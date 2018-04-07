@@ -70,7 +70,7 @@
 		<string name="select_storage_hdr">Выберите накопитель</string>
 		<string name="select_storage_btn">Выбор накопителя</string>
 		<string name="queue_hdr">Очередь</string>
-		<string name="zip_queue_count">Файлов в очереди: %tw_zip_queue_count% из 10 возможных</string>
+		<string name="zip_queue_count">В очереди: %tw_zip_queue_count% из 10</string>
 		<string name="zip_queue_count_s">Файл %tw_zip_queue_count% из 10:</string>
 		<string name="zip_warn1">Эта операция может установить несовместимое ПО на</string>
 		<string name="zip_warn2">ваше устройство и сделать загрузку системы невозможной.</string>
@@ -80,7 +80,7 @@
 		<string name="file">Файл:</string>
 		<string name="zip_sig_chk">Проверка подписи Zip</string>
 		<string name="inject_twrp_chk">Интегрировать TWRP после установки</string>
-		<string name="install_reboot_chk">Автоматическая перезагрузка после установки</string>
+		<string name="install_reboot_chk">Перезагрузка после установки</string>
 		<string name="options_hdr">Опции</string>
 		<string name="confirm_flash_hdr">Подтвердите установку</string>
 		<string name="zip_queue">Очередь:</string>
@@ -250,7 +250,7 @@
 		<string name="restore_try_decrypt_s">Попытка расшифровки</string>
 		<string name="restore_backup_date">Резервная копия создана: %tw_restore_file_date%</string>
 		<string name="restore_sel_part">Выбор раздела для восстановления:</string>
-		<string name="restore_enable_digest_chk" version="2">Включить проверку Digest файлов резервной копии</string>
+		<string name="restore_enable_digest_chk" version="2">Проверка Digest файлов резервной копии</string>
 		<string name="restore_complete">Восстановление завершено</string>
 		<string name="swipe_restore">Свайп для восстановления</string>
 		<string name="swipe_restore_s">   Восстановление</string>
@@ -302,10 +302,10 @@
 		<string name="settings_gen_hdr">Основные</string>
 		<string name="settings_gen_s_hdr">Основные</string>
 		<string name="settings_gen_btn">Основные</string>
-		<string name="use_rmrf_chk">Использовать rm -rf вместо форматирования</string>
+		<string name="use_rmrf_chk">Использовать rm -rf для форматирования</string>
 		<string name="use24clock_chk">Использовать 24-часовой формат времени</string>
-		<string name="rev_navbar_chk">Инвертировать порядок навигационных кнопок</string>
-		<string name="simact_chk">Имитация действий для тестирования темы</string>
+		<string name="rev_navbar_chk">изменить порядок навигационных кнопок</string>
+		<string name="simact_chk">Тестирования темы</string>
 		<string name="simfail_chk">Имитация отказа для действий</string>
 		<string name="ctr_navbar_rdo">Кнопки нав.панели по центру</string>
 		<string name="lft_navbar_rdo">Выровнять кнопки нав.панели слева</string>
@@ -463,7 +463,7 @@
 		<string name="sideload_confirm">ADB Sideload</string>
 		<string name="sideload_usage">Пример: adb sideload filename.zip</string>
 		<string name="sideload_complete">ADB Sideload завершен</string>
-		<string name="fix_contexts_hdr">Исправление контекста SELinux</string>
+		<string name="fix_contexts_hdr">Fix контекста SELinux</string>
 		<string name="fix_contexts_note1">Примечание: исправление контекста SELinux требуется редко.</string>
 		<string name="fix_contexts_note2">Исправление SELinux-контекста может привести</string>
 		<string name="fix_contexts_note3">к тому, что система не будет запускаться.</string>
@@ -472,14 +472,14 @@
 		<string name="fixing_contexts">Исправление контекста...</string>
 		<string name="fix_contexts_complete">Исправление контекста завершено</string>
 		<string name="reboot_hdr">Перезагрузка</string>
-		<string name="su_hdr">Проверика SuperSU</string>
+		<string name="su_hdr">Проверика Xposed</string>
 		<string name="su_note1">В вашем устройстве отсутствует рут-доступ.</string>
-		<string name="su_note2">Установить SuperSU сейчас?</string>
+		<string name="su_note2">Установить Xposed сейчас?</string>
 		<string name="su_note3">Рут-доступ будет активирован.</string>
 		<string name="su_cancel">Не устанавливать</string>
 		<string name="swipe_su_to_install">Свайп для установки</string>
 		<string name="swipe_su_install">   Установка</string>
-		<string name="su_installing">Установка SuperSU</string>
+		<string name="su_installing">Установка Xposed</string>
 		<string name="sel_storage_list">Выберите накопитель</string>
 		<string name="ok_btn">OK</string>
 		<!-- Various console messages - these consist of user displayed messages, oftentimes errors -->
@@ -697,7 +697,7 @@
 		<string name="use_aromafm">Использовать Aroma File Manager</string>
 		<string name="set_bookmark_hdr">Использовать закладкт</string>
 		<string name="use_bookmark">Использовать закладки для списков файлов</string>
-		<string name="auto_name_generate">Показывать автоматически сгенерированное имя р.к.</string>
+		<string name="auto_name_generate">Показывать имя р.к. до изменения</string>
 		<string name="use_flashit_script">Использовать скрипт FlashIt для прошивки образов</string>
 		<string name="visual">Внешний вид</string>
 		<string name="center_clock_bar">Часы по центру в строке состояния</string>
@@ -727,7 +727,7 @@
 		<string name="sel_rec_im">Выбрать образ Recovery</string>
 		<string name="sel_splash_png">Выбрать картинку для Splash</string>
 		<string name="install_Recovery">Установка Recovery...</string>
-		<string name="zip_md5_chk">Принудительно проверять MD5 для архивов</string>
+		<string name="zip_md5_chk">Принудительно проверять MD5</string>
 		<string name="swipe_to_install">Проведите, для установки</string>
 		<string name="start_aromafm">Запустить Aroma File Manager</string>
 		<string name="swipe_aromafm">Проведите, чтобы запустить AromaFM</string>
@@ -754,10 +754,10 @@
 		<string name="contact">Поддержка</string>
 		<string name="credits">Благодарности</string>
 		<string name="RayLi">За помощь в редактировании</string>
-		<string name="help">исчходного кода TWRP</string>
-		<string name="osm0sis">За скрипты для образов</string>
-		<string name="z31s1g">За базу для темы в стиле Material.</string>
-		<string name="DSM_">За скрипт изменения цветов</string>
+		<string name="help">и просто друг</string>
+		<string name="osm0sis">Тестер</string>
+		<string name="z31s1g">Тестер</string>
+		<string name="DSM_">Спасибо комманде ATG Droid</string>
 		<string name="version_twrp">Версия</string>
 		<string name="theme">Установить тему</string>
 		<string name="theme_hdr">Выбрать тему</string>
@@ -859,7 +859,7 @@
      <string name="community_info_line2">сообщества. Если вы хотите оставить здесь</string>
      <string name="community_info_line3">свой скрипт, или у вас есть совет насчет </string>
      <string name="community_info_line4">текущего, напишите мне в</string>
-     <string name="community_info_line5">теме на XDA.</string>
+     <string name="community_info_line5">Telegram @MrYacha</string>
      <string name="governor_info_line1">Существует множество говернеров ЦП</string>
      <string name="governor_info_line2">для Android, но люди должны ознакомиться</string>
      <string name="governor_info_line3">с несколькими важными моментами</string>
@@ -882,7 +882,7 @@
      <string name="governor_info_line20">давать оптимальную производительность,</string>
      <string name="governor_info_line21">с меньшим расходом</string>
      <string name="governor_info_line22">зарядки батареи.</string>
-     <string name="wolf_flash_SU">Проведите, чтобы установить встроенный SuperSU.</string>
+     <string name="wolf_flash_SU">Проведите, чтобы установить встроенный Xposed.</string>
      <string name="wolf_flash_Magisk">Проведите, чтобы установить встроенный Magisk.</string>
      <string name="wolf.pass.final_slide">Проведите, чтобы вернуться на главную.</string>
      <string name="wolf.disable_verity">Отключить dm-verity</string>
@@ -906,7 +906,7 @@
      <string name="change_pass_text_1_del">Чтобы удалить пароль,</string>
      <string name="change_pass_text_2_del">сперва введите</string>
      <string name="change_pass_text_3_del">текущий пароль.</string>
-     <string name="wolf.fix.fp_scanner">Починить сканер отпечатка пальца</string>
+     <string name="wolf.fix.fp_scanner">Fix сканера отпечатка</string>
      <string name="wolf.community.scripts_hdr">Скрипты сообщества</string>
      <string name="wolf_flash_ramdisk_cleaner">Проведите,чтобы установить Ramdisk Cleaner.</string>
      <string name="wolf_flash_substratum_rescue">Проведите,чтобы установить Substratum Rescue</string>
@@ -914,7 +914,7 @@
      <string name="wolf_flash_fp_fix">Проведите,чтобы починить сканер отпечатка пальца.</string>
      <string name="wolf_actual_build">Текущая сборка</string>
      <string name="inject_led_chk">Уведомлять о завершении установки</string>
-     <string name="inject_led_chk_bak">Уведомлять о завершении резервной копии</string>
+     <string name="inject_led_chk_bak">Уведомить о завершении р.к.</string>
      <string name="inject_led_chk_res">Уведомлять о завершении восстановления</string>   
      <string name="wolf_rmpass_hdr">Скрипт может удалить пароль прошивки.</string>
      <string name="wolf_flash_rmpass">Проведите, чтобы удалить пароль прошивки</string>
@@ -942,7 +942,7 @@
 	 <string name="change_pass_confirm_xdl">Проведите, чтобы установить новый пароль</string>
      <string name="working">Подождите...</string>
      <string name="wolf_flash_zip_magisk">Установка Magisk</string>
-     <string name="wolf_flash_zip_supersu">Установка SuperSU</string>
+     <string name="wolf_flash_zip_supersu">Установка Xposed</string>
      <string name="run_custom_file">Пуск</string>
      <string name="wolf_backup_name1">Здесь вы можете изменить папку</string>
      <string name="wolf_backup_name2">для хранения р.к. и задать ваш</string>
@@ -962,7 +962,7 @@
      <string name="wolf_del_backup_confirm">Удалить все р.к.?</string>
      <string name="wolf_deleting_backup">Удаление р.к....</string>
      <string name="wolf_backup_deleted">Удаление всех р.к. завершено</string>
-	 <string name="wolf.rmpass_btn">Удалить пароли прошивки</string>
+	 <string name="wolf.rmpass_btn">Убрать пароль прошивки</string>
 	 <string name="redwolf_wb_chk">Резервное копирование Wifi, Bluetooth и Hosts</string>  
      <string name="wolf_Wifi_Bluetooth_backup_line1">Если эта функция включена, Recovery</string>
      <string name="wolf_Wifi_Bluetooth_backup_line2">автоматически будет засекать установку прошивки</string>
@@ -974,10 +974,10 @@
      <string name="wolf_Wifi_Bluetooth_backup_line8">Убедитесь, что вы отключили Wifi and Bluetooth перед</string>
      <string name="wolf_Wifi_Bluetooth_backup_line9">восстановлением этих данных (В ином случае</string>
      <string name="wolf_Wifi_Bluetooth_backup_line10">изменения не применятся).</string>
-     <string name="wolf_action_vibration">Вибрация действий Red Wolf:</string>
+     <string name="wolf_action_vibration">Вибрация действий OrangeFox:</string>
      <string name="wolf_boot_fsync">Отключить Fsync</string>
      <string name="wolf_boot_fastcharge">Принудительная быстрая зарядка</string>
-     <string name="wolf_boot_t2w">Включить T2W</string>
+     <string name="wolf_boot_t2w">Включить 2 тапа для включение экрана(T2W)</string>
      <string name="wolf_boot_curr_governor">Применить слабую вибрацию для T2W</string>
      <string name="wolf_boot_performance">Включить режим производительности</string>
      <string name="wolf_boot_powersave">Включить режим энергосбережения</string>
@@ -993,7 +993,53 @@
      <string name="wolf_install_vibrate">Вибрация при установке</string> 
      <string name="wolf_backup_vibrate">Вибрация при создании р.к.</string> 
      <string name="wolf_restore_vibrate">Вибрация при восстановлении р.к.</string> 
-     <string name="wolf_vibration_hdr">Вибрация действий Red Wolf</string>
+     <string name="wolf_vibration_hdr">Вибрация действий OrangeFox</string>
      <string name="wolf_boot_nastaveni">Аппаратные настройки</string>
+	 <!--OrangeFox Edited by Yahcka-->
+	 <string name="wolf_supersu_config_chk">Установить Xposed модулем в Magisk?</string>
+	 <string name="select_storage_hdr">Выберите накопить</string>
+	 <string name="select_storage_btn">Накопитель</string>
+	 <string name="wolf_no_os_engine">Улучшенный метод поиска ОС</string>
+	 <string name="Dadi11">Главный тестер</string>
+	 <string name="yacha_magisk">By Yahcka, Только для Treble!</string>
+	 <string name="yacha_xposed">By topjohnwu, Только для Android 8.1!</string>
+	 <string name="reboot_recovery_btn">Перезагрузить рекавери</string>
+	 <string name="wolf_reboot_restore_finish_chk">Перезагрузка после восстановления</string>
+	 <string name="sel_splash_png">Выберите PNG</string>
+	 <string name="wolf_custom_wolf_splash_btn">Изменить сплеш</string>
+	 <string name="raised_clearqueue_btn">Очистить список</string>
+	 <string name="raised_viewqueue_btn">Просмотрть список</string>
+	 <string name="wolf_special_actions_hdr">Спец. Настройки</string>
+	 <string name="fix_contexts_confirm">исправленить контекст SELinux?</string>
+	 <string name="sha2_chk">Использовать SHA2 для хширования</string>
+	 <string name="statusbar_wolf_on_lockpass">Не рабочая опция</string>
+	 
+	 <string name="sort_by_name_asc">По имени</string>
+	 <string name="sort_by_date_asc">По дате</string>
+	 <string name="sort_by_size_asc">По размеру</string>
+	 <string name="sort_by_name_desc">По имени обр.</string>
+	 <string name="sort_by_date_desc">По дате обр.</string>
+	 <string name="sort_by_size_desc">По размеру обр.</string>
+	 
+	 <string name="extra_shit_info_line1">Очень много текста! Потом!</string>
+     <string name="extra_shit_info_line2">special settings! Here you can change</string>
+     <string name="extra_shit_info_line3">the way of how is the OrangeFox Recovery</string>
+     <string name="extra_shit_info_line4">installing zip files.</string>  
+     <string name="extra_shit_info_line5">Maybe you don't want to flash lazyflasher</string>       
+     <string name="extra_shit_info_line6">everytime when you are installing</string>
+     <string name="extra_shit_info_line7">ROM with enabled dm-verity? So just enable</string>
+     <string name="extra_shit_info_line8">here &quot;Disable DM-Verity&quot; and</string>
+     <string name="extra_shit_info_line9">that's everything what you have to do.</string>
+     <string name="extra_shit_info_line10">After that when you flash the ROM</string>
+     <string name="extra_shit_info_line11">recovery will automatically during the</string>
+     <string name="extra_shit_info_line12">installation check and disable dm-verity.</string>
+     <string name="extra_shit_info_line13">The same process is also for forced</string>
+     <string name="extra_shit_info_line14">encryption.</string>   
+     <string name="extra_shit_info_line15">Other things like &quot;Enable Debugging...&quot;</string>
+     <string name="extra_shit_info_line16">are changing the props...</string>
+     <string name="extra_shit_info_line17">If you still have any question then</string>
+     <string name="extra_shit_info_line18">ask us in the XDA thread or in our</string>
+     <string name="extra_shit_info_line19">Telegram group (link is on XDA).</string>
+     <string name="extra_shit_info_line20">Enjoy! :)</string>
 	</resources>
 </language>
