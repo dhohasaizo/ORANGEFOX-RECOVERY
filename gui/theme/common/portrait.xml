@@ -11142,14 +11142,15 @@
 				<text>{@wolf_prebuilt_shit_not_exist_2=test test test.}</text>
 			</text>
 
-			<!--button style="btn_dlg_hl">
+			<button style="btn_dlg_hl">
 				<placement x="%db_right_x%" y="%db_y%"/>
 				<text>{@ok_btn=OK}</text>
 				<actions>
 					<action function="overlay"/>
-					<action function="page">%tw_back%</action>
+					<!--action function="page">%tw_back%</action-->
+					<action function="page">%main%</action>
 				</actions>
-			</button-->
+			</button>
 
 			<action>
 				<touch key="power+volup"/>
