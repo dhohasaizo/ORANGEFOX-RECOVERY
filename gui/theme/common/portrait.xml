@@ -193,7 +193,7 @@
 				</actions>
 			</button>
 
-			<button>
+			<!--button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_misc"/>
 				<action function="page">wolf_set_custom_led_color</action>
@@ -203,107 +203,28 @@
 				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
 				<image resource="wolf_plus_icon_opacity"/>
 				<action function="page">wolf_led_vibrate_action</action>
-			</button>
+			</button-->
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>RedWolf</text>
+				<text>OrangeFox menu</text>
 			</text>
 			
 			<fill color="%text_actionbar%">
 				<placement x="0" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
 
-			<image>
-				<placement x="%col1_x%" y="%row2_2_y%"/>
-				<image resource="icon_info"/>
-			</image>
-
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
-				<text>{@wolf_install_section_info1=}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
-				<text>{@wolf_install_section_info2=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
-				<text>{@wolf_install_section_info3=}</text>
-			</text>
-			
-			<text style="text_body2_green">
-				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
-				<text>{@wolf_install_section_info4_title=RedWolf's OTA Survival}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row4_1_y%"/>
-				<text>{@wolf_install_section_info4=}</text>
-			</text>
-
-          <text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row4_2_y%"/>
-				<text>{@wolf_install_section_info5=}</text>
-			</text>
-			
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="%row4_3_y%"/>
-				<text>t.me/RedWolfRecovery</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row5_1_y%"/>
-				<text>{@wolf_install_section_info6=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row5_2_y%"/>
-				<text>{@wolf_install_section_info7=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row5_3_y%"/>
-				<text>{@wolf_install_section_info8=}</text>
-			</text>
-			
-			
-		 <text style="text_body2_green">
-				<placement x="%col1_x_indent%" y="%row6_2_y%"/>
-				<text>Dumwolf Driver</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row6_3_y%"/>
-				<text>{@wolf_install_section_info9=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row7_1_y%"/>
-				<text>{@wolf_install_section_info10=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row7_2_y%"/>
-				<text>{@wolf_install_section_info11=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row7_3_y%"/>
-				<text>{@wolf_install_section_info12=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row8_1_y%"/>
-				<text>{@wolf_install_section_info13=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row8_2_y%"/>
-				<text>{@wolf_install_section_info14=}</text>
-			</text>
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
+				<text>Magisk</text>
+				<actions>
+					<action function="set">tw_filecheck=%rw_resource_dir%/Magisk/Magisk.zip</action>
+					<action function="set">tw_existpage=wolf_magisk</action>
+					<action function="set">tw_back=theme_settings</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+				   </actions>
+				</button>
 
 				<action>
 				<touch key="home"/>
