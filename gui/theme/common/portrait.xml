@@ -11148,7 +11148,7 @@
 				<actions>
 					<action function="overlay"/>
 					<!--action function="page">%tw_back%</action-->
-					<action function="page">%main%</action>
+					<action function="page">main</action>
 				</actions>
 			</button>
 
