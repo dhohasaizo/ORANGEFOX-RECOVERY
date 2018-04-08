@@ -235,6 +235,18 @@
 					<action function="page">filecheck</action>
 				   </actions>
 				</button>
+				
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="%row7_1a_y%"/>
+				<text>Xposed</text>
+					<actions>
+					<action function="set">tw_filecheck=%rw_resource_dir%/SuperSU/SuperSU.zip</action>
+					<action function="set">tw_existpage=wolf_supersu</action>
+					<action function="set">tw_back=theme_settings</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+				   </actions>
+			</button>	
 
 				<action>
 				<touch key="home"/>
