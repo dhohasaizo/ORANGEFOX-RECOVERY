@@ -193,7 +193,7 @@
 				</actions>
 			</button>
 
-			<!--button>
+			<button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_misc"/>
 				<action function="page">wolf_set_custom_led_color</action>
@@ -203,7 +203,7 @@
 				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
 				<image resource="wolf_plus_icon_opacity"/>
 				<action function="page">wolf_led_vibrate_action</action>
-			</button-->
+			</button>
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
@@ -213,6 +213,16 @@
 			<fill color="%text_actionbar%">
 				<placement x="0" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
+
+            <image>
+				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
+				<text>{@wolf_install_section_info1=}</text>
+			</text>
 
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
