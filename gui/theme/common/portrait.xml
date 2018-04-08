@@ -11129,27 +11129,27 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>{@wolf_prebuilt_shit_not_exist_hdr=Change Theme}</text>
+				<text>{@wolf_prebuilt_shit_not_exist_hdr=Recovery is damaged!}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%storage_indent_x%" y="%db_text2a_y%"/>
-				<text>{@wolf_prebuilt_shit_not_exist_1=The recovery will now reboot}</text>
+				<text>{@wolf_prebuilt_shit_not_exist_1=you must flash OrangeFox zip to fix it}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%storage_indent_x%" y="%db_text3a_y%"/>
-				<text>{@wolf_prebuilt_shit_not_exist_2=to apply the selected theme.}</text>
+				<text>{@wolf_prebuilt_shit_not_exist_2=test test test.}</text>
 			</text>
 
-			<button style="btn_dlg_hl">
+			<!--button style="btn_dlg_hl">
 				<placement x="%db_right_x%" y="%db_y%"/>
 				<text>{@ok_btn=OK}</text>
 				<actions>
 					<action function="overlay"/>
 					<action function="page">%tw_back%</action>
 				</actions>
-			</button>
+			</button-->
 
 			<action>
 				<touch key="power+volup"/>
