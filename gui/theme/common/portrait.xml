@@ -11218,7 +11218,7 @@
 				       <action function="page">main2</action>
 			</action>
 </page>
-	</pages>
+	
 	
 	<page name="fox_xposed">
 	
@@ -11236,7 +11236,7 @@
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>SuperSU</text>
+				<text>Xposed</text>
 			</text>
 
 			<text style="text_ab_title">	
@@ -11300,4 +11300,6 @@
 				     <action function="page">main2</action>
 			</action>
 	</page>
+	
+	</pages>
 </recovery>
