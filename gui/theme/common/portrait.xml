@@ -11258,7 +11258,7 @@
 				</listbox>
 
 			<slider>
-				<condition var1="rw_supersu_config_chk" op="!=" var2=1/>
+				<condition var1="rw_supersu_config_chk" var2=0/>
 				<actions>
 				   <action function="queueclear"/>
 					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
