@@ -228,7 +228,8 @@
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>Magisk</text>
 				<actions>
-					<action function="set">tw_filecheck=%rw_resource_dir%/Magisk/Magisk.zip</action>
+					<!--action function="set">tw_filecheck=%rw_resource_dir%/Magisk/Magisk.zip</action-->
+					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/Magisk.zip</action>
 					<action function="set">tw_existpage=wolf_magisk</action>
 					<action function="set">tw_back=theme_settings</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
@@ -11162,5 +11163,60 @@
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
+		
+		<page name="wolf_magisk">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<button>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+			    <action function="page">theme_settings</action>
+			</button>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>Magisk</text>
+			</text>
+
+			<text style="text_ab_title">	
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>by topjohnwu</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@wolf_flash_Magisk=}</text>
+			</text>
+
+
+			<slider>
+				<actions>
+					<action function="queueclear"/>
+					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
+					<action function="set">rw_inject_after_zip=0</action>
+					<action function="set">wolf_install_built_in_zip=1</action>
+					<action function="set">wolf_magisk_var=1</action>
+					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
+					<action function="set">tw_signed_zip_verify=0</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+					<action function="queuezip"/>
+				<action function="flash">flash_zip</action>
+				</actions>
+           </slider>
+
+<action>
+				<touch key="back"/>
+				        <action function="page">theme_settings</action>		
+			</action>
+
+<action>
+				<touch key="home"/>
+				       <action function="page">main2</action>
+			</action>
+</page>
 	</pages>
 </recovery>
