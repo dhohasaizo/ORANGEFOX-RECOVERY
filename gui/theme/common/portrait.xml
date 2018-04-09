@@ -10591,10 +10591,10 @@
 				<text>MrYacha, DarthJabba9,</text>
 			</text>
 			
-			<text style="text_body2">
+			<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
 				<text>ATG Droid, Dadi11</text>
-			</text>
+			</text-->
 
 			<image>
 				<placement x="%col1_x%" y="%row3_3_y%"/>
@@ -10626,12 +10626,12 @@
 				<text>kirillmaster4 - {@fox_cre1=}</text>
 			</text>
 
-			<!--text style="text_body2">
+			<text> style="text_body2">
 				<placement x="%col1_x_indent%" y="%row5_2_y%"/>
-				<text>z31s1g - {@z31s1g=}</text>
-			</text-->
+				<text>ATG Droid, Dadi11 - {@fox_redcreators=}</text>
+			</text>
 			
-			<text style="text_body2">
+			<text> style="text_body2">
 				<placement x="%col1_x_indent%" y="%row5_3_y%"/>
 				<text>TeamWin - {@twrpcredit=}</text>
 			</text>
