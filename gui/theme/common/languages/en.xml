@@ -272,7 +272,7 @@
 		<string name="settings_screen_timeout_cptn">Timeout</string>
 		<string name="settings_screen_timeout_cptn2">Timeout:</string>
 		<string name="timeout_unit">seconds</string>
-		<string name="msg2">[Red Wolf]: Process finished!</string>
+		<string name="msg2">[OrangeFox]: Process finished!</string>
 		<string name="enable_timeout_chk">Enable screen timeout</string>
 		<string name="screen_to_slider_s">Screen timeout in seconds (0=disabled): %tw_screen_timeout_secs%</string>
 		<string name="screen_to_na">Screen timeout setting unavailable</string>
@@ -624,7 +624,6 @@
 		<string name="developers">Development Team</string>
 		<string name="contact">Telegram Channel</string>
 		<string name="credits">Credits</string>
-		<string name="osm0sis">For boot image binaries...</string>
 		<string name="z31s1g">For the base of his material theme.</string>
 		<string name="version_twrp">Version</string>
 		<string name="all_done">All Done</string>
@@ -720,7 +719,7 @@
 	<string name="digest_fail_match" version="2">Digest failed to match on '{1}'.</string>
 	<string name="digest_matched" version="2">Digest matched for '{1}'.</string> 
     <!-- Red Wolf Recovery V3.1 / 018 -->
-	<string name="redwolfms2">[Red Wolf]: Welcome! ^_^</string>
+	<string name="redwolfms2">[OrangeFox]: By MrYacha && DarthJabba9</string>
 	<string name="redwolfms3">[Version]: {1}</string>
 	<string name="redwolfms4">[Build]: {1}</string>
 	<string name="wolf_reboot_restore_finish_chk">Reboot after restore is complete</string>
@@ -827,6 +826,8 @@
 	 <string name="wolf_prebuilt_shit_not_exist_hdr">Recovery is damaged!</string>
 	 <string name="wolf_prebuilt_shit_not_exist_1">You must flash OrangeFox zip to fix it</string>
 	 <string name="wolf_prebuilt_shit_not_exist_2">oops</string>
+	 
+	 <string name="fox_cre1">For graphics, photoshop guru</string>
 	 
 	 
      </resources>
