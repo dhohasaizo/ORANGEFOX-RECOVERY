@@ -778,7 +778,6 @@
      <string name="wolf_verify_password_start">Verifying entered password...</string>
 	 <string name="wolf_verify_password_fail">Password is not correct!</string>
 	 <string name="wolf_verify_password_success">Password is correct!</string>
-	 <string name="wolf_install_section_info1">Here is the main section for settings</string>
      <string name="wolf_install_section_info2">related to OTA survival engine and</string>
      <string name="wolf_install_section_info3">setup of Dumwolf driver.</string>
      <string name="wolf_install_section_info4_title">RedWolf's OTA Survival</string>
@@ -824,6 +823,9 @@
 	 <string name="fox_actionbar_xposed">by Chainfire, only for Android 8.1!</string>
 	 <string name="fox_flash_Xposed">Swipe tp flash Xposed</string>
 	 <string name="fox_magisk_xposed_config">Install Xposed in magisk?</string>
+	 
+	 <string name="wolf_menu_info1">For install build in magisk recovery</string>
+	 <string name="wolf_menu_info2">necessary have folder /Fox/FoxFiles in phone</string>
 	 
 	 
 	 <string name="wolf_prebuilt_shit_not_exist_hdr">Recovery is damaged!</string>
