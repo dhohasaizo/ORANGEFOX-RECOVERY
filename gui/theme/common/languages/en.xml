@@ -272,7 +272,7 @@
 		<string name="settings_screen_timeout_cptn">Timeout</string>
 		<string name="settings_screen_timeout_cptn2">Timeout:</string>
 		<string name="timeout_unit">seconds</string>
-		<string name="msg2">[Red Wolf]: Process finished!</string>
+		<string name="msg2">[OrangeFox]: Process finished!</string>
 		<string name="enable_timeout_chk">Enable screen timeout</string>
 		<string name="screen_to_slider_s">Screen timeout in seconds (0=disabled): %tw_screen_timeout_secs%</string>
 		<string name="screen_to_na">Screen timeout setting unavailable</string>
@@ -624,8 +624,6 @@
 		<string name="developers">Development Team</string>
 		<string name="contact">Telegram Channel</string>
 		<string name="credits">Credits</string>
-		<string name="osm0sis">For boot image binaries...</string>
-		<string name="z31s1g">For the base of his material theme.</string>
 		<string name="version_twrp">Version</string>
 		<string name="all_done">All Done</string>
 		<string name="zip_md5_chk">Force MD5 check on all Zip files</string>
@@ -720,7 +718,7 @@
 	<string name="digest_fail_match" version="2">Digest failed to match on '{1}'.</string>
 	<string name="digest_matched" version="2">Digest matched for '{1}'.</string> 
     <!-- Red Wolf Recovery V3.1 / 018 -->
-	<string name="redwolfms2">[Red Wolf]: Welcome! ^_^</string>
+	<string name="redwolfms2">[OrangeFox]: By MrYacha && DarthJabba9</string>
 	<string name="redwolfms3">[Version]: {1}</string>
 	<string name="redwolfms4">[Build]: {1}</string>
 	<string name="wolf_reboot_restore_finish_chk">Reboot after restore is complete</string>
@@ -780,7 +778,6 @@
      <string name="wolf_verify_password_start">Verifying entered password...</string>
 	 <string name="wolf_verify_password_fail">Password is not correct!</string>
 	 <string name="wolf_verify_password_success">Password is correct!</string>
-	 <string name="wolf_install_section_info1">Here is the main section for settings</string>
      <string name="wolf_install_section_info2">related to OTA survival engine and</string>
      <string name="wolf_install_section_info3">setup of Dumwolf driver.</string>
      <string name="wolf_install_section_info4_title">RedWolf's OTA Survival</string>
@@ -818,5 +815,25 @@
      <string name="twrpcredit">For source code of TWRP</string>  
      <string name="wolf_enable_string_chk">Enable</string>
 	 <string name="wolf_disable_string_chk">Disable</string>
+	 <!--OrangeFox strings | By MrYacha-->
+	 <!-- <string name=""></string> -->
+	 
+	 <string name="fox_flash_Magisk">Swipe to flash Magisk</string>
+	 <string name="fox_actionbar_Magisk">By MrYacha, only for Treble!</string>
+	 <string name="fox_actionbar_xposed">by Chainfire, only for Android 8.1!</string>
+	 <string name="fox_flash_Xposed">Swipe tp flash Xposed</string>
+	 <string name="fox_magisk_xposed_config">Install Xposed in magisk?</string>
+	 
+	 <string name="fox_menu_info1">Flash build-in archives</string>
+	 <!--string name="fox_menu_info2">necessary have folder /Fox/FoxFiles in phone</string-->
+	 
+	 
+	 <string name="wolf_prebuilt_shit_not_exist_hdr">Recovery is damaged!</string>
+	 <string name="wolf_prebuilt_shit_not_exist_1">You must flash OrangeFox zip to fix it</string>
+	 <string name="wolf_prebuilt_shit_not_exist_2">oops</string>
+	 
+	 <string name="fox_cre1">For graphics, photoshop guru</string>
+	 <string name="fox_redcreators">For development Red Wolf</string>
+	 
      </resources>
 </language>

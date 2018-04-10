@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
-	<pages>
+    <pages>
 <page name="main">
 <action>
 				<actions>
@@ -207,103 +207,52 @@
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>RedWolf</text>
+				<text>OrangeFox menu</text>
 			</text>
 			
 			<fill color="%text_actionbar%">
 				<placement x="0" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
 
-			<image>
+            <image>
 				<placement x="%col1_x%" y="%row2_2_y%"/>
 				<image resource="icon_info"/>
 			</image>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
-				<text>{@wolf_install_section_info1=}</text>
+				<text>{@fox_menu_info1=}</text>
 			</text>
-
-			<text style="text_body2">
+			
+			<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
-				<text>{@wolf_install_section_info2=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
-				<text>{@wolf_install_section_info3=}</text>
-			</text>
-			
-			<text style="text_body2_green">
-				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
-				<text>{@wolf_install_section_info4_title=RedWolf's OTA Survival}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row4_1_y%"/>
-				<text>{@wolf_install_section_info4=}</text>
-			</text>
+				<text>{@fox_menu_info2=}</text>
+			</text-->
 
-          <text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row4_2_y%"/>
-				<text>{@wolf_install_section_info5=}</text>
-			</text>
-			
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="%row4_3_y%"/>
-				<text>t.me/RedWolfRecovery</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row5_1_y%"/>
-				<text>{@wolf_install_section_info6=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row5_2_y%"/>
-				<text>{@wolf_install_section_info7=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row5_3_y%"/>
-				<text>{@wolf_install_section_info8=}</text>
-			</text>
-			
-			
-		 <text style="text_body2_green">
-				<placement x="%col1_x_indent%" y="%row6_2_y%"/>
-				<text>Dumwolf Driver</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row6_3_y%"/>
-				<text>{@wolf_install_section_info9=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row7_1_y%"/>
-				<text>{@wolf_install_section_info10=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row7_2_y%"/>
-				<text>{@wolf_install_section_info11=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row7_3_y%"/>
-				<text>{@wolf_install_section_info12=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row8_1_y%"/>
-				<text>{@wolf_install_section_info13=}</text>
-			</text>
-			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row8_2_y%"/>
-				<text>{@wolf_install_section_info14=}</text>
-			</text>
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
+				<text>Magisk</text>
+				<actions>
+					<!--action function="set">tw_filecheck=%rw_resource_dir%/Magisk/Magisk.zip</action-->
+					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+					<action function="set">tw_existpage=wolf_magisk</action>
+					<action function="set">tw_back=theme_settings</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+				   </actions>
+				</button>
+				
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="%row7_1a_y%"/>
+				<text>Xposed</text>
+					<actions>
+					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/Xposed.zip</action>
+					<action function="set">tw_existpage=fox_xposed</action>
+					<action function="set">tw_back=theme_settings</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+				   </actions>
+			</button>	
 
 				<action>
 				<touch key="home"/>
@@ -10644,13 +10593,13 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
-				<text>MrYacha, DarthJabba9,</text>
+				<text>MrYacha, DarthJabba9</text>
 			</text>
 			
-			<text style="text_body2">
+			<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
 				<text>ATG Droid, Dadi11</text>
-			</text>
+			</text-->
 
 			<image>
 				<placement x="%col1_x%" y="%row3_3_y%"/>
@@ -10679,12 +10628,12 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row5_1_y%"/>
-				<text>kirillmaster4 - {@osm0sis=}</text>
+				<text>kirillmaster4 - {@fox_cre1=}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row5_2_y%"/>
-				<text>z31s1g - {@z31s1g=}</text>
+				<text>ATG Droid, Dadi11 - {@fox_redcreators=}</text>
 			</text>
 			
 			<text style="text_body2">
@@ -11175,5 +11124,187 @@
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
+		
+		<page name="wolf_prebuilt_wolf_not_found">
+			<background color="%transparent%"/>
+
+			<image>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</image>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>{@wolf_prebuilt_shit_not_exist_hdr=Recovery is damaged!}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%storage_indent_x%" y="%db_text2a_y%"/>
+				<text>{@wolf_prebuilt_shit_not_exist_1=you must flash OrangeFox zip to fix it}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%storage_indent_x%" y="%db_text3a_y%"/>
+				<text>{@wolf_prebuilt_shit_not_exist_2=test test test.}</text>
+			</text>
+
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@ok_btn=OK}</text>
+				<actions>
+					<action function="overlay"/>
+					<!--action function="page">%tw_back%</action-->
+					<action function="page">main</action>
+				</actions>
+			</button>
+
+			<action>
+				<touch key="power+volup"/>
+				<action function="screenshotexternal"/>
+			</action>
+
+<action>
+				<touch key="power+voldown"/>
+				<action function="screenshotinternal"/>
+			</action>
+		</page>
+		
+		<page name="wolf_magisk">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<button>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+			    <action function="page">theme_settings</action>
+			</button>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>Magisk</text>
+			</text>
+
+			<text style="text_ab_title">	
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@fox_actionbar_Magisk=}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@fox_flash_Magisk=}</text>
+			</text>
+
+
+			<slider>
+				<actions>
+					<action function="queueclear"/>
+					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
+					<action function="set">rw_inject_after_zip=0</action>
+					<action function="set">wolf_install_built_in_zip=1</action>
+					<action function="set">wolf_magisk_var=1</action>
+					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
+					<action function="set">tw_signed_zip_verify=0</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+					<action function="queuezip"/>
+				<action function="flash">flash_zip</action>
+				</actions>
+           </slider>
+
+<action>
+				<touch key="back"/>
+				        <action function="page">theme_settings</action>		
+			</action>
+
+<action>
+				<touch key="home"/>
+				       <action function="page">main2</action>
+			</action>
+</page>
+	
+	
+	<page name="fox_xposed">
+	
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<button>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+				<action function="page">theme_settings</action>
+			    </button>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>Xposed</text>
+			</text>
+
+			<text style="text_ab_title">	
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@fox_actionbar_xposed}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@fox_flash_Xposed=}</text>
+			</text>
+			
+			<listbox style="settingslist">
+	             <condition var1="tw_busy" var2="0"/>
+				<placement x="%col1_x%" y="%row4_1_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+				<listitem name="{@fox_magisk_xposed_config=}">
+					<data variable="rw_supersu_config_chk"/>
+				</listitem>
+				</listbox>
+
+			<slider>
+				<condition var1="rw_supersu_config_chk" op="!=" var2="1"/>
+				<actions>
+				   <action function="queueclear"/>
+					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
+					<action function="set">rw_inject_after_zip=0</action>
+					<action function="set">wolf_install_built_in_zip=1</action>
+					<action function="set">wolf_supersu_var=1</action>
+					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
+					<action function="set">tw_signed_zip_verify=0</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Xposed.zip</action>
+					<action function="queuezip"/>
+				    <action function="flash">flash_zip</action>
+				</actions>
+       	</slider>
+       
+           <slider>
+				<condition var1="rw_supersu_config_chk" var2="1"/>
+				<actions>
+				   <action function="queueclear"/>
+					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
+					<action function="set">rw_inject_after_zip=0</action>
+					<action function="set">wolf_install_built_in_zip=1</action>
+					<action function="set">wolf_supersu_var=1</action>
+					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
+					<action function="set">tw_signed_zip_verify=0</action>
+				    <action function="set">tw_filename=/sdcard/Fox/FoxFiles/Xposed_Magisk.zip</action>
+			        <action function="queuezip"/>
+				    <action function="flash">flash_zip</action>
+				</actions>
+      	</slider>
+
+
+<action>
+				<touch key="back"/>
+			      <action function="page">theme_settings</action>	
+			</action>
+
+<action>
+				<touch key="home"/>
+				     <action function="page">main2</action>
+			</action>
+	</page>
+	
 	</pages>
 </recovery>
