@@ -224,10 +224,10 @@
 				<text>{@fox_menu_info1=}</text>
 			</text>
 			
-			<text style="text_body2">
+			<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
 				<text>{@fox_menu_info2=}</text>
-			</text>
+			</text-->
 
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
