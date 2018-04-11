@@ -58,7 +58,6 @@
 #define RW_FLASHLIGHT_VAR     "flashlight"
 #define RW_T2W_CHECK       "wolf_boot_t2w_check"
 #define RW_MIN_EXPECTED_FP_SIZE 30
-#define RW_USER_IS_PIRATE                    "wolf_user_is_pirateshit"
 #define RW_RUN_SURVIVAL_BACKUP                 "wolf_run_survival_backup"
 #define RW_INCREMENTAL_OTA_FAIL                 "wolf_ota_fail"
 #define RW_GUI_HANDLE        "wolf_handle_gui_progress"
