@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
-    <pages>
+	<pages>
 <page name="main">
 <action>
 				<actions>
@@ -207,52 +207,103 @@
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>OrangeFox menu</text>
+				<text>RedWolf</text>
 			</text>
 			
 			<fill color="%text_actionbar%">
 				<placement x="0" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
 
-            <image>
+			<image>
 				<placement x="%col1_x%" y="%row2_2_y%"/>
 				<image resource="icon_info"/>
 			</image>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
-				<text>{@fox_menu_info1=}</text>
+				<text>{@wolf_install_section_info1=}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
+				<text>{@wolf_install_section_info2=}</text>
 			</text>
 			
-			<!--text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
-				<text>{@fox_menu_info2=}</text>
-			</text-->
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
+				<text>{@wolf_install_section_info3=}</text>
+			</text>
+			
+			<text style="text_body2_green">
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
+				<text>{@wolf_install_section_info4_title=RedWolf's OTA Survival}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row4_1_y%"/>
+				<text>{@wolf_install_section_info4=}</text>
+			</text>
 
-			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
-				<text>Magisk</text>
-				<actions>
-					<!--action function="set">tw_filecheck=%rw_resource_dir%/Magisk/Magisk.zip</action-->
-					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/Magisk.zip</action>
-					<action function="set">tw_existpage=wolf_magisk</action>
-					<action function="set">tw_back=theme_settings</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-				   </actions>
-				</button>
-				
-			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="%row7_1a_y%"/>
-				<text>Xposed</text>
-					<actions>
-					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/Xposed.zip</action>
-					<action function="set">tw_existpage=fox_xposed</action>
-					<action function="set">tw_back=theme_settings</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-				   </actions>
-			</button>	
+          <text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row4_2_y%"/>
+				<text>{@wolf_install_section_info5=}</text>
+			</text>
+			
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row4_3_y%"/>
+				<text>t.me/RedWolfRecovery</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row5_1_y%"/>
+				<text>{@wolf_install_section_info6=}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row5_2_y%"/>
+				<text>{@wolf_install_section_info7=}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row5_3_y%"/>
+				<text>{@wolf_install_section_info8=}</text>
+			</text>
+			
+			
+		 <text style="text_body2_green">
+				<placement x="%col1_x_indent%" y="%row6_2_y%"/>
+				<text>Dumwolf Driver</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row6_3_y%"/>
+				<text>{@wolf_install_section_info9=}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row7_1_y%"/>
+				<text>{@wolf_install_section_info10=}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row7_2_y%"/>
+				<text>{@wolf_install_section_info11=}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row7_3_y%"/>
+				<text>{@wolf_install_section_info12=}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row8_1_y%"/>
+				<text>{@wolf_install_section_info13=}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row8_2_y%"/>
+				<text>{@wolf_install_section_info14=}</text>
+			</text>
 
 				<action>
 				<touch key="home"/>
@@ -10521,22 +10572,110 @@
 
 		<page name="lock">
 			<background color="%darktransparent%"/>
-
-			<image>
-				<image resource="unlock_icon"/>
-				<placement x="%center_x%" y="%row4_1_y%" placement="4"/>
+			
+           <image>
+				<placement x="0" y="0"/>
+				<image resource="wolf_lock_bg"/>
 			</image>
-
-			<text color="%text_light%">
-				<font resource="caption"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_to_unlock=Swipe to Unlock}</text>
+			
+			<button>
+				<placement x="0" y="0" w="1080" h="1127"/>
+				<fill color="%transparent%"/>
+				<action function="overlay"/>
+			</button>
+			
+			<text color="#FF0000">
+				<font resource="status"/>
+				<placement x="840" y="1164"/>
+					<condition var1="tw_simulate_actions" op="!=" var2="1"/>
+				<text>%tw_time%</text>
 			</text>
 
-			<slider>
-				<action function="overlay"/>
-			</slider>
+            <text color="#FF0000">
+				<font resource="status"/>
+				<placement x="940" y="1164"/>
+				<condition var1="tw_no_battery_percent" var2="0"/>
+				<text>/ {@battery_pct=%tw_battery%}</text>
+			</text>
 
+            <image>
+				<placement x="0" y="%keyboard_bg_y%"/>
+				<image resource="keyboard_shadow"/>
+			</image>
+
+			<slidervalue>
+				<condition var1="tw_has_brightnesss_file" var2="1"/>
+				<placement x="%slider_x%" y="1164" w="%slidervalue_w%"/>
+				<resource background="slider" handle="handle" handlehover="handle_h"/>
+				<font resource="caption" color="%text%"/>
+				<colors line="%text_dark%" slider="%accent%"/>
+				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
+				<data variable="tw_brightness_pct" min="10" max="100" showrange="0" showcurr="0" changeondrag="1"/>
+				<actions>
+					<action function="set">tw_brightness=%tw_brightness_max%</action>
+					<action function="compute">tw_brightness*%tw_brightness_pct%</action>
+					<action function="compute">tw_brightness/100</action>
+					<action function="setbrightness">%tw_brightness%</action>
+				</actions>
+			</slidervalue>
+			
+			<text style="text_body2">
+				<condition var1="tw_has_brightnesss_file" var2="1"/>
+				<placement x="%col1_x%" y="1164"/>
+				<text>{@screen_bright_slider=Brightness: %tw_brightness_pct%%}</text>
+			</text>
+			
+			<text style="text_body2">
+				<condition var1="tw_screen_timeout_secs" op="=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="1434"/>
+				<text>{@settings_screen_timeout_cptn=Timeout}</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="tw_screen_timeout_secs" op="!=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="1434"/>
+				<text>{@settings_screen_timeout_cptn2=Timeout:} %tw_screen_timeout_secs% {@timeout_unit=seconds}</text>
+			</text>
+			
+			<button>
+				<condition var1="tw_screen_timeout_secs" op="=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="1494" textplacement="6"/>
+				<font resource="body1" color="%text%"/>
+				<text>{@enable_timeout_chk=Enable screen timeout}</text>
+				<image resource="checkbox_false"/>
+				<action function="set">tw_screen_timeout_secs=60</action>
+			</button>
+
+			<button>
+				<condition var1="tw_screen_timeout_secs" op="!=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="1494" textplacement="6"/>
+				<font resource="body1" color="%text%"/>
+				<text>{@enable_timeout_chk=Enable screen timeout}</text>
+				<image resource="checkbox_true"/>
+				<action function="set">tw_screen_timeout_secs=0</action>
+			</button>
+
+			<slidervalue>
+				<condition var1="tw_screen_timeout_secs" op="!=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%slider_x%" y="1558" w="%slidervalue_w%"/>
+				<resource background="slider" handle="handle" handlehover="handle_h"/>
+				<font resource="caption" color="%text%"/>
+				<colors line="%text_dark%" slider="%accent%"/>
+				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
+				<data variable="tw_screen_timeout_secs" min="15" max="300" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+			
+			<button>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="flash_quick"/>
+				<action function="flashlight"/>
+			</button>
+			
 			<action>
 				<touch key="power"/>
 				<action function="togglebacklight"/>
@@ -10573,7 +10712,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>OrangeFox</text>
+				<text>RED WOLF</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -10593,13 +10732,13 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
-				<text>MrYacha, DarthJabba9</text>
+				<text>ATG Droid, Dadi11,</text>
 			</text>
 			
-			<!--text style="text_body2">
+			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
-				<text>ATG Droid, Dadi11</text>
-			</text-->
+				<text>Devil7DK, yshalsager</text>
+			</text>
 
 			<image>
 				<placement x="%col1_x%" y="%row3_3_y%"/>
@@ -10613,7 +10752,7 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row4_1_y%"/>
-				<text>@MrYacha</text>
+				<text>t.me/RedWolfRecovery</text>
 			</text>
 
 			<image>
@@ -10628,12 +10767,12 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row5_1_y%"/>
-				<text>kirillmaster4 - {@fox_cre1=}</text>
+				<text>osm0sis - {@osm0sis=}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row5_2_y%"/>
-				<text>ATG Droid, Dadi11 - {@fox_redcreators=}</text>
+				<text>z31s1g - {@z31s1g=}</text>
 			</text>
 			
 			<text style="text_body2">
@@ -11124,187 +11263,5 @@
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
-		
-		<page name="wolf_prebuilt_wolf_not_found">
-			<background color="%transparent%"/>
-
-			<image>
-				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
-				<image resource="dialog_bg"/>
-			</image>
-
-			<text style="text_dlg_title">
-				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>{@wolf_prebuilt_shit_not_exist_hdr=Recovery is damaged!}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text2a_y%"/>
-				<text>{@wolf_prebuilt_shit_not_exist_1=you must flash OrangeFox zip to fix it}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text3a_y%"/>
-				<text>{@wolf_prebuilt_shit_not_exist_2=test test test.}</text>
-			</text>
-
-			<button style="btn_dlg_hl">
-				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
-				<actions>
-					<action function="overlay"/>
-					<!--action function="page">%tw_back%</action-->
-					<action function="page">main</action>
-				</actions>
-			</button>
-
-			<action>
-				<touch key="power+volup"/>
-				<action function="screenshotexternal"/>
-			</action>
-
-<action>
-				<touch key="power+voldown"/>
-				<action function="screenshotinternal"/>
-			</action>
-		</page>
-		
-		<page name="wolf_magisk">
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-			    <action function="page">theme_settings</action>
-			</button>
-			
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Magisk</text>
-			</text>
-
-			<text style="text_ab_title">	
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fox_actionbar_Magisk=}</text>
-			</text>
-			
-			<text style="caption">
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@fox_flash_Magisk=}</text>
-			</text>
-
-
-			<slider>
-				<actions>
-					<action function="queueclear"/>
-					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
-					<action function="set">rw_inject_after_zip=0</action>
-					<action function="set">wolf_install_built_in_zip=1</action>
-					<action function="set">wolf_magisk_var=1</action>
-					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
-					<action function="set">tw_signed_zip_verify=0</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
-					<action function="queuezip"/>
-				<action function="flash">flash_zip</action>
-				</actions>
-           </slider>
-
-<action>
-				<touch key="back"/>
-				        <action function="page">theme_settings</action>		
-			</action>
-
-<action>
-				<touch key="home"/>
-				       <action function="page">main2</action>
-			</action>
-</page>
-	
-	
-	<page name="fox_xposed">
-	
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">theme_settings</action>
-			    </button>
-			
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Xposed</text>
-			</text>
-
-			<text style="text_ab_title">	
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fox_actionbar_xposed}</text>
-			</text>
-			
-			<text style="caption">
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@fox_flash_Xposed=}</text>
-			</text>
-			
-			<listbox style="settingslist">
-	             <condition var1="tw_busy" var2="0"/>
-				<placement x="%col1_x%" y="%row4_1_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="{@fox_magisk_xposed_config=}">
-					<data variable="rw_supersu_config_chk"/>
-				</listitem>
-				</listbox>
-
-			<slider>
-				<condition var1="rw_supersu_config_chk" op="!=" var2="1"/>
-				<actions>
-				   <action function="queueclear"/>
-					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
-					<action function="set">rw_inject_after_zip=0</action>
-					<action function="set">wolf_install_built_in_zip=1</action>
-					<action function="set">wolf_supersu_var=1</action>
-					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
-					<action function="set">tw_signed_zip_verify=0</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Xposed.zip</action>
-					<action function="queuezip"/>
-				    <action function="flash">flash_zip</action>
-				</actions>
-       	</slider>
-       
-           <slider>
-				<condition var1="rw_supersu_config_chk" var2="1"/>
-				<actions>
-				   <action function="queueclear"/>
-					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
-					<action function="set">rw_inject_after_zip=0</action>
-					<action function="set">wolf_install_built_in_zip=1</action>
-					<action function="set">wolf_supersu_var=1</action>
-					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
-					<action function="set">tw_signed_zip_verify=0</action>
-				    <action function="set">tw_filename=/sdcard/Fox/FoxFiles/Xposed_Magisk.zip</action>
-			        <action function="queuezip"/>
-				    <action function="flash">flash_zip</action>
-				</actions>
-      	</slider>
-
-
-<action>
-				<touch key="back"/>
-			      <action function="page">theme_settings</action>	
-			</action>
-
-<action>
-				<touch key="home"/>
-				     <action function="page">main2</action>
-			</action>
-	</page>
-	
 	</pages>
 </recovery>
