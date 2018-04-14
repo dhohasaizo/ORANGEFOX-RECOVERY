@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 
 <language>
-	<display>Indonesia beta</display>
+	<display>Indonesia</display>
 
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
@@ -272,7 +272,7 @@
 		<string name="settings_screen_timeout_cptn">Waktu habis</string>
 		<string name="settings_screen_timeout_cptn2">Waktu habis:</string>
 		<string name="timeout_unit">detik</string>
-		<string name="msg2">[Red Wolf]: Proses selesai!</string>
+		<string name="msg2">[OrangeFox]: Proses selesai!</string>
 		<string name="enable_timeout_chk">Aktifkan waktu habis layar</string>
 		<string name="screen_to_slider_s">Waktu layar habis dalam detik (0=mati): %tw_screen_timeout_secs%</string>
 		<string name="screen_to_na">Pengaturan waktu layar habis tidak ada</string>
@@ -870,7 +870,7 @@
      <string name="wolf_wifi_bluetooth_backup_line8">Pastikan untuk mematikan wifi dan bluetooth sebelum</string>
      <string name="wolf_wifi_bluetooth_backup_line9">memulihkan data ini (Perubahan akan terjadi</string>
      <string name="wolf_wifi_bluetooth_backup_line10">atau tidak berlaku).</string>
-     <string name="wolf_action_vibration">Aksi Getaran Red Wolf:</string>
+     <string name="wolf_action_vibration">Aksi Getaran OrangeFox:</string>
      <string name="wolf_boot_fsync">Matikan Fsync</string>
      <string name="wolf_boot_fastcharge">Paksa fast charge</string>
      <string name="wolf_boot_t2w">Aktifkan T2W</string>
@@ -889,7 +889,7 @@
      <string name="wolf_install_vibrate">Getaran Pemasangan</string> 
      <string name="wolf_backup_vibrate">Getaran Pencadangan</string> 
      <string name="wolf_restore_vibrate">Getaran Pemulihan</string> 
-     <string name="wolf_vibration_hdr">Aksi Getar Red Wolf</string>
+     <string name="wolf_vibration_hdr">Aksi Getar OrangeFox</string>
      <string name="wolf_boot_nastaveni">Pengaturan HW</string>
      <!-- Red Wolf Recovery V3.1 / 010 -->
      <string name="restore_enable_digest_chk" version="2">Aktifkan Verifikasi Digest dari berkas Cadangan</string>
@@ -929,7 +929,7 @@
 	<string name="repacking">Tunggu bentar...</string>
 	<string name="dialog_reset_splash_hdr">Splash Standar</string>
 	<string name="dialog_reset_splash_note_1">Ingin mengembalikan splash</string>
-	<string name="dialog_reset_splash_note_2">standar untuk Pemulihan Red Wolf?</string>
+	<string name="dialog_reset_splash_note_2">standar untuk Pemulihan OrangeFox?</string>
 	<string name="wolf_restore_splash_wolf">Pemulihan splash screen standar...</string>
 	<string name="wolf_restore_wolf_splash_conf">Geser untuk memulihkan stok splash screen</string>
 	<string name="wolf_restore_wolf_splash_1">Pulihkan Splash standar</string>
@@ -944,7 +944,7 @@
 	<!-- Red Wolf Recovery V3.1 / 012 -->
 	<string name="wolf_no_os_btn">Mulai Ulang</string>
 	<string name="wolf_no_wolfos_hdr">Tidak ada OS terpasang!</string>
-	<string name="wolf_no_os_wolf_txt1">Red Wolf mendeteksi OS tersebut</string>
+	<string name="wolf_no_os_wolf_txt1">OrangeFox mendeteksi OS tersebut</string>
 	<string name="wolf_no_os_wolf_txt2">tidak terpasang.Jika Anda yakin</string>
     <string name="wolf_no_os_wolf_txt3">OS tersebut terpasang dan pendeteksi</string>
     <string name="wolf_no_os_wolf_txt4">salah, silahkan geser untuk konfirmasi</string>
@@ -955,7 +955,7 @@
     <string name="wolf_fgo_patch_hdr2">Untuk ROM berbasis LOS</string>
     <string name="wolf_flash_fgo_patch">Geser untuk memasang patch FGO</string>    
     <!-- Red Wolf Recovery V3.1 / 018 -->
-	<string name="redwolfms2">[Red Wolf]: Selamat Datang ! ^_^</string>
+	<string name="redwolfms2">[OrangeFox]: Selamat Datang ! ^_^</string>
 	<string name="redwolfms3">[Versi]: {1}</string>
 	<string name="redwolfms4">[Build]: {1}</string>
 	<string name="wolf_reboot_restore_finish_chk">Mulai ulang setelah pemulihan selesai</string>
@@ -967,7 +967,7 @@
 	<string name="wolf_hide_backup_folder_chk">Sembunyikan folder pemulihan utama</string>
 	<string name="wolf_advanced_stock_recovery">Penonaktifan stok recovery secara agresif</string>
 	<string name="wolf_support_miui_ota_chk">Dukung MIUI Incremental OTA</string>
-	<string name="wolf_special_actions">Aksi spesial milik Red Wolf Recovery</string>
+	<string name="wolf_special_actions">Aksi spesial milik OrangeFox Recovery</string>
 	<string name="wolf_special_actions_hdr">Aksi Spesial</string>
 	<string name="wolf_reboot_disable_secure_boot_chk">Nonaktifkan secure boot</string>
 	<string name="wolf_reboot_enable_mock_location_chk">Aktifkan allow.mock.location</string>
@@ -986,10 +986,10 @@
 	<string name="wolf_no_os_engine">Gunakan NO OS Search Engine Lanjutan</string>
     <string name="wolf_reset_default_hdr">Pengaturan Default</string>
 	<string name="wolf_extra_shit_hdr">Aksi Lanjutan</string>
-	<string name="wolf_extra_shit_hdr_2">Aksi Lanjutan dari Red Wolf Recovery</string>
+	<string name="wolf_extra_shit_hdr_2">Aksi Lanjutan dari OrangeFox Recovery</string>
 	<string name="extra_shit_info_line1">Halo! Selamat datang dibagian</string>
      <string name="extra_shit_info_line2">aksi spesial! Disini Anda bisa mengubah</string>
-     <string name="extra_shit_info_line3">bagaimana cara Red Wolf Recovery</string>
+     <string name="extra_shit_info_line3">bagaimana cara OrangeFox Recovery</string>
      <string name="extra_shit_info_line4">memasang berkas-berkas zip.</string>  
      <string name="extra_shit_info_line5">Mungkin Anda tidak ingin memasang lazyflasher</string>       
      <string name="extra_shit_info_line6">setiap kali Anda memasang ROM dengan</string>
@@ -1034,7 +1034,7 @@
 	<string name="wolf_incremental_ota_compatibility_true">Paket inkremental cocok</string>
 	<!-- Red Wolf Recovery V3.1 / 022 -->
 	<string name="wolf_wipe_substratum_overlays">Lapisan Substratum</string>
-	<string name="wolf_zip_have_bootloader">Peringatan: RedWolf mendeteksi adanya bootloader didalam berkas '{1}'</string>
+	<string name="wolf_zip_have_bootloader">Peringatan: OrangeFox mendeteksi adanya bootloader didalam berkas '{1}'</string>
 	<string name="substratum_done">-- Lapisan Substratum Selesai Dibersihkan!</string>
 	<string name="wolf_no_space_ota_survival">Tidak cukup ruang kosong pada penyimpanan internal untuk membuat OTA Survival.</string>
 	<!-- Red Wolf Recovery V3.1 / 023 -->

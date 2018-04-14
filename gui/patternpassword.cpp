@@ -371,6 +371,7 @@ int GUIPatternPassword::NotifyTouch(TOUCH_STATE state, int x, int y)
 			mTrackingTouch = true;
 			ResetActiveDots();
 			ConnectDot(dot_idx);
+			DataManager::Vibrate("tw_button_vibrate");
 			mCurLineX = x;
 			mCurLineY = y;
 			mNeedRender = true;
@@ -386,6 +387,7 @@ int GUIPatternPassword::NotifyTouch(TOUCH_STATE state, int x, int y)
 			{
 				ConnectIntermediateDots(dot_idx);
 				ConnectDot(dot_idx);
+				DataManager::Vibrate("tw_button_vibrate");
 			}
 
 			mCurLineX = x;

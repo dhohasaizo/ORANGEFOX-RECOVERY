@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <language>
-	<display>Czech beta</display>
+	<display>Czech</display>
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
 		<resource name="font_l" type="fontoverride" filename="RobotoCondensed-Regular.ttf" scale="90" />
@@ -690,7 +690,7 @@
 	 <string name="dialog_color_note_1">Nezobrazovat znovu</string>
 	 <string name="dialog_reset_theme_hdr">Přednastavené nastavení</string>
 	 <string name="dialog_reset_theme_note_1">Chcete obnovit přednastavené nastavení</string>
-     <string name="dialog_reset_theme_note_2">Red Wolf Recovery?</string>
+     <string name="dialog_reset_theme_note_2">OrangeFox Recovery?</string>
 	 <string name="queue_no">Ne.</string>
 	 <string name="all_done">Všechno hotovo.</string>
 	 <string name="patch_image">Instaluji...</string>
@@ -872,7 +872,7 @@
      <string name="wolf_wifi_bluetooth_backup_line8">Nezapomeňte před obnovením těchto dat</string>
      <string name="wolf_wifi_bluetooth_backup_line9">vypnout wifi & bluetooth (Změny by se jinak</string>
      <string name="wolf_wifi_bluetooth_backup_line10">neprojevily).</string>
-     <string name="wolf_action_vibration">Vibrace akcí Red Wolf Recovery:</string>
+     <string name="wolf_action_vibration">Vibrace akcí OrangeFox Recovery:</string>
      <string name="wolf_boot_fsync">Vypnout Fsync</string>
      <string name="wolf_boot_fastcharge">Zapnout rychlejší nabíjení</string>
      <string name="wolf_boot_t2w">T2W</string>
@@ -890,7 +890,7 @@
      <string name="wolf_install_vibrate">Vibrace instalace</string> 
      <string name="wolf_backup_vibrate">Vibrace zálohy</string> 
      <string name="wolf_restore_vibrate">Vibrace obnovy</string> 
-     <string name="wolf_vibration_hdr">Nastavení vibrace akcí Red Wolf</string>
+     <string name="wolf_vibration_hdr">Nastavení vibrace akcí OrangeFox</string>
      <string name="wolf_boot_nastaveni">HW Nastavení</string>
  <!-- Red Wolf Recovery V3.1 / 010 -->
      <string name="restore_enable_digest_chk" version="2">Zapnout ověření digestu na zálohách</string>
@@ -930,11 +930,11 @@
 	<string name="repacking">Prosím čekejte...</string>
 	<string name="dialog_reset_splash_hdr">Úvod. obrazovka</string>
 	<string name="dialog_reset_splash_note_1">Chcete obnovit úvod. obrazovku</string>
-	<string name="dialog_reset_splash_note_2">Red Wolf Recovery?</string>
+	<string name="dialog_reset_splash_note_2">OrangeFox Recovery?</string>
 	<string name="wolf_restore_splash_wolf">Obnovuji úvod. obrazovku...</string>
 	<string name="wolf_restore_wolf_splash_conf">Potáhněte pro obnovu úvod. obrazovky...</string>
 	<string name="wolf_restore_wolf_splash_1">Obnovit úvod. obrazovku</string>
-	<string name="wolf1_restore_splash_wolf_2">Red Wolf Recovery</string>
+	<string name="wolf1_restore_splash_wolf_2">OrangeFox Recovery</string>
     <string name="wolf_restore_wolf2_splash_1">Přednast. úvod. obrazovka</string>
     <string name="wolf_restore_wolf2_splash_2">byla úspěšně aplikována</string>
     <string name="statusbar_wolf_on_lockpass">Statusbar na zamykací obrazovce</string>

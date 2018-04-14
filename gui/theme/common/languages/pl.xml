@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <language>
-	<display>Polish beta</display>
+	<display>Polish</display>
 
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
@@ -272,7 +272,7 @@
 		<string name="settings_screen_timeout_cptn">Wygaszenie ekranu</string>
 		<string name="settings_screen_timeout_cptn2">Wygaszenie ekranu za:</string>
 		<string name="timeout_unit">sekund</string>
-		<string name="msg2">[RedWolf]: Proces ukończony</string>
+		<string name="msg2">[OrangeFox]: Proces ukończony</string>
 		<string name="enable_timeout_chk">Włącz wygaszanie ekranu</string>
 		<string name="screen_to_slider_s">Wygaszanie ekranu w sekundach (0=wyłączone): %tw_screen_timeout_secs%</string>
 		<string name="screen_to_na">Ustawienia wygaszania ekranu niedostępne</string>
@@ -870,7 +870,7 @@
      <string name="wolf_wifi_bluetooth_backup_line8">Upewnij się, że Wi-Fi i Bluetooth jest</string>
      <string name="wolf_wifi_bluetooth_backup_line9">wyłączone przed przywróceniem tych danych</string>
      <string name="wolf_wifi_bluetooth_backup_line10">(zmiany nie miałyby zastosowania).</string>
-     <string name="wolf_action_vibration">Wibracje działań Red Wolf:</string>
+     <string name="wolf_action_vibration">Wibracje działań OrangeFox:</string>
      <string name="wolf_boot_fsync">Wyłącz Fsync</string>
      <string name="wolf_boot_fastcharge">Szybkie ładowanie</string>
      <string name="wolf_boot_t2w">Double Tap to Wake</string>
@@ -929,7 +929,7 @@
 	<string name="repacking">Przepakowywanie w toku...</string>
 	<string name="dialog_reset_splash_hdr">Domyślny ekr. powitalny</string>
 	<string name="dialog_reset_splash_note_1">Czy chcesz przywrócić domyślny</string>
-	<string name="dialog_reset_splash_note_2">ekr. powitalny Red Wolf Recovery?</string>
+	<string name="dialog_reset_splash_note_2">ekr. powitalny OrangeFox Recovery?</string>
 	<string name="wolf_restore_splash_wolf">Przywracanie domyślnego ekr. powitalnego...</string>
 	<string name="wolf_restore_wolf_splash_conf">Przesuń, aby przywrócić domyślny ekr. powitalny</string>
 	<string name="wolf_restore_wolf_splash_1">Przywróć domyślny ekr. powitalny</string>
@@ -944,7 +944,7 @@
 	<!-- Red Wolf Recovery V3.1 / 012 -->
 	<string name="wolf_no_os_btn">Restart</string>
 	<string name="wolf_no_wolfos_hdr">Brak zainstalowanego systemu!</string>
-	<string name="wolf_no_os_wolf_txt1">Red Wolf wykrył, że system nie jest</string>
+	<string name="wolf_no_os_wolf_txt1">OrangeFox wykrył, że system nie jest</string>
 	<string name="wolf_no_os_wolf_txt2">zainstalowany. Jeśli masz pewność,</string>
     <string name="wolf_no_os_wolf_txt3">że system jest zainstalowany,</string>
     <string name="wolf_no_os_wolf_txt4">a wykrycie jest nieprawidłowe,</string>
@@ -955,7 +955,7 @@
     <string name="wolf_fgo_patch_hdr2">Dla ROMów bazowanych na LOS</string>
     <string name="wolf_flash_fgo_patch">Przesuń, aby zainstalować łatkę FGO</string>
     <!-- Red Wolf Recovery V3.1 / 018 -->
-	<string name="redwolfms2">[Red Wolf]: Witaj! ^_^</string>
+	<string name="redwolfms2">[OrangeFox]: Witaj! ^_^</string>
 	<string name="redwolfms3">[Wersja]: {1}</string>
 	<string name="redwolfms4">[Build]: {1}</string>
 	<string name="wolf_reboot_restore_finish_chk">Uruchom ponownie po przywróceniu kopii</string>
@@ -967,7 +967,7 @@
 	<string name="wolf_hide_backup_folder_chk">Ukryj główny folder recovery</string>
 	<string name="wolf_advanced_stock_recovery">Agresywna dezaktywacja stock recovery</string>
 	<string name="wolf_support_miui_ota_chk">Obsługa MIUI OTA</string>
-	<string name="wolf_special_actions">Akcje specjalne Red Wolf Recovery</string>
+	<string name="wolf_special_actions">Akcje specjalne OrangeFox Recovery</string>
 	<string name="wolf_special_actions_hdr">Akcje specjalne</string>
 	<string name="wolf_reboot_disable_secure_boot_chk">Wyłącz bezpieczny boot</string>
 	<string name="wolf_reboot_enable_mock_location_chk">Włącz allow.mock.location</string>
@@ -986,10 +986,10 @@
 	<string name="wolf_no_os_engine">Użyj zaaw. wyszukiwarki braku systemu</string>
     <string name="wolf_reset_default_hdr">Domyśłne ustawienia</string>
 	<string name="wolf_extra_shit_hdr">Zaawansowane akcje</string>
-	<string name="wolf_extra_shit_hdr_2">Zaawansowane akcje the Red Wolf Recovery</string>
+	<string name="wolf_extra_shit_hdr_2">Zaawansowane akcje the OrangeFox Recovery</string>
 	<string name="extra_shit_info_line1">Cześć! Witamy w sekcji akcji specjalnych!</string>
      <string name="extra_shit_info_line2">Tutaj możesz zmienić sposób instalowania </string>
-     <string name="extra_shit_info_line3">plików zip w Red Wolf Recovery.</string>
+     <string name="extra_shit_info_line3">plików zip w OrangeFox Recovery.</string>
      <string name="extra_shit_info_line4"> </string>  
      <string name="extra_shit_info_line5">Nie chcesz instalować lazyflasher za</string>       
      <string name="extra_shit_info_line6">każdym razem, gdy instalujesz ROM z</string>
@@ -1033,7 +1033,7 @@
 	<string name="wolf_incremental_ota_compatibility_true">Pakiet aktualizacji jest kompatybilny</string>
 	<!-- Red Wolf Recovery V3.1 / 022 -->
 	<string name="wolf_wipe_substratum_overlays">Nakładki Substratum</string>
-	<string name="wolf_zip_have_bootloader">Ostrzeżenie: RedWolf wykrył bootloader wewnątrz '{1}'</string>
+	<string name="wolf_zip_have_bootloader">Ostrzeżenie: OrangeFox wykrył bootloader wewnątrz '{1}'</string>
 	<string name="substratum_done">-- Czyszczenie nakładek substratum ukończone!</string>
 	<string name="wolf_no_space_ota_survival">Za mało wolnego miejsca w pamięci wewnętrznej na utworzenie Przetrwania OTA.</string>
 	<!-- Red Wolf Recovery V3.1 / 023 -->

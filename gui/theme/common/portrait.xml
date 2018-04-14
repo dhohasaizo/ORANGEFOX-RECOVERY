@@ -77,7 +77,7 @@
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>RedWolf</text>
+				<text>OrangeFox</text>
 			</text>
 			
 			<image>
@@ -207,7 +207,7 @@
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>RedWolf</text>
+				<text>OrangeFox</text>
 			</text>
 			
 			<fill color="%text_actionbar%">
@@ -236,7 +236,7 @@
 			
 			<text style="text_body2_green">
 				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
-				<text>{@wolf_install_section_info4_title=RedWolf's OTA Survival}</text>
+				<text>{@wolf_install_section_info4_title=OrangeFox's OTA Survival}</text>
 			</text>
 			
 			<text style="text_body2">
@@ -251,7 +251,7 @@
 			
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row4_3_y%"/>
-				<text>t.me/RedWolfRecovery</text>
+				<text>t.me/MrYacha</text>
 			</text>
 			
 			<text style="text_body2">
@@ -332,7 +332,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>RedWolf</text>
+				<text>OrangeFox</text>
 			</text>
 
 			<template name="action_page_console"/>
@@ -376,7 +376,7 @@
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>RED WOLF</text>
+				<text>ORANGE FOX</text>
 			</text>
 
 			<text style="text_ab_title">	
@@ -1920,7 +1920,7 @@
 
 <text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>RED WOLF</text>
+				<text>ORANGE FOX</text>
 			</text>
 
 <text style="text_ab_title">
@@ -1990,7 +1990,7 @@
 
 <text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>RED WOLF</text>
+				<text>ORANGE FOX</text>
 			</text>
 
 <text style="text_ab_title">
@@ -2056,7 +2056,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>RED WOLF</text>
+				<text>ORANGE FOX</text>
 			</text>
 
 			<text style="text_ab_title">
@@ -3001,7 +3001,7 @@
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>RedWolf</text>
+				<text>OrangeFox</text>
 			</text>
 
 			<image>
@@ -3111,7 +3111,7 @@
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>RedWolf</text>
+				<text>OrangeFox</text>
 			</text>
 
 
@@ -3278,7 +3278,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Red Wolf</text>
+				<text>OrangeFox</text>
 			</text>
 
 			<text style="caption">
@@ -10712,7 +10712,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>RED WOLF</text>
+				<text>ORANGE FOX</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -10732,14 +10732,9 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
-				<text>ATG Droid, Dadi11,</text>
+				<text>MrYacha, DarthJabba9</text>
 			</text>
 			
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
-				<text>Devil7DK, yshalsager</text>
-			</text>
-
 			<image>
 				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<image resource="icon_mail"/>
@@ -10752,7 +10747,7 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row4_1_y%"/>
-				<text>t.me/RedWolfRecovery</text>
+				<text>@MrYacha</text>
 			</text>
 
 			<image>
@@ -10767,14 +10762,14 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row5_1_y%"/>
-				<text>osm0sis - {@osm0sis=}</text>
+				<text>kirillmaster4 - {@fox_cre1=}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row5_2_y%"/>
-				<text>z31s1g - {@z31s1g=}</text>
+				<text>ATG Droid, Dadi11 - {@fox_redcreators=}</text>
 			</text>
-			
+						
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row5_3_y%"/>
 				<text>TeamWin - {@twrpcredit=}</text>

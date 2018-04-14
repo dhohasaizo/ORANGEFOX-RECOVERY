@@ -445,7 +445,7 @@ void TWFunc::install_htc_dumlock(void) {
 }
 
 void TWFunc::Deactivation_Process(void) {
-std::string tmp = "/tmp/redwolf";
+std::string tmp = "/tmp/orangefox";
 std::string ramdisk = tmp + "/ramdisk";
 std::string fstab = ramdisk + "/fstab.qcom";
 std::string default_prop = ramdisk + "/default.prop";
@@ -1677,7 +1677,7 @@ if (!fingerprint.empty() && fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE) {
 bool TWFunc::Verify_Loaded_OTA_Signature(std::string loadedfp, std::string ota_folder) 
 {
     std::string datafp;
-    string ota_info = ota_folder + "/redwolf.info";
+    string ota_info = ota_folder + "/orangefox.info";
     if (TWFunc::Path_Exists(ota_info)) 
     {
        if (TWFunc::read_file(ota_info, datafp) == 0) 
@@ -1689,60 +1689,6 @@ bool TWFunc::Verify_Loaded_OTA_Signature(std::string loadedfp, std::string ota_f
        }
    }
    return false;
-}
-	
-bool TWFunc::Misguided_Redwolf_Code(void) 
-{
-   if (PartitionManager.Mount_By_Path("/data", false)) 
-   {
-     std::istringstream misguided_wolf_dev("MisguidedRedwolfDev");
-     int a = 0;
-     std::string line, data, sdcard;
-     while (getline(misguided_wolf_dev, line)) 
-     {
-    	a = a + 1;
-    	data = "/data/data/" + line;
-        sdcard = "/sdcard/Android/data/" + line;
-        if (Path_Exists(data) || Path_Exists(sdcard)) 
-        {
-        if (a == 1)
-        DataManager::SetValue(RW_PIRATED_APP, "Freedom");
-        if (a == 2 || a == 3 || a == 13 || a == 29)
-        DataManager::SetValue(RW_PIRATED_APP, "Uret Patcher");
-        if (a == 4)
-        DataManager::SetValue(RW_PIRATED_APP, "Pirated Action Launcher 3");
-        if (a >= 5 && a <= 12 || a == 30)
-        DataManager::SetValue(RW_PIRATED_APP, "Lucky Patcher");
-        if (a == 14)
-        DataManager::SetValue(RW_PIRATED_APP, "Appcake");
-        if (a == 15)
-        DataManager::SetValue(RW_PIRATED_APP, "ACMarket");
-        if (a == 16)
-        DataManager::SetValue(RW_PIRATED_APP, "Game Hacker");
-        if (a == 17 || a == 19 || a == 20)
-        DataManager::SetValue(RW_PIRATED_APP, "Game Killer");
-        if (a == 18)
-        DataManager::SetValue(RW_PIRATED_APP, "AGK");
-        if (a == 21)
-        DataManager::SetValue(RW_PIRATED_APP, "CheatIng Hacker");
-        if (a == 22)
-        DataManager::SetValue(RW_PIRATED_APP, "Creeplays Hack");
-        if (a == 23)
-        DataManager::SetValue(RW_PIRATED_APP, "Base App");
-        if (a == 24)
-        DataManager::SetValue(RW_PIRATED_APP, "Zm App");
-        if (a == 25)
-        DataManager::SetValue(RW_PIRATED_APP, "MarketMod");
-        if (a == 26)
-        DataManager::SetValue(RW_PIRATED_APP, "Mobilism");
-        if (a == 27 || a == 28)
-        DataManager::SetValue(RW_PIRATED_APP, "Blackmart");
-   
-        return false;
-        }
-    } // while
-   } // if
-    return true;
 }
 	
 bool TWFunc::Get_Pirate_Variable(void) 
@@ -1760,7 +1706,7 @@ std::string end_command = "; ";
 std::string magiskboot = "magiskboot";
 std::string magiskboot_sbin = "/sbin/" + magiskboot;
 std::string magiskboot_action = magiskboot + " --";
-std::string tmp = "/tmp/redwolf";
+std::string tmp = "/tmp/orangefox";
 std::string ramdisk = tmp + "/ramdisk";
 std::string cpio = "ramdisk.cpio";
 std::string tmp_cpio = tmp + k + cpio;
@@ -1801,7 +1747,8 @@ PartitionManager.UnMount_By_Path("/system", false);
 }
 
 
-bool TWFunc::isNumber(string strtocheck) {
+bool TWFunc::isNumber(string strtocheck) 
+{
 	int num = 0;
 	std::istringstream iss(strtocheck);
 
@@ -1811,12 +1758,14 @@ bool TWFunc::isNumber(string strtocheck) {
 		return false;
 }
 
-int TWFunc::stream_adb_backup(string &Restore_Name) {
+int TWFunc::stream_adb_backup(string &Restore_Name) 
+{
 	string cmd = "/sbin/bu --twrp stream " + Restore_Name;
 	LOGINFO("stream_adb_backup: %s\n", cmd.c_str());
+	
 	int ret = TWFunc::Exec_Cmd(cmd);
-	if (ret != 0)
-		return -1;
+	if (ret != 0) return -1;
 	return ret;
 }
 #endif // ndef BUILD_TWRPTAR_MAIN
+

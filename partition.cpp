@@ -40,7 +40,6 @@
 #include "twcommon.h"
 #include "partitions.hpp"
 #include "data.hpp"
-#include "dumwolf.hpp"
 #include "twrp-functions.hpp"
 #include "twrpTar.hpp"
 #include "exclude.hpp"
@@ -2493,17 +2492,10 @@ bool TWPartition::Raw_Read_Write(PartitionSettings *part_settings) {
 	fsync(dest_fd);
 
 	if (!part_settings->adbbackup && part_settings->PM_Method == PM_BACKUP) {
-		if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1) {
-		if (part_settings->Part->Backup_Name == "recovery" || part_settings->Part->Backup_Name == "boot") {
-		if (!RWDumwolf::Resize_By_Path(destfn))
-		LOGINFO("Unable to resize image by path: %s\n", destfn.c_str());
-		else
-		LOGINFO("Successfully resized image by path: %s\n", destfn.c_str());
-		}
-		}
 		tw_set_default_metadata(destfn.c_str());
 		LOGINFO("Restored default metadata for %s\n", destfn.c_str());
 	}
+
 	ret = true;
 exit:
 	if (src_fd >= 0)
@@ -3197,4 +3189,3 @@ void TWPartition::Set_Backup_FileName(string fname) {
 string TWPartition::Get_Backup_Name() {
 	return Backup_Name;
 }
-		

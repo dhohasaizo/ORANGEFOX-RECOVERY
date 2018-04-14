@@ -284,7 +284,7 @@
 		<string name="settings_screen_timeout_cptn">屏幕超时</string>
 		<string name="settings_screen_timeout_cptn2">屏幕超时：</string>
 		<string name="timeout_unit">秒</string>
-		<string name="msg2">[Red Wolf]：操作完成</string>
+		<string name="msg2">[OrangeFox]：操作完成</string>
 		<string name="enable_timeout_chk">启用屏幕超时</string>
 		<string name="screen_to_slider_s">屏幕超时时间(0=禁用): %tw_screen_timeout_secs%</string>
 		<string name="screen_to_na">屏幕超时设置不可用</string>
@@ -940,7 +940,7 @@
 	<string name="slider_repack">滑动应用新的启动图片</string>
 	<string name="repacking">请稍候...</string>
 	<string name="dialog_reset_splash_hdr">默认启动界面</string>
-	<string name="dialog_reset_splash_note_1">是否要恢复 Red Wolf Recovery</string>
+	<string name="dialog_reset_splash_note_1">是否要恢复 OrangeFox Recovery</string>
 	<string name="dialog_reset_splash_note_2">的默认启动图片？</string>
 	<string name="wolf_restore_splash_wolf">正在恢复默认启动图片...</string>
 	<string name="wolf_restore_wolf_splash_conf">滑动恢复默认启动图片</string>
@@ -967,7 +967,7 @@
     <string name="wolf_fgo_patch_hdr2">对基于 LOS 的 ROM</string>
     <string name="wolf_flash_fgo_patch">滑动确认安装 FGO 补丁</string>    
     <!-- Red Wolf Recovery V3.1 / 018  -->
-	<string name="redwolfms2">[Red Wolf]: 欢迎！ ^_^</string>
+	<string name="redwolfms2">[OrangeFox]: 欢迎！ ^_^</string>
 	<string name="redwolfms3">[版本]: {1}</string>
 	<string name="redwolfms4">[构建]: {1}</string>
 	<string name="wolf_reboot_restore_finish_chk">恢复完成之后重启</string>
@@ -998,9 +998,9 @@
 	<string name="wolf_no_os_engine">使用高级的 NO OS 搜索引擎</string>
     <string name="wolf_reset_default_hdr">默认设置</string>
 	<string name="wolf_extra_shit_hdr">高级操作</string>
-	<string name="wolf_extra_shit_hdr_2">Red Wolf Recovery 高级操作</string>
+	<string name="wolf_extra_shit_hdr_2">OrangeFox Recovery 高级操作</string>
 	<string name="extra_shit_info_line1">你好！欢迎使用高级操作！在这里，您可以更</string>
-     <string name="extra_shit_info_line2">改Red Wolf Recovery安装zip文件的方式。</string>
+     <string name="extra_shit_info_line2">改OrangeFox Recovery安装zip文件的方式。</string>
      <string name="extra_shit_info_line3">也许你不想在每次刷入带有DM校验的ROM之</string>
      <string name="extra_shit_info_line4">后再刷入删除DM校验的补丁？ 所以你只需</string>  
      <string name="extra_shit_info_line5">在这里打开“禁用DM-Verity”就行了。 之后，</string>       
@@ -1046,7 +1046,7 @@
 	<string name="wolf_incremental_ota_compatibility_true">兼容的增量包</string>
 	<!-- Red Wolf Recovery V3.1 / 022 -->
 	<string name="wolf_wipe_substratum_overlays">Substratum 叠加层</string>
-	<string name="wolf_zip_have_bootloader">警告：RedWolf在'{1}'中检测到bootloader</string>
+	<string name="wolf_zip_have_bootloader">警告：OrangeFox在'{1}'中检测到bootloader</string>
 	<string name="substratum_done">-- Substratum 叠加层清除完成！</string>
 	<string name="wolf_no_space_ota_survival">内部存储没有足够的空间来创建OTA备份。</string>
 	<!-- Red Wolf Recovery V3.1 / 023 -->

@@ -624,6 +624,8 @@
 		<string name="developers">Development Team</string>
 		<string name="contact">Telegram Channel</string>
 		<string name="credits">Credits</string>
+		<string name="osm0sis">For boot image binaries...</string>
+		<string name="z31s1g">For the base of his material theme.</string>
 		<string name="version_twrp">Version</string>
 		<string name="all_done">All Done</string>
 		<string name="zip_md5_chk">Force MD5 check on all Zip files</string>
@@ -778,9 +780,10 @@
      <string name="wolf_verify_password_start">Verifying entered password...</string>
 	 <string name="wolf_verify_password_fail">Password is not correct!</string>
 	 <string name="wolf_verify_password_success">Password is correct!</string>
+	 <string name="wolf_install_section_info1">Here is the main section for settings</string>
      <string name="wolf_install_section_info2">related to OTA survival engine and</string>
      <string name="wolf_install_section_info3">setup of Dumwolf driver.</string>
-     <string name="wolf_install_section_info4_title">RedWolf's OTA Survival</string>
+     <string name="wolf_install_section_info4_title">OrangeFox's OTA Survival</string>
      <string name="wolf_install_section_info4">Documentation about whole OTA survival process,</string>
      <string name="wolf_install_section_info5">limitations or even possible risks can be found on</string>
      <string name="wolf_install_section_info6">If you still have any questions about it then</string>
@@ -814,7 +817,7 @@
      <string name="wolf_dumwolf_properties_info3">during the Dumwolf cleanup.</string>  
      <string name="twrpcredit">For source code of TWRP</string>  
      <string name="wolf_enable_string_chk">Enable</string>
-	 <string name="wolf_disable_string_chk">Disable</string>
+     <string name="wolf_disable_string_chk">Disable</string>
 	 <!--OrangeFox strings | By MrYacha-->
 	 <!-- <string name=""></string> -->
 	 
@@ -826,14 +829,13 @@
 	 
 	 <string name="fox_menu_info1">Flash build-in archives</string>
 	 <!--string name="fox_menu_info2">necessary have folder /Fox/FoxFiles in phone</string-->
-	 
-	 
+	 	 
 	 <string name="wolf_prebuilt_shit_not_exist_hdr">Recovery is damaged!</string>
 	 <string name="wolf_prebuilt_shit_not_exist_1">You must flash OrangeFox zip to fix it</string>
 	 <string name="wolf_prebuilt_shit_not_exist_2">oops</string>
 	 
 	 <string name="fox_cre1">For graphics, photoshop guru</string>
 	 <string name="fox_redcreators">For development Red Wolf</string>
-	 
+
      </resources>
 </language>

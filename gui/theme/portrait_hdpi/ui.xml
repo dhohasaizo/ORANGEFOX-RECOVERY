@@ -615,7 +615,7 @@
 </template>
 
 		<template name="statusbarinfo">
-			<text color="#FF7E00">
+			<text color="#FF0000">
 				<font resource="status"/>
 				<placement x="%version_x%" y="%status_info_y%"/>
 				<text>{@cpu_temp=CPU: %tw_cpu_temp%&#xB0;C}</text>
@@ -627,14 +627,14 @@
 				<text>{@simulating=SIMULATING ACTIONS}</text>
 			</text>
 
-			<text color="#FF7E00">
+			<text color="#FF0000">
 				<font resource="status"/>
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
 				<condition var1="tw_no_battery_percent" var2="0"/>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF7E00">
+			<text color="#FF0000">
 				<font resource="status"/>
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/>
 					<condition var1="tw_simulate_actions" op="!=" var2="1"/>
