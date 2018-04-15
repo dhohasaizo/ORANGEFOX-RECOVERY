@@ -480,7 +480,8 @@
 		<variable name="process" value="#00CC44"/>
 		<variable name="error" value="#FF0000FF"/>
 		<variable name="highlight" value="#555555FF"/>
-		<variable name="accent" value="#E51C23FF"/>
+		<!--variable name="accent" value="#E51C23FF"/-->
+        <variable name="accent" value="#FF7E00"/>
 
 		<variable name="input_width" value="984"/>
 		<variable name="input_backup_width" value="876"/>
@@ -615,7 +616,7 @@
 </template>
 
 		<template name="statusbarinfo">
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%version_x%" y="%status_info_y%"/>
 				<text>{@cpu_temp=CPU: %tw_cpu_temp%&#xB0;C}</text>
@@ -627,14 +628,14 @@
 				<text>{@simulating=SIMULATING ACTIONS}</text>
 			</text>
 
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
 				<condition var1="tw_no_battery_percent" var2="0"/>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/>
 					<condition var1="tw_simulate_actions" op="!=" var2="1"/>
