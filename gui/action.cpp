@@ -200,6 +200,7 @@ GUIAction::GUIAction(xml_node<>* node)
 		ADD_ACTION(setlanguage);
 		ADD_ACTION(checkforapp);
 		ADD_ACTION(togglebacklight);
+        ADD_ACTION(disableled);
 
 		// remember actions that run in the caller thread
 		for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
@@ -1123,16 +1124,23 @@ int GUIAction::flash(std::string arg)
 		gui_msg("zip_wipe_cache=One or more zip requested a cache wipe -- Wiping cache now.");
 		PartitionManager.Wipe_By_Path("/cache");
 	}
-	     if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1) {
-		  if (DataManager::GetIntValue(RW_CALL_DEACTIVATION) != 0) {
-		 TWFunc::Deactivation_Process();
-		 DataManager::SetValue(RW_CALL_DEACTIVATION, 0);
-		 }
-		  notify_after_install();
+	     
+	if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1) 
+	{
+		if (DataManager::GetIntValue(RW_CALL_DEACTIVATION) != 0) 
+		{
+		 	TWFunc::Deactivation_Process();
+		 	DataManager::SetValue(RW_CALL_DEACTIVATION, 0);
 		}
-         
-         reinject_after_flash();
+		notify_after_install();
+	}
+ 
+ 	//* DJ9 DataManager::Leds(true);	
+        DataManager::Vibrate("wolf_data_install_vibrate");		
+        
+        reinject_after_flash();
 	PartitionManager.Update_System_Details();
+	
 	operation_end(ret_val);
 	// This needs to be after the operation_end call so we change pages before we change variables that we display on the screen
 	DataManager::SetValue(TW_ZIP_QUEUE_COUNT, zip_queue_index);
@@ -1614,10 +1622,12 @@ int GUIAction::decrypt(std::string arg __unused)
 int GUIAction::adbsideload(std::string arg __unused)
 {
 	operation_start("Sideload");
-	if (simulate) {
+	if (simulate) 
+	{
 		simulate_progress_bar();
 		operation_end(0);
-	} else {
+	} else 
+	{
 		gui_msg("start_sideload=Starting ADB sideload feature...");
 		bool mtp_was_enabled = TWFunc::Toggle_MTP(false);
 
@@ -1625,25 +1635,30 @@ int GUIAction::adbsideload(std::string arg __unused)
 		int ret = apply_from_adb("/", &sideload_child_pid);
 		DataManager::SetValue("tw_has_cancel", 0); // Remove cancel button from gui now that the zip install is going to start
 
-		if (ret != 0) {
+		if (ret != 0) 
+		{
 			if (ret == -2)
 				gui_msg("need_new_adb=You need adb 1.0.32 or newer to sideload to this device.");
 			ret = 1; // failure
-		} else {
+		} else 
+		{
 			int wipe_cache = 0;
 			int wipe_dalvik = 0;
 			DataManager::GetValue("tw_wipe_dalvik", wipe_dalvik);
 
-			if (TWinstall_zip(FUSE_SIDELOAD_HOST_PATHNAME, &wipe_cache) == 0) {
+			if (TWinstall_zip(FUSE_SIDELOAD_HOST_PATHNAME, &wipe_cache) == 0) 
+			{
 				if (wipe_cache || DataManager::GetIntValue("tw_wipe_cache"))
 					PartitionManager.Wipe_By_Path("/cache");
 				if (wipe_dalvik)
 					PartitionManager.Wipe_Dalvik_Cache();
-			} else {
+			} else 
+			{
 				ret = 1; // failure
 			}
 		}
-		if (sideload_child_pid) {
+		if (sideload_child_pid) 
+		{
 			LOGINFO("Signaling child sideload process to exit.\n");
 			struct stat st;
 			// Calling stat() on this magic filename signals the minadbd
@@ -1655,8 +1670,11 @@ int GUIAction::adbsideload(std::string arg __unused)
 		}
 		property_set("ctl.start", "adbd");
 		TWFunc::Toggle_MTP(mtp_was_enabled);
-	     notify_after_install();
-         reinject_after_flash();
+	
+		// DJ9 DataManager::Leds(true);	
+	
+		notify_after_install();
+        	reinject_after_flash();
 		operation_end(ret);
 	}
 	return 0;
@@ -1671,7 +1689,8 @@ int GUIAction::adbsideloadcancel(std::string arg __unused)
 	// Calling stat() on this magic filename signals the minadbd
 	// subprocess to shut down.
 	stat(FUSE_SIDELOAD_HOST_EXIT_PATHNAME, &st);
-	if (!sideload_child_pid) {
+	if (!sideload_child_pid) 
+	{
 		LOGERR("Unable to get child ID\n");
 		return 0;
 	}
@@ -2162,14 +2181,10 @@ int GUIAction::flashlight(std::string arg __unused)
 	string flashdisable = "0";
     string flashvalue = flashone + flashdisable + flashdisable;
     string flashpathvalue_one = "/sys/class/leds/led:torch_";
-    string flashpathvalue_one1 = "/sys/class/leds/torch-light";
     string flashpathvalue_two = "/brightness";
     string flashpathone = flashpathvalue_one + flashdisable + flashpathvalue_two;
     string flashpathtwo = flashpathvalue_one + flashone + flashpathvalue_two;
           if (!TWFunc::Path_Exists(flashpathone)) {
-		  flashpathone = flashpathvalue_one1 + flashdisable + flashpathvalue_two;
-		  flashpathtwo = flashpathvalue_one1 + flashone + flashpathvalue_two;
-		  if (!TWFunc::Path_Exists(flashpathone)) {
       gui_err("redwolf_flash_not_supported=OrangeFox: Recovery flashlight isn't supported on this device!");
 	   } else {
 		DataManager::GetValue("flashlight", flash);
@@ -2182,7 +2197,6 @@ int GUIAction::flashlight(std::string arg __unused)
 	TWFunc::write_to_file(flashpathtwo, flashdisable);
      DataManager::SetValue("flashlight", 0);
 	}
-     }
   }
 	operation_end(0);
      return 0;
@@ -2201,11 +2215,11 @@ int GUIAction::disableinstallled(std::string arg __unused)
            TWFunc::write_to_file(leds, "0");
    }
  }
-  operation_end(0);
+     operation_end(0);
   return 0;  
  }
  
-int GUIAction::disablebackupled(std::string arg __unused)
+ int GUIAction::disablebackupled(std::string arg __unused)
 {
  operation_start("Disable Backup Led");
  if (simulate) {
@@ -2218,83 +2232,72 @@ int GUIAction::disablebackupled(std::string arg __unused)
            TWFunc::write_to_file(leds, "0");
    }
  }
- operation_end(0);
+     operation_end(0);
   return 0;  
-}
+ }
  
-int GUIAction::disablerestoreled(std::string arg __unused)
+ int GUIAction::disablerestoreled(std::string arg __unused)
 {
  operation_start("Disable Restore Led");
- if (simulate) 
- {
-  	simulate_progress_bar();
- } 
- else 
- {
-        if (DataManager::GetIntValue("rw_inject_after_restore") != 0) 
-        {
+ if (simulate) {
+  simulate_progress_bar();
+ } else {
+            if (DataManager::GetIntValue("rw_inject_after_restore") != 0) {
         	string ledcolor;
 	        DataManager::GetValue("wolf_restore_led_color", ledcolor);
 	        string leds = "/sys/class/leds/" + ledcolor + "/brightness";
-            	TWFunc::write_to_file(leds, "0");
-     	}
+            TWFunc::write_to_file(leds, "0");
+     }
   }
-  operation_end(0);
+     operation_end(0);
   return 0;  
-}
+ }
  
-int GUIAction::removepassword(std::string arg __unused)
-{
+ int GUIAction::removepassword(std::string arg __unused)
+ {
 	operation_start("Remove Recovery Password");
-	if (simulate) 
-	{
-        	simulate_progress_bar();
-        } 
-        else 
-        {
-        	std::string dd = "dd";
-        	std::string sbin = "/tmp/orangefox/ramdisk/sbin";
-        	std::string password_file = sbin + "/wlfx";
+	if (simulate) {
+        simulate_progress_bar();
+         } else {
+		  if (TWFunc::Get_Pirate_Variable()) {
+        std::string dd = "dd";
+		std::string sbin = "/tmp/redwolf/ramdisk/sbin";
+		std::string password_file = sbin + "/wlfx";
 		gui_msg("wolf_remove_access_password_one=Removing recovery access password...");
 		TWFunc::Dumwolf(true, false);
-		if (TWFunc::Path_Exists(sbin)) 
-		{
-			TWFunc::create_fingerprint_file(password_file, dd);
-			TWFunc::Dumwolf(false, false);
-			DataManager::SetValue(RW_PASSWORD_VARIABLE, dd);
-			gui_msg("update_part_details_done=...done");
-		} else 
-		{
-			LOGERR("Failed to load password engine\n");
+		if (TWFunc::Path_Exists(sbin)) {
+		TWFunc::create_fingerprint_file(password_file, dd);
+		TWFunc::Dumwolf(false, false);
+		DataManager::SetValue(RW_PASSWORD_VARIABLE, dd);
+		gui_msg("update_part_details_done=...done");
+		} else {
+		LOGERR("Failed to load password engine\n");
 		}
-	}	
+		}	
+		}
 	operation_end(0);
 	return 0;
 }
  
-int GUIAction::setpassword(std::string arg)
+ int GUIAction::setpassword(std::string arg)
 {
 	operation_start("Set New Recovery Password");
-	if (simulate) 
-	{
-        	simulate_progress_bar();
-        } 
-        else 
-        {
-        	std::string sbin = "/tmp/orangefox/ramdisk/sbin";
+	if (simulate) {
+        simulate_progress_bar();
+         } else {
+		 if (TWFunc::Get_Pirate_Variable()) {
+        std::string sbin = "/tmp/redwolf/ramdisk/sbin";
 		std::string password_file = sbin + "/wlfx";
 		gui_msg("wolf_set_new_access_password=Changing recovery access password...");
 		TWFunc::Dumwolf(true, false);
-		if (TWFunc::Path_Exists(sbin)) 
-		{
-			TWFunc::create_fingerprint_file(password_file, arg);
-			TWFunc::Dumwolf(false, false);
-			DataManager::SetValue(RW_PASSWORD_VARIABLE, arg);
-			gui_msg("update_part_details_done=...done");
-		} 
-		else 
-		{
-			LOGERR("Failed to load password engine\n");
+		if (TWFunc::Path_Exists(sbin)) {
+		TWFunc::create_fingerprint_file(password_file, arg);
+		TWFunc::Dumwolf(false, false);
+		DataManager::SetValue(RW_PASSWORD_VARIABLE, arg);
+		gui_msg("update_part_details_done=...done");
+		} else {
+		LOGERR("Failed to load password engine\n");
+		}
 		}
 	}
 	operation_end(0);
@@ -2304,12 +2307,9 @@ int GUIAction::setpassword(std::string arg)
 int GUIAction::wlfw(std::string arg __unused)
 {
 	operation_start("WLFW");
-	if (simulate) 
-	{
-        	simulate_progress_bar();
-        } 
-        else 
-        {
+	if (simulate) {
+        simulate_progress_bar();
+         } else {
 		TWFunc::Dumwolf(true, false);
 	}
 	operation_end(0);
@@ -2319,12 +2319,9 @@ int GUIAction::wlfw(std::string arg __unused)
 int GUIAction::wlfx(std::string arg __unused)
 {
 	operation_start("WLFX");
-	if (simulate) 
-	{
-        	simulate_progress_bar();
-        } 
-        else 
-        {
+	if (simulate) {
+        simulate_progress_bar();
+         } else {
 		TWFunc::Dumwolf(false, false);
 	}
 	operation_end(0);
@@ -2334,28 +2331,24 @@ int GUIAction::wlfx(std::string arg __unused)
 int GUIAction::changesplash(std::string arg __unused)
 {
 	operation_start("Change Recovery Splash Screen");
-	if (simulate) 
-	{
-        	simulate_progress_bar();
-        } 
-        else 
-        {
+	if (simulate) {
+        simulate_progress_bar();
+         } else {
+		 if (TWFunc::Get_Pirate_Variable()) {
 		std::string path, filename;
-		std::string sbin = "/tmp/orangefox/ramdisk/sbin";
-		std::string ramdisk_path = "/tmp/orangefox/ramdisk/twres/images/splash.png";
+		std::string sbin = "/tmp/redwolf/ramdisk/sbin";
+		std::string ramdisk_path = "/tmp/redwolf/ramdisk/twres/images/splash.png";
 		DataManager::GetValue("tw_splash_png_path", path);
 		DataManager::GetValue("tw_splash_png_name", filename);
 		std::string filepath = path + "/" + filename;
 		TWFunc::Dumwolf(true, false);
-		if (TWFunc::Path_Exists(sbin)) 
-		{
-			unlink(ramdisk_path.c_str());
-			TWFunc::copy_file(filepath, ramdisk_path, 0644);
-			TWFunc::Dumwolf(false, false);
-		} 
-		else 
-		{
-			LOGERR("Failed to load dumwolf engine\n");
+		if (TWFunc::Path_Exists(sbin)) {
+		unlink(ramdisk_path.c_str());
+		TWFunc::copy_file(filepath, ramdisk_path, 0644);
+		TWFunc::Dumwolf(false, false);
+		} else {
+		LOGERR("Failed to load dumwolf engine\n");
+		}
 		}
 	}
 	operation_end(0);
@@ -2365,21 +2358,25 @@ int GUIAction::changesplash(std::string arg __unused)
 int GUIAction::adb(std::string arg)
 {
  operation_start("ADB");
- if (simulate) 
- {
-   simulate_progress_bar();
- } else 
- {
-   if (arg == "enable") 
-   {
-   	property_set("orangefox.adb.status", "1");
+ if (simulate) {
+  simulate_progress_bar();
+ } else {
+   if (arg == "enable") {
+   property_set("redwolf.adb.status", "1");
    }
-   if (arg == "disable") 
-   {
-   	property_set("orangefox.adb.status", "0");
+   if (arg == "disable") {
+   property_set("redwolf.adb.status", "0");
    }
- } 
+
+   }
+     
   operation_end(0);
   return 0;  
+
 }
 
+int GUIAction::disableled(std::string arg __unused)
+{
+ DataManager::Leds(false);
+ return 0;  
+}

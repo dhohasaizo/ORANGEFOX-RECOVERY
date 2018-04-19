@@ -445,7 +445,7 @@ void TWFunc::install_htc_dumlock(void) {
 }
 
 void TWFunc::Deactivation_Process(void) {
-std::string tmp = "/tmp/orangefox";
+std::string tmp = "/tmp/redwolf";
 std::string ramdisk = tmp + "/ramdisk";
 std::string fstab = ramdisk + "/fstab.qcom";
 std::string default_prop = ramdisk + "/default.prop";
@@ -479,7 +479,7 @@ std::string dm_verity_prop_true = dm_verity_prop + "=true";
 					}
 				}
 			  // Save AromaFM config
-	     if (copy_file("/WolfStuff/AromaFM/AromaFM.cfg", aromafm_file, 0644)) {
+	     if (copy_file("/FFiles/AromaFM/AromaFM.cfg", aromafm_file, 0644)) {
 							LOGERR("Error copying AromaFM config\n");
 				}
 			}
@@ -1402,7 +1402,8 @@ if (DataManager::GetIntValue(RW_MIUI_ZIP_TMP) != 0 || DataManager::GetIntValue(R
      }
 }
 
-void TWFunc::Start_redwolf(void) {
+void TWFunc::Start_redwolf(void) 
+{
 int i;
 std::string cpu_one, cpu_two, a, loaded_password;
 cpu_one = "/sys/devices/system/cpu/cpu";
@@ -1422,36 +1423,45 @@ std::string device_two = kernel_proc_check + "disable";
 std::string password_file = "/sbin/wlfx";
     
 	if (TWFunc::Path_Exists(device_one))
-	TWFunc::write_to_file(device_one, disable);
-	if (TWFunc::Path_Exists(device_two))
-	TWFunc::write_to_file(device_two, enable);
+	      TWFunc::write_to_file(device_one, disable);
 	
-if (TWFunc::Path_Exists(password_file)) {
-if (TWFunc::read_file(password_file, loaded_password) == 0) {
-if (!loaded_password.empty())
-DataManager::SetValue(RW_PASSWORD_VARIABLE, loaded_password);
-}
-}
+	if (TWFunc::Path_Exists(device_two))
+	      TWFunc::write_to_file(device_two, enable);
+	
+  if (TWFunc::Path_Exists(password_file)) 
+  {
+    if (TWFunc::read_file(password_file, loaded_password) == 0) 
+    {
+      if (!loaded_password.empty())
+       DataManager::SetValue(RW_PASSWORD_VARIABLE, loaded_password);
+    }
+  }
 
- if (DataManager::GetIntValue(RW_T2W_CHECK) == 1) {
-   if (TWFunc::Path_Exists(t2w))
-     TWFunc::write_to_file(t2w, enable);
-       }
+  if (DataManager::GetIntValue(RW_T2W_CHECK) == 1) 
+  {
+     if (TWFunc::Path_Exists(t2w))
+        TWFunc::write_to_file(t2w, enable);
+  }
        
-  if (DataManager::GetIntValue(RW_FSYNC_CHECK) == 1) {
+  if (DataManager::GetIntValue(RW_FSYNC_CHECK) == 1) 
+  {
      if (TWFunc::Path_Exists(fsync))
       TWFunc::write_to_file(fsync, disable);
-      }
+  }
       
-  if (DataManager::GetIntValue(RW_FORCE_FAST_CHARGE_CHECK) == 1) {
-     if (TWFunc::Path_Exists(fast_charge)) {
+  if (DataManager::GetIntValue(RW_FORCE_FAST_CHARGE_CHECK) == 1) 
+  {
+     if (TWFunc::Path_Exists(fast_charge)) 
+     {
       TWFunc::write_to_file(fast_charge, enable);
-         }
-       }
+     }
+  }
        
-       if (DataManager::GetIntValue(RW_PERFORMANCE_CHECK) == 1) {
+       if (DataManager::GetIntValue(RW_PERFORMANCE_CHECK) == 1) 
+       {
        DataManager::SetValue(RW_GOVERNOR_STABLE, performance);
-       for (i = 0; i < 9; i++) {
+       for (i = 0; i < 9; i++) 
+       {
        std::string k = to_string(i);
        a = cpu_one + k + cpu_two;
        if (TWFunc::Path_Exists(a))
@@ -1459,19 +1469,23 @@ DataManager::SetValue(RW_PASSWORD_VARIABLE, loaded_password);
        }
      }
   
-     if (DataManager::GetIntValue(RW_POWERSAVE_CHECK) == 1) {
+     if (DataManager::GetIntValue(RW_POWERSAVE_CHECK) == 1) 
+     {
    	DataManager::SetValue(RW_GOVERNOR_STABLE, powersave);
-       for (i = 0; i < 9; i++) {
-       std::string k = to_string(i);
-       a = cpu_one + k + cpu_two;
-       if (TWFunc::Path_Exists(a))
-       TWFunc::write_to_file(a, powersave);
+       for (i = 0; i < 9; i++) 
+       {
+          std::string k = to_string(i);
+          a = cpu_one + k + cpu_two;
+          if (TWFunc::Path_Exists(a))
+          TWFunc::write_to_file(a, powersave);
        }
      }
      
-     if (DataManager::GetIntValue(RW_BALANCE_CHECK) == 1) {
+     if (DataManager::GetIntValue(RW_BALANCE_CHECK) == 1) 
+     {
    	DataManager::SetValue(RW_GOVERNOR_STABLE, interactive);
-       for (i = 0; i < 9; i++) {
+       for (i = 0; i < 9; i++) 
+       {
        std::string k = to_string(i);
        a = cpu_one + k + cpu_two;
        if (TWFunc::Path_Exists(a))
@@ -1479,29 +1493,33 @@ DataManager::SetValue(RW_PASSWORD_VARIABLE, loaded_password);
        }
      }  
 	string info = TWFunc::System_Property_Get("ro.build.display.id");
-	if (info.empty()) {
+	if (info.empty()) 
+	{
 		LOGINFO("ROM Status: Is not installed\n");
-	} else {
+	} else 
+	{
 	LOGINFO("ROM Status: %s\n", info.c_str());
 	}
 	string wolf_res = "/sdcard/WOLF.res";
 	string resource_folder = wolf_res + "/FILES";
     string config_aroma_path = wolf_res + "/aromafm.cfg";
-    string ramdisk_folder = "/WolfStuff";
-    string wolfstuff_path = ramdisk_folder + "/AromaFM/AromaFM.cfg";
-    if (TWFunc::Path_Exists(ramdisk_folder.c_str())) {
-     DataManager::SetValue("rw_resource_dir", ramdisk_folder.c_str());
-      if (TWFunc::Path_Exists(config_aroma_path)) {
-     TWFunc::copy_file(config_aroma_path, wolfstuff_path, 0644);
-     }
-    } else {
-    DataManager::SetValue("rw_resource_dir", resource_folder.c_str());
-	 }	
-   }
+    string ramdisk_folder = "/FFiles";
+    string OrangeFox_Files_path = ramdisk_folder + "/AromaFM/AromaFM.cfg";
+    if (TWFunc::Path_Exists(ramdisk_folder.c_str())) 
+    {
+      DataManager::SetValue("rw_resource_dir", ramdisk_folder.c_str());
+      if (TWFunc::Path_Exists(config_aroma_path)) 
+      {
+        TWFunc::copy_file(config_aroma_path, OrangeFox_Files_path, 0644);
+      }
+    } else 
+    {
+        DataManager::SetValue("rw_resource_dir", resource_folder.c_str());
+    }	
+}
 
-
-
-void TWFunc::copy_kernel_log(string curr_storage) {
+void TWFunc::copy_kernel_log(string curr_storage) 
+{
 	std::string dmesgDst = curr_storage + "/dmesg.log";
 	std::string dmesgCmd = "/sbin/dmesg";
 
@@ -1512,17 +1530,19 @@ void TWFunc::copy_kernel_log(string curr_storage) {
 	tw_set_default_metadata(dmesgDst.c_str());
 }
 
-void TWFunc::create_fingerprint_file(string file_path, string fingerprint) {
-		if (TWFunc::Path_Exists(file_path))
+void TWFunc::create_fingerprint_file(string file_path, string fingerprint) 
+{
+	if (TWFunc::Path_Exists(file_path))
 		unlink(file_path.c_str());
-	    ofstream file;
+	ofstream file;
         file.open (file_path.c_str());
         file << fingerprint;
         file.close();
-	    tw_set_default_metadata(file_path.c_str());
+	tw_set_default_metadata(file_path.c_str());
 }
 
-bool TWFunc::Verify_Incremental_Package(string fingerprint, string metadatafp, string metadatadevice) {
+bool TWFunc::Verify_Incremental_Package(string fingerprint, string metadatafp, string metadatadevice) 
+{
 string brand_property = "ro.product.brand";
 string androidversion = TWFunc::System_Property_Get("ro.build.version.release");
 string buildpropbrand = TWFunc::System_Property_Get(brand_property);
@@ -1676,21 +1696,20 @@ if (!fingerprint.empty() && fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE) {
 	
 bool TWFunc::Verify_Loaded_OTA_Signature(std::string loadedfp, std::string ota_folder) 
 {
-    std::string datafp;
-    string ota_info = ota_folder + "/orangefox.info";
-    if (TWFunc::Path_Exists(ota_info)) 
-    {
-       if (TWFunc::read_file(ota_info, datafp) == 0) 
-       {
-	   if (!datafp.empty() && datafp.size() > RW_MIN_EXPECTED_FP_SIZE && !loadedfp.empty() && loadedfp.size() > RW_MIN_EXPECTED_FP_SIZE && datafp == loadedfp) 
-	   {
-	      return true;
+	    std::string datafp;
+        string ota_info = ota_folder + "/redwolf.info";
+		if (TWFunc::Path_Exists(ota_info)) {
+		if (TWFunc::read_file(ota_info, datafp) == 0) {
+	    if (!datafp.empty() && datafp.size() > RW_MIN_EXPECTED_FP_SIZE && !loadedfp.empty() && loadedfp.size() > RW_MIN_EXPECTED_FP_SIZE && datafp == loadedfp) {
+	    return true;
+	    }
 	   }
-       }
-   }
-   return false;
+	}
+	 return false;
 }
+
 	
+
 bool TWFunc::Get_Pirate_Variable(void) 
 {
    return true;
@@ -1706,7 +1725,7 @@ std::string end_command = "; ";
 std::string magiskboot = "magiskboot";
 std::string magiskboot_sbin = "/sbin/" + magiskboot;
 std::string magiskboot_action = magiskboot + " --";
-std::string tmp = "/tmp/orangefox";
+std::string tmp = "/tmp/redwolf";
 std::string ramdisk = tmp + "/ramdisk";
 std::string cpio = "ramdisk.cpio";
 std::string tmp_cpio = tmp + k + cpio;
@@ -1747,8 +1766,7 @@ PartitionManager.UnMount_By_Path("/system", false);
 }
 
 
-bool TWFunc::isNumber(string strtocheck) 
-{
+bool TWFunc::isNumber(string strtocheck) {
 	int num = 0;
 	std::istringstream iss(strtocheck);
 
@@ -1758,14 +1776,12 @@ bool TWFunc::isNumber(string strtocheck)
 		return false;
 }
 
-int TWFunc::stream_adb_backup(string &Restore_Name) 
-{
+int TWFunc::stream_adb_backup(string &Restore_Name) {
 	string cmd = "/sbin/bu --twrp stream " + Restore_Name;
 	LOGINFO("stream_adb_backup: %s\n", cmd.c_str());
-	
 	int ret = TWFunc::Exec_Cmd(cmd);
-	if (ret != 0) return -1;
+	if (ret != 0)
+		return -1;
 	return ret;
 }
 #endif // ndef BUILD_TWRPTAR_MAIN
-

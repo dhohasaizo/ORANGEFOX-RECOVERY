@@ -374,6 +374,7 @@ protected:
 	int disableinstallled(std::string arg);
     int disablebackupled(std::string arg);
 	int disablerestoreled(std::string arg);
+int disableled(std::string arg);	
 	int removepassword(std::string arg);
 	int setpassword(std::string arg);
 	int changesplash(std::string arg);

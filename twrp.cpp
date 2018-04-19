@@ -105,7 +105,7 @@ int main(int argc, char **argv) {
 	snprintf(crash_prop_val, sizeof(crash_prop_val), "%d", crash_counter);
 	property_set("twrp.crash_counter", crash_prop_val);
 	property_set("ro.twrp.boot", "1");
-	property_set("ro.twrp.build", "orangefox");
+	property_set("ro.twrp.build", "orangefox");	
 	property_set("ro.twrp.version", RW_VERSION);
 
 	time_t StartupTime = time(NULL);
@@ -117,13 +117,17 @@ int main(int argc, char **argv) {
 	gui_init();
 	printf("=> Linking mtab\n");
 	symlink("/proc/mounts", "/etc/mtab");
-	std::string fstab_filename = "/etc/twrp.fstab";
-	if (!TWFunc::Path_Exists(fstab_filename)) {
-		fstab_filename = "/etc/recovery.fstab";
+	if (TWFunc::Path_Exists("/etc/redwolf.fstab")) {
+		if (TWFunc::Path_Exists("/etc/recovery.fstab")) {
+			printf("Renaming regular /etc/recovery.fstab -> /etc/recovery.fstab.bak\n");
+			rename("/etc/recovery.fstab", "/etc/recovery.fstab.bak");
+		}
+		printf("Moving /etc/redwolf.fstab -> /etc/recovery.fstab\n");
+		rename("/etc/redwolf.fstab", "/etc/recovery.fstab");
 	}
-	printf("=> Processing %s\n", fstab_filename.c_str());
-	if (!PartitionManager.Process_Fstab(fstab_filename, 1)) {
-		LOGERR("Failing out of recovery due to problem with fstab.\n");
+	printf("=> Processing recovery.fstab\n");
+	if (!PartitionManager.Process_Fstab("/etc/recovery.fstab", 1)) {
+		LOGERR("Failing out of recovery due to problem with recovery.fstab.\n");
 		return -1;
 	}
 	PartitionManager.Output_Partition_Logging();
@@ -339,12 +343,11 @@ int main(int argc, char **argv) {
 #endif
 
 
-     	TWFunc::Start_redwolf();
-
-     	DataManager::SetValue(RW_USER_IS_PIRATE, 0);
+     TWFunc::Start_redwolf();
      
-	#ifndef TW_OEM_BUILD
-	
+     DataManager::SetValue(RW_USER_IS_PIRATE, 0);
+     
+ #ifndef TW_OEM_BUILD
 	// Check if system has never been changed
 	TWPartition* sys = PartitionManager.Find_Partition_By_Path("/system");
 	TWPartition* ven = PartitionManager.Find_Partition_By_Path("/vendor");

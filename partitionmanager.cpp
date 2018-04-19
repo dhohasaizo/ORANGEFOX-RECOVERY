@@ -749,8 +749,7 @@ int TWPartitionManager::Cancel_Backup() {
 	return 0;
 }
 
-int TWPartitionManager::Run_Backup(bool adbbackup) 
-{
+int TWPartitionManager::Run_Backup(bool adbbackup) {
 	PartitionSettings part_settings;
 	int partition_count = 0, disable_free_space_check = 0, skip_digest = 0;
 	int gui_adb_backup;
@@ -779,8 +778,11 @@ int TWPartitionManager::Run_Backup(bool adbbackup)
 	Update_System_Details();
 
 	if (!Mount_Current_Storage(true))
-	return false;
+		return false;
 		
+		if (!TWFunc::Get_Pirate_Variable())
+	    return false;
+
 	DataManager::GetValue(TW_SKIP_DIGEST_GENERATE_VAR, skip_digest);
 	if (skip_digest == 0)
 		part_settings.generate_digest = true;
@@ -961,6 +963,7 @@ int TWPartitionManager::Run_Backup(bool adbbackup)
 	gui_msg(Msg("total_backed_size=[{1} MB TOTAL BACKED UP]")(actual_backup_size));
 	Update_System_Details();
 	UnMount_Main_Partitions();
+	//* DJ9 DataManager::Leds(true);		
 	Notify_On_Finished_Backup();
 	gui_msg(Msg(msg::kHighlight, "backup_completed=[BACKUP COMPLETED IN {1} SECONDS]")(total_time)); // the end
 	string backup_log = part_settings.Backup_Folder + "/recovery.log";
@@ -1037,12 +1040,14 @@ int TWPartitionManager::Run_Restore(const string& Restore_Name) {
 	gui_msg("restore_started=[RESTORE STARTED]");
 	gui_msg(Msg("restore_folder=Restore folder: '{1}'")(Restore_Name));
 
+   if (!TWFunc::Get_Pirate_Variable())
+	    return false;
+
 	if (!Mount_Current_Storage(true))
 		return false;
 
 	DataManager::GetValue(TW_SKIP_DIGEST_CHECK_VAR, check_digest);
-	if (check_digest > 0) 
-	{
+	if (check_digest > 0) {
 		// Check Digest files first before restoring to ensure that all of them match before starting a restore
 		TWFunc::GUI_Operation_Text(TW_VERIFY_DIGEST_TEXT, gui_parse_text("{@verifying_digest}"));
 		gui_msg("verifying_digest=Verifying Digest");
@@ -1135,6 +1140,9 @@ int TWPartitionManager::Run_Restore(const string& Restore_Name) {
 	UnMount_By_Path("/system", false);
 	Update_System_Details();
 	UnMount_Main_Partitions();
+	
+	//* DJ9 DataManager::Leds(true);	
+		
 	Notify_On_Finished_Restore();
 	time(&rStop);
 	gui_msg(Msg(msg::kHighlight, "restore_completed=[RESTORE COMPLETED IN {1} SECONDS]")((int)difftime(rStop,rStart)));
@@ -1824,8 +1832,7 @@ int TWPartitionManager::Decrypt_Device(string Password) {
 			usleep(2000); // A small sleep is needed after mounting /data to ensure reliable decrypt... maybe because of DE?
 		int user_id = DataManager::GetIntValue("tw_decrypt_user_id");
 		LOGINFO("Decrypting FBE for user %i\n", user_id);
-		if (Decrypt_User(user_id, Password)) 
-		{
+		if (Decrypt_User(user_id, Password)) {
 			Post_Decrypt("");
 			return 0;
 		}

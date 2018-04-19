@@ -859,7 +859,7 @@
      <string name="community_info_line2">сообщества. Если вы хотите оставить здесь</string>
      <string name="community_info_line3">свой скрипт, или у вас есть совет насчет </string>
      <string name="community_info_line4">текущего, напишите мне в</string>
-     <string name="community_info_line5">Telegram @MrYacha</string>
+     <string name="community_info_line5">теме на XDA.</string>
      <string name="governor_info_line1">Существует множество говернеров ЦП</string>
      <string name="governor_info_line2">для Android, но люди должны ознакомиться</string>
      <string name="governor_info_line3">с несколькими важными моментами</string>
@@ -995,51 +995,5 @@
      <string name="wolf_restore_vibrate">Вибрация при восстановлении р.к.</string> 
      <string name="wolf_vibration_hdr">Вибрация действий OrangeFox</string>
      <string name="wolf_boot_nastaveni">Аппаратные настройки</string>
-	 <!--OrangeFox Edited by Yahcka-->
-	 <string name="wolf_supersu_config_chk">Установить Xposed модулем в Magisk?</string>
-	 <string name="select_storage_hdr">Выберите накопить</string>
-	 <string name="select_storage_btn">Накопитель</string>
-	 <string name="wolf_no_os_engine">Улучшенный метод поиска ОС</string>
-	 <string name="Dadi11">Главный тестер</string>
-	 <string name="yacha_magisk">By Yahcka, Только для Treble!</string>
-	 <string name="yacha_xposed">By topjohnwu, Только для Android 8.1!</string>
-	 <string name="reboot_recovery_btn">Перезагрузить рекавери</string>
-	 <string name="wolf_reboot_restore_finish_chk">Перезагрузка после восстановления</string>
-	 <string name="sel_splash_png">Выберите PNG</string>
-	 <string name="wolf_custom_wolf_splash_btn">Изменить сплеш</string>
-	 <string name="raised_clearqueue_btn">Очистить список</string>
-	 <string name="raised_viewqueue_btn">Просмотрть список</string>
-	 <string name="wolf_special_actions_hdr">Спец. Настройки</string>
-	 <string name="fix_contexts_confirm">исправленить контекст SELinux?</string>
-	 <string name="sha2_chk">Использовать SHA2 для хширования</string>
-	 <string name="statusbar_wolf_on_lockpass">Не рабочая опция</string>
-	 
-	 <string name="sort_by_name_asc">По имени</string>
-	 <string name="sort_by_date_asc">По дате</string>
-	 <string name="sort_by_size_asc">По размеру</string>
-	 <string name="sort_by_name_desc">По имени обр.</string>
-	 <string name="sort_by_date_desc">По дате обр.</string>
-	 <string name="sort_by_size_desc">По размеру обр.</string>
-	 
-     <string name="extra_shit_info_line1">Очень много текста! Потом!</string>
-     <string name="extra_shit_info_line2">special settings! Here you can change</string>
-     <string name="extra_shit_info_line3">the way of how is the OrangeFox Recovery</string>
-     <string name="extra_shit_info_line4">installing zip files.</string>  
-     <string name="extra_shit_info_line5">Maybe you don't want to flash lazyflasher</string>       
-     <string name="extra_shit_info_line6">everytime when you are installing</string>
-     <string name="extra_shit_info_line7">ROM with enabled dm-verity? So just enable</string>
-     <string name="extra_shit_info_line8">here &quot;Disable DM-Verity&quot; and</string>
-     <string name="extra_shit_info_line9">that's everything what you have to do.</string>
-     <string name="extra_shit_info_line10">After that when you flash the ROM</string>
-     <string name="extra_shit_info_line11">recovery will automatically during the</string>
-     <string name="extra_shit_info_line12">installation check and disable dm-verity.</string>
-     <string name="extra_shit_info_line13">The same process is also for forced</string>
-     <string name="extra_shit_info_line14">encryption.</string>   
-     <string name="extra_shit_info_line15">Other things like &quot;Enable Debugging...&quot;</string>
-     <string name="extra_shit_info_line16">are changing the props...</string>
-     <string name="extra_shit_info_line17">If you still have any question then</string>
-     <string name="extra_shit_info_line18">ask us in the XDA thread or in our</string>
-     <string name="extra_shit_info_line19">Telegram group (link is on XDA).</string>
-     <string name="extra_shit_info_line20">Enjoy! :)</string>
-  </resources>
+	</resources>
 </language>

@@ -758,7 +758,7 @@ void DataManager::SetDefaultValues()
      mPersist.SetValue(RW_REBOOT_AFTER_RESTORE, "0"); 
      mPersist.SetValue(RW_SUPERSU_CONFIG, "0");
      mPersist.SetValue(RW_NO_OS_SEARCH_ENGINE, "1"); 
-     mPersist.SetValue(RW_STUPID_COOKIE_STUFF, "0");     
+     mPersist.SetValue(RW_STUPID_COOKIE_SHIT, "0");     
      mPersist.SetValue(RW_STATUSBAR_ON_LOCK, "1");  
      mPersist.SetValue(RW_INSTALL_VIBRATE, "150");
      mPersist.SetValue(RW_BACKUP_VIBRATE, "150"); 
@@ -788,7 +788,7 @@ void DataManager::SetDefaultValues()
 	 mConst.SetValue(RW_SURVIVAL_FOLDER_VAR, RW_SURVIVAL_FOLDER);
      mConst.SetValue(RW_SURVIVAL_BACKUP_NAME, RW_SURVIVAL_BACKUP);
      mConst.SetValue(RW_ACTUAL_BUILD_VAR, RW_BUILD);
-     mConst.SetValue(RW_TMP_SCRIPT_DIR, "/tmp/orangefox");  
+     mConst.SetValue(RW_TMP_SCRIPT_DIR, "/tmp/redwolf");  
      mConst.SetValue(RW_COMPATIBILITY_DEVICE, RW_DEVICE);  
      
      // End of the OrangeFox variables
@@ -1174,4 +1174,28 @@ void DataManager::Vibrate(const string& varName)
 	if (vib_value) {
 		vibrate(vib_value);
 	}
+}
+
+void DataManager::Leds(bool enable)
+{
+	std::string leds, bs, bsmax, time, blink, bsm;
+	struct stat st;
+	leds = "/sys/class/leds/green";
+	bs = leds + "/brightness";
+    time = leds + "/led_time";
+    blink = leds + "/blink";    
+    bsmax = leds + "/max_brightness";
+    if (!enable && stat(bs.c_str(), &st) == 0)
+    TWFunc::write_to_file(bs, "0");
+    else {
+    if (stat(bs.c_str(), &st) == 0 && stat(time.c_str(), &st) == 0 && stat(bsmax.c_str(), &st) == 0 && stat(blink.c_str(), &st) == 0) 
+    {
+	if (TWFunc::read_file(bsmax, bsm) == 0) 
+	{
+	TWFunc::write_to_file(bs, bsm);
+	TWFunc::write_to_file(blink, "1");
+	TWFunc::write_to_file(time, "1 1 1 1");
+        }
+   } 
+  }
 }

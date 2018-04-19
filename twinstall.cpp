@@ -577,7 +577,7 @@ int TWinstall_zip(const char* path, int* wipe_cache) {
 			LOGINFO("AB zip\n");
 			ret_val = Run_Update_Binary(path, &Zip, wipe_cache, AB_OTA_ZIP_TYPE);
 		} else {
-			if (Zip.EntryExists("orangefox.prop")) {
+			if (Zip.EntryExists("redwolf.prop")) {
 				LOGINFO("OrangeFox Update\n");
 				ret_val = Install_Theme(path, &Zip);
 			} else {
@@ -598,7 +598,7 @@ int TWinstall_zip(const char* path, int* wipe_cache) {
 		DataManager::GetValue(RW_SURVIVAL_BACKUP_NAME, ota_backup);
 		DataManager::GetValue(RW_LOADED_FINGERPRINT, loadedfp);
 		ota_folder += "/" + ota_backup;
-		string ota_info = ota_folder + "/orangefox.info";
+		string ota_info = ota_folder + "/redwolf.info";
 		if (TWFunc::Verify_Loaded_OTA_Signature(loadedfp, ota_folder)) {
 		gui_msg("wolf_incremental_ota_bak_skip=Detected OTA survival with the same ID - leaving");
 		} else {

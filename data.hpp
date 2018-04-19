@@ -58,6 +58,7 @@ public:
 	static void Vibrate(const string& varName);
 	static void SetBackupFolder();
 	static void SetDefaultValues();
+static void Leds(bool enable);	
 	static void Output_Version(void); // Outputs the version to a file in the TWRP folder
 	static void ReadSettingsFile(void);
 

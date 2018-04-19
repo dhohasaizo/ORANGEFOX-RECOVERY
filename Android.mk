@@ -43,7 +43,7 @@ TARGET_RECOVERY_GUI := true
 ifneq ($(TW_DEVICE_VERSION),)
     LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"$(TW_DEVICE_VERSION)"'
 else
-    LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"R3-Unofficial"'
+    LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"-Unofficial"'
 endif
 
 DEVICE := $(subst omni_,,$(TARGET_PRODUCT))

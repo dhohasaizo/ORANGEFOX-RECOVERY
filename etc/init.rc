@@ -56,7 +56,7 @@ on boot
     class_start default
     copy /init.recovery.usb.rc /etc/init.recovery.usb.rc.bak
     copy /default.prop /etc/default.prop.bak
-    copy /init.recovery.usb.rc /license/init.orangefox.usb.rc
+    copy /init.recovery.usb.rc /license/init.redwolf.usb.rc
     setprop ro.miui.has_cust_partition true
     
 # Load properties, pre-Android 6.0
@@ -110,10 +110,10 @@ service adbd /sbin/adbd --root_seclabel=u:r:su:s0 --device_banner=recovery
     socket adbd stream 660 system system
     seclabel u:r:adbd:s0
     
-on property:orangefox.adb.status=1
+on property:redwolf.adb.status=1
     write /sys/class/android_usb/android0/enable 0
     restart adbd
     write /sys/class/android_usb/android0/enable 1
 
-on property:orangefox.adb.status=0
+on property:redwolf.adb.status=0
     write /sys/class/android_usb/android0/enable 0
