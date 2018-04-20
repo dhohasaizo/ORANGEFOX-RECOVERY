@@ -43,7 +43,7 @@ TARGET_RECOVERY_GUI := true
 ifneq ($(TW_DEVICE_VERSION),)
     LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"$(TW_DEVICE_VERSION)"'
 else
-    LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"R2"'
+    LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"-Unofficial"'
 endif
 
 DEVICE := $(subst omni_,,$(TARGET_PRODUCT))
@@ -65,7 +65,6 @@ LOCAL_SRC_FILES := \
     progresstracking.cpp \
     twinstall.cpp \
     twrp-functions.cpp \
-    dumwolf.cpp \
     twrpDigestDriver.cpp \
     openrecoveryscript.cpp \
     tarWrite.c \
@@ -385,7 +384,7 @@ LOCAL_ADDITIONAL_DEPENDENCIES += \
     twrp \
     fsck.fat \
     fatlabel \
-    startx \
+    magiskboot \
     mkfs.fat \
     permissive.sh \
     simg2img_twrp \

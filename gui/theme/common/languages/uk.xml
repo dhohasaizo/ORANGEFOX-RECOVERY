@@ -364,7 +364,7 @@
 		<string name="settings_screen_timeout_cptn">Таймаут</string>
 		<string name="settings_screen_timeout_cptn2">Таймаут:</string>
 		<string name="timeout_unit">сек</string>
-		<string name="msg2">[Red Wolf]: Процес завершено!</string>
+		<string name="msg2">[OrangeFox]: Процес завершено!</string>
 		<string name="enable_timeout_chk">Увімкнути таймаут екрану</string>
 		<string name="screen_to_slider">Таймаут екрану, сек:</string>
 		<string name="screen_to_slider_s">Таймаут екрану через, сек(0=вимкнений): %tw_screen_timeout_secs%</string>
@@ -1017,7 +1017,7 @@
      <string name="wolf_Wifi_Bluetooth_backup_line8">Переконайтеся, що Ви відключили Wifi і Bluetooth перед</string>
      <string name="wolf_Wifi_Bluetooth_backup_line9">відновленням цих даних (В іншому випадку</string>
      <string name="wolf_Wifi_Bluetooth_backup_line10">зміни не застосуються).</string>
-     <string name="wolf_action_vibration">Вібрація дій Red Wolf:</string>
+     <string name="wolf_action_vibration">Вібрація дій OrangeFox:</string>
      <string name="wolf_boot_fsync">Відключити Fsync</string>
      <string name="wolf_boot_fastcharge">Примусова швидка зарядка</string>
      <string name="wolf_boot_t2w">Включити T2W</string>
@@ -1036,7 +1036,7 @@
      <string name="wolf_install_vibrate">Вібрація при встановленні</string> 
      <string name="wolf_backup_vibrate">Вібрація при створення р.к.</string> 
      <string name="wolf_restore_vibrate">Вібрація при відновленні р.к.</string> 
-     <string name="wolf_vibration_hdr">Вібрація дій Red Wolf</string>
+     <string name="wolf_vibration_hdr">Вібрація дій OrangeFox</string>
      <string name="wolf_boot_nastaveni">Апаратні налаштування</string>
 	 <string name="wolf_special_actions_hdr">Особливі дії</string>
 	 <string name="rem_sd">Знімний носій</string>
@@ -1063,7 +1063,7 @@
 	<string name="wolf_hide_backup_folder_chk">Приховати головну папку recovery</string>
 	<string name="wolf_advanced_stock_recovery">Агресивна деактивація стокового recovery</string>
 	<string name="wolf_support_miui_ota_chk">Підтримка MIUI Incremental OTA</string>
-	<string name="wolf_special_actions">Особливі дії в Red Wolf Recovery</string>
+	<string name="wolf_special_actions">Особливі дії в OrangeFox Recovery</string>
 	<string name="wolf_disable_boot_chk">Вимкнути перевірку завантаження</string>
 	<string name="wolf_include_system_survival_chk">Включити систему в OTA survival</string>
 	<string name="wolf_verify_incremental_ota_signature_chk">Перевірка підпису Incremental OTA</string>

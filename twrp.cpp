@@ -105,11 +105,11 @@ int main(int argc, char **argv) {
 	snprintf(crash_prop_val, sizeof(crash_prop_val), "%d", crash_counter);
 	property_set("twrp.crash_counter", crash_prop_val);
 	property_set("ro.twrp.boot", "1");
-	property_set("ro.twrp.build", "redwolf");
+	property_set("ro.twrp.build", "orangefox");	
 	property_set("ro.twrp.version", RW_VERSION);
 
 	time_t StartupTime = time(NULL);
-	printf("Starting RED WOLF TWRP %s-%s-%s on %s (pid %d)\n", RW_VERSION, RW_BUILD, TW_GIT_REVISION, ctime(&StartupTime), getpid());
+	printf("Starting OrangeFox TWRP %s-%s-%s on %s (pid %d)\n", RW_VERSION, RW_BUILD, TW_GIT_REVISION, ctime(&StartupTime), getpid());
   
 	// Load default values to set DataManager constants and handle ifdefs
 	DataManager::SetDefaultValues();
@@ -117,13 +117,17 @@ int main(int argc, char **argv) {
 	gui_init();
 	printf("=> Linking mtab\n");
 	symlink("/proc/mounts", "/etc/mtab");
-	std::string fstab_filename = "/etc/twrp.fstab";
-	if (!TWFunc::Path_Exists(fstab_filename)) {
-		fstab_filename = "/etc/recovery.fstab";
+	if (TWFunc::Path_Exists("/etc/redwolf.fstab")) {
+		if (TWFunc::Path_Exists("/etc/recovery.fstab")) {
+			printf("Renaming regular /etc/recovery.fstab -> /etc/recovery.fstab.bak\n");
+			rename("/etc/recovery.fstab", "/etc/recovery.fstab.bak");
+		}
+		printf("Moving /etc/redwolf.fstab -> /etc/recovery.fstab\n");
+		rename("/etc/redwolf.fstab", "/etc/recovery.fstab");
 	}
-	printf("=> Processing %s\n", fstab_filename.c_str());
-	if (!PartitionManager.Process_Fstab(fstab_filename, 1)) {
-		LOGERR("Failing out of recovery due to problem with fstab.\n");
+	printf("=> Processing recovery.fstab\n");
+	if (!PartitionManager.Process_Fstab("/etc/recovery.fstab", 1)) {
+		LOGERR("Failing out of recovery due to problem with recovery.fstab.\n");
 		return -1;
 	}
 	PartitionManager.Output_Partition_Logging();
@@ -168,11 +172,11 @@ int main(int argc, char **argv) {
 			}
 	}
             gui_print("**************************");
-		    gui_msg("redwolfms2=[Red Wolf]: Welcome! ^_^");
+		    gui_msg("redwolfms2=[OrangeFox]: Welcome! ^_^");
 		    gui_msg(Msg("redwolfms3=[Version]: '{1}'")(RW_VERSION));
 		    gui_msg(Msg("redwolfms4=[Build]: {1}")(RW_BUILD));
 		    gui_print("**************************");
-	        PartitionManager.Mount_By_Path("/cache", false);
+	PartitionManager.Mount_By_Path("/cache", false);
 
 	bool Shutdown = false;
 	string Send_Intent = "";
@@ -289,7 +293,7 @@ int main(int argc, char **argv) {
 		LOGINFO("Is encrypted, do decrypt page first\n");
 		if (gui_startPage("decrypt", 1, 1) != 0) {
 			LOGERR("Failed to start decrypt GUI page.\n");
-		}
+		} 
 	} else if (datamedia) {
 		if (tw_get_default_metadata(DataManager::GetSettingsStoragePath().c_str()) != 0) {
 			LOGINFO("Failed to get default contexts and file mode for storage files.\n");
@@ -339,8 +343,11 @@ int main(int argc, char **argv) {
 #endif
 
 
-     TWFunc::Start_redwolf();      
-	 #ifndef TW_OEM_BUILD
+     TWFunc::Start_redwolf();
+     
+     DataManager::SetValue(RW_USER_IS_PIRATE, 0);
+     
+ #ifndef TW_OEM_BUILD
 	// Check if system has never been changed
 	TWPartition* sys = PartitionManager.Find_Partition_By_Path("/system");
 	TWPartition* ven = PartitionManager.Find_Partition_By_Path("/vendor");
@@ -351,7 +358,7 @@ int main(int argc, char **argv) {
 				DataManager::SetValue("tw_back", "main");
 				if (gui_startPage("system_readonly", 1, 1) != 0) {
 					LOGERR("Failed to start system_readonly GUI page.\n");
-		}
+				}
 			} else if (DataManager::GetIntValue("tw_mount_system_ro") == 0) {
 				sys->Change_Mount_Read_Only(false);
 				if (ven)
@@ -371,8 +378,31 @@ int main(int argc, char **argv) {
      
 	// Launch the main GUI
 	gui_start();
-
+#ifndef TW_OEM_BUILD
+	// Disable flashing of stock recovery
 	TWFunc::Disable_Stock_Recovery_Replace();
+
+	// Check for su to see if the device is rooted or not
+	if (DataManager::GetIntValue("tw_mount_system_ro") == 0 && PartitionManager.Mount_By_Path("/system", false)) {
+		// read /system/build.prop to get sdk version and do not offer to root if running M or higher (sdk version 23 == M)
+		string sdkverstr = TWFunc::System_Property_Get("ro.build.version.sdk");
+		int sdkver = 23;
+		if (!sdkverstr.empty()) {
+			sdkver = atoi(sdkverstr.c_str());
+		}
+		if (TWFunc::Path_Exists("/supersu/su") && TWFunc::Path_Exists("/system/bin") && !TWFunc::Path_Exists("/system/bin/su") && !TWFunc::Path_Exists("/system/xbin/su") && !TWFunc::Path_Exists("/system/bin/.ext/.su") && sdkver < 23) {
+			// Device doesn't have su installed
+			DataManager::SetValue("tw_busy", 1);
+			if (gui_startPage("installsu", 1, 1) != 0) {
+				LOGERR("Failed to start SuperSU install page.\n");
+			}
+		}
+		sync();
+		PartitionManager.UnMount_By_Path("/system", false);
+	}
+#endif
+
+	// Reboot
 	TWFunc::Update_Intent_File(Send_Intent);
 	delete adb_bu_fifo;
 	TWFunc::Update_Log_File();
@@ -392,4 +422,3 @@ int main(int argc, char **argv) {
 
 	return 0;
 }
-					
