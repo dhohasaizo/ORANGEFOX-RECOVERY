@@ -109,9 +109,15 @@
 			<image resource="btn_raised_warn"/>
 		</style>
 
-		<style name="btn_raised_hl">
+		<!--style name="btn_raised_hl">
 			<highlight color="%highlight_color%"/>
 			<font resource="button" color="%text%"/>
+			<image resource="btn_raised_hl"/>
+		</style-->
+
+		<style name="btn_raised_hl">
+			<highlight color="%highlight_color%"/>
+			<font resource="button" color="%text_dark%"/>
 			<image resource="btn_raised_hl"/>
 		</style>
 

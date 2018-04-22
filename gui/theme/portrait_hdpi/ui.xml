@@ -196,7 +196,7 @@
 		<image name="keyboard_hide_hl" filename="keyboard_hide_hl" retainaspect="1"/>
 		<image name="keyboard_show" filename="keyboard_show" retainaspect="1"/>
 		<image name="keyboard_show_hl" filename="keyboard_show_hl" retainaspect="1"/>
-		
+
 		<image name="home_white" filename="home_white" retainaspect="1"/>
 		<image name="home_white_hl" filename="home_white_hl" retainaspect="1"/>
 		<image name="back_white" filename="back_white" retainaspect="1"/>
@@ -268,7 +268,7 @@
 		<variable name="navbar_accent" value="0" persist="1"/>
 		<variable name="menu_btn_solid" value="0" persist="1"/>
 		<variable name="accent_name" value="Red" persist="1"/>
-		
+
 		<variable name="screen_w" value="1080"/>
 		<variable name="screen_h" value="1920"/>
 		<variable name="ab_h" value="240"/>
@@ -496,7 +496,7 @@
 		<variable name="warning" value="#FF6600FF"/>
 		<variable name="error" value="#FF0000FF"/>
 		<variable name="highlight" value="#000000FF"/>
-		<variable name="accent" value="#E51C23FF"/>
+		<variable name="accent" value="#FF7E00"/>
 
 		<variable name="input_width" value="984"/>
 		<variable name="input_backup_width" value="876"/>
@@ -582,16 +582,16 @@
 		<variable name="pattern_line_w" value="12"/>
 		<variable name="pattern_size" value="648"/>
 
-       
 
- 
+
+
         <variable name="rw_version" value="[OrangeFox V3.2.X]"/>
         <variable name="flashlight" value="0"/>
         <variable name="tw_heslo_check" value="dd"/>
         <variable name="wolf_adb" value="0"/>
         <variable name="wolf_supersu_var" value="0"/>
         <variable name="wolf_magisk_var" value="0"/>
-        <variable name="wolf_nosunroot_var" value="0"/> 
+        <variable name="wolf_nosunroot_var" value="0"/>
         <variable name="wolf_subsrescue_var" value="0"/>
         <variable name="wolf_subslegacy_var" value="0"/>
         <variable name="wolf_ramdiskcleaner_var" value="0"/>
@@ -602,12 +602,12 @@
         <variable name="wolf_aromafm" value="0"/>
         <variable name="wolf_aromafm" value="0"/>
      </variables>
-     
+
 	<include>
 		<xmlfile name="styles.xml"/>
 		<xmlfile name="portrait.xml"/>
 	</include>
-	
+
 	<mousecursor>
 		<placement w="15" h="15"/>
 		<background color="#FFFF00FF" resource="cursor"/>
@@ -881,7 +881,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -905,7 +905,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -928,7 +928,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -1019,7 +1019,7 @@
 
 		<template name="action_page_console">
 			<console>
-				<placement x="%col1_x%" y="%row2_1_y%" w="%console_width%" h="%console_action_height%"/> 
+				<placement x="%col1_x%" y="%row2_1_y%" w="%console_width%" h="%console_action_height%"/>
 				<color foreground="%console_foreground%" background="%background%" scroll="%background%"/>
 				<font resource="fixed"/>
 			</console>

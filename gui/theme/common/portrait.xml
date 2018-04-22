@@ -2,7 +2,7 @@
 <recovery>
 	<pages>
 <page name="main">
-	
+
 <action>
        <condition var1="heslo" op="=" var2="tw_heslo_check"/>
 				<actions>
@@ -14,18 +14,18 @@
 <action>
        <condition var1="heslo" op="!=" var2="tw_heslo_check"/>
 		<actions>
-                <action function="set">tw_clear_destination=lockpass</action>	          
+                <action function="set">tw_clear_destination=lockpass</action>
 		<action function="page">clear_vars</action>
 		</actions>
 </action>
 
 </page>
-		
+
 		<page name="extra_shit_info">
 			<template name="body"/>
 
-			<template name="ab_ex"/>	
-			
+			<template name="ab_ex"/>
+
 			<template name="statusbarinfo"/>
 
 			<button>
@@ -58,23 +58,23 @@
 				<placement x="%col1_x%" y="%row2_3_y%" w="%console_width%" h="%console_action_height%"/>
 				<listitem name="{@extra_shit_info_line1=}"/>
 				<listitem name="{@extra_shit_info_line2=}"/>
-				<listitem name="{@extra_shit_info_line3=}"/>			
+				<listitem name="{@extra_shit_info_line3=}"/>
 				<listitem name="{@extra_shit_info_line4=}"/>
 				<listitem name="{@extra_shit_info_line5=}"/>
 				<listitem name="{@extra_shit_info_line6=}"/>
 				<listitem name="{@extra_shit_info_line7=}"/>
-				<listitem name="{@extra_shit_info_line8=}"/>       
+				<listitem name="{@extra_shit_info_line8=}"/>
 				<listitem name="{@extra_shit_info_line9=}"/>
 				<listitem name="{@extra_shit_info_line10=}"/>
-				<listitem name="{@extra_shit_info_line11=}"/>				
+				<listitem name="{@extra_shit_info_line11=}"/>
 				<listitem name="{@extra_shit_info_line12=}"/>
-                <listitem name="{@extra_shit_info_line13=}"/>	
+                <listitem name="{@extra_shit_info_line13=}"/>
 				<listitem name="{@extra_shit_info_line14=}"/>
 				<listitem name="{@extra_shit_info_line15=}"/>
-				<listitem name="{@extra_shit_info_line16=}"/>       
+				<listitem name="{@extra_shit_info_line16=}"/>
 				<listitem name="{@extra_shit_info_line17=}"/>
 				<listitem name="{@extra_shit_info_line18=}"/>
-				<listitem name="{@extra_shit_info_line19=}"/>				
+				<listitem name="{@extra_shit_info_line19=}"/>
 				<listitem name="{@extra_shit_info_line20=}"/>
 			</listbox>
 
@@ -106,7 +106,7 @@
 
 
 <page name="wolf_project_extra_shit">
-	
+
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -118,24 +118,24 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 			    <action function="page">main</action>
 			</button>
-			
+
 			<button>
 	            <placement x="853" y="row1_2a_y"/>
 				<image resource="btn_float_flashitinfo" highlightresource="btn_float_flashitinfo_hl"/>
 				<action function="page">extra_shit_info</action>
 			</button>
 
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@advanced_btn=Advanced}</text>
 			</text>
-			
-			<text style="text_ab_title">	
+
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@wolf_special_actions_hdr=}</text>
 			</text>
-			
+
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_3_y%"/>
@@ -200,7 +200,7 @@
 					<data variable="wolf_reboot_dont_disable_stock_recovery"/>
 				</listitem>
 			</listbox>
-			
+
 			<action>
 				<conditions>
 				<condition var1="wolf_reboot_forced_debugging_check" var2="1"/>
@@ -208,7 +208,7 @@
 				</conditions>
 				<action function="set">wolf_reboot_disable_debugging_check=0</action>
 			</action>
-			
+
 			<action>
 				<conditions>
 				<condition var1="wolf_reboot_enable_mock_location" var2="1"/>
@@ -216,7 +216,7 @@
 				</conditions>
 				<action function="set">wolf_reboot_disable_mock_location=0</action>
 			</action>
-			
+
 			<action>
 				<conditions>
 				<condition var1="wolf_reboot_enable_adb_ro" var2="1"/>
@@ -224,7 +224,7 @@
 				</conditions>
 				<action function="set">wolf_reboot_disable_adb_ro=0</action>
 			</action>
-			
+
 			<action>
 				<conditions>
 				<condition var1="wolf_reboot_disable_secure_ro" var2="1"/>
@@ -232,7 +232,7 @@
 				</conditions>
 				<action function="set">wolf_reboot_disable_secure_ro=0</action>
 			</action>
-			
+
 <action>
 				<touch key="back"/>
 				<action function="page">advanced</action>
@@ -243,7 +243,7 @@
 				<action function="page">main</action>
 			</action>
 	</page>
-			
+
 			<!--page name="dialog_reset">
 			<background color="%transparent%"/>
 
@@ -371,8 +371,8 @@
 					<data variable="wolf_reboot_disable_backup_wifibl_check"/>
 				</listitem-->
 			</listbox>
-			
-			
+
+
 			<!--text style="caption">
 			<condition var1="nightmode" var2="0"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
@@ -392,12 +392,12 @@
               	</slider>
 
 			<slider>
-				<condition var1="nightmode" var2="0"/>            	
+				<condition var1="nightmode" var2="0"/>
 				<action function="cmd">echo "256 193 132" > /sys/devices/platform/kcal_ctrl.0/kcal;</action>
 		    	<action function="set">nightmode=1</action>
             	</slider-->
 
-			
+
 			<action>
 				<conditions>
 	            <condition var1="tw_busy" var2="0"/>
@@ -407,9 +407,9 @@
 				</conditions>
 				<action function="set">wolf_boot_balance_check=1</action>
 			</action>
-			
-			
-	
+
+
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_boot_performance_check" var2="1"/>
@@ -418,7 +418,7 @@
 					<action function="set">wolf_boot_balance_check=0</action>
              </actions>
 			</action>
-			
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_boot_powersave_check" var2="1"/>
@@ -427,7 +427,7 @@
 					<action function="set">wolf_boot_balance_check=0</action>
              </actions>
 			</action>
-			
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_boot_balance_check" var2="1"/>
@@ -436,7 +436,7 @@
 					<action function="set">wolf_boot_powersave_check=0</action>
              </actions>
 			</action>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -451,7 +451,7 @@
 
 
 	<page name="wolf_flashlight">
-		
+
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -473,7 +473,7 @@
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@flashlight=Flashlight}</text>
 			</text>
-			
+
 		   <text style="caption">
 			<condition var1="flashlight" var2="0"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
@@ -485,26 +485,26 @@
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@flashlight_info_off=Swipe to turn off flashlight}</text>
 			</text>
-			
+
 	     <slider>
                 <condition var1="tw_busy" var2="0"/>
 				<action function="flashlight"/>
                 <action function="page">advanced</action>
         	</slider>
-          
+
         <action>
 				<touch key="back"/>
-			<action function="page">advanced</action>				
+			<action function="page">advanced</action>
 			</action>
-			
+
 			<action>
 				<touch key="home"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 </page>
 
 <page name="wolf_reboot_no_os">
-		
+
 			<template name="body"/>
 
 			<template name="ab"/>
@@ -526,7 +526,7 @@
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@wolf_no_wolfos_hdr=}</text>
 			</text>
-			
+
 			<image>
 				<placement x="%col1_x%" y="440"/>
 				<image resource="icon_info"/>
@@ -557,7 +557,7 @@
 				<text>{@wolf_no_os_wolf_txt5=It can check for new TWRP versions.}</text>
 			</text>
 
-			
+
 		   <text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf_no_os_wolf_slider_txt=}</text>
@@ -565,22 +565,22 @@
 
 		       <slider>
 	              <action function="reboot">%tw_reboot_param%</action>
-	           </slider>  
-	
+	           </slider>
+
 			<action>
 				<touch key="back"/>
-			<action function="page">reboot</action>				
+			<action function="page">reboot</action>
 			</action>
-			
+
 			<action>
 				<touch key="home"/>
-			<action function="page">main</action>				
+			<action function="page">main</action>
 			</action>
 </page>
 
 
 <page name="wolf_adb">
-	
+
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -592,17 +592,17 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">main2</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>OrangeFox</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>Android Debug Bridge</text>
 			</text>
-			
+
 			   <text style="caption">
 			<condition var1="wolf_adb" var2="0"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
@@ -629,7 +629,7 @@
 	     <conditions>
          	<condition var1="wolf_adb" var2="0"/>
              <condition var1="tw_busy" var2="0"/>
-         </conditions>     	
+         </conditions>
 				<action function="adb">enable</action>
 		    	<action function="set">wolf_adb=1</action>
           <action function="page">main2</action>
@@ -638,18 +638,18 @@
 
 <action>
 				<touch key="back"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 
 <action>
 				<touch key="home"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 </page>
 
 
 <page name="wolf_fix_fp_scanner">
-	
+
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -661,17 +661,17 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 		        <action function="page">wolf_rom_settings</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 			<text>{@wolf_fix_fp_hdr1=}</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>by Magua</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf_flash_fp_fix=}</text>
@@ -718,17 +718,17 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">wolf_rom_settings</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 			<text>Ramdisk Cleaner</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>by ATG Droid</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf_flash_ramdisk_cleaner=}</text>
@@ -762,7 +762,7 @@
 
 
 <page name="wolf_substratum_rescue">
-	
+
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -774,17 +774,17 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 		       <action function="page">wolf_rom_settings</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>Substratum Rescue</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>by Substratum Project</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf_flash_substratum_rescue=}</text>
@@ -807,7 +807,7 @@
 
 <action>
 				<touch key="back"/>
-		        <action function="page">wolf_rom_settings</action>		
+		        <action function="page">wolf_rom_settings</action>
 			</action>
 
 <action>
@@ -830,17 +830,17 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 			    <action function="page">wolf_rom_settings</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@wolf_rmpass_hdr=}</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>by Magua</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf_flash_rmpass=}</text>
@@ -863,7 +863,7 @@
 
 <action>
 				<touch key="back"/>
-			    <action function="page">wolf_rom_settings</action>		
+			    <action function="page">wolf_rom_settings</action>
 			</action>
 
 <action>
@@ -874,7 +874,7 @@
 
 
 <page name="wolf_substratum_legacy">
-	
+
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -886,17 +886,17 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 			    <action function="page">wolf_rom_settings</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>Substratum Rescue Legacy</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>by Substratum Project</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf_flash_subs_legacy=}</text>
@@ -930,7 +930,7 @@
 
 
 <page name="wolf_nos_patch">
-	
+
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -949,17 +949,17 @@
 				  <action function="page">wolf_rom_settings</action>
              </actions>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@wolf_nos_info_patch=}</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>by Serjo87 @ 4PDA.ru</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf_flash_nos_patch=}</text>
@@ -978,8 +978,8 @@
 					<action function="set">wolf_install_built_in_zip=0</action>
 					<action function="set">wolf_nospatch_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
-			        <action function="page">wolf_rom_settings</action>		
-                </actions>		
+			        <action function="page">wolf_rom_settings</action>
+                </actions>
 			</action>
 
 <action>
@@ -991,13 +991,13 @@
 					<action function="set">wolf_nospatch_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
 				     <action function="page">main2</action>
-                </actions>	
+                </actions>
 			</action>
 </page>
 
 
 <page name="wolf_supersu">
-	
+
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -1009,22 +1009,22 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">theme_settings</action>
 			    </button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>SuperSU</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>by Chainfire</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf_flash_SU=}</text>
 			</text>
-			
+
 			<listbox style="settingslist">
 	             <condition var1="tw_busy" var2="0"/>
 				<placement x="%col1_x%" y="%row4_1_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
@@ -1048,7 +1048,7 @@
 				    <action function="flash">flash_zip</action>
 				</actions>
        	</slider>
-       
+
            <slider>
 				<condition var1="rw_supersu_config_chk" var2="1"/>
 				<actions>
@@ -1070,7 +1070,7 @@
 
 <action>
 				<touch key="back"/>
-			      <action function="page">theme_settings</action>	
+			      <action function="page">theme_settings</action>
 			</action>
 
 <action>
@@ -1096,17 +1096,17 @@
 				     <action function="page">theme_settings</action>
              </actions>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>dm-verity</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@wolf_dm-verity_hdr2=}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf_dm-verity_swipe=}</text>
@@ -1123,8 +1123,8 @@
 					<action function="cancelzip"/>
 					<action function="set">wolf_disableverity_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
-				     <action function="page">theme_settings</action>		
-                </actions>		
+				     <action function="page">theme_settings</action>
+                </actions>
 			</action>
 
 <action>
@@ -1134,7 +1134,7 @@
 					<action function="set">wolf_disableverity_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
 				   <action function="page">main2</action>
-                </actions>	
+                </actions>
 			</action>
 </page-->
 
@@ -1158,7 +1158,7 @@
 				     <action function="page">wolf_rom_settings</action>
              </actions>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<condition var1="wolf_compatibility_wolf_device" var2="kenzo"/>
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
@@ -1170,7 +1170,7 @@
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@wolf_nitro_unroot_hdr2=}</text>
 			</text>
-			
+
 			<text style="caption">
 				<condition var1="wolf_compatibility_wolf_device" var2="kenzo"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
@@ -1190,8 +1190,8 @@
 					<action function="set">wolf_install_built_in_zip=0</action>
 					<action function="set">wolf_nosunroot_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
-				      <action function="page">wolf_rom_settings</action>		
-                </actions>		
+				      <action function="page">wolf_rom_settings</action>
+                </actions>
 			</action>
 
 <action>
@@ -1203,7 +1203,7 @@
 					<action function="set">wolf_nosunroot_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
 			        <action function="page">main2</action>
-                </actions>	
+                </actions>
 			</action>
 </page>
 
@@ -1219,8 +1219,8 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 		        <action function="page">wolf_rom_settings</action>
 			</button>
-			
-			
+
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>FGO Patch</text>
@@ -1230,7 +1230,7 @@
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@wolf_fgo_patch_hdr2=}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf_flash_fgo_patch=}</text>
@@ -1255,7 +1255,7 @@
 
 <action>
 				<touch key="back"/>
-			    <action function="page">wolf_rom_settings</action>		
+			    <action function="page">wolf_rom_settings</action>
 			</action>
 
 <action>
@@ -1277,17 +1277,17 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 			    <action function="page">theme_settings</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>Magisk</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>by topjohnwu</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf_flash_Magisk=}</text>
@@ -1311,7 +1311,7 @@
 
 <action>
 				<touch key="back"/>
-				        <action function="page">theme_settings</action>		
+				        <action function="page">theme_settings</action>
 			</action>
 
 <action>
@@ -1332,18 +1332,18 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">advanced</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>ORANGE FOX</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 			<condition var1="changepass" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@pass_hdr3=}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf.pass.final_slide=}</text>
@@ -1355,12 +1355,12 @@
 
 <action>
 				<touch key="back"/>
-			<action function="page">advanced</action>				
+			<action function="page">advanced</action>
 			</action>
 
 <action>
 				<touch key="home"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 </page>
 
@@ -1376,18 +1376,18 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">advanced</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@pass_hdr=}</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 			<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@pass_hdr3_del=}</text>
 			</text>
-			
-			
+
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@wolf.pass.final_slide=}</text>
@@ -1400,12 +1400,12 @@
 
 <action>
 				<touch key="back"/>
-			<action function="page">advanced</action>				
+			<action function="page">advanced</action>
 			</action>
 
 <action>
 				<touch key="home"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 </page>
 
@@ -1593,41 +1593,41 @@
 
 			<fill color="%linecolor%">
 				<condition var1="wolf_adb" var2="1"/>
-				<condition var1="menu_btn_solid" var2="0"/>			
+				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row5_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 
 			<fill color="%linecolor%">
 				<condition var1="wolf_adb" var2="1"/>
-				<condition var1="menu_btn_solid" var2="0"/>				
+				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row5_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 
 			<fill color="%linecolor%">
-				<condition var1="menu_btn_solid" var2="0"/>			
+				<condition var1="menu_btn_solid" var2="0"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="%col1_x_indent%" y="%mb_row5_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 
 			<image>
-				<condition var1="menu_btn_solid" var2="0"/>				
+				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row5_y%"/>
 				<image resource="mb_dumlock"/>
 			</image>
 
 			<fill color="%accent%">
-				<condition var1="menu_btn_solid" var2="1"/>				
+				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%mb_icon_x%" y="%mb_row5_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
-				<condition var1="menu_btn_solid" var2="1"/>				
+				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row5_y%"/>
 				<image resource="mb_dumlock_color"/>
 			</image>
 
 			<image>
-				<condition var1="menu_btn_solid" var2="1"/>			
+				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x_neg%" y="%mb_row5_y%" placement="1"/>
 				<image resource="mb_color_extension"/>
 			</image>
@@ -1811,7 +1811,7 @@
 				<placement x="%col1_x%" y="%mb_row8_y%" w="%content_w%" h="%mb_h%"/>
 				<action function="overlay">dialog_advanced_actions_warning</action>
 			</button>
-			
+
 			<button style="mb_btn">
 				<condition var1="wolf_advanced_warning_checkbox" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row8_y%" w="%content_w%" h="%mb_h%"/>
@@ -1829,8 +1829,8 @@
 				<action function="page">main</action>
 			</action>
 		</page>
-		
-		
+
+
 		<page name="dialog_advanced_actions_warning">
 			<background color="%transparent%"/>
 
@@ -1888,7 +1888,7 @@
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
-		
+
 <page name="dialog_reset_pass">
 			<background color="%transparent%"/>
 
@@ -1960,7 +1960,7 @@
 				</actions>
 			</button>
 
-			<input>        
+			<input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -1984,11 +1984,11 @@
             </actions>
 			</button>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -2002,7 +2002,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@change_pass_text_1=}</text>		
+			<text>{@change_pass_text_1=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -2054,15 +2054,15 @@
 </page>
 
 
-<page name="pass_change2">			
+<page name="pass_change2">
 
  <template name="body"/>
 
   <template name="ab"/>
 
   <template name="statusbarinfo"/>
-             
-           <input>        
+
+           <input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -2086,11 +2086,11 @@
             </actions>
 			</button>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -2104,7 +2104,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@change_pass_text_1=}</text>		
+			<text>{@change_pass_text_1=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -2146,7 +2146,7 @@
 				<action function="page">advanced</action>
 				</actions>
 			</action>
-			
+
 
 <action>
  <condition var1="heslo"  op="=" var2="tw_droid_password_change_xd1"/>
@@ -2159,14 +2159,14 @@
 
 
 <page name="pass_change_del1">
-			
+
 <template name="body"/>
 
 <template name="ab"/>
 
 <template name="statusbarinfo"/>
 
-			<input>        
+			<input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -2181,11 +2181,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-<image>				
+<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -2199,7 +2199,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@change_pass_text_1_del=}</text>		
+			<text>{@change_pass_text_1_del=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -2251,15 +2251,15 @@
 </page>
 
 
-<page name="pass_change_del2">			
+<page name="pass_change_del2">
 
  <template name="body"/>
 
   <template name="ab"/>
 
   <template name="statusbarinfo"/>
-             
-           <input>        
+
+           <input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -2274,11 +2274,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -2292,7 +2292,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@change_pass_text_1_del=}</text>		
+			<text>{@change_pass_text_1_del=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -2347,15 +2347,15 @@
 
 
 
-<page name="pass_change3">			
+<page name="pass_change3">
 
              <template name="body"/>
 
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
-     
-              <input>        
+
+              <input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -2373,11 +2373,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -2391,7 +2391,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@new_pass_text_1=}</text>		
+			<text>{@new_pass_text_1=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -2437,7 +2437,7 @@
 			</action>
 </page>
 
-<page name="pass_change4">			
+<page name="pass_change4">
 
             <template name="body"/>
 
@@ -2445,7 +2445,7 @@
 
 			<template name="statusbarinfo"/>
 
-			<input>        
+			<input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -2463,11 +2463,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -2481,7 +2481,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@new_pass_text_1=}</text>		
+			<text>{@new_pass_text_1=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -2525,15 +2525,15 @@
 			</action>
 </page>
 
-<page name="pass_change5">			
+<page name="pass_change5">
 
              <template name="body"/>
 
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
-     
-              <input>        
+
+              <input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -2548,11 +2548,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -2566,7 +2566,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_repeat_1=}</text>		
+			<text>{@full_new_pass_repeat_1=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -2607,7 +2607,7 @@
 				<action function="page">pass_change3</action>
 				</actions>
 			</action>
-			
+
 			<action>
  <condition var1="tw_droid_password_change_xd2"  op="=" var2="tw_droid_password_change_xd3"/>
 <actions>
@@ -2618,7 +2618,7 @@
 </action>
 </page>
 
-<page name="pass_change6">			
+<page name="pass_change6">
 
             <template name="body"/>
 
@@ -2626,7 +2626,7 @@
 
 			<template name="statusbarinfo"/>
 
-			<input>        
+			<input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -2641,11 +2641,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -2659,7 +2659,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_repeat_1=}</text>		
+			<text>{@full_new_pass_repeat_1=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -2700,7 +2700,7 @@
 				<action function="page">pass_change3</action>
 				</actions>
 			</action>
-			
+
 			<action>
  <condition var1="tw_droid_password_change_xd2"  op="=" var2="tw_droid_password_change_xd3"/>
 <actions>
@@ -2713,14 +2713,14 @@
 </page>
 
 
-<page name="pass_new1">			
+<page name="pass_new1">
 
              <template name="body"/>
 
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
@@ -2732,8 +2732,8 @@
                 <action function="set">tw_passnew2_viditelnost=0</action>
 				</actions>
 			</button>
-     
-              <input>        
+
+              <input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -2748,11 +2748,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -2766,7 +2766,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_text_1=}</text>		
+			<text>{@full_new_pass_text_1=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -2802,7 +2802,7 @@
                 <action function="set">tw_passnew2_viditelnost=0</action>
 				</actions>
 			</action>
-			
+
 
 			<action>
 				<touch key="back"/>
@@ -2816,7 +2816,7 @@
 			</action>
 </page>
 
-<page name="pass_new2">			
+<page name="pass_new2">
 
             <template name="body"/>
 
@@ -2836,7 +2836,7 @@
 				</actions>
 			</button>
 
-			<input>        
+			<input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -2851,11 +2851,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -2869,7 +2869,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_text_1=}</text>		
+			<text>{@full_new_pass_text_1=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -2904,7 +2904,7 @@
                 <action function="set">tw_passnew2_viditelnost=0</action>
 				</actions>
 			</action>
-			
+
 
 			<action>
 				<touch key="back"/>
@@ -2919,14 +2919,14 @@
 </page>
 
 
-<page name="pass_new3">			
+<page name="pass_new3">
 
              <template name="body"/>
 
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
@@ -2938,8 +2938,8 @@
                 <action function="set">tw_passnew2_viditelnost=0</action>
 				</actions>
 			</button>
-     
-              <input>        
+
+              <input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -2954,11 +2954,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -2972,7 +2972,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_repeat_1=}</text>		
+			<text>{@full_new_pass_repeat_1=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -3011,7 +3011,7 @@
                 <action function="set">tw_passnew2_viditelnost=0</action>
 				</actions>
 			</action>
-			
+
 
 			<action>
 				<touch key="back"/>
@@ -3024,14 +3024,14 @@
 			</action>
 </page>
 
-<page name="pass_new4">			
+<page name="pass_new4">
 
             <template name="body"/>
 
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
@@ -3044,7 +3044,7 @@
 				</actions>
 			</button>
 
-			<input>        
+			<input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -3059,11 +3059,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -3077,7 +3077,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_repeat_1=}</text>		
+			<text>{@full_new_pass_repeat_1=}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -3128,7 +3128,7 @@
 			</action>
 </page>
 
-<page name="new_pass_confirm">			
+<page name="new_pass_confirm">
 
             <template name="body"/>
 
@@ -3188,7 +3188,7 @@
 					<action function="page">advanced</action>
 				</actions>
 			</action>
-			
+
          <action>
 				<touch key="home"/>
 				<actions>
@@ -3199,8 +3199,8 @@
 				</actions>
 			</action>
 		</page>
-		
-		<page name="new_pass_confirm3">			
+
+		<page name="new_pass_confirm3">
 
             <template name="body"/>
 
@@ -3262,7 +3262,7 @@
 				<action function="page">main2</action>
 				</actions>
 			</action>
-			
+
 			<action>
 				<touch key="back"/>
 				<actions>
@@ -3272,17 +3272,17 @@
 				</actions>
 			</action>
 </page>
-		
-		
-		
-		<page name="new_pass_confirm2">			
+
+
+
+		<page name="new_pass_confirm2">
 
             <template name="body"/>
 
 			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
-			
+
 <button>
           <condition var1="tw_busy" var2="0"/>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
@@ -3355,7 +3355,7 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">theme_settings</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@colour_script_finish1=}</text>
@@ -3396,17 +3396,17 @@
 
 <action>
 				<touch key="back"/>
-			<action function="page">theme_settings</action>				
+			<action function="page">theme_settings</action>
 			</action>
 
 <action>
 				<touch key="home"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 </page>
 
 
-<page name="set_color">			
+<page name="set_color">
 <template name="body"/>
 
 			<template name="ab_ex"/>
@@ -3447,7 +3447,7 @@
 <condition var1="tw_busy" var2="0"/>
 				<actions>
 					<action function="wlfw"/>
-					<action function="cmd">  
+					<action function="cmd">
                      cd "/tmp/redwolf/ramdisk/twres";
                     cp -r %tw_folder%/* "images";
 					mv "ui.xml" "/tmp/redwolf/ui_temp.xml";
@@ -3479,17 +3479,17 @@
 				</actions>
 			</action>
 		</page>
-		
-		<page name="lockpass">			
+
+		<page name="lockpass">
 
 			<template name="ab"/>
-			
+
             <template name="body"/>
-            
-            
-            
-            
-             
+
+
+
+
+
             <text style="text_status">
             	<conditions>
             	<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
@@ -3530,7 +3530,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -3556,7 +3556,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -3581,7 +3581,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -3610,14 +3610,14 @@
 					<condition var1="tw_simulate_actions" op="!=" var2="1"/>
 				</conditions>
 				<text>%tw_time%</text>
-			</text>          
-        
+			</text>
+
 	       <image>
 				<placement x="0" y="84"/>
-				<image resource="actionbar_logo"/>			
+				<image resource="actionbar_logo"/>
 			</image>
 
-			<input>        
+			<input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
@@ -3632,11 +3632,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -3650,7 +3650,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@lock_text_1=Recovery is protected against unauthorized}</text>		
+			<text>{@lock_text_1=Recovery is protected against unauthorized}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -3697,7 +3697,7 @@
           <action function="set">tw_mtp_enabled=0</actions>
           <action function="stopmtp"/>
      </actions>
-     </action> 
+     </action>
 
 			<action>
 				<touch key="back"/>
@@ -3706,7 +3706,7 @@
 </page>
 
 <page name="wolf_lockpass_checker">
-	
+
 <action>
 <condition var1="heslo"  op="=" var2="tw_droid_password"/>
  <actions>
@@ -3724,7 +3724,7 @@
 </action>
 		</page>
 
-<page name="lockpass2">			
+<page name="lockpass2">
 
 			<template name="ab"/>
             <template name="body"/>
@@ -3769,7 +3769,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -3795,7 +3795,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -3820,7 +3820,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF0000">
+			<text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -3849,17 +3849,17 @@
 					<condition var1="tw_simulate_actions" op="!=" var2="1"/>
 				</conditions>
 				<text>%tw_time%</text>
-			</text>          
+			</text>
 
 
 			<image>
 				<placement x="0" y="84"/>
-				<image resource="actionbar_logo"/>			
+				<image resource="actionbar_logo"/>
 			</image>
 
       <!--image>
 				<placement x="0" y="84"/>
-				<image resource="OrangeFox"/>			
+				<image resource="OrangeFox"/>
 			</image-->
 
 	<input>
@@ -3877,11 +3877,11 @@
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			<image>				
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<image>
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
@@ -3900,7 +3900,7 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@lock_text_1=Recovery is protected against unauthorized}</text>		
+			<text>{@lock_text_1=Recovery is protected against unauthorized}</text>
       </text>
 
 			<text style="text_body2_fail">
@@ -3952,7 +3952,7 @@
  </page>
 
 		<page name="main2">
-			
+
 			<template name="body"/>
 
 			<template name="ab"/>
@@ -3992,8 +3992,8 @@
 				<image resource="android_debug_bridge_wolf"/>
 				<action function="page">wolf_adb</action>
 			</button>
-	
-	
+
+
 			<button>
 				<placement x="780" y="84"/>
 				<image resource="actionbar_theme" highlightresource="actionbar_theme_hl"/>
@@ -4111,7 +4111,7 @@
 					<action function="page">backup</action>
 				    </actions>
 			</button>
-			
+
 			<button style="mb_btn">
 				<condition var1="auto_generate" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row3_y%" w="%content_w%" h="%mb_h%"/>
@@ -4120,7 +4120,7 @@
 					<action function="page">backup</action>
 					</actions>
 			</button>
-			
+
 			<image>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row4_y%"/>
@@ -4335,10 +4335,10 @@
 			</fill>
 			</page>
 
-		 
+
 <page name="settings">
-	
-	         
+
+
 			<template name="body"/>
 
 			<template name="ab_tab"/>
@@ -4432,13 +4432,13 @@
 					<data variable="tw_use_sha2"/>
 				</listitem>
 			</listbox>
-			
+
 		   <text style="caption">
 				<placement x="%col1_x%" y="%row6_3_y%" />
 				<text>{@language_cptn=Language}</text>
 			</text>
-			
-			
+
+
 			<listbox>
 				<placement x="%col1_x%" y="%row7_1_y%" w="%listbox_w%" h="%listbox_settings_lang_height%"/>
 				<data name="tw_language"/>
@@ -4760,7 +4760,7 @@
 				<image resource="tab_misc"/>
 				<action function="page">settings</action>
 			</button>
-			
+
 			<!--button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
@@ -4834,7 +4834,7 @@
 				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
 				<data variable="tw_action_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
-			
+
 
 <!--text style="text_body2">
 				<placement x="%col1_x%" y="1380"/>
@@ -4946,7 +4946,7 @@
 				<touch key="back"/>
 				<action function="page">%tw_back%</action>
 			</action>
-			
+
 
 			<action>
 				<touch key="home"/>
@@ -4960,8 +4960,8 @@
 <page name="governor_info">
 			<template name="body"/>
 
-			<template name="ab_ex"/>	
-			
+			<template name="ab_ex"/>
+
 			<template name="statusbarinfo"/>
 
 			<button>
@@ -4994,25 +4994,25 @@
 				<placement x="%col1_x%" y="%row2_3_y%" w="%console_width%" h="%console_action_height%"/>
 				<listitem name="{@governor_info_line1=}"/>
 				<listitem name="{@governor_info_line2=}"/>
-				<listitem name="{@governor_info_line3=}"/>			
+				<listitem name="{@governor_info_line3=}"/>
 				<listitem name="{@governor_info_line4=}"/>
 				<listitem name=""/>
 				<listitem name="{@governor_info_line5=}"/>
 				<listitem name="{@governor_info_line6=}"/>
 				<listitem name="{@governor_info_line7=}"/>
-				<listitem name="{@governor_info_line8=}"/>       
+				<listitem name="{@governor_info_line8=}"/>
 				<listitem name="{@governor_info_line9=}"/>
 				<listitem name="{@governor_info_line10=}"/>
-				<listitem name="{@governor_info_line11=}"/>				
+				<listitem name="{@governor_info_line11=}"/>
 				<listitem name="{@governor_info_line12=}"/>
-                <listitem name=""/>				
-                <listitem name="{@governor_info_line13=}"/>	
+                <listitem name=""/>
+                <listitem name="{@governor_info_line13=}"/>
 				<listitem name="{@governor_info_line14=}"/>
 				<listitem name="{@governor_info_line15=}"/>
-				<listitem name="{@governor_info_line16=}"/>       
+				<listitem name="{@governor_info_line16=}"/>
 				<listitem name="{@governor_info_line17=}"/>
 				<listitem name="{@governor_info_line18=}"/>
-				<listitem name="{@governor_info_line19=}"/>				
+				<listitem name="{@governor_info_line19=}"/>
 				<listitem name="{@governor_info_line20=}"/>
 				<listitem name="{@governor_info_line21=}"/>
 				<listitem name="{@governor_info_line22=}"/>
@@ -5043,14 +5043,14 @@
 				<action function="page">main2</action>
 			</action>
 			</page>
-			
-			
+
+
 
 <page name="community_scripts_info">
 			<template name="body"/>
 
-			<template name="ab_ex"/>	
-			
+			<template name="ab_ex"/>
+
 			<template name="statusbarinfo"/>
 
 			<button>
@@ -5078,7 +5078,7 @@
 				<placement x="%col1_x%" y="%row2_3_y%" w="%console_width%" h="%console_action_height%"/>
 				<listitem name="{@community_info_line1=}"/>
 				<listitem name="{@community_info_line2=}"/>
-				<listitem name="{@community_info_line3=}"/>			
+				<listitem name="{@community_info_line3=}"/>
 				<listitem name="{@community_info_line4=}"/>
 				<listitem name="{@community_info_line5=}"/>
 			</listbox>
@@ -5114,8 +5114,8 @@
 <page name="wolf_wifi_bluetooth_backup_info">
 			<template name="body"/>
 
-			<template name="ab_ex"/>	
-			
+			<template name="ab_ex"/>
+
 			<template name="statusbarinfo"/>
 
 			<button>
@@ -5143,10 +5143,10 @@
 				<placement x="%col1_x%" y="%row2_3_y%" w="%console_width%" h="%console_action_height%"/>
 				<listitem name="{@wolf_wifi_bluetooth_backup_line1=}"/>
 				<listitem name="{@wolf_wifi_bluetooth_backup_line2=}"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line3=}"/>			
+				<listitem name="{@wolf_wifi_bluetooth_backup_line3=}"/>
 				<listitem name="{@wolf_wifi_bluetooth_backup_line4=}"/>
 				<listitem name="{@wolf_wifi_bluetooth_backup_line5=}"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line6=}"/>			
+				<listitem name="{@wolf_wifi_bluetooth_backup_line6=}"/>
 				<listitem name="{@wolf_wifi_bluetooth_backup_line7=}"/>
 				<listitem name="{@wolf_wifi_bluetooth_backup_line8=}"/>
 				<listitem name="{@wolf_wifi_bluetooth_backup_line9=}"/>
@@ -5255,8 +5255,8 @@
 					<data variable="wolf_boot_qc2.0_check"/>
 				</listitem-->
 			</listbox>
-			
-			
+
+
 			<text style="caption">
 			<condition var1="nightmode" var2="0"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
@@ -5276,12 +5276,12 @@
               	</slider>
 
 			<slider>
-				<condition var1="nightmode" var2="0"/>            	
+				<condition var1="nightmode" var2="0"/>
 				<action function="cmd">echo "256 193 132" > /sys/devices/platform/kcal_ctrl.0/kcal;</action>
 		    	<action function="set">nightmode=1</action>
             	</slider>
 
-			
+
 			<action>
 				<conditions>
 	            <condition var1="tw_busy" var2="0"/>
@@ -5291,9 +5291,9 @@
 				</conditions>
 				<action function="set">wolf_boot_balance_check=1</action>
 			</action>
-			
-			
-	
+
+
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_boot_performance_check" var2="1"/>
@@ -5302,7 +5302,7 @@
 					<action function="set">wolf_boot_balance_check=0</action>
              </actions>
 			</action>
-			
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_boot_powersave_check" var2="1"/>
@@ -5311,7 +5311,7 @@
 					<action function="set">wolf_boot_balance_check=0</action>
              </actions>
 			</action>
-			
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_boot_balance_check" var2="1"/>
@@ -5320,7 +5320,7 @@
 					<action function="set">wolf_boot_powersave_check=0</action>
              </actions>
 			</action>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -5427,7 +5427,7 @@
 				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
 				<data variable="wolf_data_restore_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -5487,14 +5487,14 @@
 				<placement x="%center_x%" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
 
-			
-			
+
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<text>{@wolf_set_custom_led_install=}</text>
 			</text>
 
-			
+
 			<listbox style="settingslist">
 				<placement x="%col1_x%" y="%row2_2_y%" w="%listbox_w%" h="%listbox_settings_backup_height%"/>
 				<listitem name="{@wolf_set_custom_led_green=}">
@@ -5507,8 +5507,8 @@
 					<data variable="wolf_set_custom_led_install_red"/>
 				</listitem>
 			</listbox>
-			
-			
+
+
 			<action>
 				<conditions>
 	            <condition var1="tw_busy" var2="0"/>
@@ -5518,8 +5518,8 @@
 				</conditions>
 		    <action function="set">wolf_set_custom_led_install_green=1</action>
 			</action>
-			
-			
+
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_set_custom_led_install_green" var2="1"/>
@@ -5529,7 +5529,7 @@
 					<action function="set">wolf_install_led_color=green</action>
              </actions>
 			</action>
-			
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_set_custom_led_install_red" var2="1"/>
@@ -5539,7 +5539,7 @@
 					<action function="set">wolf_install_led_color=red</action>
              </actions>
 			</action>
-			
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_set_custom_led_install_blue" var2="1"/>
@@ -5549,8 +5549,8 @@
 					<action function="set">wolf_install_led_color=blue</action>
              </actions>
 			</action>
-			
-			
+
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_1_y%"/>
 				<text>{@wolf_set_custom_led_backup=}</text>
@@ -5568,7 +5568,7 @@
 					<data variable="wolf_set_custom_led_backup_red"/>
 				</listitem>
 			</listbox>
-			
+
 			<action>
 				<conditions>
 	            <condition var1="tw_busy" var2="0"/>
@@ -5578,8 +5578,8 @@
 				</conditions>
 		    <action function="set">wolf_set_custom_led_backup_green=1</action>
 			</action>
-	
-			
+
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_set_custom_led_backup_green" var2="1"/>
@@ -5589,7 +5589,7 @@
 					<action function="set">wolf_backup_led_color=green</action>
              </actions>
 			</action>
-			
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_set_custom_led_backup_red" var2="1"/>
@@ -5599,7 +5599,7 @@
 					<action function="set">wolf_backup_led_color=red</action>
              </actions>
 			</action>
-			
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_set_custom_led_backup_blue" var2="1"/>
@@ -5609,7 +5609,7 @@
 					<action function="set">wolf_backup_led_color=blue</action>
              </actions>
 			</action>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row6_1_y%"/>
 				<text>{@wolf_set_custom_led_restore=}</text>
@@ -5627,7 +5627,7 @@
 					<data variable="wolf_set_custom_led_restore_red"/>
 				</listitem>
 			</listbox>
-			
+
 			<action>
 				<conditions>
 	            <condition var1="tw_busy" var2="0"/>
@@ -5637,8 +5637,8 @@
 				</conditions>
 		    <action function="set">wolf_set_custom_led_restore_green=1</action>
 			</action>
-	
-			
+
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_set_custom_led_restore_green" var2="1"/>
@@ -5648,7 +5648,7 @@
 					<action function="set">wolf_restore_led_color=green</action>
              </actions>
 			</action>
-			
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_set_custom_led_restore_red" var2="1"/>
@@ -5658,7 +5658,7 @@
 					<action function="set">wolf_restore_led_color=red</action>
              </actions>
 			</action>
-			
+
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_set_custom_led_restore_blue" var2="1"/>
@@ -5668,9 +5668,9 @@
 					<action function="set">wolf_restore_led_color=blue</action>
              </actions>
 			</action>
-			
-			
-			
+
+
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -5736,9 +5736,9 @@
 				<placement x="0" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
 
-			
 
-			
+
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_2_y%"/>
 				<text>{@governor_settings=}</text>
@@ -5771,14 +5771,14 @@
 					<data variable="governor_performance"/>
 				</listitem>
 				</listbox>
-				
-				
+
+
 
 <text style="caption">
 <placement x="%col1_x%" y="%row7_2_y%" textplacement="6"/>
 <text>{@active_governor=}</text>
 </text>
-	
+
 <action>
 	<condition var1="tw_busy" var2="0"/>
 				<condition var1="governor_interactive" var2="1"/>
@@ -5790,7 +5790,7 @@
 					<action function="set">governor_userspace=0</action>
 					<action function="set">governor_powersave=0</action>
 				    <action function="set">governor_performance=0</action>
-				    <action function="set">governor_tmp=interactive</action>        
+				    <action function="set">governor_tmp=interactive</action>
               </actions>
 			</action>
 
@@ -5907,7 +5907,7 @@
 			</text>
 
              <slider>
-    <condition var1="tw_busy" var2="0"/>         	
+    <condition var1="tw_busy" var2="0"/>
              	<condition var1="governor_performance" var2="1"/>
 				<action function="cmd">
                 for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
@@ -5964,7 +5964,7 @@
 			</text>
 
 <slider>
-        <condition var1="tw_busy" var2="0"/>     	
+        <condition var1="tw_busy" var2="0"/>
 <condition var1="governor_impulse" var2="1"/>
 				<action function="cmd">
                 for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
@@ -6085,7 +6085,7 @@
 				<placement x="853" y="152"/>
 				<image resource="btn_float_flashitinfo" highlightresource="btn_float_flashitinfo_hl"/>
 				<action function="page">community_scripts_info</action>
-			</button>	
+			</button>
 
 <button style="btn_raised">
 				<placement x="27" y="1560"/>
@@ -6110,8 +6110,8 @@
 					<action function="page">filecheck</action>
 				   </actions>
 			</button>
-			
-			
+
+
 
 <button style="btn_raised_hl">
 				<placement x="27" y="1110"/>
@@ -6137,7 +6137,7 @@
 					<action function="page">filecheck</action>
 				   </actions>
 			</button>
-			
+
 			<!--button style="btn_raised">
 				<condition var1="wolf_compatibility_wolf_device" var2="kenzo"/>
 				<placement x="1053" y="%row6_2_y%" placement="1"/>
@@ -6150,8 +6150,8 @@
 					<action function="page">filecheck</action>
 				   </actions>
 			</button-->
-			
-			
+
+
 			<button style="btn_raised">
 				<placement x="1053" y="1410" placement="1"/>
 				<text>FGO Patch</text>
@@ -6209,7 +6209,7 @@
 		</page>
 
 <page name="wolf_system_settings">
-	
+
 			<template name="body"/>
 
 			<template name="ab"/>
@@ -6232,13 +6232,13 @@
 				<text>t2w</text>
 				<action function="page">wolf_t2w</action>
             </button>
-  
+
     <button style="btn_raised">
 				<placement x="27" y="1410"/>
 				<text>Gallery</text>
 				<action function="page">wolf_picture</action>
             </button-->
-        
+
 
 <button style="btn_raised_hl">
 				<placement x="1053" y="1410" placement="1"/>
@@ -6294,21 +6294,21 @@
 				<!--listitem name="{@use_bookmark=Use bookmark function for file lists}">
 					<data variable="bookmark"/>
 				</listitem-->
-				<listitem name="{@statusbar_wolf_on_lockpass=It's a fucking wolf bitch!}">
+				<!--listitem name="{@statusbar_wolf_on_lockpass=It's a fucking wolf bitch!}">
 					<data variable="wolf_statusbar_on_lockpass"/>
-				</listitem>
+				</listitem-->
 				<listitem name="{@auto_name_generate=Show auto generated backup name}">
 					<data variable="auto_generate"/>
 				</listitem>
 				</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_3_y%"/>
+				<placement x="%col1_x%" y="%row2_2_y%"/>
 				<text>{@visual=Visual}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row4_1_y%" w="%listbox_w%" h="%listbox_settings_mv_height%"/>
+				<placement x="%col1_x%" y="%row2_3_y%" w="%listbox_w%" h="%listbox_settings_mv_height%"/>
 				<listitem name="{@center_clock_bar=Center clock in statusbar}">
 					<data variable="center_clock"/>
 				</listitem>
@@ -6326,8 +6326,13 @@
 				</listitem>
 			</listbox>
 
-			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="%row7_1a_y%"/>
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_2_y%"/>
+				<text>{@fox_menu_flash=Woooolf}</text>
+			</text>
+
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_left_x%" y="%row6_2_y%"/>
 				<text>SuperSU</text>
 					<actions>
 					<action function="set">tw_filecheck=%rw_resource_dir%/SuperSU/SuperSU.zip</action>
@@ -6337,16 +6342,16 @@
 					<action function="page">filecheck</action>
 				   </actions>
 			</button>
-			
-		  <button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row7_1a_y%" placement="1"/>
+
+		  <button style="btn_raised">
+				<placement x="%btn_raised_right_x%" y="%row6_2_y%" placement="1"/>
 				<text>{@wolf.colour.change=Change color}</text>
 			        <action function="page">theme_color</action>
 			</button>
 
 
-			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_left_x%" y="%row5_3_y%"/>
 				<text>Magisk</text>
 				<actions>
 					<action function="set">tw_filecheck=%rw_resource_dir%/Magisk/Magisk.zip</action>
@@ -6357,9 +6362,26 @@
 				   </actions>
 				</button>
 
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
+			<button style="btn_raised">
+				<placement x="%btn_raised_right_x%" y="%row5_3_y%" placement="1"/>
 				<text>{@wolf_custom_wolf_splash_btn=Change Splash}</text>
+				<action function="page">theme_splash</action>
+			</button>
+
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_right_x%" y="%row7_1_y%" placement="1"/>
+				<text>{@fox_menu_delpass=Del ROM pass}</text>
+				<action function="page">theme_splash</action>
+			</button>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row8_1_y%"/>
+				<text>{@fox_menu_navigation=Navigation}</text>
+			</text>
+
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_right_x%" y="%row8_2_y%" placement="1"/>
+				<text>>></text>
 				<action function="page">theme_splash</action>
 			</button>
 
@@ -6368,7 +6390,7 @@
 				<action function="page">main2</action>
 			</action>
 
-             
+
 			<action>
 				<touch key="back"/>
 				<action function="page">main2</action>
@@ -6422,7 +6444,7 @@
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>OrangeFox Recovery</text>
-			</text> 
+			</text>
 
 			<image>
 				<placement x="%col1_x%" y="%row2_2_y%"/>
@@ -6459,7 +6481,7 @@
 				<text>{@wolf_theme_splash_wolf_txt6=}</text>
 			</text>
 
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row5_1_y%"/>
 				<text>{@tw_splash_png_btn=PNG to use as Splash Screen}</text>
@@ -6492,7 +6514,7 @@
 				<placement x="%btn_raised_right_x%" y="%row5_3_y%" placement="1"/>
 				<text>{@install_select_file_btn=SELECT FILE}</text>
 				</button>
-			
+
 			<text style="caption">
 				<conditions>
 					<condition var1="tw_busy" var2="0"/>
@@ -6512,8 +6534,8 @@
 					<action function="page">wolf_theme_splash_wolf_finish</action>
 					</actions>
 			</slider>
-			
-			
+
+
 
 			<text color="%accent%">
 				<condition var1="tw_busy" var2="1"/>
@@ -6540,7 +6562,7 @@
 				</actions>
 			</action>
 		</page>
-		
+
 		<page name="wolf_restore_wolf_stock_splash">
 			<template name="body"/>
 
@@ -6554,14 +6576,14 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">main2</action>
 			</button>
-			
+
 			<image>
 				<condition var1="tw_busy" var2="1"/>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 			</image>
-			
-			
+
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@wolf_restore_wolf_splash_1=}</text>
@@ -6589,22 +6611,22 @@
 				<condition var1="tw_busy" var2="0"/>
 				<actions>
 					<action function="wlfw"/>
-					<action function="cmd">  
+					<action function="cmd">
                     cp -f "/tmp/redwolf/ramdisk/twres/images/splash_stock.png" "/tmp/redwolf/ramdisk/twres/images/splash.png";
 					</action>
 					<action function="wlfx"/>
 					<action function="page">wolf_theme_splash_restore_finish</action>
 					</actions>
 			</slider>
-			
+
 <action>
 				<touch key="back"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 
 <action>
 				<touch key="home"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 </page>
 
@@ -6620,7 +6642,7 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">main2</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@wolf_restore_wolf2_splash_1=}</text>
@@ -6661,16 +6683,16 @@
 
 <action>
 				<touch key="back"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 
 <action>
 				<touch key="home"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 </page>
 
-		
+
 		<page name="wolf_theme_splash_wolf_finish">
 			<template name="body"/>
 
@@ -6683,7 +6705,7 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">main2</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@wolf_custom_wolf_splash_1=}</text>
@@ -6724,12 +6746,12 @@
 
 <action>
 				<touch key="back"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 
 <action>
 				<touch key="home"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 </page>
 
@@ -6914,7 +6936,8 @@
 				<text>{@s_color=Color}</text>
 			</text>
 
-			<fill color="#E51C23FF">
+			<!--fill color="#E51C23FF"-->
+			<fill color="#FF7E00">
 				<placement x="%col1_x%" y="%row2_3_y%" w="308" h="180"/>
 			</fill>
 
@@ -6927,10 +6950,10 @@
 				<fill color="%transparent%"/>
 				<placement x="%col1_x%" y="%row2_3_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Red</action>
+					<action function="set">tw_accent_name=Orange</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=E51C23FF</action>
-					<action function="set">tw_folder=images_red</action>
+					<action function="set">tw_accent=FF7E00</action>
+					<action function="set">tw_folder=images</action>
 					<action function="page">set_color</action>
 				</actions>
 			</button>
@@ -7124,7 +7147,7 @@
 				</actions>
 			</button>
 
-			<fill color="#FF9800FF">
+			<fill color="#E51C23FF">
 				<placement x="%col_col_center_x%" y="%row6_1a_y%" w="308" h="180"/>
 			</fill>
 
@@ -7137,10 +7160,10 @@
 				<fill color="%transparent%"/>
 				<placement x="%col_col_center_x%" y="%row6_1a_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Orange</action>
+					<action function="set">tw_accent_name=Red0</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=FF9800FF</action>
-					<action function="set">tw_folder=images_orange</action>
+					<action function="set">tw_accent=E51C23FF</action>
+					<action function="set">tw_folder=images_red</action>
 					<action function="page">set_color</action>
 				</actions>
 			</button>
@@ -7241,8 +7264,8 @@
 			</action>
 		</page>
 
-		
-		
+
+
 		<page name="flash_confirm">
 			<template name="body"/>
 
@@ -7693,7 +7716,7 @@
 			</action>
 		</page>
 
-		
+
 		<page name="add_zip">
 			<action>
 				<condition var1="bookmark" var2="1"/>
@@ -7818,42 +7841,42 @@
 
 			<action>
 				<condition var1="tw_zip_queue_count" var2="2"/>
-				<action function="set">tw_q_2=%tw_file%</action>        
+				<action function="set">tw_q_2=%tw_file%</action>
 			</action>
 
 			<action>
 				<condition var1="tw_zip_queue_count" var2="3"/>
-				<action function="set">tw_q_3=%tw_file%</action>         
+				<action function="set">tw_q_3=%tw_file%</action>
 			</action>
 
 			<action>
 				<condition var1="tw_zip_queue_count" var2="4"/>
-				<action function="set">tw_q_4=%tw_file%</action>         
+				<action function="set">tw_q_4=%tw_file%</action>
 			</action>
 
 			<action>
 				<condition var1="tw_zip_queue_count" var2="5"/>
-				<action function="set">tw_q_5=%tw_file%</action>         
+				<action function="set">tw_q_5=%tw_file%</action>
 			</action>
 
 			<action>
 				<condition var1="tw_zip_queue_count" var2="6"/>
-				<action function="set">tw_q_6=%tw_file%</action>        
+				<action function="set">tw_q_6=%tw_file%</action>
 			</action>
 
 			<action>
 				<condition var1="tw_zip_queue_count" var2="7"/>
-				<action function="set">tw_q_7=%tw_file%</action>        
+				<action function="set">tw_q_7=%tw_file%</action>
 			</action>
 
 			<action>
 				<condition var1="tw_zip_queue_count" var2="8"/>
-				<action function="set">tw_q_8=%tw_file%</action>          
+				<action function="set">tw_q_8=%tw_file%</action>
 			</action>
 
 			<action>
 				<condition var1="tw_zip_queue_count" var2="9"/>
-				<action function="set">tw_q_9=%tw_file%</action>          
+				<action function="set">tw_q_9=%tw_file%</action>
 			</action>
 
 			<action>
@@ -8154,7 +8177,7 @@
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>{@tw_aroma_btn=}</text>
 			</text>
-			
+
 			<!--button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@wolf_games_shit=Game}</text>
@@ -8197,7 +8220,7 @@
 				<action function="page">main2</action>
 				</actions>
 			</action>
-			
+
 			<action>
 				<condition var1="wolf_disableverity_var" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
@@ -8209,7 +8232,7 @@
 				<action function="page">flash_done</action>
 				</actions>
 			</action>
-		
+
 		<action>
 				<condition var1="wolf_fpscannerfix_var" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
@@ -8221,7 +8244,7 @@
 				<action function="page">flash_done</action>
 				</actions>
 			</action>
-		
+
 		<action>
 				<condition var1="wolf_nospatch_var" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
@@ -8233,7 +8256,7 @@
 				<action function="page">flash_done</action>
 				</actions>
 			</action>
-		
+
 		<action>
 				<condition var1="wolf_delpass_var" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
@@ -8245,7 +8268,7 @@
 				<action function="page">flash_done</action>
 				</actions>
 			</action>
-			
+
 			<action>
 				<condition var1="wolf_ramdiskcleaner_var" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
@@ -8257,7 +8280,7 @@
 				<action function="page">flash_done</action>
 				</actions>
 			</action>
-		
+
 		<action>
 				<condition var1="wolf_subslegacy_var" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
@@ -8269,7 +8292,7 @@
 				<action function="page">flash_done</action>
 				</actions>
 			</action>
-		
+
 		<action>
 				<condition var1="wolf_subsrescue_var" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
@@ -8281,7 +8304,7 @@
 				<action function="page">flash_done</action>
 				</actions>
 			</action>
-		
+
 		<action>
 				<condition var1="wolf_nosunroot_var" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
@@ -8293,7 +8316,7 @@
 				<action function="page">flash_done</action>
 				</actions>
 			</action>
-		
+
 		<action>
 				<condition var1="wolf_magisk_var" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
@@ -8305,7 +8328,7 @@
 				<action function="page">flash_done</action>
 				</actions>
 			</action>
-		
+
 		<action>
 				<condition var1="wolf_supersu_var" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
@@ -8318,7 +8341,7 @@
 				</actions>
 			</action>
 		</page>
-		
+
 		<page name="flash_image">
 			<template name="body"/>
 
@@ -8512,9 +8535,9 @@
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
-			
+
 <action>
-				<conditions> 
+				<conditions>
                     <condition var1="tw_install_reboot" var2="1"/>
 					<condition var1="tw_operation_status" var2="0"/>
 					<condition var1="tw_reboot_system" var2="1"/>
@@ -8525,7 +8548,7 @@
 				</actions>
 			</action>
 				</page>
-		
+
 		<page name="flash_sleep_and_reboot">
 			<template name="body"/>
 
@@ -8751,7 +8774,7 @@
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
-			
+
 
 			<action>
 				<touch key="back"/>
@@ -10028,7 +10051,7 @@
 				<text>{@install_image_hdr=Install Image}</text>
 			</text>
 
-			
+
 			<button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
@@ -10204,7 +10227,7 @@
 					<action function="page">flash_confirm</action>
 				</actions>
 			</action>
-			
+
             <action>
 				<touch key="back"/>
 				<action function="page">main</action>
@@ -10214,7 +10237,7 @@
 				<touch key="home"/>
 				<action function="page">main</action>
 			</action>
-			
+
 			<action>
 				<touch key="volup"/>
 				<action function="set">tw_zip_location=/sdcard1</action>
@@ -10255,7 +10278,7 @@
 			</action>
 		</page>
 
-		
+
 		<page name="rebootcheck">
 			<!--action>
 				<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
@@ -10283,7 +10306,7 @@
 					<action function="page">filecheck</action>
 				</actions>
 			</action>
-		
+
 
 
 <action>
@@ -10449,11 +10472,11 @@
 		</page>
 
 		<page name="advancedwipe">
-			
+
 			<action>
 				<action function="set">tw_wipe_list=</action>
 			</action>
-			
+
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -10581,7 +10604,7 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">main2</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@wolf_backup_name_finish1=}</text>
@@ -10622,12 +10645,12 @@
 
 <action>
 				<touch key="back"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 
 <action>
 				<touch key="home"/>
-			<action function="page">main2</action>				
+			<action function="page">main2</action>
 			</action>
 </page>
 
@@ -11652,8 +11675,8 @@
              <slider>
 				<action function="page">backup_run</action>
 			</slider>
-			
-			
+
+
 <action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -11746,7 +11769,7 @@
 					<data variable="tw_disable_free_space"/>
 				</listitem>
 			</listbox>
-			
+
 			<text style="caption">
 				<condition var1="tw_has_boot_slots" var2="1"/>
 				<placement x="%col1_x%" y="%row4_2_y%"/>
@@ -12320,7 +12343,7 @@
 			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<image>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back"/>
@@ -12352,7 +12375,7 @@
 				<placement x="%col1_x%" y="%row7_2a_y%"/>
 				<text>%tw_size_progress%</text>
 			</text>
-			
+
 			<!--button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@wolf_games_shit=Game}</text>
@@ -12389,14 +12412,14 @@
 					<action function="page">backup_action_complete</action>
 				</actions>
 			</action>
-			
+
 			<action>
 				<action function="nandroid">backup</action>
 			</action>
 		</page>
-		
+
 		<!--page name="wolf_bobs_vagene">
-	
+
 			<template name="bobs_veganas"/>
 
 			<template name="ab_ex"/>
@@ -12408,13 +12431,13 @@
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 			    <action function="page">%tw_back%</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@progress=Progress}</text>
 			</text>
 
-			<text style="text_ab_title">	
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>%tw_size_progress%</text>
 			</text>
@@ -12430,8 +12453,8 @@
 				<action function="compute">rw_game_bobs_max+1</action>
 			</button>
 
-			
-			
+
+
 			<action>
 				<condition var1="tw_operation_state" var2="1"/>
 				<condition var1="tw_cancel_backup" var2="0"/>
@@ -12453,8 +12476,8 @@
 					<action function="page">backup_action_complete</action>
 				</actions>
 			</action>
-			
-			
+
+
 <action>
 				<touch key="back"/>
 			       <action function="page">%tw_back%</action>
@@ -12466,8 +12489,8 @@
 			</action>
 	</page-->
 
-		
-		
+
+
 
 		<page name="backup_action_complete">
 			<template name="body"/>
@@ -12986,13 +13009,13 @@
 				<text>{@wolf_reboot_restore_finish_chk=Enable Digest Verification of Backup Files}</text>
 				<data variable="rw_reboot_after_restore"/>
 			</checkbox>
-			
+
 			<checkbox style="checkbox_big">
 				<placement x="%col1_x%" y="1430"/>
 				<text>{@inject_led_chk_res=}</text>
 				<data variable="rw_inject_after_restore"/>
 			</checkbox>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@swipe_restore=Swipe to Restore}</text>
@@ -13204,7 +13227,7 @@
 				<placement x="%col1_x%" y="%row7_2a_y%"/>
 				<text>%tw_size_progress%</text>
 			</text>
-			
+
 			<!--button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@wolf_games_shit=Game}</text>
@@ -13237,7 +13260,7 @@
 					<action function="page">restore_action_complete</action>
 				</actions>
 			</action>
-			
+
 			<action>
 				<action function="nandroid">restore</action>
 			</action>
@@ -13546,7 +13569,7 @@
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
-			
+
 				<action>
 				<conditions>
 					<condition var1="rw_reboot_after_restore" var2="1"/>
@@ -14219,7 +14242,7 @@
 			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
@@ -14334,7 +14357,7 @@
 			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
@@ -14692,7 +14715,7 @@
 				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
-			
+
 			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
@@ -14725,7 +14748,7 @@
 			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
@@ -15131,7 +15154,7 @@
 					<action function="cmd">%tw_filemanager_command% "%tw_filename1%"</action>
 				</actions>
 			</action>
-			
+
 <action>
 				<condition var1="tw_filemanager_command" op="=" var2="unzip -o"/>
 				<condition var1="tw_include_text3" var2="1"/>
@@ -15224,7 +15247,7 @@
 			</action>
 		</page>
 
-		
+
 		<page name="partsdcardsel">
 			<template name="body"/>
 
@@ -16135,7 +16158,7 @@
 			</fill>
 
 			<console>
-				<placement x="%col1_x%" y="%ab_bc_y%" w="%console_width%" h="%console_height%"/> 
+				<placement x="%col1_x%" y="%ab_bc_y%" w="%console_width%" h="%console_height%"/>
 				<color foreground="%console_foreground%" background="%background%" scroll="%background%"/>
 				<font resource="fixed"/>
 			</console>
@@ -16971,7 +16994,7 @@
 					<action function="set">auto_generate=0</action>
 					<action function="set">show_cpu_temp=0</action>
 					<action function="set">center_clock=0</action>
-					
+
 					<action function="set">wolf_set_custom_led_install_blue=0</action>
 					<action function="set">wolf_set_custom_led_install_green=1</action>
 					<action function="set">wolf_set_custom_led_install_red=0</action>
@@ -16988,9 +17011,9 @@
 					<action function="set">center_clock=0</action>
 					<action function="set">list_font=small</action>
 					<action function="set">bookmark=0</action>
-					
-					
-					
+
+
+
 					<action function="set">list_font=small</action>
 					<action function="set">bookmark=0</action>
 					<action function="set">wolf_statusbar_on_lockpass=0</action>
@@ -17004,8 +17027,8 @@
 					<action function="overlay"/>
 				</actions>
 			</button>
-			
-			
+
+
 			<data variable="wolf_set_custom_led_install_green"/>
 				</listitem>
 				<listitem name="{@wolf_set_custom_led_blue=}">
@@ -17013,8 +17036,8 @@
 				</listitem>
 				<listitem name="{@wolf_set_custom_led_red=}">
 					<data variable="wolf_set_custom_led_install_red"/>
-				
-			
+
+
 
 <button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
