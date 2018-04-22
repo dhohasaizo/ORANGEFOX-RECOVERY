@@ -496,7 +496,7 @@
 		<variable name="warning" value="#FF6600FF"/>
 		<variable name="error" value="#FF0000FF"/>
 		<variable name="highlight" value="#000000FF"/>
-		<variable name="accent" value="#FF7E00"/>
+		<variable name="accent" value="#FF9800"/>
 
 		<variable name="input_width" value="984"/>
 		<variable name="input_backup_width" value="876"/>
@@ -881,7 +881,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF7E00">
+			<text color="#FF9800">
 				<font resource="status"/>
 				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -905,7 +905,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF7E00">
+			<text color="#FF9800">
 				<font resource="status"/>
 				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -928,7 +928,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF7E00">
+			<text color="#FF9800">
 				<font resource="status"/>
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
 				<conditions>

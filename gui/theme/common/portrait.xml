@@ -1552,6 +1552,30 @@
 				<placement x="%col1_x_indent%" y="%mb_row4_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 
+			<!--FOX ADB-->
+			<image>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="%col1_x%" y="%mb_row4_y%"/>
+				<image resource="mb_adbsideload"/>
+			</image>
+
+			<image>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="%col1_x_neg%" y="%mb_row4_y%" placement="1"/>
+				<image resource="mb_adbsideload"/>
+			</image>
+
+			<text style="mb_text">
+				<placement x="%col1_x_indent%" y="%mb_row4_text_y%"/>
+				<text>ADB activate</text>
+			</text>
+
+			<button style="mb_btn">
+				<placement x="%col1_x%" y="%mb_row4_y%" w="%content_w%" h="%mb_h%"/>
+				<action function="page">wolf_adb</action>
+			</button>
+
+
 			<image>
 				<condition var1="wolf_adb" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
@@ -3965,46 +3989,46 @@
 				<action function="page">about</action>
 			</button>
 
-<button>
+<!--button>
 				<placement x="60" y="84"/>
 				<image resource="actionbar_android"/>
 				<actions>
 				<action function="set">tw_back=main</action>
 				<action function="page">wolf_kernel_settings</action>
 				</actions>
-			</button>
+			</button-->
 
 <button>
 				<placement x="204" y="84"/>
-				<image resource="actionbar_community_scripts"/>
-				<action function="page">wolf_rom_settings</action>
+				<image resource="actionbar_android"/>
+				<action function="page">wolf_kernel_settings</action>
 			</button>
 
 <button>
 				<placement x="348" y="84"/>
-				<image resource="redwolf_settings"/>
-				<action function="page">wolf_backup_name_set1</action>
+				<image resource="actionbar_theme" highlightresource="actionbar_theme_hl"/>
+				<action function="page">theme_settings</action>
 			</button>
 
 
-	<button>
+			<button>
 				<placement x="636" y="84"/>
-				<image resource="android_debug_bridge_wolf"/>
-				<action function="page">wolf_adb</action>
+				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
+				<action function="page">settings</action>
 			</button>
 
 
 			<button>
 				<placement x="780" y="84"/>
-				<image resource="actionbar_theme" highlightresource="actionbar_theme_hl"/>
-				<action function="page">theme_settings</action>
+				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
+				<action function="page">fox_quick_settings</action>
 			</button>
 
-			<button>
+			<!--button>
 				<placement x="924" y="84"/>
 				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
 				<action function="page">settings</action>
-			</button>
+			</button-->
 
 			<image>
 				<condition var1="menu_btn_solid" var2="0"/>
@@ -6278,7 +6302,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>OrangeFox</text>
+				<text>OrangeFox menu</text>
 			</text>
 
 			<text style="caption">
@@ -6382,7 +6406,13 @@
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row8_2_y%" placement="1"/>
 				<text>>></text>
-				<action function="page">theme_splash</action>
+				<action function="page">fox_menu2</action>
+			</button>
+
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_left_x%" y="%row8_2_y%"/>
+				<text>Community scripts</text>
+				<action function="page">wolf_rom_settings</action>
 			</button>
 
 			<action>
@@ -6937,7 +6967,7 @@
 			</text>
 
 			<!--fill color="#E51C23FF"-->
-			<fill color="#FF7E00">
+			<fill color="#FF9800">
 				<placement x="%col1_x%" y="%row2_3_y%" w="308" h="180"/>
 			</fill>
 
@@ -6952,7 +6982,7 @@
 				<actions>
 					<action function="set">tw_accent_name=Orange</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=FF7E00</action>
+					<action function="set">tw_accent=FF9800</action>
 					<action function="set">tw_folder=images</action>
 					<action function="page">set_color</action>
 				</actions>
@@ -7909,11 +7939,6 @@
 			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
-
-			<image>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back"/>
-			</image>
 
 			<text style="text_ab_title">
 				<conditions>
@@ -17238,5 +17263,233 @@
 		<page name="black_out">
 			<background color="#000000"/>
 		</page>
+
+		<page name="wolf_system_settings">
+
+					<template name="body"/>
+
+					<template name="ab"/>
+
+					<template name="statusbarinfo"/>
+
+					<button>
+						<placement x="%ab_back_x%" y="%ab_y%"/>
+						<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+						<action function="page">main2</action>
+					</button>
+
+					<text style="text_ab_title">
+						<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+						<text>{@redwolf_settings=}</text>
+					</text>
+
+		<!--button style="btn_raised">
+						<placement x="27" y="1560"/>
+						<text>t2w</text>
+						<action function="page">wolf_t2w</action>
+		            </button>
+
+		    <button style="btn_raised">
+						<placement x="27" y="1410"/>
+						<text>Gallery</text>
+						<action function="page">wolf_picture</action>
+		            </button-->
+
+
+		<button style="btn_raised_hl">
+						<placement x="1053" y="1410" placement="1"/>
+						<text>{@wolf_backupfolder_btn=}</text>
+						<action function="page">wolf_backup_name_set1</action>
+					</button>
+
+					<button style="btn_raised_hl">
+						<placement x="1053" y="1560" placement="1"/>
+						<text>{@wolf_nightmode=}</text>
+						<action function="page">wolf_night_mode</action>
+					</button>
+
+		         <action>
+		          <touch key="home"/>
+						<action function="page">main2</action>
+					</action>
+
+					<action>
+						<touch key="back"/>
+						<action function="page">main2</action>
+					</action>
+				</page>
+
+				<page name="fox_menu2">
+					<template name="body"/>
+
+					<template name="ab"/>
+
+					<template name="statusbarinfo"/>
+
+					<button>
+						<placement x="%ab_back_x%" y="%ab_y%"/>
+						<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+						<action function="page">main2</action>
+					</button>
+
+					<text style="text_ab_title">
+						<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+						<text>OrangeFox</text>
+					</text>
+
+					<text style="caption">
+						<placement x="%col1_x%" y="%row8_1_y%"/>
+						<text>{@fox_menu_navigation=Navigation}</text>
+					</text>
+
+					<button style="btn_raised_hl">
+						<placement x="%btn_raised_right_x%" y="%row8_2_y%" placement="1"/>
+						<text>Back</text>
+						<action function="page">wolf_rom_settings</action>
+					</button>
+
+					<action>
+						<touch key="home"/>
+						<action function="page">main2</action>
+					</action>
+
+
+					<action>
+						<touch key="back"/>
+						<action function="page">main2</action>
+					</action>
+				</page>
+
+				<page name="fox_quick_settings">
+			<background color="%darktransparent%"/>
+
+           <image>
+				<placement x="0" y="0"/>
+				<image resource="wolf_lock_bg"/>
+			</image>
+
+			<button>
+				<placement x="0" y="0" w="1080" h="1127"/>
+				<fill color="%transparent%"/>
+				<action function="overlay"/>
+			</button>
+
+			<text color="#FF0000">
+				<font resource="status"/>
+				<placement x="840" y="1164"/>
+					<condition var1="tw_simulate_actions" op="!=" var2="1"/>
+				<text>%tw_time%</text>
+			</text>
+
+            <text color="#FF0000">
+				<font resource="status"/>
+				<placement x="940" y="1164"/>
+				<condition var1="tw_no_battery_percent" var2="0"/>
+				<text>/ {@battery_pct=%tw_battery%}</text>
+			</text>
+
+            <image>
+				<placement x="0" y="%keyboard_bg_y%"/>
+				<image resource="keyboard_shadow"/>
+			</image>
+
+			<slidervalue>
+				<condition var1="tw_has_brightnesss_file" var2="1"/>
+				<placement x="%slider_x%" y="1164" w="%slidervalue_w%"/>
+				<resource background="slider" handle="handle" handlehover="handle_h"/>
+				<font resource="caption" color="%text%"/>
+				<colors line="%text_dark%" slider="%accent%"/>
+				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
+				<data variable="tw_brightness_pct" min="10" max="100" showrange="0" showcurr="0" changeondrag="1"/>
+				<actions>
+					<action function="set">tw_brightness=%tw_brightness_max%</action>
+					<action function="compute">tw_brightness*%tw_brightness_pct%</action>
+					<action function="compute">tw_brightness/100</action>
+					<action function="setbrightness">%tw_brightness%</action>
+				</actions>
+			</slidervalue>
+
+			<text style="text_body2">
+				<condition var1="tw_has_brightnesss_file" var2="1"/>
+				<placement x="%col1_x%" y="1164"/>
+				<text>{@screen_bright_slider=Brightness: %tw_brightness_pct%%}</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="tw_screen_timeout_secs" op="=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="1434"/>
+				<text>{@settings_screen_timeout_cptn=Timeout}</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="tw_screen_timeout_secs" op="!=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="1434"/>
+				<text>{@settings_screen_timeout_cptn2=Timeout:} %tw_screen_timeout_secs% {@timeout_unit=seconds}</text>
+			</text>
+
+			<button>
+				<condition var1="tw_screen_timeout_secs" op="=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="1494" textplacement="6"/>
+				<font resource="body1" color="%text%"/>
+				<text>{@enable_timeout_chk=Enable screen timeout}</text>
+				<image resource="checkbox_false"/>
+				<action function="set">tw_screen_timeout_secs=60</action>
+			</button>
+
+			<button>
+				<condition var1="tw_screen_timeout_secs" op="!=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="1494" textplacement="6"/>
+				<font resource="body1" color="%text%"/>
+				<text>{@enable_timeout_chk=Enable screen timeout}</text>
+				<image resource="checkbox_true"/>
+				<action function="set">tw_screen_timeout_secs=0</action>
+			</button>
+
+			<slidervalue>
+				<condition var1="tw_screen_timeout_secs" op="!=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%slider_x%" y="1558" w="%slidervalue_w%"/>
+				<resource background="slider" handle="handle" handlehover="handle_h"/>
+				<font resource="caption" color="%text%"/>
+				<colors line="%text_dark%" slider="%accent%"/>
+				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
+				<data variable="tw_screen_timeout_secs" min="15" max="300" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+
+			<button>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="mb_flashlight_on"/>
+				<action function="flashlight"/>
+			</button>
+
+			<action>
+				<touch key="power"/>
+				<action function="togglebacklight"/>
+			</action>
+
+			<action>
+				<touch key="power+volup"/>
+				<action function="screenshotexternal"/>
+			</action>
+
+            <action>
+				<touch key="power+voldown"/>
+				<action function="screenshotinternal"/>
+			</action>
+
+            <button>
+				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
+				<image resource="btn_float_accept"/>
+				<highlight color="%highlight_color%"/>
+				<action function="page">main2</action>
+			</button>
+
+        </page>
+
+
 	</pages>
 </recovery>

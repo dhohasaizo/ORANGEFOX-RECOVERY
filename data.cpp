@@ -525,7 +525,7 @@ void DataManager::SetBackupFolder()
 {
 	string str = GetCurrentStoragePath();
 	TWPartition* partition = PartitionManager.Find_Partition_By_Path(str);
-	str += "/WOLF/.BACKUPS/";
+	str += "/Fox/BACKUPS/";
 	string dev_id;
 	GetValue("device_id", dev_id);
 
@@ -606,7 +606,7 @@ void DataManager::SetDefaultValues()
 
 	str = GetCurrentStoragePath();
 	mPersist.SetValue(TW_ZIP_LOCATION_VAR, str);
-	str += "/WOLF/.BACKUPS/";
+	str += "/Fox/BACKUPS/";
 
 	string dev_id;
 	mConst.GetValue("device_id", dev_id);
@@ -735,62 +735,62 @@ void DataManager::SetDefaultValues()
 	 mData.SetValue(RW_LOADED_FINGERPRINT, "0");
      mData.SetValue(RW_MIUI_ZIP_TMP, "0");
      mData.SetValue(RW_FLASHLIGHT_VAR, "0");
-          
+
      mPersist.SetValue(RW_DISABLE_BOOT_CHK, "0");
      mPersist.SetValue(RW_DO_SYSTEM_ON_OTA, "1");
 	 mPersist.SetValue("wolf_verify_incremental_ota_signature", "0");
      mPersist.SetValue(RW_ADVANCED_STOCK_REPLACE, "1");
      mPersist.SetValue(RW_DISABLE_SECURE_BOOT, "0");
-     mPersist.SetValue(RW_DISABLE_MOCK_LOCATION, "0");  
-     mPersist.SetValue(RW_ENABLE_MOCK_LOCATION, "0");  
+     mPersist.SetValue(RW_DISABLE_MOCK_LOCATION, "0");
+     mPersist.SetValue(RW_ENABLE_MOCK_LOCATION, "0");
      mPersist.SetValue(RW_DISABLE_ADB_RO, "0");
      mPersist.SetValue(RW_ENABLE_ADB_RO, "0");
-     mPersist.SetValue(RW_ENABLE_SECURE_RO, "0");  
-     mPersist.SetValue(RW_DISABLE_SECURE_RO, "0");  
+     mPersist.SetValue(RW_ENABLE_SECURE_RO, "0");
+     mPersist.SetValue(RW_DISABLE_SECURE_RO, "0");
      mPersist.SetValue(RW_DONT_REPLACE_STOCK, "0");
-     mPersist.SetValue(RW_ADVANCED_WARN_CHK, "0");       
-     mPersist.SetValue(RW_INCREMENTAL_PACKAGE, "0");    
+     mPersist.SetValue(RW_ADVANCED_WARN_CHK, "0");
+     mPersist.SetValue(RW_INCREMENTAL_PACKAGE, "0");
      mPersist.SetValue(RW_SAVE_LOAD_AROMAFM, "0");
-     mPersist.SetValue(RW_DISABLE_DEBUGGING, "0"); 
-     mPersist.SetValue(RW_ENABLE_DEBUGGING, "1");     
-     mPersist.SetValue(RW_DISABLE_FORCED_ENCRYPTION, "1");  
+     mPersist.SetValue(RW_DISABLE_DEBUGGING, "0");
+     mPersist.SetValue(RW_ENABLE_DEBUGGING, "1");
+     mPersist.SetValue(RW_DISABLE_FORCED_ENCRYPTION, "1");
      mPersist.SetValue(RW_DISABLE_DM_VERITY, "1");
-     mPersist.SetValue(RW_REBOOT_AFTER_RESTORE, "0"); 
+     mPersist.SetValue(RW_REBOOT_AFTER_RESTORE, "0");
      mPersist.SetValue(RW_SUPERSU_CONFIG, "0");
-     mPersist.SetValue(RW_NO_OS_SEARCH_ENGINE, "1"); 
-     mPersist.SetValue(RW_STUPID_COOKIE_SHIT, "0");     
-     mPersist.SetValue(RW_STATUSBAR_ON_LOCK, "1");  
+     mPersist.SetValue(RW_NO_OS_SEARCH_ENGINE, "1");
+     mPersist.SetValue(RW_STUPID_COOKIE_SHIT, "0");
+     mPersist.SetValue(RW_STATUSBAR_ON_LOCK, "1");
      mPersist.SetValue(RW_INSTALL_VIBRATE, "150");
-     mPersist.SetValue(RW_BACKUP_VIBRATE, "150"); 
-     mPersist.SetValue(RW_RESTORE_VIBRATE, "150");     
-     mPersist.SetValue(RW_RESTORE_BLUE_LED, "0");   
-     mPersist.SetValue(RW_RESTORE_RED_LED, "0");  
+     mPersist.SetValue(RW_BACKUP_VIBRATE, "150");
+     mPersist.SetValue(RW_RESTORE_VIBRATE, "150");
+     mPersist.SetValue(RW_RESTORE_BLUE_LED, "0");
+     mPersist.SetValue(RW_RESTORE_RED_LED, "0");
      mPersist.SetValue(RW_RESTORE_GREEN_LED, "1");
-     mPersist.SetValue(RW_BACKUP_RED_LED, "0"); 
-     mPersist.SetValue(RW_BACKUP_GREEN_LED, "1");     
-     mPersist.SetValue(RW_BACKUP_BLUE_LED, "0");  
+     mPersist.SetValue(RW_BACKUP_RED_LED, "0");
+     mPersist.SetValue(RW_BACKUP_GREEN_LED, "1");
+     mPersist.SetValue(RW_BACKUP_BLUE_LED, "0");
      mPersist.SetValue(RW_INSTALL_RED_LED, "0");
-     mPersist.SetValue(RW_INSTALL_GREEN_LED, "1"); 
-     mPersist.SetValue(RW_INSTALL_BLUE_LED, "0");  
+     mPersist.SetValue(RW_INSTALL_GREEN_LED, "1");
+     mPersist.SetValue(RW_INSTALL_BLUE_LED, "0");
      mPersist.SetValue(RW_INSTALL_LED_COLOR, "green");
-     mPersist.SetValue(RW_BACKUP_LED_COLOR, "green");     
+     mPersist.SetValue(RW_BACKUP_LED_COLOR, "green");
      mPersist.SetValue(RW_RESTORE_LED_COLOR, "green");
      mPersist.SetValue(RW_NOTIFY_AFTER_INSTALL, "0");
      mPersist.SetValue(RW_NOTIFY_AFTER_BACKUP, "0");
      mPersist.SetValue(RW_NOTIFY_AFTER_RESTORE, "0");
-     mPersist.SetValue(RW_BALANCE_CHECK, "0");     
+     mPersist.SetValue(RW_BALANCE_CHECK, "0");
      mPersist.SetValue(RW_FSYNC_CHECK, "0");
      mPersist.SetValue(RW_T2W_CHECK, "0");
      mPersist.SetValue(RW_FORCE_FAST_CHARGE_CHECK, "0");
      mPersist.SetValue(RW_POWERSAVE_CHECK, "0");
      mPersist.SetValue(RW_PERFORMANCE_CHECK, "0");
-      
+
 	 mConst.SetValue(RW_SURVIVAL_FOLDER_VAR, RW_SURVIVAL_FOLDER);
      mConst.SetValue(RW_SURVIVAL_BACKUP_NAME, RW_SURVIVAL_BACKUP);
      mConst.SetValue(RW_ACTUAL_BUILD_VAR, RW_BUILD);
-     mConst.SetValue(RW_TMP_SCRIPT_DIR, "/tmp/redwolf");  
-     mConst.SetValue(RW_COMPATIBILITY_DEVICE, RW_DEVICE);  
-     
+     mConst.SetValue(RW_TMP_SCRIPT_DIR, "/tmp/redwolf");
+     mConst.SetValue(RW_COMPATIBILITY_DEVICE, RW_DEVICE);
+
      // End of the OrangeFox variables
 
 	mPersist.SetValue(TW_INSTALL_REBOOT_VAR, "0");
@@ -1136,7 +1136,7 @@ void DataManager::ReadSettingsFile(void)
 
 	memset(mkdir_path, 0, sizeof(mkdir_path));
 	memset(settings_file, 0, sizeof(settings_file));
-	sprintf(mkdir_path, "%s/WOLF", GetSettingsStoragePath().c_str());
+	sprintf(mkdir_path, "%s/Fox", GetSettingsStoragePath().c_str());
 	sprintf(settings_file, "%s/.wolfs", mkdir_path);
 
 	if (!PartitionManager.Mount_Settings_Storage(false))
@@ -1183,19 +1183,19 @@ void DataManager::Leds(bool enable)
 	leds = "/sys/class/leds/green";
 	bs = leds + "/brightness";
     time = leds + "/led_time";
-    blink = leds + "/blink";    
+    blink = leds + "/blink";
     bsmax = leds + "/max_brightness";
     if (!enable && stat(bs.c_str(), &st) == 0)
     TWFunc::write_to_file(bs, "0");
     else {
-    if (stat(bs.c_str(), &st) == 0 && stat(time.c_str(), &st) == 0 && stat(bsmax.c_str(), &st) == 0 && stat(blink.c_str(), &st) == 0) 
+    if (stat(bs.c_str(), &st) == 0 && stat(time.c_str(), &st) == 0 && stat(bsmax.c_str(), &st) == 0 && stat(blink.c_str(), &st) == 0)
     {
-	if (TWFunc::read_file(bsmax, bsm) == 0) 
+	if (TWFunc::read_file(bsmax, bsm) == 0)
 	{
 	TWFunc::write_to_file(bs, bsm);
 	TWFunc::write_to_file(blink, "1");
 	TWFunc::write_to_file(time, "1 1 1 1");
         }
-   } 
+   }
   }
 }

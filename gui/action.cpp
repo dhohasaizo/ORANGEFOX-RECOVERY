@@ -243,9 +243,9 @@ GUIAction::GUIAction(xml_node<>* node)
 	    ADD_ACTION(wlfw);
 	    ADD_ACTION(wlfx);
 		ADD_ACTION(changesplash);
-		
-	
-	
+
+
+
 				}
 
 
@@ -964,9 +964,9 @@ int GUIAction::screenshotinternal(std::string arg __unused)
 
 	const std::string storage = "/sdcard";
 	if (PartitionManager.Is_Mounted_By_Path(storage)) {
-		snprintf(path, sizeof(path), "%s/WOLF.res/Wolf.images/", storage.c_str());
+		snprintf(path, sizeof(path), "%s/Fox/screenshots/", storage.c_str());
 	} else {
-		strcpy(path, "/sdcard/WOLF.res/Wolf.images/");
+		strcpy(path, "/sdcard/Fox/screenshots/");
 	}
 
 	if (!TWFunc::Create_Dir_Recursive(path, 0775, uid, gid))
@@ -1006,9 +1006,9 @@ int GUIAction::screenshotexternal(std::string arg __unused)
 
 	const std::string storage = "/sdcard1";
 	if (PartitionManager.Is_Mounted_By_Path(storage)) {
-		snprintf(path, sizeof(path), "%s/WOLF.res/Wolf.images/", storage.c_str());
+		snprintf(path, sizeof(path), "%s/Fox/screenshots/", storage.c_str());
 	} else {
-		strcpy(path, "/sdcard/WOLF.res/Wolf.images/");
+		strcpy(path, "/sdcard/Fox/screenshots/");
 	}
 
 	if (!TWFunc::Create_Dir_Recursive(path, 0775, uid, gid))
@@ -1086,8 +1086,8 @@ void GUIAction::notify_after_install()
 	        string leds = "/sys/class/leds/";
 	        string flashbs = leds + ledcolor + "/brightness";
             string flashtime = leds + ledcolor + "/led_time";
-            string flashblink = leds + ledcolor + "/blink";    
-            string vibrate_path = "/sys/class/timed_output/vibrator/enable"; 
+            string flashblink = leds + ledcolor + "/blink";
+            string vibrate_path = "/sys/class/timed_output/vibrator/enable";
             TWFunc::write_to_file(flashbs, "255");
 		    TWFunc::write_to_file(flashtime, "1 1 1 1");
 		    TWFunc::write_to_file(flashblink, "1");
@@ -1124,23 +1124,23 @@ int GUIAction::flash(std::string arg)
 		gui_msg("zip_wipe_cache=One or more zip requested a cache wipe -- Wiping cache now.");
 		PartitionManager.Wipe_By_Path("/cache");
 	}
-	     
-	if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1) 
+
+	if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1)
 	{
-		if (DataManager::GetIntValue(RW_CALL_DEACTIVATION) != 0) 
+		if (DataManager::GetIntValue(RW_CALL_DEACTIVATION) != 0)
 		{
 		 	TWFunc::Deactivation_Process();
 		 	DataManager::SetValue(RW_CALL_DEACTIVATION, 0);
 		}
 		notify_after_install();
 	}
- 
- 	//* DJ9 DataManager::Leds(true);	
-        DataManager::Vibrate("wolf_data_install_vibrate");		
-        
+
+ 	//* DJ9 DataManager::Leds(true);
+        DataManager::Vibrate("wolf_data_install_vibrate");
+
         reinject_after_flash();
 	PartitionManager.Update_System_Details();
-	
+
 	operation_end(ret_val);
 	// This needs to be after the operation_end call so we change pages before we change variables that we display on the screen
 	DataManager::SetValue(TW_ZIP_QUEUE_COUNT, zip_queue_index);
@@ -1219,7 +1219,7 @@ int GUIAction::wipe(std::string arg)
 						} else {
 							skip = true;
 						}
-						
+
 					} else if (wipe_path == "INTERNAL") {
 						if (!PartitionManager.Wipe_Media_From_Data()) {
 							ret_val = false;
@@ -1315,7 +1315,7 @@ int GUIAction::nandroid(std::string arg)
 				return -1;
 			}
 			DataManager::SetValue(TW_BACKUP_NAME, auto_gen);
-			
+
 		} else if (arg == "restore") {
 			string Restore_Name;
 			int gui_adb_backup;
@@ -1622,11 +1622,11 @@ int GUIAction::decrypt(std::string arg __unused)
 int GUIAction::adbsideload(std::string arg __unused)
 {
 	operation_start("Sideload");
-	if (simulate) 
+	if (simulate)
 	{
 		simulate_progress_bar();
 		operation_end(0);
-	} else 
+	} else
 	{
 		gui_msg("start_sideload=Starting ADB sideload feature...");
 		bool mtp_was_enabled = TWFunc::Toggle_MTP(false);
@@ -1635,29 +1635,29 @@ int GUIAction::adbsideload(std::string arg __unused)
 		int ret = apply_from_adb("/", &sideload_child_pid);
 		DataManager::SetValue("tw_has_cancel", 0); // Remove cancel button from gui now that the zip install is going to start
 
-		if (ret != 0) 
+		if (ret != 0)
 		{
 			if (ret == -2)
 				gui_msg("need_new_adb=You need adb 1.0.32 or newer to sideload to this device.");
 			ret = 1; // failure
-		} else 
+		} else
 		{
 			int wipe_cache = 0;
 			int wipe_dalvik = 0;
 			DataManager::GetValue("tw_wipe_dalvik", wipe_dalvik);
 
-			if (TWinstall_zip(FUSE_SIDELOAD_HOST_PATHNAME, &wipe_cache) == 0) 
+			if (TWinstall_zip(FUSE_SIDELOAD_HOST_PATHNAME, &wipe_cache) == 0)
 			{
 				if (wipe_cache || DataManager::GetIntValue("tw_wipe_cache"))
 					PartitionManager.Wipe_By_Path("/cache");
 				if (wipe_dalvik)
 					PartitionManager.Wipe_Dalvik_Cache();
-			} else 
+			} else
 			{
 				ret = 1; // failure
 			}
 		}
-		if (sideload_child_pid) 
+		if (sideload_child_pid)
 		{
 			LOGINFO("Signaling child sideload process to exit.\n");
 			struct stat st;
@@ -1670,9 +1670,9 @@ int GUIAction::adbsideload(std::string arg __unused)
 		}
 		property_set("ctl.start", "adbd");
 		TWFunc::Toggle_MTP(mtp_was_enabled);
-	
-		// DJ9 DataManager::Leds(true);	
-	
+
+		// DJ9 DataManager::Leds(true);
+
 		notify_after_install();
         	reinject_after_flash();
 		operation_end(ret);
@@ -1689,7 +1689,7 @@ int GUIAction::adbsideloadcancel(std::string arg __unused)
 	// Calling stat() on this magic filename signals the minadbd
 	// subprocess to shut down.
 	stat(FUSE_SIDELOAD_HOST_EXIT_PATHNAME, &st);
-	if (!sideload_child_pid) 
+	if (!sideload_child_pid)
 	{
 		LOGERR("Unable to get child ID\n");
 		return 0;
@@ -2176,7 +2176,7 @@ int GUIAction::flashlight(std::string arg __unused)
 	if (simulate) {
 		simulate_progress_bar();
 		} else {
-	int flash = 0;	
+	int flash = 0;
 	string flashone = "1";
 	string flashdisable = "0";
     string flashvalue = flashone + flashdisable + flashdisable;
@@ -2216,9 +2216,9 @@ int GUIAction::disableinstallled(std::string arg __unused)
    }
  }
      operation_end(0);
-  return 0;  
+  return 0;
  }
- 
+
  int GUIAction::disablebackupled(std::string arg __unused)
 {
  operation_start("Disable Backup Led");
@@ -2233,9 +2233,9 @@ int GUIAction::disableinstallled(std::string arg __unused)
    }
  }
      operation_end(0);
-  return 0;  
+  return 0;
  }
- 
+
  int GUIAction::disablerestoreled(std::string arg __unused)
 {
  operation_start("Disable Restore Led");
@@ -2250,9 +2250,9 @@ int GUIAction::disableinstallled(std::string arg __unused)
      }
   }
      operation_end(0);
-  return 0;  
+  return 0;
  }
- 
+
  int GUIAction::removepassword(std::string arg __unused)
  {
 	operation_start("Remove Recovery Password");
@@ -2273,12 +2273,12 @@ int GUIAction::disableinstallled(std::string arg __unused)
 		} else {
 		LOGERR("Failed to load password engine\n");
 		}
-		}	
+		}
 		}
 	operation_end(0);
 	return 0;
 }
- 
+
  int GUIAction::setpassword(std::string arg)
 {
 	operation_start("Set New Recovery Password");
@@ -2354,7 +2354,7 @@ int GUIAction::changesplash(std::string arg __unused)
 	operation_end(0);
 	return 0;
 }
- 
+
 int GUIAction::adb(std::string arg)
 {
  operation_start("ADB");
@@ -2369,14 +2369,14 @@ int GUIAction::adb(std::string arg)
    }
 
    }
-     
+
   operation_end(0);
-  return 0;  
+  return 0;
 
 }
 
 int GUIAction::disableled(std::string arg __unused)
 {
  DataManager::Leds(false);
- return 0;  
+ return 0;
 }

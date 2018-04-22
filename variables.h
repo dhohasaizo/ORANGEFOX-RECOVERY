@@ -30,7 +30,7 @@
 
 #define RW_SURVIVAL_FOLDER_VAR      "wolf_survival_backup_folder_path"
 #define RW_SURVIVAL_BACKUP_NAME       "wolf_survival_backup_folder_name"
-#define RW_SURVIVAL_FOLDER      "/sdcard/WOLF"
+#define RW_SURVIVAL_FOLDER      "/sdcard/Fox"
 #define RW_SURVIVAL_BACKUP       "OTA"
 #define RW_FILES_BACKUPS_FOLDER_VAR       "rw_files_backup_folder_var"
 #define RW_DISABLE_BOOT_CHK       "wolf_disable_boot_check"
