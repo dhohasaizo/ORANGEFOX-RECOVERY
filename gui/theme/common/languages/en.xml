@@ -257,7 +257,7 @@
 		<string name="utcp10">(UTC +10) Eastern Australia, Guam</string>
 		<string name="utcp11">(UTC +11) Vladivostok, Solomon Islands</string>
 		<string name="utcp12">(UTC +12) Auckland, Wellington, Fiji</string>
-		<string name="tz_offset_hdr">Time Offset</string>	
+		<string name="tz_offset_hdr">Time Offset</string>
 		<string name="tz_offset">Offset</string>
 		<string name="sel_tz_offset">Select Offset (usually 0): %tw_time_zone_guioffset%</string>
 		<string name="tz_offset_0">0</string>
@@ -718,7 +718,7 @@
 		<string name="changing_boot_slot">Changing Boot Slot</string>
 		<string name="changing_boot_slot_complete">Changing Boot Slot completed</string>
 		<string name="unable_set_boot_slot">Error changing bootloader boot slot to {1}</string>
-		<string name="backup_storage_warning">Backups of {1} do not include any files in internal storage such as pictures or downloads.</string>  
+		<string name="backup_storage_warning">Backups of {1} do not include any files in internal storage such as pictures or downloads.</string>
 <!-- Start of Red Wolf Recovery strings -->
 <!-- Some strings aren't maybe used anymore, but we are too much lazy to delete them :P -->
      <string name="flashlight">Flashlight</string>
@@ -762,8 +762,8 @@
      <string name="governor_info_line1">There are many CPU governors available</string>
      <string name="governor_info_line2">on android, but there are some important</string>
      <string name="governor_info_line3">things people should look out for before</string>
-     <string name="governor_info_line4">selecting their new governor.</string>  
-     <string name="governor_info_line5">Speed</string>       
+     <string name="governor_info_line4">selecting their new governor.</string>
+     <string name="governor_info_line5">Speed</string>
      <string name="governor_info_line6">Some governors are faster than others</string>
      <string name="governor_info_line7">and some are slower. This all depends</string>
      <string name="governor_info_line8">on if the governor is biased towards </string>
@@ -772,7 +772,7 @@
      <string name="governor_info_line11">the middle-ground providing</string>
      <string name="governor_info_line12">optimal speed when required.</string>
      <string name="governor_info_line13">Battery life</string>
-     <string name="governor_info_line14">Generally, if the governor is biased</string>   
+     <string name="governor_info_line14">Generally, if the governor is biased</string>
      <string name="governor_info_line15">towards performance, it will drain</string>
      <string name="governor_info_line16">your battery faster. If the governor</string>
      <string name="governor_info_line17">is biased towards battery life, the</string>
@@ -786,15 +786,15 @@
      <string name="wolf.pass.final_slide">Swipe to return to the main menu.</string>
      <string name="wolf_nitro_unroot_hdr2">by Nitrogen Project</string>
      <string name="wolf_flash_nitro.unroot">Swipe to install "Nitrogen unroot".</string>
-     <string name="Set_pass_btn">Set password</string>  
-     <string name="dialog_reset_pass_hdr">Remove password</string>  
-     <string name="dialog_reset_pass_1">Do you want to remove password?</string>  
-     <string name="dialog_reset_pass_2">Recovery will not require a password</string>  
-     <string name="dialog_reset_pass_3">at the next entry.</string>  
-     <string name="wolf_reboot_install_app_hdr">Do you want to install Snap Camera HDR?</string>  
-     <string name="wolf_reboot_install_app1">Many users have confirmed that this is an</string>  
-     <string name="wolf_reboot_install_app2">application that takes the best photos from our device.</string>  
-     <string name="wolf_swipe_to_install_app">Swipe to install Snap Camera HDR.</string>  
+     <string name="Set_pass_btn">Set password</string>
+     <string name="dialog_reset_pass_hdr">Remove password</string>
+     <string name="dialog_reset_pass_1">Do you want to remove password?</string>
+     <string name="dialog_reset_pass_2">Recovery will not require a password</string>
+     <string name="dialog_reset_pass_3">at the next entry.</string>
+     <string name="wolf_reboot_install_app_hdr">Do you want to install Snap Camera HDR?</string>
+     <string name="wolf_reboot_install_app1">Many users have confirmed that this is an</string>
+     <string name="wolf_reboot_install_app2">application that takes the best photos from our device.</string>
+     <string name="wolf_swipe_to_install_app">Swipe to install Snap Camera HDR.</string>
      <string name="pass_hdr2_del">Remove Password</string>
      <string name="pass_hdr3_del">Removing the password has been completed</string>
      <string name="change_pass_confirm_del">Swipe to remove password.</string>
@@ -811,7 +811,7 @@
      <string name="wolf_actual_build">Current build</string>
      <string name="inject_led_chk">Notify about finished installation</string>
      <string name="inject_led_chk_bak">Notify about finished backup</string>
-     <string name="inject_led_chk_res">Notify about finished restore</string>   
+     <string name="inject_led_chk_res">Notify about finished restore</string>
      <string name="wolf_rmpass_hdr">Script can remove ROM password.</string>
      <string name="wolf_flash_rmpass">Swipe to remove ROM security</string>
      <string name="wolf_flash_subs_legacy">Swipe to install Substratum Legacy</string>
@@ -823,12 +823,12 @@
      <string name="nightmode_info_off">Swipe to disable night mode</string>
      <string name="t2w_info_on">Swipe to enable t2w</string>
      <string name="t2w_info_off">Swipe to disable t2w</string>
-     <string name="colour_script_finish1">The selected color has been</string>       
-     <string name="colour_script_finish2">successfully applied</string>    
+     <string name="colour_script_finish1">The selected color has been</string>
+     <string name="colour_script_finish2">successfully applied</string>
      <string name="colour_script_finish3">Swipe to reboot and apply changes</string>
 	 <string name="wolf_colour_wait">Restart is in progress</string>
-	 <string name="colour_engine1">Apply new accent</string>       
-     <string name="colour_engine2">color</string>    
+	 <string name="colour_engine1">Apply new accent</string>
+     <string name="colour_engine2">color</string>
      <string name="colour_engine3">Swipe to apply the selected color</string>
 	 <string name="colour_engine4">Selected color is being applied.</string>
      <string name="wolf.colour.change">Change color</string>
@@ -859,7 +859,7 @@
      <string name="wolf_deleting_backup">Deleting backups...</string>
      <string name="wolf_backup_deleted">Removing backups is complete</string>
 	 <string name="wolf.rmpass_btn">Remove ROM security</string>
-	 <string name="redwolf_wb_chk">Backup wifi, bluetooth & hosts</string>  
+	 <string name="redwolf_wb_chk">Backup wifi, bluetooth & hosts</string>
      <string name="wolf_wifi_bluetooth_backup_line1">If this feature is turned on, then recovery</string>
      <string name="wolf_wifi_bluetooth_backup_line2">automatically detects installation of the new ROM</string>
      <string name="wolf_wifi_bluetooth_backup_line3">and backs up from the current ROM </string>
@@ -886,15 +886,15 @@
      <string name="wolf_set_custom_led_green">Green</string>
      <string name="wolf_set_custom_led_blue">Blue</string>
      <string name="wolf_set_custom_led_red">Red</string>
-     <string name="wolf_install_vibrate">Install Vibration</string> 
-     <string name="wolf_backup_vibrate">Backup Vibration</string> 
-     <string name="wolf_restore_vibrate">Restore Vibration</string> 
+     <string name="wolf_install_vibrate">Install Vibration</string>
+     <string name="wolf_backup_vibrate">Backup Vibration</string>
+     <string name="wolf_restore_vibrate">Restore Vibration</string>
      <string name="wolf_vibration_hdr">OrangeFox Action Vibrations</string>
      <string name="wolf_boot_nastaveni">HW Settings</string>
      <!-- Red Wolf Recovery V3.1 / 010 -->
      <string name="restore_enable_digest_chk" version="2">Enable Digest Verification of Backup Files</string>
      <string name="generating_digest1" version="2">Generating Digest</string>
-     
+
      <!-- Message displayed during a backup if we are generating an Digest, ideally, leave the leading " * " to help align and separate this text from other console text -->
 	 <string name="generating_digest2" version="2"> * Generating digest...</string>
 	 <string name="digest_created" version="2"> * Digest Created.</string>
@@ -908,7 +908,7 @@
 	 <string name="skip_digest" version="2">Skipping Digest check based on user setting.</string>
 	 <string name="digest_check_skip" version="2">Digest check skip is on</string>
 	 <string name="check_for_digest" version="2">Checking for Digest file...</string>
-	
+
 	 <string name="install_reboot" version="2">Rebooting in %tw_sleep% second(s)</string>
 	 <string name="sha2_chk">Use SHA2 for hashing</string>
      <string name="wolf_custom_wolf_splash_btn">Custom Splash</string>
@@ -918,7 +918,7 @@
      <string name="wolf_theme_splash_wolf_txt1">To change the splash screen select any</string>
      <string name="wolf_theme_splash_wolf_txt2">image in the png format and then just</string>
      <string name="wolf_theme_splash_wolf_txt3">swipe to apply it.</string>
-    <string name="wolf_theme_splash_wolf_txt4">For the best results the selected</string>     
+    <string name="wolf_theme_splash_wolf_txt4">For the best results the selected</string>
     <string name="wolf_theme_splash_wolf_txt5">image should be in the size</string>
     <string name="wolf_theme_splash_wolf_txt6">1080x1920.</string>
     <string name="not_selected">not selected</string>
@@ -940,7 +940,7 @@
     <!-- Red Wolf Recovery V3.1 / 011 -->
     <string name="no_digest_found" version="2">No digest file found for '{1}'. Please unselect Enable Digest verification to restore.</string>
 	<string name="digest_fail_match" version="2">Digest failed to match on '{1}'.</string>
-	<string name="digest_matched" version="2">Digest matched for '{1}'.</string> 
+	<string name="digest_matched" version="2">Digest matched for '{1}'.</string>
 	<!-- Red Wolf Recovery V3.1 / 012 -->
 	<string name="wolf_no_os_btn">Reboot</string>
 	<string name="wolf_no_wolfos_hdr">No OS installed!</string>
@@ -953,7 +953,7 @@
     <!-- Red Wolf Recovery V3.1 / 015 -->
     <string name="wolf_supersu_config_chk">Use SuperSU Config</string>
     <string name="wolf_fgo_patch_hdr2">For LOS based ROMs</string>
-    <string name="wolf_flash_fgo_patch">Swipe to install the FGO patch</string>    
+    <string name="wolf_flash_fgo_patch">Swipe to install the FGO patch</string>
     <!-- OrangeFox Recovery V3.1 / 018 -->
 	<string name="redwolfms2">[OrangeFox]: Welcome! ^_^</string>
 	<string name="redwolfms3">[Version]: {1}</string>
@@ -990,8 +990,8 @@
 	<string name="extra_shit_info_line1">Hi there! Welcome in the section of the</string>
      <string name="extra_shit_info_line2">special actions! Here you can change</string>
      <string name="extra_shit_info_line3">the way of how is the OrangeFox Recovery</string>
-     <string name="extra_shit_info_line4">installing zip files.</string>  
-     <string name="extra_shit_info_line5">Maybe you don't want to flash lazyflasher</string>       
+     <string name="extra_shit_info_line4">installing zip files.</string>
+     <string name="extra_shit_info_line5">Maybe you don't want to flash lazyflasher</string>
      <string name="extra_shit_info_line6">everytime when you are installing</string>
      <string name="extra_shit_info_line7">ROM with enabled dm-verity? So just enable</string>
      <string name="extra_shit_info_line8">here &quot;Disable DM-Verity&quot; and</string>
@@ -1000,15 +1000,15 @@
      <string name="extra_shit_info_line11">recovery will automatically during the</string>
      <string name="extra_shit_info_line12">installation check and disable dm-verity.</string>
      <string name="extra_shit_info_line13">The same process is also for forced</string>
-     <string name="extra_shit_info_line14">encryption.</string>   
+     <string name="extra_shit_info_line14">encryption.</string>
      <string name="extra_shit_info_line15">Other things like &quot;Enable Debugging...&quot;</string>
      <string name="extra_shit_info_line16">are changing the props...</string>
      <string name="extra_shit_info_line17">If you still have any question then</string>
      <string name="extra_shit_info_line18">ask us in the XDA thread or in our</string>
      <string name="extra_shit_info_line19">Telegram group (link is on XDA).</string>
      <string name="extra_shit_info_line20">Enjoy! :)</string>
-     
-	
+
+
 	<!-- Console Messages -->
 	<!-- Some messages were updated or deleted in the 020! -->
 	<string name="wolf_incremental_ota_status_enabled">Support MIUI Incremental package status: Enabled</string>
@@ -1049,5 +1049,16 @@
 	<!-- Red Wolf Recovery V3.1 / 025 -->
 	<string name="wolf_set_new_access_password">Changing recovery access password...</string>
 	<string name="wolf_remove_access_password_one">Removing recovery access password...</string>
+
+	<!--OrangeFox Recovery Project-->
+	<!-- <string name=""></string> -->
+
+	<string name="fox_menu_flash">Orange!</string>
+	<string name="fox_menu_delpass">Del ROM Pass</string>
+	<string name="fox_menu_navigation">Navigation</string>
+
+	<string name="fox_redwolf">for RedWolf development and</string>
+	<string name="fox_rey">Vince maintainer</string>
+	<string name="fox_kirill">For graphics, Photoshop guru</string>
 </resources>
 </language>

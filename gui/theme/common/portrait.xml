@@ -288,12 +288,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page-->
@@ -1335,7 +1335,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>ORANGE FOX</text>
+				<text>OrangeFox</text>
 			</text>
 
 			<text style="text_ab_title">
@@ -1903,12 +1903,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -1957,12 +1957,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -3169,7 +3169,7 @@
 
 <text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>ORANGE FOX</text>
+				<text>OrangeFox</text>
 			</text>
 
 <text style="text_ab_title">
@@ -3245,7 +3245,7 @@
 
 <text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>ORANGE FOX</text>
+				<text>OrangeFox</text>
 			</text>
 
 <text style="text_ab_title">
@@ -3316,7 +3316,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>ORANGE FOX</text>
+				<text>OrangeFox</text>
 			</text>
 
 			<text style="text_ab_title">
@@ -6352,7 +6352,7 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row5_2_y%"/>
-				<text>{@fox_menu_flash=Woooolf}</text>
+				<text>{@fox_menu_flash=Orange!}</text>
 			</text>
 
 			<button style="btn_raised_hl">
@@ -14737,12 +14737,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 			<action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -15793,12 +15793,12 @@
 			</action>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16033,12 +16033,12 @@
 			</action>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16061,15 +16061,20 @@
 				<text>{@about_hdr=About}</text>
 			</text>
 
-			<text style="text_ab_title">
+			<!--text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>ORANGE FOX</text>
+				<text>OrangeFox</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>Recovery Project</text>
-			</text>
+			</text-->
+
+			<image>
+		 		<placement x="%col1_x%" y="%row1_3_y%" placement="2"/>
+		 		<image resource="actionbar_logo"/>
+	 		</image>
 
 			<image>
 				<placement x="%col1_x%" y="%row2_2_y%"/>
@@ -16113,7 +16118,7 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="960"/>
-				<text>ATG Droid, Dadi11 - for RedWolf development and </text>
+				<text>ATG Droid, Dadi11 - {@fox_redwolf=for RedWolf development and }</text>
 			</text>
 
 			<text style="text_body2">
@@ -16123,18 +16128,18 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1110"/>
-				<text>osm0sis - {@osm0sis=to &quot;osm0sis&quot; for the FlashIt script}</text>
+				<text>ManoloRey - {@fox_rey=Vince maintainer}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1200"/>
-				<text>z31s1g - {@z31s1g=to &quot;DSM_&quot; for the color changing script}</text>
+				<text>Kirill Filippenok - {@fox_kirill=For graphics, Photoshop guru}</text>
 			</text>
 
-            		<text style="text_body2">
+            		<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="1290"/>
-				<text>DSM_ - {@DSM_=to &quot;DSM_&quot; for the color changing script}</text>
-			</text>
+				<text>INDEV! - {@DSM_=to &quot;DSM_&quot; for the color changing script}</text>
+			</text-->
 
 			<image>
 				<placement x="%col1_x%" y="1500"/>
@@ -16293,12 +16298,12 @@
 			</action>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 			</page>
@@ -16498,12 +16503,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16578,12 +16583,12 @@
 			</text>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16621,12 +16626,12 @@
             </button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16744,12 +16749,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16787,12 +16792,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16853,12 +16858,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16963,12 +16968,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -17072,12 +17077,12 @@
 
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page-->
@@ -17121,12 +17126,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -17187,12 +17192,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -17250,12 +17255,12 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -17370,7 +17375,7 @@
 
 			<button>
 				<placement x="0" y="0" w="1080" h="1127"/>
-				<fill color="%transparent%"/>
+				<fill color="%darktransparent%"/>
 				<action function="overlay"/>
 			</button>
 
@@ -17472,12 +17477,12 @@
 			</action>
 
 			<action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
             <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 
@@ -17488,7 +17493,7 @@
 				<action function="page">main2</action>
 			</button>
 
-        </page>
+		</page>
 
 
 	</pages>

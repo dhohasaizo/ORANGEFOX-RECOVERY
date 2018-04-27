@@ -90,6 +90,8 @@
 		<image name="actionbar_close_hl" filename="actionbar_close_hl" retainaspect="1"/>
 		<image name="actionbar_date" filename="actionbar_date" retainaspect="1"/>
 
+    <image name="wolf_lock_bg" filename="wolf_lock_bg" retainaspect="1"/>
+
 		<image name="btn_float_addtoqueue" filename="btn_float_addtoqueue" retainaspect="1"/>
 		<image name="btn_float_addtoqueue_hl" filename="btn_float_addtoqueue_hl" retainaspect="1"/>
 		<image name="btn_float_flashitinfo" filename="btn_float_flashitinfo" retainaspect="1"/>
@@ -487,7 +489,8 @@
 		<variable name="text_actionbar" value="#000000FF"/>
 		<variable name="text_button" value="#CCCCCCFF"/>
 		<variable name="text_light" value="#666666FF"/>
-		<variable name="text_dark" value="#333333FF"/>
+		<!--variable name="text_dark" value="#333333FF"/-->
+    <variable name="text_dark" value="#000000"/>
 		<variable name="text_success" value="#68B60B"/>
 		<variable name="text_fail" value="#FF0101"/>
 		<variable name="highlight_color" value="#00000066"/>
@@ -563,7 +566,7 @@
 		<variable name="listbox_settings_mv_height" value="450"/>
 		<variable name="listbox_settings_lang_height" value="360"/>
 		<variable name="listbox_settings_install_height" value="360"/>
-		<variable name="listbox_settings_backup_height" value="270"/>
+		<variable name="listbox_settings_backup_height" value="360"/>
 		<variable name="listbox_spacing" value="0"/>
 
 		<variable name="textbox_spacing" value="8"/>
@@ -833,7 +836,7 @@
 			</action>
 
 <action>
-				<touch key="power+volup"/>
+				<touch key="volup"/>
 				<actions>
 				<action function="set">tw_storage_path=/sdcard1</action>
 				<action function="screenshot"/>
@@ -841,7 +844,7 @@
 			</action>
 
 <action>
-				<touch key="power+voldown"/>
+				<touch key="voldown"/>
 				<actions>
 				<action function="set">tw_storage_path=/sdcard</action>
 				<action function="screenshot"/>
@@ -881,7 +884,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF9800">
+			<text color="#000000">
 				<font resource="status"/>
 				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -905,7 +908,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF9800">
+			<text color="#000000">
 				<font resource="status"/>
 				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -928,7 +931,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
 
-			<text color="#FF9800">
+			<text color="#000000">
 				<font resource="status"/>
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
