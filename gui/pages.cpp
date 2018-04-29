@@ -1518,7 +1518,8 @@ void PageManager::ReleasePackage(std::string name)
 	return;
 }
 
-int PageManager::RunReload() {
+int PageManager::RunReload() 
+{
 	int ret_val = 0;
 	std::string theme_path;
 
@@ -1527,12 +1528,13 @@ int PageManager::RunReload() {
 
 	mReloadTheme = false;
 	theme_path = DataManager::GetSettingsStoragePath();
-	if (PartitionManager.Mount_By_Path(theme_path.c_str(), 1) < 0) {
+	if (PartitionManager.Mount_By_Path(theme_path.c_str(), 1) < 0) 
+	{
 		LOGERR("Unable to mount %s during gui_reload_theme function.\n", theme_path.c_str());
 		ret_val = 1;
 	}
 
-	theme_path += "/WOLF/.bin./jq.zip";
+	theme_path += "/Fox/.bin./jq.zip"; // dj9 - replaced "/WOLF"
 	if (ret_val != 0 || ReloadPackage("TWRP", theme_path) != 0)
 	{
 		// Loading the custom theme failed - try loading the stock theme
@@ -1543,8 +1545,10 @@ int PageManager::RunReload() {
 			ret_val = 1;
 		}
 	}
-	if (ret_val == 0) {
-		if (DataManager::GetStrValue("tw_language") != "en.xml") {
+	if (ret_val == 0) 
+	{
+		if (DataManager::GetStrValue("tw_language") != "en.xml") 
+		{
 			LOGINFO("Loading language '%s'\n", DataManager::GetStrValue("tw_language").c_str());
 			LoadLanguage(DataManager::GetStrValue("tw_language"));
 		}
@@ -1556,11 +1560,13 @@ int PageManager::RunReload() {
 	return ret_val;
 }
 
-void PageManager::RequestReload() {
+void PageManager::RequestReload()
+{
 	mReloadTheme = true;
 }
 
-void PageManager::SetStartPage(const std::string& page_name) {
+void PageManager::SetStartPage(const std::string& page_name) 
+{
 	mStartPage = page_name;
 }
 
@@ -1626,7 +1632,8 @@ xml_node<>* PageManager::FindStyle(std::string name)
 	for (std::vector<xml_node<>*>::iterator itr = currentLoadingContext->styles.begin(); itr != currentLoadingContext->styles.end(); itr++) {
 		xml_node<>* node = (*itr)->first_node("style");
 
-		while (node) {
+		while (node) 
+		{
 			if (!node->first_attribute("name"))
 				continue;
 

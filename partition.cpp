@@ -405,7 +405,8 @@ bool TWPartition::Process_Fstab_Line(const char *fstab_line, bool Display_Error,
 	if (Primary_Block_Device.find("*") != string::npos)
 		Wildcard_Block_Device = true;
 
-	if (Mount_Point == "auto") {
+	if (Mount_Point == "auto") 
+	{
 		Mount_Point = "/auto";
 		char autoi[5];
 		sprintf(autoi, "%i", auto_index);
@@ -421,24 +422,30 @@ bool TWPartition::Process_Fstab_Line(const char *fstab_line, bool Display_Error,
 		Wipe_Available_in_GUI = true;
 		Is_Storage = true;
 		Removable = true;
-		Wipe_Available_in_GUI = true;
-	} else if (!Is_File_System(Fstab_File_System) && !Is_Image(Fstab_File_System)) {
+		// dj9* Wipe_Available_in_GUI = true;
+	} 
+	else if (!Is_File_System(Fstab_File_System) && !Is_Image(Fstab_File_System)) 
+	{
 		if (Display_Error)
 			LOGERR("Unknown File System: '%s'\n", Fstab_File_System.c_str());
 		else
 			LOGINFO("Unknown File System: '%s'\n", Fstab_File_System.c_str());
 		return false;
-	} else if (Is_File_System(Fstab_File_System)) {
+	} 
+	else if (Is_File_System(Fstab_File_System)) 
+	{
 		Find_Actual_Block_Device();
 		Setup_File_System(Display_Error);
-		if (Mount_Point == "/system") {
+		if (Mount_Point == "/system") 
+		{
 			Display_Name = "System";
 			Backup_Display_Name = Display_Name;
 			Storage_Name = Display_Name;
 			Wipe_Available_in_GUI = true;
 			Can_Be_Backed_Up = true;
 			Mount_Read_Only = true;
-		} else if (Mount_Point == "/data") {
+		} else if (Mount_Point == "/data") 
+		{
 			Display_Name = "Data";
 			Backup_Display_Name = Display_Name;
 			Storage_Name = Display_Name;
@@ -447,14 +454,16 @@ bool TWPartition::Process_Fstab_Line(const char *fstab_line, bool Display_Error,
 			Can_Be_Backed_Up = true;
 			Can_Encrypt_Backup = true;
 			Use_Userdata_Encryption = true;
-		} else if (Mount_Point == "/cache") {
+		} else if (Mount_Point == "/cache") 
+		{
 			Display_Name = "Cache";
 			Backup_Display_Name = Display_Name;
 			Storage_Name = Display_Name;
 			Wipe_Available_in_GUI = true;
 			Wipe_During_Factory_Reset = true;
 			Can_Be_Backed_Up = true;
-		} else if (Mount_Point == "/datadata") {
+		} else if (Mount_Point == "/datadata") 
+		{
 			Wipe_During_Factory_Reset = true;
 			Display_Name = "DataData";
 			Backup_Display_Name = Display_Name;
@@ -465,7 +474,8 @@ bool TWPartition::Process_Fstab_Line(const char *fstab_line, bool Display_Error,
 			Can_Be_Backed_Up = true;
 			Can_Encrypt_Backup = true;
 			Use_Userdata_Encryption = false; // This whole partition should be encrypted
-		} else if (Mount_Point == "/sd-ext") {
+		} else if (Mount_Point == "/sd-ext") 
+		{
 			Wipe_During_Factory_Reset = true;
 			Display_Name = "SD-Ext";
 			Backup_Display_Name = Display_Name;
@@ -475,12 +485,14 @@ bool TWPartition::Process_Fstab_Line(const char *fstab_line, bool Display_Error,
 			Can_Be_Backed_Up = true;
 			Can_Encrypt_Backup = true;
 			Use_Userdata_Encryption = true;
-		} else if (Mount_Point == "/boot") {
+		} else if (Mount_Point == "/boot") 
+		{
 			Display_Name = "Boot";
 			Backup_Display_Name = Display_Name;
 			DataManager::SetValue("tw_boot_is_mountable", 1);
 			Can_Be_Backed_Up = true;
-		} else if (Mount_Point == "/vendor") {
+		} else if (Mount_Point == "/vendor") 
+		{
 			Display_Name = "Vendor";
 			Backup_Display_Name = Display_Name;
 			Storage_Name = Display_Name;

@@ -800,7 +800,7 @@ extern "C" int gui_loadResources(void)
 			}
 		}
 
-		theme_path += "/WOLF/.bin./pa.zip";
+		theme_path += "/Fox/.bin./pa.zip"; // dj9 - changed WOLF
 		if (check || PageManager::LoadPackage("TWRP", theme_path, "main"))
 		{
 #endif // ifndef TW_OEM_BUILD
@@ -828,19 +828,23 @@ error:
 extern "C" int gui_loadCustomResources(void)
 {
 #ifndef TW_OEM_BUILD
-	if (!PartitionManager.Mount_Settings_Storage(false)) {
+	if (!PartitionManager.Mount_Settings_Storage(false)) 
+	{
 		LOGINFO("Unable to mount settings storage during GUI startup.\n");
 		return -1;
 	}
 
 	std::string theme_path = DataManager::GetSettingsStoragePath();
-	theme_path += "/WOLF/.bin./xd.zip";
+	theme_path += "/Fox/.bin./xd.zip"; // dj9 - changed WOLF
 	// Check for a custom theme
-	if (TWFunc::Path_Exists(theme_path)) {
+	if (TWFunc::Path_Exists(theme_path)) 
+	{
 		// There is a custom theme, try to load it
-		if (PageManager::ReloadPackage("TWRP", theme_path)) {
+		if (PageManager::ReloadPackage("TWRP", theme_path)) 
+		{
 			// Custom theme failed to load, try to load stock theme
-			if (PageManager::ReloadPackage("TWRP", TWRES "ui.xml")) {
+			if (PageManager::ReloadPackage("TWRP", TWRES "ui.xml")) 
+			{
 				gui_err("base_pkg_err=Failed to load base packages.");
 				goto error;
 			}

@@ -963,7 +963,7 @@ int TWPartitionManager::Run_Backup(bool adbbackup) {
 	gui_msg(Msg("total_backed_size=[{1} MB TOTAL BACKED UP]")(actual_backup_size));
 	Update_System_Details();
 	UnMount_Main_Partitions();
-	//* DJ9 DataManager::Leds(true);		
+	DataManager::Leds(true); // dj9
 	Notify_On_Finished_Backup();
 	gui_msg(Msg(msg::kHighlight, "backup_completed=[BACKUP COMPLETED IN {1} SECONDS]")(total_time)); // the end
 	string backup_log = part_settings.Backup_Folder + "/recovery.log";
@@ -1140,9 +1140,7 @@ int TWPartitionManager::Run_Restore(const string& Restore_Name) {
 	UnMount_By_Path("/system", false);
 	Update_System_Details();
 	UnMount_Main_Partitions();
-	
-	//* DJ9 DataManager::Leds(true);	
-		
+	DataManager::Leds(true); // dj9
 	Notify_On_Finished_Restore();
 	time(&rStop);
 	gui_msg(Msg(msg::kHighlight, "restore_completed=[RESTORE COMPLETED IN {1} SECONDS]")((int)difftime(rStop,rStart)));
@@ -1151,7 +1149,8 @@ int TWPartitionManager::Run_Restore(const string& Restore_Name) {
 	return true;
 }
 
-void TWPartitionManager::Set_Restore_Files(string Restore_Name) {
+void TWPartitionManager::Set_Restore_Files(string Restore_Name) 
+{
 	// Start with the default values
 	string Restore_List;
 	bool get_date = true, check_encryption = true;
@@ -1275,7 +1274,8 @@ void TWPartitionManager::Set_Restore_Files(string Restore_Name) {
 	return;
 }
 
-int TWPartitionManager::Wipe_By_Path(string Path) {
+int TWPartitionManager::Wipe_By_Path(string Path) 
+{
 	std::vector<TWPartition*>::iterator iter;
 	int ret = false;
 	bool found = false;
@@ -1300,7 +1300,8 @@ int TWPartitionManager::Wipe_By_Path(string Path) {
 	return false;
 }
 
-int TWPartitionManager::Wipe_Substratum_Overlays(void) {
+int TWPartitionManager::Wipe_Substratum_Overlays(void) 
+{
 	// Right now we don't support wipe of the overlays in the 
 	// Substratum Legacy mode
 	string data_path = "/data";
@@ -1326,7 +1327,8 @@ int TWPartitionManager::Wipe_Substratum_Overlays(void) {
 	return true;
 }
 
-int TWPartitionManager::Wipe_By_Path(string Path, string New_File_System) {
+int TWPartitionManager::Wipe_By_Path(string Path, string New_File_System) 
+{
 	std::vector<TWPartition*>::iterator iter;
 	int ret = false;
 	bool found = false;
@@ -1622,7 +1624,6 @@ void TWPartitionManager::Restore_Bluetooth_Files(PartitionSettings *part_setting
 }
 
 
-
 void TWPartitionManager::Restore_Hosts_Files(PartitionSettings *part_settings) {
 	string redwolf = "HOSTS.";
 	string wlfx = ".win";
@@ -1676,7 +1677,8 @@ void TWPartitionManager::Backup_Bluetooth_Files(PartitionSettings *part_settings
 	}
 }
 
-void TWPartitionManager::Backup_Hosts_Files(PartitionSettings *part_settings) {
+void TWPartitionManager::Backup_Hosts_Files(PartitionSettings *part_settings) 
+{
 	string redwolf = "HOSTS.";
 	string wlfx = ".win";
 	string file = "/system/etc/hosts";
@@ -1688,13 +1690,15 @@ void TWPartitionManager::Backup_Hosts_Files(PartitionSettings *part_settings) {
 	}
 }
 
-void TWPartitionManager::Update_System_Details(void) {
+void TWPartitionManager::Update_System_Details(void) 
+{
 	std::vector<TWPartition*>::iterator iter;
 	int data_size = 0;
 
 	gui_msg("update_part_details=Updating partition details...");
 	TWFunc::SetPerformanceMode(true);
-	for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
+	for (iter = Partitions.begin(); iter != Partitions.end(); iter++) 
+	{
 		(*iter)->Update_Size(true);
 		if ((*iter)->Can_Be_Mounted) {
 			if ((*iter)->Mount_Point == "/system") {
@@ -1758,23 +1762,29 @@ void TWPartitionManager::Update_System_Details(void) {
 	DataManager::SetValue(TW_BACKUP_DATA_SIZE, data_size);
 	string current_storage_path = DataManager::GetCurrentStoragePath();
 	TWPartition* FreeStorage = Find_Partition_By_Path(current_storage_path);
-	if (FreeStorage != NULL) {
+	if (FreeStorage != NULL) 
+	{
 		// Attempt to mount storage
-		if (!FreeStorage->Mount(false)) {
+		if (!FreeStorage->Mount(false)) 
+		{
 			gui_msg(Msg(msg::kError, "unable_to_mount_storage=Unable to mount storage"));
 			DataManager::SetValue(TW_STORAGE_FREE_SIZE, 0);
-		} else {
+		} else 
+		{
 			DataManager::SetValue(TW_STORAGE_FREE_SIZE, (int)(FreeStorage->Free / 1048576LLU));
 		}
-	} else {
+	} else 
+	{
 		LOGINFO("Unable to find storage partition '%s'.\n", current_storage_path.c_str());
 	}
 	if (!Write_Fstab())
 		LOGERR("Error creating fstab\n");
+//DataManager::Leds(false); // dj9	
 	return;
 }
 
-void TWPartitionManager::Post_Decrypt(const string& Block_Device) {
+void TWPartitionManager::Post_Decrypt(const string& Block_Device) 
+{
 	TWPartition* dat = Find_Partition_By_Path("/data");
 	if (dat != NULL) {
 		DataManager::SetValue(TW_IS_DECRYPTED, 1);
@@ -1804,7 +1814,8 @@ void TWPartitionManager::Post_Decrypt(const string& Block_Device) {
 		LOGERR("Unable to locate data partition.\n");
 }
 
-int TWPartitionManager::Decrypt_Device(string Password) {
+int TWPartitionManager::Decrypt_Device(string Password) 
+{
 #ifdef TW_INCLUDE_CRYPTO
 	char crypto_state[PROPERTY_VALUE_MAX], crypto_blkdev[PROPERTY_VALUE_MAX];
 	std::vector<TWPartition*>::iterator iter;
@@ -1904,7 +1915,8 @@ int TWPartitionManager::Decrypt_Device(string Password) {
 	return 1;
 }
 
-int TWPartitionManager::Fix_Contexts(void) {
+int TWPartitionManager::Fix_Contexts(void) 
+{
 	std::vector<TWPartition*>::iterator iter;
 	for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
 		if ((*iter)->Has_Data_Media) {
@@ -1919,7 +1931,8 @@ int TWPartitionManager::Fix_Contexts(void) {
 	return 0;
 }
 
-TWPartition* TWPartitionManager::Find_Next_Storage(string Path, bool Exclude_Data_Media) {
+TWPartition* TWPartitionManager::Find_Next_Storage(string Path, bool Exclude_Data_Media) 
+{
 	std::vector<TWPartition*>::iterator iter = Partitions.begin();
 
 	if (!Path.empty()) {
@@ -2199,21 +2212,26 @@ int TWPartitionManager::Partition_SDCard(void) {
 		format_device += "p";
 
 	// Format new partitions to proper file system
-	if (fat_size > 0) {
+	if (fat_size > 0) 
+	{
 		Command = "mkfs.fat " + format_device + "1";
 		TWFunc::Exec_Cmd(Command);
 	}
-	if (ext > 0) {
-		if (SDext == NULL) {
+	if (ext > 0) 
+	{
+		if (SDext == NULL) 
+		{
 			Command = "mke2fs -t " + ext_format + " -m 0 " + format_device + "2";
 			gui_msg(Msg("format_sdext_as=Formatting sd-ext as {1}...")(ext_format));
 			LOGINFO("Formatting sd-ext after partitioning, command: '%s'\n", Command.c_str());
 			TWFunc::Exec_Cmd(Command);
-		} else {
+		} else 
+		{
 			SDext->Wipe(ext_format);
 		}
 	}
-	if (swap > 0) {
+	if (swap > 0) 
+	{
 		Command = "mkswap " + format_device;
 		if (ext > 0)
 			Command += "3";
@@ -2223,8 +2241,9 @@ int TWPartitionManager::Partition_SDCard(void) {
 	}
 
 	// recreate TWRP folder and rewrite settings - these will be gone after sdcard is partitioned
-	if (SDCard->Mount(true)) {
-		string TWRP_Folder = SDCard->Mount_Point + "/WOLF";
+	if (SDCard->Mount(true)) 
+	{
+		string TWRP_Folder = SDCard->Mount_Point + "/Fox"; // dj9 - changed WOLF
 		mkdir(TWRP_Folder.c_str(), 0777);
 		DataManager::Flush();
 	}
@@ -2234,11 +2253,15 @@ int TWPartitionManager::Partition_SDCard(void) {
 	return true;
 }
 
-void TWPartitionManager::Get_Partition_List(string ListType, std::vector<PartitionList> *Partition_List) {
+void TWPartitionManager::Get_Partition_List(string ListType, std::vector<PartitionList> *Partition_List) 
+{
 	std::vector<TWPartition*>::iterator iter;
-	if (ListType == "mount") {
-		for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
-			if ((*iter)->Can_Be_Mounted) {
+	if (ListType == "mount") 
+	{
+		for (iter = Partitions.begin(); iter != Partitions.end(); iter++) 
+		{
+			if ((*iter)->Can_Be_Mounted) 
+			{
 				struct PartitionList part;
 				part.Display_Name = (*iter)->Display_Name;
 				part.Mount_Point = (*iter)->Mount_Point;
@@ -2246,7 +2269,9 @@ void TWPartitionManager::Get_Partition_List(string ListType, std::vector<Partiti
 				Partition_List->push_back(part);
 			}
 		}
-	} else if (ListType == "storage") {
+	} 
+	else if (ListType == "storage") 
+	{
 		char free_space[255];
 		string Current_Storage = DataManager::GetCurrentStoragePath();
 		for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {

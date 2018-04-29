@@ -444,7 +444,8 @@ void TWFunc::install_htc_dumlock(void) {
 	gui_msg("done=Done.");
 }
 
-void TWFunc::Deactivation_Process(void) {
+void TWFunc::Deactivation_Process(void) 
+{
 std::string tmp = "/tmp/redwolf";
 std::string ramdisk = tmp + "/ramdisk";
 std::string fstab = ramdisk + "/fstab.qcom";
@@ -462,39 +463,46 @@ std::string dm_verity_prop_false = dm_verity_prop + "=false";
 std::string dm_verity_prop_true = dm_verity_prop + "=true";
 
 
-    // Mount partitions
+    	// Mount partitions
 	if (!PartitionManager.Mount_By_Path("/sdcard", false))
 		return;
 
-		if (!PartitionManager.Mount_By_Path("/system", false))
+	if (!PartitionManager.Mount_By_Path("/system", false))
 		return;
 
-		// Check AromaFM Config
-	if (DataManager::GetIntValue(RW_SAVE_LOAD_AROMAFM) == 1) {
-		string aromafm_path = "/sdcard/Fox";
+	// Check AromaFM Config
+	if (DataManager::GetIntValue(RW_SAVE_LOAD_AROMAFM) == 1) 
+	{
+		string aromafm_path = RW_SURVIVAL_FOLDER; // dj9 - changed "/sdcard/Fox";
 		string aromafm_file = aromafm_path + "/aromafm.cfg";
-		if (!Path_Exists(aromafm_path)) {
-					if (mkdir(aromafm_path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH)) {
-						LOGERR("Error making %s directory: %s\n", aromafm_path.c_str(), strerror(errno));
-					}
-				}
+		if (!Path_Exists(aromafm_path)) 
+		{
+			if (mkdir(aromafm_path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH)) 
+			{
+				LOGERR("Error making %s directory: %s\n", aromafm_path.c_str(), strerror(errno));
+			}
+		}
 			  // Save AromaFM config
-	     if (copy_file("/FFiles/AromaFM/AromaFM.cfg", aromafm_file, 0644)) {
-							LOGERR("Error copying AromaFM config\n");
-				}
-			}
+	     	if (copy_file("/FFiles/AromaFM/AromaFM.cfg", aromafm_file, 0644)) 
+	     	{
+			LOGERR("Error copying AromaFM config\n");
+		}
+	}
 
-			// Rename stock recovery back
-			if (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) == 1) {
-             if (Path_Exists("/system/wlfx0recovery-from-boot.bak0xwlf")) {
-				rename("/system/wlfx0recovery-from-boot.bak0xwlf", "/system/recovery-from-boot.p");
-				}
-			}
+	// Rename stock recovery back
+	if (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) == 1) 
+	{
+             if (Path_Exists("/system/wlfx0recovery-from-boot.bak0xwlf")) 
+             	{
+			rename("/system/wlfx0recovery-from-boot.bak0xwlf", "/system/recovery-from-boot.p");
+		}
+	}
 
-			// Unpack boot image
-	         TWFunc::Dumwolf(true, true);
+	// Unpack boot image
+	TWFunc::Dumwolf(true, true);
 
-			   if (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1) {
+	if (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1) 
+	{
             std::string verity = "verify";
 			std::string one_verity = "," + verity;
 			std::string two_verity = verity + ",";
@@ -506,102 +514,125 @@ std::string dm_verity_prop_true = dm_verity_prop + "=true";
 			TWFunc::Replace_Word_In_File(fstab, verity, "");
 			TWFunc::Replace_Word_In_File(fstab, one_support_scfs, "");
 			TWFunc::Replace_Word_In_File(fstab, two_support_scfs, "");
-			TWFunc::Replace_Word_In_File(fstab, support_scfs, "");
-			if (TWFunc::CheckWord(default_prop, dm_verity_prop)) {
-            TWFunc::Replace_Word_In_File(default_prop, dm_verity_prop_true, dm_verity_prop_false);
-             } else {
-             ofstream File(default_prop.c_str(), std::ios::app);
-             if (File.is_open()) {
-             File << dm_verity_prop_false;
-             File.close();
-             }
-			}
+		TWFunc::Replace_Word_In_File(fstab, support_scfs, "");
+		
+		if (TWFunc::CheckWord(default_prop, dm_verity_prop)) 
+		{
+            		TWFunc::Replace_Word_In_File(default_prop, dm_verity_prop_true, dm_verity_prop_false);
+             	} else 
+             	{
+             		ofstream File(default_prop.c_str(), std::ios::app);
+             		if (File.is_open()) 
+             		{
+             			File << dm_verity_prop_false;
+             			File.close();
+             		}
+	 	}
 
-			if (Path_Exists(verity_key))
+		if (Path_Exists(verity_key))
 			unlink(verity_key.c_str());
-			if (Path_Exists(firmware_key))
+		if (Path_Exists(firmware_key))
 			unlink(firmware_key.c_str());
-			}
+	}
 
 			// Check Forced Encryption
-			if (DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1) {
-			std::string encryptable = "encryptable=";
-			TWFunc::Replace_Word_In_File(fstab, "forceencrypt=", encryptable);
-			TWFunc::Replace_Word_In_File(fstab, "forcefdeorfbe=", encryptable);
+			if (DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1) 
+			{
+				std::string encryptable = "encryptable=";
+				TWFunc::Replace_Word_In_File(fstab, "forceencrypt=", encryptable);
+				TWFunc::Replace_Word_In_File(fstab, "forcefdeorfbe=", encryptable);
 			}
 
-				// Enable Debugging
-				if (DataManager::GetIntValue(RW_ENABLE_DEBUGGING) == 1) {
+			// Enable Debugging
+			if (DataManager::GetIntValue(RW_ENABLE_DEBUGGING) == 1) 
+			{
 				TWFunc::Set_New_Ramdisk_Property(default_prop, debug, true);
-	            }
+	            	}
 
-	           // Disable Debugging
-				if (DataManager::GetIntValue(RW_DISABLE_DEBUGGING) == 1) {
+	           	// Disable Debugging
+			if (DataManager::GetIntValue(RW_DISABLE_DEBUGGING) == 1) 
+			{
 				TWFunc::Set_New_Ramdisk_Property(default_prop, debug, false);
-	            }
+	            	}
 
 	          // Advanced stock recovery replace
-	            if (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) != 1) {
-				if (DataManager::GetIntValue(RW_ADVANCED_STOCK_REPLACE) == 1) {
-				  if (Path_Exists("/system/bin/install-recovery.sh")) {
-				     if (!Path_Exists("/system/bin/wlfx0install-recovery.bak0xwlf")) {
+	            if (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) != 1) 
+	            {
+				if (DataManager::GetIntValue(RW_ADVANCED_STOCK_REPLACE) == 1) 
+				{
+				  if (Path_Exists("/system/bin/install-recovery.sh")) 
+				  {
+				     if (!Path_Exists("/system/bin/wlfx0install-recovery.bak0xwlf")) 
+				     {
 				     rename("/system/bin/install-recovery.sh", "/system/bin/wlfx0install-recovery.bak0xwlf");
 				     }
 				  }
-				if (Path_Exists("/system/etc/install-recovery.sh")) {
-				     if (!Path_Exists("/system/etc/wlfx0install-recovery.bak0xwlf")) {
+				if (Path_Exists("/system/etc/install-recovery.sh")) 
+				{
+				     if (!Path_Exists("/system/etc/wlfx0install-recovery.bak0xwlf")) 
+				     {
 				     rename("/system/etc/install-recovery.sh", "/system/etc/wlfx0install-recovery.bak0xwlf");
-				    }
-			     }
-			if (Path_Exists("/system/etc/recovery-resource.dat")) {
-				     if (!Path_Exists("/system/etc/wlfx0recovery-rerce0xwlf")) {
-				     rename("/system/etc/recovery-resource.dat", "/system/etc/wlfx0recovery-resource0xwlf");
-				    }
-			     }
+				     }
+			        }
+			if (Path_Exists("/system/etc/recovery-resource.dat")) 
+			{
+				     if (!Path_Exists("/system/etc/wlfx0recovery-rerce0xwlf")) 
+				     {
+				     	rename("/system/etc/recovery-resource.dat", "/system/etc/wlfx0recovery-resource0xwlf");
+				     }
+			}
 	       }
 	     }
 	     // Enable ADB read-only property in the default.prop
-	    if (DataManager::GetIntValue(RW_ENABLE_ADB_RO) == 1) {
+	    if (DataManager::GetIntValue(RW_ENABLE_ADB_RO) == 1) 
+	    {
 	     TWFunc::Set_New_Ramdisk_Property(default_prop, adb_ro, true);
-      }
+      	    }
 
-      // Disable ADB read-only property in the default.prop
-	    if (DataManager::GetIntValue(RW_DISABLE_ADB_RO) == 1) {
-	     TWFunc::Set_New_Ramdisk_Property(default_prop, adb_ro, false);
-      }
+      	// Disable ADB read-only property in the default.prop
+	if (DataManager::GetIntValue(RW_DISABLE_ADB_RO) == 1) 
+	{
+		TWFunc::Set_New_Ramdisk_Property(default_prop, adb_ro, false);
+      	}
 
       // Enable read-only property in the default.prop
-	    if (DataManager::GetIntValue(RW_ENABLE_SECURE_RO) == 1) {
+	if (DataManager::GetIntValue(RW_ENABLE_SECURE_RO) == 1) 
+	{
 	     TWFunc::Set_New_Ramdisk_Property(default_prop, ro, true);
-      }
+      	}
 
       // Disable read-only property in the default.prop
-	    if (DataManager::GetIntValue(RW_DISABLE_SECURE_RO) == 1) {
+	if (DataManager::GetIntValue(RW_DISABLE_SECURE_RO) == 1) 
+	{
 	     TWFunc::Set_New_Ramdisk_Property(default_prop, ro, false);
-      }
+      	}
 
       // Disable secure-boot
-      if (DataManager::GetIntValue(RW_DISABLE_SECURE_BOOT) == 1) {
+      	if (DataManager::GetIntValue(RW_DISABLE_SECURE_BOOT) == 1) 
+      	{
 	     TWFunc::Set_New_Ramdisk_Property(default_prop, miui_secure_boot, false);
-      }
+      	}
 
 
       // Enable mock_location property
-      if (DataManager::GetIntValue(RW_ENABLE_MOCK_LOCATION) == 1) {
+      	if (DataManager::GetIntValue(RW_ENABLE_MOCK_LOCATION) == 1) 
+      	{
 	     TWFunc::Set_New_Ramdisk_Property(default_prop, mock, true);
-      }
+      	}
 
       // Disable mock_location property
-      if (DataManager::GetIntValue(RW_DISABLE_MOCK_LOCATION) == 1) {
+      	if (DataManager::GetIntValue(RW_DISABLE_MOCK_LOCATION) == 1) 
+      	{
 	     TWFunc::Set_New_Ramdisk_Property(default_prop, mock, false);
-      }
-            if (Path_Exists(default_prop))
+      	}
+      
+      	if (Path_Exists(default_prop))
              chmod(default_prop.c_str(), 0644);
-             if (Path_Exists(fstab))
+      	if (Path_Exists(fstab))
                  chmod(fstab.c_str(), 0640);
 
-            // Make new boot image
-			TWFunc::Dumwolf(false, true);
+      // Make new boot image
+	TWFunc::Dumwolf(false, true);
 }
 
 void TWFunc::htc_dumlock_restore_original_boot(void) {
@@ -1422,10 +1453,10 @@ std::string device_one = kernel_proc_check + "enable";
 std::string device_two = kernel_proc_check + "disable";
 std::string password_file = "/sbin/wlfx";
 
-	if (TWFunc::Path_Exists(device_one))
+  if (TWFunc::Path_Exists(device_one))
 	      TWFunc::write_to_file(device_one, disable);
 
-	if (TWFunc::Path_Exists(device_two))
+  if (TWFunc::Path_Exists(device_two))
 	      TWFunc::write_to_file(device_two, enable);
 
   if (TWFunc::Path_Exists(password_file))
@@ -1457,8 +1488,8 @@ std::string password_file = "/sbin/wlfx";
      }
   }
 
-       if (DataManager::GetIntValue(RW_PERFORMANCE_CHECK) == 1)
-       {
+     if (DataManager::GetIntValue(RW_PERFORMANCE_CHECK) == 1)
+     {
        DataManager::SetValue(RW_GOVERNOR_STABLE, performance);
        for (i = 0; i < 9; i++)
        {
@@ -1486,10 +1517,10 @@ std::string password_file = "/sbin/wlfx";
    	DataManager::SetValue(RW_GOVERNOR_STABLE, interactive);
        for (i = 0; i < 9; i++)
        {
-       std::string k = to_string(i);
-       a = cpu_one + k + cpu_two;
-       if (TWFunc::Path_Exists(a))
-       TWFunc::write_to_file(a, interactive);
+       	std::string k = to_string(i);
+       	a = cpu_one + k + cpu_two;
+       	if (TWFunc::Path_Exists(a))
+       		TWFunc::write_to_file(a, interactive);
        }
      }
 	string info = TWFunc::System_Property_Get("ro.build.display.id");
@@ -1498,13 +1529,15 @@ std::string password_file = "/sbin/wlfx";
 		LOGINFO("ROM Status: Is not installed\n");
 	} else
 	{
-	LOGINFO("ROM Status: %s\n", info.c_str());
+		LOGINFO("ROM Status: %s\n", info.c_str());
 	}
-	string wolf_res = "/sdcard/Fox.res";
-	string resource_folder = wolf_res + "/FILES";
+    
+    string wolf_res = "/sdcard/Fox.res";
+    string resource_folder = wolf_res + "/FILES";
     string config_aroma_path = wolf_res + "/aromafm.cfg";
     string ramdisk_folder = "/FFiles";
     string OrangeFox_Files_path = ramdisk_folder + "/AromaFM/AromaFM.cfg";
+    
     if (TWFunc::Path_Exists(ramdisk_folder.c_str()))
     {
       DataManager::SetValue("rw_resource_dir", ramdisk_folder.c_str());

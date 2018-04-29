@@ -1077,22 +1077,25 @@ void GUIAction::reinject_after_flash()
 
 void GUIAction::notify_after_install()
 {
-	if (simulate) {
-			simulate_progress_bar();
-		} else if (DataManager::GetIntValue("rw_inject_after_zip") != 0) {
+	if (simulate) 
+	{
+		simulate_progress_bar();
+	} 
+	else if (DataManager::GetIntValue("rw_inject_after_zip") != 0) 
+	{
         	string ledcolor, install_vibrate_value;
-            DataManager::GetValue("wolf_data_install_vibrate", install_vibrate_value);
-            DataManager::GetValue("wolf_install_led_color", ledcolor);
+            	DataManager::GetValue("wolf_data_install_vibrate", install_vibrate_value);
+            	DataManager::GetValue("wolf_install_led_color", ledcolor);
 	        string leds = "/sys/class/leds/";
 	        string flashbs = leds + ledcolor + "/brightness";
-            string flashtime = leds + ledcolor + "/led_time";
-            string flashblink = leds + ledcolor + "/blink";
-            string vibrate_path = "/sys/class/timed_output/vibrator/enable";
-            TWFunc::write_to_file(flashbs, "255");
-		    TWFunc::write_to_file(flashtime, "1 1 1 1");
-		    TWFunc::write_to_file(flashblink, "1");
-		    TWFunc::write_to_file(vibrate_path, install_vibrate_value);
-		   }
+            	string flashtime = leds + ledcolor + "/led_time";
+            	string flashblink = leds + ledcolor + "/blink";
+            	string vibrate_path = "/sys/class/timed_output/vibrator/enable";
+            	TWFunc::write_to_file(flashbs, "255");
+		TWFunc::write_to_file(flashtime, "1 1 1 1");
+		TWFunc::write_to_file(flashblink, "1");
+		TWFunc::write_to_file(vibrate_path, install_vibrate_value);
+	}
 }
 
 int GUIAction::flash(std::string arg)
@@ -1100,7 +1103,8 @@ int GUIAction::flash(std::string arg)
 	int i, ret_val = 0, wipe_cache = 0;
 	// We're going to jump to this page first, like a loading page
 	gui_changePage(arg);
-	for (i=0; i<zip_queue_index; i++) {
+	for (i=0; i<zip_queue_index; i++) 
+	{
 		string zip_path = zip_queue[i];
 		size_t slashpos = zip_path.find_last_of('/');
 		string zip_filename = (slashpos == string::npos) ? zip_path : zip_path.substr(slashpos + 1);
@@ -1112,7 +1116,8 @@ int GUIAction::flash(std::string arg)
 		TWFunc::SetPerformanceMode(true);
 		ret_val = flash_zip(zip_path, &wipe_cache);
 		TWFunc::SetPerformanceMode(false);
-		if (ret_val != 0) {
+		if (ret_val != 0) 
+		{
 			gui_msg(Msg(msg::kError, "zip_err=Error installing zip file '{1}'")(zip_path));
 			ret_val = 1;
 			break;
@@ -1120,7 +1125,8 @@ int GUIAction::flash(std::string arg)
 	}
 	zip_queue_index = 0;
 
-	if (wipe_cache) {
+	if (wipe_cache) 
+	{
 		gui_msg("zip_wipe_cache=One or more zip requested a cache wipe -- Wiping cache now.");
 		PartitionManager.Wipe_By_Path("/cache");
 	}
@@ -1135,13 +1141,13 @@ int GUIAction::flash(std::string arg)
 		notify_after_install();
 	}
 
- 	//* DJ9 DataManager::Leds(true);
         DataManager::Vibrate("wolf_data_install_vibrate");
+ 	DataManager::Leds(true); // dj9
 
         reinject_after_flash();
 	PartitionManager.Update_System_Details();
-
 	operation_end(ret_val);
+	
 	// This needs to be after the operation_end call so we change pages before we change variables that we display on the screen
 	DataManager::SetValue(TW_ZIP_QUEUE_COUNT, zip_queue_index);
 	return 0;
@@ -1252,7 +1258,7 @@ int GUIAction::wipe(std::string arg)
 
 			if (PartitionManager.Mount_By_Path(Storage_Path, true)) {
 				LOGINFO("Making TWRP folder and saving settings.\n");
-				Storage_Path += "/WOLF";
+				Storage_Path += "/Fox"; // dj9 - changed WOLF
 				mkdir(Storage_Path.c_str(), 0777);
 				DataManager::Flush();
 			} else {
@@ -1671,7 +1677,7 @@ int GUIAction::adbsideload(std::string arg __unused)
 		property_set("ctl.start", "adbd");
 		TWFunc::Toggle_MTP(mtp_was_enabled);
 
-		// DJ9 DataManager::Leds(true);
+ 		DataManager::Leds(true); // dj9
 
 		notify_after_install();
         	reinject_after_flash();
@@ -2202,6 +2208,27 @@ int GUIAction::flashlight(std::string arg __unused)
      return 0;
 }
 
+int GUIAction::disableled(std::string arg __unused)
+{
+ 	DataManager::Leds(false);
+ 	return 0;
+}
+
+int GUIAction::disableinstallled(std::string arg __unused)
+{
+  	return disableled("Installed");
+}
+ 
+int GUIAction::disablebackupled(std::string arg __unused)
+{
+  	return disableled("Backup");
+}
+ 
+int GUIAction::disablerestoreled(std::string arg __unused)
+{
+  	return disableled("Restore");
+}
+/*
 int GUIAction::disableinstallled(std::string arg __unused)
 {
  operation_start("Disable Install Led");
@@ -2219,7 +2246,7 @@ int GUIAction::disableinstallled(std::string arg __unused)
   return 0;
  }
 
- int GUIAction::disablebackupled(std::string arg __unused)
+int GUIAction::disablebackupled(std::string arg __unused)
 {
  operation_start("Disable Backup Led");
  if (simulate) {
@@ -2234,9 +2261,9 @@ int GUIAction::disableinstallled(std::string arg __unused)
  }
      operation_end(0);
   return 0;
- }
+}
 
- int GUIAction::disablerestoreled(std::string arg __unused)
+int GUIAction::disablerestoreled(std::string arg __unused)
 {
  operation_start("Disable Restore Led");
  if (simulate) {
@@ -2251,10 +2278,10 @@ int GUIAction::disableinstallled(std::string arg __unused)
   }
      operation_end(0);
   return 0;
- }
-
- int GUIAction::removepassword(std::string arg __unused)
- {
+}
+*/
+int GUIAction::removepassword(std::string arg __unused)
+{
 	operation_start("Remove Recovery Password");
 	if (simulate) {
         simulate_progress_bar();
@@ -2362,10 +2389,10 @@ int GUIAction::adb(std::string arg)
   simulate_progress_bar();
  } else {
    if (arg == "enable") {
-   property_set("redwolf.adb.status", "1");
+   property_set("orangefox.adb.status", "1");
    }
    if (arg == "disable") {
-   property_set("redwolf.adb.status", "0");
+   property_set("orangefox.adb.status", "0");
    }
 
    }
@@ -2373,10 +2400,4 @@ int GUIAction::adb(std::string arg)
   operation_end(0);
   return 0;
 
-}
-
-int GUIAction::disableled(std::string arg __unused)
-{
- DataManager::Leds(false);
- return 0;
 }

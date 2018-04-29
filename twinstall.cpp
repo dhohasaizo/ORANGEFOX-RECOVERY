@@ -96,12 +96,14 @@ static int switch_to_legacy_properties()
 		legacy_props_env_initd = true;
 	}
 
-	if (TWFunc::Path_Exists(properties_path)) {
+	if (TWFunc::Path_Exists(properties_path)) 
+	{
 		// hide real properties so that the updater uses the envvar to find the legacy format properties
 		if (rename(properties_path, properties_path_renamed) != 0) {
 			LOGERR("Renaming %s failed: %s\n", properties_path, strerror(errno));
 			return -1;
-		} else {
+		} else 
+		{
 			legacy_props_path_modified = true;
 		}
 	}
@@ -112,10 +114,12 @@ static int switch_to_legacy_properties()
 static int switch_to_new_properties()
 {
 	if (TWFunc::Path_Exists(properties_path_renamed)) {
-		if (rename(properties_path_renamed, properties_path) != 0) {
+		if (rename(properties_path_renamed, properties_path) != 0) 
+		{
 			LOGERR("Renaming %s failed: %s\n", properties_path_renamed, strerror(errno));
 			return -1;
-		} else {
+		} else 
+		{
 			legacy_props_path_modified = false;
 		}
 	}
@@ -123,12 +127,14 @@ static int switch_to_new_properties()
 	return 0;
 }
 
-static int Install_Theme(const char* path, ZipWrap *Zip) {
-Zip->Close();
+static int Install_Theme(const char* path, ZipWrap *Zip) 
+{
+	Zip->Close();
 	return INSTALL_CORRUPT;	
 }
 
-static int Prepare_Update_Binary(const char *path, ZipWrap *Zip, int* wipe_cache) {
+static int Prepare_Update_Binary(const char *path, ZipWrap *Zip, int* wipe_cache) 
+{
 string pre_something = "pre-";
 string miui_update = "_update";
 string bootloader = "firmware-update/emmc_appsboot.mbn";
@@ -260,7 +266,8 @@ string pre_build = pre_something + "build";
   gui_err("wolf_survival_does_not_exist=OTA Survival does not exist! Please flash a full ROM first!");
   return INSTALL_ERROR;
   }
-  } else {
+  } else 
+  {
   TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, false);
   gui_err("wolf_survival_encrypted_err=Internal storage is encrypted! Please do decrypt first!");
   return INSTALL_ERROR;
@@ -270,13 +277,16 @@ string pre_build = pre_something + "build";
 	  gui_msg(Msg(msg::kWarning, "wolf_zip_have_bootloader=Warning: OrangeFox detected bootloader inside of the {1}")(path));
   }
 		// If exists, extract file_contexts from the zip file
-	if (!Zip->EntryExists("file_contexts")) {
+	if (!Zip->EntryExists("file_contexts")) 
+	{
 		Zip->Close();
 		LOGINFO("Zip does not contain SELinux file_contexts file in its root.\n");
-	} else {
+	} else 
+	{
 		const string output_filename = "/file_contexts";
 		LOGINFO("Zip contains SELinux file_contexts file in its root. Extracting to %s\n", output_filename.c_str());
-		if (!Zip->ExtractEntry("file_contexts", output_filename, 0644)) {
+		if (!Zip->ExtractEntry("file_contexts", output_filename, 0644)) 
+		{
 			Zip->Close();
 			TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, false);
 			LOGERR("Could not extract '%s'\n", output_filename.c_str());
@@ -287,7 +297,8 @@ string pre_build = pre_something + "build";
 	return INSTALL_SUCCESS;
 }
 
-static bool update_binary_has_legacy_properties(const char *binary) {
+static bool update_binary_has_legacy_properties(const char *binary) 
+{
 	const char str_to_match[] = "ANDROID_PROPERTY_WORKSPACE";
 	int len_to_match = sizeof(str_to_match) - 1;
 	bool found = false;
@@ -320,17 +331,24 @@ static bool update_binary_has_legacy_properties(const char *binary) {
 	return found;
 }
 
-static int Run_Update_Binary(const char *path, ZipWrap *Zip, int* wipe_cache, zip_type ztype) {
+
+static int Run_Update_Binary(const char *path, ZipWrap *Zip, int* wipe_cache, zip_type ztype) 
+{
 	int ret_val, pipe_fd[2], status, zip_verify, aroma_running;
 	char buffer[1024];
 	FILE* child_data;
 
 #ifndef TW_NO_LEGACY_PROPS
-	if (!update_binary_has_legacy_properties(TMP_UPDATER_BINARY_PATH)) {
+	if (!update_binary_has_legacy_properties(TMP_UPDATER_BINARY_PATH)) 
+	{
 		LOGINFO("Legacy property environment not used in updater.\n");
-	} else if (switch_to_legacy_properties() != 0) { /* Set legacy properties */
+	} 
+	else if (switch_to_legacy_properties() != 0) 
+	{ /* Set legacy properties */
 		LOGERR("Legacy property environment did not initialize successfully. Properties may not be detected.\n");
-	} else {
+	} 
+	else 
+	{
 		LOGINFO("Legacy property environment initialized.\n");
 	}
 #endif
@@ -338,19 +356,23 @@ static int Run_Update_Binary(const char *path, ZipWrap *Zip, int* wipe_cache, zi
 	pipe(pipe_fd);
 
 	std::vector<std::string> args;
-    if (ztype == UPDATE_BINARY_ZIP_TYPE) {
+    	if (ztype == UPDATE_BINARY_ZIP_TYPE) 
+    	{
 		ret_val = update_binary_command(path, 0, pipe_fd[1], &args);
-    } else if (ztype == AB_OTA_ZIP_TYPE) {
+    	} else if (ztype == AB_OTA_ZIP_TYPE) 
+    	{
 		ret_val = abupdate_binary_command(path, Zip, 0, pipe_fd[1], &args);
-	} else {
+	} else 
+	{
 		LOGERR("Unknown zip type %i\n", ztype);
 		ret_val = INSTALL_CORRUPT;
 	}
-    if (ret_val) {
-        close(pipe_fd[0]);
-        close(pipe_fd[1]);
-        return ret_val;
-    }
+    	if (ret_val) 
+    	{
+        	close(pipe_fd[0]);
+        	close(pipe_fd[1]);
+        	return ret_val;
+    	}
 
 	// Convert the vector to a NULL-terminated char* array suitable for execv.
 	const char* chr_args[args.size() + 1];
@@ -359,7 +381,8 @@ static int Run_Update_Binary(const char *path, ZipWrap *Zip, int* wipe_cache, zi
 		chr_args[i] = args[i].c_str();
 
 	pid_t pid = fork();
-	if (pid == 0) {
+	if (pid == 0) 
+	{
 		close(pipe_fd[0]);
 		execve(chr_args[0], const_cast<char**>(chr_args), environ);
 		printf("E:Can't execute '%s': %s\n", chr_args[0], strerror(errno));
@@ -372,11 +395,15 @@ static int Run_Update_Binary(const char *path, ZipWrap *Zip, int* wipe_cache, zi
 
 	DataManager::GetValue(TW_SIGNED_ZIP_VERIFY_VAR, zip_verify);
 	child_data = fdopen(pipe_fd[0], "r");
-	while (fgets(buffer, sizeof(buffer), child_data) != NULL) {
+	while (fgets(buffer, sizeof(buffer), child_data) != NULL) 
+	{
 		char* command = strtok(buffer, " \n");
-		if (command == NULL) {
+		if (command == NULL) 
+		{
 			continue;
-		} else if (strcmp(command, "progress") == 0) {
+		} 
+		else if (strcmp(command, "progress") == 0) 
+		{
 			char* fraction_char = strtok(NULL, " \n");
 			char* seconds_char = strtok(NULL, " \n");
 
@@ -387,32 +414,44 @@ static int Run_Update_Binary(const char *path, ZipWrap *Zip, int* wipe_cache, zi
 				DataManager::ShowProgress(fraction_float * (1 - VERIFICATION_PROGRESS_FRAC), seconds_float);
 			else
 				DataManager::ShowProgress(fraction_float, seconds_float);
-		} else if (strcmp(command, "set_progress") == 0) {
+		} 
+		else if (strcmp(command, "set_progress") == 0) 
+		{
 			char* fraction_char = strtok(NULL, " \n");
 			float fraction_float = strtof(fraction_char, NULL);
 			DataManager::SetProgress(fraction_float);
-		} else if (strcmp(command, "ui_print") == 0) {
+		} 
+		else if (strcmp(command, "ui_print") == 0) 
+		{
 			char* display_value = strtok(NULL, "\n");
-			if (display_value) {
-				if (strcmp(display_value, "AROMA Installer Finished...") == 0 && (aroma_running == 1)) {
+			if (display_value) 
+			{
+				if (strcmp(display_value, "AROMA Installer Finished...") == 0 && (aroma_running == 1)) 
+				{
 					aroma_running = 0;
 					gui_changeOverlay("");
 				}
 				gui_print("%s", display_value);
-				if (strcmp(display_value, "(c) 2013 by amarullz xda-developers") == 0 && (aroma_running == 0)) {
+				if (strcmp(display_value, "(c) 2013 by amarullz xda-developers") == 0 && (aroma_running == 0)) 
+				{
 					aroma_running = 1;
 					gui_changeOverlay("black_out");
 				}
-			} else {
+			} else 
+			{
 				gui_print("\n");
 			}
-		} else if (strcmp(command, "wipe_cache") == 0) {
+		} else if (strcmp(command, "wipe_cache") == 0) 
+		{
 			*wipe_cache = 1;
-		} else if (strcmp(command, "clear_display") == 0) {
+		} else if (strcmp(command, "clear_display") == 0) 
+		{
 			// Do nothing, not supported by TWRP
-		} else if (strcmp(command, "log") == 0) {
+		} else if (strcmp(command, "log") == 0) 
+		{
 			printf("%s\n", strtok(NULL, "\n"));
-		} else {
+		} else 
+		{
 			LOGERR("unknown command [%s]\n", command);
 		}
 	}
@@ -421,7 +460,8 @@ static int Run_Update_Binary(const char *path, ZipWrap *Zip, int* wipe_cache, zi
 	int waitrc = TWFunc::Wait_For_Child(pid, &status, "Updater");
 
 	// Should never happen, but in case of crash or other unexpected condition
-	if (aroma_running == 1) {
+	if (aroma_running == 1) 
+	{
 		gui_changeOverlay("");
 	}
 
@@ -436,7 +476,8 @@ static int Run_Update_Binary(const char *path, ZipWrap *Zip, int* wipe_cache, zi
 	}
 #endif
 
-	if (waitrc != 0) {
+	if (waitrc != 0) 
+	{
 		TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, false);
 		return INSTALL_ERROR;
         }
@@ -444,36 +485,44 @@ static int Run_Update_Binary(const char *path, ZipWrap *Zip, int* wipe_cache, zi
 	return INSTALL_SUCCESS;
 }
 
-int TWinstall_zip(const char* path, int* wipe_cache) {
+int TWinstall_zip(const char* path, int* wipe_cache) 
+{
 	int ret_val, zip_verify = 1;
 
-	if (strcmp(path, "error") == 0) {
+	if (strcmp(path, "error") == 0) 
+	{
 		LOGERR("Failed to get adb sideload file: '%s'\n", path);
 		return INSTALL_CORRUPT;
 	}
 
 
 	
-    if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1) {
+    if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1) 
+    {
 	gui_msg(Msg("installing_zip=Installing zip file '{1}'")(path));
 	
-	if (strlen(path) < 9 || strncmp(path, "/sideload", 9) != 0) {
+	if (strlen(path) < 9 || strncmp(path, "/sideload", 9) != 0) 
+	{
 		string digest_str;
 		string Full_Filename = path;
 		string digest_file = path;
 		digest_file += ".md5";
 
 		gui_msg("check_for_digest=Checking for Digest file...");
-		if (!TWFunc::Path_Exists(digest_file)) {
+		if (!TWFunc::Path_Exists(digest_file)) 
+		{
 			gui_msg("no_digest=Skipping Digest check: no Digest file found");
 		}
-		else {
-			if (TWFunc::read_file(digest_file, digest_str) != 0) {
+		else 
+		{
+			if (TWFunc::read_file(digest_file, digest_str) != 0) 
+			{
 				LOGERR("Skipping MD5 check: MD5 file unreadable\n");
 			}
 			else {
 				twrpDigest *digest = new twrpMD5();
-				if (!twrpDigestDriver::stream_file_to_digest(Full_Filename, digest)) {
+				if (!twrpDigestDriver::stream_file_to_digest(Full_Filename, digest)) 
+				{
 					delete digest;
 					return INSTALL_CORRUPT;
 				}
@@ -481,7 +530,8 @@ int TWinstall_zip(const char* path, int* wipe_cache) {
 				if (digest_str == digest_check) {
 					gui_msg(Msg("digest_matched=Digest matched for '{1}'.")(path));
 				}
-				else {
+				else 
+				{
 					LOGERR("Aborting zip install: Digest verification failed\n");
 					TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, true);
 					delete digest;
@@ -491,7 +541,7 @@ int TWinstall_zip(const char* path, int* wipe_cache) {
 			}
 		}
 	}
-  }
+    }
 
 #ifndef TW_OEM_BUILD
 	DataManager::GetValue(TW_SIGNED_ZIP_VERIFY_VAR, zip_verify);

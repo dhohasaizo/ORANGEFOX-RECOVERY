@@ -1178,24 +1178,26 @@ void DataManager::Vibrate(const string& varName)
 
 void DataManager::Leds(bool enable)
 {
-	std::string leds, bs, bsmax, time, blink, bsm;
-	struct stat st;
-	leds = "/sys/class/leds/green";
-	bs = leds + "/brightness";
-    time = leds + "/led_time";
-    blink = leds + "/blink";
-    bsmax = leds + "/max_brightness";
-    if (!enable && stat(bs.c_str(), &st) == 0)
-    TWFunc::write_to_file(bs, "0");
-    else {
-    if (stat(bs.c_str(), &st) == 0 && stat(time.c_str(), &st) == 0 && stat(bsmax.c_str(), &st) == 0 && stat(blink.c_str(), &st) == 0)
+std::string leds, bs, bsmax, time, blink, bsm;
+struct stat st;
+leds = "/sys/class/leds/green";
+bs = leds + "/brightness";
+time = leds + "/led_time";
+blink = leds + "/blink";
+bsmax = leds + "/max_brightness";
+
+   if (!enable && stat(bs.c_str(), &st) == 0)
+    	TWFunc::write_to_file(bs, "0");
+    else 
     {
+      if (stat(bs.c_str(), &st) == 0 && stat(time.c_str(), &st) == 0 && stat(bsmax.c_str(), &st) == 0 && stat(blink.c_str(), &st) == 0)
+      {
 	if (TWFunc::read_file(bsmax, bsm) == 0)
 	{
-	TWFunc::write_to_file(bs, bsm);
-	TWFunc::write_to_file(blink, "1");
-	TWFunc::write_to_file(time, "1 1 1 1");
+		TWFunc::write_to_file(bs, bsm);
+		TWFunc::write_to_file(blink, "1");
+		TWFunc::write_to_file(time, "1 1 1 1");
         }
+      }
    }
-  }
 }

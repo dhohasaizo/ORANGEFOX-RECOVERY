@@ -5,17 +5,17 @@
 
 <action>
        <condition var1="heslo" op="=" var2="tw_heslo_check"/>
-				<actions>
-				<action function="set">tw_clear_destination=main2</action>
-				<action function="page">clear_vars</action>
-				</actions>
+		<actions>
+			<action function="set">tw_clear_destination=main2</action>
+			<action function="page">clear_vars</action>
+		</actions>
 </action>
 
 <action>
        <condition var1="heslo" op="!=" var2="tw_heslo_check"/>
 		<actions>
-                <action function="set">tw_clear_destination=lockpass</action>
-		<action function="page">clear_vars</action>
+                	<action function="set">tw_clear_destination=lockpass</action>
+			<action function="page">clear_vars</action>
 		</actions>
 </action>
 
@@ -68,7 +68,7 @@
 				<listitem name="{@extra_shit_info_line10=}"/>
 				<listitem name="{@extra_shit_info_line11=}"/>
 				<listitem name="{@extra_shit_info_line12=}"/>
-                <listitem name="{@extra_shit_info_line13=}"/>
+                		<listitem name="{@extra_shit_info_line13=}"/>
 				<listitem name="{@extra_shit_info_line14=}"/>
 				<listitem name="{@extra_shit_info_line15=}"/>
 				<listitem name="{@extra_shit_info_line16=}"/>
@@ -236,7 +236,7 @@
 <action>
 				<touch key="back"/>
 				<action function="page">advanced</action>
-			</action>
+</action>
 
 <action>
 				<touch key="home"/>
@@ -2856,7 +2856,7 @@
 				<action function="set">tw_droid_password_new2=</action>
 				<action function="page">main2</action>
 				<action function="set">tw_passnew1_viditelnost=0</action>
-                <action function="set">tw_passnew2_viditelnost=0</action>
+                		<action function="set">tw_passnew2_viditelnost=0</action>
 				</actions>
 			</button>
 
@@ -2933,11 +2933,11 @@
 			<action>
 				<touch key="back"/>
 				<actions>
-					<action function="set">tw_passnew1_viditelnost=0</action>
-                    <action function="set">tw_passnew2_viditelnost=0</action>
-				    <action function="page">advanced</action>
-				    <action function="set">tw_droid_password_new1=</action>
-				    <action function="set">tw_droid_password_new2=</action>
+				<action function="set">tw_passnew1_viditelnost=0</action>
+                    		<action function="set">tw_passnew2_viditelnost=0</action>
+				<action function="page">advanced</action>
+				<action function="set">tw_droid_password_new1=</action>
+				<action function="set">tw_droid_password_new2=</action>
 				</actions>
 			</action>
 </page>
@@ -3419,12 +3419,12 @@
        	</slider>
 
 <action>
-				<touch key="back"/>
+			<touch key="back"/>
 			<action function="page">theme_settings</action>
 			</action>
 
 <action>
-				<touch key="home"/>
+			<touch key="home"/>
 			<action function="page">main2</action>
 			</action>
 </page>
@@ -3986,7 +3986,10 @@
 			<button>
 				<placement x="492" y="84"/>
 				<image resource="actionbar_wolf"/>
+				<actions>
+				<action function="disableled"/>
 				<action function="page">about</action>
+				</actions>
 			</button>
 
 <!--button>
@@ -4175,7 +4178,7 @@
 
 			<button style="mb_btn">
 				<placement x="%col1_x%" y="%mb_row4_y%" w="%content_w%" h="%mb_h%"/>
-           <action function="page">restore</action>
+ <action function="page">restore</action>
 			</button>
 
 			<image>
@@ -4251,6 +4254,7 @@
 				<actions>
 					<action function="set">tw_filecheck=%rw_resource_dir%/AromaFM/AromaFM.zip</action>
 					<action function="set">tw_existpage=flash_aromafm_confirm</action>
+				<action function="disableled"/>	
 					<action function="set">tw_back=main2</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
@@ -7644,17 +7648,24 @@
 					<action function="set">tw_filename=%rw_resource_dir%/AromaFM/AromaFM.zip</action>
 					<action function="queuezip"/>
 				<action function="flash">flash_zip</action>
+			<action function="disableled"/>	
 				</actions>
 			</slider>
 
 			<action>
 				<touch key="back"/>
+				<actions>
+				<action function="disableled"/>
 				<action function="page">main2</action>
+				</actions>
 			</action>
 
 			<action>
 				<touch key="home"/>
+				<actions>
+				<action function="disableled"/>
 				<action function="page">main2</action>
+				</actions>
 			</action>
 			</page>
 
@@ -8529,6 +8540,7 @@
 					<action function="set">tw_action_text1={@wiping_cache_dalvik=Wiping Cache &amp; Dalvik...}</action>
 					<action function="set">tw_complete_text1={@wipe_cache_dalvik_complete=Cache &amp; Dalvik Wipe Complete}</action>
 					<action function="set">tw_slider_text={@swipe_wipe=Swipe to Wipe}</action>
+		<action function="disableled"/>			
                     <action function="page">confirm_action</action>
 				</actions>
 			</button>
@@ -12539,13 +12551,14 @@
 			</button>
 
 <button>
-				<conditions>
+		<conditions>
 	             <condition var1="tw_busy" var2="0"/>
 				<condition var1="rw_inject_after_backup" var2="0"/>
 				</conditions>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<actions>
+				<action function="disableled"/>
 					<action function="set">tw_clear_destination=main2</action>
 					<action function="page">clear_vars</action>
 				</actions>
@@ -12597,6 +12610,7 @@
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@back_btn=BACK}</text>
 				<actions>
+				<action function="disableled"/>
 					<action function="set">tw_clear_destination=%tw_back%</action>
 					<action function="page">clear_vars</action>
 				</actions>
@@ -13562,6 +13576,7 @@
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@back_btn=BACK}</text>
 				<actions>
+				<action function="disableled"/>
 					<action function="set">tw_clear_destination=%tw_back%</action>
 					<action function="page">clear_vars</action>
 				</actions>
