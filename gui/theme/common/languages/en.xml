@@ -576,7 +576,7 @@
 		<string name="size_progress">%lluMB of %lluMB, %i%%</string>
 		<string name="decrypt_cmd">Attempting to decrypt data partition via command line.</string>
 		<string name="base_pkg_err">Failed to load base packages.</string>
-		<string name="simulating">SIMULATING ACTIONS</string>
+		<string name="simulating">Powersave</string>
 		<string name="backup_cancel">Backup Cancelled</string>
 		<string name="config_twrp">Configuring TWRP...</string>
 		<string name="config_twrp_err">Unable to configure TWRP with this kernel.</string>
@@ -1056,6 +1056,10 @@
 	<string name="fox_menu_flash">Orange!</string>
 	<string name="fox_menu_delpass">Del ROM Pass</string>
 	<string name="fox_menu_navigation">Navigation</string>
+	<string name="fox_m_other">Other settings</string>
+	<string name="fox_dell_pass">Dell ROM Pass</string>
+
+	<string name="fox_slider_magisk">Swipe to install Magisk</string>
 
 	<string name="fox_redwolf">for RedWolf development and</string>
 	<string name="fox_rey">Vince maintainer</string>

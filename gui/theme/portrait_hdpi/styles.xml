@@ -19,11 +19,11 @@
 		</style>
 
 		<style name="text_status">
-			<font resource="status" color="%text%"/>
+			<font resource="status" color="#000000"/>
 		</style>
 
 		<style name="text_status_fail">
-			<font resource="status" color="%text_fail%"/>
+			<font resource="status" color="#000000"/>
 		</style>
 
 		<style name="text_body1">
@@ -108,12 +108,6 @@
 			<font resource="button" color="%text%"/>
 			<image resource="btn_raised_warn"/>
 		</style>
-
-		<!--style name="btn_raised_hl">
-			<highlight color="%highlight_color%"/>
-			<font resource="button" color="%text%"/>
-			<image resource="btn_raised_hl"/>
-		</style-->
 
 		<style name="btn_raised_hl">
 			<highlight color="%highlight_color%"/>
