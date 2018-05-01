@@ -985,28 +985,28 @@
 	<string name="wolf_reboot_nastaveni">Set on boot settings</string>
 	<string name="wolf_no_os_engine">Gunakan NO OS Search Engine Lanjutan</string>
     <string name="wolf_reset_default_hdr">Pengaturan Default</string>
-	<string name="wolf_extra_shit_hdr">Aksi Lanjutan</string>
-	<string name="wolf_extra_shit_hdr_2">Aksi Lanjutan dari OrangeFox Recovery</string>
-	<string name="extra_shit_info_line1">Halo! Selamat datang dibagian</string>
-     <string name="extra_shit_info_line2">aksi spesial! Disini Anda bisa mengubah</string>
-     <string name="extra_shit_info_line3">bagaimana cara OrangeFox Recovery</string>
-     <string name="extra_shit_info_line4">memasang berkas-berkas zip.</string>  
-     <string name="extra_shit_info_line5">Mungkin Anda tidak ingin memasang lazyflasher</string>       
-     <string name="extra_shit_info_line6">setiap kali Anda memasang ROM dengan</string>
-     <string name="extra_shit_info_line7">DM-Verity yang aktif? Jadi, aktifkan saja</string>
-     <string name="extra_shit_info_line8">ini &quot;Matikan DM-Verity&quot; dan</string>
-     <string name="extra_shit_info_line9">itu semua yang harus Anda lakukan.</string>
-     <string name="extra_shit_info_line10">Setelah itu, jika kamu memasang ROM</string>
-     <string name="extra_shit_info_line11">pemulihan akan otomatis selama pemeriksaan</string>
-     <string name="extra_shit_info_line12">instalasi dan menonaktifkan dm-verity.</string>
-     <string name="extra_shit_info_line13">Proses yang sama juga untuk memaksa</string>
-     <string name="extra_shit_info_line14">enkripsi.</string>   
-     <string name="extra_shit_info_line15">Hal lain seperti &quot;Aktifasi Debugging...&quot;</string>
-     <string name="extra_shit_info_line16">merubah props...</string>
-     <string name="extra_shit_info_line17">Jika masih memiliki pertanyaan maka</string>
-     <string name="extra_shit_info_line18">tanyalah kami di Thread XDA atau di</string>
-     <string name="extra_shit_info_line19">Grup Telegram (tautan ada di XDA).</string>
-     <string name="extra_shit_info_line20">Nikmati! :)</string>
+	<string name="wolf_extra_fox_hdr">Aksi Lanjutan</string>
+	<string name="wolf_extra_fox_hdr_2">Aksi Lanjutan dari OrangeFox Recovery</string>
+	<string name="extra_fox_info_line1">Halo! Selamat datang dibagian</string>
+     <string name="extra_fox_info_line2">aksi spesial! Disini Anda bisa mengubah</string>
+     <string name="extra_fox_info_line3">bagaimana cara OrangeFox Recovery</string>
+     <string name="extra_fox_info_line4">memasang berkas-berkas zip.</string>  
+     <string name="extra_fox_info_line5">Mungkin Anda tidak ingin memasang lazyflasher</string>       
+     <string name="extra_fox_info_line6">setiap kali Anda memasang ROM dengan</string>
+     <string name="extra_fox_info_line7">DM-Verity yang aktif? Jadi, aktifkan saja</string>
+     <string name="extra_fox_info_line8">ini &quot;Matikan DM-Verity&quot; dan</string>
+     <string name="extra_fox_info_line9">itu semua yang harus Anda lakukan.</string>
+     <string name="extra_fox_info_line10">Setelah itu, jika kamu memasang ROM</string>
+     <string name="extra_fox_info_line11">pemulihan akan otomatis selama pemeriksaan</string>
+     <string name="extra_fox_info_line12">instalasi dan menonaktifkan dm-verity.</string>
+     <string name="extra_fox_info_line13">Proses yang sama juga untuk memaksa</string>
+     <string name="extra_fox_info_line14">enkripsi.</string>   
+     <string name="extra_fox_info_line15">Hal lain seperti &quot;Aktifasi Debugging...&quot;</string>
+     <string name="extra_fox_info_line16">merubah props...</string>
+     <string name="extra_fox_info_line17">Jika masih memiliki pertanyaan maka</string>
+     <string name="extra_fox_info_line18">tanyalah kami di Thread XDA atau di</string>
+     <string name="extra_fox_info_line19">Grup Telegram (tautan ada di XDA).</string>
+     <string name="extra_fox_info_line20">Nikmati! :)</string>
      
 	
 	<!-- Console Messages -->
@@ -1024,9 +1024,9 @@
 	<string name="wolf_disable_boot_chk">Matikan pemeriksaan boot</string>
 	<string name="wolf_include_system_survival_chk">Sertakan sistem dalam Survival OTA</string>
 	<string name="wolf_verify_incremental_ota_signature_chk">Verifikasi signature Inkremental OTA </string>
-	<string name="wolf_prebuilt_shit_not_exist_hdr">Berkas tidak ada!</string>
-	<string name="wolf_prebuilt_shit_not_exist_1">Mohon flash ulang pemulihan</string>
-	<string name="wolf_prebuilt_shit_not_exist_2">menggunakan instalasi zip.</string>
+	<string name="wolf_prebuilt_fox_not_exist_hdr">Berkas tidak ada!</string>
+	<string name="wolf_prebuilt_fox_not_exist_1">Mohon flash ulang pemulihan</string>
+	<string name="wolf_prebuilt_fox_not_exist_2">menggunakan instalasi zip.</string>
 	<string name="wolf_fm_unzip_btn">Unzip</string>
 	<!-- Console Messages -->
 	<string name="wolf_incremental_ota_compatibility_chk">Memverifikasi Signature Paket Inkremental...</string>
@@ -1038,6 +1038,6 @@
 	<string name="substratum_done">-- Lapisan Substratum Selesai Dibersihkan!</string>
 	<string name="wolf_no_space_ota_survival">Tidak cukup ruang kosong pada penyimpanan internal untuk membuat OTA Survival.</string>
 	<!-- Red Wolf Recovery V3.1 / 023 -->
-	<string name="wolf_stupid_shit_detected">Pemulihan tidak mengizinkan anda untuk flashing '{1}' sampai aplikasi pembajakan yang disebut 'Lucky Patcher' dicopot dari perangkat!</string>
+	<string name="wolf_stupid_fox_detected">Pemulihan tidak mengizinkan anda untuk flashing '{1}' sampai aplikasi pembajakan yang disebut 'Lucky Patcher' dicopot dari perangkat!</string>
 </resources>
 </language>

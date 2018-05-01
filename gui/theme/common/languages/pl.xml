@@ -985,28 +985,28 @@
 	<string name="wolf_reboot_nastaveni">Ustaw przy ustawieniach rozruchu</string>
 	<string name="wolf_no_os_engine">Użyj zaaw. wyszukiwarki braku systemu</string>
     <string name="wolf_reset_default_hdr">Domyśłne ustawienia</string>
-	<string name="wolf_extra_shit_hdr">Zaawansowane akcje</string>
-	<string name="wolf_extra_shit_hdr_2">Zaawansowane akcje the OrangeFox Recovery</string>
-	<string name="extra_shit_info_line1">Cześć! Witamy w sekcji akcji specjalnych!</string>
-     <string name="extra_shit_info_line2">Tutaj możesz zmienić sposób instalowania </string>
-     <string name="extra_shit_info_line3">plików zip w OrangeFox Recovery.</string>
-     <string name="extra_shit_info_line4"> </string>  
-     <string name="extra_shit_info_line5">Nie chcesz instalować lazyflasher za</string>       
-     <string name="extra_shit_info_line6">każdym razem, gdy instalujesz ROM z</string>
-     <string name="extra_shit_info_line7">aktywowanym dm-verity? Więc włącz</string>
-     <string name="extra_shit_info_line8">tutaj &quot;Wyłącz DM-Verity&quot; i gotowe.</string>
-     <string name="extra_shit_info_line9"> </string>
-     <string name="extra_shit_info_line10">Gdy instalujesz ROM, recovery sprawdzi</string>
-     <string name="extra_shit_info_line11">i wyłączy dm-verity podczas instalacji.</string>
-     <string name="extra_shit_info_line12"> </string>
-     <string name="extra_shit_info_line13">Ten proces dotyczy również wym. szyfrowania </string>
-     <string name="extra_shit_info_line14"> </string>   
-     <string name="extra_shit_info_line15">Inne opcje, typu Włącz debugowanie...</string>
-     <string name="extra_shit_info_line16">zmieniają własności...</string>
-     <string name="extra_shit_info_line17"></string>
-     <string name="extra_shit_info_line18">Jeśli nadal masz jakieś pytania, to zapytaj</string>
-     <string name="extra_shit_info_line19">nas w wątku na XDA lub na grupie Telegram</string>
-     <string name="extra_shit_info_line20">(link na XDA). Miłego! :)</string>
+	<string name="wolf_extra_fox_hdr">Zaawansowane akcje</string>
+	<string name="wolf_extra_fox_hdr_2">Zaawansowane akcje the OrangeFox Recovery</string>
+	<string name="extra_fox_info_line1">Cześć! Witamy w sekcji akcji specjalnych!</string>
+     <string name="extra_fox_info_line2">Tutaj możesz zmienić sposób instalowania </string>
+     <string name="extra_fox_info_line3">plików zip w OrangeFox Recovery.</string>
+     <string name="extra_fox_info_line4"> </string>  
+     <string name="extra_fox_info_line5">Nie chcesz instalować lazyflasher za</string>       
+     <string name="extra_fox_info_line6">każdym razem, gdy instalujesz ROM z</string>
+     <string name="extra_fox_info_line7">aktywowanym dm-verity? Więc włącz</string>
+     <string name="extra_fox_info_line8">tutaj &quot;Wyłącz DM-Verity&quot; i gotowe.</string>
+     <string name="extra_fox_info_line9"> </string>
+     <string name="extra_fox_info_line10">Gdy instalujesz ROM, recovery sprawdzi</string>
+     <string name="extra_fox_info_line11">i wyłączy dm-verity podczas instalacji.</string>
+     <string name="extra_fox_info_line12"> </string>
+     <string name="extra_fox_info_line13">Ten proces dotyczy również wym. szyfrowania </string>
+     <string name="extra_fox_info_line14"> </string>   
+     <string name="extra_fox_info_line15">Inne opcje, typu Włącz debugowanie...</string>
+     <string name="extra_fox_info_line16">zmieniają własności...</string>
+     <string name="extra_fox_info_line17"></string>
+     <string name="extra_fox_info_line18">Jeśli nadal masz jakieś pytania, to zapytaj</string>
+     <string name="extra_fox_info_line19">nas w wątku na XDA lub na grupie Telegram</string>
+     <string name="extra_fox_info_line20">(link na XDA). Miłego! :)</string>
      
 	
 	<!-- Console Messages -->
@@ -1024,9 +1024,9 @@
 	<string name="wolf_disable_boot_chk">Wyłącz sprawdzenie rozruchu</string>
 	<string name="wolf_include_system_survival_chk">Uwzględnij system w Przetrwaniu OTA</string>
 	<string name="wolf_verify_incremental_ota_signature_chk">Weryfikacja podpisu paczki OTA</string>
-	<string name="wolf_prebuilt_shit_not_exist_hdr">Plik nie istnieje!</string>
-	<string name="wolf_prebuilt_shit_not_exist_1">Proszę przeinstalować recovery</string>
-	<string name="wolf_prebuilt_shit_not_exist_2">za pomocą instalacyjnego zip.</string>
+	<string name="wolf_prebuilt_fox_not_exist_hdr">Plik nie istnieje!</string>
+	<string name="wolf_prebuilt_fox_not_exist_1">Proszę przeinstalować recovery</string>
+	<string name="wolf_prebuilt_fox_not_exist_2">za pomocą instalacyjnego zip.</string>
 	<string name="wolf_fm_unzip_btn">Rozpakuj</string>
 	<!-- Console Messages -->
 	<string name="wolf_incremental_ota_compatibility_chk">Weryfikowanie podpisu paczki OTA...</string>
@@ -1038,6 +1038,6 @@
 	<string name="substratum_done">-- Czyszczenie nakładek substratum ukończone!</string>
 	<string name="wolf_no_space_ota_survival">Za mało wolnego miejsca w pamięci wewnętrznej na utworzenie Przetrwania OTA.</string>
 	<!-- Red Wolf Recovery V3.1 / 023 -->
-	<string name="wolf_stupid_shit_detected">Recovery nie pozwoli Ci na instalację '{1}', dopóki piracka aplikacja o nazwie "Lucky Patcher" nie zostanie odinstalowana z twojego urządzenia!</string>
+	<string name="wolf_stupid_fox_detected">Recovery nie pozwoli Ci na instalację '{1}', dopóki piracka aplikacja o nazwie "Lucky Patcher" nie zostanie odinstalowana z twojego urządzenia!</string>
 </resources>
 </language>

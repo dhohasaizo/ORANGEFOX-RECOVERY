@@ -985,28 +985,28 @@
 	<string name="wolf_reboot_nastaveni">Set on boot settings</string>
 	<string name="wolf_no_os_engine">Use Advanced NO OS Search Engine</string>
     <string name="wolf_reset_default_hdr">Default Settings</string>
-	<string name="wolf_extra_shit_hdr">Advanced Actions</string>
-	<string name="wolf_extra_shit_hdr_2">Advanced Actions of the OrangeFox Recovery</string>
-	<string name="extra_shit_info_line1">Hi there! Welcome in the section of the</string>
-     <string name="extra_shit_info_line2">special actions! Here you can change</string>
-     <string name="extra_shit_info_line3">the way of how is the OrangeFox Recovery</string>
-     <string name="extra_shit_info_line4">installing zip files.</string>
-     <string name="extra_shit_info_line5">Maybe you don't want to flash lazyflasher</string>
-     <string name="extra_shit_info_line6">everytime when you are installing</string>
-     <string name="extra_shit_info_line7">ROM with enabled dm-verity? So just enable</string>
-     <string name="extra_shit_info_line8">here &quot;Disable DM-Verity&quot; and</string>
-     <string name="extra_shit_info_line9">that's everything what you have to do.</string>
-     <string name="extra_shit_info_line10">After that when you flash the ROM</string>
-     <string name="extra_shit_info_line11">recovery will automatically during the</string>
-     <string name="extra_shit_info_line12">installation check and disable dm-verity.</string>
-     <string name="extra_shit_info_line13">The same process is also for forced</string>
-     <string name="extra_shit_info_line14">encryption.</string>
-     <string name="extra_shit_info_line15">Other things like &quot;Enable Debugging...&quot;</string>
-     <string name="extra_shit_info_line16">are changing the props...</string>
-     <string name="extra_shit_info_line17">If you still have any question then</string>
-     <string name="extra_shit_info_line18">ask us in the XDA thread or in our</string>
-     <string name="extra_shit_info_line19">Telegram group (link is on XDA).</string>
-     <string name="extra_shit_info_line20">Enjoy! :)</string>
+	<string name="wolf_extra_fox_hdr">Advanced Actions</string>
+	<string name="wolf_extra_fox_hdr_2">Advanced Actions of the OrangeFox Recovery</string>
+	<string name="extra_fox_info_line1">Hi there! Welcome in the section of the</string>
+     <string name="extra_fox_info_line2">special actions! Here you can change</string>
+     <string name="extra_fox_info_line3">the way of how is the OrangeFox Recovery</string>
+     <string name="extra_fox_info_line4">installing zip files.</string>
+     <string name="extra_fox_info_line5">Maybe you don't want to flash lazyflasher</string>
+     <string name="extra_fox_info_line6">everytime when you are installing</string>
+     <string name="extra_fox_info_line7">ROM with enabled dm-verity? So just enable</string>
+     <string name="extra_fox_info_line8">here &quot;Disable DM-Verity&quot; and</string>
+     <string name="extra_fox_info_line9">that's everything what you have to do.</string>
+     <string name="extra_fox_info_line10">After that when you flash the ROM</string>
+     <string name="extra_fox_info_line11">recovery will automatically during the</string>
+     <string name="extra_fox_info_line12">installation check and disable dm-verity.</string>
+     <string name="extra_fox_info_line13">The same process is also for forced</string>
+     <string name="extra_fox_info_line14">encryption.</string>
+     <string name="extra_fox_info_line15">Other things like &quot;Enable Debugging...&quot;</string>
+     <string name="extra_fox_info_line16">are changing the props...</string>
+     <string name="extra_fox_info_line17">If you still have any question then</string>
+     <string name="extra_fox_info_line18">ask us in the XDA thread or in our</string>
+     <string name="extra_fox_info_line19">Telegram group (link is on XDA).</string>
+     <string name="extra_fox_info_line20">Enjoy! :)</string>
 
 
 	<!-- Console Messages -->
@@ -1023,9 +1023,9 @@
 	<string name="wolf_disable_boot_chk">Disable boot check</string>
 	<string name="wolf_include_system_survival_chk">Include system in OTA survival</string>
 	<string name="wolf_verify_incremental_ota_signature_chk">Incremental OTA signature verification</string>
-	<string name="wolf_prebuilt_shit_not_exist_hdr">File doesn't exist!</string>
-	<string name="wolf_prebuilt_shit_not_exist_1">Please reflash recovery</string>
-	<string name="wolf_prebuilt_shit_not_exist_2">using the installation zip.</string>
+	<string name="wolf_prebuilt_fox_not_exist_hdr">File doesn't exist!</string>
+	<string name="wolf_prebuilt_fox_not_exist_1">Please reflash recovery</string>
+	<string name="wolf_prebuilt_fox_not_exist_2">using the installation zip.</string>
 	<string name="wolf_fm_unzip_btn">Unzip</string>
 	<!-- Console Messages -->
 	<string name="wolf_incremental_ota_compatibility_chk">Verifying Incremental Package Signature...</string>
@@ -1037,7 +1037,7 @@
 	<string name="substratum_done">-- Substratum Overlays Wipe Complete!</string>
 	<string name="wolf_no_space_ota_survival">Not enough free space on internal storage for creating the OTA survival.</string>
 	<!-- Red Wolf Recovery V3.1 / 023 -->
-	<string name="wolf_stupid_shit_detected">Recovery won't allow you to to do this action until the pirating application called '{1}' is uninstalled from your device!</string>
+	<string name="wolf_stupid_fox_detected">Recovery won't allow you to to do this action until the pirating application called '{1}' is uninstalled from your device!</string>
 	<!-- Red Wolf Recovery V3.1 / 024 -->
     <string name="wolf_incremental_ota_res">OTA_RES -- done!</string>
 	<string name="wolf_incremental_ota_res_run">Running OTA_RES process...</string>

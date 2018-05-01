@@ -28,7 +28,7 @@
 
 </page>
 
-		<page name="extra_shit_info">
+		<page name="extra_fox_info">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -38,7 +38,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">wolf_project_extra_shit</action>
+				<action function="page">wolf_project_extra_fox</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -53,36 +53,36 @@
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@wolf_extra_shit_hdr=}</text>
+				<text>{@wolf_extra_fox_hdr=}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_2_y%"/>
-				<text>{@wolf_extra_shit_hdr_2=}</text>
+				<text>{@wolf_extra_fox_hdr_2=}</text>
 			</text>
 
 			<listbox style="textbox">
 				<placement x="%col1_x%" y="%row2_3_y%" w="%console_width%" h="%console_action_height%"/>
-				<listitem name="{@extra_shit_info_line1=}"/>
-				<listitem name="{@extra_shit_info_line2=}"/>
-				<listitem name="{@extra_shit_info_line3=}"/>
-				<listitem name="{@extra_shit_info_line4=}"/>
-				<listitem name="{@extra_shit_info_line5=}"/>
-				<listitem name="{@extra_shit_info_line6=}"/>
-				<listitem name="{@extra_shit_info_line7=}"/>
-				<listitem name="{@extra_shit_info_line8=}"/>
-				<listitem name="{@extra_shit_info_line9=}"/>
-				<listitem name="{@extra_shit_info_line10=}"/>
-				<listitem name="{@extra_shit_info_line11=}"/>
-				<listitem name="{@extra_shit_info_line12=}"/>
-    		<listitem name="{@extra_shit_info_line13=}"/>
-				<listitem name="{@extra_shit_info_line14=}"/>
-				<listitem name="{@extra_shit_info_line15=}"/>
-				<listitem name="{@extra_shit_info_line16=}"/>
-				<listitem name="{@extra_shit_info_line17=}"/>
-				<listitem name="{@extra_shit_info_line18=}"/>
-				<listitem name="{@extra_shit_info_line19=}"/>
-				<listitem name="{@extra_shit_info_line20=}"/>
+				<listitem name="{@extra_fox_info_line1=}"/>
+				<listitem name="{@extra_fox_info_line2=}"/>
+				<listitem name="{@extra_fox_info_line3=}"/>
+				<listitem name="{@extra_fox_info_line4=}"/>
+				<listitem name="{@extra_fox_info_line5=}"/>
+				<listitem name="{@extra_fox_info_line6=}"/>
+				<listitem name="{@extra_fox_info_line7=}"/>
+				<listitem name="{@extra_fox_info_line8=}"/>
+				<listitem name="{@extra_fox_info_line9=}"/>
+				<listitem name="{@extra_fox_info_line10=}"/>
+				<listitem name="{@extra_fox_info_line11=}"/>
+				<listitem name="{@extra_fox_info_line12=}"/>
+    		<listitem name="{@extra_fox_info_line13=}"/>
+				<listitem name="{@extra_fox_info_line14=}"/>
+				<listitem name="{@extra_fox_info_line15=}"/>
+				<listitem name="{@extra_fox_info_line16=}"/>
+				<listitem name="{@extra_fox_info_line17=}"/>
+				<listitem name="{@extra_fox_info_line18=}"/>
+				<listitem name="{@extra_fox_info_line19=}"/>
+				<listitem name="{@extra_fox_info_line20=}"/>
 			</listbox>
 
 			<fill color="%linecolor%">
@@ -97,12 +97,12 @@
 				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
 				<image resource="btn_float_accept"/>
 				<highlight color="%highlight_color%"/>
-				<action function="page">wolf_project_extra_shit</action>
+				<action function="page">wolf_project_extra_fox</action>
 			</button>
 
 			<action>
 				<touch key="back"/>
-				<action function="page">wolf_project_extra_shit</action>
+				<action function="page">wolf_project_extra_fox</action>
 			</action>
 
 			<action>
@@ -112,7 +112,7 @@
 			</page>
 
 
-<page name="wolf_project_extra_shit">
+<page name="wolf_project_extra_fox">
 
 			<template name="body"/>
 
@@ -129,7 +129,7 @@
 			<button>
         <placement x="853" y="row1_2a_y"/>
 				<image resource="btn_float_flashitinfo" highlightresource="btn_float_flashitinfo_hl"/>
-				<action function="page">extra_shit_info</action>
+				<action function="page">extra_fox_info</action>
 			</button>
 
 
@@ -1742,7 +1742,7 @@
 			<button style="mb_btn">
 				<condition var1="wolf_advanced_warning_checkbox" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row8_y%" w="%content_w%" h="%mb_h%"/>
-				<action function="page">wolf_project_extra_shit</action>
+				<action function="page">wolf_project_extra_fox</action>
 			</button>
 
 			<action>
@@ -1800,7 +1800,7 @@
 				<placement x="%db_right_x%" y="%db_y%"/>
 				<text>{@ok_btn=OK}</text>
 				<actions>
-				<action function="page">wolf_project_extra_shit</action>
+				<action function="page">wolf_project_extra_fox</action>
 				<action function="overlay"/>
 				</actions>
 			</button>
@@ -8118,7 +8118,7 @@
 
 			<!--button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
-				<text>{@wolf_games_shit=Game}</text>
+				<text>{@wolf_games_stuff=Game}</text>
 				<actions>
 				<action function="set">tw_back=flash_zip</action>
 				<action function="page">wolf_bobs_vagene</action>
@@ -12317,7 +12317,7 @@
 
 			<!--button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
-				<text>{@wolf_games_shit=Game}</text>
+				<text>{@wolf_games_stuff=Game}</text>
 				<actions>
 				<action function="set">tw_back=backup_run</action>
 				<action function="page">wolf_bobs_vagene</action>
@@ -12383,7 +12383,7 @@
 
              <text style="mb_text">
 				<placement x="%ab_bc_y%" y="%mb_row7_text_y%"/>
-				<text>{@wolf_game_shit_score=}: %rw_game_bobs_max%</text>
+				<text>{@wolf_game_fox_score=}: %rw_game_bobs_max%</text>
 			</text>
 
 			<button style="mb_btn">
@@ -13171,7 +13171,7 @@
 
 			<!--button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
-				<text>{@wolf_games_shit=Game}</text>
+				<text>{@wolf_games_stuff=Game}</text>
 				<actions>
 				<action function="set">tw_back=restore_run</action>
 				<action function="page">wolf_bobs_vagene</action>
@@ -16679,17 +16679,17 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>{@wolf_prebuilt_shit_not_exist_hdr=Change Theme}</text>
+				<text>{@wolf_prebuilt_fox_not_exist_hdr=Change Theme}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%storage_indent_x%" y="%db_text2a_y%"/>
-				<text>{@wolf_prebuilt_shit_not_exist_1=The recovery will now reboot}</text>
+				<text>{@wolf_prebuilt_fox_not_exist_1=The recovery will now reboot}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%storage_indent_x%" y="%db_text3a_y%"/>
-				<text>{@wolf_prebuilt_shit_not_exist_2=to apply the selected theme.}</text>
+				<text>{@wolf_prebuilt_fox_not_exist_2=to apply the selected theme.}</text>
 			</text>
 
 			<button style="btn_dlg_hl">

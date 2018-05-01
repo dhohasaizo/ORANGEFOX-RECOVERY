@@ -997,28 +997,28 @@
 	<string name="wolf_reboot_nastaveni">在 boot 设置中设置</string>
 	<string name="wolf_no_os_engine">使用高级的 NO OS 搜索引擎</string>
     <string name="wolf_reset_default_hdr">默认设置</string>
-	<string name="wolf_extra_shit_hdr">高级操作</string>
-	<string name="wolf_extra_shit_hdr_2">OrangeFox Recovery 高级操作</string>
-	<string name="extra_shit_info_line1">你好！欢迎使用高级操作！在这里，您可以更</string>
-     <string name="extra_shit_info_line2">改OrangeFox Recovery安装zip文件的方式。</string>
-     <string name="extra_shit_info_line3">也许你不想在每次刷入带有DM校验的ROM之</string>
-     <string name="extra_shit_info_line4">后再刷入删除DM校验的补丁？ 所以你只需</string>  
-     <string name="extra_shit_info_line5">在这里打开“禁用DM-Verity”就行了。 之后，</string>       
-     <string name="extra_shit_info_line6">当您刷机时，recovery将在安装过程中自动</string>
-     <string name="extra_shit_info_line7">检查并删除DM校验。禁用强制加密也是同样</string>
-     <string name="extra_shit_info_line8">的过程。如果您还有任何问题，请在XDA帖子</string>
-     <string name="extra_shit_info_line9">里或我们的Telegram群组（在XDA上链接）向</string>
-     <string name="extra_shit_info_line10">我们提问。 请享用！:)</string>
-     <string name="extra_shit_info_line11"></string>
-     <string name="extra_shit_info_line12"></string>
-     <string name="extra_shit_info_line13"></string>
-     <string name="extra_shit_info_line14"></string>
-     <string name="extra_shit_info_line15"></string>
-     <string name="extra_shit_info_line16"></string>
-     <string name="extra_shit_info_line17"></string>
-     <string name="extra_shit_info_line18"></string>
-     <string name="extra_shit_info_line19"></string>
-     <string name="extra_shit_info_line20"></string>
+	<string name="wolf_extra_fox_hdr">高级操作</string>
+	<string name="wolf_extra_fox_hdr_2">OrangeFox Recovery 高级操作</string>
+	<string name="extra_fox_info_line1">你好！欢迎使用高级操作！在这里，您可以更</string>
+     <string name="extra_fox_info_line2">改OrangeFox Recovery安装zip文件的方式。</string>
+     <string name="extra_fox_info_line3">也许你不想在每次刷入带有DM校验的ROM之</string>
+     <string name="extra_fox_info_line4">后再刷入删除DM校验的补丁？ 所以你只需</string>  
+     <string name="extra_fox_info_line5">在这里打开“禁用DM-Verity”就行了。 之后，</string>       
+     <string name="extra_fox_info_line6">当您刷机时，recovery将在安装过程中自动</string>
+     <string name="extra_fox_info_line7">检查并删除DM校验。禁用强制加密也是同样</string>
+     <string name="extra_fox_info_line8">的过程。如果您还有任何问题，请在XDA帖子</string>
+     <string name="extra_fox_info_line9">里或我们的Telegram群组（在XDA上链接）向</string>
+     <string name="extra_fox_info_line10">我们提问。 请享用！:)</string>
+     <string name="extra_fox_info_line11"></string>
+     <string name="extra_fox_info_line12"></string>
+     <string name="extra_fox_info_line13"></string>
+     <string name="extra_fox_info_line14"></string>
+     <string name="extra_fox_info_line15"></string>
+     <string name="extra_fox_info_line16"></string>
+     <string name="extra_fox_info_line17"></string>
+     <string name="extra_fox_info_line18"></string>
+     <string name="extra_fox_info_line19"></string>
+     <string name="extra_fox_info_line20"></string>
      
 	
 	<!-- Console Messages -->
@@ -1036,9 +1036,9 @@
 	<string name="wolf_disable_boot_chk">禁用 boot 检查</string>
 	<string name="wolf_include_system_survival_chk">在OTA备份中包含system</string>
 	<string name="wolf_verify_incremental_ota_signature_chk">增量OTA签名验证</string>
-	<string name="wolf_prebuilt_shit_not_exist_hdr">文件不存在！</string>
-	<string name="wolf_prebuilt_shit_not_exist_1">请使用安装zip</string>
-	<string name="wolf_prebuilt_shit_not_exist_2">重刷Recovery</string>
+	<string name="wolf_prebuilt_fox_not_exist_hdr">文件不存在！</string>
+	<string name="wolf_prebuilt_fox_not_exist_1">请使用安装zip</string>
+	<string name="wolf_prebuilt_fox_not_exist_2">重刷Recovery</string>
 	<string name="wolf_fm_unzip_btn">解压</string>
 	<!-- Console Messages -->
 	<string name="wolf_incremental_ota_compatibility_chk">验证增量包装签名...</string>
@@ -1051,6 +1051,6 @@
 	<string name="wolf_no_space_ota_survival">内部存储没有足够的空间来创建OTA备份。</string>
 	<!-- Red Wolf Recovery V3.1 / 023 -->
 	<!-- This string have to be updated first... -->
-	<!--string name="wolf_stupid_shit_detected">Recovery 不允许您刷入'{1}'，直到您从您的设备上卸载名为“Lucky Patcher”的盗版应用！</string-->
+	<!--string name="wolf_stupid_fox_detected">Recovery 不允许您刷入'{1}'，直到您从您的设备上卸载名为“Lucky Patcher”的盗版应用！</string-->
 </resources>
 </language>

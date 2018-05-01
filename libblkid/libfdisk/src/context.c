@@ -697,7 +697,7 @@ int fdisk_is_listonly(struct fdisk_context *cxt)
  * @cxt: context
  * @str: "cylinder" or "sector".
  *
- * This is pure shit, unfortunately for example Sun addresses begin of the
+ * This is pure trouble, unfortunately for example Sun addresses begin of the
  * partition by cylinders...
  *
  * Returns: 0 on succes, <0 on error.
