@@ -1,5 +1,12 @@
 <?xml version="1.0"?>
 <recovery>
+	<details>
+		<resolution width="1080" height="1920"/>
+		<author>OrangeFox dev team</author>
+		<title>OrangeFox</title>
+		<description>UI</description>
+	</details>
+
 	<pages>
 <page name="main">
 
@@ -14,7 +21,7 @@
 <action>
        <condition var1="heslo" op="!=" var2="tw_heslo_check"/>
 		<actions>
-                	<action function="set">tw_clear_destination=lockpass</action>
+    	<action function="set">tw_clear_destination=lockpass</action>
 			<action function="page">clear_vars</action>
 		</actions>
 </action>
@@ -68,7 +75,7 @@
 				<listitem name="{@extra_shit_info_line10=}"/>
 				<listitem name="{@extra_shit_info_line11=}"/>
 				<listitem name="{@extra_shit_info_line12=}"/>
-                		<listitem name="{@extra_shit_info_line13=}"/>
+    		<listitem name="{@extra_shit_info_line13=}"/>
 				<listitem name="{@extra_shit_info_line14=}"/>
 				<listitem name="{@extra_shit_info_line15=}"/>
 				<listitem name="{@extra_shit_info_line16=}"/>
@@ -116,11 +123,11 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-			    <action function="page">main</action>
+		    <action function="page">main</action>
 			</button>
 
 			<button>
-	            <placement x="853" y="row1_2a_y"/>
+        <placement x="853" y="row1_2a_y"/>
 				<image resource="btn_float_flashitinfo" highlightresource="btn_float_flashitinfo_hl"/>
 				<action function="page">extra_shit_info</action>
 			</button>
@@ -244,61 +251,6 @@
 			</action>
 	</page>
 
-			<!--page name="dialog_reset">
-			<background color="%transparent%"/>
-
-			<image>
-				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
-				<image resource="dialog_bg"/>
-			</image>
-
-			<text style="text_dlg_title">
-				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>{@wolf_reset_default_hdr=}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text1_y%"/>
-				<text>{@wolf_dialog_reset_note_1=}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text2_y%"/>
-				<text>{@wolf_dialog_reset_note_2=}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text3_y%"/>
-				<text>{@wolf_dialog_reset_note_3=}</text>
-			</text>
-
-			<button style="btn_dlg">
-				<placement x="%db_left_x%" y="%db_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
-				<action function="overlay"/>
-			</button>
-
-			<button style="btn_dlg_hl">
-				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
-				<actions>
-					<action function="restoredefaultsettings"/>
-					<action function="overlay"/>
-				</actions>
-			</button>
-
-			<action>
-				<touch key="volup"/>
-				<action function="screenshotexternal"/>
-			</action>
-
-<action>
-				<touch key="voldown"/>
-				<action function="screenshotinternal"/>
-			</action>
-		</page-->
-
-
 <page name="wolf_set_on_reboot">
 			<template name="body"/>
 
@@ -323,11 +275,11 @@
 				<image resource="wolf_on_boot_1"/>
 			</image>
 
-			<button>
+			<!--button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="wolf_traffic_light_2"/>
 				<action function="page">wolf_set_custom_led_color</action>
-			</button>
+			</button-->
 
 			<button>
 				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
@@ -367,40 +319,11 @@
 				<listitem name="{@wolf_hide_backup_folder_chk=Simulate failure for actions}">
 					<data variable="wolf_reboot_hide_backup_folder_check"/>
 				</listitem>
-				<!--listitem name="{@wolf_boot_qc2.0=Simulate failure for actions}">
-					<data variable="wolf_reboot_disable_backup_wifibl_check"/>
-				</listitem-->
 			</listbox>
-
-
-			<!--text style="caption">
-			<condition var1="nightmode" var2="0"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@nightmode_info_on=Swipe to turn on night mode}</text>
-			</text>
-
-<text style="caption">
-			<condition var1="nightmode" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@nightmode_info_off=Swipe to turn off night mode}</text>
-			</text>
-
-	     <slider>
-     	<condition var1="nightmode" var2="1"/>
-				<action function="cmd">echo "256 256 256" > /sys/devices/platform/kcal_ctrl.0/kcal;</action>
-		    	<action function="set">nightmode=0</action>
-              	</slider>
-
-			<slider>
-				<condition var1="nightmode" var2="0"/>
-				<action function="cmd">echo "256 193 132" > /sys/devices/platform/kcal_ctrl.0/kcal;</action>
-		    	<action function="set">nightmode=1</action>
-            	</slider-->
-
 
 			<action>
 				<conditions>
-	            <condition var1="tw_busy" var2="0"/>
+        <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_boot_performance_check" var2="0"/>
 				<condition var1="wolf_boot_balance_check" var2="0"/>
 				<condition var1="wolf_boot_powersave_check" var2="0"/>
@@ -411,12 +334,12 @@
 
 
 			<action>
-	            <condition var1="tw_busy" var2="0"/>
+        <condition var1="tw_busy" var2="0"/>
 				<condition var1="wolf_boot_performance_check" var2="1"/>
 				<actions>
 					<action function="set">wolf_boot_powersave_check=0</action>
 					<action function="set">wolf_boot_balance_check=0</action>
-             </actions>
+       	</actions>
 			</action>
 
 			<action>
@@ -425,7 +348,7 @@
 				<actions>
 					<action function="set">wolf_boot_performance_check=0</action>
 					<action function="set">wolf_boot_balance_check=0</action>
-             </actions>
+       	</actions>
 			</action>
 
 			<action>
@@ -434,7 +357,7 @@
 				<actions>
 					<action function="set">wolf_boot_performance_check=0</action>
 					<action function="set">wolf_boot_powersave_check=0</action>
-             </actions>
+       	</actions>
 			</action>
 
 			<action>
@@ -996,7 +919,7 @@
 </page>
 
 
-<page name="wolf_supersu">
+<page name="fox_pass">
 
 			<template name="body"/>
 
@@ -1007,22 +930,22 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">theme_settings</action>
+				<action function="page">fox_menu</action>
 			    </button>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>SuperSU</text>
+				<text>Delete ROM Password</text>
 			</text>
 
-			<text style="text_ab_title">
+			<!--text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>by Chainfire</text>
-			</text>
+			</text-->
 
-			<text style="caption">
+			<text> style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@wolf_flash_SU=}</text>
+				<text>{@fox_slider_magisk}</text>
 			</text>
 
 			<listbox style="settingslist">
@@ -1031,46 +954,26 @@
 				<listitem name="{@wolf_supersu_config_chk=}">
 					<data variable="rw_supersu_config_chk"/>
 				</listitem>
-				</listbox>
+			</listbox-->
 
 			<slider>
-				<condition var1="rw_supersu_config_chk" var2="0"/>
 				<actions>
 				   <action function="queueclear"/>
 					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
 					<action function="set">rw_inject_after_zip=0</action>
 					<action function="set">wolf_install_built_in_zip=1</action>
-					<action function="set">wolf_supersu_var=1</action>
 					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
 					<action function="set">tw_signed_zip_verify=0</action>
-					<action function="set">tw_filename=%rw_resource_dir%/SuperSU/SuperSU.zip</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/PassReset.zip</action>
 					<action function="queuezip"/>
-				    <action function="flash">flash_zip</action>
+			    <action function="flash">flash_zip</action>
 				</actions>
        	</slider>
-
-           <slider>
-				<condition var1="rw_supersu_config_chk" var2="1"/>
-				<actions>
-				   <action function="queueclear"/>
-					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
-					<action function="set">rw_inject_after_zip=0</action>
-					<action function="set">wolf_install_built_in_zip=1</action>
-					<action function="set">wolf_supersu_var=1</action>
-					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
-					<action function="set">tw_signed_zip_verify=0</action>
-					<action function="set">tw_filename=%rw_resource_dir%/SuperSU/SuperSU.zip</action>
-					<action function="queuezip"/>
-				    <action function="set">tw_filename=%rw_resource_dir%/SuperSU_Config/SuperSU_Config.zip</action>
-			        <action function="queuezip"/>
-				    <action function="flash">flash_zip</action>
-				</actions>
-      	</slider>
 
 
 <action>
 				<touch key="back"/>
-			      <action function="page">theme_settings</action>
+			      <action function="page">fox_menu</action>
 			</action>
 
 <action>
@@ -1093,7 +996,7 @@
 					<action function="cancelzip"/>
 					<action function="set">wolf_disableverity_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
-				     <action function="page">theme_settings</action>
+				     <action function="page">fox_menu</action>
              </actions>
 			</button>
 
@@ -1123,7 +1026,7 @@
 					<action function="cancelzip"/>
 					<action function="set">wolf_disableverity_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
-				     <action function="page">theme_settings</action>
+				     <action function="page">fox_menu</action>
                 </actions>
 			</action>
 
@@ -1265,7 +1168,7 @@
 </page>
 
 
-<page name="wolf_magisk">
+<page name="fox_magisk">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -1275,7 +1178,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-			    <action function="page">theme_settings</action>
+			    <action function="page">fox_menu</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -1285,7 +1188,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>by topjohnwu</text>
+				<text>by Topjohnwu</text>
 			</text>
 
 			<text style="caption">
@@ -1300,10 +1203,10 @@
 					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
 					<action function="set">rw_inject_after_zip=0</action>
 					<action function="set">wolf_install_built_in_zip=1</action>
-					<action function="set">wolf_magisk_var=1</action>
+					<action function="set">fox_magisk_var=1</action>
 					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
 					<action function="set">tw_signed_zip_verify=0</action>
-					<action function="set">tw_filename=%rw_resource_dir%/Magisk/Magisk.zip</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
 					<action function="queuezip"/>
 				<action function="flash">flash_zip</action>
 				</actions>
@@ -1311,7 +1214,7 @@
 
 <action>
 				<touch key="back"/>
-				        <action function="page">theme_settings</action>
+				        <action function="page">fox_menu</action>
 			</action>
 
 <action>
@@ -1908,7 +1811,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -1962,7 +1865,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -3377,7 +3280,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">theme_settings</action>
+				<action function="page">fox_menu</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -3420,7 +3323,7 @@
 
 <action>
 			<touch key="back"/>
-			<action function="page">theme_settings</action>
+			<action function="page">fox_menu</action>
 			</action>
 
 <action>
@@ -3514,7 +3417,7 @@
 
 
 
-            <text style="text_status">
+            <!--text style="text_status">
             	<conditions>
             	<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
 				<condition var1="show_cpu_temp" var2="0"/>
@@ -3603,7 +3506,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
+			</text-->
 
 			<text color="#FF7E00">
 				<font resource="status"/>
@@ -4010,7 +3913,7 @@
 <button>
 				<placement x="348" y="84"/>
 				<image resource="actionbar_theme" highlightresource="actionbar_theme_hl"/>
-				<action function="page">theme_settings</action>
+				<action function="page">fox_menu</action>
 			</button>
 
 
@@ -4254,7 +4157,7 @@
 				<actions>
 					<action function="set">tw_filecheck=%rw_resource_dir%/AromaFM/AromaFM.zip</action>
 					<action function="set">tw_existpage=flash_aromafm_confirm</action>
-				<action function="disableled"/>	
+				<action function="disableled"/>
 					<action function="set">tw_back=main2</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
@@ -4966,7 +4869,7 @@
 				<actions>
 					<action function="set">tw_theme_path=%tw_zip_location%</action>
 					<action function="set">tw_themeexists=1</action>
-					<action function="page">theme_settings</action>
+					<action function="page">fox_menu</action>
 				</actions>
 			</action>
 
@@ -5149,7 +5052,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">theme_settings</action>
+				<action function="page">fox_menu</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -5193,12 +5096,12 @@
 				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
 				<image resource="btn_float_accept"/>
 				<highlight color="%highlight_color%"/>
-				<action function="page">theme_settings</action>
+				<action function="page">fox_menu"</action>
 			</button>
 
 			<action>
 				<touch key="back"/>
-				<action function="page">theme_settings</action>
+				<action function="page">fox_menu</action>
 			</action>
 
 
@@ -5237,11 +5140,11 @@
 				<image resource="wolf_on_boot_1"/>
 			</image>
 
-			<button>
+			<!--button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="wolf_traffic_light_2"/>
 				<action function="page">wolf_set_custom_led_color</action>
-			</button>
+			</button-->
 
 			<button>
 				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
@@ -5394,11 +5297,11 @@
 				<action function="page">wolf_set_on_boot</action>
 			</button>
 
-			<button>
+			<!--button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="wolf_traffic_light_2"/>
 				<action function="page">wolf_set_custom_led_color</action>
-			</button>
+			</button-->
 
 			<image>
 				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
@@ -5470,7 +5373,7 @@
 
 
 
-<page name="wolf_set_custom_led_color">
+<!--page name="wolf_set_custom_led_color">
 			<template name="body"/>
 
 			<template name="ab_tab"/>
@@ -5709,7 +5612,7 @@
 				<touch key="back"/>
 				<action function="page">wolf_kernel_settings</action>
 			</action>
-		</page>
+		</page-->
 
 
 <page name="wolf_kernel_settings">
@@ -5748,11 +5651,11 @@
 				<action function="page">wolf_set_on_boot</action>
 			</button>
 
-			<button>
+			<!--button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="wolf_traffic_light_2"/>
 				<action function="page">wolf_set_custom_led_color</action>
-			</button>
+			</button-->
 
 			<button>
 				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
@@ -6291,7 +6194,7 @@
 			</action>
 		</page>
 
-		<page name="theme_settings">
+		<page name="fox_menu">
 			<template name="body"/>
 
 			<template name="ab"/>
@@ -6361,14 +6264,14 @@
 
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_left_x%" y="%row6_2_y%"/>
-				<text>SuperSU</text>
+				<text>{@fox_dell_pass}</text>
 					<actions>
-					<action function="set">tw_filecheck=%rw_resource_dir%/SuperSU/SuperSU.zip</action>
-					<action function="set">tw_existpage=wolf_supersu</action>
-					<action function="set">tw_back=theme_settings</action>
+					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/PassReset.zip</action>
+					<action function="set">tw_existpage=fox_pass</action>
+					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
-				   </actions>
+				  </actions>
 			</button>
 
 		  <button style="btn_raised">
@@ -6382,9 +6285,9 @@
 				<placement x="%btn_raised_left_x%" y="%row5_3_y%"/>
 				<text>Magisk</text>
 				<actions>
-					<action function="set">tw_filecheck=%rw_resource_dir%/Magisk/Magisk.zip</action>
-					<action function="set">tw_existpage=wolf_magisk</action>
-					<action function="set">tw_back=theme_settings</action>
+					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+					<action function="set">tw_existpage=fox_magisk</action>
+					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 				   </actions>
@@ -6396,12 +6299,6 @@
 				<action function="page">theme_splash</action>
 			</button>
 
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row7_1_y%" placement="1"/>
-				<text>{@fox_menu_delpass=Del ROM pass}</text>
-				<action function="page">theme_splash</action>
-			</button>
-
 			<text style="caption">
 				<placement x="%col1_x%" y="%row8_1_y%"/>
 				<text>{@fox_menu_navigation=Navigation}</text>
@@ -6409,7 +6306,7 @@
 
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row8_2_y%" placement="1"/>
-				<text>>></text>
+				<text>{@fox_m_other}</text>
 				<action function="page">fox_menu2</action>
 			</button>
 
@@ -6583,7 +6480,7 @@
 				<actions>
 				    <action function="set">tw_splash_png_name=</action>
 					<action function="set">tw_splash_png_path=</action>
-					<action function="page">theme_settings</action>
+					<action function="page">fox_menu</action>
 				</actions>
 			</action>
 
@@ -6941,7 +6838,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">theme_settings</action>
+				<action function="page">fox_menu</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -7294,7 +7191,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">theme_settings</action>
+				<action function="page">fox_menu</action>
 			</action>
 		</page>
 
@@ -7648,7 +7545,7 @@
 					<action function="set">tw_filename=%rw_resource_dir%/AromaFM/AromaFM.zip</action>
 					<action function="queuezip"/>
 				<action function="flash">flash_zip</action>
-			<action function="disableled"/>	
+			<action function="disableled"/>
 				</actions>
 			</slider>
 
@@ -7950,6 +7847,11 @@
 			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
+
+			<image>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back"/>
+			</image>
 
 			<text style="text_ab_title">
 				<conditions>
@@ -8540,7 +8442,7 @@
 					<action function="set">tw_action_text1={@wiping_cache_dalvik=Wiping Cache &amp; Dalvik...}</action>
 					<action function="set">tw_complete_text1={@wipe_cache_dalvik_complete=Cache &amp; Dalvik Wipe Complete}</action>
 					<action function="set">tw_slider_text={@swipe_wipe=Swipe to Wipe}</action>
-		<action function="disableled"/>			
+		<action function="disableled"/>
                     <action function="page">confirm_action</action>
 				</actions>
 			</button>
@@ -10154,7 +10056,7 @@
 				</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="set">tw_zip_location=/sdcard</action>
 			</action>
 
@@ -10281,7 +10183,7 @@
 				</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="set">tw_zip_location=/sdcard</action>
 			</action>
 		</page>
@@ -14757,7 +14659,7 @@
 			</action>
 
 			<action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -15813,7 +15715,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16052,8 +15954,8 @@
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
-				<touch key="voldown"/>
+		<action>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16186,13 +16088,6 @@
 				<touch key="back"/>
 				<action function="page">main</action>
 			</action>
-
-			<button>
-				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
-				<image resource="btn_float_accept"/>
-				<highlight color="%highlight_color%"/>
-				<action function="page">main2</action>
-			</button>
 		</page>
 
 		<page name="console">
@@ -16318,7 +16213,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 			</page>
@@ -16523,7 +16418,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16603,7 +16498,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16646,7 +16541,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16769,7 +16664,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16812,7 +16707,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16878,7 +16773,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -16988,119 +16883,10 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
-
-<!--page name="wolf_reset_wolf_settings_dialog">
-			<background color="%transparent%"/>
-
-			<image>
-				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
-				<image resource="dialog_bg"/>
-			</image>
-
-			<text style="text_dlg_title">
-				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>{@dialog_reset_theme_hdr=Default Settings}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text1_y%"/>
-				<text>{@dialog_reset_note_1=Do you want to restore the}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text2_y%"/>
-				<text>{@dialog_reset_note_2=default settings for TWRP recovery}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text3_y%"/>
-				<text>{@dialog_reset_note_3=and Materialised theme?}</text>
-			</text>
-
-			<button style="btn_dlg">
-				<placement x="%db_left_x%" y="%db_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
-				<action function="overlay"/>
-			</button>
-
-			<button style="btn_dlg_hl">
-				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
-				<actions>
-					<action function="set">tw_hide_kb=0</action>
-					<action function="set">wolf_boot_fastcharge_check=0</action>
-					<action function="set">wolf_boot_t2w_check=0</action>
-					<action function="set">wolf_boot_performance_check=0</action>
-					<action function="set">aromafm=0</action>
-					<action function="set">auto_generate=0</action>
-					<action function="set">show_cpu_temp=0</action>
-					<action function="set">center_clock=0</action>
-
-					<action function="set">wolf_set_custom_led_install_blue=0</action>
-					<action function="set">wolf_set_custom_led_install_green=1</action>
-					<action function="set">wolf_set_custom_led_install_red=0</action>
-					<action function="set">wolf_set_custom_led_backup_blue=0</action>
-					<action function="set">wolf_set_custom_led_backup_red=0</action>
-					<action function="set">wolf_set_custom_led_backup_green=1</action>
-					<action function="set">wolf_set_custom_led_backup_red=0</action>
-					<action function="set">wolf_set_custom_led_restore_green=1</action>
-					<action function="set">wolf_set_custom_led_restore_blue=0</action>
-					<action function="set">wolf_set_custom_led_restore_red=0</action>
-					<action function="set">aromafm=0</action>
-					<action function="set">auto_generate=0</action>
-					<action function="set">show_cpu_temp=0</action>
-					<action function="set">center_clock=0</action>
-					<action function="set">list_font=small</action>
-					<action function="set">bookmark=0</action>
-
-
-
-					<action function="set">list_font=small</action>
-					<action function="set">bookmark=0</action>
-					<action function="set">wolf_statusbar_on_lockpass=0</action>
-					<action function="set">rw_wifi_bluetooth_backup=0</action>
-					<action function="set">navbar_sams=small</action>
-					<action function="set">navbar_accent=0</action>
-					<action function="set">menu_btn_solid=0</action>
-					<action function="set">wolf_boot_powersave_check=0</action>
-					<action function="set">wolf_boot_qc2.0_check=0</action>
-					<action function="restoredefaultsettings"/>
-					<action function="overlay"/>
-				</actions>
-			</button>
-
-
-			<data variable="wolf_set_custom_led_install_green"/>
-				</listitem>
-				<listitem name="{@wolf_set_custom_led_blue=}">
-					<data variable="wolf_set_custom_led_install_blue"/>
-				</listitem>
-				<listitem name="{@wolf_set_custom_led_red=}">
-					<data variable="wolf_set_custom_led_install_red"/>
-
-
-
-<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
-				<action function="overlay">dialog_reset</action>
-			</button>
-
-
-			<action>
-				<touch key="volup"/>
-				<action function="screenshotexternal"/>
-			</action>
-
-<action>
-				<touch key="voldown"/>
-				<action function="screenshotinternal"/>
-			</action>
-		</page-->
 
 		<page name="dialog_reset_theme">
 			<background color="%transparent%"/>
@@ -17146,7 +16932,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -17212,7 +16998,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -17275,7 +17061,7 @@
 			</action>
 
 <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
@@ -17358,6 +17144,46 @@
 					</text>
 
 					<text style="caption">
+						<placement x="%col1_x%" y="%row1_1_y%"/>
+						<text>{@fox_menu2_power=Performace Profile}</text>
+					</text>
+
+					<listbox style="listbox">
+						<placement x="%col1_x%" y="%row1_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+						<listitem name="{@wolf_boot_performance=Skip MD5 generation during backup}">
+							<data variable="wolf_boot_performance_check"/>
+						</listitem>
+						<listitem name="{@wolf_boot_powersave=Enable MD5 verification of backup files}">
+							<data variable="wolf_boot_powersave_check"/>
+						</listitem>
+						<listitem name="{@wolf_boot_balance=Simulate actions for theme testing}">
+							<data variable="wolf_boot_balance_check"/>
+						</listitem>
+					</listbox>
+
+					<text style="caption">
+						<placement x="%col1_x%" y="%row3_1_y%"/>
+						<text>{@fox_menu2_other=Other Settings}</text>
+					</text>
+
+					<listbox style="settingslist">
+						<placement x="%col1_x%" y="%row3_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+						<listitem name="{@wolf_boot_fsync=Zip signature verification}">
+							<data variable="wolf_boot_fsync_check"/>
+						</listitem>
+						<listitem name="{@wolf_boot_fastcharge=Reboot after installation is complete}">
+							<data variable="wolf_boot_fastcharge_check"/>
+						</listitem>
+						<listitem name="{@wolf_boot_t2w=Use rm -rf instead of formatting}">
+							<data variable="wolf_boot_t2w_check"/>
+						</listitem>
+						<!--listitem name="{@wolf_boot_qc2.0=Simulate failure for actions}">
+							<condition var1="wolf_compatibility_wolf_device" var2="kenzo"/>
+							<data variable="wolf_boot_qc2.0_check"/>
+						</listitem-->
+					</listbox>
+
+					<text style="caption">
 						<placement x="%col1_x%" y="%row8_1_y%"/>
 						<text>{@fox_menu_navigation=Navigation}</text>
 					</text>
@@ -17365,8 +17191,47 @@
 					<button style="btn_raised_hl">
 						<placement x="%btn_raised_right_x%" y="%row8_2_y%" placement="1"/>
 						<text>Back</text>
-						<action function="page">wolf_rom_settings</action>
+						<action function="page">fox_menu</action>
 					</button>
+
+					<action>
+						<conditions>
+		        <condition var1="tw_busy" var2="0"/>
+						<condition var1="wolf_boot_performance_check" var2="0"/>
+						<condition var1="wolf_boot_balance_check" var2="0"/>
+						<condition var1="wolf_boot_powersave_check" var2="0"/>
+						</conditions>
+						<action function="set">wolf_boot_balance_check=1</action>
+					</action>
+
+
+
+					<action>
+		        <condition var1="tw_busy" var2="0"/>
+						<condition var1="wolf_boot_performance_check" var2="1"/>
+						<actions>
+							<action function="set">wolf_boot_powersave_check=0</action>
+							<action function="set">wolf_boot_balance_check=0</action>
+		       	</actions>
+					</action>
+
+					<action>
+			            <condition var1="tw_busy" var2="0"/>
+						<condition var1="wolf_boot_powersave_check" var2="1"/>
+						<actions>
+							<action function="set">wolf_boot_performance_check=0</action>
+							<action function="set">wolf_boot_balance_check=0</action>
+		       	</actions>
+					</action>
+
+					<action>
+			            <condition var1="tw_busy" var2="0"/>
+						<condition var1="wolf_boot_balance_check" var2="1"/>
+						<actions>
+							<action function="set">wolf_boot_performance_check=0</action>
+							<action function="set">wolf_boot_powersave_check=0</action>
+		       	</actions>
+					</action>
 
 					<action>
 						<touch key="home"/>
@@ -17497,7 +17362,7 @@
 			</action>
 
             <action>
-				<touch key="voldown"/>
+				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 
