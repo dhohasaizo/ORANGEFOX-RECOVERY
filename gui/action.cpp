@@ -1258,7 +1258,7 @@ int GUIAction::wipe(std::string arg)
 
 			if (PartitionManager.Mount_By_Path(Storage_Path, true)) {
 				LOGINFO("Making TWRP folder and saving settings.\n");
-				Storage_Path += "/Fox"; // dj9 - changed WOLF
+				Storage_Path += "/Fox"; 
 				mkdir(Storage_Path.c_str(), 0777);
 				DataManager::Flush();
 			} else {

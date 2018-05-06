@@ -1534,7 +1534,7 @@ int PageManager::RunReload()
 		ret_val = 1;
 	}
 
-	theme_path += "/Fox/.bin./jq.zip"; // dj9 - replaced "/WOLF"
+	theme_path += "/Fox/.bin./jq.zip"; 
 	if (ret_val != 0 || ReloadPackage("TWRP", theme_path) != 0)
 	{
 		// Loading the custom theme failed - try loading the stock theme

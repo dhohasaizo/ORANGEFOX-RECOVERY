@@ -800,7 +800,7 @@ extern "C" int gui_loadResources(void)
 			}
 		}
 
-		theme_path += "/Fox/.bin./pa.zip"; // dj9 - changed WOLF
+		theme_path += "/Fox/.bin./pa.zip"; 
 		if (check || PageManager::LoadPackage("TWRP", theme_path, "main"))
 		{
 #endif // ifndef TW_OEM_BUILD
@@ -835,7 +835,7 @@ extern "C" int gui_loadCustomResources(void)
 	}
 
 	std::string theme_path = DataManager::GetSettingsStoragePath();
-	theme_path += "/Fox/.bin./xd.zip"; // dj9 - changed WOLF
+	theme_path += "/Fox/.bin./xd.zip";
 	// Check for a custom theme
 	if (TWFunc::Path_Exists(theme_path)) 
 	{
