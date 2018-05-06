@@ -582,7 +582,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-		        <action function="page">wolf_rom_settings</action>
+		        <action function="page">fox_community</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -617,7 +617,7 @@
 
 <action>
 				<touch key="back"/>
-	            <action function="page">wolf_rom_settings</action>
+	            <action function="page">fox_community</action>
 			</action>
 
 <action>
@@ -639,7 +639,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">wolf_rom_settings</action>
+				<action function="page">fox_community</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -674,7 +674,7 @@
 
 <action>
 				<touch key="back"/>
-			    <action function="page">wolf_rom_settings</action>
+			    <action function="page">fox_community</action>
 			</action>
 
 <action>
@@ -695,7 +695,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-		       <action function="page">wolf_rom_settings</action>
+		       <action function="page">fox_community</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -730,7 +730,7 @@
 
 <action>
 				<touch key="back"/>
-		        <action function="page">wolf_rom_settings</action>
+		        <action function="page">fox_community</action>
 			</action>
 
 <action>
@@ -751,7 +751,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-			    <action function="page">wolf_rom_settings</action>
+			    <action function="page">fox_community</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -786,7 +786,7 @@
 
 <action>
 				<touch key="back"/>
-			    <action function="page">wolf_rom_settings</action>
+			    <action function="page">fox_community</action>
 			</action>
 
 <action>
@@ -807,7 +807,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-			    <action function="page">wolf_rom_settings</action>
+			    <action function="page">fox_community</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -842,7 +842,7 @@
 
 <action>
 				<touch key="back"/>
-				  <action function="page">wolf_rom_settings</action>
+				  <action function="page">fox_community</action>
 			</action>
 
 <action>
@@ -869,7 +869,7 @@
 					<action function="set">wolf_install_built_in_zip=0</action>
 					<action function="set">wolf_nospatch_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
-				  <action function="page">wolf_rom_settings</action>
+				  <action function="page">fox_community</action>
              </actions>
 			</button>
 
@@ -901,7 +901,7 @@
 					<action function="set">wolf_install_built_in_zip=0</action>
 					<action function="set">wolf_nospatch_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
-			        <action function="page">wolf_rom_settings</action>
+			        <action function="page">fox_community</action>
                 </actions>
 			</action>
 
@@ -1058,7 +1058,7 @@
 					<action function="set">wolf_install_built_in_zip=0</action>
 					<action function="set">wolf_nosunroot_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
-				     <action function="page">wolf_rom_settings</action>
+				     <action function="page">fox_community</action>
              </actions>
 			</button>
 
@@ -1093,7 +1093,7 @@
 					<action function="set">wolf_install_built_in_zip=0</action>
 					<action function="set">wolf_nosunroot_var=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
-				      <action function="page">wolf_rom_settings</action>
+				      <action function="page">fox_community</action>
                 </actions>
 			</action>
 
@@ -1120,7 +1120,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-		        <action function="page">wolf_rom_settings</action>
+		        <action function="page">fox_community</action>
 			</button>
 
 
@@ -1158,7 +1158,7 @@
 
 <action>
 				<touch key="back"/>
-			    <action function="page">wolf_rom_settings</action>
+			    <action function="page">fox_community</action>
 			</action>
 
 <action>
@@ -1456,29 +1456,6 @@
 			</fill>
 
 			<!--FOX ADB-->
-			<image>
-				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="%col1_x%" y="%mb_row4_y%"/>
-				<image resource="mb_adbsideload"/>
-			</image>
-
-			<image>
-				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="%col1_x_neg%" y="%mb_row4_y%" placement="1"/>
-				<image resource="mb_adbsideload"/>
-			</image>
-
-			<text style="mb_text">
-				<placement x="%col1_x_indent%" y="%mb_row4_text_y%"/>
-				<text>ADB activate</text>
-			</text>
-
-			<button style="mb_btn">
-				<placement x="%col1_x%" y="%mb_row4_y%" w="%content_w%" h="%mb_h%"/>
-				<action function="page">wolf_adb</action>
-			</button>
-
-
 			<image>
 				<condition var1="wolf_adb" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
@@ -4987,7 +4964,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">wolf_rom_settings</action>
+				<action function="page">fox_community</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -5026,12 +5003,12 @@
 				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
 				<image resource="btn_float_accept"/>
 				<highlight color="%highlight_color%"/>
-				<action function="page">wolf_rom_settings</action>
+				<action function="page">fox_community</action>
 			</button>
 
 			<action>
 				<touch key="back"/>
-				<action function="page">wolf_rom_settings</action>
+				<action function="page">fox_community</action>
 			</action>
 
 
@@ -5994,7 +5971,7 @@
 		</page>
 
 
-<page name="wolf_rom_settings">
+<page name="fox_community">
 			<template name="body"/>
 
 			<template name="ab"/>
@@ -6004,7 +5981,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main2</action>
+				<action function="page">fox_menu</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -6024,7 +6001,7 @@
 				<actions>
 					<action function="set">tw_filecheck=%rw_resource_dir%/Ramdisk_Cleaner/Ramdisk_Cleaner.zip</action>
 					<action function="set">tw_existpage=wolf_ramdisk_cleaner</action>
-					<action function="set">tw_back=wolf_rom_settings</action>
+					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 				   </actions>
@@ -6036,7 +6013,7 @@
 				<actions>
 					<action function="set">tw_filecheck=%rw_resource_dir%/Rm_Pass/Rm_Pass.zip</action>
 					<action function="set">tw_existpage=wolf_rmpass</action>
-					<action function="set">tw_back=wolf_rom_settings</action>
+					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 				   </actions>
@@ -6050,7 +6027,7 @@
 				<actions>
 					<action function="set">tw_filecheck=%rw_resource_dir%/Substratum_Rescue/Substratum_Rescue.zip</action>
 					<action function="set">tw_existpage=wolf_substratum_rescue</action>
-					<action function="set">tw_back=wolf_rom_settings</action>
+					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 				   </actions>
@@ -6063,7 +6040,7 @@
 				<actions>
 					<action function="set">tw_filecheck=%rw_resource_dir%/Substratum_Rescue_Legacy/Substratum_Rescue_Legacy.zip</action>
 					<action function="set">tw_existpage=wolf_substratum_legacy</action>
-					<action function="set">tw_back=wolf_rom_settings</action>
+					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 				   </actions>
@@ -6076,7 +6053,7 @@
 				<actions>
 					<action function="set">tw_filecheck=%rw_resource_dir%/Fgo_Patch/Fgo_Patch.zip</action>
 					<action function="set">tw_existpage=wolf_fgo_patch</action>
-					<action function="set">tw_back=wolf_rom_settings</action>
+					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 				   </actions>
@@ -6089,7 +6066,7 @@
 				<actions>
 					<action function="set">tw_filecheck=%rw_resource_dir%/Fgo_Patch/Fgo_Patch.zip</action>
 					<action function="set">tw_existpage=wolf_fgo_patch</action>
-					<action function="set">tw_back=wolf_rom_settings</action>
+					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 				   </actions>
@@ -6120,7 +6097,7 @@
 				<actions>
 					<action function="set">tw_filecheck=%rw_resource_dir%/Fix_FP_Scanner/Fix_FP_Scanner.zip</action>
 					<action function="set">tw_existpage=wolf_fix_fp_scanner</action>
-					<action function="set">tw_back=wolf_rom_settings</action>
+					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 				   </actions>
@@ -6135,7 +6112,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">main2</action>
+				<action function="page">fox_menu</action>
 			</action>
 		</page>
 
@@ -6299,6 +6276,12 @@
 				<action function="page">theme_splash</action>
 			</button>
 
+			<button style="btn_raised">
+				<placement x="%btn_raised_right_x%" y="%row7_2_y%" placement="1"/>
+				<text>ADB</text>
+				<action function="page">wolf_adb</action>
+			</button>
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row8_1_y%"/>
 				<text>{@fox_menu_navigation=Navigation}</text>
@@ -6313,7 +6296,7 @@
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_left_x%" y="%row8_2_y%"/>
 				<text>Community scripts</text>
-				<action function="page">wolf_rom_settings</action>
+				<action function="page">fox_community</action>
 			</button>
 
 			<action>
@@ -17135,7 +17118,7 @@
 					<button>
 						<placement x="%ab_back_x%" y="%ab_y%"/>
 						<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-						<action function="page">main2</action>
+						<action function="page">fox_menu</action>
 					</button>
 
 					<text style="text_ab_title">
@@ -17145,7 +17128,7 @@
 
 					<text style="caption">
 						<placement x="%col1_x%" y="%row1_1_y%"/>
-						<text>{@fox_menu2_power=Performace Profile}</text>
+						<text>{@fox_menu2_power}</text>
 					</text>
 
 					<listbox style="listbox">
@@ -17163,7 +17146,7 @@
 
 					<text style="caption">
 						<placement x="%col1_x%" y="%row3_1_y%"/>
-						<text>{@fox_menu2_other=Other Settings}</text>
+						<text>{@fox_menu2_other}</text>
 					</text>
 
 					<listbox style="settingslist">
@@ -17185,7 +17168,7 @@
 
 					<text style="caption">
 						<placement x="%col1_x%" y="%row8_1_y%"/>
-						<text>{@fox_menu_navigation=Navigation}</text>
+						<text>{@fox_menu_navigation}</text>
 					</text>
 
 					<button style="btn_raised_hl">
@@ -17241,7 +17224,7 @@
 
 					<action>
 						<touch key="back"/>
-						<action function="page">main2</action>
+						<action function="page">fox_menu</action>
 					</action>
 				</page>
 
