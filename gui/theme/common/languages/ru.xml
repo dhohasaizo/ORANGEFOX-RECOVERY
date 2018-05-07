@@ -70,7 +70,7 @@
 		<string name="select_storage_hdr">Выберите накопитель</string>
 		<string name="select_storage_btn">Выбор накопителя</string>
 		<string name="queue_hdr">Очередь</string>
-		<string name="zip_queue_count">Файлов в очереди: %tw_zip_queue_count% из 10 возможных</string>
+		<string name="zip_queue_count">Файлов в очереди: %tw_zip_queue_count% из 20</string>
 		<string name="zip_queue_count_s">Файл %tw_zip_queue_count% из 10:</string>
 		<string name="zip_warn1">Эта операция может установить несовместимое ПО на</string>
 		<string name="zip_warn2">ваше устройство и сделать загрузку системы невозможной.</string>
@@ -80,7 +80,7 @@
 		<string name="file">Файл:</string>
 		<string name="zip_sig_chk">Проверка подписи Zip</string>
 		<string name="inject_twrp_chk">Интегрировать TWRP после установки</string>
-		<string name="install_reboot_chk">Автоматическая перезагрузка после установки</string>
+		<string name="install_reboot_chk">Перезагрузка после установки</string>
 		<string name="options_hdr">Опции</string>
 		<string name="confirm_flash_hdr">Подтвердите установку</string>
 		<string name="zip_queue">Очередь:</string>
@@ -250,7 +250,7 @@
 		<string name="restore_try_decrypt_s">Попытка расшифровки</string>
 		<string name="restore_backup_date">Резервная копия создана: %tw_restore_file_date%</string>
 		<string name="restore_sel_part">Выбор раздела для восстановления:</string>
-		<string name="restore_enable_digest_chk" version="2">Включить проверку Digest файлов резервной копии</string>
+		<string name="restore_enable_digest_chk" version="2">Проверка Digest резервной копии</string>
 		<string name="restore_complete">Восстановление завершено</string>
 		<string name="swipe_restore">Свайп для восстановления</string>
 		<string name="swipe_restore_s">   Восстановление</string>
@@ -302,7 +302,7 @@
 		<string name="settings_gen_hdr">Основные</string>
 		<string name="settings_gen_s_hdr">Основные</string>
 		<string name="settings_gen_btn">Основные</string>
-		<string name="use_rmrf_chk">Использовать rm -rf вместо форматирования</string>
+		<string name="use_rmrf_chk">rm -rf вместо форматирования</string>
 		<string name="use24clock_chk">Использовать 24-часовой формат времени</string>
 		<string name="rev_navbar_chk">Инвертировать порядок навигационных кнопок</string>
 		<string name="simact_chk">Имитация действий для тестирования темы</string>
@@ -463,7 +463,7 @@
 		<string name="sideload_confirm">ADB Sideload</string>
 		<string name="sideload_usage">Пример: adb sideload filename.zip</string>
 		<string name="sideload_complete">ADB Sideload завершен</string>
-		<string name="fix_contexts_hdr">Исправление контекста SELinux</string>
+		<string name="fix_contexts_hdr">Fix SELinux</string>
 		<string name="fix_contexts_note1">Примечание: исправление контекста SELinux требуется редко.</string>
 		<string name="fix_contexts_note2">Исправление SELinux-контекста может привести</string>
 		<string name="fix_contexts_note3">к тому, что система не будет запускаться.</string>
@@ -820,7 +820,7 @@
 		<string name="changing_boot_slot">Изменения слота загрузки</string>
 		<string name="changing_boot_slot_complete">Изменения слота загрузки завершено</string>
 		<string name="unable_set_boot_slot">Ошибка изменения слота загрузчика на {1}</string>
-		<string name="backup_storage_warning">Р.К. {1} не будут включать в себя файлы с накопителя, такие как изображения или музыка.</string>  
+		<string name="backup_storage_warning">Р.К. {1} не будут включать в себя файлы с накопителя, такие как изображения или музыка.</string>
 <!-- Start of Red Wolf Recovery strings -->
      <string name="flashlight">Фонарик</string>
      <string name="flashlight_info_on">Проведите, чтобы включить фонарик</string>
@@ -828,10 +828,10 @@
      <string name="adb_info_on">Проведите, чтобы включить ADB</string>
      <string name="adb_info_off">Проведите, чтобы отключить ADB</string>
      <string name="show_password">Показать пароль</string>
-     <string name="lock_text_1">Recovery защищено от несанкционированного</string>
-     <string name="lock_text_2">доступа.</string>
-     <string name="lock_text_3">Чтобы использовать основные функции</string>
-     <string name="lock_text_4">необходимо ввести пароль.</string>
+     <string name="lock_text_1">Recovery защищено!</string>
+     <string name="lock_text_2"></string>
+     <string name="lock_text_3"></string>
+     <string name="lock_text_4">Необходимо ввести пароль!</string>
      <string name="lock_text_5">Введите пароль:</string>
      <string name="change_pass_btn">Изменить пароль</string>
      <string name="change_pass_text_1">Чтобы изменить пароль доступа</string>
@@ -863,8 +863,8 @@
      <string name="governor_info_line1">Существует множество говернеров ЦП</string>
      <string name="governor_info_line2">для Android, но люди должны ознакомиться</string>
      <string name="governor_info_line3">с несколькими важными моментами</string>
-     <string name="governor_info_line4">перед выбором говернера.</string>  
-     <string name="governor_info_line5">Скорость</string>       
+     <string name="governor_info_line4">перед выбором говернера.</string>
+     <string name="governor_info_line5">Скорость</string>
      <string name="governor_info_line6">Некоторые говернеры быстрее, а</string>
      <string name="governor_info_line7">некоторые медленнее. Зависит это</string>
      <string name="governor_info_line8">от того, с какой целью был создан говернер: </string>
@@ -873,7 +873,7 @@
      <string name="governor_info_line11">чем то средним и дают</string>
      <string name="governor_info_line12">оптимальную скорость работы.</string>
      <string name="governor_info_line13">Энергосбережение</string>
-     <string name="governor_info_line14">В общем, если говернер создан</string>   
+     <string name="governor_info_line14">В общем, если говернер создан</string>
      <string name="governor_info_line15">для производительности, он будет</string>
      <string name="governor_info_line16">довольно быстро съедать заряд батареи.</string>
      <string name="governor_info_line17">Если говернер создан для энергосбережения</string>
@@ -890,15 +890,15 @@
      <string name="wolf_dm-verity_swipe">Проведите, чтобы отключить верификацию ядра.</string>
      <string name="wolf_nitro_unroot_hdr2">от Nitrogen Project</string>
      <string name="wolf_flash_nitro.unroot">Проведите, чтобы установить "Nitrogen unroot".</string>
-     <string name="Set_pass_btn">Задать пароль</string>  
-     <string name="dialog_reset_pass_hdr">Удалить пароль</string>  
-     <string name="dialog_reset_pass_1">Вы действительно хотите удалить пароль?</string>  
-     <string name="dialog_reset_pass_2">Recovery не будет запрашивать пароль</string>  
-     <string name="dialog_reset_pass_3">при следующей перезагрузке.</string>  
-     <string name="wolf_reboot_install_app_hdr">Вы действительно хотите установить Snap Camera HDR?</string>  
-     <string name="wolf_reboot_install_app1">Многие пользователи говорят, что это</string>  
-     <string name="wolf_reboot_install_app2">приложение делает лучшие снимки на нашем устройстве.</string>  
-     <string name="wolf_swipe_to_install_app">Проведите, чтобы установить Snap Camera HDR.</string>  
+     <string name="Set_pass_btn">Задать пароль</string>
+     <string name="dialog_reset_pass_hdr">Удалить пароль</string>
+     <string name="dialog_reset_pass_1">Вы действительно хотите удалить пароль?</string>
+     <string name="dialog_reset_pass_2">Recovery не будет запрашивать пароль</string>
+     <string name="dialog_reset_pass_3">при следующей перезагрузке.</string>
+     <string name="wolf_reboot_install_app_hdr">Вы действительно хотите установить Snap Camera HDR?</string>
+     <string name="wolf_reboot_install_app1">Многие пользователи говорят, что это</string>
+     <string name="wolf_reboot_install_app2">приложение делает лучшие снимки на нашем устройстве.</string>
+     <string name="wolf_swipe_to_install_app">Проведите, чтобы установить Snap Camera HDR.</string>
      <string name="pass_hdr2_del">Удалить пароль</string>
      <string name="pass_hdr3_del">Удаление пароля завершено</string>
      <string name="change_pass_confirm_del">Проведите, чтобы удалить пароль.</string>
@@ -915,7 +915,7 @@
      <string name="wolf_actual_build">Текущая сборка</string>
      <string name="inject_led_chk">Уведомлять о завершении установки</string>
      <string name="inject_led_chk_bak">Уведомлять о завершении резервной копии</string>
-     <string name="inject_led_chk_res">Уведомлять о завершении восстановления</string>   
+     <string name="inject_led_chk_res">Уведомлять о завершении восстановления</string>
      <string name="wolf_rmpass_hdr">Скрипт может удалить пароль прошивки.</string>
      <string name="wolf_flash_rmpass">Проведите, чтобы удалить пароль прошивки</string>
      <string name="wolf_flash_subs_legacy">Проведите, чтобы установить Substratum Legacy</string>
@@ -927,19 +927,19 @@
      <string name="nightmode_info_off">Проведите, чтобы отключить ночной режим</string>
      <string name="t2w_info_on">Проведите, чтобы включить T2W</string>
      <string name="t2w_info_off">Проведите, чтобы отключить T2W</string>
-     <string name="colour_script_finish1">Выбранный цвет был</string>       
-     <string name="colour_script_finish2">успешно применен</string>    
+     <string name="colour_script_finish1">Выбранный цвет был</string>
+     <string name="colour_script_finish2">успешно применен</string>
      <string name="colour_script_finish3">Проведите, для перезагрузки и применения изменений</string>
-	 <string name="wolf_colour_wait">Идет перезагрузка</string>
-	 <string name="colour_engine1">Применить новый</string>       
-     <string name="colour_engine2">оттенок</string>    
+	 	 <string name="wolf_colour_wait">Идет перезагрузка</string>
+	 	 <string name="colour_engine1">Применить новый</string>
+     <string name="colour_engine2">оттенок</string>
      <string name="colour_engine3">Проведите, чтобы применить выбранный оттенок</string>
-	 <string name="colour_engine4">Выбранный оттенок применяется.</string>
+	 	 <string name="colour_engine4">Выбранный оттенок применяется.</string>
      <string name="wolf.colour.change">Изменить оттенок</string>
      <string name="full_new_pass_repeat_1">Введите пароль еще раз для</string>
      <string name="full_new_pass_repeat_2">подтверждения правильности ввода.</string>
      <string name="pass_hdr2_xdl">Новый пароль</string>
-	 <string name="change_pass_confirm_xdl">Проведите, чтобы установить новый пароль</string>
+ 		 <string name="change_pass_confirm_xdl">Проведите, чтобы установить новый пароль</string>
      <string name="working">Подождите...</string>
      <string name="wolf_flash_zip_magisk">Установка Magisk</string>
      <string name="wolf_flash_zip_supersu">Установка SuperSU</string>
@@ -962,8 +962,8 @@
      <string name="wolf_del_backup_confirm">Удалить все р.к.?</string>
      <string name="wolf_deleting_backup">Удаление р.к....</string>
      <string name="wolf_backup_deleted">Удаление всех р.к. завершено</string>
-	 <string name="wolf.rmpass_btn">Удалить пароли прошивки</string>
-	 <string name="redwolf_wb_chk">Резервное копирование Wifi, Bluetooth и Hosts</string>  
+	 	 <string name="wolf.rmpass_btn">Удалить пароли прошивки</string>
+	 	 <string name="redwolf_wb_chk">Резервное копирование Wifi, Bluetooth и Hosts</string>
      <string name="wolf_Wifi_Bluetooth_backup_line1">Если эта функция включена, Recovery</string>
      <string name="wolf_Wifi_Bluetooth_backup_line2">автоматически будет засекать установку прошивки</string>
      <string name="wolf_Wifi_Bluetooth_backup_line3">и сохранять из текущей прошивки настройки </string>
@@ -990,10 +990,39 @@
      <string name="wolf_set_custom_led_green">Зеленый</string>
      <string name="wolf_set_custom_led_blue">Синий</string>
      <string name="wolf_set_custom_led_red">Красный</string>
-     <string name="wolf_install_vibrate">Вибрация при установке</string> 
-     <string name="wolf_backup_vibrate">Вибрация при создании р.к.</string> 
-     <string name="wolf_restore_vibrate">Вибрация при восстановлении р.к.</string> 
+     <string name="wolf_install_vibrate">Вибрация при установке</string>
+     <string name="wolf_backup_vibrate">Вибрация при создании р.к.</string>
+     <string name="wolf_restore_vibrate">Вибрация при восстановлении р.к.</string>
      <string name="wolf_vibration_hdr">Вибрация действий OrangeFox</string>
      <string name="wolf_boot_nastaveni">Аппаратные настройки</string>
+
+		 <!--OrangeFox Recovery Project-->
+	 	<!-- <string name=""></string> -->
+
+	 	<string name="fox_menu_flash">Orange!</string>
+	 	<string name="fox_menu_delpass">Удалить пароль</string>
+	 	<string name="fox_menu_navigation">Навигация</string>
+	 	<string name="fox_m_other">Остальные настройки</string>
+	 	<string name="fox_dell_pass">Сброс пароля прошивки</string>
+		<string name="fox_menu_comm">Скрипты сообщества</string>
+
+		<string name="wolf_no_os_engine">Улучшенный NO OS Движок</string>
+		<string name="sha2_chk">SHA2 для хеширования</string>
+
+	 	<string name="fox_slider_magisk">Проведите что-бы установить Magisk</string>
+
+	 	<string name="fox_redwolf">За разработку RedWolf и</string>
+	 	<string name="fox_rey">Vince разработчик</string>
+	 	<string name="fox_kirill">За графику, Photoshop гуру</string>
+
+	 	<string name="fox_menu2_power">Профиль производительности</string>
+	 	<string name="fox_menu2_other">Доп. Настройки</string>
+
+		<string name="wolf_special_actions">Специальные функции OrangeFox Recovery</string>
+	 	<string name="wolf_special_actions_hdr">Спец. функции</string>
+
+		<string name="settings_screen_timeout_cptn">Таймаут экрана</string>
+		<string name="settings_screen_timeout_cptn2">Таймаут экрана:</string>
+		<string name="timeout_unit">секунд</string>
 	</resources>
 </language>

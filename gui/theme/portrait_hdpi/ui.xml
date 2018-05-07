@@ -23,11 +23,6 @@
 		<font name="input_fail" filename="RobotoCondensed-Regular.ttf" size="32"/>
 		<font name="splash" filename="RobotoCondensed-Regular.ttf" size="47"/>
 
-    <image name="logo" filename="logo" retainaspect="1"/>
-		<image name="splashlogo" filename="splashlogo" retainaspect="1"/>
-		<image name="splashlogo_stock" filename="splashlogo_stock" retainaspect="1"/>
-		<image name="splashteamwin" filename="splashteamwin" retainaspect="1"/>
-		<image name="splashteamwin_stock" filename="splashteamwin_stock" retainaspect="1"/>
 		<image name="navigate_left" filename="navigate_left" retainaspect="1"/>
 		<image name="navigate_right" filename="navigate_right" retainaspect="1"/>
 		<image name="navigate_accept" filename="navigate_accept" retainaspect="1"/>
@@ -41,8 +36,6 @@
 		<font name="keylabel-longpress" filename="RobotoCondensed-Regular.ttf" size="32"/>
 
 		<image name="actionbar_shadow" filename="actionbar_shadow"/>
-		<image name="wolf_cookie" filename="wolf_cookie" retainaspect="1"/>
-		<image name="wolf_cookie2" filename="wolf_cookie2" retainaspect="1"/>
 		<image name="actionbar_wolf" filename="actionbar_wolf" retainaspect="1"/>
 		<image name="mb_wolf_actions" filename="mb_wolf_actions" retainaspect="1"/>
 		<image name="mb_wolf_actions_color" filename="mb_wolf_actions_color" retainaspect="1"/>
@@ -225,7 +218,7 @@
 		<image name="kb_arrow_up" filename="kb_arrow_up" retainaspect="1"/>
 		<image name="kb_arrow_down" filename="kb_arrow_down" retainaspect="1"/>
 		<image name="keyboard_shadow" filename="keyboard_shadow"/>
-		<image name="usb" filename="usb" retainaspect="1"/>
+		<!--image name="usb" filename="usb" retainaspect="1"/-->
 
 		<image name="tab_misc" filename="tab_misc" retainaspect="1"/>
 		<image name="tab_misc_a" filename="tab_misc_a" retainaspect="1"/>

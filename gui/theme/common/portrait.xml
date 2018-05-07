@@ -4328,13 +4328,13 @@
 				<listitem name="{@wolf_no_os_engine=}">
 					<data variable="wolf_noos_engine"/>
 				</listitem>
-				<listitem name="{@simact_chk=Simulate actions for theme testing}">
+				<!--listitem name="{@simact_chk=Simulate actions for theme testing}">
 					<data variable="tw_simulate_actions"/>
 				</listitem>
 				<listitem name="{@simfail_chk=Simulate failure for actions}">
 					<condition var1="tw_simulate_actions" var2="1"/>
-					<data variable="tw_simulate_fail"/>
-				</listitem>
+					<data variable="tw_simulate_fail">
+				</listitem-->
 				<listitem name="{@sha2_chk=Use SHA2 for hashing}">
 					<condition var1="tw_no_sha2" var2="0"/>
 					<data variable="tw_use_sha2"/>
@@ -6277,7 +6277,7 @@
 			</button>
 
 			<button style="btn_raised">
-				<placement x="%btn_raised_right_x%" y="%row7_2_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row7_1_y%" placement="1"/>
 				<text>ADB</text>
 				<action function="page">wolf_adb</action>
 			</button>
@@ -6295,7 +6295,7 @@
 
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_left_x%" y="%row8_2_y%"/>
-				<text>Community scripts</text>
+				<text>{@fox_menu_comm}</text>
 				<action function="page">fox_community</action>
 			</button>
 
@@ -7199,7 +7199,7 @@
 			</text>
 
 			<button>
-				<condition var1="tw_zip_queue_count" op="!=" var2="10"/>
+				<condition var1="tw_zip_queue_count" op="!=" var2="20"/>
 				<placement x="%btn_float_x%" y="%row1_2_y%"/>
 				<image resource="btn_float_addtoqueue" highlightresource="btn_float_addtoqueue_hl"/>
 				<action function="page">add_zip</action>
