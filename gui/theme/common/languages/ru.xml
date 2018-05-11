@@ -33,7 +33,7 @@
 		<string name="twrp_header">Team Win Recovery Project</string>
 		<string name="twrp_watch_header">TWRP %tw_version%</string>
 		<string name="cpu_temp">ЦП: %tw_cpu_temp% °C</string>
-		<string name="battery_pct">Батарея: %tw_battery%</string>
+		<string name="battery_pct">%tw_battery%</string>
 		<string name="sort_by_name">Сорт.по имени</string>
 		<string name="sort_by_date">Сорт.по дате</string>
 		<string name="sort_by_size">Сорт.по размеру</string>
@@ -304,7 +304,7 @@
 		<string name="settings_gen_btn">Основные</string>
 		<string name="use_rmrf_chk">rm -rf вместо форматирования</string>
 		<string name="use24clock_chk">Использовать 24-часовой формат времени</string>
-		<string name="rev_navbar_chk">Инвертировать порядок навигационных кнопок</string>
+		<string name="rev_navbar_chk">Изменить порядок навигационных кнопок</string>
 		<string name="simact_chk">Имитация действий для тестирования темы</string>
 		<string name="simfail_chk">Имитация отказа для действий</string>
 		<string name="ctr_navbar_rdo">Кнопки нав.панели по центру</string>
@@ -463,7 +463,7 @@
 		<string name="sideload_confirm">ADB Sideload</string>
 		<string name="sideload_usage">Пример: adb sideload filename.zip</string>
 		<string name="sideload_complete">ADB Sideload завершен</string>
-		<string name="fix_contexts_hdr">Fix SELinux</string>
+		<string name="fix_contexts_hdr">Исправить SELinux</string>
 		<string name="fix_contexts_note1">Примечание: исправление контекста SELinux требуется редко.</string>
 		<string name="fix_contexts_note2">Исправление SELinux-контекста может привести</string>
 		<string name="fix_contexts_note3">к тому, что система не будет запускаться.</string>
@@ -658,7 +658,7 @@
 		<string name="size_progress">%llu МБ из %llu МБ, %i%%</string>
 		<string name="decrypt_cmd">Попытка расшифровать раздел данных с помощью командной строки.</string>
 		<string name="base_pkg_err">Неудача при загрузке базовых пакетов.</string>
-		<string name="simulating">Имитация действий...</string>
+		<string name="simulating">Энергосбережение</string>
 		<string name="backup_cancel">Резервное копирование отменено</string>
 		<string name="config_twrp">Конфигурирование TWRP...</string>
 		<string name="config_twrp_err">Невозможно сконфигурировать TWRP с этим ядром.</string>
@@ -697,7 +697,7 @@
 		<string name="use_aromafm">Использовать Aroma File Manager</string>
 		<string name="set_bookmark_hdr">Использовать закладкт</string>
 		<string name="use_bookmark">Использовать закладки для списков файлов</string>
-		<string name="auto_name_generate">Показывать автоматически сгенерированное имя р.к.</string>
+		<string name="auto_name_generate">Показывать авто имя р.к.</string>
 		<string name="use_flashit_script">Использовать скрипт FlashIt для прошивки образов</string>
 		<string name="visual">Внешний вид</string>
 		<string name="center_clock_bar">Часы по центру в строке состояния</string>
@@ -1005,11 +1005,18 @@
 	 	<string name="fox_m_other">Остальные настройки</string>
 	 	<string name="fox_dell_pass">Сброс пароля прошивки</string>
 		<string name="fox_menu_comm">Скрипты сообщества</string>
+		<string name="fox_menu_splash">Изменить сплеш</string>
+		<string name="fox_menu_pass_h">Удалить пароль прошивки</string>
+		<string name="fox_menu_pass">От Bulik01</string>
+
+		<string name="fox_slider_magisk">Проведите чтобы установить Magisk</string>
+		<string name="fox_slider_pass">Проведите чтобы сбросить пароль прошивки</string>
+
+		<string name="wolf_dialog_special_actions_1">Пожалуйста не меняйте ничего без</string>
+		<string name="wolf_dialog_special_actions_2">хорошего понимания этих настроек!</string>
 
 		<string name="wolf_no_os_engine">Улучшенный NO OS Движок</string>
 		<string name="sha2_chk">SHA2 для хеширования</string>
-
-	 	<string name="fox_slider_magisk">Проведите что-бы установить Magisk</string>
 
 	 	<string name="fox_redwolf">За разработку RedWolf и</string>
 	 	<string name="fox_rey">Vince разработчик</string>
@@ -1018,11 +1025,67 @@
 	 	<string name="fox_menu2_power">Профиль производительности</string>
 	 	<string name="fox_menu2_other">Доп. Настройки</string>
 
+		<string name="dialog_splash_btn">Изменить Сплеш</string>
+		<string name="fox_menu_splash">Изменить Сплеш</string>
+		<string name="wolf_custom_wolf_splash_btn">Кастомный сплеш</string>
+		<string name="wolf_custom_wolf_splash_1">Кастомный сплеш </string>
+		<string name="wolf_custom_wolf_splash_2">успешно применен</string>
+		<string name="wolf_theme_splash_wolf_hdr">Кастомный сплеш</string>
+		<string name="wolf_theme_splash_wolf_txt1">Что-бы изменить сплеш выберите любое</string>
+		<string name="wolf_theme_splash_wolf_txt2">изображение в png формате и просто</string>
+		<string name="wolf_theme_splash_wolf_txt3">проведите для установки.</string>
+	 	<string name="wolf_theme_splash_wolf_txt4">Для лучшего результата выбранное</string>
+	 	<string name="wolf_theme_splash_wolf_txt5">изображение должно быть размером</string>
+	 	<string name="wolf_theme_splash_wolf_txt6">1080x1920.</string>
+	 	<string name="not_selected">Не выбано</string>
+	 	<string name="tw_splash_png_btn">Используйте PNG для сплеша.</string>
+ 		<string name="splash_preview">Splash Type</string>
+		<string name="theme_splash_preview">ВЫБЕРИТЕ СПЛЕШ</string>
+ 		<string name="slider_repack">Проведите чтобы применить новый сплеш</string>
+		<string name="install_select_file_btn">ВЫБЕРИТЕ ФАЙЛ</string>
+		<string name="dialog_reset_splash_hdr">Восстановить сплеш</string>
+		<string name="dialog_reset_splash_note_1">Хотите ли вы восстановить стандартный</string>
+		<string name="dialog_reset_splash_note_2">сплеш OrangeFox Recovery Project?</string>
+
 		<string name="wolf_special_actions">Специальные функции OrangeFox Recovery</string>
 	 	<string name="wolf_special_actions_hdr">Спец. функции</string>
 
 		<string name="settings_screen_timeout_cptn">Таймаут экрана</string>
 		<string name="settings_screen_timeout_cptn2">Таймаут экрана:</string>
 		<string name="timeout_unit">секунд</string>
+
+		<string name="rb_recovery_btn">Рекавери</string>
+		<string name="rb_theme">Тема</string>
+
+		<string name="f_orange">Ораньжевый</string>
+		<string name="f_indigo">Индиго</string>
+		<string name="f_blue">Синий</string>
+		<string name="f_light_blue">Светло синий</string>
+		<string name="f_stock">Стоковый</string>
+		<string name="f_teal">Теал</string>
+		<string name="f_green">Зелёный</string>
+		<string name="f_light_green">Светло Зелёный</string>
+		<string name="f_lime">Лайм</string>
+		<string name="f_amber">Янтарный</string>
+		<string name="f_red">Злой цвет</string>
+		<string name="f_deep_orange">Тёмно Ораньжевый</string>
+		<string name="f_brown">Коричневый</string>
+		<string name="f_gray">Серый</string>
+		<string name="f_blue_grey">Серо Синий</string>
+
+		<string name="sort_by_name_asc">По имени</string>
+		<string name="sort_by_date_asc">По дате</string>
+		<string name="sort_by_size_asc">По размеру</string>
+		<string name="sort_by_name_desc">По имени наоб.</string>
+		<string name="sort_by_date_desc">По дате наоб.</string>
+		<string name="sort_by_size_desc">По размеру наоб.</string>
+
+		<!--string name="encrypt_backup1">Введите пароль чтобы</string-->
+		<!--string name="encrypt_backup2">Включить шифрование бекапов</string-->
+		<string name="encrypt_backup1">Извините, пока функция не работает!</string>
+		<string name="encrypt_backup2">Сожелеем, прийдется подождать</string>
+		<string name="encrypt_backup3">Повторите пароль чтобы</string>
+		<string name="encrypt_backup4">Нажмите кнопку "назад" чтобы выйти</string>
+
 	</resources>
 </language>

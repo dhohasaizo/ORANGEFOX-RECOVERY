@@ -157,8 +157,8 @@
 		<string name="swipe_factory_reset">Swipe to Factory Reset</string>
 		<string name="backup_hdr">Backup</string>
 		<string name="encryption_hdr">Enable Encryption</string>
-		<string name="encrypt_backup1">Enter a password to</string>
-		<string name="encrypt_backup2">enable backup encryption.</string>
+		<string name="encrypt_backup1">Sorry, this function not working!</string>
+		<string name="encrypt_backup2">We regret, will have to wait!</string>
 		<string name="encrypt_backup3">Repeat password to</string>
 		<string name="encrypt_backup4">Press back button to cancel.</string>
 		<string name="name">Name</string>
@@ -1057,10 +1057,14 @@
 	<string name="fox_menu_delpass">Del ROM Pass</string>
 	<string name="fox_menu_navigation">Navigation</string>
 	<string name="fox_m_other">Other settings</string>
-	<string name="fox_dell_pass">Dell ROM Pass</string>
+	<string name="fox_dell_pass">Del ROM Pass</string>
 	<string name="fox_menu_comm">Community scripts</string>
+	<string name="fox_menu_splash">Change Splash</string>
+	<string name="fox_menu_pass_h">Delet ROM pas</string>
+	<string name="fox_menu_pass">By Bulik01</string>
 
 	<string name="fox_slider_magisk">Swipe to install Magisk</string>
+	<string name="fox_slider_pass">Swipe to remove ROM Pass</string>
 
 	<string name="fox_redwolf">for RedWolf development and</string>
 	<string name="fox_rey">Vince maintainer</string>
@@ -1068,5 +1072,21 @@
 
 	<string name="fox_menu2_power">Performance Profile</string>
 	<string name="fox_menu2_other">Other Setting</string>
+
+	<string name="f_orange">Orange</string>
+	<string name="f_indigo">Indigo</string>
+	<string name="f_blue">Blue</string>
+	<string name="f_light_blue">Light Blue</string>
+	<string name="f_stock">Stck</string>
+	<string name="f_teal">Teal</string>
+	<string name="f_green">Green</string>
+	<string name="f_light_green">Light Green</string>
+	<string name="f_lime">Lime</string>
+	<string name="f_amber">Amber</string>
+	<string name="f_red">Evil Color</string>
+	<string name="f_deep_orange">Deep Orange</string>
+	<string name="f_brown">Brown</string>
+	<string name="f_gray">Gray</string>
+	<string name="f_blue_grey">Blue Grey</string>
 </resources>
 </language>

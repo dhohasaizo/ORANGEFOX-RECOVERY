@@ -2,9 +2,8 @@
 <recovery>
 	<details>
 		<resolution width="1080" height="1920"/>
-		<author>OrangeFox dev team</author>
-		<title>OrangeFox</title>
-		<description>UI</description>
+		<author>z31s1g & OrangeFox dev team</author>
+		<title>OrangeFox UI</title>
 	</details>
 
 	<pages>
@@ -371,60 +370,6 @@
 				<action function="page">wolf_kernel_settings</action>
 			</action>
 		</page>
-
-
-	<page name="wolf_flashlight">
-
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@advanced_btn=Advanced}</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@flashlight=Flashlight}</text>
-			</text>
-
-		   <text style="caption">
-			<condition var1="flashlight" var2="0"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@flashlight_info_on=Swipe to turn on flashlight}</text>
-			</text>
-
-<text style="caption">
-			<condition var1="flashlight" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@flashlight_info_off=Swipe to turn off flashlight}</text>
-			</text>
-
-	     <slider>
-                <condition var1="tw_busy" var2="0"/>
-				<action function="flashlight"/>
-                <action function="page">advanced</action>
-        	</slider>
-
-        <action>
-				<touch key="back"/>
-			<action function="page">advanced</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-			<action function="page">main2</action>
-			</action>
-</page>
 
 <page name="wolf_reboot_no_os">
 
@@ -931,30 +876,17 @@
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">fox_menu</action>
-			    </button>
+	    </button>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Delete ROM Password</text>
+				<text>{@fox_menu_pass_h}</text>
 			</text>
 
-			<!--text style="text_ab_title">
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>by Chainfire</text>
-			</text-->
-
-			<text> style="caption">
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@fox_slider_magisk}</text>
+				<text>{@fox_menu_pass}</text>
 			</text>
-
-			<listbox style="settingslist">
-	             <condition var1="tw_busy" var2="0"/>
-				<placement x="%col1_x%" y="%row4_1_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="{@wolf_supersu_config_chk=}">
-					<data variable="rw_supersu_config_chk"/>
-				</listitem>
-			</listbox-->
 
 			<slider>
 				<actions>
@@ -969,6 +901,11 @@
 			    <action function="flash">flash_zip</action>
 				</actions>
        	</slider>
+
+				<text style="caption">
+					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+					<text>{@fox_slider_pass=}</text>
+				</text>
 
 
 <action>
@@ -1210,7 +1147,7 @@
 					<action function="queuezip"/>
 				<action function="flash">flash_zip</action>
 				</actions>
-           </slider>
+     </slider>
 
 <action>
 				<touch key="back"/>
@@ -1254,7 +1191,7 @@
 
 			<slider>
 				<action function="page">main2</action>
-       	</slider>
+     	</slider>
 
 <action>
 				<touch key="back"/>
@@ -1611,7 +1548,7 @@
 
 			<button style="mb_btn">
 				<placement x="%col1_x%" y="%mb_row6_y%" w="%content_w%" h="%mb_h%"/>
-				<action function="page">wolf_flashlight</action>
+				<action function="flashlight"/>
 			</button>
 
 <fill color="%linecolor%">
@@ -1783,7 +1720,7 @@
 			</button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -1837,7 +1774,7 @@
 			</button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -3388,7 +3325,9 @@
 
 			<template name="ab"/>
 
-            <template name="body"/>
+			<template name="statusbarinfo"/>
+
+      <template name="body"/>
 
 
 
@@ -3485,7 +3424,7 @@
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text-->
 
-			<text color="#FF7E00">
+			<!--text color="#FF7E00">
 				<font resource="status"/>
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -3499,7 +3438,7 @@
 
 			<text style="text_status">
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/> <!--right align-->
-				<conditions>
+				<!--conditions>
 					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
 					<condition var1="center_clock" op="!=" var2="1"/>
 				</conditions>
@@ -3508,13 +3447,13 @@
 
 			<text style="text_status">
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/> <!--centered-->
-				<conditions>
+				<!--conditions>
 					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
 					<condition var1="center_clock" var2="1"/>
 					<condition var1="tw_simulate_actions" op="!=" var2="1"/>
 				</conditions>
 				<text>%tw_time%</text>
-			</text>
+			</text-->
 
 	       <image>
 				<placement x="0" y="84"/>
@@ -3551,6 +3490,13 @@
 				<text>{@show_password=Show password}</text>
 				<data variable="tw_heslo_viditelnost"/>
 			</checkbox>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_right_x%" y="660" placement="1"/>
+				<text>Reboot to ROM</text>
+				<action function="set">tw_back=reboot</action>
+				<action function="page">reboot_system_routine</action>
+			</button>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
@@ -3657,7 +3603,7 @@
 				<condition var1="tw_simulate_actions" var2="1"/>
 				</conditions>
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/>
-				<text>{@simulating=SIMULATING ACTIONS}</text>
+				<text>{@simulating}</text>
 			</text>
 
 			<text style="text_status">
@@ -3865,7 +3811,7 @@
 
 			<button>
 				<placement x="492" y="84"/>
-				<image resource="actionbar_wolf"/>
+				<image resource="actionbar_fox"/>
 				<actions>
 				<action function="disableled"/>
 				<action function="page">about</action>
@@ -3881,11 +3827,11 @@
 				</actions>
 			</button-->
 
-<button>
+<!--button>
 				<placement x="204" y="84"/>
 				<image resource="actionbar_android"/>
 				<action function="page">wolf_kernel_settings</action>
-			</button>
+			</button-->
 
 <button>
 				<placement x="348" y="84"/>
@@ -4271,30 +4217,30 @@
 			</button-->
 
 			<image>
-				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
+				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_misc_a"/>
 			</image>
 
 			<button>
-				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
+				<placement x="540" y="%tab_y%" placement="4"/>
 				<image resource="tab_time"/>
 				<action function="page">timezone</action>
 			</button>
 
-			<button>
+			<!--button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_display"/>
 				<action function="page">screen</action>
-			</button>
+			</button-->
 
 			<button>
-				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
+				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_vibration"/>
 				<action function="page">vibrate</action>
 			</button>
 
 			<fill color="%text_actionbar%">
-				<placement x="0" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
+				<placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption">
@@ -4397,30 +4343,30 @@
 			</button-->
 
 			<button>
-				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
+				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_misc"/>
 				<action function="page">settings</action>
 			</button>
 
 			<image>
-				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
+				<placement x="540" y="%tab_y%" placement="4"/>
 				<image resource="tab_time_a"/>
 			</image>
 
-			<button>
+			<!--button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_display"/>
 				<action function="page">screen</action>
-			</button>
+			</button-->
 
 			<button>
-				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
+				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_vibration"/>
 				<action function="page">vibrate</action>
 			</button>
 
 			<fill color="%text_actionbar%">
-				<placement x="%tab4_ind2_x%" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
+				<placement x="%tab3_ind2_x%" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption">
@@ -4664,7 +4610,7 @@
 			</text>
 
 			<button>
-				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
+				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_misc"/>
 				<action function="page">settings</action>
 			</button>
@@ -4676,38 +4622,38 @@
 			</button-->
 
 			<button>
-				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
+				<placement x="540" y="%tab_y%" placement="4"/>
 				<image resource="tab_time"/>
 				<action function="page">timezone</action>
 			</button>
 
-			<button>
+			<!--button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_display"/>
 				<action function="page">screen</action>
-			</button>
+			</button-->
 
 			<image>
-				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
+				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_vibration_a"/>
 			</image>
 
 			<fill color="%text_actionbar%">
-				<placement x="%tab4_ind4_x%" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
+				<placement x="%tab3_ind3_x%" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row2_1_y%"/>
+				<placement x="%col1_x%" y="400"/>
 				<text>{@vibration_hdr=Vibration}</text>
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="%row2_2a_y%"/>
+				<placement x="%col1_x%" y="450"/>
 				<text>{@button_vibration=Button Vibration:} %tw_button_vibrate%</text>
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="600" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="470" w="%slidervalue_w%"/>
 				<resource background="slider" handle="handle" handlehover="handle_h"/>
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
@@ -4716,12 +4662,12 @@
 			</slidervalue>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="840"/>
+				<placement x="%col1_x%" y="690"/>
 				<text>{@kb_vibration=Keyboard Vibration:} %tw_keyboard_vibrate%</text>
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="870" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="710" w="%slidervalue_w%"/>
 				<resource background="slider" handle="handle" handlehover="handle_h"/>
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
@@ -4730,12 +4676,12 @@
 			</slidervalue>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="1110"/>
+				<placement x="%col1_x%" y="910"/>
 				<text>{@act_vibration=Action Vibration:} %tw_action_vibrate%</text>
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="1140" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="940" w="%slidervalue_w%"/>
 				<resource background="slider" handle="handle" handlehover="handle_h"/>
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
@@ -4743,20 +4689,47 @@
 				<data variable="tw_action_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
 
-
-<!--text style="text_body2">
-				<placement x="%col1_x%" y="1380"/>
-				<text>{@wolf_action_vibration=OrangeFox Action Vibration:} %redwolf_action_vibrate%</text>
+			<text style="text_body2">
+				<placement x="%col1_x%" y="1100"/>
+				<text>{@wolf_install_vibrate=}: %wolf_data_install_vibrate%</text>
 			</text>
 
-<slidervalue>
-				<placement x="%slider_x%" y="1410" w="%slidervalue_w%"/>
+			<slidervalue>
+				<placement x="%slider_x%" y="1130" w="%slidervalue_w%"/>
 				<resource background="slider" handle="handle" handlehover="handle_h"/>
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
 				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
-				<data variable="redwolf_action_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
-			</slidervalue-->
+				<data variable="wolf_data_install_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="1320"/>
+				<text>{@wolf_backup_vibrate=}: %wolf_data_backup_vibrate%</text>
+			</text>
+
+			<slidervalue>
+				<placement x="%slider_x%" y="1350" w="%slidervalue_w%"/>
+				<resource background="slider" handle="handle" handlehover="handle_h"/>
+				<font resource="caption" color="%text%"/>
+				<colors line="%text_dark%" slider="%accent%"/>
+				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
+				<data variable="wolf_data_backup_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="1540"/>
+				<text>{@wolf_restore_vibrate=}: %wolf_data_restore_vibrate%</text>
+			</text>
+
+			<slidervalue>
+				<placement x="%slider_x%" y="1570" w="%slidervalue_w%"/>
+				<resource background="slider" handle="handle" handlehover="handle_h"/>
+				<font resource="caption" color="%text%"/>
+				<colors line="%text_dark%" slider="%accent%"/>
+				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
+				<data variable="wolf_data_restore_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
 
 			<action>
 				<touch key="home"/>
@@ -4864,95 +4837,6 @@
 				</actions>
 			</action>
 		</page>
-
-<page name="governor_info">
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">wolf_kernel_settings</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>OrangeFox</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>Recovery Project</text>
-			</text>
-
-			<text style="text_ab_subtitle">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@governor_settings=}</text>
-			</text>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row2_2_y%"/>
-				<text>{@governor_explain=}</text>
-			</text>
-
-			<listbox style="textbox">
-				<placement x="%col1_x%" y="%row2_3_y%" w="%console_width%" h="%console_action_height%"/>
-				<listitem name="{@governor_info_line1=}"/>
-				<listitem name="{@governor_info_line2=}"/>
-				<listitem name="{@governor_info_line3=}"/>
-				<listitem name="{@governor_info_line4=}"/>
-				<listitem name=""/>
-				<listitem name="{@governor_info_line5=}"/>
-				<listitem name="{@governor_info_line6=}"/>
-				<listitem name="{@governor_info_line7=}"/>
-				<listitem name="{@governor_info_line8=}"/>
-				<listitem name="{@governor_info_line9=}"/>
-				<listitem name="{@governor_info_line10=}"/>
-				<listitem name="{@governor_info_line11=}"/>
-				<listitem name="{@governor_info_line12=}"/>
-                <listitem name=""/>
-                <listitem name="{@governor_info_line13=}"/>
-				<listitem name="{@governor_info_line14=}"/>
-				<listitem name="{@governor_info_line15=}"/>
-				<listitem name="{@governor_info_line16=}"/>
-				<listitem name="{@governor_info_line17=}"/>
-				<listitem name="{@governor_info_line18=}"/>
-				<listitem name="{@governor_info_line19=}"/>
-				<listitem name="{@governor_info_line20=}"/>
-				<listitem name="{@governor_info_line21=}"/>
-				<listitem name="{@governor_info_line22=}"/>
-			</listbox>
-
-			<fill color="%linecolor%">
-				<placement x="%col1_x%" y="%row2_3_y%" w="%content_w%" h="%fileselector_separatorheight%"/>
-			</fill>
-
-			<fill color="%linecolor%">
-				<placement x="%col1_x%" y="%row7_3_y%" w="%content_w%" h="%fileselector_separatorheight%"/>
-			</fill>
-
-			<button>
-				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
-				<image resource="btn_float_accept"/>
-				<highlight color="%highlight_color%"/>
-				<action function="page">wolf_kernel_settings</action>
-			</button>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">wolf_kernel_settings</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-			</page>
-
-
 
 <page name="community_scripts_info">
 			<template name="body"/>
@@ -5088,895 +4972,45 @@
 			</action>
 		</page>
 
-<page name="wolf_set_on_boot">
-			<template name="body"/>
-
-			<template name="ab_tab"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wolf_boot_nastaveni=}</text>
-			</text>
-
-			<button>
-				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_governors"/>
-				<action function="page">wolf_kernel_settings</action>
-			</button>
-
-			<image>
-				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_1"/>
-			</image>
-
-			<!--button>
-				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_traffic_light_2"/>
-				<action function="page">wolf_set_custom_led_color</action>
-			</button-->
-
-			<button>
-				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_vibration"/>
-				<action function="page">wolf_led_vibrate_action</action>
-			</button>
-
-			<fill color="%text_actionbar%">
-				<placement x="%tab4_ind2_x%" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
-			</fill>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row2_1_y%"/>
-				<text>{@wolf_setonboot_cptn=Set on boot}</text>
-			</text>
-
-			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row2_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="{@wolf_boot_fsync=Zip signature verification}">
-					<data variable="wolf_boot_fsync_check"/>
-				</listitem>
-				<listitem name="{@wolf_boot_fastcharge=Reboot after installation is complete}">
-					<data variable="wolf_boot_fastcharge_check"/>
-				</listitem>
-				<listitem name="{@wolf_boot_t2w=Use rm -rf instead of formatting}">
-					<data variable="wolf_boot_t2w_check"/>
-				</listitem>
-				<listitem name="{@wolf_boot_performance=Skip MD5 generation during backup}">
-					<data variable="wolf_boot_performance_check"/>
-				</listitem>
-				<listitem name="{@wolf_boot_powersave=Enable MD5 verification of backup files}">
-					<data variable="wolf_boot_powersave_check"/>
-				</listitem>
-				<listitem name="{@wolf_boot_balance=Simulate actions for theme testing}">
-					<data variable="wolf_boot_balance_check"/>
-				</listitem>
-				<!--listitem name="{@wolf_boot_qc2.0=Simulate failure for actions}">
-					<condition var1="wolf_compatibility_wolf_device" var2="kenzo"/>
-					<data variable="wolf_boot_qc2.0_check"/>
-				</listitem-->
-			</listbox>
-
-
-			<text style="caption">
-			<condition var1="nightmode" var2="0"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@nightmode_info_on=Swipe to turn on night mode}</text>
-			</text>
-
-<text style="caption">
-			<condition var1="nightmode" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@nightmode_info_off=Swipe to turn off night mode}</text>
-			</text>
-
-	     <slider>
-     	<condition var1="nightmode" var2="1"/>
-				<action function="cmd">echo "256 256 256" > /sys/devices/platform/kcal_ctrl.0/kcal;</action>
-		    	<action function="set">nightmode=0</action>
-              	</slider>
-
-			<slider>
-				<condition var1="nightmode" var2="0"/>
-				<action function="cmd">echo "256 193 132" > /sys/devices/platform/kcal_ctrl.0/kcal;</action>
-		    	<action function="set">nightmode=1</action>
-            	</slider>
-
-
-			<action>
-				<conditions>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_boot_performance_check" var2="0"/>
-				<condition var1="wolf_boot_balance_check" var2="0"/>
-				<condition var1="wolf_boot_powersave_check" var2="0"/>
-				</conditions>
-				<action function="set">wolf_boot_balance_check=1</action>
-			</action>
-
-
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_boot_performance_check" var2="1"/>
-				<actions>
-					<action function="set">wolf_boot_powersave_check=0</action>
-					<action function="set">wolf_boot_balance_check=0</action>
-             </actions>
-			</action>
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_boot_powersave_check" var2="1"/>
-				<actions>
-					<action function="set">wolf_boot_performance_check=0</action>
-					<action function="set">wolf_boot_balance_check=0</action>
-             </actions>
-			</action>
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_boot_balance_check" var2="1"/>
-				<actions>
-					<action function="set">wolf_boot_performance_check=0</action>
-					<action function="set">wolf_boot_powersave_check=0</action>
-             </actions>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-
-			<action>
-				<touch key="back"/>
-				<action function="page">wolf_kernel_settings</action>
-			</action>
-		</page>
-
-
-
-			<page name="wolf_led_vibrate_action">
-			<template name="body"/>
-
-			<template name="ab_tab"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wolf_boot_nastaveni=}</text>
-			</text>
-
-			<button>
-				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_governors"/>
-				<action function="page">wolf_kernel_settings</action>
-			</button>
-
-
-			<button>
-				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_2"/>
-				<action function="page">wolf_set_on_boot</action>
-			</button>
-
-			<!--button>
-				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_traffic_light_2"/>
-				<action function="page">wolf_set_custom_led_color</action>
-			</button-->
-
-			<image>
-				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_vibration_a"/>
-			</image>
-
-			<fill color="%text_actionbar%">
-				<placement x="%tab4_ind4_x%" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
-			</fill>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row2_1_y%"/>
-				<text>{@wolf_vibration_hdr=Vibration}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%col1_x%" y="%row2_2a_y%"/>
-				<text>{@wolf_install_vibrate=}: %wolf_data_install_vibrate%</text>
-			</text>
-
-			<slidervalue>
-				<placement x="%slider_x%" y="600" w="%slidervalue_w%"/>
-				<resource background="slider" handle="handle" handlehover="handle_h"/>
-				<font resource="caption" color="%text%"/>
-				<colors line="%text_dark%" slider="%accent%"/>
-				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
-				<data variable="wolf_data_install_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
-			</slidervalue>
-
-			<text style="text_body2">
-				<placement x="%col1_x%" y="840"/>
-				<text>{@wolf_backup_vibrate=}: %wolf_data_backup_vibrate%</text>
-			</text>
-
-			<slidervalue>
-				<placement x="%slider_x%" y="870" w="%slidervalue_w%"/>
-				<resource background="slider" handle="handle" handlehover="handle_h"/>
-				<font resource="caption" color="%text%"/>
-				<colors line="%text_dark%" slider="%accent%"/>
-				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
-				<data variable="wolf_data_backup_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
-			</slidervalue>
-
-			<text style="text_body2">
-				<placement x="%col1_x%" y="1110"/>
-				<text>{@wolf_restore_vibrate=}: %wolf_data_restore_vibrate%</text>
-			</text>
-
-			<slidervalue>
-				<placement x="%slider_x%" y="1140" w="%slidervalue_w%"/>
-				<resource background="slider" handle="handle" handlehover="handle_h"/>
-				<font resource="caption" color="%text%"/>
-				<colors line="%text_dark%" slider="%accent%"/>
-				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
-				<data variable="wolf_data_restore_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
-			</slidervalue>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">wolf_kernel_settings</action>
-			</action>
-		</page>
-
-
-
-
-<!--page name="wolf_set_custom_led_color">
-			<template name="body"/>
-
-			<template name="ab_tab"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wolf_boot_nastaveni=}</text>
-			</text>
-
-			<button>
-				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_governors"/>
-				<action function="page">wolf_kernel_settings</action>
-			</button>
-
-			<button>
-				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_2"/>
-				<action function="page">wolf_set_on_boot</action>
-			</button>
-
-			<image>
-				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_traffic_light_1"/>
-			</image>
-
-			<button>
-				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_vibration"/>
-				<action function="page">wolf_led_vibrate_action</action>
-			</button>
-
-			<fill color="%text_actionbar%">
-				<placement x="%center_x%" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
-			</fill>
-
-
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row2_1_y%"/>
-				<text>{@wolf_set_custom_led_install=}</text>
-			</text>
-
-
-			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row2_2_y%" w="%listbox_w%" h="%listbox_settings_backup_height%"/>
-				<listitem name="{@wolf_set_custom_led_green=}">
-					<data variable="wolf_set_custom_led_install_green"/>
-				</listitem>
-				<listitem name="{@wolf_set_custom_led_blue=}">
-					<data variable="wolf_set_custom_led_install_blue"/>
-				</listitem>
-				<listitem name="{@wolf_set_custom_led_red=}">
-					<data variable="wolf_set_custom_led_install_red"/>
-				</listitem>
-			</listbox>
-
-
-			<action>
-				<conditions>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_install_green" var2="0"/>
-				<condition var1="wolf_set_custom_led_install_red" var2="0"/>
-				<condition var1="wolf_set_custom_led_install_blue" var2="0"/>
-				</conditions>
-		    <action function="set">wolf_set_custom_led_install_green=1</action>
-			</action>
-
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_install_green" var2="1"/>
-				<actions>
-					<action function="set">wolf_set_custom_led_install_red=0</action>
-					<action function="set">wolf_set_custom_led_install_blue=0</action>
-					<action function="set">wolf_install_led_color=green</action>
-             </actions>
-			</action>
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_install_red" var2="1"/>
-				<actions>
-					<action function="set">wolf_set_custom_led_install_green=0</action>
-					<action function="set">wolf_set_custom_led_install_blue=0</action>
-					<action function="set">wolf_install_led_color=red</action>
-             </actions>
-			</action>
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_install_blue" var2="1"/>
-				<actions>
-					<action function="set">wolf_set_custom_led_install_red=0</action>
-					<action function="set">wolf_set_custom_led_install_green=0</action>
-					<action function="set">wolf_install_led_color=blue</action>
-             </actions>
-			</action>
-
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row4_1_y%"/>
-				<text>{@wolf_set_custom_led_backup=}</text>
-			</text>
-
-			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_backup_height%"/>
-				<listitem name="{@wolf_set_custom_led_green=}">
-					<data variable="wolf_set_custom_led_backup_green"/>
-				</listitem>
-				<listitem name="{@wolf_set_custom_led_blue=}">
-					<data variable="wolf_set_custom_led_backup_blue"/>
-				</listitem>
-				<listitem name="{@wolf_set_custom_led_red=}">
-					<data variable="wolf_set_custom_led_backup_red"/>
-				</listitem>
-			</listbox>
-
-			<action>
-				<conditions>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_backup_green" var2="0"/>
-				<condition var1="wolf_set_custom_led_backup_red" var2="0"/>
-				<condition var1="wolf_set_custom_led_backup_blue" var2="0"/>
-				</conditions>
-		    <action function="set">wolf_set_custom_led_backup_green=1</action>
-			</action>
-
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_backup_green" var2="1"/>
-				<actions>
-					<action function="set">wolf_set_custom_led_backup_red=0</action>
-					<action function="set">wolf_set_custom_led_backup_blue=0</action>
-					<action function="set">wolf_backup_led_color=green</action>
-             </actions>
-			</action>
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_backup_red" var2="1"/>
-				<actions>
-					<action function="set">wolf_set_custom_led_backup_green=0</action>
-					<action function="set">wolf_set_custom_led_backup_blue=0</action>
-					<action function="set">wolf_backup_led_color=red</action>
-             </actions>
-			</action>
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_backup_blue" var2="1"/>
-				<actions>
-					<action function="set">wolf_set_custom_led_backup_red=0</action>
-					<action function="set">wolf_set_custom_led_backup_green=0</action>
-					<action function="set">wolf_backup_led_color=blue</action>
-             </actions>
-			</action>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row6_1_y%"/>
-				<text>{@wolf_set_custom_led_restore=}</text>
-			</text>
-
-			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row6_2_y%" w="%listbox_w%" h="%listbox_settings_backup_height%"/>
-				<listitem name="{@wolf_set_custom_led_green=}">
-					<data variable="wolf_set_custom_led_restore_green"/>
-				</listitem>
-				<listitem name="{@wolf_set_custom_led_blue=}">
-					<data variable="wolf_set_custom_led_restore_blue"/>
-				</listitem>
-				<listitem name="{@wolf_set_custom_led_red=}">
-					<data variable="wolf_set_custom_led_restore_red"/>
-				</listitem>
-			</listbox>
-
-			<action>
-				<conditions>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_restore_green" var2="0"/>
-				<condition var1="wolf_set_custom_led_restore_red" var2="0"/>
-				<condition var1="wolf_set_custom_led_restore_blue" var2="0"/>
-				</conditions>
-		    <action function="set">wolf_set_custom_led_restore_green=1</action>
-			</action>
-
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_restore_green" var2="1"/>
-				<actions>
-					<action function="set">wolf_set_custom_led_restore_red=0</action>
-					<action function="set">wolf_set_custom_led_restore_blue=0</action>
-					<action function="set">wolf_restore_led_color=green</action>
-             </actions>
-			</action>
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_restore_red" var2="1"/>
-				<actions>
-					<action function="set">wolf_set_custom_led_restore_green=0</action>
-					<action function="set">wolf_set_custom_led_restore_blue=0</action>
-					<action function="set">wolf_restore_led_color=red</action>
-             </actions>
-			</action>
-
-			<action>
-	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_set_custom_led_restore_blue" var2="1"/>
-				<actions>
-					<action function="set">wolf_set_custom_led_restore_red=0</action>
-					<action function="set">wolf_set_custom_led_restore_green=0</action>
-					<action function="set">wolf_restore_led_color=blue</action>
-             </actions>
-			</action>
-
-
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-
-			<action>
-				<touch key="back"/>
-				<action function="page">wolf_kernel_settings</action>
-			</action>
-		</page-->
-
-
-<page name="wolf_kernel_settings">
-			<template name="body"/>
-
-			<template name="ab_tab"/>
-
-			<template name="statusbarinfo"/>
-
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wolf_boot_nastaveni=}</text>
-			</text>
-
-<button>
-	  <placement x="853" y="row1_2a_y"/>
-				<image resource="btn_float_flashitinfo" highlightresource="btn_float_flashitinfo_hl"/>
-				<action function="page">governor_info</action>
-			</button>
-
-	<image>
-				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_kernel_scale"/>
-			</image>
-
-			<button>
-				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_2"/>
-				<action function="page">wolf_set_on_boot</action>
-			</button>
-
-			<!--button>
-				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_traffic_light_2"/>
-				<action function="page">wolf_set_custom_led_color</action>
-			</button-->
-
-			<button>
-				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_vibration"/>
-				<action function="page">wolf_led_vibrate_action</action>
-			</button>
-
-			<fill color="%text_actionbar%">
-				<placement x="0" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
-			</fill>
-
-
-
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row2_2_y%"/>
-				<text>{@governor_settings=}</text>
-			</text>
-
-			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row2_3_y%" w="%listbox_w%" h="%row3_2_y%"/>
-				<listitem name="Interactive">
-					<data variable="governor_interactive"/>
-				</listitem>
-                <listitem name="Ironactive">
-					<data variable="governor_ironactive"/>
-				</listitem>
-				<listitem name="Impulse">
-					<data variable="governor_impulse"/>
-				</listitem>
-				<listitem name="Conservative">
-					<data variable="governor_conservative"/>
-				</listitem>
-				<listitem name="Ondemand">
-					<data variable="governor_ondemand"/>
-				</listitem>
-				<listitem name="Userspace">
-					<data variable="governor_userspace"/>
-				</listitem>
-				<listitem name="Powersave">
-					<data variable="governor_powersave"/>
-				</listitem>
-				<listitem name="Performance">
-					<data variable="governor_performance"/>
-				</listitem>
-				</listbox>
-
-
-
-<text style="caption">
-<placement x="%col1_x%" y="%row7_2_y%" textplacement="6"/>
-<text>{@active_governor=}</text>
-</text>
-
-<action>
-	<condition var1="tw_busy" var2="0"/>
-				<condition var1="governor_interactive" var2="1"/>
-				<actions>
-					<action function="set">governor_ironactive=0</action>
-					<action function="set">governor_impulse=0</action>
-					<action function="set">governor_conservative=0</action>
-					<action function="set">governor_ondemand=0</action>
-					<action function="set">governor_userspace=0</action>
-					<action function="set">governor_powersave=0</action>
-				    <action function="set">governor_performance=0</action>
-				    <action function="set">governor_tmp=interactive</action>
-              </actions>
-			</action>
-
-<action>
-	<condition var1="tw_busy" var2="0"/>
-				<condition var1="governor_ironactive" var2="1"/>
-				<actions>
-					<action function="set">governor_interactive=0</action>
-					<action function="set">governor_impulse=0</action>
-					<action function="set">governor_conservative=0</action>
-					<action function="set">governor_ondemand=0</action>
-					<action function="set">governor_userspace=0</action>
-					<action function="set">governor_powersave=0</action>
-				    <action function="set">governor_performance=0</action>
-				    <action function="set">governor_tmp=ironactive</action>
-              </actions>
-			</action>
-
-<action>
-	<condition var1="tw_busy" var2="0"/>
-				<condition var1="governor_impulse" var2="1"/>
-				<actions>
-					<action function="set">governor_interactive=0</action>
-					<action function="set">governor_ironactive=0</action>
-					<action function="set">governor_conservative=0</action>
-					<action function="set">governor_ondemand=0</action>
-					<action function="set">governor_userspace=0</action>
-					<action function="set">governor_powersave=0</action>
-				    <action function="set">governor_performance=0</action>
-				    <action function="set">governor_tmp=impulse</action>
-              </actions>
-			</action>
-
-<action>
-	<condition var1="tw_busy" var2="0"/>
-				<condition var1="governor_conservative" var2="1"/>
-				<actions>
-					<action function="set">governor_interactive=0</action>
-					<action function="set">governor_ironactive=0</action>
-					<action function="set">governor_impulse=0</action>
-					<action function="set">governor_ondemand=0</action>
-					<action function="set">governor_userspace=0</action>
-					<action function="set">governor_powersave=0</action>
-				    <action function="set">governor_performance=0</action>
-				    <action function="set">governor_tmp=conservative</action>
-              </actions>
-			</action>
-
-<action>
-	<condition var1="tw_busy" var2="0"/>
-				<condition var1="governor_ondemand" var2="1"/>
-				<actions>
-					<action function="set">governor_interactive=0</action>
-					<action function="set">governor_ironactive=0</action>
-					<action function="set">governor_impulse=0</action>
-					<action function="set">governor_conservative=0</action>
-					<action function="set">governor_userspace=0</action>
-					<action function="set">governor_powersave=0</action>
-				    <action function="set">governor_performance=0</action>
-				    <action function="set">governor_tmp=ondemand</action>
-              </actions>
-			</action>
-
-<action>
-	<condition var1="tw_busy" var2="0"/>
-				<condition var1="governor_userspace" var2="1"/>
-				<actions>
-					<action function="set">governor_interactive=0</action>
-					<action function="set">governor_ironactive=0</action>
-					<action function="set">governor_impulse=0</action>
-					<action function="set">governor_conservative=0</action>
-					<action function="set">governor_ondemand=0</action>
-					<action function="set">governor_powersave=0</action>
-				    <action function="set">governor_performance=0</action>
-				    <action function="set">governor_tmp=userspace</action>
-              </actions>
-			</action>
-
-<action>
-	<condition var1="tw_busy" var2="0"/>
-				<condition var1="governor_powersave" var2="1"/>
-				<actions>
-					<action function="set">governor_interactive=0</action>
-					<action function="set">governor_ironactive=0</action>
-					<action function="set">governor_impulse=0</action>
-					<action function="set">governor_conservative=0</action>
-					<action function="set">governor_ondemand=0</action>
-					<action function="set">governor_userspace=0</action>
-				    <action function="set">governor_performance=0</action>
-				    <action function="set">governor_tmp=powersave</action>
-              </actions>
-			</action>
-
-<action>
-	<condition var1="tw_busy" var2="0"/>
-				<condition var1="governor_performance" var2="1"/>
-				<actions>
-					<action function="set">governor_interactive=0</action>
-					<action function="set">governor_ironactive=0</action>
-					<action function="set">governor_impulse=0</action>
-					<action function="set">governor_conservative=0</action>
-					<action function="set">governor_ondemand=0</action>
-					<action function="set">governor_userspace=0</action>
-				    <action function="set">governor_powersave=0</action>
-				    <action function="set">governor_tmp=performance</action>
-              </actions>
-			</action>
-
-              <text style="caption">
-              	<condition var1="tw_busy" var2="0"/>
-              	<condition var1="governor_performance" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_governor=}</text>
-			</text>
-
-             <slider>
-    <condition var1="tw_busy" var2="0"/>
-             	<condition var1="governor_performance" var2="1"/>
-				<action function="cmd">
-                for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-	             [ -f "$cpu" ] || continue
-	             echo "%governor_tmp%" > "$cpu";
-                 done
-              </action>
-		   <action function="set">governor_stable=%governor_tmp%</action>
-            </slider>
-
-<text style="caption">
-	<condition var1="tw_busy" var2="0"/>
-              	<condition var1="governor_interactive" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_governor=}</text>
-			</text>
-
-<slider>
-	<condition var1="tw_busy" var2="0"/>
-             	<condition var1="governor_interactive" var2="1"/>
-				<action function="cmd">
-                for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-	             [ -f "$cpu" ] || continue
-	             echo "%governor_tmp%" > "$cpu";
-                 done
-              </action>
-		   <action function="set">governor_stable=%governor_tmp%</action>
-            </slider>
-
-<text style="caption">
-	<condition var1="tw_busy" var2="0"/>
-              	<condition var1="governor_ironactive" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_governor=}</text>
-			</text>
-
-<slider>
-	<condition var1="tw_busy" var2="0"/>
-             	<condition var1="governor_ironactive" var2="1"/>
-				<action function="cmd">
-                for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-	             [ -f "$cpu" ] || continue
-	             echo "%governor_tmp%" > "$cpu";
-                 done
-              </action>
-		   <action function="set">governor_stable=%governor_tmp%</action>
-            </slider>
-
-<text style="caption">
-	<condition var1="tw_busy" var2="0"/>
-              	<condition var1="governor_impulse" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_governor=}</text>
-			</text>
-
-<slider>
-        <condition var1="tw_busy" var2="0"/>
-<condition var1="governor_impulse" var2="1"/>
-				<action function="cmd">
-                for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-	             [ -f "$cpu" ] || continue
-	             echo "%governor_tmp%" > "$cpu";
-                 done
-              </action>
-		   <action function="set">governor_stable=%governor_tmp%</action>
-            </slider>
-
-<text style="caption">
-	<condition var1="tw_busy" var2="0"/>
-              	<condition var1="governor_conservative" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_governor=}</text>
-			</text>
-
-<slider>
-	<condition var1="tw_busy" var2="0"/>
-             	<condition var1="governor_conservative" var2="1"/>
-				<action function="cmd">
-                 for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-	             [ -f "$cpu" ] || continue
-	             echo "%governor_tmp%" > "$cpu";
-                 done
-              </action>
-		   <action function="set">governor_stable=%governor_tmp%</action>
-            </slider>
-
-<text style="caption">
-	<condition var1="tw_busy" var2="0"/>
-              	<condition var1="governor_ondemand" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_governor=}</text>
-			</text>
-
-<slider>
-	<condition var1="tw_busy" var2="0"/>
-             	<condition var1="governor_ondemand" var2="1"/>
-				<action function="cmd">
-                for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-	             [ -f "$cpu" ] || continue
-	             echo "%governor_tmp%" > "$cpu";
-                 done
-              </action>
-		   <action function="set">governor_stable=%governor_tmp%</action>
-            </slider>
-
-<text style="caption">
-              	<condition var1="governor_userspace" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_governor=}</text>
-			</text>
-
-<slider>
-	<condition var1="tw_busy" var2="0"/>
-             	<condition var1="governor_userspace" var2="1"/>
-				<action function="cmd">
-                for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-	             [ -f "$cpu" ] || continue
-	             echo "%governor_tmp%" > "$cpu";
-                 done
-              </action>
-		   <action function="set">governor_stable=%governor_tmp%</action>
-            </slider>
-
-<text style="caption">
-	<condition var1="tw_busy" var2="0"/>
-              	<condition var1="governor_powersave" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_governor=}</text>
-			</text>
-
-<slider>
-	<condition var1="tw_busy" var2="0"/>
-             	<condition var1="governor_powersave" var2="1"/>
-				<action function="cmd">
-                for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
-	             [ -f "$cpu" ] || continue
-	             echo "%governor_tmp%" > "$cpu";
-                 done
-              </action>
-		   <action function="set">governor_stable=%governor_tmp%</action>
-            </slider>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-
-			<action>
-				<touch key="back"/>
-				<action function="page">main</action>
-			</action>
-		</page>
-
-
 <page name="fox_community">
 			<template name="body"/>
 
-			<template name="ab"/>
+			<template name="ab_tab"/>
 
 			<template name="statusbarinfo"/>
+
+			<button>
+				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
+				<image resource="wolf_on_boot_2"/>
+				<action function="page">fox_menu</action>
+			</button>
+
+			<!--button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
+				<action function="overlay">dialog_reset</action>
+			</button-->
+
+			<button>
+				<placement x="540" y="%tab_y%" placement="4"/>
+				<image resource="wolf_governors"/>
+				<action function="page">fox_menu2</action>
+			</button>
+
+			<!--button>
+				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_display"/>
+				<action function="page">screen</action>
+			</button-->
+
+			<image>
+				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_comm_a"/>
+			</image>
+
+			<fill color="%text_actionbar%">
+				<placement x="%tab3_ind3_x%" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+			</fill>
 
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
@@ -5988,12 +5022,6 @@
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@wolf.community.scripts_hdr=}</text>
 			</text>
-
-<button>
-				<placement x="853" y="152"/>
-				<image resource="btn_float_flashitinfo" highlightresource="btn_float_flashitinfo_hl"/>
-				<action function="page">community_scripts_info</action>
-			</button>
 
 <button style="btn_raised">
 				<placement x="27" y="1560"/>
@@ -6174,7 +5202,7 @@
 		<page name="fox_menu">
 			<template name="body"/>
 
-			<template name="ab"/>
+			<template name="ab_tab"/>
 
 			<template name="statusbarinfo"/>
 
@@ -6189,13 +5217,34 @@
 				<text>OrangeFox menu</text>
 			</text>
 
+			<image>
+				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
+				<image resource="wolf_on_boot_1"/>
+			</image>
+
+			<button>
+				<placement x="540" y="%tab_y%" placement="4"/>
+				<image resource="wolf_governors"/>
+				<action function="page">fox_menu2</action>
+			</button>
+
+			<button>
+				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_comm"/>
+				<action function="page">fox_community</action>
+			</button>
+
+			<fill color="%text_actionbar%">
+				<placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+			</fill>
+
 			<text style="caption">
-				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<text>{@functional=Functional}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row1_2_y%" w="%listbox_w%" h="%listbox_settings_mf_height%"/>
+				<placement x="%col1_x%" y="%row2_2_y%" w="%listbox_w%" h="%listbox_settings_mf_height%"/>
 				<listitem name="{@use_aromafm=Use Aroma File Manager}">
 					<data variable="aromafm"/>
 				</listitem>
@@ -6211,12 +5260,12 @@
 				</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
 				<text>{@visual=Visual}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row2_3_y%" w="%listbox_w%" h="%listbox_settings_mv_height%"/>
+				<placement x="%col1_x%" y="%row3_3_y%" w="%listbox_w%" h="%listbox_settings_mv_height%"/>
 				<listitem name="{@center_clock_bar=Center clock in statusbar}">
 					<data variable="center_clock"/>
 				</listitem>
@@ -6235,12 +5284,12 @@
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row5_2_y%"/>
+				<placement x="%col1_x%" y="%row7_1_y%"/>
 				<text>{@fox_menu_flash=Orange!}</text>
 			</text>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row6_2_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row7_2_y%"/>
 				<text>{@fox_dell_pass}</text>
 					<actions>
 					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/PassReset.zip</action>
@@ -6252,14 +5301,14 @@
 			</button>
 
 		  <button style="btn_raised">
-				<placement x="%btn_raised_right_x%" y="%row6_2_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row6_3_y%" placement="1"/>
 				<text>{@wolf.colour.change=Change color}</text>
 			        <action function="page">theme_color</action>
 			</button>
 
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row5_3_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row6_3_y%"/>
 				<text>Magisk</text>
 				<actions>
 					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/Magisk.zip</action>
@@ -6271,18 +5320,28 @@
 				</button>
 
 			<button style="btn_raised">
-				<placement x="%btn_raised_right_x%" y="%row5_3_y%" placement="1"/>
-				<text>{@wolf_custom_wolf_splash_btn=Change Splash}</text>
+				<placement x="%btn_raised_right_x%" y="%row7_2_y%" placement="1"/>
+				<text>{@fox_menu_splash=Change Splash}</text>
 				<action function="page">theme_splash</action>
 			</button>
 
 			<button style="btn_raised">
-				<placement x="%btn_raised_right_x%" y="%row7_1_y%" placement="1"/>
-				<text>ADB</text>
-				<action function="page">wolf_adb</action>
+				<condition var1="wolf_adb" var2="1"/>
+				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
+				<text>ADB ON</text>
+				<!--action function="page">wolf_adb</action-->
+				<action function="set">wolf_adb=0</action>
 			</button>
 
-			<text style="caption">
+			<button style="btn_raised">
+				<condition var1="wolf_adb" var2="0"/>
+				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
+				<text>ADB OFF</text>
+				<!--action function="page">wolf_adb</action-->
+				<action function="set">wolf_adb=1</action>
+			</button>
+
+			<!--text style="caption">
 				<placement x="%col1_x%" y="%row8_1_y%"/>
 				<text>{@fox_menu_navigation=Navigation}</text>
 			</text>
@@ -6297,7 +5356,7 @@
 				<placement x="%btn_raised_left_x%" y="%row8_2_y%"/>
 				<text>{@fox_menu_comm}</text>
 				<action function="page">fox_community</action>
-			</button>
+			</button-->
 
 			<action>
 				<touch key="home"/>
@@ -6864,7 +5923,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col1_x%" y="%row2_3_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Orange</action>
+					<action function="set">tw_accent_name={@f_orange}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=FF9800</action>
 					<action function="set">tw_folder=images</action>
@@ -6885,7 +5944,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col_col_center_x%" y="%row2_3_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Indigo</action>
+					<action function="set">tw_accent_name={@f_indigo}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=3F51B5FF</action>
 					<action function="set">tw_folder=images_indigo</action>
@@ -6906,7 +5965,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col_x_color3%" y="%row2_3_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Blue</action>
+					<action function="set">tw_accent_name={@f_blue}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=1464FFFF</action>
 					<action function="set">tw_folder=images_blue</action>
@@ -6927,7 +5986,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col1_x%" y="%row3_3a_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Light Blue</action>
+					<action function="set">tw_accent_name={@f_light_blue}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=03A9F4FF</action>
 					<action function="set">tw_folder=images_lightblue</action>
@@ -6948,7 +6007,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col_col_center_x%" y="%row3_3a_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Stock</action>
+					<action function="set">tw_accent_name={@f_stock}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=0090CAFF</action>
 					<action function="set">tw_folder=images_stock</action>
@@ -6969,7 +6028,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col_x_color3%" y="%row3_3a_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Teal</action>
+					<action function="set">tw_accent_name={@f_teal}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=009688FF</action>
 					<action function="set">tw_folder=images_teal</action>
@@ -6990,7 +6049,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col1_x%" y="%row5_1_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Green</action>
+					<action function="set">tw_accent_name={@f_green}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=259B24FF</action>
 					<action function="set">tw_folder=images_green</action>
@@ -7011,7 +6070,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col_col_center_x%" y="%row5_1_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Light Green</action>
+					<action function="set">tw_accent_name={@f_light_green}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=8BC34AFF</action>
 					<action function="set">tw_folder=images_lightgreen</action>
@@ -7032,7 +6091,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col_x_color3%" y="%row5_1_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Lime</action>
+					<action function="set">tw_accent_name={@f_lime}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=CDDC39FF</action>
 					<action function="set">tw_folder=images_lime</action>
@@ -7053,7 +6112,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col1_x%" y="%row6_1a_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Amber</action>
+					<action function="set">tw_accent_name={@f_amber}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=FFC107FF</action>
 					<action function="set">tw_folder=images_amber</action>
@@ -7074,7 +6133,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col_col_center_x%" y="%row6_1a_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Red0</action>
+					<action function="set">tw_accent_name={@f_red}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=E51C23FF</action>
 					<action function="set">tw_folder=images_red</action>
@@ -7095,7 +6154,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col_x_color3%" y="%row6_1a_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Deep Orange</action>
+					<action function="set">tw_accent_name={@f_deep_orange}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=FF5722FF</action>
 					<action function="set">tw_folder=images_deeporange</action>
@@ -7116,7 +6175,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col1_x%" y="%row7_2_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Brown</action>
+					<action function="set">tw_accent_name={@f_brown}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=795548FF</action>
 					<action function="set">tw_folder=images_brown</action>
@@ -7137,7 +6196,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col_col_center_x%" y="%row7_2_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Grey</action>
+					<action function="set">tw_accent_name={@f_grey}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=9E9E9EFF</action>
 					<action function="set">tw_folder=images_grey</action>
@@ -7158,7 +6217,7 @@
 				<fill color="%transparent%"/>
 				<placement x="%col_x_color3%" y="%row7_2_y%" w="308" h="180"/>
 				<actions>
-					<action function="set">tw_accent_name=Blue Grey</action>
+					<action function="set">tw_accent_name={@f_blue_grey}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=607D8BFF</action>
 					<action function="set">tw_folder=images_bluegrey</action>
@@ -8727,6 +7786,18 @@
 				<action function="set">tw_show_exclamation=0</action>
 				<action function="set">tw_show_reboot=0</action>
 				<action function="page">%tw_clear_destination%</action>
+				<!-- Lower led crutch :) -->
+				<action function="set">wolf_set_custom_led_restore_green=1</action>
+				<action function="set">wolf_set_custom_led_restore_blue=0</action>
+				<action function="set">wolf_set_custom_led_restore_red=0</action>
+
+				<action function="set">wolf_set_custom_led_backup_green=1</action>
+				<action function="set">wolf_set_custom_led_backup_blue=0</action>
+				<action function="set">wolf_set_custom_led_backup_red=0</action>
+
+				<action function="set">wolf_set_custom_led_install_green=1</action>
+				<action function="set">wolf_set_custom_led_install_blue=0</action>
+				<action function="set">wolf_set_custom_led_install_red=0</action>
 			</action>
 		</page>
 
@@ -10034,7 +9105,7 @@
 			</action>
 
 <action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="set">tw_zip_location=/sdcard1</action>
 				</action>
 
@@ -10161,7 +9232,7 @@
 			</action>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="set">tw_zip_location=/sdcard1</action>
 				</action>
 
@@ -14637,7 +13708,7 @@
 			</button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -15693,7 +14764,7 @@
 			</action>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -15933,7 +15004,7 @@
 			</action>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -15942,6 +15013,7 @@
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
+
 
 		<page name="about">
 			<template name="body"/>
@@ -16191,7 +15263,7 @@
 			</action>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -16396,7 +15468,7 @@
 			</button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -16476,7 +15548,7 @@
 			</text>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -16519,7 +15591,7 @@
             </button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -16642,7 +15714,7 @@
 			</button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -16685,7 +15757,7 @@
 			</button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -16751,11 +15823,11 @@
 			</button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
@@ -16861,7 +15933,7 @@
 			</button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -16910,7 +15982,7 @@
 			</button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -16976,7 +16048,7 @@
 			</button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -17039,7 +16111,7 @@
 			</button>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -17111,7 +16183,7 @@
 				<page name="fox_menu2">
 					<template name="body"/>
 
-					<template name="ab"/>
+					<template name="ab_tab"/>
 
 					<template name="statusbarinfo"/>
 
@@ -17123,16 +16195,49 @@
 
 					<text style="text_ab_title">
 						<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-						<text>OrangeFox</text>
+						<text>OrangeFox menu</text>
 					</text>
 
+		           <!--button>
+						<placement x="%ab_btn1_x%" y="%ab_y%"/>
+						<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
+						<action function="overlay">dialog_reset</action>
+					</button-->
+
+					<button>
+						<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
+						<image resource="wolf_on_boot_2"/>
+						<action function="page">fox_menu</action>
+					</button>
+
+					<image>
+						<placement x="540" y="%tab_y%" placement="4"/>
+						<image resource="wolf_kernel_scale"/>
+					</image>
+
+					<!--button>
+						<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
+						<image resource="tab_display"/>
+						<action function="page">screen</action>
+					</button-->
+
+					<button>
+						<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
+						<image resource="tab_comm"/>
+						<action function="page">fox_community</action>
+					</button>
+
+					<fill color="%text_actionbar%">
+						<placement x="%tab3_ind2_x%" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+					</fill>
+
 					<text style="caption">
-						<placement x="%col1_x%" y="%row1_1_y%"/>
+						<placement x="%col1_x%" y="%row2_1_y%"/>
 						<text>{@fox_menu2_power}</text>
 					</text>
 
 					<listbox style="listbox">
-						<placement x="%col1_x%" y="%row1_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+						<placement x="%col1_x%" y="%row2_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
 						<listitem name="{@wolf_boot_performance=Skip MD5 generation during backup}">
 							<data variable="wolf_boot_performance_check"/>
 						</listitem>
@@ -17145,12 +16250,12 @@
 					</listbox>
 
 					<text style="caption">
-						<placement x="%col1_x%" y="%row3_1_y%"/>
+						<placement x="%col1_x%" y="%row4_1_y%"/>
 						<text>{@fox_menu2_other}</text>
 					</text>
 
 					<listbox style="settingslist">
-						<placement x="%col1_x%" y="%row3_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+						<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
 						<listitem name="{@wolf_boot_fsync=Zip signature verification}">
 							<data variable="wolf_boot_fsync_check"/>
 						</listitem>
@@ -17166,17 +16271,6 @@
 						</listitem-->
 					</listbox>
 
-					<text style="caption">
-						<placement x="%col1_x%" y="%row8_1_y%"/>
-						<text>{@fox_menu_navigation}</text>
-					</text>
-
-					<button style="btn_raised_hl">
-						<placement x="%btn_raised_right_x%" y="%row8_2_y%" placement="1"/>
-						<text>Back</text>
-						<action function="page">fox_menu</action>
-					</button>
-
 					<action>
 						<conditions>
 		        <condition var1="tw_busy" var2="0"/>
@@ -17186,8 +16280,6 @@
 						</conditions>
 						<action function="set">wolf_boot_balance_check=1</action>
 					</action>
-
-
 
 					<action>
 		        <condition var1="tw_busy" var2="0"/>
@@ -17340,7 +16432,7 @@
 			</action>
 
 			<action>
-				<touch key="volup"/>
+				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
@@ -17357,7 +16449,6 @@
 			</button>
 
 		</page>
-
 
 	</pages>
 </recovery>
