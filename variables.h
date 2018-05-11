@@ -27,10 +27,17 @@
 
 // OrangeFox - Variables
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string>
+#include <unistd.h>
+static const std::string Fox_Home = "/sdcard/Fox";
+static const std::string Fox_sdcard_aroma_cfg = Fox_Home + "/aromafm.cfg";
+static const std::string Fox_aroma_cfg = "/FFiles/AromaFM/AromaFM.zip.cfg";
+#define RW_SURVIVAL_FOLDER      "/sdcard/Fox"
 
 #define RW_SURVIVAL_FOLDER_VAR      "wolf_survival_backup_folder_path"
 #define RW_SURVIVAL_BACKUP_NAME       "wolf_survival_backup_folder_name"
-#define RW_SURVIVAL_FOLDER      "/sdcard/Fox"
 #define RW_SURVIVAL_BACKUP       "OTA"
 #define RW_FILES_BACKUPS_FOLDER_VAR       "rw_files_backup_folder_var"
 #define RW_DISABLE_BOOT_CHK       "wolf_disable_boot_check"
