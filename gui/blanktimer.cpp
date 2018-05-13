@@ -32,46 +32,54 @@ extern "C" {
 #include "../twrp-functions.hpp"
 #include "../variables.h"
 
-blanktimer::blanktimer(void) {
+blanktimer::blanktimer(void) 
+{
 	pthread_mutex_init(&mutex, NULL);
 	setTime(0); // no timeout
 	state = kOn;
 	orig_brightness = getBrightness();
 }
 
-bool blanktimer::isScreenOff() {
+bool blanktimer::isScreenOff() 
+{
 	return state >= kOff;
 }
 
-void blanktimer::setTime(int newtime) {
+void blanktimer::setTime(int newtime) 
+{
 	pthread_mutex_lock(&mutex);
 	sleepTimer = newtime;
 	pthread_mutex_unlock(&mutex);
 }
 
-void blanktimer::setTimer(void) {
+void blanktimer::setTimer(void) 
+{
 	clock_gettime(CLOCK_MONOTONIC, &btimer);
 }
 
-void blanktimer::checkForTimeout() {
+void blanktimer::checkForTimeout() 
+{
 #ifndef TW_NO_SCREEN_TIMEOUT
 	pthread_mutex_lock(&mutex);
 	timespec curTime, diff;
 	clock_gettime(CLOCK_MONOTONIC, &curTime);
 	diff = TWFunc::timespec_diff(btimer, curTime);
-	if (sleepTimer > 2 && diff.tv_sec > (sleepTimer - 2) && state == kOn) {
+	if (sleepTimer > 2 && diff.tv_sec > (sleepTimer - 2) && state == kOn) 
+	{
 		orig_brightness = getBrightness();
 		state = kDim;
 		TWFunc::Set_Brightness("5");
 	}
-	if (sleepTimer && diff.tv_sec > sleepTimer && state < kOff) {
+	if (sleepTimer && diff.tv_sec > sleepTimer && state < kOff) 
+	{
 		state = kOff;
 		TWFunc::Set_Brightness("0");
 		TWFunc::check_and_run_script("/sbin/postscreenblank.sh", "blank");
 		PageManager::ChangeOverlay("lock");
 	}
 #ifndef TW_NO_SCREEN_BLANK
-	if (state == kOff) {
+	if (state == kOff) 
+	{
 		gr_fb_blank(true);
 		state = kBlanked;
 	}
@@ -80,10 +88,12 @@ void blanktimer::checkForTimeout() {
 #endif
 }
 
-string blanktimer::getBrightness(void) {
+string blanktimer::getBrightness(void) 
+{
 	string result;
 
-	if (DataManager::GetIntValue("tw_has_brightnesss_file")) {
+	if (DataManager::GetIntValue("tw_has_brightnesss_file")) 
+	{
 		DataManager::GetValue("tw_brightness", result);
 		if (result.empty())
 			result = "255";
@@ -91,11 +101,13 @@ string blanktimer::getBrightness(void) {
 	return result;
 }
 
-void blanktimer::resetTimerAndUnblank(void) {
+void blanktimer::resetTimerAndUnblank(void) 
+{
 #ifndef TW_NO_SCREEN_TIMEOUT
 	pthread_mutex_lock(&mutex);
 	setTimer();
-	switch (state) {
+	switch (state) 
+	{
 		case kBlanked:
 #ifndef TW_NO_SCREEN_BLANK
 			gr_fb_blank(false);
@@ -117,7 +129,8 @@ void blanktimer::resetTimerAndUnblank(void) {
 #endif
 }
 
-void blanktimer::blank(void) {
+void blanktimer::blank(void) 
+{
 /*  1) No need for timer handling since checkForTimeout() verifies
  *     state of screen before performing screen-off
  *  2) Assume screen-off causes issues for devices that set
@@ -126,14 +139,16 @@ void blanktimer::blank(void) {
 
 #ifndef TW_NO_SCREEN_TIMEOUT
 	pthread_mutex_lock(&mutex);
-	if (state == kOn) {
+	if (state == kOn) 
+	{
 		orig_brightness = getBrightness();
 		state = kOff;
 		TWFunc::Set_Brightness("0");
 		TWFunc::check_and_run_script("/sbin/postscreenblank.sh", "blank");
 	}
 #ifndef TW_NO_SCREEN_BLANK
-	if (state == kOff) {
+	if (state == kOff) 
+	{
 		gr_fb_blank(true);
 		state = kBlanked;
 	}
@@ -142,11 +157,14 @@ void blanktimer::blank(void) {
 #endif
 }
 
-void blanktimer::toggleBlank(void) {
-	if (state == kOn) {
+void blanktimer::toggleBlank(void) 
+{
+	if (state == kOn) 
+	{
 		blank();
 		PageManager::ChangeOverlay("lock");
-	} else {
+	} else 
+	{
 		resetTimerAndUnblank();
 	}
 }
