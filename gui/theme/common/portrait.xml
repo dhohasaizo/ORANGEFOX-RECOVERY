@@ -725,7 +725,7 @@
 					<action function="set">tw_signed_zip_verify=0</action>
 					<action function="set">tw_filename=%rw_resource_dir%/Rm_Pass/Rm_Pass.zip</action>
 					<action function="queuezip"/>
-				    <action function="flash">flash_zip</action>
+			    <action function="flash">flash_zip</action>
 				</actions>
        	</slider>
 
@@ -4078,12 +4078,19 @@
 				<condition var1="aromafm" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row6_y%" w="%content_w%" h="%mb_h%"/>
 				<actions>
-					<action function="set">tw_filecheck=%rw_resource_dir%/AromaFM/AromaFM.zip</action>
-					<action function="set">tw_existpage=flash_aromafm_confirm</action>
-				<action function="disableled"/>
-					<action function="set">tw_back=main2</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
+					<action function="queueclear"/>
+					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
+					<action function="set">rw_inject_after_zip=0</action>
+					<action function="set">wolf_install_built_in_zip=1</action>
+					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
+					<action function="set">tw_signed_zip_verify=0</action>
+					<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
+					<action function="set">tw_screen_timeout_secs=0</action>
+					<action function="set">wolf_aromafm=1</action>
+					<action function="set">tw_filename=%rw_resource_dir%/AromaFM/AromaFM.zip</action>
+					<action function="queuezip"/>
+					<action function="flash">flash_zip</action>
+					<action function="disableled"/>
 				</actions>
 			</button>
 
@@ -5280,6 +5287,9 @@
 				</listitem>
 				<listitem name="{@use_color_navbar=Use accent color for navbar}">
 					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@fox_lock_btn}">
+					<data variable="lock_btn"/>
 				</listitem>
 			</listbox>
 
@@ -14988,13 +14998,23 @@
 				<placement x="%center_x%" y="%row4_1_y%" placement="4"/>
 			</image>
 
+			<button style="btn_raised">
+				<condition var1="lock_btn" var2="1"/>
+				<placement x="%btn_raised_center_x%" y="%row8_2_y%" placement="1"/>
+				<text>{@unlock_btn}</text>
+				<action function="overlay"/>
+			</button>
+
 			<text color="%text_light%">
+
 				<font resource="caption"/>
+				<condition var1="lock_btn" var2="0"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@swipe_to_unlock=Swipe to Unlock}</text>
 			</text>
 
 			<slider>
+				<condition var1="lock_btn" var2="0"/>
 				<action function="overlay"/>
 			</slider>
 
@@ -16331,7 +16351,7 @@
 			<button>
 				<placement x="0" y="0" w="1080" h="1127"/>
 				<fill color="%darktransparent%"/>
-				<action function="overlay"/>
+				<action page="main2"/>
 			</button>
 
 			<text color="#FF0000">

@@ -1008,11 +1008,12 @@
 		<string name="fox_menu_splash">Изменить сплеш</string>
 		<string name="fox_menu_pass_h">Удалить пароль прошивки</string>
 		<string name="fox_menu_pass">От Bulik01</string>
+		<string name="fox_lock_btn">Разблокировка кнопкой</string>
 
 		<string name="fox_slider_magisk">Проведите чтобы установить Magisk</string>
 		<string name="fox_slider_pass">Проведите чтобы сбросить пароль прошивки</string>
 
-		<string name="wolf_dialog_special_actions_1">Пожалуйста не меняйте ничего без</string>
+		<string name="wolf_dialog_special_actions_1">Пожалуйста, не меняйте ничего без</string>
 		<string name="wolf_dialog_special_actions_2">хорошего понимания этих настроек!</string>
 
 		<string name="wolf_no_os_engine">Улучшенный NO OS Движок</string>
@@ -1022,17 +1023,19 @@
 	 	<string name="fox_rey">Vince разработчик</string>
 	 	<string name="fox_kirill">За графику, Photoshop гуру</string>
 
+		<string name="unlock_btn">Разблокировать</string>
+
 	 	<string name="fox_menu2_power">Профиль производительности</string>
 	 	<string name="fox_menu2_other">Доп. Настройки</string>
 
-		<string name="dialog_splash_btn">Изменить Сплеш</string>
-		<string name="fox_menu_splash">Изменить Сплеш</string>
+		<string name="dialog_splash_btn">Изменить сплеш</string>
+		<string name="fox_menu_splash">Изменить сплеш</string>
 		<string name="wolf_custom_wolf_splash_btn">Кастомный сплеш</string>
 		<string name="wolf_custom_wolf_splash_1">Кастомный сплеш </string>
 		<string name="wolf_custom_wolf_splash_2">успешно применен</string>
 		<string name="wolf_theme_splash_wolf_hdr">Кастомный сплеш</string>
-		<string name="wolf_theme_splash_wolf_txt1">Что-бы изменить сплеш выберите любое</string>
-		<string name="wolf_theme_splash_wolf_txt2">изображение в png формате и просто</string>
+		<string name="wolf_theme_splash_wolf_txt1">Чтобы изменить сплеш выберите любое</string>
+		<string name="wolf_theme_splash_wolf_txt2">изображение PNG в формате и просто</string>
 		<string name="wolf_theme_splash_wolf_txt3">проведите для установки.</string>
 	 	<string name="wolf_theme_splash_wolf_txt4">Для лучшего результата выбранное</string>
 	 	<string name="wolf_theme_splash_wolf_txt5">изображение должно быть размером</string>
@@ -1057,21 +1060,21 @@
 		<string name="rb_recovery_btn">Рекавери</string>
 		<string name="rb_theme">Тема</string>
 
-		<string name="f_orange">Ораньжевый</string>
+		<string name="f_orange">Оранжевый</string>
 		<string name="f_indigo">Индиго</string>
 		<string name="f_blue">Синий</string>
-		<string name="f_light_blue">Светло синий</string>
+		<string name="f_light_blue">Светло-синий</string>
 		<string name="f_stock">Стоковый</string>
-		<string name="f_teal">Теал</string>
+		<string name="f_teal">Бирюзово-голубой</string>
 		<string name="f_green">Зелёный</string>
-		<string name="f_light_green">Светло Зелёный</string>
+		<string name="f_light_green">Светло-зелёный</string>
 		<string name="f_lime">Лайм</string>
 		<string name="f_amber">Янтарный</string>
 		<string name="f_red">Злой цвет</string>
-		<string name="f_deep_orange">Тёмно Ораньжевый</string>
+		<string name="f_deep_orange">Тёмно-оранжевый</string>
 		<string name="f_brown">Коричневый</string>
 		<string name="f_gray">Серый</string>
-		<string name="f_blue_grey">Серо Синий</string>
+		<string name="f_blue_grey">Серо-синий</string>
 
 		<string name="sort_by_name_asc">По имени</string>
 		<string name="sort_by_date_asc">По дате</string>

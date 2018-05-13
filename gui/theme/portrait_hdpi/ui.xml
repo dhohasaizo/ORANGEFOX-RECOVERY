@@ -83,7 +83,7 @@
 		<image name="actionbar_close_hl" filename="actionbar_close_hl" retainaspect="1"/>
 		<image name="actionbar_date" filename="actionbar_date" retainaspect="1"/>
 
-    <!-- OrangeFox the best recovery in world! -->
+    <!-- OrangeFox is the best recovery in the world! -->
     <!-- OrangeFox Custom images -->
     <image name="tab_comm_a" filename="tab_comm_a" retainaspect="1"/>
     <image name="tab_comm" filename="tab_comm" retainaspect="1"/>
@@ -269,6 +269,8 @@
 		<variable name="navbar_accent" value="0" persist="1"/>
 		<variable name="menu_btn_solid" value="0" persist="1"/>
 		<variable name="accent_name" value="Orange" persist="1"/>
+    <!-- OrangeFox variables -->
+    <variable name="lock_btn" value="0" persist="1"/>
 
 		<variable name="screen_w" value="1080"/>
 		<variable name="screen_h" value="1920"/>
@@ -355,6 +357,7 @@
 
 		<variable name="btn_raised_left_x" value="27"/>
 		<variable name="btn_raised_right_x" value="1053"/>
+    <variable name="btn_raised_center_x" value="800"/>
 
 		<variable name="row0_y" value="240"/>
 		<variable name="row0_a_y" value="270"/>
@@ -587,7 +590,7 @@
 
 
 
-      <variable name="rw_version" value="[OrangeFox V3.2.X]"/>
+      <variable name="rw_version" value="[OrangeFox R4]"/>
       <variable name="flashlight" value="0"/>
       <variable name="tw_heslo_check" value="dd"/>
       <variable name="wolf_adb" value="0"/>
@@ -903,6 +906,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
+          <condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -915,6 +919,7 @@
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
+          <condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -926,6 +931,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
+          <condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -937,6 +943,7 @@
 					<condition var1="center_clock" op="=" var2="1"/>
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
+          <condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -957,6 +964,40 @@
 				</conditions>
 				<text>%tw_time%</text>
 			</text>
+
+      <text style="text_status">
+				<placement x="%time_x%" y="%status_info_y%" placement="1"/> <!--Powersave center clock-->
+				<conditions>
+					<condition var1="center_clock" op="=" var2="1"/>
+					<condition var1="wolf_boot_powersave_check" op="=" var2="1"/>
+				</conditions>
+				<text>%tw_time%</text>
+			</text>
+
+      <text color="#000000">
+				<font resource="status"/>
+				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
+				<conditions>
+					<condition var1="tw_military_time" var2="0"/>
+					<condition var1="tw_battery" op="&gt;" var2="0"/>
+					<condition var1="tw_battery" op="&lt;" var2="15"/>
+          <condition var1="wolf_boot_powersave_check" op="=" var2="1"/>
+				</conditions>
+				<text>{@battery_pct=%tw_battery%}</text>
+			</text>
+
+			<text style="text_status">
+				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
+				<conditions>
+					<condition var1="tw_military_time" var2="1"/>
+					<condition var1="tw_no_battery_percent" var2="0"/>
+					<condition var1="tw_battery" op="&gt;" var2="16"/>
+					<condition var1="tw_battery" op="&lt;" var2="101"/>
+          <condition var1="wolf_boot_powersave_check" op="=" var2="1"/>
+				</conditions>
+				<text>{@battery_pct=%tw_battery%}</text>
+			</text>
+
 		</template>
 
 		<template name="ab">
