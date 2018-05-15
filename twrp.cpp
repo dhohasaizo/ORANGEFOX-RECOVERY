@@ -345,8 +345,6 @@ int main(int argc, char **argv) {
 
      TWFunc::Start_redwolf();
      
-     DataManager::SetValue(RW_USER_IS_PIRATE, 0);
-     
  #ifndef TW_OEM_BUILD
 	// Check if system has never been changed
 	TWPartition* sys = PartitionManager.Find_Partition_By_Path("/system");

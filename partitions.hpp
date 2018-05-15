@@ -297,12 +297,6 @@ public:
 	int Factory_Reset();                                                      // Performs a factory reset
 	int Wipe_Dalvik_Cache();                                                  // Wipes dalvik cache
 	int Wipe_Substratum_Overlays();                                    // Wipe substratum overlays
-	void Restore_Wifi_Files(PartitionSettings *part_settings);                                                  // Restore Backup
-	void Restore_Bluetooth_Files(PartitionSettings *part_settings);                                    // Restore Backup
-	void Restore_Hosts_Files(PartitionSettings *part_settings);                                                  // Restore Backup
-	void Backup_Wifi_Files(PartitionSettings *part_settings);                                    // Backup files
-	void Backup_Bluetooth_Files(PartitionSettings *part_settings);                                    // Backup files
-	void Backup_Hosts_Files(PartitionSettings *part_settings);                                    // Backup files
 	int Wipe_Rotate_Data();                                                   // Wipes rotation data --
 	int Wipe_Battery_Stats();                                                 // Wipe battery stats -- /data/system/batterystats.bin
 	int Wipe_Android_Secure();                                                // Wipes android secure

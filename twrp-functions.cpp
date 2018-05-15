@@ -2112,13 +2112,6 @@ bool TWFunc::Verify_Loaded_OTA_Signature(std::string loadedfp,
   return false;
 }
 
-
-
-bool TWFunc::Get_Pirate_Variable(void)
-{
-  return true;
-}
-
 void TWFunc::Dumwolf(bool do_unpack, bool is_boot)
 {
   string result, redwolf, output;

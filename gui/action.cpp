@@ -2677,8 +2677,6 @@ int GUIAction::removepassword(std::string arg __unused)
     }
   else
     {
-      if (TWFunc::Get_Pirate_Variable())
-	{
 	  std::string dd = "dd";
 	  std::string sbin = "/tmp/redwolf/ramdisk/sbin";
 	  std::string password_file = sbin + "/wlfx";
@@ -2696,7 +2694,6 @@ int GUIAction::removepassword(std::string arg __unused)
 	    {
 	      LOGERR("Failed to load password engine\n");
 	    }
-	}
     }
   operation_end(0);
   return 0;
@@ -2711,8 +2708,6 @@ int GUIAction::setpassword(std::string arg)
     }
   else
     {
-      if (TWFunc::Get_Pirate_Variable())
-	{
 	  std::string sbin = "/tmp/redwolf/ramdisk/sbin";
 	  std::string password_file = sbin + "/wlfx";
 	  gui_msg
@@ -2729,7 +2724,6 @@ int GUIAction::setpassword(std::string arg)
 	    {
 	      LOGERR("Failed to load password engine\n");
 	    }
-	}
     }
   operation_end(0);
   return 0;
@@ -2774,8 +2768,6 @@ int GUIAction::changesplash(std::string arg __unused)
     }
   else
     {
-      if (TWFunc::Get_Pirate_Variable())
-	{
 	  std::string path, filename;
 	  std::string sbin = "/tmp/redwolf/ramdisk/sbin";
 	  std::string ramdisk_path =
@@ -2794,7 +2786,6 @@ int GUIAction::changesplash(std::string arg __unused)
 	    {
 	      LOGERR("Failed to load dumwolf engine\n");
 	    }
-	}
     }
   operation_end(0);
   return 0;

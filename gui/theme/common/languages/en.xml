@@ -157,10 +157,10 @@
 		<string name="swipe_factory_reset">Swipe to Factory Reset</string>
 		<string name="backup_hdr">Backup</string>
 		<string name="encryption_hdr">Enable Encryption</string>
-		<string name="encrypt_backup1">Sorry, this function not working!</string>
-		<string name="encrypt_backup2">We regret, will have to wait!</string>
+		<string name="encrypt_backup1">Sorry, this feature is not functional!</string>
+		<string name="encrypt_backup2">We regret that you will have to wait!</string>
 		<string name="encrypt_backup3">Repeat password to</string>
-		<string name="encrypt_backup4">Press back button to cancel.</string>
+		<string name="encrypt_backup4">Press the back button to cancel.</string>
 		<string name="name">Name</string>
 		<string name="enable_backup_comp_chk">Enable compression</string>
 		<string name="skip_md5_backup_chk">Skip MD5 generation during backup</string>
@@ -1043,9 +1043,11 @@
 	<string name="wolf_incremental_ota_res_run">Running OTA_RES process...</string>
 	<string name="wolf_incremental_ota_bak_run">Running OTA_BAK process...</string>
 	<string name="wolf_incremental_ota_bak">OTA_BAK -- done!</string>
-	<string name="wolf_wifi_data">WIFI Data</string>
-	<string name="wolf_bluetooth_data">Bluetooth Data</string>
-	<string name="wolf_hosts_data">Hosts</string>
+	<!-- OrangeFox R4; removed wifi, bluetooth, hosts -->
+	<!--string name="wolf_wifi_data">WIFI Data</string -->
+	<!--string name="wolf_bluetooth_data">Bluetooth Data</string -->
+	<!--string name="wolf_hosts_data">Hosts</string -->
+	
 	<!-- Red Wolf Recovery V3.1 / 025 -->
 	<string name="wolf_set_new_access_password">Changing recovery access password...</string>
 	<string name="wolf_remove_access_password_one">Removing recovery access password...</string>
