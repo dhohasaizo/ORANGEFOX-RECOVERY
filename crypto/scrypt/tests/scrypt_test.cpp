@@ -15,7 +15,8 @@
  */
 
 #define LOG_TAG "scrypt_test"
-#include <UniquePtr.h>
+//#include <UniquePtr.h>
+#include <nativehelper/UniquePtr.h>
 #include <utils/Log.h>
 
 #include <gtest/gtest.h>
