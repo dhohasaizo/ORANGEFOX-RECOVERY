@@ -951,7 +951,7 @@
      <string name="change_pass_text_3_del">поточний пароль.</string>
      <string name="wolf.fix.fp_scanner">Полагодити сканер відбитка пальця</string>
      <string name="wolf.community.scripts_hdr">Скрипти спільноти</string>
-     <string name="wolf_flash_ramdisk_cleaner">Проведіть,щоб встановити Ramdisk Cleaner.</string>
+     <string name="fox_install_initd">Проведіть,щоб встановити Initd.</string>
      <string name="wolf_flash_substratum_rescue">Проведіть,щоб встановити Substratum Rescue</string>
      <string name="wolf_fix_fp_hdr1">Скрипт може полагодити сканер відбитка пальця</string>
      <string name="wolf_flash_fp_fix">Проведіть,щоб полагодити сканер відбитка пальця.</string>
@@ -1079,11 +1079,12 @@
 		<string name="fox_menu_comm">Скрипти спільноти</string>
 		<string name="fox_menu_splash">Змінити сплеш</string>
 		<string name="fox_menu_pass_h">Видалити пароль прошивки</string>
-		<string name="fox_menu_pass">Від Bulik01</string>
+		<string name="fox_menu_pass">Від DarthJabba9</string>
 		<string name="fox_lock_btn">Разблокування кнопкой</string>
 
 		<string name="fox_slider_magisk">Проведіть щоб встановити Magisk</string>
 		<string name="fox_slider_pass">Проведіть щоб видалити пароль прошивки</string>
+		<string name="fox_slider_supersu">Проведіть щоб встановити SuperSU</string>
 
 		<string name="wolf_dialog_special_actions_1">Будь ласка, не міняйте нічого без</string>
 		<string name="wolf_dialog_special_actions_2">гарного розуміння цих параметрів!</string>

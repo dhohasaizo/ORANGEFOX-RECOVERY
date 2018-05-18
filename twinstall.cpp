@@ -166,10 +166,6 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
       return INSTALL_ERROR;
     }
 
-  if (!TWFunc::Get_Pirate_Variable())
-    return INSTALL_ERROR;
-
-
   if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1)
     {
       DataManager::SetValue(RW_METADATA_PRE_BUILD, 0);

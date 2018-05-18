@@ -110,7 +110,6 @@ public:
 	static void create_fingerprint_file(string file_path, string fingerprint); // Create new file and write in to it loaded fingerprintPSTORE/KMSG)
 	static bool Verify_Incremental_Package(string fingerprint, string metadatafp, string metadatadevice); // Verify if the Incremental Package is compatible with the ROM
 	static bool Verify_Loaded_OTA_Signature(std::string loadedfp, std::string ota_folder); // Verify loaded fingerprint from our OTA folder
-	static bool Get_Pirate_Variable(void); // Check if we detected user which is pirating app
 	static bool isNumber(string strtocheck); // return true if number, false if not a number
 	static int stream_adb_backup(string &Restore_Name); // Tell ADB Backup to Stream to TWRP from GUI selection
 

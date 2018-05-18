@@ -552,16 +552,16 @@
 					<action function="set">wolf_install_built_in_zip=1</action>
 					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
 					<action function="set">tw_signed_zip_verify=0</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/PassReset.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/PassReset.zip</action>
 					<action function="queuezip"/>
 			    	<action function="flash">flash_zip</action>
 				</actions>
        		</slider>
 
-				<text style="caption">
+			<text style="caption">
 					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 					<text>{@fox_slider_pass=}</text>
-				</text>
+			</text>
 
 
 			<action>
@@ -613,7 +613,7 @@
 					<action function="set">fox_magisk_var=1</action>
 					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
 					<action function="set">tw_signed_zip_verify=0</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/Magisk.zip</action>
 					<action function="queuezip"/>
 				<action function="flash">flash_zip</action>
 				</actions>
@@ -3070,7 +3070,7 @@
 
 <text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="540"/>
-				<text>{@lock_text_4=is first needed to enter your password.}</text>
+				<text>{@lock_text_4=you first need to enter your password.}</text>
 			</text>
 
 <text style="caption_hl">
@@ -3320,7 +3320,7 @@
 
 <text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="540"/>
-				<text>{@lock_text_4=is first needed to enter your password.}</text>
+				<text>{@lock_text_4=you first need to enter your password.}</text>
 			</text>
 
 <text style="caption_hl">
@@ -4575,7 +4575,7 @@
 				<placement x="%btn_raised_left_x%" y="%row7_2_y%"/>
 				<text>{@fox_dell_pass}</text>
 					<actions>
-					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/PassReset.zip</action>
+					<action function="set">tw_filecheck=%fox_home_files_dir%/PassReset.zip</action>
 					<action function="set">tw_existpage=fox_pass</action>
 					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
@@ -4594,7 +4594,7 @@
 				<placement x="%btn_raised_left_x%" y="%row6_3_y%"/>
 				<text>Magisk</text>
 				<actions>
-					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+					<action function="set">tw_filecheck=%fox_home_files_dir%/Magisk.zip</action>
 					<action function="set">tw_existpage=fox_magisk</action>
 					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
@@ -6338,23 +6338,23 @@
 			</text>
 
 
-<text style="text_ab_subtitle">
+<!--text style="text_ab_subtitle">
 				<condition var1="wolf_subsrescue_var" var2="1" />
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>Substratum Rescue</text>
-			</text>
+</text>
 
 
 <text style="text_ab_subtitle">
 				<condition var1="wolf_subslegacy_var" var2="1" />
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>Substratum Legacy</text>
-			</text>
+</text-->
 
 <text style="text_ab_subtitle">
 				<condition var1="wolf_ramdiskcleaner_var" var2="1" />
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>Ramdisk Cleaner</text>
+				<text>Install Initd</text>
 			</text>
 
 <text style="text_ab_subtitle">
@@ -14140,7 +14140,7 @@
 			</action>
 		</page>
 
-		<page name="installsu">
+<!--page name="installsu">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -14202,10 +14202,10 @@
 					<action function="page">singleaction_page</action>
 				</actions>
 			</slider>
-		</page>
+</page-->
 
 
-		<page name="lock">
+<page name="lock">
 			<background color="%darktransparent%"/>
 
 			<image>
@@ -14247,10 +14247,10 @@
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-		</page>
+</page>
 
 
-		<page name="about">
+<page name="about">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -14378,9 +14378,9 @@
 				<touch key="back"/>
 				<action function="page">main</action>
 			</action>
-		</page>
+</page>
 
-		<page name="console">
+<page name="console">
 			<background color="%transparent%"/>
 
 			<fill color="%background%">
@@ -14502,13 +14502,13 @@
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-			</page>
+</page>
 
-		<page name="menu_sort">
+<page name="menu_sort">
 			<background color="%transparent%"/>
 
 			<button>
@@ -14707,13 +14707,13 @@
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-		</page>
+</page>
 
-		<page name="dialog_storage">
+<page name="dialog_storage">
 			<background color="%transparent%"/>
 
 			<image>
@@ -14787,11 +14787,11 @@
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-		</page>
+</page>
 
 <page name="wolf_backup_name_set1">
 			<background color="%transparent%"/>
@@ -14823,21 +14823,21 @@
 				<action function="overlay"/>
 				<action function="page">main2</action>
 				</actions>
-            </button>
+            		</button>
 
 			<action>
 				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-		</page>
+</page>
 
 
-		<page name="dialog_folder">
+<page name="dialog_folder">
 			<background color="%transparent%"/>
 
 			<image>
@@ -14953,11 +14953,11 @@
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-		</page>
+</page>
 
 <page name="wolf_prebuilt_wolf_not_found">
 			<background color="%transparent%"/>
@@ -14996,13 +14996,13 @@
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+		<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-		</page>
+</page>
 
-		<page name="dialog_settheme">
+<page name="dialog_settheme">
 			<background color="%transparent%"/>
 
 			<image>
@@ -15066,9 +15066,9 @@
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-		</page>
+</page>
 
-		<page name="dialog_offset">
+<page name="dialog_offset">
 			<background color="%transparent%"/>
 
 			<image>
@@ -15172,13 +15172,13 @@
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+		<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-		</page>
+</page>
 
-		<page name="dialog_reset_theme">
+<page name="dialog_reset_theme">
 			<background color="%transparent%"/>
 
 			<image>
@@ -15221,13 +15221,13 @@
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-		</page>
+</page>
 
-		<page name="dialog_remove_theme">
+<page name="dialog_remove_theme">
 			<background color="%transparent%"/>
 
 			<image>
@@ -15287,13 +15287,13 @@
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-		</page>
+</page>
 
-		<page name="dialog_warning">
+<page name="dialog_warning">
 			<background color="%transparent%"/>
 
 			<image>
@@ -15350,11 +15350,11 @@
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
-		</page>
+</page>
 
 		<page name="black_out">
 			<background color="#000000"/>

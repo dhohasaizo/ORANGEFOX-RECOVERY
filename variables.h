@@ -32,6 +32,7 @@
 #include <string>
 #include <unistd.h>
 static const std::string Fox_Home = "/sdcard/Fox";
+static const std::string Fox_Home_Files = Fox_Home + "/FoxFiles";
 static const std::string Fox_sdcard_aroma_cfg = Fox_Home + "/aromafm.cfg";
 static const std::string Fox_aroma_cfg = "/FFiles/AromaFM/AromaFM.zip.cfg";
 #define RW_SURVIVAL_FOLDER      "/sdcard/Fox"
@@ -99,8 +100,6 @@ static const std::string Fox_aroma_cfg = "/FFiles/AromaFM/AromaFM.zip.cfg";
 #define RW_MIUI_ZIP_TMP                    "wolf_miui_zip_tmp"
 #define RW_LOADED_FINGERPRINT                    "wolf_loaded_singature"
 #define RW_MIN_EXPECTED_FP_SIZE 30
-#define RW_USER_IS_PIRATE                    "wolf_misguided_code"
-#define RW_PIRATED_APP                    "wolf_code_misguided"
 
 #define RW_INCREMENTAL_OTA_FAIL                 "wolf_ota_fail"
 #define RW_RUN_SURVIVAL_BACKUP                 "wolf_run_survival_backup"
