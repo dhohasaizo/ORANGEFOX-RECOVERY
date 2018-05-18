@@ -99,7 +99,7 @@
 
 		<style name="btn_raised">
 			<highlight color="%highlight_color%"/>
-			<font resource="button" color="%text%"/>
+			<font resource="button" color="%text_dark%"/>
 			<image resource="btn_raised"/>
 		</style>
 

@@ -1067,6 +1067,100 @@
 	<string name="wolf_disable_boot_chk">Вимкнути перевірку завантаження</string>
 	<string name="wolf_include_system_survival_chk">Включити систему в OTA survival</string>
 	<string name="wolf_verify_incremental_ota_signature_chk">Перевірка підпису Incremental OTA</string>
+
+	<!--OrangeFox Recovery Project-->
+	 	<!-- <string name=""></string> -->
+
+	 	<string name="fox_menu_flash">Orange!</string>
+	 	<string name="fox_menu_delpass">Видалити пароль</string>
+	 	<string name="fox_menu_navigation">Навігація</string>
+	 	<string name="fox_m_other">Інші параметри</string>
+	 	<string name="fox_dell_pass">Сброс пароля прошивки</string>
+		<string name="fox_menu_comm">Скрипти спільноти</string>
+		<string name="fox_menu_splash">Змінити сплеш</string>
+		<string name="fox_menu_pass_h">Видалити пароль прошивки</string>
+		<string name="fox_menu_pass">Від Bulik01</string>
+		<string name="fox_lock_btn">Разблокування кнопкой</string>
+
+		<string name="fox_slider_magisk">Проведіть щоб встановити Magisk</string>
+		<string name="fox_slider_pass">Проведіть щоб видалити пароль прошивки</string>
+
+		<string name="wolf_dialog_special_actions_1">Будь ласка, не міняйте нічого без</string>
+		<string name="wolf_dialog_special_actions_2">гарного розуміння цих параметрів!</string>
+
+		<string name="wolf_no_os_engine">Покращенний NO OS Движок</string>
+		<string name="sha2_chk">SHA2 для хешування</string>
+
+	 	<string name="fox_redwolf">За розробку RedWolf й</string>
+	 	<string name="fox_rey">Vince розрабник</string>
+	 	<string name="fox_kirill">За графіу, Photoshop гуру</string>
+
+		<string name="unlock_btn">Розблокувати</string>
+
+	 	<string name="fox_menu2_power">Профіль продуктивності</string>
+	 	<string name="fox_menu2_other">Доп. Настройки</string>
+
+		<string name="dialog_splash_btn">Змінити сплеш</string>
+		<string name="fox_menu_splash">Змінити сплеш</string>
+		<string name="wolf_custom_wolf_splash_btn">Кастомный сплеш</string>
+		<string name="wolf_custom_wolf_splash_1">Кастомный сплеш </string>
+		<string name="wolf_custom_wolf_splash_2">успішно применен</string>
+		<string name="wolf_theme_splash_wolf_hdr">Кастомный сплеш</string>
+		<string name="wolf_theme_splash_wolf_txt1">Щоб змінити сплеш виберіть любе</string>
+		<string name="wolf_theme_splash_wolf_txt2">зображення в PNG форматі й просто</string>
+		<string name="wolf_theme_splash_wolf_txt3">проведіть для встановлення</string>
+	 	<string name="wolf_theme_splash_wolf_txt4">Для лучшего результата выбранное</string>
+	 	<string name="wolf_theme_splash_wolf_txt5">изображение должно быть размером</string>
+	 	<string name="wolf_theme_splash_wolf_txt6">1080x1920.</string>
+	 	<string name="not_selected">Не вибрано</string>
+	 	<string name="tw_splash_png_btn">Використовуйте PNG для сплеша.</string>
+ 		<string name="splash_preview">Тип сплешу</string>
+		<string name="theme_splash_preview">ВЫБЕРІТЬ СПЛЕШ</string>
+ 		<string name="slider_repack">Проведіть щоб встановити новый сплеш</string>
+		<string name="install_select_file_btn">ВЫБЕРІТЬ ФАЙЛ</string>
+		<string name="dialog_reset_splash_hdr">Востановити сплеш</string>
+		<string name="dialog_reset_splash_note_1">Бажаете лі востановити стандартний</string>
+		<string name="dialog_reset_splash_note_2">сплеш OrangeFox Recovery Project?</string>
+
+		<string name="wolf_special_actions">Спеціальні функції OrangeFox Recovery</string>
+	 	<string name="wolf_special_actions_hdr">Спец. функції</string>
+
+		<string name="settings_screen_timeout_cptn">Таймаут екрану</string>
+		<string name="settings_screen_timeout_cptn2">Таймаут екрану:</string>
+		<string name="timeout_unit">секунд</string>
+
+		<string name="rb_recovery_btn">Рекавері</string>
+		<string name="rb_theme">Тема</string>
+
+		<string name="f_orange">Оранжевий</string>
+		<string name="f_indigo">Индиго</string>
+		<string name="f_blue">Синій</string>
+		<string name="f_light_blue">Світло-синій</string>
+		<string name="f_stock">Стандартний</string>
+		<string name="f_teal">Бирюзово-голубий</string>
+		<string name="f_green">Зеленый</string>
+		<string name="f_light_green">Світло-зеленый</string>
+		<string name="f_lime">Лаймовий</string>
+		<string name="f_amber">Янтарний</string>
+		<string name="f_red">Злий колір</string>
+		<string name="f_deep_orange">Темно-оранжевий</string>
+		<string name="f_brown">Коричневий</string>
+		<string name="f_gray">Сірий</string>
+		<string name="f_blue_grey">Сіро-синій</string>
+
+		<string name="sort_by_name_asc">По имені</string>
+		<string name="sort_by_date_asc">По даті</string>
+		<string name="sort_by_size_asc">По разміру</string>
+		<string name="sort_by_name_desc">По имені наоб.</string>
+		<string name="sort_by_date_desc">По даті наоб.</string>
+		<string name="sort_by_size_desc">По разміру наоб.</string>
+
+		<!--string name="encrypt_backup1">Введите пароль чтобы</string-->
+		<!--string name="encrypt_backup2">Включить шифрование бекапов</string-->
+		<string name="encrypt_backup1">вибачте, поки функция не працює!</string>
+		<string name="encrypt_backup2">Жалкуемо, прийдется почекати</string>
+		<string name="encrypt_backup3">Повторите пароль чтобы</string>
+		<string name="encrypt_backup4">Нажмите кнопку "назад" чтобы выйти</string>
 	
 	</resources>
 </language>

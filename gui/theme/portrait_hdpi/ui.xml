@@ -40,16 +40,16 @@
 		<image name="mb_wolf_actions" filename="mb_wolf_actions" retainaspect="1"/>
 		<image name="mb_wolf_actions_color" filename="mb_wolf_actions_color" retainaspect="1"/>
 		<image name="redwolf_settings" filename="redwolf_settings" retainaspect="1"/>
-    <image name="actionbar_android" filename="actionbar_android" retainaspect="1"/>
-    <image name="wolf_broom" filename="wolf_broom" retainaspect="1"/>
-    <image name="wolf_governors" filename="wolf_governors" retainaspect="1"/>
-    <image name="wolf_traffic_light_1" filename="wolf_traffic_light_1" retainaspect="1"/>
-    <image name="wolf_traffic_light_2" filename="wolf_traffic_light_2" retainaspect="1"/>
-    <image name="wolf_on_boot_1" filename="wolf_on_boot_1" retainaspect="1"/>
-    <image name="wolf_on_boot_2" filename="wolf_on_boot_2" retainaspect="1"/>
-    <image name="android_debug_bridge_wolf" filename="android_debug_bridge_wolf" retainaspect="1"/>
-    <image name="actionbar_community_scripts" filename="actionbar_community_scripts" retainaspect="1"/>
-    <image name="actionbar_logo" filename="actionbar_logo" retainaspect="1"/>
+    	<image name="actionbar_android" filename="actionbar_android" retainaspect="1"/>
+    	<image name="wolf_broom" filename="wolf_broom" retainaspect="1"/>
+    	<image name="wolf_governors" filename="wolf_governors" retainaspect="1"/>
+    	<image name="wolf_traffic_light_1" filename="wolf_traffic_light_1" retainaspect="1"/>
+    	<image name="wolf_traffic_light_2" filename="wolf_traffic_light_2" retainaspect="1"/>
+    	<image name="wolf_on_boot_1" filename="wolf_on_boot_1" retainaspect="1"/>
+    	<image name="wolf_on_boot_2" filename="wolf_on_boot_2" retainaspect="1"/>
+    	<image name="android_debug_bridge_wolf" filename="android_debug_bridge_wolf" retainaspect="1"/>
+    	<image name="actionbar_community_scripts" filename="actionbar_community_scripts" retainaspect="1"/>
+    	<image name="actionbar_logo" filename="actionbar_logo" retainaspect="1"/>
 		<image name="actionbar_back" filename="actionbar_back" retainaspect="1"/>
 		<image name="actionbar_back_hl" filename="actionbar_back_hl" retainaspect="1"/>
 		<image name="actionbar_settings" filename="actionbar_settings" retainaspect="1"/>
@@ -268,9 +268,12 @@
 		<variable name="navbar_sams" value="0" persist="1"/>
 		<variable name="navbar_accent" value="0" persist="1"/>
 		<variable name="menu_btn_solid" value="0" persist="1"/>
-		<variable name="accent_name" value="Orange" persist="1"/>
-    <!-- OrangeFox variables -->
-    <variable name="lock_btn" value="0" persist="1"/>
+
+    	<!-- OrangeFox variables -->
+    	<variable name="lock_btn" value="1" persist="1"/>
+		<variable name="fox_black" value="0" persist="0"/>
+		<variable name="fox_dark" value="0" persist="0"/>
+		<variable name="fox_white" value="0" persist="0"/>
 
 		<variable name="screen_w" value="1080"/>
 		<variable name="screen_h" value="1920"/>
@@ -357,7 +360,7 @@
 
 		<variable name="btn_raised_left_x" value="27"/>
 		<variable name="btn_raised_right_x" value="1053"/>
-    <variable name="btn_raised_center_x" value="800"/>
+    	<variable name="btn_raised_center_x" value="800"/>
 
 		<variable name="row0_y" value="240"/>
 		<variable name="row0_a_y" value="270"/>
@@ -483,26 +486,6 @@
 		<variable name="back_button_x" value="237"/>
 		<variable name="slideout_button_x" value="843"/>
 
-		<variable name="background" value="#000000FF"/>
-		<variable name="darktransparent" value="#000000BB"/>
-		<variable name="lightransparent" value="#00000033"/>
-		<variable name="transparent" value="#00000000"/>
-		<variable name="text" value="#CCCCCCFF"/>
-		<variable name="text_actionbar" value="#000000FF"/>
-		<variable name="text_button" value="#CCCCCCFF"/>
-		<variable name="text_light" value="#666666FF"/>
-		<!--variable name="text_dark" value="#333333FF"/-->
-    <variable name="text_dark" value="#000000"/>
-		<variable name="text_success" value="#68B60B"/>
-		<variable name="text_fail" value="#FF0101"/>
-		<variable name="highlight_color" value="#00000066"/>
-		<variable name="console_foreground" value="#CCCCCCFF"/>
-		<variable name="linecolor" value="#383838FF"/>
-		<variable name="warning" value="#FF6600FF"/>
-		<variable name="error" value="#FF0000FF"/>
-		<variable name="highlight" value="#000000FF"/>
-		<variable name="accent" value="#FF9800"/>
-
 		<variable name="input_width" value="984"/>
 		<variable name="input_backup_width" value="876"/>
 		<variable name="input_encr_width" value="696"/>
@@ -588,8 +571,6 @@
 		<variable name="pattern_size" value="648"/>
 
 
-
-
       <variable name="rw_version" value="[OrangeFox R4]"/>
       <variable name="flashlight" value="0"/>
       <variable name="tw_heslo_check" value="dd"/>
@@ -609,6 +590,7 @@
    </variables>
 
 	<include>
+		<xmlfile name="colors.xml"/>
 		<xmlfile name="styles.xml"/>
 		<xmlfile name="portrait.xml"/>
 	</include>

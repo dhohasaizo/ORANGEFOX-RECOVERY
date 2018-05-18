@@ -827,8 +827,8 @@
      <string name="colour_script_finish2">successfully applied</string>
      <string name="colour_script_finish3">Swipe to reboot and apply changes</string>
 	 <string name="wolf_colour_wait">Restart is in progress</string>
-	 <string name="colour_engine1">Apply new accent</string>
-     <string name="colour_engine2">color</string>
+	 <string name="colour_engine1">Apply new theme</string>
+     <string name="colour_engine2">Select theme color</string>
      <string name="colour_engine3">Swipe to apply the selected color</string>
 	 <string name="colour_engine4">Selected color is being applied.</string>
      <string name="wolf.colour.change">Change color</string>
@@ -955,7 +955,7 @@
     <string name="wolf_fgo_patch_hdr2">For LOS based ROMs</string>
     <string name="wolf_flash_fgo_patch">Swipe to install the FGO patch</string>
     <!-- OrangeFox Recovery V3.1 / 018 -->
-	<string name="redwolfms2">[OrangeFox]: Welcome! ^_^</string>
+	<string name="redwolfms2">[OrangeFox]: Welcome!</string>
 	<string name="redwolfms3">[Version]: {1}</string>
 	<string name="redwolfms4">[Build]: {1}</string>
 	<string name="wolf_reboot_restore_finish_chk">Reboot after restore is complete</string>
@@ -1037,7 +1037,7 @@
 	<string name="substratum_done">-- Substratum Overlays Wipe Complete!</string>
 	<string name="wolf_no_space_ota_survival">Not enough free space on internal storage for creating the OTA survival.</string>
 	<!-- Red Wolf Recovery V3.1 / 023 -->
-	<string name="wolf_stupid_fox_detected">Recovery won't allow you to to do this action until the pirating application called '{1}' is uninstalled from your device!</string>
+	<string name="wolf_stupid_fox_detected">Todo: delete this string</string>
 	<!-- Red Wolf Recovery V3.1 / 024 -->
     <string name="wolf_incremental_ota_res">OTA_RES -- done!</string>
 	<string name="wolf_incremental_ota_res_run">Running OTA_RES process...</string>
@@ -1063,6 +1063,8 @@
 	<string name="fox_menu_pass_h">Delete ROM pass</string>
 	<string name="fox_menu_pass">By Bulik01</string>
 	<string name="fox_lock_btn">Button on lockscreen</string>
+
+	<string name="fox_community_title">OrangeFox Community scrips</string>
 
 	<string name="fox_slider_magisk">Swipe to install Magisk</string>
 	<string name="fox_slider_pass">Swipe to remove ROM Pass</string>
