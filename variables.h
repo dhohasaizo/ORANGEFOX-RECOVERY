@@ -32,6 +32,7 @@
 #include <string>
 #include <unistd.h>
 static const std::string Fox_Home = "/sdcard/Fox";
+static const std::string Fox_Home_Files = Fox_Home + "/FoxFiles";
 static const std::string Fox_sdcard_aroma_cfg = Fox_Home + "/aromafm.cfg";
 static const std::string Fox_aroma_cfg = "/FFiles/AromaFM/AromaFM.zip.cfg";
 #define RW_SURVIVAL_FOLDER      "/sdcard/Fox"

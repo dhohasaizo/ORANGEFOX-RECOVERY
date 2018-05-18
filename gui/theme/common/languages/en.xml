@@ -157,8 +157,8 @@
 		<string name="swipe_factory_reset">Swipe to Factory Reset</string>
 		<string name="backup_hdr">Backup</string>
 		<string name="encryption_hdr">Enable Encryption</string>
-		<string name="encrypt_backup1">Sorry, this feature is not functional!</string>
-		<string name="encrypt_backup2">We regret that you will have to wait!</string>
+		<string name="encrypt_backup1">Enter a password to</string>
+		<string name="encrypt_backup2">enable backup encryption.</string>
 		<string name="encrypt_backup3">Repeat password to</string>
 		<string name="encrypt_backup4">Press the back button to cancel.</string>
 		<string name="name">Name</string>
@@ -719,8 +719,7 @@
 		<string name="changing_boot_slot_complete">Changing Boot Slot completed</string>
 		<string name="unable_set_boot_slot">Error changing bootloader boot slot to {1}</string>
 		<string name="backup_storage_warning">Backups of {1} do not include any files in internal storage such as pictures or downloads.</string>
-<!-- Start of Red Wolf Recovery strings -->
-<!-- Some strings aren't maybe used anymore, but we are too much lazy to delete them :P -->
+<!-- Start of Recovery strings -->
      <string name="flashlight">Flashlight</string>
      <string name="flashlight_info_on">Swipe to turn on flashlight</string>
      <string name="flashlight_info_off">Swipe to turn off flashlight</string>
@@ -804,15 +803,15 @@
      <string name="change_pass_text_3_del">password first.</string>
      <string name="wolf.fix.fp_scanner">Fix fingerprint scanner</string>
      <string name="wolf.community.scripts_hdr">Community scripts</string>
-     <string name="wolf_flash_ramdisk_cleaner">Swipe to install Ramdisk Cleaner.</string>
+     <string name="fox_install_initd">Swipe to install Initd.</string>
      <string name="wolf_flash_substratum_rescue">Swipe to install Substratum Rescue</string>
-     <string name="wolf_fix_fp_hdr1">Script can fix fingerprint scanner</string>
+     <string name="wolf_fix_fp_hdr1">Fix fingerprint scanner</string>
      <string name="wolf_flash_fp_fix">Swipe to fix fingerprint scanner.</string>
      <string name="wolf_actual_build">Current build</string>
      <string name="inject_led_chk">Notify about finished installation</string>
      <string name="inject_led_chk_bak">Notify about finished backup</string>
      <string name="inject_led_chk_res">Notify about finished restore</string>
-     <string name="wolf_rmpass_hdr">Script can remove ROM password.</string>
+     <string name="wolf_rmpass_hdr">Remove the ROM's password.</string>
      <string name="wolf_flash_rmpass">Swipe to remove ROM security</string>
      <string name="wolf_flash_subs_legacy">Swipe to install Substratum Legacy</string>
      <string name="wolf_nos_info_patch">Script can deactivate post-boot script Nitrogen ROM</string>
@@ -1056,18 +1055,19 @@
 	<!-- <string name=""></string> -->
 
 	<string name="fox_menu_flash">Orange!</string>
-	<string name="fox_menu_delpass">Del ROM Pass</string>
+	<string name="fox_menu_delpass">Delete ROM password</string>
 	<string name="fox_menu_navigation">Navigation</string>
 	<string name="fox_m_other">Other settings</string>
-	<string name="fox_dell_pass">Del ROM Pass</string>
+	<string name="fox_dell_pass">Delete ROM password</string>
 	<string name="fox_menu_comm">Community scripts</string>
 	<string name="fox_menu_splash">Change Splash</string>
-	<string name="fox_menu_pass_h">Delete ROM pass</string>
-	<string name="fox_menu_pass">By Bulik01</string>
+	<string name="fox_menu_pass_h">Delete ROM password</string>
+	<string name="fox_menu_pass">By DarthJabba9</string>
 	<string name="fox_lock_btn">Button on lockscreen</string>
 
 	<string name="fox_slider_magisk">Swipe to install Magisk</string>
-	<string name="fox_slider_pass">Swipe to remove ROM Pass</string>
+	<string name="fox_slider_pass">Swipe to delete ROM password</string>
+	<string name="fox_slider_supersu">Swipe to install SuperSU</string>
 
 	<string name="fox_redwolf">for RedWolf development and</string>
 	<string name="fox_rey">Vince maintainer</string>

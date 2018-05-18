@@ -1825,6 +1825,8 @@ void TWFunc::Start_redwolf(void)
   string ramdisk_folder = "/FFiles";
   string resource_folder = wolf_res + "/FILES";
 
+  DataManager::SetValue("fox_home_files_dir", Fox_Home_Files.c_str());
+
   if (TWFunc::Path_Exists(ramdisk_folder.c_str()))
     {
       DataManager::SetValue("rw_resource_dir", ramdisk_folder.c_str());
