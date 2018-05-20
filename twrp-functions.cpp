@@ -1425,7 +1425,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
 	}
     }
 
-/****
+/* this is the original code; but it seems to generate wrong results
   gettimeofday(&tv, NULL);
 
   tv.tv_sec += offset / 1000;
@@ -1438,17 +1438,15 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
     }
 
   settimeofday(&tv, NULL);
-****/
-//***********************************
-      
+*/
+
+//***** let's try something else   
       gettimeofday(&tv, NULL);
       tv.tv_sec = offset;
       tv.tv_usec = 0;
       settimeofday(&tv, NULL);
-      gettimeofday(&tv, NULL);
-//      fixed = true;
-      
-//***********************************
+//******
+
   LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n",
 	  TWFunc::Get_Current_Date().c_str());
 #endif
