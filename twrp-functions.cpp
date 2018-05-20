@@ -555,7 +555,7 @@ void TWFunc::Deactivation_Process(void)
   // Check AromaFM Config
   if (DataManager::GetIntValue(RW_SAVE_LOAD_AROMAFM) == 1)
     {
-      string aromafm_path = Fox_Home;	// "/sdcard/Fox.res"; //RW_SURVIVAL_FOLDER; // dj9 - changed "/sdcard/Fox";
+      string aromafm_path = Fox_Home;
       string aromafm_file = aromafm_path + "/aromafm.cfg";
       if (!Path_Exists(aromafm_path))
 	{
@@ -567,7 +567,7 @@ void TWFunc::Deactivation_Process(void)
 	    }
 	}
       // Save AromaFM config (AromaFM.cfg)
-      if (copy_file("/FFiles/AromaFM/AromaFM.zip.cfg", aromafm_file, 0644))
+      if (copy_file(FFiles_dir + "/AromaFM/AromaFM.zip.cfg", aromafm_file, 0644))
 	{
 	  LOGERR("Error copying AromaFM config\n");
 	}
@@ -1121,6 +1121,7 @@ int TWFunc::write_to_file(const string & fn, const string & line)
   return -1;
 }
 
+/*
 bool TWFunc::Install_SuperSU(void)
 {
   if (!PartitionManager.Mount_By_Path("/system", true))
@@ -1129,7 +1130,7 @@ bool TWFunc::Install_SuperSU(void)
   check_and_run_script("/supersu/install-supersu.sh", "SuperSU");
   return true;
 }
-
+*/
 bool TWFunc::Try_Decrypting_Backup(string Restore_Path, string Password)
 {
   DIR *d;
@@ -1309,25 +1310,23 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
       tv.tv_sec = offset;
       tv.tv_usec = 0;
       settimeofday(&tv, NULL);
-
       gettimeofday(&tv, NULL);
-
-      if (tv.tv_sec > 1405209403)
-	{			// Anything older then 12 Jul 2014 23:56:43 GMT will do nicely thank you ;)
-
+      
+      if (tv.tv_sec > 1526836663) // Sun May 20 18:17:47 BST 2018
+	{
 	  LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n",
 		  TWFunc::Get_Current_Date().c_str());
 	  fixed = true;
 	  return;
-
+	} 
+	else 
+	{
+      	  LOGINFO("TWFunc::Fixup_Time: Wrong date and time epoch in %s\n", sepoch.c_str());
 	}
-
     }
   else
     {
-
       LOGINFO("TWFunc::Fixup_Time: opening %s failed\n", sepoch.c_str());
-
     }
 
   LOGINFO("TWFunc::Fixup_Time: will attempt to use the ats files now.\n");
@@ -1344,7 +1343,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
   std::vector < std::string > paths;	// space separated list of paths
   if (time_paths.empty())
     {
-      paths = Split_String("/data/system/time/ /data/time/", " ");
+      paths = Split_String("/persist/time/ /data/system/time/ /data/time/", " ");
       if (!PartitionManager.Mount_By_Path("/data", false))
 	return;
     }
@@ -1426,6 +1425,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
 	}
     }
 
+/****
   gettimeofday(&tv, NULL);
 
   tv.tv_sec += offset / 1000;
@@ -1438,7 +1438,17 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
     }
 
   settimeofday(&tv, NULL);
-
+****/
+//***********************************
+      
+      gettimeofday(&tv, NULL);
+      tv.tv_sec = offset;
+      tv.tv_usec = 0;
+      settimeofday(&tv, NULL);
+      gettimeofday(&tv, NULL);
+//      fixed = true;
+      
+//***********************************
   LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n",
 	  TWFunc::Get_Current_Date().c_str());
 #endif
@@ -1818,49 +1828,43 @@ void TWFunc::Start_redwolf(void)
       LOGINFO("ROM Status: %s\n", info.c_str());
     }
 
-  string wolf_res = Fox_Home;	//"/sdcard/Fox.res";
-  string config_aroma_path = wolf_res;	// + "/aromafm.cfg";
-  string config_aroma_file_cfg = Fox_sdcard_aroma_cfg;	//wolf_res + "/aromafm.cfg";
-  string OrangeFox_Files_path = Fox_aroma_cfg;	//ramdisk_folder + "/AromaFM/AromaFM.zip.cfg";
-  string ramdisk_folder = "/FFiles";
-  string resource_folder = wolf_res + "/FILES";
+//  string Fox_Home = Fox_Home;
+//  string Fox_sdcard_aroma_cfg = Fox_sdcard_aroma_cfg;
+//  string Fox_aroma_cfg = Fox_aroma_cfg;
+  string ramdisk_folder = FFiles_dir;
+  string resource_folder = Fox_Home_Files;
 
   DataManager::SetValue("fox_home_files_dir", Fox_Home_Files.c_str());
 
   if (TWFunc::Path_Exists(ramdisk_folder.c_str()))
     {
       DataManager::SetValue("rw_resource_dir", ramdisk_folder.c_str());
-//LOGINFO("DJ9 #1 found %s\n", ramdisk_folder.c_str());
-      if (TWFunc::Path_Exists(config_aroma_file_cfg))	// is there a backup CFG?
+      if (TWFunc::Path_Exists(Fox_sdcard_aroma_cfg)) // is there a backup CFG file on /sdcard/Fox/?
 	{
-//LOGINFO("DJ9 #2 copying %s to : %s\n", config_aroma_file_cfg.c_str(), OrangeFox_Files_path.c_str());
-	  TWFunc::copy_file(config_aroma_file_cfg, OrangeFox_Files_path,
-			    0644);
+	  TWFunc::copy_file(Fox_sdcard_aroma_cfg, Fox_aroma_cfg, 0644);
 	}
       else
 	{
-	  if (!Path_Exists(config_aroma_path))
+	  if (!Path_Exists(Fox_Home))
 	    {
 	      if (mkdir
-		  (config_aroma_path.c_str(),
+		  (Fox_Home.c_str(),
 		   S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
 		{
 		  LOGERR("Error making %s directory: %s\n",
-			 config_aroma_path.c_str(), strerror(errno));
+			 Fox_Home.c_str(), strerror(errno));
 		}
 	    }         
-	  if (Path_Exists(config_aroma_path))
+	  if (Path_Exists(Fox_Home))
 	    {
-	      if (Path_Exists(OrangeFox_Files_path))
-		TWFunc::copy_file(OrangeFox_Files_path, config_aroma_file_cfg,
+	      if (Path_Exists(Fox_aroma_cfg))
+		TWFunc::copy_file(Fox_aroma_cfg, Fox_sdcard_aroma_cfg,
 				  0644);
-//LOGINFO("DJ9 #3 %s not found - so I copied %s to it\n", config_aroma_file_cfg.c_str(), OrangeFox_Files_path.c_str());
 	    }
 	} // else
     }
   else
     {
-//LOGINFO("DJ9 #4 NOT found %s setting value to %s\n", ramdisk_folder.c_str(), resource_folder.c_str());
       DataManager::SetValue("rw_resource_dir", resource_folder.c_str());
     }
 }

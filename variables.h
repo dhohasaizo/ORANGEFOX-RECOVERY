@@ -25,8 +25,7 @@
 #define RW_DEVICE               RW_DEVICE_MODEL
 #define RW_VERSION              TW_MAIN_VERSION_STR
 
-// OrangeFox - Variables
-
+// *** OrangeFox - Variables
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
@@ -34,8 +33,10 @@
 static const std::string Fox_Home = "/sdcard/Fox";
 static const std::string Fox_Home_Files = Fox_Home + "/FoxFiles";
 static const std::string Fox_sdcard_aroma_cfg = Fox_Home + "/aromafm.cfg";
-static const std::string Fox_aroma_cfg = "/FFiles/AromaFM/AromaFM.zip.cfg";
+static const std::string FFiles_dir = "/FFiles";
+static const std::string Fox_aroma_cfg = FFiles_dir + "/AromaFM/AromaFM.zip.cfg";
 #define RW_SURVIVAL_FOLDER      "/sdcard/Fox"
+// ****
 
 #define RW_SURVIVAL_FOLDER_VAR      "wolf_survival_backup_folder_path"
 #define RW_SURVIVAL_BACKUP_NAME       "wolf_survival_backup_folder_name"
@@ -64,9 +65,9 @@ static const std::string Fox_aroma_cfg = "/FFiles/AromaFM/AromaFM.zip.cfg";
 #define RW_DISABLE_DM_VERITY           "wolf_reboot_dm_verity_check"
 #define RW_REBOOT_AFTER_RESTORE           "rw_reboot_after_restore"
 #define RW_COMPATIBILITY_DEVICE         "wolf_compatibility_wolf_device"
-#define RW_SUPERSU_CONFIG           "rw_supersu_config_chk"
+//#define RW_SUPERSU_CONFIG           "rw_supersu_config_chk"
 #define RW_NO_OS_SEARCH_ENGINE           "wolf_noos_engine"
-#define RW_STUPID_COOKIE_SHIT           "rw_game_bobs_max"
+#define RW_STUPID_COOKIE_STUFF           "rw_game_bobs_max"
 #define RW_TMP_SCRIPT_DIR       "wolf_tmp_script_directory"
 #define RW_STATUSBAR_ON_LOCK       "wolf_statusbar_on_lockpass"
 #define RW_INSTALL_VIBRATE       "wolf_data_install_vibrate"
