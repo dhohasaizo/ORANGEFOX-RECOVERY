@@ -31,6 +31,7 @@
 #include <string>
 #include <unistd.h>
 static const std::string Fox_Home = "/sdcard/Fox";
+static const std::string epoch_drift_file = Fox_Home + "/epoch_drift.cfg"; // to cater for any recorded epoch_drifts
 static const std::string Fox_Home_Files = Fox_Home + "/FoxFiles";
 static const std::string Fox_sdcard_aroma_cfg = Fox_Home + "/aromafm.cfg";
 static const std::string FFiles_dir = "/FFiles";

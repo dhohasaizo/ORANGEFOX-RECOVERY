@@ -1287,35 +1287,54 @@ void TWFunc::Auto_Generate_Backup_Name()
     }
 }
 
-void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
+void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
 {
 #ifdef QCOM_RTC_FIX
   static bool fixed = false;
-  if (fixed)
+  
+  if (fixed) // i.e., we have sorted out the date/time issue properly
+   {
     return;
+   }
 
-  LOGINFO("TWFunc::Fixup_Time: Pre-fix date and time: %s\n",
-	  TWFunc::Get_Current_Date().c_str());
-
+  LOGINFO("TWFunc::Fixup_Time: Pre-fix date and time: %s\n", TWFunc::Get_Current_Date().c_str());
+  
   struct timeval tv;
   uint64_t offset = 0;
+  uint64_t drift = 0;
+  const uint64_t min_offset = 1526913615; // minimum offset = Mon May 21 15:40:17 BST 2018
   std::string sepoch = "/sys/class/rtc/rtc0/since_epoch";
 
   if (TWFunc::read_file(sepoch, offset) == 0)
     {
 
-      LOGINFO("TWFunc::Fixup_Time: Setting time offset from file %s\n",
-	      sepoch.c_str());
+      LOGINFO("TWFunc::Fixup_Time: Setting time offset from file %s\n", sepoch.c_str());
 
+      // DJ9
+      if (offset < 1261440000) // bad RTC (less than 41 years since epoch!)
+      {  
+	 LOGINFO ("TWFunc::Fixup_Time: your RTC is broken (date is earlier than 2011!)\n");
+	 // try to correct 
+         if (TWFunc::read_file (epoch_drift_file, drift) == 0) 
+         {
+           if (drift > 1369180500) // ignore drifts from earlier than  Tuesday, May 21, 2013 11:55:00 PM
+           { 
+              offset += drift; 
+              LOGINFO ("TWFunc::Fixup_Time: compensated for drift by %lu (from %s)\n", drift, epoch_drift_file.c_str());
+              DataManager::SetValue("tw_qcom_ats_offset", (unsigned long long) offset, 1); // store this new value
+           }
+         }
+      }	
+      // DJ9      
+      
       tv.tv_sec = offset;
       tv.tv_usec = 0;
       settimeofday(&tv, NULL);
       gettimeofday(&tv, NULL);
       
-      if (tv.tv_sec > 1526836663) // Sun May 20 18:17:47 BST 2018
+      if (tv.tv_sec > min_offset)
 	{
-	  LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n",
-		  TWFunc::Get_Current_Date().c_str());
+	  LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n", TWFunc::Get_Current_Date().c_str());
 	  fixed = true;
 	  return;
 	} 
@@ -1343,7 +1362,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
   std::vector < std::string > paths;	// space separated list of paths
   if (time_paths.empty())
     {
-      paths = Split_String("/persist/time/ /data/system/time/ /data/time/", " ");
+      paths = Split_String("/data/system/time/ /data/time/", " ");
       if (!PartitionManager.Mount_By_Path("/data", false))
 	return;
     }
@@ -1402,8 +1421,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
       LOGINFO
 	("TWFunc::Fixup_Time: Setting time offset from file %s, offset %llu\n",
 	 ats_path.c_str(), (unsigned long long) offset);
-      DataManager::SetValue("tw_qcom_ats_offset", (unsigned long long) offset,
-			    1);
+      DataManager::SetValue("tw_qcom_ats_offset", (unsigned long long) offset, 1);
       fixed = true;
     }
 
@@ -1425,7 +1443,6 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
 	}
     }
 
-/* this is the original code; but it seems to generate wrong results
   gettimeofday(&tv, NULL);
 
   tv.tv_sec += offset / 1000;
@@ -1438,17 +1455,19 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
     }
 
   settimeofday(&tv, NULL);
-*/
 
-//***** let's try something else   
-      gettimeofday(&tv, NULL);
-      tv.tv_sec = offset;
-      tv.tv_usec = 0;
+// DJ9 last check for sensible offset
+    if (offset < min_offset) // let's try something else 
+    {
+      LOGINFO("TWFunc::Fixup_Time: trying for the last time!\n");
+      tv.tv_sec = min_offset;
+      tv.tv_usec = 0;   
       settimeofday(&tv, NULL);
-//******
+      gettimeofday(&tv, NULL);
+    }
+// DJ9
 
-  LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n",
-	  TWFunc::Get_Current_Date().c_str());
+  LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n", TWFunc::Get_Current_Date().c_str());
 #endif
 }
 
