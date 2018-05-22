@@ -74,7 +74,7 @@
 				<listitem name="{@extra_fox_info_line10=}"/>
 				<listitem name="{@extra_fox_info_line11=}"/>
 				<listitem name="{@extra_fox_info_line12=}"/>
-    		<listitem name="{@extra_fox_info_line13=}"/>
+    			<listitem name="{@extra_fox_info_line13=}"/>
 				<listitem name="{@extra_fox_info_line14=}"/>
 				<listitem name="{@extra_fox_info_line15=}"/>
 				<listitem name="{@extra_fox_info_line16=}"/>
@@ -2742,7 +2742,7 @@
 				<text>{@colour_engine2=}</text>
 			</text>
 
-			<image>
+					<image>
 						<placement x="%col1_x%" y="%row2_2_y%"/>
 						<image resource="icon_info"/>
 					</image>
@@ -2762,76 +2762,13 @@
 						<text>I prevented!</text>
 					</text>
 
-			<listbox style="listbox">
-				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="BLACK THEME">
-					<data variable="fox_black"/>
-				</listitem>
-				<listitem name="DARK THEME">
-					<data variable="fox_dark"/>
-				</listitem>
-				<listitem name="WHITE THEME">
-					<data variable="fox_white"/>
-				</listitem>
-			</listbox>
-       
-           <slider>
-		   <condition var1="fox_dark" var2="1"/>
-				<actions>
-					<action function="wlfw"/>
-					<action function="cmd">  
-					cd "/tmp/redwolf/ramdisk/twres";
-					mv -f "dark/dark.xml" "colors.xml";
-					</action>
-					<action function="wlfx"/>
-					<action function="page">main2</action>
-					<!--action function="page">set_color_finish</action-->
-				</actions>
-      		</slider>
-
-					<action>
-						<conditions>
-						<condition var1="fox_black" var2="0"/>
-						<condition var1="fox_dark" var2="0"/>
-						<condition var1="fox_white" var2="0"/>
-						</conditions>
-						<action function="set">fox_black=1</action>
-					</action>
-
-					<action>
-		        		<condition var1="tw_busy" var2="0"/>
-						<condition var1="fox_black" var2="1"/>
-						<actions>
-							<action function="set">fox_dark=0</action>
-							<action function="set">fox_white=0</action>
-		       			</actions>
-					</action>
-
-					<action>
-            			<condition var1="tw_busy" var2="0"/>
-						<condition var1="fox_dark" var2="1"/>
-						<actions>
-							<action function="set">fox_black=0</action>
-							<action function="set">fox_white=0</action>
-		       			</actions>
-					</action>
-
-					<action>
-            			<condition var1="tw_busy" var2="0"/>
-						<condition var1="fox_white" var2="1"/>
-						<actions>
-							<action function="set">fox_black=0</action>
-							<action function="set">fox_dark=0</action>
-		       			</actions>
-					</action>
-
 			<text style="caption">
 				<condition var1="tw_busy" var2="0"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
                <text>{@colour_engine3=}</text>
 			</text>
 
-<text color="%accent%">
+			<text color="%accent%">
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
@@ -2839,7 +2776,9 @@
 			</text>
        
            <slider>
+		   		<condition var1="fox_theme_wait" var2="0"/>
 				<actions>
+					<action function="set">fox_theme_wait=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
 					cd "/tmp/redwolf/ramdisk/twres";
@@ -4384,22 +4323,43 @@
 				<text>{@fox_community_title=}</text>
 			</text>
 
-			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="%row2_0_y%"/>
-				<condition var1="fox_dev" var2="1"/>
-				<text>DEVELOPER OPTIONS</text>
-				<action function="page">fox_dev</action>
-			</button>
+			<image>
+				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
+				<text>For add new item contact @MrYacha in Telegram</text>
+			</text>
 
 <!-- #OF3 -->
 <button style="btn_raised_hl">
-	<placement x="%btn_raised_left_x%" y="%row6_3_y%"/>
+	<placement x="%btn_raised_left_x%" y="%row3_1_y%"/>
+	<text>SuperSU</text>
+	<actions>
+		<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/SuperSU.zip</action>
+		<action function="set">tw_filename=/sdcard/Fox/FoxFiles/SuperSU.zip</action>
+		<action function="set">tw_existpage=fox_flash</action>
+		<action function="set">tw_back=fox_community</action>
+		<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+		<action function="page">filecheck</action>
+		<action function="set">fox_flash_txt1=SuperSU</action>
+		<action function="set">fox_flash_txt2=By Chainfire</action>
+		<action function="set">fox_flash_sld=Swipe to install SuperSU</action>
+		<action function="set">fox_flash_info=1</action>
+		<action function="set">fox_flash_i1=Only for Miui and Non-Treble ROM</action>
+ 	</actions>
+	</button>
+
+<button style="btn_raised_hl">
+	<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
 	<text>Test btn</text>
 	<actions>
-		<action function="set">tw_filecheck=/sdcard1/Firm/1.zip</action>
-		<action function="set">tw_filename=/sdcard1/Firm/1.zip</action>
+		<action function="set">tw_filecheck=/sdcard1/Firm/2.zip</action>
+		<action function="set">tw_filename=/sdcard1/Firm/2.zip</action>
 		<action function="set">tw_existpage=fox_flash</action>
-		<action function="set">tw_back=fox_menu</action>
+		<action function="set">tw_back=fox_community</action>
 		<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 		<action function="page">filecheck</action>
 		<action function="set">fox_flash_txt1=Test Installing 1</action>
@@ -4409,6 +4369,24 @@
 		<action function="set">fox_flash_i1=Its only Test notice!</action>
 		<action function="set">fox_flash_i2=OrangeFox the best recovery!</action>
 		<action function="set">fox_flash_i3=By MrYacha</action>
+ 	</actions>
+	</button>
+
+<button style="btn_raised_hl">
+	<placement x="%btn_raised_right_x%" y="%row3_3_y%" placement="1"/>
+	<text>Google Sans</text>
+	<actions>
+		<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/GoogleSans.zip</action>
+		<action function="set">tw_filename=/sdcard/Fox/FoxFiles/GoogleSans.zip</action>
+		<action function="set">tw_existpage=fox_flash</action>
+		<action function="set">tw_back=fox_community</action>
+		<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+		<action function="page">filecheck</action>
+		<action function="set">fox_flash_txt1=GoogleSans</action>
+		<action function="set">fox_flash_txt2=By SharkcpN</action>
+		<action function="set">fox_flash_sld=Swipe to install GoogleSans font</action>
+		<action function="set">fox_flash_info=1</action>
+		<action function="set">fox_flash_i1=Miui not supported!</action>
  	</actions>
 	</button>
 
@@ -4585,8 +4563,8 @@
 
 		  	<button style="btn_raised">
 				<placement x="%btn_raised_right_x%" y="%row6_3_y%" placement="1"/>
-				<text>{@wolf.colour.change=Change color}</text>
-				<action function="page">theme_color</action>					
+				<text>Change theme</text>
+				<action function="page">fox_theme</action>					
 			</button>
 
 
@@ -4609,14 +4587,8 @@
 			</button>
 
 			<button style="btn_raised">
-				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
-				<text>CHANGE THEME</text>
-				<action function="page">fox_theme</action>					
-			</button>
-
-			<button style="btn_raised">
 				<condition var1="wolf_adb" var2="1"/>
-				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
+				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
 				<text>ADB ON</text>
 				<!--action function="page">wolf_adb</action-->
 				<action function="set">wolf_adb=0</action>
@@ -4624,7 +4596,7 @@
 
 			<button style="btn_raised">
 				<condition var1="wolf_adb" var2="0"/>
-				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
+				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
 				<text>ADB OFF</text>
 				<!--action function="page">wolf_adb</action-->
 				<action function="set">wolf_adb=1</action>
@@ -14793,50 +14765,6 @@
 			</action>
 </page>
 
-<page name="wolf_backup_name_set1">
-			<background color="%transparent%"/>
-
-			<image>
-				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
-				<image resource="dialog_bg"/>
-			</image>
-
-			<text style="text_dlg_title">
-				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>This section is under</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text1_y%"/>
-				<text>reconstruction...</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text2_y%"/>
-				<text>Please wait!</text>
-			</text>
-
-			<button style="btn_dlg_hl">
-				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
-				<actions>
-				<action function="overlay"/>
-				<action function="page">main2</action>
-				</actions>
-            		</button>
-
-			<action>
-				<touch key="power+volup"/>
-				<action function="screenshotexternal"/>
-			</action>
-
-			<action>
-				<touch key="power+voldown"/>
-				<action function="screenshotinternal"/>
-			</action>
-</page>
-
-
 <page name="dialog_folder">
 			<background color="%transparent%"/>
 
@@ -15737,16 +15665,16 @@
 							<action function="queuezip"/>
 						<action function="flash">flash_zip</action>
 						</actions>
-		     </slider>
+		     		</slider>
 
 				 	<action>
 						<touch key="back"/>
-		        <action function="page">fox_menu</action>
+		        		<action function="page">%tw_back%</action>
 					</action>
 
 					<action>
 						<touch key="home"/>
-		       	<action function="page">main2</action>
+		       			<action function="page">main2</action>
 				 	</action>
 		</page>
 
@@ -15766,7 +15694,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>THEME</text>
+				<text>Fox Theme Engine</text>
 			</text>
 
 			<image>
@@ -15805,28 +15733,66 @@
 					</text>
 
 			<listbox style="listbox">
+				<condition var1="fox_theme_wait" var2="0"/>
 				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="BLACK THEME">
+				<listitem name="Black theme">
 					<data variable="fox_black"/>
 				</listitem>
-				<listitem name="DARK THEME BETA">
+				<listitem name="Dark theme BETA">
 					<data variable="fox_dark"/>
 				</listitem>
 			</listbox>
+
+			<text style="caption">
+			<condition var1="fox_theme_wait" var2="1"/>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>Please wait...</text>
+			</text>
        
            <slider>
 		   <condition var1="fox_dark" var2="1"/>
 				<actions>
+					<action function="set">fox_dark=0</action>
+					<action function="set">fox_theme_wait=1</action>
 					<action function="wlfw"/>
-					<action function="cmd">  
+					<action function="cmd"> 
 					cd "/tmp/redwolf/ramdisk/twres";
+					cp -r images_orange/* "images"; 
 					mv -f "dark/dark.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
-					<action function="page">main2</action>
-					<!--action function="page">set_color_finish</action-->
+					<action function="page">set_color_finish</action>
 				</actions>
       		</slider>
+
+			<text style="caption">
+			<condition var1="fox_dark" var2="1"/>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>Swipe to apply dark theme</text>
+			</text>
+
+			<slider>
+		   <condition var1="fox_black" var2="1"/>
+				<actions>
+					<action function="set">fox_black=0</action>
+					<action function="set">fox_theme_wait=1</action>
+					<action function="wlfw"/>
+					<action function="cmd">  
+					cd "/tmp/redwolf/ramdisk/twres";
+					cp -r images_orange/* "images"; 
+					mv -f "black/black.xml" "colors.xml";
+					</action>
+					<action function="wlfx"/>
+					<action function="page">set_color_finish</action>
+				</actions>
+      		</slider>
+
+			<text style="caption">
+			<condition var1="fox_black" var2="1"/>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>Swipe to apply black theme</text>
+			</text>
+
 					<action>
 		        		<condition var1="tw_busy" var2="0"/>
 						<condition var1="fox_black" var2="1"/>

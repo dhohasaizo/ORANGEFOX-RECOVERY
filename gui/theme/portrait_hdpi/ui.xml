@@ -273,7 +273,7 @@
     	<variable name="lock_btn" value="1" persist="1"/>
 		<variable name="fox_black" value="0" persist="0"/>
 		<variable name="fox_dark" value="0" persist="0"/>
-		<variable name="fox_white" value="0" persist="0"/>
+		<variable name="fox_theme_wait" value="0" persist="0"/>
 
 		<variable name="screen_w" value="1080"/>
 		<variable name="screen_h" value="1920"/>
