@@ -555,7 +555,7 @@ void TWFunc::Deactivation_Process(void)
   // Check AromaFM Config
   if (DataManager::GetIntValue(RW_SAVE_LOAD_AROMAFM) == 1)
     {
-      string aromafm_path = Fox_Home;	// "/sdcard/Fox.res"; //RW_SURVIVAL_FOLDER; // dj9 - changed "/sdcard/Fox";
+      string aromafm_path = Fox_Home;
       string aromafm_file = aromafm_path + "/aromafm.cfg";
       if (!Path_Exists(aromafm_path))
 	{
@@ -567,7 +567,7 @@ void TWFunc::Deactivation_Process(void)
 	    }
 	}
       // Save AromaFM config (AromaFM.cfg)
-      if (copy_file("/FFiles/AromaFM/AromaFM.zip.cfg", aromafm_file, 0644))
+      if (copy_file(FFiles_dir + "/AromaFM/AromaFM.zip.cfg", aromafm_file, 0644))
 	{
 	  LOGERR("Error copying AromaFM config\n");
 	}
@@ -1121,6 +1121,7 @@ int TWFunc::write_to_file(const string & fn, const string & line)
   return -1;
 }
 
+/*
 bool TWFunc::Install_SuperSU(void)
 {
   if (!PartitionManager.Mount_By_Path("/system", true))
@@ -1129,7 +1130,7 @@ bool TWFunc::Install_SuperSU(void)
   check_and_run_script("/supersu/install-supersu.sh", "SuperSU");
   return true;
 }
-
+*/
 bool TWFunc::Try_Decrypting_Backup(string Restore_Path, string Password)
 {
   DIR *d;
@@ -1286,48 +1287,65 @@ void TWFunc::Auto_Generate_Backup_Name()
     }
 }
 
-void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
+void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
 {
 #ifdef QCOM_RTC_FIX
   static bool fixed = false;
-  if (fixed)
+  
+  if (fixed) // i.e., we have sorted out the date/time issue properly
+   {
     return;
+   }
 
-  LOGINFO("TWFunc::Fixup_Time: Pre-fix date and time: %s\n",
-	  TWFunc::Get_Current_Date().c_str());
-
+  LOGINFO("TWFunc::Fixup_Time: Pre-fix date and time: %s\n", TWFunc::Get_Current_Date().c_str());
+  
   struct timeval tv;
   uint64_t offset = 0;
+  uint64_t drift = 0;
+  const uint64_t min_offset = 1526913615; // minimum offset = Mon May 21 15:40:17 BST 2018
   std::string sepoch = "/sys/class/rtc/rtc0/since_epoch";
 
   if (TWFunc::read_file(sepoch, offset) == 0)
     {
 
-      LOGINFO("TWFunc::Fixup_Time: Setting time offset from file %s\n",
-	      sepoch.c_str());
+      LOGINFO("TWFunc::Fixup_Time: Setting time offset from file %s\n", sepoch.c_str());
 
+      // DJ9
+      if (offset < 1261440000) // bad RTC (less than 41 years since epoch!)
+      {  
+	 LOGINFO ("TWFunc::Fixup_Time: your RTC is broken (date is earlier than 2011!)\n");
+	 // try to correct 
+         if (TWFunc::read_file (epoch_drift_file, drift) == 0) 
+         {
+           if (drift > 1369180500) // ignore drifts from earlier than  Tuesday, May 21, 2013 11:55:00 PM
+           { 
+              offset += drift; 
+              LOGINFO ("TWFunc::Fixup_Time: compensated for drift by %lu (from %s)\n", drift, epoch_drift_file.c_str());
+              DataManager::SetValue("tw_qcom_ats_offset", (unsigned long long) offset, 1); // store this new value
+           }
+         }
+      }	
+      // DJ9      
+      
       tv.tv_sec = offset;
       tv.tv_usec = 0;
       settimeofday(&tv, NULL);
-
       gettimeofday(&tv, NULL);
-
-      if (tv.tv_sec > 1405209403)
-	{			// Anything older then 12 Jul 2014 23:56:43 GMT will do nicely thank you ;)
-
-	  LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n",
-		  TWFunc::Get_Current_Date().c_str());
+      
+      if (tv.tv_sec > min_offset)
+	{
+	  LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n", TWFunc::Get_Current_Date().c_str());
 	  fixed = true;
 	  return;
-
+	} 
+	else 
+	{
+      	  LOGINFO("TWFunc::Fixup_Time: Wrong date and time epoch in %s\n", sepoch.c_str());
 	}
-
     }
   else
     {
-
       LOGINFO("TWFunc::Fixup_Time: opening %s failed\n", sepoch.c_str());
-
     }
 
   LOGINFO("TWFunc::Fixup_Time: will attempt to use the ats files now.\n");
@@ -1403,8 +1421,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
       LOGINFO
 	("TWFunc::Fixup_Time: Setting time offset from file %s, offset %llu\n",
 	 ats_path.c_str(), (unsigned long long) offset);
-      DataManager::SetValue("tw_qcom_ats_offset", (unsigned long long) offset,
-			    1);
+      DataManager::SetValue("tw_qcom_ats_offset", (unsigned long long) offset, 1);
       fixed = true;
     }
 
@@ -1418,11 +1435,18 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
 	}
       else
 	{
+	  // Do not consider the settings file as a definitive answer, keep fixed=false so next run will try ats files again
 	  offset = (uint64_t) value;
 	  LOGINFO
 	    ("TWFunc::Fixup_Time: Setting time offset from twrp setting file, offset %llu\n",
 	     (unsigned long long) offset);
-	  // Do not consider the settings file as a definitive answer, keep fixed=false so next run will try ats files again
+	     // DJ9
+	        tv.tv_sec = offset;
+      		tv.tv_usec = 0;
+      		settimeofday(&tv, NULL);
+      		gettimeofday(&tv, NULL);
+      		return;
+      	     // DJ9
 	}
     }
 
@@ -1439,8 +1463,18 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths /* = "" */ )
 
   settimeofday(&tv, NULL);
 
-  LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n",
-	  TWFunc::Get_Current_Date().c_str());
+// DJ9 last check for sensible offset
+    if (offset < min_offset) // let's try something else 
+    {
+      LOGINFO("TWFunc::Fixup_Time: trying for the last time!\n");
+      tv.tv_sec = min_offset;
+      tv.tv_usec = 0;   
+      settimeofday(&tv, NULL);
+      gettimeofday(&tv, NULL);
+    }
+// DJ9
+
+  LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n", TWFunc::Get_Current_Date().c_str());
 #endif
 }
 
@@ -1818,49 +1852,43 @@ void TWFunc::Start_redwolf(void)
       LOGINFO("ROM Status: %s\n", info.c_str());
     }
 
-  string wolf_res = Fox_Home;	//"/sdcard/Fox.res";
-  string config_aroma_path = wolf_res;	// + "/aromafm.cfg";
-  string config_aroma_file_cfg = Fox_sdcard_aroma_cfg;	//wolf_res + "/aromafm.cfg";
-  string OrangeFox_Files_path = Fox_aroma_cfg;	//ramdisk_folder + "/AromaFM/AromaFM.zip.cfg";
-  string ramdisk_folder = "/FFiles";
-  string resource_folder = wolf_res + "/FILES";
+//  string Fox_Home = Fox_Home;
+//  string Fox_sdcard_aroma_cfg = Fox_sdcard_aroma_cfg;
+//  string Fox_aroma_cfg = Fox_aroma_cfg;
+  string ramdisk_folder = FFiles_dir;
+  string resource_folder = Fox_Home_Files;
 
   DataManager::SetValue("fox_home_files_dir", Fox_Home_Files.c_str());
 
   if (TWFunc::Path_Exists(ramdisk_folder.c_str()))
     {
       DataManager::SetValue("rw_resource_dir", ramdisk_folder.c_str());
-//LOGINFO("DJ9 #1 found %s\n", ramdisk_folder.c_str());
-      if (TWFunc::Path_Exists(config_aroma_file_cfg))	// is there a backup CFG?
+      if (TWFunc::Path_Exists(Fox_sdcard_aroma_cfg)) // is there a backup CFG file on /sdcard/Fox/?
 	{
-//LOGINFO("DJ9 #2 copying %s to : %s\n", config_aroma_file_cfg.c_str(), OrangeFox_Files_path.c_str());
-	  TWFunc::copy_file(config_aroma_file_cfg, OrangeFox_Files_path,
-			    0644);
+	  TWFunc::copy_file(Fox_sdcard_aroma_cfg, Fox_aroma_cfg, 0644);
 	}
       else
 	{
-	  if (!Path_Exists(config_aroma_path))
+	  if (!Path_Exists(Fox_Home))
 	    {
 	      if (mkdir
-		  (config_aroma_path.c_str(),
+		  (Fox_Home.c_str(),
 		   S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
 		{
 		  LOGERR("Error making %s directory: %s\n",
-			 config_aroma_path.c_str(), strerror(errno));
+			 Fox_Home.c_str(), strerror(errno));
 		}
 	    }         
-	  if (Path_Exists(config_aroma_path))
+	  if (Path_Exists(Fox_Home))
 	    {
-	      if (Path_Exists(OrangeFox_Files_path))
-		TWFunc::copy_file(OrangeFox_Files_path, config_aroma_file_cfg,
+	      if (Path_Exists(Fox_aroma_cfg))
+		TWFunc::copy_file(Fox_aroma_cfg, Fox_sdcard_aroma_cfg,
 				  0644);
-//LOGINFO("DJ9 #3 %s not found - so I copied %s to it\n", config_aroma_file_cfg.c_str(), OrangeFox_Files_path.c_str());
 	    }
 	} // else
     }
   else
     {
-//LOGINFO("DJ9 #4 NOT found %s setting value to %s\n", ramdisk_folder.c_str(), resource_folder.c_str());
       DataManager::SetValue("rw_resource_dir", resource_folder.c_str());
     }
 }

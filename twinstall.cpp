@@ -532,7 +532,7 @@ static int Run_Update_Binary(const char *path, ZipWrap * Zip, int *wipe_cache,
 		  aroma_running = 0;
 		  gui_changeOverlay("");
 		  //LOGERR("DJ9 #101:\n");
-		  //TWFunc::copy_file("/FFiles/AromaFM/AromaFM.zip.cfg", "/sdcard/Fox.res/aromafm.cfg", 0644);
+		  //TWFunc::copy_file(FFiles_dir + "/AromaFM/AromaFM.zip.cfg", "/sdcard/Fox.res/aromafm.cfg", 0644);
 		  TWFunc::copy_file(Fox_aroma_cfg, Fox_sdcard_aroma_cfg,
 				    0644);
 		}

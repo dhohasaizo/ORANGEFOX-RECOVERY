@@ -826,9 +826,8 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue(RW_DISABLE_FORCED_ENCRYPTION, "1");
   mPersist.SetValue(RW_DISABLE_DM_VERITY, "1");
   mPersist.SetValue(RW_REBOOT_AFTER_RESTORE, "0");
-  mPersist.SetValue(RW_SUPERSU_CONFIG, "0");
   mPersist.SetValue(RW_NO_OS_SEARCH_ENGINE, "1");
-  mPersist.SetValue(RW_STUPID_COOKIE_SHIT, "0");
+  mPersist.SetValue(RW_STUPID_COOKIE_STUFF, "0");
   mPersist.SetValue(RW_STATUSBAR_ON_LOCK, "1");
   mPersist.SetValue(RW_INSTALL_VIBRATE, "150");
   mPersist.SetValue(RW_BACKUP_VIBRATE, "150");
