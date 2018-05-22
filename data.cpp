@@ -857,9 +857,8 @@ void DataManager::SetDefaultValues()
   mConst.SetValue(RW_SURVIVAL_FOLDER_VAR, RW_SURVIVAL_FOLDER);
   mConst.SetValue(RW_SURVIVAL_BACKUP_NAME, RW_SURVIVAL_BACKUP);
   mConst.SetValue(RW_ACTUAL_BUILD_VAR, RW_BUILD);
-  mConst.SetValue(RW_TMP_SCRIPT_DIR, "/tmp/redwolf");
+  mConst.SetValue(RW_TMP_SCRIPT_DIR, Fox_tmp_dir);
   mConst.SetValue(RW_COMPATIBILITY_DEVICE, RW_DEVICE);
-
   // End of the OrangeFox variables
 
   mPersist.SetValue(TW_INSTALL_REBOOT_VAR, "0");

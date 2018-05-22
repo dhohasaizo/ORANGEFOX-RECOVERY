@@ -31,14 +31,17 @@
 #include <string>
 #include <unistd.h>
 static const std::string Fox_Home = "/sdcard/Fox";
-static const std::string epoch_drift_file = Fox_Home + "/.fox_epoch_drift.cfg"; // to cater for any recorded epoch_drifts
+static const std::string epoch_drift_file = Fox_Home + "/.fox_epoch_drift.cfg"; // to cater for any saved epoch_drifts
 static const std::string Fox_Home_Files = Fox_Home + "/FoxFiles";
 static const std::string Fox_sdcard_aroma_cfg = Fox_Home + "/aromafm.cfg";
 static const std::string FFiles_dir = "/FFiles";
 static const std::string Fox_aroma_cfg = FFiles_dir + "/AromaFM/AromaFM.zip.cfg";
-#define RW_SURVIVAL_FOLDER      "/sdcard/Fox"
-// ****
+static const std::string Fox_tmp_dir = "/tmp/redwolf";
+static const std::string Fox_ramdisk_dir = Fox_tmp_dir + "/ramdisk";
+static const std::string Fox_ramdisk_sbin_dir = Fox_ramdisk_dir + "/sbin";
+#define RW_SURVIVAL_FOLDER    Fox_Home.c_str()
 
+// ****
 #define RW_SURVIVAL_FOLDER_VAR      "wolf_survival_backup_folder_path"
 #define RW_SURVIVAL_BACKUP_NAME       "wolf_survival_backup_folder_name"
 #define RW_SURVIVAL_BACKUP       "OTA"

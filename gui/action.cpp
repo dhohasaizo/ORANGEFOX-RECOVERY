@@ -2621,12 +2621,11 @@ int GUIAction::removepassword(std::string arg __unused)
   else
     {
 	  std::string dd = "dd";
-	  std::string sbin = "/tmp/redwolf/ramdisk/sbin";
-	  std::string password_file = sbin + "/wlfx";
+	  std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
 	  gui_msg
 	    ("wolf_remove_access_password_one=Removing recovery access password...");
 	  TWFunc::Dumwolf(true, false);
-	  if (TWFunc::Path_Exists(sbin))
+	  if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
 	    {
 	      TWFunc::create_fingerprint_file(password_file, dd);
 	      TWFunc::Dumwolf(false, false);
@@ -2651,12 +2650,11 @@ int GUIAction::setpassword(std::string arg)
     }
   else
     {
-	  std::string sbin = "/tmp/redwolf/ramdisk/sbin";
-	  std::string password_file = sbin + "/wlfx";
+	  std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
 	  gui_msg
 	    ("wolf_set_new_access_password=Changing recovery access password...");
 	  TWFunc::Dumwolf(true, false);
-	  if (TWFunc::Path_Exists(sbin))
+	  if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
 	    {
 	      TWFunc::create_fingerprint_file(password_file, arg);
 	      TWFunc::Dumwolf(false, false);
@@ -2712,14 +2710,12 @@ int GUIAction::changesplash(std::string arg __unused)
   else
     {
 	  std::string path, filename;
-	  std::string sbin = "/tmp/redwolf/ramdisk/sbin";
-	  std::string ramdisk_path =
-	    "/tmp/redwolf/ramdisk/twres/images/splash.png";
+	  std::string ramdisk_path = Fox_ramdisk_dir + "/twres/images/splash.png";
 	  DataManager::GetValue("tw_splash_png_path", path);
 	  DataManager::GetValue("tw_splash_png_name", filename);
 	  std::string filepath = path + "/" + filename;
 	  TWFunc::Dumwolf(true, false);
-	  if (TWFunc::Path_Exists(sbin))
+	  if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
 	    {
 	      unlink(ramdisk_path.c_str());
 	      TWFunc::copy_file(filepath, ramdisk_path, 0644);

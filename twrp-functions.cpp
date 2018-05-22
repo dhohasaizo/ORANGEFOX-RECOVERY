@@ -528,7 +528,7 @@ void TWFunc::install_htc_dumlock(void)
 
 void TWFunc::Deactivation_Process(void)
 {
-  std::string tmp = "/tmp/redwolf";
+  std::string tmp = Fox_tmp_dir;
   std::string ramdisk = tmp + "/ramdisk";
   std::string fstab = ramdisk + "/fstab.qcom";
   std::string default_prop = ramdisk + "/default.prop";
@@ -1852,17 +1852,11 @@ void TWFunc::Start_redwolf(void)
       LOGINFO("ROM Status: %s\n", info.c_str());
     }
 
-//  string Fox_Home = Fox_Home;
-//  string Fox_sdcard_aroma_cfg = Fox_sdcard_aroma_cfg;
-//  string Fox_aroma_cfg = Fox_aroma_cfg;
-  string ramdisk_folder = FFiles_dir;
-  string resource_folder = Fox_Home_Files;
-
   DataManager::SetValue("fox_home_files_dir", Fox_Home_Files.c_str());
 
-  if (TWFunc::Path_Exists(ramdisk_folder.c_str()))
+  if (TWFunc::Path_Exists(FFiles_dir.c_str()))
     {
-      DataManager::SetValue("rw_resource_dir", ramdisk_folder.c_str());
+      DataManager::SetValue("rw_resource_dir", FFiles_dir.c_str());
       if (TWFunc::Path_Exists(Fox_sdcard_aroma_cfg)) // is there a backup CFG file on /sdcard/Fox/?
 	{
 	  TWFunc::copy_file(Fox_sdcard_aroma_cfg, Fox_aroma_cfg, 0644);
@@ -1872,8 +1866,7 @@ void TWFunc::Start_redwolf(void)
 	  if (!Path_Exists(Fox_Home))
 	    {
 	      if (mkdir
-		  (Fox_Home.c_str(),
-		   S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
+		  (Fox_Home.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
 		{
 		  LOGERR("Error making %s directory: %s\n",
 			 Fox_Home.c_str(), strerror(errno));
@@ -1882,14 +1875,13 @@ void TWFunc::Start_redwolf(void)
 	  if (Path_Exists(Fox_Home))
 	    {
 	      if (Path_Exists(Fox_aroma_cfg))
-		TWFunc::copy_file(Fox_aroma_cfg, Fox_sdcard_aroma_cfg,
-				  0644);
+		TWFunc::copy_file(Fox_aroma_cfg, Fox_sdcard_aroma_cfg, 0644);
 	    }
 	} // else
     }
   else
     {
-      DataManager::SetValue("rw_resource_dir", resource_folder.c_str());
+      DataManager::SetValue("rw_resource_dir", Fox_Home_Files.c_str());
     }
 }
 
@@ -2149,23 +2141,23 @@ void TWFunc::Dumwolf(bool do_unpack, bool is_boot)
   std::string cd_dir = "cd ";
   output = "new-boot.img";
   std::string end_command = "; ";
+  std::string tmp = Fox_tmp_dir;
   std::string magiskboot = "magiskboot";
   std::string magiskboot_sbin = "/sbin/" + magiskboot;
   std::string magiskboot_action = magiskboot + " --";
-  std::string tmp = "/tmp/redwolf";
-  std::string ramdisk = tmp + "/ramdisk";
   std::string cpio = "ramdisk.cpio";
-  std::string tmp_cpio = tmp + k + cpio;
-  std::string ramdisk_cpio = ramdisk + k + cpio;
-  std::string dump_cpio =
-    cd_dir + ramdisk + end_command + "cpio -i < \"" + cpio + "\"";
-  if (!TWFunc::Path_Exists(magiskboot_sbin))
-    TWFunc::tw_reboot(rb_recovery);
+  std::string tmp_cpio = Fox_tmp_dir + k + cpio;
+  std::string ramdisk_cpio = Fox_ramdisk_dir + k + cpio;
+  std::string dump_cpio = cd_dir + Fox_ramdisk_dir + end_command + "cpio -i < \"" + cpio + "\"";
+ 
+  if (!TWFunc::Path_Exists(magiskboot_sbin)) TWFunc::tw_reboot(rb_recovery);
+ 
   if (!PartitionManager.Mount_By_Path("/system", false))
     return;
+ 
   TWPartition *Boot = PartitionManager.Find_Partition_By_Path("/boot");
-  TWPartition *Recovery =
-    PartitionManager.Find_Partition_By_Path("/recovery");
+  TWPartition *Recovery = PartitionManager.Find_Partition_By_Path("/recovery");
+ 
   if (Boot != NULL && Recovery != NULL)
     {
       if (is_boot)
@@ -2174,12 +2166,13 @@ void TWFunc::Dumwolf(bool do_unpack, bool is_boot)
 	redwolf = Recovery->Actual_Block_Device;
       if (do_unpack)
 	{
-	  if (TWFunc::Path_Exists(tmp))
-	    TWFunc::removeDir(tmp, false);
-	  if (TWFunc::Recursive_Mkdir(ramdisk))
+	  if (TWFunc::Path_Exists(Fox_tmp_dir))
+	    TWFunc::removeDir(Fox_tmp_dir, false);
+	    
+	  if (TWFunc::Recursive_Mkdir(Fox_ramdisk_dir))
 	    {
 	      std::string unpack_partition =
-		cd_dir + tmp + end_command + magiskboot_action + "unpack \"" +
+		cd_dir + Fox_tmp_dir + end_command + magiskboot_action + "unpack \"" +
 		redwolf + "\"";
 	      Exec_Cmd(unpack_partition, result);
 	      rename(tmp_cpio.c_str(), ramdisk_cpio.c_str());
@@ -2190,16 +2183,16 @@ void TWFunc::Dumwolf(bool do_unpack, bool is_boot)
       else
 	{
 	  std::string build_cpio =
-	    cd_dir + ramdisk + end_command + "find | cpio -o -H newc > \"" +
+	    cd_dir + Fox_ramdisk_dir + end_command + "find | cpio -o -H newc > \"" +
 	    tmp_cpio + "\"";
 	  Exec_Cmd(build_cpio, result);
 	  std::string repack_partition =
-	    cd_dir + tmp + end_command + magiskboot_action + "repack \"" +
+	    cd_dir + Fox_tmp_dir + end_command + magiskboot_action + "repack \"" +
 	    redwolf + "\"";
 	  Exec_Cmd(repack_partition, result);
 	  if (!PartitionManager.Flash_Repacked_Image(tmp, output, is_boot))
 	    LOGERR("TWFunc::Dumwolf: Failed to flash repacked image!");
-	  TWFunc::removeDir(tmp, false);
+	  TWFunc::removeDir(Fox_tmp_dir, false);
 	}
     }
   PartitionManager.UnMount_By_Path("/system", false);
