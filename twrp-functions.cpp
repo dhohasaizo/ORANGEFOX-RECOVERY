@@ -1435,11 +1435,18 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
 	}
       else
 	{
+	  // Do not consider the settings file as a definitive answer, keep fixed=false so next run will try ats files again
 	  offset = (uint64_t) value;
 	  LOGINFO
 	    ("TWFunc::Fixup_Time: Setting time offset from twrp setting file, offset %llu\n",
 	     (unsigned long long) offset);
-	  // Do not consider the settings file as a definitive answer, keep fixed=false so next run will try ats files again
+	     // DJ9
+	        tv.tv_sec = offset;
+      		tv.tv_usec = 0;
+      		settimeofday(&tv, NULL);
+      		gettimeofday(&tv, NULL);
+      		return;
+      	     // DJ9
 	}
     }
 
