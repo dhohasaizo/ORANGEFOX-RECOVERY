@@ -1315,7 +1315,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
       // DJ9
       if (offset < 1261440000) // bad RTC (less than 41 years since epoch!)
       {  
-	 LOGINFO ("TWFunc::Fixup_Time: Your RTC is broken (the date is earlier than 2011!)\n");
+	 LOGINFO ("TWFunc::Fixup_Time: Your RTC is broken (the alleged date/time is %s)\n", TWFunc::Get_Current_Date().c_str());
 	 
 	 // try to correct 	 
 	 if (DataManager::GetValue("fox_epoch_drift", stored_drift) < 0) // read from .foxs
@@ -1330,7 +1330,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
             if ((stored_drift > 0) && (drift == 0)) // we only got drift from .foxs
                 {
            	  drift = stored_drift;
-           	  LOGINFO ("TWFunc::Fixup_Time: using drift value (%lu) stored in .foxs\n", drift);
+           	  LOGINFO ("TWFunc::Fixup_Time: Using drift value (%lu) stored in .foxs\n", drift);
                 } 
             else 
             {   
@@ -1338,9 +1338,9 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
               	 {
                     if (stored_drift != drift) // let drift override stored_drift, and save drift
                     {
-                        LOGINFO ("TWFunc::Fixup_Time: using drift value (%lu) stored in %s\n", drift, epoch_drift_file.c_str());
                         store = 1; 
                     } 
+                    LOGINFO ("TWFunc::Fixup_Time: using drift value (%lu) stored in %s\n", drift, epoch_drift_file.c_str());
               	 } 
               	 else // either both are 0, or stored_drift is 0
               	 {
@@ -1356,7 +1356,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
            if (drift > 1369180500) // ignore drifts from earlier than Tuesday, May 21, 2013 11:55:00 PM
            { 
               offset += drift; 
-              LOGINFO ("TWFunc::Fixup_Time: compensated for drift by %lu \n", drift);
+              LOGINFO ("TWFunc::Fixup_Time: Compensated for drift by %lu \n", drift);
               DataManager::SetValue("tw_qcom_ats_offset", (unsigned long long) offset, 1); // store this new offset
               
               if (store == 1) // we haven't already stored the drift in .foxs
