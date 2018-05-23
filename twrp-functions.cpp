@@ -1302,6 +1302,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
   struct timeval tv;
   uint64_t offset = 0;
   uint64_t drift = 0;
+  int store = 0;
   unsigned long long stored_drift = 0;
   const uint64_t min_offset = 1526913615; // minimum offset = Mon May 21 15:40:17 BST 2018
   std::string sepoch = "/sys/class/rtc/rtc0/since_epoch";
@@ -1314,32 +1315,56 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
       // DJ9
       if (offset < 1261440000) // bad RTC (less than 41 years since epoch!)
       {  
-	 LOGINFO ("TWFunc::Fixup_Time: your RTC is broken (the date is earlier than 2011!)\n");
-	 // try to correct 
-	 if (DataManager::GetValue("fox_epoch_drift", stored_drift) < 0)
+	 LOGINFO ("TWFunc::Fixup_Time: Your RTC is broken (the date is earlier than 2011!)\n");
+	 
+	 // try to correct 	 
+	 if (DataManager::GetValue("fox_epoch_drift", stored_drift) < 0) // read from .foxs
 	 	stored_drift = 0;
 	 
-         if ((stored_drift > 0) || (TWFunc::read_file (epoch_drift_file, drift) == 0)) 
+	 if (TWFunc::read_file (epoch_drift_file, drift) != 0) // read from epoch drift file
+	 	drift = 0;
+	 
+	 // what have we succeeded in reading?
+         if ((drift > 0) || (stored_drift > 0)) 
          {
-           if ((stored_drift > 0) && (drift == 0)) // we have read drift from .foxs
-              {
+            if ((stored_drift > 0) && (drift == 0)) // we only got drift from .foxs
+                {
            	  drift = stored_drift;
            	  LOGINFO ("TWFunc::Fixup_Time: using drift value (%lu) stored in .foxs\n", drift);
-              } 
-              else 
-                  LOGINFO ("TWFunc::Fixup_Time: using drift value (%lu) stored in %s\n", drift, epoch_drift_file.c_str());
-            
-           if (drift > 1369180500) // ignore drifts from earlier than  Tuesday, May 21, 2013 11:55:00 PM
+                } 
+            else 
+            {   
+           	 if ((stored_drift > 0) && (drift > 0)) // we got two values
+              	 {
+                    if (stored_drift != drift) // let drift override stored_drift, and save drift
+                    {
+                        LOGINFO ("TWFunc::Fixup_Time: using drift value (%lu) stored in %s\n", drift, epoch_drift_file.c_str());
+                        store = 1; 
+                    } 
+              	 } 
+              	 else // either both are 0, or stored_drift is 0
+              	 {
+              	    if (drift > 0) // then stored_drift must be 0
+              	    {
+                        LOGINFO ("TWFunc::Fixup_Time: using drift value (%lu) stored in %s\n", drift, epoch_drift_file.c_str());              	    
+              	    	store = 1;
+              	    }
+              	 }             
+             }
+             
+	   // now see if we have a sensible value            
+           if (drift > 1369180500) // ignore drifts from earlier than Tuesday, May 21, 2013 11:55:00 PM
            { 
               offset += drift; 
               LOGINFO ("TWFunc::Fixup_Time: compensated for drift by %lu \n", drift);
               DataManager::SetValue("tw_qcom_ats_offset", (unsigned long long) offset, 1); // store this new offset
               
-              if (stored_drift == 0) // we haven't already stored it
+              if (store == 1) // we haven't already stored the drift in .foxs
               	DataManager::SetValue("fox_epoch_drift", (unsigned long long) drift, 1); // store the drift value
            }
-         }
-      }	
+           
+         } // if (drift > 0) || (stored_drift > 0)
+      }	// if offset
       // DJ9      
       
       tv.tv_sec = offset;
