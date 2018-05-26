@@ -117,7 +117,7 @@
 		<string name="format_data_btn">FORMAT DATA</string>
 		<string name="format_data_ptr1">Format Data will wipe all of your apps,</string>
 		<string name="format_data_ptr2">backups, pictures, videos, media, and</string>
-		<string name="format_data_ptr3">removes encryption on internal storage.</string>
+		<string name="format_data_ptr3">will remove encryption on internal storage.</string>
 		<string name="format_data_adopted">Including Adopted Storage</string>
 		<string name="format_data_undo">This cannot be undone.</string>
 		<string name="format_data_complete">Data Format completed</string>
@@ -578,8 +578,8 @@
 		<string name="base_pkg_err">Failed to load base packages.</string>
 		<string name="simulating">Powersave</string>
 		<string name="backup_cancel">Backup Cancelled</string>
-		<string name="config_twrp">Configuring TWRP...</string>
-		<string name="config_twrp_err">Unable to configure TWRP with this kernel.</string>
+		<string name="config_twrp">Configuring OrangeFox...</string>
+		<string name="config_twrp_err">Unable to configure OrangeFox with this kernel.</string>
 		<string name="copy_log">Copied recovery log to {1}.</string>
 		<string name="max_queue">Maximum zip queue reached!</string>
 		<string name="min_queue">Minimum zip queue reached!</string>
@@ -596,7 +596,7 @@
 		<string name="cancel_sideload">Cancelling ADB sideload...</string>
 		<string name="change_fs_err">Error changing file system.</string>
 		<string name="change_fs_hdr">Change File System for %tw_partition_name%</string>
-		<string name="theme_ver_err">Custom theme version does not match TWRP version. Using stock theme.</string>
+		<string name="theme_ver_err">Custom theme version does not match OrangeFox version. Using stock theme.</string>
 		<string name="up_a_level">(Up A Level)</string>
 
 		<!-- new-->
@@ -675,7 +675,7 @@
 		<string name="dialog_splash_btn">CHANGE SPLASH</string>
 		<string name="dialog_splash_adapt">ADAPT SPLASH</string>
 		<string name="dialog_reset_note_1">Do you want to restore the</string>
-		<string name="dialog_reset_note_2">default settings for TWRP recovery</string>
+		<string name="dialog_reset_note_2">default settings for OrangeFox recovery</string>
 		<string name="dialog_reset_note_3">and Materialised theme?</string>
 		<string name="dialog_remove_theme_hdr">Remove Theme</string>
 		<string name="dialog_remove_theme_1">Do you want to remove the theme?</string>
@@ -983,29 +983,29 @@
 	<string name="wolf_about_telegram_account">Telegram account</string>
 	<string name="wolf_reboot_nastaveni">Set on boot settings</string>
 	<string name="wolf_no_os_engine">Use Advanced NO OS Search Engine</string>
-    <string name="wolf_reset_default_hdr">Default Settings</string>
+    	<string name="wolf_reset_default_hdr">Default Settings</string>
 	<string name="wolf_extra_fox_hdr">Advanced Actions</string>
 	<string name="wolf_extra_fox_hdr_2">Advanced Actions of the OrangeFox Recovery</string>
-	<string name="extra_fox_info_line1">Hi there! Welcome in the section of the</string>
-     <string name="extra_fox_info_line2">special actions! Here you can change</string>
-     <string name="extra_fox_info_line3">the way of how is the OrangeFox Recovery</string>
-     <string name="extra_fox_info_line4">installing zip files.</string>
-     <string name="extra_fox_info_line5">Maybe you don't want to flash lazyflasher</string>
-     <string name="extra_fox_info_line6">everytime when you are installing</string>
-     <string name="extra_fox_info_line7">ROM with enabled dm-verity? So just enable</string>
-     <string name="extra_fox_info_line8">here &quot;Disable DM-Verity&quot; and</string>
-     <string name="extra_fox_info_line9">that's everything what you have to do.</string>
-     <string name="extra_fox_info_line10">After that when you flash the ROM</string>
-     <string name="extra_fox_info_line11">recovery will automatically during the</string>
-     <string name="extra_fox_info_line12">installation check and disable dm-verity.</string>
-     <string name="extra_fox_info_line13">The same process is also for forced</string>
-     <string name="extra_fox_info_line14">encryption.</string>
-     <string name="extra_fox_info_line15">Other things like &quot;Enable Debugging...&quot;</string>
-     <string name="extra_fox_info_line16">are changing the props...</string>
-     <string name="extra_fox_info_line17">If you still have any question then</string>
-     <string name="extra_fox_info_line18">ask us in the XDA thread or in our</string>
-     <string name="extra_fox_info_line19">Telegram group (link is on XDA).</string>
-     <string name="extra_fox_info_line20">Enjoy! :)</string>
+	<string name="extra_fox_info_line1">Hello! Welcome to the special actions section</string>
+     	<string name="extra_fox_info_line2">of OrangeFox Recovery! Here you can change</string>
+     	<string name="extra_fox_info_line3">the manner in which OrangeFox Recovery</string>
+     	<string name="extra_fox_info_line4">installs zip files.</string>
+     	<string name="extra_fox_info_line5">Would you prefer to not flash lazyflasher</string>
+     	<string name="extra_fox_info_line6">every time you install a ROM which has</string>
+     	<string name="extra_fox_info_line7">dm-verity enabled? If so, just enable</string>
+     	<string name="extra_fox_info_line8">&quot;Disable DM-Verity&quot; here. And</string>
+     	<string name="extra_fox_info_line9">that would be all that you need to do.</string>
+     	<string name="extra_fox_info_line10">After this, whenever you flash the ROM,</string>
+     	<string name="extra_fox_info_line11">the recovery will automatically check and</string>
+     	<string name="extra_fox_info_line12">disable dm-verity during the installation.</string>
+     	<string name="extra_fox_info_line13">The same process also applies to forced</string>
+     	<string name="extra_fox_info_line14">encryption.</string>
+     	<string name="extra_fox_info_line15">Other things like &quot;Enable Debugging...&quot;</string>
+     	<string name="extra_fox_info_line16">will involve changes being made to the props...</string>
+     	<string name="extra_fox_info_line17">If you still have any question then please</string>
+     	<string name="extra_fox_info_line18">do ask in the OrangeFox XDA thread, or in</string>
+     	<string name="extra_fox_info_line19">our Telegram group (the link is on XDA).</string>
+     	<string name="extra_fox_info_line20">Enjoy the OrangeFox special features!</string>
 
 
 	<!-- Console Messages -->
