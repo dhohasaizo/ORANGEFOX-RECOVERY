@@ -1095,5 +1095,22 @@
 	<string name="f_brown">Brown</string>
 	<string name="f_gray">Gray</string>
 	<string name="f_blue_grey">Blue Grey</string>
+
+	<!-- OrangeFox community scripts -->
+
+	<string name="fox_community_title">OrangeFox Community scrips</string>
+	<string name="fox_comm_i1">For add new item contact</string>
+	<string name="fox_comm_i2">@MrYacha in Telegram</string>
+
+	<string name="fox_comm_su_txt2">By Chainfire</string>
+	<string name="fox_comm_su_sld">Swipe to install SuperSU</string>
+	<string name="fox_comm_su_i1">Only for Miui and Non-Treble ROM</string>
+
+	<string name="fox_comm_initd_txt2">By DarhJabba9</string>
+	<string name="fox_comm_initd_sld">Swipe to install initd support</string>
+
+	<string name="fox_comm_gs_txt2">By SharkcpN</string>
+	<string name="fox_comm_gs_sld">Swipe to install GoogleSans font</string>
+	<string name="fox_comm_gs_i1">Miui not supported!</string>
 </resources>
 </language>

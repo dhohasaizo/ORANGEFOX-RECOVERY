@@ -2,7 +2,7 @@
 <recovery>
 	<details>
 		<resolution width="1080" height="1920"/>
-		<author>z31s1g & OrangeFox dev team</author>
+		<author>z31s1g | OrangeFox dev team</author>
 		<title>OrangeFox UI</title>
 	</details>
 	<pages>
@@ -104,6 +104,24 @@
 				<placement x="853" y="row1_2a_y"/>
 				<image resource="btn_float_flashitinfo" highlightresource="btn_float_flashitinfo_hl"/>
 				<action function="page">extra_fox_info</action>
+			</button>
+				<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="row1_2a_y" />
+				<text>Del OF files</text>
+				<actions>
+					<action function="set">tw_filecheck=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
+					<action function="set">tw_filename=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1=Delete OrangeFox Files</action>
+					<action function="set">fox_flash_txt2=By OrangeFox team</action>
+					<action function="set">fox_flash_sld=Swipe to delete OF Files</action>
+					<action function="set">fox_flash_info=2</action>
+					<action function="set">fox_flash_i1=You Really want to delete all</action>
+					<action function="set">fox_flash_i2=OrangeFox files?</action>
+				</actions>
 			</button>
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
@@ -2008,8 +2026,7 @@
 					<action function="setpassword">%tw_droid_password_new2%</action>
 					<action function="set">tw_droid_password=%tw_droid_password_new1%</action>
 					<action function="set">tw_droid_password_new1=</action>
-					<action function="set">wolf_lockpass_checker=1
-					</actions>
+					<action function="set">wolf_lockpass_checker=1</actions>
 					<action function="page">new_pass_finished</action>
 				</actions>
 			</slider>
@@ -2065,8 +2082,7 @@
 					<action function="removepassword"/>
 					<action function="set">tw_droid_password=dd</action>
 					<action function="set">tw_droid_password_new1=</action>
-					<action function="set">wolf_lockpass_checker=1
-					</actions>
+					<action function="set">wolf_lockpass_checker=1</actions>
 					<action function="page">new_pass_finished2</action>
 				</actions>
 			</slider>
@@ -2152,7 +2168,7 @@
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@colour_engine2=}</text>
 			</text>
-			<image>
+			<!--image>
 				<placement x="%col1_x%" y="%row2_2_y%"/>
 				<image resource="icon_info"/></image>
 			<text style="text_body2">
@@ -2166,7 +2182,7 @@
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
 				<text>I prevented!</text>
-			</text>
+			</text-->
 			<text style="caption">
 				<condition var1="tw_busy" var2="0"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
@@ -2197,8 +2213,7 @@
 					</action>
 					<action function="wlfx"/>
 					<action function="set">accent_name=%tw_accent_name%</action>
-					<action function="page">main2</action>
-					<!--action function="page">set_color_finish</action-->
+					<action function="page">set_color_finish</action>
 				</actions>
 			</slider>
 			<action>
@@ -2293,12 +2308,10 @@
 			<action>
 				<condition var1="heslo"  op="!=" var2="tw_droid_password"/>
 				<actions>
-					<action function="set">tw_has_mtp=1
-					</actions>
-					<action function="set">tw_mtp_enabled=0
-					</actions>
+					<action function="set">tw_has_mtp=1</actions>
+					<action function="set">tw_mtp_enabled=0</actions>
 					<action function="stopmtp"/>
-				</actions>
+     			</actions>
 			</action>
 			<action>
 				<touch key="back"/>
@@ -2308,13 +2321,10 @@
 		<page name="wolf_lockpass_checker">
 			<action>
 				<condition var1="heslo"  op="=" var2="tw_droid_password"/>
-				<actions>
-					<action function="set">tw_has_mtp=1
-					</actions>
-					<action function="set">tw_mtp_enabled=1
-					</actions>
-					<action function="set">wolf_lockpass_checker=1
-					</actions>
+				 <actions>
+					<action function="set">tw_has_mtp=1</actions>
+					<action function="set">tw_mtp_enabled=1</actions>
+					<action function="set">wolf_lockpass_checker=1</actions>
 					<action function="startmtp"/>
 					<action function="page">main2</action>
 				</actions>
@@ -2508,10 +2518,8 @@
 			<action>
 				<condition var1="heslo"  op="!=" var2="tw_droid_password"/>
 				<actions>
-					<action function="set">tw_has_mtp=1
-					</actions>
-					<action function="set">tw_mtp_enabled=0
-					</actions>
+					<action function="set">tw_has_mtp=1</actions>
+					<action function="set">tw_mtp_enabled=0</actions>
 					<action function="stopmtp"/>
 				</actions>
 			</action>
@@ -3281,11 +3289,15 @@
 				<text>{@fox_community_title=}</text>
 			</text>
 			<image>
-				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<image resource="icon_info"/></image>
 			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>{@fox_comm_i1}</text>
+			</text>
+			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
-				<text>For add new item contact @MrYacha in Telegram</text>
+				<text>{@fox_comm_i2}</text>
 			</text>
 			<!-- #OF3 -->
 			<button style="btn_raised_hl">
@@ -3299,46 +3311,43 @@
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1=SuperSU</action>
-					<action function="set">fox_flash_txt2=By Chainfire</action>
-					<action function="set">fox_flash_sld=Swipe to install SuperSU</action>
+					<action function="set">fox_flash_txt2={@fox_comm_su_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_su_sld}</action>
 					<action function="set">fox_flash_info=1</action>
-					<action function="set">fox_flash_i1=Only for Miui and Non-Treble ROM</action>
+					<action function="set">fox_flash_i1={@fox_comm_su_i1}</action>
 				</actions>
 			</button>
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
-				<text>Test btn</text>
-				<actions>
-					<action function="set">tw_filecheck=/sdcard1/Firm/2.zip</action>
-					<action function="set">tw_filename=/sdcard1/Firm/2.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1=Test Installing 1</action>
-					<action function="set">fox_flash_txt2=Test Installing 2</action>
-					<action function="set">fox_flash_sld=Swipe to test</action>
-					<action function="set">fox_flash_info=3</action>
-					<action function="set">fox_flash_i1=Its only Test notice!</action>
-					<action function="set">fox_flash_i2=OrangeFox the best recovery!</action>
-					<action function="set">fox_flash_i3=By MrYacha</action>
-				</actions>
-			</button>
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row3_3_y%" placement="1"/>
 				<text>Google Sans</text>
 				<actions>
-					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/GoogleSans.zip</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/GoogleSans.zip</action>
+					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/GoogleSans/GoogleSans.zip</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/GoogleSans/GoogleSans.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1=GoogleSans</action>
-					<action function="set">fox_flash_txt2=By SharkcpN</action>
-					<action function="set">fox_flash_sld=Swipe to install GoogleSans font</action>
+					<action function="set">fox_flash_txt2={@fox_comm_gs_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_gs_sld}</action>
 					<action function="set">fox_flash_info=1</action>
-					<action function="set">fox_flash_i1=Miui not supported!</action>
+					<action function="set">fox_flash_i1={@fox_comm_gs_i1}</action>
+				</actions>
+			</button>
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_right_x%" y="%row3_3_y%" placement="1"/>
+				<text>Initd</text>
+				<actions>
+					<action function="set">tw_filecheck=/FFiles/OF_initd/OF_initd.zip</action>
+					<action function="set">tw_filename=/FFiles/OF_initd/OF_initd.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1=Initd support</action>
+					<action function="set">fox_flash_txt2={@fox_comm_initd_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_initd_sld}</action>
+					<action function="set">fox_flash_info=0</action>
 				</actions>
 			</button>
 			<action>
@@ -3469,7 +3478,7 @@
 			</button>
 			<button style="btn_raised">
 				<placement x="%btn_raised_right_x%" y="%row6_3_y%" placement="1"/>
-				<text>Change theme</text>
+				<text>{@fox_menu_theme}</text>
 				<action function="page">fox_theme</action>
 			</button>
 			<button style="btn_raised_hl">
@@ -3491,14 +3500,14 @@
 			<button style="btn_raised">
 				<condition var1="wolf_adb" var2="1"/>
 				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
-				<text>ADB ON</text>
+				<text>{@fox_menu_adb_on}</text>
 				<!--action function="page">wolf_adb</action-->
 				<action function="set">wolf_adb=0</action>
 			</button>
 			<button style="btn_raised">
 				<condition var1="wolf_adb" var2="0"/>
 				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
-				<text>ADB OFF</text>
+				<text>{@fox_menu_adb_off}</text>
 				<!--action function="page">wolf_adb</action-->
 				<action function="set">wolf_adb=1</action>
 			</button>
@@ -11277,9 +11286,9 @@
 				<image resource="unlock_icon"/>
 				<placement x="%center_x%" y="%row4_1_y%" placement="4"/>
 			</image>
-			<button style="btn_raised">
+			<button style="btn_raised_hl">
 				<condition var1="lock_btn" var2="1"/>
-				<placement x="%btn_raised_center_x%" y="%row8_2_y%" placement="1"/>
+				<placement x="%btn_raised_center_x%" y="%row7_2_y%" placement="1"/>
 				<text>{@unlock_btn}</text>
 				<action function="overlay"/>
 			</button>
@@ -12388,6 +12397,12 @@
 				<image resource="mb_flashlight_on"/>
 				<action function="flashlight"/>
 			</button>
+			<button>
+				<placement x="%btn_float_x%" y="%row7_1_y%"/>
+				<image resource="btn_float_accept"/>
+				<highlight color="%highlight_color%"/>
+				<action function="page">main2</action>
+			</button>
 			<action>
 				<touch key="power"/>
 				<action function="togglebacklight"/></action>
@@ -12469,6 +12484,7 @@
 			<template name="ab_tab"/>
 			<template name="statusbarinfo"/>
 			<button>
+				<condition var1="fox_theme_wait" var2="0"/>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">main2</action>
@@ -12481,6 +12497,7 @@
 				<placement x="270" y="%tab_y%" placement="4"/>
 				<image resource="wolf_on_boot_1"/></image>
 			<button>
+				<condition var1="fox_theme_wait" var2="0"/>
 				<placement x="810" y="%tab_y%" placement="4"/>
 				<image resource="wolf_traffic_light_2"/>
 				<action function="page">theme_color</action>
@@ -12493,30 +12510,31 @@
 				<image resource="icon_info"/></image>
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
-				<text>Works on magic!</text>
+				<text>{@fox_theme_i1}</text>
 			</text>
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
-				<text>Don't touch!</text>
+				<text>{@fox_theme_i2}</text>
 			</text>
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
-				<text>I prevented!</text>
+				<text>{@fox_theme_i3}</text>
 			</text>
 			<listbox style="listbox">
 				<condition var1="fox_theme_wait" var2="0"/>
 				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="Black theme">
+				<listitem name="{@fox_theme_black}">
 					<data variable="fox_black"/>
 				</listitem>
-				<listitem name="Dark theme BETA">
+				<listitem name="{@fox_theme_dark}">
 					<data variable="fox_dark"/>
 				</listitem>
 			</listbox>
-			<text style="caption">
+			<text color="%accent%">
 				<condition var1="fox_theme_wait" var2="1"/>
+				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>Please wait...</text>
+				<text>{@colour_engine4=}</text>
 			</text>
 			<slider>
 				<condition var1="fox_dark" var2="1"/>
@@ -12536,7 +12554,7 @@
 			<text style="caption">
 				<condition var1="fox_dark" var2="1"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>Swipe to apply dark theme</text>
+				<text>{@fox_theme_slider_dark}</text>
 			</text>
 			<slider>
 				<condition var1="fox_black" var2="1"/>
@@ -12556,7 +12574,7 @@
 			<text style="caption">
 				<condition var1="fox_black" var2="1"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>Swipe to apply black theme</text>
+				<text>{@fox_theme_slider_black}</text>
 			</text>
 			<action>
 				<condition var1="tw_busy" var2="0"/>
