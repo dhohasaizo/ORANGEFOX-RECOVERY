@@ -1372,7 +1372,8 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
       settimeofday(&tv, NULL);
       gettimeofday(&tv, NULL);
       
-      if (tv.tv_sec > min_offset)
+      offset = tv.tv_sec;  // this and the next line to get rid of warnings
+      if (offset > min_offset)
 	{
 	  LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n", TWFunc::Get_Current_Date().c_str());
 	  fixed = true;
