@@ -4367,8 +4367,8 @@
 				<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
 				<text>Google Sans</text>
 				<actions>
-					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/GoogleSans/GoogleSans.zip</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/GoogleSans/GoogleSans.zip</action>
+					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/GoogleSans.zip</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/GoogleSans.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
