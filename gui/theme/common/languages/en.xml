@@ -1061,11 +1061,20 @@
 	<string name="fox_dell_pass">Delete ROM password</string>
 	<string name="fox_menu_comm">Community scripts</string>
 	<string name="fox_menu_splash">Change Splash</string>
+	<string name="fox_menu_theme">Change Theme</string>
 	<string name="fox_menu_pass_h">Delete ROM password</string>
 	<string name="fox_menu_pass">By DarthJabba9</string>
 	<string name="fox_lock_btn">Button on lockscreen</string>
+	<string name="fox_menu_adb_on">ADB: on</string>
+	<string name="fox_menu_adb_off">ADB: off</string>
 
-	<string name="fox_community_title">OrangeFox Community scrips</string>
+	<string name="fox_theme_i1">After changing the theme, the theme color</string>
+	<string name="fox_theme_i2">will be set to default (orange).</string>
+	<string name="fox_theme_i3">After rebooting, you can set a new theme color.</string>
+	<string name="fox_theme_black">Black theme</string>
+	<string name="fox_theme_dark">Dark theme (beta)</string>
+	<string name="fox_theme_slider_dark">Slide to apply dark theme</string>
+	<string name="fox_theme_slider_black">Slide to apply black theme</string>
 
 	<string name="fox_slider_magisk">Swipe to install Magisk</string>
 	<string name="fox_slider_pass">Swipe to delete ROM password</string>
@@ -1098,19 +1107,19 @@
 
 	<!-- OrangeFox community scripts -->
 
-	<string name="fox_community_title">OrangeFox Community scrips</string>
-	<string name="fox_comm_i1">For add new item contact</string>
-	<string name="fox_comm_i2">@MrYacha in Telegram</string>
+		<string name="fox_community_title">OrangeFox Community scrips</string>
+		<string name="fox_comm_i1">For add new item contact</string>
+		<string name="fox_comm_i2">@MrYacha in Telegram</string>
 
-	<string name="fox_comm_su_txt2">By Chainfire</string>
-	<string name="fox_comm_su_sld">Swipe to install SuperSU</string>
-	<string name="fox_comm_su_i1">Only for Miui and Non-Treble ROM</string>
+		<string name="fox_comm_su_txt2">By Chainfire</string>
+		<string name="fox_comm_su_sld">Swipe to install SuperSU</string>
+		<string name="fox_comm_su_i1">Only for Miui and Non-Treble ROM</string>
 
-	<string name="fox_comm_initd_txt2">By DarhJabba9</string>
-	<string name="fox_comm_initd_sld">Swipe to install initd support</string>
+		<string name="fox_comm_initd_txt2">By DarhJabba9</string>
+		<string name="fox_comm_initd_sld">Swipe to install initd support</string>
 
-	<string name="fox_comm_gs_txt2">By SharkcpN</string>
-	<string name="fox_comm_gs_sld">Swipe to install GoogleSans font</string>
-	<string name="fox_comm_gs_i1">Miui not supported!</string>
+		<string name="fox_comm_gs_txt2">By SharkcpN</string>
+		<string name="fox_comm_gs_sld">Swipe to install GoogleSans font</string>
+		<string name="fox_comm_gs_i1">Miui not supported!</string>
 </resources>
 </language>

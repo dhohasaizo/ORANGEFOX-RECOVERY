@@ -636,5 +636,51 @@
 		<string name="cancel_sideload">Cancelamento de sideload ADB...</string>
 		<string name="change_fs_err">Sistema de arquivo erro em mudança.</string>
 		<string name="theme_ver_err">Versão personalizada do tema não coincide com a versão TWRP. Usando o tema conservado em estoque.</string>
+
+		<string name="fox_menu_flash">Orange!</string>
+		<string name="fox_menu_delpass">Apagar senha da ROM</string>
+		<string name="fox_menu_navigation">Navegação</string>
+		<string name="fox_m_other">Outras configurações</string>
+		<string name="fox_dell_pass">Delete ROM password</string>
+		<string name="fox_menu_comm">Community scripts</string>
+		<string name="fox_menu_splash">Change Splash</string>
+		<string name="fox_menu_pass_h">Delete ROM password</string>
+		<string name="fox_menu_pass">By DarthJabba9</string>
+		<string name="fox_lock_btn">Botão na tela de bloqueio</string>
+
+		<string name="fox_community_title">OrangeFox Community scrips</string>
+
+		<string name="fox_slider_magisk">Deslize pra instalar Magisk</string>
+		<string name="fox_slider_pass">Deslize para apagar a senha da ROM</string>
+		<string name="fox_slider_supersu">Deslize para instalar SuperSU</string>
+
+		<string name="fox_redwolf">for RedWolf development and</string>
+		<string name="fox_rey">Vince maintainer</string>
+		<string name="fox_kirill">For graphics, Photoshop guru</string>
+
+		<string name="unlock_btn">Desbloquear</string>
+
+		<string name="fox_menu2_power">Performance Profile</string>
+		<string name="fox_menu2_other">Outras configurações</string>
+
+		<string name="f_orange">Orange</string>
+		<string name="f_indigo">Indigo</string>
+		<string name="f_blue">Blue</string>
+		<string name="f_light_blue">Light Blue</string>
+		<string name="f_stock">Stck</string>
+		<string name="f_teal">Teal</string>
+		<string name="f_green">Green</string>
+		<string name="f_light_green">Light Green</string>
+		<string name="f_lime">Lime</string>
+		<string name="f_amber">Amber</string>
+		<string name="f_red">Evil Color</string>
+		<string name="f_deep_orange">Deep Orange</string>
+		<string name="f_brown">Brown</string>
+		<string name="f_gray">Gray</string>
+		<string name="f_blue_grey">Blue Grey</string>
+
+
+
+
 	</resources>
 </language>
