@@ -1,28 +1,28 @@
- <?xml version="1.0"?>
+  <?xml version="1.0"?>
 <recovery>
 	<details>
 		<resolution width="1080" height="1920"/>
 		<author>z31s1g & OrangeFox dev team</author>
-		<title>OrangeFox dark colors</title>
+		<title>OrangeFox black colors</title>
 	</details>
 	<variables>
-		<variable name="background" value="#222222FF"/>
+		<variable name="background" value="#000000FF"/>
 		<variable name="darktransparent" value="#000000BB"/>
 		<variable name="lightransparent" value="#00000033"/>
 		<variable name="transparent" value="#00000000"/>
-		<variable name="text" value="#E3E3E3FF"/>
-		<variable name="text_actionbar" value="#1D3037FF"/>
-		<variable name="text_button" value="#E3E3E3FF"/>
-		<variable name="text_light" value="#9A9A9AFF"/>
-		<variable name="text_dark" value="#313131FF"/>
+		<variable name="text" value="#CCCCCCFF"/>
+		<variable name="text_actionbar" value="#000000FF"/>
+		<variable name="text_button" value="#CCCCCCFF"/>
+		<variable name="text_light" value="#666666FF"/>
+    	<variable name="text_dark" value="#000000"/>
 		<variable name="text_success" value="#68B60B"/>
 		<variable name="text_fail" value="#FF0101"/>
-		<variable name="highlight_color" value="#22222266"/>
-		<variable name="console_foreground" value="#E3E3E3FF"/>
+		<variable name="highlight_color" value="#00000066"/>
+		<variable name="console_foreground" value="#CCCCCCFF"/>
 		<variable name="linecolor" value="#383838FF"/>
 		<variable name="warning" value="#FF6600FF"/>
 		<variable name="error" value="#FF0000FF"/>
-		<variable name="highlight" value="#0090CAFF"/>
+		<variable name="highlight" value="#000000FF"/>
 		<variable name="accent" value="#FF9800"/>
 		<variable name="accent_name" value="Orange" persist="1"/>
 	</variables>
