@@ -637,6 +637,8 @@ void DataManager::SetDefaultValues()
   mConst.SetValue("false", "0");
 
   mConst.SetValue(TW_VERSION_VAR, RW_VERSION);
+  mConst.SetValue(OF_MAINTAINER_STR, OF_MAINTAINER);
+    
   mPersist.SetValue("tw_button_vibrate", "80");
   mPersist.SetValue("tw_keyboard_vibrate", "40");
   mPersist.SetValue("tw_action_vibrate", "160");

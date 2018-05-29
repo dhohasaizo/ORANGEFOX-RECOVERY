@@ -56,7 +56,8 @@ endif
 
 ifneq ($(OF_MAINTAINER),)
     LOCAL_CFLAGS += -DOF_MAINTAINER='"$(OF_MAINTAINER)"'
-    export OF_MAINTAINER=$(TW_MAINTAINER)
+else
+    LOCAL_CFLAGS += -DOF_MAINTAINER='"MrYacha and DarthJabba9"'
 endif
 
 LOCAL_SRC_FILES := \
