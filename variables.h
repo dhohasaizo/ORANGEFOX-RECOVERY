@@ -43,6 +43,7 @@ static const std::string epoch_drift_file = "/persist/.fox_epoch_drift.cfg"; // 
 #define RW_SURVIVAL_FOLDER    Fox_Home.c_str()
 
 // **** //
+#define OF_MAINTAINER      "of_maintainer"
 #define RW_SURVIVAL_FOLDER_VAR      "wolf_survival_backup_folder_path"
 #define RW_SURVIVAL_BACKUP_NAME       "wolf_survival_backup_folder_name"
 #define RW_SURVIVAL_BACKUP       "OTA"

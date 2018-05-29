@@ -14337,12 +14337,12 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1560"/>
-				<text>%tw_version%</text>
+				<text>%tw_version% | {@wolf_actual_build=Actual build}: %rw_actual_build%</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1650"/>
-				<text>{@wolf_actual_build=Actual build}: %rw_actual_build%</text>
+				<text>{@fox_about_maintainer=Maintainer}: %of_maintainer%</text>
 			</text>
 
 			<action>

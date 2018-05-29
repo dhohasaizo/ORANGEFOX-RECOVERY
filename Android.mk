@@ -54,6 +54,11 @@ ifeq ($(RW_DEVICE_MODEL),)
     LOCAL_CFLAGS += -DRW_DEVICE_MODEL='"$(DEVICE)"'
 endif
 
+ifneq ($(OF_MAINTAINER),)
+    LOCAL_CFLAGS += -DOF_MAINTAINER='"$(OF_MAINTAINER)"'
+    export OF_MAINTAINER=$(TW_MAINTAINER)
+endif
+
 LOCAL_SRC_FILES := \
     twrp.cpp \
     fixContexts.cpp \
