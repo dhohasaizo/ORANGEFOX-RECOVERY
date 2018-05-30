@@ -693,73 +693,73 @@
 		<string name="unable_set_boot_slot">Hiba a boot slot váltása során erre: {1}</string>
 
 		<!--OrangeFox Recovery Project-->
-	<!-- <string name=""></string> -->
+		<!-- <string name=""></string> -->
 
-	<string name="fox_menu_flash">Orange!</string>
-	<string name="fox_menu_delpass">ROM jelszó törlése</string>
-	<string name="fox_menu_navigation">Navigáció</string>
-	<string name="fox_m_other">Egyéb beállítások</string>
-	<string name="fox_dell_pass">ROM jelszó törlése</string>
-	<string name="fox_menu_comm">A közösség által írt script-ek</string>
-	<string name="fox_menu_splash">Betöltőkép cseréje</string>
-	<string name="fox_menu_pass_h">ROM jelszó törlése</string>
-	<string name="fox_menu_pass">Írta: DarthJabba9</string>
-	<string name="fox_lock_btn">Gomb a zárképernyőn</string>
+		<string name="fox_menu_flash">Orange!</string>
+		<string name="fox_menu_delpass">ROM jelszó törlése</string>
+		<string name="fox_menu_navigation">Navigáció</string>
+		<string name="fox_m_other">Egyéb beállítások</string>
+		<string name="fox_dell_pass">ROM jelszó törlése</string>
+		<string name="fox_menu_comm">A közösség által írt script-ek</string>
+		<string name="fox_menu_splash">Betöltőkép cseréje</string>
+		<string name="fox_menu_pass_h">ROM jelszó törlése</string>
+		<string name="fox_menu_pass">Írta: DarthJabba9</string>
+		<string name="fox_lock_btn">Gomb a zárképernyőn</string>
 
-	<string name="fox_theme_i1">Témaváltoztatás után a téma színe</string>
-	<string name="fox_theme_i2">az alapértelmezettre lesz állítva (narancs).</string>
-	<string name="fox_theme_i3">Újraindítás után a szín megváltoztatható.</string>
-	<string name="fox_theme_black">Fekete téma</string>
-	<string name="fox_theme_dark">Sötét téma (beta)</string>
-	<string name="fox_theme_slider_dark">Csúsztasd a témát a sötét téma alkalmazásához</string>
-	<string name="fox_theme_slider_black">Csúsztasd a témát a fekete téma alkalmazásához</string>
+		<string name="fox_theme_i1">Témaváltoztatás után a téma színe</string>
+		<string name="fox_theme_i2">az alapértelmezettre lesz állítva (narancs).</string>
+		<string name="fox_theme_i3">Újraindítás után a szín megváltoztatható.</string>
+		<string name="fox_theme_black">Fekete téma</string>
+		<string name="fox_theme_dark">Sötét téma (beta)</string>
+		<string name="fox_theme_slider_dark">Csúsztasd a témát a sötét téma alkalmazásához</string>
+		<string name="fox_theme_slider_black">Csúsztasd a témát a fekete téma alkalmazásához</string>
 
-	<string name="fox_community_title">OrangeFox közösség által írt script-ek</string>
+		<string name="fox_community_title">OrangeFox közösség által írt script-ek</string>
 
-	<string name="fox_slider_magisk">A Magisk telepítéséhez csúsztasd el a csúszkát</string>
-	<string name="fox_slider_pass">A ROM jelszó törléséhez csúsztasd el a csúszkát</string>
-	<string name="fox_slider_supersu">A SuperSU telepítéséhez csúsztasd el a csúszkát</string>
+		<string name="fox_slider_magisk">A Magisk telepítéséhez csúsztasd el a csúszkát</string>
+		<string name="fox_slider_pass">A ROM jelszó törléséhez csúsztasd el a csúszkát</string>
+		<string name="fox_slider_supersu">A SuperSU telepítéséhez csúsztasd el a csúszkát</string>
 
-	<string name="fox_redwolf">a RedWolf fejlesztéséért és</string>
-	<string name="fox_rey">Vince a karbantartásért</string>
-	<string name="fox_kirill">A grafikáért, Photoshop guru</string>
+		<string name="fox_redwolf">a RedWolf fejlesztéséért és</string>
+		<string name="fox_rey">Vince a karbantartásért</string>
+		<string name="fox_kirill">A grafikáért, Photoshop guru</string>
 
-	<string name="unlock_btn">Feloldás</string>
+		<string name="unlock_btn">Feloldás</string>
 
-	<string name="fox_menu2_power">Teljesítmény profilok</string>
-	<string name="fox_menu2_other">Egyéb beállítások</string>
+		<string name="fox_menu2_power">Teljesítmény profilok</string>
+		<string name="fox_menu2_other">Egyéb beállítások</string>
 
-	<string name="f_orange">Narancs</string>
-	<string name="f_indigo">Indigó</string>
-	<string name="f_blue">Kék</string>
-	<string name="f_light_blue">Világoskék</string>
-	<string name="f_stock">Eredeti</string>
-	<string name="f_teal">Zöldeskék</string>
-	<string name="f_green">Zöld</string>
-	<string name="f_light_green">Világoszöld</string>
-	<string name="f_lime">Lime</string>
-	<string name="f_amber">Borostynánsárga</string>
-	<string name="f_red">A Gonosz színe</string>
-	<string name="f_deep_orange">Sötétnarancs</string>
-	<string name="f_brown">Barna</string>
-	<string name="f_gray">Szürke</string>
-	<string name="f_blue_grey">Kékesszürke</string>
+		<string name="f_orange">Narancs</string>
+		<string name="f_indigo">Indigó</string>
+		<string name="f_blue">Kék</string>
+		<string name="f_light_blue">Világoskék</string>
+		<string name="f_stock">Eredeti</string>
+		<string name="f_teal">Zöldeskék</string>
+		<string name="f_green">Zöld</string>
+		<string name="f_light_green">Világoszöld</string>
+		<string name="f_lime">Lime</string>
+		<string name="f_amber">Borostynánsárga</string>
+		<string name="f_red">A Gonosz színe</string>
+		<string name="f_deep_orange">Sötétnarancs</string>
+		<string name="f_brown">Barna</string>
+		<string name="f_gray">Szürke</string>
+		<string name="f_blue_grey">Kékesszürke</string>
 
-	<!-- OrangeFox community scripts -->
+		<!-- OrangeFox community scripts -->
 
-    <string name="fox_community_title">OrangeFox közösségi scrip-ek</string>
-    <string name="fox_comm_i1">Új elem hozzáadásáért lép kapcsolatba</string>
-    <string name="fox_comm_i2">@MrYacha-val Telegram-on</string>
+		<string name="fox_community_title">OrangeFox közösségi scrip-ek</string>
+		<string name="fox_comm_i1">Új elem hozzáadásáért lép kapcsolatba</string>
+		<string name="fox_comm_i2">@MrYacha-val Telegram-on</string>
 
-    <string name="fox_comm_su_txt2">Írta: Chainfire</string>
-    <string name="fox_comm_su_sld">A SuperSU telepítéséhez csúsztasd el a csúszkát</string>
-    <string name="fox_comm_su_i1">Csak MIUI és nem Treble kompat. ROM használatához.</string>
+		<string name="fox_comm_su_txt2">Írta: Chainfire</string>
+		<string name="fox_comm_su_sld">A SuperSU telepítéséhez csúsztasd el a csúszkát</string>
+		<string name="fox_comm_su_i1">Csak MIUI és nem Treble kompat. ROM használatához.</string>
 
-    <string name="fox_comm_initd_txt2">Írta: DarthJabba9</string>
-    <string name="fox_comm_initd_sld">Az init.s támogatás telepítéséhez csúsztasd el a csúszkát</string>
+		<string name="fox_comm_initd_txt2">Írta: DarthJabba9</string>
+		<string name="fox_comm_initd_sld">Az init.s támogatás telepítéséhez csúsztasd el a csúszkát</string>
 
-    <string name="fox_comm_gs_txt2">Írta: SharkcpN</string>
-    <string name="fox_comm_gs_sld">A GoogleSans betűtípus telepítéséhez csúsztasd el a csúszkát</string>
-    <string name="fox_comm_gs_i1">MIUI-n nem támogatott!</string>
+		<string name="fox_comm_gs_txt2">Írta: SharkcpN</string>
+		<string name="fox_comm_gs_sld">A GoogleSans betűtípus telepítéséhez csúsztasd el a csúszkát</string>
+		<string name="fox_comm_gs_i1">MIUI-n nem támogatott!</string>
 	</resources>
 </language>

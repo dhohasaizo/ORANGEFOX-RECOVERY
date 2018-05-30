@@ -719,393 +719,393 @@
 		<string name="changing_boot_slot_complete">Changing Boot Slot completed</string>
 		<string name="unable_set_boot_slot">Error changing bootloader boot slot to {1}</string>
 		<string name="backup_storage_warning">Backups of {1} do not include any files in internal storage such as pictures or downloads.</string>
-<!-- Start of Recovery strings -->
-     <string name="flashlight">Flashlight</string>
-     <string name="flashlight_info_on">Swipe to turn on flashlight</string>
-     <string name="flashlight_info_off">Swipe to turn off flashlight</string>
-     <string name="adb_info_on">Swipe to turn on ADB</string>
-     <string name="adb_info_off">Swipe to turn off ADB</string>
-     <string name="show_password">Show password</string>
-     <string name="lock_text_1">Recovery is protected against unauthorized</string>
-     <string name="lock_text_2">access.</string>
-     <string name="lock_text_3">To use main recovery features</string>
-     <string name="lock_text_4">you first need to enter your password.</string>
-     <string name="lock_text_5">Enter password:</string>
-     <string name="change_pass_btn">Change password</string>
-     <string name="change_pass_text_1">To change the access password</string>
-     <string name="change_pass_text_2">please enter the</string>
-     <string name="change_pass_text_3">current password first.</string>
-     <string name="new_pass_text_1">The access password has been confirmed.</string>
-     <string name="new_pass_text_2">Now enter your new password.</string>
-     <string name="full_new_pass_text_1">The entered password will be used as</string>
-     <string name="full_new_pass_text_2">the access password for the next</string>
-     <string name="full_new_pass_text_3">time you enter the recovery</string>
-     <string name="full_new_pattern_text_1">Zadadaný znak bude použit jako</string>
-     <string name="full_new_pattern_text_2">přístupové heslo při příštím vstupu do recovery.</string>
-     <string name="pass_hdr">Password</string>
-     <string name="pass_hdr2">Change Password</string>
-     <string name="pass_hdr3">Password change complete</string>
-     <string name="change_pass_confirm">Swipe to confirm the password change.</string>
-     <string name="wolf_please_wait">Setting up new password ...</string>
-     <string name="swipe_governor">Swipe to switch to the governor "%governor_tmp%"</string>
-     <string name="active_governor">Active governor: %governor_stable%</string>
-     <string name="community_settings">Community scripts</string>
-     <string name="kernel_settings">Governor</string>
-     <string name="governor_settings">Select Governor</string>
-     <string name="governor_explain">What is a governor?</string>
-     <string name="community_info_line1">Here is a free space for community</string>
-     <string name="community_info_line2">scripts. If you want to place here some</string>
-     <string name="community_info_line3">your script, or if you have a tip for an </string>
-     <string name="community_info_line4">existing one, then let me know in the</string>
-     <string name="community_info_line5">XDA thread.</string>
-     <string name="governor_info_line1">There are many CPU governors available</string>
-     <string name="governor_info_line2">on android, but there are some important</string>
-     <string name="governor_info_line3">things people should look out for before</string>
-     <string name="governor_info_line4">selecting their new governor.</string>
-     <string name="governor_info_line5">Speed</string>
-     <string name="governor_info_line6">Some governors are faster than others</string>
-     <string name="governor_info_line7">and some are slower. This all depends</string>
-     <string name="governor_info_line8">on if the governor is biased towards </string>
-     <string name="governor_info_line9">performance or towards battery life. </string>
-     <string name="governor_info_line10">Balanced governors tend to be on</string>
-     <string name="governor_info_line11">the middle-ground providing</string>
-     <string name="governor_info_line12">optimal speed when required.</string>
-     <string name="governor_info_line13">Battery life</string>
-     <string name="governor_info_line14">Generally, if the governor is biased</string>
-     <string name="governor_info_line15">towards performance, it will drain</string>
-     <string name="governor_info_line16">your battery faster. If the governor</string>
-     <string name="governor_info_line17">is biased towards battery life, the</string>
-     <string name="governor_info_line18">battery should drain slower. If the</string>
-     <string name="governor_info_line19">governor is balanced, then it will</string>
-     <string name="governor_info_line20">try to provide optimal performance</string>
-     <string name="governor_info_line21"> while trying to be battery friendly</string>
-     <string name="governor_info_line22">when possible.</string>
-     <string name="wolf_flash_SU">Swipe to install the built-in SuperSU.</string>
-     <string name="wolf_flash_Magisk">Swipe to install the built-in Magisk.</string>
-     <string name="wolf.pass.final_slide">Swipe to return to the main menu.</string>
-     <string name="wolf_nitro_unroot_hdr2">by Nitrogen Project</string>
-     <string name="wolf_flash_nitro.unroot">Swipe to install "Nitrogen unroot".</string>
-     <string name="Set_pass_btn">Set password</string>
-     <string name="dialog_reset_pass_hdr">Remove password</string>
-     <string name="dialog_reset_pass_1">Do you want to remove password?</string>
-     <string name="dialog_reset_pass_2">Recovery will not require a password</string>
-     <string name="dialog_reset_pass_3">at the next entry.</string>
-     <string name="wolf_reboot_install_app_hdr">Do you want to install Snap Camera HDR?</string>
-     <string name="wolf_reboot_install_app1">Many users have confirmed that this is an</string>
-     <string name="wolf_reboot_install_app2">application that takes the best photos from our device.</string>
-     <string name="wolf_swipe_to_install_app">Swipe to install Snap Camera HDR.</string>
-     <string name="pass_hdr2_del">Remove Password</string>
-     <string name="pass_hdr3_del">Removing the password has been completed</string>
-     <string name="change_pass_confirm_del">Swipe to remove password.</string>
-     <string name="wolf_please_wait_del">Removing password...</string>
-     <string name="change_pass_text_1_del">To remove an access password,</string>
-     <string name="change_pass_text_2_del">enter your current</string>
-     <string name="change_pass_text_3_del">password first.</string>
-     <string name="wolf.fix.fp_scanner">Fix fingerprint scanner</string>
-     <string name="wolf.community.scripts_hdr">Community scripts</string>
-     <string name="fox_install_initd">Swipe to install Initd.</string>
-     <string name="wolf_flash_substratum_rescue">Swipe to install Substratum Rescue</string>
-     <string name="wolf_fix_fp_hdr1">Fix fingerprint scanner</string>
-     <string name="wolf_flash_fp_fix">Swipe to fix fingerprint scanner.</string>
-     <string name="wolf_actual_build">Current build</string>
-     <string name="inject_led_chk">Notify about finished installation</string>
-     <string name="inject_led_chk_bak">Notify about finished backup</string>
-     <string name="inject_led_chk_res">Notify about finished restore</string>
-     <string name="wolf_rmpass_hdr">Remove the ROM's password.</string>
-     <string name="wolf_flash_rmpass">Swipe to remove ROM security</string>
-     <string name="wolf_flash_subs_legacy">Swipe to install Substratum Legacy</string>
-     <string name="wolf_nos_info_patch">Script can deactivate post-boot script Nitrogen ROM</string>
-     <string name="wolf_flash_nos_patch">Swipe to deactivate post-boot script Nitrogen ROM</string>
-     <string name="redwolf_settings">Advanced features</string>
-     <string name="wolf_nightmode">Night mode</string>
-     <string name="nightmode_info_on">Swipe to enable night mode</string>
-     <string name="nightmode_info_off">Swipe to disable night mode</string>
-     <string name="t2w_info_on">Swipe to enable t2w</string>
-     <string name="t2w_info_off">Swipe to disable t2w</string>
-     <string name="colour_script_finish1">The selected color has been</string>
-     <string name="colour_script_finish2">successfully applied</string>
-     <string name="colour_script_finish3">Swipe to reboot and apply changes</string>
-	 <string name="wolf_colour_wait">Restart is in progress</string>
-	 <string name="colour_engine1">Apply new theme</string>
-     <string name="colour_engine2">Select theme color</string>
-     <string name="colour_engine3">Swipe to apply the selected color</string>
-	 <string name="colour_engine4">Selected color is being applied.</string>
-     <string name="wolf.colour.change">Change color</string>
-     <string name="full_new_pass_repeat_1">Enter the entered password again</string>
-     <string name="full_new_pass_repeat_2">to verify its correctness.</string>
-     <string name="pass_hdr2_xdl">New password</string>
-	 <string name="change_pass_confirm_xdl">Swipe to set a new password</string>
-     <string name="working">Working...</string>
-     <string name="wolf_flash_zip_magisk">Installing Magisk</string>
-     <string name="wolf_flash_zip_supersu">Installing SuperSU</string>
-     <string name="run_custom_file">Run</string>
-     <string name="wolf_backup_name1">Here you can change the current backup</string>
-     <string name="wolf_backup_name2">folder name and optionally set your</string>
-     <string name="wolf_backup_name3">own Android Debug Bridge ID.</string>
-     <string name="wolf_backup_name4">Start by first entering a</string>
-     <string name="wolf_backup_name5">new name.</string>
-     <string name="wolf_back_text_1">Enter name:</string>
-     <string name="wolf_back_page_check1">Use the name also with ADB.</string>
-     <string name="wolf_backup_name_hdr1">Set your own name</string>
-     <string name="wolf_backup_name_hdr2">for backup folder & ADB</string>
-     <string name="wolf_backup_name_confirm1">Swipe to set a new backup folder name</string>
-     <string name="wolf_backup_name_confirm2">Swipe to set a new backup folder name & ADB</string>
-     <string name="wolf_backup_name_wait">Setting up new name ...</string>
-     <string name="wolf_backup_name_finish1">New name setting</string>
-     <string name="wolf_backup_name_finish2">completed successfully</string>
-     <string name="wolf_backupfolder_btn">Backup folder</string>
-     <string name="wolf_del_backup_confirm">Delete all backups?</string>
-     <string name="wolf_deleting_backup">Deleting backups...</string>
-     <string name="wolf_backup_deleted">Removing backups is complete</string>
-	 <string name="wolf.rmpass_btn">Remove ROM security</string>
-	 <string name="redwolf_wb_chk">Backup wifi, bluetooth & hosts</string>
-     <string name="wolf_wifi_bluetooth_backup_line1">If this feature is turned on, then recovery</string>
-     <string name="wolf_wifi_bluetooth_backup_line2">automatically detects installation of the new ROM</string>
-     <string name="wolf_wifi_bluetooth_backup_line3">and backs up from the current ROM </string>
-     <string name="wolf_wifi_bluetooth_backup_line4">wifi settings, bluetooth and hosts. After you </string>
-     <string name="wolf_wifi_bluetooth_backup_line5">install a new ROM recovery automatically</string>
-     <string name="wolf_wifi_bluetooth_backup_line6">install a new app in to system so you can</string>
-     <string name="wolf_wifi_bluetooth_backup_line7">recover these files.</string>
-     <string name="wolf_wifi_bluetooth_backup_line8">Be sure to disable wifi and bluetooth before</string>
-     <string name="wolf_wifi_bluetooth_backup_line9">restoring this data (Changes would</string>
-     <string name="wolf_wifi_bluetooth_backup_line10">otherwise not apply).</string>
-     <string name="wolf_action_vibration">OrangeFox Action Vibration:</string>
-     <string name="wolf_boot_fsync">Disable Fsync</string>
-     <string name="wolf_boot_fastcharge">Force fast charge</string>
-     <string name="wolf_boot_t2w">Enable T2W</string>
-     <string name="wolf_boot_curr_governor">Enable small vibration for T2W</string>
-     <string name="wolf_boot_performance">Enable performance mode</string>
-     <string name="wolf_boot_powersave">Enable powersave mode</string>
-     <string name="wolf_boot_balance">Enable balanced mode</string>
-     <string name="wolf_boot_qc2.0">Enable QC quick charge 2.0</string>
-     <string name="wolf_setonboot_cptn">Set on boot</string>
-     <string name="wolf_set_custom_led_install">Customize led color for installation process</string>
-     <string name="wolf_set_custom_led_backup">Customize led color for backup process</string>
-     <string name="wolf_set_custom_led_restore">Customize led color for restore process</string>
-     <string name="wolf_set_custom_led_green">Green</string>
-     <string name="wolf_set_custom_led_blue">Blue</string>
-     <string name="wolf_set_custom_led_red">Red</string>
-     <string name="wolf_install_vibrate">Install Vibration</string>
-     <string name="wolf_backup_vibrate">Backup Vibration</string>
-     <string name="wolf_restore_vibrate">Restore Vibration</string>
-     <string name="wolf_vibration_hdr">OrangeFox Action Vibrations</string>
-     <string name="wolf_boot_nastaveni">HW Settings</string>
-     <!-- Red Wolf Recovery V3.1 / 010 -->
-     <string name="restore_enable_digest_chk" version="2">Enable Digest Verification of Backup Files</string>
-     <string name="generating_digest1" version="2">Generating Digest</string>
+	<!-- Start of Recovery strings -->
+		<string name="flashlight">Flashlight</string>
+		<string name="flashlight_info_on">Swipe to turn on flashlight</string>
+		<string name="flashlight_info_off">Swipe to turn off flashlight</string>
+		<string name="adb_info_on">Swipe to turn on ADB</string>
+		<string name="adb_info_off">Swipe to turn off ADB</string>
+		<string name="show_password">Show password</string>
+		<string name="lock_text_1">Recovery is protected against unauthorized</string>
+		<string name="lock_text_2">access.</string>
+		<string name="lock_text_3">To use main recovery features</string>
+		<string name="lock_text_4">you first need to enter your password.</string>
+		<string name="lock_text_5">Enter password:</string>
+		<string name="change_pass_btn">Change password</string>
+		<string name="change_pass_text_1">To change the access password</string>
+		<string name="change_pass_text_2">please enter the</string>
+		<string name="change_pass_text_3">current password first.</string>
+		<string name="new_pass_text_1">The access password has been confirmed.</string>
+		<string name="new_pass_text_2">Now enter your new password.</string>
+		<string name="full_new_pass_text_1">The entered password will be used as</string>
+		<string name="full_new_pass_text_2">the access password for the next</string>
+		<string name="full_new_pass_text_3">time you enter the recovery</string>
+		<string name="full_new_pattern_text_1">Zadadaný znak bude použit jako</string>
+		<string name="full_new_pattern_text_2">přístupové heslo při příštím vstupu do recovery.</string>
+		<string name="pass_hdr">Password</string>
+		<string name="pass_hdr2">Change Password</string>
+		<string name="pass_hdr3">Password change complete</string>
+		<string name="change_pass_confirm">Swipe to confirm the password change.</string>
+		<string name="wolf_please_wait">Setting up new password ...</string>
+		<string name="swipe_governor">Swipe to switch to the governor "%governor_tmp%"</string>
+		<string name="active_governor">Active governor: %governor_stable%</string>
+		<string name="community_settings">Community scripts</string>
+		<string name="kernel_settings">Governor</string>
+		<string name="governor_settings">Select Governor</string>
+		<string name="governor_explain">What is a governor?</string>
+		<string name="community_info_line1">Here is a free space for community</string>
+		<string name="community_info_line2">scripts. If you want to place here some</string>
+		<string name="community_info_line3">your script, or if you have a tip for an </string>
+		<string name="community_info_line4">existing one, then let me know in the</string>
+		<string name="community_info_line5">XDA thread.</string>
+		<string name="governor_info_line1">There are many CPU governors available</string>
+		<string name="governor_info_line2">on android, but there are some important</string>
+		<string name="governor_info_line3">things people should look out for before</string>
+		<string name="governor_info_line4">selecting their new governor.</string>
+		<string name="governor_info_line5">Speed</string>
+		<string name="governor_info_line6">Some governors are faster than others</string>
+		<string name="governor_info_line7">and some are slower. This all depends</string>
+		<string name="governor_info_line8">on if the governor is biased towards </string>
+		<string name="governor_info_line9">performance or towards battery life. </string>
+		<string name="governor_info_line10">Balanced governors tend to be on</string>
+		<string name="governor_info_line11">the middle-ground providing</string>
+		<string name="governor_info_line12">optimal speed when required.</string>
+		<string name="governor_info_line13">Battery life</string>
+		<string name="governor_info_line14">Generally, if the governor is biased</string>
+		<string name="governor_info_line15">towards performance, it will drain</string>
+		<string name="governor_info_line16">your battery faster. If the governor</string>
+		<string name="governor_info_line17">is biased towards battery life, the</string>
+		<string name="governor_info_line18">battery should drain slower. If the</string>
+		<string name="governor_info_line19">governor is balanced, then it will</string>
+		<string name="governor_info_line20">try to provide optimal performance</string>
+		<string name="governor_info_line21"> while trying to be battery friendly</string>
+		<string name="governor_info_line22">when possible.</string>
+		<string name="wolf_flash_SU">Swipe to install the built-in SuperSU.</string>
+		<string name="wolf_flash_Magisk">Swipe to install the built-in Magisk.</string>
+		<string name="wolf.pass.final_slide">Swipe to return to the main menu.</string>
+		<string name="wolf_nitro_unroot_hdr2">by Nitrogen Project</string>
+		<string name="wolf_flash_nitro.unroot">Swipe to install "Nitrogen unroot".</string>
+		<string name="Set_pass_btn">Set password</string>
+		<string name="dialog_reset_pass_hdr">Remove password</string>
+		<string name="dialog_reset_pass_1">Do you want to remove password?</string>
+		<string name="dialog_reset_pass_2">Recovery will not require a password</string>
+		<string name="dialog_reset_pass_3">at the next entry.</string>
+		<string name="wolf_reboot_install_app_hdr">Do you want to install Snap Camera HDR?</string>
+		<string name="wolf_reboot_install_app1">Many users have confirmed that this is an</string>
+		<string name="wolf_reboot_install_app2">application that takes the best photos from our device.</string>
+		<string name="wolf_swipe_to_install_app">Swipe to install Snap Camera HDR.</string>
+		<string name="pass_hdr2_del">Remove Password</string>
+		<string name="pass_hdr3_del">Removing the password has been completed</string>
+		<string name="change_pass_confirm_del">Swipe to remove password.</string>
+		<string name="wolf_please_wait_del">Removing password...</string>
+		<string name="change_pass_text_1_del">To remove an access password,</string>
+		<string name="change_pass_text_2_del">enter your current</string>
+		<string name="change_pass_text_3_del">password first.</string>
+		<string name="wolf.fix.fp_scanner">Fix fingerprint scanner</string>
+		<string name="wolf.community.scripts_hdr">Community scripts</string>
+		<string name="fox_install_initd">Swipe to install Initd.</string>
+		<string name="wolf_flash_substratum_rescue">Swipe to install Substratum Rescue</string>
+		<string name="wolf_fix_fp_hdr1">Fix fingerprint scanner</string>
+		<string name="wolf_flash_fp_fix">Swipe to fix fingerprint scanner.</string>
+		<string name="wolf_actual_build">Current build</string>
+		<string name="inject_led_chk">Notify about finished installation</string>
+		<string name="inject_led_chk_bak">Notify about finished backup</string>
+		<string name="inject_led_chk_res">Notify about finished restore</string>
+		<string name="wolf_rmpass_hdr">Remove the ROM's password.</string>
+		<string name="wolf_flash_rmpass">Swipe to remove ROM security</string>
+		<string name="wolf_flash_subs_legacy">Swipe to install Substratum Legacy</string>
+		<string name="wolf_nos_info_patch">Script can deactivate post-boot script Nitrogen ROM</string>
+		<string name="wolf_flash_nos_patch">Swipe to deactivate post-boot script Nitrogen ROM</string>
+		<string name="redwolf_settings">Advanced features</string>
+		<string name="wolf_nightmode">Night mode</string>
+		<string name="nightmode_info_on">Swipe to enable night mode</string>
+		<string name="nightmode_info_off">Swipe to disable night mode</string>
+		<string name="t2w_info_on">Swipe to enable t2w</string>
+		<string name="t2w_info_off">Swipe to disable t2w</string>
+		<string name="colour_script_finish1">The selected color has been</string>
+		<string name="colour_script_finish2">successfully applied</string>
+		<string name="colour_script_finish3">Swipe to reboot and apply changes</string>
+		<string name="wolf_colour_wait">Restart is in progress</string>
+		<string name="colour_engine1">Apply new theme</string>
+		<string name="colour_engine2">Select theme color</string>
+		<string name="colour_engine3">Swipe to apply the selected color</string>
+		<string name="colour_engine4">Selected color is being applied.</string>
+		<string name="wolf.colour.change">Change color</string>
+		<string name="full_new_pass_repeat_1">Enter the entered password again</string>
+		<string name="full_new_pass_repeat_2">to verify its correctness.</string>
+		<string name="pass_hdr2_xdl">New password</string>
+		<string name="change_pass_confirm_xdl">Swipe to set a new password</string>
+		<string name="working">Working...</string>
+		<string name="wolf_flash_zip_magisk">Installing Magisk</string>
+		<string name="wolf_flash_zip_supersu">Installing SuperSU</string>
+		<string name="run_custom_file">Run</string>
+		<string name="wolf_backup_name1">Here you can change the current backup</string>
+		<string name="wolf_backup_name2">folder name and optionally set your</string>
+		<string name="wolf_backup_name3">own Android Debug Bridge ID.</string>
+		<string name="wolf_backup_name4">Start by first entering a</string>
+		<string name="wolf_backup_name5">new name.</string>
+		<string name="wolf_back_text_1">Enter name:</string>
+		<string name="wolf_back_page_check1">Use the name also with ADB.</string>
+		<string name="wolf_backup_name_hdr1">Set your own name</string>
+		<string name="wolf_backup_name_hdr2">for backup folder & ADB</string>
+		<string name="wolf_backup_name_confirm1">Swipe to set a new backup folder name</string>
+		<string name="wolf_backup_name_confirm2">Swipe to set a new backup folder name & ADB</string>
+		<string name="wolf_backup_name_wait">Setting up new name ...</string>
+		<string name="wolf_backup_name_finish1">New name setting</string>
+		<string name="wolf_backup_name_finish2">completed successfully</string>
+		<string name="wolf_backupfolder_btn">Backup folder</string>
+		<string name="wolf_del_backup_confirm">Delete all backups?</string>
+		<string name="wolf_deleting_backup">Deleting backups...</string>
+		<string name="wolf_backup_deleted">Removing backups is complete</string>
+		<string name="wolf.rmpass_btn">Remove ROM security</string>
+		<string name="redwolf_wb_chk">Backup wifi, bluetooth & hosts</string>
+		<string name="wolf_wifi_bluetooth_backup_line1">If this feature is turned on, then recovery</string>
+		<string name="wolf_wifi_bluetooth_backup_line2">automatically detects installation of the new ROM</string>
+		<string name="wolf_wifi_bluetooth_backup_line3">and backs up from the current ROM </string>
+		<string name="wolf_wifi_bluetooth_backup_line4">wifi settings, bluetooth and hosts. After you </string>
+		<string name="wolf_wifi_bluetooth_backup_line5">install a new ROM recovery automatically</string>
+		<string name="wolf_wifi_bluetooth_backup_line6">install a new app in to system so you can</string>
+		<string name="wolf_wifi_bluetooth_backup_line7">recover these files.</string>
+		<string name="wolf_wifi_bluetooth_backup_line8">Be sure to disable wifi and bluetooth before</string>
+		<string name="wolf_wifi_bluetooth_backup_line9">restoring this data (Changes would</string>
+		<string name="wolf_wifi_bluetooth_backup_line10">otherwise not apply).</string>
+		<string name="wolf_action_vibration">OrangeFox Action Vibration:</string>
+		<string name="wolf_boot_fsync">Disable Fsync</string>
+		<string name="wolf_boot_fastcharge">Force fast charge</string>
+		<string name="wolf_boot_t2w">Enable T2W</string>
+		<string name="wolf_boot_curr_governor">Enable small vibration for T2W</string>
+		<string name="wolf_boot_performance">Enable performance mode</string>
+		<string name="wolf_boot_powersave">Enable powersave mode</string>
+		<string name="wolf_boot_balance">Enable balanced mode</string>
+		<string name="wolf_boot_qc2.0">Enable QC quick charge 2.0</string>
+		<string name="wolf_setonboot_cptn">Set on boot</string>
+		<string name="wolf_set_custom_led_install">Customize led color for installation process</string>
+		<string name="wolf_set_custom_led_backup">Customize led color for backup process</string>
+		<string name="wolf_set_custom_led_restore">Customize led color for restore process</string>
+		<string name="wolf_set_custom_led_green">Green</string>
+		<string name="wolf_set_custom_led_blue">Blue</string>
+		<string name="wolf_set_custom_led_red">Red</string>
+		<string name="wolf_install_vibrate">Install Vibration</string>
+		<string name="wolf_backup_vibrate">Backup Vibration</string>
+		<string name="wolf_restore_vibrate">Restore Vibration</string>
+		<string name="wolf_vibration_hdr">OrangeFox Action Vibrations</string>
+		<string name="wolf_boot_nastaveni">HW Settings</string>
+		<!-- Red Wolf Recovery V3.1 / 010 -->
+		<string name="restore_enable_digest_chk" version="2">Enable Digest Verification of Backup Files</string>
+		<string name="generating_digest1" version="2">Generating Digest</string>
 
-     <!-- Message displayed during a backup if we are generating an Digest, ideally, leave the leading " * " to help align and separate this text from other console text -->
-	 <string name="generating_digest2" version="2"> * Generating digest...</string>
-	 <string name="digest_created" version="2"> * Digest Created.</string>
-	 <string name="digest_error" version="2"> * Digest Error!</string>
-	 <string name="no_digest" version="2">Skipping Digest check: no Digest file found</string>
-	 <string name="digest_fail" version="2">Digest does not match</string>
-	 <string name="digest_match" version="2">Digest matched</string>
-	 <string name="skip_digest_backup_chk" version="2">Skip Digest generation during backup</string>
-	 <string name="digest_compute_error" version="2"> * Error computing Digest.</string>
-	 <string name="verifying_digest" version="2">Verifying Digest</string>
-	 <string name="skip_digest" version="2">Skipping Digest check based on user setting.</string>
-	 <string name="digest_check_skip" version="2">Digest check skip is on</string>
-	 <string name="check_for_digest" version="2">Checking for Digest file...</string>
+		<!-- Message displayed during a backup if we are generating an Digest, ideally, leave the leading " * " to help align and separate this text from other console text -->
+		<string name="generating_digest2" version="2"> * Generating digest...</string>
+		<string name="digest_created" version="2"> * Digest Created.</string>
+		<string name="digest_error" version="2"> * Digest Error!</string>
+		<string name="no_digest" version="2">Skipping Digest check: no Digest file found</string>
+		<string name="digest_fail" version="2">Digest does not match</string>
+		<string name="digest_match" version="2">Digest matched</string>
+		<string name="skip_digest_backup_chk" version="2">Skip Digest generation during backup</string>
+		<string name="digest_compute_error" version="2"> * Error computing Digest.</string>
+		<string name="verifying_digest" version="2">Verifying Digest</string>
+		<string name="skip_digest" version="2">Skipping Digest check based on user setting.</string>
+		<string name="digest_check_skip" version="2">Digest check skip is on</string>
+		<string name="check_for_digest" version="2">Checking for Digest file...</string>
 
-	 <string name="install_reboot" version="2">Rebooting in %tw_sleep% second(s)</string>
-	 <string name="sha2_chk">Use SHA2 for hashing</string>
-     <string name="wolf_custom_wolf_splash_btn">Custom Splash</string>
-     <string name="wolf_custom_wolf_splash_1">Custom splash screen was</string>
-     <string name="wolf_custom_wolf_splash_2">succesfully applied</string>
-     <string name="wolf_theme_splash_wolf_hdr">Custom Splash</string>
-     <string name="wolf_theme_splash_wolf_txt1">To change the splash screen select any</string>
-     <string name="wolf_theme_splash_wolf_txt2">image in the png format and then just</string>
-     <string name="wolf_theme_splash_wolf_txt3">swipe to apply it.</string>
-    <string name="wolf_theme_splash_wolf_txt4">For the best results the selected</string>
-    <string name="wolf_theme_splash_wolf_txt5">image should be in the size</string>
-    <string name="wolf_theme_splash_wolf_txt6">1080x1920.</string>
-    <string name="not_selected">not selected</string>
-    <string name="tw_splash_png_btn">PNG to use as Splash Screen</string>
-	<string name="splash_preview">Splash Type</string>
-	<string name="theme_splash_preview">SELECT SPLASH</string>
-	<string name="slider_repack">Swipe to apply new splash screen</string>
-	<string name="repacking">Please wait...</string>
-	<string name="dialog_reset_splash_hdr">Default Splash</string>
-	<string name="dialog_reset_splash_note_1">Do you want to restore the default</string>
-	<string name="dialog_reset_splash_note_2">splash for the OrangeFox Recovery?</string>
-	<string name="wolf_restore_splash_wolf">Restoring default splash screen...</string>
-	<string name="wolf_restore_wolf_splash_conf">Swipe to restore the stock splash screen</string>
-	<string name="wolf_restore_wolf_splash_1">Restore default Splash</string>
-	<string name="wolf1_restore_splash_wolf_2">Screen of the Recovery</string>
-    <string name="wolf_restore_wolf2_splash_1">Stock Splash Screen was</string>
-    <string name="wolf_restore_wolf2_splash_2">succesfully restored</string>
-    <string name="statusbar_wolf_on_lockpass">Enable Statusbar on Lock Screen</string>
-    <!-- Red Wolf Recovery V3.1 / 011 -->
-    <string name="no_digest_found" version="2">No digest file found for '{1}'. Please unselect Enable Digest verification to restore.</string>
-	<string name="digest_fail_match" version="2">Digest failed to match on '{1}'.</string>
-	<string name="digest_matched" version="2">Digest matched for '{1}'.</string>
-	<!-- Red Wolf Recovery V3.1 / 012 -->
-	<string name="wolf_no_os_btn">Reboot</string>
-	<string name="wolf_no_wolfos_hdr">No OS installed!</string>
-	<string name="wolf_no_os_wolf_txt1">OrangeFox detected that OS</string>
-	<string name="wolf_no_os_wolf_txt2">isn't installed. If you are sure</string>
-    <string name="wolf_no_os_wolf_txt3">that OS is installed and this detection</string>
-    <string name="wolf_no_os_wolf_txt4">is wrong then swipe to confirm</string>
-    <string name="wolf_no_os_wolf_txt5">the reboot.</string>
-    <string name="wolf_no_os_wolf_slider_txt">Swipe to ignore this detection & reboot</string>
-    <!-- Red Wolf Recovery V3.1 / 015 -->
-    <string name="wolf_supersu_config_chk">Use SuperSU Config</string>
-    <string name="wolf_fgo_patch_hdr2">For LOS based ROMs</string>
-    <string name="wolf_flash_fgo_patch">Swipe to install the FGO patch</string>
-    <!-- OrangeFox Recovery V3.1 / 018 -->
-	<string name="redwolfms2">[OrangeFox]: Welcome!</string>
-	<string name="redwolfms3">[Version]: {1}</string>
-	<string name="redwolfms4">[Build]: {1}</string>
-	<string name="wolf_reboot_restore_finish_chk">Reboot after restore is complete</string>
-	<string name="wolf_dmverity_chk">Disable DM-Verity</string>
-	<string name="wolf_forced_encryption_chk">Disable Forced Encryption</string>
-	<string name="wolf_enable_debugg_chk">Enable Debugging in the ROM</string>
-	<string name="wolf_disable_debugg_chk">Disable Debugging in the ROM</string>
-	<string name="wolf_save_load_aromafm_config_chk">Save/Load AromaFM config</string>
-	<string name="wolf_hide_backup_folder_chk">Hide main recovery folder</string>
-	<string name="wolf_advanced_stock_recovery">Aggressive stock recovery deactivation</string>
-	<string name="wolf_support_miui_ota_chk">Support MIUI Incremental OTA</string>
-	<string name="wolf_special_actions">Special actions of the OrangeFox Recovery</string>
-	<string name="wolf_special_actions_hdr">Special Actions</string>
-	<string name="wolf_reboot_disable_secure_boot_chk">Disable secure boot</string>
-	<string name="wolf_reboot_enable_mock_location_chk">Enable allow.mock.location</string>
-	<string name="wolf_reboot_disable_mock_location_chk">Disable allow.mock.location</string>
-	<string name="wolf_reboot_disable_adb_ro_chk">Disable ADB read-only</string>
-	<string name="wolf_reboot_enable_adb_ro_chk">Enable ADB read-only</string>
-	<string name="wolf_reboot_enable_secure_ro_chk">Enable read-only prop</string>
-	<string name="wolf_reboot_disable_secure_ro_chk">Disable read-only prop</string>
-	<string name="wolf_reboot_dont_disable_stock_recovery_chk">Don't disable stock recovery replace</string>
-	<string name="wolf_dialog_special_actions_1">Please don't change anything in this</string>
-	<string name="wolf_dialog_special_actions_2">section without a good reason!</string>
-	<string name="Dadi11">Great dev and maintainer</string>
-	<string name="help">of the builds for Mido.</string>
-	<string name="wolf_about_telegram_account">Telegram account</string>
-	<string name="wolf_reboot_nastaveni">Set on boot settings</string>
-	<string name="wolf_no_os_engine">Use Advanced NO OS Search Engine</string>
-    	<string name="wolf_reset_default_hdr">Default Settings</string>
-	<string name="wolf_extra_fox_hdr">Advanced Actions</string>
-	<string name="wolf_extra_fox_hdr_2">Advanced Actions of the OrangeFox Recovery</string>
-	<string name="extra_fox_info_line1">Hello! Welcome to the special actions section</string>
-     	<string name="extra_fox_info_line2">of OrangeFox Recovery! Here you can change</string>
-     	<string name="extra_fox_info_line3">the manner in which OrangeFox Recovery</string>
-     	<string name="extra_fox_info_line4">installs zip files.</string>
-     	<string name="extra_fox_info_line5">Would you prefer to not flash lazyflasher</string>
-     	<string name="extra_fox_info_line6">every time you install a ROM which has</string>
-     	<string name="extra_fox_info_line7">dm-verity enabled? If so, just enable</string>
-     	<string name="extra_fox_info_line8">&quot;Disable DM-Verity&quot; here. And</string>
-     	<string name="extra_fox_info_line9">that would be all that you need to do.</string>
-     	<string name="extra_fox_info_line10">After this, whenever you flash the ROM,</string>
-     	<string name="extra_fox_info_line11">the recovery will automatically check and</string>
-     	<string name="extra_fox_info_line12">disable dm-verity during the installation.</string>
-     	<string name="extra_fox_info_line13">The same process also applies to forced</string>
-     	<string name="extra_fox_info_line14">encryption.</string>
-     	<string name="extra_fox_info_line15">Other things like &quot;Enable Debugging...&quot;</string>
-     	<string name="extra_fox_info_line16">will involve changes being made to the props...</string>
-     	<string name="extra_fox_info_line17">If you still have any question then please</string>
-     	<string name="extra_fox_info_line18">do ask in the OrangeFox XDA thread, or in</string>
-     	<string name="extra_fox_info_line19">our Telegram group (the link is on XDA).</string>
-     	<string name="extra_fox_info_line20">Enjoy the OrangeFox special features!</string>
+		<string name="install_reboot" version="2">Rebooting in %tw_sleep% second(s)</string>
+		<string name="sha2_chk">Use SHA2 for hashing</string>
+		<string name="wolf_custom_wolf_splash_btn">Custom Splash</string>
+		<string name="wolf_custom_wolf_splash_1">Custom splash screen was</string>
+		<string name="wolf_custom_wolf_splash_2">succesfully applied</string>
+		<string name="wolf_theme_splash_wolf_hdr">Custom Splash</string>
+		<string name="wolf_theme_splash_wolf_txt1">To change the splash screen select any</string>
+		<string name="wolf_theme_splash_wolf_txt2">image in the png format and then just</string>
+		<string name="wolf_theme_splash_wolf_txt3">swipe to apply it.</string>
+		<string name="wolf_theme_splash_wolf_txt4">For the best results the selected</string>
+		<string name="wolf_theme_splash_wolf_txt5">image should be in the size</string>
+		<string name="wolf_theme_splash_wolf_txt6">1080x1920.</string>
+		<string name="not_selected">not selected</string>
+		<string name="tw_splash_png_btn">PNG to use as Splash Screen</string>
+		<string name="splash_preview">Splash Type</string>
+		<string name="theme_splash_preview">SELECT SPLASH</string>
+		<string name="slider_repack">Swipe to apply new splash screen</string>
+		<string name="repacking">Please wait...</string>
+		<string name="dialog_reset_splash_hdr">Default Splash</string>
+		<string name="dialog_reset_splash_note_1">Do you want to restore the default</string>
+		<string name="dialog_reset_splash_note_2">splash for the OrangeFox Recovery?</string>
+		<string name="wolf_restore_splash_wolf">Restoring default splash screen...</string>
+		<string name="wolf_restore_wolf_splash_conf">Swipe to restore the stock splash screen</string>
+		<string name="wolf_restore_wolf_splash_1">Restore default Splash</string>
+		<string name="wolf1_restore_splash_wolf_2">Screen of the Recovery</string>
+		<string name="wolf_restore_wolf2_splash_1">Stock Splash Screen was</string>
+		<string name="wolf_restore_wolf2_splash_2">succesfully restored</string>
+		<string name="statusbar_wolf_on_lockpass">Enable Statusbar on Lock Screen</string>
+		<!-- Red Wolf Recovery V3.1 / 011 -->
+		<string name="no_digest_found" version="2">No digest file found for '{1}'. Please unselect Enable Digest verification to restore.</string>
+		<string name="digest_fail_match" version="2">Digest failed to match on '{1}'.</string>
+		<string name="digest_matched" version="2">Digest matched for '{1}'.</string>
+		<!-- Red Wolf Recovery V3.1 / 012 -->
+		<string name="wolf_no_os_btn">Reboot</string>
+		<string name="wolf_no_wolfos_hdr">No OS installed!</string>
+		<string name="wolf_no_os_wolf_txt1">OrangeFox detected that OS</string>
+		<string name="wolf_no_os_wolf_txt2">isn't installed. If you are sure</string>
+		<string name="wolf_no_os_wolf_txt3">that OS is installed and this detection</string>
+		<string name="wolf_no_os_wolf_txt4">is wrong then swipe to confirm</string>
+		<string name="wolf_no_os_wolf_txt5">the reboot.</string>
+		<string name="wolf_no_os_wolf_slider_txt">Swipe to ignore this detection & reboot</string>
+		<!-- Red Wolf Recovery V3.1 / 015 -->
+		<string name="wolf_supersu_config_chk">Use SuperSU Config</string>
+		<string name="wolf_fgo_patch_hdr2">For LOS based ROMs</string>
+		<string name="wolf_flash_fgo_patch">Swipe to install the FGO patch</string>
+		<!-- OrangeFox Recovery V3.1 / 018 -->
+		<string name="redwolfms2">[OrangeFox]: Welcome!</string>
+		<string name="redwolfms3">[Version]: {1}</string>
+		<string name="redwolfms4">[Build]: {1}</string>
+		<string name="wolf_reboot_restore_finish_chk">Reboot after restore is complete</string>
+		<string name="wolf_dmverity_chk">Disable DM-Verity</string>
+		<string name="wolf_forced_encryption_chk">Disable Forced Encryption</string>
+		<string name="wolf_enable_debugg_chk">Enable Debugging in the ROM</string>
+		<string name="wolf_disable_debugg_chk">Disable Debugging in the ROM</string>
+		<string name="wolf_save_load_aromafm_config_chk">Save/Load AromaFM config</string>
+		<string name="wolf_hide_backup_folder_chk">Hide main recovery folder</string>
+		<string name="wolf_advanced_stock_recovery">Aggressive stock recovery deactivation</string>
+		<string name="wolf_support_miui_ota_chk">Support MIUI Incremental OTA</string>
+		<string name="wolf_special_actions">Special actions of the OrangeFox Recovery</string>
+		<string name="wolf_special_actions_hdr">Special Actions</string>
+		<string name="wolf_reboot_disable_secure_boot_chk">Disable secure boot</string>
+		<string name="wolf_reboot_enable_mock_location_chk">Enable allow.mock.location</string>
+		<string name="wolf_reboot_disable_mock_location_chk">Disable allow.mock.location</string>
+		<string name="wolf_reboot_disable_adb_ro_chk">Disable ADB read-only</string>
+		<string name="wolf_reboot_enable_adb_ro_chk">Enable ADB read-only</string>
+		<string name="wolf_reboot_enable_secure_ro_chk">Enable read-only prop</string>
+		<string name="wolf_reboot_disable_secure_ro_chk">Disable read-only prop</string>
+		<string name="wolf_reboot_dont_disable_stock_recovery_chk">Don't disable stock recovery replace</string>
+		<string name="wolf_dialog_special_actions_1">Please don't change anything in this</string>
+		<string name="wolf_dialog_special_actions_2">section without a good reason!</string>
+		<string name="Dadi11">Great dev and maintainer</string>
+		<string name="help">of the builds for Mido.</string>
+		<string name="wolf_about_telegram_account">Telegram account</string>
+		<string name="wolf_reboot_nastaveni">Set on boot settings</string>
+		<string name="wolf_no_os_engine">Use Advanced NO OS Search Engine</string>
+		<string name="wolf_reset_default_hdr">Default Settings</string>
+		<string name="wolf_extra_fox_hdr">Advanced Actions</string>
+		<string name="wolf_extra_fox_hdr_2">Advanced Actions of the OrangeFox Recovery</string>
+		<string name="extra_fox_info_line1">Hello! Welcome to the special actions section</string>
+		<string name="extra_fox_info_line2">of OrangeFox Recovery! Here you can change</string>
+		<string name="extra_fox_info_line3">the manner in which OrangeFox Recovery</string>
+		<string name="extra_fox_info_line4">installs zip files.</string>
+		<string name="extra_fox_info_line5">Would you prefer to not flash lazyflasher</string>
+		<string name="extra_fox_info_line6">every time you install a ROM which has</string>
+		<string name="extra_fox_info_line7">dm-verity enabled? If so, just enable</string>
+		<string name="extra_fox_info_line8">&quot;Disable DM-Verity&quot; here. And</string>
+		<string name="extra_fox_info_line9">that would be all that you need to do.</string>
+		<string name="extra_fox_info_line10">After this, whenever you flash the ROM,</string>
+		<string name="extra_fox_info_line11">the recovery will automatically check and</string>
+		<string name="extra_fox_info_line12">disable dm-verity during the installation.</string>
+		<string name="extra_fox_info_line13">The same process also applies to forced</string>
+		<string name="extra_fox_info_line14">encryption.</string>
+		<string name="extra_fox_info_line15">Other things like &quot;Enable Debugging...&quot;</string>
+		<string name="extra_fox_info_line16">will involve changes being made to the props...</string>
+		<string name="extra_fox_info_line17">If you still have any question then please</string>
+		<string name="extra_fox_info_line18">do ask in the OrangeFox XDA thread, or in</string>
+		<string name="extra_fox_info_line19">our Telegram group (the link is on XDA).</string>
+		<string name="extra_fox_info_line20">Enjoy the OrangeFox special features!</string>
 
 
-	<!-- Console Messages -->
-	<!-- Some messages were updated or deleted in the 020! -->
-	<string name="wolf_incremental_ota_status_enabled">Support MIUI Incremental package status: Enabled</string>
-	<string name="wolf_incremental_ota_status_disabled">Support MIUI Incremental package status: Disabled</string>
-	<string name="wolf_incremental_package_detected">Detected Incremental package '{1}'</string>
-	<string name="wolf_survival_does_not_exist">OTA Survival does not exist! Please flash a full ROM first!</string>
-	<string name="wolf_install_detecting">Detecting Current Package</string>
-    <string name="wolf_install_standard_detected">- Detected Standard Package</string>
-	<string name="wolf_install_miui_detected">- Detected MIUI Update Package</string>
-	<!-- Red Wolf Recovery V3.1.1 / 020 -->
-	<!-- This thing will disable checking of the boot partition to disable DM-Verity, Forced Encryption etc. -->
-	<string name="wolf_disable_boot_chk">Disable boot check</string>
-	<string name="wolf_include_system_survival_chk">Include system in OTA survival</string>
-	<string name="wolf_verify_incremental_ota_signature_chk">Incremental OTA signature verification</string>
-	<string name="wolf_prebuilt_fox_not_exist_hdr">File doesn't exist!</string>
-	<string name="wolf_prebuilt_fox_not_exist_1">Please reflash recovery</string>
-	<string name="wolf_prebuilt_fox_not_exist_2">using the installation zip.</string>
-	<string name="wolf_fm_unzip_btn">Unzip</string>
-	<!-- Console Messages -->
-	<string name="wolf_incremental_ota_compatibility_chk">Verifying Incremental Package Signature...</string>
-	<string name="wolf_incremental_ota_compatibility_false">Incremental package isn't compatible with this ROM!</string>
-	<string name="wolf_incremental_ota_compatibility_true">Incremental package is compatible</string>
-	<!-- Red Wolf Recovery V3.1 / 022 -->
-	<string name="wolf_wipe_substratum_overlays">Substratum Overlays</string>
-	<string name="wolf_zip_have_bootloader">Warning: Detected reinstallation of the bootloader which was called by '{1}'.</string>
-	<string name="substratum_done">-- Substratum Overlays Wipe Complete!</string>
-	<string name="wolf_no_space_ota_survival">Not enough free space on internal storage for creating the OTA survival.</string>
-	<!-- Red Wolf Recovery V3.1 / 023 -->
-	<string name="wolf_stupid_fox_detected">Todo: delete this string</string>
-	<!-- Red Wolf Recovery V3.1 / 024 -->
-    <string name="wolf_incremental_ota_res">OTA_RES -- done!</string>
-	<string name="wolf_incremental_ota_res_run">Running OTA_RES process...</string>
-	<string name="wolf_incremental_ota_bak_run">Running OTA_BAK process...</string>
-	<string name="wolf_incremental_ota_bak">OTA_BAK -- done!</string>
-	<!-- OrangeFox R4; removed wifi, bluetooth, hosts -->
-	<!--string name="wolf_wifi_data">WIFI Data</string -->
-	<!--string name="wolf_bluetooth_data">Bluetooth Data</string -->
-	<!--string name="wolf_hosts_data">Hosts</string -->
-	
-	<!-- Red Wolf Recovery V3.1 / 025 -->
-	<string name="wolf_set_new_access_password">Changing recovery access password...</string>
-	<string name="wolf_remove_access_password_one">Removing recovery access password...</string>
+		<!-- Console Messages -->
+		<!-- Some messages were updated or deleted in the 020! -->
+		<string name="wolf_incremental_ota_status_enabled">Support MIUI Incremental package status: Enabled</string>
+		<string name="wolf_incremental_ota_status_disabled">Support MIUI Incremental package status: Disabled</string>
+		<string name="wolf_incremental_package_detected">Detected Incremental package '{1}'</string>
+		<string name="wolf_survival_does_not_exist">OTA Survival does not exist! Please flash a full ROM first!</string>
+		<string name="wolf_install_detecting">Detecting Current Package</string>
+		<string name="wolf_install_standard_detected">- Detected Standard Package</string>
+		<string name="wolf_install_miui_detected">- Detected MIUI Update Package</string>
+		<!-- Red Wolf Recovery V3.1.1 / 020 -->
+		<!-- This thing will disable checking of the boot partition to disable DM-Verity, Forced Encryption etc. -->
+		<string name="wolf_disable_boot_chk">Disable boot check</string>
+		<string name="wolf_include_system_survival_chk">Include system in OTA survival</string>
+		<string name="wolf_verify_incremental_ota_signature_chk">Incremental OTA signature verification</string>
+		<string name="wolf_prebuilt_fox_not_exist_hdr">File doesn't exist!</string>
+		<string name="wolf_prebuilt_fox_not_exist_1">Please reflash recovery</string>
+		<string name="wolf_prebuilt_fox_not_exist_2">using the installation zip.</string>
+		<string name="wolf_fm_unzip_btn">Unzip</string>
+		<!-- Console Messages -->
+		<string name="wolf_incremental_ota_compatibility_chk">Verifying Incremental Package Signature...</string>
+		<string name="wolf_incremental_ota_compatibility_false">Incremental package isn't compatible with this ROM!</string>
+		<string name="wolf_incremental_ota_compatibility_true">Incremental package is compatible</string>
+		<!-- Red Wolf Recovery V3.1 / 022 -->
+		<string name="wolf_wipe_substratum_overlays">Substratum Overlays</string>
+		<string name="wolf_zip_have_bootloader">Warning: Detected reinstallation of the bootloader which was called by '{1}'.</string>
+		<string name="substratum_done">-- Substratum Overlays Wipe Complete!</string>
+		<string name="wolf_no_space_ota_survival">Not enough free space on internal storage for creating the OTA survival.</string>
+		<!-- Red Wolf Recovery V3.1 / 023 -->
+		<string name="wolf_stupid_fox_detected">Todo: delete this string</string>
+		<!-- Red Wolf Recovery V3.1 / 024 -->
+		<string name="wolf_incremental_ota_res">OTA_RES -- done!</string>
+		<string name="wolf_incremental_ota_res_run">Running OTA_RES process...</string>
+		<string name="wolf_incremental_ota_bak_run">Running OTA_BAK process...</string>
+		<string name="wolf_incremental_ota_bak">OTA_BAK -- done!</string>
+		<!-- OrangeFox R4; removed wifi, bluetooth, hosts -->
+		<!--string name="wolf_wifi_data">WIFI Data</string -->
+		<!--string name="wolf_bluetooth_data">Bluetooth Data</string -->
+		<!--string name="wolf_hosts_data">Hosts</string -->
+		
+		<!-- Red Wolf Recovery V3.1 / 025 -->
+		<string name="wolf_set_new_access_password">Changing recovery access password...</string>
+		<string name="wolf_remove_access_password_one">Removing recovery access password...</string>
 
-	<!--OrangeFox Recovery Project-->
-	<!-- <string name=""></string> -->
+		<!--OrangeFox Recovery Project-->
+		<!-- <string name=""></string> -->
 
-	<string name="fox_menu_flash">Orange!</string>
-	<string name="fox_menu_delpass">Delete ROM password</string>
-	<string name="fox_menu_navigation">Navigation</string>
-	<string name="fox_m_other">Other settings</string>
-	<string name="fox_dell_pass">Delete ROM password</string>
-	<string name="fox_menu_comm">Community scripts</string>
-	<string name="fox_menu_splash">Change Splash</string>
-	<string name="fox_menu_theme">Change Theme</string>
-	<string name="fox_menu_pass_h">Delete ROM password</string>
-	<string name="fox_menu_pass">By DarthJabba9</string>
-	<string name="fox_lock_btn">Button on lockscreen</string>
-	<string name="fox_menu_adb_on">ADB: on</string>
-	<string name="fox_menu_adb_off">ADB: off</string>
+		<string name="fox_menu_flash">Orange!</string>
+		<string name="fox_menu_delpass">Delete ROM password</string>
+		<string name="fox_menu_navigation">Navigation</string>
+		<string name="fox_m_other">Other settings</string>
+		<string name="fox_dell_pass">Delete ROM password</string>
+		<string name="fox_menu_comm">Community scripts</string>
+		<string name="fox_menu_splash">Change Splash</string>
+		<string name="fox_menu_theme">Change Theme</string>
+		<string name="fox_menu_pass_h">Delete ROM password</string>
+		<string name="fox_menu_pass">By DarthJabba9</string>
+		<string name="fox_lock_btn">Button on lockscreen</string>
+		<string name="fox_menu_adb_on">ADB: on</string>
+		<string name="fox_menu_adb_off">ADB: off</string>
 
-	<string name="fox_theme_i1">After changing the theme, the theme color</string>
-	<string name="fox_theme_i2">will be set to default (orange).</string>
-	<string name="fox_theme_i3">After rebooting, you can set a new theme color.</string>
-	<string name="fox_theme_black">Black theme</string>
-	<string name="fox_theme_dark">Dark theme (beta)</string>
-	<string name="fox_theme_slider_dark">Slide to apply dark theme</string>
-	<string name="fox_theme_slider_black">Slide to apply black theme</string>
+		<string name="fox_theme_i1">After changing the theme, the theme color</string>
+		<string name="fox_theme_i2">will be set to default (orange).</string>
+		<string name="fox_theme_i3">After rebooting, you can set a new theme color.</string>
+		<string name="fox_theme_black">Black theme</string>
+		<string name="fox_theme_dark">Dark theme (beta)</string>
+		<string name="fox_theme_slider_dark">Slide to apply dark theme</string>
+		<string name="fox_theme_slider_black">Slide to apply black theme</string>
 
-	<string name="fox_slider_magisk">Swipe to install Magisk</string>
-	<string name="fox_slider_pass">Swipe to delete ROM password</string>
-	<string name="fox_slider_supersu">Swipe to install SuperSU</string>
+		<string name="fox_slider_magisk">Swipe to install Magisk</string>
+		<string name="fox_slider_pass">Swipe to delete ROM password</string>
+		<string name="fox_slider_supersu">Swipe to install SuperSU</string>
 
-	<string name="fox_redwolf">for RedWolf development and</string>
-	<string name="fox_rey">Vince maintainer</string>
-	<string name="fox_kirill">For graphics, Photoshop guru</string>
+		<string name="fox_redwolf">for RedWolf development and</string>
+		<string name="fox_rey">Vince maintainer</string>
+		<string name="fox_kirill">For graphics, Photoshop guru</string>
 
-	<string name="unlock_btn">Unlock</string>
+		<string name="unlock_btn">Unlock</string>
 
-	<string name="fox_menu2_power">Performance Profile</string>
-	<string name="fox_menu2_other">Other Setting</string>
+		<string name="fox_menu2_power">Performance Profile</string>
+		<string name="fox_menu2_other">Other Setting</string>
 
-	<string name="f_orange">Orange</string>
-	<string name="f_indigo">Indigo</string>
-	<string name="f_blue">Blue</string>
-	<string name="f_light_blue">Light Blue</string>
-	<string name="f_stock">Stck</string>
-	<string name="f_teal">Teal</string>
-	<string name="f_green">Green</string>
-	<string name="f_light_green">Light Green</string>
-	<string name="f_lime">Lime</string>
-	<string name="f_amber">Amber</string>
-	<string name="f_red">Evil Color</string>
-	<string name="f_deep_orange">Deep Orange</string>
-	<string name="f_brown">Brown</string>
-	<string name="f_gray">Gray</string>
-	<string name="f_blue_grey">Blue Grey</string>
+		<string name="f_orange">Orange</string>
+		<string name="f_indigo">Indigo</string>
+		<string name="f_blue">Blue</string>
+		<string name="f_light_blue">Light Blue</string>
+		<string name="f_stock">Stck</string>
+		<string name="f_teal">Teal</string>
+		<string name="f_green">Green</string>
+		<string name="f_light_green">Light Green</string>
+		<string name="f_lime">Lime</string>
+		<string name="f_amber">Amber</string>
+		<string name="f_red">Evil Color</string>
+		<string name="f_deep_orange">Deep Orange</string>
+		<string name="f_brown">Brown</string>
+		<string name="f_gray">Gray</string>
+		<string name="f_blue_grey">Blue Grey</string>
 
-	<!-- OrangeFox community scripts -->
+		<!-- OrangeFox community scripts -->
 
 		<string name="fox_community_title">OrangeFox Community scrips</string>
 		<string name="fox_comm_i1">To add a new item contact</string>
