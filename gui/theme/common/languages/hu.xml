@@ -706,6 +706,14 @@
 	<string name="fox_menu_pass">Írta: DarthJabba9</string>
 	<string name="fox_lock_btn">Gomb a zárképernyőn</string>
 
+	<string name="fox_theme_i1">Témaváltoztatás után a téma színe</string>
+	<string name="fox_theme_i2">az alapértelmezettre lesz állítva (narancs).</string>
+	<string name="fox_theme_i3">Újraindítás után a szín megváltoztatható.</string>
+	<string name="fox_theme_black">Fekete téma</string>
+	<string name="fox_theme_dark">Sötét téma (beta)</string>
+	<string name="fox_theme_slider_dark">Csúsztasd a témát a sötét téma alkalmazásához</string>
+	<string name="fox_theme_slider_black">Csúsztasd a témát a fekete téma alkalmazásához</string>
+
 	<string name="fox_community_title">OrangeFox közösség által írt script-ek</string>
 
 	<string name="fox_slider_magisk">A Magisk telepítéséhez csúsztasd el a csúszkát</string>
@@ -740,8 +748,8 @@
 	<!-- OrangeFox community scripts -->
 
     <string name="fox_community_title">OrangeFox közösségi scrip-ek</string>
-    <string name="fox_comm_i1">Új elem hozzáadása</string>
-    <string name="fox_comm_i2">@MrYacha a Telegram-on</string>
+    <string name="fox_comm_i1">Új elem hozzáadásáért lép kapcsolatba</string>
+    <string name="fox_comm_i2">@MrYacha-val Telegram-on</string>
 
     <string name="fox_comm_su_txt2">Írta: Chainfire</string>
     <string name="fox_comm_su_sld">A SuperSU telepítéséhez csúsztasd el a csúszkát</string>
