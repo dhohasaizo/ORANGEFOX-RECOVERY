@@ -223,6 +223,7 @@
 				</listitem>
 				<listitem name="ENABLE DEVELOPERS OPTION">
 					<condition var1="wolf_adb" var2="1"/>
+					<condition var1="auto_generate" var2="1"/>
 					<data variable="fox_dev"/>
 				</listitem>
 					
@@ -15747,6 +15748,9 @@
 				<listitem name="{@fox_theme_dark}">
 					<data variable="fox_dark"/>
 				</listitem>
+				<listitem name="{@fox_theme_white}">
+					<data variable="fox_white"/>
+				</listitem>
 			</listbox>
 			<text color="%accent%">
 				<condition var1="fox_theme_wait" var2="1"/>
@@ -15764,6 +15768,8 @@
 					<action function="cmd"> 
 					cd "/tmp/redwolf/ramdisk/twres";
 					cp -r images_orange/* "images"; 
+					cp -r un-white/* "images"; 
+					cp -r dark/*.png "images"
 					mv -f "dark/dark.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
@@ -15786,7 +15792,32 @@
 					<action function="cmd">  
 					cd "/tmp/redwolf/ramdisk/twres";
 					cp -r images_orange/* "images"; 
+					cp -r un-white/* "images"; 
+					cp -r black/*.png "images"
 					mv -f "black/black.xml" "colors.xml";
+					</action>
+					<action function="wlfx"/>
+					<action function="page">set_color_finish</action>
+				</actions>
+      		</slider>
+
+			<text style="caption">
+			<condition var1="fox_white" var2="1"/>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@fox_theme_slider_white}</text>
+			</text>
+
+			<slider>
+			<condition var1="fox_white" var2="1"/>
+				<actions>
+					<action function="set">fox_white=0</action>
+					<action function="set">fox_theme_wait=1</action>
+					<action function="wlfw"/>
+					<action function="cmd">  
+					cd "/tmp/redwolf/ramdisk/twres";
+					cp -r images_orange/* "images"; 
+					cp -r white/*.png "images"
+					mv -f "white/white.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
 					<action function="page">set_color_finish</action>

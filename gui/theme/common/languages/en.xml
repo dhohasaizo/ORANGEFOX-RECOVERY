@@ -1072,14 +1072,17 @@
 		<string name="fox_theme_i2">will be set to default (orange).</string>
 		<string name="fox_theme_i3">After rebooting, you can set a new theme color.</string>
 		<string name="fox_theme_black">Black theme</string>
-		<string name="fox_theme_dark">Dark theme (beta)</string>
+		<string name="fox_theme_dark">Dark theme</string>
+		<string name="fox_theme_white">White theme</string>
 		<string name="fox_theme_slider_dark">Slide to apply dark theme</string>
 		<string name="fox_theme_slider_black">Slide to apply black theme</string>
+		<string name="fox_theme_slider_white">Slide to apply white theme</string>
 
 		<string name="fox_slider_magisk">Swipe to install Magisk</string>
 		<string name="fox_slider_pass">Swipe to delete ROM password</string>
 		<string name="fox_slider_supersu">Swipe to install SuperSU</string>
 
+		<string name="fox_about_maintainer">Maintainer</string>
 		<string name="fox_redwolf">for RedWolf development and</string>
 		<string name="fox_rey">Vince maintainer</string>
 		<string name="fox_kirill">For graphics, Photoshop guru</string>
