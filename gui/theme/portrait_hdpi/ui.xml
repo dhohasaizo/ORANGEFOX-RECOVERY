@@ -3,10 +3,7 @@
 	<details>
 		<resolution width="1080" height="1920"/>
 		<author>OrangeFox dev team</author>
-		<title>TWRP Materialized theme for RWRP</title>
-		<description>Material Design theme for RWRP</description>
-		<preview>preview.png</preview>
-		<themeversion>3</themeversion>
+		<themeversion>1</themeversion>
 	</details>
 
 	<resources>
@@ -83,7 +80,6 @@
 		<image name="actionbar_close_hl" filename="actionbar_close_hl" retainaspect="1"/>
 		<image name="actionbar_date" filename="actionbar_date" retainaspect="1"/>
 
-    <!-- OrangeFox is the best recovery in the world! -->
     <!-- OrangeFox Custom images -->
     <image name="tab_comm_a" filename="tab_comm_a" retainaspect="1"/>
     <image name="tab_comm" filename="tab_comm" retainaspect="1"/>
@@ -815,12 +811,12 @@
 				<action function="page">wolf_bobs_vagene</action>
 			</button>
 
-    <action>
+    		<action>
 				<touch key="power"/>
 				<action function="togglebacklight"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="volup"/>
 				<actions>
 				<action function="set">tw_storage_path=/sdcard1</action>
@@ -828,16 +824,14 @@
 				</actions>
 			</action>
 
-<action>
+			<action>
 				<touch key="voldown"/>
 				<actions>
 				<action function="set">tw_storage_path=/sdcard</action>
 				<action function="screenshot"/>
 				</actions>
 			</action>
-</template>
-
-
+		</template>
 		<template name="statusbarinfo">
 			<text style="text_status">
 				<condition var1="show_cpu_temp" var2="0"/>

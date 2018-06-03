@@ -14316,10 +14316,10 @@
 				<text>ManoloRey - {@fox_rey=Vince maintainer}</text>
 			</text>
 
-			<text style="text_body2">
+			<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="1200"/>
 				<text>Kirill Filippenok - {@fox_kirill=For graphics, Photoshop guru}</text>
-			</text>
+			</text-->
 
             		<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="1290"/>
@@ -15706,7 +15706,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Fox Theme Engine</text>
+				<text>{@fox_theme_title=Fox Theme Engine}</text>
 			</text>
 
 			<image>
