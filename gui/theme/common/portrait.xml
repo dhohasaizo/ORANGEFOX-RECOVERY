@@ -2724,12 +2724,12 @@
 
 <action>
 			<touch key="back"/>
-			<action function="page">fox_menu</action>
+			<action function="page">set_color_finish</action>
 			</action>
 
 <action>
 			<touch key="home"/>
-			<action function="page">main2</action>
+			<action function="page">set_color_finish</action>
 			</action>
 </page>
 
@@ -15848,6 +15848,15 @@
 		       			</actions>
 					</action>
 
+					<action>
+            			<condition var1="tw_busy" var2="0"/>
+						<condition var1="fox_white" var2="1"/>
+						<actions>
+							<action function="set">fox_black=0</action>
+							<action function="set">fox_dark=0</action>
+		       			</actions>
+					</action>
+
 			<action>
 				<touch key="back"/>
 				<actions>
@@ -15862,8 +15871,5 @@
 				</actions>
 			</action>
 		</page>
-
-
-
 		</pages>
 </recovery>
