@@ -2141,6 +2141,7 @@ int TWPartitionManager::Decrypt_Device(string Password)
 	}
     }
 
+  property_set("twrp.mount_to_decrypt", "1");
   property_get("ro.crypto.state", crypto_state, "error");
   if (strcmp(crypto_state, "error") == 0)
     {
@@ -2230,6 +2231,8 @@ int TWPartitionManager::Decrypt_Device(string Password)
 	}
     }
 
+  property_set("twrp.mount_to_decrypt", "0");
+
   if (pwret != 0)
     {
       gui_err("fail_decrypt=Failed to decrypt data.");
@@ -2254,6 +2257,7 @@ int TWPartitionManager::Decrypt_Device(string Password)
   return 1;
 }
 
+
 int TWPartitionManager::Fix_Contexts(void)
 {
   std::vector < TWPartition * >::iterator iter;
@@ -2273,6 +2277,7 @@ int TWPartitionManager::Fix_Contexts(void)
   gui_msg("done=Done.");
   return 0;
 }
+
 
 TWPartition *TWPartitionManager::Find_Next_Storage(string Path,
 						   bool Exclude_Data_Media)
@@ -2306,6 +2311,7 @@ TWPartition *TWPartitionManager::Find_Next_Storage(string Path,
 
   return NULL;
 }
+
 
 int TWPartitionManager::Open_Lun_File(string Partition_Path, string Lun_File)
 {

@@ -1494,6 +1494,12 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
   gettimeofday(&tv, NULL);
 
   tv.tv_sec += offset / 1000;
+  
+#ifdef TW_CLOCK_OFFSET
+// Some devices are even quirkier and have ats files that are offset from the actual time
+	tv.tv_sec = tv.tv_sec + TW_CLOCK_OFFSET;
+#endif
+  
   tv.tv_usec += (offset % 1000) * 1000;
 
   while (tv.tv_usec >= 1000000)
@@ -1755,8 +1761,6 @@ void TWFunc::Set_New_Ramdisk_Property(std::string file_path, std::string prop,
 	}
     }
 }
-
-
 
 
 void TWFunc::Write_MIUI_Install_Status(std::string install_status,
