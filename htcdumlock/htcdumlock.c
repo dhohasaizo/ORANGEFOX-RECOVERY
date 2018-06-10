@@ -175,12 +175,12 @@ void flash_recovery_to_boot(int no_flash, int no_reboot) {
 
 	// Create folders
 	if (verbose)
-		printf("Making '/sdcard/TWRP'\n");
-	mkdir("/sdcard/TWRP", 0777);
+		printf("Making '/sdcard/Fox'\n");
+	mkdir("/sdcard/Fox", 0777);
 	if (verbose)
-		printf("Making folder '/sdcard/TWRP/htcdumlock'\n");
-	mkdir("/sdcard/TWRP/htcdumlock", 0777);
-	strcpy(twrp_device_path, "/sdcard/TWRP/htcdumlock/");
+		printf("Making folder '/sdcard/Fox/htcdumlock'\n");
+	mkdir("/sdcard/Fox/htcdumlock", 0777);
+	strcpy(twrp_device_path, "/sdcard/Fox/htcdumlock/");
 	strcat(twrp_device_path, device_id);
 	if (verbose)
 		printf("Making folder '%s'\n", twrp_device_path);
@@ -279,7 +279,7 @@ void restore_original_boot(int no_flash) {
 	char boot_path[255], exec[255];
 
 	// Restore original boot partition
-	strcpy(boot_path, "/sdcard/TWRP/htcdumlock/");
+	strcpy(boot_path, "/sdcard/Fox/htcdumlock/");
 	strcat(boot_path, device_id);
 	strcat(boot_path, "/boot/");
 	strcpy(exec, "flash_image boot ");

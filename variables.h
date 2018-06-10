@@ -35,6 +35,7 @@ static const std::string Fox_Tmp = "/tmp";
 static const std::string Fox_Home = "/sdcard/Fox";
 static const std::string Fox_Home_Files = Fox_Home + "/FoxFiles";
 static const std::string Fox_sdcard_aroma_cfg = Fox_Home + "/aromafm.cfg";
+static const std::string Fox_Themes_Dir = "/Fox/theme";
 static const std::string FFiles_dir = "/FFiles";
 static const std::string Fox_aroma_cfg = FFiles_dir + "/AromaFM/AromaFM.zip.cfg";
 static const std::string Fox_tmp_dir = Fox_Tmp + "/redwolf";
