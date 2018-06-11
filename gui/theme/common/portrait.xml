@@ -221,6 +221,10 @@
 					<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
 					<data variable="wolf_reboot_dont_disable_stock_recovery"/>
 				</listitem>
+				<listitem name="DEBUG MODE">
+					<condition var1="wolf_adb" var2="1"/>
+					<data variable="fox_debug"/>
+				</listitem>
 					
 			</listbox>
 
@@ -2659,7 +2663,7 @@
 			</action>
 		</page>
 
-<page name="set_color_finish">
+		<page name="set_color_finish">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -2677,7 +2681,7 @@
 				<text>{@colour_script_finish1=}</text>
 			</text>
 
-<text style="text_ab_title">
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@colour_script_finish2=}</text>
 			</text>
@@ -2688,7 +2692,7 @@
                <text>{@colour_script_finish3=}</text>
 			</text>
 
-<text color="%accent%">
+			<text color="%accent%">
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
@@ -2708,23 +2712,23 @@
 					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
 				    <action function="page">rebootcheck</action>
 				</actions>
-       	</slider>
+			</slider>
 
-<action>
-			<touch key="back"/>
-			<action function="page">set_color_finish</action>
-			</action>
+			<action>
+				<touch key="back"/>
+				<action function="page">set_color_finish</action>
+				</action>
 
-<action>
-			<touch key="home"/>
-			<action function="page">set_color_finish</action>
-			</action>
-</page>
+			<action>
+				<touch key="home"/>
+				<action function="page">set_color_finish</action>
+				</action>
+			</page>
 
 
-<page name="set_color">
+		<page name="set_color">
 
-<template name="body"/>
+			<template name="body"/>
 
 			<template name="ab_ex"/>
 
@@ -2742,7 +2746,7 @@
 				<text>{@colour_engine1=}</text>
 			</text>
 
-<text style="text_ab_title">
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@colour_engine2=}</text>
 			</text>
@@ -2761,6 +2765,16 @@
 				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
 				<text>I prevented!</text>
 			</text-->
+
+			<listbox style="listbox">
+				<condition var1="fox_theme_wait" var2="0"/>
+				<condition var1="fox_debug" var2="1"/>
+				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+				<listitem name="DEBUG: Uncolor header">
+					<data variable="fox_uncolor_header"/>
+				</listitem>
+			</listbox>
+
 			<text style="caption">
 				<condition var1="tw_busy" var2="0"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
@@ -2774,7 +2788,8 @@
                <text>{@colour_engine4=}</text>
 			</text>
        
-           <slider>
+           	<slider>
+		   		<condition var1="fox_uncolor_header" var2="0"/>
 		   		<condition var1="fox_theme_wait" var2="0"/>
 				<actions>
 					<action function="set">fox_theme_wait=1</action>
@@ -2786,6 +2801,30 @@
 					sed "s/%accent%/#%tw_accent%/g" "/tmp/redwolf/ui_temp.xml" &gt; "/tmp/redwolf/ui_temp2.xml";
 					rm -f "/tmp/redwolf/ui_temp.xml";
 					sed "s/%text_actionbar%/#%tw_text_actionbar%/g" "/tmp/redwolf/ui_temp2.xml" &gt; "/tmp/redwolf/ui_temp3.xml";
+					rm -f "/tmp/redwolf/ui_temp2.xml";
+					sed "s/%accent_name%/%tw_accent_name%/g" "/tmp/redwolf/ui_temp3.xml" &gt; "/tmp/redwolf/ui.xml";
+					rm -f "/tmp/redwolf/ui_temp3.xml";
+					mv "/tmp/redwolf/ui.xml" "colors.xml";
+					</action>
+					<action function="wlfx"/>
+					<action function="set">accent_name=%tw_accent_name%</action>
+					<action function="page">set_color_finish</action>
+				</actions>
+      		</slider>
+
+			<slider>
+		   		<condition var1="fox_uncolor_header" var2="1"/>
+		   		<condition var1="fox_theme_wait" var2="0"/>
+				<actions>
+					<action function="set">fox_theme_wait=1</action>
+					<action function="wlfw"/>
+					<action function="cmd">  
+					cd "/tmp/redwolf/ramdisk/twres";
+					mv "colors.xml" "/tmp/redwolf/ui_temp.xml";
+                    cp -r %tw_folder%/* "images";
+					sed "s/%accent%/#%background%/g" "/tmp/redwolf/ui_temp.xml" &gt; "/tmp/redwolf/ui_temp2.xml";
+					rm -f "/tmp/redwolf/ui_temp.xml";
+					sed "s/%text_actionbar%/#%text_light%/g" "/tmp/redwolf/ui_temp2.xml" &gt; "/tmp/redwolf/ui_temp3.xml";
 					rm -f "/tmp/redwolf/ui_temp2.xml";
 					sed "s/%accent_name%/%tw_accent_name%/g" "/tmp/redwolf/ui_temp3.xml" &gt; "/tmp/redwolf/ui.xml";
 					rm -f "/tmp/redwolf/ui_temp3.xml";
@@ -6296,7 +6335,7 @@
 				</actions>
 			</action>
 
-<action>
+			<action>
 				<conditions>
                     <condition var1="tw_install_reboot" var2="1"/>
 					<condition var1="tw_operation_status" var2="0"/>
@@ -14656,6 +14695,12 @@
 					<data variable="wolf_boot_t2w_check"/>
 				</listitem>
 			</listbox>
+
+			<text style="caption">
+				<condition var1="fox_debug" var2="1"/>
+				<placement x="%col1_x%" y="%row6_1_y%"/>
+				<text>Debug active!</text>
+			</text>
 
 			<action>
 				<conditions>
