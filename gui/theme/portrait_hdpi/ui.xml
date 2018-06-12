@@ -569,23 +569,10 @@
 		<variable name="pattern_line_w" value="12"/>
 		<variable name="pattern_size" value="648"/>
 
-
-      <variable name="rw_version" value="[OrangeFox R4]"/>
-      <variable name="flashlight" value="0"/>
-      <variable name="tw_heslo_check" value="dd"/>
-      <variable name="wolf_adb" value="0"/>
-      <variable name="wolf_supersu_var" value="0"/>
-      <variable name="wolf_magisk_var" value="0"/>
-      <variable name="wolf_nosunroot_var" value="0"/>
-      <variable name="wolf_subsrescue_var" value="0"/>
-      <variable name="wolf_subslegacy_var" value="0"/>
-      <variable name="wolf_ramdiskcleaner_var" value="0"/>
-      <variable name="wolf_delpass_var" value="0"/>
-      <variable name="wolf_nospatch_var" value="0"/>
-      <variable name="wolf_fpscannerfix_var" value="0"/>
-      <variable name="wolf_disableverity_var" value="0"/>
-      <variable name="wolf_aromafm" value="0"/>
-      <variable name="wolf_aromafm" value="0"/>
+		<variable name="rw_version" value="[OrangeFox R4]"/>
+		<variable name="flashlight" value="0"/>
+		<variable name="tw_heslo_check" value="dd"/>
+		<variable name="wolf_adb" value="0"/>
    </variables>
 
 	<include>
@@ -609,7 +596,7 @@
 				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
 			</fill>
 
-<!--image>
+			<!--image>
 				<condition var1="tw_busy" var2="1"/>
 				<image resource="logo"/>
 				<placement x="0" y="0"/>
