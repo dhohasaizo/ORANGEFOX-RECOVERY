@@ -2858,135 +2858,9 @@
 
 			<template name="statusbarinfo"/>
 
-      <template name="body"/>
+			<template name="body"/>
 
-
-
-
-
-            <!--text style="text_status">
-            	<conditions>
-            	<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-				<condition var1="show_cpu_temp" var2="0"/>
-				</conditions>
-				<placement x="%version_x%" y="%status_info_y%"/>
-				<text>%rw_version%</text>
-			</text>
-
-			<text style="text_status">
-				<conditions>
-            	<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-				<condition var1="show_cpu_temp" var2="1"/>
-				</conditions>
-				<placement x="%version_x%" y="%status_info_y%"/>
-				<text>{@cpu_temp=CPU: %tw_cpu_temp%&#xB0;C}</text>
-			</text>
-
-			<text style="text_status_fail">
-				<conditions>
-            	<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-				<condition var1="tw_simulate_actions" var2="1"/>
-				</conditions>
-				<placement x="%center_x%" y="%status_info_y%" placement="5"/>
-				<text>{@simulating=SIMULATING ACTIONS}</text>
-			</text>
-
-			<text style="text_status">
-				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="!=" var2="1"/>
-					<condition var1="tw_military_time" var2="0"/>
-					<condition var1="tw_no_battery_percent" var2="0"/>
-					<condition var1="tw_battery" op="&gt;" var2="16"/>
-					<condition var1="tw_battery" op="&lt;" var2="101"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
-
-			<text color="#FF7E00">
-				<font resource="status"/>
-				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="!=" var2="1"/>
-					<condition var1="tw_military_time" var2="0"/>
-					<condition var1="tw_battery" op="&gt;" var2="0"/>
-					<condition var1="tw_battery" op="&lt;" var2="15"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
-
-			<text style="text_status">
-				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="!=" var2="1"/>
-					<condition var1="tw_military_time" var2="1"/>
-					<condition var1="tw_no_battery_percent" var2="0"/>
-					<condition var1="tw_battery" op="&gt;" var2="16"/>
-					<condition var1="tw_battery" op="&lt;" var2="101"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
-
-			<text color="#FF7E00">
-				<font resource="status"/>
-				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="!=" var2="1"/>
-					<condition var1="tw_military_time" var2="1"/>
-					<condition var1="tw_battery" op="&gt;" var2="0"/>
-					<condition var1="tw_battery" op="&lt;" var2="15"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
-
-			<text style="text_status">
-				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="=" var2="1"/>
-					<condition var1="tw_no_battery_percent" var2="0"/>
-					<condition var1="tw_battery" op="&gt;" var2="16"/>
-					<condition var1="tw_battery" op="&lt;" var2="101"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text-->
-
-			<!--text color="#FF7E00">
-				<font resource="status"/>
-				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="=" var2="1"/>
-					<condition var1="tw_battery" op="&gt;" var2="0"/>
-					<condition var1="tw_battery" op="&lt;" var2="15"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
-
-			<text style="text_status">
-				<placement x="%time_x%" y="%status_info_y%" placement="1"/> <!--right align-->
-				<!--conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="!=" var2="1"/>
-				</conditions>
-				<text>%tw_time%</text>
-			</text>
-
-			<text style="text_status">
-				<placement x="%center_x%" y="%status_info_y%" placement="5"/> <!--centered-->
-				<!--conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" var2="1"/>
-					<condition var1="tw_simulate_actions" op="!=" var2="1"/>
-				</conditions>
-				<text>%tw_time%</text>
-			</text-->
-
-	       <image>
+	       	<image>
 				<placement x="0" y="84"/>
 				<image resource="actionbar_logo"/>
 			</image>
@@ -3002,7 +2876,7 @@
 				<action function="page">wolf_lockpass_checker</action>
 			</input>
 
-	<fill color="%accent%">
+			<fill color="%accent%">
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
@@ -3016,7 +2890,7 @@
 				<image resource="icon_warning"/>
 			</image>
 
- <checkbox style="checkbox_big">
+ 			<checkbox style="checkbox_big">
 				<placement x="48" y="660"/>
 				<text>{@show_password=Show password}</text>
 				<data variable="tw_heslo_viditelnost"/>
@@ -3032,7 +2906,7 @@
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
 			<text>{@lock_text_1=Recovery is protected against unauthorized}</text>
-      </text>
+      		</text>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="420"/>
@@ -3044,293 +2918,66 @@
 				<text>{@lock_text_3=To use main recovery features}</text>
 			</text>
 
-<text style="text_body2_fail">
+			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="540"/>
 				<text>{@lock_text_4=you first need to enter your password.}</text>
 			</text>
 
-<text style="caption_hl">
+			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row4_2_y%"/>
 				<text>{@lock_text_5=Enter password:}</text>
 			</text>
 
-<action>
-<condition var1="wolf_lockpass_checker" var2="1"/>
-<action function="page">main2</action>
-</action>
+			<action>
+				<condition var1="wolf_lockpass_checker" var2="1"/>
+				<action function="page">main2</action>
+			</action>
 
-	<template name="keyboardtemplate"/>
+			<template name="keyboardtemplate"/>
 
-<action>
-<condition var1="tw_heslo_viditelnost" var2="1"/>
-<action function="page">lockpass2</action>
-</action>
+			<action>
+				<condition var1="tw_heslo_viditelnost" var2="1"/>
+				<action function="page">lockpass2</action>
+			</action>
 
 			<action>
 				<touch key="home"/>
 				<action function="page">lockpass</action>
 			</action>
 
-<action>
-<condition var1="heslo"  op="!=" var2="tw_droid_password"/>
-<actions>
-          <action function="set">tw_has_mtp=1</actions>
-          <action function="set">tw_mtp_enabled=0</actions>
-          <action function="stopmtp"/>
-     </actions>
-     </action>
+			<action>
+				<condition var1="heslo"  op="!=" var2="tw_droid_password"/>
+				<actions>
+					<action function="set">tw_has_mtp=1</actions>
+					<action function="set">tw_mtp_enabled=0</actions>
+					<action function="stopmtp"/>
+				</actions>
+			</action>
 
 			<action>
 				<touch key="back"/>
 				<action function="page">lockpass</action>
 			</action>
-</page>
-
-<page name="wolf_lockpass_checker">
-
-<action>
-<condition var1="heslo"  op="=" var2="tw_droid_password"/>
- <actions>
-          <action function="set">tw_has_mtp=1</actions>
-          <action function="set">tw_mtp_enabled=1</actions>
-          <action function="set">wolf_lockpass_checker=1</actions>
-          <action function="startmtp"/>
-	      <action function="page">main2</action>
-</actions>
-</action>
-
-<action>
-<condition var1="heslo"  op="!=" var2="tw_droid_password"/>
-<action function="page">lockpass</action>
-</action>
 		</page>
 
-<page name="lockpass2">
-
-			<template name="ab"/>
-            <template name="body"/>
-
-<text style="text_status">
-            	<conditions>
-            	<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-				<condition var1="show_cpu_temp" var2="0"/>
-				</conditions>
-				<placement x="%version_x%" y="%status_info_y%"/>
-				<text>%rw_version%</text>
-			</text>
-
-			<text style="text_status">
-				<conditions>
-            	<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-				<condition var1="show_cpu_temp" var2="1"/>
-				</conditions>
-				<placement x="%version_x%" y="%status_info_y%"/>
-				<text>{@cpu_temp=CPU: %tw_cpu_temp%&#xB0;C}</text>
-			</text>
-
-			<text style="text_status_fail">
-				<conditions>
-            	<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-				<condition var1="tw_simulate_actions" var2="1"/>
-				</conditions>
-				<placement x="%center_x%" y="%status_info_y%" placement="5"/>
-				<text>{@simulating}</text>
-			</text>
-
-			<text style="text_status">
-				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="!=" var2="1"/>
-					<condition var1="tw_military_time" var2="0"/>
-					<condition var1="tw_no_battery_percent" var2="0"/>
-					<condition var1="tw_battery" op="&gt;" var2="16"/>
-					<condition var1="tw_battery" op="&lt;" var2="101"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
-
-			<text color="#FF7E00">
-				<font resource="status"/>
-				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="!=" var2="1"/>
-					<condition var1="tw_military_time" var2="0"/>
-					<condition var1="tw_battery" op="&gt;" var2="0"/>
-					<condition var1="tw_battery" op="&lt;" var2="15"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
-
-			<text style="text_status">
-				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="!=" var2="1"/>
-					<condition var1="tw_military_time" var2="1"/>
-					<condition var1="tw_no_battery_percent" var2="0"/>
-					<condition var1="tw_battery" op="&gt;" var2="16"/>
-					<condition var1="tw_battery" op="&lt;" var2="101"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
-
-			<text color="#FF7E00">
-				<font resource="status"/>
-				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="!=" var2="1"/>
-					<condition var1="tw_military_time" var2="1"/>
-					<condition var1="tw_battery" op="&gt;" var2="0"/>
-					<condition var1="tw_battery" op="&lt;" var2="15"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
-
-			<text style="text_status">
-				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="=" var2="1"/>
-					<condition var1="tw_no_battery_percent" var2="0"/>
-					<condition var1="tw_battery" op="&gt;" var2="16"/>
-					<condition var1="tw_battery" op="&lt;" var2="101"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
-
-			<text color="#FF7E00">
-				<font resource="status"/>
-				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="=" var2="1"/>
-					<condition var1="tw_battery" op="&gt;" var2="0"/>
-					<condition var1="tw_battery" op="&lt;" var2="15"/>
-				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
-			</text>
-
-			<text style="text_status">
-				<placement x="%time_x%" y="%status_info_y%" placement="1"/> <!--right align-->
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" op="!=" var2="1"/>
-				</conditions>
-				<text>%tw_time%</text>
-			</text>
-
-			<text style="text_status">
-				<placement x="%center_x%" y="%status_info_y%" placement="5"/> <!--centered-->
-				<conditions>
-					<condition var1="wolf_statusbar_on_lockpass" var2="1"/>
-					<condition var1="center_clock" var2="1"/>
-					<condition var1="tw_simulate_actions" op="!=" var2="1"/>
-				</conditions>
-				<text>%tw_time%</text>
-			</text>
-
-
-			<image>
-				<placement x="0" y="84"/>
-				<image resource="actionbar_logo"/>
-			</image>
-
-      <!--image>
-				<placement x="0" y="84"/>
-				<image resource="OrangeFox"/>
-			</image-->
-
-	<input>
-				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
-				<background color="%background%"/>
-				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
-				<font resource="body1" color="%text%"/>
-				<text>Zadejte heslo:</text>
-				<data name="tw_droid_password"/>
-				<restrict minlen="3" maxlen="128"/>
-				<action function="page">wolf_lockpass_checker</action>
-			</input>
-
-	<fill color="%accent%">
-				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
-			</fill>
-
-			<image>
-				<placement x="0" y="%keyboard_bg_y%"/>
-				<image resource="keyboard_shadow"/>
-			</image>
-
-			<image>
-				<placement x="%col1_x%" y="420"/>
-				<image resource="icon_warning"/>
-			</image>
-
-	<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="tw_heslo_viditelnost"/>
-			</checkbox>
-
-<action>
-<condition var1="tw_heslo_viditelnost" var2="0"/>
-<action function="page">lockpass</action>
-</action>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@lock_text_1=Recovery is protected against unauthorized}</text>
-      </text>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="420"/>
-				<text>{@lock_text_2=access.}</text>
-			</text>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="480"/>
-				<text>{@lock_text_3=To use main recovery features}</text>
-			</text>
-
-<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="540"/>
-				<text>{@lock_text_4=you first need to enter your password.}</text>
-			</text>
-
-<text style="caption_hl">
-				<placement x="%col1_x%" y="%row4_2_y%"/>
-				<text>{@lock_text_5=Enter password:}</text>
-			</text>
-
-<action>
-<condition var1="wolf_lockpass_checker" var2="1"/>
-<action function="page">main2</action>
-</action>
-
-	<template name="keyboardtemplate"/>
+		<page name="wolf_lockpass_checker">
 
 			<action>
-				<touch key="home"/>
-				<action function="page">lockpass2</action>
+				<condition var1="heslo"  op="=" var2="tw_droid_password"/>
+				<actions>
+					<action function="set">tw_has_mtp=1</actions>
+					<action function="set">tw_mtp_enabled=1</actions>
+					<action function="set">wolf_lockpass_checker=1</actions>
+					<action function="startmtp"/>
+					<action function="page">main2</action>
+				</actions>
 			</action>
 
 			<action>
-				<touch key="back"/>
-				<action function="page">lockpass2</action>
+				<condition var1="heslo"  op="!=" var2="tw_droid_password"/>
+				<action function="page">lockpass</action>
 			</action>
-
-
-<action>
-<condition var1="heslo"  op="!=" var2="tw_droid_password"/>
-<actions>
-          <action function="set">tw_has_mtp=1</actions>
-          <action function="set">tw_mtp_enabled=0</actions>
-          <action function="stopmtp"/>
-     </actions>
-     </action>
- </page>
+		</page>
 
 		<page name="main2">
 
@@ -3349,7 +2996,7 @@
 				</actions>
 			</button>
 
-<!--button>
+			<!--button>
 				<placement x="60" y="84"/>
 				<image resource="actionbar_android"/>
 				<actions>
@@ -3358,13 +3005,13 @@
 				</actions>
 			</button-->
 
-<!--button>
+			<!--button>
 				<placement x="204" y="84"/>
 				<image resource="actionbar_android"/>
 				<action function="page">wolf_kernel_settings</action>
 			</button-->
 
-<button>
+			<button>
 				<placement x="348" y="84"/>
 				<image resource="actionbar_theme" highlightresource="actionbar_theme_hl"/>
 				<action function="page">fox_menu</action>
@@ -3535,7 +3182,7 @@
 
 			<button style="mb_btn">
 				<placement x="%col1_x%" y="%mb_row4_y%" w="%content_w%" h="%mb_h%"/>
- <action function="page">restore</action>
+ 				<action function="page">restore</action>
 			</button>
 
 			<image>
@@ -3728,7 +3375,7 @@
 			</page>
 
 
-<page name="settings">
+		<page name="settings">
 
 
 			<template name="body"/>
@@ -4240,76 +3887,7 @@
 			</action>
 		</page>
 
-<page name="wolf_wifi_bluetooth_backup_info">
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">fox_menu</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>OrangeFox</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>Recovery Project</text>
-			</text>
-
-			<text style="text_ab_subtitle">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>New ROM Guard</text>
-			</text>
-
-			<listbox style="textbox">
-				<placement x="%col1_x%" y="%row2_3_y%" w="%console_width%" h="%console_action_height%"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line1=}"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line2=}"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line3=}"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line4=}"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line5=}"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line6=}"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line7=}"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line8=}"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line9=}"/>
-				<listitem name="{@wolf_wifi_bluetooth_backup_line10=}"/>
-			</listbox>
-
-			<fill color="%linecolor%">
-				<placement x="%col1_x%" y="%row2_3_y%" w="%content_w%" h="%fileselector_separatorheight%"/>
-			</fill>
-
-			<fill color="%linecolor%">
-				<placement x="%col1_x%" y="%row7_3_y%" w="%content_w%" h="%fileselector_separatorheight%"/>
-			</fill>
-
-			<button>
-				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
-				<image resource="btn_float_accept"/>
-				<highlight color="%highlight_color%"/>
-				<action function="page">fox_menu"</action>
-			</button>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">fox_menu</action>
-			</action>
-
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-
-<page name="fox_community">
+		<page name="fox_community">
 			<template name="body"/>
 
 			<template name="ab_tab"/>
@@ -4373,7 +3951,7 @@
 				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
 				<text>{@fox_comm_i2}</text>
 			</text>
-			<!-- #OF3 -->
+
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_left_x%" y="%row3_1_y%"/>
 				<text>SuperSU</text>
@@ -4429,14 +4007,13 @@
 				<action function="page">main2</action>
 			</action>
 
-
 			<action>
 				<touch key="back"/>
 				<action function="page">fox_menu</action>
 			</action>
-</page>
+		</page>
 
-<page name="wolf_system_settings">
+		<page name="wolf_system_settings">
 
 			<template name="body"/>
 
@@ -4455,20 +4032,7 @@
 				<text>{@redwolf_settings=}</text>
 			</text>
 
-<!--button style="btn_raised">
-				<placement x="27" y="1560"/>
-				<text>t2w</text>
-				<action function="page">wolf_t2w</action>
-            </button>
-
-    <button style="btn_raised">
-				<placement x="27" y="1410"/>
-				<text>Gallery</text>
-				<action function="page">wolf_picture</action>
-            </button-->
-
-
-<button style="btn_raised_hl">
+			<button style="btn_raised_hl">
 				<placement x="1053" y="1410" placement="1"/>
 				<text>{@wolf_backupfolder_btn=}</text>
 				<action function="page">wolf_backup_name_set1</action>
@@ -4480,8 +4044,8 @@
 				<action function="page">wolf_night_mode</action>
 			</button>
 
-         <action>
-          <touch key="home"/>
+         	<action>
+          		<touch key="home"/>
 				<action function="page">main2</action>
 			</action>
 
@@ -4665,7 +4229,7 @@
 			</action>
 		</page>
 
-<page name="theme_splash">
+		<page name="theme_splash">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -4691,7 +4255,6 @@
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
 			</image>
-
 
             <button>
 				<condition var1="tw_busy" var2="1"/>
@@ -4729,22 +4292,22 @@
 				<text>{@wolf_theme_splash_wolf_txt2=}</text>
 			</text>
 
-<text style="text_body2_hl">
+			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
 				<text>{@wolf_theme_splash_wolf_txt3=}</text>
 			</text>
 
-<text style="text_body2_hl">
+			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
 				<text>{@wolf_theme_splash_wolf_txt4=}</text>
 			</text>
 
-<text style="text_body2_hl">
+			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@wolf_theme_splash_wolf_txt5=}</text>
 			</text>
 
-<text style="text_body2_hl">
+			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row4_1_y%"/>
 				<text>{@wolf_theme_splash_wolf_txt6=}</text>
 			</text>
@@ -4777,11 +4340,11 @@
 				</actions>
 			</button>
 
-<button style="btn_raised">
+			<button style="btn_raised">
 				<condition var1="tw_busy" var2="1"/>
 				<placement x="%btn_raised_right_x%" y="%row5_3_y%" placement="1"/>
 				<text>{@install_select_file_btn=SELECT FILE}</text>
-				</button>
+			</button>
 
 			<text style="caption">
 				<conditions>
@@ -4802,8 +4365,6 @@
 					<action function="page">wolf_theme_splash_wolf_finish</action>
 					</actions>
 			</slider>
-
-
 
 			<text color="%accent%">
 				<condition var1="tw_busy" var2="1"/>
@@ -4857,7 +4418,7 @@
 				<text>{@wolf_restore_wolf_splash_1=}</text>
 			</text>
 
-<text style="text_ab_title">
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@wolf1_restore_splash_wolf_2=}</text>
 			</text>
@@ -4868,14 +4429,14 @@
                <text>{@wolf_restore_wolf_splash_conf=}</text>
 			</text>
 
-<text color="%accent%">
+			<text color="%accent%">
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
                <text>{@wolf_restore_splash_wolf=}</text>
 			</text>
 
-			    <slider>
+			<slider>
 				<condition var1="tw_busy" var2="0"/>
 				<actions>
 					<action function="wlfw"/>
@@ -4883,147 +4444,22 @@
                     cp -f "/tmp/redwolf/ramdisk/twres/images/splash_stock.png" "/tmp/redwolf/ramdisk/twres/images/splash.png";
 					</action>
 					<action function="wlfx"/>
-					<action function="page">wolf_theme_splash_restore_finish</action>
-					</actions>
+					<action function="page">set_color_finish</action>
+				</actions>
 			</slider>
 
-<action>
+			<action>
 				<touch key="back"/>
-			<action function="page">main2</action>
-			</action>
-
-<action>
-				<touch key="home"/>
-			<action function="page">main2</action>
-			</action>
-</page>
-
-<page name="wolf_theme_splash_restore_finish">
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">main2</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wolf_restore_wolf2_splash_1=}</text>
-			</text>
-
-<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@wolf_restore_wolf2_splash_2=}</text>
-			</text>
-
-			<text style="caption">
-				<condition var1="tw_busy" var2="0"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-               <text>{@colour_script_finish3=}</text>
-			</text>
-
-<text color="%accent%">
-				<condition var1="tw_busy" var2="1"/>
-				<font resource="subhead"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-               <text>{@wolf_colour_wait=}</text>
-			</text>
-
-			<slider>
-				<actions>
-				    <action function="set">tw_back=theme_splash</action>
-					<action function="set">tw_action=reboot</action>
-					<action function="set">tw_reboot_param=recovery</action>
-					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
-					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
-					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
-				    <action function="page">rebootcheck</action>
-				</actions>
-       	</slider>
-
-<action>
-				<touch key="back"/>
-			<action function="page">main2</action>
 			</action>
 
-<action>
+			<action>
 				<touch key="home"/>
-			<action function="page">main2</action>
-			</action>
-</page>
-
-
-		<page name="wolf_theme_splash_wolf_finish">
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">main2</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wolf_custom_wolf_splash_1=}</text>
-			</text>
-
-<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@wolf_custom_wolf_splash_2=}</text>
-			</text>
-
-			<text style="caption">
-				<condition var1="tw_busy" var2="0"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-               <text>{@colour_script_finish3=}</text>
-			</text>
-
-<text color="%accent%">
-				<condition var1="tw_busy" var2="1"/>
-				<font resource="subhead"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-               <text>{@wolf_colour_wait=}</text>
-			</text>
-
-			<slider>
-				<actions>
-				    <action function="set">tw_back=reboot</action>
-					<action function="set">tw_action=reboot</action>
-					<action function="set">tw_reboot_param=recovery</action>
-					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
-					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
-					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
-				    <action function="page">rebootcheck</action>
-				</actions>
-       	</slider>
-
-<action>
-				<touch key="back"/>
-			<action function="page">main2</action>
 			</action>
+		</page>
 
-<action>
-				<touch key="home"/>
-			<action function="page">main2</action>
-			</action>
-</page>
-
-<page name="theme_splash_select_png">
+		<page name="theme_splash_select_png">
 			<action>
 				<condition var1="bookmark" var2="1"/>
 				<action function="set">tw_zip_location=%location_install_splash_png%</action>
@@ -5163,7 +4599,6 @@
 				</actions>
 			</action>
 		</page>
-
 
 		<page name="theme_color">
 			<template name="body"/>
