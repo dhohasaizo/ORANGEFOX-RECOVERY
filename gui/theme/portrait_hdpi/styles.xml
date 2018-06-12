@@ -187,10 +187,17 @@
 		<style name="partitionlist">
 			<background color="%background%"/>
 			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
-			<!--icon selected="checkbox_true" unselected="checkbox_false" /-->
-			<icon selected="radio_true" unselected="radio_false" />
+			<icon selected="checkbox_true" unselected="checkbox_false" />
 			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" highlightcolor="%accent%" />
 		</style>
+
+		<!--style name="partitionselect">
+			<background color="%background%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<!--icon selected="checkbox_true" unselected="checkbox_false" /-->
+			<!--icon selected="radio_true" unselected="radio_false" />
+			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" highlightcolor="%accent%" />
+		</style-->
 
 		<style name="partitionlist_dialog">
 			<background color="%background%"/>

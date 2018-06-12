@@ -12449,6 +12449,7 @@
 				<placement x="%col1_x%" y="%row3_1_y%" w="%listbox_w%" h="%fileselector_wipe_height%"/>
 				<data name="tw_storage_path"/>
 				<listtype name="storage"/>
+				<icon selected="radio_true" unselected="radio_false" />
 			</partitionlist>
 
 			<image>
