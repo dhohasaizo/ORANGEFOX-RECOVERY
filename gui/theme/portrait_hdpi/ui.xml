@@ -80,12 +80,10 @@
 		<image name="actionbar_close_hl" filename="actionbar_close_hl" retainaspect="1"/>
 		<image name="actionbar_date" filename="actionbar_date" retainaspect="1"/>
 
-    <!-- OrangeFox Custom images -->
-    <image name="tab_comm_a" filename="tab_comm_a" retainaspect="1"/>
-    <image name="tab_comm" filename="tab_comm" retainaspect="1"/>
-
-
-    <image name="wolf_lock_bg" filename="wolf_lock_bg" retainaspect="1"/>
+		<!-- OrangeFox Custom images -->
+		<image name="tab_comm_a" filename="tab_comm_a" retainaspect="1"/>
+		<image name="tab_comm" filename="tab_comm" retainaspect="1"/>
+		<image name="wolf_lock_bg" filename="wolf_lock_bg" retainaspect="1"/>
 
 		<image name="btn_float_addtoqueue" filename="btn_float_addtoqueue" retainaspect="1"/>
 		<image name="btn_float_addtoqueue_hl" filename="btn_float_addtoqueue_hl" retainaspect="1"/>
@@ -220,7 +218,6 @@
 		<image name="kb_arrow_up" filename="kb_arrow_up" retainaspect="1"/>
 		<image name="kb_arrow_down" filename="kb_arrow_down" retainaspect="1"/>
 		<image name="keyboard_shadow" filename="keyboard_shadow"/>
-		<!--image name="usb" filename="usb" retainaspect="1"/-->
 
 		<image name="tab_misc" filename="tab_misc" retainaspect="1"/>
 		<image name="tab_misc_a" filename="tab_misc_a" retainaspect="1"/>
@@ -248,14 +245,6 @@
 		<variable name="rw_inject_after_zip_tmp" value="0"/>
 		<variable name="auto_flash_repack" value="0"/>
 		<variable name="aromafm" value="1" persist="1"/>
-		<variable name="governor_interactive" value="0"/>
-		<variable name="governor_ironactive" value="0"/>
-		<variable name="governor_impulse" value="0"/>
-		<variable name="governor_conservative" value="0"/>
-		<variable name="governor_ondemand" value="0"/>
-		<variable name="governor_userspace" value="0"/>
-		<variable name="governor_performance" value="0"/>
-		<variable name="governor_powersave" value="0"/>
 		<variable name="auto_generate" value="0" persist="1"/>
 		<variable name="show_cpu_temp" value="1" persist="1"/>
 		<variable name="center_clock" value="0" persist="1"/>
@@ -271,6 +260,7 @@
 		<variable name="fox_dark" value="0" persist="0"/>
 		<variable name="fox_white" value="0" persist="0"/>
 		<variable name="fox_theme_wait" value="0" persist="0"/>
+		<!-- OrangeFox debug functions -->
 		<variable name="fox_debug" value="1" persist="0"/>
 		<variable name="fox_uncolor_header" value="0" persist="0"/>
 
@@ -697,24 +687,24 @@
 				<action function="overlay">console</action>
 			</button>
 
-    <action>
+    		<action>
 				<touch key="power"/>
 				<action function="togglebacklight"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+volup"/>
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 
-</template>
+		</template>
 
-<template name="bobs_veganas">
+		<template name="bobs_veganas">
 			<background color="%background%"/>
 
 			<fill color="%accent%">
@@ -931,7 +921,7 @@
 				<text>%tw_time%</text>
 			</text>
 
-      <text style="text_status">
+      		<text style="text_status">
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/> <!--Powersave center clock-->
 				<conditions>
 					<condition var1="center_clock" op="=" var2="1"/>
@@ -940,14 +930,14 @@
 				<text>%tw_time%</text>
 			</text>
 
-      <text color="#000000">
+      		<text color="#000000">
 				<font resource="status"/>
 				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
-          <condition var1="wolf_boot_powersave_check" op="=" var2="1"/>
+          			<condition var1="wolf_boot_powersave_check" op="=" var2="1"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -959,7 +949,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
-          <condition var1="wolf_boot_powersave_check" op="=" var2="1"/>
+          			<condition var1="wolf_boot_powersave_check" op="=" var2="1"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>

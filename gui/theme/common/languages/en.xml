@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-
+<author>OrangeFox Recovery Project</author>
 <language>
 	<display>English</display>
-
+	
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
 		<resource name="font_l" type="fontoverride" filename="RobotoCondensed-Regular.ttf" scale="100" />
@@ -599,7 +599,6 @@
 		<string name="theme_ver_err">Custom theme version does not match OrangeFox version. Using stock theme.</string>
 		<string name="up_a_level">(Up A Level)</string>
 
-		<!-- new-->
 	    <string name="mtp_enabled">MTP is enabled</string>
 		<string name="mtp_disabled">MTP is disabled</string>
 		<string name="done">Done</string>
@@ -626,8 +625,6 @@
 		<string name="install_recovery">Installing Recovery...</string>
 		<string name="zip_md5_chk">Force MD5 check on all Zip files</string>
 		<string name="swipe_to_install">Swipe to Install</string>
-		<string name="start_aromafm">Start Aroma File Manager</string>
-		<string name="swipe_aromafm">Swipe to start AromaFM</string>
 		<string name="run_aromafm">Run</string>
 		<string name="flashit_script">FlashIt Script</string>
 		<string name="raised_installscript_btn">Install Script</string>
@@ -650,8 +647,6 @@
 		<string name="author">Author</string>
 		<string name="contact">Contact</string>
 		<string name="credits">Credits</string>
-		<string name="osm0sis">For his image scripts</string>
-		<string name="z31s1g">For the base of his material theme.</string>
 		<string name="DSM_">For the color changing script</string>
 		<string name="version_twrp">Version</string>
 		<string name="theme">Install Theme</string>
@@ -954,9 +949,6 @@
 		<string name="wolf_fgo_patch_hdr2">For LOS based ROMs</string>
 		<string name="wolf_flash_fgo_patch">Swipe to install the FGO patch</string>
 		<!-- OrangeFox Recovery V3.1 / 018 -->
-		<string name="redwolfms2">[OrangeFox]: Welcome!</string>
-		<string name="redwolfms3">[Version]: {1}</string>
-		<string name="redwolfms4">[Build]: {1}</string>
 		<string name="wolf_reboot_restore_finish_chk">Reboot after restore is complete</string>
 		<string name="wolf_dmverity_chk">Disable DM-Verity</string>
 		<string name="wolf_forced_encryption_chk">Disable Forced Encryption</string>
@@ -978,45 +970,13 @@
 		<string name="wolf_reboot_dont_disable_stock_recovery_chk">Don't disable stock recovery replace</string>
 		<string name="wolf_dialog_special_actions_1">Please don't change anything in this</string>
 		<string name="wolf_dialog_special_actions_2">section without a good reason!</string>
-		<string name="Dadi11">Great dev and maintainer</string>
-		<string name="help">of the builds for Mido.</string>
 		<string name="wolf_about_telegram_account">Telegram account</string>
 		<string name="wolf_reboot_nastaveni">Set on boot settings</string>
 		<string name="wolf_no_os_engine">Use Advanced NO OS Search Engine</string>
 		<string name="wolf_reset_default_hdr">Default Settings</string>
 		<string name="wolf_extra_fox_hdr">Advanced Actions</string>
 		<string name="wolf_extra_fox_hdr_2">Advanced Actions of the OrangeFox Recovery</string>
-		<string name="extra_fox_info_line1">Hello! Welcome to the special actions section</string>
-		<string name="extra_fox_info_line2">of OrangeFox Recovery! Here you can change</string>
-		<string name="extra_fox_info_line3">the manner in which OrangeFox Recovery</string>
-		<string name="extra_fox_info_line4">installs zip files.</string>
-		<string name="extra_fox_info_line5">Would you prefer to not flash lazyflasher</string>
-		<string name="extra_fox_info_line6">every time you install a ROM which has</string>
-		<string name="extra_fox_info_line7">dm-verity enabled? If so, just enable</string>
-		<string name="extra_fox_info_line8">&quot;Disable DM-Verity&quot; here. And</string>
-		<string name="extra_fox_info_line9">that would be all that you need to do.</string>
-		<string name="extra_fox_info_line10">After this, whenever you flash the ROM,</string>
-		<string name="extra_fox_info_line11">the recovery will automatically check and</string>
-		<string name="extra_fox_info_line12">disable dm-verity during the installation.</string>
-		<string name="extra_fox_info_line13">The same process also applies to forced</string>
-		<string name="extra_fox_info_line14">encryption.</string>
-		<string name="extra_fox_info_line15">Other things like &quot;Enable Debugging...&quot;</string>
-		<string name="extra_fox_info_line16">will involve changes being made to the props...</string>
-		<string name="extra_fox_info_line17">If you still have any question then please</string>
-		<string name="extra_fox_info_line18">do ask in the OrangeFox XDA thread, or in</string>
-		<string name="extra_fox_info_line19">our Telegram group (the link is on XDA).</string>
-		<string name="extra_fox_info_line20">Enjoy the OrangeFox special features!</string>
 
-
-		<!-- Console Messages -->
-		<!-- Some messages were updated or deleted in the 020! -->
-		<string name="wolf_incremental_ota_status_enabled">Support MIUI Incremental package status: Enabled</string>
-		<string name="wolf_incremental_ota_status_disabled">Support MIUI Incremental package status: Disabled</string>
-		<string name="wolf_incremental_package_detected">Detected Incremental package '{1}'</string>
-		<string name="wolf_survival_does_not_exist">OTA Survival does not exist! Please flash a full ROM first!</string>
-		<string name="wolf_install_detecting">Detecting Current Package</string>
-		<string name="wolf_install_standard_detected">- Detected Standard Package</string>
-		<string name="wolf_install_miui_detected">- Detected MIUI Update Package</string>
 		<!-- Red Wolf Recovery V3.1.1 / 020 -->
 		<!-- This thing will disable checking of the boot partition to disable DM-Verity, Forced Encryption etc. -->
 		<string name="wolf_disable_boot_chk">Disable boot check</string>
@@ -1027,31 +987,30 @@
 		<string name="wolf_prebuilt_fox_not_exist_2">using the installation zip.</string>
 		<string name="wolf_fm_unzip_btn">Unzip</string>
 		<!-- Console Messages -->
+		<string name="redwolfms2">[OrangeFox]: Welcome!</string>
+		<string name="redwolfms3">[Version]: {1}</string>
+		<string name="redwolfms4">[Build]: {1}</string>
 		<string name="wolf_incremental_ota_compatibility_chk">Verifying Incremental Package Signature...</string>
 		<string name="wolf_incremental_ota_compatibility_false">Incremental package isn't compatible with this ROM!</string>
 		<string name="wolf_incremental_ota_compatibility_true">Incremental package is compatible</string>
-		<!-- Red Wolf Recovery V3.1 / 022 -->
-		<string name="wolf_wipe_substratum_overlays">Substratum Overlays</string>
+		<string name="wolf_incremental_ota_status_enabled">Support MIUI Incremental package status: Enabled</string>
+		<string name="wolf_incremental_ota_status_disabled">Support MIUI Incremental package status: Disabled</string>
+		<string name="wolf_incremental_package_detected">Detected Incremental package '{1}'</string>
+		<string name="wolf_survival_does_not_exist">OTA Survival does not exist! Please flash a full ROM first!</string>
+		<string name="wolf_install_detecting">Detecting Current Package</string>
+		<string name="wolf_install_standard_detected">- Detected Standard Package</string>
+		<string name="wolf_install_miui_detected">- Detected MIUI Update Package</string>
 		<string name="wolf_zip_have_bootloader">Warning: Detected reinstallation of the bootloader which was called by '{1}'.</string>
 		<string name="substratum_done">-- Substratum Overlays Wipe Complete!</string>
 		<string name="wolf_no_space_ota_survival">Not enough free space on internal storage for creating the OTA survival.</string>
-		<!-- Red Wolf Recovery V3.1 / 023 -->
-		<string name="wolf_stupid_fox_detected">Todo: delete this string</string>
-		<!-- Red Wolf Recovery V3.1 / 024 -->
+		<string name="wolf_wipe_substratum_overlays">Substratum Overlays</string>
 		<string name="wolf_incremental_ota_res">OTA_RES -- done!</string>
 		<string name="wolf_incremental_ota_res_run">Running OTA_RES process...</string>
 		<string name="wolf_incremental_ota_bak_run">Running OTA_BAK process...</string>
 		<string name="wolf_incremental_ota_bak">OTA_BAK -- done!</string>
-		<!-- OrangeFox R4; removed wifi, bluetooth, hosts -->
-		<!--string name="wolf_wifi_data">WIFI Data</string -->
-		<!--string name="wolf_bluetooth_data">Bluetooth Data</string -->
-		<!--string name="wolf_hosts_data">Hosts</string -->
-		
-		<!-- Red Wolf Recovery V3.1 / 025 -->
 		<string name="wolf_set_new_access_password">Changing recovery access password...</string>
 		<string name="wolf_remove_access_password_one">Removing recovery access password...</string>
-
-		<!--OrangeFox Recovery Project-->
+		
 		<!-- <string name=""></string> -->
 
 		<string name="fox_menu_flash">Orange!</string>
@@ -1084,9 +1043,8 @@
 		<string name="fox_slider_supersu">Swipe to install SuperSU</string>
 
 		<string name="fox_about_maintainer">Maintainer</string>
-		<string name="fox_redwolf">for RedWolf development and</string>
-		<string name="fox_rey">Vince maintainer</string>
-		<string name="fox_kirill">For graphics, Photoshop guru</string>
+		<string name="z31s1g">For the base of his material theme.</string>
+		<string name="fox_redwolf">for RedWolf development</string>
 
 		<string name="unlock_btn">Unlock</string>
 

@@ -3459,13 +3459,6 @@
 				<listitem name="{@wolf_no_os_engine=}">
 					<data variable="wolf_noos_engine"/>
 				</listitem>
-				<!--listitem name="{@simact_chk=Simulate actions for theme testing}">
-					<data variable="tw_simulate_actions"/>
-				</listitem>
-				<listitem name="{@simfail_chk=Simulate failure for actions}">
-					<condition var1="tw_simulate_actions" var2="1"/>
-					<data variable="tw_simulate_fail">
-				</listitem-->
 				<listitem name="{@sha2_chk=Use SHA2 for hashing}">
 					<condition var1="tw_no_sha2" var2="0"/>
 					<data variable="tw_use_sha2"/>
@@ -3476,7 +3469,6 @@
 				<placement x="%col1_x%" y="%row6_3_y%" />
 				<text>{@language_cptn=Language}</text>
 			</text>
-
 
 			<listbox>
 				<placement x="%col1_x%" y="%row7_1_y%" w="%listbox_w%" h="%listbox_settings_lang_height%"/>
@@ -13091,23 +13083,23 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="960"/>
-				<text>ATG Droid, Dadi11 - {@fox_redwolf=for RedWolf development and }</text>
+				<text>ATG Droid, Dadi11 - {@fox_redwolf=for RedWolf development}</text>
 			</text>
 
-			<text style="text_body2">
+			<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="1020"/>
 				<text>{@help=}</text>
-			</text>
+			</text-->
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1110"/>
 				<text>ManoloRey - {@fox_rey=Vince maintainer}</text>
 			</text>
 
-			<!--text style="text_body2">
+			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1200"/>
-				<text>Kirill Filippenok - {@fox_kirill=For graphics, Photoshop guru}</text>
-			</text-->
+				<text>z31s1g - {@fox_z31s1g=For material theme}</text>
+			</text>
 
             		<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="1290"/>
@@ -14127,9 +14119,9 @@
 				<listitem name="{@wolf_boot_fastcharge=Reboot after installation is complete}">
 					<data variable="wolf_boot_fastcharge_check"/>
 				</listitem>
-				<listitem name="{@wolf_boot_t2w=Use rm -rf instead of formatting}">
+				<!--listitem name="{@wolf_boot_t2w=Use rm -rf instead of formatting}">
 					<data variable="wolf_boot_t2w_check"/>
-				</listitem>
+				</listitem-->
 			</listbox>
 
 			<text style="caption">
