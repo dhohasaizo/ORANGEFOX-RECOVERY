@@ -5576,6 +5576,24 @@
 				<action function="page">flash_done</action>
 			</action>
 
+			<text style="text_ab_title">
+				<condition var1="wolf_aromafm" var2="1" />
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@run_custom_file=Run}</text>
+			</text>
+
+			<action>
+				<condition var1="wolf_aromafm" var2="1" />
+				<actions>
+					<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+					<action function="set">wolf_install_built_in_zip=0</action>
+					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+					<action function="set">tw_screen_timeout_secs=%tw_screen_timeout_temp%</action>
+					<action function="set">wolf_aromafm=0</action>
+					<action function="page">main</action>
+				</actions>
+			</action>
+
 		</page>
 
 		<page name="flash_image">
