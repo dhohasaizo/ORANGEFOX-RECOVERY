@@ -4157,7 +4157,6 @@
 				<action function="page">fox_theme</action>
 			</button>
 
-
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_left_x%" y="%row6_3_y%"/>
 				<text>Magisk</text>
@@ -5061,7 +5060,7 @@
 				<action function="flash">flash_zip</action>
 			</slider>
 
-<action>
+			<action>
 				<touch key="back"/>
 				<actions>
 					<action function="cancelzip"/>
@@ -5532,7 +5531,6 @@
 				<action function="page">flash_confirm</action>
 			</action>
 
-
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -5869,7 +5867,7 @@
 			</action>
 		</page>
 
-<page name="restore_sleep_and_reboot">
+		<page name="restore_sleep_and_reboot">
 			<template name="body"/>
 
 			<template name="progress_bar"/>
@@ -6029,7 +6027,7 @@
 			</action>
 		</page>
 
-<page name="clear_vars">
+		<page name="clear_vars">
 			<action>
 				<action function="set">tw_operation_state=0</action>
 				<action function="set">tw_text1=</action>
@@ -6248,7 +6246,7 @@
 					<action function="%tw_action2%">%tw_action2_param%</action>
 				</actions>
 			</action>
-			</page>
+		</page>
 
 		<page name="singleaction_page">
 			<template name="body"/>
@@ -7265,7 +7263,7 @@
 			</action>
 		</page>
 
-<page name="install_image">
+		<page name="install_image">
 			<action>
 				<action function="set">tw_back=install_image</action>
 			</action>
@@ -7367,12 +7365,12 @@
 				<action function="page">install</action>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+volup"/>
 				<action function="set">tw_zip_location=/sdcard1</action>
-				</action>
+			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="set">tw_zip_location=/sdcard</action>
 			</action>
@@ -7383,8 +7381,7 @@
 			</action>
 		</page>
 
-
-<page name="install">
+		<page name="install">
 			<action>
 				<action function="set">tw_back=install</action>
 			</action>
@@ -7499,7 +7496,7 @@
 				<action function="set">tw_zip_location=/sdcard1</action>
 				</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="set">tw_zip_location=/sdcard</action>
 			</action>
@@ -7541,7 +7538,7 @@
 				<action function="page">appcheck</action>
 			</action-->
 
-<action>
+			<action>
 	            <conditions>
 	            <condition var1="wolf_noos_engine" var2="0"/>
 				<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
@@ -7565,7 +7562,7 @@
 
 
 
-<action>
+			<action>
 	            <conditions>
 	            <condition var1="wolf_noos_engine" var2="0"/>
 				<condition var1="tw_backup_system_size" op="&lt;" var2="%tw_min_system%"/>
@@ -7591,10 +7588,9 @@
 			<action>
 				<action function="reboot">%tw_reboot_param%</action>
 			</action>
-</page>
+		</page>
 
-
-<page name="wipe">
+		<page name="wipe">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -7703,7 +7699,7 @@
 			</text>
 
 
-<slider>
+			<slider>
 				<actions>
 					<action function="set">tw_back=wipe</action>
 					<action function="set">tw_action=wipe</action>
@@ -7821,7 +7817,7 @@
 				<text>{@swipe_wipe=Swipe to Wipe}</text>
 			</text>
 
-<slider>
+			<slider>
 				<actions>
 					<action function="set">tw_back=advancedwipe</action>
 					<action function="set">tw_action=wipe</action>
