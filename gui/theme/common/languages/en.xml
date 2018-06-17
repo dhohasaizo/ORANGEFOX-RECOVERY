@@ -1017,7 +1017,6 @@
 		<string name="fox_menu_delpass">Delete ROM password</string>
 		<string name="fox_menu_navigation">Navigation</string>
 		<string name="fox_m_other">Other settings</string>
-		<string name="fox_dell_pass">Delete ROM password</string>
 		<string name="fox_menu_comm">Community scripts</string>
 		<string name="fox_menu_splash">Change Splash</string>
 		<string name="fox_menu_theme">Change Theme</string>
@@ -1038,10 +1037,6 @@
 		<string name="fox_theme_slider_black">Slide to apply black theme</string>
 		<string name="fox_theme_slider_white">Slide to apply white theme</string>
 
-		<string name="fox_slider_magisk">Swipe to install Magisk</string>
-		<string name="fox_slider_pass">Swipe to delete ROM password</string>
-		<string name="fox_slider_supersu">Swipe to install SuperSU</string>
-
 		<string name="fox_about_maintainer">Maintainer</string>
 		<string name="z31s1g">For the base of his material theme.</string>
 		<string name="fox_redwolf">for RedWolf development</string>
@@ -1050,6 +1045,10 @@
 
 		<string name="fox_menu2_power">Performance Profile</string>
 		<string name="fox_menu2_other">Other Setting</string>
+
+		<string name="fox_community_title">OrangeFox Community scrips</string>
+		<string name="fox_comm_i1">To add a new item contact</string>
+		<string name="fox_comm_i2">@MrYacha in Telegram</string>
 
 		<string name="f_orange">Orange</string>
 		<string name="f_indigo">Indigo</string>
@@ -1067,11 +1066,7 @@
 		<string name="f_gray">Gray</string>
 		<string name="f_blue_grey">Blue Grey</string>
 
-		<!-- OrangeFox community scripts -->
-
-		<string name="fox_community_title">OrangeFox Community scrips</string>
-		<string name="fox_comm_i1">To add a new item contact</string>
-		<string name="fox_comm_i2">@MrYacha in Telegram</string>
+		<!-- OrangeFox flash! -->
 
 		<string name="fox_comm_su_txt2">By Chainfire</string>
 		<string name="fox_comm_su_sld">Swipe to install SuperSU</string>
@@ -1090,5 +1085,15 @@
 		<string name="fox_del_sld">Swipe to delete OrangeFox Files</string>
 		<string name="fox_del_i1">You Really want to delete all</string>
 		<string name="fox_del_i2">OrangeFox files?</string>
+
+		<string name="fox_magisk_txt1">Install Magisk</string>
+		<string name="fox_magisk_txt2">By Topjohnwu</string>
+		<string name="fox_magisk_sld">Swipe to install Magisk</string>
+
+		<string name="fox_dellp_btn">Del ROM Pass</string>
+		<string name="fox_dellp_txt1">Remove ROM password</string>
+		<string name="fox_dellp_txt2">By DarthJabba9</string>
+		<string name="fox_dellp_sld">Swipe to remove ROM Password</string>
+
 </resources>
 </language>

@@ -466,184 +466,6 @@
 			</action>
 		</page>
 
-
-		<page name="wolf_adb">
-
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main2</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>OrangeFox</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>Android Debug Bridge</text>
-			</text>
-
-			   <text style="caption">
-			<condition var1="wolf_adb" var2="0"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@adb_info_on=}</text>
-			</text>
-
-			<text style="caption">
-				<condition var1="wolf_adb" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@adb_info_off=}</text>
-			</text>
-
-	        <slider>
-				<conditions>
-					<condition var1="wolf_adb" var2="1"/>
-					<condition var1="tw_busy" var2="0"/>
-         		</conditions>
-				<action function="adb">disable</action>
-		    	<action function="set">wolf_adb=0</action>
-          		<action function="page">main2</action>
-        	</slider>
-
-			<slider>
-	     		<conditions>
-         			<condition var1="wolf_adb" var2="0"/>
-             		<condition var1="tw_busy" var2="0"/>
-         		</conditions>
-				<action function="adb">enable</action>
-		    	<action function="set">wolf_adb=1</action>
-          		<action function="page">main2</action>
-        	</slider>
-
-
-			<action>
-				<touch key="back"/>
-				<action function="page">main2</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-
-		<page name="fox_pass">
-
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">fox_menu</action>
-	    	</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fox_menu_pass_h}</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fox_menu_pass}</text>
-			</text>
-
-			<slider>
-				<actions>
-				   <action function="queueclear"/>
-					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
-					<action function="set">rw_inject_after_zip=0</action>
-					<action function="set">wolf_install_built_in_zip=1</action>
-					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
-					<action function="set">tw_signed_zip_verify=0</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/PassReset.zip</action>
-					<action function="queuezip"/>
-			    	<action function="flash">flash_zip</action>
-				</actions>
-       		</slider>
-
-			<text style="caption">
-					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-					<text>{@fox_slider_pass=}</text>
-			</text>
-
-
-			<action>
-				<touch key="back"/>
-				<action function="page">fox_menu</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-
-		<page name="fox_magisk">
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-			    <action function="page">fox_menu</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Magisk</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>by Topjohnwu</text>
-			</text>
-
-			<text style="caption">
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@wolf_flash_Magisk=}</text>
-			</text>
-
-			<slider>
-				<actions>
-					<action function="queueclear"/>
-					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
-					<action function="set">rw_inject_after_zip=0</action>
-					<action function="set">wolf_install_built_in_zip=1</action>
-					<action function="set">fox_magisk_var=1</action>
-					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
-					<action function="set">tw_signed_zip_verify=0</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/Magisk.zip</action>
-					<action function="queuezip"/>
-				<action function="flash">flash_zip</action>
-				</actions>
-     		</slider>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">fox_menu</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-
 		<page name="new_pass_finished">
 			<template name="body"/>
 
@@ -1256,19 +1078,19 @@
 				<action function="screenshotexternal"/>
 			</action>
 
-<action>
+			<action>
 				<touch key="power+voldown"/>
 				<action function="screenshotinternal"/>
 			</action>
 		</page>
 
 
-<page name="pass_change1">
-<template name="body"/>
+		<page name="pass_change1">
+			<template name="body"/>
 
-<template name="ab"/>
+			<template name="ab"/>
 
-<template name="statusbarinfo"/>
+			<template name="statusbarinfo"/>
 
            <button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
@@ -1290,17 +1112,17 @@
 				<action function="page">pass_change1</action>
 			</input>
 
-	<fill color="%accent%">
+			<fill color="%accent%">
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-<button>
+			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_delete" highlightresource="actionbar_delete_hl"/>
-			<actions>
-			<action function="set">checkbox_pass_change_1-2=0</action>
-            <action function="overlay">dialog_reset_pass</action>
-            </actions>
+					<actions>
+						<action function="set">checkbox_pass_change_1-2=0</action>
+						<action function="overlay">dialog_reset_pass</action>
+					</actions>
 			</button>
 
 			<image>
@@ -1313,16 +1135,10 @@
 				<image resource="icon_warning"/>
 			</image>
 
-<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="checkbox_pass_change_1-2"/>
-			</checkbox>
-
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@change_pass_text_1=}</text>
-      </text>
+				<text>{@change_pass_text_1=}</text>
+      		</text>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="420"/>
@@ -1334,17 +1150,12 @@
 				<text>{@change_pass_text_3=}</text>
 			</text>
 
-<text style="caption_hl">
+			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row4_2_y%"/>
 				<text>{@lock_text_5=Enter password:}</text>
 			</text>
 
-	<template name="keyboardtemplate"/>
-
-<action>
-<condition var1="checkbox_pass_change_1-2" var2="1"/>
-<action function="page">pass_change2</action>
-</action>
+			<template name="keyboardtemplate"/>
 
 			<action>
 				<touch key="home"/>
@@ -1363,127 +1174,22 @@
 				</actions>
 			</action>
 
-<action>
- <condition var1="heslo"  op="=" var2="tw_droid_password_change_xd1"/>
-<actions>
-<action function="page">pass_change3</action>
-<action function="set">tw_droid_password_pass_change1_xd1=</action>
-</actions>
-</action>
-</page>
-
-
-<page name="pass_change2">
-
- <template name="body"/>
-
-  <template name="ab"/>
-
-  <template name="statusbarinfo"/>
-
-           <input>
-				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
-				<background color="%background%"/>
-				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
-				<font resource="body1" color="%text%"/>
-				<text></text>
-				<data name="tw_droid_password_change_xd1"/>
-				<restrict minlen="3" maxlen="128" allow=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.{}[]"/>
-				<action function="page">pass_change2</action>
-			</input>
-
-	<fill color="%accent%">
-				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
-			</fill>
-
-<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_delete" highlightresource="actionbar_delete_hl"/>
-			<actions>
-			<action function="set">checkbox_pass_change_1-2=0</action>
-            <action function="overlay">dialog_reset_pass</action>
-            </actions>
-			</button>
-
-			<image>
-				<placement x="0" y="%keyboard_bg_y%"/>
-				<image resource="keyboard_shadow"/>
-			</image>
-
-			<image>
-				<placement x="%col1_x%" y="420"/>
-				<image resource="icon_warning"/>
-			</image>
-
-<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="checkbox_pass_change_1-2"/>
-			</checkbox>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@change_pass_text_1=}</text>
-      </text>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="420"/>
-				<text>{@change_pass_text_2=}</text>
-			</text>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="480"/>
-				<text>{@change_pass_text_3=}</text>
-			</text>
-
-<text style="caption_hl">
-				<placement x="%col1_x%" y="%row4_2_y%"/>
-				<text>{@lock_text_5=Enter password:}</text>
-			</text>
-
-	<template name="keyboardtemplate"/>
-
-<action>
-<condition var1="checkbox_pass_change_1-2" var2="0"/>
-<action function="page">pass_change1</action>
-</action>
-
 			<action>
-				<touch key="home"/>
+				<condition var1="heslo"  op="=" var2="tw_droid_password_change_xd1"/>
 				<actions>
-				<action function="set">checkbox_pass_change_1-2=0</action>
-				<action function="set">tw_droid_password_change_xd1=</action>
-				<action function="page">main2</action>
+					<action function="page">pass_change3</action>
+					<action function="set">tw_droid_password_pass_change1_xd1=</action>
 				</actions>
 			</action>
+		</page>
 
-			<action>
-				<touch key="back"/>
-				<actions>
-				<action function="set">checkbox_pass_change_1-2=0</action>
-				<action function="set">tw_droid_password_change_xd1=</action>
-				<action function="page">advanced</action>
-				</actions>
-			</action>
+		<page name="pass_change_del1">
 
+			<template name="body"/>
 
-<action>
- <condition var1="heslo"  op="=" var2="tw_droid_password_change_xd1"/>
-<actions>
-<action function="page">pass_change3</action>
-</actions>
-</action>
-</page>
+			<template name="ab"/>
 
-
-
-<page name="pass_change_del1">
-
-<template name="body"/>
-
-<template name="ab"/>
-
-<template name="statusbarinfo"/>
+			<template name="statusbarinfo"/>
 
 			<input>
 				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
@@ -1496,11 +1202,11 @@
 				<action function="page">pass_change_del1</action>
 			</input>
 
-	<fill color="%accent%">
+			<fill color="%accent%">
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-<image>
+			<image>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
@@ -1510,16 +1216,10 @@
 				<image resource="icon_warning"/>
 			</image>
 
-<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="checkbox_pass_change_1-2"/>
-			</checkbox>
-
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@change_pass_text_1_del=}</text>
-      </text>
+				<text>{@change_pass_text_1_del=}</text>
+     		</text>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="420"/>
@@ -1531,17 +1231,12 @@
 				<text>{@change_pass_text_3_del=}</text>
 			</text>
 
-<text style="caption_hl">
+			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row4_2_y%"/>
 				<text>{@lock_text_5=Enter password:}</text>
 			</text>
 
-	<template name="keyboardtemplate"/>
-
-<action>
-<condition var1="checkbox_pass_change_1-2" var2="1"/>
-<action function="page">pass_change_del2</action>
-</action>
+			<template name="keyboardtemplate"/>
 
 			<action>
 				<touch key="home"/>
@@ -1560,113 +1255,16 @@
 			</action>
 
 
-<action>
- <condition var1="heslo"  op="=" var2="tw_droid_password_change1"/>
-<actions>
-<action function="page">new_pass_confirm2</action>
-<action function="set">tw_droid_password_change1=</action>
-</actions>
-</action>
-</page>
-
-
-<page name="pass_change_del2">
-
- <template name="body"/>
-
-  <template name="ab"/>
-
-  <template name="statusbarinfo"/>
-
-           <input>
-				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
-				<background color="%background%"/>
-				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
-				<font resource="body1" color="%text%"/>
-				<text></text>
-				<data name="tw_droid_password_change1"/>
-				<restrict minlen="3" maxlen="128" allow=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.{}[]"/>
-				<action function="page">pass_change_del2</action>
-			</input>
-
-	<fill color="%accent%">
-				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
-			</fill>
-
-			<image>
-				<placement x="0" y="%keyboard_bg_y%"/>
-				<image resource="keyboard_shadow"/>
-			</image>
-
-			<image>
-				<placement x="%col1_x%" y="420"/>
-				<image resource="icon_warning"/>
-			</image>
-
-<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="checkbox_pass_change_1-2"/>
-			</checkbox>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@change_pass_text_1_del=}</text>
-      </text>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="420"/>
-				<text>{@change_pass_text_2_del=}</text>
-			</text>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="480"/>
-				<text>{@change_pass_text_3_del=}</text>
-			</text>
-
-<text style="caption_hl">
-				<placement x="%col1_x%" y="%row4_2_y%"/>
-				<text>{@lock_text_5=Enter password:}</text>
-			</text>
-
-	<template name="keyboardtemplate"/>
-
-<action>
-<condition var1="checkbox_pass_change_1-2" var2="0"/>
-<action function="page">pass_change_del1</action>
-</action>
-
 			<action>
-				<touch key="home"/>
+				<condition var1="heslo"  op="=" var2="tw_droid_password_change1"/>
 				<actions>
-				<action function="set">tw_droid_password_change1=</action>
-				<action function="page">main2</action>
+					<action function="page">new_pass_confirm2</action>
+					<action function="set">tw_droid_password_change1=</action>
 				</actions>
 			</action>
+		</page>
 
-			<action>
-				<touch key="back"/>
-				<actions>
-				<action function="set">tw_droid_password_change1=</action>
-				<action function="page">advanced</action>
-				</actions>
-			</action>
-
-
-<action>
- <condition var1="heslo"  op="=" var2="tw_droid_password_change1"/>
-<actions>
-<action function="page">new_pass_confirm2</action>
-<action function="set">tw_droid_password_change1=</action>
-</actions>
-</action>
-</page>
-
-
-
-
-
-<page name="pass_change3">
+		<page name="pass_change3">
 
              <template name="body"/>
 
@@ -1688,96 +1286,6 @@
 				</actions>
 			</input>
 
-	<fill color="%accent%">
-				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
-			</fill>
-
-			<image>
-				<placement x="0" y="%keyboard_bg_y%"/>
-				<image resource="keyboard_shadow"/>
-			</image>
-
-			<image>
-				<placement x="%col1_x%" y="420"/>
-				<image resource="icon_warning"/>
-			</image>
-
-<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="checkbox_pass_change3-4"/>
-			</checkbox>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@new_pass_text_1=}</text>
-      </text>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="420"/>
-				<text>{@new_pass_text_2=}</text>
-			</text>
-
-			<text style="caption_hl">
-				<placement x="%col1_x%" y="%row4_2_y%"/>
-				<text>{@lock_text_5=Enter password:}</text>
-			</text>
-
-	<template name="keyboardtemplate"/>
-
-<action>
-<condition var1="checkbox_pass_change3-4" var2="1"/>
-<action function="page">pass_change4</action>
-</action>
-
-			<action>
-				<touch key="home"/>
-				<actions>
-			    <action function="set">checkbox_pass_change3-4=0</action>
-				<action function="set">checkbox_pass_change_1-2=0</action>
-				<action function="set">tw_droid_password_change_xd1=</action>
-				<action function="set">tw_droid_password_change_xd2=</action>
-				<action function="set">tw_droid_password_change_xd3=</action>
-				<action function="page">main2</action>
-				</actions>
-			</action>
-
-
-			<action>
-				<touch key="back"/>
-				<actions>
-				<action function="set">checkbox_pass_change3-4=0</action>
-				<action function="set">checkbox_pass_change_1-2=0</action>
-				<action function="set">tw_droid_password_change_xd1=</action>
-				<action function="set">tw_droid_password_change_xd2=</action>
-				<action function="set">tw_droid_password_change_xd3=</action>
-				<action function="page">advanced</action>
-				</actions>
-			</action>
-</page>
-
-<page name="pass_change4">
-
-            <template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<input>
-				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
-				<background color="%background%"/>
-				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
-				<font resource="body1" color="%text%"/>
-				<text></text>
-				<data name="tw_droid_password_change_xd2"/>
-				<restrict minlen="3" maxlen="128" allow=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.{}[]"/>
-				<actions>
-				<action function="set">tw_droid_password_change_xd1=</action>
-				<action function="page">pass_change5</action>
-				</actions>
-			</input>
-
 			<fill color="%accent%">
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
@@ -1791,12 +1299,6 @@
 				<placement x="%col1_x%" y="420"/>
 				<image resource="icon_warning"/>
 			</image>
-
-			<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="checkbox_pass_change3-4"/>
-			</checkbox>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
@@ -1813,12 +1315,7 @@
 				<text>{@lock_text_5=Enter password:}</text>
 			</text>
 
-	<template name="keyboardtemplate"/>
-
-<action>
-<condition var1="checkbox_pass_change3-4" var2="0"/>
-<action function="page">pass_change3</action>
-</action>
+			<template name="keyboardtemplate"/>
 
 			<action>
 				<touch key="home"/>
@@ -1827,6 +1324,7 @@
 				<action function="set">checkbox_pass_change_1-2=0</action>
 				<action function="set">tw_droid_password_change_xd1=</action>
 				<action function="set">tw_droid_password_change_xd2=</action>
+				<action function="set">tw_droid_password_change_xd3=</action>
 				<action function="page">main2</action>
 				</actions>
 			</action>
@@ -1839,10 +1337,11 @@
 				<action function="set">checkbox_pass_change_1-2=0</action>
 				<action function="set">tw_droid_password_change_xd1=</action>
 				<action function="set">tw_droid_password_change_xd2=</action>
+				<action function="set">tw_droid_password_change_xd3=</action>
 				<action function="page">advanced</action>
 				</actions>
 			</action>
-</page>
+		</page>
 
 <page name="pass_change5">
 
@@ -1863,7 +1362,7 @@
 				<action function="page">pass_change5</action>
 			</input>
 
-	<fill color="%accent%">
+			<fill color="%accent%">
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
@@ -1877,16 +1376,10 @@
 				<image resource="icon_warning"/>
 			</image>
 
-<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="checkbox_pass_change5-6"/>
-			</checkbox>
-
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_repeat_1=}</text>
-      </text>
+				<text>{@full_new_pass_repeat_1=}</text>
+      		</text>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="420"/>
@@ -1898,141 +1391,41 @@
 				<text>{@lock_text_5=Enter password:}</text>
 			</text>
 
-	<template name="keyboardtemplate"/>
-
-<action>
-<condition var1="checkbox_pass_change5-6" var2="1"/>
-<action function="page">pass_change6</action>
-</action>
+			<template name="keyboardtemplate"/>
 
 			<action>
 				<touch key="home"/>
 				<actions>
-				<action function="set">checkbox_pass_change5-6=0</action>
-				<action function="set">checkbox_pass_change3-4=0</action>
-				<action function="set">checkbox_pass_change_1-2=0</action>
-				<action function="set">tw_droid_password_change_xd3=</action>
-				<action function="set">tw_droid_password_new1=</action>
-				<action function="page">main2</action>
+					<action function="set">checkbox_pass_change5-6=0</action>
+					<action function="set">checkbox_pass_change3-4=0</action>
+					<action function="set">checkbox_pass_change_1-2=0</action>
+					<action function="set">tw_droid_password_change_xd3=</action>
+					<action function="set">tw_droid_password_new1=</action>
+					<action function="page">main2</action>
 				</actions>
 			</action>
 
 			<action>
 				<touch key="back"/>
 				<actions>
-				<action function="set">checkbox_pass_change5-6=0</action>
-				<action function="set">checkbox_pass_change3-4=0</action>
-				<action function="set">tw_droid_password_change_xd3=</action>
-				<action function="page">pass_change3</action>
+					<action function="set">checkbox_pass_change5-6=0</action>
+					<action function="set">checkbox_pass_change3-4=0</action>
+					<action function="set">tw_droid_password_change_xd3=</action>
+					<action function="page">pass_change3</action>
 				</actions>
 			</action>
 
 			<action>
- <condition var1="tw_droid_password_change_xd2"  op="=" var2="tw_droid_password_change_xd3"/>
-<actions>
-<action function="page">new_pass_confirm</action>
-<action function="set">checkbox_pass_change3-4=0</action>
-<action function="set">tw_droid_password_change_xd1=</action>
-</actions>
-</action>
-</page>
-
-<page name="pass_change6">
-
-            <template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<input>
-				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
-				<background color="%background%"/>
-				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
-				<font resource="body1" color="%text%"/>
-				<text></text>
-				<data name="tw_droid_password_change_xd3"/>
-				<restrict minlen="3" maxlen="128" allow=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.{}[]"/>
-				<action function="page">pass_change6</action>
-			</input>
-
-	<fill color="%accent%">
-				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
-			</fill>
-
-			<image>
-				<placement x="0" y="%keyboard_bg_y%"/>
-				<image resource="keyboard_shadow"/>
-			</image>
-
-			<image>
-				<placement x="%col1_x%" y="420"/>
-				<image resource="icon_warning"/>
-			</image>
-
-<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="checkbox_pass_change5-6"/>
-			</checkbox>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_repeat_1=}</text>
-      </text>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="420"/>
-				<text>{@full_new_pass_repeat_2=}</text>
-			</text>
-
-			<text style="caption_hl">
-				<placement x="%col1_x%" y="%row4_2_y%"/>
-				<text>{@lock_text_5=Enter password:}</text>
-			</text>
-
-	<template name="keyboardtemplate"/>
-
-<action>
-<condition var1="checkbox_pass_change5-6" var2="0"/>
-<action function="page">pass_change5</action>
-</action>
-
-			<action>
-				<touch key="home"/>
+				<condition var1="tw_droid_password_change_xd2"  op="=" var2="tw_droid_password_change_xd3"/>
 				<actions>
-				<action function="set">checkbox_pass_change5-6=0</action>
-				<action function="set">checkbox_pass_change3-4=0</action>
-				<action function="set">checkbox_pass_change_1-2=0</action>
-				<action function="set">tw_droid_password_change_xd3=</action>
-				<action function="set">tw_droid_password_change_xd2=</action>
-				<action function="page">main2</action>
+					<action function="page">new_pass_confirm</action>
+					<action function="set">checkbox_pass_change3-4=0</action>
+					<action function="set">tw_droid_password_change_xd1=</action>
 				</actions>
 			</action>
+		</page>
 
-			<action>
-				<touch key="back"/>
-				<actions>
-				<action function="set">checkbox_pass_change5-6=0</action>
-				<action function="set">checkbox_pass_change3-4=0</action>
-				<action function="set">tw_droid_password_change_xd3=</action>
-				<action function="page">pass_change3</action>
-				</actions>
-			</action>
-
-			<action>
- <condition var1="tw_droid_password_change_xd2"  op="=" var2="tw_droid_password_change_xd3"/>
-<actions>
-<action function="page">new_pass_confirm</action>
-<action function="set">checkbox_pass_change3-4=0</action>
-<action function="set">tw_droid_password_change_xd1=</action>
-<action function="set">tw_droid_password_change_xd2=</action>
-</actions>
-</action>
-</page>
-
-
-<page name="pass_new1">
+		<page name="pass_new1">
 
              <template name="body"/>
 
@@ -2063,7 +1456,7 @@
 				<action function="page">pass_new3</action>
 			</input>
 
-	<fill color="%accent%">
+			<fill color="%accent%">
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
@@ -2077,23 +1470,17 @@
 				<image resource="icon_warning"/>
 			</image>
 
-<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="tw_passnew1_viditelnost"/>
-			</checkbox>
-
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_text_1=}</text>
-      </text>
+				<text>{@full_new_pass_text_1=}</text>
+			</text>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="420"/>
 				<text>{@full_new_pass_text_2=}</text>
 			</text>
 
-<text style="text_body2_fail">
+			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="480"/>
 				<text>{@full_new_pass_text_3=}</text>
 			</text>
@@ -2104,12 +1491,7 @@
 				<text>{@lock_text_5=Enter password:}</text>
 			</text>
 
-	<template name="keyboardtemplate"/>
-
-<action>
-<condition var1="tw_passnew1_viditelnost" var2="1"/>
-<action function="page">pass_new2</action>
-</action>
+			<template name="keyboardtemplate"/>
 
 			<action>
 				<touch key="home"/>
@@ -2117,8 +1499,6 @@
 				<action function="set">tw_droid_password_new1=</action>
 				<action function="set">tw_droid_password_new2=</action>
 				<action function="page">main2</action>
-				<action function="set">tw_passnew1_viditelnost=0</action>
-                <action function="set">tw_passnew2_viditelnost=0</action>
 				</actions>
 			</action>
 
@@ -2126,119 +1506,14 @@
 			<action>
 				<touch key="back"/>
 				<actions>
-					<action function="set">tw_passnew1_viditelnost=0</action>
-                    <action function="set">tw_passnew2_viditelnost=0</action>
 				    <action function="page">advanced</action>
 				    <action function="set">tw_droid_password_new1=</action>
 				    <action function="set">tw_droid_password_new2=</action>
 				</actions>
 			</action>
-</page>
+		</page>
 
-<page name="pass_new2">
-
-            <template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<actions>
-				<action function="set">tw_droid_password_new1=</action>
-				<action function="set">tw_droid_password_new2=</action>
-				<action function="page">main2</action>
-				<action function="set">tw_passnew1_viditelnost=0</action>
-                		<action function="set">tw_passnew2_viditelnost=0</action>
-				</actions>
-			</button>
-
-			<input>
-				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
-				<background color="%background%"/>
-				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
-				<font resource="body1" color="%text%"/>
-				<text></text>
-				<data name="tw_droid_password_new1"/>
-				<restrict minlen="3" maxlen="128" allow=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_.{}[]"/>
-				<action function="page">pass_new3</action>
-			</input>
-
-	<fill color="%accent%">
-				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
-			</fill>
-
-			<image>
-				<placement x="0" y="%keyboard_bg_y%"/>
-				<image resource="keyboard_shadow"/>
-			</image>
-
-			<image>
-				<placement x="%col1_x%" y="420"/>
-				<image resource="icon_warning"/>
-			</image>
-
-<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="tw_passnew1_viditelnost"/>
-			</checkbox>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_text_1=}</text>
-      </text>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="420"/>
-				<text>{@full_new_pass_text_2=}</text>
-			</text>
-
-<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="480"/>
-				<text>{@full_new_pass_text_3=}</text>
-			</text>
-
-			<text style="caption_hl">
-				<placement x="%col1_x%" y="%row4_2_y%"/>
-				<text>{@lock_text_5=Enter password:}</text>
-			</text>
-
-	<template name="keyboardtemplate"/>
-
-<action>
-<condition var1="tw_passnew1_viditelnost" var2="0"/>
-<action function="page">pass_new1</action>
-</action>
-
-			<action>
-				<touch key="home"/>
-				<actions>
-				<action function="set">tw_droid_password_new1=</action>
-				<action function="set">tw_droid_password_new2=</action>
-				<action function="page">main2</action>
-				<action function="set">tw_passnew1_viditelnost=0</action>
-                <action function="set">tw_passnew2_viditelnost=0</action>
-				</actions>
-			</action>
-
-
-			<action>
-				<touch key="back"/>
-				<actions>
-				<action function="set">tw_passnew1_viditelnost=0</action>
-                    		<action function="set">tw_passnew2_viditelnost=0</action>
-				<action function="page">advanced</action>
-				<action function="set">tw_droid_password_new1=</action>
-				<action function="set">tw_droid_password_new2=</action>
-				</actions>
-			</action>
-</page>
-
-
-<page name="pass_new3">
+		<page name="pass_new3">
 
              <template name="body"/>
 
@@ -2253,8 +1528,6 @@
 				<action function="set">tw_droid_password_new1=</action>
 				<action function="set">tw_droid_password_new2=</action>
 				<action function="page">main2</action>
-				<action function="set">tw_passnew1_viditelnost=0</action>
-                <action function="set">tw_passnew2_viditelnost=0</action>
 				</actions>
 			</button>
 
@@ -2269,7 +1542,7 @@
 				<action function="page">pass_new3</action>
 			</input>
 
-	<fill color="%accent%">
+			<fill color="%accent%">
 				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
@@ -2283,16 +1556,10 @@
 				<image resource="icon_warning"/>
 			</image>
 
-<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="tw_passnew2_viditelnost"/>
-			</checkbox>
-
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_repeat_1=}</text>
-      </text>
+				<text>{@full_new_pass_repeat_1=}</text>
+      		</text>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="420"/>
@@ -2304,30 +1571,24 @@
 				<text>{@lock_text_5=Enter password:}</text>
 			</text>
 
-	<template name="keyboardtemplate"/>
+			<template name="keyboardtemplate"/>
 
-<action>
-<condition var1="tw_passnew2_viditelnost" var2="1"/>
-<action function="page">pass_new4</action>
-</action>
 
-<action>
- <condition var1="tw_droid_password_new1"  op="=" var2="tw_droid_password_new2"/>
-<actions>
-<action function="set">tw_passnew1_viditelnost=0</action>
-<action function="set">tw_passnew2_viditelnost=0</action>
-<action function="page">new_pass_confirm3</action>
-</actions>
-</action>
+			<action>
+				<condition var1="tw_droid_password_new1"  op="=" var2="tw_droid_password_new2"/>
+				<actions>
+					<action function="set">tw_passnew1_viditelnost=0</action>
+					<action function="set">tw_passnew2_viditelnost=0</action>
+					<action function="page">new_pass_confirm3</action>
+				</actions>
+			</action>
 
 			<action>
 				<touch key="home"/>
 				<actions>
-				<action function="set">tw_droid_password_new1=</action>
-				<action function="set">tw_droid_password_new2=</action>
-				<action function="page">main2</action>
-				<action function="set">tw_passnew1_viditelnost=0</action>
-                <action function="set">tw_passnew2_viditelnost=0</action>
+					<action function="set">tw_droid_password_new1=</action>
+					<action function="set">tw_droid_password_new2=</action>
+					<action function="page">main2</action>
 				</actions>
 			</action>
 
@@ -2335,119 +1596,13 @@
 			<action>
 				<touch key="back"/>
 				<actions>
-					<action function="set">tw_passnew1_viditelnost=0</action>
-                    <action function="set">tw_passnew2_viditelnost=0</action>
 				    <action function="page">pass_new1</action>
 				    <action function="set">tw_droid_password_new2=</action>
 				</actions>
 			</action>
-</page>
+		</page>
 
-<page name="pass_new4">
-
-            <template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<actions>
-				<action function="set">tw_droid_password_new1=</action>
-				<action function="set">tw_droid_password_new2=</action>
-				<action function="page">main2</action>
-				<action function="set">tw_passnew1_viditelnost=0</action>
-                <action function="set">tw_passnew2_viditelnost=0</action>
-				</actions>
-			</button>
-
-			<input>
-				<placement x="%col1_x%" y="%input_format_y%" w="%input_width%" h="%input_height%"/>
-				<background color="%background%"/>
-				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
-				<font resource="body1" color="%text%"/>
-				<text></text>
-				<data name="tw_droid_password_new2" allow=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_.{}[]"/>
-				<restrict minlen="3" maxlen="128"/>
-				<action function="page">pass_new4</action>
-			</input>
-
-	<fill color="%accent%">
-				<placement x="%col1_x%" y="%row5_1_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
-			</fill>
-
-			<image>
-				<placement x="0" y="%keyboard_bg_y%"/>
-				<image resource="keyboard_shadow"/>
-			</image>
-
-			<image>
-				<placement x="%col1_x%" y="420"/>
-				<image resource="icon_warning"/>
-			</image>
-
-<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="tw_passnew2_viditelnost"/>
-			</checkbox>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="360"/>
-			<text>{@full_new_pass_repeat_1=}</text>
-      </text>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="420"/>
-				<text>{@full_new_pass_repeat_2=}</text>
-			</text>
-
-			<text style="caption_hl">
-				<placement x="%col1_x%" y="%row4_2_y%"/>
-				<text>{@lock_text_5=Enter password:}</text>
-			</text>
-
-	<template name="keyboardtemplate"/>
-
-<action>
-<condition var1="tw_passnew2_viditelnost" var2="0"/>
-<action function="page">pass_new3</action>
-</action>
-
-<action>
- <condition var1="tw_droid_password_new1"  op="=" var2="tw_droid_password_new2"/>
-<actions>
-<action function="set">tw_passnew1_viditelnost=0</action>
-<action function="set">tw_passnew2_viditelnost=0</action>
-<action function="page">new_pass_confirm3</action>
-</actions>
-</action>
-
-			<action>
-				<touch key="home"/>
-				<actions>
-				<action function="set">tw_droid_password_new1=</action>
-				<action function="set">tw_droid_password_new2=</action>
-				<action function="page">main2</action>
-				<action function="set">tw_passnew1_viditelnost=0</action>
-                <action function="set">tw_passnew2_viditelnost=0</action>
-				</actions>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<actions>
-					<action function="set">tw_passnew1_viditelnost=0</action>
-                    <action function="set">tw_passnew2_viditelnost=0</action>
-				    <action function="page">pass_new1</action>
-				    <action function="set">tw_droid_password_new2=</action>
-				</actions>
-			</action>
-</page>
-
-<page name="new_pass_confirm">
+		<page name="new_pass_confirm">
 
             <template name="body"/>
 
@@ -2456,18 +1611,18 @@
 			<template name="statusbarinfo"/>
 
 			<button>
-          <condition var1="tw_busy" var2="0"/>
+         		<condition var1="tw_busy" var2="0"/>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">pass_change4</action>
 			</button>
 
-<text style="text_ab_title">
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>OrangeFox</text>
 			</text>
 
-<text style="text_ab_title">
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@pass_hdr2=}</text>
 			</text>
@@ -2478,27 +1633,25 @@
                <text>{@change_pass_confirm=}</text>
 			</text>
 
-<text color="%accent%">
+			<text color="%accent%">
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
                <text>{@wolf_please_wait=}</text>
 			</text>
 
-
-<slider>
-<condition var1="tw_busy" var2="0"/>
+			<slider>
+			<condition var1="tw_busy" var2="0"/>
 				<actions>
 					<action function="setpassword">%tw_droid_password_change_xd3%</action>
                     <action function="set">tw_droid_password=%tw_droid_password_change_xd3%</action>
                     <action function="set">tw_droid_password_change_xd3=</action>
                     <action function="set">wolf_lockpass_checker=1</actions>
 					<action function="page">new_pass_finished</action>
-					</actions>
+				</actions>
 			</slider>
 
-
-<action>
+			<action>
 				<touch key="back"/>
 				<actions>
 					<action function="set">checkbox_pass_change5-6=0</action>
@@ -2538,12 +1691,12 @@
 				</actions>
 			</button>
 
-<text style="text_ab_title">
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>OrangeFox</text>
 			</text>
 
-<text style="text_ab_title">
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@pass_hdr2_xdl=}</text>
 			</text>
@@ -2554,31 +1707,30 @@
                <text>{@change_pass_confirm_xdl=}</text>
 			</text>
 
-<text color="%accent%">
+			<text color="%accent%">
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
                <text>{@wolf_please_wait=}</text>
 			</text>
 
-
-<slider>
-<condition var1="tw_busy" var2="0"/>
+			<slider>
+				<condition var1="tw_busy" var2="0"/>
 				<actions>
 				    <action function="setpassword">%tw_droid_password_new2%</action>
                     <action function="set">tw_droid_password=%tw_droid_password_new1%</action>
                     <action function="set">tw_droid_password_new1=</action>
                     <action function="set">wolf_lockpass_checker=1</actions>
 					<action function="page">new_pass_finished</action>
-					</actions>
+				</actions>
 			</slider>
 
-<action>
+			<action>
 				<touch key="home"/>
 				<actions>
-				<action function="set">tw_droid_password_new1=</action>
-				<action function="set">tw_droid_password_new2=</action>
-				<action function="page">main2</action>
+					<action function="set">tw_droid_password_new1=</action>
+					<action function="set">tw_droid_password_new2=</action>
+					<action function="page">main2</action>
 				</actions>
 			</action>
 
@@ -2590,9 +1742,7 @@
 				<action function="page">advanced</action>
 				</actions>
 			</action>
-</page>
-
-
+		</page>
 
 		<page name="new_pass_confirm2">
 
@@ -2602,8 +1752,8 @@
 
 			<template name="statusbarinfo"/>
 
-<button>
-          <condition var1="tw_busy" var2="0"/>
+			<button>
+          		<condition var1="tw_busy" var2="0"/>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">pass_change1</action>
@@ -2625,28 +1775,26 @@
                <text>{@change_pass_confirm_del=}</text>
 			</text>
 
-<text color="%accent%">
+			<text color="%accent%">
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-               <text>{@wolf_please_wait_del=}</text>
+               	<text>{@wolf_please_wait_del=}</text>
 			</text>
 
-
-
-<slider>
-<condition var1="tw_busy" var2="0"/>
+			<slider>
+				<condition var1="tw_busy" var2="0"/>
 				<actions>
 					<action function="removepassword"/>
                     <action function="set">tw_droid_password=dd</action>
                     <action function="set">tw_droid_password_new1=</action>
                     <action function="set">wolf_lockpass_checker=1</actions>
 					<action function="page">new_pass_finished2</action>
-					</actions>
+				</actions>
 			</slider>
 
 
-         <action>
+			<action>
 				<touch key="back"/>
 				<actions>
 					<action function="page">pass_change1</action>
@@ -2889,12 +2037,6 @@
 				<image resource="icon_warning"/>
 			</image>
 
- 			<checkbox style="checkbox_big">
-				<placement x="48" y="660"/>
-				<text>{@show_password=Show password}</text>
-				<data variable="tw_heslo_viditelnost"/>
-			</checkbox>
-
 			<button style="btn_raised">
 				<placement x="%btn_raised_right_x%" y="660" placement="1"/>
 				<text>Reboot to ROM</text>
@@ -2933,11 +2075,6 @@
 			</action>
 
 			<template name="keyboardtemplate"/>
-
-			<action>
-				<condition var1="tw_heslo_viditelnost" var2="1"/>
-				<action function="page">lockpass2</action>
-			</action>
 
 			<action>
 				<touch key="home"/>
@@ -4140,14 +3277,19 @@
 
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_left_x%" y="%row7_2_y%"/>
-				<text>{@fox_dell_pass}</text>
-					<actions>
+				<text>{@fox_dellp_btn}</text>
+				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/PassReset.zip</action>
-					<action function="set">tw_existpage=fox_pass</action>
+					<action function="set">tw_filename=tw_filecheck=%fox_home_files_dir%/PassReset.zip</action>
+					<action function="set">tw_existpage=fox_menu</action>
 					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
-				  </actions>
+					<action function="set">fox_flash_txt1={@fox_dellp_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_dellp_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_dellp_sld}</action>
+					<action function="set">fox_flash_info=0</action>
+				</actions>
 			</button>
 
 		  	<button style="btn_raised">
@@ -4161,12 +3303,17 @@
 				<text>Magisk</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/Magisk.zip</action>
-					<action function="set">tw_existpage=fox_magisk</action>
+					<action function="set">tw_filename=tw_filecheck=%fox_home_files_dir%/Magisk.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
-				   </actions>
-				</button>
+					<action function="set">fox_flash_txt1={@fox_magisk_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_magisk_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_magisk_sld}</action>
+					<action function="set">fox_flash_info=0</action>
+				</actions>
+			</button>
 
 			<button style="btn_raised">
 				<placement x="%btn_raised_right_x%" y="%row7_2_y%" placement="1"/>
@@ -4189,23 +3336,6 @@
 				<!--action function="page">wolf_adb</action-->
 				<action function="set">wolf_adb=1</action>
 			</button>
-
-			<!--text style="caption">
-				<placement x="%col1_x%" y="%row8_1_y%"/>
-				<text>{@fox_menu_navigation=Navigation}</text>
-			</text>
-
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row8_2_y%" placement="1"/>
-				<text>{@fox_m_other}</text>
-				<action function="page">fox_menu2</action>
-			</button>
-
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row8_2_y%"/>
-				<text>{@fox_menu_comm}</text>
-				<action function="page">fox_community</action>
-			</button-->
 
 			<action>
 				<touch key="home"/>
@@ -6170,11 +5300,6 @@
 			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
-
-			<image>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back"/>
-			</image>
 
 			<text style="text_ab_title">
 				<condition var1="tw_action" op="!=" var2="adbsideload"/>
@@ -14122,13 +13247,13 @@
 
 			<listbox style="settingslist">
 				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="{@wolf_boot_fsync=Zip signature verification}">
+				<listitem name="{@wolf_boot_fsync}">
 					<data variable="wolf_boot_fsync_check"/>
 				</listitem>
-				<listitem name="{@wolf_boot_fastcharge=Reboot after installation is complete}">
+				<listitem name="{@wolf_boot_fastcharge}">
 					<data variable="wolf_boot_fastcharge_check"/>
 				</listitem>
-				<!--listitem name="{@wolf_boot_t2w=Use rm -rf instead of formatting}">
+				<!--listitem name="{@wolf_boot_t2w}">
 					<data variable="wolf_boot_t2w_check"/>
 				</listitem-->
 			</listbox>
@@ -14320,6 +13445,8 @@
 			</action>
 		</page>
 
+		<!-- Fox Flash! -->
+
 		<page name="fox_flash">
 			<template name="body"/>
 
@@ -14372,7 +13499,6 @@
 				<text>%fox_flash_i3%</text>
 			</text>
 
-
 			<slider>
 				<actions>
 					<action function="queueclear"/>
@@ -14383,7 +13509,7 @@
 					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
 					<action function="set">tw_signed_zip_verify=0</action>
 					<action function="queuezip"/>
-				<action function="flash">flash_zip</action>
+					<action function="flash">flash_zip</action>
 				</actions>
 			</slider>
 
@@ -14539,32 +13665,32 @@
 			<text>{@fox_theme_slider_black}</text>
 		</text>
 
-				<action>
-					<condition var1="tw_busy" var2="0"/>
-					<condition var1="fox_black" var2="1"/>
-					<actions>
-						<action function="set">fox_dark=0</action>
-						<action function="set">fox_white=0</action>
-					</actions>
-				</action>
+			<action>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="fox_black" var2="1"/>
+				<actions>
+					<action function="set">fox_dark=0</action>
+					<action function="set">fox_white=0</action>
+				</actions>
+			</action>
 
-				<action>
-					<condition var1="tw_busy" var2="0"/>
-					<condition var1="fox_dark" var2="1"/>
-					<actions>
-						<action function="set">fox_black=0</action>
-						<action function="set">fox_white=0</action>
-					</actions>
-				</action>
+			<action>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="fox_dark" var2="1"/>
+				<actions>
+					<action function="set">fox_black=0</action>
+					<action function="set">fox_white=0</action>
+				</actions>
+			</action>
 
-				<action>
-					<condition var1="tw_busy" var2="0"/>
-					<condition var1="fox_white" var2="1"/>
-					<actions>
-						<action function="set">fox_black=0</action>
-						<action function="set">fox_dark=0</action>
-					</actions>
-				</action>
+			<action>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="fox_white" var2="1"/>
+				<actions>
+					<action function="set">fox_black=0</action>
+					<action function="set">fox_dark=0</action>
+				</actions>
+			</action>
 
 			<action>
 				<touch key="back"/>
