@@ -108,10 +108,9 @@
 				<touch key="home"/>
 				<action function="page">main2</action>
 			</action>
-			</page>
+		</page>
 
-
-			<page name="wolf_project_extra_fox">
+		<page name="wolf_project_extra_fox">
 
 			<template name="body"/>
 
@@ -132,7 +131,7 @@
 			</button>
 				<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="row1_2a_y" />
-				<text>Del OF files</text>
+				<text>{@fox_del_btn}</text>
 				<actions>
 					<action function="set">tw_filecheck=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
 					<action function="set">tw_filename=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
@@ -140,12 +139,12 @@
 					<action function="set">tw_back=advanced</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1=Delete OrangeFox Files</action>
-					<action function="set">fox_flash_txt2=By OrangeFox team</action>
-					<action function="set">fox_flash_sld=Swipe to delete OF Files</action>
+					<action function="set">fox_flash_txt1={@fox_del_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_del_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_del_sld}</action>
 					<action function="set">fox_flash_info=2</action>
-					<action function="set">fox_flash_i1=You Really want to delete all</action>
-					<action function="set">fox_flash_i2=OrangeFox files?</action>
+					<action function="set">fox_flash_i1={@fox_del_i1}</action>
+					<action function="set">fox_flash_i2={@fox_del_i2}</action>
 				</actions>
 			</button>
 			<text style="text_ab_title">
@@ -13096,20 +13095,20 @@
 				<text>ATG Droid, Dadi11 - {@fox_redwolf=for RedWolf development}</text>
 			</text>
 
-			<!--text style="text_body2">
-				<placement x="%col1_x_indent%" y="1020"/>
-				<text>{@help=}</text>
-			</text-->
-
 			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="1050"/>
+				<text>z31s1g - {@z31s1g=For material theme}</text>
+			</text>
+
+			<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="1110"/>
 				<text>ManoloRey - {@fox_rey=Vince maintainer}</text>
-			</text>
+			</text-->
 
-			<text style="text_body2">
+			<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="1200"/>
 				<text>z31s1g - {@fox_z31s1g=For material theme}</text>
-			</text>
+			</text-->
 
             		<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="1290"/>

@@ -252,16 +252,16 @@
 		<variable name="list_font" value="small" persist="1"/>
 		<variable name="navbar_sams" value="0" persist="1"/>
 		<variable name="navbar_accent" value="0" persist="1"/>
-		<variable name="menu_btn_solid" value="0" persist="1"/>
+		<variable name="menu_btn_solid" value="1" persist="1"/>
 
     	<!-- OrangeFox variables -->
     	<variable name="lock_btn" value="1" persist="1"/>
 		<variable name="fox_black" value="0" persist="0"/>
-		<variable name="fox_dark" value="0" persist="0"/>
+		<variable name="fox_dark" value="1" persist="0"/>
 		<variable name="fox_white" value="0" persist="0"/>
 		<variable name="fox_theme_wait" value="0" persist="0"/>
 		<!-- OrangeFox debug functions -->
-		<variable name="fox_debug" value="1" persist="0"/>
+		<variable name="fox_debug" value="0" persist="1"/>
 		<variable name="fox_uncolor_header" value="0" persist="0"/>
 
 		<variable name="screen_w" value="1080"/>
