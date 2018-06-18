@@ -3281,7 +3281,7 @@
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/PassReset.zip</action>
 					<action function="set">tw_filename=tw_filecheck=%fox_home_files_dir%/PassReset.zip</action>
-					<action function="set">tw_existpage=fox_menu</action>
+					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
