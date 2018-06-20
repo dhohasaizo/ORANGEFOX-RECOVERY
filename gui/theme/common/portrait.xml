@@ -4675,16 +4675,16 @@
 
 			<template name="statusbarinfo"/>
 
+			<image>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back"/>
+			</image>
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@install_zip_hdr=Install Zip}</text>
 			</text>
 
-			<text style="text_ab_title">
-				<condition var1="wolf_supersu_var" var2="1" />
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@working=Working...}</text>
-			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
@@ -4696,11 +4696,18 @@
 				<text>%tw_file%</text>
 			</text>
 
+			<text style="text_ab_subtitle">
+				<condition var1="wolf_aromafm" var2="1" />
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@tw_aroma_btn=}</text>
+			</text>
+
 			<template name="action_page_console"/>
 
 			<action>
+				<conditions>
 				<condition var1="tw_operation_state" var2="1"/>
-				<condition var1="wolf_aromafm" var2="0" />
+				</conditions>
 				<action function="page">flash_done</action>
 			</action>
 
@@ -4708,15 +4715,134 @@
 				<condition var1="wolf_aromafm" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
 				<actions>
-					<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+				<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
 					<action function="set">wolf_install_built_in_zip=0</action>
-					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
-					<action function="set">tw_screen_timeout_secs=%tw_screen_timeout_temp%</action>
-					<action function="set">wolf_aromafm=0</action>
-					<action function="page">main2</action>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+				<action function="set">tw_screen_timeout_secs=%tw_screen_timeout_temp%</action>
+				<action function="set">wolf_aromafm=0</action>
+				<action function="page">main2</action>
 				</actions>
 			</action>
 
+			<action>
+				<condition var1="wolf_disableverity_var" var2="1" />
+				<condition var1="tw_operation_state" var2="1"/>
+				<actions>
+				<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+				<action function="set">wolf_install_built_in_zip=0</action>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+				<action function="set">wolf_disableverity_var=0</action>
+				<action function="page">flash_done</action>
+				</actions>
+			</action>
+
+		<action>
+				<condition var1="wolf_fpscannerfix_var" var2="1" />
+				<condition var1="tw_operation_state" var2="1"/>
+				<actions>
+				<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+					<action function="set">wolf_install_built_in_zip=0</action>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+				<action function="set">wolf_fpscannerfix_var=0</action>
+				<action function="page">flash_done</action>
+				</actions>
+			</action>
+
+		<action>
+				<condition var1="wolf_nospatch_var" var2="1" />
+				<condition var1="tw_operation_state" var2="1"/>
+				<actions>
+				<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+					<action function="set">wolf_install_built_in_zip=0</action>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+				<action function="set">wolf_nospatch_var=0</action>
+				<action function="page">flash_done</action>
+				</actions>
+			</action>
+
+		<action>
+				<condition var1="wolf_delpass_var" var2="1" />
+				<condition var1="tw_operation_state" var2="1"/>
+				<actions>
+				<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+					<action function="set">wolf_install_built_in_zip=0</action>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+				<action function="set">wolf_delpass_var=0</action>
+				<action function="page">flash_done</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="wolf_ramdiskcleaner_var" var2="1" />
+				<condition var1="tw_operation_state" var2="1"/>
+				<actions>
+				<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+					<action function="set">wolf_install_built_in_zip=0</action>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+				<action function="set">wolf_ramdiskcleaner_var=0</action>
+				<action function="page">flash_done</action>
+				</actions>
+			</action>
+
+		<action>
+				<condition var1="wolf_subslegacy_var" var2="1" />
+				<condition var1="tw_operation_state" var2="1"/>
+				<actions>
+				<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+					<action function="set">wolf_install_built_in_zip=0</action>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+				<action function="set">wolf_subslegacy_var=0</action>
+				<action function="page">flash_done</action>
+				</actions>
+			</action>
+
+		<action>
+				<condition var1="wolf_subsrescue_var" var2="1" />
+				<condition var1="tw_operation_state" var2="1"/>
+				<actions>
+				<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+					<action function="set">wolf_install_built_in_zip=0</action>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+				<action function="set">wolf_subsrescue_var=0</action>
+				<action function="page">flash_done</action>
+				</actions>
+			</action>
+
+		<action>
+				<condition var1="wolf_nosunroot_var" var2="1" />
+				<condition var1="tw_operation_state" var2="1"/>
+				<actions>
+				<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+					<action function="set">wolf_install_built_in_zip=0</action>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+				<action function="set">wolf_nosunroot_var=0</action>
+				<action function="page">flash_done</action>
+				</actions>
+			</action>
+
+		<action>
+				<condition var1="wolf_magisk_var" var2="1" />
+				<condition var1="tw_operation_state" var2="1"/>
+				<actions>
+				<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+					<action function="set">wolf_install_built_in_zip=0</action>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+				<action function="set">wolf_magisk_var=0</action>
+				<action function="page">flash_done</action>
+				</actions>
+			</action>
+
+		<action>
+				<condition var1="wolf_supersu_var" var2="1" />
+				<condition var1="tw_operation_state" var2="1"/>
+				<actions>
+				<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+					<action function="set">wolf_install_built_in_zip=0</action>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
+				<action function="set">wolf_supersu_var=0</action>
+				<action function="page">flash_done</action>
+				</actions>
+			</action>
 		</page>
 
 		<page name="flash_image">
