@@ -263,6 +263,8 @@
 		<!-- OrangeFox debug functions -->
 		<variable name="fox_debug" value="0" persist="1"/>
 		<variable name="fox_uncolor_header" value="0" persist="0"/>
+		<!-- UI variables -->
+		<variable name="fox_aromafm" value="0" persist="0"/>
 
 		<variable name="screen_w" value="1080"/>
 		<variable name="screen_h" value="1920"/>
