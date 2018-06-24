@@ -822,22 +822,26 @@
 
 			<image>
 				<condition var1="menu_btn_solid" var2="0"/>
+				<condition var1="flashlight_support" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row6_y%"/>
 				<image resource="mb_flashlight_on"/>
 			</image>
 
 			<fill color="%accent%">
 				<condition var1="menu_btn_solid" var2="1"/>
+				<condition var1="flashlight_support" var2="1"/>
 				<placement x="%mb_icon_x%" y="%mb_row6_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
+				<condition var1="flashlight_support" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row6_y%"/>
 				<image resource="mb_flashlight_color_on"/>
 			</image>
 
 			<image>
+				<condition var1="flashlight_support" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x_neg%" y="%mb_row6_y%" placement="1"/>
 				<image resource="mb_color_extension"/>
@@ -845,11 +849,13 @@
 
 
 			<text style="mb_text">
+				<condition var1="flashlight_support" var2="1"/>
 				<placement x="%col1_x_indent%" y="%mb_row6_text_y%"/>
 				<text>{@flashlight=Flashlight}</text>
 			</text>
 
 			<button style="mb_btn">
+				<condition var1="flashlight_support" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row6_y%" w="%content_w%" h="%mb_h%"/>
 				<action function="flashlight"/>
 			</button>
@@ -13430,6 +13436,7 @@
 			</slidervalue>
 
 			<button>
+				<condition var1="flashlight_support" var2="1"/>
 				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
 				<image resource="mb_flashlight_on"/>
 				<action function="flashlight"/>
@@ -13540,188 +13547,188 @@
 			</action>
 		</page>
 
-	<page name="fox_theme">
+		<page name="fox_theme">
 
-		<template name="body"/>
+			<template name="body"/>
 
-		<template name="ab_tab"/>
+			<template name="ab_tab"/>
 
-		<template name="statusbarinfo"/>
+			<template name="statusbarinfo"/>
 
-		<button>
-			<condition var1="fox_theme_wait" var2="0"/>
-			<placement x="%ab_back_x%" y="%ab_y%"/>
-			<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-			<action function="page">main2</action>
-		</button>
+			<button>
+				<condition var1="fox_theme_wait" var2="0"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+				<action function="page">main2</action>
+			</button>
 
-		<text style="text_ab_title">
-			<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-			<text>{@fox_theme_title=Fox Theme Engine}</text>
-		</text>
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@fox_theme_title=Fox Theme Engine}</text>
+			</text>
 
-		<image>
-			<placement x="270" y="%tab_y%" placement="4"/>
-			<image resource="wolf_on_boot_1"/>
-		</image>
+			<image>
+				<placement x="270" y="%tab_y%" placement="4"/>
+				<image resource="wolf_on_boot_1"/>
+			</image>
 
-		<button>
-			<condition var1="fox_theme_wait" var2="0"/>
-			<placement x="810" y="%tab_y%" placement="4"/>
-			<image resource="wolf_traffic_light_2"/>
-			<action function="page">theme_color</action>
-		</button>
+			<button>
+				<condition var1="fox_theme_wait" var2="0"/>
+				<placement x="810" y="%tab_y%" placement="4"/>
+				<image resource="wolf_traffic_light_2"/>
+				<action function="page">theme_color</action>
+			</button>
 
-		<fill color="%text_actionbar%">
-			<placement x="0" y="%tab_indicator_y%" w="%tab2_width%" h="%tab_indicator_height%"/>
-		</fill>
-		<image>
-			<placement x="%col1_x%" y="%row2_2_y%"/>
-			<image resource="icon_info"/></image>
-		<text style="text_body2">
-			<placement x="%col1_x_indent%" y="%row2_2_y%"/>
-			<text>{@fox_theme_i1}</text>
-		</text>
-		<text style="text_body2">
-			<placement x="%col1_x_indent%" y="%row2_3_y%"/>
-			<text>{@fox_theme_i2}</text>
-		</text>
-		<text style="text_body2">
-			<placement x="%col1_x_indent%" y="%row3_1_y%"/>
-			<text>{@fox_theme_i3}</text>
-		</text>
-		<listbox style="listbox">
-			<condition var1="fox_theme_wait" var2="0"/>
-			<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-			<listitem name="{@fox_theme_black}">
-				<data variable="fox_black"/>
-			</listitem>
-			<listitem name="{@fox_theme_dark}">
-				<data variable="fox_dark"/>
-			</listitem>
-			<listitem name="{@fox_theme_white}">
-				<data variable="fox_white"/>
-			</listitem>
-		</listbox>
-		<text color="%accent%">
-			<condition var1="fox_theme_wait" var2="1"/>
-			<font resource="subhead"/>
-			<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-			<text>{@colour_engine4=}</text>
-		</text>
-	
-		<slider>
-		<condition var1="fox_dark" var2="1"/>
-			<actions>
-				<action function="set">fox_dark=0</action>
-				<action function="set">fox_theme_wait=1</action>
-				<action function="wlfw"/>
-				<action function="cmd"> 
-				cd "/tmp/redwolf/ramdisk/twres";
-				cp -r images_orange/* "images"; 
-				cp -r un-white/* "images"; 
-				cp -r dark/*.png "images"
-				mv -f "dark/dark.xml" "colors.xml";
-				</action>
-				<action function="wlfx"/>
-				<action function="page">set_color_finish</action>
-			</actions>
-		</slider>
+			<fill color="%text_actionbar%">
+				<placement x="0" y="%tab_indicator_y%" w="%tab2_width%" h="%tab_indicator_height%"/>
+			</fill>
+			<image>
+				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<image resource="icon_info"/></image>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
+				<text>{@fox_theme_i1}</text>
+			</text>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
+				<text>{@fox_theme_i2}</text>
+			</text>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
+				<text>{@fox_theme_i3}</text>
+			</text>
+			<listbox style="listbox">
+				<condition var1="fox_theme_wait" var2="0"/>
+				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+				<listitem name="{@fox_theme_black}">
+					<data variable="fox_black"/>
+				</listitem>
+				<listitem name="{@fox_theme_dark}">
+					<data variable="fox_dark"/>
+				</listitem>
+				<listitem name="{@fox_theme_white}">
+					<data variable="fox_white"/>
+				</listitem>
+			</listbox>
+			<text color="%accent%">
+				<condition var1="fox_theme_wait" var2="1"/>
+				<font resource="subhead"/>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@colour_engine4=}</text>
+			</text>
+		
+			<slider>
+			<condition var1="fox_dark" var2="1"/>
+				<actions>
+					<action function="set">fox_dark=0</action>
+					<action function="set">fox_theme_wait=1</action>
+					<action function="wlfw"/>
+					<action function="cmd"> 
+					cd "/tmp/redwolf/ramdisk/twres";
+					cp -r images_orange/* "images"; 
+					cp -r un-white/* "images"; 
+					cp -r dark/*.png "images"
+					mv -f "dark/dark.xml" "colors.xml";
+					</action>
+					<action function="wlfx"/>
+					<action function="page">set_color_finish</action>
+				</actions>
+			</slider>
 
-		<text style="caption">
-		<condition var1="fox_dark" var2="1"/>
-			<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-			<text>{@fox_theme_slider_dark}</text>
-		</text>
+			<text style="caption">
+			<condition var1="fox_dark" var2="1"/>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@fox_theme_slider_dark}</text>
+			</text>
 
-		<slider>
-		<condition var1="fox_black" var2="1"/>
-			<actions>
-				<action function="set">fox_black=0</action>
-				<action function="set">fox_theme_wait=1</action>
-				<action function="wlfw"/>
-				<action function="cmd">  
-				cd "/tmp/redwolf/ramdisk/twres";
-				cp -r images_orange/* "images"; 
-				cp -r un-white/* "images"; 
-				cp -r black/*.png "images"
-				mv -f "black/black.xml" "colors.xml";
-				</action>
-				<action function="wlfx"/>
-				<action function="page">set_color_finish</action>
-			</actions>
-		</slider>
-
-		<text style="caption">
-		<condition var1="fox_white" var2="1"/>
-			<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-			<text>{@fox_theme_slider_white}</text>
-		</text>
-
-		<slider>
-		<condition var1="fox_white" var2="1"/>
-			<actions>
-				<action function="set">fox_white=0</action>
-				<action function="set">fox_theme_wait=1</action>
-				<action function="wlfw"/>
-				<action function="cmd">  
-				cd "/tmp/redwolf/ramdisk/twres";
-				cp -r images_orange/* "images"; 
-				cp -r white/*.png "images"
-				mv -f "white/white.xml" "colors.xml";
-				</action>
-				<action function="wlfx"/>
-				<action function="page">set_color_finish</action>
-			</actions>
-		</slider>
-
-		<text style="caption">
+			<slider>
 			<condition var1="fox_black" var2="1"/>
-			<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-			<text>{@fox_theme_slider_black}</text>
-		</text>
+				<actions>
+					<action function="set">fox_black=0</action>
+					<action function="set">fox_theme_wait=1</action>
+					<action function="wlfw"/>
+					<action function="cmd">  
+					cd "/tmp/redwolf/ramdisk/twres";
+					cp -r images_orange/* "images"; 
+					cp -r un-white/* "images"; 
+					cp -r black/*.png "images"
+					mv -f "black/black.xml" "colors.xml";
+					</action>
+					<action function="wlfx"/>
+					<action function="page">set_color_finish</action>
+				</actions>
+			</slider>
 
-			<action>
-				<condition var1="tw_busy" var2="0"/>
+			<text style="caption">
+			<condition var1="fox_white" var2="1"/>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@fox_theme_slider_white}</text>
+			</text>
+
+			<slider>
+			<condition var1="fox_white" var2="1"/>
+				<actions>
+					<action function="set">fox_white=0</action>
+					<action function="set">fox_theme_wait=1</action>
+					<action function="wlfw"/>
+					<action function="cmd">  
+					cd "/tmp/redwolf/ramdisk/twres";
+					cp -r images_orange/* "images"; 
+					cp -r white/*.png "images"
+					mv -f "white/white.xml" "colors.xml";
+					</action>
+					<action function="wlfx"/>
+					<action function="page">set_color_finish</action>
+				</actions>
+			</slider>
+
+			<text style="caption">
 				<condition var1="fox_black" var2="1"/>
-				<actions>
-					<action function="set">fox_dark=0</action>
-					<action function="set">fox_white=0</action>
-				</actions>
-			</action>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@fox_theme_slider_black}</text>
+			</text>
 
-			<action>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="fox_dark" var2="1"/>
-				<actions>
-					<action function="set">fox_black=0</action>
-					<action function="set">fox_white=0</action>
-				</actions>
-			</action>
+				<action>
+					<condition var1="tw_busy" var2="0"/>
+					<condition var1="fox_black" var2="1"/>
+					<actions>
+						<action function="set">fox_dark=0</action>
+						<action function="set">fox_white=0</action>
+					</actions>
+				</action>
 
-			<action>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="fox_white" var2="1"/>
-				<actions>
-					<action function="set">fox_black=0</action>
-					<action function="set">fox_dark=0</action>
-				</actions>
-			</action>
+				<action>
+					<condition var1="tw_busy" var2="0"/>
+					<condition var1="fox_dark" var2="1"/>
+					<actions>
+						<action function="set">fox_black=0</action>
+						<action function="set">fox_white=0</action>
+					</actions>
+				</action>
 
-			<action>
-				<touch key="back"/>
-				<actions>
-					<action function="page">fox_menu</action>
-				</actions>
-			</action>
+				<action>
+					<condition var1="tw_busy" var2="0"/>
+					<condition var1="fox_white" var2="1"/>
+					<actions>
+						<action function="set">fox_black=0</action>
+						<action function="set">fox_dark=0</action>
+					</actions>
+				</action>
 
-			<action>
-				<touch key="home"/>
-				<actions>
-					<action function="page">main2</action>
-				</actions>
-			</action>
-		</page>
+				<action>
+					<touch key="back"/>
+					<actions>
+						<action function="page">fox_menu</action>
+					</actions>
+				</action>
+
+				<action>
+					<touch key="home"/>
+					<actions>
+						<action function="page">main2</action>
+					</actions>
+				</action>
+			</page>
 
 		</pages>
 </recovery>

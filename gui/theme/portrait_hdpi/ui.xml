@@ -260,11 +260,13 @@
 		<variable name="fox_dark" value="1" persist="0"/>
 		<variable name="fox_white" value="0" persist="0"/>
 		<variable name="fox_theme_wait" value="0" persist="0"/>
+		<variable name="fox_aromafm" value="0" persist="0"/>
 		<!-- OrangeFox debug functions -->
 		<variable name="fox_debug" value="0" persist="1"/>
 		<variable name="fox_uncolor_header" value="0" persist="0"/>
-		<!-- UI variables -->
-		<variable name="fox_aromafm" value="0" persist="0"/>
+
+		<!-- For Maintainers -->
+		<variable name="flashlight_support" value="1"/> <!-- Disable this variable to disable FlashLight Support in OrangeFox -->
 
 		<variable name="screen_w" value="1080"/>
 		<variable name="screen_h" value="1920"/>
