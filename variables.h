@@ -25,6 +25,7 @@
 #define RW_DEVICE               RW_DEVICE_MODEL
 #define RW_VERSION              TW_MAIN_VERSION_STR
 #define OF_MAINTAINER_STR      	"of_maintainer"
+#define OF_FLASHLIGHT_ENABLE_STR "of_flashlight_enable"
 
 // *** OrangeFox - Variables ** //
 #include <stdio.h>

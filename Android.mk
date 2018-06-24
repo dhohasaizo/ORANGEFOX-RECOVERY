@@ -60,6 +60,12 @@ else
     LOCAL_CFLAGS += -DOF_MAINTAINER='"MrYacha and DarthJabba9"'
 endif
 
+ifneq ($(OF_FLASHLIGHT_ENABLE),)
+    LOCAL_CFLAGS += -DOF_FLASHLIGHT_ENABLE='"$(OF_FLASHLIGHT_ENABLE)"'
+else
+    LOCAL_CFLAGS += -DOF_FLASHLIGHT_ENABLE='"1"'
+endif
+
 LOCAL_SRC_FILES := \
     twrp.cpp \
     fixContexts.cpp \

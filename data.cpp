@@ -638,6 +638,7 @@ void DataManager::SetDefaultValues()
 
   mConst.SetValue(TW_VERSION_VAR, RW_VERSION);
   mConst.SetValue(OF_MAINTAINER_STR, OF_MAINTAINER);
+  mConst.SetValue(OF_FLASHLIGHT_ENABLE_STR, OF_FLASHLIGHT_ENABLE);
     
   mPersist.SetValue("tw_button_vibrate", "80");
   mPersist.SetValue("tw_keyboard_vibrate", "40");
