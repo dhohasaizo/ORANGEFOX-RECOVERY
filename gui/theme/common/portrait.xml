@@ -7955,17 +7955,19 @@
 			</text>
 
 			<image>
-				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
+				<!--placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/-->
+				<placement x="270" y="%tab_y%" placement="4"/>
 				<image resource="tab_bu_create_a"/>
 			</image>
 
 			<button>
-				<placement x="%center_x%" y="%tab_y%" placement="4"/>
+				<!--placement x="%center_x%" y="%tab_y%" placement="4"/-->
+				<placement x="810" y="%tab_y%" placement="4"/>
 				<image resource="tab_bu_options"/>
 				<action function="page">backup_options</action>
 			</button>
 
-			<button>
+			<!--button>
 				<conditions>
 					<condition var1="tw_include_encrypted_backup" var2="1"/>
 					<condition var1="tw_encrypt_backup" var2="0"/>
@@ -7991,10 +7993,11 @@
 					<action function="set">tw_password_not_match=0</action>
 					<action function="page">backup_encryption1</action>
 				</actions>
-			</button>
+			</button-->
 
 			<fill color="%text_actionbar%">
-				<placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+				<!--placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/-->
+				<placement x="0" y="%tab_indicator_y%" w="%tab2_width%" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption">
@@ -8100,18 +8103,20 @@
 				<text>{@backup_hdr=Backup}</text>
 			</text>
 
-			<button>
-				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_bu_create"/>
-				<action function="page">backup</action>
-			</button>
-
 			<image>
-				<placement x="%center_x%" y="%tab_y%" placement="4"/>
+				<!--placement x="%center_x%" y="%tab_y%" placement="4"/-->
+				<placement x="810" y="%tab_y%" placement="4"/>
 				<image resource="tab_bu_options_a"/>
 			</image>
 
 			<button>
+				<!--placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/-->
+				<placement x="270" y="%tab_y%" placement="4"/>
+				<image resource="tab_bu_create"/>
+				<action function="page">backup</action>
+			</button>
+
+			<!--button>
 				<conditions>
 					<condition var1="tw_include_encrypted_backup" var2="1"/>
 					<condition var1="tw_encrypt_backup" var2="0"/>
@@ -8137,10 +8142,11 @@
 					<action function="set">tw_password_not_match=0</action>
 					<action function="page">backup_encryption1</action>
 				</actions>
-			</button>
+			</button-->
 
 			<fill color="%text_actionbar%">
-				<placement x="tab3_ind2_x" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+				<!--placement x="tab3_ind2_x" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/-->
+				<placement x="540" y="%tab_indicator_y%" w="1080" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption">
