@@ -26,6 +26,8 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <iostream>
+#include <fstream>
 
 #include <string.h>
 #include <stdio.h>
@@ -56,6 +58,7 @@
 #include "twrp-functions.hpp"
 #include "gui/gui.hpp"
 #include "gui/pages.hpp"
+#include "gui/blanktimer.hpp"
 #include "legacy_property_service.h"
 #include "twinstall.h"
 #include "installcommand.h"
@@ -74,6 +77,10 @@ static const char *properties_path = "/dev/__properties__";
 static const char *properties_path_renamed = "/dev/__properties_kk__";
 static bool legacy_props_env_initd = false;
 static bool legacy_props_path_modified = false;
+static bool zip_is_for_specific_build = false;
+static bool zip_is_rom_package = false;
+static bool zip_survival_failed = false;
+static bool zip_is_survival_trigger = false;
 
 enum zip_type
 {
@@ -82,6 +89,25 @@ enum zip_type
   AB_OTA_ZIP_TYPE,
   TWRP_THEME_ZIP_TYPE
 };
+
+static std::string get_survival_path()
+{
+  std::string ota_location_folder, ota_location_backup;
+  DataManager::GetValue(RW_SURVIVAL_FOLDER_VAR, ota_location_folder);
+  DataManager::GetValue(RW_SURVIVAL_BACKUP_NAME, ota_location_backup);
+  ota_location_folder += "/" + ota_location_backup;
+  return ota_location_folder;
+}
+
+static bool storage_is_encrypted()
+{
+  return DataManager::GetIntValue(TW_IS_ENCRYPTED) != 0;
+}
+
+static bool ors_is_active()
+{
+  return DataManager::GetStrValue("tw_action") == "openrecoveryscript";
+}
 
 // to support pre-KitKat update-binaries that expect properties in the legacy format
 static int switch_to_legacy_properties()
@@ -142,6 +168,76 @@ static int Install_Theme(const char *path, ZipWrap * Zip)
   return INSTALL_CORRUPT;
 }
 
+static void set_miui_install_status(std::string install_status, bool verify)
+{
+  if (ors_is_active())
+    {
+      std::string last_status = "/cache/recovery/last_status";
+      if (!PartitionManager.Mount_By_Path("/cache", true))
+	return;
+      if (!verify)
+	{
+	  if (zip_is_survival_trigger || zip_is_for_specific_build)
+	    {
+	      if (TWFunc::Path_Exists(last_status))
+		unlink(last_status.c_str());
+
+	      ofstream status;
+	      status.open(last_status.c_str());
+	      status << install_status;
+	      status.close();
+	      chmod(last_status.c_str(), 0755);
+	    }
+	}
+      else
+	{
+	  if (TWFunc::Path_Exists(last_status))
+	    unlink(last_status.c_str());
+
+	  ofstream status;
+	  status.open(last_status.c_str());
+	  status << install_status;
+	  status.close();
+	  chmod(last_status.c_str(), 0755);
+	}
+    }
+}
+
+static std::string get_metadata_property(std::vector < string > metadata,
+					 std::string Property)
+{
+  int i, l = metadata.size();
+  size_t start = 0, end;
+  std::string local;
+  for (i = 0; i < l; i++)
+    {
+      end = metadata.at(i).find("=", start);
+      local = metadata.at(i).substr(start, end);
+      if (local == Property)
+	{
+	  local = metadata.at(i).substr(end + 1, metadata.at(i).size());
+	  return local;
+	}
+    }
+  return local;
+}
+
+static bool verify_incremental_package(string fingerprint, string metadatafp,
+				       string metadatadevice)
+{
+  if (metadatafp.size() > RW_MIN_EXPECTED_FP_SIZE
+      && fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE
+      && metadatafp != fingerprint)
+    return false;
+  if (metadatadevice.size() >= 4
+      && fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE
+      && fingerprint.find(metadatadevice) == string::npos)
+    return false;
+  return (metadatadevice.size() >= 4
+	  && metadatafp.size() > RW_MIN_EXPECTED_FP_SIZE
+	  && metadatafp.find(metadatadevice) == string::npos) ? false : true;
+}
+
 static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 				 int *wipe_cache)
 {
@@ -158,8 +254,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   string pre_build = pre_something + "build";
 
 
-  if (!Zip->ExtractEntry
-      (ASSUMED_UPDATE_BINARY_NAME, TMP_UPDATER_BINARY_PATH, 0755))
+  if (!Zip->
+      ExtractEntry(ASSUMED_UPDATE_BINARY_NAME, TMP_UPDATER_BINARY_PATH, 0755))
     {
       Zip->Close();
       LOGERR("Could not extract '%s'\n", ASSUMED_UPDATE_BINARY_NAME);
@@ -195,7 +291,6 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    ("wolf_install_miui_detected=- Detected MIUI Update Package");
 	}
 
-
       if (DataManager::GetIntValue(RW_INCREMENTAL_PACKAGE) != 0)
 	{
 	  gui_msg
@@ -203,8 +298,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  if (Zip->EntryExists(metadata_sg_path))
 	    {
 	      const string take_out_metadata = "/tmp/build.prop";
-	      if (Zip->ExtractEntry
-		  (metadata_sg_path, take_out_metadata, 0644))
+	      if (Zip->
+		  ExtractEntry(metadata_sg_path, take_out_metadata, 0644))
 		{
 		  string metadata_fingerprint =
 		    TWFunc::File_Property_Get(take_out_metadata, pre_build);
@@ -222,15 +317,20 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		      DataManager::SetValue(RW_METADATA_PRE_BUILD, 1);
 		      if (!fingerprint.empty()
 			  && fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE
-			  &&
-			  DataManager::GetIntValue
-			  ("wolf_verify_incremental_ota_signature") != 0)
+			  && DataManager::
+			  GetIntValue("wolf_verify_incremental_ota_signature")
+			  != 0)
 			{
 			  gui_msg
 			    ("wolf_incremental_ota_compatibility_chk=Verifying Incremental Package Signature...");
-			  if (TWFunc::Verify_Incremental_Package
-			      (fingerprint, metadata_fingerprint,
-			       metadata_device))
+			     /* if (verify_incremental_package
+				(fingerprint, metadata_fingerprint,
+				 metadata_device)) */
+			  
+			    if (TWFunc::
+			      Verify_Incremental_Package(fingerprint,
+							 metadata_fingerprint,
+							 metadata_device))
 			    {
 			      gui_msg
 				("wolf_incremental_ota_compatibility_true=Incremental package is compatible.");
@@ -241,8 +341,9 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 			    }
 			  else
 			    {
-			      TWFunc::Write_MIUI_Install_Status
-				(OTA_VERIFY_FAIL, false);
+			      TWFunc::
+				Write_MIUI_Install_Status(OTA_VERIFY_FAIL,
+							  false);
 			      gui_err
 				("wolf_incremental_ota_compatibility_false=Incremental package isn't compatible with this ROM!");
 			      return INSTALL_ERROR;
@@ -271,8 +372,6 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  gui_msg
 	    ("wolf_incremental_ota_status_disabled=Support MIUI Incremental package status: Disabled");
 	}
-
-
 
       string ota_location_folder, ota_location_backup, loadedfp;
       DataManager::GetValue(RW_SURVIVAL_FOLDER_VAR, ota_location_folder);
@@ -320,8 +419,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		    ("wolf_incremental_ota_res_run=Running restore process of the current OTA file");
 		  DataManager::SetValue(RW_RUN_SURVIVAL_BACKUP, 1);
 		  PartitionManager.Set_Restore_Files(ota_location_folder);
-		  if (PartitionManager.Run_OTA_Survival_Restore
-		      (ota_location_folder))
+		  if (PartitionManager.
+		      Run_OTA_Survival_Restore(ota_location_folder))
 		    {
 		      gui_msg
 			("wolf_incremental_ota_res=Process OTA_RES -- done!!");
@@ -355,6 +454,16 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		 "wolf_zip_have_bootloader=Warning: OrangeFox detected bootloader inside of the {1}")
 		(path));
     }
+
+  if (blankTimer.isScreenOff())
+    {
+      if (Zip->EntryExists(AROMA_CONFIG))
+	{
+	  blankTimer.toggleBlank();
+	  gui_changeOverlay("");
+	}
+    }
+
   // If exists, extract file_contexts from the zip file
   if (!Zip->EntryExists("file_contexts"))
     {
@@ -640,8 +749,8 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	      else
 		{
 		  twrpDigest *digest = new twrpMD5();
-		  if (!twrpDigestDriver::stream_file_to_digest
-		      (Full_Filename, digest))
+		  if (!twrpDigestDriver::
+		      stream_file_to_digest(Full_Filename, digest))
 		    {
 		      delete digest;
 		      return INSTALL_CORRUPT;
@@ -796,19 +905,15 @@ int TWinstall_zip(const char *path, int *wipe_cache)
   else
     {
       /* DJ9 - this produces too many warnings
-      if (DataManager::GetIntValue(RW_MIUI_ZIP_TMP) != 0
-	  && DataManager::GetIntValue(RW_INCREMENTAL_OTA_FAIL) != 1
-	  || DataManager::GetIntValue(RW_METADATA_PRE_BUILD) != 0
-	  && DataManager::GetIntValue(RW_INCREMENTAL_OTA_FAIL) != 1)
-      */
+         if (DataManager::GetIntValue(RW_MIUI_ZIP_TMP) != 0
+         && DataManager::GetIntValue(RW_INCREMENTAL_OTA_FAIL) != 1
+         || DataManager::GetIntValue(RW_METADATA_PRE_BUILD) != 0
+         && DataManager::GetIntValue(RW_INCREMENTAL_OTA_FAIL) != 1)
+       */
       // get rid of warnings and sort out the logic
-      if (
-            (DataManager::GetIntValue(RW_INCREMENTAL_OTA_FAIL) != 1) 
-      	 && (
-      	    (DataManager::GetIntValue(RW_MIUI_ZIP_TMP) != 0) 
-      	 || (DataManager::GetIntValue(RW_METADATA_PRE_BUILD) != 0)
-      	    )
-      	 ) 
+      if ((DataManager::GetIntValue(RW_INCREMENTAL_OTA_FAIL) != 1)
+	  && ((DataManager::GetIntValue(RW_MIUI_ZIP_TMP) != 0)
+	      || (DataManager::GetIntValue(RW_METADATA_PRE_BUILD) != 0)))
 	{
 	  string ota_folder, ota_backup, loadedfp;
 	  DataManager::GetValue(RW_SURVIVAL_FOLDER_VAR, ota_folder);
@@ -827,11 +932,12 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 		TWFunc::removeDir(ota_folder, false);
 
 	      DataManager::SetValue(RW_RUN_SURVIVAL_BACKUP, 1);
-	      gui_msg ("wolf_incremental_ota_bak_run=Running OTA_BAK process...");
-	      
+	      gui_msg
+		("wolf_incremental_ota_bak_run=Running OTA_BAK process...");
+
 	      PartitionManager.Run_OTA_Survival_Backup(false);
 	      gui_msg("wolf_incremental_ota_bak=Process OTA_BAK --- done!");
-	      
+
 	      if (TWFunc::Path_Exists(ota_folder)
 		  && !TWFunc::Path_Exists(ota_info))
 		{

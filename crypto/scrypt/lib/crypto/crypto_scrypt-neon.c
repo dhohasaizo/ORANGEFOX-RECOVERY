@@ -28,7 +28,7 @@
  */
 #include "scrypt_platform.h"
 
-#include <machine/cpu-features.h>
+//#include <machine/cpu-features.h>
 #include <arm_neon.h>
 
 #include <errno.h>
