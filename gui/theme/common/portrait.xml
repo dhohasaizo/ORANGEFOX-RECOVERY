@@ -13634,7 +13634,7 @@
 					cp -r images_orange/* "images"; 
 					cp -r un-white/* "images"; 
 					cp -r dark/*.png "images"
-					mv -f "dark/dark.xml" "colors.xml";
+					cp -r "dark/dark.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
 					<action function="page">set_color_finish</action>
@@ -13658,7 +13658,7 @@
 					cp -r images_orange/* "images"; 
 					cp -r un-white/* "images"; 
 					cp -r black/*.png "images"
-					mv -f "black/black.xml" "colors.xml";
+					cp -r "black/black.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
 					<action function="page">set_color_finish</action>
@@ -13681,7 +13681,7 @@
 					cd "/tmp/redwolf/ramdisk/twres";
 					cp -r images_orange/* "images"; 
 					cp -r white/*.png "images"
-					mv -f "white/white.xml" "colors.xml";
+					cp -r "white/white.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
 					<action function="page">set_color_finish</action>
