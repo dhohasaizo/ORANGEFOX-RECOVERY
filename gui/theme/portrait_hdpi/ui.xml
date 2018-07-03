@@ -157,6 +157,18 @@
 		<image name="mb_dumlock_color" filename="mb_dumlock_color" retainaspect="1"/>
 		<image name="mb_partsdcard_color" filename="mb_partsdcard_color" retainaspect="1"/>
 
+		<image name="btn_install_color" filename="btn_install_color" retainaspect="1"/>
+		<image name="btn_wipe_color" filename="btn_wipe_color" retainaspect="1"/>
+		<image name="btn_backup_color" filename="btn_backup_color" retainaspect="1"/>
+		<image name="btn_restore_color" filename="btn_restore_color" retainaspect="1"/>
+		<image name="btn_mount_color" filename="btn_mount_color" retainaspect="1"/>
+		<image name="btn_filemanager_color" filename="btn_filemanager_color" retainaspect="1"/>
+		<image name="btn_advanced_color" filename="btn_advanced_color" retainaspect="1"/>
+		<image name="btn_restart_color" filename="btn_restart_color" retainaspect="1"/>
+		<!--image name="btn_system_color" filename="btn_system_color" retainaspect="1"/-->
+		<image name="btn_recovery_color" filename="btn_recovery_color" retainaspect="1"/>
+		<image name="btn_flashlight_color_on" filename="btn_flashlight_color_on" retainaspect="1"/>
+
 		<image name="icon_info" filename="icon_info" retainaspect="1"/>
 		<image name="icon_warning" filename="icon_warning" retainaspect="1"/>
 		<image name="icon_person" filename="icon_person" retainaspect="1"/>
@@ -235,7 +247,8 @@
 		<image name="tab_bu_encr_dis_a" filename="tab_bu_encr_dis_a" retainaspect="1"/>
 		<image name="tab_bu_encr_ena" filename="tab_bu_encr_ena" retainaspect="1"/>
 		<image name="tab_bu_encr_ena_a" filename="tab_bu_encr_ena_a" retainaspect="1"/>
-
+		<resource name="button-bes" type="image" filename="button-bes" />
+		<font name="button-text" filename="RobotoCondensed-Regular.ttf" size="35"/>
 		<image name="cursor" filename="cursor"/>
 	</resources>
 
@@ -261,6 +274,8 @@
 		<variable name="fox_white" value="0" persist="0"/>
 		<variable name="fox_theme_wait" value="0" persist="0"/>
 		<variable name="fox_aromafm" value="0" persist="0"/>
+		<variable name="ico_btn_mode" value="0" persist="1"/>
+
 		<!-- OrangeFox debug functions -->
 		<variable name="fox_debug" value="0" persist="1"/>
 		<variable name="fox_uncolor_header" value="0" persist="0"/>
@@ -276,6 +291,7 @@
 		<variable name="status_h" value="72"/>
 		<variable name="nav_h" value="156"/>
 		<variable name="content_w" value="984"/>
+		<variable name="content_a" value="140"/>
 		<variable name="listbox_w" value="996"/>
 		<variable name="indent" value="0"/>
 		<variable name="center_x" value="540"/>

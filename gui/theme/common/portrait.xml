@@ -2180,34 +2180,40 @@
 			</button-->
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row1_y%"/>
 				<image resource="mb_install"/>
 			</image>
 
 			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%mb_icon_x%" y="%mb_row1_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row1_y%"/>
 				<image resource="mb_install_color"/>
 			</image>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x_neg%" y="%mb_row1_y%" placement="1"/>
 				<image resource="mb_color_extension"/>
 			</image>
 
 			<text style="mb_text">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row1_text_y%"/>
 				<text>{@install_btn=Install}</text>
 			</text>
 
 			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row1_y%" w="%content_w%" h="%mb_h%"/>
 				<actions>
 					<action function="queueclear"/>
@@ -2216,67 +2222,79 @@
 			</button>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row2_y%"/>
 				<image resource="mb_wipe"/>
 			</image>
 
 			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%mb_icon_x%" y="%mb_row2_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row2_y%"/>
 				<image resource="mb_wipe_color"/>
 			</image>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x_neg%" y="%mb_row2_y%" placement="1"/>
 				<image resource="mb_color_extension"/>
 			</image>
 
 			<text style="mb_text">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row2_text_y%"/>
 				<text>{@wipe_btn=Wipe}</text>
 			</text>
 
 			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row2_y%" w="%content_w%" h="%mb_h%"/>
 				<action function="page">wipe</action>
 			</button>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row3_y%"/>
 				<image resource="mb_backup"/>
 			</image>
 
 			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%mb_icon_x%" y="%mb_row3_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row3_y%"/>
 				<image resource="mb_backup_color"/>
 			</image>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x_neg%" y="%mb_row3_y%" placement="1"/>
 				<image resource="mb_color_extension"/>
 			</image>
 
 			<text style="mb_text">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row3_text_y%"/>
 				<text>{@backup_btn=Backup}</text>
 			</text>
 
 			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="auto_generate" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row3_y%" w="%content_w%" h="%mb_h%"/>
 				<actions>
@@ -2286,6 +2304,7 @@
 			</button>
 
 			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="auto_generate" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row3_y%" w="%content_w%" h="%mb_h%"/>
 				<actions>
@@ -2295,106 +2314,125 @@
 			</button>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row4_y%"/>
 				<image resource="mb_restore"/>
 			</image>
 
 			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%mb_icon_x%" y="%mb_row4_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row4_y%"/>
 				<image resource="mb_restore_color"/>
 			</image>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x_neg%" y="%mb_row4_y%" placement="1"/>
 				<image resource="mb_color_extension"/>
 			</image>
 
 			<text style="mb_text">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row4_text_y%"/>
 				<text>{@restore_btn=Restore}</text>
 			</text>
 
 			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row4_y%" w="%content_w%" h="%mb_h%"/>
  				<action function="page">restore</action>
 			</button>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row5_y%"/>
 				<image resource="mb_mount"/>
 			</image>
 
 			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%mb_icon_x%" y="%mb_row5_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row5_y%"/>
 				<image resource="mb_mount_color"/>
 			</image>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x_neg%" y="%mb_row5_y%" placement="1"/>
 				<image resource="mb_color_extension"/>
 			</image>
 
 			<text style="mb_text">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row5_text_y%"/>
 				<text>{@mount_btn=Mount}</text>
 			</text>
 
 			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row5_y%" w="%content_w%" h="%mb_h%"/>
 				<action function="page">mount</action>
 			</button>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row6_y%"/>
 				<image resource="mb_filemanager"/>
 			</image>
 
 			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%mb_icon_x%" y="%mb_row6_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row6_y%"/>
 				<image resource="mb_filemanager_color"/>
 			</image>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x_neg%" y="%mb_row6_y%" placement="1"/>
 				<image resource="mb_color_extension"/>
 			</image>
 
 			<text style="mb_text">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row6_text_y%"/>
 				<text>{@file_manager_btn=File Manager}</text>
 			</text>
 
 			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="aromafm" op="!=" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row6_y%" w="%content_w%" h="%mb_h%"/>
 				<action function="page">filemanagerlist</action>
 			</button>
 
 			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="aromafm" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row6_y%" w="%content_w%" h="%mb_h%"/>
 				<actions>
@@ -2415,106 +2453,584 @@
 			</button>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row7_y%"/>
 				<image resource="mb_advanced"/>
 			</image>
 
 			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%mb_icon_x%" y="%mb_row7_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row7_y%"/>
 				<image resource="mb_advanced_color"/>
 			</image>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x_neg%" y="%mb_row7_y%" placement="1"/>
 				<image resource="mb_color_extension"/>
 			</image>
 
 			<text style="mb_text">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row7_text_y%"/>
 				<text>{@advanced_btn=Advanced}</text>
 			</text>
 
 			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row7_y%" w="%content_w%" h="%mb_h%"/>
 				<action function="page">advanced</action>
 			</button>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row8_y%"/>
 				<image resource="mb_restart"/>
 			</image>
 
 			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%mb_icon_x%" y="%mb_row8_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row8_y%"/>
 				<image resource="mb_restart_color"/>
 			</image>
 
 			<image>
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x_neg%" y="%mb_row8_y%" placement="1"/>
 				<image resource="mb_color_extension"/>
 			</image>
 
 			<text style="mb_text">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row8_text_y%"/>
 				<text>{@reboot_btn=Reboot}</text>
 			</text>
 
 			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row8_y%" w="%content_w%" h="%mb_h%"/>
 				<action function="page">reboot</action>
 			</button>
 
 			<fill color="%linecolor%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row2_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 
 			<fill color="%linecolor%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row3_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 
 			<fill color="%linecolor%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row4_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 
 			<fill color="%linecolor%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row5_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 
 			<fill color="%linecolor%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row6_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 
 			<fill color="%linecolor%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row7_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 
 			<fill color="%linecolor%">
+				<condition var1="ico_btn_mode" var2="0"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row8_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
-			</page>
+
+			<!-- Icon Button Mode -->
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="60" y="510"/>
+				<image resource="mb_install"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="65" y="530" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="64" y="510"/>
+				<image resource="btn_install_color"/>
+			</image>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="0" y="680" />
+				<text>{@install_btn=Install}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+				<action function="page">install</action>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="70" y="510" w="%content_a%" h="%mb_h%"/>
+				<actions>
+					<action function="queueclear"/>
+					<action function="page">install</action>
+				</actions>
+			</button>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="330" y="350"/>
+				<image resource="mb_wipe"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="335" y="370" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="334" y="350"/>
+				<image resource="btn_wipe_color"/>
+			</image>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="270" y="520" />
+				<text>{@wipe_btn=Wipe}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+				<action function="page">wipe</action>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="330" y="350" w="%content_a%" h="%mb_h%"/>
+				<action function="page">wipe</action>
+			</button>
+
+			<image>	
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="600" y="350"/>
+				<image resource="mb_backup"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="605" y="370" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="604" y="350"/>
+				<image resource="btn_backup_color"/>
+			</image>
+
+			<button style="mb_text">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="540" y="520" />
+				<text>{@backup_btn=Backup}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+				<action function="page">backup</action>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="auto_generate" var2="0"/>
+				<placement x="600" y="350" w="%content_a%" h="%mb_h%"/>
+				<actions>
+					<action function="set">tw_backup_name={@auto_generate=(Auto Generate)}</action>
+					<action function="page">backup</action>
+				</actions>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="auto_generate" var2="1"/>
+				<placement x="600" y="350" w="%content_a%" h="%mb_h%"/>
+				<actions>
+					<action function="generatebackupname"/>
+					<action function="page">backup</action>
+				</actions>
+			</button>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="870" y="510"/>
+				<image resource="mb_restore"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="875" y="530" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="874" y="510"/>
+				<image resource="btn_restore_color"/>
+			</image>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="810" y="680"/>
+				<text>{@restore_btn=Restore}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+				<action function="page">restore</action>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="870" y="510" w="%content_a%" h="%mb_h%"/>
+				<action function="page">restore</action>
+			</button>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="60" y="810"/>
+				<image resource="mb_mount"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="65" y="830" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="64" y="810"/>
+				<image resource="btn_mount_color"/>
+			</image>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="0" y="980"/>
+				<text>{@mount_btn=Mount}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+				<action function="page">mount</action>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="60" y="810" w="%content_a%" h="%mb_h%"/>
+				<action function="page">mount</action>
+			</button>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="330" y="650"/>
+				<image resource="mb_filemanager"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="335" y="670" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="334" y="650"/>
+				<image resource="btn_filemanager_color"/>
+			</image>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="270" y="820"/>
+				<text>{@file_manager_btn=File Manager}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+				<action function="page">filemanagerlist</action>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="aromafm" op="!=" var2="1"/>
+				<placement x="330" y="650" w="%content_a%" h="%mb_h%"/>
+				<action function="page">filemanagerlist</action>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="aromafm" var2="1"/>
+				<placement x="330" y="650" w="%content_a%" h="%mb_h%"/>
+				<actions>
+					<action function="queueclear"/>
+					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
+					<action function="set">rw_inject_after_zip=0</action>
+					<action function="set">wolf_install_built_in_zip=1</action>
+					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
+					<action function="set">tw_signed_zip_verify=0</action>
+					<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
+					<action function="set">tw_screen_timeout_secs=0</action>
+					<action function="set">wolf_aromafm=1</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/AromaFM/AromaFM.zip</action>
+					<action function="queuezip"/>
+					<action function="flash">flash_zip</action>
+					<action function="disableled"/>
+				</actions>
+			</button>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="600" y="650"/>
+				<image resource="mb_advanced"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="605" y="670" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="604" y="650"/>
+				<image resource="btn_advanced_color"/>
+			</image>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="540" y="820"/>
+				<text>{@advanced_btn=Advanced}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+				<action function="page">advanced</action>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="600" y="650" w="%content_a%" h="%mb_h%"/>
+				<action function="page">advanced</action>
+			</button>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="870" y="810"/>
+				<image resource="mb_restart"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="875" y="830" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="874" y="810"/>
+				<image resource="btn_restart_color"/>
+			</image>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="810" y="980"/>
+				<text>{@reboot_btn=Reboot}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+				<action function="page">reboot</action>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="870" y="810" w="%content_a%" h="%mb_h%"/>
+				<action function="page">reboot</action>
+			</button>
+			
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="330" y="950"/>
+				<image resource="mb_flashlight_on"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="335" y="970" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="334" y="950"/>
+				<image resource="btn_flashlight_color_on"/>
+			</image>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="270" y="1120"/>
+				<text>{@flashlight=Flashlight}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+				<action function="flashlight"/>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="330" y="950%" w="%content_a%" h="%mb_h%"/>
+				<action function="flashlight"/>
+			</button>
+			
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="600" y="950"/>
+				<image resource="mb_recovery"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="605" y="970" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="604" y="950"/>
+				<image resource="btn_recovery_color"/>
+			</image>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="tw_reboot_recovery" var2="1"/>
+				<placement x="540" y="1120"/>
+				<text>{@rb_recovery_btn=Recovery}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+				<actions>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_action_param=recovery</action>
+					<action function="set">tw_reboot_param=recovery</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
+					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
+					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
+					<action function="page">rebootcheck</action>
+				</actions>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="tw_reboot_recovery" var2="1"/>
+				<placement x="600" y="950" w="%content_a%" h="%mb_h%"/>
+				<actions>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_action_param=recovery</action>
+					<action function="set">tw_reboot_param=recovery</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
+					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
+					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
+					<action function="page">rebootcheck</action>
+				</actions>
+			</button>
+			
+			<fill color="%linecolor%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="200" y="1300" w="3" h="300"/>
+			</fill>
+
+			<image>
+				<placement x="60" y="1300"/>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<image resource="icon_person"/>
+			</image>
+
+			<text style="caption">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="250" y="1290"/>
+				<text>{@fox_about_maintainer}</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="250" y="1350"/>
+				<text>%of_maintainer%</text>
+			</text>
+			
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="60%" y="1450"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="caption">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="250" y="1440"/>
+				<text>{@version_twrp=Version}</text>
+			</text>
+			
+			<text style="text_body2">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="250" y="1500"/>
+				<text>%tw_version% | {@wolf_actual_build=Actual build}: %rw_actual_build%</text>
+			</text>
+
+		</page>
 
 
 		<page name="settings">
@@ -3273,6 +3789,9 @@
 				</listitem>
 				<listitem name="{@fox_lock_btn}">
 					<data variable="lock_btn"/>
+				</listitem>
+				<listitem name="DEBUG: icon buttons mode">
+					<data variable="ico_btn_mode"/>
 				</listitem>
 			</listbox>
 
@@ -12253,10 +12772,10 @@
 				<text>z31s1g - {@z31s1g=For material theme}</text>
 			</text>
 
-			<!--text style="text_body2">
-				<placement x="%col1_x_indent%" y="1110"/>
-				<text>ManoloRey - {@fox_rey=Vince maintainer}</text>
-			</text-->
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="1140"/>
+				<text>kirilmaster4, ZHANtech - {@fox_thfox=For a contribution to UI}</text>
+			</text>
 
 			<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="1200"/>
@@ -12268,7 +12787,7 @@
 				<text>INDEV! - {@DSM_=to &quot;DSM_&quot; for the color changing script}</text>
 			</text-->
 
-			<image>
+			<!--image>
 				<placement x="%col1_x%" y="1500"/>
 				<image resource="icon_info"/>
 			</image>
@@ -12286,6 +12805,41 @@
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1650"/>
 				<text>{@fox_about_maintainer=Maintainer}: %of_maintainer%</text>
+			</text-->
+
+			<fill color="%linecolor%">
+				<placement x="200" y="1400" w="3" h="300"/>
+			</fill>
+
+			<image>
+				<placement x="60" y="1400"/>
+				<image resource="icon_person"/>
+			</image>
+
+			<text style="caption">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="250" y="1390"/>
+				<text>{@fox_about_maintainer}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="250" y="1450"/>
+				<text>%of_maintainer%</text>
+			</text>
+			
+			<image>
+				<placement x="60%" y="1550"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="caption">
+				<placement x="250" y="1540"/>
+				<text>{@version_twrp=Version}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="250" y="1600"/>
+				<text>%tw_version% | {@wolf_actual_build=Actual build}: %rw_actual_build%</text>
 			</text>
 
 			<action>
