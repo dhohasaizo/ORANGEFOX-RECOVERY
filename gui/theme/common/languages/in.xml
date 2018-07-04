@@ -50,7 +50,7 @@
 		<string name="mount_btn">Mount</string>
 		<string name="file_manager_btn">Manajer Berkas</string>
 		<string name="advanced_btn">Lanjutan</string>
-		<string name="reboot_btn">Reboot</string>
+		<string name="reboot_btn">Mulai Ulang</string>
 		<string name="copy_log_btn">Salin Log ke SD</string>
 		<string name="install_zip_hdr">Pasang Zip</string>
 		<string name="install_zip_btn">PASANG ZIP</string>
@@ -95,7 +95,7 @@
 		<string name="swipe_reboot">Geser untuk Mulai Ulang</string>
 		<string name="confirm_action">Konfirmasi Tindakan</string>
 		<string name="cancel_btn">BATAL</string>
-		<string name="cancel_reboot_btn">BATALKAN REBOOT</string>
+		<string name="cancel_reboot_btn">BATALKAN MULAI ULANG</string>
 		<string name="wipe_hdr">Bersihkan</string>
 		<string name="factory_reset_hdr">Reset Pabrik</string>
 		<string name="factory_reset1">Bersihkan Data, Cache, dan Dalvik</string>
@@ -123,7 +123,7 @@
 		<string name="format_data_complete">Format Data selesai</string>
 		<!-- Translator note: the word "yes" must remain English! -->
 		<string name="yes_continue">Ketik "yes" untuk konfirmasi.</string>
-		<string name="part_opt_hdr">Pilihan Partisi for %tw_partition_name%</string>
+		<string name="part_opt_hdr">Pilihan Partisi dari %tw_partition_name%</string>
 		<string name="file_sys_opt">OPSI PARTISI</string>
 		<string name="part_mount_point">Mount Point:</string>
 		<string name="part_curr_fs">Berkas Sistem:</string>
@@ -646,7 +646,7 @@
 		<string name="part_fs_error_2">tersedia untuk partisi ini!</string>
 		<string name="new_file_system">Berkas Sistem Baru:</string>
 		<string name="adb_sideload_opt">Opsi Sideload</string>
-		<string name="about_hdr">Tentan</string>
+		<string name="about_hdr">Tentang</string>
 		<string name="author">Pencipta</string>
 		<string name="contact">Kontak</string>
 		<string name="credits">Penghargaan</string>
@@ -654,6 +654,7 @@
 		<string name="z31s1g">Untuk basis tema materialnya.</string>
 		<string name="DSM_">Untuk skrip perubah warna</string>
 		<string name="version_twrp">Versi</string>
+		<string name="maintainer">Pengelola</string>
 		<string name="theme">Pasang Tema</string>
 		<string name="theme_hdr">Pilih Tema</string>
 		<string name="theme_vers">Tema:</string>
@@ -664,7 +665,7 @@
 		<string name="dialog_folder_note_1">Apakah Anda ingin mengatur folder saat ini</string>
 		<string name="dialog_folder_note_2">sebagai folder default untuk daftar ini?</string>
 		<string name="hide_folder">Jangan tanya saya lagi</string>
-		<string name="dialog_label_color_hdr">Reboot diperlukan</string>
+		<string name="dialog_label_color_hdr">Mulai Ulang diperlukan</string>
 		<string name="dialog_settheme_hdr">Ganti Tema</string>
 		<string name="dialog_settheme_btn">GANTI TEMA</string>
 		<string name="dialog_settheme_note_1">Pemulihan akan reboot sekarang</string>
@@ -715,8 +716,8 @@
 		<string name="boot_slot_use_a">TUKAR KE SLOT A</string>
 		<string name="boot_slot_b">SLOT B</string>
 		<string name="boot_slot_use_b">TUKAR KE SLOT B</string>
-		<string name="changing_boot_slot">Mengganti Slot Boot</string>
-		<string name="changing_boot_slot_complete">Mengganti Slot Boot selesai</string>
+		<string name="penggantian_boot_slot">Mengganti Slot Boot</string>
+		<string name="penggantian_boot_slot_complete">Mengganti Slot Boot selesai</string>
 		<string name="unable_set_boot_slot">Kesalahan saat mengganti slot boot bootloader ke {1}</string>
 		<string name="backup_storage_warning">Backup dari {1} tidak menyertakan file dalam penyimpanan internal seperti gambar atau download.</string>  
 <!-- Start of Red Wolf Recovery strings -->
@@ -828,7 +829,7 @@
      <string name="colour_script_finish3">Geser untuk mulai ulang dan menerapkan perubahan</string>
 	 <string name="wolf_colour_wait">Sedang proses mulai ulang</string>
 	 <string name="colour_engine1">Terapkan aksen baru</string>       
-     <string name="colour_engine2">warna</string>    
+     <string name="colour_engine2">Pilih tema warna</string>    
      <string name="colour_engine3">Geser untuk menerapkan warna terpilih</string>
 	 <string name="colour_engine4">Warna terpilih telah diterapkan.</string>
      <string name="wolf.colour.change">Ganti warna</string>
@@ -960,7 +961,7 @@
 	<string name="redwolfms4">[Build]: {1}</string>
 	<string name="wolf_reboot_restore_finish_chk">Mulai ulang setelah pemulihan selesai</string>
 	<string name="wolf_dmverity_chk">Matikan DM-Verity</string>
-	<string name="wolf_forced_encryption_chk">Matikan Forced Encryption</string>
+	<string name="wolf_forced_encryption_chk">Matikan Untukced Encryption</string>
 	<string name="wolf_enable_debugg_chk">Aktifkan Debugging dalam ROM</string>
 	<string name="wolf_disable_debugg_chk">Matikan Debugging dalam ROM</string>
 	<string name="wolf_save_load_aromafm_config_chk">Simpan/Muat konfigurasi AromaFM</string>
@@ -1020,7 +1021,7 @@
     <string name="wolf_install_standard_detected">- Paket Standar Terdeteksi</string>
 	<string name="wolf_install_miui_detected">- Paket Pembaruan MIUI Terdeteksi</string>
 	<!-- Red Wolf Recovery V3.1.1 / 020 -->
-	<!-- This thing will disable checking of the boot partition to disable DM-Verity, Forced Encryption etc. -->
+	<!-- This thing will disable checking of the boot partition to disable DM-Verity, Untukced Encryption etc. -->
 	<string name="wolf_disable_boot_chk">Matikan pemeriksaan boot</string>
 	<string name="wolf_include_system_survival_chk">Sertakan sistem dalam Survival OTA</string>
 	<string name="wolf_verify_incremental_ota_signature_chk">Verifikasi signature Inkremental OTA </string>
@@ -1039,5 +1040,94 @@
 	<string name="wolf_no_space_ota_survival">Tidak cukup ruang kosong pada penyimpanan internal untuk membuat OTA Survival.</string>
 	<!-- Red Wolf Recovery V3.1 / 023 -->
 	<string name="wolf_stupid_fox_detected">Pemulihan tidak mengizinkan anda untuk flashing '{1}' sampai aplikasi pembajakan yang disebut 'Lucky Patcher' dicopot dari perangkat!</string>
+		<!-- Red Wolf Recovery V3.1 / 024 -->
+		<string name="wolf_incremental_ota_res">OTA_RES -- selesai!</string>
+		<string name="wolf_incremental_ota_res_run">Proses OTA_RES berjalan...</string>
+		<string name="wolf_incremental_ota_bak_run">Proses OTA_BAK berjalan...</string>
+		<string name="wolf_incremental_ota_bak">OTA_BAK -- selesai!</string>
+		<!-- OrangeFox R4; removed wifi, bluetooth, hosts -->
+		<!--string name="wolf_wifi_data">WIFI Data</string -->
+		<!--string name="wolf_bluetooth_data">Blueuntukoth Data</string -->
+		<!--string name="wolf_hosts_data">Hosts</string -->
+		
+		<!-- Red Wolf Recovery V3.1 / 025 -->
+		<string name="wolf_set_new_access_password">Mengganti akses kata sandi pemulihan...</string>
+		<string name="wolf_remove_access_password_one">Removing akses kata sandi pemulihan...</string>
+
+		<!--OrangeFox Recovery Project-->
+		<!-- <string name=""></string> -->
+
+		<string name="fox_menu_flash">Orange!</string>
+		<string name="fox_menu_delpass">Hapus Kata Sandi ROM</string>
+		<string name="fox_menu_navigation">Navigasi</string>
+		<string name="fox_m_other">Setelan Lainnya</string>
+		<string name="fox_dell_pass">Hapus Kata Sandi ROM</string>
+		<string name="fox_menu_comm">Skrip Komunitas</string>
+		<string name="fox_menu_splash">Ganti Splash</string>
+		<string name="fox_menu_theme">Ganti Tema</string>
+		<string name="fox_menu_pass_h">Hapus Kata Sandi ROM</string>
+		<string name="fox_menu_pass">By DarthJabba9</string>
+		<string name="fox_lock_btn">Tombol di Layar Kunci</string>
+		<string name="fox_menu_adb_on">ADB: hidup</string>
+		<string name="fox_menu_adb_off">ADB: mati</string>
+
+		<string name="fox_theme_i1">Setelah penggantian Tema, Warna Tema</string>
+		<string name="fox_theme_i2">akan menjadi ke setelan awal (jingga).</string>
+		<string name="fox_theme_i3">Setelah memuat ulang, kamu dapat atur warna tema baru.</string>
+		<string name="fox_theme_black">Tema Hitam</string>
+		<string name="fox_theme_dark">Tema Gelap</string>
+		<string name="fox_theme_slider_dark">Geser untuk menerapkan tema gelap</string>
+		<string name="fox_theme_slider_black">Geser untuk menerapkan tema hitam</string>
+		<string name="fox_theme_white">Tema Terang</string>
+		<string name="fox_theme_slider_white">Geser untuk menerapkan tema terang</string>
+		<string name="fox_theme_engine">Fox Pencarian Tema</string>
+
+
+		<string name="fox_slider_magisk">Geser untuk install Magisk</string>
+		<string name="fox_slider_pass">Geser untuk delete Kata Sandi ROM</string>
+		<string name="fox_slider_supersu">Geser untuk install SuperSU</string>
+
+		<string name="fox_redwolf">Untuk RedWolf development dan</string>
+		<string name="fox_rey">Pengelola Vince</string>
+		<string name="fox_faiz">Porting untuk Santoni dan Land</string>
+		<string name="fox_kirill">Untuk graphics, Photoshop</string>
+
+		<string name="unlock_btn">Unlock</string>
+
+		<string name="fox_menu2_power">Profil Kinerja</string>
+		<string name="fox_menu2_other">Setelan Lainnya</string>
+
+		<string name="f_orange">Jingga</string>
+		<string name="f_indigo">Nila</string>
+		<string name="f_blue">Biru</string>
+		<string name="f_light_blue">Biru Muda</string>
+		<string name="f_stock">Awal</string>
+		<string name="f_teal">Teal</string>
+		<string name="f_green">Hijau</string>
+		<string name="f_light_green">Hijau Muda</string>
+		<string name="f_lime">Lime</string>
+		<string name="f_amber">Kuning</string>
+		<string name="f_red">Merah</string>
+		<string name="f_deep_orange">Jingga Tua</string>
+		<string name="f_brown">Coklat</string>
+		<string name="f_grey">Abu - Abu</string>
+		<string name="f_blue_grey">Biru Kehijauan</string>
+
+		<!-- OrangeFox community scripts -->
+
+		<string name="fox_community_title">OrangeFox Skrip Komunitas</string>
+		<string name="fox_comm_i1">untuk menambahkan item baru contact</string>
+		<string name="fox_comm_i2">@MrYacha di Telegram</string>
+
+		<string name="fox_comm_su_txt2">oleh Chainfire</string>
+		<string name="fox_comm_su_sld">Geser untuk install SuperSU</string>
+		<string name="fox_comm_su_i1">Hanya untuk Miui dan Non-Treble ROM</string>
+
+		<string name="fox_comm_initd_txt2">oleh DarthJabba9</string>
+		<string name="fox_comm_initd_sld">Geser untuk install dukungan initd</string>
+
+		<string name="fox_comm_gs_txt2">oleh SharkcpN</string>
+		<string name="fox_comm_gs_sld">Geser untuk pasang huruf GoogleSans</string>
+		<string name="fox_comm_gs_i1">Miui tidak mendukung!</string>
 </resources>
 </language>

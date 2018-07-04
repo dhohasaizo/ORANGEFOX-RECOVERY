@@ -2138,46 +2138,29 @@
 				</actions>
 			</button>
 
-			<!--button>
-				<placement x="60" y="84"/>
-				<image resource="actionbar_android"/>
-				<actions>
-				<action function="set">tw_back=main</action>
-				<action function="page">wolf_kernel_settings</action>
-				</actions>
-			</button-->
-
-			<!--button>
-				<placement x="204" y="84"/>
-				<image resource="actionbar_android"/>
-				<action function="page">wolf_kernel_settings</action>
-			</button-->
+			<image>
+		 		<placement x="0" y="84"/>
+		 		<image resource="actionbar_logo"/>
+	 		</image>
 
 			<button>
-				<placement x="348" y="84"/>
+				<placement x="636" y="84"/>
 				<image resource="actionbar_theme" highlightresource="actionbar_theme_hl"/>
 				<action function="page">fox_menu</action>
 			</button>
 
 
 			<button>
-				<placement x="636" y="84"/>
+				<placement x="780" y="84"/>
 				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
 				<action function="page">settings</action>
 			</button>
 
-
 			<button>
-				<placement x="780" y="84"/>
+				<placement x="924" y="84"/>
 				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
 				<action function="page">fox_quick_settings</action>
 			</button>
-
-			<!--button>
-				<placement x="924" y="84"/>
-				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
-				<action function="page">settings</action>
-			</button-->
 
 			<image>
 				<condition var1="ico_btn_mode" var2="0"/>
@@ -3087,12 +3070,12 @@
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row2_1_y%"/>
+				<placement x="%col1_x%" y="%row1_3_y%"/>
 				<text>{@settings_cptn=General}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row2_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="810"/>
 				<listitem name="{@zip_sig_chk=Zip signature verification}">
 					<data variable="tw_signed_zip_verify"/>
 				</listitem>
@@ -12817,7 +12800,6 @@
 			</image>
 
 			<text style="caption">
-				<condition var1="ico_btn_mode" var2="1"/>
 				<placement x="250" y="1390"/>
 				<text>{@fox_about_maintainer}</text>
 			</text>

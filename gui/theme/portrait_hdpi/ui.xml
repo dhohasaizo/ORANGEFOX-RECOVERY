@@ -452,7 +452,7 @@
 
 		<variable name="mb_icon_offset_x" value="5"/>
 		<variable name="mb_icon_offset_y" value="20"/>
-		<variable name="mb_icon_h" value="140"/>
+		<variable name="mb_icon_h" value="120"/>
 		<variable name="mb_icon_w" value="140"/>
 		<variable name="mb_icon_x" value="%col1_x%+%mb_icon_offset_x%"/>
 		<variable name="mb_row1_icon_y" value="%mb_row1_y%+%mb_icon_offset_y%"/>
@@ -907,7 +907,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
-          <condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
+          			<condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -919,7 +919,7 @@
 					<condition var1="center_clock" op="=" var2="1"/>
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
-          <condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
+          			<condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
