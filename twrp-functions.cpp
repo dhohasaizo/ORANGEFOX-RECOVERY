@@ -594,12 +594,12 @@ void TWFunc::Deactivation_Process(void)
       std::string support_scfs = "support_scfs";
       std::string one_support_scfs = "," + support_scfs;
       std::string two_support_scfs = support_scfs + ",";
-      TWFunc::Replace_Word_In_File(fstab, one_verity, "");
-      TWFunc::Replace_Word_In_File(fstab, two_verity, "");
-      TWFunc::Replace_Word_In_File(fstab, verity, "");
-      TWFunc::Replace_Word_In_File(fstab, one_support_scfs, "");
-      TWFunc::Replace_Word_In_File(fstab, two_support_scfs, "");
-      TWFunc::Replace_Word_In_File(fstab, support_scfs, "");
+      TWFunc::Replace_Word_In_File(fstab, one_verity);//, "");
+      TWFunc::Replace_Word_In_File(fstab, two_verity);//, "");
+      TWFunc::Replace_Word_In_File(fstab, verity);//, "");
+      TWFunc::Replace_Word_In_File(fstab, one_support_scfs);//, "");
+      TWFunc::Replace_Word_In_File(fstab, two_support_scfs);//, "");
+      TWFunc::Replace_Word_In_File(fstab, support_scfs);//, "");
 
       if (TWFunc::CheckWord(default_prop, dm_verity_prop))
 	{
@@ -1121,7 +1121,6 @@ int TWFunc::write_to_file(const string & fn, const string & line)
   return -1;
 }
 
-/*
 bool TWFunc::Install_SuperSU(void)
 {
   if (!PartitionManager.Mount_By_Path("/system", true))
@@ -1130,7 +1129,7 @@ bool TWFunc::Install_SuperSU(void)
   check_and_run_script("/supersu/install-supersu.sh", "SuperSU");
   return true;
 }
-*/
+
 bool TWFunc::Try_Decrypting_Backup(string Restore_Path, string Password)
 {
   DIR *d;
@@ -1681,6 +1680,8 @@ unsigned long long TWFunc::IOCTL_Get_Block_Size(const char *block_device)
   return 0;
 }
 
+
+/*
 bool TWFunc::CheckWord(std::string filename, std::string search)
 {
   std::string line;
@@ -1698,9 +1699,97 @@ bool TWFunc::CheckWord(std::string filename, std::string search)
     }
   return false;
 }
+*/
+bool TWFunc::CheckWord(std::string filename, std::string search)
+{
+  std::string line;
+  ifstream File;
+  File.open(filename);
+  if (File.is_open())
+    {
+      while (!File.eof())
+	{
+	  std::getline(File, line);
+	  if (line.find(search) != string::npos)
+	    {
+	      File.close();
+	      return true;
+	    }
+	}
+      File.close();
+    }
+  return false;
+}
 
+void TWFunc::Replace_Word_In_File(string file_path, string search,
+				  string word)
+{
+  std::string contents_of_file, local, renamed = file_path + ".wlfx";
+  if (TWFunc::Path_Exists(renamed))
+    unlink(renamed.c_str());
+  std::rename(file_path.c_str(), renamed.c_str());
+  std::ifstream old_file(renamed.c_str());
+  std::ofstream new_file(file_path.c_str());
+  size_t start_pos, end_pos, pos;
+  while (std::getline(old_file, contents_of_file))
+    {
+      start_pos = 0;
+      pos = 0;
+      end_pos = search.find(";", start_pos);
+      while (end_pos != string::npos && start_pos < search.size())
+	{
+	  local = search.substr(start_pos, end_pos - start_pos);
+	  if (contents_of_file.find(local) != string::npos)
+	    {
+	      while ((pos =
+		      contents_of_file.find(local, pos)) != string::npos)
+		{
+		  contents_of_file.replace(pos, local.length(), word);
+		  pos += word.length();
+		}
+	    }
+	  start_pos = end_pos + 1;
+	  end_pos = search.find(";", start_pos);
+	}
+      new_file << contents_of_file << '\n';
+    }
+  unlink(renamed.c_str());
+  chmod(file_path.c_str(), 0640);
+}
 
+void TWFunc::Replace_Word_In_File(std::string file_path, std::string search)
+{
+  std::string contents_of_file, local, renamed = file_path + ".wlfx";
+  if (TWFunc::Path_Exists(renamed))
+    unlink(renamed.c_str());
+  std::rename(file_path.c_str(), renamed.c_str());
+  std::ifstream old_file(renamed.c_str());
+  std::ofstream new_file(file_path.c_str());
+  size_t start_pos, end_pos, pos;
+  while (std::getline(old_file, contents_of_file))
+    {
+      start_pos = 0;
+      pos = 0;
+      end_pos = search.find(";", start_pos);
+      while (end_pos != string::npos && start_pos < search.size())
+	{
+	  local = search.substr(start_pos, end_pos - start_pos);
+	  if (contents_of_file.find(local) != string::npos)
+	    {
+	      while ((pos =
+		      contents_of_file.find(local, pos)) != string::npos)
+		contents_of_file.replace(pos, local.length(), "");
+	    }
+	  start_pos = end_pos + 1;
+	  end_pos = search.find(";", start_pos);
+	}
+      new_file << contents_of_file << '\n';
+    }
+  unlink(renamed.c_str());
+  chmod(file_path.c_str(), 0640);
+}
 
+/*
 void TWFunc::Replace_Word_In_File(string file_path, string search,
 				  string word)
 {
@@ -1727,7 +1816,7 @@ void TWFunc::Replace_Word_In_File(string file_path, string search,
     }
   unlink(renamed.c_str());
 }
-
+*/
 
 void TWFunc::Set_New_Ramdisk_Property(std::string file_path, std::string prop,
 				      bool enable)

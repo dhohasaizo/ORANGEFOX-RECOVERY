@@ -208,6 +208,7 @@ for (const std::string & line:android::base::Split(metadata_str, "\n"))
       return INSTALL_ERROR;
     }
 
+/*
   // Check for downgrade version.
   int64_t build_timestamp =
     android::base::GetIntProperty("ro.build.date.utc",
@@ -236,7 +237,7 @@ for (const std::string & line:android::base::Split(metadata_str, "\n"))
 	  return INSTALL_ERROR;
 	}
     }
-
+*/
   return 0;
 }
 

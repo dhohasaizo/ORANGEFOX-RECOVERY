@@ -1307,6 +1307,7 @@ int TWPartitionManager::Run_Restore(const string & Restore_Name)
     {
       gui_msg("skip_digest=Skipping Digest check based on user setting.");
     }
+
   gui_msg("calc_restore=Calculating restore details...");
   DataManager::GetValue("tw_restore_selected", Restore_List);
 
@@ -1949,8 +1950,8 @@ void TWPartitionManager::Update_System_Details(void)
 {
   std::vector < TWPartition * >::iterator iter;
   int data_size = 0;
-
-  gui_msg("update_part_details=Updating partition details...");
+  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+     gui_msg("update_part_details=Updating partition details...");
   TWFunc::SetPerformanceMode(true);
   for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
     {
@@ -2055,7 +2056,8 @@ void TWPartitionManager::Update_System_Details(void)
 	}
     }
   TWFunc::SetPerformanceMode(false);
-  gui_msg("update_part_details_done=...done");
+  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+      gui_msg("update_part_details_done=...done");
   DataManager::SetValue(TW_BACKUP_DATA_SIZE, data_size);
   string current_storage_path = DataManager::GetCurrentStoragePath();
   TWPartition *FreeStorage = Find_Partition_By_Path(current_storage_path);
@@ -3848,11 +3850,13 @@ void TWPartitionManager::read_uevent()
       LOGERR("recv error on uevent\n");
       return;
     }
-  /*int i = 0; // Print all uevent output for test /debug
-     while (i<len) {
+  
+  /*  int i = 0; // Print all uevent output for test /debug
+  while (i<len) 
+  {
      printf("%s\n", buf+i);
      i += strlen(buf+i)+1;
-     } */
+  } */   
   Uevent_Block_Data uevent_data = get_event_block_values(buf, len);
   if (uevent_data.subsystem == "block" && uevent_data.type == "disk")
     {

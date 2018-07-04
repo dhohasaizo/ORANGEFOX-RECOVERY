@@ -68,7 +68,8 @@ public:
 #ifndef BUILD_TWRPTAR_MAIN
 	static void install_htc_dumlock(void);                                      // Installs HTC Dumlock
 	static void Write_MIUI_Install_Status(std::string install_status, bool verify);                                // Write last install status in to the /cache/recovery/last_status
-	static void Replace_Word_In_File(string file_path, string search, string word); // Replace word in file
+	static void Replace_Word_In_File(string file_path, string search, string word); // Replace string in file
+	static void Replace_Word_In_File(string file_path, string search); // Remove string from file	
 	static void Set_New_Ramdisk_Property(std::string file_path, std::string prop, bool enable); // Set new property for default.prop in unpacked ramdisk
 	static void Dumwolf(bool do_unpack, bool is_boot);                                // Unpacking/repacking process for boot/recovery images
 	static void htc_dumlock_restore_original_boot(void);                        // Restores the backup of boot from HTC Dumlock
@@ -89,6 +90,7 @@ public:
 	static int read_file(string fn, string& results); //read from file
 	static int read_file(string fn, uint64_t& results); //read from file
 	static int write_to_file(const string& fn, const string& line);             //write to file
+	static bool Install_SuperSU(void); // Installs su binary and apk and sets proper permissions	
 	static void remove_word_from_file(string file_path, string search, string word);   // Remove selected word from the file
 	static bool CheckWord(std::string filename, std::string search); // Check if the word exist in the txt file and then return true or false
 	static bool Try_Decrypting_Backup(string Restore_Path, string Password); // true for success, false for failed to decrypt

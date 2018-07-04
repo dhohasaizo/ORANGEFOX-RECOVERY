@@ -133,10 +133,10 @@ bool twrpAdbBuFifo::Backup_ADB_Command(std::string Options) {
 		else {
 			gui_msg(Msg(msg::kError, "partition_not_found=path: {1} not found in partition list")(path));
 			if (!twadbbu::Write_TWERROR())
-				LOGERR("Unable to write to TWRP ADB Backup.\n");		
-			return false;
-		}
+				LOGERR("Unable to write to TWRP ADB Backup.\n");
+		return false;
 	}
+}
 
 	if (Backup_List.empty()) {
 		DataManager::GetValue("tw_backup_list", Backup_List);
@@ -219,8 +219,7 @@ bool twrpAdbBuFifo::Restore_ADB_Backup(void) {
 				int check_digest;
 
 				DataManager::GetValue(TW_SKIP_DIGEST_CHECK_VAR, check_digest);
-				if (check_digest > 0) 
-				{
+				if (check_digest > 0) {
 					TWFunc::GUI_Operation_Text(TW_VERIFY_DIGEST_TEXT, gui_parse_text("{@verifying_digest}"));
 					gui_msg("verifying_digest=Verifying Digest");
 					struct AdbBackupFileTrailer md5check;
@@ -228,30 +227,28 @@ bool twrpAdbBuFifo::Restore_ADB_Backup(void) {
 
 					memset(&md5check, 0, sizeof(md5check));
 					memcpy(&md5check, cmd, sizeof(cmd));
-					if (strcmp(md5check.md5, adbmd5.md5) != 0) 
-					{
+					if (strcmp(md5check.md5, adbmd5.md5) != 0) {
 						LOGERR("md5 doesn't match!\n");
 						LOGERR("Stored file md5: %s\n", adbmd5.md5);
 						LOGERR("ADB Backup check md5: %s\n", md5check.md5);
 						ret = false;
 						break;
 					}
-					else 
-					{
+					else {
 						LOGINFO("ADB Backup md5 matches\n");
 						LOGINFO("Stored file md5: %s\n", adbmd5.md5);
 						LOGINFO("ADB Backup check md5: %s\n", md5check.md5);
 						continue;
 					}
-				} else 
-				{
+				} else {
 					gui_msg("skip_digest=Skipping Digest check based on user setting.");
 					continue;
 				}
+
 			}
 			else if (cmdtype == TWENDADB) {
 				LOGINFO("received TWENDADB\n");
-				ret = false;
+				ret = 1;
 				break;
 			}
 			else {
@@ -317,10 +314,11 @@ bool twrpAdbBuFifo::Restore_ADB_Backup(void) {
 					if (path.compare("/system") == 0) {
 						if (part_settings.Part->Is_Read_Only()) {
 							if (!twadbbu::Write_TWERROR())
-							   LOGERR("Unable to write to TWRP ADB Backup.\n");					
+								LOGERR("Unable to write to TWRP ADB Backup.\n");
 							gui_msg(Msg(msg::kError, "restore_read_only=Cannot restore {1} -- mounted read only.")(part_settings.Part->Backup_Display_Name));
 							ret = false;
 							break;
+
 						}
 					}
 					part_settings.partition_count = partition_count;

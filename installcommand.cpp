@@ -159,6 +159,7 @@ static int check_newer_ab_build(ZipWrap* zip)
         return INSTALL_ERROR;
     }
 
+/*
     // Check for downgrade version.
     int64_t build_timestampt = property_get_int64(
             "ro.build.date.utc", std::numeric_limits<int64_t>::max());
@@ -182,7 +183,7 @@ static int check_newer_ab_build(ZipWrap* zip)
             return INSTALL_ERROR;
         }
     }
-
+*/
     return 0;
 }
 

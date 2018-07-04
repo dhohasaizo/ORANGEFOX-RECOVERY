@@ -247,7 +247,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   string meta = "META-INF/com";
   string metadata = "/android/metadata";
   string miui_word = "/miui";
-  string miui_sg_path = meta + miui_word + miui_word + miui_update;
+  string miui_sg_path = meta + miui_word + miui_word + miui_update; // META-INF/com/miui/miui_update
+//  string miui_sg_path = meta + +"/google/android/update-binary";    // META-INF/com/google/android/update-binary [a fix for certain problems]
   string metadata_sg_path = meta + metadata;
   string fingerprint_property = "ro.build.fingerprint";
   string pre_device = pre_something + "device";
