@@ -3573,18 +3573,18 @@
 
 			<image>
 				<condition var1="fox_go" var2="0"/>
-				<placement x="%col1_x%" y="%row1_3_y%"/>
+				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<image resource="icon_info"/>
 			</image>
 
 			<text style="text_body2">
 				<condition var1="fox_go" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
 				<text>{@fox_comm_i1}</text>
 			</text>
 			<text style="text_body2">
 				<condition var1="fox_go" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
 				<text>{@fox_comm_i2}</text>
 			</text>
 
@@ -3607,7 +3607,43 @@
 
 			<button style="btn_raised_hl">
 				<condition var1="fox_go" var2="0"/>
+				<placement x="%btn_raised_left_x%" y="%row3_1_y%"/>
+				<text>Unroot Magisk</text>
+				<actions>
+					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootmagisk.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/unrootmagisk.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1=Delete Magisk</action>
+					<action function="set">fox_flash_txt2=Testing!</action>
+					<action function="set">fox_flash_sld={@fox_comm_initd_sld}</action>
+					<action function="set">fox_flash_info=0</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised_hl">
+				<condition var1="fox_go" var2="0"/>
 				<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
+				<text>Unroot SuperSU</text>
+				<actions>
+					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootsupersu.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/unrootsupersu.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1=Delete SuperSU</action>
+					<action function="set">fox_flash_txt2=Testing!</action>
+					<action function="set">fox_flash_sld={@fox_comm_initd_sld}</action>
+					<action function="set">fox_flash_info=0</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised_hl">
+				<condition var1="fox_go" var2="0"/>
+				<placement x="%btn_raised_right_x%" y="%row3_3_y%" placement="1"/>
 				<text>Google Sans</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/GoogleSans.zip</action>
@@ -3625,7 +3661,7 @@
 			</button>
 			<button style="btn_raised_hl">
 				<condition var1="fox_go" var2="0"/>
-				<placement x="%btn_raised_right_x%" y="%row4_1_y%" placement="1"/>
+				<placement x="%btn_raised_left_x%" y="%row3_3_y%"/>
 				<text>Initd</text>
 				<actions>
 					<action function="set">tw_filecheck=/FFiles/OF_initd/OF_initd.zip</action>
@@ -3635,6 +3671,23 @@
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1=Initd support</action>
+					<action function="set">fox_flash_txt2={@fox_comm_initd_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_initd_sld}</action>
+					<action function="set">fox_flash_info=0</action>
+				</actions>
+			</button>
+			<button style="btn_raised_hl">
+				<condition var1="fox_go" var2="0"/>
+				<placement x="%btn_raised_left_x%" y="%row4_2_y%"/>
+				<text>Cam2Api</text>
+				<actions>
+					<action function="set">tw_filecheck=%fox_home_files_dir%/Camera2Api.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/Camera2Api.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1=Cam2API</action>
 					<action function="set">fox_flash_txt2={@fox_comm_initd_txt2}</action>
 					<action function="set">fox_flash_sld={@fox_comm_initd_sld}</action>
 					<action function="set">fox_flash_info=0</action>
