@@ -2560,26 +2560,26 @@
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
-				<placement x="60" y="510"/>
+				<placement x="60" y="350"/>
 				<image resource="mb_install"/>
 			</image>
 
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="65" y="530" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="65" y="370" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="64" y="510"/>
+				<placement x="64" y="350"/>
 				<image resource="btn_install_color"/>
 			</image>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="0" y="680" />
+				<placement x="0" y="520" />
 				<text>{@install_btn=Install}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
@@ -2588,7 +2588,7 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="70" y="510" w="%content_a%" h="%mb_h%"/>
+				<placement x="70" y="350" w="%content_a%" h="%mb_h%"/>
 				<actions>
 					<action function="queueclear"/>
 					<action function="page">install</action>
@@ -2682,26 +2682,26 @@
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
-				<placement x="870" y="510"/>
+				<placement x="870" y="350"/>
 				<image resource="mb_restore"/>
 			</image>
 
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="875" y="530" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="875" y="370" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="874" y="510"/>
+				<placement x="874" y="350"/>
 				<image resource="btn_restore_color"/>
 			</image>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="810" y="680"/>
+				<placement x="810" y="520"/>
 				<text>{@restore_btn=Restore}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
@@ -2710,33 +2710,33 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="870" y="510" w="%content_a%" h="%mb_h%"/>
+				<placement x="870" y="350" w="%content_a%" h="%mb_h%"/>
 				<action function="page">restore</action>
 			</button>
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
-				<placement x="60" y="810"/>
+				<placement x="60" y="650"/>
 				<image resource="mb_mount"/>
 			</image>
 
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="65" y="830" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="65" y="670" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="64" y="810"/>
+				<placement x="64" y="650"/>
 				<image resource="btn_mount_color"/>
 			</image>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="0" y="980"/>
+				<placement x="0" y="820"/>
 				<text>{@mount_btn=Mount}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
@@ -2745,7 +2745,7 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="60" y="810" w="%content_a%" h="%mb_h%"/>
+				<placement x="60" y="650" w="%content_a%" h="%mb_h%"/>
 				<action function="page">mount</action>
 			</button>
 
@@ -2844,26 +2844,26 @@
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
-				<placement x="870" y="810"/>
+				<placement x="870" y="650"/>
 				<image resource="mb_restart"/>
 			</image>
 
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="875" y="830" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="875" y="650" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="874" y="810"/>
+				<placement x="874" y="640"/>
 				<image resource="btn_restart_color"/>
 			</image>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="810" y="980"/>
+				<placement x="810" y="820"/>
 				<text>{@reboot_btn=Reboot}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
@@ -2872,7 +2872,7 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="870" y="810" w="%content_a%" h="%mb_h%"/>
+				<placement x="870" y="650" w="%content_a%" h="%mb_h%"/>
 				<action function="page">reboot</action>
 			</button>
 			
@@ -2974,42 +2974,42 @@
 			
 			<fill color="%linecolor%">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="200" y="1300" w="3" h="300"/>
+				<placement x="200" y="1400" w="3" h="300"/>
 			</fill>
 
 			<image>
-				<placement x="60" y="1300"/>
 				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="60" y="1400"/>
 				<image resource="icon_person"/>
 			</image>
 
 			<text style="caption">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="250" y="1290"/>
+				<placement x="250" y="1390"/>
 				<text>{@fox_about_maintainer}</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="250" y="1350"/>
+				<placement x="250" y="1450"/>
 				<text>%of_maintainer%</text>
 			</text>
 			
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="60%" y="1450"/>
+				<placement x="60%" y="1550"/>
 				<image resource="icon_info"/>
 			</image>
 
 			<text style="caption">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="250" y="1440"/>
+				<placement x="250" y="1540"/>
 				<text>{@version_twrp=Version}</text>
 			</text>
 			
 			<text style="text_body2">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="250" y="1500"/>
+				<placement x="250" y="1600"/>
 				<text>%tw_version% | {@wolf_actual_build=Actual build}: %rw_actual_build%</text>
 			</text>
 
@@ -3572,16 +3572,16 @@
 			</text>
 
 			<image>
-				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<placement x="%col1_x%" y="%row1_3_y%"/>
 				<image resource="icon_info"/>
 			</image>
 
 			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
 				<text>{@fox_comm_i1}</text>
 			</text>
 			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
 				<text>{@fox_comm_i2}</text>
 			</text>
 
@@ -3620,7 +3620,7 @@
 				</actions>
 			</button>
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row3_3_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row4_1_y%" placement="1"/>
 				<text>Initd</text>
 				<actions>
 					<action function="set">tw_filecheck=/FFiles/OF_initd/OF_initd.zip</action>
@@ -4632,32 +4632,32 @@
 			</text>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<text>{@file=File}</text>
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<placement x="%col1_x%" y="%row2_2_y%"/>
 				<text>%tw_file%</text>
 			</text>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_1_y%"/>
 				<text>{@folder=Folder}</text>
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="%row3_3_y%"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
 				<text>%tw_zip_location%</text>
 			</text>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<placement x="%col1_x%" y="%row4_1_y%"/>
 				<text>{@options_cptn=Options}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row4_3_y%" w="%listbox_w%" h="%listbox_settings_install_height%"/>
+				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_install_height%"/>
 				<listitem name="{@zip_sig_chk=Zip signature verification}">
 					<data variable="tw_signed_zip_verify"/>
 				</listitem>
@@ -13787,12 +13787,12 @@
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row2_1_y%"/>
+				<placement x="%col1_x%" y="%row1_3_y%"/>
 				<text>{@fox_menu2_power}</text>
 			</text>
 
 			<listbox style="listbox">
-				<placement x="%col1_x%" y="%row2_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
 				<listitem name="{@wolf_boot_performance=Skip MD5 generation during backup}">
 					<data variable="wolf_boot_performance_check"/>
 				</listitem>
@@ -13805,21 +13805,22 @@
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row4_1_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<text>{@fox_menu2_other}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+				<placement x="%col1_x%" y="%row4_1_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
 				<listitem name="{@wolf_boot_fsync}">
 					<data variable="wolf_boot_fsync_check"/>
 				</listitem>
 				<listitem name="{@wolf_boot_fastcharge}">
 					<data variable="wolf_boot_fastcharge_check"/>
 				</listitem>
-				<!--listitem name="{@wolf_boot_t2w}">
+				<listitem name="{@wolf_boot_t2w}">
+					<condition var1="fox_debug" var2="1"/>
 					<data variable="wolf_boot_t2w_check"/>
-				</listitem-->
+				</listitem>
 			</listbox>
 
 			<text style="caption">
