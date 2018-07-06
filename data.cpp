@@ -810,7 +810,6 @@ void DataManager::SetDefaultValues()
   mData.SetValue(RW_FLASHLIGHT_VAR, "0");
 
   mPersist.SetValue(RW_DISABLE_BOOT_CHK, "0");
-  mPersist.SetValue(RW_DO_SYSTEM_ON_OTA, "1");
   mPersist.SetValue("wolf_verify_incremental_ota_signature", "0");
   mPersist.SetValue(RW_ADVANCED_STOCK_REPLACE, "1");
   mPersist.SetValue(RW_DISABLE_SECURE_BOOT, "0");
@@ -822,12 +821,15 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue(RW_DISABLE_SECURE_RO, "0");
   mPersist.SetValue(RW_DONT_REPLACE_STOCK, "0");
   mPersist.SetValue(RW_ADVANCED_WARN_CHK, "0");
-  mPersist.SetValue(RW_INCREMENTAL_PACKAGE, "0");
   mPersist.SetValue(RW_SAVE_LOAD_AROMAFM, "0");
   mPersist.SetValue(RW_DISABLE_DEBUGGING, "0");
-  mPersist.SetValue(RW_ENABLE_DEBUGGING, "1");
+  mPersist.SetValue(RW_ENABLE_DEBUGGING, "1"); 
+  // { MIUI
   mPersist.SetValue(RW_DISABLE_FORCED_ENCRYPTION, "1");
   mPersist.SetValue(RW_DISABLE_DM_VERITY, "1");
+  mPersist.SetValue(RW_INCREMENTAL_PACKAGE, "1"); // DJ9 set to 1 [support miui ota]
+  mPersist.SetValue(RW_DO_SYSTEM_ON_OTA, "1");
+  //  MIUI }
   mPersist.SetValue(RW_REBOOT_AFTER_RESTORE, "0");
   mPersist.SetValue(RW_NO_OS_SEARCH_ENGINE, "1");
   mPersist.SetValue(RW_STUPID_COOKIE_STUFF, "0");

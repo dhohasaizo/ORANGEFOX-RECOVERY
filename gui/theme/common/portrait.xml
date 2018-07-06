@@ -165,12 +165,26 @@
 
 			<listbox style="settingslist">
 				<placement x="%col1_x%" y="%row3_1_y%" w="%listbox_w%" h="%row4_2_y%"/>
+				
 				<listitem name="{@wolf_dmverity_chk=Zip signature verification}">
 					<data variable="wolf_reboot_dm_verity_check"/>
+				</listitem>
+				<listitem name="{@wolf_support_miui_ota_chk=}">
+					<data variable="wolf_support_miui_ota"/>
+				</listitem>				
+				<listitem name="{@wolf_include_system_survival_chk=Simulate failure for actions}">
+					<data variable="wolf_include_system_survival"/>
+				</listitem>
+				<listitem name="{@wolf_verify_incremental_ota_signature_chk=Simulate failure for actions}">
+					<data variable="wolf_verify_incremental_ota_signature"/>
 				</listitem>
 				<listitem name="{@wolf_forced_encryption_chk=Reboot after installation is complete}">
 					<data variable="wolf_reboot_forced_encryption_check"/>
 				</listitem>
+				<listitem name="{@wolf_advanced_stock_recovery=Simulate failure for actions}">
+					<data variable="wolf_reboot_advanced_stock_recovery_check"/>
+				</listitem>
+				
 				<listitem name="{@wolf_enable_debugg_chk=Use rm -rf instead of formatting}">
 					<data variable="wolf_reboot_forced_debugging_check"/>
 				</listitem>
@@ -201,25 +215,16 @@
 				<listitem name="{@wolf_save_load_aromafm_config_chk=Simulate failure for actions}">
 					<data variable="wolf_reboot_saveload_aromafm_check"/>
 				</listitem>
-				<listitem name="{@wolf_verify_incremental_ota_signature_chk=Simulate failure for actions}">
-					<data variable="wolf_verify_incremental_ota_signature"/>
-				</listitem>
-				<listitem name="{@wolf_include_system_survival_chk=Simulate failure for actions}">
-					<data variable="wolf_include_system_survival"/>
-				</listitem>
+
 				<listitem name="{@wolf_disable_boot_chk=Simulate failure for actions}">
 					<data variable="wolf_disable_boot_check"/>
 				</listitem>
-				<listitem name="{@wolf_advanced_stock_recovery=Simulate failure for actions}">
-					<data variable="wolf_reboot_advanced_stock_recovery_check"/>
-				</listitem>
-				<listitem name="{@wolf_support_miui_ota_chk=}">
-					<data variable="wolf_support_miui_ota"/>
-				</listitem>
+
 				<listitem name="{@wolf_reboot_dont_disable_stock_recovery_chk=}">
 					<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
 					<data variable="wolf_reboot_dont_disable_stock_recovery"/>
 				</listitem>
+
 				<listitem name="DEBUG MODE">
 					<condition var1="fox_adb" var2="1"/>
 					<data variable="fox_debug"/>

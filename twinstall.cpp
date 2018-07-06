@@ -248,8 +248,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   string metadata = "/android/metadata";
   string miui_word = "/miui";
   string miui_sg_path = meta + miui_word + miui_word + miui_update; // META-INF/com/miui/miui_update
-//  string miui_sg_path = meta + +"/google/android/update-binary";    // META-INF/com/google/android/update-binary [a fix for certain problems]
-  string metadata_sg_path = meta + metadata;
+//  string miui_sg_path = meta + "/google/android/update-binary";    // META-INF/com/google/android/update-binary [a fix for certain problems]
+  string metadata_sg_path = meta + metadata; // META-INF/com/android/metadata
   string fingerprint_property = "ro.build.fingerprint";
   string pre_device = pre_something + "device";
   string pre_build = pre_something + "build";
@@ -273,7 +273,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 
       gui_msg("wolf_install_detecting=Detecting Current Package");
 
-      if (!Zip->EntryExists(miui_sg_path))
+      if (!Zip->EntryExists(miui_sg_path)) // check for META-INF/com/miui/miui_update; if not found, then this is a standard package
 	{
 	  if (Zip->EntryExists("system.new.dat")
 	      || Zip->EntryExists("system.new.dat.br"))
@@ -281,7 +281,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  gui_msg
 	    ("wolf_install_standard_detected=- Detected standard Package");
 	}
-      else
+      else // this is a MIUI update package
 	{
 	  if (Zip->EntryExists("system.new.dat"))
 	    {
