@@ -226,7 +226,7 @@
 				</listitem>
 
 				<listitem name="DEBUG MODE">
-					<condition var1="fox_adb" var2="1"/>
+					<condition var1="wolf_adb" var2="1"/>
 					<data variable="fox_debug"/>
 				</listitem>
 					
@@ -702,52 +702,52 @@
 
 			<!--FOX ADB-->
 			<image>
-				<condition var1="fox_adb" var2="1"/>
+				<condition var1="wolf_adb" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row4_y%"/>
 				<image resource="mb_adbsideload"/>
 			</image>
 
 			<fill color="%accent%">
-				<condition var1="fox_adb" var2="1"/>
+				<condition var1="wolf_adb" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%mb_icon_x%" y="%mb_row4_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
-				<condition var1="fox_adb" var2="1"/>
+				<condition var1="wolf_adb" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row4_y%"/>
 				<image resource="mb_adbsideload_color"/>
 			</image>
 
 			<image>
-				<condition var1="fox_adb" var2="1"/>
+				<condition var1="wolf_adb" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="%col1_x_neg%" y="%mb_row4_y%" placement="1"/>
 				<image resource="mb_color_extension"/>
 			</image>
 
 			<text style="mb_text">
-				<condition var1="fox_adb" var2="1"/>
+				<condition var1="wolf_adb" var2="1"/>
 				<placement x="%col1_x_indent%" y="%mb_row4_text_y%"/>
 				<text>{@adb_sideload_btn=ADB Sideload}</text>
 			</text>
 
 			<button style="mb_btn">
-				<condition var1="fox_adb" var2="1"/>
+				<condition var1="wolf_adb" var2="1"/>
 				<placement x="%col1_x%" y="%mb_row4_y%" w="%content_w%" h="%mb_h%"/>
 				<action function="page">sideload</action>
 			</button>
 
 			<fill color="%linecolor%">
-				<condition var1="fox_adb" var2="1"/>
+				<condition var1="wolf_adb" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row5_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 
 			<fill color="%linecolor%">
-				<condition var1="fox_adb" var2="1"/>
+				<condition var1="wolf_adb" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="%col1_x_indent%" y="%mb_row5_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
 			</fill>
@@ -3577,37 +3577,17 @@
 			</text>
 
 			<image>
-				<condition var1="fox_go" var2="0"/>
 				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<image resource="icon_info"/>
 			</image>
 
 			<text style="text_body2">
-				<condition var1="fox_go" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
 				<text>{@fox_comm_i1}</text>
 			</text>
 			<text style="text_body2">
-				<condition var1="fox_go" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
 				<text>{@fox_comm_i2}</text>
-			</text>
-
-			<image>
-				<condition var1="fox_go" var2="1"/>
-				<placement x="%col1_x%" y="%row2_1_y%"/>
-				<image resource="icon_warning"/>
-			</image>
-
-			<text style="text_body2">
-				<condition var1="fox_go" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
-				<text>{@fox_comm_go1}</text>
-			</text>
-			<text style="text_body2">
-				<condition var1="fox_go" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
-				<text>{@fox_comm_go2}</text>
 			</text>
 
 			<button style="btn_raised_hl">
@@ -3665,7 +3645,6 @@
 				</actions>
 			</button>
 			<button style="btn_raised_hl">
-				<condition var1="fox_go" var2="0"/>
 				<placement x="%btn_raised_left_x%" y="%row3_3_y%"/>
 				<text>Initd</text>
 				<actions>
@@ -3847,7 +3826,6 @@
 			</text>
 
 			<button style="btn_raised_hl">
-				<condition var1="fox_go" var2="0"/>
 				<placement x="%btn_raised_left_x%" y="%row7_2_y%"/>
 				<text>{@fox_dellp_btn}</text>
 				<actions>
@@ -3871,7 +3849,6 @@
 			</button>
 
 			<button style="btn_raised_hl">
-				<condition var1="fox_go" var2="0"/>
 				<placement x="%btn_raised_left_x%" y="%row6_3_y%"/>
 				<text>Magisk</text>
 				<actions>
@@ -3895,38 +3872,19 @@
 			</button>
 
 			<button style="btn_raised">
-				<condition var1="fox_adb" var2="1"/>
+				<condition var1="wolf_adb" var2="1"/>
 				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
 				<text>{@fox_menu_adb_on}</text>
-				<!--action function="page">fox_adb</action-->
-				<action function="set">fox_adb=0</action>
+				<!--action function="page">wolf_adb</action-->
+				<action function="set">wolf_adb=0</action>
 			</button>
 
 			<button style="btn_raised">
-				<condition var1="fox_adb" var2="0"/>
+				<condition var1="wolf_adb" var2="0"/>
 				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
 				<text>{@fox_menu_adb_off}</text>
-				<!--action function="page">fox_adb</action-->
-				<action function="set">fox_adb=1</action>
-			</button>
-
-			<button style="btn_raised_hl">
-				<condition var1="fox_go" var2="0"/>
-				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
-				<text>SuperSU</text>
-				<actions>
-					<action function="set">tw_filecheck=%fox_home_files_dir%/SuperSU.zip</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/SuperSU.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1=SuperSU</action>
-					<action function="set">fox_flash_txt2={@fox_comm_su_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_su_sld}</action>
-					<action function="set">fox_flash_info=1</action>
-					<action function="set">fox_flash_i1={@fox_comm_su_i1}</action>
-				</actions>
+				<!--action function="page">wolf_adb</action-->
+				<action function="set">wolf_adb=1</action>
 			</button>
 
 			<action>

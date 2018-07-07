@@ -279,7 +279,6 @@
 
 		<!-- For Maintainers -->
 		<variable name="flashlight_support" value="%of_flashlight_enable%"/>
-		<variable name="fox_go" value="0"/> <!-- Enable this variable to activate included ZIP support -->
 		<variable name="fox_adb" value="0"/> <!-- Secure ADB 1 -->
 		<variable name="fox_debug" value="0" persist="1"/> <!-- Enable this variables to activate persist debug mode -->
 
@@ -582,6 +581,7 @@
 		<variable name="rw_version" value="[OrangeFox R4]"/>
 		<variable name="flashlight" value="0"/>
 		<variable name="tw_heslo_check" value="dd"/>
+		<variable name="wolf_adb" value="0"/>
    </variables>
 
 	<include>
