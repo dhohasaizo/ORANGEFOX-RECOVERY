@@ -855,6 +855,8 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue(RW_BALANCE_CHECK, "0");
   mPersist.SetValue(RW_FSYNC_CHECK, "0");
   mPersist.SetValue(RW_T2W_CHECK, "0");
+  mPersist.SetValue(RW_MAIN_SURVIVAL_TRIGGER, "META-INF/com/miui/miui_update");
+
   mPersist.SetValue(RW_FORCE_FAST_CHARGE_CHECK, "0");
   mPersist.SetValue(RW_POWERSAVE_CHECK, "0");
   mPersist.SetValue(RW_PERFORMANCE_CHECK, "0");

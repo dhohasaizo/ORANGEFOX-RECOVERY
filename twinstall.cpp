@@ -72,6 +72,7 @@ extern "C"
 #define OTA_ERROR "INSTALL_ERROR"
 #define OTA_VERIFY_FAIL "INSTALL_VERIFY_FAILURE"
 #define OTA_SUCCESS "INSTALL_SUCCESS"
+#define FOX_TMP_PATH "/foxtmpfile"
 
 static const char *properties_path = "/dev/__properties__";
 static const char *properties_path_renamed = "/dev/__properties_kk__";
@@ -241,19 +242,11 @@ static bool verify_incremental_package(string fingerprint, string metadatafp,
 static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 				 int *wipe_cache)
 {
-  string pre_something = "pre-";
-  string miui_update = "_update";
   string bootloader = "firmware-update/emmc_appsboot.mbn";
-  string meta = "META-INF/com";
-  string metadata = "/android/metadata";
-  string miui_word = "/miui";
-  string miui_sg_path = meta + miui_word + miui_word + miui_update; // META-INF/com/miui/miui_update
-//  string miui_sg_path = meta + "/google/android/update-binary";    // META-INF/com/google/android/update-binary [a fix for certain problems]
-  string metadata_sg_path = meta + metadata; // META-INF/com/android/metadata
+  string metadata_sg_path = "META-INF/com/android/metadata";
   string fingerprint_property = "ro.build.fingerprint";
-  string pre_device = pre_something + "device";
-  string pre_build = pre_something + "build";
-
+  string pre_device = "pre-device";
+  string pre_build = "pre-build";
 
   if (!Zip->
       ExtractEntry(ASSUMED_UPDATE_BINARY_NAME, TMP_UPDATER_BINARY_PATH, 0755))
@@ -272,16 +265,27 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
       DataManager::SetValue(RW_LOADED_FINGERPRINT, 0);
 
       gui_msg("wolf_install_detecting=Detecting Current Package");
-
-      if (!Zip->EntryExists(miui_sg_path)) // check for META-INF/com/miui/miui_update; if not found, then this is a standard package
+      
+      if (Zip->EntryExists(UPDATER_SCRIPT))
 	{
-	  if (Zip->EntryExists("system.new.dat")
-	      || Zip->EntryExists("system.new.dat.br"))
-	    DataManager::SetValue(RW_CALL_DEACTIVATION, 1);
-	  gui_msg
-	    ("wolf_install_standard_detected=- Detected standard Package");
+	  if (Zip->ExtractEntry(UPDATER_SCRIPT, FOX_TMP_PATH, 0644))
+	    {
+	      if (TWFunc::CheckWord(FOX_TMP_PATH, "block_image_update"))
+		zip_is_rom_package = true;
+	      unlink(FOX_TMP_PATH);
+	    }
 	}
-      else // this is a MIUI update package
+      
+      if (!Zip->EntryExists(FOX_MIUI_UPDATE_PATH)) // META-INF/com/miui/miui_update - if NOT found, then this is a standard zip installer 
+	{
+	  if (
+	     (Zip->EntryExists("system.new.dat")) || (Zip->EntryExists("system.new.dat.br")) // we are installing a custom ROM
+	     ) 
+	       DataManager::SetValue(RW_CALL_DEACTIVATION, 1);
+	  gui_msg
+	    ("wolf_install_standard_detected=- Detected standard ROM zip installer");
+	}
+      else // this is a MIUI zip installer
 	{
 	  if (Zip->EntryExists("system.new.dat"))
 	    {
@@ -289,49 +293,46 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      DataManager::SetValue(RW_CALL_DEACTIVATION, 1);
 	    }
 	  gui_msg
-	    ("wolf_install_miui_detected=- Detected MIUI Update Package");
+	    ("wolf_install_miui_detected=- Detected MIUI Update zip installer");
 	}
 
       if (DataManager::GetIntValue(RW_INCREMENTAL_PACKAGE) != 0)
 	{
 	  gui_msg
 	    ("wolf_incremental_ota_status_enabled=Support MIUI Incremental package status: Enabled");
-	  if (Zip->EntryExists(metadata_sg_path))
+	  if (Zip->EntryExists(metadata_sg_path)) // META-INF/com/android/metadata is in zip
 	    {
 	      const string take_out_metadata = "/tmp/build.prop";
-	      if (Zip->
-		  ExtractEntry(metadata_sg_path, take_out_metadata, 0644))
+	      if (Zip->ExtractEntry(metadata_sg_path, take_out_metadata, 0644))
 		{
-		  string metadata_fingerprint =
-		    TWFunc::File_Property_Get(take_out_metadata, pre_build);
-		  string metadata_device =
-		    TWFunc::File_Property_Get(take_out_metadata, pre_device);
-		  string fingerprint =
-		    TWFunc::System_Property_Get(fingerprint_property);
-		  if (!metadata_fingerprint.empty()
-		      && metadata_fingerprint.size() >
-		      RW_MIN_EXPECTED_FP_SIZE)
+		  string metadata_fingerprint = TWFunc::File_Property_Get(take_out_metadata, pre_build); // look for "pre-build"
+		  string metadata_device = TWFunc::File_Property_Get(take_out_metadata, pre_device);  // look for "pre-device"
+		  string fingerprint = TWFunc::System_Property_Get(fingerprint_property); // try to get system fingerprint - ro.build.fingerprint
+		    
+		  // appropriate "pre-build" entry in META-INF/com/android/metadata ? == miui OTA zip installer
+		  if (metadata_fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE) 
 		    {
 		      gui_msg(Msg
 			      ("wolf_incremental_package_detected=Detected Incremental package '{1}'")
 			      (path));
+			      
+		      zip_is_for_specific_build = true;
+		      
 		      DataManager::SetValue(RW_METADATA_PRE_BUILD, 1);
-		      if (!fingerprint.empty()
-			  && fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE
-			  && DataManager::
-			  GetIntValue("wolf_verify_incremental_ota_signature")
-			  != 0)
+		      
+		      if ((fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE) 
+		      && (DataManager::GetIntValue("wolf_verify_incremental_ota_signature") != 0))
 			{
 			  gui_msg
 			    ("wolf_incremental_ota_compatibility_chk=Verifying Incremental Package Signature...");
-			     /* if (verify_incremental_package
-				(fingerprint, metadata_fingerprint,
-				 metadata_device)) */
-			  
-			    if (TWFunc::
+			    /* if (TWFunc::
 			      Verify_Incremental_Package(fingerprint,
 							 metadata_fingerprint,
-							 metadata_device))
+							 metadata_device)) */
+			    if (verify_incremental_package 
+			         (fingerprint, 
+			          metadata_fingerprint,
+				  metadata_device))
 			    {
 			      gui_msg
 				("wolf_incremental_ota_compatibility_true=Incremental package is compatible.");
@@ -342,9 +343,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 			    }
 			  else
 			    {
-			      TWFunc::
-				Write_MIUI_Install_Status(OTA_VERIFY_FAIL,
-							  false);
+			      TWFunc::Write_MIUI_Install_Status(OTA_VERIFY_FAIL, false);
 			      gui_err
 				("wolf_incremental_ota_compatibility_false=Incremental package isn't compatible with this ROM!");
 			      return INSTALL_ERROR;
@@ -355,7 +354,14 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 			  property_set(fingerprint_property.c_str(),
 				       metadata_fingerprint.c_str());
 			}
-		      unlink(take_out_metadata.c_str());
+		    
+		      if (zip_is_for_specific_build)
+			 {
+			   if ((!ors_is_active()) && (zip_is_rom_package))
+			   gui_warn
+			     ("wolf_zip_have_to_be_decrypted=Warning: Some OEMs specific packages have to be first decrypted before the installation!");
+			 }			
+		      unlink(take_out_metadata.c_str());		      
 		    }
 		}
 	      else
@@ -384,21 +390,23 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  && !TWFunc::Verify_Loaded_OTA_Signature(loadedfp,
 						  ota_location_folder))
 	{
-	  TWPartition *survival_sys =
-	    PartitionManager.Find_Partition_By_Path("/system");
 	  TWPartition *survival_boot =
 	    PartitionManager.Find_Partition_By_Path("/boot");
 
 	  if (!survival_boot)
 	    {
 	      TWFunc::Write_MIUI_Install_Status(OTA_ERROR, false);
-	      LOGERR("OTA_Survival: Boot issue");
+	      LOGERR("OTA_Survival: Unable to find boot partition");
 	      return INSTALL_ERROR;
 	    }
+	    
+	  TWPartition *survival_sys =
+	    PartitionManager.Find_Partition_By_Path("/system");
+	    
 	  if (!survival_sys)
 	    {
 	      TWFunc::Write_MIUI_Install_Status(OTA_ERROR, false);
-	      LOGERR("OTA_Survival: System issue");
+	      LOGERR("OTA_Survival: Unable to find system partition");
 	      return INSTALL_ERROR;
 	    }
 
