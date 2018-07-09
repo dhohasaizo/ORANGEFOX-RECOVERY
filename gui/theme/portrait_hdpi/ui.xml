@@ -282,6 +282,19 @@
 		<variable name="fox_adb" value="0"/> <!-- Secure ADB 1 -->
 		<variable name="fox_debug" value="0" persist="1"/> <!-- Enable this variables to activate persist debug mode -->
 
+		<!-- Lower led crutch :) -->
+		<variable name="wolf_set_custom_led_restore_green" value="1" persist="1"/>
+		<variable name="wolf_set_custom_led_restore_blue" value="0" persist="1"/>
+		<variable name="wolf_set_custom_led_restore_red" value="0" persist="1"/>
+
+		<variable name="wolf_set_custom_led_backup_green" value="1" persist="1"/>
+		<variable name="wolf_set_custom_led_backup_blue" value="0" persist="1"/>
+		<variable name="wolf_set_custom_led_backup_red" value="0" persist="1"/>
+
+		<variable name="wolf_set_custom_led_install_green" value="1" persist="1"/>
+		<variable name="wolf_set_custom_led_install_blue" value="0" persist="1"/>
+		<variable name="wolf_set_custom_led_install_red" value="0" persist="1"/>
+
 		<variable name="screen_w" value="1080"/>
 		<variable name="screen_h" value="1920"/>
 		<variable name="ab_h" value="240"/>

@@ -910,6 +910,7 @@
 		<string name="fox_lock_btn">Разблокировка кнопкой</string>
 		<string name="fox_menu_adb_on">ADB: вкл.</string>
 		<string name="fox_menu_adb_off">ADB: выкл.</string>
+		<string name="ico_btn_mode_txt">Квадратные кнопки-иконки на главной</string>
 
 		<string name="fox_theme_title">Движок темы Fox</string>
 		<string name="fox_theme_i1">После изменения темы, цвет акцента</string>
@@ -939,9 +940,12 @@
 		<string name="fox_about_maintainer">Сопровождающий</string>
 	 	<string name="fox_redwolf">За разработку RedWolf</string>
 	 	<string name="fox_z31s1g">За Material тему</string>
-		 <string name="fox_thfox">За вклад в UI</string>
+		<string name="fox_thfox">За вклад в UI</string>
 
 		<string name="unlock_btn">Разблокировать</string>
+
+		<string name="settings_cptn">Главное</string>
+		<string name="language_cptn">Язык</string>
 
 	 	<string name="fox_menu2_power">Профиль производительности</string>
 	 	<string name="fox_menu2_other">Доп. Настройки</string>
@@ -1001,7 +1005,7 @@
 		<string name="sort_by_date_desc">По дате наоб.</string>
 		<string name="sort_by_size_desc">По размеру наоб.</string>
 
-		<!-- OrangeFox community scripts -->
+		<!-- OrangeFox community page -->
 
 		<string name="fox_community_title">OrangeFox скрипты сообщества</string>
 		<string name="fox_comm_i1">Для добавления новых скриптов</string>
@@ -1017,6 +1021,23 @@
 		<string name="fox_comm_gs_txt2">От SharkcpN</string>
 		<string name="fox_comm_gs_sld">Проведите чтобы установить шрифт GoogleSans</string>
 		<string name="fox_comm_gs_i1">Miui не поддерживается!</string>
+
+		<string name="fox_comm_rm_su_txt1">Удалить SuperSU</string>
+		<string name="fox_comm_rm_su_txt2">SuperSuU от Chainfire</string>
+		<string name="fox_comm_rm_su_sld">Проведить чтобы удалить SuperSU</string>
+
+		<string name="fox_comm_rm_mg_txt1">Удвлить Magisk</string>
+		<string name="fox_comm_rm_mg_txt2">Magisk от Topjohnwu</string>
+		<string name="fox_comm_rm_mg_sld">Проведить чтобы удалить Magisk</string>
+
+		<string name="fox_comm_cam_txt1">Установить Cam2Api</string>
+		<string name="fox_comm_cam_txt2">Нет автора</string>
+		<string name="fox_comm_cam_sld">Проведите чтобы установить Cam2Api</string>
+
+		<string name="fox_dellp_btn">Сбросить пароль</string>
+		<string name="fox_dellp_txt1">Сбросить пароль прошивки</string>
+		<string name="fox_dellp_txt2">От DarthJabba9</string>
+		<string name="fox_dellp_sld">Проведите чтобы сбросить пароль прошивки</string>
 
 		<string name="fox_del_btn">Удалить OF</string>
 		<string name="fox_del_txt1">Удаление OrangeFox файлов</string>
