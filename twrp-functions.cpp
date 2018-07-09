@@ -1894,10 +1894,9 @@ void TWFunc::Start_redwolf(void)
   cpu_two = "/cpufreq/scaling_governor";
   std::string enable = "1";
   std::string disable = "0";
-  std::string sys_path = "/sys/";
-  std::string t2w = sys_path + "android_touch/doubletap2wake";
-  std::string fsync = sys_path + "module/sync/parameters/fsync_enabled";
-  std::string fast_charge = sys_path + "kernel/fast_charge/force_fast_charge";
+  std::string t2w = "/sys/android_touch/doubletap2wake";
+  std::string fsync = "/sys/module/sync/parameters/fsync_enabled";
+  std::string fast_charge = "/sys/kernel/fast_charge/force_fast_charge";
   std::string performance = "performance";
   std::string powersave = "powersave";
   std::string interactive = "interactive";
@@ -1921,11 +1920,15 @@ void TWFunc::Start_redwolf(void)
 	}
     }
 
-  if (DataManager::GetIntValue(RW_T2W_CHECK) == 1)
+  if (TWFunc::Path_Exists(t2w))
     {
-      if (TWFunc::Path_Exists(t2w))
-	TWFunc::write_to_file(t2w, enable);
-    }
+      if (DataManager::GetIntValue(RW_T2W_CHECK) == 1)
+       {
+	   TWFunc::write_to_file(t2w, enable);
+       } 
+       else
+          TWFunc::write_to_file(t2w, disable);
+    } 
 
   if (DataManager::GetIntValue(RW_FSYNC_CHECK) == 1)
     {
