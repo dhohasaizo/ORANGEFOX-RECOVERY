@@ -3596,7 +3596,7 @@
 			<button style="btn_raised_hl">
 				
 				<placement x="%btn_raised_left_x%" y="%row3_1_y%"/>
-				<text>Unroot Magisk</text>
+				<text>{@fox_comm_rm_mg_txt1}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootmagisk.zip</action>
 					<action function="set">tw_filename=%fox_home_files_dir%/unrootmagisk.zip</action>
@@ -3604,9 +3604,9 @@
 					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1=Delete Magisk</action>
-					<action function="set">fox_flash_txt2=Testing!</action>
-					<action function="set">fox_flash_sld={@fox_comm_initd_sld}</action>
+					<action function="set">fox_flash_txt1={@fox_comm_rm_mg_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_comm_rm_mg_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_rm_mg_sld}</action>
 					<action function="set">fox_flash_info=0</action>
 				</actions>
 			</button>
@@ -3614,7 +3614,7 @@
 			<button style="btn_raised_hl">
 				
 				<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
-				<text>Unroot SuperSU</text>
+				<text>{@fox_comm_rm_su_txt1}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootsupersu.zip</action>
 					<action function="set">tw_filename=%fox_home_files_dir%/unrootsupersu.zip</action>
@@ -3622,9 +3622,9 @@
 					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1=Delete SuperSU</action>
-					<action function="set">fox_flash_txt2=Testing!</action>
-					<action function="set">fox_flash_sld={@fox_comm_initd_sld}</action>
+					<action function="set">fox_flash_txt1={@fox_comm_rm_su_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_comm_rm_su_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_rm_su_sld}</action>
 					<action function="set">fox_flash_info=0</action>
 				</actions>
 			</button>
@@ -3675,9 +3675,9 @@
 					<action function="set">tw_back=fox_community</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1=Cam2API</action>
-					<action function="set">fox_flash_txt2={@fox_comm_initd_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_initd_sld}</action>
+					<action function="set">fox_flash_txt1={@fox_comm_cam_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_comm_cam_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_cam_sld}</action>
 					<action function="set">fox_flash_info=0</action>
 				</actions>
 			</button>
@@ -3854,7 +3854,6 @@
 			</button>
 
 			<button style="btn_raised_hl">
-				
 				<placement x="%btn_raised_left_x%" y="%row6_3_y%"/>
 				<text>Magisk</text>
 				<actions>
@@ -3901,7 +3900,7 @@
 					<action function="set">tw_filecheck=%fox_home_files_dir%/SuperSU.zip</action>
 					<action function="set">tw_filename=%fox_home_files_dir%/SuperSU.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1=SuperSU</action>
@@ -3935,7 +3934,7 @@
 				<condition var1="tw_busy" var2="0"/>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main</action>
+				<action function="page">fox_menu</action>
 			</button>
 
             <button>
@@ -14157,7 +14156,7 @@
 				<condition var1="fox_theme_wait" var2="0"/>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main2</action>
+				<action function="page">fox_menu</action>
 			</button>
 
 			<text style="text_ab_title">

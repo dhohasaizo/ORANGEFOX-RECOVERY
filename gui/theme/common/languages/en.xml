@@ -1047,10 +1047,6 @@
 		<string name="fox_menu2_power">Performance Profile</string>
 		<string name="fox_menu2_other">Other Setting</string>
 
-		<string name="fox_community_title">OrangeFox Community scrips</string>
-		<string name="fox_comm_i1">To add a new item contact</string>
-		<string name="fox_comm_i2">@MrYacha in Telegram</string>
-
 		<string name="f_orange">Orange</string>
 		<string name="f_indigo">Indigo</string>
 		<string name="f_blue">Blue</string>
@@ -1067,7 +1063,11 @@
 		<string name="f_gray">Gray</string>
 		<string name="f_blue_grey">Blue Grey</string>
 
-		<!-- OrangeFox flash! -->
+		<!-- OrangeFox community page -->
+
+		<string name="fox_community_title">OrangeFox Community scrips</string>
+		<string name="fox_comm_i1">To add a new item contact</string>
+		<string name="fox_comm_i2">@MrYacha in Telegram</string>
 
 		<string name="fox_comm_su_txt2">By Chainfire</string>
 		<string name="fox_comm_su_sld">Swipe to install SuperSU</string>
@@ -1082,7 +1082,7 @@
 
 		<string name="fox_del_btn">Del OF Files</string>
 		<string name="fox_del_txt1">Delete OrangeFox Files</string>
-		<string name="fox_del_txt2">OrangeFox team</string>
+		<string name="fox_del_txt2">By OrangeFox team</string>
 		<string name="fox_del_sld">Swipe to delete OrangeFox Files</string>
 		<string name="fox_del_i1">You Really want to delete all</string>
 		<string name="fox_del_i2">OrangeFox files?</string>
@@ -1090,6 +1090,18 @@
 		<string name="fox_magisk_txt1">Install Magisk</string>
 		<string name="fox_magisk_txt2">By Topjohnwu</string>
 		<string name="fox_magisk_sld">Swipe to install Magisk</string>
+
+		<string name="fox_comm_rm_su_txt1">Remove SuperSU</string>
+		<string name="fox_comm_rm_su_txt2">SuperSU by Chainfire</string>
+		<string name="fox_comm_rm_su_sld">Swipe to remove SuperSU</string>
+
+		<string name="fox_comm_rm_mg_txt1">Remove Magisk</string>
+		<string name="fox_comm_rm_mg_txt2">Magisk by Topjohnwu</string>
+		<string name="fox_comm_rm_mg_sld">Swipe to remove Magisk</string>
+
+		<string name="fox_comm_cam_txt1">Install Cam2Api</string>
+		<string name="fox_comm_cam_txt2">No author</string>
+		<string name="fox_comm_cam_sld">Swipe to install Cam2Api</string>
 
 		<string name="fox_dellp_btn">Del ROM Pass</string>
 		<string name="fox_dellp_txt1">Remove ROM password</string>
