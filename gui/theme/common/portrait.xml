@@ -5763,18 +5763,6 @@
 				<action function="set">tw_show_exclamation=0</action>
 				<action function="set">tw_show_reboot=0</action>
 				<action function="page">%tw_clear_destination%</action>
-				<!-- Lower led crutch :) -->
-				<action function="set">wolf_set_custom_led_restore_green=1</action>
-				<action function="set">wolf_set_custom_led_restore_blue=0</action>
-				<action function="set">wolf_set_custom_led_restore_red=0</action>
-
-				<action function="set">wolf_set_custom_led_backup_green=1</action>
-				<action function="set">wolf_set_custom_led_backup_blue=0</action>
-				<action function="set">wolf_set_custom_led_backup_red=0</action>
-
-				<action function="set">wolf_set_custom_led_install_green=1</action>
-				<action function="set">wolf_set_custom_led_install_blue=0</action>
-				<action function="set">wolf_set_custom_led_install_red=0</action>
 			</action>
 		</page>
 
