@@ -4,7 +4,7 @@ include $(CLEAR_VARS)
 ifneq ($(TW_DEVICE_VERSION),)
     LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"-$(TW_DEVICE_VERSION)"'
 else
-    LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"-25-Unofficial"'
+    LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"-Unofficial"'
 endif
 
 LOCAL_SRC_FILES:= \
