@@ -705,5 +705,104 @@
 		<string name="include_kernel_log">包含內核日誌</string>
 		<string name="sha2_chk">使用 SHA2 進行散列校驗</string>
 		<string name="unable_set_boot_slot">更改 bootloader 啟動分區至 {1} 錯誤</string>
+
+		<!-- OrangeFox -->
+		<!-- By tony8077616 -->
+
+		<string name="fox_menu_flash">Orange!</string>
+		<string name="fox_menu_delpass">刪除系統密碼</string>
+		<string name="fox_menu_navigation">導航欄</string>
+		<string name="fox_m_other">其它設定</string>
+		<string name="fox_menu_comm">社群腳本</string>
+		<string name="fox_menu_splash">變更啟動畫面</string>
+		<string name="fox_menu_theme">變更主題</string>
+		<string name="fox_menu_pass_h">刪除系統密碼</string>
+		<string name="fox_menu_pass">By DarthJabba9</string>
+		<string name="fox_lock_btn">點按鈕解鎖螢幕(取代滑動解鎖螢幕)</string>
+		<string name="fox_menu_adb_on">ADB：開</string>
+		<string name="fox_menu_adb_off">ADB：關</string>
+		<string name="ico_btn_mode_txt">首頁變成圖示按鈕</string>
+
+		<string name="fox_theme_title">Fox 主題引擎</string>
+		<string name="fox_theme_i1">變更主題後</string>
+		<string name="fox_theme_i2">主題顏色將會設成預設值(橘色)</string>
+		<string name="fox_theme_i3">重新啟動後，您可以設定一個新的主題顏色</string>
+		<string name="fox_theme_black">黑色主題</string>
+		<string name="fox_theme_dark">暗色主題</string>
+		<string name="fox_theme_white">白色主題</string>
+		<string name="fox_theme_slider_dark">滑動套用暗色主題</string>
+		<string name="fox_theme_slider_black">滑動套用黑色主題</string>
+		<string name="fox_theme_slider_white">滑動套用白色主題</string>
+
+		<string name="fox_about_maintainer">開發者</string>
+		<string name="z31s1g">以他的 Material 主題為基礎</string>
+		<string name="fox_redwolf">RedWolf 開發</string>
+		<string name="fox_thfox">使用者介面的貢獻</string>
+
+		<string name="unlock_btn">~解鎖~</string>
+
+		<string name="fox_menu2_power">效能設定檔</string>
+		<string name="fox_menu2_other">其它設定</string>
+
+		<string name="f_orange">橘色</string>
+		<string name="f_indigo">靛青色</string>
+		<string name="f_blue">藍色</string>
+		<string name="f_light_blue">淺藍色</string>
+		<string name="f_stock">預設顏色</string>
+		<string name="f_teal">水鴨色</string>
+		<string name="f_green">綠色</string>
+		<string name="f_light_green">淺綠色</string>
+		<string name="f_lime">青檸檬色</string>
+		<string name="f_amber">琥珀色</string>
+		<string name="f_red">紅色</string>
+		<string name="f_deep_orange">深橘色</string>
+		<string name="f_brown">棕色</string>
+		<string name="f_grey">灰色</string>
+		<string name="f_blue_grey">藍灰色</string>
+
+		<!-- OrangeFox community page -->
+
+		<string name="fox_community_title">OrangeFox 社群腳本</string>
+		<string name="fox_comm_i1">若要新增項目</string>
+		<string name="fox_comm_i2">請在 Telegram 聯繫 @MrYacha</string>
+
+		<string name="fox_comm_su_txt2">來自 Chainfire</string>
+		<string name="fox_comm_su_sld">滑動安裝 SuperSU</string>
+		<string name="fox_comm_su_i1">僅限 Miui 官方系統和 Non-Treble 系統</string>
+
+		<string name="fox_comm_initd_txt2">來自 DarthJabba9</string>
+		<string name="fox_comm_initd_sld">滑動安裝 init.d 的支援</string>
+
+		<string name="fox_comm_gs_txt2">來自 SharkcpN</string>
+		<string name="fox_comm_gs_sld">滑動安裝 GoogleSans 字體</string>
+		<string name="fox_comm_gs_i1">不支援 Miui 官方系統！</string>
+
+		<string name="fox_del_btn">刪除 OF 檔案</string>
+		<string name="fox_del_txt1">刪除 OrangeFox 的檔案</string>
+		<string name="fox_del_txt2">來自 OrangeFox 團隊</string>
+		<string name="fox_del_sld">滑動刪除 OrangeFox 的檔案</string>
+		<string name="fox_del_i1">您確定要刪除全部</string>
+		<string name="fox_del_i2">OrangeFox 的檔案嗎？</string>
+
+		<string name="fox_magisk_txt1">安裝 Magisk</string>
+		<string name="fox_magisk_txt2">來自 Topjohnwu</string>
+		<string name="fox_magisk_sld">滑動安裝 Magisk</string>
+
+		<string name="fox_comm_rm_su_txt1">移除 SuperSU</string>
+		<string name="fox_comm_rm_su_txt2">SuperSU 來自 Chainfire</string>
+		<string name="fox_comm_rm_su_sld">滑動移除 SuperSU</string>
+
+		<string name="fox_comm_rm_mg_txt1">移除 Magisk</string>
+		<string name="fox_comm_rm_mg_txt2">Magisk 來自 Topjohnwu</string>
+		<string name="fox_comm_rm_mg_sld">滑動移除 Magisk</string>
+
+		<string name="fox_comm_cam_txt1">安裝 Cam2Api</string>
+		<string name="fox_comm_cam_txt2">No author</string>
+		<string name="fox_comm_cam_sld">滑動安裝 Cam2Api</string>
+
+		<string name="fox_dellp_btn">刪除系統密碼</string>
+		<string name="fox_dellp_txt1">移除系統密碼</string>
+		<string name="fox_dellp_txt2">來自 DarthJabba9</string>
+		<string name="fox_dellp_sld">滑動移除系統密碼</string>
 	</resources>
 </language>
