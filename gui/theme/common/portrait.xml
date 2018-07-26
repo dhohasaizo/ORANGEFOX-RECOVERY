@@ -4261,7 +4261,7 @@
 					<action function="set">tw_accent_name={@f_orange}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=FF9800</action>
-					<action function="set">tw_folder=images</action>
+					<action function="set">tw_folder=images_orange</action>
 					<action function="page">set_color</action>
 				</actions>
 			</button>
