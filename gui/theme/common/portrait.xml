@@ -27,89 +27,6 @@
 
 		</page>
 
-		<page name="extra_fox_info">
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">wolf_project_extra_fox</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>OrangeFox</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>Recovery Project</text>
-			</text>
-
-			<text style="text_ab_subtitle">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@wolf_extra_fox_hdr=}</text>
-			</text>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row2_2_y%"/>
-				<text>{@wolf_extra_fox_hdr_2=}</text>
-			</text>
-
-			<listbox style="textbox">
-				<placement x="%col1_x%" y="%row2_3_y%" w="%console_width%" h="%console_action_height%"/>
-				<listitem name="{@extra_fox_info_line1=}"/>
-				<listitem name="{@extra_fox_info_line2=}"/>
-				<listitem name="{@extra_fox_info_line3=}"/>
-				<listitem name="{@extra_fox_info_line4=}"/>
-				<listitem name="{@extra_fox_info_line5=}"/>
-				<listitem name="{@extra_fox_info_line6=}"/>
-				<listitem name="{@extra_fox_info_line7=}"/>
-				<listitem name="{@extra_fox_info_line8=}"/>
-				<listitem name="{@extra_fox_info_line9=}"/>
-				<listitem name="{@extra_fox_info_line10=}"/>
-				<listitem name="{@extra_fox_info_line11=}"/>
-				<listitem name="{@extra_fox_info_line12=}"/>
-    			<listitem name="{@extra_fox_info_line13=}"/>
-				<listitem name="{@extra_fox_info_line14=}"/>
-				<listitem name="{@extra_fox_info_line15=}"/>
-				<listitem name="{@extra_fox_info_line16=}"/>
-				<listitem name="{@extra_fox_info_line17=}"/>
-				<listitem name="{@extra_fox_info_line18=}"/>
-				<listitem name="{@extra_fox_info_line19=}"/>
-				<listitem name="{@extra_fox_info_line20=}"/>
-			</listbox>
-
-			<fill color="%linecolor%">
-				<placement x="%col1_x%" y="%row2_3_y%" w="%content_w%" h="%fileselector_separatorheight%"/>
-			</fill>
-
-			<fill color="%linecolor%">
-				<placement x="%col1_x%" y="%row7_3_y%" w="%content_w%" h="%fileselector_separatorheight%"/>
-			</fill>
-
-			<button>
-				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
-				<image resource="btn_float_accept"/>
-				<highlight color="%highlight_color%"/>
-				<action function="page">wolf_project_extra_fox</action>
-			</button>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">wolf_project_extra_fox</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-
 		<page name="wolf_project_extra_fox">
 
 			<template name="body"/>
@@ -124,12 +41,7 @@
 		    <action function="page">main</action>
 			</button>
 
-			<button>
-        		<placement x="853" y="row1_2a_y"/>
-				<image resource="btn_float_flashitinfo" highlightresource="btn_float_flashitinfo_hl"/>
-				<action function="page">extra_fox_info</action>
-			</button>
-				<button style="btn_raised">
+			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="row1_2a_y" />
 				<text>{@fox_del_btn}</text>
 				<actions>
