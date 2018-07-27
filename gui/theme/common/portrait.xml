@@ -27,89 +27,6 @@
 
 		</page>
 
-		<page name="extra_fox_info">
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">wolf_project_extra_fox</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>OrangeFox</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>Recovery Project</text>
-			</text>
-
-			<text style="text_ab_subtitle">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@wolf_extra_fox_hdr=}</text>
-			</text>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row2_2_y%"/>
-				<text>{@wolf_extra_fox_hdr_2=}</text>
-			</text>
-
-			<listbox style="textbox">
-				<placement x="%col1_x%" y="%row2_3_y%" w="%console_width%" h="%console_action_height%"/>
-				<listitem name="{@extra_fox_info_line1=}"/>
-				<listitem name="{@extra_fox_info_line2=}"/>
-				<listitem name="{@extra_fox_info_line3=}"/>
-				<listitem name="{@extra_fox_info_line4=}"/>
-				<listitem name="{@extra_fox_info_line5=}"/>
-				<listitem name="{@extra_fox_info_line6=}"/>
-				<listitem name="{@extra_fox_info_line7=}"/>
-				<listitem name="{@extra_fox_info_line8=}"/>
-				<listitem name="{@extra_fox_info_line9=}"/>
-				<listitem name="{@extra_fox_info_line10=}"/>
-				<listitem name="{@extra_fox_info_line11=}"/>
-				<listitem name="{@extra_fox_info_line12=}"/>
-    			<listitem name="{@extra_fox_info_line13=}"/>
-				<listitem name="{@extra_fox_info_line14=}"/>
-				<listitem name="{@extra_fox_info_line15=}"/>
-				<listitem name="{@extra_fox_info_line16=}"/>
-				<listitem name="{@extra_fox_info_line17=}"/>
-				<listitem name="{@extra_fox_info_line18=}"/>
-				<listitem name="{@extra_fox_info_line19=}"/>
-				<listitem name="{@extra_fox_info_line20=}"/>
-			</listbox>
-
-			<fill color="%linecolor%">
-				<placement x="%col1_x%" y="%row2_3_y%" w="%content_w%" h="%fileselector_separatorheight%"/>
-			</fill>
-
-			<fill color="%linecolor%">
-				<placement x="%col1_x%" y="%row7_3_y%" w="%content_w%" h="%fileselector_separatorheight%"/>
-			</fill>
-
-			<button>
-				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
-				<image resource="btn_float_accept"/>
-				<highlight color="%highlight_color%"/>
-				<action function="page">wolf_project_extra_fox</action>
-			</button>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">wolf_project_extra_fox</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-
 		<page name="wolf_project_extra_fox">
 
 			<template name="body"/>
@@ -124,12 +41,7 @@
 		    <action function="page">main</action>
 			</button>
 
-			<button>
-        		<placement x="853" y="row1_2a_y"/>
-				<image resource="btn_float_flashitinfo" highlightresource="btn_float_flashitinfo_hl"/>
-				<action function="page">extra_fox_info</action>
-			</button>
-				<button style="btn_raised">
+			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="row1_2a_y" />
 				<text>{@fox_del_btn}</text>
 				<actions>
@@ -407,7 +319,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">reboot</action>
+				<action function="page">btnreboot</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -462,7 +374,7 @@
 
 			<action>
 				<touch key="back"/>
-			<action function="page">reboot</action>
+				<action function="page">btnreboot</action>
 			</action>
 
 			<action>
@@ -2515,7 +2427,7 @@
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row8_y%" w="%content_w%" h="%mb_h%"/>
-				<action function="page">reboot</action>
+				<action function="page">btnreboot</action>
 			</button>
 
 			<fill color="%linecolor%">
@@ -2872,13 +2784,13 @@
 				<text>{@reboot_btn=Reboot}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
-				<action function="page">reboot</action>
+				<action function="page">btnreboot</action>
 			</button>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<placement x="880" y="810" w="%content_a%" h="%mb_h%"/>
-				<action function="page">reboot</action>
+				<action function="page">btnreboot</action>
 			</button>
 			
 			<image>
@@ -4349,7 +4261,7 @@
 					<action function="set">tw_accent_name={@f_orange}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
 					<action function="set">tw_accent=FF9800</action>
-					<action function="set">tw_folder=images</action>
+					<action function="set">tw_folder=images_orange</action>
 					<action function="page">set_color</action>
 				</actions>
 			</button>
@@ -14326,6 +14238,231 @@
 					</actions>
 				</action>
 			</page>
+
+			<page name="btnreboot">
+			<background color="%transparent%"/>
+
+			<image>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</image>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>{@reboot_btn=Reboot}</text>
+			</text>
+
+			<button>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="180" y="%row4_1_y%"/>
+				<image resource="mb_system"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="page">reboot_system_routine</action>
+				</actions>
+			</button>
+			
+			<fill color="%accent%">
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="176" y="860" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+			
+			<button>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="173" y="%row4_1_y%"/>
+				<image resource="btn_system_color"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="page">reboot_system_routine</action>
+				</actions>
+			</button>
+			
+			<button style="mb_btn">
+				<placement x="120" y="%row5_1_y%"/>
+				<text>{@rb_system_btn=System}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+			</button>
+
+
+			<button>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="375" y="%row4_1_y%"/>
+				<image resource="mb_recovery"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_action_param=recovery</action>
+					<action function="set">tw_reboot_param=recovery</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
+					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
+					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
+					<action function="page">rebootcheck</action>
+				</actions>
+			</button>
+
+			<fill color="%accent%">
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="368" y="860" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+			
+			<button>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="365" y="%row4_1_y%"/>
+				<image resource="btn_recovery_color"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_action_param=recovery</action>
+					<action function="set">tw_reboot_param=recovery</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
+					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
+					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
+					<action function="page">rebootcheck</action>
+				</actions>
+			</button>			
+			
+			<button style="mb_btn">
+				<placement x="312" y="%row5_1_y%"/>
+				<text>{@rb_recovery_btn=Recovery}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+			</button>
+
+			<button>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="565" y="%row4_1_y%"/>
+				<image resource="mb_bootloader"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_action_param=bootloader</action>
+					<action function="set">tw_reboot_param=bootloader</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
+					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
+					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
+					<action function="page">rebootcheck</action>
+				</actions>
+			</button>
+			
+			<fill color="%accent%">
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="560" y="860" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+			
+			<button>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="557" y="%row4_1_y%"/>
+				<image resource="btn_bootloader_color"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_action_param=bootloader</action>
+					<action function="set">tw_reboot_param=bootloader</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
+					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
+					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
+					<action function="page">rebootcheck</action>
+				</actions>
+			</button>
+			
+			<button style="mb_btn">
+				<placement x="504" y="%row5_1_y%"/>
+				<text>{@rb_bootloader_btn=Bootloader}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+			</button>
+
+			<button>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="755" y="%row4_1_y%"/>
+				<image resource="mb_poweroff"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_action_param=poweroff</action>
+					<action function="set">tw_reboot_param=poweroff</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
+					<action function="set">tw_text2={@no_ospo=Are you sure you wish to power off?}</action>
+					<action function="set">tw_action_text1={@turning_off=Turning Off...}</action>
+					<action function="set">tw_complete_text1={@turning_off=Turning Off...}</action>
+					<action function="set">tw_slider_text={@swipe_power_off=Swipe to Power Off}</action>
+					<action function="page">rebootcheck</action>
+				</actions>
+			</button>
+			
+			<fill color="%accent%">
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="750" y="860" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+			
+			<button>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="747" y="%row4_1_y%"/>
+				<image resource="btn_poweroff_color"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_action_param=poweroff</action>
+					<action function="set">tw_reboot_param=poweroff</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
+					<action function="set">tw_text2={@no_ospo=Are you sure you wish to power off?}</action>
+					<action function="set">tw_action_text1={@turning_off=Turning Off...}</action>
+					<action function="set">tw_complete_text1={@turning_off=Turning Off...}</action>
+					<action function="set">tw_slider_text={@swipe_power_off=Swipe to Power Off}</action>
+					<action function="page">rebootcheck</action>
+				</actions>
+			</button>
+
+			<button style="mb_btn">
+				<placement x="696" y="%row5_1_y%"/>
+				<text>{@rb_poweroff_btn=Power Off}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+			</button>			
+
+
+			<button style="btn_dlg">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@cancel_btn=CANCEL}</text>
+				<actions>
+					<action function="page">main</action>
+					<action function="overlay"/>
+				</actions>
+			</button>
+
+			<action>
+				<touch key="power+volup"/>
+				<action function="screenshotexternal"/>
+			</action>
+
+			<action>
+				<touch key="power+voldown"/>
+				<action function="screenshotinternal"/>
+			</action>
+		</page>
 
 		</pages>
 </recovery>
