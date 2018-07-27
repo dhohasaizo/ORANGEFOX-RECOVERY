@@ -247,7 +247,9 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   string fingerprint_property = "ro.build.fingerprint";
   string pre_device = "pre-device";
   string pre_build = "pre-build";
-
+  
+  Fox_Zip_Installer_Code = 0; //* DJ9
+  
   if (!Zip->
       ExtractEntry(ASSUMED_UPDATE_BINARY_NAME, TMP_UPDATER_BINARY_PATH, 0755))
     {
@@ -278,10 +280,11 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
       
       if (!Zip->EntryExists(FOX_MIUI_UPDATE_PATH)) // META-INF/com/miui/miui_update - if NOT found, then this is a standard zip installer 
 	{
-	  if (
-	     (Zip->EntryExists("system.new.dat")) || (Zip->EntryExists("system.new.dat.br")) // we are installing a custom ROM
-	     ) 
+	  if ((Zip->EntryExists("system.new.dat")) || (Zip->EntryExists("system.new.dat.br"))) // we are installing a custom ROM
+	     {
 	       DataManager::SetValue(RW_CALL_DEACTIVATION, 1);
+	       Fox_Zip_Installer_Code = 1; // standard ROM
+	     }
 	  gui_msg
 	    ("wolf_install_standard_detected=- Detected standard ROM zip installer");
 	}
@@ -291,6 +294,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    {
 	      DataManager::SetValue(RW_MIUI_ZIP_TMP, 1);
 	      DataManager::SetValue(RW_CALL_DEACTIVATION, 1);
+	      Fox_Zip_Installer_Code = 2; // MIUI ROM
 	    }
 	  gui_msg
 	    ("wolf_install_miui_detected=- Detected MIUI Update zip installer");

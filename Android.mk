@@ -460,7 +460,7 @@ ifneq ($(TW_EXCLUDE_SUPERSU), true)
             chattr.pie libsupol.so suarm supolicy
     endif
     ifeq ($(TARGET_ARCH), arm64)
-        LOCAL_ADDITIONAL_DEPENDENCIES += \
+       LOCAL_ADDITIONAL_DEPENDENCIES += \
             libsupol.soarm64 suarm64 supolicyarm64
     endif
 endif

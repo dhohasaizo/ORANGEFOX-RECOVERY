@@ -123,6 +123,7 @@ int main(int argc, char **argv)
   gui_init();
   printf("=> Linking mtab\n");
   symlink("/proc/mounts", "/etc/mtab");
+  /*
   if (TWFunc::Path_Exists("/etc/redwolf.fstab"))
     {
       if (TWFunc::Path_Exists("/etc/recovery.fstab"))
@@ -134,6 +135,7 @@ int main(int argc, char **argv)
       printf("Moving /etc/redwolf.fstab -> /etc/recovery.fstab\n");
       rename("/etc/redwolf.fstab", "/etc/recovery.fstab");
     }
+   */
   printf("=> Processing recovery.fstab\n");
   if (!PartitionManager.Process_Fstab("/etc/recovery.fstab", 1))
     {

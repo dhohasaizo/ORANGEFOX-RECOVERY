@@ -625,17 +625,20 @@ int OpenRecoveryScript::Run_OpenRecoveryScript_Action() {
 			op_status = 0;
 		}
 	}
-	if (reboot) {
-	if (DataManager::GetIntValue(RW_CALL_DEACTIVATION) != 0) {
-		 TWFunc::Deactivation_Process();
-		 DataManager::SetValue(RW_CALL_DEACTIVATION, 0);
+	if (reboot) 
+	{
+		if (DataManager::GetIntValue(RW_CALL_DEACTIVATION) != 0) 
+	        {
+		   TWFunc::Deactivation_Process();
+		   DataManager::SetValue(RW_CALL_DEACTIVATION, 0);
 		 }
  		//Disable stock recovery reflashing
 		TWFunc::Disable_Stock_Recovery_Replace();
  		usleep(2000000); // Sleep for 2 seconds before rebooting
 		TWFunc::tw_reboot(rb_system);
 		usleep(5000000); // Sleep for 5 seconds to allow reboot to occur
-     } else {
+     } else 
+     	{
 		DataManager::SetValue("tw_page_done", 1);
 	}
 	return op_status;

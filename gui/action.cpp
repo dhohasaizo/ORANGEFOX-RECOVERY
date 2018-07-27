@@ -450,6 +450,23 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
 		("config_twrp_err=Unable to configure TWRP with this kernel.");
 	    }
 	}
+      //* DJ9
+      if (Fox_Zip_Installer_Code == 0) // this is a standard zip installer
+        {
+          LOGINFO("OrangeFox: finished installing the standard zip installer - %s.\n",filename.c_str());
+        } 
+      else // this is a ROM install
+        {
+          LOGINFO("OrangeFox: finished installing the ROM - %s.\n",filename.c_str());
+          //TWFunc::tw_reboot(rb_recovery);
+          /*
+            TWFunc::Exec_Cmd("/sbin/findmiui.sh");
+            if (!PartitionManager.Process_Fstab("/etc/recovery.fstab", 1)) 
+            {
+            }
+          */
+        }
+      //* DJ9
     }
 
   // Done
