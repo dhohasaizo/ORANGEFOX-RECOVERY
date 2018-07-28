@@ -81,12 +81,6 @@
 				<listitem name="{@wolf_dmverity_chk=Zip signature verification}">
 					<data variable="wolf_reboot_dm_verity_check"/>
 				</listitem>
-				<listitem name="{@wolf_support_miui_ota_chk=}">
-					<data variable="wolf_support_miui_ota"/>
-				</listitem>				
-				<listitem name="{@wolf_include_system_survival_chk=Simulate failure for actions}">
-					<data variable="wolf_include_system_survival"/>
-				</listitem>
 				<listitem name="{@wolf_verify_incremental_ota_signature_chk=Simulate failure for actions}">
 					<data variable="wolf_verify_incremental_ota_signature"/>
 				</listitem>
@@ -126,10 +120,6 @@
 				</listitem>
 				<listitem name="{@wolf_save_load_aromafm_config_chk=Simulate failure for actions}">
 					<data variable="wolf_reboot_saveload_aromafm_check"/>
-				</listitem>
-
-				<listitem name="{@wolf_disable_boot_chk=Simulate failure for actions}">
-					<data variable="wolf_disable_boot_check"/>
 				</listitem>
 
 				<listitem name="{@wolf_reboot_dont_disable_stock_recovery_chk=}">
@@ -881,6 +871,14 @@
 				<placement x="%col1_x%" y="%mb_row8_y%" w="%content_w%" h="%mb_h%"/>
 				<action function="page">wolf_project_extra_fox</action>
 			</button>
+
+			<action>
+				<condition var="ico_btn_mode" vat2="1"/>
+				<actions>
+					<action function="page">main2</action>
+					<action function="overlay">btnadvanced</action>
+				</actions>
+			</action>
 
 			<action>
 				<touch key="home"/>
@@ -2062,7 +2060,7 @@
 
 			<button>
 				<placement x="700" y="84"/>
-				<image resource="actionbar_theme" highlightresource="actionbar_theme_hl"/>
+				<image resource="fox_settings"/>
 				<action function="page">fox_menu</action>
 			</button>
 
@@ -3544,18 +3542,24 @@
 			</text>
 
 			<image>
-				<placement x="270" y="%tab_y%" placement="4"/>
+				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
 				<image resource="wolf_on_boot_1"/>
 			</image>
 
 			<button>
-				<placement x="810" y="%tab_y%" placement="4"/>
+				<placement x="540" y="%tab_y%" placement="4"/>
 				<image resource="wolf_governors"/>
 				<action function="page">fox_menu2</action>
 			</button>
 
+			<button>
+				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
+				<image resource="fox_cup_a"/>
+				<action function="page">fox_menu3</action>
+			</button>
+
 			<fill color="%text_actionbar%">
-				<placement x="0" y="%tab_indicator_y%" w="%tab2_width%" h="%tab_indicator_height%"/>
+				<placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
 			</fill>
 
 			<image>
@@ -3816,7 +3820,7 @@
 
 			<image>
 				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
-				<image resource="fox_phone_a"/>
+				<image resource="fox_phone"/>
 			</image>
 
 			<fill color="%text_actionbar%">
@@ -13711,18 +13715,24 @@
 			</text>
 
 			<button>
-				<placement x="270" y="%tab_y%" placement="4"/>
+				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
 				<image resource="wolf_on_boot_2"/>
 				<action function="page">fox_menu</action>
 			</button>
 
 			<image>
-				<placement x="810" y="%tab_y%" placement="4"/>
+				<placement x="540" y="%tab_y%" placement="4"/>
 				<image resource="wolf_kernel_scale"/>
 			</image>
 
+			<button>
+				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
+				<image resource="fox_cup_a"/>
+				<action function="page">fox_menu3</action>
+			</button>
+
 			<fill color="%text_actionbar%">
-				<placement x="540" y="%tab_indicator_y%" w="1080" h="%tab_indicator_height%"/>
+				<placement x="%tab3_ind2_x%" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption">
@@ -13804,6 +13814,118 @@
 					<action function="set">wolf_boot_powersave_check=0</action>
 				</actions>
 			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main2</action>
+			</action>
+
+
+			<action>
+				<touch key="back"/>
+				<action function="page">fox_menu</action>
+			</action>
+		</page>
+
+		<page name="fox_menu3">
+			<template name="body"/>
+
+			<template name="ab_tab"/>
+
+			<template name="statusbarinfo"/>
+
+			<button>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+				<action function="page">main2</action>
+			</button>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>OrangeFox menu</text>
+			</text>
+
+			<button>
+				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
+				<image resource="wolf_on_boot_2"/>
+				<action function="page">fox_menu</action>
+			</button>
+
+			<button>
+				<placement x="540" y="%tab_y%" placement="4"/>
+				<image resource="wolf_governors"/>
+				<action function="page">fox_menu2</action>
+			</button>
+
+			<image>
+				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
+				<image resource="fox_cup"/>
+			</image>
+
+			<fill color="%text_actionbar%">
+				<placement x="%tab3_ind3_x%" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+			</fill>
+
+			<image>
+				<placement x="%col1_x%" y="%row1_3_y%"/>
+				<image resource="icon_info"/>
+			</image>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<text>Hello to OrangeFox OTA section!</text>
+			</text>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>Click on info button for more info</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<text>OTA Parameters</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="%col1_x%" y="%row3_1_y%" w="%listbox_w%" h="%row4_2_y%"/>
+				<listitem name="{@wolf_support_miui_ota_chk=}">
+					<data variable="wolf_support_miui_ota"/>
+				</listitem>	
+				<listitem name="{@wolf_include_system_survival_chk}">
+					<data variable="wolf_include_system_survival"/>
+				</listitem>
+				<listitem name="{@wolf_verify_incremental_ota_signature_chk}">
+					<data variable="wolf_verify_incremental_ota_signature"/>
+				</listitem>
+				<listitem name="{@wolf_advanced_stock_recovery}">
+					<data variable="wolf_reboot_advanced_stock_recovery_check"/>
+				</listitem>
+				<listitem name="{@wolf_disable_boot_chk}">
+					<data variable="wolf_disable_boot_check"/>
+				</listitem>
+			</listbox>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
+				<text>Load default</text>
+				<actions>
+					<action function="set">wolf_support_miui_ota=0</action>
+					<action function="set">wolf_include_system_survival=0</action>
+					<action function="set">wolf_verify_incremental_ota_signature=0</action>
+					<action function="set">wolf_reboot_advanced_stock_recovery_check=0</action>
+					<action function="set">wolf_disable_boot_check=0</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
+				<text>Load recommend</text>
+				<actions>
+					<action function="set">wolf_support_miui_ota=1</action>
+					<action function="set">wolf_include_system_survival=1</action>
+					<action function="set">wolf_verify_incremental_ota_signature=0</action>
+					<action function="set">wolf_reboot_advanced_stock_recovery_check=1</action>
+					<action function="set">wolf_disable_boot_check=1</action>
+				</actions>
+			</button>
 
 			<action>
 				<touch key="home"/>
@@ -14322,7 +14444,7 @@
 
 				<button>
 					<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
-					<image resource="fox_phone"/>
+					<image resource="fox_phone_a"/>
 					<action function="page">theme_splash</action>
 				</button>
 
