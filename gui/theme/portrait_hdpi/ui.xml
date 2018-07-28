@@ -84,6 +84,12 @@
 		<image name="tab_comm_a" filename="tab_comm_a" retainaspect="1"/>
 		<image name="tab_comm" filename="tab_comm" retainaspect="1"/>
 		<image name="wolf_lock_bg" filename="wolf_lock_bg" retainaspect="1"/>
+		<image name="fox_cup" filename="fox_cup" retainaspect="1"/>
+		<image name="fox_cup_a" filename="fox_cup" retainaspect="1"/>
+		<image name="fox_phone" filename="fox_phone" retainaspect="1"/>
+		<image name="fox_phone_a" filename="fox_phone_a" retainaspect="1"/>
+
+
 
 		<image name="btn_float_addtoqueue" filename="btn_float_addtoqueue" retainaspect="1"/>
 		<image name="btn_float_addtoqueue_hl" filename="btn_float_addtoqueue_hl" retainaspect="1"/>
@@ -164,6 +170,13 @@
 		<image name="btn_theme_color" filename="btn_theme_color" retainaspect="1"/>
 		<image name="btn_poweroff_color" filename="btn_poweroff_color" retainaspect="1"/>
 
+		<image name="btn_logtosd_color" filename="btn_logtosd_color" retainaspect="1"/>
+		<image name="btn_fixpermissions_color" filename="btn_fixpermissions_color" retainaspect="1"/>
+		<image name="btn_terminalcommand_color" filename="btn_terminalcommand_color" retainaspect="1"/>
+		<image name="btn_adbsideload_color" filename="btn_adbsideload_color" retainaspect="1"/>
+		<image name="btn_partsdcard_color" filename="btn_partsdcard_color" retainaspect="1"/>
+
+		<image name="btn_dumlock_color" filename="btn_dumlock_color" retainaspect="1"/>
 		<image name="btn_install_color" filename="btn_install_color" retainaspect="1"/>
 		<image name="btn_wipe_color" filename="btn_wipe_color" retainaspect="1"/>
 		<image name="btn_backup_color" filename="btn_backup_color" retainaspect="1"/>
@@ -277,10 +290,10 @@
 		<variable name="fox_black" value="0" persist="0"/>
 		<variable name="fox_dark" value="1" persist="0"/>
 		<variable name="fox_white" value="0" persist="0"/>
-		<variable name="fox_theme_wait" value="0" persist="0"/>
 		<variable name="fox_aromafm" value="0" persist="0"/>
 		<variable name="ico_btn_mode" value="0" persist="1"/>
 		<variable name="fox_uncolor_header" value="0" persist="0"/>
+		<variable name="fox_need_reboot" value="0" persist="0"/>
 
 		<!-- For Maintainers -->
 		<variable name="flashlight_support" value="%of_flashlight_enable%"/>

@@ -359,7 +359,7 @@
 		<string name="copy_log_confirm">Копировать лог на SD?</string>
 		<string name="copying_log" version="2">Копирование лога на SD...</string>
 		<string name="copy_log_complete" version="2">Копирование лога завершено.</string>
-		<string name="fix_context_btn">Исправить контекст</string>
+		<string name="fix_context_btn">Fix SELinux</string>
 		<string name="part_sd_btn">Разметка SD-карты</string>
 		<string name="part_sd_s_btn">Разм-ка SD</string>
 		<string name="file_manager_btn">Проводник</string>
@@ -904,7 +904,7 @@
 	 	<string name="fox_dell_pass">Сброс пароля прошивки</string>
 		<string name="fox_menu_comm">Скрипты сообщества</string>
 		<string name="fox_menu_splash">Смена сплеша</string>
-		<string name="fox_menu_theme">Смена темы</string>
+		<string name="fox_menu_theme">UI Центр</string>
 		<string name="fox_menu_pass_h">Удалить пароль прошивки</string>
 		<string name="fox_menu_pass">От DarthJabba9</string>
 		<string name="fox_lock_btn">Разблокировка кнопкой</string>
@@ -912,7 +912,9 @@
 		<string name="fox_menu_adb_off">ADB: выкл.</string>
 		<string name="ico_btn_mode_txt">Квадратные кнопки-иконки на главной</string>
 
-		<string name="fox_theme_title">Движок темы Fox</string>
+		<string name="fox_theme_title">UI центр OrangeFox</string>
+		<string name="fox_theme_theme_tlt">Смена темы</string>
+		<string name="fox_theme_color_tlt">Смена цвета</string>
 		<string name="fox_theme_i1">После изменения темы, цвет акцента</string>
 		<string name="fox_theme_i2">будет сброшен на стандартный(оранжевый).</string>
 		<string name="fox_theme_i3">После перезагрузки, вы можете его изменить.</string>
@@ -922,6 +924,7 @@
 		<string name="fox_theme_slider_dark">Проведите чтобы применить темную тему</string>
 		<string name="fox_theme_slider_black">Проведите чтобы применить черную тему</string>
 		<string name="fox_theme_slider_white">Проведите чтобы применить белую тему</string>
+		<string name="fox_need_reboot">Нужна перезагрузка</string>
 
 		<string name="fox_community_title">OrangeFox Скрипты сообщеста</string>
 		<string name="fox_comm_i1">Для добавления новых скриптов обратитесь</string>

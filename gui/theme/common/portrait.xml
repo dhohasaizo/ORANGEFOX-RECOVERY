@@ -1837,7 +1837,7 @@
 			</text-->
 
 			<listbox style="listbox">
-				<condition var1="fox_theme_wait" var2="0"/>
+				<condition var1="tw_busy" var2="0"/>
 				<condition var1="fox_debug" var2="1"/>
 				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
 				<listitem name="DEBUG: Uncolor header">
@@ -1860,9 +1860,9 @@
        
            	<slider>
 		   		<condition var1="fox_uncolor_header" var2="0"/>
-		   		<condition var1="fox_theme_wait" var2="0"/>
+		   		<condition var1="tw_busy" var2="0"/>
 				<actions>
-					<action function="set">fox_theme_wait=1</action>
+					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
 					cd "/tmp/redwolf/ramdisk/twres";
@@ -1884,9 +1884,9 @@
 
 			<slider>
 		   		<condition var1="fox_uncolor_header" var2="1"/>
-		   		<condition var1="fox_theme_wait" var2="0"/>
+		   		<condition var1="tw_busy" var2="0"/>
 				<actions>
-					<action function="set">fox_theme_wait=1</action>
+					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
 					cd "/tmp/redwolf/ramdisk/twres";
@@ -2477,26 +2477,26 @@
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
-				<placement x="70" y="510"/>
+				<placement x="70" y="350"/>
 				<image resource="mb_install"/>
 			</image>
 
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="65" y="530" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="60" y="374" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="60" y="510"/>
+				<placement x="60" y="350"/>
 				<image resource="btn_install_color"/>
 			</image>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="10" y="680" />
+				<placement x="10" y="520" />
 				<text>{@install_btn=Install}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
@@ -2505,13 +2505,13 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="70" y="510" w="%content_a%" h="%mb_h%"/>
+				<placement x="70" y="350" w="%content_a%" h="%mb_h%"/>
 				<actions>
 					<action function="queueclear"/>
 					<action function="page">install</action>
 				</actions>
 			</button>
-
+			
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
@@ -2522,7 +2522,7 @@
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="335" y="370" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="334" y="372" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
@@ -2557,7 +2557,7 @@
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="605" y="370" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="604" y="372" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
@@ -2599,26 +2599,26 @@
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
-				<placement x="880" y="510"/>
+				<placement x="880" y="350"/>
 				<image resource="mb_restore"/>
 			</image>
 
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="875" y="530" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="874" y="372" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="870" y="510"/>
+				<placement x="870" y="350"/>
 				<image resource="btn_restore_color"/>
 			</image>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="820" y="680"/>
+				<placement x="820" y="520"/>
 				<text>{@restore_btn=Restore}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
@@ -2627,33 +2627,33 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="880" y="510" w="%content_a%" h="%mb_h%"/>
+				<placement x="880" y="350" w="%content_a%" h="%mb_h%"/>
 				<action function="page">restore</action>
 			</button>
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
-				<placement x="70" y="810"/>
+				<placement x="70" y="650"/>
 				<image resource="mb_mount"/>
 			</image>
 
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="65" y="830" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="64" y="672" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="60" y="810"/>
+				<placement x="60" y="650"/>
 				<image resource="btn_mount_color"/>
 			</image>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="10" y="980"/>
+				<placement x="10" y="820"/>
 				<text>{@mount_btn=Mount}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
@@ -2662,7 +2662,7 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="70" y="810" w="%content_a%" h="%mb_h%"/>
+				<placement x="70" y="650" w="%content_a%" h="%mb_h%"/>
 				<action function="page">mount</action>
 			</button>
 
@@ -2676,7 +2676,7 @@
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="335" y="670" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="334" y="670" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
@@ -2733,7 +2733,7 @@
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="605" y="670" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="604" y="670" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
@@ -2749,38 +2749,39 @@
 				<text>{@advanced_btn=Advanced}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
-				<action function="page">advanced</action>
+				<action function="page">btnadvanced</action>
 			</button>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<placement x="610" y="650" w="%content_a%" h="%mb_h%"/>
-				<action function="page">advanced</action>
+				<action function="page">btnadvanced</action>
 			</button>
+
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
-				<placement x="880" y="810"/>
+				<placement x="880" y="650"/>
 				<image resource="mb_restart"/>
 			</image>
 
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="875" y="830" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="874" y="670" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="870" y="810"/>
+				<placement x="870" y="650"/>
 				<image resource="btn_restart_color"/>
 			</image>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="820" y="980"/>
+				<placement x="820" y="820"/>
 				<text>{@reboot_btn=Reboot}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
@@ -2789,9 +2790,10 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="880" y="810" w="%content_a%" h="%mb_h%"/>
+				<placement x="880" y="650" w="%content_a%" h="%mb_h%"/>
 				<action function="page">btnreboot</action>
 			</button>
+
 			
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
@@ -2803,7 +2805,7 @@
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="335" y="970" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="334" y="970" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
@@ -2831,63 +2833,101 @@
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
-				<placement x="610" y="950"/>
-				<image resource="mb_recovery"/>
+				<placement x="615" y="950"/>
+				<image resource="mb_dumlock"/>
 			</image>
 
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="605" y="970" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="604" y="970" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="600" y="950"/>
-				<image resource="btn_recovery_color"/>
+				<image resource="btn_dumlock_color"/>
+			</image>
+
+			<button style="mb_btn">
+				<condition var1="heslo" op="!=" var2="tw_heslo_check"/>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="550" y="1120"/>
+				<text>{@change_pass_btn=Change password}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+			</button>
+			
+			<button style="mb_btn">
+				<condition var1="heslo" op="=" var2="tw_heslo_check"/>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="550" y="1120"/>
+				<text>{@Set_pass_btn=Set password}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+			</button>
+			
+			<button style="mb_btn">
+				<condition var1="heslo" op="!=" var2="tw_heslo_check"/>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="610" y="950" w="%content_a%" h="%mb_h%"/>
+				<actions>
+					<action function="set">tw_droid_password_change_xd1=</action>
+					<action function="set">tw_droid_password_change_xd2=</action>
+					<action function="set">tw_droid_password_change_xd3=</action>
+					<action function="set">checkbox_pass_change5-6=0</action>
+					<action function="set">checkbox_pass_change3-4=0</action>
+					<action function="set">checkbox_pass_change_1-2=0</action>
+					<action function="page">pass_change1</action>
+				</actions>
+			</button>
+			
+			<button style="mb_btn">
+				<condition var1="heslo" op="=" var2="tw_heslo_check"/>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="610" y="950" w="%content_a%" h="%mb_h%"/>
+				<action function="page">pass_new1</action>
+			</button>
+
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="880" y="950"/>
+				<image resource="mb_partsdcard"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="874" y="970" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="870" y="950"/>
+				<image resource="btn_partsdcard_color"/>
 			</image>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<condition var1="tw_reboot_recovery" var2="1"/>
-				<placement x="550" y="1120"/>
-				<text>{@rb_recovery_btn=Recovery}</text>
+				<placement x="820" y="1120"/>
+				<text>{@part_sd_hdr=Partition SD Card}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
-				<actions>
-					<action function="set">tw_back=reboot</action>
-					<action function="set">tw_action=reboot</action>
-					<action function="set">tw_action_param=recovery</action>
-					<action function="set">tw_reboot_param=recovery</action>
-					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
-					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
-					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
-					<action function="page">rebootcheck</action>
-				</actions>
 			</button>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<condition var1="tw_reboot_recovery" var2="1"/>
-				<placement x="610" y="950" w="%content_a%" h="%mb_h%"/>
+				<placement x="880" y="950" w="%content_a%" h="%mb_h%"/>
 				<actions>
-					<action function="set">tw_back=reboot</action>
-					<action function="set">tw_action=reboot</action>
-					<action function="set">tw_action_param=recovery</action>
-					<action function="set">tw_reboot_param=recovery</action>
-					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
-					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
-					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
-					<action function="page">rebootcheck</action>
+					<action function="set">partitionlisterror=0</action>
+					<action function="page">partsdcardsel</action>
 				</actions>
 			</button>
+
 			
 			<fill color="%linecolor%">
 				<condition var1="ico_btn_mode" var2="1"/>
@@ -3020,6 +3060,12 @@
 				<listitem name="{@sha2_chk=Use SHA2 for hashing}">
 					<condition var1="tw_no_sha2" var2="0"/>
 					<data variable="tw_use_sha2"/>
+				</listitem>
+				<listitem name="{@use_aromafm=Use Aroma File Manager}">
+					<data variable="aromafm"/>
+				</listitem>
+				<listitem name="{@auto_name_generate=Show auto generated backup name}">
+					<data variable="auto_generate"/>
 				</listitem>
 			</listbox>
 
@@ -3437,173 +3483,6 @@
 			</action>
 		</page>
 
-		<page name="fox_community">
-			<template name="body"/>
-
-			<template name="ab_tab"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_2"/>
-				<action function="page">fox_menu</action>
-			</button>
-
-			<!--button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
-				<action function="overlay">dialog_reset</action>
-			</button-->
-
-			<button>
-				<placement x="540" y="%tab_y%" placement="4"/>
-				<image resource="wolf_governors"/>
-				<action function="page">fox_menu2</action>
-			</button>
-
-			<!--button>
-				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_display"/>
-				<action function="page">screen</action>
-			</button-->
-
-			<image>
-				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_comm_a"/>
-			</image>
-
-			<fill color="%text_actionbar%">
-				<placement x="%tab3_ind3_x%" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
-			</fill>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">fox_menu</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fox_community_title=}</text>
-			</text>
-
-			<image>
-				
-				<placement x="%col1_x%" y="%row2_1_y%"/>
-				<image resource="icon_info"/>
-			</image>
-
-			<text style="text_body2">
-				
-				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
-				<text>{@fox_comm_i1}</text>
-			</text>
-			<text style="text_body2">
-				
-				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
-				<text>{@fox_comm_i2}</text>
-			</text>
-
-			<button style="btn_raised_hl">
-				
-				<placement x="%btn_raised_left_x%" y="%row3_1_y%"/>
-				<text>{@fox_comm_rm_mg_txt1}</text>
-				<actions>
-					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootmagisk.zip</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/unrootmagisk.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1={@fox_comm_rm_mg_txt1}</action>
-					<action function="set">fox_flash_txt2={@fox_comm_rm_mg_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_rm_mg_sld}</action>
-					<action function="set">fox_flash_info=0</action>
-				</actions>
-			</button>
-
-			<button style="btn_raised_hl">
-				
-				<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
-				<text>{@fox_comm_rm_su_txt1}</text>
-				<actions>
-					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootsupersu.zip</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/unrootsupersu.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1={@fox_comm_rm_su_txt1}</action>
-					<action function="set">fox_flash_txt2={@fox_comm_rm_su_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_rm_su_sld}</action>
-					<action function="set">fox_flash_info=0</action>
-				</actions>
-			</button>
-
-			<button style="btn_raised_hl">
-				
-				<placement x="%btn_raised_right_x%" y="%row3_3_y%" placement="1"/>
-				<text>Google Sans</text>
-				<actions>
-					<action function="set">tw_filecheck=%fox_home_files_dir%/GoogleSans.zip</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/GoogleSans.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1=GoogleSans</action>
-					<action function="set">fox_flash_txt2={@fox_comm_gs_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_gs_sld}</action>
-					<action function="set">fox_flash_info=1</action>
-					<action function="set">fox_flash_i1={@fox_comm_gs_i1}</action>
-				</actions>
-			</button>
-			<button style="btn_raised_hl">
-				
-				<placement x="%btn_raised_left_x%" y="%row3_3_y%"/>
-				<text>Initd</text>
-				<actions>
-					<action function="set">tw_filecheck=/FFiles/OF_initd/OF_initd.zip</action>
-					<action function="set">tw_filename=/FFiles/OF_initd/OF_initd.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1=Initd support</action>
-					<action function="set">fox_flash_txt2={@fox_comm_initd_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_initd_sld}</action>
-					<action function="set">fox_flash_info=0</action>
-				</actions>
-			</button>
-			<button style="btn_raised_hl">
-				
-				<placement x="%btn_raised_left_x%" y="%row4_2_y%"/>
-				<text>Cam2Api</text>
-				<actions>
-					<action function="set">tw_filecheck=%fox_home_files_dir%/Camera2Api.zip</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/Camera2Api.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1={@fox_comm_cam_txt1}</action>
-					<action function="set">fox_flash_txt2={@fox_comm_cam_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_cam_sld}</action>
-					<action function="set">fox_flash_info=0</action>
-				</actions>
-			</button>
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">fox_menu</action>
-			</action>
-		</page>
-
 		<page name="wolf_system_settings">
 
 			<template name="body"/>
@@ -3665,85 +3544,171 @@
 			</text>
 
 			<image>
-				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
+				<placement x="270" y="%tab_y%" placement="4"/>
 				<image resource="wolf_on_boot_1"/>
 			</image>
 
 			<button>
-				<placement x="540" y="%tab_y%" placement="4"/>
+				<placement x="810" y="%tab_y%" placement="4"/>
 				<image resource="wolf_governors"/>
 				<action function="page">fox_menu2</action>
 			</button>
 
-			<button>
-				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_comm"/>
-				<action function="page">fox_community</action>
-			</button>
-
 			<fill color="%text_actionbar%">
-				<placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+				<placement x="0" y="%tab_indicator_y%" w="%tab2_width%" h="%tab_indicator_height%"/>
 			</fill>
 
-			<text style="caption">
+			<image>
 				<placement x="%col1_x%" y="%row1_3_y%"/>
-				<text>{@functional=Functional}</text>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2">
+				
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<text>{@fox_comm_i1}</text>
+			</text>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>{@fox_comm_i2}</text>
 			</text>
 
-			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="%listbox_settings_mf_height%"/>
-				<listitem name="{@use_aromafm=Use Aroma File Manager}">
-					<data variable="aromafm"/>
-				</listitem>
-				<!--listitem name="{@use_bookmark=Use bookmark function for file lists}">
-					<data variable="bookmark"/>
-				</listitem-->
-				<!--listitem name="{@statusbar_wolf_on_lockpass=It's a fucking wolf bitch!}">
-					<data variable="wolf_statusbar_on_lockpass"/>
-				</listitem-->
-				<listitem name="{@auto_name_generate=Show auto generated backup name}">
-					<data variable="auto_generate"/>
-				</listitem>
-				</listbox>
-
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_1_y%"/>
-				<text>{@visual=Visual}</text>
-			</text>
-
-			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row3_2_y%" w="%listbox_w%" h="540"/>
-				<listitem name="{@center_clock_bar=Center clock in statusbar}">
-					<data variable="center_clock"/>
-				</listitem>
-				<listitem name="{@show_cpu_temp_bar=Show CPU temperature}">
-					<data variable="show_cpu_temp"/>
-				</listitem>
-				<listitem name="{@use_menu_btn=Use buttons on main menu}">
-					<data variable="menu_btn_solid"/>
-				</listitem>
-				<listitem name="{@rev_navbar_chk=Reversed navbar layout}">
-					<data variable="navbar_sams"/>
-				</listitem>
-				<listitem name="{@use_color_navbar=Use accent color for navbar}">
-					<data variable="navbar_accent"/>
-				</listitem>
-				<listitem name="{@fox_lock_btn}">
-					<data variable="lock_btn"/>
-				</listitem>
-				<listitem name="{@ico_btn_mode_txt}">
-					<data variable="ico_btn_mode"/>
-				</listitem>
-			</listbox>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row6_2_y%"/>
-				<text>{@fox_menu_flash=Orange!}</text>
+				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<text>SuperSU</text>
 			</text>
 
 			<button style="btn_raised_hl">
-				
-				<placement x="%btn_raised_left_x%" y="%row7_2_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row3_1_y%"/>
+				<text>{@fox_comm_ins}</text>
+				<actions>
+					<action function="set">tw_filecheck=%fox_home_files_dir%/SuperSU.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/SuperSU.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_menu</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1=SuperSU</action>
+					<action function="set">fox_flash_txt2={@fox_comm_su_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_su_sld}</action>
+					<action function="set">fox_flash_info=1</action>
+					<action function="set">fox_flash_i1={@fox_comm_su_i1}</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised_warn">
+				<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
+				<text>{@fox_comm_del}</text>
+				<actions>
+					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootsupersu.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/unrootsupersu.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1={@fox_comm_rm_su_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_comm_rm_su_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_rm_su_sld}</action>
+					<action function="set">fox_flash_info=0</action>
+				</actions>
+			</button>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_1_y%"/>
+				<text>Magisk</text>
+			</text>
+
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_left_x%" y="%row4_2_y%"/>
+				<text>{@fox_comm_ins}</text>
+				<actions>
+					<action function="set">tw_filecheck=%fox_home_files_dir%/Magisk.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/Magisk.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_menu</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1={@fox_magisk_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_magisk_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_magisk_sld}</action>
+					<action function="set">fox_flash_info=0</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised_warn">
+				<placement x="%btn_raised_right_x%" y="%row4_2_y%" placement="1"/>
+				<text>{@fox_comm_del}</text>
+				<actions>
+					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootmagisk.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/unrootmagisk.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1={@fox_comm_rm_mg_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_comm_rm_mg_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_rm_mg_sld}</action>
+					<action function="set">fox_flash_info=0</action>
+				</actions>
+			</button>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_2_y%"/>
+				<text>Other</text>
+			</text>
+
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_right_x%" y="%row5_3_y%" placement="1"/>
+				<text>Google Sans</text>
+				<actions>
+					<action function="set">tw_filecheck=%fox_home_files_dir%/GoogleSans.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/GoogleSans.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1=GoogleSans</action>
+					<action function="set">fox_flash_txt2={@fox_comm_gs_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_gs_sld}</action>
+					<action function="set">fox_flash_info=1</action>
+					<action function="set">fox_flash_i1={@fox_comm_gs_i1}</action>
+				</actions>
+			</button>
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_left_x%" y="%row5_3_y%"/>
+				<text>Initd</text>
+				<actions>
+					<action function="set">tw_filecheck=/FFiles/OF_initd/OF_initd.zip</action>
+					<action function="set">tw_filename=/FFiles/OF_initd/OF_initd.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1=Initd support</action>
+					<action function="set">fox_flash_txt2={@fox_comm_initd_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_initd_sld}</action>
+					<action function="set">fox_flash_info=0</action>
+				</actions>
+			</button>
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_left_x%" y="%row6_2_y%"/>
+				<text>Cam2Api</text>
+				<actions>
+					<action function="set">tw_filecheck=%fox_home_files_dir%/Camera2Api.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/Camera2Api.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1={@fox_comm_cam_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_comm_cam_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_comm_cam_sld}</action>
+					<action function="set">fox_flash_info=0</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_right_x%" y="%row6_2_y%" placement="1"/>
 				<text>{@fox_dellp_btn}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/PassReset.zip</action>
@@ -3759,33 +3724,10 @@
 				</actions>
 			</button>
 
-		  	<button style="btn_raised">
-				<placement x="%btn_raised_right_x%" y="%row6_3_y%" placement="1"/>
-				<text>{@fox_menu_theme}</text>
-				<action function="page">fox_theme</action>
-			</button>
-
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row6_3_y%"/>
-				<text>Magisk</text>
-				<actions>
-					<action function="set">tw_filecheck=%fox_home_files_dir%/Magisk.zip</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/Magisk.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_menu</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1={@fox_magisk_txt1}</action>
-					<action function="set">fox_flash_txt2={@fox_magisk_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_magisk_sld}</action>
-					<action function="set">fox_flash_info=0</action>
-				</actions>
-			</button>
-
 			<button style="btn_raised">
-				<placement x="%btn_raised_right_x%" y="%row7_2_y%" placement="1"/>
-				<text>{@fox_menu_splash=Change Splash}</text>
-				<action function="page">theme_splash</action>
+				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
+				<text>{@fox_menu_theme}</text>
+				<action function="page">fox_ui</action>
 			</button>
 
 			<button style="btn_raised">
@@ -3804,25 +3746,6 @@
 				<action function="set">fox_adb=1</action>
 			</button>
 
-			<button style="btn_raised_hl">
-				
-				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
-				<text>SuperSU</text>
-				<actions>
-					<action function="set">tw_filecheck=%fox_home_files_dir%/SuperSU.zip</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/SuperSU.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_menu</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1=SuperSU</action>
-					<action function="set">fox_flash_txt2={@fox_comm_su_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_su_sld}</action>
-					<action function="set">fox_flash_info=1</action>
-					<action function="set">fox_flash_i1={@fox_comm_su_i1}</action>
-				</actions>
-			</button>
-
 			<action>
 				<touch key="home"/>
 				<action function="page">main2</action>
@@ -3838,7 +3761,7 @@
 		<page name="theme_splash">
 			<template name="body"/>
 
-			<template name="ab_ex"/>
+			<template name="ab_tab"/>
 
 			<template name="statusbarinfo"/>
 
@@ -3870,18 +3793,36 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Splash Screen</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@wolf_theme_splash_wolf_hdr=Change TWRP Splash}</text>
 			</text>
 
-			<text style="text_ab_subtitle">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>OrangeFox Recovery</text>
-			</text>
+			<button>
+				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
+				<image resource="wolf_on_boot_2"/>
+				<action function="page">fox_ui</action>
+			</button>
+
+			<button>
+				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_bu_options"/>
+				<action function="page">fox_theme</action>
+			</button>
+
+			<button>
+				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
+				<image resource="wolf_traffic_light_2"/>
+				<action function="page">theme_color</action>
+			</button>
+
+			<image>
+				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
+				<image resource="fox_phone_a"/>
+			</image>
+
+			<fill color="%text_actionbar%">
+				<placement x="%tab4_ind4_x%" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
+			</fill>
+
 
 			<image>
 				<placement x="%col1_x%" y="%row2_2_y%"/>
@@ -4219,24 +4160,43 @@
 				<action function="page">main2</action>
 			</button>
 
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+				<action function="page">fox_menu</action>
+			</button>
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Fox Theme Engine</text>
+				<text>{@fox_theme_color_tlt}</text>
 			</text>
 
 			<button>
-				<placement x="270" y="%tab_y%" placement="4"/>
+				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
 				<image resource="wolf_on_boot_2"/>
+				<action function="page">fox_ui</action>
+			</button>
+
+			<button>
+				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_bu_options"/>
 				<action function="page">fox_theme</action>
 			</button>
 
 			<image>
-				<placement x="810" y="%tab_y%" placement="4"/>
+				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="wolf_traffic_light_1"/>
 			</image>
 
+			<button>
+				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
+				<image resource="fox_phone_a"/>
+                <action function="page">theme_splash</action>
+			</button>
+
 			<fill color="%text_actionbar%">
-				<placement x="540" y="%tab_indicator_y%" w="1080" h="%tab_indicator_height%"/>
+				<placement x="540" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption">
@@ -5673,6 +5633,7 @@
 				<action function="set">tw_cancel_param=</action>
 				<action function="set">tw_show_exclamation=0</action>
 				<action function="set">tw_show_reboot=0</action>
+				<action function="set">wolf_install_built_in_zip=0</action>
 				<action function="page">%tw_clear_destination%</action>
 			</action>
 		</page>
@@ -8731,7 +8692,7 @@
 			</action>
 		</page>
 
-		<page name="backup_encryption1">
+		<!--page name="backup_encryption1">
 			<template name="body"/>
 
 			<template name="ab_tab"/>
@@ -8999,7 +8960,7 @@
 					<action function="page">backup</action>
 				</actions>
 			</action>
-		</page>
+		</page-->
 
 		<page name="backupname1">
 			<action>
@@ -9031,7 +8992,7 @@
 				<text>{@backup_hdr=Backup}</text>
 			</text>
 
-			<image>
+			<!--image>
 				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_bu_create_a"/>
 			</image>
@@ -9077,6 +9038,24 @@
 
 			<fill color="%text_actionbar%">
 				<placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+			</fill-->
+
+			<image>
+				<!--placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/-->
+				<placement x="270" y="%tab_y%" placement="4"/>
+				<image resource="tab_bu_create_a"/>
+			</image>
+
+			<button>
+				<!--placement x="%center_x%" y="%tab_y%" placement="4"/-->
+				<placement x="810" y="%tab_y%" placement="4"/>
+				<image resource="tab_bu_options"/>
+				<action function="page">backup_options</action>
+			</button>
+
+			<fill color="%text_actionbar%">
+				<!--placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/-->
+				<placement x="0" y="%tab_indicator_y%" w="%tab2_width%" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption_hl">
@@ -13723,7 +13702,7 @@
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">fox_menu</action>
+				<action function="page">main2</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -13732,24 +13711,18 @@
 			</text>
 
 			<button>
-				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
+				<placement x="270" y="%tab_y%" placement="4"/>
 				<image resource="wolf_on_boot_2"/>
 				<action function="page">fox_menu</action>
 			</button>
 
 			<image>
-				<placement x="540" y="%tab_y%" placement="4"/>
+				<placement x="810" y="%tab_y%" placement="4"/>
 				<image resource="wolf_kernel_scale"/>
 			</image>
 
-			<button>
-				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_comm"/>
-				<action function="page">fox_community</action>
-			</button>
-
 			<fill color="%text_actionbar%">
-				<placement x="%tab3_ind2_x%" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+				<placement x="540" y="%tab_indicator_y%" w="1080" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption">
@@ -13845,8 +13818,7 @@
 		</page>
 
 		<page name="fox_quick_settings">
-			<background color="%darktransparent%"/>
-
+		
      		<image>
 				<placement x="0" y="0"/>
 				<image resource="wolf_lock_bg"/>
@@ -13854,7 +13826,7 @@
 
 			<button>
 				<placement x="0" y="0" w="1080" h="1127"/>
-				<fill color="%darktransparent%"/>
+				<fill color="%transparent%"/>
 				<action function="page">main2</action>
 			</button>
 
@@ -14065,32 +14037,78 @@
 			<template name="statusbarinfo"/>
 
 			<button>
-				<condition var1="fox_theme_wait" var2="0"/>
+				<condition var1="tw_busy" var2="0"/>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">fox_menu</action>
 			</button>
 
 			<text style="text_ab_title">
+				<condition var1="tw_busy" var2="0"/>
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fox_theme_title=Fox Theme Engine}</text>
+				<text>{@fox_theme_theme_tlt}</text>
 			</text>
 
+			<text style="text_ab_title">
+				<condition var1="fox_need_reboot" var2="0"/>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@working}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="fox_need_reboot" var2="0"/>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@repacking}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="fox_need_reboot" var2="1"/>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@done}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="fox_need_reboot" var2="1"/>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@fox_need_reboot}</text>
+			</text>
+
+			<button>
+			 	<condition var1="tw_busy" var2="0"/>
+				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
+				<image resource="wolf_on_boot_2"/>
+				<action function="page">fox_ui</action>
+			</button>
+
 			<image>
-				<placement x="270" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_1"/>
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_bu_options_a"/>
 			</image>
 
 			<button>
-				<condition var1="fox_theme_wait" var2="0"/>
-				<placement x="810" y="%tab_y%" placement="4"/>
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="wolf_traffic_light_2"/>
 				<action function="page">theme_color</action>
 			</button>
 
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
+				<image resource="fox_phone_a"/>
+                <action function="page">theme_splash</action>
+			</button>
+
 			<fill color="%text_actionbar%">
-				<placement x="0" y="%tab_indicator_y%" w="%tab2_width%" h="%tab_indicator_height%"/>
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%tab4_ind2_x%" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
+
 			<image>
 				<placement x="%col1_x%" y="%row2_2_y%"/>
 				<image resource="icon_info"/></image>
@@ -14107,7 +14125,7 @@
 				<text>{@fox_theme_i3}</text>
 			</text>
 			<listbox style="listbox">
-				<condition var1="fox_theme_wait" var2="0"/>
+				<condition var1="tw_busy" var2="0"/>
 				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
 				<listitem name="{@fox_theme_black}">
 					<data variable="fox_black"/>
@@ -14119,18 +14137,19 @@
 					<data variable="fox_white"/>
 				</listitem>
 			</listbox>
-			<text color="%accent%">
-				<condition var1="fox_theme_wait" var2="1"/>
+			<!--text color="%accent%">
+				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@colour_engine4=}</text>
-			</text>
+			</text-->
 		
 			<slider>
-			<condition var1="fox_dark" var2="1"/>
+				<condition var1="fox_need_reboot" var2="0"/>
+				<condition var1="fox_dark" var2="1"/>
 				<actions>
 					<action function="set">fox_dark=0</action>
-					<action function="set">fox_theme_wait=1</action>
+					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd"> 
 					cd "/tmp/redwolf/ramdisk/twres";
@@ -14140,21 +14159,22 @@
 					cp -r "dark/dark.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
-					<action function="page">set_color_finish</action>
+					<action function="set">fox_need_reboot=1</action>
 				</actions>
 			</slider>
 
 			<text style="caption">
-			<condition var1="fox_dark" var2="1"/>
+				<condition var1="fox_dark" var2="1"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<text>{@fox_theme_slider_dark}</text>
 			</text>
 
 			<slider>
-			<condition var1="fox_black" var2="1"/>
+				<condition var1="fox_need_reboot" var2="0"/>
+				<condition var1="fox_black" var2="1"/>
 				<actions>
 					<action function="set">fox_black=0</action>
-					<action function="set">fox_theme_wait=1</action>
+					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
 					cd "/tmp/redwolf/ramdisk/twres";
@@ -14164,7 +14184,7 @@
 					cp -r "black/black.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
-					<action function="page">set_color_finish</action>
+					<action function="set">fox_need_reboot=1</action>
 				</actions>
 			</slider>
 
@@ -14175,10 +14195,11 @@
 			</text>
 
 			<slider>
-			<condition var1="fox_white" var2="1"/>
+				<condition var1="fox_need_reboot" var2="0"/>
+				<condition var1="fox_white" var2="1"/>
 				<actions>
 					<action function="set">fox_white=0</action>
-					<action function="set">fox_theme_wait=1</action>
+					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
 					cd "/tmp/redwolf/ramdisk/twres";
@@ -14187,7 +14208,8 @@
 					cp -r "white/white.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
-					<action function="page">set_color_finish</action>
+					<action function="set">tw_busy=1</action>
+					<action function="set">fox_need_reboot=1</action>
 				</actions>
 			</slider>
 
@@ -14223,6 +14245,120 @@
 						<action function="set">fox_dark=0</action>
 					</actions>
 				</action>
+
+				<text style="caption">
+					<condition var1="fox_need_reboot" var2="1"/>
+					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+					<text>{@swipe_reboot}</text>
+				</text>
+
+				<slider>
+					<condition var1="fox_need_reboot" var2="1"/>
+					<actions>
+						<action function="set">tw_back=reboot</action>
+						<action function="set">tw_action=reboot</action>
+						<action function="set">tw_reboot_param=recovery</action>
+						<action function="set">tw_has_action2=0</action>
+						<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
+						<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
+						<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
+						<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
+						<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
+						<action function="page">rebootcheck</action>
+					</actions>
+				</slider>
+
+				<action>
+					<touch key="back"/>
+					<actions>
+						<action function="page">fox_menu</action>
+					</actions>
+				</action>
+
+				<action>
+					<touch key="home"/>
+					<actions>
+						<action function="page">main2</action>
+					</actions>
+				</action>
+			</page>
+
+			<page name="fox_ui">
+
+				<template name="body"/>
+
+				<template name="ab_tab"/>
+
+				<template name="statusbarinfo"/>
+
+				<button>
+					<condition var1="tw_busy" var2="0"/>
+					<placement x="%ab_back_x%" y="%ab_y%"/>
+					<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+					<action function="page">fox_menu</action>
+				</button>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>{@fox_theme_title}</text>
+				</text>
+
+				<image>
+					<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
+					<image resource="wolf_on_boot_1"/>
+				</image>
+
+				<button>
+					<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
+					<image resource="tab_bu_options"/>
+					<action function="page">fox_theme</action>
+				</button>
+
+				<button>
+					<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
+					<image resource="wolf_traffic_light_2"/>
+					<action function="page">theme_color</action>
+				</button>
+
+				<button>
+					<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
+					<image resource="fox_phone"/>
+					<action function="page">theme_splash</action>
+				</button>
+
+				<fill color="%text_actionbar%">
+					<placement x="0" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
+				</fill>
+
+				<text style="caption">
+					<placement x="%col1_x%" y="%row1_3_y%"/>
+					<text>{@visual=Visual}</text>
+				</text>
+
+			<listbox style="settingslist">
+				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="650"/>
+				<listitem name="{@center_clock_bar=Center clock in statusbar}">
+					<data variable="center_clock"/>
+				</listitem>
+				<listitem name="{@show_cpu_temp_bar=Show CPU temperature}">
+					<data variable="show_cpu_temp"/>
+				</listitem>
+				<listitem name="{@use_menu_btn=Use buttons on main menu}">
+					<data variable="menu_btn_solid"/>
+				</listitem>
+				<listitem name="{@rev_navbar_chk=Reversed navbar layout}">
+					<data variable="navbar_sams"/>
+				</listitem>
+				<listitem name="{@use_color_navbar=Use accent color for navbar}">
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@fox_lock_btn}">
+					<data variable="lock_btn"/>
+				</listitem>
+				<listitem name="{@ico_btn_mode_txt}">
+					<data variable="ico_btn_mode"/>
+				</listitem>
+			</listbox>
 
 				<action>
 					<touch key="back"/>
@@ -14439,6 +14575,166 @@
 			<button style="mb_btn">
 				<placement x="696" y="%row5_1_y%"/>
 				<text>{@rb_poweroff_btn=Power Off}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+			</button>			
+
+
+			<button style="btn_dlg">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@cancel_btn=CANCEL}</text>
+				<actions>
+					<action function="page">main</action>
+					<action function="overlay"/>
+				</actions>
+			</button>
+
+			<action>
+				<touch key="power+volup"/>
+				<action function="screenshotexternal"/>
+			</action>
+
+			<action>
+				<touch key="power+voldown"/>
+				<action function="screenshotinternal"/>
+			</action>
+		</page>
+
+		<page name="btnadvanced">
+			<background color="%transparent%"/>
+
+			<image>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</image>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>{@advanced_hdr}</text>
+			</text>
+
+			<button>
+				<placement x="180" y="%row4_1_y%"/>
+				<image resource="mb_adbsideload"/>
+				<actions>
+					<action function="set">tw_back=main2</action>
+					<action function="set">tw_action=copylog</action>
+					<action function="set">tw_text1={@copy_log_confirm=Copy Logs to SD Card?}</action>
+					<action function="set">tw_action_text1={@copy_log_btn=Copy Logs to SD}</action>
+					<action function="set">tw_action_text2={@copying_log=Copying Logs to SD Card...}</action>
+					<action function="set">tw_complete_text1={@copy_log_complete=Logs copied}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<fill color="%accent%">
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="176" y="860" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+			
+			<button>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="173" y="%row4_1_y%"/>
+				<image resource="btn_adbsideload_color"/>
+				<actions>
+					<action function="set">tw_back=main2</action>
+					<action function="set">tw_action=copylog</action>
+					<action function="set">tw_text1={@copy_log_confirm=Copy Logs to SD Card?}</action>
+					<action function="set">tw_action_text1={@copy_log_btn=Copy Logs to SD}</action>
+					<action function="set">tw_action_text2={@copying_log=Copying Logs to SD Card...}</action>
+					<action function="set">tw_complete_text1={@copy_log_complete=Logs copied}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</button>
+			
+			<button style="mb_btn">
+				<placement x="120" y="%row5_1_y%"/>
+				<text>{@copy_log_btn}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+			</button>
+
+
+			<button>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="375" y="%row4_1_y%"/>
+				<image resource="mb_fixpermissions"/>
+				<action function="page">fixcontexts</action>
+			</button>
+
+			<fill color="%accent%">
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="368" y="860" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+			
+			<button>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="365" y="%row4_1_y%"/>
+				<image resource="btn_fixpermissions_color"/>
+				<action function="page">fixcontexts</action>
+			</button>			
+			
+			<button style="mb_btn">
+				<placement x="312" y="%row5_1_y%"/>
+				<text>{@fix_contexts_hdr}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+			</button>
+
+			<button>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="565" y="%row4_1_y%"/>
+				<image resource="mb_terminalcommand"/>
+				<action function="page">terminal</action>
+			</button>
+			
+			<fill color="%accent%">
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="560" y="860" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+			
+			<button>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="557" y="%row4_1_y%"/>
+				<image resource="btn_terminalcommand_color"/>
+				<action function="page">terminal</action>
+			</button>
+			
+			<button style="mb_btn">
+				<placement x="504" y="%row5_1_y%"/>
+				<text>{@terminal_btn}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+			</button>
+
+			<button>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<condition var1="fox_adb" var2="1"/>
+				<placement x="755" y="%row4_1_y%"/>
+				<image resource="mb_adbsideload"/>
+				<action function="page">sideload</action>
+			</button>
+			
+			<fill color="%accent%">
+				<condition var1="menu_btn_solid" var2="1"/>
+				<condition var1="fox_adb" var2="1"/>
+				<placement x="750" y="860" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+			
+			<button>
+				<condition var1="fox_adb" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="747" y="%row4_1_y%"/>
+				<image resource="btn_adbsideload_color"/>
+				<action function="page">sideload</action>
+			</button>
+
+			<button style="mb_btn">
+				<condition var1="fox_adb" var2="1"/>
+				<placement x="696" y="%row5_1_y%"/>
+				<text>{@adb_sideload_btn}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
 			</button>			

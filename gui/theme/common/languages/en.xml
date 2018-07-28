@@ -51,7 +51,7 @@
 		<string name="file_manager_btn">File Manager</string>
 		<string name="advanced_btn">Advanced</string>
 		<string name="reboot_btn">Reboot</string>
-		<string name="copy_log_btn">Copy Logs to SD</string>
+		<string name="copy_log_btn">Copy Logs</string>
 		<string name="install_zip_hdr">Install Zip</string>
 		<string name="install_zip_btn">INSTALL ZIP</string>
 		<string name="install_image_hdr">Install Image</string>
@@ -1019,15 +1019,17 @@
 		<string name="fox_m_other">Other settings</string>
 		<string name="fox_menu_comm">Community scripts</string>
 		<string name="fox_menu_splash">Change Splash</string>
-		<string name="fox_menu_theme">Change Theme</string>
+		<string name="fox_menu_theme">UI Center</string>
 		<string name="fox_menu_pass_h">Delete ROM password</string>
 		<string name="fox_menu_pass">By DarthJabba9</string>
 		<string name="fox_lock_btn">Button on lockscreen</string>
 		<string name="fox_menu_adb_on">ADB: on</string>
 		<string name="fox_menu_adb_off">ADB: off</string>
-		<string name="ico_btn_mode_txt">icon buttons on main</string>
+		<string name="ico_btn_mode_txt">Square buttons style</string>
 
-		<string name="fox_theme_title">Fox Theme Engine</string>
+		<string name="fox_theme_title">OrangeFox UI Center</string>
+		<string name="fox_theme_theme_tlt">Change theme</string>
+		<string name="fox_theme_color_tlt">Change color</string>
 		<string name="fox_theme_i1">After changing the theme, the theme color</string>
 		<string name="fox_theme_i2">will be set to default (orange).</string>
 		<string name="fox_theme_i3">After rebooting, you can set a new theme color.</string>
@@ -1037,6 +1039,7 @@
 		<string name="fox_theme_slider_dark">Slide to apply dark theme</string>
 		<string name="fox_theme_slider_black">Slide to apply black theme</string>
 		<string name="fox_theme_slider_white">Slide to apply white theme</string>
+		<string name="fox_need_reboot">You need to reboot</string>
 
 		<string name="fox_about_maintainer">Maintainer</string>
 		<string name="z31s1g">For the base of his material theme.</string>
@@ -1069,6 +1072,9 @@
 		<string name="fox_community_title">OrangeFox Community scrips</string>
 		<string name="fox_comm_i1">To add a new item contact</string>
 		<string name="fox_comm_i2">@MrYacha in Telegram</string>
+
+		<string name="fox_comm_ins">Install</string>
+		<string name="fox_comm_del">Remove</string>
 
 		<string name="fox_comm_su_txt2">By Chainfire</string>
 		<string name="fox_comm_su_sld">Swipe to install SuperSU</string>
