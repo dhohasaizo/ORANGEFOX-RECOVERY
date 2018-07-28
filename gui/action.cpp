@@ -453,11 +453,20 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
       //* DJ9
       if (Fox_Zip_Installer_Code == 0) // this is a standard zip installer
         {
-          LOGINFO("OrangeFox: finished installing the standard zip installer - %s.\n",filename.c_str());
+           if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) == 1)
+              {
+          	 LOGINFO("OrangeFox: processed internal zip: %s\n",filename.c_str());
+              }
+              else
+          	 LOGINFO("OrangeFox: installed standard zip: %s\n",filename.c_str());
+           
         } 
       else // this is a ROM install
         {
-          LOGINFO("OrangeFox: finished installing the ROM - %s.\n",filename.c_str());
+          if (Fox_Zip_Installer_Code == 1)
+             LOGINFO("OrangeFox: installed CUSTOM ROM: %s\n",filename.c_str());
+          else
+             LOGINFO("OrangeFox: installed MIUI ROM: %s\n",filename.c_str());            
         }
       //* DJ9
     }
