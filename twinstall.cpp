@@ -933,7 +933,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	  DataManager::GetValue(RW_SURVIVAL_BACKUP_NAME, ota_backup);
 	  DataManager::GetValue(RW_LOADED_FINGERPRINT, loadedfp);
 	  ota_folder += "/" + ota_backup;
-	  string ota_info = ota_folder + "/redwolf.info";
+	  string ota_info = ota_folder + Fox_OTA_info;
 	  if (TWFunc::Verify_Loaded_OTA_Signature(loadedfp, ota_folder))
 	    {
 	      gui_msg

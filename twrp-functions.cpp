@@ -2254,7 +2254,7 @@ bool TWFunc::Verify_Loaded_OTA_Signature(std::string loadedfp,
 					 std::string ota_folder)
 {
   std::string datafp;
-  string ota_info = ota_folder + "/redwolf.info";
+  string ota_info = ota_folder + Fox_OTA_info;
   if (TWFunc::Path_Exists(ota_info))
     {
       if (TWFunc::read_file(ota_info, datafp) == 0)
