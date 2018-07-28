@@ -873,10 +873,10 @@
 			</button>
 
 			<action>
-				<condition var="ico_btn_mode" vat2="1"/>
+				<condition var1="ico_btn_mode" var2="1"/>
 				<actions>
 					<action function="page">main2</action>
-					<action function="overlay">btnadvanced</action>
+					<action function="page">btnadvanced</action>
 				</actions>
 			</action>
 
@@ -890,7 +890,7 @@
 				<touch key="back"/>
 				<action function="page">main</action>
 			</action>
-	</page>
+		</page>
 
 
 		<page name="dialog_advanced_actions_warning">
