@@ -458,13 +458,6 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
       else // this is a ROM install
         {
           LOGINFO("OrangeFox: finished installing the ROM - %s.\n",filename.c_str());
-          //TWFunc::tw_reboot(rb_recovery);
-          /*
-            TWFunc::Exec_Cmd("/sbin/findmiui.sh");
-            if (!PartitionManager.Process_Fstab("/etc/recovery.fstab", 1)) 
-            {
-            }
-          */
         }
       //* DJ9
     }
@@ -1260,9 +1253,9 @@ int GUIAction::flash(std::string arg)
       PartitionManager.Wipe_By_Path("/cache");
     }
 
-  if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1)
+  if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1) // we are not installing an internal zip
     {
-      if (DataManager::GetIntValue(RW_CALL_DEACTIVATION) != 0)
+      if (DataManager::GetIntValue(RW_CALL_DEACTIVATION) != 0) // we are installing a ROM
 	{
 	  TWFunc::Deactivation_Process();
 	  DataManager::SetValue(RW_CALL_DEACTIVATION, 0);
@@ -1271,12 +1264,26 @@ int GUIAction::flash(std::string arg)
     }
 
   DataManager::Vibrate("wolf_data_install_vibrate");
-  DataManager::Leds(true);	// dj9
+  DataManager::Leds(true);
 
   reinject_after_flash();
   PartitionManager.Update_System_Details();
   operation_end(ret_val);
 
+  //* DJ9
+  DataManager::SetValue(RW_INSTALL_PREBUILT_ZIP, 0); // if we have installed an internal zip, turn off the flag
+  if (Fox_Zip_Installer_Code != 0) // this is a ROM install
+     {
+          /*
+            //TWFunc::tw_reboot(rb_recovery); // either reboot recovery automatically, or reload fstab
+            TWFunc::Exec_Cmd("/sbin/findmiui.sh");
+            if (!PartitionManager.Process_Fstab("/etc/recovery.fstab", 1)) 
+               {
+               }
+          */
+     }
+  //* DJ9
+  
   // This needs to be after the operation_end call so we change pages before we change variables that we display on the screen
   DataManager::SetValue(TW_ZIP_QUEUE_COUNT, zip_queue_index);
   return 0;
@@ -1945,7 +1952,7 @@ int GUIAction::adbsideload(std::string arg __unused)
       property_set("ctl.start", "adbd");
       TWFunc::Toggle_MTP(mtp_was_enabled);
 
-      DataManager::Leds(true);	// dj9
+      DataManager::Leds(true);
 
       notify_after_install();
       reinject_after_flash();
