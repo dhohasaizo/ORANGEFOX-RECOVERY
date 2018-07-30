@@ -27,156 +27,6 @@
 
 		</page>
 
-		<page name="wolf_project_extra_fox">
-
-			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-		    <action function="page">main</action>
-			</button>
-
-			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="row1_2a_y" />
-				<text>{@fox_del_btn}</text>
-				<actions>
-					<action function="set">tw_filecheck=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
-					<action function="set">tw_filename=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1={@fox_del_txt1}</action>
-					<action function="set">fox_flash_txt2={@fox_del_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_del_sld}</action>
-					<action function="set">fox_flash_info=2</action>
-					<action function="set">fox_flash_i1={@fox_del_i1}</action>
-					<action function="set">fox_flash_i2={@fox_del_i2}</action>
-				</actions>
-			</button>
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@advanced_btn=Advanced}</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@wolf_special_actions_hdr=}</text>
-			</text>
-
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row2_3_y%"/>
-				<text>{@wolf_special_actions=}</text>
-			</text>
-
-			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row3_1_y%" w="%listbox_w%" h="%row4_2_y%"/>
-				
-				<listitem name="{@wolf_dmverity_chk=Zip signature verification}">
-					<data variable="wolf_reboot_dm_verity_check"/>
-				</listitem>
-				<listitem name="{@wolf_verify_incremental_ota_signature_chk=Simulate failure for actions}">
-					<data variable="wolf_verify_incremental_ota_signature"/>
-				</listitem>
-				<listitem name="{@wolf_forced_encryption_chk=Reboot after installation is complete}">
-					<data variable="wolf_reboot_forced_encryption_check"/>
-				</listitem>
-				<listitem name="{@wolf_advanced_stock_recovery=Simulate failure for actions}">
-					<data variable="wolf_reboot_advanced_stock_recovery_check"/>
-				</listitem>
-				
-				<listitem name="{@wolf_enable_debugg_chk=Use rm -rf instead of formatting}">
-					<data variable="wolf_reboot_forced_debugging_check"/>
-				</listitem>
-				<listitem name="{@wolf_disable_debugg_chk=Skip MD5 generation during backup}">
-					<data variable="wolf_reboot_disable_debugging_check"/>
-				</listitem>
-				<listitem name="{@wolf_reboot_disable_secure_boot_chk=Skip MD5 generation during backup}">
-					<data variable="wolf_reboot_disable_secure_boot"/>
-				</listitem>
-				<listitem name="{@wolf_reboot_enable_mock_location_chk=Skip MD5 generation during backup}">
-					<data variable="wolf_reboot_enable_mock_location"/>
-				</listitem>
-				<listitem name="{@wolf_reboot_disable_mock_location_chk=Skip MD5 generation during backup}">
-					<data variable="wolf_reboot_disable_mock_location"/>
-				</listitem>
-				<listitem name="{@wolf_reboot_disable_adb_ro_chk=Skip MD5 generation during backup}">
-					<data variable="wolf_reboot_disable_adb_ro"/>
-				</listitem>
-				<listitem name="{@wolf_reboot_enable_adb_ro_chk=Skip MD5 generation during backup}">
-					<data variable="wolf_reboot_enable_adb_ro"/>
-				</listitem>
-				<listitem name="{@wolf_reboot_disable_secure_ro_chk=Skip MD5 generation during backup}">
-					<data variable="wolf_reboot_disable_secure_ro"/>
-				</listitem>
-				<listitem name="{@wolf_reboot_enable_secure_ro_chk=Skip MD5 generation during backup}">
-					<data variable="wolf_reboot_enable_secure_ro"/>
-				</listitem>
-				<listitem name="{@wolf_save_load_aromafm_config_chk=Simulate failure for actions}">
-					<data variable="wolf_reboot_saveload_aromafm_check"/>
-				</listitem>
-
-				<listitem name="{@wolf_reboot_dont_disable_stock_recovery_chk=}">
-					<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
-					<data variable="wolf_reboot_dont_disable_stock_recovery"/>
-				</listitem>
-
-				<listitem name="DEBUG MODE">
-					<condition var1="fox_adb" var2="1"/>
-					<data variable="fox_debug"/>
-				</listitem>
-					
-			</listbox>
-
-			<action>
-				<conditions>
-				<condition var1="wolf_reboot_forced_debugging_check" var2="1"/>
-				<condition var1="wolf_reboot_disable_debugging_check" var2="1"/>
-				</conditions>
-				<action function="set">wolf_reboot_disable_debugging_check=0</action>
-			</action>
-
-			<action>
-				<conditions>
-				<condition var1="wolf_reboot_enable_mock_location" var2="1"/>
-				<condition var1="wolf_reboot_disable_mock_location" var2="1"/>
-				</conditions>
-				<action function="set">wolf_reboot_disable_mock_location=0</action>
-			</action>
-
-			<action>
-				<conditions>
-				<condition var1="wolf_reboot_enable_adb_ro" var2="1"/>
-				<condition var1="wolf_reboot_disable_adb_ro" var2="1"/>
-				</conditions>
-				<action function="set">wolf_reboot_disable_adb_ro=0</action>
-			</action>
-
-			<action>
-				<conditions>
-				<condition var1="wolf_reboot_disable_secure_ro" var2="1"/>
-				<condition var1="wolf_reboot_enable_secure_ro" var2="1"/>
-				</conditions>
-				<action function="set">wolf_reboot_disable_secure_ro=0</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">advanced</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-		</page>
-
 		<page name="wolf_set_on_reboot">
 			<template name="body"/>
 
@@ -821,57 +671,6 @@
 				</actions>
 			</button>
 
-			<fill color="%linecolor%">
-				<condition var1="menu_btn_solid" var2="0"/>
-				<placement x="%col1_x_indent%" y="%mb_row8_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
-			</fill>
-
-			<fill color="%linecolor%">
-				<condition var1="menu_btn_solid" var2="0"/>
-				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x_indent%" y="%mb_row8_y%" w="%mb_div_w%" h="%fileselector_separatorheight%"/>
-			</fill>
-
-			<image>
-				<condition var1="menu_btn_solid" var2="0"/>
-				<placement x="%col1_x%" y="%mb_row8_y%"/>
-				<image resource="mb_wolf_actions"/>
-			</image>
-
-			<fill color="%accent%">
-				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="%mb_icon_x%" y="%mb_row8_icon_y%" w="%mb_icon_w%" h="%mb_icon_h%"/>
-			</fill>
-
-			<image>
-				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="%col1_x%" y="%mb_row8_y%"/>
-				<image resource="mb_wolf_actions_color"/>
-			</image>
-
-			<image>
-				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="%col1_x_neg%" y="%mb_row8_y%" placement="1"/>
-				<image resource="mb_color_extension"/>
-			</image>
-
-            <text style="mb_text">
-				<placement x="%col1_x_indent%" y="%mb_row8_text_y%"/>
-				<text>{@wolf_special_actions_hdr=}</text>
-			</text>
-
-			<button style="mb_btn">
-				<condition var1="wolf_advanced_warning_checkbox" var2="0"/>
-				<placement x="%col1_x%" y="%mb_row8_y%" w="%content_w%" h="%mb_h%"/>
-				<action function="overlay">dialog_advanced_actions_warning</action>
-			</button>
-
-			<button style="mb_btn">
-				<condition var1="wolf_advanced_warning_checkbox" var2="1"/>
-				<placement x="%col1_x%" y="%mb_row8_y%" w="%content_w%" h="%mb_h%"/>
-				<action function="page">wolf_project_extra_fox</action>
-			</button>
-
 			<action>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<actions>
@@ -892,66 +691,7 @@
 			</action>
 		</page>
 
-
-		<page name="dialog_advanced_actions_warning">
-			<background color="%transparent%"/>
-
-			<image>
-				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
-				<image resource="dialog_bg"/>
-			</image>
-
-			<text style="text_dlg_title">
-				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>{@wolf_special_actions_hdr=}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text1_y%"/>
-				<text>{@wolf_dialog_special_actions_1=Do you want to set the current folder}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%storage_indent_x%" y="%db_text2_y%"/>
-				<text>{@wolf_dialog_special_actions_2=as the default folder for this list?}</text>
-			</text>
-
-			<checkbox style="checkbox_small">
-				<placement x="%storage_indent_x%" y="%db_checkbox_y%"/>
-				<text>{@dialog_color_note_1=Don't tell me again}</text>
-				<data variable="wolf_advanced_warning_checkbox"/>
-			</checkbox>
-
-			<button style="btn_dlg">
-				<placement x="%db_left_x%" y="%db_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
-				<actions>
-					<action function="page">advanced</action>
-					<action function="overlay"/>
-				</actions>
-			</button>
-
-			<button style="btn_dlg_hl">
-				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
-				<actions>
-				<action function="page">wolf_project_extra_fox</action>
-				<action function="overlay"/>
-				</actions>
-			</button>
-
-			<action>
-				<touch key="power+volup"/>
-				<action function="screenshotexternal"/>
-			</action>
-
-<action>
-				<touch key="power+voldown"/>
-				<action function="screenshotinternal"/>
-			</action>
-		</page>
-
-<page name="dialog_reset_pass">
+		<page name="dialog_reset_pass">
 			<background color="%transparent%"/>
 
 			<image>
@@ -2926,6 +2666,44 @@
 				</actions>
 			</button>
 
+			<button>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="0"/>
+				<placement x="70" y="950"/>
+				<image resource="mb_system"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="page">reboot_system_routine</action>
+				</actions>
+			</button>
+			
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="64" y="970" w="%mb_icon_w%" h="%mb_icon_h%"/>
+			</fill>
+			
+			<button>
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="menu_btn_solid" var2="1"/>
+				<placement x="60" y="950"/>
+				<image resource="btn_system_color"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="page">reboot_system_routine</action>
+				</actions>
+			</button>
+			
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="10" y="1120"/>
+				<text>{@rb_system_btn=System}</text>
+				<image resource="button-bes" />
+				<font resource="button-text" color="%text_button%"/>
+			</button>
+
 			
 			<fill color="%linecolor%">
 				<condition var1="ico_btn_mode" var2="1"/>
@@ -3538,7 +3316,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>OrangeFox menu</text>
+				<text>{@of_menu_tlt}</text>
 			</text>
 
 			<image>
@@ -3658,7 +3436,7 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row5_2_y%"/>
-				<text>Other</text>
+				<text>{@fox_menu_other}</text>
 			</text>
 
 			<button style="btn_raised_hl">
@@ -3727,6 +3505,11 @@
 					<action function="set">fox_flash_info=0</action>
 				</actions>
 			</button>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<text>{@fox_menu_nav}</text>
+			</text>
 
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
@@ -13770,20 +13553,81 @@
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="wolf_boot_t2w_check"/>
 				</listitem>
+				<listitem name="DEBUG MODE">
+					<condition var1="fox_adb" var2="1"/>
+					<data variable="fox_debug"/>
+				</listitem>
+				<listitem name="{@wolf_save_load_aromafm_config_chk=Simulate failure for actions}">
+					<data variable="wolf_reboot_saveload_aromafm_check"/>
+				</listitem>
+
+				<listitem name="{@wolf_forced_encryption_chk=Reboot after installation is complete}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="wolf_reboot_forced_encryption_check"/>
+				</listitem>
+				<listitem name="{@wolf_enable_debugg_chk=Use rm -rf instead of formatting}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="wolf_reboot_forced_debugging_check"/>
+				</listitem>
+				<listitem name="{@wolf_disable_debugg_chk=Skip MD5 generation during backup}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="wolf_reboot_disable_debugging_check"/>
+				</listitem>
+				<listitem name="{@wolf_reboot_disable_secure_boot_chk=Skip MD5 generation during backup}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="wolf_reboot_disable_secure_boot"/>
+				</listitem>
+				<listitem name="{@wolf_reboot_enable_mock_location_chk=Skip MD5 generation during backup}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="wolf_reboot_enable_mock_location"/>
+				</listitem>
+				<listitem name="{@wolf_reboot_disable_mock_location_chk=Skip MD5 generation during backup}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="wolf_reboot_disable_mock_location"/>
+				</listitem>
+				<listitem name="{@wolf_reboot_disable_adb_ro_chk=Skip MD5 generation during backup}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="wolf_reboot_disable_adb_ro"/>
+				</listitem>
+				<listitem name="{@wolf_reboot_enable_adb_ro_chk=Skip MD5 generation during backup}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="wolf_reboot_enable_adb_ro"/>
+				</listitem>
+				<listitem name="{@wolf_reboot_disable_secure_ro_chk=Skip MD5 generation during backup}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="wolf_reboot_disable_secure_ro"/>
+				</listitem>
+				<listitem name="{@wolf_reboot_enable_secure_ro_chk=Skip MD5 generation during backup}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="wolf_reboot_enable_secure_ro"/>
+				</listitem>
 			</listbox>
 
-			<text style="caption">
-				<condition var1="fox_debug" var2="1"/>
-				<placement x="%col1_x%" y="%row6_1_y%"/>
-				<text>Debug active!</text>
-			</text>
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="row8_1_y" />
+				<text>{@fox_del_btn}</text>
+				<actions>
+					<action function="set">tw_filecheck=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
+					<action function="set">tw_filename=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1={@fox_del_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_del_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_del_sld}</action>
+					<action function="set">fox_flash_info=2</action>
+					<action function="set">fox_flash_i1={@fox_del_i1}</action>
+					<action function="set">fox_flash_i2={@fox_del_i2}</action>
+				</actions>
+			</button>
 
 			<action>
 				<conditions>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_boot_performance_check" var2="0"/>
-				<condition var1="wolf_boot_balance_check" var2="0"/>
-				<condition var1="wolf_boot_powersave_check" var2="0"/>
+					<condition var1="tw_busy" var2="0"/>
+					<condition var1="wolf_boot_performance_check" var2="0"/>
+					<condition var1="wolf_boot_balance_check" var2="0"/>
+					<condition var1="wolf_boot_powersave_check" var2="0"/>
 				</conditions>
 				<action function="set">wolf_boot_balance_check=1</action>
 			</action>
@@ -13816,6 +13660,38 @@
 			</action>
 
 			<action>
+				<conditions>
+				<condition var1="wolf_reboot_forced_debugging_check" var2="1"/>
+				<condition var1="wolf_reboot_disable_debugging_check" var2="1"/>
+				</conditions>
+				<action function="set">wolf_reboot_disable_debugging_check=0</action>
+			</action>
+
+			<action>
+				<conditions>
+				<condition var1="wolf_reboot_enable_mock_location" var2="1"/>
+				<condition var1="wolf_reboot_disable_mock_location" var2="1"/>
+				</conditions>
+				<action function="set">wolf_reboot_disable_mock_location=0</action>
+			</action>
+
+			<action>
+				<conditions>
+				<condition var1="wolf_reboot_enable_adb_ro" var2="1"/>
+				<condition var1="wolf_reboot_disable_adb_ro" var2="1"/>
+				</conditions>
+				<action function="set">wolf_reboot_disable_adb_ro=0</action>
+			</action>
+
+			<action>
+				<conditions>
+				<condition var1="wolf_reboot_disable_secure_ro" var2="1"/>
+				<condition var1="wolf_reboot_enable_secure_ro" var2="1"/>
+				</conditions>
+				<action function="set">wolf_reboot_disable_secure_ro=0</action>
+			</action>
+
+			<action>
 				<touch key="home"/>
 				<action function="page">main2</action>
 			</action>
@@ -13842,7 +13718,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>OrangeFox menu</text>
+				<text>{@of_menu_tlt}</text>
 			</text>
 
 			<button>
@@ -13867,24 +13743,56 @@
 			</fill>
 
 			<image>
+				<condition var1="fox_menu3_info" var2="0"/>
 				<placement x="%col1_x%" y="%row1_3_y%"/>
 				<image resource="icon_info"/>
 			</image>
+			<image>
+				<condition var1="fox_menu3_info" var2="1"/>
+				<placement x="%col1_x%" y="%row2_1_y%"/>
+				<image resource="icon_info"/>
+			</image>
 			<text style="text_body2">
+				<condition var1="fox_menu3_info" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
-				<text>Hello to OrangeFox OTA section!</text>
+				<text>{@fox_menu3_i1}</text>
 			</text>
 			<text style="text_body2">
+				<condition var1="fox_menu3_info" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
-				<text>Click on info button for more info</text>
+				<text>{@fox_menu3_i2}</text>
 			</text>
 
+			<text style="text_body2">
+				<condition var1="fox_menu3_info" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>OTA Information:</text>
+			</text>
+
+			<button>
+				<condition var1="fox_menu3_info" var2="0"/>
+				<placement x="850" y="%row1_3_y%"/>
+				<image resource="btn_float_flashitinfo"/>
+				<highlight color="%highlight_color%"/>
+				<action function="set">fox_menu3_info=1</action>
+			</button>
+
+			<button>
+				<condition var1="fox_menu3_info" var2="1"/>
+				<placement x="850" y="%row1_3_y%"/>
+				<image resource="btn_float_cancel"/>
+				<highlight color="%highlight_color%"/>
+				<action function="set">fox_menu3_info=0</action>
+			</button>
+
 			<text style="caption">
+				<condition var1="fox_menu3_info" var2="0"/>
 				<placement x="%col1_x%" y="%row2_3_y%"/>
-				<text>OTA Parameters</text>
+				<text>{@fox_menu3_ota_sett}</text>
 			</text>
 
 			<listbox style="settingslist">
+				<condition var1="fox_menu3_info" var2="0"/>
 				<placement x="%col1_x%" y="%row3_1_y%" w="%listbox_w%" h="%row4_2_y%"/>
 				<listitem name="{@wolf_support_miui_ota_chk=}">
 					<data variable="wolf_support_miui_ota"/>
@@ -13901,31 +13809,62 @@
 				<listitem name="{@wolf_disable_boot_chk}">
 					<data variable="wolf_disable_boot_check"/>
 				</listitem>
+				<listitem name="{@wolf_dmverity_chk}">
+					<data variable="wolf_reboot_dm_verity_check"/>
+				</listitem>
 			</listbox>
 
+			<text style="caption">
+				<condition var1="fox_menu3_info" var2="0"/>
+				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<text>{@fox_menu3_fast_act}</text>
+			</text>
+
 			<button style="btn_raised">
+				<condition var1="fox_menu3_info" var2="0"/>
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
-				<text>Load default</text>
+				<text>{@fox_menu3_dis_ota}</text>
 				<actions>
 					<action function="set">wolf_support_miui_ota=0</action>
 					<action function="set">wolf_include_system_survival=0</action>
 					<action function="set">wolf_verify_incremental_ota_signature=0</action>
 					<action function="set">wolf_reboot_advanced_stock_recovery_check=0</action>
 					<action function="set">wolf_disable_boot_check=0</action>
+					<action function="set">wolf_reboot_dm_verity_check=0</action>
 				</actions>
 			</button>
 
 			<button style="btn_raised">
+				<condition var1="fox_menu3_info" var2="0"/>
 				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
-				<text>Load recommend</text>
+				<text>{@fox_menu3_enb_ota}</text>
 				<actions>
 					<action function="set">wolf_support_miui_ota=1</action>
 					<action function="set">wolf_include_system_survival=1</action>
 					<action function="set">wolf_verify_incremental_ota_signature=0</action>
 					<action function="set">wolf_reboot_advanced_stock_recovery_check=1</action>
 					<action function="set">wolf_disable_boot_check=1</action>
+					<action function="set">wolf_reboot_dm_verity_check=1</action>
 				</actions>
 			</button>
+
+			<listbox style="textbox">
+				<condition var1="fox_menu3_info" var2="1"/>
+				<placement x="%col1_x%" y="%row2_3_y%" w="%console_width%" h="%console_action_height%"/>
+				<listitem name="{@fox_menu3_info1}"/>
+				<listitem name="{@fox_menu3_info2}"/>
+				<listitem name="{@fox_menu3_info3}"/>
+				<listitem name="{@fox_menu3_info4}"/>
+				<listitem name="{@fox_menu3_info5}"/>
+				<listitem name="{@fox_menu3_info6}"/>	
+				<listitem name="{@fox_menu3_info7}"/>
+				<listitem name="{@fox_menu3_info8}"/>
+				<listitem name="{@fox_menu3_info9}"/>
+				<listitem name="{@fox_menu3_info10}"/>
+				<listitem name="{@fox_menu3_info11}"/>
+				<listitem name="{@fox_menu3_info12}"/>		
+				<listitem name="{@fox_menu3_info13}"/>			
+			</listbox>
 
 			<action>
 				<touch key="home"/>

@@ -97,6 +97,7 @@
 		<image name="btn_float_flashitinfo_hl" filename="btn_float_flashitinfo_hl" retainaspect="1"/>
 		<image name="btn_float_accept" filename="btn_float_accept" retainaspect="1"/>
 		<image name="btn_float_folder" filename="btn_float_folder" retainaspect="1"/>
+		<image name="btn_float_cancel" filename="btn_float_cancel" retainaspect="1"/>
 
 		<image name="btn_flat_fw" filename="btn_flat_fw"/>
 		<image name="btn_flat_qw" filename="btn_flat_qw"/>
@@ -284,6 +285,7 @@
 		<variable name="navbar_sams" value="0" persist="1"/>
 		<variable name="navbar_accent" value="0" persist="1"/>
 		<variable name="menu_btn_solid" value="1" persist="1"/>
+		<variable name="fox_menu3_info" value="0" persist="0"/>
 
     	<!-- OrangeFox variables -->
     	<variable name="lock_btn" value="1" persist="1"/>

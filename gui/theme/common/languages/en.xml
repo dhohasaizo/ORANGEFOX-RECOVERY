@@ -950,16 +950,11 @@
 		<string name="wolf_flash_fgo_patch">Swipe to install the FGO patch</string>
 		<!-- OrangeFox Recovery V3.1 / 018 -->
 		<string name="wolf_reboot_restore_finish_chk">Reboot after restore is complete</string>
-		<string name="wolf_dmverity_chk">Disable DM-Verity</string>
 		<string name="wolf_forced_encryption_chk">Disable Forced Encryption</string>
 		<string name="wolf_enable_debugg_chk">Enable Debugging in the ROM</string>
 		<string name="wolf_disable_debugg_chk">Disable Debugging in the ROM</string>
 		<string name="wolf_save_load_aromafm_config_chk">Save/Load AromaFM config</string>
 		<string name="wolf_hide_backup_folder_chk">Hide main recovery folder</string>
-		<string name="wolf_advanced_stock_recovery">Aggressive stock recovery deactivation</string>
-		<string name="wolf_support_miui_ota_chk">Support MIUI Incremental OTA</string>
-		<string name="wolf_special_actions">Special actions of the OrangeFox Recovery</string>
-		<string name="wolf_special_actions_hdr">Special Actions</string>
 		<string name="wolf_reboot_disable_secure_boot_chk">Disable secure boot</string>
 		<string name="wolf_reboot_enable_mock_location_chk">Enable allow.mock.location</string>
 		<string name="wolf_reboot_disable_mock_location_chk">Disable allow.mock.location</string>
@@ -979,9 +974,6 @@
 
 		<!-- Red Wolf Recovery V3.1.1 / 020 -->
 		<!-- This thing will disable checking of the boot partition to disable DM-Verity, Forced Encryption etc. -->
-		<string name="wolf_disable_boot_chk">Disable boot check</string>
-		<string name="wolf_include_system_survival_chk">Include system in OTA survival</string>
-		<string name="wolf_verify_incremental_ota_signature_chk">Incremental OTA signature verification</string>
 		<string name="wolf_prebuilt_fox_not_exist_hdr">File doesn't exist!</string>
 		<string name="wolf_prebuilt_fox_not_exist_1">Please reflash recovery</string>
 		<string name="wolf_prebuilt_fox_not_exist_2">using the installation zip.</string>
@@ -1027,6 +1019,39 @@
 		<string name="fox_menu_adb_off">ADB: off</string>
 		<string name="ico_btn_mode_txt">Square buttons style</string>
 
+		<string name="of_menu_tlt">OrangeFox menu</string>
+
+		<string name="fox_menu_other">Other</string>
+		<string name="fox_menu_nav">Navigation</string>
+
+		<string name="fox_menu3_i1">Hello to OrangeFox OTA section!</string>
+		<string name="fox_menu3_i2">Click on info button for more info</string>
+		<string name="fox_menu3_ota_sett">OTA Parameters</string>
+		<string name="fox_menu3_fast_act">Fast actions</string>
+		<string name="fox_menu3_dis_ota">Disable OTA</string>
+		<string name="fox_menu3_enb_ota">Enable OTA</string>
+
+		<string name="fox_menu3_info1">Support MIUI incremental OTA:</string>
+		<string name="fox_menu3_info2">This should be enabled if you want to be able to install</string>
+		<string name="fox_menu3_info3">MIUI incremental OTA upgrades while using OrangeFox.</string>
+		<string name="fox_menu3_info4"></string>
+		<string name="fox_menu3_info5">Include system in OTA survival:</string>
+		<string name="fox_menu3_info6">This should be enabled if you want to be able</string>
+		<string name="fox_menu3_info7">to modify the modify system partition</string>
+		<string name="fox_menu3_info8">without subsequent OTA updates failing</string>
+		<string name="fox_menu3_info9"></string>
+		<string name="fox_menu3_info10">Incremental OTA signature verification:</string>
+		<string name="fox_menu3_info11">This should be enabled if you want the signatures</string>
+		<string name="fox_menu3_info12">of incremental OTA upgrade files to be verified</string>
+		<string name="fox_menu3_info13"></string>
+
+		<string name="wolf_advanced_stock_recovery">Aggressive stock recovery deactivation</string>
+		<string name="wolf_support_miui_ota_chk">Support MIUI Incremental OTA</string>
+		<string name="wolf_disable_boot_chk">Disable boot check</string>
+		<string name="wolf_include_system_survival_chk">Include system in OTA survival</string>
+		<string name="wolf_verify_incremental_ota_signature_chk">Incremental OTA signature verification</string>
+		<string name="wolf_dmverity_chk">Disable DM-Verity</string>
+		
 		<string name="fox_theme_title">OrangeFox UI Center</string>
 		<string name="fox_theme_theme_tlt">Change theme</string>
 		<string name="fox_theme_color_tlt">Change color</string>
@@ -1069,7 +1094,6 @@
 
 		<!-- OrangeFox community page -->
 
-		<string name="fox_community_title">OrangeFox Community scrips</string>
 		<string name="fox_comm_i1">To add a new item contact</string>
 		<string name="fox_comm_i2">@MrYacha in Telegram</string>
 

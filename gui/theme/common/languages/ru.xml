@@ -912,6 +912,39 @@
 		<string name="fox_menu_adb_off">ADB: выкл.</string>
 		<string name="ico_btn_mode_txt">Квадратные кнопки-иконки на главной</string>
 
+		<string name="of_menu_tlt">Меню OrangeFox</string>
+
+		<string name="fox_menu_other">Остальное</string>
+		<string name="fox_menu_nav">Навигация</string>
+
+		<string name="fox_menu3_i1">Приветсвую в OrangeFox OTA!</string>
+		<string name="fox_menu3_i2">Нажмите на кнопку для справки</string>
+		<string name="fox_menu3_ota_sett">OTA Параметры</string>
+		<string name="fox_menu3_fast_act">Быстрые действия</string>
+		<string name="fox_menu3_dis_ota">Выключить OTA</string>
+		<string name="fox_menu3_enb_ota">Включить OTA</string>
+
+		<string name="fox_menu3_info1">Поддержка MIUI incremental OTA:</string>
+		<string name="fox_menu3_info2">Это должо быть включено если вы хотите ставить</string>
+		<string name="fox_menu3_info3">OTA обновления пока пользуетесь OrangeFox.</string>
+		<string name="fox_menu3_info4"></string>
+		<string name="fox_menu3_info5">Добавить системный раздел в OTA:</string>
+		<string name="fox_menu3_info6">Это должо бытьн включено если вы хотите</string>
+		<string name="fox_menu3_info7">модифицировать системный раздел без</string>
+		<string name="fox_menu3_info8">последущих ошибок установки обновления</string>
+		<string name="fox_menu3_info9"></string>
+		<string name="fox_menu3_info10">Проверка подписи Incremental OTA:</string>
+		<string name="fox_menu3_info11">Это должо быть включено если вы хотите</string>
+		<string name="fox_menu3_info12">чтобы OrangeFox проверял подпись обновлений</string>
+		<string name="fox_menu3_info13"></string>
+
+		<string name="wolf_advanced_stock_recovery">Отклонение перезаписи рекавери</string>
+		<string name="wolf_support_miui_ota_chk">Поддержка MIUI Incremental OTA</string>
+		<string name="wolf_disable_boot_chk">Выключить проверку boot</string>
+		<string name="wolf_include_system_survival_chk">Добавить системный раздел в OTA</string>
+		<string name="wolf_verify_incremental_ota_signature_chk">Проверка подписи Incremental OTA</string>
+		<string name="wolf_dmverity_chk">Выключение DM-Verity</string>
+
 		<string name="fox_theme_title">UI центр OrangeFox</string>
 		<string name="fox_theme_theme_tlt">Смена темы</string>
 		<string name="fox_theme_color_tlt">Смена цвета</string>
