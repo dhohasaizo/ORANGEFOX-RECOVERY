@@ -43,7 +43,7 @@ static const std::string Fox_tmp_dir = Fox_Tmp + "/redwolf";
 static const std::string Fox_ramdisk_dir = Fox_tmp_dir + "/ramdisk";
 static const std::string Fox_ramdisk_sbin_dir = Fox_ramdisk_dir + "/sbin";
 static const std::string epoch_drift_file = "/persist/.fox_epoch_drift.cfg"; // to cater for any saved epoch_drifts
-static int Fox_Zip_Installer_Code = 0; // 0=normal zip;1=custom ROM;2=miui ROM
+static int Fox_Zip_Installer_Code = 0; // 0=standard zip;1=custom ROM;2=miui ROM; 11=custom treble ROM; 22=miui treble ROM
 static const std::string Fox_OTA_info = "/orangefox.info";
 
 #define RW_SURVIVAL_FOLDER    Fox_Home.c_str()

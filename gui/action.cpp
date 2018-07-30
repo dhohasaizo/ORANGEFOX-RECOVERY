@@ -2643,58 +2643,6 @@ int GUIAction::disablerestoreled(std::string arg __unused)
   return disableled("Restore");
 }
 
-/*
-int GUIAction::disableinstallled(std::string arg __unused)
-{
- operation_start("Disable Install Led");
- if (simulate) {
-  simulate_progress_bar();
- } else {
-            if (DataManager::GetIntValue("rw_inject_after_zip") != 0) {
-        	string ledcolor;
-	        DataManager::GetValue("wolf_install_led_color", ledcolor);
-	        string leds = "/sys/class/leds/" + ledcolor + "/brightness";
-           TWFunc::write_to_file(leds, "0");
-   }
- }
-     operation_end(0);
-  return 0;
- }
-
-int GUIAction::disablebackupled(std::string arg __unused)
-{
- operation_start("Disable Backup Led");
- if (simulate) {
-  simulate_progress_bar();
-  } else {
-            if (DataManager::GetIntValue("rw_inject_after_backup") != 0) {
-        	string ledcolor;
-	        DataManager::GetValue("wolf_backup_led_color", ledcolor);
-	        string leds = "/sys/class/leds/" + ledcolor + "/brightness";
-           TWFunc::write_to_file(leds, "0");
-   }
- }
-     operation_end(0);
-  return 0;
-}
-
-int GUIAction::disablerestoreled(std::string arg __unused)
-{
- operation_start("Disable Restore Led");
- if (simulate) {
-  simulate_progress_bar();
- } else {
-            if (DataManager::GetIntValue("rw_inject_after_restore") != 0) {
-        	string ledcolor;
-	        DataManager::GetValue("wolf_restore_led_color", ledcolor);
-	        string leds = "/sys/class/leds/" + ledcolor + "/brightness";
-            TWFunc::write_to_file(leds, "0");
-     }
-  }
-     operation_end(0);
-  return 0;
-}
-*/
 int GUIAction::removepassword(std::string arg __unused)
 {
   operation_start("Remove Recovery Password");
@@ -2704,22 +2652,27 @@ int GUIAction::removepassword(std::string arg __unused)
     }
   else
     {
-	  std::string dd = "dd";
-	  std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
-	  gui_msg
-	    ("wolf_remove_access_password_one=Removing recovery access password...");
-	  TWFunc::Dumwolf(true, false);
-	  if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
-	    {
-	      TWFunc::create_fingerprint_file(password_file, dd);
-	      TWFunc::Dumwolf(false, false);
-	      DataManager::SetValue(RW_PASSWORD_VARIABLE, dd);
-	      gui_msg("update_part_details_done=...done");
-	    }
-	  else
-	    {
-	      LOGERR("Failed to load password engine\n");
-	    }
+	std::string dd = "dd";
+  	std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
+	gui_msg ("wolf_remove_access_password_one=Removing recovery access password...");
+	//TWFunc::Dumwolf(true, false);
+	if (TWFunc::Unpack_Image("/recovery"))
+	   {
+	  	if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
+	    	{
+	      		TWFunc::create_fingerprint_file(password_file, dd);
+	      		//TWFunc::Dumwolf(false, false);
+	      		TWFunc::Repack_Image("/recovery");
+	      		DataManager::SetValue(RW_PASSWORD_VARIABLE, dd);
+	      		gui_msg("update_part_details_done=...done");
+	    	}
+	  	else
+	    	{
+	      		LOGERR("Failed to load password engine\n");
+	    	}
+	   }
+	   else 
+	  	LOGERR("Failed to unpack recovery to load the password engine\n");	     
     }
   operation_end(0);
   return 0;
@@ -2734,21 +2687,26 @@ int GUIAction::setpassword(std::string arg)
     }
   else
     {
-	  std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
-	  gui_msg
-	    ("wolf_set_new_access_password=Changing recovery access password...");
-	  TWFunc::Dumwolf(true, false);
-	  if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
-	    {
-	      TWFunc::create_fingerprint_file(password_file, arg);
-	      TWFunc::Dumwolf(false, false);
-	      DataManager::SetValue(RW_PASSWORD_VARIABLE, arg);
-	      gui_msg("update_part_details_done=...done");
-	    }
-	  else
-	    {
-	      LOGERR("Failed to load password engine\n");
-	    }
+	std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
+	gui_msg ("wolf_set_new_access_password=Changing recovery access password...");
+	//TWFunc::Dumwolf(true, false);
+	if (TWFunc::Unpack_Image("/recovery"))
+	   {
+	  	if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
+	    	{
+	      		TWFunc::create_fingerprint_file(password_file, arg);
+	      		//TWFunc::Dumwolf(false, false);
+	      		TWFunc::Repack_Image("/recovery");
+	      		DataManager::SetValue(RW_PASSWORD_VARIABLE, arg);
+	      		gui_msg("update_part_details_done=...done");
+	    	}
+	  	else
+	    	{
+	      		LOGERR("Failed to load password engine\n");
+	    	}
+	   }
+	   else 
+	   	LOGERR("Failed to unpack recovery to load the password engine\n");
     }
   operation_end(0);
   return 0;
@@ -2763,7 +2721,8 @@ int GUIAction::wlfw(std::string arg __unused)
     }
   else
     {
-      TWFunc::Dumwolf(true, false);
+      //TWFunc::Dumwolf(true, false);
+      TWFunc::Unpack_Image("/recovery");
     }
   operation_end(0);
   return 0;
@@ -2778,7 +2737,8 @@ int GUIAction::wlfx(std::string arg __unused)
     }
   else
     {
-      TWFunc::Dumwolf(false, false);
+      //TWFunc::Dumwolf(false, false);
+      TWFunc::Repack_Image("/recovery");
     }
   operation_end(0);
   return 0;
@@ -2798,17 +2758,23 @@ int GUIAction::changesplash(std::string arg __unused)
 	  DataManager::GetValue("tw_splash_png_path", path);
 	  DataManager::GetValue("tw_splash_png_name", filename);
 	  std::string filepath = path + "/" + filename;
-	  TWFunc::Dumwolf(true, false);
-	  if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
-	    {
-	      unlink(ramdisk_path.c_str());
-	      TWFunc::copy_file(filepath, ramdisk_path, 0644);
-	      TWFunc::Dumwolf(false, false);
-	    }
-	  else
-	    {
-	      LOGERR("Failed to load dumwolf engine\n");
-	    }
+	  //TWFunc::Dumwolf(true, false);
+	  if (TWFunc::Unpack_Image("/recovery"))
+	     {
+	  	if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
+	    	{
+	      		unlink(ramdisk_path.c_str());
+	      		TWFunc::copy_file(filepath, ramdisk_path, 0644);
+	      		//TWFunc::Dumwolf(false, false);
+	      		TWFunc::Repack_Image("/recovery");
+	    	}
+	  	else
+	    	{
+	      		LOGERR("Failed to load splash engine\n");
+	    	}
+	     } 
+	  	else
+	  		LOGERR("Failed to unpack recovery image to load splash engine\n");
     }
   operation_end(0);
   return 0;
@@ -2831,10 +2797,7 @@ int GUIAction::adb(std::string arg)
 	{
 	  property_set("orangefox.adb.status", "0");
 	}
-
     }
-
   operation_end(0);
   return 0;
-
 }

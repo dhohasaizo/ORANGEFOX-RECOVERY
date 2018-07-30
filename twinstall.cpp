@@ -288,17 +288,27 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  gui_msg
 	    ("wolf_install_standard_detected=- Detected standard ROM zip installer");
 	}
-      else // this is a MIUI zip installer
+      else // this is a MIUI installer
 	{
-	  if (Zip->EntryExists("system.new.dat"))
+	  if ((Zip->EntryExists("system.new.dat")) || (Zip->EntryExists("system.new.dat.br"))) // we are installing a MIUI ROM
 	    {
 	      DataManager::SetValue(RW_MIUI_ZIP_TMP, 1);
 	      DataManager::SetValue(RW_CALL_DEACTIVATION, 1);
+	      DataManager::SetValue(RW_DISABLE_DM_VERITY, 1);
 	      Fox_Zip_Installer_Code = 2; // MIUI ROM
 	    }
 	  gui_msg
 	    ("wolf_install_miui_detected=- Detected MIUI Update zip installer");
 	}
+
+//* treble
+      if ((Zip->EntryExists("vendor.new.dat")) || (Zip->EntryExists("vendor.new.dat.br"))) // we are installing a Treble ROM
+         {
+           if (Fox_Zip_Installer_Code == 1) Fox_Zip_Installer_Code = 11; // custom Treble ROM
+           if (Fox_Zip_Installer_Code == 2) Fox_Zip_Installer_Code = 22; // miui Treble ROM
+           LOGINFO("OrangeFox: detected Treble ROM installer.\n");
+         }
+//* treble
 
       if (DataManager::GetIntValue(RW_INCREMENTAL_PACKAGE) != 0)
 	{
@@ -745,8 +755,16 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	  string digest_str;
 	  string Full_Filename = path;
 	  string digest_file = path;
-	  digest_file += ".md5";
-
+	  //digest_file += ".md5";
+	  string defmd5file = digest_file + ".md5sum";
+	  if (TWFunc::Path_Exists(defmd5file)) 
+	     {
+		digest_file += ".md5sum";
+	     }
+	  else 
+	     {
+		digest_file += ".md5";
+	     }
 	  gui_msg("check_for_digest=Checking for Digest file...");
 	  if (!TWFunc::Path_Exists(digest_file))
 	    {
@@ -949,6 +967,9 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 		("wolf_incremental_ota_bak_run=Running OTA_BAK process...");
 
 	      PartitionManager.Run_OTA_Survival_Backup(false);
+	      
+	      TWFunc::Write_MIUI_Install_Status(OTA_SUCCESS, false);
+	      
 	      gui_msg("wolf_incremental_ota_bak=Process OTA_BAK --- done!");
 
 	      if (TWFunc::Path_Exists(ota_folder)

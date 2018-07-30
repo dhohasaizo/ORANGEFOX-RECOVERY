@@ -59,6 +59,12 @@ extern "C"
 #include "libcrecovery/common.h"
 }
 
+static string tmp = Fox_tmp_dir;
+static string split_img = tmp + "/split_img";
+static string ramdisk = tmp + "/ramdisk";
+static string tmp_boot = tmp + "/boot.img";
+
+
 /* Execute a command */
 int TWFunc::Exec_Cmd(const string & cmd, string & result)
 {
@@ -528,8 +534,8 @@ void TWFunc::install_htc_dumlock(void)
 
 void TWFunc::Deactivation_Process(void)
 {
-  std::string tmp = Fox_tmp_dir;
-  std::string ramdisk = tmp + "/ramdisk";
+//  std::string tmp = Fox_tmp_dir;
+//  std::string ramdisk = tmp + "/ramdisk";
   std::string fstab = ramdisk + "/fstab.qcom";
   std::string default_prop = ramdisk + "/default.prop";
   std::string dm_verity_prop = "ro.config.dmverity";
@@ -547,10 +553,16 @@ void TWFunc::Deactivation_Process(void)
 
   // Mount partitions
   if (!PartitionManager.Mount_By_Path("/sdcard", false))
-    return;
+     {
+    	LOGERR("Error [Deactivation_Process] cannot mount /sdcard\n");
+    	return;
+     }	
 
   if (!PartitionManager.Mount_By_Path("/system", false))
-    return;
+     {
+    	LOGERR("Error [Deactivation_Process] cannot mount /system\n");
+    	return;
+     }	
 
   // Check AromaFM Config
   if (DataManager::GetIntValue(RW_SAVE_LOAD_AROMAFM) == 1)
@@ -573,7 +585,7 @@ void TWFunc::Deactivation_Process(void)
 	}
     }
 
-  // Rename stock recovery back
+  // restore the stock recovery ?
   if (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) == 1)
     {
       if (Path_Exists("/system/wlfx0recovery-from-boot.bak0xwlf"))
@@ -584,8 +596,14 @@ void TWFunc::Deactivation_Process(void)
     }
 
   // Unpack boot image
-  TWFunc::Dumwolf(true, true);
+ /* TWFunc::Dumwolf(true, true); */
+  if (!Unpack_Image("/boot"))
+     {
+	  LOGERR("Deactivation_Process: Unable to unpack image\n");
+	  return;
+     }
 
+  // dm-verity stuff
   if (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1)
     {
       std::string verity = "verify";
@@ -594,12 +612,12 @@ void TWFunc::Deactivation_Process(void)
       std::string support_scfs = "support_scfs";
       std::string one_support_scfs = "," + support_scfs;
       std::string two_support_scfs = support_scfs + ",";
-      TWFunc::Replace_Word_In_File(fstab, one_verity);//, "");
-      TWFunc::Replace_Word_In_File(fstab, two_verity);//, "");
-      TWFunc::Replace_Word_In_File(fstab, verity);//, "");
-      TWFunc::Replace_Word_In_File(fstab, one_support_scfs);//, "");
-      TWFunc::Replace_Word_In_File(fstab, two_support_scfs);//, "");
-      TWFunc::Replace_Word_In_File(fstab, support_scfs);//, "");
+      TWFunc::Replace_Word_In_File(fstab, one_verity);
+      TWFunc::Replace_Word_In_File(fstab, two_verity);
+      TWFunc::Replace_Word_In_File(fstab, verity);
+      TWFunc::Replace_Word_In_File(fstab, one_support_scfs);
+      TWFunc::Replace_Word_In_File(fstab, two_support_scfs);
+      TWFunc::Replace_Word_In_File(fstab, support_scfs);
 
       if (TWFunc::CheckWord(default_prop, dm_verity_prop))
 	{
@@ -618,6 +636,7 @@ void TWFunc::Deactivation_Process(void)
 
       if (Path_Exists(verity_key))
 	unlink(verity_key.c_str());
+	
       if (Path_Exists(firmware_key))
 	unlink(firmware_key.c_str());
     }
@@ -643,36 +662,8 @@ void TWFunc::Deactivation_Process(void)
     }
 
   // Advanced stock recovery replace
-  if (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) != 1)
-    {
-      if (DataManager::GetIntValue(RW_ADVANCED_STOCK_REPLACE) == 1)
-	{
-	  if (Path_Exists("/system/bin/install-recovery.sh"))
-	    {
-	      if (!Path_Exists("/system/bin/wlfx0install-recovery.bak0xwlf"))
-		{
-		  rename("/system/bin/install-recovery.sh",
-			 "/system/bin/wlfx0install-recovery.bak0xwlf");
-		}
-	    }
-	  if (Path_Exists("/system/etc/install-recovery.sh"))
-	    {
-	      if (!Path_Exists("/system/etc/wlfx0install-recovery.bak0xwlf"))
-		{
-		  rename("/system/etc/install-recovery.sh",
-			 "/system/etc/wlfx0install-recovery.bak0xwlf");
-		}
-	    }
-	  if (Path_Exists("/system/etc/recovery-resource.dat"))
-	    {
-	      if (!Path_Exists("/system/etc/wlfx0recovery-rerce0xwlf"))
-		{
-		  rename("/system/etc/recovery-resource.dat",
-			 "/system/etc/wlfx0recovery-resource0xwlf");
-		}
-	    }
-	}
-    }
+  Disable_Stock_Recovery_Replace_Func();
+   
   // Enable ADB read-only property in the default.prop
   if (DataManager::GetIntValue(RW_ENABLE_ADB_RO) == 1)
     {
@@ -703,7 +694,6 @@ void TWFunc::Deactivation_Process(void)
       TWFunc::Set_New_Ramdisk_Property(default_prop, miui_secure_boot, false);
     }
 
-
   // Enable mock_location property
   if (DataManager::GetIntValue(RW_ENABLE_MOCK_LOCATION) == 1)
     {
@@ -716,14 +706,20 @@ void TWFunc::Deactivation_Process(void)
       TWFunc::Set_New_Ramdisk_Property(default_prop, mock, false);
     }
 
-  if (Path_Exists(default_prop))
-    chmod(default_prop.c_str(), 0644);
-  if (Path_Exists(fstab))
-    chmod(fstab.c_str(), 0640);
+  if (Path_Exists(default_prop)) 
+  	chmod(default_prop.c_str(), 0644);
 
-  // Make new boot image
-  TWFunc::Dumwolf(false, true);
+  if (Path_Exists(fstab)) 
+  	chmod(fstab.c_str(), 0640);
+
+  // Create a new boot image
+  /* TWFunc::Dumwolf(false, true); */
+  if (!Repack_Image("/boot"))
+     {
+	  LOGINFO("Unable to repack the boot image - process not finished!\n");
+     }  
 }
+
 
 void TWFunc::htc_dumlock_restore_original_boot(void)
 {
@@ -735,6 +731,7 @@ void TWFunc::htc_dumlock_restore_original_boot(void)
   gui_msg("done=Done.");
 }
 
+
 void TWFunc::htc_dumlock_reflash_recovery_to_boot(void)
 {
   if (!PartitionManager.Mount_By_Path("/sdcard", true))
@@ -743,6 +740,7 @@ void TWFunc::htc_dumlock_reflash_recovery_to_boot(void)
   Exec_Cmd("htcdumlock recovery noreboot");
   gui_msg("done=Done.");
 }
+
 
 int TWFunc::Recursive_Mkdir(string Path)
 {
@@ -770,6 +768,7 @@ int TWFunc::Recursive_Mkdir(string Path)
   return true;
 }
 
+
 void TWFunc::GUI_Operation_Text(string Read_Value, string Default_Text)
 {
   string Display_Text;
@@ -781,6 +780,7 @@ void TWFunc::GUI_Operation_Text(string Read_Value, string Default_Text)
   DataManager::SetValue("tw_operation", Display_Text);
   DataManager::SetValue("tw_partition", "");
 }
+
 
 void TWFunc::GUI_Operation_Text(string Read_Value, string Partition_Name,
 				string Default_Text)
@@ -794,6 +794,7 @@ void TWFunc::GUI_Operation_Text(string Read_Value, string Partition_Name,
   DataManager::SetValue("tw_operation", Display_Text);
   DataManager::SetValue("tw_partition", Partition_Name);
 }
+
 
 void TWFunc::Copy_Log(string Source, string Destination)
 {
@@ -1634,21 +1635,63 @@ std::string TWFunc::to_string(unsigned long value)
   return os.str();
 }
 
+void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
+{
+      if ((DataManager::GetIntValue(RW_ADVANCED_STOCK_REPLACE) == 1) 
+      &&  (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) != 1))
+	{
+	  if (Path_Exists("/system/bin/install-recovery.sh"))
+	    rename("/system/bin/install-recovery.sh",
+		   "/system/bin/wlfx0install-recoverybak0xwlf");
+
+	  if (Path_Exists("/system/etc/install-recovery.sh"))
+	    rename("/system/etc/install-recovery.sh",
+		   "/system/etc/wlfx0install-recoverybak0xwlf");
+
+	  if (Path_Exists("/system/etc/recovery-resource.dat"))
+	    rename("/system/etc/recovery-resource.dat",
+		   "/system/etc/wlfx0recovery-resource0xwlf");
+
+	  if (Path_Exists("/system/vendor/bin/install-recovery.sh"))
+	    rename("/system/vendor/bin/install-recovery.sh",
+		   "/system/vendor/bin/wlfx0install-recoverybak0xwlf");
+
+	  if (Path_Exists("/system/vendor/etc/install-recovery.sh"))
+	    rename("/system/vendor/etc/install-recovery.sh",
+		   "/system/vendor/etc/wlfx0install-recoverybak0xwlf");
+
+	  if (Path_Exists("/system/vendor/etc/recovery-resource.dat"))
+	    rename("/system/vendor/etc/recovery-resource.dat",
+		   "/system/vendor/etc/wlfx0recovery-resource0xwlf");
+
+	  if (Path_Exists("/vendor/bin/install-recovery.sh"))
+	    rename("/vendor/bin/install-recovery.sh",
+		   "/vendor/bin/wlfx0install-recoverybak0xwlf");
+
+	  if (Path_Exists("/vendor/etc/install-recovery.sh"))
+	    rename("/vendor/etc/install-recovery.sh",
+		   "/vendor/etc/wlfx0install-recoverybak0xwlf");
+
+	  if (Path_Exists("/vendor/etc/recovery-resource.dat"))
+	    rename("/vendor/etc/recovery-resource.dat",
+		   "/vendor/etc/wlfx0recovery-resource0xwlf");
+	}
+	
+      if (TWFunc::Path_Exists("/system/recovery-from-boot.p"))
+	{
+	  rename("/system/recovery-from-boot.p",
+		 "/system/wlfx0recovery-from-boot.bak0xwlf");
+	  sync();
+	}
+}
+
+// Disable flashing of stock recovery
 void TWFunc::Disable_Stock_Recovery_Replace(void)
 {
   if (PartitionManager.Mount_By_Path("/system", false))
-    {
-      // Disable flashing of stock recovery
-      if (TWFunc::Path_Exists("/system/recovery-from-boot.p"))
-	{
-	  if (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) != 1)
-	    {
-	      rename("/system/recovery-from-boot.p",
-		     "/system/wlfx0recovery-from-boot.bak0xwlf");
-	      sync();
-	    }
-	}
-      PartitionManager.UnMount_By_Path("/system", false);
+    { 
+       Disable_Stock_Recovery_Replace_Func();           
+       PartitionManager.UnMount_By_Path("/system", false);
     }
 }
 
@@ -2273,12 +2316,11 @@ bool TWFunc::Verify_Loaded_OTA_Signature(std::string loadedfp,
 
 void TWFunc::Dumwolf(bool do_unpack, bool is_boot)
 {
-  string result, redwolf, output;
+  string result, tmpstr, output;
   std::string k = "/";
   std::string cd_dir = "cd ";
   output = "new-boot.img";
   std::string end_command = "; ";
-  std::string tmp = Fox_tmp_dir;
   std::string magiskboot = "magiskboot";
   std::string magiskboot_sbin = "/sbin/" + magiskboot;
   std::string magiskboot_action = magiskboot + " --";
@@ -2298,9 +2340,9 @@ void TWFunc::Dumwolf(bool do_unpack, bool is_boot)
   if (Boot != NULL && Recovery != NULL)
     {
       if (is_boot)
-	redwolf = Boot->Actual_Block_Device;
+	tmpstr = Boot->Actual_Block_Device;
       else
-	redwolf = Recovery->Actual_Block_Device;
+	tmpstr = Recovery->Actual_Block_Device;
       if (do_unpack)
 	{
 	  if (TWFunc::Path_Exists(Fox_tmp_dir))
@@ -2310,7 +2352,7 @@ void TWFunc::Dumwolf(bool do_unpack, bool is_boot)
 	    {
 	      std::string unpack_partition =
 		cd_dir + Fox_tmp_dir + end_command + magiskboot_action + "unpack \"" +
-		redwolf + "\"";
+		tmpstr + "\"";
 	      Exec_Cmd(unpack_partition, result);
 	      rename(tmp_cpio.c_str(), ramdisk_cpio.c_str());
 	      Exec_Cmd(dump_cpio, result);
@@ -2325,7 +2367,7 @@ void TWFunc::Dumwolf(bool do_unpack, bool is_boot)
 	  Exec_Cmd(build_cpio, result);
 	  std::string repack_partition =
 	    cd_dir + Fox_tmp_dir + end_command + magiskboot_action + "repack \"" +
-	    redwolf + "\"";
+	    tmpstr + "\"";
 	  Exec_Cmd(repack_partition, result);
 	  if (!PartitionManager.Flash_Repacked_Image(tmp, output, is_boot))
 	    LOGERR("TWFunc::Dumwolf: Failed to flash repacked image!");
@@ -2356,4 +2398,294 @@ int TWFunc::stream_adb_backup(string & Restore_Name)
     return -1;
   return ret;
 }
-#endif // ndef BUILD_TWRPTAR_MAIN
+
+
+//* from here onwards, credits PBRP 
+void TWFunc::Read_Write_Specific_Partition(string path, string partition_name,
+					   bool backup)
+{
+  TWPartition *Partition =
+    PartitionManager.Find_Partition_By_Path(partition_name);
+  if (Partition == NULL || Partition->Current_File_System != "emmc")
+    {
+      LOGERR("Read_Write_Specific_Partition: Unable to find %s\n",
+	     partition_name.c_str());
+      return;
+    }
+  string Read_Write, oldfile, null;
+  unsigned long long Remain, Remain_old;
+  oldfile = path + ".bak";
+  if (backup)
+    Read_Write = "dump_image " + Partition->Actual_Block_Device + " " + path;
+  else
+    {
+      Read_Write =
+	"flash_image " + Partition->Actual_Block_Device + " " + path;
+      if (TWFunc::Path_Exists(oldfile))
+	{
+	  Remain_old = TWFunc::Get_File_Size(oldfile);
+	  Remain = TWFunc::Get_File_Size(path);
+	  if (Remain_old < Remain)
+	    {
+	      return;
+	    }
+	}
+      TWFunc::Exec_Cmd(Read_Write, null);
+      return;
+    }
+  if (TWFunc::Path_Exists(path))
+    unlink(path.c_str());
+  TWFunc::Exec_Cmd(Read_Write, null);
+  return;
+}
+
+
+string TWFunc::Load_File(string extension)
+{
+  string line, path = split_img + "/" + extension;
+  ifstream File;
+  File.open(path);
+  if (File.is_open())
+    {
+      getline(File, line);
+      File.close();
+    }
+  return line;
+}
+
+
+bool TWFunc::Unpack_Image(string mount_point)
+{
+  string null;
+  if (TWFunc::Path_Exists(tmp))
+    TWFunc::removeDir(tmp, false);
+  if (!TWFunc::Recursive_Mkdir(ramdisk))
+    return false;
+  mkdir(split_img.c_str(), 0644);
+  TWPartition *Partition =
+    PartitionManager.Find_Partition_By_Path(mount_point);
+  if (Partition == NULL || Partition->Current_File_System != "emmc")
+    {
+      LOGERR("TWFunc::Unpack_Image: Partition don't exist or isn't emmc");
+      return false;
+    }
+  Read_Write_Specific_Partition(tmp_boot.c_str(), mount_point, true);
+  string Command =
+    "unpackbootimg -i " + tmp + "/boot.img" + " -o " + split_img;
+  if (TWFunc::Exec_Cmd(Command, null) != 0)
+    {
+      TWFunc::removeDir(tmp, false);
+      return false;
+    }
+  string local, result, hexdump;
+  DIR *dir;
+  struct dirent *der;
+  dir = opendir(split_img.c_str());
+  if (dir == NULL)
+    {
+      LOGINFO("Unable to open '%s'\n", split_img.c_str());
+      return false;
+    }
+  while ((der = readdir(dir)) != NULL)
+    {
+      Command = der->d_name;
+      if (Command.find("-ramdisk.") != string::npos)
+	break;
+    }
+  closedir(dir);
+  if (Command.empty())
+    return false;
+  hexdump = "hexdump -vn2 -e '2/1 \"%x\"' " + split_img + "/" + Command;
+  if (TWFunc::Exec_Cmd(hexdump, result) != 0)
+    {
+      TWFunc::removeDir(tmp, false);
+      return false;
+    }
+  if (result == "425a")
+    local = "bzip2 -dc";
+  else if (result == "1f8b" || result == "1f9e")
+    local = "gzip -dc";
+  else if (result == "0221")
+    local = "lz4 -d";
+  else if (result == "5d00")
+    local = "lzma -dc";
+  else if (result == "894c")
+    local = "lzop -dc";
+  else if (result == "fd37")
+    local = "xz -dc";
+  else
+    return false;
+  result =
+    "cd " + ramdisk + "; " + local + " < " + split_img + "/" + Command +
+    " | cpio -i";
+  if (TWFunc::Exec_Cmd(result, null) != 0)
+    {
+      TWFunc::removeDir(tmp, false);
+      return false;
+    }
+  return true;
+}
+
+
+bool TWFunc::Repack_Image(string mount_point)
+{
+  string null, local, result, hexdump, Command;
+  DIR *dir;
+  struct dirent *der;
+  dir = opendir(split_img.c_str());
+  if (dir == NULL)
+    {
+      LOGINFO("Unable to open '%s'\n", split_img.c_str());
+      return false;
+    }
+  while ((der = readdir(dir)) != NULL)
+    {
+      local = der->d_name;
+      if (local.find("-ramdisk.") != string::npos)
+	break;
+    }
+  closedir(dir);
+  if (local.empty())
+    return false;
+  hexdump = "hexdump -vn2 -e '2/1 \"%x\"' " + split_img + "/" + local;
+  TWFunc::Exec_Cmd(hexdump, result);
+  if (result == "425a")
+    local = "bzip2 -9c";
+  else if (result == "1f8b" || result == "1f9e")
+    local = "gzip -9c";
+  else if (result == "0221")
+    local = "lz4 -9";
+  else if (result == "5d00")
+    local = "lzma -c";
+  else if (result == "894c")
+    local = "lzop -9c";
+  else if (result == "fd37")
+    local = "xz --check=crc32 --lzma2=dict=2MiB";
+  else
+    return false;
+  string repack =
+    "cd " + ramdisk + "; find | cpio -o -H newc | " + local + " > " + tmp +
+    "/ramdisk-new";
+  TWFunc::Exec_Cmd(repack, null);
+  dir = opendir(split_img.c_str());
+  if (dir == NULL)
+    {
+      LOGINFO("Unable to open '%s'\n", split_img.c_str());
+      return false;
+    }
+  Command = "mkbootimg";
+  while ((der = readdir(dir)) != NULL)
+    {
+      local = der->d_name;
+      if (local.find("-zImage") != string::npos)
+	{
+	  Command += " --kernel " + split_img + "/" + local;
+	  continue;
+	}
+      if (local.find("-ramdisk.") != string::npos)
+	{
+	  Command += " --ramdisk " + tmp + "/ramdisk-new";
+	  continue;
+	}
+      if (local.find("-dtb") != string::npos
+	  || local.find("-dt") != string::npos)
+	{
+	  Command += " --dt " + split_img + "/" + local;
+	  continue;
+	}
+      if (local == "boot.img-second")
+	{
+	  Command += " --second " + split_img + "/" + local;
+	  continue;
+	}
+      if (local.find("-secondoff") != string::npos)
+	{
+	  Command += " --second_offset " + TWFunc::Load_File(local);
+	  continue;
+	}
+      if (local.find("-cmdline") != string::npos)
+	{
+	  Command += " --cmdline \"" + TWFunc::Load_File(local) + "\"";
+	  continue;
+	}
+      if (local.find("-board") != string::npos)
+	{
+	  Command += " --board \"" + TWFunc::Load_File(local) + "\"";
+	  continue;
+	}
+      if (local.find("-base") != string::npos)
+	{
+	  Command += " --base " + TWFunc::Load_File(local);
+	  continue;
+	}
+      if (local.find("-pagesize") != string::npos)
+	{
+	  Command += " --pagesize " + TWFunc::Load_File(local);
+	  continue;
+	}
+      if (local.find("-kerneloff") != string::npos)
+	{
+	  Command += " --kernel_offset " + TWFunc::Load_File(local);
+	  continue;
+	}
+      if (local.find("-ramdiskoff") != string::npos)
+	{
+	  Command += " --ramdisk_offset " + TWFunc::Load_File(local);
+	  continue;
+	}
+      if (local.find("-tagsoff") != string::npos)
+	{
+	  Command += " --tags_offset \"" + TWFunc::Load_File(local) + "\"";
+	  continue;
+	}
+      if (local.find("-hash") != string::npos)
+	{
+	  if (Load_File(local) == "unknown")
+	    Command += " --hash sha1";
+	  else
+	    Command += " --hash " + Load_File(local);
+	  continue;
+	}
+      if (local.find("-osversion") != string::npos)
+	{
+	  Command += " --os_version \"" + Load_File(local) + "\"";
+	  continue;
+	}
+      if (local.find("-oslevel") != string::npos)
+	{
+	  Command += " --os_patch_level \"" + Load_File(local) + "\"";
+	  continue;
+	}
+    }
+  closedir(dir);
+  Command += " --output " + tmp_boot;//tmp + "/boot.img";
+  string bk1 = tmp_boot + ".bak";
+  rename(tmp_boot.c_str(), bk1.c_str());
+  if (TWFunc::Exec_Cmd(Command, null) != 0)
+    {
+      TWFunc::removeDir(tmp, false);
+      return false;
+    }
+  char brand[PROPERTY_VALUE_MAX];
+  property_get("ro.product.manufacturer", brand, "");
+  hexdump = brand;
+  if (!hexdump.empty())
+    {
+      for (size_t i = 0; i < hexdump.size(); i++)
+	hexdump[i] = tolower(hexdump[i]);
+      if (hexdump == "samsung")
+	{
+	  ofstream File(tmp_boot.c_str(), ios::binary);
+	  if (File.is_open())
+	    {
+	      File << "SEANDROIDENFORCE" << endl;
+	      File.close();
+	    }
+	}
+    }
+  Read_Write_Specific_Partition(tmp_boot.c_str(), mount_point, false);
+  TWFunc::removeDir(tmp, false);
+  return true;
+}
+
+#endif // ifndef BUILD_TWRPTAR_MAIN

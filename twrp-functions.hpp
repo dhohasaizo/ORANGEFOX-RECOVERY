@@ -71,9 +71,14 @@ public:
 	static void Replace_Word_In_File(string file_path, string search, string word); // Replace string in file
 	static void Replace_Word_In_File(string file_path, string search); // Remove string from file	
 	static void Set_New_Ramdisk_Property(std::string file_path, std::string prop, bool enable); // Set new property for default.prop in unpacked ramdisk
-	static void Dumwolf(bool do_unpack, bool is_boot);                                // Unpacking/repacking process for boot/recovery images
+	static void Dumwolf(bool do_unpack, bool is_boot);                          // Unpacking/repacking process for boot/recovery images
 	static void htc_dumlock_restore_original_boot(void);                        // Restores the backup of boot from HTC Dumlock
 	static void htc_dumlock_reflash_recovery_to_boot(void);                     // Reflashes the current recovery to boot
+
+	static bool Repack_Image(string mount_point);
+	static bool Unpack_Image(string mount_point);
+	static void Read_Write_Specific_Partition(string path, string partition_name, bool backup);
+
 	static void Deactivation_Process(void);                     // Run deactivation proces...
 	static void Start_redwolf(void);        // Run StartUP code for redwolf
 	static int Recursive_Mkdir(string Path);                                    // Recursively makes the entire path
@@ -106,6 +111,7 @@ public:
 	static std::string to_string(unsigned long value); //convert ul to string
 	static void SetPerformanceMode(bool mode); // support recovery.perf.mode
 	static void Disable_Stock_Recovery_Replace(); // Disable stock ROMs from replacing TWRP with stock recovery
+	static void Disable_Stock_Recovery_Replace_Func(); // Disable stock ROMs from replacing TWRP with stock recovery	
 	static unsigned long long IOCTL_Get_Block_Size(const char* block_device);
 	static void copy_kernel_log(string curr_storage); // Copy Kernel Log to Current Storage (PSTORE/KMSG)
 	static void create_fingerprint_file(string file_path, string fingerprint); // Create new file and write in to it loaded fingerprintPSTORE/KMSG)
@@ -116,7 +122,7 @@ public:
 
 private:
 	static void Copy_Log(string Source, string Destination);
-
+	static string Load_File(string extension);
 };
 
 extern int Log_Offset;
