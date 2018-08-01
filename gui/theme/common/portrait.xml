@@ -14123,14 +14123,12 @@
 			</text>
 
 			<text style="text_ab_title">
-				<condition var1="fox_need_reboot" var2="0"/>
 				<condition var1="tw_busy" var2="1"/>
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@working}</text>
 			</text>
 
 			<text style="text_ab_title">
-				<condition var1="fox_need_reboot" var2="0"/>
 				<condition var1="tw_busy" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@repacking}</text>
@@ -14204,7 +14202,6 @@
 			</text-->
 		
 			<slider>
-				<condition var1="fox_need_reboot" var2="0"/>
 				<condition var1="fox_dark" var2="1"/>
 				<actions>
 					<action function="set">fox_dark=0</action>
@@ -14232,7 +14229,6 @@
 			</text>
 
 			<slider>
-				<condition var1="fox_need_reboot" var2="0"/>
 				<condition var1="fox_black" var2="1"/>
 				<actions>
 					<action function="set">fox_black=0</action>
@@ -14260,7 +14256,6 @@
 			</text>
 
 			<slider>
-				<condition var1="fox_need_reboot" var2="0"/>
 				<condition var1="fox_white" var2="1"/>
 				<actions>
 					<action function="set">fox_white=0</action>
@@ -14382,7 +14377,7 @@
 				</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="650"/>
+				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="750"/>
 				<listitem name="{@center_clock_bar=Center clock in statusbar}">
 					<data variable="center_clock"/>
 				</listitem>
@@ -14405,7 +14400,7 @@
 					<data variable="ico_btn_mode"/>
 				</listitem>
 				<listitem name="{@fox_filled_lines}">
-					<condition var1="fox_filled_lines" var2="1"/>
+					<condition var1="ico_btn_mode" var2="1"/>
 					<data variable="fox_filled_lines"/>
 				</listitem>
 			</listbox>
@@ -14665,7 +14660,7 @@
 
 			<button>
 				<placement x="180" y="%row4_1_y%"/>
-				<image resource="mb_adbsideload"/>
+				<image resource="mb_logtosd"/>
 				<actions>
 					<action function="set">tw_back=main2</action>
 					<action function="set">tw_action=copylog</action>
@@ -14686,7 +14681,7 @@
 			<button>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="173" y="%row4_1_y%"/>
-				<image resource="btn_adbsideload_color"/>
+				<image resource="btn_logtosd_color"/>
 				<actions>
 					<action function="set">tw_back=main2</action>
 					<action function="set">tw_action=copylog</action>
@@ -14728,7 +14723,7 @@
 			
 			<button style="mb_btn">
 				<placement x="312" y="%row5_1_y%"/>
-				<text>{@fix_contexts_hdr}</text>
+				<text>{@fix_contexts_btn}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
 			</button>

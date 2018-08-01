@@ -741,7 +741,7 @@
 		<string name="pass_hdr2">Change Password</string>
 		<string name="pass_hdr3">Password change complete</string>
 		<string name="change_pass_confirm">Swipe to confirm the password change.</string>
-		<string name="fox_please_wait">Setting up new password ...</string>
+		<string name="fox_please_wait">Please wait ...</string>
 		<string name="swipe_governor">Swipe to switch to the governor "%governor_tmp%"</string>
 		<string name="active_governor">Active governor: %governor_stable%</string>
 		<string name="community_settings">Community scripts</string>
@@ -1027,6 +1027,8 @@
 		<string name="fox_menu_adb_on">ADB: on</string>
 		<string name="fox_menu_adb_off">ADB: off</string>
 		<string name="ico_btn_mode_txt">Square buttons style</string>
+
+		<string name="fix_contexts_btn">Fix SELinux</string>
 
 		<string name="of_menu_tlt">OrangeFox menu</string>
 

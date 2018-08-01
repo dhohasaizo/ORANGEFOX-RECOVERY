@@ -39,7 +39,7 @@
 		<string name="advanced_btn">Дополнительно</string>
 		<string name="reboot_btn">Перезагрузка</string>
 		<string name="files_btn">Файлы</string>
-		<string name="copy_log_btn">Копировать лог</string>
+		<string name="copy_log_btn">Лог рекавери</string>
 		<string name="select_type_hdr">Выбор типа</string>
 		<string name="install_zip_hdr">Установка Zip</string>
 		<string name="install_zip_btn">Установка Zip</string>
@@ -934,16 +934,16 @@
 		<string name="fox_menu3_enb_ota">Включить OTA</string>
 
 		<string name="fox_menu3_info1">Поддержка MIUI incremental OTA:</string>
-		<string name="fox_menu3_info2">Это должо быть включено если вы хотите ставить</string>
+		<string name="fox_menu3_info2">Это должно быть включено если вы хотите ставить</string>
 		<string name="fox_menu3_info3">OTA обновления пока пользуетесь OrangeFox.</string>
 		<string name="fox_menu3_info4"></string>
 		<string name="fox_menu3_info5">Добавить системный раздел в OTA:</string>
-		<string name="fox_menu3_info6">Это должо бытьн включено если вы хотите</string>
+		<string name="fox_menu3_info6">Это должно быть включено если вы хотите</string>
 		<string name="fox_menu3_info7">модифицировать системный раздел без</string>
 		<string name="fox_menu3_info8">последущих ошибок установки обновления</string>
 		<string name="fox_menu3_info9"></string>
 		<string name="fox_menu3_info10">Проверка подписи Incremental OTA:</string>
-		<string name="fox_menu3_info11">Это должо быть включено если вы хотите</string>
+		<string name="fox_menu3_info11">Это должно быть включено если вы хотите</string>
 		<string name="fox_menu3_info12">чтобы OrangeFox проверял подпись обновлений</string>
 		<string name="fox_menu3_info13"></string>
 
@@ -966,7 +966,6 @@
 		<string name="fox_theme_slider_dark">Проведите чтобы применить темную тему</string>
 		<string name="fox_theme_slider_black">Проведите чтобы применить черную тему</string>
 		<string name="fox_theme_slider_white">Проведите чтобы применить белую тему</string>
-		<string name="fox_need_reboot">Нужна перезагрузка</string>
 		<string name="fox_filled_lines">Использовать акцентные линии</string>
 
 		<string name="fox_community_title">OrangeFox Скрипты сообщеста</string>
@@ -1017,6 +1016,8 @@
 		<string name="dialog_reset_splash_hdr">Восстановить сплеш</string>
 		<string name="dialog_reset_splash_note_1">Хотите ли вы восстановить стандартный</string>
 		<string name="dialog_reset_splash_note_2">сплеш OrangeFox Recovery Project?</string>
+
+		<string name="fox_please_wait">Пожалуйста подождите ...</string>
 
 		<string name="fox_no_os_btn">Перезагрузка</string>
 		<string name="fox_no_wolfos_hdr">Система не установлена!</string>
