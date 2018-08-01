@@ -675,7 +675,6 @@
 				<condition var1="ico_btn_mode" var2="1"/>
 				<actions>
 					<action function="page">main2</action>
-					<action function="page">btnadvanced</action>
 				</actions>
 			</action>
 
@@ -13494,7 +13493,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>OrangeFox menu</text>
+				<text>{@of_menu_tlt}</text>
 			</text>
 
 			<button>

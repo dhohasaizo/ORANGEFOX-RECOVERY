@@ -894,6 +894,15 @@
 		<string name="fox_boot_nastaveni">Аппаратные настройки</string>
 		<string name="fox_menu_adb_on">ADB: вкл.</string>
 		<string name="fox_menu_adb_off">ADB: выкл.</string>
+
+		<string name="of_run_process">Старт процесса '{1}'</string>
+		<string name="of_run_process_fail">Не может быть закочено '{1}' process</string>
+		<string name="of_run_process_done">Завершен '{1}'</string>
+		<string name="of_dm_verity">Патч DM-Verity успешен</string>
+		<string name="of_dm_verity_off">DM-Verity не включено</string>
+		<string name="of_encryption">Successfully patched forced encryption</string>
+		<string name="of_encryption_off">Forced Encryption is not enabled</string>
+		<string name="of_fstab">Detected fstab: '{1}'</string>
 		
 	 	<!-- <string name=""></string> -->
 
