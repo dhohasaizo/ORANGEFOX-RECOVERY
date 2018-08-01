@@ -152,7 +152,7 @@
 
 			<template name="body"/>
 
-			<template name="ab"/>
+			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
 
@@ -173,33 +173,33 @@
 			</text>
 
 			<image>
-				<placement x="%col1_x%" y="440"/>
+				<placement x="%col1_x%" y="%row2_3_y%"/>
 				<image resource="icon_info"/>
 			</image>
 
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="440"/>
-				<text>{@fox_no_os_fox_txt1=Do you like to install the TW}</text>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
+				<text>{@fox_no_os_fox_txt1}</text>
 			</text>
 
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="500"/>
-				<text>{@fox_no_os_fox_txt2=It can check for new TWRP versions.}</text>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
+				<text>{@fox_no_os_fox_txt2}</text>
 			</text>
 
-          <text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="560"/>
-				<text>{@fox_no_os_fox_txt3=It can check for new TWRP versions.}</text>
+          <text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<text>{@fox_no_os_fox_txt3}</text>
 			</text>
 
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="620"/>
-				<text>{@fox_no_os_fox_txt4=It can check for new TWRP versions.}</text>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
+				<text>{@fox_no_os_fox_txt4}</text>
 			</text>
 
-          <text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="680"/>
-				<text>{@fox_no_os_fox_txt5=It can check for new TWRP versions.}</text>
+          <text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row4_1_y%"/>
+				<text>{@fox_no_os_fox_txt5}</text>
 			</text>
 
 
@@ -214,7 +214,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">btnreboot</action>
+				<action function="page">main</action>
 			</action>
 
 			<action>
@@ -14220,6 +14220,7 @@
 					cp -r "dark/dark.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
+					<action function="set">tw_busy=1</action>
 					<action function="set">fox_need_reboot=1</action>
 				</actions>
 			</slider>
@@ -14245,6 +14246,7 @@
 					cp -r "black/black.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
+					<action function="set">tw_busy=1</action>
 					<action function="set">fox_need_reboot=1</action>
 				</actions>
 			</slider>

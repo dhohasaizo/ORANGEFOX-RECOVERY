@@ -1008,6 +1008,15 @@
 		<string name="dialog_reset_splash_note_1">Хотите ли вы восстановить стандартный</string>
 		<string name="dialog_reset_splash_note_2">сплеш OrangeFox Recovery Project?</string>
 
+		<string name="fox_no_os_btn">Перезагрузка</string>
+		<string name="fox_no_wolfos_hdr">Система не установлена!</string>
+		<string name="fox_no_os_fox_txt1">OrangeFox обнаружил что</string>
+		<string name="fox_no_os_fox_txt2">система не установлена. Если вы уверены</string>
+		<string name="fox_no_os_fox_txt3">что система установлена иэто предупреждение</string>
+		<string name="fox_no_os_fox_txt4">ошибка проведить для подтверждения</string>
+		<string name="fox_no_os_fox_txt5">чтобы перезагрузить.</string>
+		<string name="fox_no_os_fox_slider_txt">Проведите чтобы перезагрузить</string>
+
 		<string name="fox_special_actions">Специальные функции OrangeFox Recovery</string>
 	 	<string name="fox_special_actions_hdr">Спец. функции</string>
 
@@ -1074,6 +1083,9 @@
 		<string name="fox_dellp_txt1">Сбросить пароль прошивки</string>
 		<string name="fox_dellp_txt2">От DarthJabba9</string>
 		<string name="fox_dellp_sld">Проведите чтобы сбросить пароль прошивки</string>
+
+		<string name="fox_comm_ins">Установить</string>
+		<string name="fox_comm_del">Удалить</string>
 
 		<string name="fox_del_btn">Удалить OF</string>
 		<string name="fox_del_txt1">Удаление OrangeFox файлов</string>
