@@ -64,6 +64,9 @@ static string split_img = tmp + "/split_img";
 static string ramdisk = tmp + "/ramdisk";
 static string tmp_boot = tmp + "/boot.img";
 
+static string fstab1 = "/system/vendor/etc";
+static string fstab2 = "/vendor/etc";
+
 /* Execute a command */
 int TWFunc::Exec_Cmd(const string & cmd, string & result)
 {
@@ -531,6 +534,7 @@ void TWFunc::install_htc_dumlock(void)
   gui_msg("done=Done.");
 }
 
+/*
 void TWFunc::Deactivation_Process(void)
 {
 //  std::string tmp = Fox_tmp_dir;
@@ -598,7 +602,7 @@ void TWFunc::Deactivation_Process(void)
     }
 
   // Unpack boot image
- /* TWFunc::Dumwolf(true, true); */
+ //* TWFunc::Dumwolf(true, true); 
   if (!Unpack_Image("/boot"))
      {
 	  LOGERR("Deactivation_Process: Unable to unpack image\n");
@@ -715,12 +719,13 @@ void TWFunc::Deactivation_Process(void)
   	chmod(fstab.c_str(), 0640);
 
   // Create a new boot image
-  /* TWFunc::Dumwolf(false, true); */
+  //* TWFunc::Dumwolf(false, true); 
   if (!Repack_Image("/boot"))
      {
 	  LOGINFO("Unable to repack the boot image - process not finished!\n");
      }  
 }
+*/
 
 
 void TWFunc::htc_dumlock_restore_original_boot(void)
@@ -932,7 +937,7 @@ int TWFunc::tw_reboot(RebootCommand command)
       return reboot(RB_AUTOBOOT);
 #endif
     case rb_recovery:
-      //if (DoDeactivate == 1){ Deactivation_Process(); } // DJ9  
+      if (DoDeactivate == 1){ Deactivation_Process(); } // DJ9  
 #ifdef ANDROID_RB_PROPERTY
       return property_set(ANDROID_RB_PROPERTY, "reboot,recovery");
 #else
@@ -1738,25 +1743,6 @@ unsigned long long TWFunc::IOCTL_Get_Block_Size(const char *block_device)
 }
 
 
-/*
-bool TWFunc::CheckWord(std::string filename, std::string search)
-{
-  std::string line;
-  ifstream File;
-  File.open(filename);
-  if (File.is_open())
-    {
-      while (!File.eof())
-	{
-	  getline(File, line);
-	  if (line.find(search) != std::string::npos)
-	    return true;
-	}
-      File.close();
-    }
-  return false;
-}
-*/
 bool TWFunc::CheckWord(std::string filename, std::string search)
 {
   std::string line;
@@ -1846,35 +1832,6 @@ void TWFunc::Replace_Word_In_File(std::string file_path, std::string search)
   chmod(file_path.c_str(), 0640);
 }
 
-/*
-void TWFunc::Replace_Word_In_File(string file_path, string search,
-				  string word)
-{
-  std::string renamed = file_path + ".wlfx";
-  std::string contents_of_file;
-  if (TWFunc::Path_Exists(renamed))
-    unlink(renamed.c_str());
-  std::rename(file_path.c_str(), renamed.c_str());
-  std::ifstream old_file(renamed.c_str());
-  std::ofstream new_file(file_path.c_str());
-  while (std::getline(old_file, contents_of_file))
-    {
-      if (contents_of_file.find(search) != std::string::npos)
-	{
-	  size_t pos = 0;
-	  while ((pos =
-		  contents_of_file.find(search, pos)) != std::string::npos)
-	    {
-	      contents_of_file.replace(pos, search.length(), word);
-	      pos += word.length();
-	    }
-	}
-      new_file << contents_of_file << '\n';
-    }
-  unlink(renamed.c_str());
-}
-*/
-
 void TWFunc::Set_New_Ramdisk_Property(std::string file_path, std::string prop,
 				      bool enable)
 {
@@ -1943,6 +1900,51 @@ void TWFunc::Write_MIUI_Install_Status(std::string install_status,
     }
 }
 
+int TWFunc::Check_MIUI_Treble(void)
+{
+  //read cfg file to confirm treble/miui
+  string fox_cfg = "/tmp/orangefox.cfg";
+  string fox_is_miui = "0";
+  string fox_is_treble = "0";
+  if (TWFunc::Path_Exists(fox_cfg)) 
+    {
+  	fox_is_miui = TWFunc::File_Property_Get (fox_cfg, "MIUI");
+  	fox_is_treble = TWFunc::File_Property_Get (fox_cfg, "TREBLE");
+  	if ((fox_is_miui.empty()) || (fox_is_treble.empty()))
+  	  return 1;
+    }
+    else 
+    	return -1; // error - cfg not found
+    
+  if (strncmp(fox_is_treble.c_str(), "1", 1) == 0)
+  	Fox_Current_ROM_IsTreble = 1;
+  
+  if (strncmp(fox_is_miui.c_str(), "1", 1) == 0)
+     {
+  	Fox_Current_ROM_IsMIUI = 1;
+    	/*DataManager::SetValue("fox_verify_incremental_ota_signature", "1");
+  	DataManager::SetValue(RW_INCREMENTAL_PACKAGE, "1");
+  	DataManager::SetValue(RW_DISABLE_DM_VERITY, "1");
+  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "1"); */
+  	gui_print("MIUI ROM");
+     } 
+  else
+     {
+    	DataManager::SetValue("fox_verify_incremental_ota_signature", "0");
+  	DataManager::SetValue(RW_INCREMENTAL_PACKAGE, "0");
+  	DataManager::SetValue(RW_DISABLE_DM_VERITY, "0");
+  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "0");     
+  	gui_print("Custom ROM");
+     } 
+     
+   if (Fox_Current_ROM_IsTreble == 1)
+   	gui_print("(Treble)\n");
+   else
+   	gui_print("(non-Treble)\n");
+   	
+   return 0;
+}
+
 void TWFunc::OrangeFox_Startup(void)
 {
   int i;
@@ -1962,38 +1964,9 @@ void TWFunc::OrangeFox_Startup(void)
   std::string device_two = kernel_proc_check + "disable";
   std::string password_file = "/sbin/wlfx";
 
-//* DJ9 - read cfg file to confirm treble/miui
-  string fox_cfg = "/tmp/orangefox.cfg";
-  string fox_is_miui = "0";
-  string fox_is_treble = "0";
-  if (TWFunc::Path_Exists(fox_cfg)) 
-    {
-  	fox_is_miui = TWFunc::File_Property_Get (fox_cfg, "MIUI");
-  	fox_is_treble = TWFunc::File_Property_Get (fox_cfg, "TREBLE");
-  	//gui_print("MIUI=%s\n",fox_is_miui.c_str());
-  	//gui_print("TREBLE=%s\n",fox_is_treble.c_str());
-    }
-    
-  if (strncmp(fox_is_treble.c_str(), "1", 1) == 0)
-  	Fox_Current_ROM_IsTreble = 1;
+  //* DJ9
+  Check_MIUI_Treble();
   
-  if (strncmp(fox_is_miui.c_str(), "1", 1) == 0)
-     {
-  	Fox_Current_ROM_IsMIUI = 1;
-    	DataManager::SetValue("fox_verify_incremental_ota_signature", "1");
-  	DataManager::SetValue(RW_INCREMENTAL_PACKAGE, "1");
-  	DataManager::SetValue(RW_DISABLE_DM_VERITY, "1");
-  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "1");
-     } 
-  else
-     {
-    	DataManager::SetValue("fox_verify_incremental_ota_signature", "0");
-  	DataManager::SetValue(RW_INCREMENTAL_PACKAGE, "0");
-  	DataManager::SetValue(RW_DISABLE_DM_VERITY, "0");
-  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "0");     
-     }  
-//* DJ9
-
   if (TWFunc::Path_Exists(device_one))
     TWFunc::write_to_file(device_one, disable);
 
@@ -2738,7 +2711,7 @@ bool TWFunc::Repack_Image(string mount_point)
 	}
     }
   closedir(dir);
-  Command += " --output " + tmp_boot;//tmp + "/boot.img";
+  Command += " --output " + tmp_boot;
   string bk1 = tmp_boot + ".bak";
   rename(tmp_boot.c_str(), bk1.c_str());
   if (TWFunc::Exec_Cmd(Command, null) != 0)
@@ -2768,6 +2741,372 @@ bool TWFunc::Repack_Image(string mount_point)
   Read_Write_Specific_Partition(tmp_boot.c_str(), mount_point, false);
   TWFunc::removeDir(tmp, false);
   return true;
+}
+
+
+bool TWFunc::Patch_DM_Verity()
+{
+  bool status = false;
+  int stat = 0;
+  string firmware_key = ramdisk + "/sbin/firmware_key.cer";
+  string path, cmp, remove =
+    "verify,;,verify;verify;support_scfs,;,support_scfs;support_scfs;";
+  DIR *d;
+  DIR *d1;
+  struct dirent *de;
+  d = opendir(ramdisk.c_str());
+  if (d == NULL)
+    {
+      LOGINFO("Unable to open '%s'\n", ramdisk.c_str());
+      return false;
+    }
+  while ((de = readdir(d)) != NULL)
+    {
+      cmp = de->d_name;
+      path = ramdisk + "/" + cmp;
+      if (cmp.find("fstab.") != string::npos)
+	{
+	  gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
+	  stat = 1;
+	  if (!status)
+	    {
+	      if (TWFunc::CheckWord(path, "verify")
+		  || TWFunc::CheckWord(path, "support_scfs"))
+		status = true;
+	    }
+	  TWFunc::Replace_Word_In_File(path, remove);
+	}
+      if (cmp == "default.prop")
+	{
+	  if (TWFunc::CheckWord(path, "ro.config.dmverity="))
+	    {
+	      if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
+		TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;",
+					     "ro.config.dmverity=false");
+	    }
+	  else
+	    {
+	      ofstream File(path.c_str(), ios_base::app | ios_base::out);
+	      if (File.is_open())
+		{
+		  File << "ro.config.dmverity=false" << endl;
+		  File.close();
+		}
+	    }
+	}
+      if (cmp == "verity_key")
+	{
+	  if (!status)
+	    status = true;
+	  unlink(path.c_str());
+	}
+    }
+  closedir(d);
+  if (stat == 0)
+    {
+      if (PartitionManager.Mount_By_Path("/vendor", false))
+	{
+	  d1 = opendir(fstab2.c_str());
+	  stat = 2;
+	}
+      else
+	{
+	  PartitionManager.Mount_By_Path("/system", false);
+	  stat = 1;
+	  d1 = opendir(fstab1.c_str());
+	}
+      while ((de = readdir(d1)) != NULL)
+	{
+	  cmp = de->d_name;
+	  if (stat == 2)
+	    path = fstab2 + "/" + cmp;
+	  else if (stat == 1)
+	    path = fstab1 + "/" + cmp;
+	  if (cmp.find("fstab.") != string::npos)
+	    {
+	      gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
+	      if (!status)
+		{
+		  if (TWFunc::CheckWord(path, "verify")
+		      || TWFunc::CheckWord(path, "support_scfs"))
+		    status = true;
+		}
+	      TWFunc::Replace_Word_In_File(path, remove);
+	    }
+	}
+      closedir(d1);
+      if (PartitionManager.Is_Mounted_By_Path("/system"))
+	  PartitionManager.UnMount_By_Path("/system", false);
+	
+      if (PartitionManager.Is_Mounted_By_Path("/vendor"))
+	  PartitionManager.UnMount_By_Path("/vendor", false);
+    }
+
+  if (TWFunc::Path_Exists(firmware_key))
+    {
+      if (!status)
+	status = true;
+      unlink(firmware_key.c_str());
+    }
+  return status;
+}
+
+
+bool TWFunc::Patch_Forced_Encryption()
+{
+  string path, cmp;
+  int stat = 0;
+  bool status = false;
+  int encryption;
+  DataManager::GetValue(RW_DISABLE_DM_VERITY, encryption);
+  DIR *d;
+  DIR *d1;
+  struct dirent *de;
+  d = opendir(ramdisk.c_str());
+  if (d == NULL)
+    {
+      LOGINFO("Unable to open '%s'\n", ramdisk.c_str());
+      return false;
+    }
+    
+  while ((de = readdir(d)) != NULL)
+    {
+      cmp = de->d_name;
+      path = ramdisk + "/" + cmp;
+      if (cmp.find("fstab.") != string::npos)
+	{
+	  if (encryption != 1)
+	    {
+	      gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
+	      stat = 1;
+	    }
+	  if (!status)
+	    {
+	      if (TWFunc::CheckWord(path, "forceencrypt")
+		  || TWFunc::CheckWord(path, "forcefdeorfbe"))
+		status = true;
+	    }
+	  TWFunc::Replace_Word_In_File(path, "forcefdeorfbe=;forceencrypt=;",
+				       "encryptable=");
+	}
+    }
+  closedir(d);
+  
+  if (stat == 0)
+    {
+      if (PartitionManager.Mount_By_Path("/vendor", false))
+	{
+	  d1 = opendir(fstab2.c_str());
+	  stat = 2;
+	}
+      else
+	{
+	  PartitionManager.Mount_By_Path("/system", false);
+	  stat = 1;
+	  d1 = opendir(fstab1.c_str());
+	}
+
+      while ((de = readdir(d1)) != NULL)
+	{
+	  cmp = de->d_name;
+	  if (stat == 2)
+	    path = fstab2 + "/" + cmp;
+	  else if (stat == 1)
+	    path = fstab1 + "/" + cmp;
+	  if (cmp.find("fstab.") != string::npos)
+	    {
+	      if (encryption != 1)
+		{
+		  gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
+		  stat = 1;
+		}
+	      if (!status)
+		{
+		  if (TWFunc::CheckWord(path, "forceencrypt")
+		      || TWFunc::CheckWord(path, "forcefdeorfbe"))
+		    status = true;
+		}
+	      TWFunc::Replace_Word_In_File(path,
+					   "forcefdeorfbe=;forceencrypt=;",
+					   "encryptable=");
+	    }
+	}
+      closedir(d1);
+    }
+    
+  if (PartitionManager.Is_Mounted_By_Path("/system"))
+    	PartitionManager.UnMount_By_Path("/system", false);
+    
+  if (PartitionManager.Is_Mounted_By_Path("/vendor"))
+    	PartitionManager.UnMount_By_Path("/vendor", false);
+    	
+  return status;
+}
+
+
+void TWFunc::Patch_Others(void)
+{
+  std::string fstab = ramdisk + "/fstab.qcom";
+  std::string default_prop = ramdisk + "/default.prop";
+  std::string dm_verity_prop = "ro.config.dmverity";
+  std::string result;
+  std::string verity_key = ramdisk + "/verity_key";
+  std::string firmware_key = ramdisk + "/sbin/firmware_key.cer";
+  std::string debug = "ro.debuggable";
+  std::string adb_ro = "ro.adb.secure";
+  std::string ro = "ro.secure";
+  std::string mock = "ro.allow.mock.location";
+  std::string miui_secure_boot = "ro.secureboot.devicelock";
+  std::string dm_verity_prop_false = dm_verity_prop + "=false";
+  std::string dm_verity_prop_true = dm_verity_prop + "=true";
+
+  // Enable ADB read-only property in the default.prop
+  if (DataManager::GetIntValue(RW_ENABLE_ADB_RO) == 1)
+    {
+      TWFunc::Set_New_Ramdisk_Property(default_prop, adb_ro, true);
+    }
+
+  // Disable ADB read-only property in the default.prop
+  if (DataManager::GetIntValue(RW_DISABLE_ADB_RO) == 1)
+    {
+      TWFunc::Set_New_Ramdisk_Property(default_prop, adb_ro, false);
+    }
+
+  // Enable read-only property in the default.prop
+  if (DataManager::GetIntValue(RW_ENABLE_SECURE_RO) == 1)
+    {
+      TWFunc::Set_New_Ramdisk_Property(default_prop, ro, true);
+    }
+
+  // Disable read-only property in the default.prop
+  if (DataManager::GetIntValue(RW_DISABLE_SECURE_RO) == 1)
+    {
+      TWFunc::Set_New_Ramdisk_Property(default_prop, ro, false);
+    }
+
+  // Disable secure-boot
+  if (DataManager::GetIntValue(RW_DISABLE_SECURE_BOOT) == 1)
+    {
+      TWFunc::Set_New_Ramdisk_Property(default_prop, miui_secure_boot, false);
+    }
+
+  // Enable mock_location property
+  if (DataManager::GetIntValue(RW_ENABLE_MOCK_LOCATION) == 1)
+    {
+      TWFunc::Set_New_Ramdisk_Property(default_prop, mock, true);
+    }
+
+  // Disable mock_location property
+  if (DataManager::GetIntValue(RW_DISABLE_MOCK_LOCATION) == 1)
+    {
+      TWFunc::Set_New_Ramdisk_Property(default_prop, mock, false);
+    }
+
+  if (Path_Exists(default_prop)) 
+  	chmod(default_prop.c_str(), 0644);
+
+  if (Path_Exists(fstab)) 
+  	chmod(fstab.c_str(), 0640);
+}
+
+
+void TWFunc::Deactivation_Process(void)
+{
+
+  // Check AromaFM Config
+  if (
+     (DataManager::GetIntValue(RW_SAVE_LOAD_AROMAFM) == 1)
+  && (!PartitionManager.Mount_By_Path("/sdcard", false))
+     )
+    {
+      string aromafm_path = Fox_Home;
+      string aromafm_file = aromafm_path + "/aromafm.cfg";
+      if (!Path_Exists(aromafm_path))
+	{
+	  if (mkdir
+	      (aromafm_path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
+	    {
+	      LOGERR("Error making %s directory: %s\n", aromafm_path.c_str(),
+		     strerror(errno));
+	    }
+	}
+      // Save AromaFM config (AromaFM.cfg)
+      if (copy_file(FFiles_dir + "/AromaFM/AromaFM.zip.cfg", aromafm_file, 0644))
+	{
+	  LOGERR("Error copying AromaFM config\n");
+	}
+      PartitionManager.UnMount_By_Path("/sdcard", false);
+    }
+
+  // restore the stock recovery ?
+  if (
+     (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) == 1)
+  && (!PartitionManager.Mount_By_Path("/system", false))
+     )
+    {
+      if (Path_Exists("/system/wlfx0recovery-from-boot.bak0xwlf"))
+	{
+	  rename("/system/wlfx0recovery-from-boot.bak0xwlf",
+		 "/system/recovery-from-boot.p");
+	}
+      PartitionManager.UnMount_By_Path("/system", false);
+    }
+
+  // advanced stock replace
+  Disable_Stock_Recovery_Replace();
+
+  // increment value, to show how many times we have called this
+  Fox_IsDeactivation_Process_Called++;
+  
+  // dm-verity and forced encryption
+  if (
+     (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1)
+  || (DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1)  
+     )
+    {
+      if (!Unpack_Image("/boot"))
+	{
+	  LOGINFO("Deactivation_Process: Unable to unpack image\n");
+	  return;
+	}
+	
+      gui_msg(Msg(msg::kProcess, "of_run_process=Starting '{1}' process")
+	      ("OrangeFox"));
+      
+      if (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1)
+	{
+	  DataManager::SetValue(RW_DISABLE_FORCED_ENCRYPTION, 1);
+	  if (Patch_DM_Verity())
+	    gui_msg("of_dm_verity=Successfully patched DM-Verity");
+	  else
+	    gui_msg("of_dm_verity_off=DM-Verity is not enabled");
+	}
+      
+      if (DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1)
+	{
+	  if (Patch_Forced_Encryption())
+	    gui_msg("of_encryption=Successfully patched forced encryption");
+	  else
+	    gui_msg("of_encryption_off=Forced Encryption is not enabled");
+	}
+
+      // save other stuff (probably move this elsewhere - riding on the unpacking of the image)
+      Patch_Others();
+      //
+      
+      if (!Repack_Image("/boot"))
+	{
+	  gui_msg(Msg
+		  (msg::kProcess,
+		   "of_run_process_fail=Unable to finish '{1}' process")
+		  ("OrangeFox"));
+	  return;
+	}
+	
+      gui_msg(Msg(msg::kProcess, "of_run_process_done=Finished '{1}' process")
+	      ("OrangeFox"));
+      return;
+    }
 }
 
 #endif // ifndef BUILD_TWRPTAR_MAIN

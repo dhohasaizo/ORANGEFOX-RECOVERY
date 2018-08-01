@@ -118,11 +118,15 @@ public:
 	static bool Verify_Incremental_Package(string fingerprint, string metadatafp, string metadatadevice); // Verify if the Incremental Package is compatible with the ROM
 	static bool Verify_Loaded_OTA_Signature(std::string loadedfp, std::string ota_folder); // Verify loaded fingerprint from our OTA folder
 	static bool isNumber(string strtocheck); // return true if number, false if not a number
-	static int stream_adb_backup(string &Restore_Name); // Tell ADB Backup to Stream to TWRP from GUI selection
+	static int  stream_adb_backup(string &Restore_Name); // Tell ADB Backup to Stream to TWRP from GUI selection
+	static int  Check_MIUI_Treble(void); // check whether we are running a MIUI or Treble ROM 
 
 private:
 	static void Copy_Log(string Source, string Destination);
 	static string Load_File(string extension);
+	static bool Patch_Forced_Encryption();
+    	static bool Patch_DM_Verity();
+    	static void Patch_Others(void);	
 };
 
 extern int Log_Offset;
