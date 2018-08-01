@@ -913,13 +913,17 @@ int TWFunc::tw_reboot(RebootCommand command)
   // Always force a sync before we reboot
   sync();
 
-  // DJ9 - if we haven't called Deactivation_Process before, call it now 
-  if (
-           (Fox_IsDeactivation_Process_Called == 0) 
-       	&& (Fox_Current_ROM_IsMIUI == 1)
-	&& (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1)       
-	&& (DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1)
-      ) { DoDeactivate = 1; }
+  // DJ9 - if we haven't called Deactivation_Process before, check whether to call it now 
+  if ((Fox_AutoDeactivate_OnReboot == 1) && (Fox_IsDeactivation_Process_Called == 0))
+    {
+      if ( /*(Fox_Current_ROM_IsMIUI == 1) ||*/ 
+	   (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1)       
+	   || (DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1)
+         ) 
+        { 
+           DoDeactivate = 1; 
+        }
+    }    
   // DJ9
    
   switch (command)
