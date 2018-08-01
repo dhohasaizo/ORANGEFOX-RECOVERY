@@ -885,7 +885,7 @@
 		<string name="fox_restore_vibrate">Restore Vibration</string>
 		<string name="fox_vibration_hdr">OrangeFox Action Vibrations</string>
 		<string name="fox_boot_nastaveni">HW Settings</string>
-		<!-- Red Wolf Recovery V3.1 / 010 -->
+		<!--  -->
 		<string name="restore_enable_digest_chk" version="2">Enable Digest Verification of Backup Files</string>
 		<string name="generating_digest1" version="2">Generating Digest</string>
 
@@ -931,11 +931,11 @@
 		<string name="fox_restore_fox2_splash_1">Stock Splash Screen was</string>
 		<string name="fox_restore_fox2_splash_2">succesfully restored</string>
 		<string name="statusbar_fox_on_lockpass">Enable Statusbar on Lock Screen</string>
-		<!-- Red Wolf Recovery V3.1 / 011 -->
+		<!--  -->
 		<string name="no_digest_found" version="2">No digest file found for '{1}'. Please unselect Enable Digest verification to restore.</string>
 		<string name="digest_fail_match" version="2">Digest failed to match on '{1}'.</string>
 		<string name="digest_matched" version="2">Digest matched for '{1}'.</string>
-		<!-- Red Wolf Recovery V3.1 / 012 -->
+		<!--  -->
 		<string name="fox_no_os_btn">Reboot</string>
 		<string name="fox_no_foxos_hdr">No OS installed!</string>
 		<string name="fox_no_os_fox_txt1">OrangeFox detected that OS</string>
@@ -944,7 +944,7 @@
 		<string name="fox_no_os_fox_txt4">is wrong then swipe to confirm</string>
 		<string name="fox_no_os_fox_txt5">the reboot.</string>
 		<string name="fox_no_os_fox_slider_txt">Swipe to ignore this detection & reboot</string>
-		<!-- Red Wolf Recovery V3.1 / 015 -->
+		<!--  -->
 		<string name="fox_supersu_config_chk">Use SuperSU Config</string>
 		<string name="fox_fgo_patch_hdr2">For LOS based ROMs</string>
 		<string name="fox_flash_fgo_patch">Swipe to install the FGO patch</string>
@@ -972,7 +972,7 @@
 		<string name="fox_extra_fox_hdr">Advanced Actions</string>
 		<string name="fox_extra_fox_hdr_2">Advanced Actions of the OrangeFox Recovery</string>
 
-		<!-- Red Wolf Recovery V3.1.1 / 020 -->
+		<!--  -->
 		<!-- This thing will disable checking of the boot partition to disable DM-Verity, Forced Encryption etc. -->
 		<string name="fox_prebuilt_fox_not_exist_hdr">File doesn't exist!</string>
 		<string name="fox_prebuilt_fox_not_exist_1">Please reflash recovery</string>

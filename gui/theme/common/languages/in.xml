@@ -720,7 +720,7 @@
 		<string name="penggantian_boot_slot_complete">Mengganti Slot Boot selesai</string>
 		<string name="unable_set_boot_slot">Kesalahan saat mengganti slot boot bootloader ke {1}</string>
 		<string name="backup_storage_warning">Backup dari {1} tidak menyertakan file dalam penyimpanan internal seperti gambar atau download.</string>  
-<!-- Start of Red Wolf Recovery strings -->
+<!-- Start of OrangeFox Recovery strings -->
 <!-- Some strings aren't maybe used anymore, but we are too much lazy to delete them :P -->
      <string name="flashlight">Senter</string>
      <string name="flashlight_info_on">Geser untuk menyalakan senter</string>
@@ -892,7 +892,7 @@
      <string name="fox_restore_vibrate">Getaran Pemulihan</string> 
      <string name="fox_vibration_hdr">Aksi Getar OrangeFox</string>
      <string name="fox_boot_nastaveni">Pengaturan HW</string>
-     <!-- Red Wolf Recovery V3.1 / 010 -->
+     <!--  -->
      <string name="restore_enable_digest_chk" version="2">Aktifkan Verifikasi Digest dari berkas Cadangan</string>
      <string name="generating_digest1" version="2">Membuat Digest</string>
      
@@ -938,11 +938,11 @@
     <string name="fox_restore_fox2_splash_1">Stok Splash Screen telah</string>
     <string name="fox_restore_fox2_splash_2">berhasil dipulihkan</string>
     <string name="statusbar_fox_on_lockpass">Aktifkan Statusbar pada Layar Kunci</string>
-    <!-- Red Wolf Recovery V3.1 / 011 -->
+    <!--  -->
     <string name="no_digest_found" version="2">Tidak ditemukan berkas digest untuk '{1}'. Matikan opsi verifikasi Enable Digest untuk memulihkan.</string>
 	<string name="digest_fail_match" version="2">Digest tidak cocok dengan '{1}'.</string>
 	<string name="digest_matched" version="2">Digest cocok dengan '{1}'.</string> 
-	<!-- Red Wolf Recovery V3.1 / 012 -->
+	<!--  -->
 	<string name="fox_no_os_btn">Mulai Ulang</string>
 	<string name="fox_no_foxos_hdr">Tidak ada OS terpasang!</string>
 	<string name="fox_no_os_fox_txt1">OrangeFox mendeteksi OS tersebut</string>
@@ -951,11 +951,11 @@
     <string name="fox_no_os_fox_txt4">salah, silahkan geser untuk konfirmasi</string>
     <string name="fox_no_os_fox_txt5">pemulaian ulang.</string>
     <string name="fox_no_os_fox_slider_txt">Geser untuk abaikan pendeteksian & memulai ulang</string>
-    <!-- Red Wolf Recovery V3.1 / 015 -->
+    <!--  -->
     <string name="fox_supersu_config_chk">Gunakan Konfig SuperSU</string>
     <string name="fox_fgo_patch_hdr2">Untuk ROM berbasis LOS</string>
     <string name="fox_flash_fgo_patch">Geser untuk memasang patch FGO</string>    
-    <!-- Red Wolf Recovery V3.1 / 018 -->
+    <!--  -->
 	<string name="orangefox_msg2">[OrangeFox]: Selamat Datang ! ^_^</string>
 	<string name="orangefox_msg3">[Versi]: {1}</string>
 	<string name="orangefox_msg4">[Build]: {1}</string>
@@ -1020,7 +1020,7 @@
 	<string name="fox_install_detecting">Mendeteksi Paket Saat Ini</string>
     <string name="fox_install_standard_detected">- Paket Standar Terdeteksi</string>
 	<string name="fox_install_miui_detected">- Paket Pembaruan MIUI Terdeteksi</string>
-	<!-- Red Wolf Recovery V3.1.1 / 020 -->
+	<!--  -->
 	<!-- This thing will disable checking of the boot partition to disable DM-Verity, Untukced Encryption etc. -->
 	<string name="fox_disable_boot_chk">Matikan pemeriksaan boot</string>
 	<string name="fox_include_system_survival_chk">Sertakan sistem dalam Survival OTA</string>
@@ -1033,14 +1033,14 @@
 	<string name="fox_incremental_ota_compatibility_chk">Memverifikasi Signature Paket Inkremental...</string>
 	<string name="fox_incremental_ota_compatibility_false">Paket inkremental tidak cocok dengan ROM ini!</string>
 	<string name="fox_incremental_ota_compatibility_true">Paket inkremental cocok</string>
-	<!-- Red Wolf Recovery V3.1 / 022 -->
+	<!--  -->
 	<string name="fox_wipe_substratum_overlays">Lapisan Substratum</string>
 	<string name="fox_zip_have_bootloader">Peringatan: OrangeFox mendeteksi adanya bootloader didalam berkas '{1}'</string>
 	<string name="substratum_done">-- Lapisan Substratum Selesai Dibersihkan!</string>
 	<string name="fox_no_space_ota_survival">Tidak cukup ruang kosong pada penyimpanan internal untuk membuat OTA Survival.</string>
-	<!-- Red Wolf Recovery V3.1 / 023 -->
+	<!--  -->
 	<string name="fox_stupid_fox_detected">Pemulihan tidak mengizinkan anda untuk flashing '{1}' sampai aplikasi pembajakan yang disebut 'Lucky Patcher' dicopot dari perangkat!</string>
-		<!-- Red Wolf Recovery V3.1 / 024 -->
+		<!--  -->
 		<string name="fox_incremental_ota_res">OTA_RES -- selesai!</string>
 		<string name="fox_incremental_ota_res_run">Proses OTA_RES berjalan...</string>
 		<string name="fox_incremental_ota_bak_run">Proses OTA_BAK berjalan...</string>
@@ -1050,7 +1050,7 @@
 		<!--string name="fox_bluetooth_data">Blueuntukoth Data</string -->
 		<!--string name="fox_hosts_data">Hosts</string -->
 		
-		<!-- Red Wolf Recovery V3.1 / 025 -->
+		<!--  -->
 		<string name="fox_set_new_access_password">Mengganti akses kata sandi pemulihan...</string>
 		<string name="fox_remove_access_password_one">Removing akses kata sandi pemulihan...</string>
 

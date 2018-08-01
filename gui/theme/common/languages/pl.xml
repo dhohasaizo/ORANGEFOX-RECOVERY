@@ -719,7 +719,7 @@
 		<string name="changing_boot_slot_complete">Zmiana slotu Boot ukończona</string>
 		<string name="unable_set_boot_slot">Wystąpił błąd podczas zmiany bootloader boot slot dla {1}</string>
 		<string name="backup_storage_warning">Kopie zapasowe {1} nie zawierają żadnych plików z pamięci wewnętrznej, typu zdjęcia czy pobrane pliki.</string>
-<!-- Start of Red Wolf Recovery strings -->
+<!-- Start of OrangeFox Recovery strings -->
 <!-- Some strings aren't maybe used anymore, but we are too much lazy to delete them :P -->
      <string name="flashlight">Latarka</string>
      <string name="flashlight_info_on">Przesuń, aby włączyć latarkę</string>
@@ -891,7 +891,7 @@
      <string name="fox_restore_vibrate">Siła wibracji po przywróceniu kopii zapasowej</string> 
      <string name="fox_vibration_hdr">Wibracje OrangeFox - po ukończeniu wybranej akcji</string>
      <string name="fox_boot_nastaveni">Ustawienia sprzętowe</string>
-	 <!-- Red Wolf Recovery V3.1 / 010 -->
+	 <!--  -->
      <string name="restore_enable_digest_chk" version="2">Weryfikacja skrótów plików kopii zapas.</string>
      <string name="generating_digest1" version="2">Generowanie skrótu</string>
      
@@ -937,11 +937,11 @@
     <string name="fox_restore_fox2_splash_1">Domyślny ekran powitalny został</string>
     <string name="fox_restore_fox2_splash_2">przywrócony z powodzeniem</string>
     <string name="statusbar_fox_on_lockpass">Włącz pasek stanu na ekranie blokady</string>
-    <!-- Red Wolf Recovery V3.1 / 011 -->
+    <!--  -->
     <string name="no_digest_found" version="2">Nie znaleziono pliku skrótu dla '{1}'. Wyłącz opcję weryfikacji skrótów, aby ją przywrócić.</string>
 	<string name="digest_fail_match" version="2">Skrót nie pasuje do '{1}'.</string>
 	<string name="digest_matched" version="2">Skrót pasuje do '{1}'.</string> 
-	<!-- Red Wolf Recovery V3.1 / 012 -->
+	<!--  -->
 	<string name="fox_no_os_btn">Restart</string>
 	<string name="fox_no_foxos_hdr">Brak zainstalowanego systemu!</string>
 	<string name="fox_no_os_fox_txt1">OrangeFox wykrył, że system nie jest</string>
@@ -950,11 +950,11 @@
     <string name="fox_no_os_fox_txt4">a wykrycie jest nieprawidłowe,</string>
     <string name="fox_no_os_fox_txt5">to przesuń dolnym suwakiem.</string>
     <string name="fox_no_os_fox_slider_txt">Przesuń, aby zignorować tę detekcję i zrestartować</string>
-    <!-- Red Wolf Recovery V3.1 / 015 -->
+    <!--  -->
     <string name="fox_supersu_config_chk">Użyj konfiguracji SuperSU</string>
     <string name="fox_fgo_patch_hdr2">Dla ROMów bazowanych na LOS</string>
     <string name="fox_flash_fgo_patch">Przesuń, aby zainstalować łatkę FGO</string>
-    <!-- Red Wolf Recovery V3.1 / 018 -->
+    <!--  -->
 	<string name="orangefox_msg2">[OrangeFox]: Witaj! ^_^</string>
 	<string name="orangefox_msg3">[Wersja]: {1}</string>
 	<string name="orangefox_msg4">[Build]: {1}</string>
@@ -1019,7 +1019,7 @@
 	<string name="fox_install_detecting">Wykrywanie Bieżącego Pakietu</string>
     <string name="fox_install_standard_detected">- Wykryty pakiet standardowy</string>
 	<string name="fox_install_miui_detected">- Wykryty pakiet aktualizacji MIUI</string>
-	<!-- Red Wolf Recovery V3.1.1 / 020 -->
+	<!--  -->
 	<!-- This thing will disable checking of the boot partition to disable DM-Verity, Forced Encryption etc. -->
 	<string name="fox_disable_boot_chk">Wyłącz sprawdzenie rozruchu</string>
 	<string name="fox_include_system_survival_chk">Uwzględnij system w Przetrwaniu OTA</string>
@@ -1032,12 +1032,12 @@
 	<string name="fox_incremental_ota_compatibility_chk">Weryfikowanie podpisu paczki OTA...</string>
 	<string name="fox_incremental_ota_compatibility_false">Pakiet aktualizacji nie jest kompatybilny z tym ROMem!</string>
 	<string name="fox_incremental_ota_compatibility_true">Pakiet aktualizacji jest kompatybilny</string>
-	<!-- Red Wolf Recovery V3.1 / 022 -->
+	<!--  -->
 	<string name="fox_wipe_substratum_overlays">Nakładki Substratum</string>
 	<string name="fox_zip_have_bootloader">Ostrzeżenie: OrangeFox wykrył bootloader wewnątrz '{1}'</string>
 	<string name="substratum_done">-- Czyszczenie nakładek substratum ukończone!</string>
 	<string name="fox_no_space_ota_survival">Za mało wolnego miejsca w pamięci wewnętrznej na utworzenie Przetrwania OTA.</string>
-	<!-- Red Wolf Recovery V3.1 / 023 -->
+	<!--  -->
 	<string name="fox_stupid_fox_detected">Recovery nie pozwoli Ci na instalację '{1}', dopóki piracka aplikacja o nazwie "Lucky Patcher" nie zostanie odinstalowana z twojego urządzenia!</string>
 </resources>
 </language>
