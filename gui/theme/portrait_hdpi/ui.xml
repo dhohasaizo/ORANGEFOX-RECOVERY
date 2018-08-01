@@ -295,7 +295,7 @@
 		<variable name="fox_aromafm" value="0" persist="0"/>
 		<variable name="ico_btn_mode" value="0" persist="1"/>
 		<variable name="fox_uncolor_header" value="0" persist="0"/>
-		<variable name="fox_need_reboot" value="0" persist="0"/>
+		<variable name="fox_filled_lines" value="0" persist="1"/>
 
 		<!-- For Maintainers -->
 		<variable name="flashlight_support" value="%of_flashlight_enable%"/>

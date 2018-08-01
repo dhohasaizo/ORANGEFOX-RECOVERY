@@ -1602,7 +1602,7 @@
 					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
-					cd "/tmp/orangefox/ramdisk/twres";
+					cd "/twres";
 					mv "colors.xml" "/tmp/orangefox/ui_temp.xml";
                     cp -r %tw_folder%/* "images";
 					sed "s/%accent%/#%tw_accent%/g" "/tmp/orangefox/ui_temp.xml" &gt; "/tmp/orangefox/ui_temp2.xml";
@@ -1612,10 +1612,13 @@
 					sed "s/%accent_name%/%tw_accent_name%/g" "/tmp/orangefox/ui_temp3.xml" &gt; "/tmp/orangefox/ui.xml";
 					rm -f "/tmp/orangefox/ui_temp3.xml";
 					mv "/tmp/orangefox/ui.xml" "colors.xml";
+					rm -rf "/tmp/orangefox/ramdisk/twres";
+					cp -r -f "/twres" "/tmp/orangefox/ramdisk/twres";
+					cd /;
 					</action>
 					<action function="wlfx"/>
 					<action function="set">accent_name=%tw_accent_name%</action>
-					<action function="page">set_color_finish</action>
+					<action function="reload"/>
 				</actions>
       		</slider>
 
@@ -2703,6 +2706,11 @@
 				<font resource="button-text" color="%text_button%"/>
 			</button>
 
+			<fill color="%accent%">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<condition var1="fox_filled_lines" var2="1"/>
+				<placement x="0" y="1300" w="1080" h="20"/>
+			</fill>
 			
 			<fill color="%linecolor%">
 				<condition var1="ico_btn_mode" var2="1"/>
@@ -12521,6 +12529,11 @@
 				<text>{@fox_about_maintainer=Maintainer}: %of_maintainer%</text>
 			</text-->
 
+			<fill color="%accent%">
+				<condition var1="fox_filled_lines" var2="1"/>
+				<placement x="0" y="1300" w="1080" h="20"/>
+			</fill>
+
 			<fill color="%linecolor%">
 				<placement x="200" y="1400" w="3" h="300"/>
 			</fill>
@@ -14123,20 +14136,6 @@
 				<text>{@repacking}</text>
 			</text>
 
-			<text style="text_ab_title">
-				<condition var1="fox_need_reboot" var2="1"/>
-				<condition var1="tw_busy" var2="1"/>
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@done}</text>
-			</text>
-
-			<text style="text_ab_title">
-				<condition var1="fox_need_reboot" var2="1"/>
-				<condition var1="tw_busy" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fox_need_reboot}</text>
-			</text>
-
 			<button>
 			 	<condition var1="tw_busy" var2="0"/>
 				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
@@ -14212,15 +14211,17 @@
 					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd"> 
-					cd "/tmp/orangefox/ramdisk/twres";
+					cd "/twres";
 					cp -r images_orange/* "images"; 
 					cp -r un-white/* "images"; 
 					cp -r dark/*.png "images"
 					cp -r "dark/dark.xml" "colors.xml";
+					rm -rf "/tmp/orangefox/ramdisk/twres";
+					cp -r -f "/twres" "/tmp/orangefox/ramdisk/twres";
+					cd /;
 					</action>
 					<action function="wlfx"/>
-					<action function="set">tw_busy=1</action>
-					<action function="set">fox_need_reboot=1</action>
+					<action function="reload"/>
 				</actions>
 			</slider>
 
@@ -14238,15 +14239,17 @@
 					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
-					cd "/tmp/orangefox/ramdisk/twres";
+					cd "/twres";
 					cp -r images_orange/* "images"; 
 					cp -r un-white/* "images"; 
-					cp -r black/*.png "images"
+					cp -r black/*.png "images";
 					cp -r "black/black.xml" "colors.xml";
+					rm -rf "/tmp/orangefox/ramdisk/twres";
+					cp -r -f "/twres" "/tmp/orangefox/ramdisk/twres";
+					cd /;
 					</action>
 					<action function="wlfx"/>
-					<action function="set">tw_busy=1</action>
-					<action function="set">fox_need_reboot=1</action>
+					<action function="reload"/>
 				</actions>
 			</slider>
 
@@ -14264,14 +14267,17 @@
 					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
-					cd "/tmp/orangefox/ramdisk/twres";
+					cd "/twres";
 					cp -r images_orange/* "images"; 
 					cp -r white/*.png "images"
 					cp -r "white/white.xml" "colors.xml";
+					rm -rf "/tmp/orangefox/ramdisk/twres";
+					cp -r -f "/twres" "/tmp/orangefox/ramdisk/twres";
+					cd /;
 					</action>
 					<action function="wlfx"/>
-					<action function="set">tw_busy=1</action>
-					<action function="set">fox_need_reboot=1</action>
+					<action function="repack" />
+					<action function="reload"/>
 				</actions>
 			</slider>
 
@@ -14307,28 +14313,6 @@
 						<action function="set">fox_dark=0</action>
 					</actions>
 				</action>
-
-				<text style="caption">
-					<condition var1="fox_need_reboot" var2="1"/>
-					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-					<text>{@swipe_reboot}</text>
-				</text>
-
-				<slider>
-					<condition var1="fox_need_reboot" var2="1"/>
-					<actions>
-						<action function="set">tw_back=reboot</action>
-						<action function="set">tw_action=reboot</action>
-						<action function="set">tw_reboot_param=recovery</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
-						<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
-						<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
-						<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
-						<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
-						<action function="page">rebootcheck</action>
-					</actions>
-				</slider>
 
 				<action>
 					<touch key="back"/>
@@ -14419,6 +14403,10 @@
 				</listitem>
 				<listitem name="{@ico_btn_mode_txt}">
 					<data variable="ico_btn_mode"/>
+				</listitem>
+				<listitem name="{@fox_filled_lines}">
+					<condition var1="fox_filled_lines" var2="1"/>
+					<data variable="fox_filled_lines"/>
 				</listitem>
 			</listbox>
 
