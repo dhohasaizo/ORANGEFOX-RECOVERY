@@ -2833,7 +2833,7 @@ void TWPartitionManager::Get_Partition_List(string ListType,
       Partition_List->push_back(dalvik);
       struct PartitionList substratum;
       substratum.Display_Name =
-	gui_parse_text("{@wolf_wipe_substratum_overlays}");
+	gui_parse_text("{@fox_wipe_substratum_overlays}");
       substratum.Mount_Point = "SUBSTRATUM";
       substratum.selected = 0;
       Partition_List->push_back(substratum);      
@@ -3967,9 +3967,9 @@ int TWPartitionManager::Run_OTA_Survival_Backup(bool adbbackup)
   part_settings.file_bytes = 0;
   part_settings.PM_Method = PM_BACKUP;
 
-  TWPartition *redwolf = Get_Default_Storage_Partition();
-  if (redwolf)
-    DataManager::SetValue("tw_storage_path", redwolf->Storage_Path);
+  TWPartition *orangefox = Get_Default_Storage_Partition();
+  if (orangefox)
+    DataManager::SetValue("tw_storage_path", orangefox->Storage_Path);
   else
     DataManager::SetValue("tw_storage_path", "/");
 
@@ -4092,7 +4092,7 @@ int TWPartitionManager::Run_OTA_Survival_Backup(bool adbbackup)
 	  if (free_space - (1500 * 1024 * 1024) < total_bytes)
 	    {
 	      gui_err
-		("wolf_no_space_ota_survival=Not enough free space on internal storage for creating the OTA survival.");
+		("fox_no_space_ota_survival=Not enough free space on internal storage for creating the OTA survival.");
 	      return false;
 	    }
 	}
@@ -4104,7 +4104,7 @@ int TWPartitionManager::Run_OTA_Survival_Backup(bool adbbackup)
 	  if (free_space - (100 * 1024 * 1024) < total_bytes)
 	    {
 	      gui_err
-		("wolf_no_space_ota_survival=Not enough free space on internal storage for creating the OTA survival.");
+		("fox_no_space_ota_survival=Not enough free space on internal storage for creating the OTA survival.");
 	      return false;
 	    }
 	}
@@ -4306,9 +4306,9 @@ int TWPartitionManager::Run_OTA_Survival_Restore(const string & Restore_Name)
   part_settings.adbbackup = false;
   part_settings.PM_Method = PM_RESTORE;
 
-  TWPartition *redwolf = Get_Default_Storage_Partition();
-  if (redwolf)
-    DataManager::SetValue("tw_storage_path", redwolf->Storage_Path);
+  TWPartition *orangefox = Get_Default_Storage_Partition();
+  if (orangefox)
+    DataManager::SetValue("tw_storage_path", orangefox->Storage_Path);
   else
     DataManager::SetValue("tw_storage_path", "/");
 
@@ -4561,9 +4561,9 @@ void TWPartitionManager::Notify_On_Finished_Backup(void)
   if (DataManager::GetIntValue("rw_inject_after_backup") != 0)
     {
       string ledcolor, install_vibrate_value;
-      DataManager::GetValue("wolf_data_backup_vibrate",
+      DataManager::GetValue("fox_data_backup_vibrate",
 			    install_vibrate_value);
-      DataManager::GetValue("wolf_backup_led_color", ledcolor);
+      DataManager::GetValue("fox_backup_led_color", ledcolor);
       string leds = "/sys/class/leds/";
       string flashbs = leds + ledcolor + "/brightness";
       string flashtime = leds + ledcolor + "/led_time";
@@ -4581,9 +4581,9 @@ void TWPartitionManager::Notify_On_Finished_Restore(void)
   if (DataManager::GetIntValue("rw_inject_after_restore") != 0)
     {
       string ledcolor, install_vibrate_value;
-      DataManager::GetValue("wolf_data_restore_vibrate",
+      DataManager::GetValue("fox_data_restore_vibrate",
 			    install_vibrate_value);
-      DataManager::GetValue("wolf_restore_led_color", ledcolor);
+      DataManager::GetValue("fox_restore_led_color", ledcolor);
       string leds = "/sys/class/leds/";
       string flashbs = leds + ledcolor + "/brightness";
       string flashtime = leds + ledcolor + "/led_time";

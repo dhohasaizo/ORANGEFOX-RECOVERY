@@ -266,7 +266,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
       DataManager::SetValue(RW_INCREMENTAL_OTA_FAIL, 0);
       DataManager::SetValue(RW_LOADED_FINGERPRINT, 0);
 
-      gui_msg("wolf_install_detecting=Detecting Current Package");
+      gui_msg("fox_install_detecting=Detecting Current Package");
       
       if (Zip->EntryExists(UPDATER_SCRIPT))
 	{
@@ -286,7 +286,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	       Fox_Zip_Installer_Code = 1; // standard ROM
 	     }
 	  gui_msg
-	    ("wolf_install_standard_detected=- Detected standard ROM zip installer");
+	    ("fox_install_standard_detected=- Detected standard ROM zip installer");
 	}
       else // this is a MIUI installer
 	{
@@ -298,7 +298,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      Fox_Zip_Installer_Code = 2; // MIUI ROM
 	    }
 	  gui_msg
-	    ("wolf_install_miui_detected=- Detected MIUI Update zip installer");
+	    ("fox_install_miui_detected=- Detected MIUI Update zip installer");
 	}
 
 //* treble
@@ -313,7 +313,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
       if (DataManager::GetIntValue(RW_INCREMENTAL_PACKAGE) != 0)
 	{
 	  gui_msg
-	    ("wolf_incremental_ota_status_enabled=Support MIUI Incremental package status: Enabled");
+	    ("fox_incremental_ota_status_enabled=Support MIUI Incremental package status: Enabled");
 	  if (Zip->EntryExists(metadata_sg_path)) // META-INF/com/android/metadata is in zip
 	    {
 	      const string take_out_metadata = "/tmp/build.prop";
@@ -327,7 +327,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		  if (metadata_fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE) 
 		    {
 		      gui_msg(Msg
-			      ("wolf_incremental_package_detected=Detected Incremental package '{1}'")
+			      ("fox_incremental_package_detected=Detected Incremental package '{1}'")
 			      (path));
 			      
 		      zip_is_for_specific_build = true;
@@ -335,10 +335,10 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		      DataManager::SetValue(RW_METADATA_PRE_BUILD, 1);
 		      
 		      if ((fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE) 
-		      && (DataManager::GetIntValue("wolf_verify_incremental_ota_signature") != 0))
+		      && (DataManager::GetIntValue("fox_verify_incremental_ota_signature") != 0))
 			{
 			  gui_msg
-			    ("wolf_incremental_ota_compatibility_chk=Verifying Incremental Package Signature...");
+			    ("fox_incremental_ota_compatibility_chk=Verifying Incremental Package Signature...");
 			    /* if (TWFunc::
 			      Verify_Incremental_Package(fingerprint,
 							 metadata_fingerprint,
@@ -349,7 +349,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 				  metadata_device))
 			    {
 			      gui_msg
-				("wolf_incremental_ota_compatibility_true=Incremental package is compatible.");
+				("fox_incremental_ota_compatibility_true=Incremental package is compatible.");
 			      property_set(fingerprint_property.c_str(),
 					   metadata_fingerprint.c_str());
 			      DataManager::SetValue(RW_LOADED_FINGERPRINT,
@@ -359,7 +359,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 			    {
 			      TWFunc::Write_MIUI_Install_Status(OTA_VERIFY_FAIL, false);
 			      gui_err
-				("wolf_incremental_ota_compatibility_false=Incremental package isn't compatible with this ROM!");
+				("fox_incremental_ota_compatibility_false=Incremental package isn't compatible with this ROM!");
 			      return INSTALL_ERROR;
 			    }
 			}
@@ -373,7 +373,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 			 {
 			   if ((!ors_is_active()) && (zip_is_rom_package))
 			   gui_warn
-			     ("wolf_zip_have_to_be_decrypted=Warning: Some OEMs specific packages have to be first decrypted before the installation!");
+			     ("fox_zip_have_to_be_decrypted=Warning: Some OEMs specific packages have to be first decrypted before the installation!");
 			 }			
 		      unlink(take_out_metadata.c_str());		      
 		    }
@@ -391,7 +391,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
       else
 	{
 	  gui_msg
-	    ("wolf_incremental_ota_status_disabled=Support MIUI Incremental package status: Disabled");
+	    ("fox_incremental_ota_status_disabled=Support MIUI Incremental package status: Disabled");
 	}
 
       string ota_location_folder, ota_location_backup, loadedfp;
@@ -439,14 +439,14 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      if (TWFunc::Path_Exists(Boot_File))
 		{
 		  gui_msg
-		    ("wolf_incremental_ota_res_run=Running restore process of the current OTA file");
+		    ("fox_incremental_ota_res_run=Running restore process of the current OTA file");
 		  DataManager::SetValue(RW_RUN_SURVIVAL_BACKUP, 1);
 		  PartitionManager.Set_Restore_Files(ota_location_folder);
 		  if (PartitionManager.
 		      Run_OTA_Survival_Restore(ota_location_folder))
 		    {
 		      gui_msg
-			("wolf_incremental_ota_res=Process OTA_RES -- done!!");
+			("fox_incremental_ota_res=Process OTA_RES -- done!!");
 		    }
 		  else
 		    {
@@ -459,7 +459,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		{
 		  TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, false);
 		  gui_err
-		    ("wolf_survival_does_not_exist=OTA Survival does not exist! Please flash a full ROM first!");
+		    ("fox_survival_does_not_exist=OTA Survival does not exist! Please flash a full ROM first!");
 		  return INSTALL_ERROR;
 		}
 	    }
@@ -467,14 +467,14 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    {
 	      TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, false);
 	      gui_err
-		("wolf_survival_encrypted_err=Internal storage is encrypted! Please do decrypt first!");
+		("fox_survival_encrypted_err=Internal storage is encrypted! Please do decrypt first!");
 	      return INSTALL_ERROR;
 	    }
 	}
       if (Zip->EntryExists(bootloader))
 	gui_msg(Msg
 		(msg::kWarning,
-		 "wolf_zip_have_bootloader=Warning: OrangeFox detected bootloader inside of the {1}")
+		 "fox_zip_have_bootloader=Warning: OrangeFox detected bootloader inside of the {1}")
 		(path));
     }
 
@@ -734,6 +734,8 @@ static int Run_Update_Binary(const char *path, ZipWrap * Zip, int *wipe_cache,
   return INSTALL_SUCCESS;
 }
 
+
+
 int TWinstall_zip(const char *path, int *wipe_cache)
 {
   int ret_val, zip_verify = 1;
@@ -743,8 +745,6 @@ int TWinstall_zip(const char *path, int *wipe_cache)
       LOGERR("Failed to get adb sideload file: '%s'\n", path);
       return INSTALL_CORRUPT;
     }
-
-
 
   if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1)
     {
@@ -914,7 +914,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	}
       else
 	{
-	  if (Zip.EntryExists("redwolf.prop"))
+	  if (Zip.EntryExists("orangefox.prop"))
 	    {
 	      LOGINFO("OrangeFox Update\n");
 	      ret_val = Install_Theme(path, &Zip);
@@ -955,7 +955,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	  if (TWFunc::Verify_Loaded_OTA_Signature(loadedfp, ota_folder))
 	    {
 	      gui_msg
-		("wolf_incremental_ota_bak_skip=Detected OTA survival with the same ID - leaving");
+		("fox_incremental_ota_bak_skip=Detected OTA survival with the same ID - leaving");
 	    }
 	  else
 	    {
@@ -964,13 +964,13 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 
 	      DataManager::SetValue(RW_RUN_SURVIVAL_BACKUP, 1);
 	      gui_msg
-		("wolf_incremental_ota_bak_run=Running OTA_BAK process...");
+		("fox_incremental_ota_bak_run=Running OTA_BAK process...");
 
 	      PartitionManager.Run_OTA_Survival_Backup(false);
 	      
 	      TWFunc::Write_MIUI_Install_Status(OTA_SUCCESS, false);
 	      
-	      gui_msg("wolf_incremental_ota_bak=Process OTA_BAK --- done!");
+	      gui_msg("fox_incremental_ota_bak=Process OTA_BAK --- done!");
 
 	      if (TWFunc::Path_Exists(ota_folder)
 		  && !TWFunc::Path_Exists(ota_info))

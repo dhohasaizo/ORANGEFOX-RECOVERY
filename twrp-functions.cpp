@@ -64,7 +64,6 @@ static string split_img = tmp + "/split_img";
 static string ramdisk = tmp + "/ramdisk";
 static string tmp_boot = tmp + "/boot.img";
 
-
 /* Execute a command */
 int TWFunc::Exec_Cmd(const string & cmd, string & result)
 {
@@ -564,6 +563,9 @@ void TWFunc::Deactivation_Process(void)
     	return;
      }	
 
+  // increment value, to show how many times we have called this
+  Fox_IsDeactivation_Process_Called++;
+  
   // Check AromaFM Config
   if (DataManager::GetIntValue(RW_SAVE_LOAD_AROMAFM) == 1)
     {
@@ -824,7 +826,6 @@ void TWFunc::Copy_Log(string Source, string Destination)
 }
 
 
-
 void TWFunc::Update_Log_File(void)
 {
   // Copy logs to cache so the system can find out what happened.
@@ -900,15 +901,27 @@ void TWFunc::Update_Intent_File(string Intent)
 // reboot: Reboot the system. Return -1 on error, no return on success
 int TWFunc::tw_reboot(RebootCommand command)
 {
+  int DoDeactivate = 0;
   DataManager::Flush();
   Update_Log_File();
+  
   // Always force a sync before we reboot
   sync();
 
+  // DJ9 - if we haven't called Deactivation_Process before, call it now 
+  if (
+           (Fox_IsDeactivation_Process_Called == 0) 
+       	&& (Fox_Current_ROM_IsMIUI == 1)
+	&& (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1)       
+	&& (DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1)
+      ) { DoDeactivate = 1; }
+  // DJ9
+   
   switch (command)
     {
     case rb_current:
     case rb_system:
+      if (DoDeactivate == 1) { Deactivation_Process(); } // DJ9  
       Update_Intent_File("s");
       sync();
 #ifdef ANDROID_RB_PROPERTY
@@ -919,6 +932,7 @@ int TWFunc::tw_reboot(RebootCommand command)
       return reboot(RB_AUTOBOOT);
 #endif
     case rb_recovery:
+      //if (DoDeactivate == 1){ Deactivation_Process(); } // DJ9  
 #ifdef ANDROID_RB_PROPERTY
       return property_set(ANDROID_RB_PROPERTY, "reboot,recovery");
 #else
@@ -1929,7 +1943,7 @@ void TWFunc::Write_MIUI_Install_Status(std::string install_status,
     }
 }
 
-void TWFunc::Start_redwolf(void)
+void TWFunc::OrangeFox_Startup(void)
 {
   int i;
   std::string cpu_one, cpu_two, a, loaded_password;
@@ -1947,6 +1961,38 @@ void TWFunc::Start_redwolf(void)
   std::string device_one = kernel_proc_check + "enable";
   std::string device_two = kernel_proc_check + "disable";
   std::string password_file = "/sbin/wlfx";
+
+//* DJ9 - read cfg file to confirm treble/miui
+  string fox_cfg = "/tmp/orangefox.cfg";
+  string fox_is_miui = "0";
+  string fox_is_treble = "0";
+  if (TWFunc::Path_Exists(fox_cfg)) 
+    {
+  	fox_is_miui = TWFunc::File_Property_Get (fox_cfg, "MIUI");
+  	fox_is_treble = TWFunc::File_Property_Get (fox_cfg, "TREBLE");
+  	//gui_print("MIUI=%s\n",fox_is_miui.c_str());
+  	//gui_print("TREBLE=%s\n",fox_is_treble.c_str());
+    }
+    
+  if (strncmp(fox_is_treble.c_str(), "1", 1) == 0)
+  	Fox_Current_ROM_IsTreble = 1;
+  
+  if (strncmp(fox_is_miui.c_str(), "1", 1) == 0)
+     {
+  	Fox_Current_ROM_IsMIUI = 1;
+    	DataManager::SetValue("fox_verify_incremental_ota_signature", "1");
+  	DataManager::SetValue(RW_INCREMENTAL_PACKAGE, "1");
+  	DataManager::SetValue(RW_DISABLE_DM_VERITY, "1");
+  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "1");
+     } 
+  else
+     {
+    	DataManager::SetValue("fox_verify_incremental_ota_signature", "0");
+  	DataManager::SetValue(RW_INCREMENTAL_PACKAGE, "0");
+  	DataManager::SetValue(RW_DISABLE_DM_VERITY, "0");
+  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "0");     
+     }  
+//* DJ9
 
   if (TWFunc::Path_Exists(device_one))
     TWFunc::write_to_file(device_one, disable);
@@ -2457,48 +2503,67 @@ string TWFunc::Load_File(string extension)
 bool TWFunc::Unpack_Image(string mount_point)
 {
   string null;
+  
   if (TWFunc::Path_Exists(tmp))
-    TWFunc::removeDir(tmp, false);
+    	TWFunc::removeDir(tmp, false);
+
   if (!TWFunc::Recursive_Mkdir(ramdisk))
-    return false;
+     {
+        if (!TWFunc::Path_Exists(ramdisk)) 
+          {
+        	LOGERR("TWFunc::Unpack_Image: Unable to create directory - \n", ramdisk.c_str());
+    		return false;
+    	  }
+     }
+
   mkdir(split_img.c_str(), 0644);
-  TWPartition *Partition =
-    PartitionManager.Find_Partition_By_Path(mount_point);
+
+  TWPartition *Partition = PartitionManager.Find_Partition_By_Path(mount_point);
+
   if (Partition == NULL || Partition->Current_File_System != "emmc")
     {
-      LOGERR("TWFunc::Unpack_Image: Partition don't exist or isn't emmc");
+      LOGERR("TWFunc::Unpack_Image: Partition does not exist or is not emmc");
       return false;
     }
+    
   Read_Write_Specific_Partition(tmp_boot.c_str(), mount_point, true);
-  string Command =
-    "unpackbootimg -i " + tmp + "/boot.img" + " -o " + split_img;
+  string Command = "unpackbootimg -i " + tmp + "/boot.img" + " -o " + split_img;
   if (TWFunc::Exec_Cmd(Command, null) != 0)
     {
       TWFunc::removeDir(tmp, false);
+      LOGERR("TWFunc::Unpack_Image: Unpacking image failed.");
       return false;
     }
+  
   string local, result, hexdump;
   DIR *dir;
   struct dirent *der;
   dir = opendir(split_img.c_str());
   if (dir == NULL)
     {
-      LOGINFO("Unable to open '%s'\n", split_img.c_str());
+      LOGERR("TWFunc::Unpack_Image: Unable to open '%s'\n", split_img.c_str());
       return false;
     }
+
   while ((der = readdir(dir)) != NULL)
     {
       Command = der->d_name;
       if (Command.find("-ramdisk.") != string::npos)
 	break;
     }
+
   closedir(dir);
   if (Command.empty())
+  {
+    LOGERR("TWFunc::Unpack_Image: Unpacking image failed #2.");
     return false;
+  }
+
   hexdump = "hexdump -vn2 -e '2/1 \"%x\"' " + split_img + "/" + Command;
   if (TWFunc::Exec_Cmd(hexdump, result) != 0)
     {
       TWFunc::removeDir(tmp, false);
+      LOGERR("TWFunc::Unpack_Image: Command failed '%s'\n", hexdump.c_str());
       return false;
     }
   if (result == "425a")
@@ -2514,13 +2579,16 @@ bool TWFunc::Unpack_Image(string mount_point)
   else if (result == "fd37")
     local = "xz -dc";
   else
+   {
+    LOGERR("TWFunc::Unpack_Image: the command %s yields an unknown compression type.\n", hexdump.c_str());
     return false;
-  result =
-    "cd " + ramdisk + "; " + local + " < " + split_img + "/" + Command +
-    " | cpio -i";
+   }
+       
+  result = "cd " + ramdisk + "; " + local + " < " + split_img + "/" + Command + " | cpio -i";
   if (TWFunc::Exec_Cmd(result, null) != 0)
     {
       TWFunc::removeDir(tmp, false);
+      LOGERR("TWFunc::Unpack_Image: Command failed '%s'\n", result.c_str());
       return false;
     }
   return true;
@@ -2532,21 +2600,28 @@ bool TWFunc::Repack_Image(string mount_point)
   string null, local, result, hexdump, Command;
   DIR *dir;
   struct dirent *der;
+  
   dir = opendir(split_img.c_str());
   if (dir == NULL)
     {
       LOGINFO("Unable to open '%s'\n", split_img.c_str());
       return false;
     }
+  
   while ((der = readdir(dir)) != NULL)
     {
       local = der->d_name;
       if (local.find("-ramdisk.") != string::npos)
 	break;
     }
+  
   closedir(dir);
   if (local.empty())
+  {
+    LOGERR("TWFunc::Repack_Image: -ramdisk. not found in \n", split_img.c_str());
     return false;
+   }
+    
   hexdump = "hexdump -vn2 -e '2/1 \"%x\"' " + split_img + "/" + local;
   TWFunc::Exec_Cmd(hexdump, result);
   if (result == "425a")
@@ -2561,11 +2636,16 @@ bool TWFunc::Repack_Image(string mount_point)
     local = "lzop -9c";
   else if (result == "fd37")
     local = "xz --check=crc32 --lzma2=dict=2MiB";
-  else
+  else 
+  {
+    LOGERR("TWFunc::Repack_Image: the command %s yields an unknown compression type.\n", hexdump.c_str());
     return false;
+  }
+  
   string repack =
     "cd " + ramdisk + "; find | cpio -o -H newc | " + local + " > " + tmp +
     "/ramdisk-new";
+  
   TWFunc::Exec_Cmd(repack, null);
   dir = opendir(split_img.c_str());
   if (dir == NULL)
@@ -2664,8 +2744,10 @@ bool TWFunc::Repack_Image(string mount_point)
   if (TWFunc::Exec_Cmd(Command, null) != 0)
     {
       TWFunc::removeDir(tmp, false);
+      LOGERR("TWFunc::Repack_Image: the command %s was unsuccessful.\n", Command.c_str());
       return false;
     }
+
   char brand[PROPERTY_VALUE_MAX];
   property_get("ro.product.manufacturer", brand, "");
   hexdump = brand;

@@ -824,7 +824,7 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue(RW_DISABLE_DEBUGGING, "0");
   mPersist.SetValue(RW_ENABLE_DEBUGGING, "1"); 
   // { MIUI
-  mPersist.SetValue("wolf_verify_incremental_ota_signature", "1"); // DJ9 set to 1 [support miui ota]
+  mPersist.SetValue("fox_verify_incremental_ota_signature", "1"); // DJ9 set to 1 [support miui ota]
   mPersist.SetValue(RW_INCREMENTAL_PACKAGE, "1"); // DJ9 set to 1 [support miui ota]
   mPersist.SetValue(RW_DISABLE_FORCED_ENCRYPTION, "1");
   mPersist.SetValue(RW_DISABLE_DM_VERITY, "1");

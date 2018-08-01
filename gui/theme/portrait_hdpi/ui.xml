@@ -34,17 +34,17 @@
 
 		<image name="actionbar_shadow" filename="actionbar_shadow"/>
 		<image name="actionbar_fox" filename="actionbar_fox" retainaspect="1"/>
-		<image name="mb_wolf_actions" filename="mb_wolf_actions" retainaspect="1"/>
-		<image name="mb_wolf_actions_color" filename="mb_wolf_actions_color" retainaspect="1"/>
+		<image name="mb_fox_actions" filename="mb_fox_actions" retainaspect="1"/>
+		<image name="mb_fox_actions_color" filename="mb_fox_actions_color" retainaspect="1"/>
 		<image name="fox_settings" filename="fox_settings" retainaspect="1"/>
     	<image name="actionbar_android" filename="actionbar_android" retainaspect="1"/>
-    	<image name="wolf_broom" filename="wolf_broom" retainaspect="1"/>
-    	<image name="wolf_governors" filename="wolf_governors" retainaspect="1"/>
-    	<image name="wolf_traffic_light_1" filename="wolf_traffic_light_1" retainaspect="1"/>
-    	<image name="wolf_traffic_light_2" filename="wolf_traffic_light_2" retainaspect="1"/>
-    	<image name="wolf_on_boot_1" filename="wolf_on_boot_1" retainaspect="1"/>
-    	<image name="wolf_on_boot_2" filename="wolf_on_boot_2" retainaspect="1"/>
-    	<image name="android_debug_bridge_wolf" filename="android_debug_bridge_wolf" retainaspect="1"/>
+    	<image name="fox_broom" filename="fox_broom" retainaspect="1"/>
+    	<image name="fox_governors" filename="fox_governors" retainaspect="1"/>
+    	<image name="fox_traffic_light_1" filename="fox_traffic_light_1" retainaspect="1"/>
+    	<image name="fox_traffic_light_2" filename="fox_traffic_light_2" retainaspect="1"/>
+    	<image name="fox_on_boot_1" filename="fox_on_boot_1" retainaspect="1"/>
+    	<image name="fox_on_boot_2" filename="fox_on_boot_2" retainaspect="1"/>
+    	<image name="android_debug_bridge_fox" filename="android_debug_bridge_fox" retainaspect="1"/>
     	<image name="actionbar_community_scripts" filename="actionbar_community_scripts" retainaspect="1"/>
     	<image name="actionbar_logo" filename="actionbar_logo" retainaspect="1"/>
 		<image name="actionbar_back" filename="actionbar_back" retainaspect="1"/>
@@ -83,7 +83,7 @@
 		<!-- OrangeFox Custom images -->
 		<image name="tab_comm_a" filename="tab_comm_a" retainaspect="1"/>
 		<image name="tab_comm" filename="tab_comm" retainaspect="1"/>
-		<image name="wolf_lock_bg" filename="wolf_lock_bg" retainaspect="1"/>
+		<image name="fox_lock_bg" filename="fox_lock_bg" retainaspect="1"/>
 		<image name="fox_cup" filename="fox_cup" retainaspect="1"/>
 		<image name="fox_cup_a" filename="fox_cup_a" retainaspect="1"/>
 		<image name="fox_phone" filename="fox_phone" retainaspect="1"/>
@@ -132,7 +132,7 @@
 		<image name="mb_recovery" filename="mb_recovery" retainaspect="1"/>
 		<image name="mb_flashlight_on" filename="mb_flashlight_on" retainaspect="1"/>
 		<image name="mb_flashlight_color_on" filename="mb_flashlight_color_on" retainaspect="1"/>
-		<image name="wolf_kernel_scale" filename="wolf_kernel_scale" retainaspect="1"/>
+		<image name="fox_kernel_scale" filename="fox_kernel_scale" retainaspect="1"/>
 		<image name="mb_bootloader" filename="mb_bootloader" retainaspect="1"/>
 		<image name="mb_theme" filename="mb_theme" retainaspect="1"/>
 		<image name="mb_poweroff" filename="mb_poweroff" retainaspect="1"/>
@@ -303,17 +303,17 @@
 		<variable name="fox_debug" value="0" persist="1"/> <!-- Enable this variables to activate persist debug mode -->
 
 		<!-- Lower led crutch :) -->
-		<variable name="wolf_set_custom_led_restore_green" value="1" persist="1"/>
-		<variable name="wolf_set_custom_led_restore_blue" value="0" persist="1"/>
-		<variable name="wolf_set_custom_led_restore_red" value="0" persist="1"/>
+		<variable name="fox_set_custom_led_restore_green" value="1" persist="1"/>
+		<variable name="fox_set_custom_led_restore_blue" value="0" persist="1"/>
+		<variable name="fox_set_custom_led_restore_red" value="0" persist="1"/>
 
-		<variable name="wolf_set_custom_led_backup_green" value="1" persist="1"/>
-		<variable name="wolf_set_custom_led_backup_blue" value="0" persist="1"/>
-		<variable name="wolf_set_custom_led_backup_red" value="0" persist="1"/>
+		<variable name="fox_set_custom_led_backup_green" value="1" persist="1"/>
+		<variable name="fox_set_custom_led_backup_blue" value="0" persist="1"/>
+		<variable name="fox_set_custom_led_backup_red" value="0" persist="1"/>
 
-		<variable name="wolf_set_custom_led_install_green" value="1" persist="1"/>
-		<variable name="wolf_set_custom_led_install_blue" value="0" persist="1"/>
-		<variable name="wolf_set_custom_led_install_red" value="0" persist="1"/>
+		<variable name="fox_set_custom_led_install_green" value="1" persist="1"/>
+		<variable name="fox_set_custom_led_install_blue" value="0" persist="1"/>
+		<variable name="fox_set_custom_led_install_red" value="0" persist="1"/>
 
 		<variable name="screen_w" value="1080"/>
 		<variable name="screen_h" value="1920"/>
@@ -814,7 +814,7 @@
 				<condition var1="navbar_accent" var2="0"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
 				<image resource="slideout" highlightresource="slideout_hl"/>
-				<action function="page">wolf_bobs_vagene</action>
+				<action function="page">fox_bobs_vagene</action>
 			</button>
 
 			<button>
@@ -822,7 +822,7 @@
 				<condition var1="navbar_accent" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
 				<image resource="slideout_white" highlightresource="slideout_white_hl"/>
-				<action function="page">wolf_bobs_vagene</action>
+				<action function="page">fox_bobs_vagene</action>
 			</button>
 
 			<button>
@@ -830,7 +830,7 @@
 				<condition var1="navbar_accent" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
 				<image resource="slideout" highlightresource="slideout_hl"/>
-				<action function="page">wolf_bobs_vagene</action>
+				<action function="page">fox_bobs_vagene</action>
 			</button>
 
 			<button>
@@ -838,7 +838,7 @@
 				<condition var1="navbar_accent" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
 				<image resource="slideout_white" highlightresource="slideout_white_hl"/>
-				<action function="page">wolf_bobs_vagene</action>
+				<action function="page">fox_bobs_vagene</action>
 			</button>
 
     		<action>
@@ -876,7 +876,7 @@
 			</text>
 
 			<text style="text_status_fail">
-				<condition var1="wolf_boot_powersave_check" var2="1"/>
+				<condition var1="fox_boot_powersave_check" var2="1"/>
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/>
 				<text>{@simulating=Powersave}</text>
 			</text>
@@ -913,7 +913,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
-          <condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
+          <condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -926,7 +926,7 @@
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
-          <condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
+          <condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -938,7 +938,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
-          			<condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
+          			<condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -950,7 +950,7 @@
 					<condition var1="center_clock" op="=" var2="1"/>
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
-          			<condition var1="wolf_boot_powersave_check" op="=" var2="0"/>
+          			<condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -967,7 +967,7 @@
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/> <!--centered-->
 				<conditions>
 					<condition var1="center_clock" var2="1"/>
-					<condition var1="wolf_boot_powersave_check" op="!=" var2="1"/>
+					<condition var1="fox_boot_powersave_check" op="!=" var2="1"/>
 				</conditions>
 				<text>%tw_time%</text>
 			</text>
@@ -976,7 +976,7 @@
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/> <!--Powersave center clock-->
 				<conditions>
 					<condition var1="center_clock" op="=" var2="1"/>
-					<condition var1="wolf_boot_powersave_check" op="=" var2="1"/>
+					<condition var1="fox_boot_powersave_check" op="=" var2="1"/>
 				</conditions>
 				<text>%tw_time%</text>
 			</text>
@@ -988,7 +988,7 @@
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
-          			<condition var1="wolf_boot_powersave_check" op="=" var2="1"/>
+          			<condition var1="fox_boot_powersave_check" op="=" var2="1"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -1000,7 +1000,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
-          			<condition var1="wolf_boot_powersave_check" op="=" var2="1"/>
+          			<condition var1="fox_boot_powersave_check" op="=" var2="1"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>

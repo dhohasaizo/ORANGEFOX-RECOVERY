@@ -123,8 +123,8 @@ int main(int argc, char **argv)
   gui_init();
   printf("=> Linking mtab\n");
   symlink("/proc/mounts", "/etc/mtab");
-  /*
-  if (TWFunc::Path_Exists("/etc/redwolf.fstab"))
+  /*OrangeFox_Startup
+  if (TWFunc::Path_Exists("/etc/orangefox.fstab"))
     {
       if (TWFunc::Path_Exists("/etc/recovery.fstab"))
 	{
@@ -132,8 +132,8 @@ int main(int argc, char **argv)
 	    ("Renaming regular /etc/recovery.fstab -> /etc/recovery.fstab.bak\n");
 	  rename("/etc/recovery.fstab", "/etc/recovery.fstab.bak");
 	}
-      printf("Moving /etc/redwolf.fstab -> /etc/recovery.fstab\n");
-      rename("/etc/redwolf.fstab", "/etc/recovery.fstab");
+      printf("Moving /etc/orangefox.fstab -> /etc/recovery.fstab\n");
+      rename("/etc/orangefox.fstab", "/etc/recovery.fstab");
     }
    */
   printf("=> Processing recovery.fstab\n");
@@ -196,9 +196,9 @@ int main(int argc, char **argv)
       }
   }
   gui_print("**************************");
-  gui_msg("redwolfms2=[OrangeFox]: Welcome! ^_^");
-  gui_msg(Msg("redwolfms3=[Version]: '{1}'") (RW_VERSION));
-  gui_msg(Msg("redwolfms4=[Build]: {1}") (RW_BUILD));
+  gui_msg("orangefox_msg2=[OrangeFox]: Welcome! ^_^");
+  gui_msg(Msg("orangefox_msg3=[Version]: '{1}'") (RW_VERSION));
+  gui_msg(Msg("orangefox_msg4=[Build]: {1}") (RW_BUILD));
   gui_print("**************************");
   PartitionManager.Mount_By_Path("/cache", false);
 
@@ -414,7 +414,7 @@ int main(int argc, char **argv)
   {
       if (TWFunc::Path_Exists(SCRIPT_FILE_TMP) || TWFunc::Path_Exists(SCRIPT_FILE_CACHE))
        {
-         TWFunc::Start_redwolf();
+         TWFunc::OrangeFox_Startup();
          OpenRecoveryScript::Run_OpenRecoveryScript();
        }
    }
@@ -449,7 +449,7 @@ int main(int argc, char **argv)
 #endif
 
 
-  TWFunc::Start_redwolf();
+  TWFunc::OrangeFox_Startup();
 
 #ifndef TW_OEM_BUILD
   // Check if system has never been changed
@@ -523,11 +523,14 @@ int main(int argc, char **argv)
   DataManager::GetValue("tw_reboot_arg", Reboot_Arg);
   if (Reboot_Arg == "recovery")
     TWFunc::tw_reboot(rb_recovery);
-  else if (Reboot_Arg == "poweroff")
+  else 
+  if (Reboot_Arg == "poweroff")
     TWFunc::tw_reboot(rb_poweroff);
-  else if (Reboot_Arg == "bootloader")
+  else 
+  if (Reboot_Arg == "bootloader")
     TWFunc::tw_reboot(rb_bootloader);
-  else if (Reboot_Arg == "download")
+  else 
+  if (Reboot_Arg == "download")
     TWFunc::tw_reboot(rb_download);
   else
     TWFunc::tw_reboot(rb_system);

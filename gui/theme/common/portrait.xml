@@ -27,7 +27,7 @@
 
 		</page>
 
-		<page name="wolf_set_on_reboot">
+		<page name="fox_set_on_reboot">
 			<template name="body"/>
 
 			<template name="ab_tab"/>
@@ -42,25 +42,25 @@
 
 			<button>
 				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_governors"/>
-				<action function="page">wolf_kernel_settings</action>
+				<image resource="fox_governors"/>
+				<action function="page">fox_kernel_settings</action>
 			</button>
 
 			<image>
 				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_1"/>
+				<image resource="fox_on_boot_1"/>
 			</image>
 
 			<!--button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_traffic_light_2"/>
-				<action function="page">wolf_set_custom_led_color</action>
+				<image resource="fox_traffic_light_2"/>
+				<action function="page">fox_set_custom_led_color</action>
 			</button-->
 
 			<button>
 				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_vibration"/>
-				<action function="page">wolf_led_vibrate_action</action>
+				<action function="page">fox_led_vibrate_action</action>
 			</button>
 
 			<fill color="%text_actionbar%">
@@ -69,70 +69,70 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1_y%"/>
-				<text>{@wolf_setonboot_cptn=Set on boot}</text>
+				<text>{@fox_setonboot_cptn=Set on boot}</text>
 			</text>
 
 			<listbox style="settingslist">
 				<placement x="%col1_x%" y="%row2_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="{@wolf_dmverity_chk=Zip signature verification}">
-					<data variable="wolf_reboot_dm_verity_check"/>
+				<listitem name="{@fox_dmverity_chk=Zip signature verification}">
+					<data variable="fox_reboot_dm_verity_check"/>
 				</listitem>
-				<listitem name="{@wolf_forced_encryption_chk=Reboot after installation is complete}">
-					<data variable="wolf_reboot_forced_encryption_check"/>
+				<listitem name="{@fox_forced_encryption_chk=Reboot after installation is complete}">
+					<data variable="fox_reboot_forced_encryption_check"/>
 				</listitem>
-				<listitem name="{@wolf_enable_debugg_chk=Use rm -rf instead of formatting}">
-					<data variable="wolf_reboot_forced_debugging_check"/>
+				<listitem name="{@fox_enable_debugg_chk=Use rm -rf instead of formatting}">
+					<data variable="fox_reboot_forced_debugging_check"/>
 				</listitem>
-				<listitem name="{@wolf_disable_debugg_chk=Skip MD5 generation during backup}">
-					<data variable="wolf_reboot_disable_debugging_check"/>
+				<listitem name="{@fox_disable_debugg_chk=Skip MD5 generation during backup}">
+					<data variable="fox_reboot_disable_debugging_check"/>
 				</listitem>
-				<listitem name="{@wolf_support_miui_install_chk=Simulate actions for theme testing}">
-					<data variable="wolf_reboot_miui_ota_checking_check"/>
+				<listitem name="{@fox_support_miui_install_chk=Simulate actions for theme testing}">
+					<data variable="fox_reboot_miui_ota_checking_check"/>
 				</listitem>
-				<listitem name="{@wolf_save_load_aromafm_config_chk=Simulate failure for actions}">
-					<data variable="wolf_reboot_saveload_aromafm_check"/>
+				<listitem name="{@fox_save_load_aromafm_config_chk=Simulate failure for actions}">
+					<data variable="fox_reboot_saveload_aromafm_check"/>
 				</listitem>
-				<listitem name="{@wolf_hide_backup_folder_chk=Simulate failure for actions}">
-					<data variable="wolf_reboot_hide_backup_folder_check"/>
+				<listitem name="{@fox_hide_backup_folder_chk=Simulate failure for actions}">
+					<data variable="fox_reboot_hide_backup_folder_check"/>
 				</listitem>
 			</listbox>
 
 			<action>
 				<conditions>
 					<condition var1="tw_busy" var2="0"/>
-					<condition var1="wolf_boot_performance_check" var2="0"/>
-					<condition var1="wolf_boot_balance_check" var2="0"/>
-					<condition var1="wolf_boot_powersave_check" var2="0"/>
+					<condition var1="fox_boot_performance_check" var2="0"/>
+					<condition var1="fox_boot_balance_check" var2="0"/>
+					<condition var1="fox_boot_powersave_check" var2="0"/>
 				</conditions>
-				<action function="set">wolf_boot_balance_check=1</action>
+				<action function="set">fox_boot_balance_check=1</action>
 			</action>
 
 
 
 			<action>
         		<condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_boot_performance_check" var2="1"/>
+				<condition var1="fox_boot_performance_check" var2="1"/>
 				<actions>
-					<action function="set">wolf_boot_powersave_check=0</action>
-					<action function="set">wolf_boot_balance_check=0</action>
+					<action function="set">fox_boot_powersave_check=0</action>
+					<action function="set">fox_boot_balance_check=0</action>
        			</actions>
 			</action>
 
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_boot_powersave_check" var2="1"/>
+				<condition var1="fox_boot_powersave_check" var2="1"/>
 				<actions>
-					<action function="set">wolf_boot_performance_check=0</action>
-					<action function="set">wolf_boot_balance_check=0</action>
+					<action function="set">fox_boot_performance_check=0</action>
+					<action function="set">fox_boot_balance_check=0</action>
        			</actions>
 			</action>
 
 			<action>
 	            <condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_boot_balance_check" var2="1"/>
+				<condition var1="fox_boot_balance_check" var2="1"/>
 				<actions>
-					<action function="set">wolf_boot_performance_check=0</action>
-					<action function="set">wolf_boot_powersave_check=0</action>
+					<action function="set">fox_boot_performance_check=0</action>
+					<action function="set">fox_boot_powersave_check=0</action>
        			</actions>
 			</action>
 
@@ -144,11 +144,11 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">wolf_kernel_settings</action>
+				<action function="page">fox_kernel_settings</action>
 			</action>
 		</page>
 
-		<page name="wolf_reboot_no_os">
+		<page name="fox_reboot_no_os">
 
 			<template name="body"/>
 
@@ -164,12 +164,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wolf_no_os_btn=}</text>
+				<text>{@fox_no_os_btn=}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@wolf_no_wolfos_hdr=}</text>
+				<text>{@fox_no_foxos_hdr=}</text>
 			</text>
 
 			<image>
@@ -179,33 +179,33 @@
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="440"/>
-				<text>{@wolf_no_os_wolf_txt1=Do you like to install the TW}</text>
+				<text>{@fox_no_os_fox_txt1=Do you like to install the TW}</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="500"/>
-				<text>{@wolf_no_os_wolf_txt2=It can check for new TWRP versions.}</text>
+				<text>{@fox_no_os_fox_txt2=It can check for new TWRP versions.}</text>
 			</text>
 
           <text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="560"/>
-				<text>{@wolf_no_os_wolf_txt3=It can check for new TWRP versions.}</text>
+				<text>{@fox_no_os_fox_txt3=It can check for new TWRP versions.}</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="620"/>
-				<text>{@wolf_no_os_wolf_txt4=It can check for new TWRP versions.}</text>
+				<text>{@fox_no_os_fox_txt4=It can check for new TWRP versions.}</text>
 			</text>
 
           <text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="680"/>
-				<text>{@wolf_no_os_wolf_txt5=It can check for new TWRP versions.}</text>
+				<text>{@fox_no_os_fox_txt5=It can check for new TWRP versions.}</text>
 			</text>
 
 
 		   <text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@wolf_no_os_wolf_slider_txt=}</text>
+				<text>{@fox_no_os_fox_slider_txt=}</text>
 			</text>
 
 		       <slider>
@@ -249,7 +249,7 @@
 
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@wolf.pass.final_slide=}</text>
+				<text>{@fox.pass.final_slide=}</text>
 			</text>
 
 			<slider>
@@ -293,7 +293,7 @@
 
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@wolf.pass.final_slide=}</text>
+				<text>{@fox.pass.final_slide=}</text>
 			</text>
 
 			<slider>
@@ -1298,7 +1298,7 @@
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-               <text>{@wolf_please_wait=}</text>
+               <text>{@fox_please_wait=}</text>
 			</text>
 
 			<slider>
@@ -1307,7 +1307,7 @@
 					<action function="setpassword">%tw_droid_password_change_xd3%</action>
                     <action function="set">tw_droid_password=%tw_droid_password_change_xd3%</action>
                     <action function="set">tw_droid_password_change_xd3=</action>
-                    <action function="set">wolf_lockpass_checker=1</actions>
+                    <action function="set">fox_lockpass_checker=1</actions>
 					<action function="page">new_pass_finished</action>
 				</actions>
 			</slider>
@@ -1372,7 +1372,7 @@
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-               <text>{@wolf_please_wait=}</text>
+               <text>{@fox_please_wait=}</text>
 			</text>
 
 			<slider>
@@ -1381,7 +1381,7 @@
 				    <action function="setpassword">%tw_droid_password_new2%</action>
                     <action function="set">tw_droid_password=%tw_droid_password_new1%</action>
                     <action function="set">tw_droid_password_new1=</action>
-                    <action function="set">wolf_lockpass_checker=1</actions>
+                    <action function="set">fox_lockpass_checker=1</actions>
 					<action function="page">new_pass_finished</action>
 				</actions>
 			</slider>
@@ -1440,7 +1440,7 @@
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-               	<text>{@wolf_please_wait_del=}</text>
+               	<text>{@fox_please_wait_del=}</text>
 			</text>
 
 			<slider>
@@ -1449,7 +1449,7 @@
 					<action function="removepassword"/>
                     <action function="set">tw_droid_password=dd</action>
                     <action function="set">tw_droid_password_new1=</action>
-                    <action function="set">wolf_lockpass_checker=1</actions>
+                    <action function="set">fox_lockpass_checker=1</actions>
 					<action function="page">new_pass_finished2</action>
 				</actions>
 			</slider>
@@ -1504,7 +1504,7 @@
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-               <text>{@wolf_colour_wait=}</text>
+               <text>{@fox_colour_wait=}</text>
 			</text>
 
 			<slider>
@@ -1603,16 +1603,16 @@
 					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
-					cd "/tmp/redwolf/ramdisk/twres";
-					mv "colors.xml" "/tmp/redwolf/ui_temp.xml";
+					cd "/tmp/orangefox/ramdisk/twres";
+					mv "colors.xml" "/tmp/orangefox/ui_temp.xml";
                     cp -r %tw_folder%/* "images";
-					sed "s/%accent%/#%tw_accent%/g" "/tmp/redwolf/ui_temp.xml" &gt; "/tmp/redwolf/ui_temp2.xml";
-					rm -f "/tmp/redwolf/ui_temp.xml";
-					sed "s/%text_actionbar%/#%tw_text_actionbar%/g" "/tmp/redwolf/ui_temp2.xml" &gt; "/tmp/redwolf/ui_temp3.xml";
-					rm -f "/tmp/redwolf/ui_temp2.xml";
-					sed "s/%accent_name%/%tw_accent_name%/g" "/tmp/redwolf/ui_temp3.xml" &gt; "/tmp/redwolf/ui.xml";
-					rm -f "/tmp/redwolf/ui_temp3.xml";
-					mv "/tmp/redwolf/ui.xml" "colors.xml";
+					sed "s/%accent%/#%tw_accent%/g" "/tmp/orangefox/ui_temp.xml" &gt; "/tmp/orangefox/ui_temp2.xml";
+					rm -f "/tmp/orangefox/ui_temp.xml";
+					sed "s/%text_actionbar%/#%tw_text_actionbar%/g" "/tmp/orangefox/ui_temp2.xml" &gt; "/tmp/orangefox/ui_temp3.xml";
+					rm -f "/tmp/orangefox/ui_temp2.xml";
+					sed "s/%accent_name%/%tw_accent_name%/g" "/tmp/orangefox/ui_temp3.xml" &gt; "/tmp/orangefox/ui.xml";
+					rm -f "/tmp/orangefox/ui_temp3.xml";
+					mv "/tmp/orangefox/ui.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
 					<action function="set">accent_name=%tw_accent_name%</action>
@@ -1627,16 +1627,16 @@
 					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
-					cd "/tmp/redwolf/ramdisk/twres";
-					mv "colors.xml" "/tmp/redwolf/ui_temp.xml";
+					cd "/tmp/orangefox/ramdisk/twres";
+					mv "colors.xml" "/tmp/orangefox/ui_temp.xml";
                     cp -r %tw_folder%/* "images";
-					sed "s/%accent%/#%background%/g" "/tmp/redwolf/ui_temp.xml" &gt; "/tmp/redwolf/ui_temp2.xml";
-					rm -f "/tmp/redwolf/ui_temp.xml";
-					sed "s/%text_actionbar%/#%text_light%/g" "/tmp/redwolf/ui_temp2.xml" &gt; "/tmp/redwolf/ui_temp3.xml";
-					rm -f "/tmp/redwolf/ui_temp2.xml";
-					sed "s/%accent_name%/%tw_accent_name%/g" "/tmp/redwolf/ui_temp3.xml" &gt; "/tmp/redwolf/ui.xml";
-					rm -f "/tmp/redwolf/ui_temp3.xml";
-					mv "/tmp/redwolf/ui.xml" "colors.xml";
+					sed "s/%accent%/#%background%/g" "/tmp/orangefox/ui_temp.xml" &gt; "/tmp/orangefox/ui_temp2.xml";
+					rm -f "/tmp/orangefox/ui_temp.xml";
+					sed "s/%text_actionbar%/#%text_light%/g" "/tmp/orangefox/ui_temp2.xml" &gt; "/tmp/orangefox/ui_temp3.xml";
+					rm -f "/tmp/orangefox/ui_temp2.xml";
+					sed "s/%accent_name%/%tw_accent_name%/g" "/tmp/orangefox/ui_temp3.xml" &gt; "/tmp/orangefox/ui.xml";
+					rm -f "/tmp/orangefox/ui_temp3.xml";
+					mv "/tmp/orangefox/ui.xml" "colors.xml";
 					</action>
 					<action function="wlfx"/>
 					<action function="set">accent_name=%tw_accent_name%</action>
@@ -1681,7 +1681,7 @@
 				<text></text>
 				<data name="tw_droid_password" mask="*" maskvariable="tw_heslo_display"/>
 				<restrict minlen="3" maxlen="128"/>
-				<action function="page">wolf_lockpass_checker</action>
+				<action function="page">fox_lockpass_checker</action>
 			</input>
 
 			<fill color="%accent%">
@@ -1731,7 +1731,7 @@
 			</text>
 
 			<action>
-				<condition var1="wolf_lockpass_checker" var2="1"/>
+				<condition var1="fox_lockpass_checker" var2="1"/>
 				<action function="page">main2</action>
 			</action>
 
@@ -1757,14 +1757,14 @@
 			</action>
 		</page>
 
-		<page name="wolf_lockpass_checker">
+		<page name="fox_lockpass_checker">
 
 			<action>
 				<condition var1="heslo"  op="=" var2="tw_droid_password"/>
 				<actions>
 					<action function="set">tw_has_mtp=1</actions>
 					<action function="set">tw_mtp_enabled=1</actions>
-					<action function="set">wolf_lockpass_checker=1</actions>
+					<action function="set">fox_lockpass_checker=1</actions>
 					<action function="startmtp"/>
 					<action function="page">main2</action>
 				</actions>
@@ -2077,7 +2077,7 @@
 					<action function="queueclear"/>
 					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
 					<action function="set">rw_inject_after_zip=0</action>
-					<action function="set">wolf_install_built_in_zip=1</action>
+					<action function="set">fox_install_built_in_zip=1</action>
 					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
 					<action function="set">tw_signed_zip_verify=0</action>
 					<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
@@ -2448,12 +2448,12 @@
 					<action function="queueclear"/>
 					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
 					<action function="set">rw_inject_after_zip=0</action>
-					<action function="set">wolf_install_built_in_zip=1</action>
+					<action function="set">fox_install_built_in_zip=1</action>
 					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
 					<action function="set">tw_signed_zip_verify=0</action>
 					<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
 					<action function="set">tw_screen_timeout_secs=0</action>
-					<action function="set">wolf_aromafm=1</action>
+					<action function="set">fox_aromafm=1</action>
 					<action function="set">tw_filename=%rw_resource_dir%/AromaFM/AromaFM.zip</action>
 					<action function="queuezip"/>
 					<action function="flash">flash_zip</action>
@@ -2743,7 +2743,7 @@
 			<text style="text_body2">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<placement x="250" y="1600"/>
-				<text>%tw_version% | {@wolf_actual_build=Actual build}: %rw_actual_build%</text>
+				<text>%tw_version% | {@fox_actual_build=Actual build}: %rw_actual_build%</text>
 			</text>
 
 		</page>
@@ -2821,7 +2821,7 @@
 				<listitem name="{@skip_digest_backup_chk=Skip Digest generation during backup}">
 					<data variable="tw_skip_digest_generate"/>
 				</listitem>
-				<listitem name="{@wolf_reboot_restore_finish_chk=}">
+				<listitem name="{@fox_reboot_restore_finish_chk=}">
 					<data variable="rw_reboot_after_restore"/>
 				</listitem>
 				<listitem name="{@restore_enable_digest_chk=Enable Digest verification of backup files}">
@@ -2830,8 +2830,8 @@
 				<listitem name="{@disable_backup_space_chk=Disable free space check before backup}">
 					<data variable="tw_disable_free_space"/>
 				</listitem>
-				<listitem name="{@wolf_no_os_engine=}">
-					<data variable="wolf_noos_engine"/>
+				<listitem name="{@fox_no_os_engine=}">
+					<data variable="fox_noos_engine"/>
 				</listitem>
 				<listitem name="{@sha2_chk=Use SHA2 for hashing}">
 					<condition var1="tw_no_sha2" var2="0"/>
@@ -3112,7 +3112,7 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x%" y="1100"/>
-				<text>{@wolf_install_vibrate=}: %wolf_data_install_vibrate%</text>
+				<text>{@fox_install_vibrate=}: %fox_data_install_vibrate%</text>
 			</text>
 
 			<slidervalue>
@@ -3121,12 +3121,12 @@
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
 				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
-				<data variable="wolf_data_install_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
+				<data variable="fox_data_install_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
 
 			<text style="text_body2">
 				<placement x="%col1_x%" y="1320"/>
-				<text>{@wolf_backup_vibrate=}: %wolf_data_backup_vibrate%</text>
+				<text>{@fox_backup_vibrate=}: %fox_data_backup_vibrate%</text>
 			</text>
 
 			<slidervalue>
@@ -3135,12 +3135,12 @@
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
 				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
-				<data variable="wolf_data_backup_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
+				<data variable="fox_data_backup_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
 
 			<text style="text_body2">
 				<placement x="%col1_x%" y="1540"/>
-				<text>{@wolf_restore_vibrate=}: %wolf_data_restore_vibrate%</text>
+				<text>{@fox_restore_vibrate=}: %fox_data_restore_vibrate%</text>
 			</text>
 
 			<slidervalue>
@@ -3149,7 +3149,7 @@
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
 				<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
-				<data variable="wolf_data_restore_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
+				<data variable="fox_data_restore_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
 
 			<action>
@@ -3259,7 +3259,7 @@
 			</action>
 		</page>
 
-		<page name="wolf_system_settings">
+		<page name="fox_system_settings">
 
 			<template name="body"/>
 
@@ -3275,19 +3275,19 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@redwolf_settings=}</text>
+				<text>{@orangefox_settings=}</text>
 			</text>
 
 			<button style="btn_raised_hl">
 				<placement x="1053" y="1410" placement="1"/>
-				<text>{@wolf_backupfolder_btn=}</text>
-				<action function="page">wolf_backup_name_set1</action>
+				<text>{@fox_backupfolder_btn=}</text>
+				<action function="page">fox_backup_name_set1</action>
 			</button>
 
 			<button style="btn_raised_hl">
 				<placement x="1053" y="1560" placement="1"/>
-				<text>{@wolf_nightmode=}</text>
-				<action function="page">wolf_night_mode</action>
+				<text>{@fox_nightmode=}</text>
+				<action function="page">fox_night_mode</action>
 			</button>
 
          	<action>
@@ -3321,12 +3321,12 @@
 
 			<image>
 				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_1"/>
+				<image resource="fox_on_boot_1"/>
 			</image>
 
 			<button>
 				<placement x="540" y="%tab_y%" placement="4"/>
-				<image resource="wolf_governors"/>
+				<image resource="fox_governors"/>
 				<action function="page">fox_menu2</action>
 			</button>
 
@@ -3368,7 +3368,7 @@
 					<action function="set">tw_filename=%fox_home_files_dir%/SuperSU.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_menu</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1=SuperSU</action>
 					<action function="set">fox_flash_txt2={@fox_comm_su_txt2}</action>
@@ -3386,7 +3386,7 @@
 					<action function="set">tw_filename=%fox_home_files_dir%/unrootsupersu.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1={@fox_comm_rm_su_txt1}</action>
 					<action function="set">fox_flash_txt2={@fox_comm_rm_su_txt2}</action>
@@ -3408,7 +3408,7 @@
 					<action function="set">tw_filename=%fox_home_files_dir%/Magisk.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_menu</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1={@fox_magisk_txt1}</action>
 					<action function="set">fox_flash_txt2={@fox_magisk_txt2}</action>
@@ -3425,7 +3425,7 @@
 					<action function="set">tw_filename=%fox_home_files_dir%/unrootmagisk.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1={@fox_comm_rm_mg_txt1}</action>
 					<action function="set">fox_flash_txt2={@fox_comm_rm_mg_txt2}</action>
@@ -3447,7 +3447,7 @@
 					<action function="set">tw_filename=%fox_home_files_dir%/GoogleSans.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1=GoogleSans</action>
 					<action function="set">fox_flash_txt2={@fox_comm_gs_txt2}</action>
@@ -3464,7 +3464,7 @@
 					<action function="set">tw_filename=/FFiles/OF_initd/OF_initd.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1=Initd support</action>
 					<action function="set">fox_flash_txt2={@fox_comm_initd_txt2}</action>
@@ -3480,7 +3480,7 @@
 					<action function="set">tw_filename=%fox_home_files_dir%/Camera2Api.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_community</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1={@fox_comm_cam_txt1}</action>
 					<action function="set">fox_flash_txt2={@fox_comm_cam_txt2}</action>
@@ -3497,7 +3497,7 @@
 					<action function="set">tw_filename=%fox_home_files_dir%/PassReset.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=fox_menu</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1={@fox_dellp_txt1}</action>
 					<action function="set">fox_flash_txt2={@fox_dellp_txt2}</action>
@@ -3580,12 +3580,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wolf_theme_splash_wolf_hdr=Change TWRP Splash}</text>
+				<text>{@fox_theme_splash_fox_hdr=Change TWRP Splash}</text>
 			</text>
 
 			<button>
 				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_2"/>
+				<image resource="fox_on_boot_2"/>
 				<action function="page">fox_ui</action>
 			</button>
 
@@ -3597,7 +3597,7 @@
 
 			<button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_traffic_light_2"/>
+				<image resource="fox_traffic_light_2"/>
 				<action function="page">theme_color</action>
 			</button>
 
@@ -3618,32 +3618,32 @@
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
-				<text>{@wolf_theme_splash_wolf_txt1=}</text>
+				<text>{@fox_theme_splash_fox_txt1=}</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
-				<text>{@wolf_theme_splash_wolf_txt2=}</text>
+				<text>{@fox_theme_splash_fox_txt2=}</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
-				<text>{@wolf_theme_splash_wolf_txt3=}</text>
+				<text>{@fox_theme_splash_fox_txt3=}</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
-				<text>{@wolf_theme_splash_wolf_txt4=}</text>
+				<text>{@fox_theme_splash_fox_txt4=}</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
-				<text>{@wolf_theme_splash_wolf_txt5=}</text>
+				<text>{@fox_theme_splash_fox_txt5=}</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row4_1_y%"/>
-				<text>{@wolf_theme_splash_wolf_txt6=}</text>
+				<text>{@fox_theme_splash_fox_txt6=}</text>
 			</text>
 
 
@@ -3696,7 +3696,7 @@
 					</conditions>
 				    <actions>
 					<action function="changesplash"/>
-					<action function="page">wolf_theme_splash_wolf_finish</action>
+					<action function="page">fox_theme_splash_fox_finish</action>
 					</actions>
 			</slider>
 
@@ -3726,7 +3726,7 @@
 			</action>
 		</page>
 
-		<page name="wolf_restore_wolf_stock_splash">
+		<page name="fox_restore_fox_stock_splash">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -3749,25 +3749,25 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wolf_restore_wolf_splash_1=}</text>
+				<text>{@fox_restore_fox_splash_1=}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@wolf1_restore_splash_wolf_2=}</text>
+				<text>{@fox1_restore_splash_fox_2=}</text>
 			</text>
 
 			<text style="caption">
 				<condition var1="tw_busy" var2="0"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-               <text>{@wolf_restore_wolf_splash_conf=}</text>
+               <text>{@fox_restore_fox_splash_conf=}</text>
 			</text>
 
 			<text color="%accent%">
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-               <text>{@wolf_restore_splash_wolf=}</text>
+               <text>{@fox1fox_restore_splash=}</text>
 			</text>
 
 			<slider>
@@ -3775,7 +3775,7 @@
 				<actions>
 					<action function="wlfw"/>
 					<action function="cmd">
-                    cp -f "/tmp/redwolf/ramdisk/twres/images/splash_stock.png" "/tmp/redwolf/ramdisk/twres/images/splash.png";
+                    cp -f "/tmp/orangefox/ramdisk/twres/images/splash_stock.png" "/tmp/orangefox/ramdisk/twres/images/splash.png";
 					</action>
 					<action function="wlfx"/>
 					<action function="page">set_color_finish</action>
@@ -3961,7 +3961,7 @@
 
 			<button>
 				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_2"/>
+				<image resource="fox_on_boot_2"/>
 				<action function="page">fox_ui</action>
 			</button>
 
@@ -3973,7 +3973,7 @@
 
 			<image>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_traffic_light_1"/>
+				<image resource="fox_traffic_light_1"/>
 			</image>
 
 			<button>
@@ -4958,7 +4958,7 @@
 				<condition var1="tw_operation_state" var2="1"/>
 				<actions>
 					<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
-					<action function="set">wolf_install_built_in_zip=0</action>
+					<action function="set">fox_install_built_in_zip=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
 					<action function="set">tw_screen_timeout_secs=%tw_screen_timeout_temp%</action>
 					<action function="set">fox_aromafm=0</action>
@@ -5420,7 +5420,7 @@
 				<action function="set">tw_cancel_param=</action>
 				<action function="set">tw_show_exclamation=0</action>
 				<action function="set">tw_show_reboot=0</action>
-				<action function="set">wolf_install_built_in_zip=0</action>
+				<action function="set">fox_install_built_in_zip=0</action>
 				<action function="page">%tw_clear_destination%</action>
 			</action>
 		</page>
@@ -6898,7 +6898,7 @@
 
 			<action>
 	            <conditions>
-	            <condition var1="wolf_noos_engine" var2="0"/>
+	            <condition var1="fox_noos_engine" var2="0"/>
 				<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
 				</conditions>
 				<action function="page">appcheck</action>
@@ -6906,14 +6906,14 @@
 
           <action>
 	            <conditions>
-	            <condition var1="wolf_noos_engine" var2="1"/>
+	            <condition var1="fox_noos_engine" var2="1"/>
 				<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
 				</conditions>
 				<actions>
 					<action function="mount">system</action>
 				    <action function="set">tw_filecheck=/system/build.prop</action>
 					<action function="set">tw_existpage=appcheck</action>
-					<action function="set">tw_notexistpage=wolf_reboot_no_os</action>
+					<action function="set">tw_notexistpage=fox_reboot_no_os</action>
 					<action function="page">filecheck</action>
 				</actions>
 			</action>
@@ -6922,21 +6922,21 @@
 
 			<action>
 	            <conditions>
-	            <condition var1="wolf_noos_engine" var2="0"/>
+	            <condition var1="fox_noos_engine" var2="0"/>
 				<condition var1="tw_backup_system_size" op="&lt;" var2="%tw_min_system%"/>
 				</conditions>
-				<action function="page">wolf_reboot_no_os</action>
+				<action function="page">fox_reboot_no_os</action>
 			</action>
 
           <action>
 	            <conditions>
-	            <condition var1="wolf_noos_engine" var2="1"/>
+	            <condition var1="fox_noos_engine" var2="1"/>
 				<condition var1="tw_backup_system_size" op="&lt;" var2="%tw_min_system%"/>
 				</conditions>
 				<actions>
 				    <action function="set">tw_filecheck=/system/build.prop</action>
 					<action function="set">tw_existpage=appcheck</action>
-					<action function="set">tw_notexistpage=wolf_reboot_no_os</action>
+					<action function="set">tw_notexistpage=fox_reboot_no_os</action>
 					<action function="page">filecheck</action>
 				</actions>
 			</action>
@@ -7202,7 +7202,7 @@
 			</action>
 		</page>
 
-		<page name="wolf_backup_finish">
+		<page name="fox_backup_finish">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -7217,12 +7217,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wolf_backup_name_finish1=}</text>
+				<text>{@fox_backup_name_finish1=}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@wolf_backup_name_finish2=}</text>
+				<text>{@fox_backup_name_finish2=}</text>
 			</text>
 
 			<text style="caption">
@@ -7235,7 +7235,7 @@
 				<condition var1="tw_busy" var2="1"/>
 				<font resource="subhead"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@wolf_colour_wait=}</text>
+				<text>{@fox_colour_wait=}</text>
 			</text>
 
 			<slider>
@@ -9206,17 +9206,17 @@
 
 			<button>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
-				<image resource="wolf_broom"/>
+				<image resource="fox_broom"/>
 				<actions>
 					<action function="set">rw_reboot_after_restore=0</action>
 					<action function="set">tw_back=restore</action>
 					<action function="set">tw_action=cmd</action>
 					<action function="set">tw_action_param=if [ -d "%tw_backups_folder%" ]; then cd %tw_backups_folder% &amp;&amp; rm -rf *; fi;</action>
-					<action function="set">tw_text1={@wolf_del_backup_confirm=Delete Backup?}</action>
+					<action function="set">tw_text1={@fox_del_backup_confirm=Delete Backup?}</action>
 					<action function="set">tw_text2=</action>
 					<action function="set">tw_text4={@del_backup_confirm2=This cannot be undone!}</action>
-					<action function="set">tw_action_text1={@wolf_deleting_backup=Deleting Backups...}</action>
-					<action function="set">tw_complete_text1={@wolf_backup_deleted=Backups deleted}</action>
+					<action function="set">tw_action_text1={@fox_deleting_backup=Deleting Backups...}</action>
+					<action function="set">tw_complete_text1={@fox_backup_deleted=Backups deleted}</action>
 					<action function="set">tw_slider_text={@swipe_delete=Swipe to Delete}</action>
 					<action function="page">deletebackup</action>
 				</actions>
@@ -9558,7 +9558,7 @@
 
 			<checkbox style="checkbox_big">
 				<placement x="%col1_x%" y="%row6_3a_y%"/>
-				<text>{@wolf_reboot_restore_finish_chk=Enable Digest Verification of Backup Files}</text>
+				<text>{@fox_reboot_restore_finish_chk=Enable Digest Verification of Backup Files}</text>
 				<data variable="rw_reboot_after_restore"/>
 			</checkbox>
 
@@ -9932,7 +9932,7 @@
 			</action>
 		</page>
 
-		<page name="wolf_restore_action_page">
+		<page name="fox_restore_action_page">
 			<template name="body"/>
 
 			<template name="progress_bar"/>
@@ -11092,7 +11092,7 @@
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
 				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
-				<text>{@wolf_fm_unzip_btn=Unzip}</text>
+				<text>{@fox_fm_unzip_btn=Unzip}</text>
 			</text>
 
 			<button style="bs_btn">
@@ -11100,7 +11100,7 @@
 				<placement x="%col1_x%" y="%bs_row5_y%" w="%content_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_command=unzip -o</action>
-					<action function="set">tw_fm_text1={@wolf_fm_unzip_btn=Unzip}</action>
+					<action function="set">tw_fm_text1={@fox_fm_unzip_btn=Unzip}</action>
 					<action function="set">tw_fm_text2=</action>
 					<action function="set">tw_fm_text3=</action>
 					<action function="set">tw_include_text3=1</action>
@@ -12464,7 +12464,7 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
-				<text>@MrYacha ({@wolf_about_telegram_account=})</text>
+				<text>@MrYacha ({@fox_about_telegram_account=})</text>
 			</text>
 
 			<image>
@@ -12514,7 +12514,7 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1560"/>
-				<text>%tw_version% | {@wolf_actual_build=Actual build}: %rw_actual_build%</text>
+				<text>%tw_version% | {@fox_actual_build=Actual build}: %rw_actual_build%</text>
 			</text>
 
 			<text style="text_body2">
@@ -12553,7 +12553,7 @@
 			
 			<text style="text_body2">
 				<placement x="250" y="1600"/>
-				<text>%tw_version% | {@wolf_actual_build=Actual build}: %rw_actual_build%</text>
+				<text>%tw_version% | {@fox_actual_build=Actual build}: %rw_actual_build%</text>
 			</text>
 
 			<action>
@@ -13102,7 +13102,7 @@
 			</action>
 		</page>
 
-		<page name="wolf_prebuilt_wolf_not_found">
+		<page name="fox_prebuilt_fox_not_found">
 			<background color="%transparent%"/>
 
 			<image>
@@ -13112,17 +13112,17 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>{@wolf_prebuilt_fox_not_exist_hdr=Change Theme}</text>
+				<text>{@fox_prebuilt_fox_not_exist_hdr=Change Theme}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%storage_indent_x%" y="%db_text2a_y%"/>
-				<text>{@wolf_prebuilt_fox_not_exist_1=The recovery will now reboot}</text>
+				<text>{@fox_prebuilt_fox_not_exist_1=The recovery will now reboot}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%storage_indent_x%" y="%db_text3a_y%"/>
-				<text>{@wolf_prebuilt_fox_not_exist_2=to apply the selected theme.}</text>
+				<text>{@fox_prebuilt_fox_not_exist_2=to apply the selected theme.}</text>
 			</text>
 
 			<button style="btn_dlg_hl">
@@ -13354,7 +13354,7 @@
 				<placement x="%db_right_x%" y="%db_y%"/>
 				<text>{@ok_btn=OK}</text>
 				<actions>
-				<action function="page">wolf_restore_wolf_stock_splash</action>
+				<action function="page">fox_restore_fox_stock_splash</action>
 				<action function="overlay"/>
 				</actions>
 			</button>
@@ -13437,7 +13437,7 @@
 			<background color="#000000"/>
 		</page>
 
-		<page name="wolf_system_settings">
+		<page name="fox_system_settings">
 
 			<template name="body"/>
 
@@ -13453,19 +13453,19 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@redwolf_settings=}</text>
+				<text>{@orangefox_settings=}</text>
 			</text>
 
 			<button style="btn_raised_hl">
 				<placement x="1053" y="1410" placement="1"/>
-				<text>{@wolf_backupfolder_btn=}</text>
-				<action function="page">wolf_backup_name_set1</action>
+				<text>{@fox_backupfolder_btn=}</text>
+				<action function="page">fox_backup_name_set1</action>
 			</button>
 
 			<button style="btn_raised_hl">
 				<placement x="1053" y="1560" placement="1"/>
-				<text>{@wolf_nightmode=}</text>
-				<action function="page">wolf_night_mode</action>
+				<text>{@fox_nightmode=}</text>
+				<action function="page">fox_night_mode</action>
 			</button>
 
 			<action>
@@ -13499,13 +13499,13 @@
 
 			<button>
 				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_2"/>
+				<image resource="fox_on_boot_2"/>
 				<action function="page">fox_menu</action>
 			</button>
 
 			<image>
 				<placement x="540" y="%tab_y%" placement="4"/>
-				<image resource="wolf_kernel_scale"/>
+				<image resource="fox_kernel_scale"/>
 			</image>
 
 			<button>
@@ -13525,14 +13525,14 @@
 
 			<listbox style="listbox">
 				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="{@wolf_boot_performance=Skip MD5 generation during backup}">
-					<data variable="wolf_boot_performance_check"/>
+				<listitem name="{@fox_boot_performance=Skip MD5 generation during backup}">
+					<data variable="fox_boot_performance_check"/>
 				</listitem>
-				<listitem name="{@wolf_boot_powersave=Enable MD5 verification of backup files}">
-					<data variable="wolf_boot_powersave_check"/>
+				<listitem name="{@fox_boot_powersave=Enable MD5 verification of backup files}">
+					<data variable="fox_boot_powersave_check"/>
 				</listitem>
-				<listitem name="{@wolf_boot_balance=Simulate actions for theme testing}">
-					<data variable="wolf_boot_balance_check"/>
+				<listitem name="{@fox_boot_balance=Simulate actions for theme testing}">
+					<data variable="fox_boot_balance_check"/>
 				</listitem>
 			</listbox>
 
@@ -13543,63 +13543,63 @@
 
 			<listbox style="settingslist">
 				<placement x="%col1_x%" y="%row4_1_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="{@wolf_boot_fsync}">
-					<data variable="wolf_boot_fsync_check"/>
+				<listitem name="{@fox_boot_fsync}">
+					<data variable="fox_boot_fsync_check"/>
 				</listitem>
-				<listitem name="{@wolf_boot_fastcharge}">
-					<data variable="wolf_boot_fastcharge_check"/>
+				<listitem name="{@fox_boot_fastcharge}">
+					<data variable="fox_boot_fastcharge_check"/>
 				</listitem>
-				<listitem name="{@wolf_boot_t2w}">
+				<listitem name="{@fox_boot_t2w}">
 					<condition var1="fox_debug" var2="1"/>
-					<data variable="wolf_boot_t2w_check"/>
+					<data variable="fox_boot_t2w_check"/>
 				</listitem>
 				<listitem name="DEBUG MODE">
 					<condition var1="fox_adb" var2="1"/>
 					<data variable="fox_debug"/>
 				</listitem>
-				<listitem name="{@wolf_save_load_aromafm_config_chk=Simulate failure for actions}">
-					<data variable="wolf_reboot_saveload_aromafm_check"/>
+				<listitem name="{@fox_save_load_aromafm_config_chk=Simulate failure for actions}">
+					<data variable="fox_reboot_saveload_aromafm_check"/>
 				</listitem>
 
-				<listitem name="{@wolf_forced_encryption_chk=Reboot after installation is complete}">
+				<listitem name="{@fox_forced_encryption_chk=Reboot after installation is complete}">
 					<condition var1="fox_debug" var2="1"/>
-					<data variable="wolf_reboot_forced_encryption_check"/>
+					<data variable="fox_reboot_forced_encryption_check"/>
 				</listitem>
-				<listitem name="{@wolf_enable_debugg_chk=Use rm -rf instead of formatting}">
+				<listitem name="{@fox_enable_debugg_chk=Use rm -rf instead of formatting}">
 					<condition var1="fox_debug" var2="1"/>
-					<data variable="wolf_reboot_forced_debugging_check"/>
+					<data variable="fox_reboot_forced_debugging_check"/>
 				</listitem>
-				<listitem name="{@wolf_disable_debugg_chk=Skip MD5 generation during backup}">
+				<listitem name="{@fox_disable_debugg_chk=Skip MD5 generation during backup}">
 					<condition var1="fox_debug" var2="1"/>
-					<data variable="wolf_reboot_disable_debugging_check"/>
+					<data variable="fox_reboot_disable_debugging_check"/>
 				</listitem>
-				<listitem name="{@wolf_reboot_disable_secure_boot_chk=Skip MD5 generation during backup}">
+				<listitem name="{@fox_reboot_disable_secure_boot_chk=Skip MD5 generation during backup}">
 					<condition var1="fox_debug" var2="1"/>
-					<data variable="wolf_reboot_disable_secure_boot"/>
+					<data variable="fox_reboot_disable_secure_boot"/>
 				</listitem>
-				<listitem name="{@wolf_reboot_enable_mock_location_chk=Skip MD5 generation during backup}">
+				<listitem name="{@fox_reboot_enable_mock_location_chk=Skip MD5 generation during backup}">
 					<condition var1="fox_debug" var2="1"/>
-					<data variable="wolf_reboot_enable_mock_location"/>
+					<data variable="fox_reboot_enable_mock_location"/>
 				</listitem>
-				<listitem name="{@wolf_reboot_disable_mock_location_chk=Skip MD5 generation during backup}">
+				<listitem name="{@fox_reboot_disable_mock_location_chk=Skip MD5 generation during backup}">
 					<condition var1="fox_debug" var2="1"/>
-					<data variable="wolf_reboot_disable_mock_location"/>
+					<data variable="fox_reboot_disable_mock_location"/>
 				</listitem>
-				<listitem name="{@wolf_reboot_disable_adb_ro_chk=Skip MD5 generation during backup}">
+				<listitem name="{@fox_reboot_disable_adb_ro_chk=Skip MD5 generation during backup}">
 					<condition var1="fox_debug" var2="1"/>
-					<data variable="wolf_reboot_disable_adb_ro"/>
+					<data variable="fox_reboot_disable_adb_ro"/>
 				</listitem>
-				<listitem name="{@wolf_reboot_enable_adb_ro_chk=Skip MD5 generation during backup}">
+				<listitem name="{@fox_reboot_enable_adb_ro_chk=Skip MD5 generation during backup}">
 					<condition var1="fox_debug" var2="1"/>
-					<data variable="wolf_reboot_enable_adb_ro"/>
+					<data variable="fox_reboot_enable_adb_ro"/>
 				</listitem>
-				<listitem name="{@wolf_reboot_disable_secure_ro_chk=Skip MD5 generation during backup}">
+				<listitem name="{@fox_reboot_disable_secure_ro_chk=Skip MD5 generation during backup}">
 					<condition var1="fox_debug" var2="1"/>
-					<data variable="wolf_reboot_disable_secure_ro"/>
+					<data variable="fox_reboot_disable_secure_ro"/>
 				</listitem>
-				<listitem name="{@wolf_reboot_enable_secure_ro_chk=Skip MD5 generation during backup}">
+				<listitem name="{@fox_reboot_enable_secure_ro_chk=Skip MD5 generation during backup}">
 					<condition var1="fox_debug" var2="1"/>
-					<data variable="wolf_reboot_enable_secure_ro"/>
+					<data variable="fox_reboot_enable_secure_ro"/>
 				</listitem>
 			</listbox>
 
@@ -13611,7 +13611,7 @@
 					<action function="set">tw_filename=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
 					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_notexistpage=wolf_prebuilt_wolf_not_found</action>
+					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1={@fox_del_txt1}</action>
 					<action function="set">fox_flash_txt2={@fox_del_txt2}</action>
@@ -13625,70 +13625,70 @@
 			<action>
 				<conditions>
 					<condition var1="tw_busy" var2="0"/>
-					<condition var1="wolf_boot_performance_check" var2="0"/>
-					<condition var1="wolf_boot_balance_check" var2="0"/>
-					<condition var1="wolf_boot_powersave_check" var2="0"/>
+					<condition var1="fox_boot_performance_check" var2="0"/>
+					<condition var1="fox_boot_balance_check" var2="0"/>
+					<condition var1="fox_boot_powersave_check" var2="0"/>
 				</conditions>
-				<action function="set">wolf_boot_balance_check=1</action>
+				<action function="set">fox_boot_balance_check=1</action>
 			</action>
 
 			<action>
 				<condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_boot_performance_check" var2="1"/>
+				<condition var1="fox_boot_performance_check" var2="1"/>
 				<actions>
-					<action function="set">wolf_boot_powersave_check=0</action>
-					<action function="set">wolf_boot_balance_check=0</action>
+					<action function="set">fox_boot_powersave_check=0</action>
+					<action function="set">fox_boot_balance_check=0</action>
 				</actions>
 			</action>
 
 			<action>
 				<condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_boot_powersave_check" var2="1"/>
+				<condition var1="fox_boot_powersave_check" var2="1"/>
 				<actions>
-					<action function="set">wolf_boot_performance_check=0</action>
-					<action function="set">wolf_boot_balance_check=0</action>
+					<action function="set">fox_boot_performance_check=0</action>
+					<action function="set">fox_boot_balance_check=0</action>
 				</actions>
 			</action>
 
 			<action>
 				<condition var1="tw_busy" var2="0"/>
-				<condition var1="wolf_boot_balance_check" var2="1"/>
+				<condition var1="fox_boot_balance_check" var2="1"/>
 				<actions>
-					<action function="set">wolf_boot_performance_check=0</action>
-					<action function="set">wolf_boot_powersave_check=0</action>
+					<action function="set">fox_boot_performance_check=0</action>
+					<action function="set">fox_boot_powersave_check=0</action>
 				</actions>
 			</action>
 
 			<action>
 				<conditions>
-				<condition var1="wolf_reboot_forced_debugging_check" var2="1"/>
-				<condition var1="wolf_reboot_disable_debugging_check" var2="1"/>
+				<condition var1="fox_reboot_forced_debugging_check" var2="1"/>
+				<condition var1="fox_reboot_disable_debugging_check" var2="1"/>
 				</conditions>
-				<action function="set">wolf_reboot_disable_debugging_check=0</action>
+				<action function="set">fox_reboot_disable_debugging_check=0</action>
 			</action>
 
 			<action>
 				<conditions>
-				<condition var1="wolf_reboot_enable_mock_location" var2="1"/>
-				<condition var1="wolf_reboot_disable_mock_location" var2="1"/>
+				<condition var1="fox_reboot_enable_mock_location" var2="1"/>
+				<condition var1="fox_reboot_disable_mock_location" var2="1"/>
 				</conditions>
-				<action function="set">wolf_reboot_disable_mock_location=0</action>
+				<action function="set">fox_reboot_disable_mock_location=0</action>
 			</action>
 
 			<action>
 				<conditions>
-				<condition var1="wolf_reboot_enable_adb_ro" var2="1"/>
-				<condition var1="wolf_reboot_disable_adb_ro" var2="1"/>
+				<condition var1="fox_reboot_enable_adb_ro" var2="1"/>
+				<condition var1="fox_reboot_disable_adb_ro" var2="1"/>
 				</conditions>
-				<action function="set">wolf_reboot_disable_adb_ro=0</action>
+				<action function="set">fox_reboot_disable_adb_ro=0</action>
 			</action>
 
 			<action>
 				<conditions>
-				<condition var1="wolf_reboot_disable_secure_ro" var2="1"/>
-				<condition var1="wolf_reboot_enable_secure_ro" var2="1"/>
+				<condition var1="fox_reboot_disable_secure_ro" var2="1"/>
+				<condition var1="fox_reboot_enable_secure_ro" var2="1"/>
 				</conditions>
-				<action function="set">wolf_reboot_disable_secure_ro=0</action>
+				<action function="set">fox_reboot_disable_secure_ro=0</action>
 			</action>
 
 			<action>
@@ -13723,13 +13723,13 @@
 
 			<button>
 				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_2"/>
+				<image resource="fox_on_boot_2"/>
 				<action function="page">fox_menu</action>
 			</button>
 
 			<button>
 				<placement x="540" y="%tab_y%" placement="4"/>
-				<image resource="wolf_governors"/>
+				<image resource="fox_governors"/>
 				<action function="page">fox_menu2</action>
 			</button>
 
@@ -13794,23 +13794,23 @@
 			<listbox style="settingslist">
 				<condition var1="fox_menu3_info" var2="0"/>
 				<placement x="%col1_x%" y="%row3_1_y%" w="%listbox_w%" h="%row4_2_y%"/>
-				<listitem name="{@wolf_support_miui_ota_chk=}">
-					<data variable="wolf_support_miui_ota"/>
+				<listitem name="{@fox_support_miui_ota_chk=}">
+					<data variable="fox_support_miui_ota"/>
 				</listitem>	
-				<listitem name="{@wolf_include_system_survival_chk}">
-					<data variable="wolf_include_system_survival"/>
+				<listitem name="{@fox_include_system_survival_chk}">
+					<data variable="fox_include_system_survival"/>
 				</listitem>
-				<listitem name="{@wolf_verify_incremental_ota_signature_chk}">
-					<data variable="wolf_verify_incremental_ota_signature"/>
+				<listitem name="{@fox_verify_incremental_ota_signature_chk}">
+					<data variable="fox_verify_incremental_ota_signature"/>
 				</listitem>
-				<listitem name="{@wolf_advanced_stock_recovery}">
-					<data variable="wolf_reboot_advanced_stock_recovery_check"/>
+				<listitem name="{@fox_advanced_stock_recovery}">
+					<data variable="fox_reboot_advanced_stock_recovery_check"/>
 				</listitem>
-				<listitem name="{@wolf_disable_boot_chk}">
-					<data variable="wolf_disable_boot_check"/>
+				<listitem name="{@fox_disable_boot_chk}">
+					<data variable="fox_disable_boot_check"/>
 				</listitem>
-				<listitem name="{@wolf_dmverity_chk}">
-					<data variable="wolf_reboot_dm_verity_check"/>
+				<listitem name="{@fox_dmverity_chk}">
+					<data variable="fox_reboot_dm_verity_check"/>
 				</listitem>
 			</listbox>
 
@@ -13825,12 +13825,12 @@
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@fox_menu3_dis_ota}</text>
 				<actions>
-					<action function="set">wolf_support_miui_ota=0</action>
-					<action function="set">wolf_include_system_survival=0</action>
-					<action function="set">wolf_verify_incremental_ota_signature=0</action>
-					<action function="set">wolf_reboot_advanced_stock_recovery_check=0</action>
-					<action function="set">wolf_disable_boot_check=0</action>
-					<action function="set">wolf_reboot_dm_verity_check=0</action>
+					<action function="set">fox_support_miui_ota=0</action>
+					<action function="set">fox_include_system_survival=0</action>
+					<action function="set">fox_verify_incremental_ota_signature=0</action>
+					<action function="set">fox_reboot_advanced_stock_recovery_check=0</action>
+					<action function="set">fox_disable_boot_check=0</action>
+					<action function="set">fox_reboot_dm_verity_check=0</action>
 				</actions>
 			</button>
 
@@ -13839,12 +13839,12 @@
 				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
 				<text>{@fox_menu3_enb_ota}</text>
 				<actions>
-					<action function="set">wolf_support_miui_ota=1</action>
-					<action function="set">wolf_include_system_survival=1</action>
-					<action function="set">wolf_verify_incremental_ota_signature=0</action>
-					<action function="set">wolf_reboot_advanced_stock_recovery_check=1</action>
-					<action function="set">wolf_disable_boot_check=1</action>
-					<action function="set">wolf_reboot_dm_verity_check=1</action>
+					<action function="set">fox_support_miui_ota=1</action>
+					<action function="set">fox_include_system_survival=1</action>
+					<action function="set">fox_verify_incremental_ota_signature=0</action>
+					<action function="set">fox_reboot_advanced_stock_recovery_check=1</action>
+					<action function="set">fox_disable_boot_check=1</action>
+					<action function="set">fox_reboot_dm_verity_check=1</action>
 				</actions>
 			</button>
 
@@ -13882,7 +13882,7 @@
 		
      		<image>
 				<placement x="0" y="0"/>
-				<image resource="wolf_lock_bg"/>
+				<image resource="fox_lock_bg"/>
 			</image>
 
 			<button>
@@ -14069,7 +14069,7 @@
 					<action function="queueclear"/>
 					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
 					<action function="set">rw_inject_after_zip=0</action>
-					<action function="set">wolf_install_built_in_zip=1</action>
+					<action function="set">fox_install_built_in_zip=1</action>
 					<action function="set">fox_magisk_var=1</action>
 					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
 					<action function="set">tw_signed_zip_verify=0</action>
@@ -14141,7 +14141,7 @@
 			<button>
 			 	<condition var1="tw_busy" var2="0"/>
 				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_on_boot_2"/>
+				<image resource="fox_on_boot_2"/>
 				<action function="page">fox_ui</action>
 			</button>
 
@@ -14154,7 +14154,7 @@
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="wolf_traffic_light_2"/>
+				<image resource="fox_traffic_light_2"/>
 				<action function="page">theme_color</action>
 			</button>
 
@@ -14213,7 +14213,7 @@
 					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd"> 
-					cd "/tmp/redwolf/ramdisk/twres";
+					cd "/tmp/orangefox/ramdisk/twres";
 					cp -r images_orange/* "images"; 
 					cp -r un-white/* "images"; 
 					cp -r dark/*.png "images"
@@ -14238,7 +14238,7 @@
 					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
-					cd "/tmp/redwolf/ramdisk/twres";
+					cd "/tmp/orangefox/ramdisk/twres";
 					cp -r images_orange/* "images"; 
 					cp -r un-white/* "images"; 
 					cp -r black/*.png "images"
@@ -14263,7 +14263,7 @@
 					<action function="set">tw_busy=1</action>
 					<action function="wlfw"/>
 					<action function="cmd">  
-					cd "/tmp/redwolf/ramdisk/twres";
+					cd "/tmp/orangefox/ramdisk/twres";
 					cp -r images_orange/* "images"; 
 					cp -r white/*.png "images"
 					cp -r "white/white.xml" "colors.xml";
@@ -14366,7 +14366,7 @@
 
 				<image>
 					<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
-					<image resource="wolf_on_boot_1"/>
+					<image resource="fox_on_boot_1"/>
 				</image>
 
 				<button>
@@ -14377,7 +14377,7 @@
 
 				<button>
 					<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
-					<image resource="wolf_traffic_light_2"/>
+					<image resource="fox_traffic_light_2"/>
 					<action function="page">theme_color</action>
 				</button>
 

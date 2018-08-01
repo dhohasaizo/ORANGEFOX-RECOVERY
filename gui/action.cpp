@@ -1211,9 +1211,9 @@ void GUIAction::notify_after_install()
   else if (DataManager::GetIntValue("rw_inject_after_zip") != 0)
     {
       string ledcolor, install_vibrate_value;
-      DataManager::GetValue("wolf_data_install_vibrate",
+      DataManager::GetValue("fox_data_install_vibrate",
 			    install_vibrate_value);
-      DataManager::GetValue("wolf_install_led_color", ledcolor);
+      DataManager::GetValue("fox_install_led_color", ledcolor);
       string leds = "/sys/class/leds/";
       string flashbs = leds + ledcolor + "/brightness";
       string flashtime = leds + ledcolor + "/led_time";
@@ -1272,7 +1272,7 @@ int GUIAction::flash(std::string arg)
       notify_after_install();
     }
 
-  DataManager::Vibrate("wolf_data_install_vibrate");
+  DataManager::Vibrate("fox_data_install_vibrate");
   DataManager::Leds(true);
 
   reinject_after_flash();
@@ -1281,7 +1281,7 @@ int GUIAction::flash(std::string arg)
 
   //* DJ9
   DataManager::SetValue(RW_INSTALL_PREBUILT_ZIP, 0); // if we have installed an internal zip, turn off the flag
-  if (Fox_Zip_Installer_Code != 0) // this is a ROM install
+  if (Fox_Zip_Installer_Code != 0) // we have just installed a ROM - really, the user should reboot the recovery
      {
           /*
             //TWFunc::tw_reboot(rb_recovery); // either reboot recovery automatically, or reload fstab
@@ -1398,7 +1398,7 @@ int GUIAction::wipe(std::string arg)
 		      if (!PartitionManager.Wipe_Substratum_Overlays())
 			{
 			  gui_err
-			    ("wolf_substratum_wipe_err=Failed to wipe substratum overlays");
+			    ("fox_substratum_wipe_err=Failed to wipe substratum overlays");
 			  ret_val = false;
 			  break;
 			}
@@ -2599,7 +2599,7 @@ int GUIAction::flashlight(std::string arg __unused)
       if (!TWFunc::Path_Exists(flashpathone))
 	{
 	  gui_err
-	    ("redwolf_flash_not_supported=OrangeFox: Recovery flashlight isn't supported on this device!");
+	    ("orangefox_flash_not_supported=OrangeFox: Recovery flashlight is not supported on this device!");
 	}
       else
 	{
@@ -2654,7 +2654,7 @@ int GUIAction::removepassword(std::string arg __unused)
     {
 	std::string dd = "dd";
   	std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
-	gui_msg ("wolf_remove_access_password_one=Removing recovery access password...");
+	gui_msg ("fox_remove_access_password_one=Removing recovery access password...");
 	//TWFunc::Dumwolf(true, false);
 	if (TWFunc::Unpack_Image("/recovery"))
 	   {
@@ -2668,7 +2668,7 @@ int GUIAction::removepassword(std::string arg __unused)
 	    	}
 	  	else
 	    	{
-	      		LOGERR("Failed to load password engine\n");
+	      		LOGERR("Failed to load password engine - cannot find %s\n", Fox_ramdisk_sbin_dir.c_str());
 	    	}
 	   }
 	   else 
@@ -2688,7 +2688,7 @@ int GUIAction::setpassword(std::string arg)
   else
     {
 	std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
-	gui_msg ("wolf_set_new_access_password=Changing recovery access password...");
+	gui_msg ("fox_set_new_access_password=Changing recovery access password...");
 	//TWFunc::Dumwolf(true, false);
 	if (TWFunc::Unpack_Image("/recovery"))
 	   {
@@ -2702,7 +2702,7 @@ int GUIAction::setpassword(std::string arg)
 	    	}
 	  	else
 	    	{
-	      		LOGERR("Failed to load password engine\n");
+	      		LOGERR("Failed to load password engine - cannot find %s\n", Fox_ramdisk_sbin_dir.c_str());
 	    	}
 	   }
 	   else 
