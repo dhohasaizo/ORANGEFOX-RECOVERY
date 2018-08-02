@@ -13615,6 +13615,12 @@
 				</listitem>
 			</listbox>
 
+			<text style="caption">
+				<condition var1="fox_menu3_info" var2="0"/>
+				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<text>{@fox_menu3_fast_act}</text>
+			</text>
+
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="row8_1_y" />
 				<text>{@fox_del_btn}</text>
@@ -13778,7 +13784,7 @@
 			<text style="text_body2">
 				<condition var1="fox_menu3_info" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
-				<text>OTA Information:</text>
+				<text>{@fox_menu3_info_header}</text>
 			</text>
 
 			<button>
