@@ -380,6 +380,7 @@ protected:
 	int changesplash(std::string arg);
 	int wlfx(std::string arg);
 	int wlfw(std::string arg);
+	int calldeactivateprocess(std::string arg);
 
 	int simulate;
 };

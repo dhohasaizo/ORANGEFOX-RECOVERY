@@ -830,6 +830,8 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue(RW_DISABLE_DM_VERITY, "1");
   mPersist.SetValue(RW_DO_SYSTEM_ON_OTA, "1");
   //  MIUI }
+  mPersist.SetValue(FOX_FORCE_DEACTIVATE_PROCESS, "0");
+
   mPersist.SetValue(RW_REBOOT_AFTER_RESTORE, "0");
   mPersist.SetValue(RW_NO_OS_SEARCH_ENGINE, "1");
   mPersist.SetValue(RW_STUPID_COOKIE_STUFF, "0");
@@ -866,6 +868,7 @@ void DataManager::SetDefaultValues()
   mConst.SetValue(RW_ACTUAL_BUILD_VAR, RW_BUILD);
   mConst.SetValue(RW_TMP_SCRIPT_DIR, Fox_tmp_dir);
   mConst.SetValue(RW_COMPATIBILITY_DEVICE, RW_DEVICE);
+
   // End of the OrangeFox variables
 
   mPersist.SetValue(TW_INSTALL_REBOOT_VAR, "0");

@@ -47,13 +47,15 @@ static const std::string Fox_OTA_info = "/orangefox.info";
 
 static int Fox_Zip_Installer_Code = 0; // 0=standard zip;1=custom ROM;2=miui ROM; 11=custom treble ROM; 22=miui treble ROM
 static int Fox_IsDeactivation_Process_Called = 0; // have we called the deactivation process
-static int Fox_AutoDeactivate_OnReboot = 0; // call the deactivation process automatically on reboot (if not already called by another thread) ?
+static int Fox_AutoDeactivate_OnReboot = 0;   // call the deactivation process automatically on reboot (if not already called by another thread) ?
+static int Fox_Force_Deactivate_Process = 0;  // for a call to Deactivate_Process()
 static int Fox_Current_ROM_IsTreble = 0; // is the currently installed ROM a treble ROM?
 static int Fox_Current_ROM_IsMIUI = 0; // is the currently installed ROM a MIUI ROM?
 
 #define RW_SURVIVAL_FOLDER    Fox_Home.c_str()
 //#define FOX_UPDATE_BINARY  "META-INF/com/google/android/update-binary" // all zip installers must have this
 #define FOX_MIUI_UPDATE_PATH "META-INF/com/miui/miui_update" 	// standard MIUI ROMs have this
+#define FOX_FORCE_DEACTIVATE_PROCESS "fox_force_deactivate_process"
 
 // **** //
 #define RW_SURVIVAL_FOLDER_VAR      "fox_survival_backup_folder_path"

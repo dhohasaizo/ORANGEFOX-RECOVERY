@@ -211,7 +211,7 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(checkforapp);
       ADD_ACTION(togglebacklight);
       ADD_ACTION(disableled);
-
+ 
       // remember actions that run in the caller thread
       for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
 	setActionsRunningInCallerThread.insert(it->first);
@@ -234,8 +234,8 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(decrypt);
       ADD_ACTION(adbsideload);
       ADD_ACTION(openrecoveryscript);
-	ADD_ACTION(installsu);
- 	ADD_ACTION(fixsu);
+      ADD_ACTION(installsu);
+      ADD_ACTION(fixsu);
      
       ADD_ACTION(decrypt_backup);
       ADD_ACTION(repair);
@@ -255,7 +255,8 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(wlfw);
       ADD_ACTION(wlfx);
       ADD_ACTION(changesplash);
-    }
+      ADD_ACTION(calldeactivateprocess);
+   }
 
   // First, get the action
   actions = FindNode(node, "actions");
@@ -2617,6 +2618,23 @@ int GUIAction::flashlight(std::string arg __unused)
 	  TWFunc::write_to_file(flashpathtwo, flashdisable);
 	  DataManager::SetValue("flashlight", 0);
 	}
+    }
+  operation_end(0);
+  return 0;
+}
+
+int GUIAction::calldeactivateprocess(std::string arg __unused)
+{
+  operation_start("Patch DM-Verity and Forced-Encryption");
+  if (simulate)
+    {
+      	simulate_progress_bar();
+    }
+  else
+    {
+  	Fox_Force_Deactivate_Process = 1;
+  	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
+  	TWFunc::Deactivation_Process();
     }
   operation_end(0);
   return 0;

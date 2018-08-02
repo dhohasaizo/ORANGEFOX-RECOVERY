@@ -534,199 +534,6 @@ void TWFunc::install_htc_dumlock(void)
   gui_msg("done=Done.");
 }
 
-/*
-void TWFunc::Deactivation_Process(void)
-{
-//  std::string tmp = Fox_tmp_dir;
-//  std::string ramdisk = tmp + "/ramdisk";
-  std::string fstab = ramdisk + "/fstab.qcom";
-  std::string default_prop = ramdisk + "/default.prop";
-  std::string dm_verity_prop = "ro.config.dmverity";
-  std::string result;
-  std::string verity_key = ramdisk + "/verity_key";
-  std::string firmware_key = ramdisk + "/sbin/firmware_key.cer";
-  std::string debug = "ro.debuggable";
-  std::string adb_ro = "ro.adb.secure";
-  std::string ro = "ro.secure";
-  std::string mock = "ro.allow.mock.location";
-  std::string miui_secure_boot = "ro.secureboot.devicelock";
-  std::string dm_verity_prop_false = dm_verity_prop + "=false";
-  std::string dm_verity_prop_true = dm_verity_prop + "=true";
-
-
-  // Mount partitions
-  if (!PartitionManager.Mount_By_Path("/sdcard", false))
-     {
-    	LOGERR("Error [Deactivation_Process] cannot mount /sdcard\n");
-    	return;
-     }	
-
-  if (!PartitionManager.Mount_By_Path("/system", false))
-     {
-    	LOGERR("Error [Deactivation_Process] cannot mount /system\n");
-    	return;
-     }	
-
-  // increment value, to show how many times we have called this
-  Fox_IsDeactivation_Process_Called++;
-  
-  // Check AromaFM Config
-  if (DataManager::GetIntValue(RW_SAVE_LOAD_AROMAFM) == 1)
-    {
-      string aromafm_path = Fox_Home;
-      string aromafm_file = aromafm_path + "/aromafm.cfg";
-      if (!Path_Exists(aromafm_path))
-	{
-	  if (mkdir
-	      (aromafm_path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
-	    {
-	      LOGERR("Error making %s directory: %s\n", aromafm_path.c_str(),
-		     strerror(errno));
-	    }
-	}
-      // Save AromaFM config (AromaFM.cfg)
-      if (copy_file(FFiles_dir + "/AromaFM/AromaFM.zip.cfg", aromafm_file, 0644))
-	{
-	  LOGERR("Error copying AromaFM config\n");
-	}
-    }
-
-  // restore the stock recovery ?
-  if (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) == 1)
-    {
-      if (Path_Exists("/system/wlfx0recovery-from-boot.bak0xwlf"))
-	{
-	  rename("/system/wlfx0recovery-from-boot.bak0xwlf",
-		 "/system/recovery-from-boot.p");
-	}
-    }
-
-  // Unpack boot image
- //* TWFunc::Dumwolf(true, true); 
-  if (!Unpack_Image("/boot"))
-     {
-	  LOGERR("Deactivation_Process: Unable to unpack image\n");
-	  return;
-     }
-
-  // dm-verity stuff
-  if (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1)
-    {
-      std::string verity = "verify";
-      std::string one_verity = "," + verity;
-      std::string two_verity = verity + ",";
-      std::string support_scfs = "support_scfs";
-      std::string one_support_scfs = "," + support_scfs;
-      std::string two_support_scfs = support_scfs + ",";
-      TWFunc::Replace_Word_In_File(fstab, one_verity);
-      TWFunc::Replace_Word_In_File(fstab, two_verity);
-      TWFunc::Replace_Word_In_File(fstab, verity);
-      TWFunc::Replace_Word_In_File(fstab, one_support_scfs);
-      TWFunc::Replace_Word_In_File(fstab, two_support_scfs);
-      TWFunc::Replace_Word_In_File(fstab, support_scfs);
-
-      if (TWFunc::CheckWord(default_prop, dm_verity_prop))
-	{
-	  TWFunc::Replace_Word_In_File(default_prop, dm_verity_prop_true,
-				       dm_verity_prop_false);
-	}
-      else
-	{
-	  ofstream File(default_prop.c_str(), std::ios::app);
-	  if (File.is_open())
-	    {
-	      File << dm_verity_prop_false;
-	      File.close();
-	    }
-	}
-
-      if (Path_Exists(verity_key))
-	unlink(verity_key.c_str());
-	
-      if (Path_Exists(firmware_key))
-	unlink(firmware_key.c_str());
-    }
-
-  // Check Forced Encryption
-  if (DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1)
-    {
-      std::string encryptable = "encryptable=";
-      TWFunc::Replace_Word_In_File(fstab, "forceencrypt=", encryptable);
-      TWFunc::Replace_Word_In_File(fstab, "forcefdeorfbe=", encryptable);
-    }
-
-  // Enable Debugging
-  if (DataManager::GetIntValue(RW_ENABLE_DEBUGGING) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, debug, true);
-    }
-
-  // Disable Debugging
-  if (DataManager::GetIntValue(RW_DISABLE_DEBUGGING) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, debug, false);
-    }
-
-  // Advanced stock recovery replace
-  Disable_Stock_Recovery_Replace_Func();
-   
-  // Enable ADB read-only property in the default.prop
-  if (DataManager::GetIntValue(RW_ENABLE_ADB_RO) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, adb_ro, true);
-    }
-
-  // Disable ADB read-only property in the default.prop
-  if (DataManager::GetIntValue(RW_DISABLE_ADB_RO) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, adb_ro, false);
-    }
-
-  // Enable read-only property in the default.prop
-  if (DataManager::GetIntValue(RW_ENABLE_SECURE_RO) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, ro, true);
-    }
-
-  // Disable read-only property in the default.prop
-  if (DataManager::GetIntValue(RW_DISABLE_SECURE_RO) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, ro, false);
-    }
-
-  // Disable secure-boot
-  if (DataManager::GetIntValue(RW_DISABLE_SECURE_BOOT) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, miui_secure_boot, false);
-    }
-
-  // Enable mock_location property
-  if (DataManager::GetIntValue(RW_ENABLE_MOCK_LOCATION) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, mock, true);
-    }
-
-  // Disable mock_location property
-  if (DataManager::GetIntValue(RW_DISABLE_MOCK_LOCATION) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, mock, false);
-    }
-
-  if (Path_Exists(default_prop)) 
-  	chmod(default_prop.c_str(), 0644);
-
-  if (Path_Exists(fstab)) 
-  	chmod(fstab.c_str(), 0640);
-
-  // Create a new boot image
-  //* TWFunc::Dumwolf(false, true); 
-  if (!Repack_Image("/boot"))
-     {
-	  LOGINFO("Unable to repack the boot image - process not finished!\n");
-     }  
-}
-*/
-
 
 void TWFunc::htc_dumlock_restore_original_boot(void)
 {
@@ -1637,6 +1444,7 @@ bool TWFunc::Toggle_MTP(bool enable)
 #endif
 }
 
+
 void TWFunc::SetPerformanceMode(bool mode)
 {
   if (mode)
@@ -1658,10 +1466,14 @@ std::string TWFunc::to_string(unsigned long value)
   return os.str();
 }
 
+
 void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 {
+      if (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) == 1)
+      	return;
+      
       if ((DataManager::GetIntValue(RW_ADVANCED_STOCK_REPLACE) == 1) 
-      &&  (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) != 1))
+      ||  (Fox_Force_Deactivate_Process == 1))
 	{
 	  if (Path_Exists("/system/bin/install-recovery.sh"))
 	    rename("/system/bin/install-recovery.sh",
@@ -1698,24 +1510,24 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 	  if (Path_Exists("/vendor/etc/recovery-resource.dat"))
 	    rename("/vendor/etc/recovery-resource.dat",
 		   "/vendor/etc/wlfx0recovery-resource0xwlf");
-	}
-	
-      if (TWFunc::Path_Exists("/system/recovery-from-boot.p"))
-	{
-	  rename("/system/recovery-from-boot.p",
-		 "/system/wlfx0recovery-from-boot.bak0xwlf");
-	  sync();
-	}
+
+          if (TWFunc::Path_Exists("/system/recovery-from-boot.p"))
+  	     {
+	          rename("/system/recovery-from-boot.p",
+		      "/system/wlfx0recovery-from-boot.bak0xwlf");
+	          sync();
+	     }
+      }
 }
 
 // Disable flashing of stock recovery
 void TWFunc::Disable_Stock_Recovery_Replace(void)
 {
   if (PartitionManager.Mount_By_Path("/system", false))
-    { 
-       Disable_Stock_Recovery_Replace_Func();           
-       PartitionManager.UnMount_By_Path("/system", false);
-    }
+     { 
+         Disable_Stock_Recovery_Replace_Func();           
+         PartitionManager.UnMount_By_Path("/system", false);
+     }
 }
 
 unsigned long long TWFunc::IOCTL_Get_Block_Size(const char *block_device)
@@ -1926,10 +1738,12 @@ int TWFunc::Check_MIUI_Treble(void)
   if (strncmp(fox_is_miui.c_str(), "1", 1) == 0)
      {
   	Fox_Current_ROM_IsMIUI = 1;
-    	/*DataManager::SetValue("fox_verify_incremental_ota_signature", "1");
+    	/*
+    	DataManager::SetValue("fox_verify_incremental_ota_signature", "1");
   	DataManager::SetValue(RW_INCREMENTAL_PACKAGE, "1");
   	DataManager::SetValue(RW_DISABLE_DM_VERITY, "1");
-  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "1"); */
+  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "1"); 
+  	*/
   	gui_print("MIUI ROM");
      } 
   else
@@ -1942,9 +1756,9 @@ int TWFunc::Check_MIUI_Treble(void)
      } 
      
    if (Fox_Current_ROM_IsTreble == 1)
-   	gui_print("(Treble)\n");
+   	gui_print("(Treble)\n\n");
    else
-   	gui_print("(non-Treble)\n");
+   	gui_print("(non-Treble)\n\n");
    	
    return 0;
 }
@@ -3017,10 +2831,13 @@ void TWFunc::Patch_Others(void)
 void TWFunc::Deactivation_Process(void)
 {
 
+  // increment value, to show how many times we have called this
+  Fox_IsDeactivation_Process_Called++;
+
   // Check AromaFM Config
   if (
      (DataManager::GetIntValue(RW_SAVE_LOAD_AROMAFM) == 1)
-  && (!PartitionManager.Mount_By_Path("/sdcard", false))
+  && (PartitionManager.Mount_By_Path("/sdcard", false))
      )
     {
       string aromafm_path = Fox_Home;
@@ -3042,10 +2859,13 @@ void TWFunc::Deactivation_Process(void)
       PartitionManager.UnMount_By_Path("/sdcard", false);
     }
 
+  // advanced stock replace
+  Disable_Stock_Recovery_Replace();
+
   // restore the stock recovery ?
   if (
      (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) == 1)
-  && (!PartitionManager.Mount_By_Path("/system", false))
+  && (PartitionManager.Mount_By_Path("/system", false))
      )
     {
       if (Path_Exists("/system/wlfx0recovery-from-boot.bak0xwlf"))
@@ -3056,61 +2876,54 @@ void TWFunc::Deactivation_Process(void)
       PartitionManager.UnMount_By_Path("/system", false);
     }
 
-  // advanced stock replace
-  Disable_Stock_Recovery_Replace();
+  // unpack boot image
+  if (!Unpack_Image("/boot"))
+     {
+	LOGINFO("Deactivation_Process: Unable to unpack boot image\n");
+	return;
+     }
 
-  // increment value, to show how many times we have called this
-  Fox_IsDeactivation_Process_Called++;
-  
-  // dm-verity and forced encryption
-  if (
-     (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1)
-  || (DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1)  
-     )
-    {
-      if (!Unpack_Image("/boot"))
-	{
-	  LOGINFO("Deactivation_Process: Unable to unpack image\n");
-	  return;
-	}
-	
-      gui_msg(Msg(msg::kProcess, "of_run_process=Starting '{1}' process")
-	      ("OrangeFox"));
-      
-      if (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1)
-	{
+  gui_msg(Msg(msg::kProcess, "of_run_process=Starting '{1}' process")
+      ("OrangeFox"));
+        
+  // dm-verity 
+  if ((DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
+     {
 	  DataManager::SetValue(RW_DISABLE_FORCED_ENCRYPTION, 1);
 	  if (Patch_DM_Verity())
-	    gui_msg("of_dm_verity=Successfully patched DM-Verity");
+	      gui_msg("of_dm_verity=Successfully patched DM-Verity");
 	  else
-	    gui_msg("of_dm_verity_off=DM-Verity is not enabled");
-	}
-      
-      if (DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1)
-	{
+	      gui_msg("of_dm_verity_off=DM-Verity is not enabled");
+     }
+  
+  // forced encryption    
+  if ((DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
+     {
 	  if (Patch_Forced_Encryption())
-	    gui_msg("of_encryption=Successfully patched forced encryption");
+	       gui_msg("of_encryption=Successfully patched forced encryption");
 	  else
-	    gui_msg("of_encryption_off=Forced Encryption is not enabled");
-	}
+	       gui_msg("of_encryption_off=Forced Encryption is not enabled");
+     }
 
-      // save other stuff (probably move this elsewhere - riding on the unpacking of the image)
-      Patch_Others();
-      //
-      
-      if (!Repack_Image("/boot"))
-	{
-	  gui_msg(Msg
-		  (msg::kProcess,
-		   "of_run_process_fail=Unable to finish '{1}' process")
-		  ("OrangeFox"));
-	  return;
-	}
-	
-      gui_msg(Msg(msg::kProcess, "of_run_process_done=Finished '{1}' process")
-	      ("OrangeFox"));
-      return;
-    }
+
+  // other stuff
+  Patch_Others();
+
+  // repack the boot image
+  if (!Repack_Image("/boot"))
+     {
+	gui_msg(Msg
+	  (msg::kProcess, "of_run_process_fail=Unable to finish '{1}' process")
+	  ("OrangeFox"));
+     }
+  else
+        gui_msg(Msg(msg::kProcess, "of_run_process_done=Finished '{1}' process")
+	  ("OrangeFox"));
+
+  // reset "force" stuff  
+  Fox_Force_Deactivate_Process = 0;
+  DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
+
 }
 
 #endif // ifndef BUILD_TWRPTAR_MAIN
