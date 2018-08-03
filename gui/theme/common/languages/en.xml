@@ -60,10 +60,10 @@
 		<string name="install_select_file_btn">SELECT FILE</string>
 		<string name="adb_sideload_btn">ADB Sideload</string>
 		<string name="select_storage_hdr">Select Storage</string>
-		<string name="select_storage_btn">SELECT STORAGE</string>
+		<string name="select_storage_btn">Select Storage</string>
 		<string name="queue_hdr">Queue</string>
-		<string name="raised_clearqueue_btn">CLEAR QUEUE</string>
-		<string name="raised_viewqueue_btn">VIEW QUEUE</string>
+		<string name="raised_clearqueue_btn">Clear queue</string>
+		<string name="raised_viewqueue_btn">View queue</string>
 		<string name="zip_queue_count">%tw_zip_queue_count% of max of 10 Files queued</string>
 		<string name="folder">Folder</string>
 		<string name="file">File</string>
@@ -78,7 +78,7 @@
 		<string name="successful">Successful</string>
 		<string name="wipe_cache_btn">WIPE CACHES</string>
 		<string name="reboot_system_btn">REBOOT SYSTEM</string>
-		<string name="reboot_recovery_btn">REBOOT RECOVERY</string>
+		<string name="reboot_recovery_btn">Reboot recovery</string>
 		<string name="install_sel_target">Select Target Partition</string>
 		<string name="flash_image_select">Partition</string>
 		<string name="flashing_image">Flashing Image...</string>

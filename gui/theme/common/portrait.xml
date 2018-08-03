@@ -2934,12 +2934,12 @@
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row2_1_y%"/>
+				<placement x="%col1_x%" y="%row1_3_y%"/>
 				<text>{@sel_tz_list=Time Zone}</text>
 			</text>
 
 			<listbox>
-				<placement x="%col1_x%" y="%row2_2_y%" w="%listbox_tz_width%" h="%listbox_tz_height%"/>
+				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_tz_width%" h="%listbox_tz_height%"/>
 				<data name="tw_time_zone_guisel"/>
 				<listitem name="{@utcm11=(UTC -11) Samoa, Midway Island}">BST11;BDT</listitem>
 				<listitem name="{@utcm10=(UTC -10) Hawaii}">HST10;HDT</listitem>
@@ -2968,18 +2968,18 @@
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row6_1a_y%"/>
+				<placement x="%col1_x%" y="%row6_2_y%"/>
 				<text>{@options_cptn=Options}</text>
 			</text>
 
 			<checkbox style="checkbox_big">
-				<placement x="%col1_x%" y="%row6_2a_y%"/>
+				<placement x="%col1_x%" y="%row6_3_y%"/>
 				<text>{@use_dst_chk=Use daylight savings time (DST)}</text>
 				<data variable="tw_time_zone_guidst"/>
 			</checkbox>
 
 			<checkbox style="checkbox_big">
-				<placement x="%col1_x%" y="%row7_1_y%"/>
+				<placement x="%col1_x%" y="%row7_1a_y%"/>
 				<text>{@use24clock_chk=Use 24-hour clock}</text>
 				<data variable="tw_military_time"/>
 			</checkbox>
@@ -3385,7 +3385,7 @@
 				</actions>
 			</button>
 
-			<button style="btn_raised_warn">
+			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
 				<text>{@fox_comm_del}</text>
 				<actions>
@@ -3424,7 +3424,7 @@
 				</actions>
 			</button>
 
-			<button style="btn_raised_warn">
+			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row4_2_y%" placement="1"/>
 				<text>{@fox_comm_del}</text>
 				<actions>
