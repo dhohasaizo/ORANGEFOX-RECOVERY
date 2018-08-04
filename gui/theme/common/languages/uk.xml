@@ -1068,100 +1068,144 @@
 	<string name="fox_include_system_survival_chk">Включити систему в OTA survival</string>
 	<string name="fox_verify_incremental_ota_signature_chk">Перевірка підпису Incremental OTA</string>
 
-	<!--OrangeFox Recovery Project-->
-	 	<!-- <string name=""></string> -->
-
-	 	<string name="fox_menu_flash">Orange!</string>
-	 	<string name="fox_menu_delpass">Видалити пароль</string>
-	 	<string name="fox_menu_navigation">Навігація</string>
-	 	<string name="fox_m_other">Інші параметри</string>
-	 	<string name="fox_dell_pass">Сброс пароля прошивки</string>
+		<!-- OrangeFox -->
+		<!-- Translated by JustPlayboy_ua -->
+		<string name="fox_menu_flash">Orange!</string>
+		<string name="fox_menu_delpass">Видалити пароль</string>
+		<string name="fox_menu_navigation">Навігація</string>
+		<string name="fox_m_other">Інші налаштування</string>
 		<string name="fox_menu_comm">Скрипти спільноти</string>
 		<string name="fox_menu_splash">Змінити сплеш</string>
+		<string name="fox_menu_theme">UI Центр</string>
 		<string name="fox_menu_pass_h">Видалити пароль прошивки</string>
 		<string name="fox_menu_pass">Від DarthJabba9</string>
-		<string name="fox_lock_btn">Разблокування кнопкой</string>
+		<string name="fox_lock_btn">Розблокування кнопкою</string>
+		<string name="fox_menu_adb_on">ADB: увім.</string>
+		<string name="fox_menu_adb_off">ADB: вимк.</string>
+		<string name="ico_btn_mode_txt">Квадратні кнопки-іконки на головній</string>
 
-		<string name="fox_slider_magisk">Проведіть щоб встановити Magisk</string>
-		<string name="fox_slider_pass">Проведіть щоб видалити пароль прошивки</string>
-		<string name="fox_slider_supersu">Проведіть щоб встановити SuperSU</string>
+		<string name="fix_contexts_btn">Змінити SELinux</string>
 
-		<string name="fox_dialog_special_actions_1">Будь ласка, не міняйте нічого без</string>
-		<string name="fox_dialog_special_actions_2">гарного розуміння цих параметрів!</string>
+		<string name="of_menu_tlt">OrangeFox меню</string>
 
-		<string name="fox_no_os_engine">Покращенний NO OS Движок</string>
-		<string name="sha2_chk">SHA2 для хешування</string>
+		<string name="fox_menu_other">Інші</string>
+		<string name="fox_menu_nav">Навігація</string>
 
-	 	<string name="fox_redwolf">За розробку RedWolf й</string>
-	 	<string name="fox_rey">Vince розрабник</string>
-	 	<string name="fox_kirill">За графіу, Photoshop гуру</string>
+		<string name="fox_menu3_i1">Вітаю в OrangeFox OTA!</string>
+		<string name="fox_menu3_i2">Натисніть на кнопку для справки</string>
+		<string name="fox_menu3_ota_sett">OTA Параметри</string>
+		<string name="fox_menu3_fast_act">Швидкі дії</string>
+		<string name="fox_menu3_dis_ota">Вимкнути OTA</string>
+		<string name="fox_menu3_enb_ota">Увімкнути OTA</string>
+
+		<string name="fox_menu3_info_header">Інформація OTA:</string>
+		<string name="fox_menu3_info1">Підтримка MIUI incremental OTA:</string>
+		<string name="fox_menu3_info2">Це має бути увімкнено якщо ви хочете прошивати</string>
+		<string name="fox_menu3_info3">OTA оновлення користуючись OrangeFox.</string>
+		<string name="fox_menu3_info4"></string>
+		<string name="fox_menu3_info5">Додати системний розділ в OTA:</string>
+		<string name="fox_menu3_info6">Це має бути увімкнено якщо ви хочете</string>
+		<string name="fox_menu3_info7">модифікувати системний розділ без</string>
+		<string name="fox_menu3_info8">подальших помилок встановлення оновлення</string>
+		<string name="fox_menu3_info9"></string>
+		<string name="fox_menu3_info10">Перевірка підпису Incremental OTA:</string>
+		<string name="fox_menu3_info11">Це має бути увімкнено, якщо ви хочете,</string>
+		<string name="fox_menu3_info12">щоб OrangeFox перевіряв підписи оновлень</string>
+		<string name="fox_menu3_info13"></string>
+
+		<string name="fox_advanced_stock_recovery">Відключення перезапису рекавері</string>
+		<string name="fox_support_miui_ota_chk">Підтримка MIUI Incremental OTA</string>
+		<string name="fox_disable_boot_chk">Вимкнути перевірку boot</string>
+		<string name="fox_include_system_survival_chk">Додати системний розділ в OTA</string>
+		<string name="fox_verify_incremental_ota_signature_chk">Перевірка підпису Incremental OTA</string>
+		<string name="fox_dmverity_chk">Вимкнення DM-Verity</string>
+		
+		<string name="fox_theme_title">UI Центр OrangeFox</string>
+		<string name="fox_theme_theme_tlt">Зміна теми</string>
+		<string name="fox_theme_color_tlt">Зміна кольору</string>
+		<string name="fox_theme_i1">Після зміни теми, колір акцента</string>
+		<string name="fox_theme_i2">буде скинутий на стандартний (помаранчевий).</string>
+		<string name="fox_theme_i3">Після зміни теми, ви можете його змінити.</string>
+		<string name="fox_theme_black">Чорна тема</string>
+		<string name="fox_theme_dark">Темна тема</string>
+		<string name="fox_theme_white">Біла тема</string>
+		<string name="fox_theme_slider_dark">Свайпніть задля застосувати темної теми</string>
+		<string name="fox_theme_slider_black">Свайпніть задля застосування чорної теми</string>
+		<string name="fox_theme_slider_white">Свайпніть задля застосування білої теми</string>
+		<string name="fox_filled_lines">Використовувати акцентні лінії</string>
+
+		<string name="fox_about_maintainer">Хто винен</string>
+		<string name="z31s1g">За material тему</string>
+		<string name="fox_redwolf">за розробку RedWolf</string>
+		<string name="fox_thfox">За внесок в UI</string>
 
 		<string name="unlock_btn">Розблокувати</string>
 
-	 	<string name="fox_menu2_power">Профіль продуктивності</string>
-	 	<string name="fox_menu2_other">Доп. Настройки</string>
+		<string name="fox_menu2_power">Профіль продуктивності</string>
+		<string name="fox_menu2_other">Дод. налаштування</string>
 
-		<string name="dialog_splash_btn">Змінити сплеш</string>
-		<string name="fox_menu_splash">Змінити сплеш</string>
-		<string name="fox_custom_fox_splash_btn">Кастомный сплеш</string>
-		<string name="fox_custom_fox_splash_1">Кастомный сплеш </string>
-		<string name="fox_custom_fox_splash_2">успішно применен</string>
-		<string name="fox_theme_splash_fox_hdr">Кастомный сплеш</string>
-		<string name="fox_theme_splash_fox_txt1">Щоб змінити сплеш виберіть любе</string>
-		<string name="fox_theme_splash_fox_txt2">зображення в PNG форматі й просто</string>
-		<string name="fox_theme_splash_fox_txt3">проведіть для встановлення</string>
-	 	<string name="fox_theme_splash_fox_txt4">Для лучшего результата выбранное</string>
-	 	<string name="fox_theme_splash_fox_txt5">изображение должно быть размером</string>
-	 	<string name="fox_theme_splash_fox_txt6">1080x1920.</string>
-	 	<string name="not_selected">Не вибрано</string>
-	 	<string name="tw_splash_png_btn">Використовуйте PNG для сплеша.</string>
- 		<string name="splash_preview">Тип сплешу</string>
-		<string name="theme_splash_preview">ВЫБЕРІТЬ СПЛЕШ</string>
- 		<string name="slider_repack">Проведіть щоб встановити новый сплеш</string>
-		<string name="install_select_file_btn">ВЫБЕРІТЬ ФАЙЛ</string>
-		<string name="dialog_reset_splash_hdr">Востановити сплеш</string>
-		<string name="dialog_reset_splash_note_1">Бажаете лі востановити стандартний</string>
-		<string name="dialog_reset_splash_note_2">сплеш OrangeFox Recovery Project?</string>
-
-		<string name="fox_special_actions">Спеціальні функції OrangeFox Recovery</string>
-	 	<string name="fox_special_actions_hdr">Спец. функції</string>
-
-		<string name="settings_screen_timeout_cptn">Таймаут екрану</string>
-		<string name="settings_screen_timeout_cptn2">Таймаут екрану:</string>
-		<string name="timeout_unit">секунд</string>
-
-		<string name="rb_recovery_btn">Рекавері</string>
-		<string name="rb_theme">Тема</string>
-
-		<string name="f_orange">Оранжевий</string>
-		<string name="f_indigo">Индиго</string>
+		<string name="f_orange">Помаранчевий</string>
+		<string name="f_indigo">Індиго</string>
 		<string name="f_blue">Синій</string>
 		<string name="f_light_blue">Світло-синій</string>
-		<string name="f_stock">Стандартний</string>
-		<string name="f_teal">Бирюзово-голубий</string>
-		<string name="f_green">Зеленый</string>
-		<string name="f_light_green">Світло-зеленый</string>
-		<string name="f_lime">Лаймовий</string>
-		<string name="f_amber">Янтарний</string>
+		<string name="f_stock">Стоковий</string>
+		<string name="f_teal">Бірюзово-блакитний</string>
+		<string name="f_green">Зелений</string>
+		<string name="f_light_green">Світло-зелений</string>
+		<string name="f_lime">Лайм</string>
+		<string name="f_amber">Бурштиновий</string>
 		<string name="f_red">Злий колір</string>
-		<string name="f_deep_orange">Темно-оранжевий</string>
+		<string name="f_deep_orange">Темно-помаранчевий</string>
 		<string name="f_brown">Коричневий</string>
 		<string name="f_grey">Сірий</string>
 		<string name="f_blue_grey">Сіро-синій</string>
 
-		<string name="sort_by_name_asc">По имені</string>
-		<string name="sort_by_date_asc">По даті</string>
-		<string name="sort_by_size_asc">По разміру</string>
-		<string name="sort_by_name_desc">По имені наоб.</string>
-		<string name="sort_by_date_desc">По даті наоб.</string>
-		<string name="sort_by_size_desc">По разміру наоб.</string>
+		<!-- OrangeFox community page -->
 
-		<!--string name="encrypt_backup1">Введите пароль чтобы</string-->
-		<!--string name="encrypt_backup2">Включить шифрование бекапов</string-->
-		<string name="encrypt_backup1">вибачте, поки функция не працює!</string>
-		<string name="encrypt_backup2">Жалкуемо, прийдется почекати</string>
-		<string name="encrypt_backup3">Повторите пароль чтобы</string>
-		<string name="encrypt_backup4">Нажмите кнопку "назад" чтобы выйти</string>
+		<string name="fox_comm_i1">Для додавання нових скриптів</string>
+		<string name="fox_comm_i2">пишіть @MrYacha у Telegram</string>
+
+		<string name="fox_comm_ins">Встановити</string>
+		<string name="fox_comm_del">Видалити</string>
+
+		<string name="fox_comm_su_txt2">Від Chainfire</string>
+		<string name="fox_comm_su_sld">Свайпніть для встановлення SuperSU</string>
+		<string name="fox_comm_su_i1">Тільки для Miui і Не-Treble ROM!</string>
+
+		<string name="fox_comm_initd_txt2">Від DarthJabba9</string>
+		<string name="fox_comm_initd_sld">Свайпніть для встановлення підтримки initd</string>
+
+		<string name="fox_comm_gs_txt2">Від SharkcpN</string>
+		<string name="fox_comm_gs_sld">Свайпніть для встановлення шрифта GoogleSans</string>
+		<string name="fox_comm_gs_i1">Miui не підтримується!</string>
+
+		<string name="fox_del_btn">Видалити OF</string>
+		<string name="fox_del_txt1">Видалення OrangeFox файлів</string>
+		<string name="fox_del_txt2">Від команди OrangeFox</string>
+		<string name="fox_del_sld">Свайпніть щоб видалити OrangeFox файли</string>
+		<string name="fox_del_i1">Ви дійсно хочете видалити всі</string>
+		<string name="fox_del_i2">OrangeFox файли?</string>
+
+		<string name="fox_magisk_txt1">Встановити Magisk</string>
+		<string name="fox_magisk_txt2">Від Topjohnwu</string>
+		<string name="fox_magisk_sld">Свайпніть для встановлення Magisk</string>
+
+		<string name="fox_comm_rm_su_txt1">Видалити SuperSU</string>
+		<string name="fox_comm_rm_su_txt2">SuperSU від Chainfire</string>
+		<string name="fox_comm_rm_su_sld">Свайпніть для видалення SuperSU</string>
+
+		<string name="fox_comm_rm_mg_txt1">Видалити Magisk</string>
+		<string name="fox_comm_rm_mg_txt2">Magisk від Topjohnwu</string>
+		<string name="fox_comm_rm_mg_sld">Свайпніть для видалення Magisk</string>
+
+		<string name="fox_comm_cam_txt1">Встановити Cam2Api</string>
+		<string name="fox_comm_cam_txt2">Немає автора</string>
+		<string name="fox_comm_cam_sld">Свайпніть для встановлення Cam2Api</string>
+
+		<string name="fox_dellp_btn">Скинути пароль</string>
+		<string name="fox_dellp_txt1">Скинути пароль прошивки</string>
+		<string name="fox_dellp_txt2">Від DarthJabba9</string>
+		<string name="fox_dellp_sld">Свайпніть щоб скинути пароль прошивки</string>
 	
 	</resources>
 </language>

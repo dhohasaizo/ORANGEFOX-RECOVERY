@@ -912,6 +912,11 @@
 		<string name="raised_viewqueue_btn">Посмотреть очередь</string>
 		<string name="tz_offset_hdr">Смещение времени</string>
 		<string name="tz_offset">Смещение</string>
+		<string name="fox_reboot_restore_finish_chk">Перезагрузка после восстановления</string>
+		<string name="part_present">Текущий:</string>
+		<string name="part_removable">Удаляемый:</string>
+		<string name="part_yes">Да</string>
+		<string name="part_no">Нет</string>
 
 	 	<string name="fox_menu_flash">Orange!</string>
 	 	<string name="fox_menu_delpass">Удалить пароль</string>
@@ -935,7 +940,7 @@
 
 		<string name="fox_save_load_aromafm_config_chk">Сохранять и загружать настройки AromaFM</string>
 
-		<string name="fox_menu3_i1">Приветсвую в OrangeFox OTA!</string>
+		<string name="fox_menu3_i1">Приветствую в OrangeFox OTA!</string>
 		<string name="fox_menu3_i2">Нажмите на кнопку для справки</string>
 		<string name="fox_menu3_ota_sett">OTA Параметры</string>
 		<string name="fox_menu3_fast_act">Быстрые действия</string>
@@ -944,16 +949,16 @@
 
 		<string name="fox_menu3_info_header">Информация OTA:</string>
 		<string name="fox_menu3_info1">Поддержка MIUI incremental OTA:</string>
-		<string name="fox_menu3_info2">Это должно быть включено если вы хотите ставить</string>
+		<string name="fox_menu3_info2">Это должно быть включено, если вы хотите ставить</string>
 		<string name="fox_menu3_info3">OTA обновления пока пользуетесь OrangeFox.</string>
 		<string name="fox_menu3_info4"></string>
 		<string name="fox_menu3_info5">Добавить системный раздел в OTA:</string>
-		<string name="fox_menu3_info6">Это должно быть включено если вы хотите</string>
+		<string name="fox_menu3_info6">Это должно быть включено, если вы хотите</string>
 		<string name="fox_menu3_info7">модифицировать системный раздел без</string>
 		<string name="fox_menu3_info8">последущих ошибок установки обновления</string>
 		<string name="fox_menu3_info9"></string>
 		<string name="fox_menu3_info10">Проверка подписи Incremental OTA:</string>
-		<string name="fox_menu3_info11">Это должно быть включено если вы хотите</string>
+		<string name="fox_menu3_info11">Это должно быть включено, если вы хотите,</string>
 		<string name="fox_menu3_info12">чтобы OrangeFox проверял подпись обновлений</string>
 		<string name="fox_menu3_info13"></string>
 

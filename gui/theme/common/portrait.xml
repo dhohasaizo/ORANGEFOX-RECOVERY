@@ -2828,9 +2828,6 @@
 				<listitem name="{@skip_digest_backup_chk=Skip Digest generation during backup}">
 					<data variable="tw_skip_digest_generate"/>
 				</listitem>
-				<listitem name="{@fox_reboot_restore_finish_chk=}">
-					<data variable="rw_reboot_after_restore"/>
-				</listitem>
 				<listitem name="{@restore_enable_digest_chk=Enable Digest verification of backup files}">
 					<data variable="tw_skip_digest_check"/>
 				</listitem>

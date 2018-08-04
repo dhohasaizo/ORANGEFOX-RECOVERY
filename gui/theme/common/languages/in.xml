@@ -1054,79 +1054,143 @@
 		<string name="fox_set_new_access_password">Mengganti akses kata sandi pemulihan...</string>
 		<string name="fox_remove_access_password_one">Removing akses kata sandi pemulihan...</string>
 
-		<!--OrangeFox Recovery Project-->
-		<!-- <string name=""></string> -->
-
+		<!-- OrangeFox -->
+		<!-- Translated by muhajaya -->
 		<string name="fox_menu_flash">Orange!</string>
-		<string name="fox_menu_delpass">Hapus Kata Sandi ROM</string>
+		<string name="fox_menu_delpass">Hapus Sandi ROM</string>
 		<string name="fox_menu_navigation">Navigasi</string>
-		<string name="fox_m_other">Setelan Lainnya</string>
-		<string name="fox_dell_pass">Hapus Kata Sandi ROM</string>
-		<string name="fox_menu_comm">Skrip Komunitas</string>
-		<string name="fox_menu_splash">Ganti Splash</string>
-		<string name="fox_menu_theme">Ganti Tema</string>
-		<string name="fox_menu_pass_h">Hapus Kata Sandi ROM</string>
-		<string name="fox_menu_pass">By DarthJabba9</string>
+		<string name="fox_m_other">Pengaturan Lainnya</string>
+		<string name="fox_menu_comm">Script Komunitas</string>
+		<string name="fox_menu_splash">Change Splash</string>
+		<string name="fox_menu_theme">Pusat UI</string>
+		<string name="fox_menu_pass_h">Hapus sandi ROM</string>
+		<string name="fox_menu_pass">Oleh DarthJabba9</string>
 		<string name="fox_lock_btn">Tombol di Layar Kunci</string>
-		<string name="fox_menu_adb_on">ADB: hidup</string>
+		<string name="fox_menu_adb_on">ADB: nyala</string>
 		<string name="fox_menu_adb_off">ADB: mati</string>
+		<string name="ico_btn_mode_txt">Gaya tombol kotak</string>
 
-		<string name="fox_theme_i1">Setelah penggantian Tema, Warna Tema</string>
-		<string name="fox_theme_i2">akan menjadi ke setelan awal (jingga).</string>
-		<string name="fox_theme_i3">Setelah memuat ulang, kamu dapat atur warna tema baru.</string>
-		<string name="fox_theme_black">Tema Hitam</string>
-		<string name="fox_theme_dark">Tema Gelap</string>
+		<string name="fix_contexts_btn">Benarkan SELinux</string>
+
+		<string name="of_menu_tlt">OrangeFox menu</string>
+
+		<string name="fox_menu_other">Lainnya</string>
+		<string name="fox_menu_nav">Navigasi</string>
+
+		<string name="fox_menu3_i1">Halo di bagian OrangeFox OTA!</string>
+		<string name="fox_menu3_i2">Klik di tombol info untuk informasi selengkapnya</string>
+		<string name="fox_menu3_ota_sett">Parameter OTA</string>
+		<string name="fox_menu3_fast_act">Aksk Cepat</string>
+		<string name="fox_menu3_dis_ota">Nonaktifkan OTA</string>
+		<string name="fox_menu3_enb_ota">Aktifkan OTA</string>
+
+		<string name="fox_menu3_info_header">Informasi OTA:</string>
+		<string name="fox_menu3_info1">Mendukung MIUI incremental OTA:</string>
+		<string name="fox_menu3_info2">Ini sebaiknya diaktifkan jika anda ingin memasang</string>
+		<string name="fox_menu3_info3">MIUI incremental OTA meng-upgrade ketika menggunakan OrangeFox.</string>
+		<string name="fox_menu3_info4"></string>
+		<string name="fox_menu3_info5">Termasuk sistem di OTA survival:</string>
+		<string name="fox_menu3_info6">Ini sebaiknya diaktifkan jika anda ingin</string>
+		<string name="fox_menu3_info7">untuk memodifikasi sistem partisi yang telah</string>
+		<string name="fox_menu3_info8">dimodifikasi tanpa kegagalan di OTA berikutnya</string>
+		<string name="fox_menu3_info9"></string>
+		<string name="fox_menu3_info10">Verifikasi Incremental OTA signature:</string>
+		<string name="fox_menu3_info11">Ini sebaiknya diaktifkan jika anda ingin memastikan</string>
+		<string name="fox_menu3_info12">berkas incremental OTA upgrade telah diverifikasi</string>
+		<string name="fox_menu3_info13"></string>
+
+		<string name="fox_advanced_stock_recovery">Penonaktifan paksa pemulihan bawaan</string>
+		<string name="fox_support_miui_ota_chk">Mendukung MIUI Incremental OTA</string>
+		<string name="fox_disable_boot_chk">Nonaktifkan cek boot</string>
+		<string name="fox_include_system_survival_chk">Termasuk sistem di OTA survival</string>
+		<string name="fox_verify_incremental_ota_signature_chk">Verifikasi Incremental OTA signature</string>
+		<string name="fox_dmverity_chk">Nonaktifkan DM-Verity</string>
+		
+		<string name="fox_theme_title">OrangeFox UI Pusat</string>
+		<string name="fox_theme_theme_tlt">Ganti tema</string>
+		<string name="fox_theme_color_tlt">Ganti warna</string>
+		<string name="fox_theme_i1">Setelah mengganti tema, maka warna tema</string>
+		<string name="fox_theme_i2">akan di set ke asal (orange).</string>
+		<string name="fox_theme_i3">Setelah menerapkan tema, anda bisa mengaturnya kembali.</string>
+		<string name="fox_theme_black">Tema hitam</string>
+		<string name="fox_theme_dark">Tema gelap</string>
+		<string name="fox_theme_white">Tema putih</string>
 		<string name="fox_theme_slider_dark">Geser untuk menerapkan tema gelap</string>
 		<string name="fox_theme_slider_black">Geser untuk menerapkan tema hitam</string>
-		<string name="fox_theme_white">Tema Terang</string>
-		<string name="fox_theme_slider_white">Geser untuk menerapkan tema terang</string>
-		<string name="fox_theme_engine">Fox Pencarian Tema</string>
+		<string name="fox_theme_slider_white">Geser untuk menerapkan tema gelap</string>
+		<string name="fox_filled_lines">Gunakan garis yg diisi</string>
 
+		<string name="fox_about_maintainer">Maintainer</string>
+		<string name="z31s1g">Untuk dasar tema material.</string>
+		<string name="fox_redwolf">kepasa pengembang RedWolf</string>
+		<string name="fox_thfox">Untuk kontribusinya terhadap UI</string>
 
-		<string name="fox_slider_magisk">Geser untuk install Magisk</string>
-		<string name="fox_slider_pass">Geser untuk delete Kata Sandi ROM</string>
-		<string name="fox_slider_supersu">Geser untuk install SuperSU</string>
-		<string name="fox_about_maintainer">Pengelola</string>
-		<string name="z31s1g">Basis tema material.</string>
-        <string name="fox_thfox">Kontribusi UI</string>
-		<string name="fox_redwolf">Pengembang RedWolf</string>
+		<string name="unlock_btn">Buka kunci</string>
 
-		<string name="unlock_btn">Unlock</string>
+		<string name="fox_menu2_power">Profil Performa</string>
+		<string name="fox_menu2_other">Pengaturan lain</string>
 
-		<string name="fox_menu2_power">Profil Kinerja</string>
-		<string name="fox_menu2_other">Setelan Lainnya</string>
-
-		<string name="f_orange">Jingga</string>
-		<string name="f_indigo">Nila</string>
+		<string name="f_orange">Orange</string>
+		<string name="f_indigo">Indigo</string>
 		<string name="f_blue">Biru</string>
-		<string name="f_light_blue">Biru Muda</string>
-		<string name="f_stock">Awal</string>
+		<string name="f_light_blue">Biru cerah</string>
+		<string name="f_stock">Stok</string>
 		<string name="f_teal">Teal</string>
-		<string name="f_green">Hijau</string>
-		<string name="f_light_green">Hijau Muda</string>
+		<string name="f_green">Green</string>
+		<string name="f_light_green">Light Green</string>
 		<string name="f_lime">Lime</string>
-		<string name="f_amber">Kuning</string>
-		<string name="f_red">Merah</string>
-		<string name="f_deep_orange">Jingga Tua</string>
+		<string name="f_amber">Amber</string>
+		<string name="f_red">Warna Jahat</string>
+		<string name="f_deep_orange">Orange Dalam</string>
 		<string name="f_brown">Coklat</string>
-		<string name="f_grey">Abu - Abu</string>
-		<string name="f_blue_grey">Biru Kehijauan</string>
+		<string name="f_grey">Abu-abu</string>
+		<string name="f_blue_grey">Abu-abu Biru</string>
 
-		<!-- OrangeFox community scripts -->
+		<!-- OrangeFox community page -->
 
-		<string name="fox_community_title">OrangeFox Skrip Komunitas</string>
-		<string name="fox_comm_i1">untuk menambahkan item baru contact</string>
-		<string name="fox_comm_i2">@MrYacha di Telegram</string>
+		<string name="fox_comm_i1">Untuk menambahkan item baru hub </string>
+		<string name="fox_comm_i2">@MrYacha di telegram</string>
 
-		<string name="fox_comm_su_txt2">oleh Chainfire</string>
-		<string name="fox_comm_su_sld">Geser untuk install SuperSU</string>
-		<string name="fox_comm_su_i1">Hanya untuk Miui dan Non-Treble ROM</string>
+		<string name="fox_comm_ins">Pasang</string>
+		<string name="fox_comm_del">Lepas</string>
 
-		<string name="fox_comm_initd_txt2">oleh DarthJabba9</string>
-		<string name="fox_comm_initd_sld">Geser untuk install dukungan initd</string>
+		<string name="fox_comm_su_txt2">Oleh Chainfire</string>
+		<string name="fox_comm_su_sld">Geser untuk memasang SuperSU</string>
+		<string name="fox_comm_su_i1">Hanya untuk Miui dan ROM Non-Treble</string>
 
-		<string name="fox_comm_gs_txt2">oleh SharkcpN</string>
-		<string name="fox_comm_gs_sld">Geser untuk pasang huruf GoogleSans</string>
-		<string name="fox_comm_gs_i1">Miui tidak mendukung!</string>
+		<string name="fox_comm_initd_txt2">Oleh DarthJabba9</string>
+		<string name="fox_comm_initd_sld">Geser untuk memasang initd support</string>
+
+		<string name="fox_comm_gs_txt2">Oleh SharkcpN</string>
+		<string name="fox_comm_gs_sld">Geser untuk memasang GoogleSans font</string>
+		<string name="fox_comm_gs_i1">Miui tidak support!</string>
+
+		<string name="fox_del_btn">Hapus berkas OF</string>
+		<string name="fox_del_txt1">Hapus OrangeFox Files</string>
+		<string name="fox_del_txt2">Oleh tim OrangeFox</string>
+		<string name="fox_del_sld">Geser untuk menghapus berkas OrangeFox</string>
+		<string name="fox_del_i1">Anda yakin ingin menghapus semua</string>
+		<string name="fox_del_i2">Berkas OrangeFox?</string>
+
+		<string name="fox_magisk_txt1">Pasang Magisk</string>
+		<string name="fox_magisk_txt2">Oleh Topjohnwu</string>
+		<string name="fox_magisk_sld">Geser untuk memasang Magisk</string>
+
+		<string name="fox_comm_rm_su_txt1">Lepaskan SuperSU</string>
+		<string name="fox_comm_rm_su_txt2">SuperSU oleh Chainfire</string>
+		<string name="fox_comm_rm_su_sld">Geser untuk melepaskan SuperSU</string>
+
+		<string name="fox_comm_rm_mg_txt1">Lepaskan Magisk</string>
+		<string name="fox_comm_rm_mg_txt2">Magisk oleh Topjohnwu</string>
+		<string name="fox_comm_rm_mg_sld">Geser untuk melepaskan Magisk</string>
+
+		<string name="fox_comm_cam_txt1">Pasang Cam2Api</string>
+		<string name="fox_comm_cam_txt2">Tidak ada penulis</string>
+		<string name="fox_comm_cam_sld">Geser untuk memasang Cam2Api</string>
+
+		<string name="fox_dellp_btn">Hapus Sandi ROM</string>
+		<string name="fox_dellp_txt1">Hilangkan Sandi ROM</string>
+		<string name="fox_dellp_txt2">Oleh DarthJabba9</string>
+		<string name="fox_dellp_sld">Geser untuk menghilangkan sandi ROM</string>
 </resources>
 </language>
