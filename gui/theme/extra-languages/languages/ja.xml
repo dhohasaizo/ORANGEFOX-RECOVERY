@@ -669,5 +669,144 @@
 		<string name="theme_ver_err">カスタムテーマのバージョンが TWRP のバージョンと一致しません。標準のテーマを使用します。</string>
 		<string name="up_a_level">(上の階層へ)</string>
 		<string name="install_reboot">5秒後に再起動します</string>
+
+				<!-- OrangeFox -->
+		<!-- Translated by (paste here your nick/name) -->
+		<string name="fox_menu_flash">オレンジ!</string>
+		<string name="fox_menu_delpass">ROMパスワードの削除</string>
+		<string name="fox_menu_navigation">ナビゲーション</string>
+		<string name="fox_m_other">その他の設定</string>
+		<string name="fox_menu_comm">OtCommunityスクリプト</string>
+		<string name="fox_menu_splash">スプラッシュを変更</string>
+		<string name="fox_menu_theme">UIセンター</string>
+		<string name="fox_menu_pass_h">ROMパスワードの削除</string>
+		<string name="fox_menu_pass">By DarthJabba9</string>
+		<string name="fox_lock_btn">ロック画面のボタン</string>
+		<string name="fox_menu_adb_on">ADB: on</string>
+		<string name="fox_menu_adb_off">ADB: off</string>
+		<string name="ico_btn_mode_txt">スクエアボタンのスタイル</string>
+
+		<string name="fix_contexts_btn">SquFix SELinux</string>
+
+		<string name="of_menu_tlt">OrangeFoxメニュー</string>
+
+		<string name="fox_menu_other">その他</string>
+		<string name="fox_menu_nav">ナビゲーション</string>
+
+		<string name="fox_menu3_i1">OrangeFox OTAセクションへようこそ!</string>
+		<string name="fox_menu3_i2">詳細情報ボタンをクリック</string>
+		<string name="fox_menu3_ota_sett">CliOTAのパラメータ</string>
+		<string name="fox_menu3_fast_act">速い行動</string>
+		<string name="fox_menu3_dis_ota">無効にする OTA</string>
+		<string name="fox_menu3_enb_ota">有効にする OTA</string>
+
+		<string name="fox_menu3_info_header">OTA 情報:</string>
+		<string name="fox_menu3_info1">MIUIインクリメンタルOTAをサポート:</string>
+		<string name="fox_menu3_info2">あなたがインストールできるようにするには、寿司を有効にする必要があります</string>
+		<string name="fox_menu3_info3">OrangeUIを使用している間、MIUIインクリメンタルOTAアップグレード。</string>
+		<string name="fox_menu3_info4"></string>
+		<string name="fox_menu3_info5">Include system in OTA survival:</string>
+		<string name="fox_menu3_info6">できるようにするには、これを有効にする必要があります</string>
+		<string name="fox_menu3_info7">システムパーティションの変更を変更する</string>
+		<string name="fox_menu3_info8">その後のOTAの更新が失敗することなく</string>
+		<string name="fox_menu3_info9"></string>
+		<string name="fox_menu3_info10">増分OTA署名検証:</string>
+		<string name="fox_menu3_info11">シグニチャを使用する場合は、これを有効にする必要があります</string>
+		<string name="fox_menu3_info12">検証される増分OTAアップグレードファイルの数</string>
+		<string name="fox_menu3_info13"></string>
+
+		<string name="fox_advanced_stock_recovery">積極的な在庫回復の停止</string>
+		<string name="fox_support_miui_ota_chk">サポートMIUI Incremental OTA</string>
+		<string name="fox_disable_boot_chk">ブートチェックを無効にする</string>
+		<string name="fox_include_system_survival_chk">OTAの生存にシステムを含める</string>
+		<string name="fox_verify_incremental_ota_signature_chk">増分OTA署名検証</string>
+		<string name="fox_dmverity_chk">DM-Verityを無効にする</string>
+		
+		<string name="fox_theme_title">OrangeFox UIセンター</string>
+		<string name="fox_theme_theme_tlt">テーマを変更する</string>
+		<string name="fox_theme_color_tlt">色を変える</string>
+		<string name="fox_theme_i1">テーマを変更した後、テーマの色</string>
+		<string name="fox_theme_i2">デフォルト（オレンジ色）に設定されます。</string>
+		<string name="fox_theme_i3">テーマを適用した後、新しいテーマの色を設定できます.</string>
+		<string name="fox_theme_black">ブラックテーマ</string>
+		<string name="fox_theme_dark">暗いテーマ</string>
+		<string name="fox_theme_white">ホワイトテーマ</string>
+		<string name="fox_theme_slider_dark">暗いテーマを適用するスライド</string>
+		<string name="fox_theme_slider_black">黒のテーマを適用するスライド</string>
+		<string name="fox_theme_slider_white">白いテーマを適用するスライド</string>
+		<string name="fox_filled_lines">塗りつぶし線を使う</string>
+
+		<string name="fox_about_maintainer">メンテナー</string>
+		<string name="z31s1g">彼のマテリアルテーマの基盤。</string>
+		<string name="fox_redwolf">RedWolf開発のための</string>
+		<string name="fox_thfox">UIへの貢献</string>
+
+		<string name="unlock_btn">ロックを解除する</string>
+
+		<string name="fox_menu2_power">パフォーマンスプロファイル</string>
+		<string name="fox_menu2_other">その他の設定</string>
+
+		<string name="f_orange">オレンジ</string>
+		<string name="f_indigo">インジゴ</string>
+		<string name="f_blue">青</string>
+		<string name="f_light_blue">ライトブルー</string>
+		<string name="f_stock">株式</string>
+		<string name="f_teal">ティール</string>
+		<string name="f_green">緑</string>
+		<string name="f_light_green">ライトグリーン</string>
+		<string name="f_lime">ライム</string>
+		<string name="f_amber">アンバー</string>
+		<string name="f_red">悪の色</string>
+		<string name="f_deep_orange">深い オレンジ</string>
+		<string name="f_brown">褐色</string>
+		<string name="f_grey">グレー</string>
+		<string name="f_blue_grey">ブルーグレー</string>
+
+		<!-- OrangeFox community page -->
+
+		<string name="fox_comm_i1">新しいアイテムの連絡先を追加するには</string>
+		<string name="fox_comm_i2">@MrYacha 電報で</string>
+
+		<string name="fox_comm_ins">インストール</string>
+		<string name="fox_comm_del">削除する</string>
+
+		<string name="fox_comm_su_txt2">〜によって チェーンファイア</string>
+		<string name="fox_comm_su_sld">スワイプしてSuperSUをインストールする</string>
+		<string name="fox_comm_su_i1">Miuiおよび非トレブルROM専用</string>
+
+		<string name="fox_comm_initd_txt2">By DarthJabba9</string>
+		<string name="fox_comm_initd_sld">スワイプしてinitdサポートをインストールする</string>
+
+		<string name="fox_comm_gs_txt2">By SharkcpN</string>
+		<string name="fox_comm_gs_sld">スワイプしてGoogleSansフォントをインストールする</string>
+		<string name="fox_comm_gs_i1">Miuiはサポートされていません！</string>
+
+		<string name="fox_del_btn">ファイルのDel</string>
+		<string name="fox_del_txt1">OrangeFoxファイルを削除する</string>
+		<string name="fox_del_txt2">OrangeFoxチームで</string>
+		<string name="fox_del_sld">スワイプしてOrangeFoxファイルを削除する</string>
+		<string name="fox_del_i1">あなたは本当にすべてを削除したい</string>
+		<string name="fox_del_i2">OrangeFoxファイル?</string>
+
+		<string name="fox_magisk_txt1">マジックをインストールする</string>
+		<string name="fox_magisk_txt2">Topjohnwu</string>
+		<string name="fox_magisk_sld">スワイプでMagiskをインストールする</string>
+
+		<string name="fox_comm_rm_su_txt1">SuperSUを削除する</string>
+		<string name="fox_comm_rm_su_txt2">ChainfireによるSuperSU</string>
+		<string name="fox_comm_rm_su_sld">スワイプしてSuperSUを削除する</string>
+
+		<string name="fox_comm_rm_mg_txt1">マジックを削除</string>
+		<string name="fox_comm_rm_mg_txt2">マジックシティTopjohnwu</string>
+		<string name="fox_comm_rm_mg_sld">スワイプしてマジスクを取り除く</string>
+
+		<string name="fox_comm_cam_txt1">Cam2Apiをインストールする</string>
+		<string name="fox_comm_cam_txt2">著者はありません</string>
+		<string name="fox_comm_cam_sld"> スワイプしてCam2Apiをインストールする</string>
+
+		<string name="fox_dellp_btn">デルROMパス</string>
+		<string name="fox_dellp_txt1">ROMパスワードを削除する</string>
+		<string name="fox_dellp_txt2">By DarthJabba9</string>
+		<string name="fox_dellp_sld">スワイプしてROMパスワードを削除する</string>
 	</resources>
 </language>
