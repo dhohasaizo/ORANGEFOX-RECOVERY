@@ -3389,7 +3389,7 @@
 					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootsupersu.zip</action>
 					<action function="set">tw_filename=%fox_home_files_dir%/unrootsupersu.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1={@fox_comm_rm_su_txt1}</action>
@@ -3428,7 +3428,7 @@
 					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootmagisk.zip</action>
 					<action function="set">tw_filename=%fox_home_files_dir%/unrootmagisk.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1={@fox_comm_rm_mg_txt1}</action>
@@ -3450,7 +3450,7 @@
 					<action function="set">tw_filecheck=%fox_home_files_dir%/GoogleSans.zip</action>
 					<action function="set">tw_filename=%fox_home_files_dir%/GoogleSans.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1=GoogleSans</action>
@@ -3467,7 +3467,7 @@
 					<action function="set">tw_filecheck=/FFiles/OF_initd/OF_initd.zip</action>
 					<action function="set">tw_filename=/FFiles/OF_initd/OF_initd.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1=Initd support</action>
@@ -3483,7 +3483,7 @@
 					<action function="set">tw_filecheck=%fox_home_files_dir%/Camera2Api.zip</action>
 					<action function="set">tw_filename=%fox_home_files_dir%/Camera2Api.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_community</action>
+					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1={@fox_comm_cam_txt1}</action>
