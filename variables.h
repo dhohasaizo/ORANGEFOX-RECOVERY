@@ -44,6 +44,7 @@ static const std::string Fox_ramdisk_dir = Fox_tmp_dir + "/ramdisk";
 static const std::string Fox_ramdisk_sbin_dir = Fox_ramdisk_dir + "/sbin"; 
 static const std::string epoch_drift_file = "/persist/.fox_epoch_drift.cfg"; // to cater for any saved epoch_drifts
 static const std::string Fox_OTA_info = "/orangefox.info";
+static std::string Fox_Current_Device = "mido";
 
 static int Fox_Zip_Installer_Code = 0; // 0=standard zip;1=custom ROM;2=miui ROM; 11=custom treble ROM; 22=miui treble ROM
 static int Fox_IsDeactivation_Process_Called = 0; // have we called the deactivation process

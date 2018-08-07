@@ -1712,6 +1712,7 @@ int TWFunc::Check_MIUI_Treble(void)
   string fox_cfg = "/tmp/orangefox.cfg";
   string fox_is_miui = "0";
   string fox_is_treble = "0";
+  
   if (TWFunc::Path_Exists(fox_cfg)) 
     {
   	fox_is_miui = TWFunc::File_Property_Get (fox_cfg, "MIUI");
@@ -1734,7 +1735,7 @@ int TWFunc::Check_MIUI_Treble(void)
   	DataManager::SetValue(RW_DISABLE_DM_VERITY, "1");
   	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "1"); 
   	*/
-  	gui_print("MIUI ROM");
+  	gui_print("MIUI ROM | %s", Fox_Current_Device.c_str());
      } 
   else
      {
@@ -1742,14 +1743,14 @@ int TWFunc::Check_MIUI_Treble(void)
   	DataManager::SetValue(RW_INCREMENTAL_PACKAGE, "0");
   	DataManager::SetValue(RW_DISABLE_DM_VERITY, "0");
   	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "0");     
-  	gui_print("Custom ROM");
+  	gui_print("Custom ROM | %s", Fox_Current_Device.c_str());
      } 
      
    if (Fox_Current_ROM_IsTreble == 1)
    	gui_print("(Treble)\n\n");
    else
    	gui_print("(non-Treble)\n\n");
-   	
+  
    return 0;
 }
 
@@ -1772,8 +1773,11 @@ void TWFunc::OrangeFox_Startup(void)
   std::string device_two = kernel_proc_check + "disable";
   std::string password_file = "/sbin/wlfx";
 
-  //* DJ9
+  //* DJ9 
+  DataManager::GetValue(RW_COMPATIBILITY_DEVICE, Fox_Current_Device); 
+
   Check_MIUI_Treble();
+  //* DJ9 
   
   if (TWFunc::Path_Exists(device_one))
     TWFunc::write_to_file(device_one, disable);
