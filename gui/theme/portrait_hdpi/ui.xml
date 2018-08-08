@@ -296,6 +296,7 @@
 		<variable name="ico_btn_mode" value="0" persist="1"/>
 		<variable name="fox_uncolor_header" value="0" persist="0"/>
 		<variable name="fox_filled_lines" value="0" persist="1"/>
+		<variable name="fox_loading" value="1" persist="0"/>
 
 		<!-- For Maintainers -->
 		<variable name="flashlight_support" value="%of_flashlight_enable%"/>
@@ -323,7 +324,7 @@
 		<variable name="status_h" value="72"/>
 		<variable name="nav_h" value="156"/>
 		<variable name="content_w" value="984"/>
-		<variable name="content_a" value="140"/>
+		<variable name="content_a" value="145"/>
 		<variable name="listbox_w" value="996"/>
 		<variable name="indent" value="0"/>
 		<variable name="center_x" value="540"/>
@@ -649,6 +650,118 @@
 				<image resource="logo"/>
 				<action function="key">home</action>
 			</button-->
+
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="home" highlightresource="home_hl"/>
+				<action function="key">home</action>
+			</button>
+
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="home_white" highlightresource="home_white_hl"/>
+				<action function="key">home</action>
+			</button>
+
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back" highlightresource="back_hl"/>
+				<action function="key">back</action>
+			</button>
+
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_white" highlightresource="back_white_hl"/>
+				<action function="key">back</action>
+			</button>
+
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back" highlightresource="back_hl"/>
+				<action function="key">back</action>
+			</button>
+
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_white" highlightresource="back_white_hl"/>
+				<action function="key">back</action>
+			</button>
+
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout" highlightresource="slideout_hl"/>
+				<action function="overlay">console</action>
+			</button>
+
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout_white" highlightresource="slideout_white_hl"/>
+				<action function="overlay">console</action>
+			</button>
+
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout" highlightresource="slideout_hl"/>
+				<action function="overlay">console</action>
+			</button>
+
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout_white" highlightresource="slideout_white_hl"/>
+				<action function="overlay">console</action>
+			</button>
+
+    		<action>
+				<touch key="power"/>
+				<action function="togglebacklight"/>
+			</action>
+
+			<action>
+				<touch key="power+volup"/>
+				<action function="screenshotexternal"/>
+			</action>
+
+			<action>
+				<touch key="power+voldown"/>
+				<action function="screenshotinternal"/>
+			</action>
+
+		</template>
+
+		<template name="fox_nav">
+
+			<fill color="%accent%">
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
+			</fill>
 
 			<button>
 				<condition var1="tw_busy" var2="0"/>

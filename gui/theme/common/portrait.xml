@@ -2245,7 +2245,7 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="70" y="350" w="%content_a%" h="%mb_h%"/>
+				<placement x="60" y="350" w="%content_a%" h="%mb_h%"/>
 				<actions>
 					<action function="queueclear"/>
 					<action function="page">install</action>
@@ -2283,7 +2283,7 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="340" y="350" w="%content_a%" h="%mb_h%"/>
+				<placement x="330" y="350" w="%content_a%" h="%mb_h%"/>
 				<action function="page">wipe</action>
 			</button>
 
@@ -2319,7 +2319,7 @@
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="auto_generate" var2="0"/>
-				<placement x="610" y="350" w="%content_a%" h="%mb_h%"/>
+				<placement x="600" y="350" w="%content_a%" h="%mb_h%"/>
 				<actions>
 					<action function="set">tw_backup_name={@auto_generate=(Auto Generate)}</action>
 					<action function="page">backup</action>
@@ -2329,7 +2329,7 @@
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="auto_generate" var2="1"/>
-				<placement x="610" y="350" w="%content_a%" h="%mb_h%"/>
+				<placement x="600" y="350" w="%content_a%" h="%mb_h%"/>
 				<actions>
 					<action function="generatebackupname"/>
 					<action function="page">backup</action>
@@ -2367,7 +2367,7 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="880" y="350" w="%content_a%" h="%mb_h%"/>
+				<placement x="870" y="350" w="%content_a%" h="%mb_h%"/>
 				<action function="page">restore</action>
 			</button>
 
@@ -2402,7 +2402,7 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="70" y="650" w="%content_a%" h="%mb_h%"/>
+				<placement x="60" y="650" w="%content_a%" h="%mb_h%"/>
 				<action function="page">mount</action>
 			</button>
 
@@ -2438,14 +2438,14 @@
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="aromafm" op="!=" var2="1"/>
-				<placement x="340" y="650" w="%content_a%" h="%mb_h%"/>
+				<placement x="330" y="650" w="%content_a%" h="%mb_h%"/>
 				<action function="page">filemanagerlist</action>
 			</button>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="aromafm" var2="1"/>
-				<placement x="340" y="650" w="%content_a%" h="%mb_h%"/>
+				<placement x="330" y="650" w="%content_a%" h="%mb_h%"/>
 				<actions>
 					<action function="queueclear"/>
 					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
@@ -2494,7 +2494,7 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="610" y="650" w="%content_a%" h="%mb_h%"/>
+				<placement x="600" y="650" w="%content_a%" h="%mb_h%"/>
 				<action function="page">btnadvanced</action>
 			</button>
 
@@ -2530,7 +2530,7 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="880" y="650" w="%content_a%" h="%mb_h%"/>
+				<placement x="870" y="650" w="%content_a%" h="%mb_h%"/>
 				<action function="page">btnreboot</action>
 			</button>
 
@@ -2566,7 +2566,7 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="340" y="950" w="%content_a%" h="%mb_h%"/>
+				<placement x="330" y="950" w="%content_a%" h="%mb_h%"/>
 				<action function="flashlight"/>
 			</button>
 			
@@ -2611,7 +2611,7 @@
 			<button style="mb_btn">
 				<condition var1="heslo" op="!=" var2="tw_heslo_check"/>
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="610" y="950" w="%content_a%" h="%mb_h%"/>
+				<placement x="600" y="950" w="%content_a%" h="%mb_h%"/>
 				<actions>
 					<action function="set">tw_droid_password_change_xd1=</action>
 					<action function="set">tw_droid_password_change_xd2=</action>
@@ -2626,7 +2626,7 @@
 			<button style="mb_btn">
 				<condition var1="heslo" op="=" var2="tw_heslo_check"/>
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="610" y="950" w="%content_a%" h="%mb_h%"/>
+				<placement x="600" y="950" w="%content_a%" h="%mb_h%"/>
 				<action function="page">pass_new1</action>
 			</button>
 
@@ -2661,36 +2661,36 @@
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
-				<placement x="880" y="950" w="%content_a%" h="%mb_h%"/>
+				<placement x="870" y="950" w="%content_a%" h="%mb_h%"/>
 				<actions>
 					<action function="set">partitionlisterror=0</action>
 					<action function="page">partsdcardsel</action>
 				</actions>
 			</button>
 
-			<button>
+			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="70" y="950"/>
 				<image resource="mb_system"/>
-				<actions>
-					<action function="overlay"/>
-					<action function="set">tw_back=reboot</action>
-					<action function="page">reboot_system_routine</action>
-				</actions>
-			</button>
-			
+			</image>
+
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="64" y="970" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
-			
-			<button>
+
+			<image>
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="60" y="950"/>
 				<image resource="btn_system_color"/>
+			</image>
+
+			<button style="mb_btn">
+				<condition var1="ico_btn_mode" var2="1"/>
+				<placement x="60" y="950" w="%content_a%" h="%mb_h%"/>
 				<actions>
 					<action function="overlay"/>
 					<action function="set">tw_back=reboot</action>
@@ -2752,6 +2752,15 @@
 				<placement x="250" y="1600"/>
 				<text>%tw_version% | {@fox_actual_build=Actual build}: %rw_actual_build%</text>
 			</text>
+
+			<!-- Auto turn on ADB -->
+
+			<action>
+				<condition var1="fox_loading" var2="1"/>
+				<condition var1="fox_adb" var2="0"/>
+				<action function="set">fox_loading=0</action>
+				<action function="set">fox_adb=1</action>
+			</action>
 
 		</page>
 
@@ -13894,6 +13903,8 @@
 		</page>
 
 		<page name="fox_quick_settings">
+
+			<background color="%darktransparent%"/>
 		
      		<image>
 				<placement x="0" y="0"/>
@@ -14424,7 +14435,10 @@
 			</page>
 
 			<page name="btnreboot">
-			<background color="%transparent%"/>
+
+			<template name="fox_nav"/>
+
+			<background color="%darktransparent%"/>
 
 			<image>
 				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
@@ -14638,18 +14652,22 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
-				<action function="screenshotexternal"/>
+				<touch key="home"/>
+				<action function="page">main2</action>
 			</action>
 
+
 			<action>
-				<touch key="power+voldown"/>
-				<action function="screenshotinternal"/>
+				<touch key="back"/>
+				<action function="page">main2</action>
 			</action>
 		</page>
 
 		<page name="btnadvanced">
-			<background color="%transparent%"/>
+
+			<template name="fox_nav"/>
+
+			<background color="%darktransparent%"/>
 
 			<image>
 				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
@@ -14798,14 +14816,16 @@
 			</button>
 
 			<action>
-				<touch key="power+volup"/>
-				<action function="screenshotexternal"/>
+				<touch key="home"/>
+				<action function="page">main2</action>
 			</action>
 
+
 			<action>
-				<touch key="power+voldown"/>
-				<action function="screenshotinternal"/>
+				<touch key="back"/>
+				<action function="page">main2</action>
 			</action>
+
 		</page>
 
 		</pages>
