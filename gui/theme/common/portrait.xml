@@ -12919,6 +12919,9 @@
 		</page>
 
 		<page name="dialog_storage">
+
+			<template name="fox_nav"/>
+
 			<background color="%transparent%"/>
 
 			<image>
@@ -12988,13 +12991,53 @@
 			</text>
 
 			<action>
-				<touch key="power+volup"/>
-				<action function="screenshotexternal"/>
+				<touch key="home"/>
+				<actions>
+					<action function="set">tw_operation_state=0</action>
+					<action function="set">tw_text1=</action>
+					<action function="set">tw_text2=</action>
+					<action function="set">tw_text3=</action>
+					<action function="set">tw_text4=</action>
+					<action function="set">tw_action_text1=</action>
+					<action function="set">tw_action_text2=</action>
+					<action function="set">tw_action_param=</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_action2=</action>
+					<action function="set">tw_action2_param=</action>
+					<action function="set">tw_has_cancel=0</action>
+					<action function="set">tw_cancel_action=</action>
+					<action function="set">tw_cancel_param=</action>
+					<action function="set">tw_show_exclamation=0</action>
+					<action function="set">tw_show_reboot=0</action>
+					<action function="set">tw_back=%tw_back_temp%</action>
+					<action function="overlay"/>
+					<action function="page">main</action>
+				</actions>
 			</action>
 
+
 			<action>
-				<touch key="power+voldown"/>
-				<action function="screenshotinternal"/>
+				<touch key="back"/>
+				<actions>
+					<action function="set">tw_operation_state=0</action>
+					<action function="set">tw_text1=</action>
+					<action function="set">tw_text2=</action>
+					<action function="set">tw_text3=</action>
+					<action function="set">tw_text4=</action>
+					<action function="set">tw_action_text1=</action>
+					<action function="set">tw_action_text2=</action>
+					<action function="set">tw_action_param=</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_action2=</action>
+					<action function="set">tw_action2_param=</action>
+					<action function="set">tw_has_cancel=0</action>
+					<action function="set">tw_cancel_action=</action>
+					<action function="set">tw_cancel_param=</action>
+					<action function="set">tw_show_exclamation=0</action>
+					<action function="set">tw_show_reboot=0</action>
+					<action function="set">tw_back=%tw_back_temp%</action>
+					<action function="overlay"/>
+				</actions>
 			</action>
 		</page>
 
