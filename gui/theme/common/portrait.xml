@@ -13615,7 +13615,7 @@
 					<data variable="fox_boot_t2w_check"/>
 				</listitem>
 				<listitem name="DEBUG MODE">
-					<condition var1="fox_adb" var2="1"/>
+					<condition var1="fox_debug_build" var2="1"/>
 					<data variable="fox_debug"/>
 				</listitem>
 				<listitem name="{@fox_save_load_aromafm_config_chk}">
