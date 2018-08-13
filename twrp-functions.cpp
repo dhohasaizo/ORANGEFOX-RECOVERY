@@ -1739,10 +1739,12 @@ int TWFunc::Check_MIUI_Treble(void)
      } 
   else
      {
+    	/*
     	DataManager::SetValue("fox_verify_incremental_ota_signature", "0");
   	DataManager::SetValue(RW_INCREMENTAL_PACKAGE, "0");
   	DataManager::SetValue(RW_DISABLE_DM_VERITY, "0");
-  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "0");     
+  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "0");
+  	*/     
   	gui_print("Custom ROM | %s", Fox_Current_Device.c_str());
      } 
      
