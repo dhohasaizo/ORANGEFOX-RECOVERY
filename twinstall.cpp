@@ -248,8 +248,6 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   string pre_device = "pre-device";
   string pre_build = "pre-build";
   
-  Fox_Zip_Installer_Code = 0; //* DJ9
-  
   if (!Zip->
       ExtractEntry(ASSUMED_UPDATE_BINARY_NAME, TMP_UPDATER_BINARY_PATH, 0755))
     {
@@ -273,7 +271,10 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  if (Zip->ExtractEntry(UPDATER_SCRIPT, FOX_TMP_PATH, 0644))
 	    {
 	      if (TWFunc::CheckWord(FOX_TMP_PATH, "block_image_update"))
-		zip_is_rom_package = true;
+	        {
+		  zip_is_rom_package = true;
+		  DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 1); // standard ROM
+		}
 	      unlink(FOX_TMP_PATH);
 	    }
 	}
@@ -283,10 +284,9 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  if ((Zip->EntryExists("system.new.dat")) || (Zip->EntryExists("system.new.dat.br"))) // we are installing a custom ROM
 	     {
 	       DataManager::SetValue(RW_CALL_DEACTIVATION, 1);
-	       Fox_Zip_Installer_Code = 1; // standard ROM
+	       DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 1); // standard ROM
 	     }
-	  gui_msg
-	    ("fox_install_standard_detected=- Detected standard ROM zip installer");
+	  gui_msg ("fox_install_standard_detected=- Detected standard ROM zip installer");
 	}
       else // this is a MIUI installer
 	{
@@ -295,22 +295,24 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      DataManager::SetValue(RW_MIUI_ZIP_TMP, 1);
 	      DataManager::SetValue(RW_CALL_DEACTIVATION, 1);
 	      DataManager::SetValue(RW_DISABLE_DM_VERITY, 1);
-	      Fox_Zip_Installer_Code = 2; // MIUI ROM
+	      DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 2); // MIUI ROM
 	    }
-	  gui_msg
-	    ("fox_install_miui_detected=- Detected MIUI Update zip installer");
+	  gui_msg ("fox_install_miui_detected=- Detected MIUI Update zip installer");
+	  zip_is_survival_trigger = true;  
 	}
 
 //* treble
       if ((Zip->EntryExists("vendor.new.dat")) || (Zip->EntryExists("vendor.new.dat.br"))) // we are installing a Treble ROM
          {
-           if (Fox_Zip_Installer_Code == 1) Fox_Zip_Installer_Code = 11; // custom Treble ROM
-           if (Fox_Zip_Installer_Code == 2) Fox_Zip_Installer_Code = 22; // miui Treble ROM
-           LOGINFO("OrangeFox: detected Treble ROM installer.\n");
+           Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+           usleep (32);
+           if (Fox_Zip_Installer_Code == 1) DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 11); // custom Treble ROM
+           if (Fox_Zip_Installer_Code == 2) DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 22); // miui Treble ROM
+           LOGINFO("OrangeFox: detected Treble ROM installer. [code=%i] \n", Fox_Zip_Installer_Code);
          }
 //* treble
 
-      if (DataManager::GetIntValue(RW_INCREMENTAL_PACKAGE) != 0)
+      if (zip_is_survival_trigger) //(DataManager::GetIntValue(RW_INCREMENTAL_PACKAGE) != 0)
 	{
 	  gui_msg
 	    ("fox_incremental_ota_status_enabled=Support MIUI Incremental package status: Enabled");
@@ -357,7 +359,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 			    }
 			  else
 			    {
-			      TWFunc::Write_MIUI_Install_Status(OTA_VERIFY_FAIL, false);
+			      //TWFunc::Write_MIUI_Install_Status(OTA_VERIFY_FAIL, false);
+			      set_miui_install_status(OTA_VERIFY_FAIL, false);
 			      gui_err
 				("fox_incremental_ota_compatibility_false=Incremental package isn't compatible with this ROM!");
 			      return INSTALL_ERROR;
@@ -383,7 +386,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		  Zip->Close();
 		  LOGERR("Could not extract '%s'\n",
 			 take_out_metadata.c_str());
-		  TWFunc::Write_MIUI_Install_Status(OTA_ERROR, false);
+		  //TWFunc::Write_MIUI_Install_Status(OTA_ERROR, false);
+		  set_miui_install_status(OTA_ERROR, false);
 		  return INSTALL_ERROR;
 		}
 	    }
@@ -409,7 +413,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 
 	  if (!survival_boot)
 	    {
-	      TWFunc::Write_MIUI_Install_Status(OTA_ERROR, false);
+	      set_miui_install_status(OTA_ERROR, false);
 	      LOGERR("OTA_Survival: Unable to find boot partition");
 	      return INSTALL_ERROR;
 	    }
@@ -419,7 +423,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    
 	  if (!survival_sys)
 	    {
-	      TWFunc::Write_MIUI_Install_Status(OTA_ERROR, false);
+	      set_miui_install_status(OTA_ERROR, false);
 	      LOGERR("OTA_Survival: Unable to find system partition");
 	      return INSTALL_ERROR;
 	    }
@@ -434,7 +438,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    }
 
 	  string Boot_File = ota_location_folder + "/boot.emmc.win";
-	  if (DataManager::GetIntValue(TW_IS_ENCRYPTED) == 0)
+	  if (!storage_is_encrypted()) //(DataManager::GetIntValue(TW_IS_ENCRYPTED) == 0)
 	    {
 	      if (TWFunc::Path_Exists(Boot_File))
 		{
@@ -450,14 +454,14 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		    }
 		  else
 		    {
-		      TWFunc::Write_MIUI_Install_Status(OTA_ERROR, false);
+		      set_miui_install_status(OTA_ERROR, false);
 		      LOGERR("OTA_Survival: Unable to finish OTA_RES!\n");
 		      return INSTALL_ERROR;
 		    }
 		}
 	      else
 		{
-		  TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, false);
+		  set_miui_install_status(OTA_CORRUPT, false);
 		  gui_err
 		    ("fox_survival_does_not_exist=OTA Survival does not exist! Please flash a full ROM first!");
 		  return INSTALL_ERROR;
@@ -465,7 +469,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    }
 	  else
 	    {
-	      TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, false);
+	      set_miui_install_status(OTA_CORRUPT, false);
 	      gui_err
 		("fox_survival_encrypted_err=Internal storage is encrypted! Please do decrypt first!");
 	      return INSTALL_ERROR;
@@ -503,7 +507,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
       if (!Zip->ExtractEntry("file_contexts", output_filename, 0644))
 	{
 	  Zip->Close();
-	  TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, false);
+	  set_miui_install_status(OTA_CORRUPT, false);
 	  LOGERR("Could not extract '%s'\n", output_filename.c_str());
 	  return INSTALL_ERROR;
 	}
@@ -727,7 +731,7 @@ static int Run_Update_Binary(const char *path, ZipWrap * Zip, int *wipe_cache,
 
   if (waitrc != 0)
     {
-      TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, false);
+      set_miui_install_status(OTA_CORRUPT, false);
       return INSTALL_ERROR;
     }
 
@@ -796,7 +800,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 		    {
 		      LOGERR
 			("Aborting zip install: Digest verification failed\n");
-		      TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, true);
+		      set_miui_install_status(OTA_CORRUPT, true);
 		      delete digest;
 		      return INSTALL_CORRUPT;
 		    }
@@ -836,7 +840,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	{
 	  LOGINFO("Failed to load keys");
 	  gui_err("verify_zip_fail=Zip signature verification failed!");
-	  TWFunc::Write_MIUI_Install_Status(OTA_VERIFY_FAIL, true);
+	  set_miui_install_status(OTA_VERIFY_FAIL, true);
 #ifdef USE_MINZIP
 	  sysReleaseMap(&map);
 #endif
@@ -851,7 +855,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	{
 	  LOGINFO("Zip signature verification failed: %i\n", ret_val);
 	  gui_err("verify_zip_fail=Zip signature verification failed!");
-	  TWFunc::Write_MIUI_Install_Status(OTA_VERIFY_FAIL, true);
+	  set_miui_install_status(OTA_VERIFY_FAIL, true);
 #ifdef USE_MINZIP
 	  sysReleaseMap(&map);
 #endif
@@ -864,11 +868,10 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 
     }
 
-
   ZipWrap Zip;
   if (!Zip.Open(path, &map))
     {
-      TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, true);
+      set_miui_install_status(OTA_CORRUPT, true);
       gui_err("zip_corrupt=Zip file is corrupt!");
 #ifdef USE_MINZIP
       sysReleaseMap(&map);
@@ -898,10 +901,16 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	    ret_val =
 	      Run_Update_Binary(path, &Zip, wipe_cache,
 				UPDATE_BINARY_ZIP_TYPE);
-	  else
-	    DataManager::SetValue(RW_INCREMENTAL_OTA_FAIL, 1);
+	  else 
+	   {
+	      zip_survival_failed = true;
+	      DataManager::SetValue(RW_INCREMENTAL_OTA_FAIL, 1);
+	   }  
 	  if (ret_val != INSTALL_SUCCESS)
-	    DataManager::SetValue(RW_INCREMENTAL_OTA_FAIL, 1);
+	   {
+	       zip_survival_failed = true;
+	       DataManager::SetValue(RW_INCREMENTAL_OTA_FAIL, 1);
+	   }    
 	}
     }
   else
@@ -930,21 +939,18 @@ int TWinstall_zip(const char *path, int *wipe_cache)
   int total_time = (int) difftime(stop, start);
   if (ret_val == INSTALL_CORRUPT)
     {
-      TWFunc::Write_MIUI_Install_Status(OTA_CORRUPT, true);
-      gui_err("invalid_zip_format=Invalid zip file format!");
+        set_miui_install_status(OTA_CORRUPT, true);
+        gui_err("invalid_zip_format=Invalid zip file format!");
     }
   else
+  if (ret_val == INSTALL_ERROR)
+     {
+	set_miui_install_status(OTA_ERROR, false);
+     }
+  else  
+  if (DataManager::GetIntValue(RW_INCREMENTAL_OTA_FAIL) != 1)
     {
-      /* DJ9 - this produces too many warnings
-         if (DataManager::GetIntValue(RW_MIUI_ZIP_TMP) != 0
-         && DataManager::GetIntValue(RW_INCREMENTAL_OTA_FAIL) != 1
-         || DataManager::GetIntValue(RW_METADATA_PRE_BUILD) != 0
-         && DataManager::GetIntValue(RW_INCREMENTAL_OTA_FAIL) != 1)
-       */
-      // get rid of warnings and sort out the logic
-      if ((DataManager::GetIntValue(RW_INCREMENTAL_OTA_FAIL) != 1)
-	  && ((DataManager::GetIntValue(RW_MIUI_ZIP_TMP) != 0)
-	      || (DataManager::GetIntValue(RW_METADATA_PRE_BUILD) != 0)))
+      if ((DataManager::GetIntValue(RW_MIUI_ZIP_TMP) != 0) || (DataManager::GetIntValue(RW_METADATA_PRE_BUILD) != 0))
 	{
 	  string ota_folder, ota_backup, loadedfp;
 	  DataManager::GetValue(RW_SURVIVAL_FOLDER_VAR, ota_folder);
@@ -960,36 +966,43 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	  else
 	    {
 	      if (TWFunc::Path_Exists(ota_folder))
-		TWFunc::removeDir(ota_folder, false);
+		  TWFunc::removeDir(ota_folder, false);
 
 	      DataManager::SetValue(RW_RUN_SURVIVAL_BACKUP, 1);
 	      gui_msg
-		("fox_incremental_ota_bak_run=Running OTA_BAK process...");
-
-	      PartitionManager.Run_OTA_Survival_Backup(false);
+		("fox_incremental_ota_bak_run=Starting OTA_BAK process...");
 	      
-	      TWFunc::Write_MIUI_Install_Status(OTA_SUCCESS, false);
+	      DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 3); // miui OTA backup
 	      
-	      gui_msg("fox_incremental_ota_bak=Process OTA_BAK --- done!");
+	      if (PartitionManager.Run_OTA_Survival_Backup(false))
+	        {
+	           set_miui_install_status(OTA_SUCCESS, false);    
+	           gui_msg("fox_incremental_ota_bak=Process OTA_BAK --- done!");
+	        }
+	      else
+	        {
+		   set_miui_install_status(OTA_ERROR, false);
+	           gui_print("Process OTA_BAK --- FAILED!\n");
+	           LOGERR("OTA_BAK: Unable to finish OTA_BAK!\n");
+	        }  
 
-	      if (TWFunc::Path_Exists(ota_folder)
-		  && !TWFunc::Path_Exists(ota_info))
+	      if ((TWFunc::Path_Exists(ota_folder)) && (!TWFunc::Path_Exists(ota_info)))
 		{
 		  TWFunc::create_fingerprint_file(ota_info, loadedfp);
 		}
 	    }
-	}
-      if (ret_val == INSTALL_SUCCESS)
-	TWFunc::Write_MIUI_Install_Status(OTA_SUCCESS, false);
-      if (ret_val == INSTALL_ERROR)
-	TWFunc::Write_MIUI_Install_Status(OTA_ERROR, false);
+	} // RW_MIUI_ZIP_TMP
+	
       DataManager::SetValue(RW_METADATA_PRE_BUILD, 0);
       DataManager::SetValue(RW_MIUI_ZIP_TMP, 0);
-      DataManager::SetValue(RW_RUN_SURVIVAL_BACKUP, 0);
       DataManager::SetValue(RW_INCREMENTAL_OTA_FAIL, 0);
       DataManager::SetValue(RW_LOADED_FINGERPRINT, 0);
+      DataManager::SetValue(RW_RUN_SURVIVAL_BACKUP, 0);
+      
       LOGINFO("Install took %i second(s).\n", total_time);
-    }
+   } // RW_INCREMENTAL_OTA_FAIL    
+   if (ret_val == INSTALL_SUCCESS)
+      set_miui_install_status(OTA_SUCCESS, false);
 #ifdef USE_MINZIP
   sysReleaseMap(&map);
 #endif

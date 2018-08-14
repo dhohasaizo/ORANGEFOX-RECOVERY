@@ -451,7 +451,10 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
 		("config_twrp_err=Unable to configure TWRP with this kernel.");
 	    }
 	}
+	
       //* DJ9
+      Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+      usleep(128);
       if (Fox_Zip_Installer_Code == 0) // this is a standard zip installer
         {
            if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) == 1)
@@ -464,11 +467,13 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
         } 
       else // this is a ROM install
         {
-          if (Fox_Zip_Installer_Code == 1)
-             LOGINFO("OrangeFox: installed CUSTOM ROM: %s\n",filename.c_str());
+          if (Fox_Zip_Installer_Code == 1) LOGINFO("OrangeFox: installed CUSTOM ROM: %s\n",filename.c_str());
+          else
+          if (Fox_Zip_Installer_Code == 11) LOGINFO("OrangeFox: installed CUSTOM (Treble) ROM: %s\n",filename.c_str());
           else
              LOGINFO("OrangeFox: installed MIUI ROM: %s\n",filename.c_str());            
         }
+       LOGINFO ("flash_zip: installer code = %i\n", DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE));
       //* DJ9
     }
 
@@ -1282,6 +1287,7 @@ int GUIAction::flash(std::string arg)
 
   //* DJ9
   DataManager::SetValue(RW_INSTALL_PREBUILT_ZIP, 0); // if we have installed an internal zip, turn off the flag
+  Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
   if (Fox_Zip_Installer_Code != 0) // we have just installed a ROM - really, the user should reboot the recovery
      {
           /*

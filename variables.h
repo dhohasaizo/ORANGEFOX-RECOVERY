@@ -57,6 +57,7 @@ static int Fox_Current_ROM_IsMIUI = 0; // is the currently installed ROM a MIUI 
 //#define FOX_UPDATE_BINARY  "META-INF/com/google/android/update-binary" // all zip installers must have this
 #define FOX_MIUI_UPDATE_PATH "META-INF/com/miui/miui_update" 	// standard MIUI ROMs have this
 #define FOX_FORCE_DEACTIVATE_PROCESS "fox_force_deactivate_process"
+#define FOX_ZIP_INSTALLER_CODE "fox_zip_installer_code"
 
 // **** //
 #define RW_SURVIVAL_FOLDER_VAR      "fox_survival_backup_folder_path"

@@ -39,13 +39,15 @@ twrpAdbBuFifo::twrpAdbBuFifo(void) {
 	unlink(TW_ADB_FIFO);
 }
 
-void twrpAdbBuFifo::Check_Adb_Fifo_For_Events(void) {
+void twrpAdbBuFifo::Check_Adb_Fifo_For_Events(void) 
+{
 	char cmd[512];
 	int ret;
 
 	memset(&cmd, 0, sizeof(cmd));
-
-	if (read(adb_fifo_fd, &cmd, sizeof(cmd)) > 0) {
+	
+	if (read(adb_fifo_fd, &cmd, sizeof(cmd)) > 0) 
+	{
 		LOGINFO("adb backup cmd: %s\n", cmd);
 		std::string cmdcheck(cmd);
 		cmdcheck = cmdcheck.substr(0, strlen(ADB_BACKUP_OP));
@@ -53,26 +55,32 @@ void twrpAdbBuFifo::Check_Adb_Fifo_For_Events(void) {
 		Options = Options.substr(strlen(ADB_BACKUP_OP) + 1, strlen(cmd));
 		if (cmdcheck == ADB_BACKUP_OP)
 			Backup_ADB_Command(Options);
-		else {
+		else 
+		{
 			Restore_ADB_Backup();
 		}
 	}
 }
 
-bool twrpAdbBuFifo::start(void) {
+bool twrpAdbBuFifo::start(void) 
+{
 	LOGINFO("Starting Adb Backup FIFO\n");
 	unlink(TW_ADB_FIFO);
-	if (mkfifo(TW_ADB_FIFO, 06660) != 0) {
+	if (mkfifo(TW_ADB_FIFO, 06660) != 0) 
+	{
 		LOGINFO("Unable to mkfifo %s\n", TW_ADB_FIFO);
 		return false;
 	}
 	adb_fifo_fd = open(TW_ADB_FIFO, O_RDONLY | O_NONBLOCK);
-	if (adb_fifo_fd < 0) {
+	if (adb_fifo_fd < 0) 
+	{
 		LOGERR("Unable to open TW_ADB_FIFO for reading.\n");
 		close(adb_fifo_fd);
 		return false;
 	}
-	while (true) {
+	
+	while (true) 
+	{
 		Check_Adb_Fifo_For_Events();
 		usleep(8000);
 	}

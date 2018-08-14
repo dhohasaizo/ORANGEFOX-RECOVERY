@@ -495,7 +495,6 @@ int OpenRecoveryScript::Install_Command(string Zip) {
 		ret_val = 1;
 	} else if (wipe_cache)
 		PartitionManager.Wipe_By_Path("/cache");
-
 	return ret_val;
 }
 

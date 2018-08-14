@@ -67,6 +67,9 @@ static string tmp_boot = tmp + "/boot.img";
 static string fstab1 = "/system/vendor/etc";
 static string fstab2 = "/vendor/etc";
 
+static bool is_miui_rom_install = false;
+static bool is_treble_rom_install = false;
+
 /* Execute a command */
 int TWFunc::Exec_Cmd(const string & cmd, string & result)
 {
@@ -1710,23 +1713,23 @@ int TWFunc::Check_MIUI_Treble(void)
 {
   //read cfg file to confirm treble/miui
   string fox_cfg = "/tmp/orangefox.cfg";
-  string fox_is_miui = "0";
-  string fox_is_treble = "0";
+  string fox_is_miui_rom_install = "0";
+  string fox_is_treble_rom_install = "0";
   
   if (TWFunc::Path_Exists(fox_cfg)) 
     {
-  	fox_is_miui = TWFunc::File_Property_Get (fox_cfg, "MIUI");
-  	fox_is_treble = TWFunc::File_Property_Get (fox_cfg, "TREBLE");
-  	if ((fox_is_miui.empty()) || (fox_is_treble.empty()))
+  	fox_is_miui_rom_install = TWFunc::File_Property_Get (fox_cfg, "MIUI");
+  	fox_is_treble_rom_install = TWFunc::File_Property_Get (fox_cfg, "TREBLE");
+  	if ((fox_is_miui_rom_install.empty()) || (fox_is_treble_rom_install.empty()))
   	  return 1;
     }
     else 
     	return -1; // error - cfg not found
     
-  if (strncmp(fox_is_treble.c_str(), "1", 1) == 0)
+  if (strncmp(fox_is_treble_rom_install.c_str(), "1", 1) == 0)
   	Fox_Current_ROM_IsTreble = 1;
   
-  if (strncmp(fox_is_miui.c_str(), "1", 1) == 0)
+  if (strncmp(fox_is_miui_rom_install.c_str(), "1", 1) == 0)
      {
   	Fox_Current_ROM_IsMIUI = 1;
     	/*
@@ -2618,7 +2621,7 @@ bool TWFunc::Patch_DM_Verity()
   closedir(d);
   if (stat == 0)
     {
-      if (PartitionManager.Mount_By_Path("/vendor", false))
+      if ((is_treble_rom_install == true) && (PartitionManager.Mount_By_Path("/vendor", false)))      
 	{
 	  d1 = opendir(fstab2.c_str());
 	  stat = 2;
@@ -2652,9 +2655,9 @@ bool TWFunc::Patch_DM_Verity()
       if (PartitionManager.Is_Mounted_By_Path("/system"))
 	  PartitionManager.UnMount_By_Path("/system", false);
 	
-      if (PartitionManager.Is_Mounted_By_Path("/vendor"))
+       if ((is_treble_rom_install == true) && (PartitionManager.Is_Mounted_By_Path("/vendor")))
 	  PartitionManager.UnMount_By_Path("/vendor", false);
-    }
+    } // stat == 0
 
   if (TWFunc::Path_Exists(firmware_key))
     {
@@ -2707,8 +2710,8 @@ bool TWFunc::Patch_Forced_Encryption()
   closedir(d);
   
   if (stat == 0)
-    {
-      if (PartitionManager.Mount_By_Path("/vendor", false))
+  {
+      if ((is_treble_rom_install == true) && (PartitionManager.Mount_By_Path("/vendor", false)))      
 	{
 	  d1 = opendir(fstab2.c_str());
 	  stat = 2;
@@ -2746,14 +2749,13 @@ bool TWFunc::Patch_Forced_Encryption()
 	    }
 	}
       closedir(d1);
-    }
+      
+       if (PartitionManager.Is_Mounted_By_Path("/system"))
+    	    PartitionManager.UnMount_By_Path("/system", false);
     
-  if (PartitionManager.Is_Mounted_By_Path("/system"))
-    	PartitionManager.UnMount_By_Path("/system", false);
-    
-  if (PartitionManager.Is_Mounted_By_Path("/vendor"))
-    	PartitionManager.UnMount_By_Path("/vendor", false);
-    	
+       if ((is_treble_rom_install == true) && (PartitionManager.Is_Mounted_By_Path("/vendor")))
+    	  PartitionManager.UnMount_By_Path("/vendor", false);   	
+  } // stat == 0   
   return status;
 }
 
@@ -2826,7 +2828,20 @@ void TWFunc::Patch_Others(void)
 
 void TWFunc::Deactivation_Process(void)
 {
+ 
+  Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+  usleep(32);
 
+  if ((Fox_Zip_Installer_Code == 2) || (Fox_Zip_Installer_Code == 3) || (Fox_Zip_Installer_Code == 22))
+     is_miui_rom_install = true;
+  else
+     is_miui_rom_install = false;
+
+  if ((Fox_Zip_Installer_Code == 11) || (Fox_Zip_Installer_Code == 22))
+     is_treble_rom_install = true;
+  else
+     is_treble_rom_install = false;
+  
   // increment value, to show how many times we have called this
   Fox_IsDeactivation_Process_Called++;
 
@@ -2881,17 +2896,19 @@ void TWFunc::Deactivation_Process(void)
 
   gui_msg(Msg(msg::kProcess, "of_run_process=Starting '{1}' process")
       ("OrangeFox"));
-        
+ 
   // dm-verity 
   if ((DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
-	  DataManager::SetValue(RW_DISABLE_FORCED_ENCRYPTION, 1);
 	  if (Patch_DM_Verity())
+	  {
+              DataManager::SetValue(RW_DISABLE_FORCED_ENCRYPTION, 1);
 	      gui_msg("of_dm_verity=Successfully patched DM-Verity");
+	  }
 	  else
 	      gui_msg("of_dm_verity_off=DM-Verity is not enabled");
      }
-  
+
   // forced encryption    
   if ((DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
@@ -2900,7 +2917,6 @@ void TWFunc::Deactivation_Process(void)
 	  else
 	       gui_msg("of_encryption_off=Forced Encryption is not enabled");
      }
-
 
   // other stuff
   Patch_Others();
