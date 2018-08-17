@@ -247,6 +247,10 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   string fingerprint_property = "ro.build.fingerprint";
   string pre_device = "pre-device";
   string pre_build = "pre-build";
+  string mCheck = "";
+  string miui_check1 = "ro.miui.ui.version.name";
+  string miui_check2 = "grep otad.log";
+  int is_new_miui_update_binary = 0;
   
   if (!Zip->
       ExtractEntry(ASSUMED_UPDATE_BINARY_NAME, TMP_UPDATER_BINARY_PATH, 0755))
@@ -279,16 +283,26 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    }
 	}
       
-      if (!Zip->EntryExists(FOX_MIUI_UPDATE_PATH)) // META-INF/com/miui/miui_update - if NOT found, then this is a standard zip installer 
-	{
-	  if ((Zip->EntryExists("system.new.dat")) || (Zip->EntryExists("system.new.dat.br"))) // we are installing a custom ROM
-	     {
-	       DataManager::SetValue(RW_CALL_DEACTIVATION, 1);
-	       DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 1); // standard ROM
-	     }
-	  gui_msg ("fox_install_standard_detected=- Detected standard ROM zip installer");
-	}
-      else // this is a MIUI installer
+   // DJ9: 26/08/18
+      if (zip_is_rom_package == true) 
+        {
+           if (Zip->EntryExists(FOX_MIUI_UPDATE_PATH)) // META-INF/com/miui/miui_update - if found, then this is a miui zip installer
+                zip_is_survival_trigger = true;
+           else // do another check for miui
+           {
+              mCheck = TWFunc::Exec_With_Output(miui_check1, TMP_UPDATER_BINARY_PATH); // check for "miui" in update-binary
+              if (mCheck.size() > 0) 
+               // { // second check -"otad.log"
+               //    mCheck = TWFunc::Exec_With_Output(miui_check2, TMP_UPDATER_BINARY_PATH);
+               //    if (mCheck.size() > 0) 
+                      is_new_miui_update_binary = 1;                 
+               // }
+           }
+        }
+   // DJ9: 16/08/18
+      
+      // is this is a MIUI installer ?
+      if ((zip_is_survival_trigger == true) || (is_new_miui_update_binary == 1))    
 	{
 	  if ((Zip->EntryExists("system.new.dat")) || (Zip->EntryExists("system.new.dat.br"))) // we are installing a MIUI ROM
 	    {
@@ -299,6 +313,15 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    }
 	  gui_msg ("fox_install_miui_detected=- Detected MIUI Update zip installer");
 	  zip_is_survival_trigger = true;  
+	}
+      else // this is a standard ROM installer
+	{
+	  if ((Zip->EntryExists("system.new.dat")) || (Zip->EntryExists("system.new.dat.br"))) // we are installing a custom ROM
+	     {
+	       DataManager::SetValue(RW_CALL_DEACTIVATION, 1);
+	       DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 1); // standard ROM
+	     }
+	  gui_msg ("fox_install_standard_detected=- Detected standard ROM zip installer");
 	}
 
 //* treble

@@ -50,6 +50,8 @@ public:
 	static string Get_Root_Path(const string& Path);                            // Trims any trailing folders or filenames from the path, also adds a leading / if not present
 	static string Get_Path(const string& Path);                                 // Trims everything after the last / in the string
 	static string Get_Filename(const string& Path);                             // Trims the path off of a filename
+	static string Exec_With_Output(const string &cmd, const string &params);    // Run a command & capture the output
+	static string Exec_With_Output(const string &cmd);			    // Run a command & capture the output
 
 	static int Exec_Cmd(const string& cmd, string &result);                     //execute a command and return the result as a string by reference
 	static int Exec_Cmd(const string& cmd);                                     //execute a command
@@ -57,8 +59,8 @@ public:
 	static int Wait_For_Child_Timeout(pid_t pid, int *status, const string& Child_Name, int timeout); // Waits for a pid to exit until the timeout is hit. If timeout is hit, kill the chilld.
 	static bool Path_Exists(string Path);                                       // Returns true if the path exists
 	static Archive_Type Get_File_Type(string fn);                               // Determines file type, 0 for unknown, 1 for gzip, 2 for OAES encrypted
-	static int Try_Decrypting_File(string fn, string password); // -1 for some error, 0 for failed to decrypt, 1 for decrypted, 3 for decrypted and found gzip format
-	static unsigned long Get_File_Size(const string& Path);                            // Returns the size of a file
+	static int Try_Decrypting_File(string fn, string password); 		    // -1 for some error, 0 for failed to decrypt, 1 for decrypted, 3 for decrypted and found gzip format
+	static unsigned long Get_File_Size(const string& Path);                     // Returns the size of a file
 	static std::string Remove_Trailing_Slashes(const std::string& path, bool leaveLast = false); // Normalizes the path, e.g /data//media/ -> /data/media
 	static void Strip_Quotes(char* &str);                                       // Remove leading & trailing double-quotes from a string
 	static vector<string> split_string(const string &in, char del, bool skip_empty);
