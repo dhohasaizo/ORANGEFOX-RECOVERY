@@ -142,26 +142,6 @@ string TWFunc::Get_Path(const string & Path)
 }
 
 // run a command and return its output
-string TWFunc::Exec_With_Output(const string &cmd, const string &params)
-{
-  string data;
-  FILE *stream;
-  const int max_buffer = 256;
-  char buffer[max_buffer];
-  string s = cmd + " " + params + " 2>&1";
-
-  stream = popen(s.c_str(), "r");
-  if (stream)
-    {
-      while (!feof(stream))
-	if (fgets(buffer, max_buffer, stream) != NULL)
-	  data.append(buffer);
-      pclose(stream);
-    }
-  return data;
-}
-
-// run a command and return its output
 string TWFunc::Exec_With_Output(const string &cmd)
 {
   string data;

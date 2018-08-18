@@ -248,9 +248,11 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   string pre_device = "pre-device";
   string pre_build = "pre-build";
   string mCheck = "";
-  string miui_check1 = "ro.miui.ui.version.name";
-  string miui_check2 = "grep otad.log";
+  string miui_check1 = "ro.miui.ui.version";
+  string check_command = "grep " + miui_check1 + " " + TMP_UPDATER_BINARY_PATH;
   int is_new_miui_update_binary = 0;
+  
+  zip_is_survival_trigger = false;
   
   if (!Zip->
       ExtractEntry(ASSUMED_UPDATE_BINARY_NAME, TMP_UPDATER_BINARY_PATH, 0755))
@@ -283,26 +285,43 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    }
 	}
       
-   // DJ9: 26/08/18
+   // DJ9: 18/08/18
       if (zip_is_rom_package == true) 
         {
            if (Zip->EntryExists(FOX_MIUI_UPDATE_PATH)) // META-INF/com/miui/miui_update - if found, then this is a miui zip installer
+              {
                 zip_is_survival_trigger = true;
+                LOGINFO("OrangeFox: Detected miui_update file [%s]\n", FOX_MIUI_UPDATE_PATH);
+              }
            else // do another check for miui
            {
-              mCheck = TWFunc::Exec_With_Output(miui_check1, TMP_UPDATER_BINARY_PATH); // check for "miui" in update-binary
-              if (mCheck.size() > 0) 
-               // { // second check -"otad.log"
-               //    mCheck = TWFunc::Exec_With_Output(miui_check2, TMP_UPDATER_BINARY_PATH);
-               //    if (mCheck.size() > 0) 
-                      is_new_miui_update_binary = 1;                 
-               // }
+              mCheck = TWFunc::Exec_With_Output(check_command);  // check for miui in update-binary             
+              if (mCheck.size() > 0)
+                { 
+                  LOGINFO("OrangeFox: the answer that I received is: [%s]\n",mCheck.c_str());
+                  int not_found = mCheck.find("not found");
+                  if (not_found == -1) // then we are miui
+                    {    
+                       is_new_miui_update_binary = 1;
+                       zip_is_survival_trigger = true;
+                       LOGINFO("OrangeFox: Detected new Xiaomi update-binary [Message=%s]\n", mCheck.c_str());
+                    }
+                   else 
+                     {
+                        LOGINFO("OrangeFox: Received a response from [%s], but did not detect a new Xiaomi update-binary -Message=[%s] and code=[%i]\n", 
+                    	    check_command.c_str(), mCheck.c_str(), not_found);
+                     }
+                } // mCheck.size > 0
+              else
+                {
+                   LOGINFO("OrangeFox: The output of [%s] came out empty\n", check_command.c_str());
+                }  
            }
-        }
-   // DJ9: 16/08/18
+        } 
+   // DJ9: 18/08/18
       
       // is this is a MIUI installer ?
-      if ((zip_is_survival_trigger == true) || (is_new_miui_update_binary == 1))    
+      if (zip_is_survival_trigger == true)    
 	{
 	  if ((Zip->EntryExists("system.new.dat")) || (Zip->EntryExists("system.new.dat.br"))) // we are installing a MIUI ROM
 	    {
@@ -311,8 +330,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      DataManager::SetValue(RW_DISABLE_DM_VERITY, 1);
 	      DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 2); // MIUI ROM
 	    }
-	  gui_msg ("fox_install_miui_detected=- Detected MIUI Update zip installer");
-	  zip_is_survival_trigger = true;  
+	  gui_msg ("fox_install_miui_detected=- Detected MIUI Update zip installer"); 
 	}
       else // this is a standard ROM installer
 	{
@@ -324,16 +342,23 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  gui_msg ("fox_install_standard_detected=- Detected standard ROM zip installer");
 	}
 
-//* treble
+   //* treble
       if ((Zip->EntryExists("vendor.new.dat")) || (Zip->EntryExists("vendor.new.dat.br"))) // we are installing a Treble ROM
          {
            Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
            usleep (32);
-           if (Fox_Zip_Installer_Code == 1) DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 11); // custom Treble ROM
-           if (Fox_Zip_Installer_Code == 2) DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 22); // miui Treble ROM
+           
+           if (Fox_Zip_Installer_Code == 1) // custom
+                 DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 11); // custom Treble ROM
+           
+           if (Fox_Zip_Installer_Code == 2) // miui 
+                 DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 22); // miui Treble ROM
+           
+           Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+           usleep (32);
            LOGINFO("OrangeFox: detected Treble ROM installer. [code=%i] \n", Fox_Zip_Installer_Code);
          }
-//* treble
+   //* treble
 
       if (zip_is_survival_trigger) //(DataManager::GetIntValue(RW_INCREMENTAL_PACKAGE) != 0)
 	{
@@ -437,7 +462,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  if (!survival_boot)
 	    {
 	      set_miui_install_status(OTA_ERROR, false);
-	      LOGERR("OTA_Survival: Unable to find boot partition");
+	      LOGERR("OTA_Survival: Unable to find boot partition\n");
 	      return INSTALL_ERROR;
 	    }
 	    
@@ -447,7 +472,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  if (!survival_sys)
 	    {
 	      set_miui_install_status(OTA_ERROR, false);
-	      LOGERR("OTA_Survival: Unable to find system partition");
+	      LOGERR("OTA_Survival: Unable to find system partition\n");
 	      return INSTALL_ERROR;
 	    }
 
@@ -456,7 +481,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  if (action != "openrecoveryscript"
 	      && DataManager::GetIntValue(RW_MIUI_ZIP_TMP) != 0)
 	    {
-	      LOGERR("Please flash this package using MIUI updater app!");
+	      LOGERR("Please flash this package using MIUI updater app!\n");
 	      return INSTALL_ERROR;
 	    }
 

@@ -50,7 +50,6 @@ public:
 	static string Get_Root_Path(const string& Path);                            // Trims any trailing folders or filenames from the path, also adds a leading / if not present
 	static string Get_Path(const string& Path);                                 // Trims everything after the last / in the string
 	static string Get_Filename(const string& Path);                             // Trims the path off of a filename
-	static string Exec_With_Output(const string &cmd, const string &params);    // Run a command & capture the output
 	static string Exec_With_Output(const string &cmd);			    // Run a command & capture the output
 
 	static int Exec_Cmd(const string& cmd, string &result);                     //execute a command and return the result as a string by reference
