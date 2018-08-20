@@ -732,6 +732,29 @@
 		<string name="fox_redwolf">RedWolf 開發</string>
 		<string name="fox_thfox">使用者介面的貢獻</string>
 
+		<string name="fox_menu3_info_header">OTA 資訊：</string>
+		<string name="fox_menu3_info1">支援 MIUI 的 OTA 增量包：</string>
+		<string name="fox_menu3_info2">如果您想安裝 MIUI 的 OTA 增量包更新</string>
+		<string name="fox_menu3_info3">並同時保留 OrangeFox，請務必啟用</string>
+		<string name="fox_menu3_info4"></string>
+		<string name="fox_menu3_info5">包含系統的 OTA 生存模式：</string>
+		<string name="fox_menu3_info6">如果您想要在</string>
+		<string name="fox_menu3_info7">已修改的系統分割區上不要之後</string>
+		<string name="fox_menu3_info8">發生升級 OTA 的錯誤，請務必啟用</string>
+		<string name="fox_menu3_info9"></string>
+		<string name="fox_menu3_info10">OTA 增量包的簽名驗證：</string>
+		<string name="fox_menu3_info11">若您想要驗證 OTA 增量包</string>
+		<string name="fox_menu3_info12">的簽名，請務必啟用</string>
+		<string name="fox_menu3_info13"></string>
+
+		<string name="fox_advanced_stock_recovery">更積極的防啟用官方 Recovery</string>
+		<string name="fox_support_miui_ota_chk">支援 MIUI 的 OTA 增量包</string>
+		<string name="fox_disable_boot_chk">停用 Boot 檢查</string>
+		<string name="fox_include_system_survival_chk">包含系統的 OTA 生存模式</string>
+		<string name="fox_verify_incremental_ota_signature_chk">OTA 增量包的簽名驗證</string>
+		<string name="fox_dmverity_chk">停用 DM-Verity</string>
+		<string name="fox_forced_encryption_chk">停用強制加密</string>
+
 		<string name="unlock_btn">~解鎖~</string>
 
 		<string name="fox_menu2_power">效能設定檔</string>

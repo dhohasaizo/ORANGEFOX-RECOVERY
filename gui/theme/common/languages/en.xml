@@ -943,7 +943,6 @@
 		<string name="fox_flash_fgo_patch">Swipe to install the FGO patch</string>
 		<!-- OrangeFox Recovery V3.1 / 018 -->
 		<string name="fox_reboot_restore_finish_chk">Reboot after restore is complete</string>
-		<string name="fox_forced_encryption_chk">Disable Forced Encryption</string>
 		<string name="fox_enable_debugg_chk">Enable Debugging in the ROM</string>
 		<string name="fox_disable_debugg_chk">Disable Debugging in the ROM</string>
 		<string name="fox_save_load_aromafm_config_chk">Save/Load AromaFM config</string>
@@ -1057,6 +1056,7 @@
 		<string name="fox_include_system_survival_chk">Include system in OTA survival</string>
 		<string name="fox_verify_incremental_ota_signature_chk">Incremental OTA signature verification</string>
 		<string name="fox_dmverity_chk">Disable DM-Verity</string>
+		<string name="fox_forced_encryption_chk">Disable Forced Encryption</string>
 		
 		<string name="fox_theme_title">OrangeFox UI Center</string>
 		<string name="fox_theme_theme_tlt">Change theme</string>

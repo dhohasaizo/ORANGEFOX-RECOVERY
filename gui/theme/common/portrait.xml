@@ -13621,11 +13621,6 @@
 				<listitem name="{@fox_save_load_aromafm_config_chk}">
 					<data variable="fox_reboot_saveload_aromafm_check"/>
 				</listitem>
-
-				<listitem name="{@fox_forced_encryption_chk}">
-					<condition var1="fox_debug" var2="1"/>
-					<data variable="fox_reboot_forced_encryption_check"/>
-				</listitem>
 				<listitem name="{@fox_enable_debugg_chk}">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_reboot_forced_debugging_check"/>
@@ -13860,7 +13855,7 @@
 
 			<listbox style="settingslist">
 				<condition var1="fox_menu3_info" var2="0"/>
-				<placement x="%col1_x%" y="%row3_1_y%" w="%listbox_w%" h="%row4_2_y%"/>
+				<placement x="%col1_x%" y="%row3_1_y%" w="%listbox_w%" h="%row5_2_y%"/>
 				<listitem name="{@fox_support_miui_ota_chk=}">
 					<data variable="fox_support_miui_ota"/>
 				</listitem>	
@@ -13878,6 +13873,9 @@
 				</listitem>
 				<listitem name="{@fox_dmverity_chk}">
 					<data variable="fox_reboot_dm_verity_check"/>
+				</listitem>
+				<listitem name="{@fox_forced_encryption_chk}">
+					<data variable="fox_reboot_forced_encryption_check"/>
 				</listitem>
 			</listbox>
 
