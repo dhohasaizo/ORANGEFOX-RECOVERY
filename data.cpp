@@ -590,11 +590,13 @@ void DataManager::SetBackupFolder()
       SetValue("tw_storage_free_size", free_space);
       string zip_path, zip_root, storage_path;
       GetValue(TW_ZIP_LOCATION_VAR, zip_path);
+      
       if (partition->Has_Data_Media
 	  && !partition->Symlink_Mount_Point.empty())
 	storage_path = partition->Symlink_Mount_Point;
       else
 	storage_path = partition->Storage_Path;
+      
       if (zip_path.size() < storage_path.size())
 	{
 	  SetValue(TW_ZIP_LOCATION_VAR, storage_path);

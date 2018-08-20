@@ -1121,8 +1121,22 @@ int TWPartitionManager::Run_Backup(bool adbbackup)
 	  part_settings.Part = Find_Partition_By_Path(backup_path);
 	  if (part_settings.Part != NULL)
 	    {
-	      if (!Backup_Partition(&part_settings))
-		return false;
+
+// DJ9 20/08/2018 { - check for someone trying to back up internal storage onto internal storage
+      		if ((strstr(backup_path.c_str(), "/storage")) || (strstr(backup_path.c_str(), "/data/media/0")))
+        	{ 
+          	   if (strstr(part_settings.Backup_Folder.c_str(), "data/media/0"))
+             		{
+                	   gui_print ("\nOrangeFox: FATAL ERROR! You cannot backup Internal Storage onto itself!\n");
+                	   gui_print ("You MUST change the backup destination to MicroSD/USB-OTG.\n\n");
+                	   return false;
+             		} 
+             		   else gui_print ("OrangeFox - Internal Storage - take care!\n");
+        	}
+// DJ9 20/08/2018 }
+
+	        if (!Backup_Partition(&part_settings))
+		    return false;
 	    }
 	  else
 	    {
@@ -1190,7 +1204,7 @@ int TWPartitionManager::Run_Backup(bool adbbackup)
 	  (actual_backup_size));
   Update_System_Details();
   UnMount_Main_Partitions();
-  DataManager::Leds(true);	// dj9
+  DataManager::Leds(true);
   Notify_On_Finished_Backup();
   gui_msg(Msg(msg::kHighlight, "backup_completed=[BACKUP COMPLETED IN {1} SECONDS]") (total_time));	// the end
   string backup_log = part_settings.Backup_Folder + "/recovery.log";
@@ -1418,7 +1432,7 @@ int TWPartitionManager::Run_Restore(const string & Restore_Name)
   UnMount_By_Path("/system", false);
   Update_System_Details();
   UnMount_Main_Partitions();
-  DataManager::Leds(true);	// dj9
+  DataManager::Leds(true);
   Notify_On_Finished_Restore();
   time(&rStop);
   gui_msg(Msg
@@ -2084,7 +2098,6 @@ void TWPartitionManager::Update_System_Details(void)
     }
   if (!Write_Fstab())
     LOGERR("Error creating fstab\n");
-//DataManager::Leds(false); // dj9      
   return;
 }
 

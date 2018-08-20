@@ -294,8 +294,10 @@ bool TWPartition::Process_Fstab_Line(const char *fstab_line,
       if (!skip && full_line[index] <= 32)
 	full_line[index] = '\0';
     }
+  
   if (line_len < 10)
     return false;		// There can't possibly be a valid fstab line that is less than 10 chars
+  
   if (strncmp(fstab_line, "/dev/", strlen("/dev/")) == 0
       || strncmp(fstab_line, "/devices/", strlen("/devices/")) == 0)
     {
@@ -310,8 +312,10 @@ bool TWPartition::Process_Fstab_Line(const char *fstab_line,
     {
       while (index < line_len && full_line[index] == '\0')
 	index++;
+      
       if (index >= line_len)
 	continue;
+	
       ptr = full_line + index;
       if (item_index == mount_point_index)
 	{
@@ -482,7 +486,6 @@ bool TWPartition::Process_Fstab_Line(const char *fstab_line,
       Wipe_Available_in_GUI = true;
       Is_Storage = true;
       Removable = true;
-      // dj9* Wipe_Available_in_GUI = true;
     }
   else if (!Is_File_System(Fstab_File_System) && !Is_Image(Fstab_File_System))
     {
@@ -2932,6 +2935,7 @@ bool TWPartition::Backup_Tar(PartitionSettings * part_settings,
 
   Backup_FileName = Backup_Name + "." + Current_File_System + ".win";
   Full_FileName = part_settings->Backup_Folder + "/" + Backup_FileName;
+  
   if (Has_Data_Media)
     gui_msg(Msg
 	    (msg::kWarning,
