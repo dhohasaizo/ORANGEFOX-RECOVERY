@@ -4469,7 +4469,7 @@
 			</text>
 
 			<button>
-				<condition var1="tw_zip_queue_count" op="!=" var2="10"/>
+				<!--condition var1="tw_zip_queue_count" op="!=" var2="10"/-->
 				<placement x="%btn_float_x%" y="%row1_2_y%"/>
 				<image resource="btn_float_addtoqueue" highlightresource="btn_float_addtoqueue_hl"/>
 				<action function="page">add_zip</action>

@@ -21,6 +21,7 @@
 		<resource name="menu" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
 		<resource name="input_fail" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
 		<resource name="splash" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="button-text" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
 		
         <!-- Partition display names -->
 		<string name="system">System</string>
