@@ -252,7 +252,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   string check_command = "grep " + miui_check1 + " " + TMP_UPDATER_BINARY_PATH;
   int is_new_miui_update_binary = 0;
   
-  zip_is_survival_trigger = false;
+  zip_is_survival_trigger = false; // assume non-miui
+  DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 0); // assume standard zip installer
   
   if (!Zip->
       ExtractEntry(ASSUMED_UPDATE_BINARY_NAME, TMP_UPDATER_BINARY_PATH, 0755))
@@ -713,8 +714,6 @@ static int Run_Update_Binary(const char *path, ZipWrap * Zip, int *wipe_cache,
 		{
 		  aroma_running = 0;
 		  gui_changeOverlay("");
-		  //LOGERR("DJ9 #101:\n");
-		  //TWFunc::copy_file(FFiles_dir + "/AromaFM/AromaFM.zip.cfg", "/sdcard/Fox.res/aromafm.cfg", 0644);
 		  TWFunc::copy_file(Fox_aroma_cfg, Fox_sdcard_aroma_cfg,
 				    0644);
 		}
@@ -724,7 +723,6 @@ static int Run_Update_Binary(const char *path, ZipWrap * Zip, int *wipe_cache,
 		{
 		  aroma_running = 1;
 		  gui_changeOverlay("black_out");
-		  //LOGERR("DJ9 #102\n:");
 		  TWFunc::copy_file(Fox_aroma_cfg, Fox_sdcard_aroma_cfg,
 				    0644);
 		}
@@ -798,7 +796,9 @@ int TWinstall_zip(const char *path, int *wipe_cache)
       return INSTALL_CORRUPT;
     }
 
-  if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1)
+  if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) == 1)
+         DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 0); // internal zip = standard zip installer
+  else   
     {
       gui_msg(Msg("installing_zip=Installing zip file '{1}'") (path));
 
@@ -807,7 +807,6 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	  string digest_str;
 	  string Full_Filename = path;
 	  string digest_file = path;
-	  //digest_file += ".md5";
 	  string defmd5file = digest_file + ".md5sum";
 	  if (TWFunc::Path_Exists(defmd5file)) 
 	     {
