@@ -4469,7 +4469,7 @@
 			</text>
 
 			<button>
-				<!--condition var1="tw_zip_queue_count" op="!=" var2="10"/-->
+				<condition var1="tw_zip_queue_count" op="!=" var2="10"/>
 				<placement x="%btn_float_x%" y="%row1_2_y%"/>
 				<image resource="btn_float_addtoqueue" highlightresource="btn_float_addtoqueue_hl"/>
 				<action function="page">add_zip</action>
@@ -13945,12 +13945,9 @@
 
 		<page name="fox_quick_settings">
 
-			<background color="%darktransparent%"/>
-		
-     		<image>
-				<placement x="0" y="0"/>
-				<image resource="fox_lock_bg"/>
-			</image>
+			<fill color="%background%">
+				<placement x="0" y="1100" w="2300" h="1127"/>
+			</fill>
 
 			<button>
 				<placement x="0" y="0" w="1080" h="1127"/>

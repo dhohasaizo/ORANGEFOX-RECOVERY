@@ -993,6 +993,9 @@
 		<string name="fox_incremental_ota_bak_run">Running OTA_BAK process...</string>
 		<string name="fox_incremental_ota_bak">OTA_BAK -- done!</string>
 		<string name="fox_set_new_access_password">Changing recovery access password...</string>
+		<string name="fox_internal_fatal_i1">OrangeFox: FATAL ERROR! You cannot backup Internal Storage onto itself!</string>
+		<string name="fox_internal_fatal_i2">You MUST change the backup destination to MicroSD/USB-OTG.</string>
+
 		<string name="fox_remove_access_password_one">Removing recovery access password...</string>
 
 		<string name="of_run_process">Starting '{1}' process</string>

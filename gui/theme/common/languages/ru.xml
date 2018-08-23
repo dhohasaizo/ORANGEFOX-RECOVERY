@@ -875,18 +875,15 @@
 		<string name="fox_boot_performance">Включить режим производительности</string>
 		<string name="fox_boot_powersave">Включить режим энергосбережения</string>
 		<string name="fox_boot_balance">Включить сбалансированный режим</string>
-		<string name="fox_boot_qc2.0">Включить быструю зарядку QC 2.0</string>
 		<string name="fox_setonboot_cptn">При загрузке</string>
-		<string name="fox_set_custom_led_green">Зеленый</string>
-		<string name="fox_set_custom_led_blue">Синий</string>
-		<string name="fox_set_custom_led_red">Красный</string>
 		<string name="fox_install_vibrate">Вибрация при установке</string>
 		<string name="fox_backup_vibrate">Вибрация при создании р.к.</string>
 		<string name="fox_restore_vibrate">Вибрация при восстановлении р.к.</string>
 		<string name="fox_vibration_hdr">Вибрация действий OrangeFox</string>
 		<string name="fox_boot_nastaveni">Аппаратные настройки</string>
-		<string name="fox_menu_adb_on">ADB: вкл.</string>
-		<string name="fox_menu_adb_off">ADB: выкл.</string>
+
+		<string name="fox_internal_fatal_i1">OrangeFox: Фатальная ошибка! Вы не можете сделать бекап Internal Storage в себя же!</string>
+		<string name="fox_internal_fatal_i2">Вы должны сменить расположение бекапа на MicroSD/USB-OTG.</string>
 
 		<string name="of_run_process">Старт процесса '{1}'</string>
 		<string name="of_run_process_fail">Не может быть закочено '{1}' process</string>

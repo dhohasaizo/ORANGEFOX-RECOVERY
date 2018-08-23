@@ -1127,11 +1127,11 @@ int TWPartitionManager::Run_Backup(bool adbbackup)
         	{ 
           	   if (strstr(part_settings.Backup_Folder.c_str(), "data/media/0"))
              		{
-                	   gui_print ("\nOrangeFox: FATAL ERROR! You cannot backup Internal Storage onto itself!\n");
-                	   gui_print ("You MUST change the backup destination to MicroSD/USB-OTG.\n\n");
+                	   gui_err("fox_internal_fatal_i1=OrangeFox: FATAL ERROR! You cannot backup Internal Storage onto itself!");
+                	   gui_err("fox_internal_fatal_i2=You MUST change the backup destination to MicroSD/USB-OTG.");
                 	   return false;
              		} 
-             		   else gui_print ("OrangeFox - Internal Storage - take care!\n");
+             		   else gui_print("fox_internal_q1=OrangeFox - Internal Storage - take care!\n");
         	}
 // DJ9 20/08/2018 }
 
