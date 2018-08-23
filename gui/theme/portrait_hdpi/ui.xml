@@ -612,7 +612,7 @@
 		<variable name="pattern_line_w" value="12"/>
 		<variable name="pattern_size" value="648"/>
 
-		<variable name="rw_version" value="[OrangeFox R7]"/>
+		<variable name="rw_version" value="[%tw_version%]"/>
 		<variable name="flashlight" value="0"/>
 		<variable name="tw_heslo_check" value="dd"/>
    </variables>

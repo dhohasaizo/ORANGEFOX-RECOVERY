@@ -13895,7 +13895,7 @@
 					<action function="set">fox_verify_incremental_ota_signature=0</action>
 					<action function="set">fox_reboot_advanced_stock_recovery_check=0</action>
 					<action function="set">fox_disable_boot_check=0</action>
-					<action function="set">fox_reboot_dm_verity_check=0</action>
+					<action function="set">fox_reboot_forced_encryption_check=0</action>
 				</actions>
 			</button>
 
@@ -13906,10 +13906,11 @@
 				<actions>
 					<action function="set">fox_support_miui_ota=1</action>
 					<action function="set">fox_include_system_survival=1</action>
-					<action function="set">fox_verify_incremental_ota_signature=0</action>
+					<action function="set">fox_verify_incremental_ota_signature=1</action>
 					<action function="set">fox_reboot_advanced_stock_recovery_check=1</action>
 					<action function="set">fox_disable_boot_check=1</action>
 					<action function="set">fox_reboot_dm_verity_check=1</action>
+					<action function="set">fox_reboot_forced_encryption_check=1</action>
 				</actions>
 			</button>
 
