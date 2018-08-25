@@ -1131,7 +1131,7 @@ int TWPartitionManager::Run_Backup(bool adbbackup)
                 	   gui_err("fox_internal_fatal_i2=You MUST change the backup destination to MicroSD/USB-OTG.");
                 	   return false;
              		} 
-             		   else gui_print("fox_internal_q1=OrangeFox - Internal Storage - take care!\n");
+             		   else gui_msg("fox_internal_q1=OrangeFox - Internal Storage - take care!");
         	}
 // DJ9 20/08/2018 }
 
