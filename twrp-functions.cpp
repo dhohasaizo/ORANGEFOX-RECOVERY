@@ -1741,7 +1741,7 @@ int TWFunc::Check_MIUI_Treble(void)
   	fox_is_miui_rom_install = TWFunc::File_Property_Get (fox_cfg, "MIUI");
   	fox_is_treble_rom_install = TWFunc::File_Property_Get (fox_cfg, "TREBLE");
   	if ((fox_is_miui_rom_install.empty()) || (fox_is_treble_rom_install.empty()))
-  	  return 1;
+  	  return 1; // emtpy value in cfg 
     }
     else 
     	return -1; // error - cfg not found
@@ -1798,11 +1798,10 @@ void TWFunc::OrangeFox_Startup(void)
   std::string device_two = kernel_proc_check + "disable";
   std::string password_file = "/sbin/wlfx";
 
-  //* DJ9 
+//* DJ9 
   DataManager::GetValue(RW_COMPATIBILITY_DEVICE, Fox_Current_Device); 
-
   Check_MIUI_Treble();
-  //* DJ9 
+//* DJ9 
   
   if (TWFunc::Path_Exists(device_one))
     TWFunc::write_to_file(device_one, disable);
