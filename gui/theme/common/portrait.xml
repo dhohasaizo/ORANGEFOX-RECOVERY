@@ -2539,7 +2539,7 @@
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="0"/>
 				<placement x="340" y="950"/>
-				<image resource="mb_flashlight_on"/>
+				<image resource="mb_recovery"/>
 			</image>
 
 			<fill color="%accent%">
@@ -2552,22 +2552,48 @@
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
 				<placement x="330" y="950"/>
-				<image resource="btn_flashlight_color_on"/>
+				<image resource="btn_recovery_color"/>
 			</image>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<placement x="280" y="1120"/>
-				<text>{@flashlight=Flashlight}</text>
+				<text>{@rb_recovery_btn=Recovery}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
-				<action function="flashlight"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_action_param=recovery</action>
+					<action function="set">tw_reboot_param=recovery</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
+					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
+					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
+					<action function="page">rebootcheck</action>
+				</actions>
 			</button>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<placement x="330" y="950" w="%content_a%" h="%mb_h%"/>
-				<action function="flashlight"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_action_param=recovery</action>
+					<action function="set">tw_reboot_param=recovery</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@no_os1=No OS Installed!}</action>
+					<action function="set">tw_text2={@no_osrb=Are you sure you wish to reboot?}</action>
+					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
+					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
+					<action function="page">rebootcheck</action>
+				</actions>
 			</button>
 			
 			<image>
