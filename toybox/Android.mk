@@ -276,7 +276,6 @@ LOCAL_SRC_FILES += \
     toys/net/tunctl.c \
     toys/pending/getfattr.c \
     toys/pending/modprobe.c \
-    toys/pending/setfattr.c \
     toys/posix/file.c \
     toys/posix/uudecode.c \
     toys/posix/uuencode.c
@@ -288,6 +287,16 @@ LOCAL_SRC_FILES += \
 else
 LOCAL_SRC_FILES += \
     toys/pending/chrt.c
+endif
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -gt 27; echo $$?),0)
+# Android 9.0
+LOCAL_SRC_FILES += \
+    toys/other/setfattr.c \
+    toys/pending/fmt.c \
+    toys/pending/stty.c
+else
+LOCAL_SRC_FILES += \
+    toys/pending/setfattr.c
 endif
 LOCAL_SHARED_LIBRARIES += liblog
 else
@@ -311,7 +320,7 @@ LOCAL_SRC_FILES += \
 endif
 
 LOCAL_CFLAGS += \
-    -std=c99 \
+    -std=gnu11 \
     -Os \
     -Wno-char-subscripts \
     -Wno-sign-compare \
@@ -381,7 +390,6 @@ ALL_TOOLS := \
     find \
     free \
     getenforce \
-    getprop \
     groups \
     head \
     hostname \
@@ -527,6 +535,7 @@ ALL_TOOLS += \
     xxd
 ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 27; echo $$?),0)
 ALL_TOOLS += \
+    getprop \
     xzcat
 endif
 ifeq ($(shell test $(PLATFORM_SDK_VERSION) -gt 24; echo $$?),0)
@@ -535,6 +544,13 @@ ALL_TOOLS += \
     gzip \
     gunzip \
     zcat
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -gt 27; echo $$?),0)
+ALL_TOOLS += \
+    fmt \
+    start \
+    stop \
+    stty
+endif
 endif
 # Account for master branch changes pulld into CM14.1
 ifneq ($(CM_BUILD),)
