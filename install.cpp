@@ -49,9 +49,9 @@
 #include <ziparchive/zip_archive.h>
 
 #include "common.h"
-#include "error_code.h"
 #include "otautil/SysUtil.h"
 #include "otautil/ThermalUtil.h"
+#include "otautil/error_code.h"
 #include "private/install.h"
 #include "roots.h"
 #include "ui.h"
@@ -172,8 +172,9 @@ for (const std::string & line:android::base::Split(metadata_str, "\n"))
       return INSTALL_ERROR;
     }
 
-  // We allow the package to not have any serialno, but if it has a non-empty
-  // value it should match.
+  // We allow the package to not have any serialno; and we also allow it to carry multiple serial
+  // numbers split by "|"; e.g. serialno=serialno1|serialno2|serialno3 ... We will fail the
+  // verification if the device's serialno doesn't match any of these carried numbers.
   value = android::base::GetProperty("ro.serialno", "");
   const std::string & pkg_serial_no = metadata["serialno"];
   if (!pkg_serial_no.empty() && pkg_serial_no != value)
@@ -797,7 +798,7 @@ int install_package(const std::string & path, bool * wipe_cache,
     std::chrono::system_clock::now() - start;
   int time_total = static_cast < int >(duration.count());
 
-  bool has_cache = volume_for_path("/cache") != nullptr;
+  bool has_cache = volume_for_mount_point("/cache") != nullptr;
   // Skip logging the uncrypt_status on devices without /cache.
   if (has_cache)
     {
