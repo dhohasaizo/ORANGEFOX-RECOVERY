@@ -936,98 +936,130 @@ void TWPartition::Save_FS_Flags(const string & local_File_System,
   fs_flags.push_back(flags);
 }
 
-void TWPartition::Apply_TW_Flag(const unsigned flag, const char *str,
-				const bool val)
-{
-  switch (flag)
-    {
-    case TWFLAG_ANDSEC:
-      Has_Android_Secure = val;
-      break;
-    case TWFLAG_BACKUP:
-      Can_Be_Backed_Up = val;
-      break;
-    case TWFLAG_BACKUPNAME:
-      Backup_Display_Name = str;
-      break;
-    case TWFLAG_BLOCKSIZE:
-      Format_Block_Size = (unsigned long) (atol(str));
-      break;
-    case TWFLAG_CANBEWIPED:
-      Can_Be_Wiped = val;
-      break;
-    case TWFLAG_CANENCRYPTBACKUP:
-      Can_Encrypt_Backup = val;
-      break;
-    case TWFLAG_DEFAULTS:
-    case TWFLAG_WAIT:
-    case TWFLAG_VERIFY:
-    case TWFLAG_CHECK:
-    case TWFLAG_NOTRIM:
-    case TWFLAG_VOLDMANAGED:
-    case TWFLAG_RESIZE:
-      // Do nothing
-      break;
-    case TWFLAG_DISPLAY:
-      Display_Name = str;
-      break;
-    case TWFLAG_ENCRYPTABLE:
-    case TWFLAG_FORCEENCRYPT:
-      Crypto_Key_Location = str;
-      break;
-    case TWFLAG_FLASHIMG:
-      Can_Flash_Img = val;
-      break;
-    case TWFLAG_FSFLAGS:
-      Process_FS_Flags(str);
-      break;
-    case TWFLAG_IGNOREBLKID:
-      Ignore_Blkid = val;
-      break;
-    case TWFLAG_LENGTH:
-      Length = atoi(str);
-      break;
-    case TWFLAG_MOUNTTODECRYPT:
-      Mount_To_Decrypt = val;
-      break;
-    case TWFLAG_REMOVABLE:
-      Removable = val;
-      break;
-    case TWFLAG_RETAINLAYOUTVERSION:
-      Retain_Layout_Version = val;
-      break;
-    case TWFLAG_SETTINGSSTORAGE:
-      Is_Settings_Storage = val;
-      if (Is_Settings_Storage)
-	Is_Storage = true;
-      break;
-    case TWFLAG_STORAGE:
-      Is_Storage = val;
-      break;
-    case TWFLAG_STORAGENAME:
-      Storage_Name = str;
-      break;
-    case TWFLAG_SUBPARTITIONOF:
-      Is_SubPartition = true;
-      SubPartition_Of = str;
-      break;
-    case TWFLAG_SYMLINK:
-      Symlink_Path = str;
-      break;
-    case TWFLAG_USERDATAENCRYPTBACKUP:
-      Use_Userdata_Encryption = val;
-      if (Use_Userdata_Encryption)
-	Can_Encrypt_Backup = true;
-      break;
-    case TWFLAG_USERMRF:
-      Use_Rm_Rf = val;
-      break;
-    case TWFLAG_WIPEDURINGFACTORYRESET:
-      Wipe_During_Factory_Reset = val;
-      if (Wipe_During_Factory_Reset)
-	{
-	  Can_Be_Wiped = true;
-	  Wipe_Available_in_GUI = true;
+void TWPartition::Apply_TW_Flag(const unsigned flag, const char* str, const bool val) {
+	switch (flag) {
+		case TWFLAG_ANDSEC:
+			Has_Android_Secure = val;
+			break;
+		case TWFLAG_BACKUP:
+			Can_Be_Backed_Up = val;
+			break;
+		case TWFLAG_BACKUPNAME:
+			Backup_Display_Name = str;
+			break;
+		case TWFLAG_BLOCKSIZE:
+			Format_Block_Size = (unsigned long)(atol(str));
+			break;
+		case TWFLAG_CANBEWIPED:
+			Can_Be_Wiped = val;
+			break;
+		case TWFLAG_CANENCRYPTBACKUP:
+			Can_Encrypt_Backup = val;
+			break;
+		case TWFLAG_DEFAULTS:
+		case TWFLAG_WAIT:
+		case TWFLAG_VERIFY:
+		case TWFLAG_CHECK:
+		case TWFLAG_NOTRIM:
+		case TWFLAG_VOLDMANAGED:
+		case TWFLAG_RESIZE:
+			// Do nothing
+			break;
+		case TWFLAG_DISPLAY:
+			Display_Name = str;
+			break;
+		case TWFLAG_ENCRYPTABLE:
+		case TWFLAG_FORCEENCRYPT:
+			Crypto_Key_Location = str;
+			break;
+		case TWFLAG_FILEENCRYPTION:
+			// This flag isn't used by TWRP but is needed in 9.0 FBE decrypt
+			// fileencryption=ice:aes-256-heh
+			{
+				std::string FBE = str;
+				std::string FBE_contents, FBE_filenames;
+				size_t colon_loc = FBE.find(":");
+				if (colon_loc == std::string::npos) {
+					LOGINFO("Invalid fileencryption fstab flag: '%s'\n", str);
+					break;
+				}
+				FBE_contents = FBE.substr(0, colon_loc);
+				FBE_filenames = FBE.substr(colon_loc + 1);
+				property_set("fbe.contents", FBE_contents.c_str());
+				property_set("fbe.filenames", FBE_filenames.c_str());
+				LOGINFO("FBE contents '%s', filenames '%s'\n", FBE_contents.c_str(), FBE_filenames.c_str());
+			}
+			break;
+		case TWFLAG_FLASHIMG:
+			Can_Flash_Img = val;
+			break;
+		case TWFLAG_FSFLAGS:
+			Process_FS_Flags(str);
+			break;
+		case TWFLAG_IGNOREBLKID:
+			Ignore_Blkid = val;
+			break;
+		case TWFLAG_LENGTH:
+			Length = atoi(str);
+			break;
+		case TWFLAG_MOUNTTODECRYPT:
+			Mount_To_Decrypt = val;
+			break;
+		case TWFLAG_REMOVABLE:
+			Removable = val;
+			break;
+		case TWFLAG_RETAINLAYOUTVERSION:
+			Retain_Layout_Version = val;
+			break;
+		case TWFLAG_SETTINGSSTORAGE:
+			Is_Settings_Storage = val;
+			if (Is_Settings_Storage)
+				Is_Storage = true;
+			break;
+		case TWFLAG_STORAGE:
+			Is_Storage = val;
+			break;
+		case TWFLAG_STORAGENAME:
+			Storage_Name = str;
+			break;
+		case TWFLAG_SUBPARTITIONOF:
+			Is_SubPartition = true;
+			SubPartition_Of = str;
+			break;
+		case TWFLAG_SYMLINK:
+			Symlink_Path = str;
+			break;
+		case TWFLAG_USERDATAENCRYPTBACKUP:
+			Use_Userdata_Encryption = val;
+			if (Use_Userdata_Encryption)
+				Can_Encrypt_Backup = true;
+			break;
+		case TWFLAG_USERMRF:
+			Use_Rm_Rf = val;
+			break;
+		case TWFLAG_WIPEDURINGFACTORYRESET:
+			Wipe_During_Factory_Reset = val;
+			if (Wipe_During_Factory_Reset) {
+				Can_Be_Wiped = true;
+				Wipe_Available_in_GUI = true;
+			}
+			break;
+		case TWFLAG_WIPEINGUI:
+		case TWFLAG_FORMATTABLE:
+			Wipe_Available_in_GUI = val;
+			if (Wipe_Available_in_GUI)
+				Can_Be_Wiped = true;
+			break;
+		case TWFLAG_SLOTSELECT:
+			SlotSelect = true;
+			break;
+		case TWFLAG_ALTDEVICE:
+			Alternate_Block_Device = str;
+			break;
+		default:
+			// Should not get here
+			LOGINFO("Flag identified for processing, but later unmatched: %i\n", flag);
+			break;
 	}
       break;
     case TWFLAG_WIPEINGUI:
