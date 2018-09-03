@@ -684,5 +684,146 @@
 		<string name="copy_kernel_log">Log del kernel copiato in {1}</string>
 		<string name="include_kernel_log">Includi Log del Kernel</string>
 		<string name="unable_set_boot_slot">Errore nel cambio slot d'avvio del bootloader in {1}</string>
+
+		<!-- <string name=""></string> -->
+
+		<string name="fox_menu_flash">Arancione!</string>
+		<string name="fox_menu_delpass">Cancella la password della rom</string>
+		<string name="fox_menu_navigation">Navigazione</string>
+		<string name="fox_m_other">Altre Impostazioni</string>
+		
+		<string name="fox_menu_comm">Scripts Della Comunit�</string>
+		<string name="fox_menu_splash">Cambia Schermata D'avvio</string>
+		<string name="fox_menu_theme">Centro Interfaccia Utente</string>
+		<string name="fox_menu_pass_h">Cancella la password della ROM</string>
+		<string name="fox_menu_pass">Di DarthJabba9</string>
+		<string name="fox_lock_btn">Pulsante sulla schermata di blocco</string>
+		<string name="fox_menu_adb_on">ADB: acceso</string>
+		<string name="fox_menu_adb_off">ADB: spento</string>
+		<string name="ico_btn_mode_txt">Stile dei bottoni quadrati</string>
+
+		<string name="fix_contexts_btn">Aggiusta SELinux</string>
+
+		<string name="of_menu_tlt">Men� Orangefox</string>
+
+		<string name="fox_menu_other">Altro</string>
+		<string name="fox_menu_nav">Navigazione</string>
+
+		<string name="fox_menu3_i1">Benvenuto nella sezione OTA della OrangeFox!</string>
+		<string name="fox_menu3_i2">Premi sul pulsante info per ulteriori informazioni</string>
+		<string name="fox_menu3_ota_sett">Parametri OTA</string>
+		<string name="fox_menu3_fast_act">Azioni Rapide</string>
+		<string name="fox_menu3_dis_ota">Disabilita OTA</string>
+		<string name="fox_menu3_enb_ota">Abilita OTA</string>
+
+		<string name="fox_menu3_info_header">informazioni sugli OTA:</string>
+		<string name="fox_menu3_info1">Supporta gli OTA incrementali della MIUI:</string>
+		<string name="fox_menu3_info2">Questo dovrebbe essere abilitato se vuoi essere in grado di installare gli OTA.</string>
+		<string name="fox_menu3_info3">aggiornamenti OTA incrementali della MIUI mente stai usando OrangeFox.</string>
+		<string name="fox_menu3_info4"></string>
+		<string name="fox_menu3_info5">Includi system nella sopravvivenza degli OTA:</string>
+		<string name="fox_menu3_info6">Questo dovrebbe essere abilitato se vuoi essere in grado</string>
+		<string name="fox_menu3_info7">di modificare la partizione di sistema</string>
+		<string name="fox_menu3_info8">Senza problemi nell'installazione di OTA sequenziali.</string>
+		<string name="fox_menu3_info9"></string>
+		<string name="fox_menu3_info10">Verifica firma degli OTA incrementali:</string>
+		<string name="fox_menu3_info11">Questo dovrebbe essere abilitato se vuoi che le firme</string>
+		<string name="fox_menu3_info12">degli aggiornamenti OTA incrementali vengano verificate.</string>
+		<string name="fox_menu3_info13"></string>
+
+		<string name="fox_advanced_stock_recovery">Disattivazione aggressiva della recovery stock</string>
+		<string name="fox_support_miui_ota_chk">Supporta gli OTA incrementali della MIUI</string>
+		<string name="fox_disable_boot_chk">Disabilita il controllo all'avvio</string>
+		<string name="fox_include_system_survival_chk">Includi system nella sopravvivenza degli OTA</string>
+		<string name="fox_verify_incremental_ota_signature_chk">verifica firma degli OTA incrementali</string>
+		<string name="fox_dmverity_chk">Disabilita DM-Verity</string>
+		<string name="fox_forced_encryption_chk">Disabilita la criptazione forzata</string>
+		
+		<string name="fox_theme_title">Centro Interfaccia Utente OrangeFox</string>
+		<string name="fox_theme_theme_tlt">Cambia Tema</string>
+		<string name="fox_theme_color_tlt">Cambia Colore</string>
+		<string name="fox_theme_i1">Dopo aver cambiato il tema, il colore del tema </string>
+		<string name="fox_theme_i2">verr� reimpostato a quello predefinito (arancione).</string>
+		<string name="fox_theme_i3">Dopo aver impostato il tema, puoi impostare un nuovo colore.</string>
+		<string name="fox_theme_black">Tema Nero</string>
+		<string name="fox_theme_dark">Tema Scuro</string>
+		<string name="fox_theme_white">Tema bianco</string>
+		<string name="fox_theme_slider_dark">Scorri per applicare il tema scuro</string>
+		<string name="fox_theme_slider_black">Scorri per applicare il tema nero</string>
+		<string name="fox_theme_slider_white">Scorri per applicare il tema bianco</string>
+		<string name="fox_filled_lines">Usa le linee riempite</string>
+
+		<string name="fox_about_maintainer">Manutentore</string>
+		<string name="z31s1g">Per la base del suo tema in material design.</string>
+		<string name="fox_redwolf">Per lo sviluppo della Redwolf Recovery</string>
+		<string name="fox_thfox">Per aver contribuito all'interfaccia Utente.</string>
+
+		<string name="unlock_btn">Sblocca</string>
+
+		<string name="fox_menu2_power">Profili prestazionj</string>
+		<string name="fox_menu2_other">Altre impostazioni</string>
+
+		<string name="f_orange">Arancione</string>
+		<string name="f_indigo">Indigo</string>
+		<string name="f_blue">Blu</string>
+		<string name="f_light_blue">Blu chiaro</string>
+		<string name="f_stock">Predefinito</string>
+		<string name="f_teal">Teal</string>
+		<string name="f_green">Verde</string>
+		<string name="f_light_green">Verde Chiaro</string>
+		<string name="f_lime">Lime</string>
+		<string name="f_amber">Ambra</string>
+		<string name="f_red">Red</string>
+		<string name="f_deep_orange">Arancione Profondo</string>
+		<string name="f_brown">Marrone</string>
+		<string name="f_grey">Grigo</string>
+		<string name="f_blue_grey">Grigio Blu</string>
+
+		<!-- OrangeFox community page -->
+
+		<string name="fox_comm_i1">Per aggiungere un nuovo pulsante contatta</string>
+		<string name="fox_comm_i2">@MrYacha su Telegram</string>
+
+		<string name="fox_comm_ins">Installa</string>
+		<string name="fox_comm_del">Rimuovi</string>
+
+		<string name="fox_comm_su_txt2">Di Chainfire</string>
+		<string name="fox_comm_su_sld">Scorri Per installare SuperSu</string>
+		<string name="fox_comm_su_i1">Solo compatibile con MIUI e ROM non Treble</string>
+
+		<string name="fox_comm_initd_txt2">Di DarthJabba9</string>
+		<string name="fox_comm_initd_sld">Scorri per installare il supporto ad initd</string>
+
+		<string name="fox_comm_gs_txt2">Di SharkcpN</string>
+		<string name="fox_comm_gs_sld">Scorri per installare il font GoogleSans</string>
+		<string name="fox_comm_gs_i1">Miui non supportata!</string>
+
+		<string name="fox_del_btn">Rimuovi i file OrangeFox</string>
+		<string name="fox_del_txt1">Rimuovi i file OrangeFox</string>
+		<string name="fox_del_txt2">Del Team Orangefox</string>
+		<string name="fox_del_sld">Scorri per rimuovere i file Orangefox</string>
+		<string name="fox_del_i1">Vuoi veramente rimuovere tutti</string>
+		<string name="fox_del_i2">I file OrangeFox?</string>
+
+		<string name="fox_magisk_txt1">Installa Magisk</string>
+		<string name="fox_magisk_txt2">Di Topjohnwu</string>
+		<string name="fox_magisk_sld">Scorri per installare Magisk</string>
+
+		<string name="fox_comm_rm_su_txt1">Rimuovi SuperSU</string>
+		<string name="fox_comm_rm_su_txt2">SuperSU Di Chainfire</string>
+		<string name="fox_comm_rm_su_sld">Scorri per rimuovere SuperSU</string>
+
+		<string name="fox_comm_rm_mg_txt1">Rimuovere Magisk</string>
+		<string name="fox_comm_rm_mg_txt2">Magisk di Topjohnwu</string>
+		<string name="fox_comm_rm_mg_sld">Scorri per rimuovere Magisk</string>
+
+		<string name="fox_comm_cam_txt1">Installa le  Cam2Api</string>
+		<string name="fox_comm_cam_txt2">Autore Sconosciuto</string>
+		<string name="fox_comm_cam_sld">Scorri per installare le Cam2Api</string>
+
+		<string name="fox_dellp_btn">Rimuovi la pass della ROM</string>
+		<string name="fox_dellp_txt1">Rimuovi la password della ROM</string>
+		<string name="fox_dellp_txt2">Di DarthJabba9</string>
+		<string name="fox_dellp_sld">Scorri per rimuovere la password della ROM</string>
 	</resources>
 </language>
