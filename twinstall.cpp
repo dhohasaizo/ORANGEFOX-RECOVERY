@@ -798,7 +798,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
   if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) == 1)
      {
          DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 0); // internal zip = standard zip installer
-         DataManager::SetValue(FOX_ZIP_INSTALLER_TREBLE, "0");
+         DataManager::SetValue(FOX_ZIP_INSTALLER_TREBLE, 0);
      }    
   else   
     {
