@@ -462,14 +462,19 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
           	 LOGINFO("OrangeFox: processed internal zip: %s\n",filename.c_str());
               }
               else
-          	 LOGINFO("OrangeFox: installed standard zip: %s\n",filename.c_str());
-           
+          	 LOGINFO("OrangeFox: installed standard zip: %s\n",filename.c_str());           
         } 
       else // this is a ROM install
         {
           if (Fox_Zip_Installer_Code == 1) LOGINFO("OrangeFox: installed CUSTOM ROM: %s\n",filename.c_str());
           else
-          if (Fox_Zip_Installer_Code == 11) LOGINFO("OrangeFox: installed CUSTOM (Treble) ROM: %s\n",filename.c_str());
+          if (Fox_Zip_Installer_Code == 2) LOGINFO("OrangeFox: installed MIUI ROM: %s\n",filename.c_str());
+          else
+          if (Fox_Zip_Installer_Code == 3) LOGINFO("OrangeFox: installed MIUI incremental OTA: %s\n",filename.c_str());
+          else
+          if (Fox_Zip_Installer_Code == 11) LOGINFO("OrangeFox: installed Treble (Custom) ROM: %s\n",filename.c_str());
+          else
+          if (Fox_Zip_Installer_Code == 22) LOGINFO("OrangeFox: installed Treble (MIUI) ROM: %s\n",filename.c_str());
           else
              LOGINFO("OrangeFox: installed MIUI ROM: %s\n",filename.c_str());            
         }
@@ -2637,8 +2642,9 @@ int GUIAction::calldeactivateprocess(std::string arg __unused)
     }
   else
     {
-  	Fox_Force_Deactivate_Process = 1;
   	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
+  	usleep(32);
+  	DataManager::GetValue(FOX_FORCE_DEACTIVATE_PROCESS, Fox_Force_Deactivate_Process); 	
   	TWFunc::Deactivation_Process();
     }
   operation_end(0);

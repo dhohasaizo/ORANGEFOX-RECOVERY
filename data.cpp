@@ -834,6 +834,7 @@ void DataManager::SetDefaultValues()
   //  MIUI }
   mPersist.SetValue(FOX_FORCE_DEACTIVATE_PROCESS, "0");
   mPersist.SetValue(FOX_ZIP_INSTALLER_CODE, "0");
+  mPersist.SetValue(FOX_ZIP_INSTALLER_TREBLE, "0");
 
   mPersist.SetValue(RW_REBOOT_AFTER_RESTORE, "0");
   mPersist.SetValue(RW_NO_OS_SEARCH_ENGINE, "1");

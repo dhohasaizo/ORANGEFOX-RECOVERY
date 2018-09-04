@@ -67,9 +67,6 @@ static string tmp_boot = tmp + "/boot.img";
 static string fstab1 = "/system/vendor/etc";
 static string fstab2 = "/vendor/etc";
 
-static bool is_miui_rom_install = false;
-static bool is_treble_rom_install = false;
-
 /* Execute a command */
 int TWFunc::Exec_Cmd(const string & cmd, string & result)
 {
@@ -744,6 +741,7 @@ int TWFunc::tw_reboot(RebootCommand command)
   sync();
 
   // DJ9 - if we haven't called Deactivation_Process before, check whether to call it now 
+  // This code is currently disabled - Fox_AutoDeactivate_OnReboot is never set to 1
   if ((Fox_AutoDeactivate_OnReboot == 1) && (Fox_IsDeactivation_Process_Called == 0))
     {
       if ( /*(Fox_Current_ROM_IsMIUI == 1) ||*/ 
@@ -1733,23 +1731,24 @@ int TWFunc::Check_MIUI_Treble(void)
 {
   //read cfg file to confirm treble/miui
   string fox_cfg = "/tmp/orangefox.cfg";
-  string fox_is_miui_rom_install = "0";
-  string fox_is_treble_rom_install = "0";
+  string fox_is_miui_rom_installed = "0";
+  string fox_is_treble_rom_installed = "0";
+  int Fox_Current_ROM_IsTreble = 0;
   
   if (TWFunc::Path_Exists(fox_cfg)) 
     {
-  	fox_is_miui_rom_install = TWFunc::File_Property_Get (fox_cfg, "MIUI");
-  	fox_is_treble_rom_install = TWFunc::File_Property_Get (fox_cfg, "TREBLE");
-  	if ((fox_is_miui_rom_install.empty()) || (fox_is_treble_rom_install.empty()))
+  	fox_is_miui_rom_installed = TWFunc::File_Property_Get (fox_cfg, "MIUI");
+  	fox_is_treble_rom_installed = TWFunc::File_Property_Get (fox_cfg, "TREBLE");
+  	if ((fox_is_miui_rom_installed.empty()) || (fox_is_treble_rom_installed.empty()))
   	  return 1; // emtpy value in cfg 
     }
     else 
     	return -1; // error - cfg not found
     
-  if (strncmp(fox_is_treble_rom_install.c_str(), "1", 1) == 0)
+  if (strncmp(fox_is_treble_rom_installed.c_str(), "1", 1) == 0)
   	Fox_Current_ROM_IsTreble = 1;
   
-  if (strncmp(fox_is_miui_rom_install.c_str(), "1", 1) == 0)
+  if (strncmp(fox_is_miui_rom_installed.c_str(), "1", 1) == 0)
      {
   	Fox_Current_ROM_IsMIUI = 1;
     	/*
@@ -2590,38 +2589,54 @@ bool TWFunc::Patch_DM_Verity()
   DIR *d;
   DIR *d1;
   struct dirent *de;
+  int treble;
+  DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);
+
+ // LOGINFO("OrangeFox: entering Patch_DM_Verity()\n");
   d = opendir(ramdisk.c_str());
   if (d == NULL)
     {
       LOGINFO("Unable to open '%s'\n", ramdisk.c_str());
       return false;
     }
+    
   while ((de = readdir(d)) != NULL)
     {
+      usleep (32);
       cmp = de->d_name;
       path = ramdisk + "/" + cmp;
+      
       if (cmp.find("fstab.") != string::npos)
 	{
 	  gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
 	  stat = 1;
 	  if (!status)
 	    {
-	      if (TWFunc::CheckWord(path, "verify")
-		  || TWFunc::CheckWord(path, "support_scfs"))
-		status = true;
+	      if ((TWFunc::CheckWord(path, "verify")) || (TWFunc::CheckWord(path, "support_scfs")))
+	        {
+	          LOGINFO("OrangeFox: Relevant DM_Verity flags are found in %s\n", path.c_str());
+		  status = true;
+		}
+		else
+		{
+	          LOGINFO("OrangeFox: Relevant DM_Verity flags are not found in %s\n", path.c_str());		
+		}
 	    }
 	  TWFunc::Replace_Word_In_File(path, remove);
 	}
+	
       if (cmp == "default.prop")
 	{
 	  if (TWFunc::CheckWord(path, "ro.config.dmverity="))
 	    {
+              LOGINFO("OrangeFox: DM_Verity flags found!\n");
 	      if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
 		TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;",
 					     "ro.config.dmverity=false");
 	    }
 	  else
 	    {
+              LOGINFO("OrangeFox: DM_Verity flags not found\n");
 	      ofstream File(path.c_str(), ios_base::app | ios_base::out);
 	      if (File.is_open())
 		{
@@ -2630,6 +2645,7 @@ bool TWFunc::Patch_DM_Verity()
 		}
 	    }
 	}
+	
       if (cmp == "verity_key")
 	{
 	  if (!status)
@@ -2638,9 +2654,11 @@ bool TWFunc::Patch_DM_Verity()
 	}
     }
   closedir(d);
+
+  usleep(128);
   if (stat == 0)
     {
-      if ((is_treble_rom_install == true) && (PartitionManager.Mount_By_Path("/vendor", false)))      
+      if ((treble == 1) && (PartitionManager.Mount_By_Path("/vendor", false)))      
 	{
 	  d1 = opendir(fstab2.c_str());
 	  stat = 2;
@@ -2651,21 +2669,41 @@ bool TWFunc::Patch_DM_Verity()
 	  stat = 1;
 	  d1 = opendir(fstab1.c_str());
 	}
+ 
+      if (d1 == NULL)
+        {
+	    if (stat == 2)
+		LOGINFO("Unable to open '%s'\n", fstab2.c_str());
+	    else 
+	    if (stat == 1)
+		LOGINFO("Unable to open '%s'\n", fstab1.c_str());
+	    return false;
+        }
+     
       while ((de = readdir(d1)) != NULL)
 	{
+	  usleep (32);
 	  cmp = de->d_name;
+	  
 	  if (stat == 2)
 	    path = fstab2 + "/" + cmp;
 	  else if (stat == 1)
 	    path = fstab1 + "/" + cmp;
+	  
 	  if (cmp.find("fstab.") != string::npos)
 	    {
 	      gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
 	      if (!status)
 		{
-		  if (TWFunc::CheckWord(path, "verify")
-		      || TWFunc::CheckWord(path, "support_scfs"))
-		    status = true;
+		  if ((TWFunc::CheckWord(path, "verify")) || (TWFunc::CheckWord(path, "support_scfs")))
+		    {
+	               LOGINFO("OrangeFox: Relevant dm-verity settings are found in %s\n", path.c_str());
+		       status = true;
+		    } 
+		    else
+		    {
+	               LOGINFO("OrangeFox: Relevant dm-verity settings are NOT found in %s\n", path.c_str());		    
+		    }
 		}
 	      TWFunc::Replace_Word_In_File(path, remove);
 	    }
@@ -2674,7 +2712,7 @@ bool TWFunc::Patch_DM_Verity()
       if (PartitionManager.Is_Mounted_By_Path("/system"))
 	  PartitionManager.UnMount_By_Path("/system", false);
 	
-       if ((is_treble_rom_install == true) && (PartitionManager.Is_Mounted_By_Path("/vendor")))
+       if ((treble == 1) && (PartitionManager.Is_Mounted_By_Path("/vendor")))
 	  PartitionManager.UnMount_By_Path("/vendor", false);
     } // stat == 0
 
@@ -2684,6 +2722,7 @@ bool TWFunc::Patch_DM_Verity()
 	status = true;
       unlink(firmware_key.c_str());
     }
+  //LOGINFO("OrangeFox: leaving Patch_DM_Verity()\n");
   return status;
 }
 
@@ -2693,20 +2732,25 @@ bool TWFunc::Patch_Forced_Encryption()
   string path, cmp;
   int stat = 0;
   bool status = false;
-  int encryption;
+  int encryption, treble;
   DataManager::GetValue(RW_DISABLE_DM_VERITY, encryption);
+  DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);
   DIR *d;
   DIR *d1;
   struct dirent *de;
   d = opendir(ramdisk.c_str());
+  
+  //LOGINFO("OrangeFox: entering Patch_Forced_Encyption()\n"); 
   if (d == NULL)
     {
       LOGINFO("Unable to open '%s'\n", ramdisk.c_str());
       return false;
     }
-    
+
+  //*** /tmp/orangefox/ramdisk/    
   while ((de = readdir(d)) != NULL)
     {
+      usleep (32);
       cmp = de->d_name;
       path = ramdisk + "/" + cmp;
       if (cmp.find("fstab.") != string::npos)
@@ -2716,21 +2760,33 @@ bool TWFunc::Patch_Forced_Encryption()
 	      gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
 	      stat = 1;
 	    }
+	    
 	  if (!status)
 	    {
-	      if (TWFunc::CheckWord(path, "forceencrypt")
-		  || TWFunc::CheckWord(path, "forcefdeorfbe"))
+	      if (
+	           (TWFunc::CheckWord(path, "forceencrypt")) 
+	        || (TWFunc::CheckWord(path, "forcefdeorfbe"))
+	        || (TWFunc::CheckWord(path, "fileencryption"))
+	        )
+	      {  
+		LOGINFO("OrangeFox: Relevant encryption settings are found in %s\n", path.c_str());
 		status = true;
+	      }
+	      else
+	      {
+		 LOGINFO("OrangeFox: Relevant encryption settings are found in %s\n", path.c_str());
+	      }
 	    }
-	  TWFunc::Replace_Word_In_File(path, "forcefdeorfbe=;forceencrypt=;",
-				       "encryptable=");
+	    TWFunc::Replace_Word_In_File(path, "forcefdeorfbe=;forceencrypt=;", "encryptable=");
+	    TWFunc::Replace_Word_In_File(path, "fileencryption=ice;", "encryptable=footer");
 	}
     }
   closedir(d);
   
+  //*** /vendor or /system
   if (stat == 0)
   {
-      if ((is_treble_rom_install == true) && (PartitionManager.Mount_By_Path("/vendor", false)))      
+      if ((treble == 1) && (PartitionManager.Mount_By_Path("/vendor", false)))      
 	{
 	  d1 = opendir(fstab2.c_str());
 	  stat = 2;
@@ -2742,39 +2798,63 @@ bool TWFunc::Patch_Forced_Encryption()
 	  d1 = opendir(fstab1.c_str());
 	}
 
+      if (d1 == NULL)
+       {
+	    if (stat == 2)
+		LOGINFO("Unable to open '%s'\n", fstab2.c_str());
+	    else 
+	    if (stat == 1)
+		LOGINFO("Unable to open '%s'\n", fstab1.c_str());
+	   return false;
+      }
+      
       while ((de = readdir(d1)) != NULL)
 	{
+	  usleep (32);
 	  cmp = de->d_name;
 	  if (stat == 2)
 	    path = fstab2 + "/" + cmp;
 	  else if (stat == 1)
 	    path = fstab1 + "/" + cmp;
+	  
 	  if (cmp.find("fstab.") != string::npos)
 	    {
+	      
 	      if (encryption != 1)
 		{
 		  gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
 		  stat = 1;
 		}
-	      if (!status)
-		{
-		  if (TWFunc::CheckWord(path, "forceencrypt")
-		      || TWFunc::CheckWord(path, "forcefdeorfbe"))
-		    status = true;
-		}
-	      TWFunc::Replace_Word_In_File(path,
-					   "forcefdeorfbe=;forceencrypt=;",
-					   "encryptable=");
-	    }
+	     
+	     if (!status)
+	        {
+	          if (
+	               (TWFunc::CheckWord(path, "forceencrypt")) 
+	            || (TWFunc::CheckWord(path, "forcefdeorfbe"))
+	            || (TWFunc::CheckWord(path, "fileencryption"))
+	             )
+	          {
+		      status = true;
+		      LOGINFO("OrangeFox: Relevant encryption settings are found in %s\n", path.c_str());
+		  } 
+		  else
+		  { 
+		      LOGINFO("OrangeFox: Relevant encryption settings *NOT* found in %s\n", path.c_str());
+		  }
+	       }
+	       TWFunc::Replace_Word_In_File(path, "forcefdeorfbe=;forceencrypt=;", "encryptable=");
+	       TWFunc::Replace_Word_In_File(path, "fileencryption=ice;", "encryptable=footer");
+	   }
 	}
       closedir(d1);
       
        if (PartitionManager.Is_Mounted_By_Path("/system"))
     	    PartitionManager.UnMount_By_Path("/system", false);
     
-       if ((is_treble_rom_install == true) && (PartitionManager.Is_Mounted_By_Path("/vendor")))
+       if ((treble == 1) && (PartitionManager.Is_Mounted_By_Path("/vendor")))
     	  PartitionManager.UnMount_By_Path("/vendor", false);   	
   } // stat == 0   
+  //LOGINFO("OrangeFox: leaving Patch_Forced_Encyption()\n");
   return status;
 }
 
@@ -2837,6 +2917,7 @@ void TWFunc::Patch_Others(void)
       TWFunc::Set_New_Ramdisk_Property(default_prop, mock, false);
     }
 
+  // Set permissions
   if (Path_Exists(default_prop)) 
   	chmod(default_prop.c_str(), 0644);
 
@@ -2851,16 +2932,9 @@ void TWFunc::Deactivation_Process(void)
   Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
   usleep(32);
 
-  if ((Fox_Zip_Installer_Code == 2) || (Fox_Zip_Installer_Code == 3) || (Fox_Zip_Installer_Code == 22))
-     is_miui_rom_install = true;
-  else
-     is_miui_rom_install = false;
+  Fox_Force_Deactivate_Process = DataManager::GetIntValue(FOX_FORCE_DEACTIVATE_PROCESS);
+  usleep(32);
 
-  if ((Fox_Zip_Installer_Code == 11) || (Fox_Zip_Installer_Code == 22))
-     is_treble_rom_install = true;
-  else
-     is_treble_rom_install = false;
-  
   // increment value, to show how many times we have called this
   Fox_IsDeactivation_Process_Called++;
 
@@ -2877,8 +2951,7 @@ void TWFunc::Deactivation_Process(void)
 	  if (mkdir
 	      (aromafm_path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
 	    {
-	      LOGERR("Error making %s directory: %s\n", aromafm_path.c_str(),
-		     strerror(errno));
+	      LOGERR("Error making %s directory: %s\n", aromafm_path.c_str(), strerror(errno));
 	    }
 	}
       // Save AromaFM config (AromaFM.cfg)
@@ -2948,13 +3021,12 @@ void TWFunc::Deactivation_Process(void)
 	  ("OrangeFox"));
      }
   else
-        gui_msg(Msg(msg::kProcess, "of_run_process_done=Finished '{1}' process")
+       gui_msg(Msg(msg::kProcess, "of_run_process_done=Finished '{1}' process")
 	  ("OrangeFox"));
 
   // reset "force" stuff  
   Fox_Force_Deactivate_Process = 0;
   DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
-
 }
 
 #endif // ifndef BUILD_TWRPTAR_MAIN

@@ -254,6 +254,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   
   zip_is_survival_trigger = false; // assume non-miui
   DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 0); // assume standard zip installer
+  DataManager::SetValue(FOX_ZIP_INSTALLER_TREBLE, "0");
   
   if (!Zip->
       ExtractEntry(ASSUMED_UPDATE_BINARY_NAME, TMP_UPDATER_BINARY_PATH, 0755))
@@ -346,6 +347,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
    //* treble
       if ((Zip->EntryExists("vendor.new.dat")) || (Zip->EntryExists("vendor.new.dat.br"))) // we are installing a Treble ROM
          {
+           DataManager::SetValue(FOX_ZIP_INSTALLER_TREBLE, "1");
            Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
            usleep (32);
            
@@ -390,10 +392,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 			{
 			  gui_msg
 			    ("fox_incremental_ota_compatibility_chk=Verifying Incremental Package Signature...");
-			    /* if (TWFunc::
-			      Verify_Incremental_Package(fingerprint,
-							 metadata_fingerprint,
-							 metadata_device)) */
+
 			    if (verify_incremental_package 
 			         (fingerprint, 
 			          metadata_fingerprint,
@@ -797,7 +796,10 @@ int TWinstall_zip(const char *path, int *wipe_cache)
     }
 
   if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) == 1)
+     {
          DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 0); // internal zip = standard zip installer
+         DataManager::SetValue(FOX_ZIP_INSTALLER_TREBLE, "0");
+     }    
   else   
     {
       gui_msg(Msg("installing_zip=Installing zip file '{1}'") (path));
