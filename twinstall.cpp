@@ -1020,11 +1020,10 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	      DataManager::SetValue(RW_RUN_SURVIVAL_BACKUP, 1);
 	      gui_msg
 		("fox_incremental_ota_bak_run=Starting OTA_BAK process...");
-	      
-	      DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 3); // miui OTA backup
-	      
+	      	      
 	      if (PartitionManager.Run_OTA_Survival_Backup(false))
 	        {
+	           DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 3); // miui OTA backup succeeded
 	           set_miui_install_status(OTA_SUCCESS, false);    
 	           gui_msg("fox_incremental_ota_bak=Process OTA_BAK --- done!");
 	        }
