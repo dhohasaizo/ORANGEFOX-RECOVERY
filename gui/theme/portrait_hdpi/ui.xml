@@ -274,7 +274,7 @@
 		<variable name="tw_hide_kb" value="0"/>
 		<variable name="rw_inject_after_zip_tmp" value="0"/>
 		<variable name="auto_flash_repack" value="0"/>
-		<variable name="aromafm" value="1" persist="1"/>
+		<variable name="aromafm" value="0" persist="1"/>
 		<variable name="auto_generate" value="0" persist="1"/>
 		<variable name="show_cpu_temp" value="1" persist="1"/>
 		<variable name="center_clock" value="0" persist="1"/>
@@ -301,6 +301,7 @@
 
 		<!-- For Maintainers -->
 		<variable name="fox_debug_build" value="0"/> <!-- Enable this function if you wanna enable debug mode switch -->
+		<variable name="fox_notch" value="0"/> <!-- Enable this variable for enable notch -->
 
 		<!-- Lower led crutch :) -->
 		<variable name="fox_set_custom_led_restore_green" value="1" persist="1"/>
@@ -976,18 +977,21 @@
 		</template>
 		<template name="statusbarinfo">
 			<text style="text_status">
+				<condition var1="fox_notch" var2="0"/>
 				<condition var1="show_cpu_temp" var2="0"/>
 				<placement x="%version_x%" y="%status_info_y%"/>
 				<text>%rw_version%</text>
 			</text>
 
 			<text style="text_status">
+				<condition var1="fox_notch" var2="0"/>
 				<condition var1="show_cpu_temp" var2="1"/>
 				<placement x="%version_x%" y="%status_info_y%"/>
 				<text>{@cpu_temp=CPU: %tw_cpu_temp%&#xB0;C}</text>
 			</text>
 
 			<text style="text_status_fail">
+				<condition var1="fox_notch" var2="0"/>
 				<condition var1="fox_boot_powersave_check" var2="1"/>
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/>
 				<text>{@simulating=Powersave}</text>
@@ -996,6 +1000,7 @@
 			<text style="text_status">
 				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
+					<condition var1="fox_notch" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="1"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -1009,6 +1014,7 @@
 				<font resource="status"/>
 				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
+					<condition var1="fox_notch" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="1"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
@@ -1020,6 +1026,7 @@
 			<text style="text_status">
 				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
 				<conditions>
+					<condition var1="fox_notch" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="1"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -1034,11 +1041,12 @@
 				<font resource="status"/>
 				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
 				<conditions>
+					<condition var1="fox_notch" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="1"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
-          <condition var1="fox_boot_powersave_check" op="=" var2="0"/>
+          			<condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
@@ -1046,6 +1054,7 @@
 			<text style="text_status">
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
+					<condition var1="fox_notch" var2="0"/>
 					<condition var1="center_clock" op="=" var2="1"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
@@ -1059,6 +1068,7 @@
 				<font resource="status"/>
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
+					<condition var1="fox_notch" var2="0"/>
 					<condition var1="center_clock" op="=" var2="1"/>
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
@@ -1070,6 +1080,7 @@
 			<text style="text_status">
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/> <!--right align-->
 				<conditions>
+					<condition var1="fox_notch" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="1"/>
 				</conditions>
 				<text>%tw_time%</text>
@@ -1078,6 +1089,7 @@
 			<text style="text_status">
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/> <!--centered-->
 				<conditions>
+					<condition var1="fox_notch" var2="0"/>
 					<condition var1="center_clock" var2="1"/>
 					<condition var1="fox_boot_powersave_check" op="!=" var2="1"/>
 				</conditions>
@@ -1087,6 +1099,7 @@
       		<text style="text_status">
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/> <!--Powersave center clock-->
 				<conditions>
+					<condition var1="fox_notch" var2="0"/>
 					<condition var1="center_clock" op="=" var2="1"/>
 					<condition var1="fox_boot_powersave_check" op="=" var2="1"/>
 				</conditions>
@@ -1097,6 +1110,7 @@
 				<font resource="status"/>
 				<placement x="%battery_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
+					<condition var1="fox_notch" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
@@ -1108,11 +1122,41 @@
 			<text style="text_status">
 				<placement x="%battery_x_m%" y="%status_info_y%" placement="1"/>
 				<conditions>
+					<condition var1="fox_notch" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
           			<condition var1="fox_boot_powersave_check" op="=" var2="1"/>
+				</conditions>
+				<text>{@battery_pct=%tw_battery%}</text>
+			</text>
+
+			<!-- OrangeFox notch section -->
+
+			<text style="text_status">
+				<placement x="1010" y="%status_info_y%" placement="1"/> <!--right align-->
+				<condition var1="fox_notch" var2="1"/>
+				<text>%tw_time%</text>
+			</text>
+
+			<text color="#000000">
+				<font resource="status"/>
+				<placement x="140" y="%status_info_y%" placement="5"/>
+				<conditions>
+					<condition var1="fox_notch" var2="1"/>
+					<condition var1="tw_battery" op="&gt;" var2="0"/>
+					<condition var1="tw_battery" op="&lt;" var2="15"/>
+				</conditions>
+				<text>{@battery_pct=%tw_battery%}</text>
+			</text>
+
+			<text style="text_status">
+				<placement x="140" y="%status_info_y%" placement="5"/>
+				<conditions>
+					<condition var1="fox_notch" var2="1"/>
+					<condition var1="tw_battery" op="&gt;" var2="16"/>
+					<condition var1="tw_battery" op="&lt;" var2="101"/>
 				</conditions>
 				<text>{@battery_pct=%tw_battery%}</text>
 			</text>
