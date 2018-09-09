@@ -252,6 +252,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   string check_command = "grep " + miui_check1 + " " + TMP_UPDATER_BINARY_PATH;
   int is_new_miui_update_binary = 0;
   
+  zip_is_rom_package = false; // assume we are not installing a ROM
   zip_is_survival_trigger = false; // assume non-miui
   DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 0); // assume standard zip installer
   DataManager::SetValue(FOX_ZIP_INSTALLER_TREBLE, "0");
@@ -287,7 +288,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    }
 	}
       
-   // DJ9: 18/08/18
+   // DJ9: Support MIUI Incremental package
       if (zip_is_rom_package == true) 
         {
            if (Zip->EntryExists(FOX_MIUI_UPDATE_PATH)) // META-INF/com/miui/miui_update - if found, then this is a miui zip installer
@@ -320,7 +321,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
                 }  
            }
         } 
-   // DJ9: 18/08/18
+   // DJ9:
       
       // is this is a MIUI installer ?
       if (zip_is_survival_trigger == true)    
@@ -407,7 +408,6 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 			    }
 			  else
 			    {
-			      //TWFunc::Write_MIUI_Install_Status(OTA_VERIFY_FAIL, false);
 			      set_miui_install_status(OTA_VERIFY_FAIL, false);
 			      gui_err
 				("fox_incremental_ota_compatibility_false=Incremental package isn't compatible with this ROM!");
@@ -432,9 +432,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      else
 		{
 		  Zip->Close();
-		  LOGERR("Could not extract '%s'\n",
-			 take_out_metadata.c_str());
-		  //TWFunc::Write_MIUI_Install_Status(OTA_ERROR, false);
+		  LOGERR("Could not extract '%s'\n", take_out_metadata.c_str());
 		  set_miui_install_status(OTA_ERROR, false);
 		  return INSTALL_ERROR;
 		}
@@ -442,8 +440,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	}
       else
 	{
-	  gui_msg
-	    ("fox_incremental_ota_status_disabled=Support MIUI Incremental package status: Disabled");
+            if (zip_is_rom_package == true) 	       
+              gui_msg ("fox_incremental_ota_status_disabled=Support MIUI Incremental package status: Disabled");
 	}
 
       string ota_location_folder, ota_location_backup, loadedfp;
@@ -453,8 +451,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
       DataManager::GetValue(RW_LOADED_FINGERPRINT, loadedfp);
 
       if (DataManager::GetIntValue(RW_METADATA_PRE_BUILD) != 0
-	  && !TWFunc::Verify_Loaded_OTA_Signature(loadedfp,
-						  ota_location_folder))
+	  && !TWFunc::Verify_Loaded_OTA_Signature(loadedfp, ota_location_folder))
 	{
 	  TWPartition *survival_boot =
 	    PartitionManager.Find_Partition_By_Path("/boot");

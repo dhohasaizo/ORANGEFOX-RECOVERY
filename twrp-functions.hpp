@@ -127,8 +127,9 @@ private:
 	static bool Patch_Forced_Encryption();
     	static bool Patch_DM_Verity();
     	static void Patch_Others(void);	
-    	static int Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
+    	static bool Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
     	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
+    	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
 };
 
 extern int Log_Offset;
