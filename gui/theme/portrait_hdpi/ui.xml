@@ -264,6 +264,8 @@
 		<image name="tab_bu_encr_dis_a" filename="tab_bu_encr_dis_a" retainaspect="1"/>
 		<image name="tab_bu_encr_ena" filename="tab_bu_encr_ena" retainaspect="1"/>
 		<image name="tab_bu_encr_ena_a" filename="tab_bu_encr_ena_a" retainaspect="1"/>
+		<image name="tab_language" filename="tab_language" retainaspect="1"/>
+		<image name="tab_language_hl" filename="tab_language_hl" retainaspect="1"/>
 		<resource name="button-bes" type="image" filename="button-bes" />
 		<font name="button-text" filename="RobotoCondensed-Regular.ttf" size="35"/>
 		<image name="cursor" filename="cursor"/>
@@ -300,7 +302,7 @@
 		<variable name="fox_adb" value="0"/>
 
 		<!-- For Maintainers -->
-		<variable name="fox_debug_build" value="0"/> <!-- Enable this function if you wanna enable debug mode switch -->
+		<variable name="fox_debug_build" value="1"/> <!-- Enable this function if you wanna enable debug mode switch -->
 		<variable name="fox_notch" value="0"/> <!-- Enable this variable for enable notch -->
 
 		<!-- Lower led crutch :) -->
@@ -363,6 +365,7 @@
 		<variable name="tab4_width" value="270"/>
 		<variable name="tab5_width" value="216"/>
 		<variable name="tab3_col1_x" value="180"/>
+		<variable name="tabx_center_x" value="540"/>
 		<variable name="tab3_col3_x" value="900"/>
 		<variable name="tab3_ind2_x" value="360"/>
 		<variable name="tab3_ind3_x" value="720"/>

@@ -2818,12 +2818,18 @@
 			</button-->
 
 			<image>
-				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
+				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_misc_a"/>
 			</image>
 
 			<button>
-				<placement x="540" y="%tab_y%" placement="4"/>
+				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_language_hl"/>
+				<action function="page">fox_languages</action>
+			</button>
+
+			<button>
+				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_time"/>
 				<action function="page">timezone</action>
 			</button>
@@ -2835,13 +2841,14 @@
 			</button-->
 
 			<button>
-				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
+				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_vibration"/>
 				<action function="page">vibrate</action>
 			</button>
 
+
 			<fill color="%text_actionbar%">
-				<placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+				<placement x="0" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption">
@@ -2850,7 +2857,7 @@
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="810"/>
+				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="%row6_2_y%"/>
 				<listitem name="{@zip_sig_chk=Zip signature verification}">
 					<data variable="tw_signed_zip_verify"/>
 				</listitem>
@@ -2882,25 +2889,43 @@
 				<listitem name="{@auto_name_generate=Show auto generated backup name}">
 					<data variable="auto_generate"/>
 				</listitem>
+				<listitem name="{@fox_enable_debugg_chk}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="fox_reboot_forced_debugging_check"/>
+				</listitem>
+				<listitem name="{@fox_disable_debugg_chk}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="fox_reboot_disable_debugging_check"/>
+				</listitem>
+				<listitem name="{@fox_reboot_disable_secure_boot_chk}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="fox_reboot_disable_secure_boot"/>
+				</listitem>
+				<listitem name="{@fox_reboot_enable_mock_location_chk}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="fox_reboot_enable_mock_location"/>
+				</listitem>
+				<listitem name="{@fox_reboot_disable_mock_location_chk}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="fox_reboot_disable_mock_location"/>
+				</listitem>
+				<listitem name="{@fox_reboot_disable_adb_ro_chk}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="fox_reboot_disable_adb_ro"/>
+				</listitem>
+				<listitem name="{@fox_reboot_enable_adb_ro_chk}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="fox_reboot_enable_adb_ro"/>
+				</listitem>
+				<listitem name="{@fox_reboot_disable_secure_ro_chk}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="fox_reboot_disable_secure_ro"/>
+				</listitem>
+				<listitem name="{@fox_reboot_enable_secure_ro_chk}">
+					<condition var1="fox_debug" var2="1"/>
+					<data variable="fox_reboot_enable_secure_ro"/>
+				</listitem>
 			</listbox>
-
-		   <text style="caption">
-				<placement x="%col1_x%" y="%row6_3_y%" />
-				<text>{@language_cptn=Language}</text>
-			</text>
-
-			<listbox>
-				<placement x="%col1_x%" y="%row7_1_y%" w="%listbox_w%" h="%listbox_settings_lang_height%"/>
-				<data name="tw_language"/>
-			</listbox>
-
-			<button>
-				<condition var1="tw_language" op="modified"/>
-				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
-				<image resource="btn_float_accept"/>
-				<highlight color="%highlight_color%"/>
-				<action function="setlanguage"></action>
-			</button>
 
 			<action>
 				<touch key="home"/>
@@ -2929,8 +2954,14 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@settings_hdr=Settings}</text>
+				<text>{@sel_tz_list}</text>
 			</text>
+
+			<button>
+				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_misc"/>
+				<action function="page">settings</action>
+			</button>
 
            <!--button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
@@ -2939,13 +2970,13 @@
 			</button-->
 
 			<button>
-				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_misc"/>
-				<action function="page">settings</action>
+				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_language_hl"/>
+				<action function="page">fox_languages</action>
 			</button>
 
 			<image>
-				<placement x="540" y="%tab_y%" placement="4"/>
+				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_time_a"/>
 			</image>
 
@@ -2956,13 +2987,14 @@
 			</button-->
 
 			<button>
-				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
+				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_vibration"/>
 				<action function="page">vibrate</action>
 			</button>
 
+
 			<fill color="%text_actionbar%">
-				<placement x="%tab3_ind2_x%" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+				<placement x="tabx_center_x" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption">
@@ -3070,19 +3102,19 @@
 			</text>
 
 			<button>
-				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
+				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_misc"/>
 				<action function="page">settings</action>
 			</button>
 
-			<!--button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
-				<action function="overlay">dialog_reset</action>
-			</button-->
+			<button>
+				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_language_hl"/>
+				<action function="page">fox_languages</action>
+			</button>
 
 			<button>
-				<placement x="540" y="%tab_y%" placement="4"/>
+				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_time"/>
 				<action function="page">timezone</action>
 			</button>
@@ -3094,12 +3126,13 @@
 			</button-->
 
 			<image>
-				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
+				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_vibration_a"/>
 			</image>
 
+
 			<fill color="%text_actionbar%">
-				<placement x="%tab3_ind3_x%" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
+				<placement x="%tab4_ind4_x%" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
 
 			<text style="caption">
@@ -13647,42 +13680,6 @@
 				<listitem name="{@fox_save_load_aromafm_config_chk}">
 					<data variable="fox_reboot_saveload_aromafm_check"/>
 				</listitem>
-				<listitem name="{@fox_enable_debugg_chk}">
-					<condition var1="fox_debug" var2="1"/>
-					<data variable="fox_reboot_forced_debugging_check"/>
-				</listitem>
-				<listitem name="{@fox_disable_debugg_chk}">
-					<condition var1="fox_debug" var2="1"/>
-					<data variable="fox_reboot_disable_debugging_check"/>
-				</listitem>
-				<listitem name="{@fox_reboot_disable_secure_boot_chk}">
-					<condition var1="fox_debug" var2="1"/>
-					<data variable="fox_reboot_disable_secure_boot"/>
-				</listitem>
-				<listitem name="{@fox_reboot_enable_mock_location_chk}">
-					<condition var1="fox_debug" var2="1"/>
-					<data variable="fox_reboot_enable_mock_location"/>
-				</listitem>
-				<listitem name="{@fox_reboot_disable_mock_location_chk}">
-					<condition var1="fox_debug" var2="1"/>
-					<data variable="fox_reboot_disable_mock_location"/>
-				</listitem>
-				<listitem name="{@fox_reboot_disable_adb_ro_chk}">
-					<condition var1="fox_debug" var2="1"/>
-					<data variable="fox_reboot_disable_adb_ro"/>
-				</listitem>
-				<listitem name="{@fox_reboot_enable_adb_ro_chk}">
-					<condition var1="fox_debug" var2="1"/>
-					<data variable="fox_reboot_enable_adb_ro"/>
-				</listitem>
-				<listitem name="{@fox_reboot_disable_secure_ro_chk}">
-					<condition var1="fox_debug" var2="1"/>
-					<data variable="fox_reboot_disable_secure_ro"/>
-				</listitem>
-				<listitem name="{@fox_reboot_enable_secure_ro_chk}">
-					<condition var1="fox_debug" var2="1"/>
-					<data variable="fox_reboot_enable_secure_ro"/>
-				</listitem>
 			</listbox>
 
 			<text style="caption">
@@ -14891,6 +14888,95 @@
 				<action function="page">main2</action>
 			</action>
 
+		</page>
+
+		<page name="fox_languages">
+			<template name="body"/>
+
+			<template name="ab_tab"/>
+
+			<template name="statusbarinfo"/>
+
+			<button>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+				<action function="page">main</action>
+			</button>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@language_cptn}</text>
+			</text>
+
+           <!--button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
+				<action function="overlay">dialog_reset</action>
+			</button-->
+
+			<button>
+				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_misc"/>
+				<action function="page">settings</action>
+			</button>
+
+			<button>
+				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_language"/>
+				<action function="page">fox_languages</action>
+			</button>
+
+			<button>
+				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_time"/>
+				<action function="page">timezone</action>
+			</button>
+
+			<!--button>
+				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_display"/>
+				<action function="page">screen</action>
+			</button-->
+
+			<button>
+				<placement x="%tab4_col4_x%" y="%tab_y%" placement="4"/>
+				<image resource="tab_vibration"/>
+				<action function="page">vibrate</action>
+			</button>
+
+
+			<fill color="%text_actionbar%">
+				<placement x="%tab4_ind2_x%" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
+			</fill>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_3_y%" />
+				<text>{@language_cptn=Language}</text>
+			</text>
+
+			<listbox>
+				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="%row6_2_y%"/>
+				<data name="tw_language"/>
+			</listbox>
+
+			<button>
+				<condition var1="tw_language" op="modified"/>
+				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
+				<image resource="btn_float_accept"/>
+				<highlight color="%highlight_color%"/>
+				<action function="setlanguage"></action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
 		</page>
 
 		</pages>
