@@ -13695,7 +13695,7 @@
 					<action function="set">tw_filecheck=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
 					<action function="set">tw_filename=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
 					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=advanced</action>
+					<action function="set">tw_back=fox_menu2</action>
 					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1={@fox_del_txt1}</action>
@@ -13704,6 +13704,23 @@
 					<action function="set">fox_flash_info=2</action>
 					<action function="set">fox_flash_i1={@fox_del_i1}</action>
 					<action function="set">fox_flash_i2={@fox_del_i2}</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_right_x%" y="row8_1_y" placement="1"/>
+				<text>{@fox_def_btn}</text>
+				<actions>
+					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/OF_reset.zip</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/OF_reset.zip</action>
+					<action function="set">tw_existpage=fox_flash</action>
+					<action function="set">tw_back=fox_menu2</action>
+					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
+					<action function="page">filecheck</action>
+					<action function="set">fox_flash_txt1={@fox_def_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_def_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_def_sld}</action>
+					<action function="set">fox_flash_info=0</action>
 				</actions>
 			</button>
 
