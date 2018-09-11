@@ -2312,7 +2312,6 @@ string TWFunc::Load_File(string extension)
   return line;
 }
 
-
 bool TWFunc::Unpack_Image(string mount_point)
 {
   string null;
@@ -2406,7 +2405,6 @@ bool TWFunc::Unpack_Image(string mount_point)
     }
   return true;
 }
-
 
 bool TWFunc::Repack_Image(string mount_point)
 {
@@ -2587,13 +2585,13 @@ bool TWFunc::Patch_DM_Verity()
 {
   bool status = false;
   int stat = 0;
-  string firmware_key = ramdisk + "/sbin/firmware_key.cer";
-  string path, cmp, remove =
-    "verify,;,verify;verify;support_scfs,;,support_scfs;support_scfs;";
+  int treble;
   DIR *d;
   DIR *d1;
   struct dirent *de;
-  int treble;
+  string path, cmp;
+  string firmware_key = ramdisk + "/sbin/firmware_key.cer";
+  string remove = "avb,;,avb;avb;verify,;,verify;verify;support_scfs,;,support_scfs;support_scfs;";
   DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);
 
   LOGINFO("OrangeFox: entering Patch_DM_Verity()\n");
@@ -2609,18 +2607,13 @@ bool TWFunc::Patch_DM_Verity()
       usleep (32);
       cmp = de->d_name;
       path = ramdisk + "/" + cmp;
-//gui_print ("DEBUG #1: filename=%s\n", path.c_str());     
       if (cmp.find("fstab.") != string::npos)
 	{
 	  gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
 	  stat = 1;
 	  if (!status)
 	    {
-	      if (
-	         (TWFunc::CheckWord(path, "verify")) 
-	      || (TWFunc::CheckWord(path, "support_scfs"))
-	     // || (TWFunc::CheckWord(path, "avb"))
-	      )
+	      if (Fstab_Has_Verity_Flag(path))
 	        {
 	          LOGINFO("OrangeFox: Relevant DM_Verity flags are found in %s\n", path.c_str());
 		  status = true;
@@ -2669,31 +2662,18 @@ bool TWFunc::Patch_DM_Verity()
 
       if (treble == 1)
       {
-//gui_print ("DEBUG #3: Treble ROM\n");     
          if (PartitionManager.Mount_By_Path("/vendor", false))      
 	   {
-//gui_print ("DEBUG #3.1: Treble ROM - mount /vendor/\n");     
 	      d1 = opendir(fstab2.c_str());
-	  //    if (d1 != NULL)
-	  //       gui_print ("DEBUG #3.2: Treble ROM - Opened directory\n");     
-	  //    else   
-	  //       gui_print ("DEBUG #3.3: Treble ROM - Cant Open\n");     
-
 	      stat = 2;
 	   }        
       } 
 
      if (d1 == NULL)
 	{
-//gui_print ("DEBUG #4: NULL - need to try again\n");     
 	  if (PartitionManager.Mount_By_Path("/system", false))
 	     {
-//gui_print ("DEBUG #4.1: mounted /system/\n");     
 	        d1 = opendir(fstab1.c_str());
-//	      if (d1 != NULL)
-//	         gui_print ("DEBUG #4.2: Treble ROM - Opened directory\n");     
-//	      else   
-//	         gui_print ("DEBUG #4.3: Treble ROM - Cant Open\n");     
 	        stat = 1;
 	     }
         }
@@ -2720,17 +2700,12 @@ bool TWFunc::Patch_DM_Verity()
 	  if (stat == 1)
 	     path = fstab1 + "/" + cmp;
 	  
-//gui_print ("DEBUG #6: filename=%s\n", path.c_str());     
 	  if (cmp.find("fstab.") != string::npos)
 	    {
 	      gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
 	      if (!status)
 		{
-		  if (
-		     (TWFunc::CheckWord(path, "verify")) 
-		  || (TWFunc::CheckWord(path, "support_scfs"))
-		 // || (TWFunc::CheckWord(path, "avb"))
-		  )
+		  if (Fstab_Has_Verity_Flag(path))
 		    {
 	               LOGINFO("OrangeFox: Relevant dm-verity settings are found in %s\n", path.c_str());
 		       status = true;
@@ -2761,7 +2736,19 @@ bool TWFunc::Patch_DM_Verity()
   return status;
 }
 
-int TWFunc::Fstab_Has_Encryption_Flag(std::string path)
+bool TWFunc::Fstab_Has_Verity_Flag(std::string path)
+{
+    if (
+       (TWFunc::CheckWord(path, "verify")) 
+    || (TWFunc::CheckWord(path, "avb"))
+    || (TWFunc::CheckWord(path, "support_scfs"))
+       )
+        return true;
+   else
+        return false;
+}
+
+bool TWFunc::Fstab_Has_Encryption_Flag(std::string path)
 {
    if (
         (CheckWord(path, "forceencrypt")) 
@@ -2770,9 +2757,9 @@ int TWFunc::Fstab_Has_Encryption_Flag(std::string path)
      || (CheckWord(path, "errors=panic")) 
      || (CheckWord(path, "discard,"))
       )
-        return 1;
+        return true;
    else
-        return 0;
+        return false;
 }
 
 void TWFunc::Patch_Encryption_Flags(std::string path)
@@ -2780,10 +2767,6 @@ void TWFunc::Patch_Encryption_Flags(std::string path)
    TWFunc::Replace_Word_In_File(path,  "forcefdeorfbe=;forceencrypt=;fileencryption=;", "encryptable=");
    TWFunc::Remove_Word_From_File(path, "errors=panic");
    TWFunc::Remove_Word_From_File(path, "discard,");   
-   /*
-    TWFunc::Replace_Word_In_File(path, "forcefdeorfbe=;forceencrypt=;", "encryptable=");
-    TWFunc::Replace_Word_In_File(path, "fileencryption=ice;", "encryptable=footer");
-    */
 }
 
 bool TWFunc::Patch_Forced_Encryption()
@@ -2812,7 +2795,6 @@ bool TWFunc::Patch_Forced_Encryption()
       usleep (32);
       cmp = de->d_name;
       path = ramdisk + "/" + cmp;
-//gui_print ("DEBUG #21: filename=%s\n", path.c_str());     
       
       if (cmp.find("fstab.") != string::npos)
 	{
@@ -2844,27 +2826,18 @@ bool TWFunc::Patch_Forced_Encryption()
 
       if (treble == 1)
       {
-//gui_print ("DEBUG #22: Treble ROM\n");     
          if (PartitionManager.Mount_By_Path("/vendor", false))      
 	   {
-//gui_print ("DEBUG #22.1: Treble ROM - Mounted /vendor.\n");     
 	      d1 = opendir(fstab2.c_str());
-//if (d1==NULL)
-//gui_print ("DEBUG #22.2: Treble ROM - /vendor - failed to open directory: %s\n", fstab2.c_str());     
-
 	      stat = 2;
 	   }        
       } 
 
      if (d1 == NULL)
 	{
-//gui_print ("DEBUG #23: NULL - need to try again\n");     
 	  if (PartitionManager.Mount_By_Path("/system", false))
 	     {
-//gui_print ("DEBUG #23.1: Mounted /system\n");     
 	        d1 = opendir(fstab1.c_str());
-//if (d1==NULL)
-//gui_print ("DEBUG #23.2: Treble ROM - /system - failed to open directory: %s\n", fstab1.c_str());     
 	        stat = 1;
 	     }
         }
@@ -2889,7 +2862,6 @@ bool TWFunc::Patch_Forced_Encryption()
 	  else 
 	  if (stat == 1)
 	       path = fstab1 + "/" + cmp;
-//gui_print ("DEBUG #25: filename=%s\n", path.c_str());	  
 	  if (cmp.find("fstab.") != string::npos)
 	    {
 	      
@@ -2931,17 +2903,10 @@ void TWFunc::Patch_Others(void)
 {
   std::string fstab = ramdisk + "/fstab.qcom";
   std::string default_prop = ramdisk + "/default.prop";
-  std::string dm_verity_prop = "ro.config.dmverity";
-  std::string result;
-  std::string verity_key = ramdisk + "/verity_key";
-  std::string firmware_key = ramdisk + "/sbin/firmware_key.cer";
-  std::string debug = "ro.debuggable";
   std::string adb_ro = "ro.adb.secure";
   std::string ro = "ro.secure";
   std::string mock = "ro.allow.mock.location";
   std::string miui_secure_boot = "ro.secureboot.devicelock";
-  std::string dm_verity_prop_false = dm_verity_prop + "=false";
-  std::string dm_verity_prop_true = dm_verity_prop + "=true";
 
   // Enable ADB read-only property in the default.prop
   if (DataManager::GetIntValue(RW_ENABLE_ADB_RO) == 1)
@@ -2998,10 +2963,7 @@ void TWFunc::Deactivation_Process(void)
 {
  
   Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
-  usleep(16);
-
   Fox_Force_Deactivate_Process = DataManager::GetIntValue(FOX_FORCE_DEACTIVATE_PROCESS);
-  usleep(16);
 
   // increment value, to show how many times we have called this
   Fox_IsDeactivation_Process_Called++;

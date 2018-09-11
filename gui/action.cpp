@@ -454,7 +454,7 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
 	
       //* DJ9
       Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
-      usleep(128);
+      usleep(1024);
       if (Fox_Zip_Installer_Code == 0) // this is a standard zip installer
         {
            if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) == 1)
@@ -1240,21 +1240,26 @@ void GUIAction::notify_after_install()
 int GUIAction::flash(std::string arg)
 {
   int i, ret_val = 0, wipe_cache = 0;
+  int has_installed_rom = 0;
+  
   // We're going to jump to this page first, like a loading page
   gui_changePage(arg);
+  
+  // loop through the zip(s) to be installed
   for (i = 0; i < zip_queue_index; i++)
     {
       string zip_path = zip_queue[i];
       size_t slashpos = zip_path.find_last_of('/');
-      string zip_filename =
-	(slashpos == string::npos) ? zip_path : zip_path.substr(slashpos + 1);
+      string zip_filename = (slashpos == string::npos) ? zip_path : zip_path.substr(slashpos + 1);
       operation_start("Flashing");
       DataManager::SetValue("tw_filename", zip_path);
       DataManager::SetValue("tw_file", zip_filename);
       DataManager::SetValue(TW_ZIP_INDEX, (i + 1));
 
       TWFunc::SetPerformanceMode(true);
+
       ret_val = flash_zip(zip_path, &wipe_cache);
+
       TWFunc::SetPerformanceMode(false);
       if (ret_val != 0)
 	{
@@ -1263,7 +1268,22 @@ int GUIAction::flash(std::string arg)
 	  ret_val = 1;
 	  break;
 	}
-    }
+ 
+      // DJ9 
+      // gui_print("DEBUG: Name=%s; Zip number [%i] of [%i]; code=%i\n", zip_path.c_str(), i, zip_queue_index, Fox_Zip_Installer_Code); 
+      if (Fox_Zip_Installer_Code != 0) // we have just installed a ROM - ideally, the user should reboot the recovery
+       {
+          has_installed_rom++;
+          usleep(50000);
+	  TWFunc::Deactivation_Process();
+	  DataManager::SetValue(RW_CALL_DEACTIVATION, 0);
+          usleep(50000);
+	  PartitionManager.Update_System_Details();
+       }
+       usleep(250000);
+       // DJ9      
+     } // for i
+    
   zip_queue_index = 0;
 
   if (wipe_cache)
@@ -1273,37 +1293,19 @@ int GUIAction::flash(std::string arg)
       PartitionManager.Wipe_By_Path("/cache");
     }
 
-  if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1) // we are not installing an internal zip
-    {
-      if (DataManager::GetIntValue(RW_CALL_DEACTIVATION) != 0) // we are installing a ROM
-	{
-	  TWFunc::Deactivation_Process();
-	  DataManager::SetValue(RW_CALL_DEACTIVATION, 0);
-	}
+   if ((has_installed_rom > 0) || (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1))
+   {
       notify_after_install();
-    }
+   }
 
   DataManager::Vibrate("fox_data_install_vibrate");
   DataManager::Leds(true);
 
-  reinject_after_flash();
+  reinject_after_flash(); // ** redundant code
   PartitionManager.Update_System_Details();
   operation_end(ret_val);
 
-  //* DJ9
   DataManager::SetValue(RW_INSTALL_PREBUILT_ZIP, 0); // if we have installed an internal zip, turn off the flag
-  Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
-  if (Fox_Zip_Installer_Code != 0) // we have just installed a ROM - really, the user should reboot the recovery
-     {
-          /*
-            //TWFunc::tw_reboot(rb_recovery); // either reboot recovery automatically, or reload fstab
-            TWFunc::Exec_Cmd("/sbin/findmiui.sh");
-            if (!PartitionManager.Process_Fstab("/etc/recovery.fstab", 1)) 
-               {
-               }
-          */
-     }
-  //* DJ9
   
   // This needs to be after the operation_end call so we change pages before we change variables that we display on the screen
   DataManager::SetValue(TW_ZIP_QUEUE_COUNT, zip_queue_index);
@@ -2643,7 +2645,7 @@ int GUIAction::calldeactivateprocess(std::string arg __unused)
   else
     {
   	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
-  	usleep(32);
+  	usleep(1024);
   	DataManager::GetValue(FOX_FORCE_DEACTIVATE_PROCESS, Fox_Force_Deactivate_Process); 	
   	TWFunc::Deactivation_Process();
     }
