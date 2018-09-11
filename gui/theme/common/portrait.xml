@@ -1816,7 +1816,7 @@
 			<button>
 				<placement x="920" y="84"/>
 				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
-				<action function="page">fox_quick_settings</action>
+				<action function="overlay">fox_quick_settings</action>
 			</button>
 
 			<image>
@@ -4980,10 +4980,11 @@
 
 			<template name="statusbarinfo"/>
 
-			<image>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back"/>
-			</image>
+			<button>
+				<placement x="920" y="84"/>
+				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
+				<action function="overlay">fox_quick_settings</action>
+			</button>
 
 			<text style="text_ab_title">
 				<condition var1="fox_aromafm" var2="0" />
@@ -9050,10 +9051,11 @@
 
 			<template name="statusbarinfo"/>
 
-			<image>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back"/>
-			</image>
+			<button>
+				<placement x="920" y="84"/>
+				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
+				<action function="overlay">fox_quick_settings</action>
+			</button>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
@@ -9820,10 +9822,11 @@
 
 			<template name="statusbarinfo"/>
 
-			<image>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back"/>
-			</image>
+			<button>
+				<placement x="920" y="84"/>
+				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
+				<action function="overlay">fox_quick_settings</action>
+			</button>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
@@ -13993,7 +13996,7 @@
 			<button>
 				<placement x="0" y="0" w="1080" h="1127"/>
 				<fill color="%transparent%"/>
-				<action function="page">main2</action>
+				<action function="overlay"/>
 			</button>
 
 			<text color="#FF0000">
@@ -14092,7 +14095,7 @@
 				<placement x="%btn_float_x%" y="%row7_1_y%"/>
 				<image resource="btn_float_accept"/>
 				<highlight color="%highlight_color%"/>
-				<action function="page">main2</action>
+				<action function="overlay"/>
 			</button>
 			<action>
 				<touch key="power"/>
@@ -14111,7 +14114,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">main2</action>
+				<action function="overlay"/>
 			</action>
 		</page>
 
