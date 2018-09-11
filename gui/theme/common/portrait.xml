@@ -13989,6 +13989,8 @@
 
 		<page name="fox_quick_settings">
 
+			<background color="%darktransparent%"/>
+
 			<fill color="%background%">
 				<placement x="0" y="1100" w="2300" h="1127"/>
 			</fill>
