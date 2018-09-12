@@ -274,7 +274,7 @@
 	<variables>
 		<!--theme settings-->
 		<variable name="tw_hide_kb" value="0"/>
-		<variable name="rw_inject_after_zip_tmp" value="0"/>
+		<variable name="fox_inject_after_zip_tmp" value="0"/>
 		<variable name="auto_flash_repack" value="0"/>
 		<variable name="aromafm" value="0" persist="1"/>
 		<variable name="auto_generate" value="0" persist="1"/>
@@ -615,7 +615,7 @@
 		<variable name="pattern_line_w" value="12"/>
 		<variable name="pattern_size" value="648"/>
 
-		<variable name="rw_version" value="[%tw_version%]"/>
+		<variable name="fox_version" value="[%tw_version%]"/>
 		<variable name="flashlight" value="0"/>
 		<variable name="tw_heslo_check" value="dd"/>
    </variables>
@@ -983,7 +983,7 @@
 				<condition var1="fox_notch" var2="0"/>
 				<condition var1="show_cpu_temp" var2="0"/>
 				<placement x="%version_x%" y="%status_info_y%"/>
-				<text>%rw_version%</text>
+				<text>%fox_version%</text>
 			</text>
 
 			<text style="text_status">

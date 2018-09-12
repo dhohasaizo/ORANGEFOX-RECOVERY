@@ -454,10 +454,10 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
 	
       //* DJ9
       Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
-      usleep(1024);
-      if (Fox_Zip_Installer_Code == 0) // this is a standard zip installer
+      usleep(32);
+      if (Fox_Zip_Installer_Code == 0) // this is a standard zip installer (not a ROM)
         {
-           if (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) == 1)
+           if (DataManager::GetIntValue(FOX_INSTALL_PREBUILT_ZIP) == 1)
               {
           	 LOGINFO("OrangeFox: processed internal zip: %s\n",filename.c_str());
               }
@@ -1219,7 +1219,7 @@ void GUIAction::notify_after_install()
     {
       simulate_progress_bar();
     }
-  else if (DataManager::GetIntValue("rw_inject_after_zip") != 0)
+  else if (DataManager::GetIntValue("fox_inject_after_zip") != 0)
     {
       string ledcolor, install_vibrate_value;
       DataManager::GetValue("fox_data_install_vibrate",
@@ -1258,58 +1258,58 @@ int GUIAction::flash(std::string arg)
 
       TWFunc::SetPerformanceMode(true);
 
+      // try to flash the zip
       ret_val = flash_zip(zip_path, &wipe_cache);
-
       TWFunc::SetPerformanceMode(false);
+      
+      // what was the outcome ?
       if (ret_val != 0)
 	{
-	  gui_msg(Msg(msg::kError, "zip_err=Error installing zip file '{1}'")
-		  (zip_path));
+	  gui_msg(Msg(msg::kError, "zip_err=Error installing zip file '{1}'") (zip_path));
 	  ret_val = 1;
 	  break;
 	}
  
-      // DJ9 
-      // gui_print("DEBUG: Name=%s; Zip number [%i] of [%i]; code=%i\n", zip_path.c_str(), i, zip_queue_index, Fox_Zip_Installer_Code); 
+      // success - but what have we just installed? 
       if (Fox_Zip_Installer_Code != 0) // we have just installed a ROM - ideally, the user should reboot the recovery
        {
           has_installed_rom++;
           usleep(50000);
 	  TWFunc::Deactivation_Process();
-	  DataManager::SetValue(RW_CALL_DEACTIVATION, 0);
+	  DataManager::SetValue(FOX_CALL_DEACTIVATION, 0);
           usleep(50000);
 	  PartitionManager.Update_System_Details();
        }
+       
        usleep(250000);
-       // DJ9      
+       
      } // for i
     
-  zip_queue_index = 0;
+   zip_queue_index = 0;
 
-  if (wipe_cache)
+   if (wipe_cache)
     {
-      gui_msg
-	("zip_wipe_cache=One or more zip requested a cache wipe -- Wiping cache now.");
+      gui_msg("zip_wipe_cache=One or more zip requested a cache wipe -- Wiping cache now.");
       PartitionManager.Wipe_By_Path("/cache");
     }
 
-   if ((has_installed_rom > 0) || (DataManager::GetIntValue(RW_INSTALL_PREBUILT_ZIP) != 1))
+   if ((has_installed_rom > 0) || (DataManager::GetIntValue(FOX_INSTALL_PREBUILT_ZIP) != 1))
    {
       notify_after_install();
    }
 
-  DataManager::Vibrate("fox_data_install_vibrate");
-  DataManager::Leds(true);
+   DataManager::Vibrate("fox_data_install_vibrate");
+   DataManager::Leds(true);
 
-  reinject_after_flash(); // ** redundant code
-  PartitionManager.Update_System_Details();
-  operation_end(ret_val);
-
-  DataManager::SetValue(RW_INSTALL_PREBUILT_ZIP, 0); // if we have installed an internal zip, turn off the flag
+   reinject_after_flash(); // ** redundant code
+   PartitionManager.Update_System_Details();
+   operation_end(ret_val);
+   DataManager::SetValue(FOX_INSTALL_PREBUILT_ZIP, 0); // if we have installed an internal zip, turn off the flag
   
-  // This needs to be after the operation_end call so we change pages before we change variables that we display on the screen
-  DataManager::SetValue(TW_ZIP_QUEUE_COUNT, zip_queue_index);
-  return 0;
+   // This needs to be after the operation_end call so we change pages before we change variables that we display on the screen
+   DataManager::SetValue(TW_ZIP_QUEUE_COUNT, zip_queue_index);
+   
+   return 0;
 }
 
 int GUIAction::wipe(std::string arg)
@@ -2694,7 +2694,7 @@ int GUIAction::removepassword(std::string arg __unused)
 	      		TWFunc::create_fingerprint_file(password_file, dd);
 	      		//TWFunc::Dumwolf(false, false);
 	      		TWFunc::Repack_Image("/recovery");
-	      		DataManager::SetValue(RW_PASSWORD_VARIABLE, dd);
+	      		DataManager::SetValue(FOX_PASSWORD_VARIABLE, dd);
 	      		gui_msg("update_part_details_done=...done");
 	    	}
 	  	else
@@ -2728,7 +2728,7 @@ int GUIAction::setpassword(std::string arg)
 	      		TWFunc::create_fingerprint_file(password_file, arg);
 	      		//TWFunc::Dumwolf(false, false);
 	      		TWFunc::Repack_Image("/recovery");
-	      		DataManager::SetValue(RW_PASSWORD_VARIABLE, arg);
+	      		DataManager::SetValue(FOX_PASSWORD_VARIABLE, arg);
 	      		gui_msg("update_part_details_done=...done");
 	    	}
 	  	else

@@ -1,7 +1,6 @@
 /*
 	Copyright 2012 bigbiff/Dees_Troy TeamWin
 	This file is part of TWRP/TeamWin Recovery Project.
-
 	TWRP is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 3 of the License, or
@@ -745,8 +744,8 @@ int TWFunc::tw_reboot(RebootCommand command)
   if ((Fox_AutoDeactivate_OnReboot == 1) && (Fox_IsDeactivation_Process_Called == 0))
     {
       if ( /*(Fox_Current_ROM_IsMIUI == 1) ||*/ 
-	   (DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1)       
-	   || (DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1)
+	   (DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1)       
+	   || (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1)
          ) 
         { 
            DoDeactivate = 1; 
@@ -1480,10 +1479,10 @@ std::string TWFunc::to_string(unsigned long value)
 
 void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 {
-      if (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) == 1)
+      if (DataManager::GetIntValue(FOX_DONT_REPLACE_STOCK) == 1)
       	return;
       
-      if ((DataManager::GetIntValue(RW_ADVANCED_STOCK_REPLACE) == 1) 
+      if ((DataManager::GetIntValue(FOX_ADVANCED_STOCK_REPLACE) == 1) 
       ||  (Fox_Force_Deactivate_Process == 1))
 	{
 	  if (Path_Exists("/system/bin/install-recovery.sh"))
@@ -1704,8 +1703,8 @@ void TWFunc::Write_MIUI_Install_Status(std::string install_status,
   std::string last_status = "/cache/recovery/last_status";
   if (!verify)
     {
-      if (DataManager::GetIntValue(RW_MIUI_ZIP_TMP) != 0
-	  || DataManager::GetIntValue(RW_METADATA_PRE_BUILD) != 0)
+      if (DataManager::GetIntValue(FOX_MIUI_ZIP_TMP) != 0
+	  || DataManager::GetIntValue(FOX_METADATA_PRE_BUILD) != 0)
 	{
 	  if (PartitionManager.Mount_By_Path("/cache", true))
 	    {
@@ -1720,7 +1719,7 @@ void TWFunc::Write_MIUI_Install_Status(std::string install_status,
 	}
     }
   else if (PartitionManager.Mount_By_Path("/cache", true)
-	   && DataManager::GetIntValue(RW_INCREMENTAL_PACKAGE) != 0)
+	   && DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) != 0)
     {
       if (Path_Exists(last_status))
 	unlink(last_status.c_str());
@@ -1758,9 +1757,9 @@ int TWFunc::Check_MIUI_Treble(void)
   	Fox_Current_ROM_IsMIUI = 1;
     	/*
     	DataManager::SetValue("fox_verify_incremental_ota_signature", "1");
-  	DataManager::SetValue(RW_INCREMENTAL_PACKAGE, "1");
-  	DataManager::SetValue(RW_DISABLE_DM_VERITY, "1");
-  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "1"); 
+  	DataManager::SetValue(FOX_INCREMENTAL_PACKAGE, "1");
+  	DataManager::SetValue(FOX_DISABLE_DM_VERITY, "1");
+  	DataManager::SetValue(FOX_DO_SYSTEM_ON_OTA, "1"); 
   	*/
   	gui_print("MIUI ROM | %s", Fox_Current_Device.c_str());
      } 
@@ -1768,9 +1767,9 @@ int TWFunc::Check_MIUI_Treble(void)
      {
     	/*
     	DataManager::SetValue("fox_verify_incremental_ota_signature", "0");
-  	DataManager::SetValue(RW_INCREMENTAL_PACKAGE, "0");
-  	DataManager::SetValue(RW_DISABLE_DM_VERITY, "0");
-  	DataManager::SetValue(RW_DO_SYSTEM_ON_OTA, "0");
+  	DataManager::SetValue(FOX_INCREMENTAL_PACKAGE, "0");
+  	DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
+  	DataManager::SetValue(FOX_DO_SYSTEM_ON_OTA, "0");
   	*/     
   	gui_print("Custom ROM | %s", Fox_Current_Device.c_str());
      } 
@@ -1803,7 +1802,7 @@ void TWFunc::OrangeFox_Startup(void)
   std::string password_file = "/sbin/wlfx";
 
 //* DJ9 
-  DataManager::GetValue(RW_COMPATIBILITY_DEVICE, Fox_Current_Device); 
+  DataManager::GetValue(FOX_COMPATIBILITY_DEVICE, Fox_Current_Device); 
   Check_MIUI_Treble();
 //* DJ9 
   
@@ -1818,13 +1817,13 @@ void TWFunc::OrangeFox_Startup(void)
       if (TWFunc::read_file(password_file, loaded_password) == 0)
 	{
 	  if (!loaded_password.empty())
-	    DataManager::SetValue(RW_PASSWORD_VARIABLE, loaded_password);
+	    DataManager::SetValue(FOX_PASSWORD_VARIABLE, loaded_password);
 	}
     }
 
   if (TWFunc::Path_Exists(t2w))
     {
-      if (DataManager::GetIntValue(RW_T2W_CHECK) == 1)
+      if (DataManager::GetIntValue(FOX_T2W_CHECK) == 1)
        {
 	   TWFunc::write_to_file(t2w, enable);
        } 
@@ -1832,13 +1831,13 @@ void TWFunc::OrangeFox_Startup(void)
           TWFunc::write_to_file(t2w, disable);
     } 
 
-  if (DataManager::GetIntValue(RW_FSYNC_CHECK) == 1)
+  if (DataManager::GetIntValue(FOX_FSYNC_CHECK) == 1)
     {
       if (TWFunc::Path_Exists(fsync))
 	TWFunc::write_to_file(fsync, disable);
     }
 
-  if (DataManager::GetIntValue(RW_FORCE_FAST_CHARGE_CHECK) == 1)
+  if (DataManager::GetIntValue(FOX_FORCE_FAST_CHARGE_CHECK) == 1)
     {
       if (TWFunc::Path_Exists(fast_charge))
 	{
@@ -1846,9 +1845,9 @@ void TWFunc::OrangeFox_Startup(void)
 	}
     }
 
-  if (DataManager::GetIntValue(RW_PERFORMANCE_CHECK) == 1)
+  if (DataManager::GetIntValue(FOX_PERFORMANCE_CHECK) == 1)
     {
-      DataManager::SetValue(RW_GOVERNOR_STABLE, performance);
+      DataManager::SetValue(FOX_GOVERNOR_STABLE, performance);
       for (i = 0; i < 9; i++)
 	{
 	  std::string k = to_string(i);
@@ -1858,9 +1857,9 @@ void TWFunc::OrangeFox_Startup(void)
 	}
     }
 
-  if (DataManager::GetIntValue(RW_POWERSAVE_CHECK) == 1)
+  if (DataManager::GetIntValue(FOX_POWERSAVE_CHECK) == 1)
     {
-      DataManager::SetValue(RW_GOVERNOR_STABLE, powersave);
+      DataManager::SetValue(FOX_GOVERNOR_STABLE, powersave);
       for (i = 0; i < 9; i++)
 	{
 	  std::string k = to_string(i);
@@ -1870,9 +1869,9 @@ void TWFunc::OrangeFox_Startup(void)
 	}
     }
 
-  if (DataManager::GetIntValue(RW_BALANCE_CHECK) == 1)
+  if (DataManager::GetIntValue(FOX_BALANCE_CHECK) == 1)
     {
-      DataManager::SetValue(RW_GOVERNOR_STABLE, interactive);
+      DataManager::SetValue(FOX_GOVERNOR_STABLE, interactive);
       for (i = 0; i < 9; i++)
 	{
 	  std::string k = to_string(i);
@@ -1895,7 +1894,7 @@ void TWFunc::OrangeFox_Startup(void)
 
   if (TWFunc::Path_Exists(FFiles_dir.c_str()))
     {
-      DataManager::SetValue("rw_resource_dir", FFiles_dir.c_str());
+      DataManager::SetValue("fox_resource_dir", FFiles_dir.c_str());
       if (TWFunc::Path_Exists(Fox_sdcard_aroma_cfg)) // is there a backup CFG file on /sdcard/Fox/?
 	{
 	  TWFunc::copy_file(Fox_sdcard_aroma_cfg, Fox_aroma_cfg, 0644);
@@ -1920,7 +1919,7 @@ void TWFunc::OrangeFox_Startup(void)
     }
   else
     {
-      DataManager::SetValue("rw_resource_dir", Fox_Home_Files.c_str());
+      DataManager::SetValue("fox_resource_dir", Fox_Home_Files.c_str());
     }
 }
 
@@ -1960,7 +1959,7 @@ bool TWFunc::Verify_Incremental_Package(string fingerprint, string metadatafp,
   string buildtags = TWFunc::System_Property_Get("ro.build.tags");
   string buildtype = TWFunc::System_Property_Get("ro.build.type");
   if (!metadatadevice.empty() && metadatadevice.size() >= 4
-      && !fingerprint.empty() && fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE
+      && !fingerprint.empty() && fingerprint.size() > FOX_MIN_EXPECTED_FP_SIZE
       && fingerprint.find(metadatadevice) == std::string::npos)
     {
       LOGINFO("OTA_ERROR: %s\n", metadatadevice.c_str());
@@ -1968,7 +1967,7 @@ bool TWFunc::Verify_Incremental_Package(string fingerprint, string metadatafp,
       return false;
     }
   if (!metadatadevice.empty() && metadatadevice.size() >= 4
-      && !metadatafp.empty() && metadatafp.size() > RW_MIN_EXPECTED_FP_SIZE
+      && !metadatafp.empty() && metadatafp.size() > FOX_MIN_EXPECTED_FP_SIZE
       && metadatafp.find(metadatadevice) == std::string::npos)
     {
       LOGINFO("OTA_ERROR: %s\n", metadatadevice.c_str());
@@ -1976,7 +1975,7 @@ bool TWFunc::Verify_Incremental_Package(string fingerprint, string metadatafp,
       return false;
     }
 
-  if (!fingerprint.empty() && fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE)
+  if (!fingerprint.empty() && fingerprint.size() > FOX_MIN_EXPECTED_FP_SIZE)
     {
       if (!buildpropbrand.empty() && buildpropbrand.size() >= 3)
 	{
@@ -2058,7 +2057,7 @@ bool TWFunc::Verify_Incremental_Package(string fingerprint, string metadatafp,
 	    }
 	}
     }
-  if (!metadatafp.empty() && metadatafp.size() > RW_MIN_EXPECTED_FP_SIZE)
+  if (!metadatafp.empty() && metadatafp.size() > FOX_MIN_EXPECTED_FP_SIZE)
     {
       if (!buildpropbrand.empty() && buildpropbrand.size() >= 3)
 	{
@@ -2141,8 +2140,8 @@ bool TWFunc::Verify_Incremental_Package(string fingerprint, string metadatafp,
 	}
     }
 
-  if (!metadatafp.empty() && metadatafp.size() > RW_MIN_EXPECTED_FP_SIZE
-      && !fingerprint.empty() && fingerprint.size() > RW_MIN_EXPECTED_FP_SIZE
+  if (!metadatafp.empty() && metadatafp.size() > FOX_MIN_EXPECTED_FP_SIZE
+      && !fingerprint.empty() && fingerprint.size() > FOX_MIN_EXPECTED_FP_SIZE
       && metadatafp != fingerprint)
     {
       LOGINFO("OTA_ERROR: %s\n", fingerprint.c_str());
@@ -2161,9 +2160,9 @@ bool TWFunc::Verify_Loaded_OTA_Signature(std::string loadedfp,
     {
       if (TWFunc::read_file(ota_info, datafp) == 0)
 	{
-	  if (!datafp.empty() && datafp.size() > RW_MIN_EXPECTED_FP_SIZE
+	  if (!datafp.empty() && datafp.size() > FOX_MIN_EXPECTED_FP_SIZE
 	      && !loadedfp.empty()
-	      && loadedfp.size() > RW_MIN_EXPECTED_FP_SIZE
+	      && loadedfp.size() > FOX_MIN_EXPECTED_FP_SIZE
 	      && datafp == loadedfp)
 	    {
 	      return true;
@@ -2755,7 +2754,7 @@ bool TWFunc::Fstab_Has_Encryption_Flag(std::string path)
      || (CheckWord(path, "forcefdeorfbe"))
      || (CheckWord(path, "fileencryption"))
      || (CheckWord(path, "errors=panic")) 
-     || (CheckWord(path, "discard,"))
+     || (CheckWord(path, "discard"))
       )
         return true;
    else
@@ -2764,9 +2763,16 @@ bool TWFunc::Fstab_Has_Encryption_Flag(std::string path)
 
 void TWFunc::Patch_Encryption_Flags(std::string path)
 {
-   TWFunc::Replace_Word_In_File(path,  "forcefdeorfbe=;forceencrypt=;fileencryption=;", "encryptable=");
-   TWFunc::Remove_Word_From_File(path, "errors=panic");
-   TWFunc::Remove_Word_From_File(path, "discard,");   
+   TWFunc::Replace_Word_In_File(path, "fileencryption=ice;", "encryptable=footer");
+   TWFunc::Replace_Word_In_File(path, "forcefdeorfbe=;forceencrypt=;fileencryption=;", "encryptable=");
+   
+   /*
+   string remove = "errors=panic,;,errors=panic;errors=panic;";
+   TWFunc::Replace_Word_In_File(path, remove);
+     
+   remove = "discard,;,discard;discard;"; 
+   TWFunc::Replace_Word_In_File(path, remove); 
+   */
 }
 
 bool TWFunc::Patch_Forced_Encryption()
@@ -2775,7 +2781,7 @@ bool TWFunc::Patch_Forced_Encryption()
   int stat = 0;
   bool status = false;
   int encryption, treble;
-  DataManager::GetValue(RW_DISABLE_DM_VERITY, encryption);
+  DataManager::GetValue(FOX_DISABLE_DM_VERITY, encryption);
   DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);
   DIR *d;
   DIR *d1;
@@ -2909,43 +2915,43 @@ void TWFunc::Patch_Others(void)
   std::string miui_secure_boot = "ro.secureboot.devicelock";
 
   // Enable ADB read-only property in the default.prop
-  if (DataManager::GetIntValue(RW_ENABLE_ADB_RO) == 1)
+  if (DataManager::GetIntValue(FOX_ENABLE_ADB_RO) == 1)
     {
       TWFunc::Set_New_Ramdisk_Property(default_prop, adb_ro, true);
     }
 
   // Disable ADB read-only property in the default.prop
-  if (DataManager::GetIntValue(RW_DISABLE_ADB_RO) == 1)
+  if (DataManager::GetIntValue(FOX_DISABLE_ADB_RO) == 1)
     {
       TWFunc::Set_New_Ramdisk_Property(default_prop, adb_ro, false);
     }
 
   // Enable read-only property in the default.prop
-  if (DataManager::GetIntValue(RW_ENABLE_SECURE_RO) == 1)
+  if (DataManager::GetIntValue(FOX_ENABLE_SECURE_RO) == 1)
     {
       TWFunc::Set_New_Ramdisk_Property(default_prop, ro, true);
     }
 
   // Disable read-only property in the default.prop
-  if (DataManager::GetIntValue(RW_DISABLE_SECURE_RO) == 1)
+  if (DataManager::GetIntValue(FOX_DISABLE_SECURE_RO) == 1)
     {
       TWFunc::Set_New_Ramdisk_Property(default_prop, ro, false);
     }
 
   // Disable secure-boot
-  if (DataManager::GetIntValue(RW_DISABLE_SECURE_BOOT) == 1)
+  if (DataManager::GetIntValue(FOX_DISABLE_SECURE_BOOT) == 1)
     {
       TWFunc::Set_New_Ramdisk_Property(default_prop, miui_secure_boot, false);
     }
 
   // Enable mock_location property
-  if (DataManager::GetIntValue(RW_ENABLE_MOCK_LOCATION) == 1)
+  if (DataManager::GetIntValue(FOX_ENABLE_MOCK_LOCATION) == 1)
     {
       TWFunc::Set_New_Ramdisk_Property(default_prop, mock, true);
     }
 
   // Disable mock_location property
-  if (DataManager::GetIntValue(RW_DISABLE_MOCK_LOCATION) == 1)
+  if (DataManager::GetIntValue(FOX_DISABLE_MOCK_LOCATION) == 1)
     {
       TWFunc::Set_New_Ramdisk_Property(default_prop, mock, false);
     }
@@ -2970,7 +2976,7 @@ void TWFunc::Deactivation_Process(void)
 
   // Check AromaFM Config
   if (
-     (DataManager::GetIntValue(RW_SAVE_LOAD_AROMAFM) == 1)
+     (DataManager::GetIntValue(FOX_SAVE_LOAD_AROMAFM) == 1)
   && (PartitionManager.Mount_By_Path("/sdcard", false))
      )
     {
@@ -2997,7 +3003,7 @@ void TWFunc::Deactivation_Process(void)
 
   // restore the stock recovery ?
   if (
-     (DataManager::GetIntValue(RW_DONT_REPLACE_STOCK) == 1)
+     (DataManager::GetIntValue(FOX_DONT_REPLACE_STOCK) == 1)
   && (PartitionManager.Mount_By_Path("/system", false))
      )
     {
@@ -3020,11 +3026,11 @@ void TWFunc::Deactivation_Process(void)
       ("OrangeFox"));
  
   // dm-verity 
-  if ((DataManager::GetIntValue(RW_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
+  if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
 	  if (Patch_DM_Verity())
 	  {
-              DataManager::SetValue(RW_DISABLE_FORCED_ENCRYPTION, 1);
+              DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, 1);
 	      gui_msg("of_dm_verity=Successfully patched DM-Verity");
 	  }
 	  else
@@ -3032,7 +3038,7 @@ void TWFunc::Deactivation_Process(void)
      }
 
   // forced encryption    
-  if ((DataManager::GetIntValue(RW_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
+  if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
 	  if (Patch_Forced_Encryption())
 	       gui_msg("of_encryption=Successfully patched forced encryption");

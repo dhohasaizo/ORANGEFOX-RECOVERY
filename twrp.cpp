@@ -111,11 +111,11 @@ int main(int argc, char **argv)
   property_set("twrp.crash_counter", crash_prop_val);
   property_set("ro.twrp.boot", "1");
   property_set("ro.twrp.build", "orangefox");
-  property_set("ro.twrp.version", RW_VERSION);
+  property_set("ro.twrp.version", FOX_VERSION);
 
   time_t StartupTime = time(NULL);
-  printf("Starting OrangeFox TWRP %s-%s-%s on %s (pid %d)\n", RW_VERSION,
-	 RW_BUILD, TW_GIT_REVISION, ctime(&StartupTime), getpid());
+  printf("Starting OrangeFox TWRP %s-%s-%s on %s (pid %d)\n", FOX_VERSION,
+	 FOX_BUILD, TW_GIT_REVISION, ctime(&StartupTime), getpid());
 
   // Load default values to set DataManager constants and handle ifdefs
   DataManager::SetDefaultValues();
@@ -197,8 +197,8 @@ int main(int argc, char **argv)
   }
   gui_print("**************************");
   gui_msg("orangefox_msg2=[OrangeFox]: Welcome! ^_^");
-  gui_msg(Msg("orangefox_msg3=[Version]: '{1}'") (RW_VERSION));
-  gui_msg(Msg("orangefox_msg4=[Build]: {1}") (RW_BUILD));
+  gui_msg(Msg("orangefox_msg3=[Version]: '{1}'") (FOX_VERSION));
+  gui_msg(Msg("orangefox_msg4=[Build]: {1}") (FOX_BUILD));
   gui_print("**************************");
   PartitionManager.Mount_By_Path("/cache", false);
 

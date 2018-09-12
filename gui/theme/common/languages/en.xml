@@ -34,7 +34,7 @@
 
 		<!-- GUI XML strings -->
 		<string name="twrp_header">Team Win Recovery Project</string>
-		<string name="twrp_watch_header">%rw_version%</string>
+		<string name="twrp_watch_header">%fox_version%</string>
 		<string name="cpu_temp">CPU: %tw_cpu_temp% &#xB0;C</string>
 		<string name="battery_pct">%tw_battery%</string>
 		<string name="sort_by_name_asc">Name asc</string>
@@ -1046,8 +1046,8 @@
 		<string name="fox_menu3_info4"></string>
 		<string name="fox_menu3_info5">Include system in OTA survival:</string>
 		<string name="fox_menu3_info6">This should be enabled if you want to be able</string>
-		<string name="fox_menu3_info7">to modify the modify system partition</string>
-		<string name="fox_menu3_info8">without subsequent OTA updates failing</string>
+		<string name="fox_menu3_info7">to modify the system partition without</string>
+		<string name="fox_menu3_info8">subsequent OTA updates failing</string>
 		<string name="fox_menu3_info9"></string>
 		<string name="fox_menu3_info10">Incremental OTA signature verification:</string>
 		<string name="fox_menu3_info11">This should be enabled if you want the signatures</string>

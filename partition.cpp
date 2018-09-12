@@ -2255,7 +2255,7 @@ bool TWPartition::Backup(PartitionSettings * part_settings,
 
 bool TWPartition::Restore(PartitionSettings * part_settings)
 {
-  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+  if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
     {
       TWFunc::GUI_Operation_Text(TW_RESTORE_TEXT, Display_Name,
 				 gui_parse_text("{@restoring_hdr}"));
@@ -2560,7 +2560,7 @@ bool TWPartition::Wipe_EXT4()
   int ret;
   char *secontext = NULL;
 
-  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+  if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
     gui_msg(Msg("formatting_using=Formatting {1} using {2}...") (Display_Name)
 	    ("make_ext4fs"));
 
@@ -2599,7 +2599,7 @@ bool TWPartition::Wipe_EXT4()
     {
       string Command;
 
-      if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+      if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
 	gui_msg(Msg("formatting_using=Formatting {1} using {2}...")
 		(Display_Name) ("make_ext4fs"));
       Find_Actual_Block_Device();
@@ -2915,7 +2915,7 @@ bool TWPartition::Backup_Tar(PartitionSettings * part_settings,
   if (!Mount(true))
     return false;
 
-  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+  if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
     {
       TWFunc::GUI_Operation_Text(TW_BACKUP_TEXT, Backup_Display_Name,
 				 "Backing Up");
@@ -2969,7 +2969,7 @@ bool TWPartition::Backup_Image(PartitionSettings * part_settings)
 {
   string Full_FileName, adb_file_name;
 
-  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+  if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
     {
       TWFunc::GUI_Operation_Text(TW_BACKUP_TEXT, Display_Name,
 				 gui_parse_text("{@backing}"));
@@ -3007,7 +3007,7 @@ bool TWPartition::Backup_Image(PartitionSettings * part_settings)
 
 bool TWPartition::Raw_Read_Write(PartitionSettings * part_settings)
 {
-  unsigned long long RW_Block_Size, Remain = Backup_Size;
+  unsigned long long FOX_Block_Size, Remain = Backup_Size;
   int src_fd = -1, dest_fd = -1;
   ssize_t bs;
   bool ret = false;
@@ -3067,13 +3067,13 @@ bool TWPartition::Raw_Read_Write(PartitionSettings * part_settings)
 
   if (part_settings->adbbackup)
     {
-      RW_Block_Size = MAX_ADB_READ;
+      FOX_Block_Size = MAX_ADB_READ;
       bs = MAX_ADB_READ;
     }
   else
     {
-      RW_Block_Size = 1048576LLU;	// 1MB
-      bs = (ssize_t) (RW_Block_Size);
+      FOX_Block_Size = 1048576LLU;	// 1MB
+      bs = (ssize_t) (FOX_Block_Size);
     }
 
   buffer = malloc((size_t) bs);
@@ -3089,7 +3089,7 @@ bool TWPartition::Raw_Read_Write(PartitionSettings * part_settings)
 
   while (Remain > 0)
     {
-      if (Remain < RW_Block_Size)
+      if (Remain < FOX_Block_Size)
 	bs = (ssize_t) (Remain);
       if (read(src_fd, buffer, bs) != bs)
 	{
@@ -3133,7 +3133,7 @@ bool TWPartition::Backup_Dump_Image(PartitionSettings * part_settings)
 {
   string Full_FileName, Command;
 
-  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+  if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
     {
       TWFunc::GUI_Operation_Text(TW_BACKUP_TEXT, Display_Name,
 				 gui_parse_text("{@backing}"));
@@ -3222,7 +3222,7 @@ bool TWPartition::Restore_Tar(PartitionSettings * part_settings)
     }
   else
     {
-      if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+      if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
 	{
 	  gui_msg(Msg("wiping=Wiping {1}") (Backup_Display_Name));
 	}
@@ -3242,7 +3242,7 @@ bool TWPartition::Restore_Tar(PartitionSettings * part_settings)
 	    return false;
 	}
     }
-  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+  if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
     {
       TWFunc::GUI_Operation_Text(TW_RESTORE_TEXT, Backup_Display_Name,
 				 gui_parse_text("{@restoring_hdr}"));
@@ -3310,7 +3310,7 @@ bool TWPartition::Restore_Image(PartitionSettings * part_settings)
   string Full_FileName;
   string Restore_File_System = Get_Restore_File_System(part_settings);
 
-  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+  if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
     {
       TWFunc::GUI_Operation_Text(TW_RESTORE_TEXT, Backup_Display_Name,
 				 gui_parse_text("{@restoring_hdr}"));

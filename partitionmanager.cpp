@@ -1277,7 +1277,7 @@ bool TWPartitionManager::Restore_Partition(PartitionSettings * part_settings)
     }
   time(&Stop);
   TWFunc::SetPerformanceMode(false);
-  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+  if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
     gui_msg(Msg("restore_part_done=[{1} done ({2} seconds)]")
 	    (part_settings->Part->
 	     Backup_Display_Name) ((int) difftime(Stop, Start)));
@@ -1964,7 +1964,7 @@ void TWPartitionManager::Update_System_Details(void)
 {
   std::vector < TWPartition * >::iterator iter;
   int data_size = 0;
-  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+  if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
      gui_msg("update_part_details=Updating partition details...");
   TWFunc::SetPerformanceMode(true);
   for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
@@ -2070,7 +2070,7 @@ void TWPartitionManager::Update_System_Details(void)
 	}
     }
   TWFunc::SetPerformanceMode(false);
-  if (DataManager::GetIntValue(RW_RUN_SURVIVAL_BACKUP) != 1)
+  if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
       gui_msg("update_part_details_done=...done");
   DataManager::SetValue(TW_BACKUP_DATA_SIZE, data_size);
   string current_storage_path = DataManager::GetCurrentStoragePath();
@@ -4004,16 +4004,16 @@ int TWPartitionManager::Run_OTA_Survival_Backup(bool adbbackup)
   else
     part_settings.generate_digest = false;
 
-  DataManager::GetValue(RW_SURVIVAL_FOLDER_VAR, part_settings.Backup_Folder);
-  DataManager::GetValue(RW_SURVIVAL_BACKUP_NAME, Backup_Name);
+  DataManager::GetValue(FOX_SURVIVAL_FOLDER_VAR, part_settings.Backup_Folder);
+  DataManager::GetValue(FOX_SURVIVAL_BACKUP_NAME, Backup_Name);
 
   part_settings.Backup_Folder =
     part_settings.Backup_Folder + "/" + Backup_Name;
   TWPartition *sys_image =
     PartitionManager.Find_Partition_By_Path("/system_image");
-  if (DataManager::GetIntValue(RW_DO_SYSTEM_ON_OTA) != 0 && sys_image != NULL)
+  if (DataManager::GetIntValue(FOX_DO_SYSTEM_ON_OTA) != 0 && sys_image != NULL)
     Backup_List += "/system_image;/boot;";
-  else if (DataManager::GetIntValue(RW_DO_SYSTEM_ON_OTA) != 0)
+  else if (DataManager::GetIntValue(FOX_DO_SYSTEM_ON_OTA) != 0)
     Backup_List += "/system;/boot;";
   else
     Backup_List += "/boot;";
@@ -4098,7 +4098,7 @@ int TWPartitionManager::Run_OTA_Survival_Backup(bool adbbackup)
   if (adbbackup)
     disable_free_space_check = true;
 
-  if (DataManager::GetIntValue(RW_DO_SYSTEM_ON_OTA) != 0)
+  if (DataManager::GetIntValue(FOX_DO_SYSTEM_ON_OTA) != 0)
     {
       if (!disable_free_space_check)
 	{
@@ -4571,7 +4571,7 @@ void TWPartitionManager::Update_System_Details_OTA_Survival(void)
 
 void TWPartitionManager::Notify_On_Finished_Backup(void)
 {
-  if (DataManager::GetIntValue("rw_inject_after_backup") != 0)
+  if (DataManager::GetIntValue("fox_inject_after_backup") != 0)
     {
       string ledcolor, install_vibrate_value;
       DataManager::GetValue("fox_data_backup_vibrate",
@@ -4591,7 +4591,7 @@ void TWPartitionManager::Notify_On_Finished_Backup(void)
 
 void TWPartitionManager::Notify_On_Finished_Restore(void)
 {
-  if (DataManager::GetIntValue("rw_inject_after_restore") != 0)
+  if (DataManager::GetIntValue("fox_inject_after_restore") != 0)
     {
       string ledcolor, install_vibrate_value;
       DataManager::GetValue("fox_data_restore_vibrate",

@@ -626,10 +626,10 @@ int OpenRecoveryScript::Run_OpenRecoveryScript_Action() {
 	}
 	if (reboot) 
 	{
-		if (DataManager::GetIntValue(RW_CALL_DEACTIVATION) != 0) 
+		if (DataManager::GetIntValue(FOX_CALL_DEACTIVATION) != 0) 
 	        {
 		   TWFunc::Deactivation_Process();
-		   DataManager::SetValue(RW_CALL_DEACTIVATION, 0);
+		   DataManager::SetValue(FOX_CALL_DEACTIVATION, 0);
 		 }
  		//Disable stock recovery reflashing
 		TWFunc::Disable_Stock_Recovery_Replace();

@@ -2077,15 +2077,15 @@
 				<placement x="%col1_x%" y="%mb_row6_y%" w="%content_w%" h="%mb_h%"/>
 				<actions>
 					<action function="queueclear"/>
-					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
-					<action function="set">rw_inject_after_zip=0</action>
+					<action function="set">fox_inject_after_zip_tmp=%fox_inject_after_zip%</action>
+					<action function="set">fox_inject_after_zip=0</action>
 					<action function="set">fox_install_built_in_zip=1</action>
 					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
 					<action function="set">tw_signed_zip_verify=0</action>
 					<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
 					<action function="set">tw_screen_timeout_secs=0</action>
 					<action function="set">fox_aromafm=1</action>
-					<action function="set">tw_filename=%rw_resource_dir%/AromaFM/AromaFM.zip</action>
+					<action function="set">tw_filename=%fox_resource_dir%/AromaFM/AromaFM.zip</action>
 					<action function="queuezip"/>
 					<action function="flash">flash_zip</action>
 					<action function="disableled"/>
@@ -2448,15 +2448,15 @@
 				<placement x="330" y="650" w="%content_a%" h="%mb_h%"/>
 				<actions>
 					<action function="queueclear"/>
-					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
-					<action function="set">rw_inject_after_zip=0</action>
+					<action function="set">fox_inject_after_zip_tmp=%fox_inject_after_zip%</action>
+					<action function="set">fox_inject_after_zip=0</action>
 					<action function="set">fox_install_built_in_zip=1</action>
 					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
 					<action function="set">tw_signed_zip_verify=0</action>
 					<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
 					<action function="set">tw_screen_timeout_secs=0</action>
 					<action function="set">fox_aromafm=1</action>
-					<action function="set">tw_filename=%rw_resource_dir%/AromaFM/AromaFM.zip</action>
+					<action function="set">tw_filename=%fox_resource_dir%/AromaFM/AromaFM.zip</action>
 					<action function="queuezip"/>
 					<action function="flash">flash_zip</action>
 					<action function="disableled"/>
@@ -2776,7 +2776,7 @@
 			<text style="text_body2">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<placement x="250" y="1600"/>
-				<text>%tw_version% | {@fox_actual_build=Actual build}: %rw_actual_build%</text>
+				<text>%tw_version% | {@fox_actual_build=Actual build}: %fox_actual_build%</text>
 			</text>
 
 			<!-- Auto turn on ADB -->
@@ -4465,7 +4465,7 @@
 					<data variable="tw_install_reboot"/>
 				</listitem>
 				<listitem name="{@inject_led_chk=}">
-				<data variable="rw_inject_after_zip"/>
+				<data variable="fox_inject_after_zip"/>
 				</listitem>
 			</listbox>
 
@@ -5030,7 +5030,7 @@
 				<condition var1="fox_aromafm" var2="1" />
 				<condition var1="tw_operation_state" var2="1"/>
 				<actions>
-					<action function="set">rw_inject_after_zip=%rw_inject_after_zip_tmp%</action>
+					<action function="set">fox_inject_after_zip=%fox_inject_after_zip_tmp%</action>
 					<action function="set">fox_install_built_in_zip=0</action>
 					<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_temp%</action>
 					<action function="set">tw_screen_timeout_secs=%tw_screen_timeout_temp%</action>
@@ -5154,7 +5154,7 @@
 			<button style="btn_raised">
 				<conditions>
 				<condition var1="tw_busy" var2="0"/>
-				<condition var1="rw_inject_after_zip" var2="1"/>
+				<condition var1="fox_inject_after_zip" var2="1"/>
 				</conditions>
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@wipe_cache_btn=WIPE CACHES}</text>
@@ -5177,7 +5177,7 @@
 			<button style="btn_raised">
 				<conditions>
 				<condition var1="tw_busy" var2="0"/>
-				<condition var1="rw_inject_after_zip" var2="0"/>
+				<condition var1="fox_inject_after_zip" var2="0"/>
 				</conditions>
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@wipe_cache_btn=WIPE CACHES}</text>
@@ -5364,14 +5364,14 @@
 				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
 				<text>{@cancel_reboot_btn=CANCEL REBOOT}</text>
 				<actions>
-					<action function="set">rw_reboot_after_restore=0</action>
+					<action function="set">fox_reboot_after_restore=0</action>
 					<action function="page">restore_action_complete</action>
 				</actions>
 			</button>
 
 			<action>
 				<conditions>
-					<condition var1="rw_reboot_after_restore" var2="1"/>
+					<condition var1="fox_reboot_after_restore" var2="1"/>
 					<condition var1="tw_sleep" var2="tw_sleep_total"/>
 				</conditions>
 				<action function="sleepcounter">%tw_sleep_total%</action>
@@ -5379,7 +5379,7 @@
 
 			<action>
 				<conditions>
-					<condition var1="rw_reboot_after_restore" var2="1"/>
+					<condition var1="fox_reboot_after_restore" var2="1"/>
 					<condition var1="tw_sleep" var2="0"/>
 				</conditions>
 				<actions>
@@ -8446,7 +8446,7 @@
 			<listbox style="settingslist">
 				<placement x="%col1_x%" y="%row2_2_y%" w="%listbox_w%" h="%listbox_settings_backup_height%"/>
 				<listitem name="{@inject_led_chk_bak=}">
-				<data variable="rw_inject_after_backup"/>
+				<data variable="fox_inject_after_backup"/>
 				</listitem>
 				<listitem name="{@enable_backup_comp_chk=Enable compression}">
 					<data variable="tw_use_compression"/>
@@ -9127,7 +9127,7 @@
 			<button>
 				<conditions>
 	            	<condition var1="tw_busy" var2="0"/>
-					<condition var1="rw_inject_after_backup" var2="1"/>
+					<condition var1="fox_inject_after_backup" var2="1"/>
 				</conditions>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
@@ -9141,7 +9141,7 @@
 			<button>
 				<conditions>
 	             	<condition var1="tw_busy" var2="0"/>
-					<condition var1="rw_inject_after_backup" var2="0"/>
+					<condition var1="fox_inject_after_backup" var2="0"/>
 				</conditions>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
@@ -9179,7 +9179,7 @@
 			<button style="btn_raised">
 				<conditions>
 	             <condition var1="tw_busy" var2="0"/>
-				<condition var1="rw_inject_after_backup" var2="1"/>
+				<condition var1="fox_inject_after_backup" var2="1"/>
 				</conditions>
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@back_btn=BACK}</text>
@@ -9193,7 +9193,7 @@
 			<button style="btn_raised">
 	            <conditions>
 	             <condition var1="tw_busy" var2="0"/>
-				<condition var1="rw_inject_after_backup" var2="0"/>
+				<condition var1="fox_inject_after_backup" var2="0"/>
 				</conditions>
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@back_btn=BACK}</text>
@@ -9282,7 +9282,7 @@
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="fox_broom"/>
 				<actions>
-					<action function="set">rw_reboot_after_restore=0</action>
+					<action function="set">fox_reboot_after_restore=0</action>
 					<action function="set">tw_back=restore</action>
 					<action function="set">tw_action=cmd</action>
 					<action function="set">tw_action_param=if [ -d "%tw_backups_folder%" ]; then cd %tw_backups_folder% &amp;&amp; rm -rf *; fi;</action>
@@ -9571,7 +9571,7 @@
 					<action function="set">tw_backup_rename=%tw_restore_name%</action>
 					<!--action function="set">tw_backup_rename=</action-->
 					<action function="set">tw_fileexists=0</action>
-					<action function="set">rw_reboot_after_restore=0</action>
+					<action function="set">fox_reboot_after_restore=0</action>
 					<action function="page">renamebackup</action>
 				</actions>
 			</button>
@@ -9589,7 +9589,7 @@
 					<action function="set">tw_action_text1={@deleting_backup=Deleting Backup...}</action>
 					<action function="set">tw_complete_text1={@backup_deleted=Backup deleted}</action>
 					<action function="set">tw_slider_text={@swipe_delete=Swipe to Delete}</action>
-					<action function="set">rw_reboot_after_restore=0</action>
+					<action function="set">fox_reboot_after_restore=0</action>
 					<action function="page">deletebackup</action>
 				</actions>
 			</button>
@@ -9633,13 +9633,13 @@
 			<checkbox style="checkbox_big">
 				<placement x="%col1_x%" y="%row6_3a_y%"/>
 				<text>{@fox_reboot_restore_finish_chk=Enable Digest Verification of Backup Files}</text>
-				<data variable="rw_reboot_after_restore"/>
+				<data variable="fox_reboot_after_restore"/>
 			</checkbox>
 
 			<checkbox style="checkbox_big">
 				<placement x="%col1_x%" y="1430"/>
 				<text>{@inject_led_chk_res=}</text>
-				<data variable="rw_inject_after_restore"/>
+				<data variable="fox_inject_after_restore"/>
 			</checkbox>
 
 			<text style="caption">
@@ -10084,7 +10084,7 @@
 			<button>
 				<conditions>
 	             <condition var1="tw_busy" var2="0"/>
-				<condition var1="rw_inject_after_restore" var2="1"/>
+				<condition var1="fox_inject_after_restore" var2="1"/>
 				</conditions>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
@@ -10098,7 +10098,7 @@
 			<button>
 				<conditions>
 	             <condition var1="tw_busy" var2="0"/>
-				<condition var1="rw_inject_after_restore" var2="0"/>
+				<condition var1="fox_inject_after_restore" var2="0"/>
 				</conditions>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
@@ -10135,7 +10135,7 @@
 			<button style="btn_raised">
 				<conditions>
 	             <condition var1="tw_busy" var2="0"/>
-				<condition var1="rw_inject_after_restore" var2="1"/>
+				<condition var1="fox_inject_after_restore" var2="1"/>
 				</conditions>
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@back_btn=BACK}</text>
@@ -10149,7 +10149,7 @@
 			<button style="btn_raised">
 				<conditions>
 	             <condition var1="tw_busy" var2="0"/>
-				<condition var1="rw_inject_after_restore" var2="0"/>
+				<condition var1="fox_inject_after_restore" var2="0"/>
 				</conditions>
 				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
 				<text>{@back_btn=BACK}</text>
@@ -10190,7 +10190,7 @@
 
 				<action>
 				<conditions>
-					<condition var1="rw_reboot_after_restore" var2="1"/>
+					<condition var1="fox_reboot_after_restore" var2="1"/>
 					<condition var1="tw_operation_status" var2="0"/>
 				</conditions>
 				<actions>
@@ -12589,7 +12589,7 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1560"/>
-				<text>%tw_version% | {@fox_actual_build=Actual build}: %rw_actual_build%</text>
+				<text>%tw_version% | {@fox_actual_build=Actual build}: %fox_actual_build%</text>
 			</text>
 
 			<text style="text_body2">
@@ -12633,7 +12633,7 @@
 			
 			<text style="text_body2">
 				<placement x="250" y="1600"/>
-				<text>%tw_version% | {@fox_actual_build=Actual build}: %rw_actual_build%</text>
+				<text>%tw_version% | {@fox_actual_build=Actual build}: %fox_actual_build%</text>
 			</text>
 
 			<action>
@@ -14177,8 +14177,8 @@
 			<slider>
 				<actions>
 					<action function="queueclear"/>
-					<action function="set">rw_inject_after_zip_tmp=%rw_inject_after_zip%</action>
-					<action function="set">rw_inject_after_zip=0</action>
+					<action function="set">fox_inject_after_zip_tmp=%fox_inject_after_zip%</action>
+					<action function="set">fox_inject_after_zip=0</action>
 					<action function="set">fox_install_built_in_zip=1</action>
 					<action function="set">fox_magisk_var=1</action>
 					<action function="set">tw_signed_zip_verify_temp=%tw_signed_zip_verify%</action>
