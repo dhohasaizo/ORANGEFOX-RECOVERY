@@ -1317,7 +1317,6 @@ void DataManager::Leds(bool enable)
   time1 = leds1 + "/led_time";
   blink1 = leds1 + "/blink";
   bsmax1 = leds1 + "/max_brightness";
-
   if (!enable && stat(bs.c_str(), &st) == 0)
     {
       TWFunc::write_to_file(bs, "0");
@@ -1332,9 +1331,12 @@ void DataManager::Leds(bool enable)
 	    {
 	      TWFunc::write_to_file(bs, bsm);
 	      TWFunc::write_to_file(blink, "1");
-
-        TWFunc::write_to_file(bs1, bsm);
-	      TWFunc::write_to_file(blink1, "1");
+	      #ifdef OF_USE_GREEN_LED
+	         TWFunc::write_to_file(time, "1 1 1 1");
+              #else
+                 TWFunc::write_to_file(bs1, bsm);
+	         TWFunc::write_to_file(blink1, "1");
+	      #endif
 	    }
 	}
     }

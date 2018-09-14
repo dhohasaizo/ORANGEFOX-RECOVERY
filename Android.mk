@@ -55,6 +55,10 @@ ifeq ($(FOX_DEVICE_MODEL),)
     LOCAL_CFLAGS += -DFOX_DEVICE_MODEL='"$(DEVICE)"'
 endif
 
+ifeq ($(OF_USE_GREEN_LED),1)
+    LOCAL_CFLAGS += -DOF_USE_GREEN_LED='"1"'
+endif
+
 ifneq ($(OF_MAINTAINER),)
     LOCAL_CFLAGS += -DOF_MAINTAINER='"$(OF_MAINTAINER)"'
 else
