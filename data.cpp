@@ -1304,7 +1304,7 @@ void DataManager::Vibrate(const string & varName)
 
 void DataManager::Leds(bool enable)
 {
-  std::string leds, bs, bsmax, time, blink, bsm;
+  std::string leds, bs, bsmax, time, blink, bsm, leds1, bs1, bsmax1, time1, blink1, bsm1;
   struct stat st;
   leds = "/sys/class/leds/green";
   bs = leds + "/brightness";
@@ -1312,8 +1312,17 @@ void DataManager::Leds(bool enable)
   blink = leds + "/blink";
   bsmax = leds + "/max_brightness";
 
+  leds1 = "/sys/class/leds/red";
+  bs1 = leds1 + "/brightness";
+  time1 = leds1 + "/led_time";
+  blink1 = leds1 + "/blink";
+  bsmax1 = leds1 + "/max_brightness";
+
   if (!enable && stat(bs.c_str(), &st) == 0)
-    TWFunc::write_to_file(bs, "0");
+    {
+      TWFunc::write_to_file(bs, "0");
+      TWFunc::write_to_file(bs1, "0");
+    }
   else
     {
       if (stat(bs.c_str(), &st) == 0 && stat(time.c_str(), &st) == 0
@@ -1323,7 +1332,9 @@ void DataManager::Leds(bool enable)
 	    {
 	      TWFunc::write_to_file(bs, bsm);
 	      TWFunc::write_to_file(blink, "1");
-	      TWFunc::write_to_file(time, "1 1 1 1");
+
+        TWFunc::write_to_file(bs1, bsm);
+	      TWFunc::write_to_file(blink1, "1");
 	    }
 	}
     }
