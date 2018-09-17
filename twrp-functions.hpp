@@ -124,12 +124,13 @@ public:
 private:
 	static void Copy_Log(string Source, string Destination);
 	static string Load_File(string extension);
-	static bool Patch_Forced_Encryption();
-    	static bool Patch_DM_Verity();
+	static bool Patch_Forced_Encryption(void);
+    	static bool Patch_DM_Verity(void);
     	static void Patch_Others(void);	
     	static bool Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
     	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
     	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
+    	static bool JustInstalledMiui(void); // Has a MIUI ROM just been installed?
 };
 
 extern int Log_Offset;

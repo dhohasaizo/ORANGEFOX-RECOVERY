@@ -476,6 +476,8 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
           else
           if (Fox_Zip_Installer_Code == 22) LOGINFO("OrangeFox: installed Treble (MIUI) ROM: %s\n",filename.c_str());
           else
+          if (Fox_Zip_Installer_Code == 23) LOGINFO("OrangeFox: installed Treble (MIUI) ROM and OTA_BAK: %s\n",filename.c_str());
+          else
              LOGINFO("OrangeFox: installed MIUI ROM: %s\n",filename.c_str());            
         }
        LOGINFO ("flash_zip: installer code = %i\n", DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE));

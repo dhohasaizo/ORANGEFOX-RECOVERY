@@ -1030,9 +1030,15 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	      	      
 	      if (PartitionManager.Run_OTA_Survival_Backup(false))
 	        {
-	           DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 3); // miui OTA backup succeeded
+	           Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+	           if (Fox_Zip_Installer_Code == 22) // Treble
+	               DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 23); // Treble miui OTA backup succeeded
+	           else
+	               DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 3); // non-Treble miui OTA backup succeeded
+	           
 	           set_miui_install_status(OTA_SUCCESS, false);    
 	           gui_msg("fox_incremental_ota_bak=Process OTA_BAK --- done!");
+	           Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
 	        }
 	      else
 	        {

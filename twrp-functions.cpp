@@ -2580,9 +2580,19 @@ bool TWFunc::Repack_Image(string mount_point)
   return true;
 }
 
-bool TWFunc::Patch_DM_Verity()
+bool TWFunc::JustInstalledMiui(void)
 {
-  bool status = false;
+  Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+  if ((Fox_Zip_Installer_Code == 22) || (Fox_Zip_Installer_Code == 23) || (Fox_Zip_Installer_Code == 3))
+      return true;
+  else
+      return false;
+}
+
+bool TWFunc::Patch_DM_Verity(void)
+{
+  bool status;
+  bool found_verity;
   int stat = 0;
   int treble;
   DIR *d;
@@ -2592,7 +2602,8 @@ bool TWFunc::Patch_DM_Verity()
   string firmware_key = ramdisk + "/sbin/firmware_key.cer";
   string remove = "avb,;,avb;avb;verify,;,verify;verify;support_scfs,;,support_scfs;support_scfs;";
   DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);
-
+  status = false;
+  found_verity = false;
   LOGINFO("OrangeFox: entering Patch_DM_Verity()\n");
   d = opendir(ramdisk.c_str());
   if (d == NULL)
@@ -2616,6 +2627,7 @@ bool TWFunc::Patch_DM_Verity()
 	        {
 	          LOGINFO("OrangeFox: Relevant DM_Verity flags are found in %s\n", path.c_str());
 		  status = true;
+		  found_verity = true;
 		}
 		else
 		{
@@ -2629,14 +2641,14 @@ bool TWFunc::Patch_DM_Verity()
 	{
 	  if (TWFunc::CheckWord(path, "ro.config.dmverity="))
 	    {
-              LOGINFO("OrangeFox: DM_Verity flags found!\n");
+              LOGINFO("OrangeFox: DM_Verity flags found in default.prop.\n");
 	      if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
 		TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;",
 					     "ro.config.dmverity=false");
 	    }
 	  else
 	    {
-              LOGINFO("OrangeFox: DM_Verity flags not found\n");
+              LOGINFO("OrangeFox: DM_Verity flags not found in default.prop.\n");
 	      ofstream File(path.c_str(), ios_base::app | ios_base::out);
 	      if (File.is_open())
 		{
@@ -2708,6 +2720,7 @@ bool TWFunc::Patch_DM_Verity()
 		    {
 	               LOGINFO("OrangeFox: Relevant dm-verity settings are found in %s\n", path.c_str());
 		       status = true;
+		       found_verity = true;
 		    } 
 		    else
 		    {
@@ -2731,16 +2744,32 @@ bool TWFunc::Patch_DM_Verity()
 	status = true;
       unlink(firmware_key.c_str());
     }
+
+  if ((status = true) && (found_verity = false))
+    {
+       LOGINFO("OrangeFox: Partial success - DM-Verity settings not found in fstab, but key file was successfully removed.\n");
+    }
+  
+  if (found_verity = false)
+     {
+         if (JustInstalledMiui() == true) 
+         {
+            gui_print("Could not patch dm-verity.\n");
+            gui_print("You may want to flash magisk from the OrangeFox menu now!\n");
+         }
+     } 
+       
   LOGINFO("OrangeFox: leaving Patch_DM_Verity()\n");
-  return status;
+  //return status;
+  return found_verity;
 }
 
 bool TWFunc::Fstab_Has_Verity_Flag(std::string path)
 {
     if (
        (TWFunc::CheckWord(path, "verify")) 
-    || (TWFunc::CheckWord(path, "avb"))
     || (TWFunc::CheckWord(path, "support_scfs"))
+    || (TWFunc::CheckWord(path, "avb"))
        )
         return true;
    else
@@ -2753,8 +2782,8 @@ bool TWFunc::Fstab_Has_Encryption_Flag(std::string path)
         (CheckWord(path, "forceencrypt")) 
      || (CheckWord(path, "forcefdeorfbe"))
      || (CheckWord(path, "fileencryption"))
-     || (CheckWord(path, "errors=panic")) 
-     || (CheckWord(path, "discard"))
+     /*|| (CheckWord(path, "errors=panic")) 
+     || (CheckWord(path, "discard")) */
       )
         return true;
    else
@@ -2775,7 +2804,7 @@ void TWFunc::Patch_Encryption_Flags(std::string path)
    */
 }
 
-bool TWFunc::Patch_Forced_Encryption()
+bool TWFunc::Patch_Forced_Encryption(void)
 {
   string path, cmp;
   int stat = 0;
@@ -2819,7 +2848,7 @@ bool TWFunc::Patch_Forced_Encryption()
 	      }
 	      else
 	      {
-		 LOGINFO("OrangeFox: Relevant encryption settings are found in %s\n", path.c_str());
+		 LOGINFO("OrangeFox: Relevant encryption settings are not found in %s\n", path.c_str());
 	      }
 	    }
 	    TWFunc::Patch_Encryption_Flags(path);
@@ -2881,12 +2910,12 @@ bool TWFunc::Patch_Forced_Encryption()
 	        {
 	          if (Fstab_Has_Encryption_Flag(path))
 	          {
-		      status = true;
 		      LOGINFO("OrangeFox: Relevant encryption settings are found in %s\n", path.c_str());
+		      status = true;
 		  } 
 		  else
 		  { 
-		      LOGINFO("OrangeFox: Relevant encryption settings *NOT* found in %s\n", path.c_str());
+		      LOGINFO("OrangeFox: Relevant encryption settings are not found in %s\n", path.c_str());
 		  }
 	       }
 	       TWFunc::Patch_Encryption_Flags(path);
@@ -2967,7 +2996,17 @@ void TWFunc::Patch_Others(void)
 
 void TWFunc::Deactivation_Process(void)
 {
- 
+   // unmount stuff
+   if (PartitionManager.Is_Mounted_By_Path("/vendor"))
+	PartitionManager.UnMount_By_Path("/vendor", false);
+   else 
+   if (PartitionManager.Is_Mounted_By_Path("/cust"))
+	PartitionManager.UnMount_By_Path("/cust", false);
+  
+   if (PartitionManager.Is_Mounted_By_Path("/system"))
+     PartitionManager.UnMount_By_Path("/system", false);
+  //
+  
   Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
   Fox_Force_Deactivate_Process = DataManager::GetIntValue(FOX_FORCE_DEACTIVATE_PROCESS);
 
