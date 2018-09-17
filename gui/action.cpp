@@ -2605,15 +2605,30 @@ int GUIAction::flashlight(std::string arg __unused)
       string flashvalue = flashone + flashdisable + flashdisable;
       string flashpathvalue_one = "/sys/class/leds/led:torch_";
       string flashpathvalue_two = "/brightness";
-      string flashpathone =
-	flashpathvalue_one + flashdisable + flashpathvalue_two;
-      string flashpathtwo =
-	flashpathvalue_one + flashone + flashpathvalue_two;
+      string flashpathone = flashpathvalue_one + flashdisable + flashpathvalue_two;
+      string flashpathtwo = flashpathvalue_one + flashone + flashpathvalue_two;
       if (!TWFunc::Path_Exists(flashpathone))
-	{
-	  gui_err
-	    ("orangefox_flash_not_supported=OrangeFox: Recovery flashlight is not supported on this device!");
-	}
+	    {
+        if (!TWFunc::Path_Exists("sys/class/leds/flashlight/"))
+        {
+          gui_err("OrangeFox: Recovery flashlight is not supported on this device!");
+        }
+        else
+        {
+          if (flash != 1)
+          {
+            TWFunc::write_to_file("/sys/class/leds/flashlight/brightness", "1");
+            DataManager::SetValue("flashlight", 1);
+            LOGINFO("DEBUG - 1");
+          }
+          else
+          {
+            TWFunc::write_to_file("/sys/class/leds/flashlight/brightness", "0");
+            DataManager::SetValue("flashlight", 0); 
+            LOGINFO("DEBUG - 2");
+          }
+        }
+      }
       else
 	{
 	  DataManager::GetValue("flashlight", flash);
@@ -2631,6 +2646,7 @@ int GUIAction::flashlight(std::string arg __unused)
 	  DataManager::SetValue("flashlight", 0);
 	}
     }
+  LOGINFO("DEBUG - 3");
   operation_end(0);
   return 0;
 }

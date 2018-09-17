@@ -1304,7 +1304,7 @@ void DataManager::Vibrate(const string & varName)
 
 void DataManager::Leds(bool enable)
 {
-  std::string leds, bs, bsmax, time, blink, bsm, leds1, bs1, bsmax1, time1, blink1, bsm1;
+  std::string leds, bs, bsmax, time, blink, bsm, leds1, bs1, bsmax1, time1, blink1, bsm1, max_brt;
   struct stat st;
   leds = "/sys/class/leds/green";
   bs = leds + "/brightness";
@@ -1317,6 +1317,13 @@ void DataManager::Leds(bool enable)
   time1 = leds1 + "/led_time";
   blink1 = leds1 + "/blink";
   bsmax1 = leds1 + "/max_brightness";
+
+  if (!TWFunc::Path_Exists("/sys/class/leds/white/"))
+  {
+    LOGINFO("DEBUG - founded white led on /sys/class/leds/white/ path");
+    TWFunc::read_file("/sys/class/leds/white/max_brightness", max_brt);
+    TWFunc::write_to_file("/sys/class/leds/white/brightness", max_brt);
+  }
 
   if (!enable && stat(bs.c_str(), &st) == 0)
     {
@@ -1332,6 +1339,7 @@ void DataManager::Leds(bool enable)
 	    {
 	      TWFunc::write_to_file(bs, bsm);
 	      TWFunc::write_to_file(blink, "1");
+        TWFunc::write_to_file("", "1");
 
         TWFunc::write_to_file(bs1, bsm);
 	      TWFunc::write_to_file(blink1, "1");
