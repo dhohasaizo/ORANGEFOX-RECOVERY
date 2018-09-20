@@ -2782,8 +2782,8 @@ bool TWFunc::Fstab_Has_Encryption_Flag(std::string path)
         (CheckWord(path, "forceencrypt")) 
      || (CheckWord(path, "forcefdeorfbe"))
      || (CheckWord(path, "fileencryption"))
-     /*|| (CheckWord(path, "errors=panic")) 
-     || (CheckWord(path, "discard")) */
+     || (CheckWord(path, "errors=panic")) 
+     || (CheckWord(path, "discard"))
       )
         return true;
    else
@@ -2795,13 +2795,8 @@ void TWFunc::Patch_Encryption_Flags(std::string path)
    TWFunc::Replace_Word_In_File(path, "fileencryption=ice;", "encryptable=footer");
    TWFunc::Replace_Word_In_File(path, "forcefdeorfbe=;forceencrypt=;fileencryption=;", "encryptable=");
    
-   /*
-   string remove = "errors=panic,;,errors=panic;errors=panic;";
+   string remove = "errors=panic,;errors=panic;discard,;,discard;";
    TWFunc::Replace_Word_In_File(path, remove);
-     
-   remove = "discard,;,discard;discard;"; 
-   TWFunc::Replace_Word_In_File(path, remove); 
-   */
 }
 
 bool TWFunc::Patch_Forced_Encryption(void)
