@@ -976,14 +976,6 @@
 		<string name="fox_theme_slider_white">Проведите чтобы применить белую тему</string>
 		<string name="fox_filled_lines">Использовать акцентные линии</string>
 
-		<string name="fox_community_title">OrangeFox Скрипты сообщеста</string>
-		<string name="fox_comm_i1">Для добавления новых скриптов обратитесь</string>
-		<string name="fox_comm_i2">@MrYacha в Telegram</string>
-
-		<string name="fox_slider_magisk">Проведите чтобы установить Magisk</string>
-		<string name="fox_slider_pass">Проведите чтобы сбросить пароль прошивки</string>
-		<string name="fox_slider_supersu">Проведите чтобы установить SuperSU</string>
-
 		<string name="fox_dialog_special_actions_1">Пожалуйста, не меняйте ничего без</string>
 		<string name="fox_dialog_special_actions_2">хорошего понимания этих настроек!</string>
 
@@ -1032,7 +1024,7 @@
 		<string name="fox_no_os_fox_txt1">OrangeFox обнаружил что</string>
 		<string name="fox_no_os_fox_txt2">система не установлена. Если вы уверены</string>
 		<string name="fox_no_os_fox_txt3">что система установлена иэто предупреждение</string>
-		<string name="fox_no_os_fox_txt4">ошибка проведить для подтверждения</string>
+		<string name="fox_no_os_fox_txt4">ошибка проведите для подтверждения</string>
 		<string name="fox_no_os_fox_txt5">чтобы перезагрузить.</string>
 		<string name="fox_no_os_fox_slider_txt">Проведите чтобы перезагрузить</string>
 
@@ -1070,6 +1062,9 @@
 		<string name="sort_by_size_desc">По размеру наоб.</string>
 
 		<!-- OrangeFox community page -->
+
+		<string name="fox_comm_i1">Для добавления новых скриптов обратитесь</string>
+		<string name="fox_comm_i2">@MrYacha в Telegram</string>
 
 		<string name="fox_community_title">OrangeFox скрипты сообщества</string>
 		<string name="fox_comm_i1">Для добавления новых скриптов</string>
