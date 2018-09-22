@@ -1607,11 +1607,8 @@
                     cp -r %tw_folder%/* "images";
 					sed "s/%accent%/#%tw_accent%/g" "/tmp/orangefox/ui_temp.xml" &gt; "/tmp/orangefox/ui_temp2.xml";
 					rm -f "/tmp/orangefox/ui_temp.xml";
-					sed "s/%text_actionbar%/#%tw_text_actionbar%/g" "/tmp/orangefox/ui_temp2.xml" &gt; "/tmp/orangefox/ui_temp3.xml";
-					rm -f "/tmp/orangefox/ui_temp2.xml";
-					sed "s/%accent_name%/%tw_accent_name%/g" "/tmp/orangefox/ui_temp3.xml" &gt; "/tmp/orangefox/ui.xml";
-					rm -f "/tmp/orangefox/ui_temp3.xml";
-					mv "/tmp/orangefox/ui.xml" "colors.xml";
+					sed "s/%text_actionbar%/#%tw_text_actionbar%/g" "/tmp/orangefox/ui_temp2.xml";
+					mv "/tmp/orangefox/ui_temp2.xml" "colors.xml";
 					rm -rf "/tmp/orangefox/ramdisk/twres";
 					cp -r -f "/twres" "/tmp/orangefox/ramdisk/twres";
 					cd /;
