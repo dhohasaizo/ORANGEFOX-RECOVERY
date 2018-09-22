@@ -4059,23 +4059,23 @@
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<placement x="%col1_x%" y="%row1_3_y%"/>
 				<text>{@s_color=Color}</text>
 			</text>
 
 			<!--fill color="#E51C23FF"-->
 			<fill color="#FF9800">
-				<placement x="%col1_x%" y="%row2_3_y%" w="308" h="180"/>
+				<placement x="%col1_x%" y="%row2_1_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col1_x%" y="%row2_3_y%" w="308" h="48"/>
+				<placement x="%col1_x%" y="%row2_1_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col1_x%" y="%row2_3_y%" w="308" h="180"/>
+				<placement x="%col1_x%" y="%row2_1_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_orange}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4086,17 +4086,17 @@
 			</button>
 
 			<fill color="#3F51B5FF">
-				<placement x="%col_col_center_x%" y="%row2_3_y%" w="308" h="180"/>
+				<placement x="%col_col_center_x%" y="%row2_1_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col_col_center_x%" y="%row2_3_y%" w="308" h="48"/>
+				<placement x="%col_col_center_x%" y="%row2_1_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col_col_center_x%" y="%row2_3_y%" w="308" h="180"/>
+				<placement x="%col_col_center_x%" y="%row2_1_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_indigo}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4107,17 +4107,17 @@
 			</button>
 
 			<fill color="#1464FFFF">
-				<placement x="%col_x_color3%" y="%row2_3_y%" w="308" h="180"/>
+				<placement x="%col_x_color3%" y="%row2_1_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col_x_color3%" y="%row2_3_y%" w="308" h="48"/>
+				<placement x="%col_x_color3%" y="%row2_1_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col_x_color3%" y="%row2_3_y%" w="308" h="180"/>
+				<placement x="%col_x_color3%" y="%row2_1_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_blue}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4128,17 +4128,17 @@
 			</button>
 
 			<fill color="#03A9F4FF">
-				<placement x="%col1_x%" y="%row3_3a_y%" w="308" h="180"/>
+				<placement x="%col1_x%" y="%row3_1a_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col1_x%" y="%row3_3a_y%" w="308" h="48"/>
+				<placement x="%col1_x%" y="%row3_1a_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col1_x%" y="%row3_3a_y%" w="308" h="180"/>
+				<placement x="%col1_x%" y="%row3_1a_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_light_blue}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4149,17 +4149,17 @@
 			</button>
 
 			<fill color="#0090CAFF">
-				<placement x="%col_col_center_x%" y="%row3_3a_y%" w="308" h="180"/>
+				<placement x="%col_col_center_x%" y="%row3_1a_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col_col_center_x%" y="%row3_3a_y%" w="308" h="48"/>
+				<placement x="%col_col_center_x%" y="%row3_1a_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col_col_center_x%" y="%row3_3a_y%" w="308" h="180"/>
+				<placement x="%col_col_center_x%" y="%row3_1a_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_stock}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4170,17 +4170,17 @@
 			</button>
 
 			<fill color="#009688FF">
-				<placement x="%col_x_color3%" y="%row3_3a_y%" w="308" h="180"/>
+				<placement x="%col_x_color3%" y="%row3_1a_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col_x_color3%" y="%row3_3a_y%" w="308" h="48"/>
+				<placement x="%col_x_color3%" y="%row3_1a_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col_x_color3%" y="%row3_3a_y%" w="308" h="180"/>
+				<placement x="%col_x_color3%" y="%row3_1a_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_teal}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4191,17 +4191,17 @@
 			</button>
 
 			<fill color="#259B24FF">
-				<placement x="%col1_x%" y="%row5_1_y%" w="308" h="180"/>
+				<placement x="%col1_x%" y="%row4_2_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col1_x%" y="%row5_1_y%" w="308" h="48"/>
+				<placement x="%col1_x%" y="%row4_2_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col1_x%" y="%row5_1_y%" w="308" h="180"/>
+				<placement x="%col1_x%" y="%row4_2_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_green}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4212,17 +4212,17 @@
 			</button>
 
 			<fill color="#8BC34AFF">
-				<placement x="%col_col_center_x%" y="%row5_1_y%" w="308" h="180"/>
+				<placement x="%col_col_center_x%" y="%row4_2_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col_col_center_x%" y="%row5_1_y%" w="308" h="48"/>
+				<placement x="%col_col_center_x%" y="%row4_2_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col_col_center_x%" y="%row5_1_y%" w="308" h="180"/>
+				<placement x="%col_col_center_x%" y="%row4_2_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_light_green}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4233,17 +4233,17 @@
 			</button>
 
 			<fill color="#CDDC39FF">
-				<placement x="%col_x_color3%" y="%row5_1_y%" w="308" h="180"/>
+				<placement x="%col_x_color3%" y="%row4_2_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col_x_color3%" y="%row5_1_y%" w="308" h="48"/>
+				<placement x="%col_x_color3%" y="%row4_2_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col_x_color3%" y="%row5_1_y%" w="308" h="180"/>
+				<placement x="%col_x_color3%" y="%row4_2_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_lime}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4254,17 +4254,17 @@
 			</button>
 
 			<fill color="#FFC107FF">
-				<placement x="%col1_x%" y="%row6_1a_y%" w="308" h="180"/>
+				<placement x="%col1_x%" y="%row5_2a_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col1_x%" y="%row6_1a_y%" w="308" h="48"/>
+				<placement x="%col1_x%" y="%row5_2a_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col1_x%" y="%row6_1a_y%" w="308" h="180"/>
+				<placement x="%col1_x%" y="%row5_2a_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_amber}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4275,17 +4275,17 @@
 			</button>
 
 			<fill color="#E51C23FF">
-				<placement x="%col_col_center_x%" y="%row6_1a_y%" w="308" h="180"/>
+				<placement x="%col_col_center_x%" y="%row5_2a_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col_col_center_x%" y="%row6_1a_y%" w="308" h="48"/>
+				<placement x="%col_col_center_x%" y="%row5_2a_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col_col_center_x%" y="%row6_1a_y%" w="308" h="180"/>
+				<placement x="%col_col_center_x%" y="%row5_2a_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_red}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4296,17 +4296,17 @@
 			</button>
 
 			<fill color="#FF5722FF">
-				<placement x="%col_x_color3%" y="%row6_1a_y%" w="308" h="180"/>
+				<placement x="%col_x_color3%" y="%row5_2a_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col_x_color3%" y="%row6_1a_y%" w="308" h="48"/>
+				<placement x="%col_x_color3%" y="%row5_2a_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col_x_color3%" y="%row6_1a_y%" w="308" h="180"/>
+				<placement x="%col_x_color3%" y="%row5_2a_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_deep_orange}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4317,17 +4317,17 @@
 			</button>
 
 			<fill color="#795548FF">
-				<placement x="%col1_x%" y="%row7_2_y%" w="308" h="180"/>
+				<placement x="%col1_x%" y="%row6_3_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col1_x%" y="%row7_2_y%" w="308" h="48"/>
+				<placement x="%col1_x%" y="%row6_3_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col1_x%" y="%row7_2_y%" w="308" h="180"/>
+				<placement x="%col1_x%" y="%row6_3_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_brown}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4338,17 +4338,17 @@
 			</button>
 
 			<fill color="#9E9E9EFF">
-				<placement x="%col_col_center_x%" y="%row7_2_y%" w="308" h="180"/>
+				<placement x="%col_col_center_x%" y="%row6_3_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col_col_center_x%" y="%row7_2_y%" w="308" h="48"/>
+				<placement x="%col_col_center_x%" y="%row6_3_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col_col_center_x%" y="%row7_2_y%" w="308" h="180"/>
+				<placement x="%col_col_center_x%" y="%row6_3_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_grey}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
@@ -4359,17 +4359,17 @@
 			</button>
 
 			<fill color="#607D8BFF">
-				<placement x="%col_x_color3%" y="%row7_2_y%" w="308" h="180"/>
+				<placement x="%col_x_color3%" y="%row6_3_y%" w="308" h="180"/>
 			</fill>
 
 			<fill color="%lightransparent%">
-				<placement x="%col_x_color3%" y="%row7_2_y%" w="308" h="48"/>
+				<placement x="%col_x_color3%" y="%row6_3_y%" w="308" h="48"/>
 			</fill>
 
 			<button>
 				<highlight color="%highlight_color%"/>
 				<fill color="%transparent%"/>
-				<placement x="%col_x_color3%" y="%row7_2_y%" w="308" h="180"/>
+				<placement x="%col_x_color3%" y="%row6_3_y%" w="308" h="180"/>
 				<actions>
 					<action function="set">tw_accent_name={@f_blue_grey}</action>
 					<action function="set">tw_text_actionbar=000000FF</action>
