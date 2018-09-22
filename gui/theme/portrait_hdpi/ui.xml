@@ -302,7 +302,7 @@
 		<variable name="fox_adb" value="0"/>
 
 		<!-- For Maintainers -->
-		<variable name="fox_debug_build" value="1"/> <!-- Enable this function if you wanna enable debug mode switch -->
+		<variable name="fox_debug_build" value="0"/> <!-- Enable this function if you wanna enable debug mode switch -->
 		<variable name="fox_notch" value="0"/> <!-- Enable this variable for enable notch -->
 
 		<!-- Lower led crutch :) -->
