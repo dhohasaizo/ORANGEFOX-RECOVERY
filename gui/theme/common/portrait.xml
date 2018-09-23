@@ -188,7 +188,7 @@
 			</text>
 
           <text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@fox_no_os_fox_txt3}</text>
 			</text>
 
@@ -2849,12 +2849,12 @@
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row1_3_y%"/>
+				<placement x="%col1_x%" y="%row1_0_y%"/>
 				<text>{@settings_cptn=General}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="%row6_2_y%"/>
+				<placement x="%col1_x%" y="%row1_2_y%" w="%listbox_w%" h="%row6_2_y%"/>
 				<listitem name="{@zip_sig_chk=Zip signature verification}">
 					<data variable="tw_signed_zip_verify"/>
 				</listitem>
@@ -2995,12 +2995,12 @@
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row1_3_y%"/>
+				<placement x="%col1_x%" y="%row1_0_y%"/>
 				<text>{@sel_tz_list=Time Zone}</text>
 			</text>
 
 			<listbox>
-				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_tz_width%" h="%listbox_tz_height%"/>
+				<placement x="%col1_x%" y="%row1_2_y%" w="984" h="750"/>
 				<data name="tw_time_zone_guisel"/>
 				<listitem name="{@utcm11=(UTC -11) Samoa, Midway Island}">BST11;BDT</listitem>
 				<listitem name="{@utcm10=(UTC -10) Hawaii}">HST10;HDT</listitem>
@@ -3029,40 +3029,40 @@
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row6_2_y%"/>
+				<placement x="%col1_x%" y="%row5_3_y%"/>
 				<text>{@options_cptn=Options}</text>
 			</text>
 
 			<checkbox style="checkbox_big">
-				<placement x="%col1_x%" y="%row6_3_y%"/>
+				<placement x="%col1_x%" y="%row6_1_y%"/>
 				<text>{@use_dst_chk=Use daylight savings time (DST)}</text>
 				<data variable="tw_time_zone_guidst"/>
 			</checkbox>
 
 			<checkbox style="checkbox_big">
-				<placement x="%col1_x%" y="%row7_1a_y%"/>
+				<placement x="%col1_x%" y="%row6_2a_y%"/>
 				<text>{@use24clock_chk=Use 24-hour clock}</text>
 				<data variable="tw_military_time"/>
 			</checkbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row7_3a_y%"/>
+				<placement x="%col1_x%" y="%row7_2_y%"/>
 				<text>{@tz_offset=Offset}</text>
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="%row8_1a_y%"/>
+				<placement x="%col1_x%" y="%row7_3_y%"/>
 				<text>{@sel_tz_offset=Select Offset (usually 0): %tw_time_zone_guioffset%}</text>
 			</text>
 
 			<button>
-				<placement x="%col1_x%" y="%row7_3a_y%" w="%content_w%" h="%mb_h%"/>
+				<placement x="%col1_x%" y="%row6_3a_y%" w="%content_w%" h="%mb_h%"/>
 				<fill color="%transparent%"/>
 				<action function="overlay">dialog_offset</action>
 			</button>
 
 			<button>
-				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
+				<placement x="%btn_float_x%" y="%row7_1_y%"/>
 				<image resource="btn_float_accept"/>
 				<highlight color="%highlight_color%"/>
 				<action function="setguitimezone"/>
@@ -3133,17 +3133,17 @@
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="400"/>
+				<placement x="%col1_x%" y="%row1_0_y%"/>
 				<text>{@vibration_hdr=Vibration}</text>
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="450"/>
+				<placement x="%col1_x%" y="%row1_2_y%"/>
 				<text>{@button_vibration=Button Vibration:} %tw_button_vibrate%</text>
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="470" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="%row1_2_y%" w="%slidervalue_w%"/>
 				<resource background="slider" handle="handle" handlehover="handle_h"/>
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
@@ -3152,12 +3152,12 @@
 			</slidervalue>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="690"/>
+				<placement x="%col1_x%" y="%row2_2_y%"/>
 				<text>{@kb_vibration=Keyboard Vibration:} %tw_keyboard_vibrate%</text>
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="710" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="%row2_2_y%" w="%slidervalue_w%"/>
 				<resource background="slider" handle="handle" handlehover="handle_h"/>
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
@@ -3166,12 +3166,12 @@
 			</slidervalue>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="910"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
 				<text>{@act_vibration=Action Vibration:} %tw_action_vibrate%</text>
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="940" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="%row3_2_y%" w="%slidervalue_w%"/>
 				<resource background="slider" handle="handle" handlehover="handle_h"/>
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
@@ -3180,12 +3180,12 @@
 			</slidervalue>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="1100"/>
+				<placement x="%col1_x%" y="%row4_2_y%"/>
 				<text>{@fox_install_vibrate=}: %fox_data_install_vibrate%</text>
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="1130" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="%row4_2_y%" w="%slidervalue_w%"/>
 				<resource background="slider" handle="handle" handlehover="handle_h"/>
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
@@ -3194,12 +3194,12 @@
 			</slidervalue>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="1320"/>
+				<placement x="%col1_x%" y="%row5_2_y%"/>
 				<text>{@fox_backup_vibrate=}: %fox_data_backup_vibrate%</text>
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="1350" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="%row5_2_y%" w="%slidervalue_w%"/>
 				<resource background="slider" handle="handle" handlehover="handle_h"/>
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
@@ -3208,12 +3208,12 @@
 			</slidervalue>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="1540"/>
+				<placement x="%col1_x%" y="%row6_2_y%"/>
 				<text>{@fox_restore_vibrate=}: %fox_data_restore_vibrate%</text>
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="1570" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="%row6_2_y%" w="%slidervalue_w%"/>
 				<resource background="slider" handle="handle" handlehover="handle_h"/>
 				<font resource="caption" color="%text%"/>
 				<colors line="%text_dark%" slider="%accent%"/>
@@ -3410,27 +3410,27 @@
 			</fill>
 
 			<image>
-				<placement x="%col1_x%" y="%row1_3_y%"/>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
 				<image resource="icon_info"/>
 			</image>
 
 			<text style="text_body2">
 				
-				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<placement x="%col1_x_indent%" y="%row1_0_y%"/>
 				<text>{@fox_comm_i1}</text>
 			</text>
 			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>{@fox_comm_i2}</text>
 			</text>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<placement x="%col1_x%" y="%row1_3_y%"/>
 				<text>SuperSU</text>
 			</text>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row3_1_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row2_1_y%"/>
 				<text>{@fox_comm_ins}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/SuperSU.zip</action>
@@ -3448,7 +3448,7 @@
 			</button>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row2_1_y%" placement="1"/>
 				<text>{@fox_comm_del}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootsupersu.zip</action>
@@ -3465,12 +3465,12 @@
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row4_1_y%"/>
+				<placement x="%col1_x%" y="%row3_1_y%"/>
 				<text>Magisk</text>
 			</text>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row4_2_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row3_2_y%"/>
 				<text>{@fox_comm_ins}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/Magisk.zip</action>
@@ -3487,7 +3487,7 @@
 			</button>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row4_2_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row3_2_y%" placement="1"/>
 				<text>{@fox_comm_del}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootmagisk.zip</action>
@@ -3504,12 +3504,12 @@
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row5_2_y%"/>
+				<placement x="%col1_x%" y="%row4_2_y%"/>
 				<text>{@fox_menu_other}</text>
 			</text>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row5_3_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row4_3_y%" placement="1"/>
 				<text>Google Sans</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/GoogleSans.zip</action>
@@ -3526,7 +3526,7 @@
 				</actions>
 			</button>
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row5_3_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row4_3_y%"/>
 				<text>Initd</text>
 				<actions>
 					<action function="set">tw_filecheck=/FFiles/OF_initd/OF_initd.zip</action>
@@ -3542,7 +3542,7 @@
 				</actions>
 			</button>
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row6_2_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row5_2_y%"/>
 				<text>Cam2Api</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/Camera2Api.zip</action>
@@ -3559,7 +3559,7 @@
 			</button>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row6_2_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row5_2_y%" placement="1"/>
 				<text>{@fox_dellp_btn}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/PassReset.zip</action>
@@ -3576,19 +3576,19 @@
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<placement x="%col1_x%" y="%row7_1_y%"/>
 				<text>{@fox_menu_nav}</text>
 			</text>
 
 			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row7_2_y%"/>
 				<text>{@fox_menu_theme}</text>
 				<action function="page">fox_ui</action>
 			</button>
 
 			<button style="btn_raised">
 				<condition var1="fox_adb" var2="1"/>
-				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row7_2_y%" placement="1"/>
 				<text>{@fox_menu_adb_on}</text>
 				<!--action function="page">fox_adb</action-->
 				<action function="set">fox_adb=0</action>
@@ -3596,7 +3596,7 @@
 
 			<button style="btn_raised">
 				<condition var1="fox_adb" var2="0"/>
-				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row7_2_y%" placement="1"/>
 				<text>{@fox_menu_adb_off}</text>
 				<!--action function="page">fox_adb</action-->
 				<action function="set">fox_adb=1</action>
@@ -3701,7 +3701,7 @@
 			</text>
 
 			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@fox_theme_splash_fox_txt4=}</text>
 			</text>
 
@@ -4028,6 +4028,267 @@
 				<text>{@fox_theme_color_tlt}</text>
 			</text>
 
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_0_y%"/>
+				<text>{@s_color=Color}</text>
+			</text>
+
+			<!--fill color="#E51C23FF"-->
+			<fill color="#FF9800">
+				<placement x="%col1_x%" y="%row1_2_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col1_x%" y="%row1_2_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_orange}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=FF9800</action>
+					<action function="set">tw_folder=images_orange</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#3F51B5FF">
+				<placement x="%col_col_center_x%" y="%row1_2_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col_col_center_x%" y="%row1_2_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_indigo}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=3F51B5FF</action>
+					<action function="set">tw_folder=images_indigo</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#1464FFFF">
+				<placement x="%col_x_color3%" y="%row1_2_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col_x_color3%" y="%row1_2_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_blue}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=1464FFFF</action>
+					<action function="set">tw_folder=images_blue</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#03A9F4FF">
+				<placement x="%col1_x%" y="%row2_2a_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col1_x%" y="%row2_2a_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_light_blue}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=03A9F4FF</action>
+					<action function="set">tw_folder=images_lightblue</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#0090CAFF">
+				<placement x="%col_col_center_x%" y="%row2_2a_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col_col_center_x%" y="%row2_2a_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_stock}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=0090CAFF</action>
+					<action function="set">tw_folder=images_stock</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#009688FF">
+				<placement x="%col_x_color3%" y="%row2_2a_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col_x_color3%" y="%row2_2a_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_teal}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=009688FF</action>
+					<action function="set">tw_folder=images_teal</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#259B24FF">
+				<placement x="%col1_x%" y="%row3_3_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col1_x%" y="%row3_3_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_green}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=259B24FF</action>
+					<action function="set">tw_folder=images_green</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#8BC34AFF">
+				<placement x="%col_col_center_x%" y="%row3_3_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col_col_center_x%" y="%row3_3_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_light_green}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=8BC34AFF</action>
+					<action function="set">tw_folder=images_lightgreen</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#CDDC39FF">
+				<placement x="%col_x_color3%" y="%row3_3_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col_x_color3%" y="%row3_3_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_lime}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=CDDC39FF</action>
+					<action function="set">tw_folder=images_lime</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#FFC107FF">
+				<placement x="%col1_x%" y="%row4_3a_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col1_x%" y="%row4_3a_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_amber}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=FFC107FF</action>
+					<action function="set">tw_folder=images_amber</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#E51C23FF">
+				<placement x="%col_col_center_x%" y="%row4_3a_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col_col_center_x%" y="%row4_3a_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_red}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=E51C23FF</action>
+					<action function="set">tw_folder=images_red</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#FF5722FF">
+				<placement x="%col_x_color3%" y="%row4_3a_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col_x_color3%" y="%row4_3a_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_deep_orange}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=FF5722FF</action>
+					<action function="set">tw_folder=images_deeporange</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#795548FF">
+				<placement x="%col1_x%" y="%row6_1_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col1_x%" y="%row6_1_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_brown}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=795548FF</action>
+					<action function="set">tw_folder=images_brown</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#9E9E9EFF">
+				<placement x="%col_col_center_x%" y="%row6_1_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col_col_center_x%" y="%row6_1_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_grey}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=9E9E9EFF</action>
+					<action function="set">tw_folder=images_grey</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
+			<fill color="#607D8BFF">
+				<placement x="%col_x_color3%" y="%row6_1_y%" w="308" h="180"/>
+			</fill>
+
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<placement x="%col_x_color3%" y="%row6_1_y%" w="308" h="180"/>
+				<actions>
+					<action function="set">tw_accent_name={@f_blue_grey}</action>
+					<action function="set">tw_text_actionbar=000000FF</action>
+					<action function="set">tw_accent=607D8BFF</action>
+					<action function="set">tw_folder=images_bluegrey</action>
+					<action function="page">set_color</action>
+				</actions>
+			</button>
+
 			<button>
 				<placement x="%tab4_col1_x%" y="%tab_y%" placement="4"/>
 				<image resource="fox_on_boot_2"/>
@@ -4054,327 +4315,6 @@
 			<fill color="%text_actionbar%">
 				<placement x="540" y="%tab_indicator_y%" w="%tab4_width%" h="%tab_indicator_height%"/>
 			</fill>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row1_3_y%"/>
-				<text>{@s_color=Color}</text>
-			</text>
-
-			<!--fill color="#E51C23FF"-->
-			<fill color="#FF9800">
-				<placement x="%col1_x%" y="%row2_1_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col1_x%" y="%row2_1_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col1_x%" y="%row2_1_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_orange}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=FF9800</action>
-					<action function="set">tw_folder=images_orange</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#3F51B5FF">
-				<placement x="%col_col_center_x%" y="%row2_1_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col_col_center_x%" y="%row2_1_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col_col_center_x%" y="%row2_1_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_indigo}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=3F51B5FF</action>
-					<action function="set">tw_folder=images_indigo</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#1464FFFF">
-				<placement x="%col_x_color3%" y="%row2_1_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col_x_color3%" y="%row2_1_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col_x_color3%" y="%row2_1_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_blue}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=1464FFFF</action>
-					<action function="set">tw_folder=images_blue</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#03A9F4FF">
-				<placement x="%col1_x%" y="%row3_1a_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col1_x%" y="%row3_1a_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col1_x%" y="%row3_1a_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_light_blue}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=03A9F4FF</action>
-					<action function="set">tw_folder=images_lightblue</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#0090CAFF">
-				<placement x="%col_col_center_x%" y="%row3_1a_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col_col_center_x%" y="%row3_1a_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col_col_center_x%" y="%row3_1a_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_stock}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=0090CAFF</action>
-					<action function="set">tw_folder=images_stock</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#009688FF">
-				<placement x="%col_x_color3%" y="%row3_1a_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col_x_color3%" y="%row3_1a_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col_x_color3%" y="%row3_1a_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_teal}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=009688FF</action>
-					<action function="set">tw_folder=images_teal</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#259B24FF">
-				<placement x="%col1_x%" y="%row4_2_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col1_x%" y="%row4_2_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col1_x%" y="%row4_2_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_green}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=259B24FF</action>
-					<action function="set">tw_folder=images_green</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#8BC34AFF">
-				<placement x="%col_col_center_x%" y="%row4_2_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col_col_center_x%" y="%row4_2_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col_col_center_x%" y="%row4_2_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_light_green}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=8BC34AFF</action>
-					<action function="set">tw_folder=images_lightgreen</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#CDDC39FF">
-				<placement x="%col_x_color3%" y="%row4_2_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col_x_color3%" y="%row4_2_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col_x_color3%" y="%row4_2_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_lime}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=CDDC39FF</action>
-					<action function="set">tw_folder=images_lime</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#FFC107FF">
-				<placement x="%col1_x%" y="%row5_2a_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col1_x%" y="%row5_2a_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col1_x%" y="%row5_2a_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_amber}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=FFC107FF</action>
-					<action function="set">tw_folder=images_amber</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#E51C23FF">
-				<placement x="%col_col_center_x%" y="%row5_2a_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col_col_center_x%" y="%row5_2a_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col_col_center_x%" y="%row5_2a_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_red}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=E51C23FF</action>
-					<action function="set">tw_folder=images_red</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#FF5722FF">
-				<placement x="%col_x_color3%" y="%row5_2a_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col_x_color3%" y="%row5_2a_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col_x_color3%" y="%row5_2a_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_deep_orange}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=FF5722FF</action>
-					<action function="set">tw_folder=images_deeporange</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#795548FF">
-				<placement x="%col1_x%" y="%row6_3_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col1_x%" y="%row6_3_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col1_x%" y="%row6_3_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_brown}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=795548FF</action>
-					<action function="set">tw_folder=images_brown</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#9E9E9EFF">
-				<placement x="%col_col_center_x%" y="%row6_3_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col_col_center_x%" y="%row6_3_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col_col_center_x%" y="%row6_3_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_grey}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=9E9E9EFF</action>
-					<action function="set">tw_folder=images_grey</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
-
-			<fill color="#607D8BFF">
-				<placement x="%col_x_color3%" y="%row6_3_y%" w="308" h="180"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="%col_x_color3%" y="%row6_3_y%" w="308" h="48"/>
-			</fill>
-
-			<button>
-				<highlight color="%highlight_color%"/>
-				<fill color="%transparent%"/>
-				<placement x="%col_x_color3%" y="%row6_3_y%" w="308" h="180"/>
-				<actions>
-					<action function="set">tw_accent_name={@f_blue_grey}</action>
-					<action function="set">tw_text_actionbar=000000FF</action>
-					<action function="set">tw_accent=607D8BFF</action>
-					<action function="set">tw_folder=images_bluegrey</action>
-					<action function="page">set_color</action>
-				</actions>
-			</button>
 
 			<action>
 				<touch key="home"/>
@@ -4441,7 +4381,7 @@
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<text>%tw_zip_location%</text>
 			</text>
 
@@ -4735,7 +4675,7 @@
 			</text>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<text>{@folder=Folder}</text>
 			</text>
 
@@ -7068,7 +7008,7 @@
 
 			<text style="text_body2_hl">
 				<condition var1="tw_has_sdext_partition" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@also_wipes=Also wipes} {@sdext=SD-EXT}</text>
 			</text>
 
@@ -7221,7 +7161,7 @@
 			</text>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<text>{@partitions=Partitions}</text>
 			</text>
 
@@ -7385,7 +7325,7 @@
 
 			<text style="text_body2_fail">
 				<condition var1="tw_has_adopted_storage" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@also_wipes=Also wipes} {@adopted_storage=Adopted Storage}</text>
 			</text>
 
@@ -7521,7 +7461,7 @@
 			</text>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<text>{@part_present=Present:}</text>
 			</text>
 
@@ -7538,7 +7478,7 @@
 			</text>
 
 			<text style="caption">
-				<placement x="%col2_x%" y="%row3_2_y%"/>
+				<placement x="%col2_x%" y="%row3_3_y%"/>
 				<text>{@part_removable=Removable:}</text>
 			</text>
 
@@ -7722,13 +7662,13 @@
 
 			<image>
 				<condition var1="tw_partition_is_present" op="!=" var2="0"/>
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<image resource="icon_warning"/>
 			</image>
 
 			<text style="text_body2_fail">
 				<condition var1="tw_partition_is_present" op="!=" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@change_fs_warn1=Some ROMs or kernels may not support}</text>
 			</text>
 
@@ -8315,7 +8255,7 @@
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<text>%tw_storage_display_name% (%tw_storage_free_size% MB)</text>
 			</text>
 
@@ -8636,12 +8576,12 @@
 			</text>
 
 			<image>
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<image resource="icon_info"/>
 			</image>
 
 			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@encrypt_backup1=Enter a password to}</text>
 			</text>
 
@@ -8765,12 +8705,12 @@
 			</fill>
 
 			<image>
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<image resource="icon_info"/>
 			</image>
 
 			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@encrypt_backup3=Repeat password to}</text>
 			</text>
 
@@ -8964,7 +8904,7 @@
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<text>%tw_storage_display_name% (%tw_storage_free_size% MB)</text>
 			</text>
 
@@ -9427,7 +9367,7 @@
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@decrypt_data_enter_note2=press the back button to cancel.}</text>
 			</text>
 
@@ -9612,7 +9552,7 @@
 			</text>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<text>{@partitions=Partitions}</text>
 			</text>
 
@@ -10268,7 +10208,7 @@
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<text>{@partitions=Partitions}</text>
 			</text>
 
@@ -10606,7 +10546,7 @@
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@decrypt_data_enter_note2=press the back button to cancel.}</text>
 			</text>
 
@@ -10715,7 +10655,7 @@
 
 			<text style="text_body2">
 				<condition var1="tw_password_fail" op="!=" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@decrypt_data_enter_note2=press the back button to cancel.}</text>
 			</text>
 
@@ -10727,7 +10667,7 @@
 
 			<text style="text_body2">
 				<condition var1="tw_password_fail" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@decrypt_try_again=Please try again.</text>
 			</text>
 
@@ -12012,7 +11952,7 @@
 			</button>
 
 			<text style="text_body2">
-				<placement x="%center_x%" y="%row3_2_y%" placement="5"/>
+				<placement x="%center_x%" y="%row3_3_y%" placement="5"/>
 				<text>{@part_sd_ext_sz=EXT Size:} %tw_sdext_size%</text>
 			</text>
 
@@ -12525,12 +12465,12 @@
 			</text>
 
 			<image>
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<image resource="icon_mail"/>
 			</image>
 
 			<text style="caption">
-				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
 				<text>{@contact=Contact}</text>
 			</text>
 
@@ -13639,12 +13579,12 @@
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row1_3_y%"/>
+				<placement x="%col1_x%" y="%row1_0_y%"/>
 				<text>{@fox_menu2_power}</text>
 			</text>
 
 			<listbox style="listbox">
-				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+				<placement x="%col1_x%" y="%row1_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
 				<listitem name="{@fox_boot_performance=Skip MD5 generation during backup}">
 					<data variable="fox_boot_performance_check"/>
 				</listitem>
@@ -13657,12 +13597,12 @@
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_3_y%"/>
+				<placement x="%col1_x%" y="%row3_1_y%"/>
 				<text>{@fox_menu2_other}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row4_1_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
+				<placement x="%col1_x%" y="%row3_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
 				<listitem name="{@fox_boot_fsync}">
 					<data variable="fox_boot_fsync_check"/>
 				</listitem>
@@ -13684,12 +13624,12 @@
 
 			<text style="caption">
 				<condition var1="fox_menu3_info" var2="0"/>
-				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<placement x="%col1_x%" y="%row7_1_y%"/>
 				<text>{@fox_menu3_fast_act}</text>
 			</text>
 
 			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="row8_1_y" />
+				<placement x="%btn_raised_left_x%" y="row7_2_y" />
 				<text>{@fox_del_btn}</text>
 				<actions>
 					<action function="set">tw_filecheck=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
@@ -13708,7 +13648,7 @@
 			</button>
 
 			<button style="btn_raised">
-				<placement x="%btn_raised_right_x%" y="row8_1_y" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="row7_2_y" placement="1"/>
 				<text>{@fox_def_btn}</text>
 				<actions>
 					<action function="set">tw_filecheck=/sdcard/Fox/FoxFiles/OF_reset.zip</action>
@@ -14296,7 +14236,7 @@
 				<text>{@colour_engine4=}</text>
 			</text-->
 		
-			<slider>
+			<slider style="slider_tab">
 				<condition var1="fox_dark" var2="1"/>
 				<actions>
 					<action function="set">fox_dark=0</action>
@@ -14319,11 +14259,11 @@
 
 			<text style="caption">
 				<condition var1="fox_dark" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<placement x="%center_x%" y="%slider_text_y_tab%" placement="5"/>
 				<text>{@fox_theme_slider_dark}</text>
 			</text>
 
-			<slider>
+			<slider style="slider_tab">
 				<condition var1="fox_black" var2="1"/>
 				<actions>
 					<action function="set">fox_black=0</action>
@@ -14346,11 +14286,11 @@
 
 			<text style="caption">
 			<condition var1="fox_white" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<placement x="%center_x%" y="%slider_text_y_tab%" placement="5"/>
 				<text>{@fox_theme_slider_white}</text>
 			</text>
 
-			<slider>
+			<slider style="slider_tab">
 				<condition var1="fox_white" var2="1"/>
 				<actions>
 					<action function="set">fox_white=0</action>
@@ -14373,7 +14313,7 @@
 
 			<text style="caption">
 				<condition var1="fox_black" var2="1"/>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<placement x="%center_x%" y="%slider_text_y_tab%" placement="5"/>
 				<text>{@fox_theme_slider_black}</text>
 			</text>
 
@@ -14467,12 +14407,12 @@
 				</fill>
 
 				<text style="caption">
-					<placement x="%col1_x%" y="%row1_3_y%"/>
+					<placement x="%col1_x%" y="%row0_a_y%"/>
 					<text>{@visual=Visual}</text>
 				</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="750"/>
+				<placement x="%col1_x%" y="%row1_2_y%" w="%listbox_w%" h="750"/>
 				<listitem name="{@center_clock_bar=Center clock in statusbar}">
 					<data variable="center_clock"/>
 				</listitem>
@@ -14939,11 +14879,10 @@
 				<action function="page">settings</action>
 			</button>
 
-			<button>
+			<image>
 				<placement x="%tab4_col2_x%" y="%tab_y%" placement="4"/>
 				<image resource="tab_language"/>
-				<action function="page">fox_languages</action>
-			</button>
+			</image>
 
 			<button>
 				<placement x="%tab4_col3_x%" y="%tab_y%" placement="4"/>
@@ -14969,18 +14908,18 @@
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row1_3_y%" />
+				<placement x="%col1_x%" y="%row1_0_y%" />
 				<text>{@language_cptn=Language}</text>
 			</text>
 
 			<listbox>
-				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_w%" h="%row6_2_y%"/>
+				<placement x="%col1_x%" y="%row1_2_y%" w="%listbox_w%" h="%row6_2_y%"/>
 				<data name="tw_language"/>
 			</listbox>
 
 			<button>
 				<condition var1="tw_language" op="modified"/>
-				<placement x="%btn_float_x%" y="%row7_3a_y%"/>
+				<placement x="%btn_float_x%" y="%row7_1_y%"/>
 				<image resource="btn_float_accept"/>
 				<highlight color="%highlight_color%"/>
 				<action function="setlanguage"></action>

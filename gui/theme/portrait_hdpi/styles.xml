@@ -164,7 +164,7 @@
 		<style name="listbox">
 			<background color="%background%"/>
 			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
-			<icon selected="radio_true" unselected="radio_false" />
+			<icon selected="radio_true_d" unselected="radio_false_d" />
 			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" highlightcolor="%accent%" />
 		</style>
 
@@ -194,8 +194,8 @@
 		<!--style name="partitionselect">
 			<background color="%background%"/>
 			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
-			<!--icon selected="checkbox_true" unselected="checkbox_false" /-->
-			<!--icon selected="radio_true" unselected="radio_false" />
+			<icon selected="checkbox_true" unselected="checkbox_false" />
+			<icon selected="radio_true" unselected="radio_false" />
 			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" highlightcolor="%accent%" />
 		</style-->
 
@@ -237,6 +237,11 @@
 
 		<style name="slider">
 			<placement x="%center_x%" y="%slider_y%" placement="5"/>
+			<resource base="slider" used="slider_used" touch="handle_h"/>
+		</style>
+
+		<style name="slider_tab">
+			<placement x="%center_x%" y="1450" placement="5"/>
 			<resource base="slider" used="slider_used" touch="handle_h"/>
 		</style>
 	</styles>
