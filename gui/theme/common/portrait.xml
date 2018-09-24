@@ -3409,7 +3409,7 @@
 				<placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
 			</fill>
 
-			<image>
+			<!--image>
 				<placement x="%col1_x%" y="%row1_1_y%"/>
 				<image resource="icon_info"/>
 			</image>
@@ -3422,7 +3422,12 @@
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>{@fox_comm_i2}</text>
-			</text>
+			</text-->
+
+			<image>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<image resource="btn_temp"/>
+			</image>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_3_y%"/>
@@ -12386,10 +12391,18 @@
 		<page name="lock">
 			<background color="%darktransparent%"/>
 
-			<image>
-				<image resource="unlock_icon"/>
-				<placement x="%center_x%" y="%row4_1_y%" placement="4"/>
-			</image>
+			<text color="%accent%">
+				<font resource="font_b"/>
+				<placement x="%center_x%" y="%row2_2_y%" placement="4"/>
+				<text>%tw_time%</text>
+			</text>
+
+			<text color="%accent%">
+				<font resource="font_l"/>
+				<placement x="%center_x%" y="%row3_2_y%" placement="4"/>
+				<text>CPU: %tw_cpu_temp% В°C   -   Battery: %tw_battery%</text>
+			</text>
+
 			<button style="btn_raised_hl">
 				<condition var1="lock_btn" var2="1"/>
 				<placement x="%btn_raised_center_x%" y="%row7_2_y%" placement="1"/>
@@ -12398,7 +12411,6 @@
 			</button>
 
 			<text color="%text_light%">
-
 				<font resource="caption"/>
 				<condition var1="lock_btn" var2="0"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>

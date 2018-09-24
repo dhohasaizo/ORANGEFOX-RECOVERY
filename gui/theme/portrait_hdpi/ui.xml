@@ -27,6 +27,7 @@
 		<font name="font_l" filename="RobotoCondensed-Regular.ttf" size="52"/>
 		<font name="font_m" filename="RobotoCondensed-Regular.ttf" size="42"/>
 		<font name="font_s" filename="RobotoCondensed-Regular.ttf" size="36"/>
+		<font name="font_b" filename="RobotoCondensed-Regular.ttf" size="200"/>
 
 		<font name="keylabel" filename="RobotoCondensed-Regular.ttf" size="64"/>
 		<font name="keylabel-small" filename="RobotoCondensed-Regular.ttf" size="46"/>
@@ -98,6 +99,8 @@
 		<image name="btn_float_accept" filename="btn_float_accept" retainaspect="1"/>
 		<image name="btn_float_folder" filename="btn_float_folder" retainaspect="1"/>
 		<image name="btn_float_cancel" filename="btn_float_cancel" retainaspect="1"/>
+
+		<image name="btn_temp" filename="btn_temp" retainaspect="1"/>
 
 		<image name="btn_flat_fw" filename="btn_flat_fw"/>
 		<image name="btn_flat_qw" filename="btn_flat_qw"/>
@@ -196,7 +199,6 @@
 
 		<image name="file_icon" filename="file" retainaspect="1"/>
 		<image name="folder_icon" filename="folder" retainaspect="1"/>
-		<image name="unlock_icon" filename="unlock_icon" retainaspect="1"/>
 
 		<animation name="progress" filename="indeterminate"/>
 		<image name="progress_empty" filename="progress_empty"/>
