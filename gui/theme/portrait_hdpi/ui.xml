@@ -16,6 +16,7 @@
 		<font name="fixed" filename="DroidSansMono.ttf" size="32"/>
 		<font name="mainbutton" filename="RobotoCondensed-Regular.ttf" size="86"/>
 		<font name="button" filename="RobotoCondensed-Regular.ttf" size="41"/>
+		<font name="button-y" filename="RobotoCondensed-Regular.ttf" size="45"/>
 		<font name="menu" filename="RobotoCondensed-Regular.ttf" size="44"/>
 		<font name="input_fail" filename="RobotoCondensed-Regular.ttf" size="32"/>
 		<font name="splash" filename="RobotoCondensed-Regular.ttf" size="47"/>
@@ -89,6 +90,8 @@
 		<image name="fox_cup_a" filename="fox_cup_a" retainaspect="1"/>
 		<image name="fox_phone" filename="fox_phone" retainaspect="1"/>
 		<image name="fox_phone_a" filename="fox_phone_a" retainaspect="1"/>
+
+		<image name="btn_info" filename="btn_info" retainaspect="1"/>
 
 
 

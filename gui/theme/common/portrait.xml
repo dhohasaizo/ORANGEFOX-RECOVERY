@@ -13772,7 +13772,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@of_menu_tlt}</text>
+				<text>OrangeFox OTA</text>
 			</text>
 
 			<button>
@@ -13796,37 +13796,11 @@
 				<placement x="%tab3_ind3_x%" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
 			</fill>
 
-			<image>
+			<button style="btn_info">
 				<condition var1="fox_menu3_info" var2="0"/>
-				<placement x="%col1_x%" y="%row1_3_y%"/>
-				<image resource="icon_info"/>
-			</image>
-			<image>
-				<condition var1="fox_menu3_info" var2="1"/>
-				<placement x="%col1_x%" y="%row2_1_y%"/>
-				<image resource="icon_info"/>
-			</image>
-			<text style="text_body2">
-				<condition var1="fox_menu3_info" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
-				<text>{@fox_menu3_i1}</text>
-			</text>
-			<text style="text_body2">
-				<condition var1="fox_menu3_info" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
-				<text>{@fox_menu3_i2}</text>
-			</text>
-
-			<text style="text_body2">
-				<condition var1="fox_menu3_info" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
-				<text>{@fox_menu3_info_header}</text>
-			</text>
-
-			<button>
-				<condition var1="fox_menu3_info" var2="0"/>
-				<placement x="850" y="%row1_3_y%"/>
-				<image resource="btn_float_flashitinfo"/>
+				<placement x="600" y="190"/>
+				<image resource="btn_info"/>
+				<text>    Info</text>
 				<highlight color="%highlight_color%"/>
 				<action function="set">fox_menu3_info=1</action>
 			</button>
@@ -13841,13 +13815,13 @@
 
 			<text style="caption">
 				<condition var1="fox_menu3_info" var2="0"/>
-				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<placement x="%col1_x%" y="%row1_2_y%"/>
 				<text>{@fox_menu3_ota_sett}</text>
 			</text>
 
 			<listbox style="settingslist">
 				<condition var1="fox_menu3_info" var2="0"/>
-				<placement x="%col1_x%" y="%row3_1_y%" w="%listbox_w%" h="%row5_2_y%"/>
+				<placement x="%col1_x%" y="%row1_3_y%" w="%listbox_w%" h="%row5_2_y%"/>
 				<listitem name="{@fox_support_miui_ota_chk=}">
 					<data variable="fox_support_miui_ota"/>
 				</listitem>	
@@ -13873,13 +13847,13 @@
 
 			<text style="caption">
 				<condition var1="fox_menu3_info" var2="0"/>
-				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<placement x="%col1_x%" y="%row7_1_y%"/>
 				<text>{@fox_menu3_fast_act}</text>
 			</text>
 
 			<button style="btn_raised">
 				<condition var1="fox_menu3_info" var2="0"/>
-				<placement x="%btn_raised_left_x%" y="%row8_1_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row7_2_y%"/>
 				<text>{@fox_menu3_dis_ota}</text>
 				<actions>
 					<action function="set">fox_support_miui_ota=0</action>
@@ -13893,7 +13867,7 @@
 
 			<button style="btn_raised">
 				<condition var1="fox_menu3_info" var2="0"/>
-				<placement x="%btn_raised_right_x%" y="%row8_1_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row7_2_y%" placement="1"/>
 				<text>{@fox_menu3_enb_ota}</text>
 				<actions>
 					<action function="set">fox_support_miui_ota=1</action>

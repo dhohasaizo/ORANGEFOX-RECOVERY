@@ -127,6 +127,11 @@
 			<image resource="btn_flat_qw"/>
 		</style>
 
+		<style name="btn_info">
+			<highlight color="%highlight_color%"/>
+			<font resource="button-y" color="%text%"/>
+		</style>
+
 		<style name="navigate_left">
 			<highlight color="%highlight_color%"/>
 			<image resource="navigate_left"/>
