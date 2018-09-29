@@ -10692,6 +10692,13 @@
 				<text>{@decrypt=Decrypt}</text>
 			</text>
 
+			<button style="btn_raised">
+				<placement x="450" y="%row1_2_y%" placement="2"/>
+				<text>Password / PIN</text>
+				<action function="set">tw_crypto_pwtype=1</action>
+				<action function="page">decrypt</action>
+			</button>
+
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>{@data_part=Data Partition}</text>
