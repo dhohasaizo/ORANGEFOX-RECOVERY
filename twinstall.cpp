@@ -530,11 +530,13 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      return INSTALL_ERROR;
 	    }
 	}
+      /*
       if (Zip->EntryExists(bootloader))
 	gui_msg(Msg
 		(msg::kWarning,
 		 "fox_zip_have_bootloader=Warning: OrangeFox detected bootloader inside of the {1}")
 		(path));
+	*/	
     }
 
   if (blankTimer.isScreenOff())
