@@ -12489,7 +12489,7 @@
 			</image>
 
 			<text style="caption">
-				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
 				<text>{@contact=Contact}</text>
 			</text>
 
@@ -12510,23 +12510,23 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="960"/>
-				<text>ATG Droid, Dadi11 - {@fox_redwolf=for RedWolf development}</text>
+				<text>RedWolf Recovery project</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1050"/>
-				<text>z31s1g - {@z31s1g=For material theme}</text>
+				<text>PitchBlack Recovery Project</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1140"/>
-				<text>kirilmaster4, ZHANtech - {@fox_thfox=For a contribution to UI}</text>
+				<text>z31s1g - {@z31s1g=For material theme}</text>
 			</text>
 
-			<!--text style="text_body2">
-				<placement x="%col1_x_indent%" y="1200"/>
-				<text>z31s1g - {@fox_z31s1g=For material theme}</text>
-			</text-->
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="1230"/>
+				<text>kirilmaster4, ZHANtech - {@fox_thfox=For a contribution to UI}</text>
+			</text>
 
             		<!--text style="text_body2">
 				<placement x="%col1_x_indent%" y="1290"/>
