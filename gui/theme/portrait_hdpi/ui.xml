@@ -309,6 +309,10 @@
 		<variable name="fox_debug_build" value="1"/> <!-- Enable this function if you wanna enable debug mode switch -->
 		<variable name="fox_notch" value="%fox_notch%"/> <!-- Enable this variable for enable notch -->
 
+		<variable name="tw_has_boot_slots" value="1"/>
+		<variable name="tw_active_slot" value="A"/>
+		<variable name="fox_need_reboot" value="0"/>
+
 		<!-- Lower led crutch :) -->
 		<variable name="fox_set_custom_led_restore_green" value="1" persist="1"/>
 		<variable name="fox_set_custom_led_restore_blue" value="0" persist="1"/>
@@ -583,7 +587,6 @@
 		<variable name="fileselector_install_height" value="1140"/>
 		<variable name="fileselector_part_height" value="540"/>
 		<variable name="fileselector_wipe_height" value="450"/>
-		<variable name="fileselector_backup_height" value="630"/>
 		<variable name="fileselector_mount_height" value="540"/>
 		<variable name="fileselector_terminal_height" value="1320"/>
 		<variable name="fileselector_separatorheight" value="2"/>
@@ -607,7 +610,7 @@
 		<variable name="slider_x" value="48"/>
 		<variable name="slider_y" value="1560"/>
 		<variable name="slider_text_y" value="1590"/>
-		<variable name="slider_text_y_tab" value="1420"/>
+		<variable name="slider_text_y_tab" value="1490"/>
 		<variable name="slidervalue_w" value="984"/>
 		<variable name="slidervalue_lineh" value="6"/>
 		<variable name="slidervalue_padding" value="72"/>

@@ -2777,12 +2777,17 @@
 			</text>
 
 			<!-- Auto turn on ADB -->
-
 			<action>
 				<condition var1="fox_loading" var2="1"/>
 				<condition var1="fox_adb" var2="0"/>
 				<action function="set">fox_loading=0</action>
 				<action function="set">fox_adb=1</action>
+			</action>
+
+			<!-- Reboot if failed last time  -->
+			<action>
+				<condition var1="fox_need_reboot" var2="1"/>
+				<action function="reboot">%tw_reboot_param%</action>
 			</action>
 
 		</page>
@@ -6913,16 +6918,16 @@
 
 			<action>
 	            <conditions>
-	            <condition var1="fox_noos_engine" var2="0"/>
-				<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
+					<condition var1="fox_noos_engine" var2="0"/>
+					<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
 				</conditions>
 				<action function="page">appcheck</action>
 			</action>
 
           <action>
 	            <conditions>
-	            <condition var1="fox_noos_engine" var2="1"/>
-				<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
+					<condition var1="fox_noos_engine" var2="1"/>
+					<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
 				</conditions>
 				<actions>
 					<action function="mount">system</action>
@@ -6933,20 +6938,18 @@
 				</actions>
 			</action>
 
-
-
 			<action>
 	            <conditions>
-	            <condition var1="fox_noos_engine" var2="0"/>
-				<condition var1="tw_backup_system_size" op="&lt;" var2="%tw_min_system%"/>
+					<condition var1="fox_noos_engine" var2="0"/>
+					<condition var1="tw_backup_system_size" op="&lt;" var2="%tw_min_system%"/>
 				</conditions>
 				<action function="page">fox_reboot_no_os</action>
 			</action>
 
-          <action>
+          	<action>
 	            <conditions>
-	            <condition var1="fox_noos_engine" var2="1"/>
-				<condition var1="tw_backup_system_size" op="&lt;" var2="%tw_min_system%"/>
+					<condition var1="fox_noos_engine" var2="1"/>
+					<condition var1="tw_backup_system_size" op="&lt;" var2="%tw_min_system%"/>
 				</conditions>
 				<actions>
 				    <action function="set">tw_filecheck=/system/build.prop</action>
@@ -6957,8 +6960,9 @@
 			</action>
 		</page>
 
-			<page name="appcheck">
+		<page name="appcheck">
 			<action>
+				<action function="set">fox_need_reboot=1</action>
 				<action function="reboot">%tw_reboot_param%</action>
 			</action>
 		</page>
@@ -8232,21 +8236,21 @@
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row2_1_y%"/>
+				<placement x="%col1_x%" y="%row1_0_y%"/>
 				<text>{@name=Name}</text>
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<placement x="%col1_x%" y="%row1_1a_y%"/>
 				<text>%tw_backup_name%</text>
 			</text>
 
 			<fill color="%linecolor%">
-				<placement x="%col1_x%" y="%row2_3_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+				<placement x="%col1_x%" y="%row1_2a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
 			<button>
-				<placement x="%col1_x%" y="%row2_1_y%" w="%content_w%" h="%mb_h%"/>
+				<placement x="%col1_x%" y="%row1_1_y%" w="%content_w%" h="%mb_h%"/>
 				<fill color="%transparent%"/>
 				<actions>
 					<action function="set">tw_fileexists=0</action>
@@ -8255,17 +8259,17 @@
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_1_y%"/>
+				<placement x="%col1_x%" y="%row1_3_y%"/>
 				<text>{@storage_cptn=Storage}</text>
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="%row3_3_y%"/>
+				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<text>%tw_storage_display_name% (%tw_storage_free_size% MB)</text>
 			</text>
 
 			<button>
-				<placement x="%col1_x%" y="%row3_1_y%" w="%content_w%" h="%mb_h%"/>
+				<placement x="%col1_x%" y="%row2_1_y%" w="%content_w%" h="%mb_h%"/>
 				<fill color="%transparent%"/>
 				<actions>
 					<action function="set">tw_back=backup</action>
@@ -8274,7 +8278,7 @@
 			</button>
 
 			<button>
-				<placement x="%ab_btn1_x%" y="%row3_1_y%"/>
+				<placement x="%ab_btn1_x%" y="%row1_3_y%"/>
 				<image resource="actionbar_refresh"/>
 				<highlight color="%highlight_color%"/>
 				<actions>
@@ -8284,26 +8288,24 @@
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row4_1_y%"/>
+				<placement x="%col1_x%" y="%row2_2a_y%"/>
 				<text>{@partitions=Partitions}</text>
 			</text>
 
 			<partitionlist>
-				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%fileselector_backup_height%"/>
+				<placement x="%col1_x%" y="%row2_3a_y%" w="%listbox_w%" h="800"/>
 				<data name="tw_backup_list"/>
 				<listtype name="backup"/>
 			</partitionlist>
 
 			<text style="caption">
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<placement x="%center_x%" y="%slider_text_y_tab%" placement="5"/>
 				<text>{@swipe_backup=Swipe to Backup}</text>
 			</text>
 
-
-             <slider>
+			<slider style="slider_tab">
 				<action function="page">backup_run</action>
 			</slider>
-
 
 			<action>
 				<touch key="home"/>
@@ -8381,15 +8383,12 @@
 			</fill>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row2_1_y%"/>
+				<placement x="%col1_x%" y="%row1_0_y%"/>
 				<text>{@options_hdr=Options}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="%col1_x%" y="%row2_2_y%" w="%listbox_w%" h="%listbox_settings_backup_height%"/>
-				<listitem name="{@inject_led_chk_bak=}">
-				<data variable="fox_inject_after_backup"/>
-				</listitem>
+				<placement x="%col1_x%" y="%row1_2_y%" w="%listbox_w%" h="%listbox_settings_backup_height%"/>
 				<listitem name="{@enable_backup_comp_chk=Enable compression}">
 					<data variable="tw_use_compression"/>
 				</listitem>
@@ -8403,7 +8402,7 @@
 
 			<text style="caption">
 				<condition var1="tw_has_boot_slots" var2="1"/>
-				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<placement x="%col1_x%" y="%row4_1_y%"/>
 				<text>{@boot_slot=Boot Slot}</text>
 			</text>
 
@@ -8412,7 +8411,7 @@
 					<condition var1="tw_has_boot_slots" var2="1"/>
 					<condition var1="tw_active_slot" var2="A"/>
 				</conditions>
-				<placement x="%btn_raised_left_x%" y="%row4_3_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row4_2_y%"/>
 				<text>{@boot_slot_a=SLOT A}</text>
 				<actions>
 					<action function="set">tw_back=backup_options</action>
@@ -8431,7 +8430,7 @@
 					<condition var1="tw_has_boot_slots" var2="1"/>
 					<condition var1="tw_active_slot" var2="B"/>
 				</conditions>
-				<placement x="%btn_raised_left_x%" y="%row4_3_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row4_2_y%"/>
 				<text>{@boot_slot_use_a=SWITCH TO SLOT A}</text>
 				<actions>
 					<action function="set">tw_back=backup_options</action>
@@ -8450,7 +8449,7 @@
 					<condition var1="tw_has_boot_slots" var2="1"/>
 					<condition var1="tw_active_slot" var2="B"/>
 				</conditions>
-				<placement x="%btn_raised_right_x%" y="%row4_3_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row4_2_y%" placement="1"/>
 				<text>{@boot_slot_b=SLOT B}</text>
 				<actions>
 					<action function="set">tw_back=backup_options</action>
@@ -8469,7 +8468,7 @@
 					<condition var1="tw_has_boot_slots" var2="1"/>
 					<condition var1="tw_active_slot" var2="A"/>
 				</conditions>
-				<placement x="%btn_raised_right_x%" y="%row4_3_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row4_2_y%" placement="1"/>
 				<text>{@boot_slot_use_b=SWITCH TO SLOT B}</text>
 				<actions>
 					<action function="set">tw_back=backup_options</action>
@@ -8779,14 +8778,14 @@
 		<page name="backupname2">
 			<template name="body"/>
 
-			<template name="ab_tab"/>
+			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
 
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main</action>
+				<action function="page">backup</action>
 			</button>
 
 			<text style="text_ab_title">
@@ -8794,79 +8793,13 @@
 				<text>{@backup_hdr=Backup}</text>
 			</text>
 
-			<!--image>
-				<placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_bu_create_a"/>
-			</image>
-
-			<button>
-				<placement x="%center_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_bu_options"/>
-				<actions>
-					<action function="set">tw_backup_name={@auto_generate=(Auto Generate)}</action>
-					<action function="page">backup_options</action>
-				</actions>
-			</button>
-
-			<button>
-				<conditions>
-					<condition var1="tw_include_encrypted_backup" var2="1"/>
-					<condition var1="tw_encrypt_backup" var2="0"/>
-					<condition var1="tw_enable_adb_backup" op="!=" var2="1"/>
-				</conditions>
-				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_bu_encr_dis"/>
-				<actions>
-					<action function="set">tw_backup_name={@auto_generate=(Auto Generate)}</action>
-					<action function="set">tw_password_not_match=0</action>
-					<action function="page">backup_encryption1</action>
-				</actions>
-			</button>
-
-			<button>
-				<conditions>
-					<condition var1="tw_include_encrypted_backup" var2="1"/>
-					<condition var1="tw_encrypt_backup" var2="1"/>
-					<condition var1="tw_enable_adb_backup" op="!=" var2="1"/>
-				</conditions>
-				<placement x="%tab3_col3_x%" y="%tab_y%" placement="4"/>
-				<image resource="tab_bu_encr_ena"/>
-				<actions>
-					<action function="set">tw_backup_name={@auto_generate=(Auto Generate)}</action>
-					<action function="set">tw_password_not_match=0</action>
-					<action function="page">backup_encryption1</action>
-				</actions>
-			</button>
-
-			<fill color="%text_actionbar%">
-				<placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/>
-			</fill-->
-
-			<image>
-				<!--placement x="%tab3_col1_x%" y="%tab_y%" placement="4"/-->
-				<placement x="270" y="%tab_y%" placement="4"/>
-				<image resource="tab_bu_create_a"/>
-			</image>
-
-			<button>
-				<!--placement x="%center_x%" y="%tab_y%" placement="4"/-->
-				<placement x="810" y="%tab_y%" placement="4"/>
-				<image resource="tab_bu_options"/>
-				<action function="page">backup_options</action>
-			</button>
-
-			<fill color="%text_actionbar%">
-				<!--placement x="0" y="%tab_indicator_y%" w="%tab3_width%" h="%tab_indicator_height%"/-->
-				<placement x="0" y="%tab_indicator_y%" w="%tab2_width%" h="%tab_indicator_height%"/>
-			</fill>
-
 			<text style="caption_hl">
-				<placement x="%col1_x%" y="%row2_1_y%"/>
+				<placement x="%col1_x%" y="%row1_0_y%"/>
 				<text>{@name=Name}</text>
 			</text>
 
 			<input>
-				<placement x="%col1_x%" y="%input_backup_y%" w="%input_backup_width%" h="%input_height%"/>
+				<placement x="%col1_x%" y="%row1_1a_y%" w="%input_backup_width%" h="%input_height%"/>
 				<background color="%background%"/>
 				<cursor color="%accent%" hasfocus="1" width="%input_cursor_width%"/>
 				<font resource="body1" color="%text%"/>
@@ -8882,49 +8815,49 @@
 			</input>
 
 			<button>
-				<placement x="%ab_btn1_x%" y="%row2_1_y%"/>
+				<placement x="%ab_btn1_x%" y="%row1_0_y%"/>
 				<image resource="actionbar_date"/>
 				<action function="appenddatetobackupname"/>
 			</button>
 
 			<fill color="%accent%">
 				<condition var1="tw_fileexists" var2="0"/>
-				<placement x="%col1_x%" y="%row2_3_y%" w="%input_backup_width%" h="%input_line_height%" placement="1"/>
+				<placement x="%col1_x%" y="%row1_2a_y%" w="%input_backup_width%" h="%input_line_height%" placement="1"/>
 			</fill>
 
 			<fill color="%text_fail%">
 				<condition var1="tw_fileexists" var2="1"/>
-				<placement x="%col1_x%" y="%row2_3_y%" w="%input_backup_width%" h="%input_line_height%" placement="1"/>
+				<placement x="%col1_x%" y="%row1_2a_y%" w="%input_backup_width%" h="%input_line_height%" placement="1"/>
 			</fill>
 
 			<text style="text_input_fail">
 				<condition var1="tw_fileexists" var2="1"/>
-				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<placement x="%col1_x%" y="%row1_2a_y%"/>
 				<text>{@backup_name_exists=A backup with that name already exists!}</text>
 			</text>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_1_y%"/>
+				<placement x="%col1_x%" y="%row1_3a_y%"/>
 				<text>{@storage_cptn=Storage}</text>
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="%row3_3_y%"/>
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
 				<text>%tw_storage_display_name% (%tw_storage_free_size% MB)</text>
 			</text>
 
 			<image>
-				<placement x="%ab_btn1_x%" y="%row3_1_y%"/>
+				<placement x="%ab_btn1_x%" y="%row1_3a_y%"/>
 				<image resource="actionbar_refresh"/>
 			</image>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row4_1_y%"/>
+				<placement x="%col1_x%" y="%row2_2a_y%"/>
 				<text>{@partitions=Partitions}</text>
 			</text>
 
 			<partitionlist>
-				<placement x="%col1_x%" y="%row4_2_y%" w="%listbox_w%" h="%fileselector_wipe_height%"/>
+				<placement x="%col1_x%" y="%row2_3a_y%" w="%listbox_w%" h="%fileselector_wipe_height%"/>
 				<data name="tw_backup_list"/>
 				<listtype name="backup"/>
 			</partitionlist>
