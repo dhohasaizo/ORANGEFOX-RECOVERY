@@ -92,6 +92,7 @@
 		<image name="fox_phone_a" filename="fox_phone_a" retainaspect="1"/>
 
 		<image name="btn_info" filename="btn_info" retainaspect="1"/>
+		<image name="btn_close" filename="btn_close" retainaspect="1"/>
 
 
 
@@ -304,6 +305,7 @@
 		<variable name="fox_debug" value="0" persist="0"/>
 		<variable name="flashlight_support" value="%of_flashlight_enable%"/>
 		<variable name="fox_adb" value="0"/>
+		<variable name="fox_rem_pass_after_restoring" value="0" persist="1"/>
 
 		<!-- For Maintainers -->
 		<variable name="fox_debug_build" value="1"/> <!-- Enable this function if you wanna enable debug mode switch -->

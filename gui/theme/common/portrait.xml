@@ -3429,18 +3429,13 @@
 				<text>{@fox_comm_i2}</text>
 			</text-->
 
-			<image>
-				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<image resource="btn_temp"/>
-			</image>
-
 			<text style="caption">
-				<placement x="%col1_x%" y="%row1_3_y%"/>
+				<placement x="%col1_x%" y="%row1_0_y%"/>
 				<text>SuperSU</text>
 			</text>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row2_1_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row1_1a_y%"/>
 				<text>{@fox_comm_ins}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/SuperSU.zip</action>
@@ -3458,7 +3453,7 @@
 			</button>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row2_1_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row1_1a_y%" placement="1"/>
 				<text>{@fox_comm_del}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootsupersu.zip</action>
@@ -3475,12 +3470,12 @@
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_1_y%"/>
+				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<text>Magisk</text>
 			</text>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row3_2_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row2_2_y%"/>
 				<text>{@fox_comm_ins}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/Magisk.zip</action>
@@ -3497,7 +3492,7 @@
 			</button>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row3_2_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row2_2_y%" placement="1"/>
 				<text>{@fox_comm_del}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootmagisk.zip</action>
@@ -3514,12 +3509,12 @@
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
 				<text>{@fox_menu_other}</text>
 			</text>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row4_3_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row3_3_y%" placement="1"/>
 				<text>Google Sans</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/GoogleSans.zip</action>
@@ -3536,7 +3531,7 @@
 				</actions>
 			</button>
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row4_3_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row3_3_y%"/>
 				<text>Initd</text>
 				<actions>
 					<action function="set">tw_filecheck=/FFiles/OF_initd/OF_initd.zip</action>
@@ -3552,7 +3547,7 @@
 				</actions>
 			</button>
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row5_2_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row4_2_y%"/>
 				<text>Cam2Api</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/Camera2Api.zip</action>
@@ -3569,7 +3564,7 @@
 			</button>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row5_2_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row4_2_y%" placement="1"/>
 				<text>{@fox_dellp_btn}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/PassReset.zip</action>
@@ -3691,37 +3686,37 @@
 
 
 			<image>
-				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<placement x="%col1_x%" y="%row1_2_y%"/>
 				<image resource="icon_info"/>
 			</image>
 
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>{@fox_theme_splash_fox_txt1=}</text>
 			</text>
 
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
 				<text>{@fox_theme_splash_fox_txt2=}</text>
 			</text>
 
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
 				<text>{@fox_theme_splash_fox_txt3=}</text>
 			</text>
 
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
 				<text>{@fox_theme_splash_fox_txt4=}</text>
 			</text>
 
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
 				<text>{@fox_theme_splash_fox_txt5=}</text>
 			</text>
 
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="%row4_1_y%"/>
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
 				<text>{@fox_theme_splash_fox_txt6=}</text>
 			</text>
 
@@ -9513,8 +9508,8 @@
 
 			<checkbox style="checkbox_big">
 				<placement x="%col1_x%" y="1430"/>
-				<text>{@inject_led_chk_res=}</text>
-				<data variable="fox_inject_after_restore"/>
+				<text>Remove password after restoring</text>
+				<data variable="fox_rem_pass_after_restoring"/>
 			</checkbox>
 
 			<text style="caption">
@@ -10073,6 +10068,7 @@
 					<action function="page">restore_sleep_and_reboot</action>
 				</actions>
 			</action>
+
 			</page>
 
 		<page name="mount">
@@ -13745,10 +13741,11 @@
 				<action function="set">fox_menu3_info=1</action>
 			</button>
 
-			<button>
+			<button style="btn_info">
 				<condition var1="fox_menu3_info" var2="1"/>
-				<placement x="850" y="%row1_3_y%"/>
-				<image resource="btn_float_cancel"/>
+				<placement x="600" y="190"/>
+				<image resource="btn_close"/>
+				<text>    Close</text>
 				<highlight color="%highlight_color%"/>
 				<action function="set">fox_menu3_info=0</action>
 			</button>
