@@ -796,9 +796,12 @@
 		<string name="fox_fix_fp_hdr1">Fix fingerprint scanner</string>
 		<string name="fox_flash_fp_fix">Swipe to fix fingerprint scanner.</string>
 		<string name="fox_actual_build">Current build</string>
+
+		<!-- TODO: Remove this strings in all languages -->
 		<string name="inject_led_chk">Notify about finished installation</string>
 		<string name="inject_led_chk_bak">Notify about finished backup</string>
 		<string name="inject_led_chk_res">Notify about finished restore</string>
+
 		<string name="fox_rmpass_hdr">Remove the ROM's password.</string>
 		<string name="fox_flash_rmpass">Swipe to remove ROM security</string>
 		<string name="fox_flash_subs_legacy">Swipe to install Substratum Legacy</string>
@@ -835,9 +838,9 @@
 		<string name="fox_back_text_1">Enter name:</string>
 		<string name="fox_back_page_check1">Use the name also with ADB.</string>
 		<string name="fox_backup_name_hdr1">Set your own name</string>
-		<string name="fox_backup_name_hdr2">for backup folder & ADB</string>
+		<string name="fox_backup_name_hdr2">for backup folder and ADB</string>
 		<string name="fox_backup_name_confirm1">Swipe to set a new backup folder name</string>
-		<string name="fox_backup_name_confirm2">Swipe to set a new backup folder name & ADB</string>
+		<string name="fox_backup_name_confirm2">Swipe to set a new backup folder name and ADB</string>
 		<string name="fox_backup_name_wait">Setting up new name ...</string>
 		<string name="fox_backup_name_finish1">New name setting</string>
 		<string name="fox_backup_name_finish2">completed successfully</string>
@@ -846,7 +849,7 @@
 		<string name="fox_deleting_backup">Deleting backups...</string>
 		<string name="fox_backup_deleted">Removing backups is complete</string>
 		<string name="fox.rmpass_btn">Remove ROM security</string>
-		<string name="orangefox_wbt_chk">Backup wifi, bluetooth & hosts</string>
+		<string name="orangefox_wbt_chk">Backup wifi, bluetooth and hosts</string>
 		<string name="fox_wifi_bluetooth_backup_line1">If this feature is turned on, then recovery</string>
 		<string name="fox_wifi_bluetooth_backup_line2">automatically detects installation of the new ROM</string>
 		<string name="fox_wifi_bluetooth_backup_line3">and backs up from the current ROM </string>
@@ -936,7 +939,7 @@
 		<string name="fox_no_os_fox_txt3">that OS is installed and this detection</string>
 		<string name="fox_no_os_fox_txt4">is wrong then swipe to confirm</string>
 		<string name="fox_no_os_fox_txt5">the reboot.</string>
-		<string name="fox_no_os_fox_slider_txt">Swipe to ignore this detection & reboot</string>
+		<string name="fox_no_os_fox_slider_txt">Swipe to ignore this detection and reboot</string>
 		<!--  -->
 		<string name="fox_supersu_config_chk">Use SuperSU Config</string>
 		<string name="fox_fgo_patch_hdr2">For LOS based ROMs</string>
