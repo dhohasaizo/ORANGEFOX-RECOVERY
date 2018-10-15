@@ -13698,6 +13698,9 @@
 				<listitem name="{@fox_forced_encryption_chk}">
 					<data variable="fox_reboot_forced_encryption_check"/>
 				</listitem>
+				<listitem name="{@FOX_DISABLE_OTA_AUTO_REBOOT_chk}">
+					<data variable="FOX_DISABLE_OTA_AUTO_REBOOT"/>
+				</listitem>
 			</listbox>
 
 			<text style="caption">
