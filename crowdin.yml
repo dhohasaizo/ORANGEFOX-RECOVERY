@@ -1,0 +1,7 @@
+files:
+  - source: gui/theme/common/languages/en.xml
+    translation: gui/theme/common/languages/%locale_with_underscore%.xml
+    languages_mapping:
+      language:
+        zh-CN: gui/theme/common/extra-languages/languages/zh_CN.xml
+        zh-TW: gui/theme/common/extra-languages/languages/zh_TW.xml

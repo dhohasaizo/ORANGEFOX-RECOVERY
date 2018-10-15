@@ -409,6 +409,14 @@ int OpenRecoveryScript::run_script_file(void) {
 		fclose(fp);
 		unlink(SCRIPT_FILE_TMP);
 		gui_msg("done_ors=Done processing script file");
+
+		//* DJ9 - disable auto-reboot after incremental OTA updates? *//
+		if (DataManager::GetIntValue(FOX_DISABLE_OTA_AUTO_REBOOT) == 1) 
+		  {
+		     ret_val = 3; // forces booting to the home page - also runs DM-Verity patch
+		  }
+		//** DJ9
+		
 	} else {
 		gui_msg(Msg(msg::kError, "error_opening_strerr=Error opening: '{1}' ({2})")(SCRIPT_FILE_TMP)(strerror(errno)));
 		return 1;
@@ -603,44 +611,69 @@ void OpenRecoveryScript::Run_OpenRecoveryScript(void) {
 }
 
 // this is called by the "openrecoveryscript" GUI action called via action page from Run_OpenRecoveryScript
-int OpenRecoveryScript::Run_OpenRecoveryScript_Action() {
+int OpenRecoveryScript::Run_OpenRecoveryScript_Action() 
+{
 	int op_status = 1;
 	// Check for the SCRIPT_FILE_TMP first as these are AOSP recovery commands
 	// that we converted to ORS commands during boot in recovery.cpp.
 	// Run those first.
 	int reboot = 0;
-	if (TWFunc::Path_Exists(SCRIPT_FILE_TMP)) {
+	int code1 = 0; int code2 = 0; // DJ9 if either of these is set to 3, disable auto-reboot
+	
+	if (TWFunc::Path_Exists(SCRIPT_FILE_TMP)) 
+	   {
 		gui_msg("running_recovery_commands=Running Recovery Commands");
-		if (OpenRecoveryScript::run_script_file() == 0) {
-			reboot = 1;
-			op_status = 0;
-		}
-	}
+		code1 = OpenRecoveryScript::run_script_file();
+		if (code1 == 0) 
+		  {
+		     reboot = 1;
+		     op_status = 0;
+		  } 
+	   }
 	// Check for the ORS file in /cache and attempt to run those commands.
-	if (OpenRecoveryScript::check_for_script_file()) {
+	if (OpenRecoveryScript::check_for_script_file()) 
+	   {
 		gui_msg("running_ors=Running OpenRecoveryScript");
-		if (OpenRecoveryScript::run_script_file() == 0) {
-			reboot = 1;
-			op_status = 0;
+		code2 = OpenRecoveryScript::run_script_file();
+		if (code2 == 0) 
+		{
+		    reboot = 1;
+		    op_status = 0;
 		}
-	}
-	if (reboot) 
-	{
+	   }
+
+	if (reboot || code1 == 3 || code2 == 3) 
+	  {
 		if (DataManager::GetIntValue(FOX_CALL_DEACTIVATION) != 0) 
-	        {
-		   TWFunc::Deactivation_Process();
-		   DataManager::SetValue(FOX_CALL_DEACTIVATION, 0);
-		 }
+	          {
+		     TWFunc::Deactivation_Process();
+		     DataManager::SetValue(FOX_CALL_DEACTIVATION, 0);
+		   }
+ 		
  		//Disable stock recovery reflashing
 		TWFunc::Disable_Stock_Recovery_Replace();
- 		usleep(2000000); // Sleep for 2 seconds before rebooting
-		TWFunc::tw_reboot(rb_system);
-		usleep(5000000); // Sleep for 5 seconds to allow reboot to occur
-     } else 
+    		
+    		// have we disabled auto-reboot?
+    		if (code1 == 3 || code2 == 3) 
+       		  { 
+ 		     usleep(1000000); // sleep for 1 second
+          	     op_status = 0;
+          	     gui_print_color("warning", "\nOTA update succeeded. You disabled auto-reboot. Returning control to you.\n\n");
+          	     DataManager::SetValue("tw_page_done", 1);
+       		  }
+       		else
+       		  {    
+ 		     usleep(2000000); // Sleep for 2 seconds before rebooting
+		     TWFunc::tw_reboot(rb_system);
+		     usleep(5000000); // Sleep for 5 seconds to allow reboot to occur
+		  }
+        } 
+      else 
      	{
-		DataManager::SetValue("tw_page_done", 1);
+	  DataManager::SetValue("tw_page_done", 1);
 	}
-	return op_status;
+    
+    return op_status;
 }
 
 // this is called by the "twcmd" GUI action when a command is received via FIFO from the "twrp" command line tool
