@@ -3333,48 +3333,6 @@
 			</action>
 		</page>
 
-		<page name="fox_system_settings">
-
-			<template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main2</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@orangefox_settings=}</text>
-			</text>
-
-			<button style="btn_raised_hl">
-				<placement x="1053" y="1410" placement="1"/>
-				<text>{@fox_backupfolder_btn=}</text>
-				<action function="page">fox_backup_name_set1</action>
-			</button>
-
-			<button style="btn_raised_hl">
-				<placement x="1053" y="1560" placement="1"/>
-				<text>{@fox_nightmode=}</text>
-				<action function="page">fox_night_mode</action>
-			</button>
-
-         	<action>
-          		<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-
 		<page name="fox_menu">
 			<template name="body"/>
 
@@ -4407,7 +4365,8 @@
 					<data variable="tw_install_reboot"/>
 				</listitem>
 				<listitem name="{@inject_led_chk=}">
-				<data variable="fox_inject_after_zip"/>
+					<condition var1="fox_debug_build" var2="1"/>
+					<data variable="fox_inject_after_zip"/>
 				</listitem>
 			</listbox>
 
@@ -11888,7 +11847,7 @@
 
 			<button style="btn_flat_qw">
 				<placement x="%btn_raised_left_x%" y="%row3_1_y%"/>
-				<text>{@btn_flat_less=LESS}</text>
+				<text>-</text>
 				<action function="addsubtract">tw_sdext_size-128</action>
 			</button>
 
@@ -11899,13 +11858,13 @@
 
 			<button style="btn_flat_qw">
 				<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
-				<text>{@btn_flat_more=MORE}</text>
+				<text>+</text>
 				<action function="addsubtract">tw_sdext_size+128</action>
 			</button>
 
 			<button style="btn_flat_qw">
 				<placement x="%btn_raised_left_x%" y="%row4_2_y%"/>
-				<text>{@btn_flat_less=LESS}</text>
+				<text>-</text>
 				<action function="addsubtract">tw_swap_size-32</action>
 			</button>
 
@@ -11916,7 +11875,7 @@
 
 			<button style="btn_flat_qw">
 				<placement x="%btn_raised_right_x%" y="%row4_2_y%" placement="1"/>
-				<text>{@btn_flat_more=MORE}</text>
+				<text>+</text>
 				<action function="addsubtract">tw_swap_size+32</action>
 			</button>
 
@@ -11927,7 +11886,7 @@
 
 			<button style="btn_flat_qw">
 				<placement x="%btn_raised_left_x%" y="%row6_1_y%"/>
-				<text>{@btn_flat_ext3=EXT3}</text>
+				<text>EXT3</text>
 				<action function="set">tw_sdpart_file_system=ext3</action>
 			</button>
 
@@ -11938,7 +11897,7 @@
 
 			<button style="btn_flat_qw">
 				<placement x="%btn_raised_right_x%" y="%row6_1_y%" placement="1"/>
-				<text>{@btn_flat_ext4=EXT4}</text>
+				<text>EXT4</text>
 				<action function="set">tw_sdpart_file_system=ext4</action>
 			</button>
 
@@ -13445,48 +13404,6 @@
 			<background color="#000000"/>
 		</page>
 
-		<page name="fox_system_settings">
-
-			<template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">main2</action>
-			</button>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@orangefox_settings=}</text>
-			</text>
-
-			<button style="btn_raised_hl">
-				<placement x="1053" y="1410" placement="1"/>
-				<text>{@fox_backupfolder_btn=}</text>
-				<action function="page">fox_backup_name_set1</action>
-			</button>
-
-			<button style="btn_raised_hl">
-				<placement x="1053" y="1560" placement="1"/>
-				<text>{@fox_nightmode=}</text>
-				<action function="page">fox_night_mode</action>
-			</button>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main2</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">main2</action>
-			</action>
-		</page>
-
 		<page name="fox_menu2">
 			<template name="body"/>
 
@@ -13533,13 +13450,13 @@
 
 			<listbox style="listbox">
 				<placement x="%col1_x%" y="%row1_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="{@fox_boot_performance=Skip MD5 generation during backup}">
+				<listitem name="{@fox_boot_performance}">
 					<data variable="fox_boot_performance_check"/>
 				</listitem>
-				<listitem name="{@fox_boot_powersave=Enable MD5 verification of backup files}">
+				<listitem name="{@fox_boot_powersave}">
 					<data variable="fox_boot_powersave_check"/>
 				</listitem>
-				<listitem name="{@fox_boot_balance=Simulate actions for theme testing}">
+				<listitem name="{@fox_boot_balance}">
 					<data variable="fox_boot_balance_check"/>
 				</listitem>
 			</listbox>
@@ -13551,13 +13468,14 @@
 
 			<listbox style="settingslist">
 				<placement x="%col1_x%" y="%row3_2_y%" w="%listbox_w%" h="%listbox_settings_height%"/>
-				<listitem name="{@fox_boot_fsync}">
+				<listitem name="FSync">
+					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_boot_fsync_check"/>
 				</listitem>
 				<listitem name="{@fox_boot_fastcharge}">
 					<data variable="fox_boot_fastcharge_check"/>
 				</listitem>
-				<listitem name="{@fox_boot_t2w}">
+				<listitem name="T2W">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_boot_t2w_check"/>
 				</listitem>

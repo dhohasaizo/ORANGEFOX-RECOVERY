@@ -1006,7 +1006,7 @@
 				<condition var1="fox_notch" var2="0"/>
 				<condition var1="fox_boot_powersave_check" var2="1"/>
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/>
-				<text>{@simulating=Powersave}</text>
+				<text>{@powersave_mode=Powersave}</text>
 			</text>
 
 			<text style="text_status">
