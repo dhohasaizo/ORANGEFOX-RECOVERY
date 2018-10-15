@@ -7424,7 +7424,7 @@
 			</text>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_3_y%"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
 				<text>{@part_present=Present:}</text>
 			</text>
 
@@ -7441,7 +7441,7 @@
 			</text>
 
 			<text style="caption">
-				<placement x="%col2_x%" y="%row3_3_y%"/>
+				<placement x="%col2_x%" y="%row3_2_y%"/>
 				<text>{@part_removable=Removable:}</text>
 			</text>
 
@@ -7625,13 +7625,13 @@
 
 			<image>
 				<condition var1="tw_partition_is_present" op="!=" var2="0"/>
-				<placement x="%col1_x%" y="%row3_3_y%"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
 				<image resource="icon_warning"/>
 			</image>
 
 			<text style="text_body2_fail">
 				<condition var1="tw_partition_is_present" op="!=" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
+				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
 				<text>{@change_fs_warn1=Some ROMs or kernels may not support}</text>
 			</text>
 
