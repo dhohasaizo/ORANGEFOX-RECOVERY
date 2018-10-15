@@ -2755,7 +2755,7 @@ bool TWFunc::Patch_DM_Verity(void)
          if (JustInstalledMiui() == true) 
          {
             LOGINFO("OrangeFox: dm-verity settings not found. If the ROM does not boot, flash magisk from the OrangeFox menu.\n");
-            gui_print_color("warning", "\nNo dm-verity settings found. This is probably fine. But\nif the ROM does not boot, flash magisk from the OrangeFox menu.\n");
+            gui_print_color("warning", "\nNo dm-verity settings. This is probably fine.\nBut if the ROM does not boot, flash magisk from the OrangeFox menu.\n\n");
          }
      } 
        

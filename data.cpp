@@ -799,7 +799,6 @@ void DataManager::SetDefaultValues()
   mData.SetValue(TW_BACKUP_NAME, "(Auto Generate)");
 
   // Start of the OrangeFox variables
-
   mData.SetValue(FOX_INSTALL_PREBUILT_ZIP, "0");
   mData.SetValue(FOX_CALL_DEACTIVATION, "0");
   mData.SetValue(FOX_GOVERNOR_STABLE, "interactive");
@@ -824,11 +823,13 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue(FOX_ADVANCED_WARN_CHK, "0");
   mPersist.SetValue(FOX_SAVE_LOAD_AROMAFM, "0");
   mPersist.SetValue(FOX_DISABLE_DEBUGGING, "0");
-  mPersist.SetValue(FOX_ENABLE_DEBUGGING, "1"); 
+  mPersist.SetValue(FOX_ENABLE_DEBUGGING, "1");
+
+  mPersist.SetValue(FOX_DISABLE_OTA_AUTO_REBOOT, "1"); // DJ9 disable auto-reboot after OTA updates?
   // { MIUI
   mPersist.SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "1");
-  mPersist.SetValue("fox_verify_incremental_ota_signature", "1"); // DJ9 set to 1 [support miui ota]
-  mPersist.SetValue(FOX_INCREMENTAL_PACKAGE, "1"); // DJ9 set to 1 [support miui ota]
+  mPersist.SetValue("fox_verify_incremental_ota_signature", "1"); // set to 1 [support miui ota]
+  mPersist.SetValue(FOX_INCREMENTAL_PACKAGE, "1"); // set to 1 [support miui ota]
   mPersist.SetValue(FOX_DISABLE_DM_VERITY, "1");
   mPersist.SetValue(FOX_DO_SYSTEM_ON_OTA, "1");
   //  MIUI }
