@@ -4365,7 +4365,7 @@
 					<data variable="tw_install_reboot"/>
 				</listitem>
 				<listitem name="{@inject_led_chk=}">
-					<condition var1="fox_debug_build" var2="1"/>
+					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_inject_after_zip"/>
 				</listitem>
 			</listbox>
@@ -12957,7 +12957,7 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>{@set_bookmark_hdr=Set Bookmark}</text>
+				<text>Set Bookmark</text>
 			</text>
 
 			<text style="text_body2">

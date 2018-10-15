@@ -644,6 +644,7 @@
 		<string name="password">Password</string>
 		<string name="set_password">Set Password</string>
 		<string name="verifying_pas">Verify Password</string>
+		<string name="fox.pass.final_slide">Swipe to return to the main menu.</string>
 		<string name="hide_folder">Don't ask me again</string>
 		<string name="dialog_label_color_hdr">Reboot required</string>
 		<string name="dialog_settheme_hdr">Change Theme</string>
@@ -694,9 +695,9 @@
 		<string name="unable_set_boot_slot">Error changing bootloader boot slot to {1}</string>
 		<string name="backup_storage_warning">Backups of {1} do not include any files in internal storage such as pictures or downloads.</string>
 	<!-- Start of Recovery strings -->
+		<string name="dialog_folder_note_1">Do you want to set the current folder</string>
+		<string name="dialog_folder_note_2">as the default folder for this list?</string>
 		<string name="flashlight">Flashlight</string>
-		<string name="flashlight_info_on">Swipe to turn on flashlight</string>
-		<string name="flashlight_info_off">Swipe to turn off flashlight</string>
 		<string name="adb_info_on">Swipe to turn on ADB</string>
 		<string name="adb_info_off">Swipe to turn off ADB</string>
 		<string name="show_password">Show password</string>
