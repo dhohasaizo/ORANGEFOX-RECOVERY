@@ -2747,21 +2747,12 @@ bool TWFunc::Patch_DM_Verity(void)
 
   if ((status == true) && (found_verity == false))
     {
-       LOGINFO("OrangeFox: dm-verity settings not found in fstab, but key file was successfully removed.\n");
+       LOGINFO("OrangeFox: dm-verity settings not found in fstab, but the key file was successfully removed.\n");
+       LOGINFO("If the ROM does not boot successfully, flash magisk from the OrangeFox menu.\n");
     }
   
-  if (found_verity == false)
-     {
-         if (JustInstalledMiui() == true) 
-         {
-            LOGINFO("OrangeFox: dm-verity settings not found. If the ROM does not boot, flash magisk from the OrangeFox menu.\n");
-            gui_print_color("warning", "\nNo dm-verity settings. This is probably fine.\nBut if the ROM does not boot, flash magisk from the OrangeFox menu.\n\n");
-         }
-     } 
-       
   LOGINFO("OrangeFox: leaving Patch_DM_Verity()\n");
-  //return status;
-  return found_verity;
+  return status;
 }
 
 bool TWFunc::Fstab_Has_Verity_Flag(std::string path)
