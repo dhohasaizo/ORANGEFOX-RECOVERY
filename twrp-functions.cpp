@@ -1243,7 +1243,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
   std::vector < std::string > paths;	// space separated list of paths
   if (time_paths.empty())
     {
-      paths = Split_String("/data/system/time/ /data/time/", " ");
+      paths = Split_String("/data/system/time/ /data/time/ /data/vendor/time/", " ");
       if (!PartitionManager.Mount_By_Path("/data", false))
 	return;
     }
@@ -1737,17 +1737,23 @@ int TWFunc::Check_MIUI_Treble(void)
   string fox_cfg = "/tmp/orangefox.cfg";
   string fox_is_miui_rom_installed = "0";
   string fox_is_treble_rom_installed = "0";
+  string display_panel;
   int Fox_Current_ROM_IsTreble = 0;
   
   if (TWFunc::Path_Exists(fox_cfg)) 
     {
   	fox_is_miui_rom_installed = TWFunc::File_Property_Get (fox_cfg, "MIUI");
   	fox_is_treble_rom_installed = TWFunc::File_Property_Get (fox_cfg, "TREBLE");
+  	display_panel = TWFunc::File_Property_Get (fox_cfg, "panel_name");
   	if ((fox_is_miui_rom_installed.empty()) || (fox_is_treble_rom_installed.empty()))
   	  return 1; // emtpy value in cfg 
     }
     else 
     	return -1; // error - cfg not found
+
+  // show display panel name, if we got one 
+  if (!display_panel.empty())
+       gui_print("Display: %s\n", display_panel.c_str());
     
   if (strncmp(fox_is_treble_rom_installed.c_str(), "1", 1) == 0)
   	Fox_Current_ROM_IsTreble = 1;
