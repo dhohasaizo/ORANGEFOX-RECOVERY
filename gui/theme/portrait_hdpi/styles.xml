@@ -162,7 +162,7 @@
 		<style name="settingslist">
 			<background color="%background%"/>
 			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
-			<icon selected="checkbox_true" unselected="checkbox_false"/>
+			<icon selected="checkbox_true_d" unselected="checkbox_false_d"/>
 			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" highlightcolor="%accent%"/>
 		</style>
 

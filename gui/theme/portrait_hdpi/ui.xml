@@ -627,6 +627,8 @@
 		<variable name="fox_version" value="[%tw_version%]"/>
 		<variable name="flashlight" value="0"/>
 		<variable name="tw_heslo_check" value="dd"/>
+
+		<variable name="battery_pct" value="%tw_battery%"/>
    </variables>
 
 	<include>

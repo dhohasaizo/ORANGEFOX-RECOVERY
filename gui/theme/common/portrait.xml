@@ -92,7 +92,7 @@
 				<listitem name="{@fox_save_load_aromafm_config_chk=Simulate failure for actions}">
 					<data variable="fox_reboot_saveload_aromafm_check"/>
 				</listitem>
-				<listitem name="{@fox_hide_backup_folder_chk=Simulate failure for actions}">
+				<listitem name="{@fox_hide_backup_folder_chk}">
 					<data variable="fox_reboot_hide_backup_folder_check"/>
 				</listitem>
 			</listbox>
@@ -2891,39 +2891,39 @@
 				<listitem name="{@auto_name_generate=Show auto generated backup name}">
 					<data variable="auto_generate"/>
 				</listitem>
-				<listitem name="{@fox_enable_debugg_chk}">
+				<listitem name="fox_enable_debugg_chk">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_reboot_forced_debugging_check"/>
 				</listitem>
-				<listitem name="{@fox_disable_debugg_chk}">
+				<listitem name="fox_disable_debugg_chk">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_reboot_disable_debugging_check"/>
 				</listitem>
-				<listitem name="{@fox_reboot_disable_secure_boot_chk}">
+				<listitem name="fox_reboot_disable_secure_boot_chk">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_reboot_disable_secure_boot"/>
 				</listitem>
-				<listitem name="{@fox_reboot_enable_mock_location_chk}">
+				<listitem name="fox_reboot_enable_mock_location_chk">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_reboot_enable_mock_location"/>
 				</listitem>
-				<listitem name="{@fox_reboot_disable_mock_location_chk}">
+				<listitem name="fox_reboot_disable_mock_location_chk">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_reboot_disable_mock_location"/>
 				</listitem>
-				<listitem name="{@fox_reboot_disable_adb_ro_chk}">
+				<listitem name="fox_reboot_disable_adb_ro_chk">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_reboot_disable_adb_ro"/>
 				</listitem>
-				<listitem name="{@fox_reboot_enable_adb_ro_chk}">
+				<listitem name="fox_reboot_enable_adb_ro_chk">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_reboot_enable_adb_ro"/>
 				</listitem>
-				<listitem name="{@fox_reboot_disable_secure_ro_chk}">
+				<listitem name="fox_reboot_disable_secure_ro_chk">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_reboot_disable_secure_ro"/>
 				</listitem>
-				<listitem name="{@fox_reboot_enable_secure_ro_chk}">
+				<listitem name="fox_reboot_enable_secure_ro_chk">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_reboot_enable_secure_ro"/>
 				</listitem>
@@ -4364,7 +4364,7 @@
 				<listitem name="{@install_reboot_chk=Reboot after installation is complete}">
 					<data variable="tw_install_reboot"/>
 				</listitem>
-				<listitem name="{@inject_led_chk=}">
+				<listitem name="DEBUG: #TODO please remove me">
 					<condition var1="fox_debug" var2="1"/>
 					<data variable="fox_inject_after_zip"/>
 				</listitem>
