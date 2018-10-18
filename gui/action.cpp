@@ -1215,30 +1215,6 @@ void GUIAction::reinject_after_flash()
     }
 }
 
-void GUIAction::notify_after_install()
-{
-  if (simulate)
-    {
-      simulate_progress_bar();
-    }
-  else if (DataManager::GetIntValue("fox_inject_after_zip") != 0)
-    {
-      string ledcolor, install_vibrate_value;
-      DataManager::GetValue("fox_data_install_vibrate",
-			    install_vibrate_value);
-      DataManager::GetValue("fox_install_led_color", ledcolor);
-      string leds = "/sys/class/leds/";
-      string flashbs = leds + ledcolor + "/brightness";
-      string flashtime = leds + ledcolor + "/led_time";
-      string flashblink = leds + ledcolor + "/blink";
-      string vibrate_path = "/sys/class/timed_output/vibrator/enable";
-      TWFunc::write_to_file(flashbs, "255");
-      TWFunc::write_to_file(flashtime, "1 1 1 1");
-      TWFunc::write_to_file(flashblink, "1");
-      TWFunc::write_to_file(vibrate_path, install_vibrate_value);
-    }
-}
-
 int GUIAction::flash(std::string arg)
 {
   int i, ret_val = 0, wipe_cache = 0;
@@ -1294,11 +1270,6 @@ int GUIAction::flash(std::string arg)
       gui_msg("zip_wipe_cache=One or more zip requested a cache wipe -- Wiping cache now.");
       PartitionManager.Wipe_By_Path("/cache");
     }
-
-   if ((has_installed_rom > 0) || (DataManager::GetIntValue(FOX_INSTALL_PREBUILT_ZIP) != 1))
-   {
-      notify_after_install();
-   }
 
    DataManager::Vibrate("fox_data_install_vibrate");
    DataManager::Leds(true);
@@ -1979,7 +1950,6 @@ int GUIAction::adbsideload(std::string arg __unused)
 
       DataManager::Leds(true);
 
-      notify_after_install();
       reinject_after_flash();
       operation_end(ret);
     }

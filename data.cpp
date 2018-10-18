@@ -842,24 +842,7 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue(FOX_NO_OS_SEARCH_ENGINE, "1");
   mPersist.SetValue(FOX_STUPID_COOKIE_STUFF, "0");
   mPersist.SetValue(FOX_STATUSBAR_ON_LOCK, "1");
-  mPersist.SetValue(FOX_INSTALL_VIBRATE, "150");
-  mPersist.SetValue(FOX_BACKUP_VIBRATE, "150");
-  mPersist.SetValue(FOX_RESTORE_VIBRATE, "150");
-  mPersist.SetValue(FOX_RESTORE_BLUE_LED, "0");
-  mPersist.SetValue(FOX_RESTORE_RED_LED, "0");
-  mPersist.SetValue(FOX_RESTORE_GREEN_LED, "1");
-  mPersist.SetValue(FOX_BACKUP_RED_LED, "0");
-  mPersist.SetValue(FOX_BACKUP_GREEN_LED, "1");
-  mPersist.SetValue(FOX_BACKUP_BLUE_LED, "0");
-  mPersist.SetValue(FOX_INSTALL_RED_LED, "0");
-  mPersist.SetValue(FOX_INSTALL_GREEN_LED, "1");
-  mPersist.SetValue(FOX_INSTALL_BLUE_LED, "0");
-  mPersist.SetValue(FOX_INSTALL_LED_COLOR, "green");
-  mPersist.SetValue(FOX_BACKUP_LED_COLOR, "green");
-  mPersist.SetValue(FOX_RESTORE_LED_COLOR, "green");
-  mPersist.SetValue(FOX_NOTIFY_AFTER_INSTALL, "0");
-  mPersist.SetValue(FOX_NOTIFY_AFTER_BACKUP, "0");
-  mPersist.SetValue(FOX_NOTIFY_AFTER_RESTORE, "0");
+  mPersist.SetValue(FOX_LED_COLOR, "0");
   mPersist.SetValue(FOX_BALANCE_CHECK, "0");
   mPersist.SetValue(FOX_FSYNC_CHECK, "0");
   mPersist.SetValue(FOX_T2W_CHECK, "0");
@@ -1306,8 +1289,9 @@ void DataManager::Vibrate(const string & varName)
 
 void DataManager::Leds(bool enable)
 {
-  std::string leds, bs, bsmax, time, blink, bsm, leds1, bs1, bsmax1, time1, blink1, bsm1, max_brt;
+  std::string leds, bs, bsmax, time, blink, bsm, leds1, bs1, bsmax1, time1, blink1, bsm1, max_brt, install_vibrate_value;
   struct stat st;
+  int ledcolor;
   leds = "/sys/class/leds/green";
   bs = leds + "/brightness";
   time = leds + "/led_time";
@@ -1320,7 +1304,11 @@ void DataManager::Leds(bool enable)
   blink1 = leds1 + "/blink";
   bsmax1 = leds1 + "/max_brightness";
 
-  if (!TWFunc::Path_Exists("/sys/class/leds/white/"))
+  string vibrate_path = "/sys/class/timed_output/vibrator/enable";
+  DataManager::GetValue("fox_data_install_vibrate", install_vibrate_value);
+  DataManager::GetValue("fox_led_color", ledcolor);
+
+  if (!TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
   {
     LOGINFO("DEBUG - founded white led on /sys/class/leds/white/ path");
     TWFunc::read_file("/sys/class/leds/white/max_brightness", max_brt);
@@ -1339,12 +1327,17 @@ void DataManager::Leds(bool enable)
 	{
 	  if (TWFunc::read_file(bsmax, bsm) == 0)
 	    {
-	      TWFunc::write_to_file(bs, bsm);
+	      TWFunc::write_to_file(bs, bsmax);
 	      TWFunc::write_to_file(blink, "1");
-        TWFunc::write_to_file("", "1");
+        TWFunc::write_to_file(time, "1 1 1 1");
 
-        TWFunc::write_to_file(bs1, bsm);
-	      TWFunc::write_to_file(blink1, "1");
+        if (ledcolor == 0) {
+          LOGINFO("Enable Yellow led");
+          TWFunc::write_to_file("/sys/class/leds/red/brightness", bsmax);
+          TWFunc::write_to_file("/sys/class/leds/red/blink", "1");
+          TWFunc::write_to_file("/sys/class/leds/red/led_time", "1 1 1 1");
+        }
+        TWFunc::write_to_file(vibrate_path, install_vibrate_value);
 	    }
 	}
     }
