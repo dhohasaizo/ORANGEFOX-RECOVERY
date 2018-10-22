@@ -3398,7 +3398,7 @@
 					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1={@fox_comm_rm_su_tlt}</action>
+					<action function="set">fox_flash_txt1={@fox_comm_su_txt1}</action>
 					<action function="set">fox_flash_txt2={@fox_comm_su_txt2}</action>
 					<action function="set">fox_flash_sld={@fox_comm_su_sld}</action>
 					<action function="set">fox_flash_info=1</action>
@@ -3438,9 +3438,9 @@
 					<action function="set">tw_back=fox_menu</action>
 					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1={@fox_comm_mg_tlt}</action>
-					<action function="set">fox_flash_txt2={@fox_comm_mg_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_mg_sld}</action>
+					<action function="set">fox_flash_txt1={@fox_magisk_txt1}</action>
+					<action function="set">fox_flash_txt2={@fox_magisk_txt2}</action>
+					<action function="set">fox_flash_sld={@fox_magisk_sld}</action>
 					<action function="set">fox_flash_info=0</action>
 				</actions>
 			</button>
@@ -3456,7 +3456,7 @@
 					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
 					<action function="page">filecheck</action>
 					<action function="set">fox_flash_txt1={@fox_comm_rm_mg_txt1}</action>
-					<action function="set">fox_flash_txt2={@fox_comm_mg_txt2}</action>
+					<action function="set">fox_flash_txt2={@fox_comm_rm_mg_txt2}</action>
 					<action function="set">fox_flash_sld={@fox_comm_rm_mg_sld}</action>
 					<action function="set">fox_flash_info=0</action>
 				</actions>
@@ -13761,7 +13761,7 @@
 				<font resource="status"/>
 				<placement x="940" y="1164"/>
 				<condition var1="tw_no_battery_percent" var2="0"/>
-				<text>/ {@battery_pct=%tw_battery%}</text>
+				<text>/ %tw_battery%</text>
 			</text>
 
 			<image>

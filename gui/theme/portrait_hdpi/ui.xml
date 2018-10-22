@@ -627,7 +627,6 @@
 		<variable name="flashlight" value="0"/>
 		<variable name="tw_heslo_check" value="dd"/>
 
-		<variable name="battery_pct" value="%tw_battery%"/>
    </variables>
 
 	<include>
@@ -1020,7 +1019,7 @@
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text color="#000000">
@@ -1033,7 +1032,7 @@
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text style="text_status">
@@ -1047,7 +1046,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
           <condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text color="#000000">
@@ -1061,7 +1060,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
           			<condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text style="text_status">
@@ -1074,7 +1073,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
           			<condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text color="#000000">
@@ -1087,7 +1086,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
           			<condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text style="text_status">
@@ -1129,7 +1128,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
           			<condition var1="fox_boot_powersave_check" op="=" var2="1"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text style="text_status">
@@ -1142,7 +1141,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
           			<condition var1="fox_boot_powersave_check" op="=" var2="1"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<!-- OrangeFox notch section -->
@@ -1161,7 +1160,7 @@
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text style="text_status">
@@ -1171,7 +1170,7 @@
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 		</template>
