@@ -2759,7 +2759,7 @@ bool TWPartition::Wipe_RMRF()
 
 bool TWPartition::Wipe_F2FS()
 {
-	string command;
+	string command, command_512;
 
 	if (TWFunc::Path_Exists("/sbin/mkfs.f2fs")) 
 	{
@@ -2771,10 +2771,12 @@ bool TWPartition::Wipe_F2FS()
 		if (!Is_Decrypted && Length != 0) 
 		   {
 			// Only use length if we're not decrypted
+			unsigned long long Length_Pos;
 			unsigned long long Actual_Size = IOCTL_Get_Block_Size();
+
 			if (Actual_Size == 0)
 				return false;
-			unsigned long long Length_Pos;
+
 			if (Length < 0) 
 			   {
 				// Convert to positive length
@@ -2782,12 +2784,23 @@ bool TWPartition::Wipe_F2FS()
 				// Subtract it from the total amount of blocks
 				Actual_Size -= Length_Pos;
 			   }
+			
 			// Divide the actual size by the sector-size
 			unsigned long long Block_Count;
-			Block_Count = (Actual_Size / 4096LLU);
 			char temp[256];
+
+			// 4kb blocks - need to send block size
+			Block_Count = (Actual_Size / 4096LLU);
 			sprintf(temp, "%llu", Block_Count);
 			command = "mkfs.f2fs -t 0 -w 4096 " + Actual_Block_Device + " " + temp;
+
+			// 512 byte blocks (using default block size in f2fs format - don't send the block size)
+			Block_Count *= 8;
+			sprintf(temp, "%llu", Block_Count);
+			command_512 = "mkfs.f2fs -t 0 " + Actual_Block_Device + " " + temp;
+
+			// use 512 byte blocks?
+			command = command_512; // comment out this line to use 4kb blocks and to send the block size
 		  } 
 		else 
 		  {
