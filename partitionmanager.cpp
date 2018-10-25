@@ -3860,7 +3860,8 @@ void TWPartitionManager::read_uevent()
   int len = recv(uevent_pfd.fd, buf, sizeof(buf), MSG_DONTWAIT);
   if (len == -1)
     {
-      LOGERR("recv error on uevent\n");
+      // remove this message (already noted as TWRP issue #1294)
+      /* LOGERR("recv error on uevent\n"); */
       return;
     }
   
