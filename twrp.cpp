@@ -449,8 +449,8 @@ int main(int argc, char **argv)
       PartitionManager.Disable_MTP();
     }
 #endif
-
-
+  
+  // call OrangeFox startup code 
   TWFunc::OrangeFox_Startup();
 
 #ifndef TW_OEM_BUILD
@@ -494,9 +494,13 @@ int main(int argc, char **argv)
   twrpAdbBuFifo *adb_bu_fifo = new twrpAdbBuFifo();
   adb_bu_fifo->threadAdbBuFifo();
 
+  // check for fresh OrangeFox installation
+  TWFunc::Fresh_Fox_Install(); // DJ9
+
   // Launch the main GUI
   gui_start();
 #ifndef TW_OEM_BUILD
+
   // Disable flashing of stock recovery
   TWFunc::Disable_Stock_Recovery_Replace();
 

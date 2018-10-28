@@ -748,16 +748,16 @@ int TWFunc::tw_reboot(RebootCommand command)
 	   || (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1)
          ) 
         { 
-           DoDeactivate = 1; 
+           DoDeactivate = 1;
         }
-    }    
+    }
   // DJ9
    
   switch (command)
     {
     case rb_current:
     case rb_system:
-      if (DoDeactivate == 1) { Deactivation_Process(); } // DJ9  
+      if (DoDeactivate == 1) { Deactivation_Process(); } // DJ9
       Update_Intent_File("s");
       sync();
 #ifdef ANDROID_RB_PROPERTY
@@ -768,7 +768,7 @@ int TWFunc::tw_reboot(RebootCommand command)
       return reboot(RB_AUTOBOOT);
 #endif
     case rb_recovery:
-      if (DoDeactivate == 1){ Deactivation_Process(); } // DJ9  
+      if (DoDeactivate == 1){ Deactivation_Process(); sync(); } // DJ9
 #ifdef ANDROID_RB_PROPERTY
       return property_set(ANDROID_RB_PROPERTY, "reboot,recovery");
 #else
@@ -2595,6 +2595,37 @@ bool TWFunc::JustInstalledMiui(void)
       return false;
 }
 
+
+bool TWFunc::Fresh_Fox_Install()
+{
+  std::string fox_file = "/cache/recovery/Fox_Installed";
+  
+  if ((PartitionManager.Is_Mounted_By_Path("/cache"))
+  || (PartitionManager.Mount_By_Path("/cache", true)))
+      {
+	if (!Path_Exists(fox_file))
+	{
+	    //gui_print("OrangeFox: not a fresh OrangeFox install\n.");
+	    return false;
+	}
+	else
+	  {
+	     unlink(fox_file.c_str());
+	     gui_print("Fresh OrangeFox installation\n");
+	     Fox_Force_Deactivate_Process = 1;
+	     DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
+	     TWFunc::Deactivation_Process();
+	     return true;
+	  }
+     }    
+     else
+       {
+          //gui_print("OrangeFox: Cannot mount /cache\n.");
+          return false;
+       }
+}
+
+
 bool TWFunc::Patch_DM_Verity(void)
 {
   bool status;
@@ -2730,7 +2761,7 @@ bool TWFunc::Patch_DM_Verity(void)
 		    } 
 		    else
 		    {
-	               LOGINFO("OrangeFox: Relevant dm-verity settings are NOT found in %s\n", path.c_str());		    
+	               LOGINFO("OrangeFox: Relevant dm-verity settings are not found in %s\n", path.c_str());		    
 		    }
 		}
 	      TWFunc::Replace_Word_In_File(path, remove);
