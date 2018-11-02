@@ -120,6 +120,7 @@ public:
 	static bool isNumber(string strtocheck); // return true if number, false if not a number
 	static int  stream_adb_backup(string &Restore_Name); // Tell ADB Backup to Stream to TWRP from GUI selection
 	static int  Check_MIUI_Treble(void); // check whether we are running a MIUI or Treble ROM 
+    	static bool Fresh_Fox_Install(void); // have we just installed OrangeFox - do some stuff?
 
 private:
 	static void Copy_Log(string Source, string Destination);
@@ -130,7 +131,7 @@ private:
     	static bool Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
     	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
     	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
-    	static bool JustInstalledMiui(void); // Has a MIUI ROM just been installed?
+    	static bool JustInstalledMiui(void); // has a MIUI ROM just been installed?
 };
 
 extern int Log_Offset;

@@ -408,18 +408,9 @@ int main(int argc, char **argv)
   // Run any outstanding OpenRecoveryScript
   if ((DataManager::GetIntValue(TW_IS_ENCRYPTED) == 0 || SkipDecryption) && (TWFunc::Path_Exists(SCRIPT_FILE_TMP) || TWFunc::Path_Exists(SCRIPT_FILE_CACHE))) 
      {
+            TWFunc::OrangeFox_Startup();
 	    OpenRecoveryScript::Run_OpenRecoveryScript();
      }
-
-  // Run any outstanding OpenRecoveryScript
-  if (DataManager::GetIntValue(TW_IS_ENCRYPTED) == 0)
-  {
-      if (TWFunc::Path_Exists(SCRIPT_FILE_TMP) || TWFunc::Path_Exists(SCRIPT_FILE_CACHE))
-       {
-         TWFunc::OrangeFox_Startup();
-         OpenRecoveryScript::Run_OpenRecoveryScript();
-       }
-   }
 
 #ifdef TW_HAS_MTP
   char mtp_crash_check[PROPERTY_VALUE_MAX];
@@ -449,8 +440,8 @@ int main(int argc, char **argv)
       PartitionManager.Disable_MTP();
     }
 #endif
-
-
+  
+  // call OrangeFox startup code 
   TWFunc::OrangeFox_Startup();
 
 #ifndef TW_OEM_BUILD
@@ -494,9 +485,13 @@ int main(int argc, char **argv)
   twrpAdbBuFifo *adb_bu_fifo = new twrpAdbBuFifo();
   adb_bu_fifo->threadAdbBuFifo();
 
+  // check for fresh OrangeFox installation
+  TWFunc::Fresh_Fox_Install(); // DJ9
+
   // Launch the main GUI
   gui_start();
 #ifndef TW_OEM_BUILD
+
   // Disable flashing of stock recovery
   TWFunc::Disable_Stock_Recovery_Replace();
 
