@@ -839,7 +839,6 @@ void DataManager::SetDefaultValues()
 
   mPersist.SetValue(FOX_REBOOT_AFTER_RESTORE, "0");
   mPersist.SetValue(FOX_NO_OS_SEARCH_ENGINE, "1");
-  mPersist.SetValue(FOX_STUPID_COOKIE_STUFF, "0");
   mPersist.SetValue(FOX_STATUSBAR_ON_LOCK, "1");
   mPersist.SetValue(FOX_INSTALL_VIBRATE, "150");
   mPersist.SetValue(FOX_BACKUP_VIBRATE, "150");

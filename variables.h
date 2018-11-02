@@ -91,7 +91,6 @@ static int Fox_Current_ROM_IsMIUI = 0; // is the currently installed ROM a MIUI 
 #define FOX_MAIN_SURVIVAL_TRIGGER         "fox_main_survival_trigger"
 //#define FOX_SUPERSU_CONFIG           "fox_supersu_config_chk"
 #define FOX_NO_OS_SEARCH_ENGINE           "fox_noos_engine"
-#define FOX_STUPID_COOKIE_STUFF           "fox_game_bobs_max"
 #define FOX_TMP_SCRIPT_DIR       "fox_tmp_script_directory"
 #define FOX_STATUSBAR_ON_LOCK       "fox_statusbar_on_lockpass"
 #define FOX_INSTALL_VIBRATE       "fox_data_install_vibrate"
@@ -130,6 +129,7 @@ static int Fox_Current_ROM_IsMIUI = 0; // is the currently installed ROM a MIUI 
 #define FOX_RUN_SURVIVAL_BACKUP                 "fox_run_survival_backup"
 #define FOX_METADATA_PRE_BUILD                 "fox_pre_build"
 
+//
 #define TW_USE_COMPRESSION_VAR      "tw_use_compression"
 #define TW_FILENAME                 "tw_filename"
 #define TW_ZIP_INDEX                "tw_zip_index"
