@@ -12260,7 +12260,7 @@
 			<text color="%accent%">
 				<font resource="font_l"/>
 				<placement x="%center_x%" y="%row3_2_y%" placement="4"/>
-				<text>CPU: %tw_cpu_temp% В°C   -   Battery: %tw_battery%</text>
+				<text>{@cpu_temp}    |    {@battery}: %tw_battery%</text>
 			</text>
 
 			<button style="btn_raised_hl">
@@ -12378,7 +12378,7 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="1230"/>
-				<text>kirilmaster4, ZHANtech - {@fox_thfox=For a contribution to UI}</text>
+				<text>kirilmaster4, ZHANtech, KMP - {@fox_thfox=For a contribution to UI}</text>
 			</text>
 
             		<!--text style="text_body2">
@@ -13837,7 +13837,10 @@
 			</slidervalue>
 
 			<button>
-				<condition var1="flashlight_support" var2="1"/>
+				<conditions>
+					<condition var1="flashlight_support" var2="1"/>
+					<condition var1="tw_busy" var2="0"/>
+				</conditions>
 				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
 				<image resource="mb_flashlight_on"/>
 				<action function="flashlight"/>
