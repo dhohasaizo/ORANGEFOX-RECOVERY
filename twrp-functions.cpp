@@ -2784,10 +2784,18 @@ bool TWFunc::Patch_DM_Verity(void)
 
   if ((status == true) && (found_verity == false))
     {
-       LOGINFO("OrangeFox: dm-verity settings not found in fstab, but the key file was successfully removed.\n");
-       LOGINFO("If the ROM does not boot successfully, flash magisk from the OrangeFox menu.\n");
+       LOGINFO("OrangeFox: Partial success - DM-Verity settings not found in fstab, but key file was successfully removed.\n");
     }
   
+  if (found_verity == false)
+     {
+         if (JustInstalledMiui() == true) 
+         {
+            LOGINFO("OrangeFox: Patch dm-verity failed. This MIUI ROM might not boot without flashing magisk.\n");
+            gui_print_color("warning", "\n\nI could not patch dm-verity.\nTry flashing magisk from the OrangeFox menu now!\n");
+         }
+     } 
+       
   LOGINFO("OrangeFox: leaving Patch_DM_Verity()\n");
   return status;
 }

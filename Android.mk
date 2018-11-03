@@ -71,6 +71,12 @@ else
     LOCAL_CFLAGS += -DOF_FLASHLIGHT_ENABLE='"1"'
 endif
 
+ifneq ($(FOX_NOTCH),)
+    LOCAL_CFLAGS += -DFOX_NOTCH='"$(FOX_NOTCH)"'
+else
+    LOCAL_CFLAGS += -DFOX_NOTCH='"0"'
+endif
+
 LOCAL_SRC_FILES := \
     twrp.cpp \
     fixContexts.cpp \

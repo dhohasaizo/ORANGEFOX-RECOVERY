@@ -16,6 +16,7 @@
 		<font name="fixed" filename="DroidSansMono.ttf" size="32"/>
 		<font name="mainbutton" filename="RobotoCondensed-Regular.ttf" size="86"/>
 		<font name="button" filename="RobotoCondensed-Regular.ttf" size="41"/>
+		<font name="button-y" filename="RobotoCondensed-Regular.ttf" size="45"/>
 		<font name="menu" filename="RobotoCondensed-Regular.ttf" size="44"/>
 		<font name="input_fail" filename="RobotoCondensed-Regular.ttf" size="32"/>
 		<font name="splash" filename="RobotoCondensed-Regular.ttf" size="47"/>
@@ -27,12 +28,14 @@
 		<font name="font_l" filename="RobotoCondensed-Regular.ttf" size="52"/>
 		<font name="font_m" filename="RobotoCondensed-Regular.ttf" size="42"/>
 		<font name="font_s" filename="RobotoCondensed-Regular.ttf" size="36"/>
+		<font name="font_b" filename="RobotoCondensed-Regular.ttf" size="200"/>
 
 		<font name="keylabel" filename="RobotoCondensed-Regular.ttf" size="64"/>
 		<font name="keylabel-small" filename="RobotoCondensed-Regular.ttf" size="46"/>
 		<font name="keylabel-longpress" filename="RobotoCondensed-Regular.ttf" size="32"/>
 
 		<image name="actionbar_shadow" filename="actionbar_shadow"/>
+		<image name="actionbar_shadow_down" filename="actionbar_shadow_down"/>
 		<image name="actionbar_fox" filename="actionbar_fox" retainaspect="1"/>
 		<image name="mb_fox_actions" filename="mb_fox_actions" retainaspect="1"/>
 		<image name="mb_fox_actions_color" filename="mb_fox_actions_color" retainaspect="1"/>
@@ -87,6 +90,9 @@
 		<image name="fox_cup_a" filename="fox_cup_a" retainaspect="1"/>
 		<image name="fox_phone" filename="fox_phone" retainaspect="1"/>
 		<image name="fox_phone_a" filename="fox_phone_a" retainaspect="1"/>
+
+		<image name="btn_info" filename="btn_info" retainaspect="1"/>
+		<image name="btn_close" filename="btn_close" retainaspect="1"/>
 
 
 
@@ -195,7 +201,6 @@
 
 		<image name="file_icon" filename="file" retainaspect="1"/>
 		<image name="folder_icon" filename="folder" retainaspect="1"/>
-		<image name="unlock_icon" filename="unlock_icon" retainaspect="1"/>
 
 		<animation name="progress" filename="indeterminate"/>
 		<image name="progress_empty" filename="progress_empty"/>
@@ -274,7 +279,6 @@
 	<variables>
 		<!--theme settings-->
 		<variable name="tw_hide_kb" value="0"/>
-		<variable name="fox_inject_after_zip_tmp" value="0"/>
 		<variable name="auto_flash_repack" value="0"/>
 		<variable name="aromafm" value="0" persist="1"/>
 		<variable name="auto_generate" value="0" persist="1"/>
@@ -300,10 +304,15 @@
 		<variable name="fox_debug" value="0" persist="0"/>
 		<variable name="flashlight_support" value="%of_flashlight_enable%"/>
 		<variable name="fox_adb" value="0"/>
+		<variable name="fox_rem_pass_after_restoring" value="0" persist="1"/>
 
 		<!-- For Maintainers -->
-		<variable name="fox_debug_build" value="0"/> <!-- Enable this function if you wanna enable debug mode switch -->
-		<variable name="fox_notch" value="0"/> <!-- Enable this variable for enable notch -->
+		<variable name="fox_debug_build" value="1"/> <!-- Enable this function if you wanna enable debug mode switch -->
+		<variable name="fox_notch" value="%fox_notch%"/> <!-- Enable this variable for enable notch -->
+
+		<variable name="tw_has_boot_slots" value="1"/>
+		<variable name="tw_active_slot" value="A"/>
+		<variable name="fox_need_reboot" value="0"/>
 
 		<!-- Lower led crutch :) -->
 		<variable name="fox_set_custom_led_restore_green" value="1" persist="1"/>
@@ -357,9 +366,9 @@
 		<variable name="ab_y" value="84"/>
 
 		<variable name="tab_height" value="144"/>
-		<variable name="tab_indicator_height" value="6"/>
-		<variable name="tab_y" value="312"/>
-		<variable name="tab_indicator_y" value="378"/>
+		<variable name="tab_indicator_height" value="8"/>
+		<variable name="tab_y" value="1700"/>
+		<variable name="tab_indicator_y" value="1774"/>
 		<variable name="tab2_width" value="540"/>
 		<variable name="tab3_width" value="360"/>
 		<variable name="tab4_width" value="270"/>
@@ -409,6 +418,7 @@
 
 		<variable name="row0_y" value="240"/>
 		<variable name="row0_a_y" value="270"/>
+		<variable name="row1_0_y" value="270"/>
 		<variable name="row1_1_y" value="300"/>
 		<variable name="row1_1a_y" value="330"/>
 		<variable name="row1_2_y" value="360"/>
@@ -578,7 +588,6 @@
 		<variable name="fileselector_install_height" value="1140"/>
 		<variable name="fileselector_part_height" value="540"/>
 		<variable name="fileselector_wipe_height" value="450"/>
-		<variable name="fileselector_backup_height" value="630"/>
 		<variable name="fileselector_mount_height" value="540"/>
 		<variable name="fileselector_terminal_height" value="1320"/>
 		<variable name="fileselector_separatorheight" value="2"/>
@@ -588,9 +597,7 @@
 		<variable name="fastscroll_linew" value="2"/>
 		<variable name="fastscroll_rectw" value="24"/>
 		<variable name="fastscroll_recth" value="120"/>
-
-		<variable name="listbox_tz_height" value="750"/>
-		<variable name="listbox_tz_width" value="984"/>
+		
 		<variable name="listbox_settings_height" value="720"/>
 		<variable name="listbox_settings_mf_height" value="360"/>
 		<variable name="listbox_settings_mv_height" value="450"/>
@@ -604,6 +611,7 @@
 		<variable name="slider_x" value="48"/>
 		<variable name="slider_y" value="1560"/>
 		<variable name="slider_text_y" value="1590"/>
+		<variable name="slider_text_y_tab" value="1490"/>
 		<variable name="slidervalue_w" value="984"/>
 		<variable name="slidervalue_lineh" value="6"/>
 		<variable name="slidervalue_padding" value="72"/>
@@ -618,6 +626,7 @@
 		<variable name="fox_version" value="[%tw_version%]"/>
 		<variable name="flashlight" value="0"/>
 		<variable name="tw_heslo_check" value="dd"/>
+
    </variables>
 
 	<include>
@@ -997,7 +1006,7 @@
 				<condition var1="fox_notch" var2="0"/>
 				<condition var1="fox_boot_powersave_check" var2="1"/>
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/>
-				<text>{@simulating=Powersave}</text>
+				<text>{@powersave_mode=Powersave}</text>
 			</text>
 
 			<text style="text_status">
@@ -1010,7 +1019,7 @@
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text color="#000000">
@@ -1023,7 +1032,7 @@
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text style="text_status">
@@ -1037,7 +1046,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
           <condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text color="#000000">
@@ -1051,7 +1060,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
           			<condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text style="text_status">
@@ -1064,7 +1073,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
           			<condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text color="#000000">
@@ -1077,7 +1086,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
           			<condition var1="fox_boot_powersave_check" op="=" var2="0"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text style="text_status">
@@ -1119,7 +1128,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
           			<condition var1="fox_boot_powersave_check" op="=" var2="1"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text style="text_status">
@@ -1132,7 +1141,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
           			<condition var1="fox_boot_powersave_check" op="=" var2="1"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<!-- OrangeFox notch section -->
@@ -1151,7 +1160,7 @@
 					<condition var1="tw_battery" op="&gt;" var2="0"/>
 					<condition var1="tw_battery" op="&lt;" var2="15"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 			<text style="text_status">
@@ -1161,7 +1170,7 @@
 					<condition var1="tw_battery" op="&gt;" var2="16"/>
 					<condition var1="tw_battery" op="&lt;" var2="101"/>
 				</conditions>
-				<text>{@battery_pct=%tw_battery%}</text>
+				<text>%tw_battery%</text>
 			</text>
 
 		</template>
@@ -1175,10 +1184,6 @@
 			<fill color="%accent%">
 				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
 			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
 		</template>
 
 		<template name="ab_ex">
@@ -1190,24 +1195,30 @@
 			<fill color="%accent%">
 				<placement x="0" y="0" w="%screen_w%" h="%ab_ex_h%"/>
 			</fill>
-
-			<fill color="%lightransparent%">
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
 		</template>
 
 		<template name="ab_tab">
 			<image>
 				<image resource="actionbar_shadow"/>
-				<placement x="0" y="380"/>
+				<placement x="0" y="236"/>
 			</image>
 
 			<fill color="%accent%">
-				<placement x="0" y="0" w="%screen_w%" h="%ab_tab_h%"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
 			</fill>
 
-			<fill color="%lightransparent%">
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			<image>
+				<image resource="actionbar_shadow_down"/>
+				<placement x="0" y="1606"/>
+			</image>
+
+			<image>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="1776"/>
+			</image>
+
+			<fill color="%accent%">
+				<placement x="0" y="1630" w="%screen_w%" h="150" placement="3"/>
 			</fill>
 		</template>
 
