@@ -840,7 +840,6 @@ void DataManager::SetDefaultValues()
 
   mPersist.SetValue(FOX_REBOOT_AFTER_RESTORE, "0");
   mPersist.SetValue(FOX_NO_OS_SEARCH_ENGINE, "1");
-  mPersist.SetValue(FOX_STUPID_COOKIE_STUFF, "0");
   mPersist.SetValue(FOX_STATUSBAR_ON_LOCK, "1");
   mPersist.SetValue(FOX_LED_COLOR, "0");
   mPersist.SetValue(FOX_BALANCE_CHECK, "0");
