@@ -5,3 +5,7 @@ files:
       language:
         zh-CN: gui/theme/common/extra-languages/languages/zh_CN.xml
         zh-TW: gui/theme/common/extra-languages/languages/zh_TW.xml
+        ja: gui/theme/common/extra-languages/languages/ja.xml
+    translatable_elements:
+      - '/language/resources/string[]'
+      - /language/display
