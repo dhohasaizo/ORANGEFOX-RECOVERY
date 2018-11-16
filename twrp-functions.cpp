@@ -66,6 +66,33 @@ static string tmp_boot = tmp + "/boot.img";
 static string fstab1 = "/system/vendor/etc";
 static string fstab2 = "/vendor/etc";
 
+static string GetInstalledRom(void)
+{
+   return TWFunc::System_Property_Get ("ro.build.display.id");
+}
+
+static string Get_Property (string propname)
+{
+   string cmd = "getprop " + propname;
+   string ret = TWFunc::Exec_With_Output (cmd);
+   return ret;
+}
+
+static string GetDeviceName(void)
+{
+  return (Get_Property("ro.product.device"));
+}
+
+static bool StorageIsEncrypted(void)
+{
+   string ret = Get_Property("ro.crypto.state");
+   //gui_print("Result=|%s|\n", ret.c_str());   
+   if (strncmp(ret.c_str(), "encrypted", 9) == 0)   
+     return true;
+   else 
+     return false;
+}
+
 /* Execute a command */
 int TWFunc::Exec_Cmd(const string & cmd, string & result)
 {
@@ -1738,6 +1765,7 @@ int TWFunc::Check_MIUI_Treble(void)
   string fox_is_miui_rom_installed = "0";
   string fox_is_treble_rom_installed = "0";
   string display_panel;
+  string rom_desc;
   int Fox_Current_ROM_IsTreble = 0;
   
   if (TWFunc::Path_Exists(fox_cfg)) 
@@ -1761,30 +1789,30 @@ int TWFunc::Check_MIUI_Treble(void)
   if (strncmp(fox_is_miui_rom_installed.c_str(), "1", 1) == 0)
      {
   	Fox_Current_ROM_IsMIUI = 1;
-    	/*
-    	DataManager::SetValue("fox_verify_incremental_ota_signature", "1");
-  	DataManager::SetValue(FOX_INCREMENTAL_PACKAGE, "1");
-  	DataManager::SetValue(FOX_DISABLE_DM_VERITY, "1");
-  	DataManager::SetValue(FOX_DO_SYSTEM_ON_OTA, "1"); 
-  	*/
   	gui_print("MIUI ROM | %s", Fox_Current_Device.c_str());
      } 
   else
      {
-    	/*
-    	DataManager::SetValue("fox_verify_incremental_ota_signature", "0");
-  	DataManager::SetValue(FOX_INCREMENTAL_PACKAGE, "0");
-  	DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
-  	DataManager::SetValue(FOX_DO_SYSTEM_ON_OTA, "0");
-  	*/     
   	gui_print("Custom ROM | %s", Fox_Current_Device.c_str());
      } 
      
    if (Fox_Current_ROM_IsTreble == 1)
-   	gui_print("(Treble)\n\n");
+   	gui_print("(Treble)");
    else
-   	gui_print("(non-Treble)\n\n");
+   	gui_print("(non-Treble)");
+    
+  rom_desc = GetInstalledRom();
+  if (!rom_desc.empty()) 
+    {
+       gui_print("- %s\n", rom_desc.c_str());
+    }
   
+  if (StorageIsEncrypted())
+    {
+      gui_print ("- Storage is encrypted.\n");
+    }
+  
+   gui_print("\n");
    return 0;
 }
 
@@ -2612,6 +2640,14 @@ bool TWFunc::Fresh_Fox_Install()
 	  {
 	     unlink(fox_file.c_str());
 	     gui_print("Fresh OrangeFox installation\n");
+	     // R9.0
+	     if (Fox_Current_Device == "nitrogen")
+	       {
+	          gui_print("Device=nitrogen. Not patching.\n");
+	          LOGINFO("OrangeFox: not processing fresh install patch for nitrogen.\n");
+	          return false;
+	       }
+	     // end R9.0
 	     Fox_Force_Deactivate_Process = 1;
 	     DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
 	     TWFunc::Deactivation_Process();
@@ -2848,6 +2884,15 @@ bool TWFunc::Patch_Forced_Encryption(void)
   struct dirent *de;
   
   LOGINFO("OrangeFox: entering Patch_Forced_Encyption()\n"); 
+  
+  // R9.0
+  if (StorageIsEncrypted())
+    {
+       LOGINFO("OrangeFox: device is already encrypted. Leaving it well alone.\n");
+       return false;
+    }
+  // end
+    
   d = opendir(ramdisk.c_str());
   if (d == NULL)
     {

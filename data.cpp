@@ -826,7 +826,7 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue(FOX_DISABLE_DEBUGGING, "0");
   mPersist.SetValue(FOX_ENABLE_DEBUGGING, "1");
 
-  mPersist.SetValue(FOX_DISABLE_OTA_AUTO_REBOOT, "0"); // DJ9 disable auto-reboot after OTA updates? set to 1 to enable this feature
+  mPersist.SetValue(FOX_DISABLE_OTA_AUTO_REBOOT, "1"); // R9.0 - DJ9 disable auto-reboot after OTA updates? set to 1 to enable this feature
   // { MIUI
   mPersist.SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "1");
   mPersist.SetValue("fox_verify_incremental_ota_signature", "1"); // set to 1 [support miui ota]
