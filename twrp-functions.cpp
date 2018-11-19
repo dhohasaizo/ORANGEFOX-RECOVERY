@@ -66,31 +66,40 @@ static string tmp_boot = tmp + "/boot.img";
 static string fstab1 = "/system/vendor/etc";
 static string fstab2 = "/vendor/etc";
 
+int Fox_Current_ROM_IsTreble = 0;
+int New_Fox_Installation = 0;
+
+/* Have we just installed OrangeFox on a device with a Treble ROM? */
+static bool New_Fox_On_Treble(void)
+{
+ return ((Fox_Current_ROM_IsTreble == 1) && (New_Fox_Installation == 1));
+}
+
+/* Get the display ID of the installed ROM */
 static string GetInstalledRom(void)
 {
    return TWFunc::System_Property_Get ("ro.build.display.id");
 }
 
+/* Get the value of a named variable from the prop file */
 static string Get_Property (string propname)
 {
-   string cmd = "getprop " + propname;
-   string ret = TWFunc::Exec_With_Output (cmd);
+   string ret = TWFunc::Exec_With_Output ("getprop " + propname);
+   // remove trailing newline
+   ret.erase(std::remove(ret.begin(), ret.end(), '\n'), ret.end());   
    return ret;
 }
 
+/* Get the device name */
 static string GetDeviceName(void)
 {
   return (Get_Property("ro.product.device"));
 }
 
+/* Return whether the device's storage is encrypted */
 static bool StorageIsEncrypted(void)
 {
-   string ret = Get_Property("ro.crypto.state");
-   //gui_print("Result=|%s|\n", ret.c_str());   
-   if (strncmp(ret.c_str(), "encrypted", 9) == 0)   
-     return true;
-   else 
-     return false;
+  return (Get_Property("ro.crypto.state") == "encrypted");
 }
 
 /* Execute a command */
@@ -1766,7 +1775,7 @@ int TWFunc::Check_MIUI_Treble(void)
   string fox_is_treble_rom_installed = "0";
   string display_panel;
   string rom_desc;
-  int Fox_Current_ROM_IsTreble = 0;
+  Fox_Current_ROM_IsTreble = 0;
   
   if (TWFunc::Path_Exists(fox_cfg)) 
     {
@@ -2627,6 +2636,7 @@ bool TWFunc::JustInstalledMiui(void)
 bool TWFunc::Fresh_Fox_Install()
 {
   std::string fox_file = "/cache/recovery/Fox_Installed";
+  New_Fox_Installation = 0;
   
   if ((PartitionManager.Is_Mounted_By_Path("/cache"))
   || (PartitionManager.Mount_By_Path("/cache", true)))
@@ -2650,7 +2660,9 @@ bool TWFunc::Fresh_Fox_Install()
 	     // end R9.0
 	     Fox_Force_Deactivate_Process = 1;
 	     DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
+	     New_Fox_Installation = 1;
 	     TWFunc::Deactivation_Process();
+	     New_Fox_Installation = 0;
 	     return true;
 	  }
      }    
@@ -2664,20 +2676,20 @@ bool TWFunc::Fresh_Fox_Install()
 
 bool TWFunc::Patch_DM_Verity(void)
 {
-  bool status;
-  bool found_verity;
+  bool status = false;
+  bool found_verity = false;
   int stat = 0;
-  int treble;
-  DIR *d;
-  DIR *d1;
-  struct dirent *de;
+  int treble = 0;
+  DIR *d = NULL;
+  DIR *d1 = NULL;
+  struct dirent *de = NULL;
   string path, cmp;
   string firmware_key = ramdisk + "/sbin/firmware_key.cer";
   string remove = "avb,;,avb;avb;verify,;,verify;verify;support_scfs,;,support_scfs;support_scfs;";
-  DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);
-  status = false;
-  found_verity = false;
+
   LOGINFO("OrangeFox: entering Patch_DM_Verity()\n");
+  DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);
+
   d = opendir(ramdisk.c_str());
   if (d == NULL)
     {
@@ -2744,7 +2756,7 @@ bool TWFunc::Patch_DM_Verity(void)
     {    
       d1 = NULL;
 
-      if (treble == 1)
+      if (treble == 1 || New_Fox_On_Treble())
       {
          if (PartitionManager.Mount_By_Path("/vendor", false))      
 	   {
