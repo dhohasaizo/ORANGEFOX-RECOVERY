@@ -81,13 +81,19 @@ static string GetInstalledRom(void)
    return TWFunc::System_Property_Get ("ro.build.display.id");
 }
 
-/* Get the value of a named variable from the prop file */
-static string Get_Property (string propname)
+/* remove trailing newline from string */
+static string Trim_Trailing_NewLine (const string src)
 {
-   string ret = TWFunc::Exec_With_Output ("getprop " + propname);
-   // remove trailing newline
+   string ret = src;
    ret.erase(std::remove(ret.begin(), ret.end(), '\n'), ret.end());   
    return ret;
+}
+
+/* Get the value of a named variable from the prop file */
+static string Get_Property (const string propname)
+{
+   string ret = TWFunc::Exec_With_Output ("getprop " + propname);
+   return (Trim_Trailing_NewLine (ret));
 }
 
 /* Get the device name */
@@ -190,7 +196,7 @@ string TWFunc::Exec_With_Output(const string &cmd)
 	  data.append(buffer);
       pclose(stream);
     }
-  return data;
+  return (Trim_Trailing_NewLine (data));
 }
 
 int TWFunc::Wait_For_Child(pid_t pid, int *status, string Child_Name)
@@ -2898,11 +2904,13 @@ bool TWFunc::Patch_Forced_Encryption(void)
   LOGINFO("OrangeFox: entering Patch_Forced_Encyption()\n"); 
   
   // R9.0
+  /*
   if (StorageIsEncrypted())
     {
        LOGINFO("OrangeFox: device is already encrypted. Leaving it well alone.\n");
        return false;
     }
+  */
   // end
     
   d = opendir(ramdisk.c_str());
@@ -2943,11 +2951,12 @@ bool TWFunc::Patch_Forced_Encryption(void)
 	}
     }
   closedir(d);  
+
   if (stat == 0)
   {
       d1 = NULL;
 
-      if (treble == 1)
+      if (treble == 1 || New_Fox_On_Treble())
       {
          if (PartitionManager.Mount_By_Path("/vendor", false))      
 	   {
