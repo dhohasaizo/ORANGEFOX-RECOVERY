@@ -765,6 +765,12 @@ static int Run_Update_Binary(const char *path, ZipWrap * Zip, int *wipe_cache,
       gui_changeOverlay("");
     }
 
+  // if updater-script doesn't find the correct device
+  if (WEXITSTATUS (status) == TW_ERROR_WRONG_DEVICE)
+     {
+       gui_print_color("error", "Are you installing onto the correct device? Search online for error %i.\n", TW_ERROR_WRONG_DEVICE);
+     }
+
 #ifndef TW_NO_LEGACY_PROPS
   /* Unset legacy properties */
   if (legacy_props_path_modified)

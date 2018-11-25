@@ -1794,40 +1794,47 @@ int TWFunc::Check_MIUI_Treble(void)
     else 
     	return -1; // error - cfg not found
 
-  // show display panel name, if we got one 
-  if (!display_panel.empty())
-       gui_print("Display: %s\n", display_panel.c_str());
-    
-  if (strncmp(fox_is_treble_rom_installed.c_str(), "1", 1) == 0)
-  	Fox_Current_ROM_IsTreble = 1;
-  
-  if (strncmp(fox_is_miui_rom_installed.c_str(), "1", 1) == 0)
-     {
-  	Fox_Current_ROM_IsMIUI = 1;
-  	gui_print("MIUI ROM | %s", Fox_Current_Device.c_str());
-     } 
-  else
-     {
-  	gui_print("Custom ROM | %s", Fox_Current_Device.c_str());
-     } 
-     
-   if (Fox_Current_ROM_IsTreble == 1)
-   	gui_print("(Treble)");
-   else
-   	gui_print("(non-Treble)");
-    
-  rom_desc = GetInstalledRom();
-  if (!rom_desc.empty()) 
-    {
-       gui_print("- %s\n", rom_desc.c_str());
-    }
-  
+  // is the device encrypted?
   if (StorageIsEncrypted())
     {
-      gui_print ("- Storage is encrypted.\n");
+      gui_print ("- Storage is encrypted\n");
     }
   
-   gui_print("\n");
+  // show display panel name, if we got one 
+  if (!display_panel.empty())
+       gui_print("- Display: %s\n", display_panel.c_str());
+
+  // device name
+  gui_print("- Device:  %s\n", Fox_Current_Device.c_str());
+
+  // installed ROM
+  rom_desc = GetInstalledRom();
+  if (!rom_desc.empty()) 
+    {  
+  	string tmp = "(non-Treble)";
+  	if (strncmp(fox_is_treble_rom_installed.c_str(), "1", 1) == 0)
+  	   Fox_Current_ROM_IsTreble = 1;
+        
+        if (Fox_Current_ROM_IsTreble == 1)
+           tmp = "(Treble)";
+  	
+  	if (strncmp(fox_is_miui_rom_installed.c_str(), "1", 1) == 0)
+     	  {
+  	     Fox_Current_ROM_IsMIUI = 1;
+  	     gui_print("- MIUI ROM %s", tmp.c_str());
+          } 
+  	else
+     	  {
+  	    gui_print("- Custom ROM %s", tmp.c_str());
+     	  } 
+        gui_print("- %s\n", rom_desc.c_str());
+    }
+    else
+      {
+    	gui_print_color ("warning", "- No ROM.\n");
+      }
+
+   gui_print("**************************\n");  
    return 0;
 }
 

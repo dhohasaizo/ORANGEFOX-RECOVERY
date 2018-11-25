@@ -248,6 +248,10 @@ static int Fox_Current_ROM_IsMIUI = 0; // is the currently installed ROM a MIUI 
 //   tw_sp2_is_mountable
 //   tw_sp3_is_mountable
 
+// Error codes
+// error code 7: device mismatch
+#define TW_ERROR_WRONG_DEVICE 7
+
 // Max archive size for tar backups before we split (1.5GB)
 #define MAX_ARCHIVE_SIZE 1610612736LLU
 //#define MAX_ARCHIVE_SIZE 52428800LLU // 50MB split for testing
