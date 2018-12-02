@@ -2739,10 +2739,14 @@ bool TWFunc::Patch_DM_Verity(void)
 	{
 	  if (TWFunc::CheckWord(path, "ro.config.dmverity="))
 	    {
-              LOGINFO("OrangeFox: DM_Verity flags found in default.prop.\n");
-	      if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
-		TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;",
+                LOGINFO("OrangeFox: DM_Verity flags found in default.prop.\n");
+		found_verity = true;
+	        if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
+	           {
+			status = true;
+		        TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;",
 					     "ro.config.dmverity=false");
+		   }			     
 	    }
 	  else
 	    {
@@ -2848,13 +2852,10 @@ bool TWFunc::Patch_DM_Verity(void)
        LOGINFO("OrangeFox: Partial success - DM-Verity settings not found in fstab, but key file was successfully removed.\n");
     }
   
-  if (found_verity == false)
+  if (found_verity == false && status == false && JustInstalledMiui() == true)
      {
-         if (JustInstalledMiui() == true) 
-         {
-            LOGINFO("OrangeFox: Patch dm-verity failed. This MIUI ROM might not boot without flashing magisk.\n");
-            gui_print_color("warning", "\n\nI could not patch dm-verity.\nTry flashing magisk from the OrangeFox menu now!\n");
-         }
+         LOGINFO("OrangeFox: Patch dm-verity failed. This MIUI ROM might not boot without flashing magisk.\n");
+         gui_print_color("warning", "\nI could not patch dm-verity.\nTry flashing magisk from the OrangeFox menu now!\n");
      } 
        
   LOGINFO("OrangeFox: leaving Patch_DM_Verity()\n");
