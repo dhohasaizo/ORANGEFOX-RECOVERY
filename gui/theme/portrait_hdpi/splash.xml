@@ -4,41 +4,28 @@
 		<resolution width="1080" height="1920"/>
 		<author>OrangeFox dev team</author>
 		<title>OrangeFox</title>
-		<description>splash screen</description>
+		<description>splash author - KMP design</description>
 		<themeversion>3</themeversion>
 	</details>
 	
 	<resources>
-		<font name="splashtext1" filename="RobotoCondensed-Regular.ttf" size="70"/>
-		<font name="splashtext2" filename="RobotoCondensed-Regular.ttf" size="150"/>
-		<font name="splashtext3" filename="RobotoCondensed-Regular.ttf" size="50"/>
+		<font name="splashtext1" filename="RobotoCondensed-Regular.ttf" size="50"/>
 		<image name="splash" filename="splash"/>
 	</resources>
 	
 	<variables>
 		<variable name="background" value="#222222FF"/>
-		<variable name="text" value="#E3E3E3FF"/>
+		<variable name="text" value="#000000"/>
 	</variables>
 
 	<pages>
 		<page name="splash">
 			<background color="%background%"/>		
-
-			<text color="%text%">
-				<font resource="splashtext2"/>
-				<placement x="100" y="150"/>
-				<text>ORANGEFOX</text>
-			</text>
-			<text color="%text%">
-				<font resource="splashtext3"/>
-				<placement x="550" y="330"/>
-				<text>RECOVERY PROJECT</text>
-			</text>
 			
 			<text color="%text%">
 				<font resource="splashtext1"/>
 				<placement x="130" y="1590"/>
-				<text>%tw_version% | OrangeFox-%fox_actual_build%</text>
+				<text>%fox_actual_build%</text>
 			</text>	
 			
 			<object type="image">
@@ -46,6 +33,6 @@
 				<placement x="0" y="0"/>
 			</object>
 
-</page>
-</pages>
+		</page>
+	</pages>
 </recovery>

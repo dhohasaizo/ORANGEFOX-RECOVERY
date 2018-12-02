@@ -2162,7 +2162,7 @@
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="0"/>
 				<placement x="%col1_x%" y="%mb_row8_y%" w="%content_w%" h="%mb_h%"/>
-				<action function="page">btnreboot</action>
+				<action function="overlay">btnreboot</action>
 			</button>
 
 			<fill color="%linecolor%">
@@ -2518,13 +2518,13 @@
 				<text>{@reboot_btn=Reboot}</text>
 				<image resource="button-bes" />
 				<font resource="button-text" color="%text_button%"/>
-				<action function="page">btnreboot</action>
+				<action function="overlay">btnreboot</action>
 			</button>
 
 			<button style="mb_btn">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<placement x="870" y="650" w="%content_a%" h="%mb_h%"/>
-				<action function="page">btnreboot</action>
+				<action function="overlay">btnreboot</action>
 			</button>
 
 			
