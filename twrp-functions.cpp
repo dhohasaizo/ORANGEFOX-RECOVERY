@@ -69,6 +69,24 @@ static string fstab2 = "/vendor/etc";
 int Fox_Current_ROM_IsTreble = 0;
 int New_Fox_Installation = 0;
 
+/* allow skipping DM-Verity and Forced-Encryption, no matter what */
+static bool Skip_DM_Verity_Forced_Encryption_Patches(void)
+{
+  /* first case: avoid nitrogen miui bootloops */
+  if (Fox_Current_Device != "nitrogen")
+     return false;
+
+  // nitrogen: are we on MIUI?
+  if (Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
+     {
+     	gui_print("Device=nitrogen on MIUI - not patching.\n");
+	LOGINFO("OrangeFox: not processing dm-verity and forced-encryption patches for nitrogen.\n");
+        return true;
+     } 
+  else
+     return false;  
+}
+
 /* Have we just installed OrangeFox on a device with a Treble ROM? */
 static bool New_Fox_On_Treble(void)
 {
@@ -1521,7 +1539,7 @@ std::string TWFunc::to_string(unsigned long value)
 
 void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 {
-      if (DataManager::GetIntValue(FOX_DONT_REPLACE_STOCK) == 1)
+      if (DataManager::GetIntValue(FOX_DONT_REPLACE_STOCK) == 1/* || Fox_Current_ROM_IsMIUI == 0*/)
       	return;
       
       if ((DataManager::GetIntValue(FOX_ADVANCED_STOCK_REPLACE) == 1) 
@@ -1779,9 +1797,10 @@ int TWFunc::Check_MIUI_Treble(void)
   string fox_cfg = "/tmp/orangefox.cfg";
   string fox_is_miui_rom_installed = "0";
   string fox_is_treble_rom_installed = "0";
+  Fox_Current_ROM_IsTreble = 0;
+  Fox_Current_ROM_IsMIUI = 0;
   string display_panel;
   string rom_desc;
-  Fox_Current_ROM_IsTreble = 0;
   
   if (TWFunc::Path_Exists(fox_cfg)) 
     {
@@ -2663,14 +2682,6 @@ bool TWFunc::Fresh_Fox_Install()
 	  {
 	     unlink(fox_file.c_str());
 	     gui_print("Fresh OrangeFox installation\n");
-	     // R9.0
-	     if (Fox_Current_Device == "nitrogen")
-	       {
-	          gui_print("Device=nitrogen. Not patching.\n");
-	          LOGINFO("OrangeFox: not processing fresh install patch for nitrogen.\n");
-	          return false;
-	       }
-	     // end R9.0
 	     Fox_Force_Deactivate_Process = 1;
 	     DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
 	     New_Fox_Installation = 1;
@@ -2833,6 +2844,7 @@ bool TWFunc::Patch_DM_Verity(void)
 	    }
 	}
       closedir(d1);
+      chmod(path.c_str(), 0644);
       if (PartitionManager.Is_Mounted_By_Path("/system"))
 	  PartitionManager.UnMount_By_Path("/system", false);
 	
@@ -3027,7 +3039,7 @@ bool TWFunc::Patch_Forced_Encryption(void)
 	   }
 	}
       closedir(d1);
-     
+      chmod(path.c_str(), 0644);
        if (PartitionManager.Is_Mounted_By_Path("/system"))
     	      PartitionManager.UnMount_By_Path("/system", false);
     
@@ -3159,6 +3171,15 @@ void TWFunc::Deactivation_Process(void)
       PartitionManager.UnMount_By_Path("/system", false);
     }
 
+  // nitrogen patch; R9.0
+  if (Skip_DM_Verity_Forced_Encryption_Patches() == true)
+     {          
+        Fox_Force_Deactivate_Process = 0;
+        DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);	
+	return;
+     }
+  // end nitrogen patch
+ 
   // unpack boot image
   if (!Unpack_Image("/boot"))
      {

@@ -1312,7 +1312,7 @@ void DataManager::Leds(bool enable)
 
   if (!TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
   {
-    LOGINFO("DEBUG - founded white led on /sys/class/leds/white/ path");
+    LOGINFO("DEBUG - found white led on /sys/class/leds/white/ path");
     TWFunc::read_file("/sys/class/leds/white/max_brightness", max_brt);
     TWFunc::write_to_file("/sys/class/leds/white/brightness", max_brt);
   }
