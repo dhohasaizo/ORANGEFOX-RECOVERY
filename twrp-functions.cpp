@@ -72,15 +72,15 @@ int New_Fox_Installation = 0;
 /* allow skipping DM-Verity and Forced-Encryption, no matter what */
 static bool Skip_DM_Verity_Forced_Encryption_Patches(void)
 {
-  /* first case: avoid nitrogen miui bootloops */
-  if (Fox_Current_Device != "nitrogen")
+  /* first case: avoid nitrogen & tulip miui bootloops */
+  if ((Fox_Current_Device != "nitrogen") && (Fox_Current_Device != "tulip"))
      return false;
 
-  // nitrogen: are we on MIUI?
+  // nitrogen/tulip: are we on MIUI?
   if (Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
      {
-     	gui_print("Device=nitrogen on MIUI - not patching.\n");
-	LOGINFO("OrangeFox: not processing dm-verity and forced-encryption patches for nitrogen.\n");
+     	gui_print("Device=%s on MIUI - not patching.\n", Fox_Current_Device.c_str());
+	LOGINFO("OrangeFox: not processing dm-verity and forced-encryption patches for %s.\n", Fox_Current_Device.c_str());
         return true;
      } 
   else
