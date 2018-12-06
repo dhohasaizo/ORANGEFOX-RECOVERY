@@ -644,15 +644,16 @@ int OpenRecoveryScript::Run_OpenRecoveryScript_Action()
 
 	if (reboot || code1 == 3 || code2 == 3) 
 	  {
+ 		// Disable stock recovery reflashing
+		TWFunc::Disable_Stock_Recovery_Replace();
+    		
+    		// run dm-verity + disabled forced-encryption
 		if (DataManager::GetIntValue(FOX_CALL_DEACTIVATION) != 0) 
 	          {
 		     TWFunc::Deactivation_Process();
 		     DataManager::SetValue(FOX_CALL_DEACTIVATION, 0);
 		   }
  		
- 		//Disable stock recovery reflashing
-		TWFunc::Disable_Stock_Recovery_Replace();
-    		
     		// have we disabled auto-reboot?
     		if (code1 == 3 || code2 == 3) 
        		  { 

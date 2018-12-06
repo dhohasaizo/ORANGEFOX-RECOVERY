@@ -2693,12 +2693,6 @@ bool TWFunc::Fresh_Fox_Install()
 	  {
 	     unlink(fox_file.c_str());
 	     gui_print("Fresh OrangeFox installation\n");
-	     if (skip_patching_this_device() == true)
-	       {
-		 gui_print("OrangeFox: not patching boot image for fresh installation on device: %s\n",Fox_Current_Device.c_str());
-		 LOGINFO("OrangeFox: skipping patching of boot image on fresh installation on device: %s\n",Fox_Current_Device.c_str());
-	         return false;
-	       }
 	     Fox_Force_Deactivate_Process = 1;
 	     DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
 	     New_Fox_Installation = 1;
@@ -3188,11 +3182,17 @@ void TWFunc::Deactivation_Process(void)
     }
 
   // nitrogen/tulip patch; R9.0
-  if (Skip_DM_Verity_Forced_Encryption_Patches() == true)
-     {          
-        Fox_Force_Deactivate_Process = 0;
-        DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);	
-	return;
+  if (skip_patching_this_device() == true)
+     {
+     	if (New_Fox_Installation == 1 || Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
+     	   {
+	      gui_print("Not patching boot image on %s\n",Fox_Current_Device.c_str());
+	      LOGINFO("OrangeFox: skipping patching of boot image on device: %s\n",Fox_Current_Device.c_str());
+	      New_Fox_Installation = 0;
+              Fox_Force_Deactivate_Process = 0;
+              DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);	
+	      return;
+	   }
      }
   // end nitrogen/tulip patch
  
