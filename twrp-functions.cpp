@@ -69,14 +69,26 @@ static string fstab2 = "/vendor/etc";
 int Fox_Current_ROM_IsTreble = 0;
 int New_Fox_Installation = 0;
 
+/* devices to avoid patching */
+static bool skip_patching_this_device(void)
+{
+/* first case: avoid nitrogen & tulip miui bootloops */
+  if (
+     (Fox_Current_Device == "nitrogen") 
+  || (Fox_Current_Device == "tulip")
+     )
+     return true;
+   else
+     return false;
+}
+
 /* allow skipping DM-Verity and Forced-Encryption, no matter what */
 static bool Skip_DM_Verity_Forced_Encryption_Patches(void)
 {
-  /* first case: avoid nitrogen & tulip miui bootloops */
-  if ((Fox_Current_Device != "nitrogen") && (Fox_Current_Device != "tulip"))
+  if (skip_patching_this_device() == false)
      return false;
 
-  // nitrogen/tulip: are we on MIUI?
+  // are we on MIUI?
   if (Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
      {
      	gui_print("Device=%s on MIUI - not patching.\n", Fox_Current_Device.c_str());
@@ -2675,13 +2687,18 @@ bool TWFunc::Fresh_Fox_Install()
       {
 	if (!Path_Exists(fox_file))
 	{
-	    //gui_print("OrangeFox: not a fresh OrangeFox install\n.");
 	    return false;
 	}
 	else
 	  {
 	     unlink(fox_file.c_str());
 	     gui_print("Fresh OrangeFox installation\n");
+	     if (skip_patching_this_device() == true)
+	       {
+		 gui_print("OrangeFox: not patching boot image for fresh installation on device: %s\n",Fox_Current_Device.c_str());
+		 LOGINFO("OrangeFox: skipping patching of boot image on fresh installation on device: %s\n",Fox_Current_Device.c_str());
+	         return false;
+	       }
 	     Fox_Force_Deactivate_Process = 1;
 	     DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
 	     New_Fox_Installation = 1;
@@ -2692,7 +2709,6 @@ bool TWFunc::Fresh_Fox_Install()
      }    
      else
        {
-          //gui_print("OrangeFox: Cannot mount /cache\n.");
           return false;
        }
 }
@@ -3171,14 +3187,14 @@ void TWFunc::Deactivation_Process(void)
       PartitionManager.UnMount_By_Path("/system", false);
     }
 
-  // nitrogen patch; R9.0
+  // nitrogen/tulip patch; R9.0
   if (Skip_DM_Verity_Forced_Encryption_Patches() == true)
      {          
         Fox_Force_Deactivate_Process = 0;
         DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);	
 	return;
      }
-  // end nitrogen patch
+  // end nitrogen/tulip patch
  
   // unpack boot image
   if (!Unpack_Image("/boot"))
