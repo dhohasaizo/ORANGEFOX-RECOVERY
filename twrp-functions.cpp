@@ -76,6 +76,7 @@ static bool skip_patching_this_device(void)
   if (
      (Fox_Current_Device == "nitrogen") 
   || (Fox_Current_Device == "tulip")
+  || (Fox_Current_Device == "sakura")
      )
      return true;
    else
