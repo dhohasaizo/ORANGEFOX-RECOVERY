@@ -4391,6 +4391,7 @@
 				<touch key="back"/>
 				<actions>
 					<action function="cancelzip"/>
+					<action function="queueclear"/>
 					<action function="page">install</action>
 				</actions>
 			</action>
