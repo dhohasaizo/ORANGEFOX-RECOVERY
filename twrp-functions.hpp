@@ -73,7 +73,7 @@ public:
 	static void Replace_Word_In_File(string file_path, string search); // Remove string from file	
 	static void Remove_Word_From_File(string file_path, string search); // Remove string from file	
 	static void Set_New_Ramdisk_Property(std::string file_path, std::string prop, bool enable); // Set new property for default.prop in unpacked ramdisk
-	static void Dumwolf(bool do_unpack, bool is_boot);                          // Unpacking/repacking process for boot/recovery images
+	static bool PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot);       // Unpacking/repacking process for boot/recovery images, using magiskboot
 	static void htc_dumlock_restore_original_boot(void);                        // Restores the backup of boot from HTC Dumlock
 	static void htc_dumlock_reflash_recovery_to_boot(void);                     // Reflashes the current recovery to boot
 
@@ -132,6 +132,7 @@ private:
     	static bool Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
     	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
     	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
+    	static void PrepareToFinish(void); // call this only when we are about to shutdown or reboot
 };
 
 extern int Log_Offset;

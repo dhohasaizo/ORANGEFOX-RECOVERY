@@ -2675,13 +2675,13 @@ int GUIAction::removepassword(std::string arg __unused)
 	std::string dd = "dd";
   	std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
 	gui_msg ("fox_remove_access_password_one=Removing recovery access password...");
-	//TWFunc::Dumwolf(true, false);
+	//TWFunc::PackRepackImage_MagiskBoot(true, false);
 	if (TWFunc::Unpack_Image("/recovery"))
 	   {
 	  	if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
 	    	{
 	      		TWFunc::create_fingerprint_file(password_file, dd);
-	      		//TWFunc::Dumwolf(false, false);
+	      		//TWFunc::PackRepackImage_MagiskBoot(false, false);
 	      		TWFunc::Repack_Image("/recovery");
 	      		DataManager::SetValue(FOX_PASSWORD_VARIABLE, dd);
 	      		gui_msg("update_part_details_done=...done");
@@ -2709,13 +2709,13 @@ int GUIAction::setpassword(std::string arg)
     {
 	std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
 	gui_msg ("fox_set_new_access_password=Changing recovery access password...");
-	//TWFunc::Dumwolf(true, false);
+	//TWFunc::PackRepackImage_MagiskBoot(true, false);
 	if (TWFunc::Unpack_Image("/recovery"))
 	   {
 	  	if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
 	    	{
 	      		TWFunc::create_fingerprint_file(password_file, arg);
-	      		//TWFunc::Dumwolf(false, false);
+	      		//TWFunc::PackRepackImage_MagiskBoot(false, false);
 	      		TWFunc::Repack_Image("/recovery");
 	      		DataManager::SetValue(FOX_PASSWORD_VARIABLE, arg);
 	      		gui_msg("update_part_details_done=...done");
@@ -2741,7 +2741,7 @@ int GUIAction::wlfw(std::string arg __unused)
     }
   else
     {
-      //TWFunc::Dumwolf(true, false);
+      //TWFunc::PackRepackImage_MagiskBoot(true, false);
       TWFunc::Unpack_Image("/recovery");
     }
   operation_end(0);
@@ -2757,7 +2757,7 @@ int GUIAction::wlfx(std::string arg __unused)
     }
   else
     {
-      //TWFunc::Dumwolf(false, false);
+      //TWFunc::PackRepackImage_MagiskBoot(false, false);
       TWFunc::Repack_Image("/recovery");
     }
   operation_end(0);
@@ -2778,14 +2778,14 @@ int GUIAction::changesplash(std::string arg __unused)
 	  DataManager::GetValue("tw_splash_png_path", path);
 	  DataManager::GetValue("tw_splash_png_name", filename);
 	  std::string filepath = path + "/" + filename;
-	  //TWFunc::Dumwolf(true, false);
+	  //TWFunc::PackRepackImage_MagiskBoot(true, false);
 	  if (TWFunc::Unpack_Image("/recovery"))
 	     {
 	  	if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
 	    	{
 	      		unlink(ramdisk_path.c_str());
 	      		TWFunc::copy_file(filepath, ramdisk_path, 0644);
-	      		//TWFunc::Dumwolf(false, false);
+	      		//TWFunc::PackRepackImage_MagiskBoot(false, false);
 	      		TWFunc::Repack_Image("/recovery");
 	    	}
 	  	else
