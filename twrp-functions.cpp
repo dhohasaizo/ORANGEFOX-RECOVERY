@@ -3004,7 +3004,7 @@ bool TWFunc::Patch_DM_Verity(void)
 
       if (treble == 1 || New_Fox_On_Treble())
       {
-         if (PartitionManager.Mount_By_Path("/vendor", false))      
+          if ((PartitionManager.Is_Mounted_By_Path("/vendor")) || (PartitionManager.Mount_By_Path("/vendor", false)))
 	   {
 	      d1 = opendir(fstab2.c_str());
 	      stat = 2;
@@ -3013,7 +3013,7 @@ bool TWFunc::Patch_DM_Verity(void)
 
      if (d1 == NULL)
 	{
-	  if (PartitionManager.Mount_By_Path("/system", false))
+          if ((PartitionManager.Is_Mounted_By_Path("/system")) || (PartitionManager.Mount_By_Path("/system", false)))
 	     {
 	        d1 = opendir(fstab1.c_str());
 	        stat = 1;
@@ -3094,6 +3094,7 @@ bool TWFunc::Patch_DM_Verity(void)
 	    path = fstab2 + "/default.prop";
 	  else
 	    path = fstab1 + "/default.prop";
+	    
 	  if (TWFunc::CheckWord(path, "ro.config.dmverity="))
 	    {
 	      if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
@@ -3102,12 +3103,15 @@ bool TWFunc::Patch_DM_Verity(void)
 	    }
 	}
       //end
-     
-      if (PartitionManager.Is_Mounted_By_Path("/system"))
-	  PartitionManager.UnMount_By_Path("/system", false);
+
+      if (New_Fox_Installation != 1)
+         {
+      		if (PartitionManager.Is_Mounted_By_Path("/system"))
+	  		PartitionManager.UnMount_By_Path("/system", false);
 	
-       if (PartitionManager.Is_Mounted_By_Path("/vendor"))
-	  PartitionManager.UnMount_By_Path("/vendor", false);
+       		if (PartitionManager.Is_Mounted_By_Path("/vendor"))
+	  		PartitionManager.UnMount_By_Path("/vendor", false);
+	 }
     } // stat == 0
 
   if (TWFunc::Path_Exists(firmware_key))
@@ -3227,7 +3231,7 @@ bool TWFunc::Patch_Forced_Encryption(void)
 
       if (treble == 1 || New_Fox_On_Treble())
       {
-         if (PartitionManager.Mount_By_Path("/vendor", false))      
+         if ((PartitionManager.Is_Mounted_By_Path("/vendor")) || (PartitionManager.Mount_By_Path("/vendor", false)))
 	   {
 	      d1 = opendir(fstab2.c_str());
 	      stat = 2;
@@ -3236,7 +3240,7 @@ bool TWFunc::Patch_Forced_Encryption(void)
 
      if (d1 == NULL)
 	{
-	  if (PartitionManager.Mount_By_Path("/system", false))
+          if ((PartitionManager.Is_Mounted_By_Path("/system")) || (PartitionManager.Mount_By_Path("/system", false)))
 	     {
 	        d1 = opendir(fstab1.c_str());
 	        stat = 1;
@@ -3291,11 +3295,16 @@ bool TWFunc::Patch_Forced_Encryption(void)
 	}
       closedir(d1);
       chmod(path.c_str(), 0644);
-       if (PartitionManager.Is_Mounted_By_Path("/system"))
-    	      PartitionManager.UnMount_By_Path("/system", false);
+
+      if (New_Fox_Installation != 1)
+         {
+       		if (PartitionManager.Is_Mounted_By_Path("/system"))
+    	      		PartitionManager.UnMount_By_Path("/system", false);
     
-       if (PartitionManager.Is_Mounted_By_Path("/vendor"))
-    	      PartitionManager.UnMount_By_Path("/vendor", false);   	
+       		if (PartitionManager.Is_Mounted_By_Path("/vendor"))
+    	      		PartitionManager.UnMount_By_Path("/vendor", false);
+    	  }
+    	  
   } // stat == 0   
   LOGINFO("OrangeFox: leaving Patch_Forced_Encyption()\n");
   return status;
@@ -3367,7 +3376,7 @@ void TWFunc::PrepareToFinish(void)
    // unmount stuff
    if (PartitionManager.Is_Mounted_By_Path("/vendor"))
 	PartitionManager.UnMount_By_Path("/vendor", false);
-   else 
+   //else 
    if (PartitionManager.Is_Mounted_By_Path("/cust"))
 	PartitionManager.UnMount_By_Path("/cust", false);
   
