@@ -3022,7 +3022,7 @@ bool TWFunc::Patch_DM_Verity(void)
  
       if (d1 == NULL)
         {
-	    gui_print ("OrangeFox: DM-Verity patch failed. Reboot OrangeFox and try again.\n");     
+	    gui_print ("OrangeFox: DM-Verity patch failed - cannot mount system/vendor. Reboot OrangeFox and try again.\n");     
 	    if (stat == 2)
 		LOGINFO("Unable to open '%s'\n", fstab2.c_str());
 	    else 
@@ -3121,16 +3121,18 @@ bool TWFunc::Patch_DM_Verity(void)
       unlink(firmware_key.c_str());
     }
 
+  #ifndef USE_MAGISKBOOT
   if ((status == true) && (found_verity == false))
     {
        LOGINFO("OrangeFox: Partial success - DM-Verity settings not found in fstab, but key file was successfully removed.\n");
     }
-  
+    
   if (found_verity == false && status == false && JustInstalledMiui() == true)
      {
-         LOGINFO("OrangeFox: Patch dm-verity failed. This MIUI ROM might not boot without flashing magisk.\n");
+         LOGINFO("OrangeFox: Dm-verity not patched. This MIUI ROM might not boot without flashing magisk.\n");
          gui_print_color("warning", "\nI could not patch dm-verity.\nTry flashing magisk from the OrangeFox menu now!\n");
      } 
+  #endif
        
   LOGINFO("OrangeFox: leaving Patch_DM_Verity()\n");
   return status;
@@ -3249,7 +3251,7 @@ bool TWFunc::Patch_Forced_Encryption(void)
  
       if (d1 == NULL)
         {
-	    gui_print ("OrangeFox: Forced-Encryption patch failed. Reboot OrangeFox and try again.\n");
+	    gui_print ("OrangeFox: Forced-Encryption not patched - cannot mount system/vendor. Reboot OrangeFox and try again.\n");
 	    if (stat == 2)
 		LOGINFO("Unable to open '%s'\n", fstab2.c_str());
 	    else 
