@@ -122,6 +122,7 @@ public:
 	static int  Check_MIUI_Treble(void); // check whether we are running a MIUI or Treble ROM 
     	static bool Fresh_Fox_Install(void); // have we just installed OrangeFox - do some stuff?
     	static bool JustInstalledMiui(void); // has a MIUI ROM just been installed?
+    	static bool RunStartupScript(void); // run startup script if not already run by init
 
 private:
 	static void Copy_Log(string Source, string Destination);

@@ -170,6 +170,19 @@ static bool StorageIsEncrypted(void)
   return (Get_Property("ro.crypto.state") == "encrypted");
 }
 
+/* run startup script, if not already run by init */
+bool TWFunc::RunStartupScript(void)
+{
+string tprop = Get_Property("orangefox.postinit.status");
+bool i = Path_Exists("/tmp/orangefox.cfg");
+   
+   if (i == true || tprop == "1")
+     return false;
+   
+   Exec_Cmd(FOX_STARTUP_SCRIPT);
+   return true;
+}
+
 /* Execute a command */
 int TWFunc::Exec_Cmd(const string & cmd, string & result)
 {

@@ -124,23 +124,16 @@ int main(int argc, char **argv)
 
   // Load default values to set DataManager constants and handle ifdefs
   DataManager::SetDefaultValues();
+
+  /* OrangeFox Startup Script */
+  TWFunc::RunStartupScript();
+  /* OrangeFox Startup Script */
+      
   printf("Starting the UI...\n");
   gui_init();
+
   printf("=> Linking mtab\n");
   symlink("/proc/mounts", "/etc/mtab");
-  /*OrangeFox_Startup
-  if (TWFunc::Path_Exists("/etc/orangefox.fstab"))
-    {
-      if (TWFunc::Path_Exists("/etc/recovery.fstab"))
-	{
-	  printf
-	    ("Renaming regular /etc/recovery.fstab -> /etc/recovery.fstab.bak\n");
-	  rename("/etc/recovery.fstab", "/etc/recovery.fstab.bak");
-	}
-      printf("Moving /etc/orangefox.fstab -> /etc/recovery.fstab\n");
-      rename("/etc/orangefox.fstab", "/etc/recovery.fstab");
-    }
-   */
   printf("=> Processing recovery.fstab\n");
   if (!PartitionManager.Process_Fstab("/etc/recovery.fstab", 1))
     {

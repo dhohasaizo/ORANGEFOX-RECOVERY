@@ -120,8 +120,8 @@ on property:service.adb.root=1
     write /sys/class/android_usb/android0/enable 1
 
 # DJ9 - run custom post_init script
-on property:init.svc.set_permissive=stopped
-    chmod 0755 /sbin/fox_post_init.sh
-    chmod 0755 /sbin/findmiui.sh
-    exec u:r:init:s0 -- /sbin/findmiui.sh    
-    exec u:r:init:s0 -- /sbin/fox_post_init.sh
+#on property:init.svc.set_permissive=stopped
+#    chmod 0755 /sbin/findmiui.sh
+#    exec u:r:init:s0 -- /sbin/findmiui.sh
+#    chmod 0755 /sbin/fox_post_init.sh
+#    exec u:r:init:s0 -- /sbin/fox_post_init.sh
