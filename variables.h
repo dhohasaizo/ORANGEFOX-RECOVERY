@@ -28,6 +28,10 @@
 #define OF_FLASHLIGHT_ENABLE_STR "of_flashlight_enable"
 #define FOX_NOTCH_STR "fox_notch"
 
+// whether to use magiskboot for unpacking/repacking boot image and verity/encryption patches
+// ###define OF_USE_MAGISKBOOT 1
+// to enable this, export "OF_USE_MAGISKBOOT=1" in the environment before building
+
 // *** OrangeFox - Variables ** //
 #include <stdio.h>
 #include <stdlib.h>

@@ -59,6 +59,10 @@ ifeq ($(OF_USE_GREEN_LED),1)
     LOCAL_CFLAGS += -DOF_USE_GREEN_LED='"1"'
 endif
 
+ifeq ($(OF_USE_MAGISKBOOT),1)
+    LOCAL_CFLAGS += -DOF_USE_MAGISKBOOT='"1"'
+endif
+
 ifneq ($(OF_MAINTAINER),)
     LOCAL_CFLAGS += -DOF_MAINTAINER='"$(OF_MAINTAINER)"'
 else

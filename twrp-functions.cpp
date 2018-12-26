@@ -63,10 +63,6 @@ extern "C"
 #include "libcrecovery/common.h"
 }
 
-// R9.0 - whether to use magiskboot for unpacking/repacking boot image and verity/encryption patches
-#define USE_MAGISKBOOT 1
-// R9.0
-
 static string tmp = Fox_tmp_dir;
 static string split_img = tmp + "/split_img";
 static string ramdisk = tmp + "/ramdisk";
@@ -100,16 +96,16 @@ static void AppendLineToFile(string file_path, string line)
 static bool skip_patching_this_device(void)
 {
 /* first case: avoid nitrogen/tulip/sakura miui bootloops */
-#ifdef USE_MAGISKBOOT
+#ifdef OF_USE_MAGISKBOOT
   return false;
 #else
-  if (
+  /*if (
      (Fox_Current_Device == "nitrogen") 
   || (Fox_Current_Device == "tulip")
   || (Fox_Current_Device == "sakura")
      )
      return true;
-   else
+   else */
      return false;
 #endif
 }
@@ -2957,8 +2953,8 @@ bool TWFunc::Patch_DM_Verity(void)
       path = ramdisk + "/" + cmp;
       if (cmp.find("fstab.") != string::npos)
 	{
-	  #ifndef USE_MAGISKBOOT
-	  gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
+	  #ifndef OF_USE_MAGISKBOOT
+	  //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
 	  #endif
 	  stat = 1;
 	  if (!status)
@@ -3057,8 +3053,8 @@ bool TWFunc::Patch_DM_Verity(void)
 	  
 	  if (cmp.find("fstab.") != string::npos)
 	    {
-	      #ifndef USE_MAGISKBOOT
-	      gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
+	      #ifndef OF_USE_MAGISKBOOT
+	      //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
 	      #endif
 	      if (!status)
 		{
@@ -3134,7 +3130,7 @@ bool TWFunc::Patch_DM_Verity(void)
       unlink(firmware_key.c_str());
     }
 
-  #ifndef USE_MAGISKBOOT
+  #ifndef OF_USE_MAGISKBOOT
   if ((status == true) && (found_verity == false))
     {
        LOGINFO("OrangeFox: Partial success - DM-Verity settings not found in fstab, but key file was successfully removed.\n");
@@ -3217,8 +3213,8 @@ bool TWFunc::Patch_Forced_Encryption(void)
 	{
 	  if (encryption != 1)
 	    {
-	      #ifndef USE_MAGISKBOOT
-	      gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
+	      #ifndef OF_USE_MAGISKBOOT
+	      //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
 	      #endif
 	      stat = 1;
 	    }
@@ -3287,8 +3283,8 @@ bool TWFunc::Patch_Forced_Encryption(void)
 	      
 	      if (encryption != 1)
 		{
-		  #ifndef USE_MAGISKBOOT
-		  gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
+		  #ifndef OF_USE_MAGISKBOOT
+		  //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
 		  #endif
 		  stat = 1;
 		}
@@ -3472,7 +3468,7 @@ void TWFunc::Deactivation_Process(void)
   // end nitrogen/tulip patch
  
   // unpack boot image
-  #ifdef USE_MAGISKBOOT
+  #ifdef OF_USE_MAGISKBOOT
   if (!PackRepackImage_MagiskBoot(true, true))
   #else
   if (!Unpack_Image("/boot"))
@@ -3495,7 +3491,7 @@ void TWFunc::Deactivation_Process(void)
 	  }
 	  else
 	  {
-	  #ifndef USE_MAGISKBOOT
+	  #ifndef OF_USE_MAGISKBOOT
 	     gui_msg("of_dm_verity_off=DM-Verity is not enabled");
 	  #endif   
 	  }
@@ -3510,7 +3506,7 @@ void TWFunc::Deactivation_Process(void)
 	     }
 	  else
 	     {
-	     #ifndef USE_MAGISKBOOT
+	     #ifndef OF_USE_MAGISKBOOT
 	        gui_msg("of_encryption_off=Forced Encryption is not enabled");
 	     #endif   
 	     }  
@@ -3520,7 +3516,7 @@ void TWFunc::Deactivation_Process(void)
   Patch_Others();
 
   // repack the boot image
-  #ifdef USE_MAGISKBOOT
+  #ifdef OF_USE_MAGISKBOOT
   if (!PackRepackImage_MagiskBoot(false, true))
   #else
   if (!Repack_Image("/boot"))
