@@ -4612,3 +4612,9 @@ void TWPartitionManager::Notify_On_Finished_Restore(void)
       TWFunc::write_to_file(vibrate_path, install_vibrate_value);
     }
 }
+
+bool TWPartitionManager::Partition_Is_Encrypted(const string Path)
+{
+  TWPartition *Part = Find_Partition_By_Path(Path);
+  return (Part && Part->Is_Encrypted);
+}

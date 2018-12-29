@@ -163,7 +163,8 @@ static string GetDeviceName(void)
 /* Return whether the device's storage is encrypted */
 static bool StorageIsEncrypted(void)
 {
-  return (Get_Property("ro.crypto.state") == "encrypted");
+  return PartitionManager.Partition_Is_Encrypted("/data");
+ // return DataManager::GetIntValue(TW_IS_ENCRYPTED) != 0;
 }
 
 /* run startup script, if not already run by init */
