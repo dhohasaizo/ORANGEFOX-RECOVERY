@@ -8742,7 +8742,10 @@
 			<button>
 				<placement x="%ab_btn1_x%" y="%row1_0_y%"/>
 				<image resource="actionbar_date"/>
-				<action function="appenddatetobackupname"/>
+				<actions>
+					<action function="appenddatetobackupname"/>
+					<action function="page">backupname2</action>
+				</actions>
 			</button>
 
 			<fill color="%accent%">
