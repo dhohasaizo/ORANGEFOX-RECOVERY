@@ -1856,6 +1856,10 @@ int TWFunc::Check_MIUI_Treble(void)
   string display_panel;
   string rom_desc;
   
+  // * run startup script
+  RunStartupScript();
+  // *
+  
   if (TWFunc::Path_Exists(fox_cfg)) 
     {
   	fox_is_miui_rom_installed = TWFunc::File_Property_Get (fox_cfg, "MIUI");

@@ -125,9 +125,8 @@ int main(int argc, char **argv)
   // Load default values to set DataManager constants and handle ifdefs
   DataManager::SetDefaultValues();
 
-  /* OrangeFox Startup Script */
-  TWFunc::RunStartupScript();
-  /* OrangeFox Startup Script */
+  /* OrangeFox Startup Script [now called in twrp-functions.cpp]
+  //  TWFunc::RunStartupScript(); */ 
       
   printf("Starting the UI...\n");
   gui_init();
@@ -402,7 +401,7 @@ int main(int argc, char **argv)
   // Fixup the RTC clock on devices which require it
   if (crash_counter == 0)
     TWFunc::Fixup_Time_On_Boot();
-	
+
   // Run any outstanding OpenRecoveryScript
   if ((DataManager::GetIntValue(TW_IS_ENCRYPTED) == 0 || SkipDecryption) && (TWFunc::Path_Exists(SCRIPT_FILE_TMP) || TWFunc::Path_Exists(SCRIPT_FILE_CACHE))) 
      {
@@ -439,7 +438,7 @@ int main(int argc, char **argv)
     }
 #endif
   
-  // call OrangeFox startup code 
+  // call OrangeFox startup code
   TWFunc::OrangeFox_Startup();
 
 #ifndef TW_OEM_BUILD
