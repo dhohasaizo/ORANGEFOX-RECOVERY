@@ -13623,7 +13623,7 @@
 				<condition var1="fox_menu3_info" var2="0"/>
 				<placement x="600" y="190"/>
 				<image resource="btn_info"/>
-				<text>    Info</text>
+				<text>{@fox_button_info=}</text>
 				<highlight color="%highlight_color%"/>
 				<action function="set">fox_menu3_info=1</action>
 			</button>
@@ -13632,7 +13632,7 @@
 				<condition var1="fox_menu3_info" var2="1"/>
 				<placement x="600" y="190"/>
 				<image resource="btn_close"/>
-				<text>    Close</text>
+				<text>{@fox_button_close=}</text>
 				<highlight color="%highlight_color%"/>
 				<action function="set">fox_menu3_info=0</action>
 			</button>

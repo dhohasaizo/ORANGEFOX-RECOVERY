@@ -934,6 +934,11 @@
 			<string name="fox_forced_encryption_chk">Disable Forced Encryption</string>
 			<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Prevent auto reboot after installing OTA</string>
 
+		<!-- OrangeFox float buttons -->
+		<!-- Please leave spaces -->
+		<string name="fox_button_close">    Close</string>
+		<string name="fox_button_info">    Info</string>
+
 		<!-- OrangeFox files damaged -->
 		<string name="fox_prebuilt_fox_not_exist_hdr">File doesn't exist!</string>
 		<string name="fox_prebuilt_fox_not_exist_1">Please reflash recovery</string>
