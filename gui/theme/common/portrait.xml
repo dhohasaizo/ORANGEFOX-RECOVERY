@@ -13658,9 +13658,6 @@
 				<listitem name="{@fox_advanced_stock_recovery}">
 					<data variable="fox_reboot_advanced_stock_recovery_check"/>
 				</listitem>
-				<listitem name="{@fox_disable_boot_chk}">
-					<data variable="fox_disable_boot_check"/>
-				</listitem>
 				<listitem name="{@fox_dmverity_chk}">
 					<data variable="fox_reboot_dm_verity_check"/>
 				</listitem>
@@ -13687,7 +13684,6 @@
 					<action function="set">fox_include_system_survival=0</action>
 					<action function="set">fox_verify_incremental_ota_signature=0</action>
 					<action function="set">fox_reboot_advanced_stock_recovery_check=0</action>
-					<action function="set">fox_disable_boot_check=0</action>
 					<action function="set">fox_reboot_forced_encryption_check=0</action>
 					<action function="set">fox_disable_ota_auto_reboot_check=0</action>
 				</actions>
@@ -13702,7 +13698,6 @@
 					<action function="set">fox_include_system_survival=1</action>
 					<action function="set">fox_verify_incremental_ota_signature=1</action>
 					<action function="set">fox_reboot_advanced_stock_recovery_check=1</action>
-					<!-- action function="set">fox_disable_boot_check=1</action -->
 					<action function="set">fox_reboot_dm_verity_check=1</action>
 					<action function="set">fox_reboot_forced_encryption_check=1</action>
 					<action function="set">fox_disable_ota_auto_reboot_check=1</action>
