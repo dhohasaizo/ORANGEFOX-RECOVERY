@@ -132,6 +132,11 @@
 			<font resource="button-y" color="%text%"/>
 		</style>
 
+		<style name="btn_info_small">
+			<highlight color="%highlight_color%"/>
+			<font resource="button-s" color="%text-float_button%"/>
+		</style>
+
 		<style name="navigate_left">
 			<highlight color="%highlight_color%"/>
 			<image resource="navigate_left"/>

@@ -4307,10 +4307,12 @@
 				<text>{@install_zip_hdr=Install Zip}</text>
 			</text>
 
-			<button>
-				<condition var1="tw_zip_queue_count" op="!=" var2="20"/>
-				<placement x="%btn_float_x%" y="%row1_2_y%"/>
-				<image resource="btn_float_addtoqueue" highlightresource="btn_float_addtoqueue_hl"/>
+			<button style="btn_info_small">
+				<condition var1="tw_zip_queue_count" op="!=" var2="11"/>
+				<placement x="600" y="%row1_2_y%"/>
+				<image resource="btn_float_addtoqueue"/>
+				<text>{@fox_button_add_zip=}</text>
+				<highlight color="%highlight_color%"/>
 				<action function="page">add_zip</action>
 			</button>
 
@@ -4321,7 +4323,7 @@
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@zip_queue_count=%tw_zip_queue_count% of max of 10 Files queued}</text>
+				<text>{@zip_queue_count}</text>
 			</text>
 
 			<text style="caption">
@@ -4340,7 +4342,7 @@
 			</text>
 
 			<text style="text_body2">
-				<placement x="%col1_x%" y="%row3_3_y%"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
 				<text>%tw_zip_location%</text>
 			</text>
 
@@ -4370,6 +4372,7 @@
 			</button>
 
 			<button style="btn_raised_hl">
+				<condition var1="tw_zip_queue_count" op="&gt;" var2="1"/>
 				<placement x="%btn_raised_right_x%" y="%row6_3_y%" placement="1"/>
 				<text>{@raised_clearqueue_btn=CLEAR QUEUE}</text>
 				<actions>
@@ -4421,10 +4424,12 @@
 				<text>{@install_zip_hdr=Install Zip}</text>
 			</text>
 
-			<button>
-				<condition var1="tw_zip_queue_count" op="!=" var2="10"/>
-				<placement x="%btn_float_x%" y="%row1_2_y%"/>
-				<image resource="btn_float_addtoqueue" highlightresource="btn_float_addtoqueue_hl"/>
+			<button style="btn_info_small">
+				<condition var1="tw_zip_queue_count" op="!=" var2="11"/>
+				<placement x="600" y="%row1_2_y%"/>
+				<image resource="btn_float_addtoqueue"/>
+				<text>{@fox_button_add_zip=}</text>
+				<highlight color="%highlight_color%"/>
 				<action function="page">add_zip</action>
 			</button>
 
@@ -14036,7 +14041,7 @@
 				<listitem name="{@fox_theme_dark}">
 					<data variable="fox_dark"/>
 				</listitem>
-				<listitem name="{@fox_theme_white}">
+				<listitem name="{@fox_theme_white} (Beta)">
 					<data variable="fox_white"/>
 				</listitem>
 			</listbox>

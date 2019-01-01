@@ -62,7 +62,7 @@
 		<string name="queue_hdr">Queue</string>
 		<string name="raised_clearqueue_btn">Clear queue</string>
 		<string name="raised_viewqueue_btn">View queue</string>
-		<string name="zip_queue_count">%tw_zip_queue_count% of max of 10 Files queued</string>
+		<string name="zip_queue_count">%tw_zip_queue_count% / 10 Files queued</string>
 		<string name="folder">Folder</string>
 		<string name="file">File</string>
 		<string name="zip_sig_chk">Zip signature verification</string>
@@ -938,6 +938,7 @@
 		<!-- Please leave spaces -->
 		<string name="fox_button_close">    Close</string>
 		<string name="fox_button_info">    Info</string>
+		<string name="fox_button_add_zip">        Add to queue</string>
 
 		<!-- OrangeFox files damaged -->
 		<string name="fox_prebuilt_fox_not_exist_hdr">File doesn't exist!</string>
