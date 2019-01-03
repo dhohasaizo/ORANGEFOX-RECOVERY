@@ -6,10 +6,23 @@
 	
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
-		<resource name="font_l" type="fontoverride" filename="RobotoCondensed-Regular.ttf" scale="100"/>
-		<resource name="font_m" type="fontoverride" filename="RobotoCondensed-Regular.ttf" scale="100"/>
-		<resource name="font_s" type="fontoverride" filename="RobotoCondensed-Regular.ttf" scale="100"/>
-		<resource name="fixed" type="fontoverride" filename="DroidSansMono.ttf" scale="100"/>
+		<resource name="font_l" type="fontoverride" filename="DroidSansFallback.ttf" scale="100" />
+		<resource name="font_m" type="fontoverride" filename="DroidSansFallback.ttf" scale="100" />
+		<resource name="font_s" type="fontoverride" filename="DroidSansFallback.ttf" scale="100" />
+		<resource name="fixed" type="fontoverride" filename="DroidSansFallback.ttf" scale="100" />
+		
+		<resource name="status" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="caption" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="body1" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="body2" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="subhead" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="title" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="mainbutton" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="button" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="menu" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="input_fail" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="splash" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="button-text" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
 
 		<!-- Partition display names -->
 		<string name="system">系统</string>
