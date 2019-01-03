@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <language>
     <author>OrangeFox Recovery Project</author>
     <!-- Write your language name in english -->
@@ -6,23 +6,10 @@
 	
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
-		<resource name="font_l" type="fontoverride" filename="DroidSansFallback.ttf" scale="100" />
-		<resource name="font_m" type="fontoverride" filename="DroidSansFallback.ttf" scale="100" />
-		<resource name="font_s" type="fontoverride" filename="DroidSansFallback.ttf" scale="100" />
-		<resource name="fixed" type="fontoverride" filename="DroidSansFallback.ttf" scale="100" />
-		
-		<resource name="status" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
-		<resource name="caption" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
-		<resource name="body1" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
-		<resource name="body2" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
-		<resource name="subhead" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
-		<resource name="title" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
-		<resource name="mainbutton" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
-		<resource name="button" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
-		<resource name="menu" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
-		<resource name="input_fail" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
-		<resource name="splash" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
-		<resource name="button-text" type="fontoverride" filename="DroidSansFallback.ttf" scale="90" />
+		<resource name="font_l" type="fontoverride" filename="RobotoCondensed-Regular.ttf" scale="100"/>
+		<resource name="font_m" type="fontoverride" filename="RobotoCondensed-Regular.ttf" scale="100"/>
+		<resource name="font_s" type="fontoverride" filename="RobotoCondensed-Regular.ttf" scale="100"/>
+		<resource name="fixed" type="fontoverride" filename="DroidSansMono.ttf" scale="100"/>
 
 		<!-- Partition display names -->
 		<string name="system">系统</string>
@@ -30,7 +17,7 @@
 		<string name="vendor">供应商</string>
 		<string name="vendor_image">Vendor 镜像</string>
 		<string name="boot">靴</string>
-		<string name="recovery">复苏</string>
+		<string name="recovery">恢复模式</string>
 		<string name="cache">高速缓存</string>
 		<string name="data">Data</string>
 		<string name="data_backup">Data（不包括 存储）</string>
@@ -39,11 +26,11 @@
 		<string name="microsd">Micro SD卡</string>
 		<string name="usbotg">USB OTG</string>
 		<string name="android_secure">Android安全</string>
-		<string name="dalvik">Dalvik / ART Cache</string>
+		<string name="dalvik">Dalvik / ART 缓存</string>
 		<!-- This is a rarely used partition on a Micro SD card for a very old app2sd system -->
 		<string name="sdext">SD-EXT</string>
 		<string name="adopted_data">采用的数据</string>
-		<string name="adopted_storage">采用的存储</string>
+		<string name="adopted_storage">使用的存储</string>
 		<string name="autostorage">存储</string>
 
 		<!-- GUI XML strings -->
@@ -55,27 +42,27 @@
 		<string name="sort_by_date_desc">按日期降序排列</string>
 		<string name="sort_by_size_desc">按大小降序排列</string>
 		<string name="install_btn">安装</string>
-		<string name="wipe_btn">擦拭</string>
+		<string name="wipe_btn">清除</string>
 		<string name="backup_btn">备份</string>
-		<string name="restore_btn">恢复</string>
+		<string name="restore_btn">还原</string>
 		<string name="mount_btn">挂载</string>
 		<string name="file_manager_btn">文件管理器</string>
 		<string name="advanced_btn">高级</string>
 		<string name="reboot_btn">重启</string>
 		<string name="copy_log_btn">复制日志</string>
-		<string name="install_zip_hdr">刷入 Zip 安装包</string>
-		<string name="install_zip_btn">刷入 Zip 安装包</string>
+		<string name="install_zip_hdr">刷入 Zip文件</string>
+		<string name="install_zip_btn">刷入 Zip文件</string>
 		<string name="install_image_hdr">刷入 Image 镜像文件</string>
 		<string name="install_image_btn">刷入 Image 镜像文件</string>
 		<string name="install_select_file_hdr">选择文件</string>
 		<string name="install_select_file_btn">选择文件</string>
-		<string name="adb_sideload_btn">ADB Sideload</string>
+		<string name="adb_sideload_btn">通过ADB操作</string>
 		<string name="select_storage_hdr">选择存储</string>
 		<string name="select_storage_btn">选择存储</string>
 		<string name="queue_hdr">队列</string>
 		<string name="raised_clearqueue_btn">清除队列</string>
 		<string name="raised_viewqueue_btn">查看队列</string>
-		<string name="zip_queue_count">已选择 %tw_zip_queue_count% 个文件（最多 10 个）</string>
+		<string name="zip_queue_count">%tw_zip_queue_count% / 10 Files queued</string>
 		<string name="folder">文件夹</string>
 		<string name="file">文件</string>
 		<string name="zip_sig_chk">Zip 文件签名验证</string>
@@ -95,11 +82,11 @@
 		<string name="flashing_image">正在刷入镜像...</string>
 		<string name="image_flashed">Image 镜像刷入成功</string>
 		<!-- Note! "&amp;" is only "&", you can remove it -->
-		<string name="wipe_cache_dalvik_confirm">是否擦除 Cache 和 Dalvik ？</string>
-		<string name="wiping_cache_dalvik">正在擦除 Cache 和 Dalvik...</string>
-		<string name="wipe_cache_dalvik_complete">Cache 和 Dalvik 擦除完成</string>
+		<string name="wipe_cache_dalvik_confirm">是否清除 Cache 和 Dalvik分区数据 ？</string>
+		<string name="wiping_cache_dalvik">正在清除 Cache 和 Dalvik...</string>
+		<string name="wipe_cache_dalvik_complete">Cache 和 Dalvik 清除完成</string>
 		<!-- -->
-		<string name="swipe_wipe">滑动以执行擦除</string>
+		<string name="swipe_wipe">滑动以执行清除</string>
 		<string name="no_os1">未安装操作系统！</string>
 		<string name="no_osrb">是否确认要重启？</string>
 		<string name="no_ospo">是否确认要关机？</string>
@@ -109,26 +96,26 @@
 		<string name="confirm_action">确认操作</string>
 		<string name="cancel_btn">取消</string>
 		<string name="cancel_reboot_btn">取消重启</string>
-		<string name="wipe_hdr">擦拭</string>
+		<string name="wipe_hdr">清除</string>
 		<string name="factory_reset_hdr">恢复出厂设置</string>
-		<string name="factory_reset1">擦除 Data、Cache 和 Dalvik</string>
+		<string name="factory_reset1">清除 Data、Cache 和 Dalvik</string>
 		<string name="factory_reset2">(不包括内部存储)</string>
 		<string name="factory_reset3">大多数情况下这是</string>
 		<string name="factory_reset4">你唯一需要的清除</string>
-		<string name="factory_resetting">正在擦除 Data、Cache 和 Dalvik ...</string>
-		<string name="advanced_wipe_hdr">高级擦除</string>
-		<string name="advanced_wipe_btn">高级擦除</string>
-		<string name="wipe_enc_confirm">是否擦除数据加密？</string>
+		<string name="factory_resetting">正在清除 Data、Cache 和 Dalvik ...</string>
+		<string name="advanced_wipe_hdr">高级清除</string>
+		<string name="advanced_wipe_btn">高级清除</string>
+		<string name="wipe_enc_confirm">是否清除数据加密？</string>
 		<string name="formatting_data">正在格式化 Data 分区...</string>
 		<string name="swipe_format_data">滑动以格式化 Data 分区</string>
 		<string name="factory_reset_complete">恢复出厂设置完成</string>
 		<string name="sel_part_hdr">选择分区</string>
-		<string name="wipe_sel_confirm">是否擦除选定的分区？</string>
-		<string name="wiping_part">正在擦除分区...</string>
-		<string name="wipe_complete">擦除完成</string>
+		<string name="wipe_sel_confirm">是否清除选定的分区？</string>
+		<string name="wiping_part">正在清除分区...</string>
+		<string name="wipe_complete">清除完成</string>
 		<string name="format_data_hdr">格式化 Data 分区</string>
 		<string name="format_data_btn">格式化 Data 分区</string>
-		<string name="format_data_ptr1">格式化 Data 分区将擦除您的所有应用、</string>
+		<string name="format_data_ptr1">格式化 Data 分区将清除您的所有应用、</string>
 		<string name="format_data_ptr2">备份、图片、视频,、媒体文件，并</string>
 		<string name="format_data_ptr3">移除内部储存的加密。</string>
 		<string name="format_data_adopted">包括已使用的存储</string>
@@ -170,7 +157,7 @@
 		<string name="swipe_factory_reset">滑动以恢复出厂</string>
 		<string name="backup_hdr">备份</string>
 		<string name="encryption_hdr">启用加密</string>
-		<string name="encrypt_backup1">输入密码以</string>
+		<string name="encrypt_backup1">输入密码以继续操作</string>
 		<string name="encrypt_backup2">启用备份加密。</string>
 		<string name="encrypt_backup3">重复输入密码</string>
 		<string name="encrypt_backup4">按返回键取消。</string>
@@ -184,7 +171,7 @@
 		<string name="partitions">分区</string>
 		<string name="progress">进度</string>
 		<string name="backup_complete">备份已完成</string>
-		<string name="restore_hdr">恢复</string>
+		<string name="restore_hdr">还原</string>
 		<string name="restore_backup_hdr">还原备份</string>
 		<string name="sel_backup_hdr">选择备份</string>
 		<string name="restore_dec_fail">密码错误，请重试！</string>
@@ -217,7 +204,7 @@
 		<string name="unmount_btn">卸载</string>
 		<string name="rb_system_btn">系统</string>
 		<string name="rb_poweroff_btn">关机</string>
-		<string name="rb_recovery_btn">复苏</string>
+		<string name="rb_recovery_btn">恢复模式</string>
 		<string name="rb_bootloader_btn">Bootloader</string>
 		<string name="rb_theme">主题</string>
 		<string name="rb_download_btn">下载模式</string>
@@ -380,11 +367,11 @@
 		<string name="decrypt_data_trying">正在尝试解密</string>
 		<string name="decrypt_data_vold_os_missing">Vold 解密所需的文件丢失： {1}</string>
 		<string name="term_s_hdr">终端</string>
-		<string name="adb_sideload_hdr">ADB Sideload</string>
+		<string name="adb_sideload_hdr">通过ADB操作</string>
 		<string name="sideload_wipe_dalvik_chk">清除 Dalvik 缓存</string>
 		<string name="sideload_wipe_cache_chk">清除缓存</string>
 		<string name="swipe_to_sideload">滑动以启动 Sideload 模式</string>
-		<string name="sideload_confirm">ADB Sideload</string>
+		<string name="sideload_confirm">通过ADB操作</string>
 		<string name="sideload_usage">使用方法：adb sideload filename.zip</string>
 		<string name="sideload_complete">ADB Sideload 已完成</string>
 		<string name="fix_contexts_hdr">修复 Contexts</string>
@@ -533,7 +520,7 @@
 		<string name="making_dir1">建立目录：%1</string>
 		<string name="making_dir2">建立目录：'{1}'</string>
 		<string name="running_command">运行命令</string>
-		<string name="sideload">ADB Sideload</string>
+		<string name="sideload">通过ADB操作</string>
 		<string name="start_sideload">正在启用 ADB Sideload 特性...</string>
 		<string name="need_new_adb">您需要 ADB 1.0.32及以上版本以加载此设备。</string>
 		<string name="no_pwd">未输入密码。</string>
@@ -941,12 +928,17 @@
 			<!-- Checkboxes -->
 			<string name="fox_advanced_stock_recovery">强制禁用官方 Recovery</string>
 			<string name="fox_support_miui_ota_chk">支持MIUI OTA增量</string>
-			<string name="fox_disable_boot_chk">禁用BOOT验证</string>
 			<string name="fox_include_system_survival_chk">OTA Survival（含系统）</string>
 			<string name="fox_verify_incremental_ota_signature_chk">增量OTA签名验证</string>
 			<string name="fox_dmverity_chk">禁用 DM 检验</string>
 			<string name="fox_forced_encryption_chk">禁用强制加密</string>
 			<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">安装OTA后阻止自动重启</string>
+
+		<!-- OrangeFox float buttons -->
+		<!-- Please leave spaces -->
+		<string name="fox_button_close">    Close</string>
+		<string name="fox_button_info">    Info</string>
+		<string name="fox_button_add_zip">        Add to queue</string>
 
 		<!-- OrangeFox files damaged -->
 		<string name="fox_prebuilt_fox_not_exist_hdr">文件不存在！</string>

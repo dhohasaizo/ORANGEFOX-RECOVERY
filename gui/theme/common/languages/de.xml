@@ -62,7 +62,7 @@
 		<string name="queue_hdr">Warteschlange</string>
 		<string name="raised_clearqueue_btn">Warteschlange leeren</string>
 		<string name="raised_viewqueue_btn">Warteschlange anzeigen</string>
-		<string name="zip_queue_count">%tw_zip_queue_count% von max. 10 Dateien in der Warteschlange</string>
+		<string name="zip_queue_count">%tw_zip_queue_count% / 10 Files queued</string>
 		<string name="folder">Ordner</string>
 		<string name="file">Datei</string>
 		<string name="zip_sig_chk">Zip-Signaturprüfung</string>
@@ -928,12 +928,17 @@
 			<!-- Checkboxes -->
 			<string name="fox_advanced_stock_recovery">Aggressive Stock Recovery-Deaktivierung</string>
 			<string name="fox_support_miui_ota_chk">Unrtstützung für MIUI inkrementelle OTA</string>
-			<string name="fox_disable_boot_chk">Deaktivieren Sie die Boot-Prüfung</string>
 			<string name="fox_include_system_survival_chk">System in OTA-Überleben einschließen</string>
 			<string name="fox_verify_incremental_ota_signature_chk">Inkrementelle OTA-Signaturprüfung</string>
 			<string name="fox_dmverity_chk">Deaktivieren Sie DM-Verity</string>
 			<string name="fox_forced_encryption_chk">Deaktivieren Sie die erzwungene Verschlüsselung</string>
 			<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Verhindert den automatischen Neustart nach der Installation von OTA</string>
+
+		<!-- OrangeFox float buttons -->
+		<!-- Please leave spaces -->
+		<string name="fox_button_close">    Close</string>
+		<string name="fox_button_info">    Info</string>
+		<string name="fox_button_add_zip">        Add to queue</string>
 
 		<!-- OrangeFox files damaged -->
 		<string name="fox_prebuilt_fox_not_exist_hdr">Datei existiert nicht!</string>

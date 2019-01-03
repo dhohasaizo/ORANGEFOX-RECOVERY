@@ -62,7 +62,7 @@
 		<string name="queue_hdr">Черга</string>
 		<string name="raised_clearqueue_btn">Очистити чергу</string>
 		<string name="raised_viewqueue_btn">Переглянути чергу</string>
-		<string name="zip_queue_count">%tw_zip_queue_count% з 10 файлів у черзі</string>
+		<string name="zip_queue_count">%tw_zip_queue_count% / 10 Files queued</string>
 		<string name="folder">Папка</string>
 		<string name="file">Файл</string>
 		<string name="zip_sig_chk">Перевірка Zip-підпису</string>
@@ -928,12 +928,17 @@
 			<!-- Checkboxes -->
 			<string name="fox_advanced_stock_recovery">Агресивна деактивація стокового рекавері</string>
 			<string name="fox_support_miui_ota_chk">Підтримка MIUI OTA оновлень</string>
-			<string name="fox_disable_boot_chk">Вимкнути перевірку boot</string>
 			<string name="fox_include_system_survival_chk">Долучати систему в OTA survival</string>
 			<string name="fox_verify_incremental_ota_signature_chk">Підпис інкриментального оновленя OTA</string>
 			<string name="fox_dmverity_chk">Вимкнути DM-Verity</string>
 			<string name="fox_forced_encryption_chk">Вимкнути примусове шифрування</string>
 			<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Заборонити авторебут після встановлення OTA</string>
+
+		<!-- OrangeFox float buttons -->
+		<!-- Please leave spaces -->
+		<string name="fox_button_close">    Close</string>
+		<string name="fox_button_info">    Info</string>
+		<string name="fox_button_add_zip">        Add to queue</string>
 
 		<!-- OrangeFox files damaged -->
 		<string name="fox_prebuilt_fox_not_exist_hdr">Файл не існує!</string>
