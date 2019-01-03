@@ -2251,17 +2251,17 @@ int GUIAction::checkpartitionlifetimewrites(std::string arg)
 int GUIAction::mountsystemtoggle(std::string arg)
 {
   int op_status = 0;
-  bool remount_system = PartitionManager.Is_Mounted_By_Path("/system");
+  bool remount_system = PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path());
   bool remount_vendor = PartitionManager.Is_Mounted_By_Path("/vendor");
 
   operation_start("Toggle System Mount");
-  if (!PartitionManager.UnMount_By_Path("/system", true))
+  if (!PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), true))
     {
       op_status = 1;		// fail
     }
   else
     {
-      TWPartition *Part = PartitionManager.Find_Partition_By_Path("/system");
+      TWPartition *Part = PartitionManager.Find_Partition_By_Path(PartitionManager.Get_Android_Root_Path());
       if (Part)
 	{
 	  if (arg == "0")
@@ -2361,7 +2361,7 @@ int GUIAction::checkforapp(std::string arg __unused)
 	  DataManager::SetValue("tw_app_install_status", 1);	// 0 = no status, 1 = not installed, 2 = already installed or do not install
 	  goto exit;
 	}
-      if (PartitionManager.Mount_By_Path("/system", false))
+      if (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false))
 	{
 	  string base_path = "/system";
 	  if (TWFunc::Path_Exists("/system/system"))
@@ -2502,7 +2502,7 @@ int GUIAction::installapp(std::string arg __unused)
 	}
       else
 	{
-	  if (PartitionManager.Mount_By_Path("/system", true))
+	  if (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), true))
 	    {
 	      string base_path = "/system";
 	      if (TWFunc::Path_Exists("/system/system"))
@@ -2545,7 +2545,7 @@ int GUIAction::installapp(std::string arg __unused)
 			}
 		      sync();
 		      sync();
-		      PartitionManager.UnMount_By_Path("/system", true);
+		      PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), true);
 		      op_status = 0;
 		    }
 		  else

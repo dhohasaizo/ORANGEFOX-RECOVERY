@@ -621,8 +621,8 @@ void TWFunc::install_htc_dumlock(void)
 {
   int need_libs = 0;
 
-  if (!PartitionManager.Mount_By_Path("/system", true))
-    return;
+	if (!PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), true))
+		return;
 
   if (!PartitionManager.Mount_By_Path("/data", true))
     return;
@@ -1133,46 +1133,39 @@ string TWFunc::Get_Current_Date()
   return Current_Date;
 }
 
-string TWFunc::System_Property_Get(string Prop_Name)
-{
-  bool mount_state = PartitionManager.Is_Mounted_By_Path("/system");
-  std::vector < string > buildprop;
-  string propvalue;
-  if (!PartitionManager.Mount_By_Path("/system", true))
-    return propvalue;
-  string prop_file = "/system/build.prop";
-  if (!TWFunc::Path_Exists(prop_file))
-    prop_file = "/system/system/build.prop";	// for devices with system as a root file system (e.g. Pixel)
-  if (TWFunc::read_file(prop_file, buildprop) != 0)
-    {
-      LOGINFO("Unable to open /system/build.prop for getting '%s'.\n",
-	      Prop_Name.c_str());
-      DataManager::SetValue(TW_BACKUP_NAME, Get_Current_Date());
-      if (!mount_state)
-	PartitionManager.UnMount_By_Path("/system", false);
-      return propvalue;
-    }
-  int line_count = buildprop.size();
-  int index;
-  size_t start_pos = 0, end_pos;
-  string propname;
-  for (index = 0; index < line_count; index++)
-    {
-      end_pos = buildprop.at(index).find("=", start_pos);
-      propname = buildprop.at(index).substr(start_pos, end_pos);
-      if (propname == Prop_Name)
-	{
-	  propvalue =
-	    buildprop.at(index).substr(end_pos + 1,
-				       buildprop.at(index).size());
-	  if (!mount_state)
-	    PartitionManager.UnMount_By_Path("/system", false);
-	  return propvalue;
+string TWFunc::System_Property_Get(string Prop_Name) {
+	bool mount_state = PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path());
+	std::vector<string> buildprop;
+	string propvalue;
+	if (!PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), true))
+		return propvalue;
+	string prop_file = "/system/build.prop";
+	if (!TWFunc::Path_Exists(prop_file))
+		prop_file = PartitionManager.Get_Android_Root_Path() + "/system/build.prop"; // for devices with system as a root file system (e.g. Pixel)
+	if (TWFunc::read_file(prop_file, buildprop) != 0) {
+		LOGINFO("Unable to open build.prop for getting '%s'.\n", Prop_Name.c_str());
+		DataManager::SetValue(TW_BACKUP_NAME, Get_Current_Date());
+		if (!mount_state)
+			PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
+		return propvalue;
 	}
-    }
-  if (!mount_state)
-    PartitionManager.UnMount_By_Path("/system", false);
-  return propvalue;
+	int line_count = buildprop.size();
+	int index;
+	size_t start_pos = 0, end_pos;
+	string propname;
+	for (index = 0; index < line_count; index++) {
+		end_pos = buildprop.at(index).find("=", start_pos);
+		propname = buildprop.at(index).substr(start_pos, end_pos);
+		if (propname == Prop_Name) {
+			propvalue = buildprop.at(index).substr(end_pos + 1, buildprop.at(index).size());
+			if (!mount_state)
+				PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
+			return propvalue;
+		}
+	}
+	if (!mount_state)
+		PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
+	return propvalue;
 }
 
 string TWFunc::File_Property_Get(string File_Path, string Prop_Name)
@@ -1647,10 +1640,10 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 // Disable flashing of stock recovery
 void TWFunc::Disable_Stock_Recovery_Replace(void)
 {
-  if (PartitionManager.Mount_By_Path("/system", false))
+  if (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false))
      { 
          Disable_Stock_Recovery_Replace_Func();           
-         PartitionManager.UnMount_By_Path("/system", false);
+         PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
      }
 }
 
@@ -2427,7 +2420,7 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 
   if (!TWFunc::Path_Exists(magiskboot_sbin)) TWFunc::tw_reboot(rb_recovery);
  
-  if (!PartitionManager.Mount_By_Path("/system", false))
+  if (!PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false))
      {
      	LOGERR("TWFunc::PackRepackImage_MagiskBoot: Failed to mount system!");
         return false;
@@ -2536,7 +2529,7 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	  	TWFunc::removeDir(Fox_tmp_dir, false);
 	}
     }
-  PartitionManager.UnMount_By_Path("/system", false);
+  PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
   return retval;
 }
 
@@ -3027,7 +3020,7 @@ bool TWFunc::Patch_DM_Verity(void)
 
      if (d1 == NULL)
 	{
-          if ((PartitionManager.Is_Mounted_By_Path("/system")) || (PartitionManager.Mount_By_Path("/system", false)))
+          if ((PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path())) || (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false)))
 	     {
 	        d1 = opendir(fstab1.c_str());
 	        stat = 1;
@@ -3120,8 +3113,8 @@ bool TWFunc::Patch_DM_Verity(void)
 
       if (New_Fox_Installation != 1)
          {
-      		if (PartitionManager.Is_Mounted_By_Path("/system"))
-	  		PartitionManager.UnMount_By_Path("/system", false);
+      		if (PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path()))
+	  		PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
 	
        		if (PartitionManager.Is_Mounted_By_Path("/vendor"))
 	  		PartitionManager.UnMount_By_Path("/vendor", false);
@@ -3256,7 +3249,7 @@ bool TWFunc::Patch_Forced_Encryption(void)
 
      if (d1 == NULL)
 	{
-          if ((PartitionManager.Is_Mounted_By_Path("/system")) || (PartitionManager.Mount_By_Path("/system", false)))
+          if ((PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path())) || (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false)))
 	     {
 	        d1 = opendir(fstab1.c_str());
 	        stat = 1;
@@ -3314,8 +3307,8 @@ bool TWFunc::Patch_Forced_Encryption(void)
 
       if (New_Fox_Installation != 1)
          {
-       		if (PartitionManager.Is_Mounted_By_Path("/system"))
-    	      		PartitionManager.UnMount_By_Path("/system", false);
+       		if (PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path()))
+    	      		PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
     
        		if (PartitionManager.Is_Mounted_By_Path("/vendor"))
     	      		PartitionManager.UnMount_By_Path("/vendor", false);
@@ -3396,8 +3389,8 @@ void TWFunc::PrepareToFinish(void)
    if (PartitionManager.Is_Mounted_By_Path("/cust"))
 	PartitionManager.UnMount_By_Path("/cust", false);
   
-   if (PartitionManager.Is_Mounted_By_Path("/system"))
-     PartitionManager.UnMount_By_Path("/system", false);
+   if (PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path()))
+     PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
   //
   
   Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
@@ -3433,7 +3426,7 @@ void TWFunc::PrepareToFinish(void)
   // restore the stock recovery ?
   if (
      (DataManager::GetIntValue(FOX_DONT_REPLACE_STOCK) == 1)
-  && (PartitionManager.Mount_By_Path("/system", false))
+  && (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false))
      )
     {
       if (Path_Exists("/system/wlfx0recovery-from-boot.bak0xwlf"))
@@ -3441,7 +3434,7 @@ void TWFunc::PrepareToFinish(void)
 	  rename("/system/wlfx0recovery-from-boot.bak0xwlf",
 		 "/system/recovery-from-boot.p");
 	}
-      PartitionManager.UnMount_By_Path("/system", false);
+      PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
     }
 }
 
