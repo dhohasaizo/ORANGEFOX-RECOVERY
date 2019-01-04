@@ -310,6 +310,7 @@
 		<!-- For Maintainers -->
 		<variable name="fox_debug_build" value="1"/> <!-- Enable this function if you wanna enable debug mode switch -->
 		<variable name="fox_notch" value="%fox_notch%"/> <!-- Enable this variable for enable notch -->
+		<variable name="fox_18_9" value="1" /> <!-- Enable this variable if your device have 18:9 screen -->
 
 		<variable name="tw_has_boot_slots" value="1"/>
 		<variable name="tw_active_slot" value="A"/>
@@ -617,7 +618,8 @@
 		<variable name="slidervalue_lineh" value="6"/>
 		<variable name="slidervalue_padding" value="72"/>
 		<variable name="slidervalue_sliderw" value="120"/>
-		<variable name="slidervalue_sliderh" value="180"/>
+
+		<!--variable name="slidervalue_sliderh" value="160"/-->
 
 		<variable name="pattern_x" value="216"/>
 		<variable name="pattern_dot_dia" value="32"/>
@@ -1215,7 +1217,7 @@
 
 			<image>
 				<image resource="actionbar_shadow"/>
-				<placement x="0" y="1776"/>
+				<placement x="0" y="1775"/>
 			</image>
 
 			<fill color="%accent%">

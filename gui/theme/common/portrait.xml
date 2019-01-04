@@ -9,6 +9,17 @@
 	<pages>
 		<page name="main">
 
+			<!-- Fix some issues with 18:9 screens -->
+			<action>
+				<condition var1="fox_18_9" var2="0"/>
+				<action function="set">slidervalue_sliderh=180</action>
+			</action>
+
+			<action>
+				<condition var1="fox_18_9" var2="1"/>
+				<action function="set">slidervalue_sliderh=160</action>
+			</action>
+
 			<action>
 				<condition var1="heslo" op="=" var2="tw_heslo_check"/>
 					<actions>
@@ -2219,7 +2230,7 @@
 			<fill color="%accent%">
 				<condition var1="ico_btn_mode" var2="1"/>
 				<condition var1="menu_btn_solid" var2="1"/>
-				<placement x="60" y="374" w="%mb_icon_w%" h="%mb_icon_h%"/>
+				<placement x="62" y="374" w="%mb_icon_w%" h="%mb_icon_h%"/>
 			</fill>
 
 			<image>
