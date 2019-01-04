@@ -2583,45 +2583,30 @@ int GUIAction::flashlight(std::string arg __unused)
       string flashpathone = flashpathvalue_one + flashdisable + flashpathvalue_two;
       string flashpathtwo = flashpathvalue_one + flashone + flashpathvalue_two;
       DataManager::GetValue("flashlight", flash);
-      if (!TWFunc::Path_Exists(flashpathone))
-	    {
-        if (!TWFunc::Path_Exists("sys/class/leds/flashlight/"))
-        {
-          gui_err("OrangeFox: Recovery flashlight is not supported on this device!");
-        }
-        else
-        {
-          if (flash != 1)
-            {
-              TWFunc::write_to_file("/sys/class/leds/flashlight/brightness", "1");
-              DataManager::SetValue("flashlight", 1);
-              LOGINFO("DEBUG: Enable flashlight 1");
-            }
-          else
-            {
-              TWFunc::write_to_file("/sys/class/leds/flashlight/brightness", "0");
-              DataManager::SetValue("flashlight", 0); 
-              LOGINFO("DEBUG: Disable flashlight 1");
-            }
-        }
+      if (TWFunc::Path_Exists("sys/class/leds/flashlight/")) {
+        if (flash != 1) {
+            TWFunc::write_to_file("/sys/class/leds/flashlight/brightness", "1");
+            DataManager::SetValue("flashlight", 1);
+            LOGINFO("DEBUG: Enable flashlight 1"); }
+        else {
+            TWFunc::write_to_file("/sys/class/leds/flashlight/brightness", "0");
+            DataManager::SetValue("flashlight", 0); 
+            LOGINFO("DEBUG: Disable flashlight 1"); }
       }
-      else
-	    {
-	}
-      if (flash != 1)
-	{
-	  TWFunc::write_to_file(flashpathone, flashvalue);
-	  TWFunc::write_to_file(flashpathtwo, flashvalue);
-	  DataManager::SetValue("flashlight", 1);
-    LOGINFO("DEBUG: Enable flashlight 0");
-	}
-      else
-	{
-	  TWFunc::write_to_file(flashpathone, flashdisable);
-	  TWFunc::write_to_file(flashpathtwo, flashdisable);
-	  DataManager::SetValue("flashlight", 0);
-    LOGINFO("DEBUG: Disable flashlight 0");
-	}
+      
+      if (TWFunc::Path_Exists(flashpathone)) {
+	
+        if (flash != 1) {
+          TWFunc::write_to_file(flashpathone, flashvalue);
+          TWFunc::write_to_file(flashpathtwo, flashvalue);
+          DataManager::SetValue("flashlight", 1);
+          LOGINFO("DEBUG: Enable flashlight 0"); }
+        else {
+          TWFunc::write_to_file(flashpathone, flashdisable);
+          TWFunc::write_to_file(flashpathtwo, flashdisable);
+          DataManager::SetValue("flashlight", 0);
+          LOGINFO("DEBUG: Disable flashlight 0"); }
+        }
     }
   operation_end(0);
   return 0;
