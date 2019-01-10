@@ -164,7 +164,40 @@ static string GetDeviceName(void)
 static bool StorageIsEncrypted(void)
 {
   return PartitionManager.Partition_Is_Encrypted("/data");
- // return DataManager::GetIntValue(TW_IS_ENCRYPTED) != 0;
+}
+
+// convert number to string
+std::string num_to_string(int value)
+{
+  std::ostringstream os;
+  os << value;
+  return os.str();
+}
+
+std::string num_to_string(long value)
+{
+  std::ostringstream os;
+  os << value;
+  return os.str();
+}
+
+// convert string to number, with default value in case of error
+int string_to_int(string String, int def_value)
+{
+int tmp;
+  if ((istringstream(String) >> tmp)) 
+      return tmp;
+  else
+      return def_value;
+}
+
+long string_to_long(string String, long def_value)
+{
+long tmp;
+  if ((istringstream(String) >> tmp)) 
+      return tmp;
+  else
+      return def_value;
 }
 
 /* run startup script, if not already run by init */
@@ -853,7 +886,7 @@ int TWFunc::tw_reboot(RebootCommand command)
   // Always force a sync before we reboot
   sync();
 
-  // DJ9 - if we haven't called Deactivation_Process before, check whether to call it now 
+  // if we haven't called Deactivation_Process before, check whether to call it now 
   // This code is currently disabled - Fox_AutoDeactivate_OnReboot is never set to 1
   if ((Fox_AutoDeactivate_OnReboot == 1) && (Fox_IsDeactivation_Process_Called == 0))
     {
@@ -865,13 +898,13 @@ int TWFunc::tw_reboot(RebootCommand command)
            DoDeactivate = 1;
         }
     }
-  // DJ9
+  //***//
    
   switch (command)
     {
     case rb_current:
     case rb_system:
-      if (DoDeactivate == 1) { Deactivation_Process(); } // DJ9
+      if (DoDeactivate == 1) { Deactivation_Process(); } 
       Update_Intent_File("s");
       sync();
 #ifdef ANDROID_RB_PROPERTY
@@ -882,7 +915,7 @@ int TWFunc::tw_reboot(RebootCommand command)
       return reboot(RB_AUTOBOOT);
 #endif
     case rb_recovery:
-      if (DoDeactivate == 1){ Deactivation_Process(); sync(); } // DJ9
+      if (DoDeactivate == 1){ Deactivation_Process(); sync(); }
 #ifdef ANDROID_RB_PROPERTY
       return property_set(ANDROID_RB_PROPERTY, "reboot,recovery");
 #else
@@ -1428,13 +1461,11 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
 	  LOGINFO
 	    ("TWFunc::Fixup_Time: Setting time offset from twrp setting file, offset %llu\n",
 	     (unsigned long long) offset);
-	     // DJ9
 	        tv.tv_sec = offset;
       		tv.tv_usec = 0;
       		settimeofday(&tv, NULL);
       		gettimeofday(&tv, NULL);
       		return;
-      	     // DJ9
 	}
     }
 
@@ -1457,7 +1488,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
 
   settimeofday(&tv, NULL);
 
-// DJ9 last check for sensible offset
+// last check for sensible offset
     if (offset < min_offset) // let's try something else 
     {
       LOGINFO("TWFunc::Fixup_Time: trying for the last time!\n");
@@ -1466,7 +1497,7 @@ void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
       settimeofday(&tv, NULL);
       gettimeofday(&tv, NULL);
     }
-// DJ9
+//
 
   LOGINFO("TWFunc::Fixup_Time: Date and time corrected: %s\n", TWFunc::Get_Current_Date().c_str());
 #endif
@@ -1521,6 +1552,18 @@ int TWFunc::Set_Brightness(std::string brightness_value)
 
   if (DataManager::GetIntValue("tw_has_brightnesss_file"))
     {
+
+      // DJ9, 20190110 - prevent black screen (refuse to go below a certain value - 10% of max_brightness)
+      	const int MIN_GOOD = 25; // minimum "good" value
+      	int tmp = string_to_int(brightness_value, MIN_GOOD);
+      	int min = (int)(DataManager::GetIntValue("tw_brightness_max") / 10);
+      	if (min < MIN_GOOD) min = MIN_GOOD;
+      	if (tmp < min) 
+           {
+            	brightness_value = num_to_string(min);
+           }
+      // DJ9 //
+
       LOGINFO("TWFunc::Set_Brightness: Setting brightness control to %s\n",
 	      brightness_value.c_str());
       result =
@@ -1560,7 +1603,6 @@ bool TWFunc::Toggle_MTP(bool enable)
   return false;
 #endif
 }
-
 
 void TWFunc::SetPerformanceMode(bool mode)
 {
@@ -1927,10 +1969,8 @@ void TWFunc::OrangeFox_Startup(void)
   std::string device_two = kernel_proc_check + "disable";
   std::string password_file = "/sbin/wlfx";
 
-//* DJ9 
   DataManager::GetValue(FOX_COMPATIBILITY_DEVICE, Fox_Current_Device); 
   Check_MIUI_Treble();
-//* DJ9 
   
   if (TWFunc::Path_Exists(device_one))
     TWFunc::write_to_file(device_one, disable);
@@ -3463,6 +3503,7 @@ void TWFunc::Deactivation_Process(void)
 	      return;
 	   }
      }
+   
   // end nitrogen/tulip patch
  
   // unpack boot image
