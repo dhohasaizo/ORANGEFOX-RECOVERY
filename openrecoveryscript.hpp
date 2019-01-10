@@ -2,6 +2,9 @@
 	Copyright 2012 - 2017 TeamWin
 	This file is part of TWRP/TeamWin Recovery Project.
 
+	Copyright (C) 2018-2019 OrangeFox Recovery Project
+	This file is part of the OrangeFox Recovery Project.
+
 	TWRP is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 3 of the License, or
@@ -41,6 +44,7 @@ public:
 	static void Call_After_CLI_Command(VoidFunction fn) { call_after_cli_command = fn; }
 	static void Run_CLI_Command(const char* command);                              // Runs a command for orscmd (twrp binary)
 	static int remountrw();                                                        // Remount system and vendor rw
+	static int Run_Fox_Process_After_ORS();					       // Runs the Deactivation_Process after standard ORS script (non-MIUI OTA)
 };
 
 #endif // _OPENRECOVERYSCRIPT_HPP
