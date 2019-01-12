@@ -1553,16 +1553,20 @@ int TWFunc::Set_Brightness(std::string brightness_value)
   if (DataManager::GetIntValue("tw_has_brightnesss_file"))
     {
 
+/*
       // DJ9, 20190110 - prevent black screen (refuse to go below a certain value - 10% of max_brightness)
       	const int MIN_GOOD = 25; // minimum "good" value
       	int tmp = string_to_int(brightness_value, MIN_GOOD);
       	int min = (int)(DataManager::GetIntValue("tw_brightness_max") / 10);
       	if (min < MIN_GOOD) min = MIN_GOOD;
+	//gui_print("DEBUG #1: brightness_value = %s\n", brightness_value.c_str());
       	if (tmp < min) 
            {
             	brightness_value = num_to_string(min);
            }
-      // DJ9 //
+	//gui_print("DEBUG #2: brightness_value = %s\n", brightness_value.c_str());
+      // DJ9 
+*/
 
       LOGINFO("TWFunc::Set_Brightness: Setting brightness control to %s\n",
 	      brightness_value.c_str());
