@@ -338,11 +338,13 @@ int OpenRecoveryScript::run_script_file(void) {
 				size_t len = strlen(value);
 				tok = strtok(value, " ");
 				strcpy(value1, tok);
-				if (len > strlen(value1) + 1) {
+				if (len > strlen(value1) + 1) 
+				{
 					char *val2 = value + strlen(value1) + 1;
 					gui_msg(Msg("setting=Setting '{1}' to '{2}'")(value1)(val2));
 					DataManager::SetValue(value1, val2);
-				} else {
+				} else 
+				{
 					gui_msg(Msg("setting_empty=Setting '{1}' to empty")(value1));
 					DataManager::SetValue(value1, "");
 				}
@@ -352,7 +354,8 @@ int OpenRecoveryScript::run_script_file(void) {
 				// Make directory (recursive)
 				DataManager::SetValue("tw_action_text2", gui_parse_text("{@making_dir1}"));
 				gui_msg(Msg("making_dir2=Making directory: '{1}'")(value));
-				if (!TWFunc::Recursive_Mkdir(value)) {
+				if (!TWFunc::Recursive_Mkdir(value)) 
+				{
 					// error message already displayed by Recursive_Mkdir
 					ret_val = 1;
 				}
@@ -373,16 +376,19 @@ int OpenRecoveryScript::run_script_file(void) {
 			if (strcmp(command, "cmd") == 0) 
 			{
 				DataManager::SetValue("tw_action_text2", gui_parse_text("{@running_command}"));
-				if (cindex != 0) {
+				if (cindex != 0) 
+				{
 					TWFunc::Exec_Cmd(value);
-				} else {
+				} else 
+				{
 					LOGERR("No value given for cmd\n");
 				}
-			} else if (strcmp(command, "print") == 0) 
+			} 
+			else if (strcmp(command, "print") == 0) 
 			{
 				gui_print("%s\n", value);
-			} else 
-			if (strcmp(command, "sideload") == 0) 
+			} 
+			else if (strcmp(command, "sideload") == 0) 
 			{
 				// ADB Sideload
 				DataManager::SetValue("tw_action_text2", gui_parse_text("{@sideload}"));
@@ -403,7 +409,7 @@ int OpenRecoveryScript::run_script_file(void) {
 				else 
 				if (TWinstall_zip(FUSE_SIDELOAD_HOST_PATHNAME, &wipe_cache) == 0) 
 				{
-				    Run_Fox_Process_After_ORS();
+				    //Run_Fox_Process_After_ORS(); // DJ9
 				    if (wipe_cache)
 					PartitionManager.Wipe_By_Path("/cache");
 				} 
@@ -425,13 +431,15 @@ int OpenRecoveryScript::run_script_file(void) {
 				}
 				property_set("ctl.start", "adbd");
 				gui_msg("done=Done.");
-			} else 
+			} 
+			else 
 			if (strcmp(command, "fixperms") == 0 || strcmp(command, "fixpermissions") == 0 || strcmp(command, "fixcontexts") == 0) 
 			{
 				ret_val = PartitionManager.Fix_Contexts();
 				if (ret_val != 0)
 					ret_val = 1; // failure
-			} else 
+			} 
+			else 
 			if (strcmp(command, "decrypt") == 0) 
 			{
 				if (*value) 
@@ -444,7 +452,8 @@ int OpenRecoveryScript::run_script_file(void) {
 					gui_err("no_pwd=No password provided.");
 					ret_val = 1; // failure
 				}
-			} else 
+			} 
+			else 
 			{
 				LOGERR("Unrecognized script command: '%s'\n", command);
 				ret_val = 1;
@@ -461,7 +470,8 @@ int OpenRecoveryScript::run_script_file(void) {
 		  }
 		//** DJ9
 		
-	} else 
+	} 
+	else 
 	{
 		gui_msg(Msg(msg::kError, "error_opening_strerr=Error opening: '{1}' ({2})")(SCRIPT_FILE_TMP)(strerror(errno)));
 		return 1;
@@ -473,14 +483,21 @@ int OpenRecoveryScript::run_script_file(void) {
 		TWPartition* Boot = PartitionManager.Find_Partition_By_Path("/boot");
 		if (Boot == NULL || Boot->Current_File_System != "emmc")
 			TWFunc::Exec_Cmd("injecttwrp --dump /tmp/backup_recovery_ramdisk.img /tmp/injected_boot.img --flash");
-		else {
+		else 
+		{
 			string injectcmd = "injecttwrp --dump /tmp/backup_recovery_ramdisk.img /tmp/injected_boot.img --flash bd=" + Boot->Actual_Block_Device;
 			TWFunc::Exec_Cmd(injectcmd.c_str());
 		}
 		gui_msg("done=Done.");
 	}
+	
+	// DJ9
+	Run_Fox_Process_After_ORS();
+	// DJ9
+	
 	if (sideload)
 		ret_val = 1; // Forces booting to the home page after sideload
+		
 	return ret_val;
 }
 
@@ -498,38 +515,48 @@ int OpenRecoveryScript::Insert_ORS_Command(string Command) {
 	return 0;
 }
 
-int OpenRecoveryScript::Install_Command(string Zip) {
+int OpenRecoveryScript::Install_Command(string Zip) 
+{
 	// Install zip
 	string ret_string;
 	int ret_val = 0, wipe_cache = 0;
 	std::vector<PartitionList> Storage_List;
 	string Full_Path;
 
-	if (Zip.substr(0, 1) == "@") {
+	if (Zip.substr(0, 1) == "@") 
+	{
 		// This is a special file that contains a map of blocks on the data partition
 		Full_Path = Zip.substr(1);
-		if (!PartitionManager.Mount_By_Path(Full_Path, true) || !TWFunc::Path_Exists(Full_Path)) {
+		if (!PartitionManager.Mount_By_Path(Full_Path, true) || !TWFunc::Path_Exists(Full_Path)) 
+		{
 			LOGINFO("Unable to install via mapped zip '%s'\n", Full_Path.c_str());
 			gui_msg(Msg(msg::kError, "zip_err=Error installing zip file '{1}'")(Zip));
 			return 1;
 		}
 		LOGINFO("Installing mapped zip file '%s'\n", Full_Path.c_str());
 		gui_msg(Msg("installing_zip=Installing zip file '{1}'")(Zip));
-	} else if (!TWFunc::Path_Exists(Zip)) {
+	} 
+	else 
+	if (!TWFunc::Path_Exists(Zip)) 
+	{
 		PartitionManager.Mount_All_Storage();
 		PartitionManager.Get_Partition_List("storage", &Storage_List);
 		int listSize = Storage_List.size();
-		for (int i = 0; i < listSize; i++) {
-			if (PartitionManager.Is_Mounted_By_Path(Storage_List.at(i).Mount_Point)) {
+		for (int i = 0; i < listSize; i++) 
+		{
+			if (PartitionManager.Is_Mounted_By_Path(Storage_List.at(i).Mount_Point)) 
+			{
 				Full_Path = Storage_List.at(i).Mount_Point + "/" + Zip;
-				if (TWFunc::Path_Exists(Full_Path)) {
+				if (TWFunc::Path_Exists(Full_Path)) 
+				{
 					Zip = Full_Path;
 					break;
 				}
 				Full_Path = Zip;
 				LOGINFO("Trying to find zip '%s' on '%s'...\n", Full_Path.c_str(), Storage_List.at(i).Mount_Point.c_str());
 				ret_string = Locate_Zip_File(Full_Path, Storage_List.at(i).Mount_Point);
-				if (!ret_string.empty()) {
+				if (!ret_string.empty()) 
+				{
 					Zip = ret_string;
 					break;
 				}
@@ -553,7 +580,7 @@ int OpenRecoveryScript::Install_Command(string Zip) {
 	  } 
 	else 
 	  {
-	  	Run_Fox_Process_After_ORS();
+	  	//Run_Fox_Process_After_ORS(); // DJ9
 		if (wipe_cache)
 		   PartitionManager.Wipe_By_Path("/cache");
 	  }
@@ -698,6 +725,7 @@ int OpenRecoveryScript::Run_OpenRecoveryScript_Action()
 
 	if (reboot || code1 == 3 || code2 == 3) 
 	  {
+ 		/* - run Deactivation_Process() at the end of run_script_file() - * DJ9
  		// Disable stock recovery reflashing
 		TWFunc::Disable_Stock_Recovery_Replace();
     		
@@ -707,7 +735,7 @@ int OpenRecoveryScript::Run_OpenRecoveryScript_Action()
 		     TWFunc::Deactivation_Process();
 		     DataManager::SetValue(FOX_CALL_DEACTIVATION, 0);
 		   }
- 		
+ 		*/
     		// have we disabled auto-reboot?
     		if (code1 == 3 || code2 == 3) 
        		  { 
@@ -786,7 +814,7 @@ int OpenRecoveryScript::remountrw(void)
 int OpenRecoveryScript::Run_Fox_Process_After_ORS(void)
 {
    Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
-   if (Fox_Zip_Installer_Code == 1 || Fox_Zip_Installer_Code == 11) // 1=standard custom ROM; 11=Treble custom ROM
+   if (Fox_Zip_Installer_Code != 0) // a ROM was installed
      {
          if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1))
             {
