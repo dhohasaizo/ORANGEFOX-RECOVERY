@@ -316,19 +316,6 @@
 		<variable name="tw_active_slot" value="A"/>
 		<variable name="fox_need_reboot" value="0"/>
 
-		<!-- Lower led crutch :) -->
-		<variable name="fox_set_custom_led_restore_green" value="1" persist="1"/>
-		<variable name="fox_set_custom_led_restore_blue" value="0" persist="1"/>
-		<variable name="fox_set_custom_led_restore_red" value="0" persist="1"/>
-
-		<variable name="fox_set_custom_led_backup_green" value="1" persist="1"/>
-		<variable name="fox_set_custom_led_backup_blue" value="0" persist="1"/>
-		<variable name="fox_set_custom_led_backup_red" value="0" persist="1"/>
-
-		<variable name="fox_set_custom_led_install_green" value="1" persist="1"/>
-		<variable name="fox_set_custom_led_install_blue" value="0" persist="1"/>
-		<variable name="fox_set_custom_led_install_red" value="0" persist="1"/>
-
 		<variable name="screen_w" value="1080"/>
 		<variable name="screen_h" value="1920"/>
 		<variable name="ab_h" value="240"/>
