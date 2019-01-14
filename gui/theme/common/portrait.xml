@@ -14244,9 +14244,11 @@
 			<listbox style="settingslist">
 				<placement x="%col1_x%" y="%row1_2_y%" w="%listbox_w%" h="750"/>
 				<listitem name="{@center_clock_bar=Center clock in statusbar}">
+					<condition var1="fox_notch" var2="0"/>
 					<data variable="center_clock"/>
 				</listitem>
 				<listitem name="{@show_cpu_temp_bar=Show CPU temperature}">
+					<condition var1="fox_notch" var2="0"/>
 					<data variable="show_cpu_temp"/>
 				</listitem>
 				<listitem name="{@use_menu_btn=Use buttons on main menu}">
