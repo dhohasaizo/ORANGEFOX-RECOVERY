@@ -3724,19 +3724,19 @@
 					<condition var1="tw_busy" var2="0"/>
 					<condition var1="tw_splash_png_name"/>
 				</conditions>
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<placement x="%center_x%" y="%slider_text_y_tab%" placement="5"/>
 				<text>{@slider_repack=Swipe to create Repack}</text>
 			</text>
 
-			<slider>
+			<slider style="slider_tab">
 				<conditions>
 					<condition var1="tw_busy" var2="0"/>
 					<condition var1="tw_splash_png_name"/>
-					</conditions>
-				    <actions>
+				</conditions>
+				<actions>
 					<action function="changesplash"/>
 					<action function="page">main</action>
-					</actions>
+				</actions>
 			</slider>
 
 			<text color="%accent%">
