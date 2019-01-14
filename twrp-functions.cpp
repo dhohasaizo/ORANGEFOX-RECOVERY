@@ -110,23 +110,6 @@ static bool skip_patching_this_device(void)
 #endif
 }
 
-/* allow skipping DM-Verity and Forced-Encryption, no matter what */
-static bool Skip_DM_Verity_Forced_Encryption_Patches(void)
-{
-  if (skip_patching_this_device() == false)
-     return false;
-
-  // are we on MIUI?
-  if (Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
-     {
-     	gui_print("Device=%s on MIUI - not patching. Flash magisk.\n", Fox_Current_Device.c_str());
-	LOGINFO("OrangeFox: not processing dm-verity and forced-encryption patches for %s.\n", Fox_Current_Device.c_str());
-        return true;
-     } 
-  else
-     return false;  
-}
-
 /* Have we just installed OrangeFox on a device with a Treble ROM? */
 static bool New_Fox_On_Treble(void)
 {
@@ -1632,7 +1615,7 @@ std::string TWFunc::to_string(unsigned long value)
 
 void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 {
-      if (DataManager::GetIntValue(FOX_DONT_REPLACE_STOCK) == 1/* || Fox_Current_ROM_IsMIUI == 0*/)
+      if (DataManager::GetIntValue(FOX_DONT_REPLACE_STOCK) == 1)
       	return;
       
       if ((DataManager::GetIntValue(FOX_ADVANCED_STOCK_REPLACE) == 1) 
@@ -2938,29 +2921,25 @@ bool TWFunc::Fresh_Fox_Install()
   std::string fox_file = "/cache/recovery/Fox_Installed";
   New_Fox_Installation = 0;
   
-  if ((PartitionManager.Is_Mounted_By_Path("/cache"))
-  || (PartitionManager.Mount_By_Path("/cache", true)))
-      {
+  if ((PartitionManager.Is_Mounted_By_Path("/cache")) || (PartitionManager.Mount_By_Path("/cache", true)))
+    {
 	if (!Path_Exists(fox_file))
-	{
 	    return false;
-	}
-	else
-	  {
-	     unlink(fox_file.c_str());
-	     gui_print("Fresh OrangeFox installation\n");
-	     Fox_Force_Deactivate_Process = 1;
-	     DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
-	     New_Fox_Installation = 1;
-	     TWFunc::Deactivation_Process();
-	     New_Fox_Installation = 0;
-	     return true;
-	  }
-     }    
-     else
-       {
-          return false;
-       }
+	
+	unlink(fox_file.c_str());
+	New_Fox_Installation = 1;
+	gui_print("Fresh OrangeFox installation\n");
+     	if (Fox_Current_ROM_IsMIUI == 1)
+     	   {
+		Fox_Force_Deactivate_Process = 1;
+		DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
+	   }
+	TWFunc::Deactivation_Process();
+	New_Fox_Installation = 0;
+	return true;
+   }    
+   else
+        return false;
 }
 
 
@@ -3482,6 +3461,22 @@ void TWFunc::PrepareToFinish(void)
     }
 }
 
+bool TWFunc::DontPatchBootImage(void)
+{
+   if (skip_patching_this_device() == true)
+      return true;
+   
+   Fox_Force_Deactivate_Process = DataManager::GetIntValue(FOX_FORCE_DEACTIVATE_PROCESS);
+   if (
+          (Fox_Force_Deactivate_Process == 1) || 
+          (DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || 
+          (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1)
+      )
+      return false;
+   else
+      return true;
+}
+
 void TWFunc::Deactivation_Process(void)
 {
 
@@ -3494,22 +3489,22 @@ void TWFunc::Deactivation_Process(void)
   // advanced stock replace
   Disable_Stock_Recovery_Replace();
 
-  // nitrogen/tulip patch; R9.0
-  if (skip_patching_this_device() == true)
+  // Should we skip the boot image patches?
+  if (DontPatchBootImage() == true)
      {
      	if (New_Fox_Installation == 1 || Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
      	   {
-	      gui_print("Not patching boot image on %s. Flash magisk after this.\n",Fox_Current_Device.c_str());
-	      LOGINFO("OrangeFox: skipping patching of boot image on device: %s\n",Fox_Current_Device.c_str());
-	      New_Fox_Installation = 0;
-              Fox_Force_Deactivate_Process = 0;
-              DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);	
-	      return;
+	      gui_print("Not patching boot image on %s. Flash magisk after this.\n", Fox_Current_Device.c_str());
 	   }
-     }
+	LOGINFO("OrangeFox: skipping patching of boot image on device: %s\n", Fox_Current_Device.c_str());
+	New_Fox_Installation = 0;
+        Fox_Force_Deactivate_Process = 0;
+        DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);	
+        return;
+     }   
+  // end
+  
    
-  // end nitrogen/tulip patch
- 
   // unpack boot image
   #ifdef OF_USE_MAGISKBOOT
   if (!PackRepackImage_MagiskBoot(true, true))
