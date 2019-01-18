@@ -2,37 +2,109 @@
 <recovery>
 	<details>
 		<resolution width="1080" height="1920"/>
-		<author>OrangeFox dev team</author>
-		<title>OrangeFox</title>
-		<description>splash author - KMP design</description>
+		<author>fowdownloads</author>
+		<title>SED Editable splash screen</title>
+		<description>Этот файл будет отредактирован с помощью SED во время сборки</description>
 		<themeversion>3</themeversion>
 	</details>
-	
+
 	<resources>
-		<font name="splashtext1" filename="RobotoCondensed-Regular.ttf" size="50"/>
-		<image name="splash" filename="splash"/>
+		<#SPLASH_LOGO_ACTIVE#image name="splashlogo" filename="splashlogo" retainaspect="1"/>
+		<image name="splashtitle" filename="splashtitle" retainaspect="1"/#SPLASH_LOGO_ACTIVE#>
+		<#IMG_AS_BKG#image name="splashbkg" filename="splashbkg" retainaspect="1"/#IMG_AS_BKG#>
 	</resources>
-	
+
 	<variables>
-		<variable name="background" value="#222222FF"/>
-		<variable name="text" value="#000000"/>
+		<variable name="screen_center_x" value="540"/>
+		<variable name="screen_center_y" value="960"/>
+		<variable name="background_color" value="##BKG_COLOR#FF"/>
+	
+		<#SPLASH_LOGO_ACTIVE#variable name="bar" value="#BOOL_BAR#"/>
+		<variable name="up_bar" value="#BOOL_UP_BAR#"/>
+		<variable name="down_bar" value="#BOOL_DOWN_BAR#"/>
+		<variable name="splash_type" value="#LOGO_TYPE#"/>
+		<variable name="vis_title" value="#BOOL_TITLE#"/>
+		
+		<variable name="logo_y" value="#PLACEMENT#"/>
+		
+		<variable name="accent_color" value="##ACCENT_COLOR#FF"/>
+		<variable name="add_color" value="##ADD_COLOR#FF"/>
+		
+		<variable name="screen_width" value="1080"/>
+		<variable name="screen_height" value="1920"/>
+
+		<variable name="arrow_fix_w" value="50"/>
+		<variable name="arrow_fix_h" value="25"/>
+		<variable name="left_padding_x" value="141"/>
+		<variable name="curcle_d" value="240"/>
+		<variable name="bar_w" value="428"/>
+		<variable name="bar_h" value="%screen_height%"/>
+		<variable name="title_y" value="1614"/>
+		
+		<variable name="down_bar_y" value="%logo_y%+12"/>
+		<variable name="up_bar_h" value="%logo_y%-12"/>
+		<variable name="down_bar_h" value="1922-%down_bar_y%"/>
+		<variable name="arrow_fix_1_x" value="%left_padding_x%+120"/>
+		<variable name="arrow_fix_2_x" value="%left_padding_x%+70"/#SPLASH_LOGO_ACTIVE#>
 	</variables>
 
 	<pages>
 		<page name="splash">
-			<background color="%background%"/>		
+			<background color="%background_color%"/>
 			
-			<text color="%text%">
-				<font resource="splashtext1"/>
-				<placement x="130" y="1590"/>
-				<text>%fox_actual_build%</text>
-			</text>	
-			
-			<object type="image">
-				<image resource="splash"/>
-				<placement x="0" y="0"/>
-			</object>
+			<#IMG_AS_BKG#image>
+				<image resource="splashbkg"/>
+				<placement x="%screen_center_x%" y="%screen_center_y%" placement="4"/>
+			</image#IMG_AS_BKG#>
 
+			<#SPLASH_LOGO_ACTIVE#fill color="%accent_color%">
+				<condition var1="bar" var2="1"/>
+				<condition var1="splash_type" op="!=" var2="classic"/>
+				<placement x="0" y="0" w="%bar_w%" h="%bar_h%"/>
+			</fill>
+			
+			<fill color="%accent_color%">
+				<condition var1="bar" var2="1"/>
+				<condition var1="splash_type" var2="classic"/>
+				<placement x="0" y="0" w="%screen_width%" h="%logo_y%"/>
+			</fill>
+			
+			<fill color="%accent_color%">
+				<condition var1="up_bar" var2="1"/>
+				<condition var1="splash_type" op="!=" var2="classic"/>
+				<placement x="%left_padding_x%" y="0" w="%curcle_d%" h="%up_bar_h%"/>
+			</fill>
+			
+			<fill color="%accent_color%">
+				<condition var1="up_bar" var2="1"/>
+				<condition var1="splash_type" op="!=" var2="classic"/>
+				<placement x="%arrow_fix_1_x%" y="%up_bar_h%" w="%arrow_fix_w%" h="%arrow_fix_h%" placement="4"/>
+			</fill>
+			
+			<fill color="%add_color%">
+				<condition var1="down_bar" var2="1"/>
+				<condition var1="splash_type" op="!=" var2="classic"/>
+				<placement x="%left_padding_x%" y="%down_bar_y%" w="%curcle_d%" h="%down_bar_h%"/>
+			</fill>
+			
+			<fill color="%add_color%">
+				<condition var1="down_bar" var2="1"/>
+				<condition var1="splash_type" op="!=" var2="classic"/>
+				<placement x="%arrow_fix_2_x%" y="%up_bar_h%" w="%arrow_fix_w%" h="%arrow_fix_h%" placement="4"/>
+			</fill>
+
+			<image>
+				<image resource="splashlogo"/>
+				<placement x="%screen_center_x%" y="%logo_y%" placement="4"/>
+			</image>
+			
+			<image>
+				<condition var1="vis_title" var2="1"/>
+				<condition var1="splash_type" var2="classic"/>
+				<image resource="splashtitle"/>
+				<placement x="%screen_center_x%" y="%title_y%" placement="4"/>
+			</image#SPLASH_LOGO_ACTIVE#>
 		</page>
 	</pages>
 </recovery>
+

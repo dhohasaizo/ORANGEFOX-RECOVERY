@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<recovery>
+
+	<mousecursor>
+		<placement w="0" h="0"/>
+		<background color="#FFFFFF00" resource="cursor"/>
+		<speed multiplier="2.5"/>
+	</mousecursor>
+	
+	<resources>
+	
+		<!-- pie door -->
+		<image name="nav_menu" filename="Default/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="Default/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="Default/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="Default/NavPanel/backup" retainaspect="1"/>
+		<image name="nav_menu_d" filename="Default/NavPanel/menu_d" retainaspect="1"/>
+		<image name="nav_wipe_d" filename="Default/NavPanel/wipe_d" retainaspect="1"/>
+		<image name="nav_files_d" filename="Default/NavPanel/files_d" retainaspect="1"/>
+		<image name="nav_backup_d" filename="Default/NavPanel/backup_d" retainaspect="1"/>
+		<image name="nav_empty" filename="Default/NavPanel/empty" retainaspect="1"/>
+		<image name="nav_hl" filename="Default/NavPanel/hl" retainaspect="1"/>
+		<image name="nav_shadow" filename="Default/NavPanel/shadow" retainaspect="1"/>
+		<image name="actionbar_storage" filename="Default/ActionBar/storage" retainaspect="1"/>
+		<image name="actionbar_storage_hl" filename="Default/ActionBar/storage_hl" retainaspect="1"/>
+		<!---->
+		<font name="GSans" filename="GoogleSans-Medium.ttf" size="42"/>
+	
+		<font name="font1" filename="Roboto-Regular.ttf" size="42"/>
+		<font name="font2" filename="RobotoSlab.ttf" size="42"/>
+		<font name="font3" filename="GoogleSans-Regular.ttf" size="42"/>
+		<font name="font4" filename="SamsungSans-Regular.ttf" size="42"/>
+		<font name="font5" filename="Chococooky.ttf" size="42"/>
+		<font name="font6" filename="Cooljazz.ttf" size="42"/>
+		<font name="font7" filename="Bender.ttf" size="42"/>
+		<font name="font8" filename="Amatic.ttf" size="42"/>
+		<font name="font9" filename="AngryBirds.ttf" size="42"/>
+		
+		<!-- Workshop -->
+		<image name="style_gray" filename="Default/Workshop/StyleGray"/>
+		<image name="style_black" filename="Default/Workshop/StyleBlack"/>
+		<image name="style_light_c" filename="Default/Workshop/StyleLight_c"/>
+		<image name="style_light" filename="Default/Workshop/StyleLight"/>
+		<image name="color_amber" filename="Default/Workshop/ColorAmber"/>
+		<image name="color_blue" filename="Default/Workshop/ColorBlue"/>
+		<image name="color_cyan" filename="Default/Workshop/ColorCyan"/>
+		<image name="color_gray" filename="Default/Workshop/ColorGray"/>
+		<image name="color_purple" filename="Default/Workshop/ColorPurple"/>
+		<image name="color_green" filename="Default/Workshop/ColorGreen"/>
+		<image name="color_red" filename="Default/Workshop/ColorRed"/>
+		<image name="color_pink" filename="Default/Workshop/ColorPink"/>
+		
+		<image name="color_apply" filename="Default/Workshop/ColorApply"/>
+		<image name="style_apply" filename="Default/Workshop/StyleApply"/>
+	
+	<font name="fixed" filename="RobotoMono.ttf" size="42"/>
+	<!-- Неизменяемые изображения -->
+	
+	<!-- Action Bar -->
+	<image name="actionbar_shadow" filename="Default/ActionBar/shadow"/>
+	
+	<!-- Battery -->
+	<image name="battery15" filename="Default/Battery/battery15" retainaspect="1"/>
+	<image name="battery5" filename="Default/Battery/battery5" retainaspect="1"/>
+	
+	<!-- Controls -->
+	<image name="btn_raised" filename="Default/Controls/btn_raised"/>
+	<image name="btn_raised_warn" filename="Default/Controls/btn_raised_warn"/>
+	<image name="btn_flat_qw" filename="Default/Controls/btn_flat_qw"/>
+	<image name="checkbox_false" filename="Default/Controls/checkbox_false_d" retainaspect="1"/>
+	<image name="radio_false" filename="Default/Controls/radio_false_d" retainaspect="1"/>
+	<image name="checkbox_false_dialog" filename="Default/Controls/checkbox_false_dialog" retainaspect="1"/>
+	<image name="radio_false_dialog" filename="Default/Controls/radio_false_dialog" retainaspect="1"/>
+	
+	<!-- FAB -->
+	<image name="btn_float_addtoqueue" filename="Default/FAB/btn_float_addtoqueue" retainaspect="1"/>
+	<image name="btn_float_addtoqueue_hl" filename="Default/FAB/btn_float_addtoqueue_hl" retainaspect="1"/>
+	<image name="btn_float_storage" filename="Default/FAB/btn_float_storage" retainaspect="1"/>
+	<image name="btn_float_storage_hl" filename="Default/FAB/btn_float_storage_hl" retainaspect="1"/>
+	<image name="btn_float_goto" filename="Default/FAB/btn_float_goto" retainaspect="1"/>
+	<image name="btn_float_goto_hl" filename="Default/FAB/btn_float_goto_hl" retainaspect="1"/>
+	<image name="btn_float_flashitinfo" filename="Default/FAB/btn_float_flashitinfo" retainaspect="1"/>
+	<image name="btn_float_flashitinfo_hl" filename="Default/FAB/btn_float_flashitinfo_hl" retainaspect="1"/>
+	<image name="float_fm_books" filename="Default/FAB/float_fm_books" retainaspect="1"/>
+	<image name="float_fm_new" filename="Default/FAB/float_fm_new" retainaspect="1"/>
+	<image name="float_fm_select" filename="Default/FAB/float_fm_select" retainaspect="1"/>
+	<image name="float_fm_books_hl" filename="Default/FAB/float_fm_books_hl" retainaspect="1"/>
+	<image name="float_fm_new_hl" filename="Default/FAB/float_fm_new_hl" retainaspect="1"/>
+	<image name="float_fm_select_hl" filename="Default/FAB/float_fm_select_hl" retainaspect="1"/>
+	
+	<!-- File Manager -->
+	<image name="flash_set" filename="Default/FileManager/flash_set" retainaspect="1"/>
+	<image name="flash_dis" filename="Default/FileManager/flash_dis" retainaspect="1"/>
+	<image name="folder_icon" filename="Default/FileManager/folder" retainaspect="1"/>
+	<image name="folder_icon_small" filename="Default/FileManager/folder_small" retainaspect="1"/>
+	
+	<!-- Icons -->
+	<image name="bs_btn_open" filename="Default/Icons/bs_btn_open" retainaspect="1"/>
+	<image name="bs_btn_checksum" filename="Default/Icons/bs_btn_checksum" retainaspect="1"/>
+	<image name="bs_btn_doc" filename="Default/Icons/bs_btn_doc" retainaspect="1"/>
+	<image name="bs_btn_archive" filename="Default/Icons/bs_btn_archive" retainaspect="1"/>
+	<image name="bs_btn_unzip" filename="Default/Icons/bs_btn_unzip" retainaspect="1"/>
+	<image name="bs_btn_image" filename="Default/Icons/bs_btn_image" retainaspect="1"/>
+	<image name="bs_btn_restore" filename="Default/Icons/bs_btn_restore" retainaspect="1"/>
+	<image name="bs_btn_time" filename="Default/Icons/bs_btn_time" retainaspect="1"/>
+	<image name="bs_btn_new" filename="Default/Icons/bs_btn_new" retainaspect="1"/>
+	<image name="bs_btn_wut" filename="Default/Icons/bs_btn_wut" retainaspect="1"/>
+	<image name="bs_btn_bookmark" filename="Default/Icons/bs_btn_bookmark" retainaspect="1"/>
+	<image name="bs_btn_set_global" filename="Default/Icons/bs_btn_set_global" retainaspect="1"/>
+	<image name="bs_btn_set_regional" filename="Default/Icons/bs_btn_set_regional" retainaspect="1"/>
+	<image name="bs_btn_set_about" filename="Default/Icons/bs_btn_set_about" retainaspect="1"/>
+	<image name="bs_btn_set_bug" filename="Default/Icons/bs_btn_set_bug" retainaspect="1"/>
+	<image name="bs_btn_set_files" filename="Default/Icons/bs_btn_set_files" retainaspect="1"/>
+	<image name="bs_btn_set_custom" filename="Default/Icons/bs_btn_set_custom" retainaspect="1"/>
+	<image name="bs_btn_set_vibro" filename="Default/Icons/bs_btn_set_vibro" retainaspect="1"/>
+	<image name="bs_btn_set_screen" filename="Default/Icons/bs_btn_set_screen" retainaspect="1"/>
+	<image name="bs_btn_copy" filename="Default/Icons/bs_btn_copy" retainaspect="1"/>
+	<image name="bs_btn_cut" filename="Default/Icons/bs_btn_cut" retainaspect="1"/>
+	<image name="bs_btn_chmod" filename="Default/Icons/bs_btn_chmod" retainaspect="1"/>
+	<image name="bs_btn_delete" filename="Default/Icons/bs_btn_delete" retainaspect="1"/>
+	<image name="bs_btn_rename" filename="Default/Icons/bs_btn_rename" retainaspect="1"/>
+	<image name="bs_btn_brush" filename="Default/Icons/bs_btn_brush" retainaspect="1"/>
+	<image name="bs_btn_get" filename="Default/Icons/bs_btn_get" retainaspect="1"/>
+	
+	<!-- Info -->
+	<image name="icon_info2" filename="Default/Info/icon_info2" retainaspect="1"/>
+	<image name="icon_warning" filename="Default/Info/icon_warning" retainaspect="1"/>
+	<image name="icon_person" filename="Default/Info/icon_person" retainaspect="1"/>
+	<image name="icon_mail" filename="Default/Info/icon_mail" retainaspect="1"/>
+	
+	<!-- Keyboard -->
+	<image name="backspace" filename="Default/Keyboard/backspace" retainaspect="1"/>
+	<image name="shift" filename="Default/Keyboard/shift" retainaspect="1"/>
+	<image name="shift_fill" filename="Default/Keyboard/shift_fill" retainaspect="1"/>
+	<image name="space" filename="Default/Keyboard/space" retainaspect="1"/>
+	<image name="keyboard_shadow" filename="Default/Keyboard/keyboard_shadow"/>
+	<image name="kb_arrow_left" filename="Default/Keyboard/kb_arrow_left" retainaspect="1"/>
+	<image name="kb_arrow_right" filename="Default/Keyboard/kb_arrow_right" retainaspect="1"/>
+	<image name="kb_arrow_up" filename="Default/Keyboard/kb_arrow_up" retainaspect="1"/>
+	<image name="kb_arrow_down" filename="Default/Keyboard/kb_arrow_down" retainaspect="1"/>
+	
+	<!-- Nav Bar -->
+	<image name="home_white" filename="Default/NavBar/home_white" retainaspect="1"/>
+	<image name="home_white_hl" filename="Default/NavBar/home_white_hl" retainaspect="1"/>
+	<image name="back_white" filename="Default/NavBar/back_white" retainaspect="1"/>
+	<image name="back_white_hl" filename="Default/NavBar/back_white_hl" retainaspect="1"/>
+	<image name="slideout_white" filename="Default/NavBar/slideout_white" retainaspect="1"/>
+	<image name="slideout_white_hl" filename="Default/NavBar/slideout_white_hl" retainaspect="1"/>
+	<image name="keyboard_hide_white" filename="Default/NavBar/keyboard_hide_white" retainaspect="1"/>
+	<image name="keyboard_hide_white_hl" filename="Default/NavBar/keyboard_hide_white_hl" retainaspect="1"/>
+	<image name="home_white_ng" filename="Default/NavBar/home_white_ng" retainaspect="1"/>
+	<image name="home_white_ng_hl" filename="Default/NavBar/home_white_ng_hl" retainaspect="1"/>
+	<image name="back_white_ng" filename="Default/NavBar/back_white_ng" retainaspect="1"/>
+	<image name="back_white_ng_hl" filename="Default/NavBar/back_white_ng_hl" retainaspect="1"/>
+	<image name="slideout_white_ng" filename="Default/NavBar/slideout_white_ng" retainaspect="1"/>
+	<image name="slideout_white_ng_hl" filename="Default/NavBar/slideout_white_ng_hl" retainaspect="1"/>
+	<image name="keyboard_hide_white_ng" filename="Default/NavBar/keyboard_hide_white_ng" retainaspect="1"/>
+	<image name="keyboard_hide_white_ng_hl" filename="Default/NavBar/keyboard_hide_white_ng_hl" retainaspect="1"/>
+	
+	<!-- Other -->
+	<image name="actionbar_clear" filename="Default/Other/actionbar_clear" retainaspect="1"/>
+	<image name="cursor" filename="Default/Other/cursor"/>
+	<image name="logo_debug" filename="Default/FullscreenIcons/logo_debug" retainaspect="1"/>
+	</resources>
+</recovery>

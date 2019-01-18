@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<!-- Controls -->
+		<image name="radio_true_dialog" filename="Purple/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="Purple/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="Purple/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="Purple/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="Purple/Controls/slider_used"/>
+		<image name="handle" filename="Purple/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="Purple/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="Purple/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="Purple/Controls/btn_raised_hl"/>
+		
+		<!-- FAB -->
+		<image name="btn_float_arc" filename="Purple/FAB/btn_float_arc" retainaspect="1"/>
+		<image name="btn_float_img" filename="Purple/FAB/btn_float_img" retainaspect="1"/>
+		<image name="btn_float_accept" filename="Purple/FAB/btn_float_accept" retainaspect="1"/>
+		<image name="btn_float_folder" filename="Purple/FAB/btn_float_folder" retainaspect="1"/>
+		<image name="btn_float_close" filename="Purple/FAB/btn_float_close" retainaspect="1"/>
+		<image name="float_fm_plus" filename="Purple/FAB/float_fm_plus" retainaspect="1"/>
+		<image name="float_fm_close" filename="Purple/FAB/float_fm_close" retainaspect="1"/>
+		<image name="float_fm_close_hl" filename="Purple/FAB/float_fm_close_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="file_icon_small" filename="Purple/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="Purple/FileManager/file" retainaspect="1"/>
+		<image name="zip_icon_small" filename="Purple/FileManager/file_zip_small" retainaspect="1"/>
+		<image name="img_icon_small" filename="Purple/FileManager/file_img_small" retainaspect="1"/>
+		<image name="zip_icon" filename="Purple/FileManager/file_zip" retainaspect="1"/>
+		<image name="img_icon" filename="Purple/FileManager/file_img" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="Purple/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="Purple/FileManager/file_bkp" retainaspect="1"/>
+		<image name="flash_icon" filename="Purple/FileManager/flash_icon" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info" filename="Purple/Info/icon_info" retainaspect="1"/>
+		<image name="help_cloud" filename="Purple/Info/help_cloud" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="enter" filename="Purple/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="Purple/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="Purple/Keyboard/enter_num_new" retainaspect="1"/>
+
+		<!-- Nav Bar -->
+		<image name="home" filename="Purple/NavBar/home" retainaspect="1"/>
+		<image name="home_hl" filename="Purple/NavBar/home_hl" retainaspect="1"/>
+		<image name="back" filename="Purple/NavBar/back" retainaspect="1"/>
+		<image name="back_hl" filename="Purple/NavBar/back_hl" retainaspect="1"/>
+		<image name="slideout" filename="Purple/NavBar/slideout" retainaspect="1"/>
+		<image name="slideout_hl" filename="Purple/NavBar/slideout_hl" retainaspect="1"/>
+		<image name="keyboard_hide" filename="Purple/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="keyboard_hide_hl" filename="Purple/NavBar/keyboard_hide_hl" retainaspect="1"/>
+		<image name="home_ng" filename="Purple/NavBar/home_ng" retainaspect="1"/>
+		<image name="home_ng_hl" filename="Purple/NavBar/home_ng_hl" retainaspect="1"/>
+		<image name="back_ng" filename="Purple/NavBar/back_ng" retainaspect="1"/>
+		<image name="back_ng_hl" filename="Purple/NavBar/back_ng_hl" retainaspect="1"/>
+		<image name="slideout_ng" filename="Purple/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="slideout_ng_hl" filename="Purple/NavBar/slideout_ng_hl" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="Purple/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng_hl" filename="Purple/NavBar/keyboard_hide_ng_hl" retainaspect="1"/>
+	</resources>
+	<variables>
+		<variable name="accent" value="#97328DFF"/>
+		<variable name="accent_r" value="151"/>
+		<variable name="accent_g" value="50"/>
+		<variable name="accent_b" value="216"/>
+		<variable name="theme_accent" value="Purple"/>
+		<variable name="current_accent" value="Purple"/>
+		<variable name="applied_accent_x" value="285"/>
+		<variable name="applied_accent_y" value="975"/>
+	</variables>
+</recovery>

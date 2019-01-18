@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<!-- Controls -->
+		<image name="radio_true_dialog" filename="Cyan/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="Cyan/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="Cyan/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="Cyan/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="Cyan/Controls/slider_used"/>
+		<image name="handle" filename="Cyan/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="Cyan/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="Cyan/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="Cyan/Controls/btn_raised_hl"/>
+		
+		<!-- FAB -->
+		<image name="btn_float_arc" filename="Cyan/FAB/btn_float_arc" retainaspect="1"/>
+		<image name="btn_float_img" filename="Cyan/FAB/btn_float_img" retainaspect="1"/>
+		<image name="btn_float_accept" filename="Cyan/FAB/btn_float_accept" retainaspect="1"/>
+		<image name="btn_float_folder" filename="Cyan/FAB/btn_float_folder" retainaspect="1"/>
+		<image name="btn_float_close" filename="Cyan/FAB/btn_float_close" retainaspect="1"/>
+		<image name="float_fm_plus" filename="Cyan/FAB/float_fm_plus" retainaspect="1"/>
+		<image name="float_fm_close" filename="Cyan/FAB/float_fm_close" retainaspect="1"/>
+		<image name="float_fm_close_hl" filename="Cyan/FAB/float_fm_close_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="file_icon_small" filename="Cyan/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="Cyan/FileManager/file" retainaspect="1"/>
+		<image name="zip_icon_small" filename="Cyan/FileManager/file_zip_small" retainaspect="1"/>
+		<image name="img_icon_small" filename="Cyan/FileManager/file_img_small" retainaspect="1"/>
+		<image name="zip_icon" filename="Cyan/FileManager/file_zip" retainaspect="1"/>
+		<image name="img_icon" filename="Cyan/FileManager/file_img" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="Cyan/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="Cyan/FileManager/file_bkp" retainaspect="1"/>
+		<image name="flash_icon" filename="Cyan/FileManager/flash_icon" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info" filename="Cyan/Info/icon_info" retainaspect="1"/>
+		<image name="help_cloud" filename="Cyan/Info/help_cloud" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="enter" filename="Cyan/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="Cyan/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="Cyan/Keyboard/enter_num_new" retainaspect="1"/>
+
+		<!-- Nav Bar -->
+		<image name="home" filename="Cyan/NavBar/home" retainaspect="1"/>
+		<image name="home_hl" filename="Cyan/NavBar/home_hl" retainaspect="1"/>
+		<image name="back" filename="Cyan/NavBar/back" retainaspect="1"/>
+		<image name="back_hl" filename="Cyan/NavBar/back_hl" retainaspect="1"/>
+		<image name="slideout" filename="Cyan/NavBar/slideout" retainaspect="1"/>
+		<image name="slideout_hl" filename="Cyan/NavBar/slideout_hl" retainaspect="1"/>
+		<image name="keyboard_hide" filename="Cyan/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="keyboard_hide_hl" filename="Cyan/NavBar/keyboard_hide_hl" retainaspect="1"/>
+		<image name="home_ng" filename="Cyan/NavBar/home_ng" retainaspect="1"/>
+		<image name="home_ng_hl" filename="Cyan/NavBar/home_ng_hl" retainaspect="1"/>
+		<image name="back_ng" filename="Cyan/NavBar/back_ng" retainaspect="1"/>
+		<image name="back_ng_hl" filename="Cyan/NavBar/back_ng_hl" retainaspect="1"/>
+		<image name="slideout_ng" filename="Cyan/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="slideout_ng_hl" filename="Cyan/NavBar/slideout_ng_hl" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="Cyan/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng_hl" filename="Cyan/NavBar/keyboard_hide_ng_hl" retainaspect="1"/>
+	</resources>
+	<variables>
+		<variable name="accent" value="#009797FF"/>
+		<variable name="accent_r" value="0"/>
+		<variable name="accent_g" value="151"/>
+		<variable name="accent_b" value="151"/>
+		<variable name="theme_accent" value="Cyan"/>
+		<variable name="current_accent" value="Cyan"/>
+		<variable name="applied_accent_x" value="540"/>
+		<variable name="applied_accent_y" value="720"/>
+	</variables>
+</recovery>

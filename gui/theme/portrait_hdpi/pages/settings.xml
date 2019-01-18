@@ -1,0 +1,1640 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="themecheck2">
+			<!-- Чекаем всратось -->
+			<action>
+				<action function="set">tw_simulate_actions=0</action>
+				<action function="set">tw_simulate_fail=0</action>
+				<action function="fileexists">/twres/images/Default/Workshop/ColorBlue.png</action>
+			</action>
+
+			<!-- ОК -->
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">splash_includezip=0</action>
+					<action function="set">tw_themeexist=0</action>
+					<action function="page">%checkpage%</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="page">find_theme</action>
+				</actions>
+			</action>
+		</page>
+		<page name="themecheck1">
+			<action>
+				<condition var1="tw_simulate_actions" var2="1"/>
+				<action function="page">debug</action>
+			</action>
+			<action>
+				<condition var1="tw_simulate_fail" var2="1"/>
+				<action function="page">debug</action>
+			</action>
+			<!-- Чекаем пользовательский путь -->
+			<action>
+				<action function="set">tw_simulate_actions=0</action>
+				<action function="set">tw_simulate_fail=0</action>
+				<action function="mount">data</action>
+				<action function="fileexists">%tw_theme_path%/ui.zip</action>
+			</action>
+
+			<!-- ОК -->
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">tw_themeexist=1</action>
+					<action function="page">%checkpage%</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="page">themecheck2</action>
+				</actions>
+			</action>
+		</page>
+		<page name="find_theme">
+			<template name="body"/>
+			<fileselector style="fileselector_b">
+				<condition var1="list_font" var2="big"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon" file="zip_icon" />
+				<filter extn=".png" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="list_font" var2="small"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon_small" file="zip_icon_small" />
+				<filter extn=".png" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+			
+			<template name="find_file"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>TWRP Workshop</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@tw_zip_location_hdr=Select Theme ZIP}</text>
+			</text>
+
+			<action>
+				<condition var1="tw_filename" op="modified"/>
+				<actions>
+					<action function="set">tw_theme_path=%tw_zip_location%</action>
+					<action function="set">tw_themeexist=1</action>
+					<action function="page">%checkpage%</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+		<!-- Настройки ☺ -->
+		<page name="settings">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_hdr=Settings}</text>
+			</text>
+			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
+				<action function="overlay">dialog_reset</action>
+			</button>
+			
+			
+			<!-- Основные -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
+				<action function="set">general_back=settings</action>
+				<action function="page">ext_general</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row1_y%"/>
+				<image resource="bs_btn_set_global"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
+				<text>{@settings_general=General}</text>
+			</text>
+			<!---->
+			
+			<!-- Workshop -->
+			<button style="bs_btn">
+				<condition var1="beta_wh" var2="1"/>
+				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_themeexist=0</action>
+				<action function="set">checkpage=ext_workshop_ar</action>
+				
+				<action function="set">theme_ar=%screen_h%</action>
+				<action function="compute">theme_ar-%rem_navbar_add%</action>
+				<action function="set">ar_display=%theme_ar%</action>
+				<action function="compute">ar_display/120</action>
+				<action function="set">ar_display=%ar_display%:9</action>
+				<action function="set">rem_navbar=</action>
+				
+				<action function="page">aik_test</action>
+			</button>
+			<button style="bs_btn">
+				<condition var1="beta_wh" op="!=" var2="1"/>
+				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="overlay">beta</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row2_y%"/>
+				<image resource="bs_btn_brush"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
+				<text>TWRP Workshop</text>
+			</text>
+			<!---->
+			
+			<!-- Персонализация -->
+			<button style="bs_btn">
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_navbar</action>
+			</button>
+			<button style="bs_btn">
+				<condition var1="navbar_disable" var2="1"/>
+				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row3_y%"/>
+				<image resource="bs_btn_set_custom"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
+				<text>{@settings_ui=Customization}</text>
+			</text>
+			<!---->
+			
+			<!-- Файлы -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_filecheck=/twres/aroma.zip</action>
+				<action function="set">tw_existpage=ext_fm</action>
+				<action function="set">tw_notexistpage=ext_fm</action>
+				<action function="page">filecheck</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row4_y%"/>
+				<image resource="bs_btn_set_files"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
+				<text>{@file_manager_btn=Files}</text>
+			</text>
+			<!---->
+			
+			<!-- Экран -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_screen</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row5_y%"/>
+				<image resource="bs_btn_set_screen"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
+				<text>{@settings_screen=Display}</text>
+			</text>
+			<!---->
+			
+			<!-- Вибрация -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_vibrate</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row6_y%"/>
+				<image resource="bs_btn_set_vibro"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
+				<text>{@vibration_hdr=Vibration}</text>
+			</text>
+			<!---->
+			
+			<!-- Резервная копия -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">backup_back=settings</action>
+				<action function="page">ext_backup</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row7_y%"/>
+				<image resource="bs_btn_restore"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
+				<text>{@backup_hdr=Backup}</text>
+			</text>
+			<!---->
+			
+			<!-- Региональные настройки -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row8_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_time</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row8_y%"/>
+				<image resource="bs_btn_set_regional"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
+				<text>{@settings_time=Regional}</text>
+			</text>
+			<!---->
+			
+			<!-- Отладка -->
+			<button style="bs_btn">
+				<condition var1="debug_open" var2="5"/>
+				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">debug</action>
+			</button>
+			<image>
+				<condition var1="debug_open" var2="5"/>
+				<placement x="%col1_set_x%" y="%set_row9_y%"/>
+				<image resource="bs_btn_set_bug"/>
+			</image>
+			<text style="bs_text">
+				<condition var1="debug_open" var2="5"/>
+				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
+				<text>{@dbg=Debug}</text>
+			</text>
+			<!---->
+			
+			<!-- Информация (отладка выключена) -->
+			<button style="bs_btn">
+				<condition var1="debug_open" op="!=" var2="5"/>
+				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_filecheck=%tw_theme_path%/ui.zip</action>
+				<action function="set">tw_existpage=about</action>
+				<action function="set">tw_notexistpage=about</action>
+				<action function="page">filecheck</action>
+			</button>
+			<image>
+				<condition var1="debug_open" op="!=" var2="5"/>
+				<placement x="%col1_set_x%" y="%set_row9_y%"/>
+				<image resource="bs_btn_set_about"/>
+			</image>
+			<text style="bs_text">
+				<condition var1="debug_open" op="!=" var2="5"/>
+				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
+				<text>{@about_hdr=About}</text>
+			</text>
+			<!---->
+			
+			<!-- Информация (отладка включена) -->
+			<button style="bs_btn">
+				<condition var1="debug_open" var2="5"/>
+				<placement x="0" y="%set_row10_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_filecheck=%tw_theme_path%/ui.zip</action>
+				<action function="set">tw_existpage=about</action>
+				<action function="set">tw_notexistpage=about</action>
+				<action function="page">filecheck</action>
+			</button>
+			<image>
+				<condition var1="debug_open" var2="5"/>
+				<placement x="%col1_set_x%" y="%set_row10_y%"/>
+				<image resource="bs_btn_set_about"/>
+			</image>
+			<text style="bs_text">
+				<condition var1="debug_open" var2="5"/>
+				<placement x="%col1_x_indent%" y="%set_row10_text_y%"/>
+				<text>{@about_hdr=About}</text>
+			</text>
+			<!---->
+
+			<action>
+				<touch key="home"/>
+				<action function="page">advanced</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">advanced</action>
+			</action>
+		</page>
+	
+		<!-- Основные ☺ -->
+		<page name="ext_general">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<condition var1="general_back" var2="settings"/>
+				<text>{@settings_general=General}</text>
+			</text>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<condition var1="general_back" var2="wipe"/>
+				<text>{@wipe_hdr=Wipe}</text>
+			</text>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<condition var1="general_back" var2="reboot"/>
+				<text>{@reboot_btn=Reboot}</text>
+			</text>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<condition var1="general_back" var2="terminal"/>
+				<text>{@term_s_hdr=Terminal}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<condition var1="general_back" op="!=" var2="reboot"/>
+				<text>{@options_hdr=Options}</text>
+			</text>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l7%"/>
+				
+				<listitem name="{@use_rmrf_chk=Use rm -rf instead of formatting}">
+					<condition var1="general_back" op="!=" var2="terminal"/>
+					<data variable="tw_rm_rf"/>
+				</listitem>
+				<listitem name="{@use_fixed_font=Do not theme terminal font}">
+					<condition var1="general_back" op="!=" var2="wipe"/>
+					<condition var1="general_back" op="!=" var2="reboot"/>
+					<data variable="use_fixed_font"/>
+				</listitem>
+				<listitem name="{@install_reboot_chk=Reboot after installation is complete}">
+					<condition var1="tw_reboot_system" var2="1"/>
+					<condition var1="general_back" var2="settings"/>
+					<data variable="tw_install_reboot"/>
+				</listitem>
+				<listitem name="{@zip_sig_chk=Zip signature verification}">
+					<data variable="tw_signed_zip_verify"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
+				<listitem name="{@lockscreen_quicklock=Tapping the lock icon locks the screen}">
+					<data variable="lock_action"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
+				
+				<listitem name="{@restoredialog_readonly=Never show mount system read-only dialog}">
+					<data variable="tw_never_show_system_ro_page"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
+				
+				
+				<listitem name="{@compatibility_321=Compatibility with TWRP 3.2.1}">
+					<data variable="compatibility_321"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
+				
+				<listitem name="{@inject_twrp_chk=Inject TWRP after install}">
+					<condition var1="tw_has_injecttwrp" var2="1"/>
+					<condition var1="general_back" var2="settings"/>
+					<data variable="tw_inject_after_zip"/>
+				</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row7_2_y%"/>
+					<condition var1="general_back" var2="settings"/>
+				<text>{@enter_password_cptn=Password}</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="use_pass" var2="0"/>
+					<condition var1="general_back" var2="settings"/>
+				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<text>{@disabled=Disabled}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="use_pass" var2="1"/>
+				<condition var1="general_back" var2="settings"/>
+				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<text>{@enabled=Enabled}</text>
+			</text>
+
+			<button style="menu_btn">
+				<condition var1="general_back" var2="settings"/>
+				<condition var1="use_pass" var2="0"/>
+				<placement x="%col1_x%" y="%row7_2_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<action function="set">pass_new_1=</action>
+				<action function="set">pass_new_2=</action>
+				<action function="set">pass_notm=0</action>
+				<action function="overlay">dialog_setpass1</action>
+			</button>
+
+			<button style="menu_btn">
+				<condition var1="general_back" var2="settings"/>
+				<condition var1="use_pass" var2="1"/>
+				<placement x="%col1_x%" y="%row7_2_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<action function="set">pass_new_1=</action>
+				<action function="set">pass_new_2=</action>
+				<action function="set">pass_notm=0</action>
+				<action function="set">use_pass=0</action>
+			</button>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_1a_y%"/>
+				<condition var1="general_back" var2="settings"/>
+				<text>{@areb_confirm=Reboot confirmation dialog}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row5_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<condition var1="general_back" var2="settings"/>
+				<data name="disable_no_os"/>
+				<listitem name="{@otp_never=Never}">1</listitem>
+				<listitem name="{@opt_always=Always}">2</listitem>
+				<listitem name="{@areb_noos=When no OS installed}">0</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<condition var1="general_back" var2="reboot"/>
+				<text>{@areb_confirm=Reboot confirmation dialog}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
+				<condition var1="general_back" var2="reboot"/>
+				<data name="disable_no_os"/>
+				<listitem name="{@otp_never=Never}">1</listitem>
+				<listitem name="{@opt_always=Always}">2</listitem>
+				<listitem name="{@areb_noos=When no OS installed}">0</listitem>
+			</listbox>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">%general_back%</action>
+			</action>
+		</page>
+		
+		<!-- Персонализация ☺ -->
+		<page name="ext_navbar">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_ui=Customization}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@settings_ui_style=NavBar style}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col2_x_text%" y="%row1_1_y%"/>
+				<text>{@settings_ui_color=NavBar background}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l3%"/>
+				<data name="nougat"/>
+				<listitem name="{@fm_none=None}">2</listitem>
+				<listitem name="{@cust_navbar_cls=Classic}">0</listitem>
+				<listitem name="{@cust_navbar_noug=Nougat}">1</listitem>
+			</listbox>
+
+			<listbox>
+				<placement x="%col2_x%" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l3%"/>
+				<data name="navbar_bkg"/>
+				<listitem name="{@fm_none=None}">0</listitem>
+				<listitem name="{@cust_navbar_accent=Accent}">1</listitem>
+				<listitem name="{@cust_navbar_black=Black}">2<condition var1="theme_style" op="!=" var2="Black"/></listitem>
+				<listitem name="{@cust_navbar_black=Black}">2<condition var1="theme_style" var2="Black"/><condition var1="theme_background" var2="on"/></listitem>
+			</listbox>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row2_3a_y%" w="%screen_w%" h="%lb_l2%"/>
+				<listitem name="{@cust_navbar_white=Use white buttons}">
+					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="theme_style_main" op="!=" var2="Light"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@cust_navbar_white=Use white buttons}">
+					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="theme_style_main" var2="Light"/>
+					<condition var1="theme_background" var2="on"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@cust_navbar_white=Use white buttons}">
+					<condition var1="navbar_bkg" var2="2"/>
+					<condition var1="theme_style_main" var2="Light"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@rev_navbar_chk=Reversed navbar layout}">
+					<data variable="navbar_sams"/>
+				</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_1a_y%"/>
+				<text>{@settings_ui_status=Status bar}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row4_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<listitem name="{@center_clock_bar=Center clock in statusbar}">
+					<data variable="center_clock"/>
+				</listitem>
+				<listitem name="{@show_cpu_temp_bar=Show CPU temperature}">
+					<data variable="show_cpu_temp"/>
+				</listitem>
+				<listitem name="{@settings_ui_battery=Show battery icon}">
+					<data variable="enable_battery"/>
+				</listitem>
+				
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row6_2_y%"/>
+				<text>{@cust_oth=Other}</text>
+			</text>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row6_3_y%" w="%screen_w%" h="%lb_l4%"/>
+				<listitem name="{@use_menu_btn=Use buttons on main menu}">
+					<data variable="menu_btn_solid"/>
+				</listitem>
+				<listitem name="{@alt_btn=Alternative buttons style}">
+					<data variable="alt_style_btn"/>
+				</listitem>
+				<listitem name="{@accent_title=Use accent color in title}">
+					<data variable="accent_title"/>
+					<condition var1="theme_style" op="!=" var2="Light"/>
+				</listitem>
+				<listitem name="{@accent_title=Use accent color in title}">
+					<data variable="accent_title"/>
+					<condition var1="theme_background" var2="on"/>
+					<condition var1="theme_style" var2="Light"/>
+				</listitem>
+				<listitem name="{@new_key=Use new style for keyboard}">
+					<data variable="key_buttons"/>
+				</listitem>
+			</listbox>
+				
+			<action>
+				<condition var1="theme_style" var2="Light"/>
+				<condition var1="accent_title" var2="1"/>
+				<action function="set">accent_title=0</action>
+			</action>
+			
+			<action>
+				<condition var1="navbar_bkg" var2="1"/>
+				<action function="set">navbar_accent=1</action>
+			</action>
+			
+			<action>
+				<condition var1="navbar_bkg" var2="0"/>
+				<condition var1="theme_style_main" var2="Light"/>
+				<action function="set">navbar_accent=0</action>
+			</action>
+			
+			<action>
+				<condition var1="nougat" var2="2"/>
+				<action function="set">navbar_bkg=0</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+		
+		<!-- Персонализация ☺ -->
+		<page name="ext_custom">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_ui=Customization}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@settings_ui_status=Status bar}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
+				<listitem name="{@center_clock_bar=Center clock in statusbar}">
+					<data variable="center_clock"/>
+				</listitem>
+				<listitem name="{@show_cpu_temp_bar=Show CPU temperature}">
+					<data variable="show_cpu_temp"/>
+				</listitem>
+				<listitem name="{@settings_ui_battery=Show battery icon}">
+					<data variable="enable_battery"/>
+				</listitem>
+				
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>{@cust_oth=Other}</text>
+			</text>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l4%"/>
+				<listitem name="{@use_menu_btn=Use buttons on main menu}">
+					<data variable="menu_btn_solid"/>
+				</listitem>
+				<listitem name="{@alt_btn=Alternative buttons style}">
+					<data variable="alt_style_btn"/>
+				</listitem>
+				<listitem name="{@accent_title=Use accent color in title}">
+					<data variable="accent_title"/>
+					<condition var1="theme_style" op="!=" var2="Light"/>
+				</listitem>
+				<listitem name="{@accent_title=Use accent color in title}">
+					<data variable="accent_title"/>
+					<condition var1="theme_background" var2="on"/>
+					<condition var1="theme_style" var2="Light"/>
+				</listitem>
+				<listitem name="{@new_key=Use new style for keyboard}">
+					<data variable="key_buttons"/>
+				</listitem>
+			</listbox>
+				
+			<action>
+				<condition var1="theme_style" var2="Light"/>
+				<condition var1="accent_title" var2="1"/>
+				<action function="set">accent_title=0</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+	
+		<!-- Файлы ☺ -->
+		<page name="ext_fm">
+			<action>
+				<condition var1="aroma_path" var2="/twres/aroma.zip"/>
+				<condition var1="tw_fileexists" var2="0"/>
+				<action function="set">aroma_path=none</action>
+				<action function="set">splash_includearoma=0</action>
+				<action function="set">aroma_enabled=0</action>
+			</action>
+			<action>
+				<condition var1="aroma_path" var2="none"/>
+				<condition var1="tw_fileexists" var2="1"/>
+				<action function="set">aroma_path=/twres/aroma.zip</action>
+			</action>
+		
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@file_manager_btn=Files}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@fm_butts=Button in File Manager}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width%" h="%lb_l3%"/>
+				<data name="bookmark"/>
+				<listitem name="{@fm_none=None}">2</listitem>
+				<listitem name="{@fm_book=Bookmark button}">1</listitem>
+				<listitem name="{@fm_font=Font button}">0</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>{@cust_fm_font=Font Size}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row3_2a_y%" w="%listbox_tz_width%" h="%lb_l2%"/>
+				<data name="list_font"/>
+				<listitem name="{@cust_fm_font_s=Small}">small</listitem>
+				<listitem name="{@cust_fm_font_b=Big}">big</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_3a_y%"/>
+				<text>AromaFM</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="aroma_path" op="!=" var2="none"/>
+				<placement x="%col1_x%" y="%row5_1a_y%"/>
+				<text>%aroma_path%</text>
+			</text>
+			
+			<text style="text_body2">
+				<condition var1="aroma_path" var2="none"/>
+				<placement x="%col1_x%" y="%row5_1a_y%"/>
+				<text>{@not_set=Not set}</text>
+			</text>
+
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row4_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<action function="page">ext_fm_aroma</action>
+			</button>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_3a_y%"/>
+				<text>{@cust_oth=Other}</text>
+			</text>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row6_1a_y%" w="%screen_w%" h="%lb_l4%"/>
+				<listitem name="{@aroma_on=Enable AromaFM}">
+					<condition var1="aroma_path" op="!=" var2="none"/>
+					<data variable="aroma_enabled"/>
+				</listitem>
+				<listitem name="{@storagedialog_enable=Enable storage selection dialog}">
+					<data variable="storage_select_on"/>
+				</listitem>
+				<listitem name="{@restoredialog_books=Newer show set bookmaks dialog}">
+					<data variable="dialog_hide_folder"/>
+				</listitem>
+				<listitem name="{@cust_fm_shad=Enable shadow}">
+					<data variable="fl_shadow"/>
+				</listitem>
+			</listbox>
+			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<condition var1="aroma_path" op="!=" var2="/twres/aroma.zip"/>
+				<condition var1="tw_fileexists" var2="1"/>
+				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
+				<action function="set">aroma_path=/twres/aroma.zip</action>
+			</button>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+		
+		<page name="ext_fm_aroma">
+			<template name="body"/>
+			<fileselector style="fileselector_b">
+				<condition var1="list_font" var2="big"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon" file="zip_icon" />
+				<filter extn=".zip" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="list_font" var2="small"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon_small" file="zip_icon_small" />
+				<filter extn=".zip" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+			
+			<template name="find_file"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@file_manager_btn=Files}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@aroma_select=Select AromaFM ZIP}</text>
+			</text>
+
+			<action>
+				<condition var1="tw_filename" op="modified"/>
+				<actions>
+					<action function="set">aroma_path=%tw_filename%</action>
+					<action function="page">ext_fm</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_fm</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+	
+		<!-- Экран ☺-->
+		<page name="ext_screen">
+			
+			<template name="body"/>
+			<template name="ab"/>
+			<template name="statusbarinfo"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_screen=Display}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@settings_screen_cptn=Screen Settings}</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="tw_has_brightnesss_file" var2="1"/>
+				<placement x="%col1_x%" y="%row1_2_y%"/>
+				<text>{@screen_bright_slider=Brightness: %tw_brightness_pct%%}</text>
+			</text>
+
+			<slidervalue>
+				<condition var1="tw_has_brightnesss_file" var2="1"/>
+				<placement x="%slider_x%" y="%row1_2a_y%" w="%slidervalue_w%"/>
+				<data variable="tw_brightness_pct" min="10" max="100" showrange="0" showcurr="0" changeondrag="1"/>
+				<actions>
+					<action function="set">tw_brightness=%tw_brightness_max%</action>
+					<action function="compute">tw_brightness*%tw_brightness_pct%</action>
+					<action function="compute">tw_brightness/100</action>
+					<action function="setbrightness">%tw_brightness%</action>
+				</actions>
+			</slidervalue>
+
+			<text style="text_body2">
+				<condition var1="tw_screen_timeout_secs" op="=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@settings_screen_timeout_cptn=Timeout}</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="tw_screen_timeout_secs" op="!=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@settings_screen_timeout_cptn2=Timeout:} %tw_screen_timeout_secs% {@timeout_unit=seconds}</text>
+			</text>
+
+			<slidervalue>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%slider_x%" y="%row3_1_y%" w="%slidervalue_w%"/>
+				<data variable="tw_screen_timeout_secs" min="0" max="300" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+		
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_2a_y%"/>
+				<text>{@flashlight=Flashlight source}</text>
+			</text>
+		
+			<button style="bs_btn">
+				<placement x="0" y="%flash_cord%" w="%screen_w%" h="%lb_l1%"/>
+				<action function="set">flashlight_on=0</action>
+			</button>
+			<image>
+				<placement x="0" y="%flash_cord%"/>
+				<image resource="flash_dis"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%flash_text_x%" y="%flash_text_y%"/>
+				<text>{@areb_off=Off}</text>
+			</text>
+			
+			<button style="bs_btn">
+				<placement x="0" y="%flash_cord2%" w="%screen_w%" h="%lb_l1%"/>
+				<action function="set">flash_active_temp=%flash_active%</action>
+				<action function="overlay">dialog_activeflash</action>
+			</button>
+			<image>
+				<placement x="0" y="%flash_cord2%"/>
+				<image resource="flash_set"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%flash_text_x%" y="%flash_text2_y%"/>
+				<text>{@flashlight_set=Brightness level (current: %flash_active%)}</text>
+			</text>
+			
+			<fileselector style="fileselector_s">
+				<placement x="0" y="%flash_files%" w="%screen_w%" h="%lb_l4%"/>
+				<sort name="1"/>
+				<icon folder="flash_icon" file="flash_icon" />
+				<filter folders="1" files="1" nav="0"/>
+				<path name="sysclass" default="/sys/class/leds"/>
+				<data name="flashlight_modify"/>
+				<selection name="flashlight_file"/>
+			</fileselector>
+			
+			<action>
+				<condition var1="flashlight_modify" op="modified"/>
+				<action function="set">flashlight_govno=0</action>
+				<action function="overlay">dialog_flashset</action>
+			</action>
+			
+			<action>
+				<condition var1="tw_screen_timeout_secs" op="&lt;" var2="15"/>
+				<condition var1="tw_screen_timeout_secs" op="&gt;" var2="0"/>
+				<action function="set">tw_screen_timeout_secs=0</action>
+			</action>
+		
+			<button>
+				<condition var1="screen_hint" var2="1"/>
+				<image resource="help_cloud"/>
+				<placement x="55" y="295"/>
+				<action function="set">screen_hint=2</action>
+				<action function="page">ext_screen</action>
+			</button>
+			
+			<text>
+				<condition var1="screen_hint" var2="1"/>
+				<font resource="body2" color="#ffffffff"/>
+				<placement x="120" y="345"/>
+				<text>{@extra_keys=Hint:}</text> <!--34-->
+			</text>
+			
+			
+			<text>
+				<condition var1="screen_hint" var2="1"/>
+				<font resource="body2" color="#ffffffff"/>
+				<placement x="120" y="410"/>
+				<text>{@extra_keys3=Turn on the flashlight by pressing}</text>
+			</text>
+			
+			<text>
+				<condition var1="screen_hint" var2="1"/>
+				<font resource="body2" color="#ffffffff"/>
+				<placement x="120" y="475"/>
+				<text>{@extra_keys4=power and the volume up buttons!}</text>
+			</text>
+			
+			
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+		
+		<!-- Вибрация ☺ -->
+		<page name="ext_vibrate">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@vibration_hdr=Vibration}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@vibration_hdr=Vibration}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row1_2_y%"/>
+				<condition var1="tw_button_vibrate" op="!=" var2="0"/>
+				<text>{@button_vibration=Button Vibration:} %tw_button_vibrate%</text>
+			</text>
+			
+			<text style="text_body2">
+				<condition var1="tw_button_vibrate" op="=" var2="0"/>
+				<placement x="%col1_x%" y="%row1_2_y%"/>
+				<text>{@button_vibration_hdr=Button Vibration is off}</text>
+			</text>
+
+			<slidervalue>
+				<placement x="%slider_x%" y="%row1_2a_y%" w="%slidervalue_w%"/>
+				<data variable="tw_button_vibrate" min="0" max="300" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+
+			<text style="text_body2">
+				<condition var1="tw_keyboard_vibrate" op="!=" var2="0"/>
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@kb_vibration=Keyboard Vibration:} %tw_keyboard_vibrate%</text>
+			</text>
+			
+			<text style="text_body2">
+				<condition var1="tw_keyboard_vibrate" op="=" var2="0"/>
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@kb_vibration_hdr=Keyboard Vibration is off}</text>
+			</text>
+
+			<slidervalue>
+				<placement x="%slider_x%" y="%row3_1_y%" w="%slidervalue_w%"/>
+				<data variable="tw_keyboard_vibrate" min="0" max="300" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+
+			<text style="text_body2">
+				<condition var1="tw_action_vibrate" op="!=" var2="0"/>
+				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<text>{@act_vibration=Action Vibration:} %tw_action_vibrate%</text>
+			</text>
+			
+			<text style="text_body2">
+				<condition var1="tw_action_vibrate" op="=" var2="0"/>
+				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<text>{@act_vibration_hdr=Action Vibration is off}</text>
+			</text>
+
+			<slidervalue>
+				<placement x="%slider_x%" y="%row4_2a_y%" w="%slidervalue_w%"/>
+				<data variable="tw_action_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+		
+		<!-- Резервная копия ☺ -->
+		<page name="ext_backup">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@backup_hdr=Backup}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@settings_backup_name=Backup name}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width%" h="%lb_l3%"/>
+				<data name="auto_generate"/>
+				<listitem name="{@settings_backup_name_user=Do not change}">2</listitem>
+				<listitem name="{@settings_backup_name_auto=Defined automatically}">1</listitem>
+				<listitem name="{@settings_backup_name_auto_hide=While backing up}">0</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_3a_y%"/>
+				<text>{@cust_oth=Other}</text>
+			</text>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row6_1a_y%" w="%screen_w%" h="%lb_l5%"/>		
+				<listitem name="{@enable_backup_comp_chk=Enable compression}">
+					<data variable="tw_use_compression"/>
+				</listitem>
+				<listitem name="{@disable_backup_space_chk=Disable free space check before backup}">
+					<data variable="tw_disable_free_space"/>
+				</listitem>
+				<listitem name="{@restore_enable_digest_chk=Enable Digest verification of backups}">
+					<data variable="tw_skip_digest_check"/>
+					<condition var1="backup_back" var2="settings"/>
+				</listitem>
+				<listitem name="{@skip_digest_backup_chk=Skip Digest generation during backup}">
+					<data variable="tw_skip_digest_generate"/>
+				</listitem>
+				<listitem name="{@sha2_chk=Use SHA2 for hashing}">
+					<condition var1="tw_no_sha2" var2="0"/>
+					<data variable="tw_use_sha2"/>
+				</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>{@settings_backup_qbkp_custom=Quick backup partitions}</text>
+			</text>
+			
+			<partitionlist>
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l4%"/>
+				<data name="tw_backup_list_quick"/>
+				<listtype name="backup"/>
+			</partitionlist>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">%backup_back%</action>
+			</action>
+		</page>
+	
+		<!-- Региональные настройки ☺ -->
+		<page name="ext_time">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_time=Regional}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@sel_tz_list=Time Zone}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width%" h="%listbox_tz_height%"/>
+				<data name="tw_time_zone_guisel"/>
+				<listitem name="{@utcm11=(UTC -11) Samoa, Midway Island}">BST11;BDT</listitem>
+				<listitem name="{@utcm10=(UTC -10) Hawaii}">HST10;HDT</listitem>
+				<listitem name="{@utcm9=(UTC -9) Alaska}">AST9;ADT</listitem>
+				<listitem name="{@utcm8=(UTC -8) Pacific Time}">PST8;PDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm7=(UTC -7) Mountain Time}">MST7;MDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm6=(UTC -6) Central Time}">CST6;CDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm5=(UTC -5) Eastern Time}">EST5;EDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm4=(UTC -4) Atlantic Time}">AST4;ADT</listitem>
+				<listitem name="{@utcm3=(UTC -3) Brazil, Buenos Aires}">GRNLNDST3;GRNLNDDT</listitem>
+				<listitem name="{@utcm2=(UTC -2) Mid-Atlantic}">FALKST2;FALKDT</listitem>
+				<listitem name="{@utcm1=(UTC -1) Azores, Cape Verde}">AZOREST1;AZOREDT</listitem>
+				<listitem name="{@utc0=(UTC  0) London, Dublin, Lisbon}">GMT0;BST,M3.5.0,M10.5.0</listitem>
+				<listitem name="{@utcp1=(UTC +1) Berlin, Brussels, Paris}">CET-1;CEST,M3.5.0,M10.5.0</listitem>
+				<listitem name="{@utcp2=(UTC +2) Athens, Istanbul, South Africa}">WET-2;WET,M3.5.0,M10.5.0</listitem>
+				<listitem name="{@utcp3=(UTC +3) Moscow, Baghdad}">SAUST-3;SAUDT</listitem>
+				<listitem name="{@utcp4=(UTC +4) Abu Dhabi, Tbilisi, Muscat}">WST-4;WDT</listitem>
+				<listitem name="{@utcp5=(UTC +5) Yekaterinburg, Islamabad}">PAKST-5;PAKDT</listitem>
+				<listitem name="{@utcp6=(UTC +6) Almaty, Dhaka, Colombo}">TASHST-6;TASHDT</listitem>
+				<listitem name="{@utcp7=(UTC +7) Bangkok, Hanoi, Jakarta}">THAIST-7;THAIDT</listitem>
+				<listitem name="{@utcp8=(UTC +8) Beijing, Singapore, Hong Kong}">TAIST-8;TAIDT</listitem>
+				<listitem name="{@utcp9=(UTC +9) Tokyo, Seoul, Yakutsk}">JST-9;JSTDT</listitem>
+				<listitem name="{@utcp10=(UTC +10) Eastern Australia, Guam}">EET-10;EETDT</listitem>
+				<listitem name="{@utcp11=(UTC +11) Vladivostok, Solomon Islands}">MET-11;METDT</listitem>
+				<listitem name="{@utcp12=(UTC +12) Auckland, Wellington, Fiji}">NZST-12;NZDT</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_1a_y%"/>
+				<text>{@options_cptn=Options}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row5_2a_y%" w="%screen_w%" h="%lb_l2%"/>
+				<listitem name="{@use_dst_chk=Use daylight savings time (DST)}">
+					<data variable="tw_time_zone_guidst"/>
+				</listitem>
+				<listitem name="{@use24clock_chk=Use 24-hour clock}">
+					<data variable="tw_military_time"/>
+				</listitem>
+			</listbox>
+		
+			<text style="caption">
+				<placement x="%col1_x%" y="%row6_3a_y%"/>
+				<text>{@tz_offset=Offset}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row7_1a_y%"/>
+				<text>{@sel_tz_offset=Select Offset (usually 0): %tw_time_zone_guioffset%}</text>
+			</text>
+
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row6_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<action function="set">zone_temp=%tw_time_zone_guioffset%</action>
+				<action function="set">zone_error=0</action>
+				<action function="overlay">dialog_offset</action>
+			</button>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row7_3a_y%"/>
+				<text>{@language_cptn=Language}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row8_1a_y%"/>
+				<text>{@lang_file=Built-in English}</text>
+			</text>
+
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row7_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<action function="page">ext_time_lang</action>
+			</button>
+			
+			<action>
+				<condition var1="tw_time_zone_guisel" op="modified"/>
+				<action function="page">ext_time</action>
+				<action function="setguitimezone"/>
+			</action>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+		
+		<page name="ext_time_lang">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@language_cptn=Language}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%" />
+				<text>{@language_cptn=Language}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l15%"/>
+				<data name="tw_language"/>
+			</listbox>
+			
+			<action>
+				<condition var1="tw_language" op="modified"/>
+				<action function="page">ext_time_lang_busy</action>
+				<action function="setlanguage"/>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_time</action>
+			</action>
+		</page>
+		
+		<page name="ext_time_lang_busy">
+			<background color="%background%"/>
+			<template name="background_image"/>
+			
+			<fill color="%lightransparent%">
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<template name="statusbarinfo"/>
+			
+			<image>
+				<image resource="language_busy"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text_l%" placement="4"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<text>{@lang_set_wait=Changing language...}</text>
+			</text>
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text%" placement="4"/>
+				<condition var1="navbar_disable" var2="1"/>
+				<text>{@lang_set_wait=Changing language...}</text>
+			</text>
+		</page>
+	
+		<!-- Информация ☺ -->
+		<page name="about">
+			<template name="body"/>
+			
+			<fill color="#487BC3">
+				<condition var1="debug_open" op="!=" var2="5"/>
+				<condition var1="theme_style" op="!=" var2="Light"/>
+				<placement x="0" y="0" w="1080" h="1080"/>
+			</fill>
+			
+			<fill color="#DB414F">
+				<condition var1="debug_open" var2="5"/>
+				<condition var1="theme_style" op="!=" var2="Light"/>
+				<placement x="0" y="0" w="1080" h="1080"/>
+			</fill>
+			
+			<button>
+				<image resource="logo"/>
+				<condition var1="debug_open" op="!=" var2="5"/>
+				<placement x="284" y="284"/>
+				<action function="compute">debug_open+1</action>
+				<action function="page">about</action>
+			</button>
+			
+			<image>
+				<image resource="logo"/>
+				<condition var1="theme_style" op="!=" var2="Light"/>
+				<condition var1="debug_open" var2="5"/>
+				<placement x="284" y="284"/>
+			</image>
+			
+			<image>
+				<image resource="logo_debug"/>
+				<condition var1="debug_open" var2="5"/>
+				<condition var1="theme_style" var2="Light"/>
+				<placement x="284" y="284"/>
+			</image>
+			
+			<fill color="%lightransparent%">
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<template name="statusbarinfo"/>
+			
+			<image>
+				<placement x="0" y="1054"/>
+				<condition var1="theme_style" op="!=" var2="Light"/>
+				<image resource="keyboard_shadow"/>
+			</image>
+			
+			<button>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+				<action function="page">settings</action>
+			</button>
+			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<condition var1="tw_fileexists" var2="1"/>
+				<image resource="actionbar_delete" highlightresource="actionbar_delete_hl"/>
+				<action function="overlay">dialog_remove_theme</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x_cards_icon%" y="%row5_3_y%"/>
+				<image resource="icon_person"/>
+			</image>
+
+			<text style="caption">
+				<placement x="%col1_x_cards%" y="%row5_3_y%"/>
+				<text>{@author=Author}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_cards%" y="%row6_1_y%"/>
+				<text>fordownloads</text>
+			</text>
+			
+			<image>
+				<placement x="%col1_x_cards_icon%" y="%row6_2a_y%"/>
+				<image resource="icon_mail"/>
+			</image>
+			
+			<text style="caption">
+				<placement x="%col1_x_cards%" y="%row6_2a_y%"/>
+				<text>{@contact=Contact}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x_cards%" y="%row6_3a_y%"/>
+				<text>https://goo.gl/1Rp2G8</text>
+			</text>
+			
+			<image>
+				<placement x="%col1_x_cards_icon%" y="%row7_2_y%"/>
+				<image resource="icon_info2"/>
+			</image>
+
+			<text style="caption">
+				<placement x="%col1_x_cards%" y="%row7_2_y%"/>
+				<text>{@version_twrp=Version}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_cards%" y="%row7_3_y%"/>
+				<text>TWRP: %tw_version%</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_cards%" y="%row8_1_y%"/>
+				<text>{@theme_vers=Theme:} %theme_version%</text>
+			</text>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+		<!-- Отладка ☺ -->
+		<page name="debug">
+			<template name="body_key"/>
+			
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="power_off" highlightresource="power_off_hl"/>
+				<action function="set">tw_simulate_actions=0</action>
+				<action function="set">tw_simulate_fail=0</action>
+				<action function="set">debug_open=0</action>
+				<action function="page">settings</action>
+			</button>
+			
+			<button>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
+				<action function="page">debug_plus</action>
+			</button>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@dbg=Debug}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row2_1_y%"/>
+				<text>{@dbg_func=Function}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row2_2_y%" w="%listbox_tz_width%" h="%lb_l3%"/>
+				<data name="dbg"/>
+				<listitem name="{@dbg_page=Page}">page</listitem>
+				<listitem name="{@dbg_set=Set}">set</listitem>
+				<listitem name="{@dbg_overlay=Overlay}">overlay</listitem>
+			</listbox>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row3_3a_y%" w="%screen_w%" h="%lb_l2%"/>
+				<listitem name="{@simact_chk=Simulate actions for theme testing}">
+					<data variable="tw_simulate_actions"/>
+				</listitem>
+				<listitem name="{@simfail_chk=Simulate failure for actions}">
+					<condition var1="tw_simulate_actions" var2="1"/>
+					<data variable="tw_simulate_fail"/>
+				</listitem>
+			</listbox>
+		
+			<text style="caption_hl">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@dbg_act=Action}</text>
+			</text>
+
+			<input>
+				<placement x="%col1_x%" y="%row1_2_y%" w="%input_width%" h="%input_height%"/>
+				<text>%dbg_b%</text>
+				<data name="dbg_b"/>
+				<restrict minlen="0" maxlen="512"/>
+				<action function="set">tw_back=debug</action>
+				<action function="%dbg%">%dbg_b%</action>
+			</input>
+			
+			<fill color="%accent%">
+				<placement x="%col1_x%" y="%row1_3_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+		
+		<page name="debug_plus">
+			<template name="body_key"/>
+			<template name="ab"/>
+			<template name="statusbarinfo"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@dbg=Debug}</text>
+			</text>
+			
+			<text style="caption_hl">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@dbg_func=Function}</text>
+			</text>
+
+			<input>
+				<placement x="%col1_x%" y="%row1_2_y%" w="%input_width%" h="%input_height%"/>
+				<text>%dbg%</text>
+				<data name="dbg"/>
+				<restrict minlen="1" maxlen="32" allow="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_="/>
+				<action function="page">debug</action>
+			</input>
+			
+			<fill color="%accent%">
+				<placement x="%col1_x%" y="%row1_3_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">debug</action>
+			</action>
+		</page>
+	</pages>
+</recovery>

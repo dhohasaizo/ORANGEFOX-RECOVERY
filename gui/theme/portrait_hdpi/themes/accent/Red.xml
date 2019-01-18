@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<!-- Controls -->
+		<image name="radio_true_dialog" filename="Red/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="Red/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="Red/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="Red/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="Red/Controls/slider_used"/>
+		<image name="handle" filename="Red/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="Red/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="Red/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="Red/Controls/btn_raised_hl"/>
+		
+		<!-- FAB -->
+		<image name="btn_float_arc" filename="Red/FAB/btn_float_arc" retainaspect="1"/>
+		<image name="btn_float_img" filename="Red/FAB/btn_float_img" retainaspect="1"/>
+		<image name="btn_float_accept" filename="Red/FAB/btn_float_accept" retainaspect="1"/>
+		<image name="btn_float_folder" filename="Red/FAB/btn_float_folder" retainaspect="1"/>
+		<image name="btn_float_close" filename="Red/FAB/btn_float_close" retainaspect="1"/>
+		<image name="float_fm_plus" filename="Red/FAB/float_fm_plus" retainaspect="1"/>
+		<image name="float_fm_close" filename="Red/FAB/float_fm_close" retainaspect="1"/>
+		<image name="float_fm_close_hl" filename="Red/FAB/float_fm_close_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="file_icon_small" filename="Red/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="Red/FileManager/file" retainaspect="1"/>
+		<image name="zip_icon_small" filename="Red/FileManager/file_zip_small" retainaspect="1"/>
+		<image name="img_icon_small" filename="Red/FileManager/file_img_small" retainaspect="1"/>
+		<image name="zip_icon" filename="Red/FileManager/file_zip" retainaspect="1"/>
+		<image name="img_icon" filename="Red/FileManager/file_img" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="Red/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="Red/FileManager/file_bkp" retainaspect="1"/>
+		<image name="flash_icon" filename="Red/FileManager/flash_icon" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info" filename="Red/Info/icon_info" retainaspect="1"/>
+		<image name="help_cloud" filename="Red/Info/help_cloud" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="enter" filename="Red/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="Red/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="Red/Keyboard/enter_num_new" retainaspect="1"/>
+
+		<!-- Nav Bar -->
+		<image name="home" filename="Red/NavBar/home" retainaspect="1"/>
+		<image name="home_hl" filename="Red/NavBar/home_hl" retainaspect="1"/>
+		<image name="back" filename="Red/NavBar/back" retainaspect="1"/>
+		<image name="back_hl" filename="Red/NavBar/back_hl" retainaspect="1"/>
+		<image name="slideout" filename="Red/NavBar/slideout" retainaspect="1"/>
+		<image name="slideout_hl" filename="Red/NavBar/slideout_hl" retainaspect="1"/>
+		<image name="keyboard_hide" filename="Red/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="keyboard_hide_hl" filename="Red/NavBar/keyboard_hide_hl" retainaspect="1"/>
+		<image name="home_ng" filename="Red/NavBar/home_ng" retainaspect="1"/>
+		<image name="home_ng_hl" filename="Red/NavBar/home_ng_hl" retainaspect="1"/>
+		<image name="back_ng" filename="Red/NavBar/back_ng" retainaspect="1"/>
+		<image name="back_ng_hl" filename="Red/NavBar/back_ng_hl" retainaspect="1"/>
+		<image name="slideout_ng" filename="Red/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="slideout_ng_hl" filename="Red/NavBar/slideout_ng_hl" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="Red/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng_hl" filename="Red/NavBar/keyboard_hide_ng_hl" retainaspect="1"/>
+	</resources>
+	<variables>
+		<variable name="accent" value="#C90000FF"/>
+		<variable name="accent_r" value="201"/>
+		<variable name="accent_g" value="0"/>
+		<variable name="accent_b" value="0"/>
+		<variable name="theme_accent" value="Red"/>
+		<variable name="current_accent" value="Red"/>
+		<variable name="applied_accent_x" value="540"/>
+		<variable name="applied_accent_y" value="975"/>
+	</variables>
+</recovery>

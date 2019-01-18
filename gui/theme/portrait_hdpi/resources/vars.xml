@@ -1,0 +1,553 @@
+<?xml version="1.0"?>
+<recovery>
+<variables>
+		
+		<!-- added by fordownloads -->
+		<variable name="col1_set_x" value="24"/>
+		
+		<variable name="screen_w" value="1080"/>
+		<variable name="busy_text" value="%screen_h%-288"/>
+		<variable name="busy_text_l" value="%screen_h%-144"/>
+		<variable name="part_list_btns_np_h" value="%screen_h%-1338"/>
+		<variable name="part_list_btns_h" value="%screen_h%-1380"/>
+		<variable name="part_list_btns_9_h" value="%screen_h%-1110"/>
+		
+		<variable name="mount_ro_opt_y" value="%screen_h%-480"/>
+		<variable name="mount_ro_check_y" value="%screen_h%-420"/>
+		<variable name="mount_ro_txt_y" value="%screen_h%-406"/>
+		
+		<variable name="nav_path_w" value="648"/>
+		<variable name="tw_install_reboot" value="0"/>
+		
+		<!-- pie door -->
+		<variable name="btn_float_nav_y" value="%screen_h%-540"/>
+		<variable name="btn_sfloat_1_y" value="%screen_h%-1104"/>
+		<variable name="btn_sfloat_2_y" value="%screen_h%-924"/>
+		<variable name="btn_sfloat_3_y" value="%screen_h%-744"/>
+		
+		<variable name="nav_item_w" value="270"/>
+		<variable name="nav_panel_h" value="168"/> <!-- material.io говорит, что панельнка 56dp=168px -->
+		<variable name="nav_panel_id" value="0"/>
+		
+		<variable name="nav_panel_y" value="%screen_h%-312"/>
+		<variable name="nav_icon_y" value="%screen_h%-256"/>
+		<variable name="nav_text_y" value="%screen_h%-193"/>
+		<variable name="nav_item_y" value="%screen_h%-228"/>
+		
+		<variable name="nav_item_1" value="135"/>
+		<variable name="nav_item_2" value="405"/>
+		<variable name="nav_item_3" value="675"/>
+		<variable name="nav_item_4" value="945"/>
+		
+		<variable name="files_np_w" value="%screen_h%-552"/>
+		<variable name="files_np_y" value="240"/>
+		
+		<variable name="row_btn2_np_y" value="%screen_h%-768"/>
+		<variable name="slider_np_y" value="%screen_h%-514"/> <!-- WIDEUI EDIT: 1574 -->
+		<variable name="slider_text_np_y" value="%screen_h%-594"/>  <!-- WIDEUI EDIT: 1495 -->
+		
+		<variable name="color_navpan" value="#202020"/>
+		<variable name="color_navpan_nb" value="#191919"/>
+		<variable name="color_disable" value="#666666"/>
+		<variable name="google_blue" value="#1A73E8"/>
+		
+		<!-- BOOKMARKS UI -->
+		<!-- notset for empty bookmarks -->
+		<variable name="book_1" value="/system/app" persist="1"/>
+		<variable name="book_2" value="/system/framework" persist="1"/>
+		<variable name="book_3" value="/data/app" persist="1"/>
+		<variable name="book_4" value="notset" persist="1"/>
+		<variable name="book_5" value="notset" persist="1"/>
+		<variable name="book_6" value="notset" persist="1"/>
+		<variable name="book_7" value="notset" persist="1"/>
+		
+		<variable name="compatibility_321" value="0" persist="1"/>
+		
+		<variable name="bs_del" value="936"/>
+		<variable name="bs_del_i" value="972"/>
+		<variable name="bs_del_w" value="144"/>
+		<variable name="book_edit" value="0"/>
+		
+		<variable name="sysclass" value="/sys/class/leds"/>
+		<variable name="flashlight_modify" value="none"/>
+		<variable name="flashlight_file" value="none"/>
+		<variable name="flashlight_default" value="factory-torch" persist="1"/>
+		<variable name="flashlight_on" value="0" persist="1"/>
+		<variable name="flash_active" value="1" persist="1"/>
+
+		<variable name="screen_hint" value="0" persist="1"/>
+		
+		<variable name="aroma_path" value="none" persist="1"/>
+		<variable name="aroma_enabled" value="0" persist="1"/>
+		
+		<variable name="pass_enter" value=""/>
+		<variable name="pass_govno" value="0"/>
+		<variable name="pass_open" value="0"/>
+		<variable name="pass_new_1" value=""/>
+		<variable name="pass_new_2" value=""/>
+		<variable name="use_pass" value="0" persist="1"/>
+		<variable name="pass_true" value="qwerty" persist="1"/>
+		
+		<variable name="tw_backup_list_quick" value="/system;/data;" persist="1"/>
+		<variable name="tw_backup_list" value=""/>
+		
+		<!-- для куска говна, которое называется "TWRP App" -->
+		<variable name="tw_app_prompt" value="0"/>
+		<variable name="tw_app_install_status" value="2"/>
+		
+		<variable name="tw_include_kernel_log" value="0"/>
+		<variable name="include_bugreport" value="0"/>
+		
+		<!--settings newui-->
+		<variable name="listbox_tz_width_2" value="540"/>
+		
+		<variable name="bs_text_offset" value="42"/>
+		
+		<variable name="flash_cord" value="990"/>
+		<variable name="flash_cord2" value="1080"/>
+		<variable name="flash_files" value="1170"/>
+		<variable name="flash_text_y" value="1008"/>
+		<variable name="flash_text2_y" value="1098"/>
+		<variable name="flash_text_x" value="130"/>
+		
+		<variable name="set_row1_y" value="264"/>
+		<variable name="set_row2_y" value="408"/>
+		<variable name="set_row3_y" value="552"/>
+		<variable name="set_row4_y" value="696"/>
+		<variable name="set_row5_y" value="840"/>
+		<variable name="set_row6_y" value="984"/>
+		<variable name="set_row7_y" value="1128"/>
+		<variable name="set_row8_y" value="1272"/>
+		<variable name="set_row9_y" value="1416"/>
+		<variable name="set_row10_y" value="1560"/>
+		<variable name="set_row1_text_y" value="%set_row1_y%+%bs_text_offset%"/>
+		<variable name="set_row2_text_y" value="%set_row2_y%+%bs_text_offset%"/>
+		<variable name="set_row3_text_y" value="%set_row3_y%+%bs_text_offset%"/>
+		<variable name="set_row4_text_y" value="%set_row4_y%+%bs_text_offset%"/>
+		<variable name="set_row5_text_y" value="%set_row5_y%+%bs_text_offset%"/>
+		<variable name="set_row6_text_y" value="%set_row6_y%+%bs_text_offset%"/>
+		<variable name="set_row7_text_y" value="%set_row7_y%+%bs_text_offset%"/>
+		<variable name="set_row8_text_y" value="%set_row8_y%+%bs_text_offset%"/>
+		<variable name="set_row9_text_y" value="%set_row9_y%+%bs_text_offset%"/>
+		<variable name="set_row10_text_y" value="%set_row10_y%+%bs_text_offset%"/>
+		
+		<variable name="actbtn_row1_y" value="666"/> <!-- сотона!!1!!1111 -->
+		<variable name="actbtn_row2_y" value="810"/>
+		<variable name="actbtn_row3_y" value="954"/>
+		<variable name="actbtn_row1_text_y" value="%actbtn_row1_y%+%bs_text_offset%"/>
+		<variable name="actbtn_row2_text_y" value="%actbtn_row2_y%+%bs_text_offset%"/>
+		<variable name="actbtn_row3_text_y" value="%actbtn_row3_y%+%bs_text_offset%"/>
+		
+		<variable name="bottom_btn1_y" value="1630"/>
+		<variable name="bottom_btn2_y" value="1486"/>
+		<variable name="bottom_btn3_y" value="1342"/>
+		<variable name="bottom_btn4_y" value="1198"/>
+		<variable name="bottom_btn5_y" value="1054"/>
+		<variable name="bottom_btn1_text_y" value="%bottom_btn1_y%+%bs_text_offset%"/>
+		<variable name="bottom_btn2_text_y" value="%bottom_btn2_y%+%bs_text_offset%"/>
+		<variable name="bottom_btn3_text_y" value="%bottom_btn3_y%+%bs_text_offset%"/>
+		<variable name="bottom_btn4_text_y" value="%bottom_btn4_y%+%bs_text_offset%"/>
+		<variable name="bottom_btn5_text_y" value="%bottom_btn5_y%+%bs_text_offset%"/>
+		
+		<variable name="row_nav_text_y" value="%row_nav_y%+%bs_text_offset%"/>
+		
+		
+		<variable name="col1_x_cards" value="228"/>
+		<variable name="col1_x_cards_icon" value="60"/>
+		
+		<variable name="storage_btn_h" value="216"/>
+		
+		<variable name="ab_menu_inst_ex_y" value="590"/>
+		<variable name="ab_menu_inst_ex_text_y" value="%ab_menu_inst_ex_y%+%ab_menu_text_offset%"/>
+		
+		<variable name="bg_storage_hdr_right_x" value="888"/>
+
+		
+		
+		<variable name="mb_h_hide" value="120"/>
+		
+		<!-- listbox height -->
+		<variable name="lb_l1" value="90"/>
+		<variable name="lb_l2" value="180"/>
+		<variable name="lb_l3" value="270"/>
+		<variable name="lb_l4" value="360"/>
+		<variable name="lb_l5" value="450"/>
+		<variable name="lb_l6" value="540"/>
+		<variable name="lb_l7" value="630"/>
+		<variable name="lb_l8" value="720"/>
+		<variable name="lb_l9" value="810"/>
+		<variable name="lb_l10" value="900"/>
+		<variable name="lb_l11" value="990"/>
+		<variable name="lb_l12" value="1080"/>
+		<variable name="lb_l13" value="1170"/>
+		<variable name="lb_l14" value="1260"/>
+		<variable name="lb_l15" value="1350"/>
+		
+		<!-- battery vars -->
+
+		<variable name="battery_12_x" value="810"/>
+		<variable name="battery_24_x" value="875"/>
+		<variable name="battery_center_x" value="1005"/>
+		
+		<variable name="battery_12_t_x" value="873"/>
+		<variable name="battery_24_t_x" value="938"/>
+		<variable name="battery_center_t_x" value="1068"/>
+
+		<!-- file selector -->
+		<variable name="fileselector_width" value="%screen_w%"/>
+		<variable name="fileselector_terminal_height" value="%screen_h%-600"/> <!--1302--> <!-- WIDEUI EDIT: 1320 -->
+		<variable name="fileselector_shadow_terminal_x" value="%screen_h%-165"/> <!-- WIDEUI EDIT: 1476 (IMAGE 300 > 18) -->
+		
+		<variable name="fileselector_separatorheight" value="2"/>
+		<variable name="fileselector_spacing" value="0"/>
+		
+		<variable name="row_ab_ex_y" value="456"/> <!--474-->
+		
+		<!-- debug -->
+		<variable name="debug_open" value="0"/>
+		<variable name="extra" value="0"/>
+		<variable name="dbg" value="page"/>
+		<variable name="dbg_b" value="main"/>
+		
+		<!-- end -->
+		
+		<!--theme settings-->
+		<variable name="tw_hide_kb" value="0"/>
+		
+		<variable name="lock_action" value="1" persist="1"/>
+		<variable name="accent_title" value="0" persist="1"/>
+		<variable name="enable_battery" value="1" persist="1"/>
+		<variable name="navbar_bkg" value="0" persist="1"/>
+		<variable name="fl_shadow" value="1" persist="1"/>
+		<variable name="nougat" value="1" persist="1"/>
+		<variable name="key_buttons" value="1" persist="1"/>
+		<variable name="storage_select_on" value="1" persist="1"/>
+		
+		<variable name="alt_style_btn" value="0" persist="1"/>
+		
+		<variable name="use_fixed_font" value="0" persist="1"/>
+		<variable name="disable_no_os" value="0" persist="1"/>
+		
+		<variable name="inject_theme" value="0"/>
+		<variable name="auto_generate" value="2" persist="1"/>
+		<variable name="show_cpu_temp" value="1" persist="1"/>
+		<variable name="center_clock" value="1" persist="1"/>
+		<variable name="dialog_hide_folder" value="0" persist="1"/>
+		<variable name="dialog_context" value="none" persist="1"/>
+		<variable name="list_font" value="small" persist="1"/>
+		<variable name="bookmark" value="2" persist="1"/>
+		<variable name="navbar_sams" value="0" persist="1"/>
+		<variable name="navbar_accent" value="0" persist="1"/>
+		<variable name="menu_btn_solid" value="1" persist="1"/>
+		<variable name="tw_theme_path" value="/data/media/0/TWRP/theme" persist="1"/>
+		<variable name="location_install" value="/sdcard" persist="1"/>
+		<variable name="location_install_image" value="/sdcard" persist="1"/>
+		<variable name="location_addfile" value="/sdcard" persist="1"/>
+		<variable name="location_filemanager" value="/sdcard" persist="1"/>
+
+		
+		<variable name="ab_h" value="240"/>
+		<variable name="ab_ex_h" value="456"/>
+		<variable name="ab_tab_h" value="384"/>
+		<variable name="status_h" value="72"/>
+		<variable name="nav_h" value="144"/>
+		<variable name="content_w" value="984"/>
+		<variable name="indent" value="0"/>
+		<variable name="center_x" value="540"/>
+		<variable name="col1_x" value="48"/>
+		<variable name="col1_x_neg" value="1032"/>
+		<variable name="col1_x_indent" value="216"/> <!--216-->
+		<variable name="col_col_center_x" value="386"/>
+		<variable name="col_x_color3" value="724"/>
+		<variable name="col2_x" value="540"/>
+		<variable name="col2_x_text" value="596"/>
+		<variable name="version_x" value="20"/>
+		<variable name="time_x" value="1060"/>
+		<variable name="status_info_y" value="8"/>
+		<variable name="mb_h" value="180"/>
+		<variable name="mb_div_w" value="816"/>
+		<variable name="mb_div_x" value="624"/>
+
+		<variable name="ab_back_x" value="12"/>
+		<variable name="ab_bc_x" value="156"/>
+		<variable name="ab_bc_y" value="108"/>
+		<variable name="ab_btn1_x" value="924"/>
+		<variable name="ab_btn2_x" value="780"/>
+		<variable name="ab_btn3_x" value="636"/>
+		<variable name="ab_btn4_x" value="492"/>
+		<variable name="ab_btn1m_x" value="960"/>
+		<variable name="ab_btn2m_x" value="816"/>
+		<variable name="ab_btn3m_x" value="672"/>
+		<variable name="ab_y" value="84"/>
+
+		<variable name="ab_menu_y" value="72"/>
+		<variable name="ab_menu_x" value="900"/>
+		<variable name="ab_menu_sort_x" value="592"/> <!---488   436-->
+		<variable name="ab_menu_sort_btn_w" value="460"/>
+		<variable name="ab_menu_sort_btn_h" value="144"/>
+		<variable name="ab_menu_sort_text_x" value="638"/> <!--+46   482-->
+		<variable name="ab_menu_text_offset" value="40"/>
+		<variable name="ab_menu_inst_1_y" value="120"/>
+		<variable name="ab_menu_inst_2_y" value="264"/>
+		<variable name="ab_menu_inst_3_y" value="408"/>
+		<variable name="ab_menu_inst_4_y" value="552"/>
+		<variable name="ab_menu_inst_5_y" value="696"/>
+		<variable name="ab_menu_inst_6_y" value="840"/>
+		<variable name="ab_menu_inst_1_text_y" value="%ab_menu_inst_1_y%+%ab_menu_text_offset%"/>
+		<variable name="ab_menu_inst_2_text_y" value="%ab_menu_inst_2_y%+%ab_menu_text_offset%"/>
+		<variable name="ab_menu_inst_3_text_y" value="%ab_menu_inst_3_y%+%ab_menu_text_offset%"/>
+		<variable name="ab_menu_inst_4_text_y" value="%ab_menu_inst_4_y%+%ab_menu_text_offset%"/>
+		<variable name="ab_menu_inst_5_text_y" value="%ab_menu_inst_5_y%+%ab_menu_text_offset%"/>
+		<variable name="ab_menu_inst_6_text_y" value="%ab_menu_inst_6_y%+%ab_menu_text_offset%"/>
+
+		<variable name="btn_float_x" value="852"/>
+		<variable name="btn_float_y" value="%screen_h%-390"/> <!-- WIDEUI NEW: row7_3a_y -->
+
+		<variable name="btn_raised_left_x" value="27"/>
+		<variable name="btn_raised_right_x" value="1053"/>
+
+		<variable name="row0_y" value="240"/>
+		<variable name="row0_a_y" value="270"/>
+		<variable name="row1_1_y" value="300"/>
+		<variable name="row1_1a_y" value="330"/>
+		<variable name="row1_2_y" value="360"/>
+		<variable name="row1_2a_y" value="390"/>
+		<variable name="row1_3_y" value="420"/>
+		<variable name="row1_3a_y" value="450"/>
+		<variable name="row2_1_y" value="480"/>
+		<variable name="row2_1a_y" value="510"/>
+		<variable name="row2_2_y" value="540"/>
+		<variable name="row2_2a_y" value="570"/>
+		<variable name="row2_3_y" value="600"/>
+		<variable name="row2_3a_y" value="630"/>
+		<variable name="row3_1_y" value="660"/>
+		<variable name="row3_1a_y" value="690"/>
+		<variable name="row3_2_y" value="720"/>
+		<variable name="row3_2a_y" value="750"/>
+		<variable name="row3_3_y" value="780"/>
+		<variable name="row3_3a_y" value="810"/>
+		<variable name="row4_1_y" value="840"/>
+		<variable name="row4_1a_y" value="870"/>
+		<variable name="row4_2_y" value="900"/>
+		<variable name="row4_2a_y" value="930"/>
+		<variable name="row4_3_y" value="960"/>
+		<variable name="row4_3a_y" value="990"/>
+		<variable name="row5_1_y" value="1020"/>
+		<variable name="row5_1a_y" value="1050"/>
+		<variable name="row5_2_y" value="1080"/>
+		<variable name="row5_2a_y" value="1110"/>
+		<variable name="row5_3_y" value="1140"/>
+		<variable name="row5_3a_y" value="1170"/>
+		<variable name="row6_1_y" value="1200"/>
+		<variable name="row6_1a_y" value="1230"/>
+		<variable name="row6_2_y" value="1260"/>
+		<variable name="row6_2a_y" value="1290"/>
+		<variable name="row6_3_y" value="1320"/>
+		<variable name="row6_3a_y" value="1350"/>
+		<variable name="row7_1_y" value="1380"/>
+		<variable name="row7_1a_y" value="1410"/>
+		<variable name="row7_2_y" value="1440"/>
+		<variable name="row7_2a_y" value="1470"/>
+		<variable name="row7_3_y" value="1500"/>
+		<variable name="row7_3a_y" value="1530"/>
+		<variable name="row8_1_y" value="1560"/>
+		<variable name="row8_1a_y" value="1590"/>
+		<variable name="row8_2_y" value="1620"/>
+		<variable name="row8_2a_y" value="1650"/>
+		<variable name="row8_3_y" value="1680"/>
+		<variable name="row8_3a_y" value="1710"/>
+		<variable name="row9_1_y" value="1740"/>
+		<variable name="row_btn_y" value="%screen_h%-471"/> <!-- 1461, 1611 -->
+		<variable name="row_btn1_y" value="%screen_h%-321"/>
+		<variable name="row_btn2_y" value="%screen_h%-600"/>
+		<variable name="row_nav_y" value="%screen_h%-144"/>  <!-- WIDEUI EDIT: 1776 -->
+		<variable name="row_navbtn_y" value="%screen_h%-72"/> <!-- WIDEUI EDIT: 1848 -->
+		<variable name="row_tz_y" value="384"/>
+		
+		<variable name="row_bs_console_y" value="600"/>
+
+		<variable name="mb_row1_y" value="285"/>
+		<variable name="mb_row2_y" value="465"/>
+		<variable name="mb_row3_y" value="645"/>
+		<variable name="mb_row4_y" value="825"/>
+		<variable name="mb_row5_y" value="1005"/>
+		<variable name="mb_row6_y" value="1185"/>
+		<variable name="mb_row7_y" value="1365"/>
+		<variable name="mb_row8_y" value="1545"/>
+		<variable name="mb_row9_y" value="1725"/>
+		<variable name="mb_text_offset" value="45"/>
+		<variable name="mb_row1_text_y" value="%mb_row1_y%+%mb_text_offset%"/>
+		<variable name="mb_row2_text_y" value="%mb_row2_y%+%mb_text_offset%"/>
+		<variable name="mb_row3_text_y" value="%mb_row3_y%+%mb_text_offset%"/>
+		<variable name="mb_row4_text_y" value="%mb_row4_y%+%mb_text_offset%"/>
+		<variable name="mb_row5_text_y" value="%mb_row5_y%+%mb_text_offset%"/>
+		<variable name="mb_row6_text_y" value="%mb_row6_y%+%mb_text_offset%"/>
+		<variable name="mb_row7_text_y" value="%mb_row7_y%+%mb_text_offset%"/>
+		<variable name="mb_row8_text_y" value="%mb_row8_y%+%mb_text_offset%"/>
+		<variable name="mb_row9_text_y" value="%mb_row9_y%+%mb_text_offset%"/>
+
+		<variable name="mb_icon_offset_x" value="5"/>
+		<variable name="mb_icon_offset_y" value="20"/>
+		<variable name="mb_icon_h" value="120"/>
+		<variable name="mb_icon_w" value="140"/>
+		<variable name="mb_icon_x" value="%col1_x%+%mb_icon_offset_x%"/>
+		<variable name="mb_row1_icon_y" value="%mb_row1_y%+%mb_icon_offset_y%"/>
+		<variable name="mb_row2_icon_y" value="%mb_row2_y%+%mb_icon_offset_y%"/>
+		<variable name="mb_row3_icon_y" value="%mb_row3_y%+%mb_icon_offset_y%"/>
+		<variable name="mb_row4_icon_y" value="%mb_row4_y%+%mb_icon_offset_y%"/>
+		<variable name="mb_row5_icon_y" value="%mb_row5_y%+%mb_icon_offset_y%"/>
+		<variable name="mb_row6_icon_y" value="%mb_row6_y%+%mb_icon_offset_y%"/>
+		<variable name="mb_row7_icon_y" value="%mb_row7_y%+%mb_icon_offset_y%"/>
+		<variable name="mb_row8_icon_y" value="%mb_row8_y%+%mb_icon_offset_y%"/>
+		<variable name="mb_row9_icon_y" value="%mb_row9_y%+%mb_icon_offset_y%"/>
+		
+		<variable name="bs_y" value="624"/>
+		<variable name="bs_shadow_y" value="600"/>
+		<variable name="bs_h" value="1296"/>
+		<variable name="bs_row1_y" value="480"/>
+		<variable name="bs_row2_y" value="624"/>
+		<variable name="bs_row3_y" value="768"/>
+		<variable name="bs_row4_y" value="912"/>
+		<variable name="bs_row5_y" value="1056"/>
+		<variable name="bs_row6_y" value="1200"/>
+		<variable name="bs_row7_y" value="1344"/>
+		<variable name="bs_row8_y" value="1488"/>
+		<variable name="bs_row9_y" value="1632"/>
+		<variable name="bs_row1_text_y" value="%bs_row1_y%+%bs_text_offset%"/>
+		<variable name="bs_row2_text_y" value="%bs_row2_y%+%bs_text_offset%"/>
+		<variable name="bs_row3_text_y" value="%bs_row3_y%+%bs_text_offset%"/>
+		<variable name="bs_row4_text_y" value="%bs_row4_y%+%bs_text_offset%"/>
+		<variable name="bs_row5_text_y" value="%bs_row5_y%+%bs_text_offset%"/>
+		<variable name="bs_row6_text_y" value="%bs_row6_y%+%bs_text_offset%"/>
+		<variable name="bs_row7_text_y" value="%bs_row7_y%+%bs_text_offset%"/>
+		<variable name="bs_row8_text_y" value="%bs_row8_y%+%bs_text_offset%"/>
+		<variable name="bs_row9_text_y" value="%bs_row9_y%+%bs_text_offset%"/>
+
+		<variable name="progressbar_x" value="0"/>
+		<variable name="progressbar_y" value="456"/>
+
+		<variable name="keyboard_y" value="%screen_h%-788"/> <!-- WIDEUI EDIT: 1132 -->
+		<variable name="keyboard_terminal_y" value="%screen_h%-884"/> <!-- WIDEUI EDIT: 1036 -->
+		<variable name="keyboard_bg_y" value="%screen_h%-812"/> <!-- WIDEUI EDIT: 1108 -->
+		<variable name="keyboard_bg_terminal_y" value="%screen_h%-908"/> <!-- WIDEUI EDIT: 1012 -->
+
+		<variable name="key_num_back" value="%screen_h%-307"/> <!-- 16- 13, 40, 22, 36, 10 -->
+		<variable name="key_num_enter" value="%screen_h%-280"/>
+		<variable name="key_enter_new" value="%screen_h%-297"/> <!-- 298 -->
+		<variable name="key_abc_enter" value="%screen_h%-284"/>
+		<variable name="key_abc_space" value="%screen_h%-310"/>
+		
+		<variable name="back_button_x" value="237"/>
+		<variable name="slideout_button_x" value="843"/>
+
+
+		<variable name="transparent" value="#00000000"/>
+		<variable name="text_success" value="#68B60B"/>
+		<variable name="text_fail" value="#FF0101"/>
+		<variable name="warning" value="#FF6600FF"/>
+		<variable name="error" value="#FF0000FF"/>
+
+		<variable name="input_width" value="984"/>
+		<variable name="input_backup_width" value="876"/>
+		<variable name="input_encr_width" value="696"/>
+		<variable name="input_height" value="60"/>
+		<variable name="input_backup_y" value="359"/>
+		<variable name="input_encr_y" value="629"/>
+		<variable name="input_decr_y" value="899"/>
+		<variable name="input_format_y" value="959"/>
+		<variable name="input_rename_y" value="569"/>
+		<variable name="input_terminal_y" value="989"/>
+		<variable name="input_line_height" value="3"/>
+		<variable name="input_cursor_width" value="2"/>
+		<variable name="input_backup_bg_height" value="1296"/>
+
+		<variable name="console_width" value="984"/>
+		<variable name="console_height" value="1620"/>
+		<variable name="console_action_height" value="900"/>
+		<variable name="terminal_y" value="280"/>
+		<variable name="terminal_width" value="1032"/>
+		<variable name="terminal_height" value="%screen_h%-1210"/> <!-- WIDEUI EDIT: 710, 1460 -->
+		<variable name="terminal_nokb_height" value="%screen_h%-460"/>
+
+		<variable name="storage_width" value="764"/>
+		<variable name="storage_height" value="274"/>
+		<variable name="storage_indent_x" value="120"/>
+		<variable name="storage_indent_y" value="832"/>
+		<variable name="bg_storage_x" value="36"/>
+		<variable name="bg_storage_y" value="592"/>
+		<variable name="bg_storage_hdr_x" value="192"/>
+		<variable name="bg_storage_hdr_y" value="706"/>
+		<variable name="bg_encrypt_y" value="302"/>
+		<variable name="bg_encrypt_hdr_y" value="416"/>
+		<variable name="db_left_x" value="380"/>
+		<variable name="db_right_x" value="644"/>
+		<variable name="db_y" value="1129"/>
+		<variable name="db_encrypt_y" value="839"/>
+		<variable name="db_text1_y" value="832"/>
+		<variable name="db_text2_y" value="892"/>
+		<variable name="db_text2a_y" value="922"/>
+		<variable name="db_text3_y" value="952"/>
+		<variable name="db_text4_y" value="1012"/>
+		<variable name="db_text3a_y" value="982"/>
+		<variable name="db_checkbox_y" value="1012"/>
+
+		<variable name="timeoffset_w" value="420"/>
+		<variable name="dialog_w" value="840"/>
+		
+		<variable name="fastscroll_w" value="48"/>
+		<variable name="fastscroll_linew" value="2"/>
+		<variable name="fastscroll_rectw" value="24"/>
+		<variable name="fastscroll_recth" value="120"/>
+
+		<variable name="listbox_tz_height" value="630"/>
+		<variable name="listbox_tz_width" value="1080"/>
+		<variable name="listbox_settings_height" value="630"/>
+		<variable name="listbox_settings_mf_height" value="360"/>
+		<variable name="listbox_settings_mv_height" value="450"/>
+		<variable name="listbox_settings_lang_height" value="450"/>
+		<variable name="listbox_settings_install_height" value="360"/>
+		<variable name="listbox_settings_backup_height" value="270"/>
+		<variable name="listbox_spacing" value="0"/>
+
+		<variable name="textbox_spacing" value="8"/>
+
+		<variable name="slider_x" value="48"/> 
+		<variable name="slider_y" value="%screen_h%-346"/> <!-- WIDEUI EDIT: 1574 -->
+		<variable name="slider_text_y" value="%screen_h%-425"/>  <!-- WIDEUI EDIT: 1495 -->
+		<variable name="slidervalue_w" value="984"/>
+		<variable name="slidervalue_lineh" value="6"/>
+		<variable name="slidervalue_padding" value="72"/>
+		<variable name="slidervalue_sliderw" value="120"/>
+		<variable name="slidervalue_sliderh" value="180"/>
+		
+		<variable name="slider_y_l" value="%screen_h%-202"/> <!-- WIDEUI EDIT: 1718 -->
+		<variable name="slider_text_y_l" value="%screen_h%-281"/> <!-- WIDEUI EDIT: 1639 -->
+
+		<variable name="pattern_x" value="216"/>
+		<variable name="pattern_dot_dia" value="32"/>
+		<variable name="pattern_line_w" value="12"/>
+		<variable name="pattern_size" value="648"/>
+		
+		<variable name="tab_height" value="144"/>
+		<variable name="tab_indicator_height" value="6"/>
+		<variable name="tab_y" value="312"/>
+		<variable name="tab_indicator_y" value="378"/>
+		<variable name="tab2_width" value="540"/>
+		<variable name="tab3_width" value="360"/>
+		<variable name="tab4_width" value="270"/>
+		<variable name="tab5_width" value="216"/>
+		<variable name="tab3_col1_x" value="180"/>
+		<variable name="tab3_col3_x" value="900"/>
+		<variable name="tab4_col1_x" value="135"/>
+		<variable name="tab4_col2_x" value="405"/>
+		<variable name="tab4_col3_x" value="675"/>
+		<variable name="tab4_col4_x" value="945"/>
+		<variable name="tab4_ind2_x" value="270"/>
+		<variable name="tab4_ind4_x" value="810"/>
+		<variable name="tab5_col1_x" value="108"/>
+		<variable name="tab5_col2_x" value="324"/>
+		<variable name="tab5_col3_x" value="540"/>
+		<variable name="tab5_col4_x" value="756"/>
+		<variable name="tab5_col5_x" value="972"/>
+	</variables>
+</recovery>

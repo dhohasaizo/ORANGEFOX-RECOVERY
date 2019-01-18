@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="main">
+			<action>
+				<condition var1="use_pass" var2="1"/>
+				<condition var1="pass_open" var2="0"/>
+				<condition var1="tw_has_mtp" var2="1"/>
+				<condition var1="tw_mtp_enabled" var2="1"/>
+				<action function="stopmtp"/>
+			</action>
+			<action>
+				<condition var1="use_pass" var2="1"/>
+				<condition var1="pass_open" var2="0"/>
+				<action function="cmd">
+					stop adbd
+					setprop sys.usb.config charging
+				</action>
+				<action function="set">pass_enter=</action>
+				<action function="set">pass_govno=0</action>
+				<action function="page">password_enter</action>
+			</action>
+			
+			<action>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_clear_destination=filemanagerlist</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</action>
+		</page>
+		
+		<page name="aroma_busy">
+			<background color="%background%"/>
+			<template name="background_image"/>
+			
+			<fill color="%lightransparent%">
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<template name="statusbarinfo"/>
+			
+			<image>
+				<image resource="aroma_folder"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text_l%" placement="4"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<text>{@starting_aroma=Starting AromaFM...}</text>
+			</text>
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text%" placement="4"/>
+				<condition var1="navbar_disable" var2="1"/>
+				<text>{@starting_aroma=Starting AromaFM...}</text>
+			</text>
+			
+			<action>
+				<condition var1="tw_operation_state" var2="1"/>
+				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_tmp%</action>
+			</action>
+			
+			<action>
+				<condition var1="tw_operation_state" var2="1"/>
+				<condition var1="tw_operation_status" op="!=" var2="0"/>
+				<action function="set">install_back=main</action>
+				<action function="page">flash_done</action>
+			</action>
+			
+			<action>
+				<condition var1="tw_operation_state" var2="1"/>
+				<condition var1="tw_operation_status" var2="0"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+		
+		<page name="flash_key">
+			<action>
+				<condition var1="flashlight_on" var2="1"/>
+				<action function="set">tw_busy_temp=%tw_busy%</action>
+				<action function="cmd">
+					flashfile=/sys/class/leds/%flashlight_default%/brightness
+					state="$(cat $flashfile)"
+					if [[ $state = 0 ]]
+					then
+						echo %flash_active% > $flashfile
+					else
+						echo 0 > $flashfile
+					fi
+				</action>
+				<action function="set">tw_busy=%tw_busy_temp%</action>
+			</action>
+		</page>
+	</pages>
+</recovery>

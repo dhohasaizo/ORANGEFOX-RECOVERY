@@ -1,0 +1,604 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="ext_workshop">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>TWRP Workshop</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%" />
+				<text>{@theme_style=Style}</text>
+			</text>
+			
+			<button>
+				<placement x="30" y="360"/>
+				<image resource="style_black"/>
+				<action function="set">theme_style=Black</action>
+			</button>
+			<button>
+				<placement x="285" y="360"/>
+				<image resource="style_gray"/>
+				<action function="set">theme_style=Gray</action>
+			</button>
+			<button>
+				<placement x="540" y="360"/>
+				<image resource="style_light"/>
+				<action function="set">theme_style=Light</action>
+			</button>
+			<button>
+				<placement x="795" y="360"/>
+				<image resource="style_light_c"/>
+				<action function="set">theme_style=Light_classic</action>
+			</button>
+			<image>
+				<placement x="%applied_style_x%" y="360"/>
+				<condition var1="theme_style" var2="Light"/>
+				<image resource="style_apply"/>
+			</image>
+			<image>
+				<placement x="%applied_style_x%" y="360"/>
+				<condition var1="theme_style" op="!=" var2="Light"/>
+				<image resource="color_apply"/>
+			</image>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1_y%" />
+				<text>{@theme_accent=Accent}</text>
+			</text>
+			
+			<button>
+				<placement x="30" y="%row3_2_y%"/>
+				<image resource="color_amber"/>
+				<action function="set">theme_accent=Amber</action>
+			</button>
+			<button>
+				<placement x="285" y="%row3_2_y%"/>
+				<image resource="color_blue"/>
+				<action function="set">theme_accent=Blue</action>
+			</button>
+			<button>
+				<placement x="540" y="%row3_2_y%"/>
+				<image resource="color_cyan"/>
+				<action function="set">theme_accent=Cyan</action>
+			</button>
+			<button>
+				<placement x="795" y="%row3_2_y%"/>
+				<image resource="color_gray"/>
+				<action function="set">theme_accent=Gray</action>
+			</button>
+			<button>
+				<placement x="30" y="975"/>
+				<image resource="color_green"/>
+				<action function="set">theme_accent=Green</action>
+			</button>
+			<button>
+				<placement x="285" y="975"/>
+				<image resource="color_purple"/>
+				<action function="set">theme_accent=Purple</action>
+			</button>
+			<button>
+				<placement x="540" y="975"/>
+				<image resource="color_red"/>
+				<action function="set">theme_accent=Red</action>
+			</button>
+			<button>
+				<placement x="795" y="975"/>
+				<image resource="color_pink"/>
+				<action function="set">theme_accent=Pink</action>
+			</button>
+			<image>
+				<placement x="%applied_accent_x%" y="%applied_accent_y%"/>
+				<image resource="color_apply"/>
+			</image>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row6_2a_y%" />
+				<text>{@theme_font=Font}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="theme_font_name" op="!=" var2="Custom"/>
+				<placement x="%col1_x%" y="%row6_3a_y%"/>
+				<text>%theme_font_name%</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="theme_font_name" var2="Custom"/>
+				<placement x="%col1_x%" y="%row6_3a_y%"/>
+				<text>{@theme_userdef=User-defined}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col2_x_text%" y="%row6_2a_y%" />
+				<text>{@theme_bkg=Background}</text>
+			</text>
+			<text style="text_body2">
+				<placement x="%col2_x_text%" y="%row6_3a_y%"/>
+				<condition var1="theme_background" var2="off"/>
+				<text>{@theme_default=Solid}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col2_x_text%" y="%row6_3a_y%"/>
+				<condition var1="theme_background" var2="on"/>
+				<text>{@theme_userdef=User-defined}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row7_2a_y%" />
+				<text>{@aspect_ratio=Aspect Ratio}</text>
+			</text>
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row7_3a_y%"/>
+				<text>%ar_display%</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col2_x_text%" y="%row7_2a_y%" />
+				<text>{@theme_splash_hdr=Change TWRP Splash}</text>
+			</text>
+			<text style="text_body2">
+				<placement x="%col2_x_text%" y="%row7_3a_y%"/>
+				<condition var1="aik_installed" op="!=" var2="1"/>
+				<text>{@aik_not_found=AIK not found}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col2_x_text%" y="%row7_3a_y%"/>
+				<condition var1="aik_installed" var2="1"/>
+				<text>{@aik_found=AIK found}</text>
+			</text>
+			
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row6_2a_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<action function="page">ext_workshop_font</action>
+			</button>
+			
+			<button style="menu_btn">
+				<placement x="%col2_x_text%" y="%row6_2a_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<condition var1="theme_background" var2="on"/>
+				<action function="page">ext_workshop_bkg</action>
+			</button>
+			<button style="menu_btn">
+				<placement x="%col2_x_text%" y="%row6_2a_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<condition var1="theme_background" var2="off"/>
+				<action function="set">png_back=ext_workshop</action>
+				<action function="page">find_png</action>
+			</button>
+			
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row7_2a_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<action function="page">ext_workshop_ar</action>
+			</button>
+			
+			<button style="menu_btn">
+				<placement x="%col2_x_text%" y="%row7_2a_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<condition var1="aik_installed" var2="1"/>
+				<action function="set">set_back=ext_workshop</action>
+				<action function="page">ext_workshop_repack</action>
+			</button>
+			<button style="menu_btn">
+				<placement x="%col2_x_text%" y="%row7_2a_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<condition var1="aik_installed" op="!=" var2="1"/>
+				<action function="overlay">dialog_aikmissing</action>
+			</button>
+			
+			<action>
+				<condition var1="theme_style" op="modified"/>
+				<condition var1="tw_themeexist" var2="1"/>
+				<action function="set">theme_cmd=themes/styles/%theme_style%.xml > ./themes/style.xml</action>
+				<action function="page">ext_theme_busy</action>
+			</action>
+			<action>
+				<condition var1="theme_accent" op="modified"/>
+				<condition var1="tw_themeexist" var2="1"/>
+				<action function="set">theme_cmd=themes/accent/%theme_accent%.xml > ./themes/accent.xml</action>
+				<action function="page">ext_theme_busy</action>
+			</action>
+			
+			<action>
+				<condition var1="theme_style" op="modified"/>
+				<condition var1="tw_themeexist" var2="0"/>
+				<action function="overlay">dialog_create_uizip</action>
+			</action>
+			
+			<action>
+				<condition var1="theme_accent" op="modified"/>
+				<condition var1="tw_themeexist" var2="0"/>
+				<action function="overlay">dialog_create_uizip</action>
+			</action>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+
+		<page name="ext_workshop_ar">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@aspect_ratio=Aspect Ratio}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%" />
+				<text>{@theme_ar_sel=Select aspect ratio}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l6%"/>
+				<data name="theme_ar"/>
+				<listitem name="16:9">1920</listitem>
+				<listitem name="17:9">2040</listitem>
+				<listitem name="18:9">2160</listitem>
+				<listitem name="18,5:9">2220</listitem>
+				<listitem name="19:9">2280</listitem>
+				<listitem name="19,5:9">2340</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_3_y%" />
+				<text>{@settings_ui_style=NavBar style}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row5_1_y%" w="%screen_w%" h="%lb_l2%"/>
+				<data name="rem_navbar"/>
+				<listitem name="{@remove=Remove}">144</listitem>
+				<listitem name="{@keep=Keep}">0</listitem>
+			</listbox>
+			
+			<action>
+				<condition var1="rem_navbar" op="modified"/>
+				<condition var1="tw_themeexist" var2="1"/>
+				<action function="set">theme_cmd=ui.xml | sed -e "s*height=\"$(expr %screen_h% - %rem_navbar_add%)\"*height=\"%theme_ar%\"*g; s*value=\"%center_y%\"*value=\"$(expr %theme_ar% / 2)\"*g; s*value=\"%screen_h%\"*value=\"$(expr %theme_ar% + %rem_navbar%)\"*g" > ./ui.xml; unzip -p ../ui.zip themes/bar/%rem_navbar%.xml > ./themes/bar.xml</action>
+				<action function="page">ext_theme_busy</action>
+			</action>
+			
+			<action>
+				<condition var1="rem_navbar" op="modified"/>
+				<condition var1="tw_themeexist" var2="0"/>
+				<action function="overlay">dialog_create_uizip</action>
+			</action>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+		
+		<page name="ext_workshop_font_cust">
+			<template name="body"/>
+			<fileselector style="fileselector_b">
+				<condition var1="list_font" var2="big"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon" file="file_icon" />
+				<filter extn=".ttf" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="list_font" var2="small"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon_small" file="file_icon_small" />
+				<filter extn=".ttf" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+			
+			<template name="find_file"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@theme_fonts=Fonts}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@select_custom_font=Select font}</text>
+			</text>
+
+			<action>
+				<condition var1="tw_filename" op="modified"/>
+				<condition var1="tw_themeexist" var2="1"/>
+				<actions>
+					<action function="set">ttf_path=%tw_filename%</action>
+					<action function="set">theme_cmd=themes/fonts/Custom.xml > ./themes/font.xml;cp "%ttf_path%" "./fonts/Custom.ttf"</action>
+					<action function="page">ext_theme_busy</action>
+				</actions>
+			</action>
+			
+			<action>
+				<condition var1="tw_filename" op="modified"/>
+				<condition var1="tw_themeexist" var2="0"/>
+				<action function="overlay">dialog_create_uizip</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_workshop_font</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+		
+		<page name="ext_workshop_bkg">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@theme_bkg=Background}</text>
+			</text>
+			
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
+				<action function="set">png_back=ext_workshop_bkg</action>
+				<action function="page">find_png</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%set_row1_y%"/>
+				<image resource="bs_btn_open"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
+				<text>{@theme_newpng=Choose new background image}</text>
+			</text>
+			<button style="bs_btn">
+				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_workshop_bkg_img</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%set_row2_y%"/>
+				<image resource="bs_btn_set_screen"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
+				<text>{@theme_view=View current image}</text>
+			</text>
+			<button style="bs_btn">
+				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<condition var1="tw_themeexist" var2="1"/>
+				<action function="set">theme_cmd=themes/bg/off.xml > ./themes/bgstyle.xml;echo "" > ./images/bg.png</action>
+				<action function="page">ext_theme_busy</action>
+			</button>
+			<button style="bs_btn">
+				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<condition var1="tw_themeexist" var2="0"/>
+				<action function="overlay">dialog_create_uizip</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%set_row3_y%"/>
+				<image resource="bs_btn_delete"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
+				<text>{@theme_delbkg=Remove background image}</text>
+			</text>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_workshop</action>
+			</action>
+		</page>
+		
+		<page name="ext_workshop_bkg_img">
+			<background color="%background%"/>
+			<template name="background_image" />
+			<button>
+				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
+				<fill color="%transparent%"/>
+				<action function="page">ext_workshop_bkg</action>
+			</button>
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_workshop_bkg</action>
+			</action>
+		</page>
+		
+		<page name="ext_theme_busy">
+			<background color="%background%"/>
+			<template name="background_image"/>
+			<fill color="%lightransparent%">
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			<template name="statusbarinfo"/>
+			<image>
+				<image resource="palette"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text_l%" placement="4"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<text>{@theme_apply=Applying theme...}</text>
+			</text>
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text%" placement="4"/>
+				<condition var1="navbar_disable" var2="1"/>
+				<text>{@theme_apply=Applying theme...}</text>
+			</text>
+			
+			<action>
+				<action function="set">tw_simulate_actions=0</action>
+				<action function="set">tw_simulate_fail=0</action>
+				<condition var1="tw_themeexist" var2="0"/>
+				<action function="cmd">
+					cd "/twres";
+					chmod 777 ./zip;
+					./zip -r9 ./ui.zip *;
+				</action>
+				<action function="set">theme_cmd=</action>
+				<action function="queueclear"/>
+				<action function="set">tw_filename=/twres/ui.zip</action>
+				<action function="queuezip"/>
+				<action function="flash">ext_theme_busy_flashing</action>
+			</action>
+			
+			<action>
+				<action function="set">tw_simulate_actions=0</action>
+				<action function="set">tw_simulate_fail=0</action>
+				<action function="mount">data</action>
+				<condition var1="tw_themeexist" var2="1"/>
+				<action function="cmd">
+					cd "%tw_theme_path%";
+					rm -rf "./repack";
+					mkdir repack;
+					cd "./repack";
+					
+					mkdir themes images fonts;
+					
+					if [ ! -f "../zip" ]; then unzip -p ../ui.zip zip > ../zip; fi;
+					if [ ! -x "../zip" ]; then chmod 777 ../zip; fi;
+					
+					unzip -p ../ui.zip %theme_cmd%;
+					
+					../zip -9r ../ui.zip .;
+					
+					rm -rf "../repack"; 
+					pkill recovery;
+				</action>
+				<action function="set">theme_cmd=</action>
+			</action>
+		</page>
+		
+		<page name="ext_theme_busy_flashing">
+			<background color="%background%"/>
+			<template name="background_image"/>
+			<fill color="%lightransparent%">
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			<template name="statusbarinfo"/>
+			<image>
+				<image resource="palette"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text_l%" placement="4"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<text>{@installing_theme=Installing theme...}</text>
+			</text>
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text%" placement="4"/>
+				<condition var1="navbar_disable" var2="1"/>
+				<text>{@installing_theme=Installing theme...}</text>
+			</text>
+			<action>
+				<condition var1="tw_operation_state" var2="1"/>
+				<condition var1="tw_operation_status" op="!=" var2="0"/>
+				<action function="set">install_back=ext_workshop</action>
+				<action function="page">flash_done</action>
+			</action>
+			<!--action>
+				<condition var1="tw_operation_state" var2="1"/>
+				<condition var1="tw_operation_status" var2="0"/>
+				<action function="reboot">recovery</action>
+			</action-->
+		</page>
+		
+		<page name="find_png">
+			<template name="body"/>
+			<fileselector style="fileselector_b">
+				<condition var1="list_font" var2="big"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon" file="file_icon" />
+				<filter extn=".png" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="list_font" var2="small"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon_small" file="file_icon_small" />
+				<filter extn=".png" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+			
+			<template name="find_file"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@theme_bkg=Background}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@theme_pngselect=Select background image}</text>
+			</text>
+			
+			<action>
+				<condition var1="tw_filename" op="modified"/>
+				<condition var1="tw_themeexist" var2="1"/>
+				<actions>
+					<action function="set">bkg_selected_img=%tw_filename%</action>
+					<action function="set">theme_cmd=themes/bg/on.xml > ./themes/bgstyle.xml;cp "%bkg_selected_img%" "./images/bg.png"</action>
+					<action function="page">ext_theme_busy</action>
+				</actions>
+			</action>
+			
+			<action>
+				<condition var1="tw_filename" op="modified"/>
+				<condition var1="tw_themeexist" var2="0"/>
+				<action function="overlay">dialog_create_uizip</action>
+			</action>
+			
+			<action>
+				<touch key="back"/>
+				<action function="page">%png_back%</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+	</pages>
+</recovery>

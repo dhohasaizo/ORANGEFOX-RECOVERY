@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<!-- Controls -->
+		<image name="radio_true_dialog" filename="Pink/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="Pink/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="Pink/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="Pink/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="Pink/Controls/slider_used"/>
+		<image name="handle" filename="Pink/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="Pink/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="Pink/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="Pink/Controls/btn_raised_hl"/>
+		
+		<!-- FAB -->
+		<image name="btn_float_arc" filename="Pink/FAB/btn_float_arc" retainaspect="1"/>
+		<image name="btn_float_img" filename="Pink/FAB/btn_float_img" retainaspect="1"/>
+		<image name="btn_float_accept" filename="Pink/FAB/btn_float_accept" retainaspect="1"/>
+		<image name="btn_float_folder" filename="Pink/FAB/btn_float_folder" retainaspect="1"/>
+		<image name="btn_float_close" filename="Pink/FAB/btn_float_close" retainaspect="1"/>
+		<image name="float_fm_plus" filename="Pink/FAB/float_fm_plus" retainaspect="1"/>
+		<image name="float_fm_close" filename="Pink/FAB/float_fm_close" retainaspect="1"/>
+		<image name="float_fm_close_hl" filename="Pink/FAB/float_fm_close_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="file_icon_small" filename="Pink/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="Pink/FileManager/file" retainaspect="1"/>
+		<image name="zip_icon_small" filename="Pink/FileManager/file_zip_small" retainaspect="1"/>
+		<image name="img_icon_small" filename="Pink/FileManager/file_img_small" retainaspect="1"/>
+		<image name="zip_icon" filename="Pink/FileManager/file_zip" retainaspect="1"/>
+		<image name="img_icon" filename="Pink/FileManager/file_img" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="Pink/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="Pink/FileManager/file_bkp" retainaspect="1"/>
+		<image name="flash_icon" filename="Pink/FileManager/flash_icon" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info" filename="Pink/Info/icon_info" retainaspect="1"/>
+		<image name="help_cloud" filename="Pink/Info/help_cloud" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="enter" filename="Pink/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="Pink/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="Pink/Keyboard/enter_num_new" retainaspect="1"/>
+
+		<!-- Nav Bar -->
+		<image name="home" filename="Pink/NavBar/home" retainaspect="1"/>
+		<image name="home_hl" filename="Pink/NavBar/home_hl" retainaspect="1"/>
+		<image name="back" filename="Pink/NavBar/back" retainaspect="1"/>
+		<image name="back_hl" filename="Pink/NavBar/back_hl" retainaspect="1"/>
+		<image name="slideout" filename="Pink/NavBar/slideout" retainaspect="1"/>
+		<image name="slideout_hl" filename="Pink/NavBar/slideout_hl" retainaspect="1"/>
+		<image name="keyboard_hide" filename="Pink/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="keyboard_hide_hl" filename="Pink/NavBar/keyboard_hide_hl" retainaspect="1"/>
+		<image name="home_ng" filename="Pink/NavBar/home_ng" retainaspect="1"/>
+		<image name="home_ng_hl" filename="Pink/NavBar/home_ng_hl" retainaspect="1"/>
+		<image name="back_ng" filename="Pink/NavBar/back_ng" retainaspect="1"/>
+		<image name="back_ng_hl" filename="Pink/NavBar/back_ng_hl" retainaspect="1"/>
+		<image name="slideout_ng" filename="Pink/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="slideout_ng_hl" filename="Pink/NavBar/slideout_ng_hl" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="Pink/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng_hl" filename="Pink/NavBar/keyboard_hide_ng_hl" retainaspect="1"/>
+	</resources>
+	<variables>
+		<variable name="accent" value="#C90079FF"/>
+		<variable name="accent_r" value="201"/>
+		<variable name="accent_g" value="0"/>
+		<variable name="accent_b" value="121"/>
+		<variable name="theme_accent" value="Pink"/>
+		<variable name="current_accent" value="Pink"/>
+		<variable name="applied_accent_x" value="795"/>
+		<variable name="applied_accent_y" value="975"/>
+	</variables>
+</recovery>

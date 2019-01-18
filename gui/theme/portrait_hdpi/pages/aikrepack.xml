@@ -1,0 +1,1166 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="ext_workshop_repack">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@theme_splash_hdr=Change TWRP Splash}</text>
+			</text>
+			
+			<image>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<image resource="icon_info"/>
+			</image>
+			
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+				<text>{@im_kitchen1=The repacked IMG will be saved}</text>
+			</text>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@im_kitchen2=to the same folder as the stock IMG}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row2_1_y%" />
+				<text>{@stock_recovery_im=Stock TWRP Image}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="tw_splash_img_name" op="!="/>
+				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<text>{@not_set=Not set}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="tw_splash_img_name"/>
+				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<text>%tw_splash_img_name%</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col2_x_text%" y="%row2_1_y%" />
+				<condition var1="tw_themeexist" op="!=" var2="1"/>
+				<condition var1="aroma_path" op="!=" var2="none"/>
+				<text>{@sph_include=Include...}</text>
+			</text>
+			<text style="caption">
+				<placement x="%col2_x_text%" y="%row2_1_y%" />
+				<condition var1="tw_themeexist" var2="1"/>
+				<condition var1="aroma_path" var2="none"/>
+				<text>{@sph_include=Include...}</text>
+			</text>
+			<text style="caption">
+				<placement x="%col2_x_text%" y="%row2_1_y%" />
+				<condition var1="tw_themeexist" var2="1"/>
+				<condition var1="aroma_path" op="!=" var2="none"/>
+				<text>{@sph_include=Include...}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="splash_includearoma" var2="1"/>
+				<condition var1="splash_includezip" var2="1"/>
+				<placement x="%col2_x_text%" y="%row2_2_y%"/>
+				<text>{@rb_theme=Theme}, AromaFM</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="splash_includearoma" var2="0"/>
+				<condition var1="splash_includezip" var2="1"/>
+				<placement x="%col2_x_text%" y="%row2_2_y%"/>
+				<text>{@rb_theme=Theme}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="splash_includearoma" var2="1"/>
+				<condition var1="splash_includezip" var2="0"/>
+				<placement x="%col2_x_text%" y="%row2_2_y%"/>
+				<text>AromaFM</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="splash_includearoma" var2="0"/>
+				<condition var1="splash_includezip" var2="0"/>
+				<condition var1="tw_themeexist" op="!=" var2="1"/>
+				<condition var1="aroma_path" op="!=" var2="none"/>
+				<placement x="%col2_x_text%" y="%row2_2_y%"/>
+				<text>{@not_set=Not set}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="splash_includearoma" var2="0"/>
+				<condition var1="splash_includezip" var2="0"/>
+				<condition var1="tw_themeexist" var2="1"/>
+				<condition var1="aroma_path" var2="none"/>
+				<placement x="%col2_x_text%" y="%row2_2_y%"/>
+				<text>{@not_set=Not set}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="splash_includearoma" var2="0"/>
+				<condition var1="splash_includezip" var2="0"/>
+				<condition var1="tw_themeexist" var2="1"/>
+				<condition var1="aroma_path" op="!=" var2="none"/>
+				<placement x="%col2_x_text%" y="%row2_2_y%"/>
+				<text>{@not_set=Not set}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1_y%" />
+				<text>{@tw_splash_png_btn=PNG as Splash Screen}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="tw_splash_png_name" op="!="/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<text>{@not_set=Not set}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="tw_splash_png_name"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<text>%tw_splash_png_name%</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col2_x_text%" y="%row3_1_y%"/>
+				<text>{@sph_set=Splash settings}</text>
+			</text>
+			
+			<text style="text_body2">
+				<condition var1="splash_logo_type" var2="twrp"/>
+				<placement x="%col2_x_text%" y="%row3_2_y%"/>
+				<text>TWRP</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="splash_logo_type" var2="teamwin"/>
+				<placement x="%col2_x_text%" y="%row3_2_y%"/>
+				<text>Team Win</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="splash_logo_type" var2="none"/>
+				<placement x="%col2_x_text%" y="%row3_2_y%"/>
+				<text>{@fm_none=None}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="splash_logo_type" var2="classic"/>
+				<placement x="%col2_x_text%" y="%row3_2_y%"/>
+				<text>{@sph_newclassic=New classic}</text>
+			</text>
+			
+			<button style="menu_btn">
+				<placement x="%col2_x_text%" y="%row2_1_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<condition var1="tw_themeexist" op="!=" var2="1"/>
+				<condition var1="aroma_path" op="!=" var2="none"/>
+				<action function="page">ext_workshop_repack_include</action>
+			</button>
+			<button style="menu_btn">
+				<placement x="%col2_x_text%" y="%row2_1_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<condition var1="tw_themeexist" var2="1"/>
+				<condition var1="aroma_path" var2="none"/>
+				<action function="page">ext_workshop_repack_include</action>
+			</button>
+			<button style="menu_btn">
+				<placement x="%col2_x_text%" y="%row2_1_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<condition var1="tw_themeexist" var2="1"/>
+				<condition var1="aroma_path" op="!=" var2="none"/>
+				<action function="page">ext_workshop_repack_include</action>
+			</button>
+			<button style="menu_btn">
+				<placement x="%col2_x_text%" y="%row3_1_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<action function="page">ext_workshop_repack_splash</action>
+			</button>
+			
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row2_1_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<action function="page">find_splash_img</action>
+			</button>
+			
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row3_1_y%" w="%listbox_tz_width_2%" h="%mb_h_hide%"/>
+				<action function="page">find_splash_png</action>
+			</button>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_1_y%"/>
+				<text>{@cust_oth=Other}</text>
+			</text>
+			
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%row4_2_y%"/>
+				<action function="page">get_recovery</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<image resource="bs_btn_get"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="942"/>
+				<text>{@getreco_btn=Get recovery.img from device}</text>
+			</text>
+
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="1044"/>
+				<action function="page">ext_workshop_cleanup</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="1044"/>
+				<image resource="bs_btn_delete"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="1086"/>
+				<text>{@cleanup=Clean up}</text>
+			</text>
+
+			<text style="caption">
+				<conditions>
+					<condition var1="tw_busy" var2="0"/>
+					<condition var1="tw_splash_img_name"/>
+				</conditions>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@slider_repack=Swipe to create Repack}</text>
+			</text>
+			
+			<slider style="slider_action">
+				<placement x="%center_x%" y="%slider_y%" placement="5"/>
+				<conditions>
+					<condition var1="tw_busy" var2="0"/>
+					<condition var1="tw_splash_img_name"/>
+				</conditions>
+				<action function="page">ext_workshop_repacking</action>
+			</slider>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">%set_back%</action>
+			</action>
+		</page>
+		
+		<page name="ext_workshop_repack_include">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@sph_include=Include...}</text>
+			</text>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row0_a_y%" w="%screen_w%" h="%lb_l2%"/>
+				<listitem name="{@include_flash_repack=Include current theme in repack}">
+					<data variable="splash_includezip"/>
+					<condition var1="tw_themeexist" var2="1"/>
+				</listitem>
+				<listitem name="{@sph_includearoma=Include AromaFM (config won't save)}">
+					<condition var1="aroma_path" op="!=" var2="none"/>
+					<data variable="splash_includearoma"/>
+				</listitem>
+			</listbox>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_workshop_repack</action>
+			</action>
+		</page>
+		
+		<page name="ext_workshop_cleanup">
+			<action>
+				<actions>
+					<action function="cmd">
+						if [ -f "%tw_theme_path%/recovery_device.img" ];
+							then rm -f "%tw_theme_path%/recovery_device.img";
+						fi;
+						if [ -f "%tw_theme_path%/recovery_modified.img" ];
+							then rm -f "%tw_theme_path%/recovery_modified.img";
+						fi;
+					</action>
+					<action function="set">tw_splash_png_name=</action>
+					<action function="set">tw_splash_png_path=</action>
+					<action function="set">tw_splash_img_name=</action>
+					<action function="set">tw_splash_img_path=</action>
+					<action function="set">splash_logo_type=teamwin</action>
+					<action function="set">splash_place=960</action>
+					<action function="set">splash_sidebar=1</action>
+					<action function="set">splash_bottom_trail=0</action>
+					<action function="set">splash_top_trail=0</action>
+					<action function="set">splash_title=1</action>
+					<action function="set">splash_bkg=%bg_rgb% %bg_rgb% %bg_rgb%</action>
+					<action function="set">splash_accent=%accent_r% %accent_g% %accent_b%</action>
+					<action function="set">splash_add=50 50 50</action>
+					<action function="set">repack_fail=</action>
+					<action function="page">ext_workshop_repack</action>
+				</actions>
+			</action>
+		</page>
+		
+		<page name="ext_workshop_repacking">
+			<action>
+				<actions>
+					<action function="mount">data</action>
+					<action function="set">tw_simulate_actions=0</action>
+					<action function="set">tw_simulate_fail=0</action>
+					<action function="cmd">
+					if [ -f "%tw_splash_img_path%/recovery_modified.img" ]; then rm -f "%tw_splash_img_path%/recovery_modified.img"; fi;
+					if [ ! -f "%tw_splash_img_path%/%tw_splash_img_name%" ]; then exit 5; fi;
+					if [ ! -f "/data/local/AIK-mobile/unpackimg.sh" ]; then exit 6; fi;
+					if [ ! -f "/data/local/AIK-mobile/repackimg.sh" ]; then exit 7; fi;
+					if [ ! -f "/data/local/AIK-mobile/cleanup.sh" ]; then exit 8; fi;
+					
+					includezip='%splash_includezip%';
+					includearoma='%splash_includearoma%';
+					themeexist='%tw_themeexist%';
+					logotype='%splash_logo_type%';
+					none='none';
+					true='1';
+					
+					if [[ $includezip = $true ]]; then if [ ! -f "%tw_theme_path%/ui.zip" ]; then exit 9; fi; fi;
+					if [[ $includearoma = $true ]]; then if [ ! -f "%aroma_path%" ]; then exit 10; fi; fi;
+
+					cd "/data/local/AIK-mobile";
+					cp "%tw_splash_img_path%/%tw_splash_img_name%" "/data/local/AIK-mobile/original.img";
+					chmod 777 "/data/local/AIK-mobile/original.img";
+					umount /system;
+					umount /system;
+					mount -o ro -t auto /system;
+					if [ -f "/system/system/bin/dalvikvm" ]; then
+						umount /system;
+						umount /system;
+						mkdir /system_root;
+						slot=$(getprop ro.boot.slot_suffix 2>/dev/null);
+						test ! "$slot" && slot=$(grep -o 'androidboot.slot_suffix=.*$' /proc/cmdline | cut -d\  -f1 | cut -d= -f2);
+						test ! "$slot" -o ! -e "/dev/block/bootdevice/by-name/system$slot" && unset slot;
+						mount -o ro -t auto /dev/block/bootdevice/by-name/system$slot /system_root;
+						mount -o bind /system_root/system /system;
+					fi;
+					echo -e '#/sbin/sh\nshift;
+					sh "$@";
+					' > /sbin/su;
+					chmod 755 /sbin/su;
+					savedpath="$LD_LIBRARY_PATH";
+					unset LD_LIBRARY_PATH;
+					./unpackimg.sh "/data/local/AIK-mobile/original.img";
+					
+					if [ -f "/data/local/AIK-mobile/ramdisk/twres/aroma.zip" ];
+					then rm -f "/data/local/AIK-mobile/ramdisk/twres/aroma.zip";
+					fi;
+					if [ -f "/data/local/AIK-mobile/ramdisk/twres/aroma.zip.cfg" ];
+					then rm -f "/data/local/AIK-mobile/ramdisk/twres/aroma.zip.cfg";
+					fi;
+					
+					if [[ $includezip = $true ]];
+					then if [ -f "%tw_theme_path%/ui.zip" ];
+						then rm -rf "/data/local/AIK-mobile/ramdisk/twres";
+							mkdir "/data/local/AIK-mobile/ramdisk/twres";
+							unzip -o "%tw_theme_path%/ui.zip" -d "/data/local/AIK-mobile/ramdisk/twres";
+							unzip -p "%tw_theme_path%/ui.zip" splash.xml > /data/local/AIK-mobile/ramdisk/twres/splash_sed.xml;
+						else exit 9;
+						fi;
+					fi;
+					if [[ $includearoma = $true ]];
+					then if [ -f "%aroma_path%" ];
+						then cp -f "%aroma_path%" "/data/local/AIK-mobile/ramdisk/twres/aroma.zip";
+							if [ -f "%aroma_path%.cfg" ];
+							then cp -f "%aroma_path%.cfg" "/data/local/AIK-mobile/ramdisk/twres/aroma.zip.cfg";
+							fi;
+						else exit 10;
+						fi;
+					fi;
+					
+					if [ -f "%tw_splash_png_path%/%tw_splash_png_name%" ];
+					then img_active=;
+					cp -f "%tw_splash_png_path%/%tw_splash_png_name%" "/data/local/AIK-mobile/ramdisk/twres/images/splashbkg.png";
+					else img_active=!--;
+					fi;   
+					
+					if [[ $logotype = $none ]];
+					then showlogo=!--;
+					else showlogo=;
+						if [[ $themeexist = $true ]];
+						then unzip -p "%tw_theme_path%/ui.zip" images/Splash/logo_%splash_logo_type%_%splash_inv%.png > /data/local/AIK-mobile/ramdisk/twres/images/splashlogo.png;
+							unzip -p "%tw_theme_path%/ui.zip" images/Splash/logo_title_%splash_inv%.png > /data/local/AIK-mobile/ramdisk/twres/images/splashtitle.png;
+						else cp -f "/twres/images/Splash/logo_%splash_logo_type%_%splash_inv%.png" "/data/local/AIK-mobile/ramdisk/twres/images/splashlogo.png";
+							cp -f "/twres/images/Splash/logo_title_%splash_inv%.png" "/data/local/AIK-mobile/ramdisk/twres/images/splashtitle.png";
+						fi;
+					fi;
+					
+					colbkg=$(printf "%%02x%%02x%%02x\n" %splash_bkg%);
+					colacc=$(printf "%%02x%%02x%%02x\n" %splash_accent%);
+					coladd=$(printf "%%02x%%02x%%02x\n" %splash_add%);
+					
+					if [[ $themeexist = $true ]];
+						then splashcmd=$(unzip -p "%tw_theme_path%/ui.zip" splash.xml);
+						else splashcmd=$(cat /twres/splash_sed.xml);
+					fi;
+					
+					echo "$splashcmd" | sed -e "
+					s/#SPLASH_LOGO_ACTIVE#/${showlogo}/g;
+					s/#IMG_AS_BKG#/${img_active}/g;
+					s/#BOOL_BAR#/%splash_sidebar%/g;
+					s/#BOOL_UP_BAR#/%splash_top_trail%/g;
+					s/#LOGO_TYPE#/%splash_logo_type%/g;
+					s/#BOOL_DOWN_BAR#/%splash_bottom_trail%/g;
+					s/#BOOL_TITLE#/%splash_title%/g;
+					s/#PLACEMENT#/%splash_place%/g;
+					s/#BKG_COLOR#/${colbkg}/g;
+					s/#ACCENT_COLOR#/${colacc}/g;
+					s/#ADD_COLOR#/${coladd}/g" > /data/local/AIK-mobile/ramdisk/twres/splash.xml
+					
+					./repackimg.sh;
+					mv "image-new.img" "%tw_splash_img_path%/recovery_modified.img";
+					chown -R media_rw:media_rw "%tw_splash_img_path%/recovery_modified.img";
+					./cleanup.sh;
+					umount /system;
+					if [ -d "/system_root" ]; then
+						umount /system_root;
+						rmdir /system_root;
+					fi;
+					test "$savedpath" && export LD_LIBRARY_PATH="$savedpath";
+					
+					if [ -f "%tw_theme_path%/recovery_device.img" ];
+					then rm -f "%tw_theme_path%/recovery_device.img";
+					fi;
+					if [ -f "/data/custom_boot_image_patch.sh" ];
+					then /data/local/AIK-mobile/bin/busybox ash "/data/custom_boot_image_patch.sh" "%tw_splash_img_path%/recovery_modified.img";
+					fi;
+					</action>
+				</actions>
+			</action>
+		
+			<template name="body"/>
+
+			<animation>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%progressbar_x%" y="%progressbar_y%"/>
+				<resource name="progress"/>
+				<speed fps="30" render="2"/>
+				<loop frame="1"/>
+			</animation>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@theme_splash_hdr=Change TWRP Splash}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@repacking=Repacking...}</text>
+			</text>
+			
+			<text style="text_ab_title">
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="tw_operation_status" op="!=" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@failed=Failed}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="tw_operation_status" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@successful=Successful}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_splash_img_name%</text>
+			</text>
+
+			<template name="action_page_console"/>
+			<template name="cant_cancel" />
+			
+			<button style="btn_raised">
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+				<text>{@back_btn=BACK}</text>
+				<action function="key">back</action>
+			</button>
+
+			<button style="btn_raised_hl">
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+				<text>{@flash_repacked=FLASH REPACK}</text>
+				<actions>
+					<action function="set">tw_file=recovery_modified.img</action>
+					<action function="set">install_back=ext_workshop_repack</action>
+					<action function="set">tw_filename=%tw_splash_img_path%/recovery_modified.img</action>
+					<action function="set">tw_zip_location=%tw_splash_img_path%</action>
+					<action function="set">tw_flash_partition=</action>
+					<action function="page">flash_image_confirm</action>
+				</actions>
+			</button>
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_workshop_repack</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+		
+		
+		<page name="find_splash_png">
+			<template name="body"/>
+			<fileselector style="fileselector_b">
+				<condition var1="list_font" var2="big"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon" file="file_icon" />
+				<filter extn=".png" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="list_font" var2="small"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon_small" file="file_icon_small" />
+				<filter extn=".png" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+			
+			<template name="find_file"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@theme_splash_hdr=Change TWRP Splash}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@sel_splash_png=Select Splash PNG}</text>
+			</text>
+			
+			<action>
+				<condition var1="tw_filename" op="modified"/>
+				<actions>
+					<action function="set">tw_splash_png_name=%tw_file%</action>
+					<action function="set">tw_splash_png_path=%tw_zip_location%</action>
+					<action function="set">splash_logo_type=none</action>
+					<action function="page">ext_workshop_repack</action>
+				</actions>
+			</action>
+			
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_workshop_repack</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+		
+		<page name="find_splash_img">
+			<template name="body"/>
+			<fileselector style="fileselector_b">
+				<condition var1="list_font" var2="big"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon" file="img_icon" />
+				<filter extn=".img" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="list_font" var2="small"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon_small" file="img_icon_small" />
+				<filter extn=".img" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+			
+			<template name="find_file"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@theme_splash_hdr=Change TWRP Splash}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@sel_rec_im=Select Recovery Image}</text>
+			</text>
+			
+			<action>
+				<condition var1="tw_filename" op="modified"/>
+				<actions>
+					<action function="set">tw_splash_img_name=%tw_file%</action>
+					<action function="set">tw_splash_img_path=%tw_zip_location%</action>
+					<action function="page">ext_workshop_repack</action>
+				</actions>
+			</action>
+			
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_workshop_repack</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+		
+		<page name="ext_workshop_repack_splash">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@sph_set=Splash settings}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@sph_logo=Logo type}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width%" h="%lb_l4%"/>
+				<data name="splash_logo_type"/>
+				<listitem name="{@fm_none=None}">none<condition var1="tw_splash_png_name"/></listitem>
+				<listitem name="{@sph_newclassic=New classic}">classic</listitem>
+				<listitem name="Team Win Recovery Project">teamwin</listitem>
+				<listitem name="TWRP">twrp</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<condition var1="splash_logo_type" op="!=" var2="none"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
+				<text>{@sph_place=Placement}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row4_1_y%" w="%listbox_tz_width%" h="%lb_l3%"/>
+				<condition var1="splash_logo_type" op="!=" var2="none"/>
+				<data name="splash_place"/>
+				<listitem name="{@top=Top}">290<condition var1="splash_logo_type" op="!=" var2="classic"/></listitem>
+				<listitem name="{@top=Top} {@sph_classic=(classic)}">500<condition var1="splash_logo_type" var2="classic"/></listitem>
+				<listitem name="{@center=Center}">960</listitem>
+				<listitem name="{@bottom=Bottom}">1630<condition var1="splash_logo_type" op="!=" var2="classic"/></listitem>
+			</listbox>
+			
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_3a_y%"/>
+				<condition var1="splash_logo_type" op="!=" var2="none"/>
+				<text>{@cust_oth=Other}</text>
+			</text>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row6_1a_y%" w="%screen_w%" h="%lb_l4%"/>
+				<condition var1="splash_logo_type" op="!=" var2="none"/>
+				<listitem name="{@sph_sidebar=Sidebar}">
+					<data variable="splash_sidebar"/>
+				</listitem>
+				<listitem name="{@sph_ttrail=Top trail}">
+					<condition var1="splash_logo_type" op="!=" var2="classic"/>
+					<data variable="splash_top_trail"/>
+				</listitem>
+				<listitem name="{@sph_btrail=Bottom trail}">
+					<condition var1="splash_logo_type" op="!=" var2="classic"/>
+					<data variable="splash_bottom_trail"/>
+				</listitem>
+				<listitem name="{@sph_classtitle=Bottom title}">
+					<condition var1="splash_logo_type" var2="classic"/>
+					<data variable="splash_title"/>
+				</listitem>
+				<listitem name="{@sph_inv=Inversion}">
+					<data variable="splash_inv"/>
+				</listitem>
+			</listbox>
+			
+			<action>
+				<condition var1="splash_place" var2="290"/>
+				<condition var1="splash_logo_type" var2="classic"/>
+				<action function="set">splash_place=960</action>
+			</action>
+			<action>
+				<condition var1="splash_place" var2="1630"/>
+				<condition var1="splash_logo_type" var2="classic"/>
+				<action function="set">splash_place=960</action>
+			</action>
+			
+			<action>
+				<condition var1="splash_place" var2="500"/>
+				<condition var1="splash_logo_type" op="!=" var2="classic"/>
+				<action function="set">splash_place=290</action>
+			</action>
+			
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+				<text>{@preview_btn=PREVIEW}</text>
+				<actions>
+					<action function="cmd">
+					if [ -f "%tw_splash_png_path%/%tw_splash_png_name%" ];
+					then img_active=;
+					cp "%tw_splash_png_path%/%tw_splash_png_name%" "/twres/images/splashbkg.png";
+					else img_active=!--;
+					fi;   
+					
+					logotype='%splash_logo_type%';
+					themeexist='%tw_themeexist%';
+					none='none';
+					true='1';
+					
+					if [[ $themeexist = $true ]];
+						then splashcmd=$(unzip -p "%tw_theme_path%/ui.zip" splash.xml);
+						else splashcmd=$(cat /twres/splash_sed.xml);
+					fi;
+					
+					if [[ $logotype = $none ]];
+					then showlogo=!--;
+					else showlogo=;
+						if [[ $themeexist = $true ]];
+						then unzip -p "%tw_theme_path%/ui.zip" images/Splash/logo_%splash_logo_type%_%splash_inv%.png > /twres/images/splashlogo.png;
+							unzip -p "%tw_theme_path%/ui.zip" images/Splash/logo_title_%splash_inv%.png > /twres/images/splashtitle.png;
+						else cp -f "/twres/images/Splash/logo_%splash_logo_type%_%splash_inv%.png" "/twres/images/splashlogo.png";
+							cp -f "/twres/images/Splash/logo_title_%splash_inv%.png" "/twres/images/splashtitle.png";
+						fi;
+					fi;
+					
+					colbkg=$(printf "%%02x%%02x%%02x\n" %splash_bkg%);
+					colacc=$(printf "%%02x%%02x%%02x\n" %splash_accent%);
+					coladd=$(printf "%%02x%%02x%%02x\n" %splash_add%);
+					
+					echo "$splashcmd" | sed -e "
+					s/#SPLASH_LOGO_ACTIVE#/${showlogo}/g;
+					s/#IMG_AS_BKG#/${img_active}/g;
+					s/#BOOL_BAR#/%splash_sidebar%/g;
+					s/#BOOL_UP_BAR#/%splash_top_trail%/g;
+					s/#LOGO_TYPE#/%splash_logo_type%/g;
+					s/#BOOL_DOWN_BAR#/%splash_bottom_trail%/g;
+					s/#BOOL_TITLE#/%splash_title%/g;
+					s/#PLACEMENT#/%splash_place%/g;
+					s/#BKG_COLOR#/${colbkg}/g;
+					s/#ACCENT_COLOR#/${colacc}/g;
+					s/#ADD_COLOR#/${coladd}/g" > /twres/splash.xml
+					pkill recovery
+					</action>
+				</actions>
+			</button>
+			
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+				<text>{@sph_colors_btn=COLORS}</text>
+				<actions>
+					<action function="page">ext_workshop_repack_colors</action>
+				</actions>
+			</button>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_workshop_repack</action>
+			</action>
+		</page>
+		
+		<page name="ext_workshop_repack_colors">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@sph_colors=Splash colors}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@color_bg=Background color}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row1_2_y%"/>
+				<text>%splash_bkg%</text>
+			</text>
+
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row1_1_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<action function="page">cp_bg</action>
+			</button>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row2_1_y%"/>
+				<condition var1="splash_logo_type" op="!=" var2="none"/>
+				<text>{@color_accent=Accent color}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<condition var1="splash_logo_type" op="!=" var2="none"/>
+				<text>%splash_accent%</text>
+			</text>
+
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row2_1_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<condition var1="splash_logo_type" op="!=" var2="none"/>
+				<action function="page">cp_ac</action>
+			</button>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1_y%"/>
+				<text>{@color_add=Additional color}</text>
+				<condition var1="splash_logo_type" op="!=" var2="none"/>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<condition var1="splash_logo_type" op="!=" var2="none"/>
+				<text>%splash_add%</text>
+			</text>
+
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row3_1_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<condition var1="splash_logo_type" op="!=" var2="none"/>
+				<action function="page">cp_ad</action>
+			</button>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_workshop_repack_splash</action>
+			</action>
+		</page>
+		
+		<page name="cp_bg">
+			<template name="colorpicker"/>
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@color_bg=Background color}</text>
+			</text>
+			<button style="floating_btn">
+				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<image resource="btn_float_accept"/>
+				<action function="set">splash_bkg=%color_r% %color_g% %color_b%</action>
+				<action function="page">ext_workshop_repack_colors</action>
+			</button>
+		</page>
+		<page name="cp_ac">
+			<template name="colorpicker"/>
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@color_accent=Accent color}</text>
+			</text>
+			<button style="floating_btn">
+				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<image resource="btn_float_accept"/>
+				<action function="set">splash_accent=%color_r% %color_g% %color_b%</action>
+				<action function="page">ext_workshop_repack_colors</action>
+			</button>
+		</page>
+		<page name="cp_ad">
+			<template name="colorpicker"/>
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@color_add=Additional color}</text>
+			</text>
+			<button style="floating_btn">
+				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<image resource="btn_float_accept"/>
+				<action function="set">splash_add=%color_r% %color_g% %color_b%</action>
+				<action function="page">ext_workshop_repack_colors</action>
+			</button>
+		</page>
+		
+		<page name="aik_test">
+			<action>
+				<action function="fileexists">/data/local/AIK-mobile/unpackimg.sh</action>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">aik_installed=1</action>
+					<action function="page">themecheck1</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="set">aik_installed=0</action>
+					<action function="page">themecheck1</action>
+				</actions> 
+			</action>
+		</page>
+		
+		<page name="get_recovery">
+			<action>
+				<!-- Поддержка нестандартных путей с помощью find, вместо ls -1A /dev/block/platform/*/by-name/recovery
+					 Т.к. для путей типа /dev/block/platform/soc/qcom636/by-name/recovery такая маска не работает -->
+				<action function="cmd">
+				#Code 10: recovery image not found
+				#Code 20: too many recovery images found
+				#Script failed:
+				find=$(find /dev/block/platform -name "recovery");
+				cnt=$(echo $find | wc -l);
+				[ $cnt -eq 0 ] && exit 10;
+				[ $cnt -eq 1 ] || exit 20;
+				if [ -f "%tw_theme_path%/recovery_device.img" ];
+					then rm -f "%tw_theme_path%/recovery_device.img";
+				fi;
+				cat $find > "%tw_theme_path%/recovery_device.img";
+				</action>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">tw_splash_img_name=recovery_device.img</action>
+					<action function="set">tw_splash_img_path=%tw_theme_path%</action>
+					<action function="page">ext_workshop_repack</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="page">ext_workshop_repack</action>
+					<action function="overlay">dialog_noreco</action>
+				</actions>
+			</action>
+		</page>
+		
+		<page name="dialog_aikmissing">
+
+			<!-- Смысл в том, что создается sh-скрипт, который выводит на экран текст (только ASCII, кириллица не работает) -->
+			<action>
+				<action function="set">tw_simulate_actions=0</action>
+				<action function="set">tw_simulate_fail=0</action>
+				<action function="cmd">
+				cd "%tw_theme_path%";
+				unzip -p ./ui.zip aik > /sbin/aik;
+				chmod 777 /sbin/aik;
+				</action>
+			</action>
+			
+			<template name="dialog_body"/>
+			
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>AIK Mobile</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text1_y%"/>
+				<text>{@aik_help_1=AIK Mobile not found!}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text2_y%"/>
+				<text>{@aik_help_2=Connect your device to PC and}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text3_y%"/>
+				<text>{@aik_help_3=type to the terminal following}</text>
+			</text>
+			
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text4_y%"/>
+				<text>{@aik_help_4=command: adb shell aik}</text>
+			</text>
+			
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@ok_btn=OK}</text>
+				<action function="overlay"/>
+			</button>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+		<page name="dialog_noreco">
+			
+			<template name="dialog_body"/>
+			
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>{@getreco_title=Find recovery}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text1_y%"/>
+				<text>{@getreco_err=Can't get recovery.img file!}</text>
+			</text>
+			
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@ok_btn=OK}</text>
+				<action function="overlay"/>
+			</button>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+	</pages>
+	<variables>
+		<variable name="splash_sidebar" value="1"/>
+		<variable name="splash_top_trail" value="0"/>
+		<variable name="splash_bottom_trail" value="0"/>
+		<variable name="splash_logo_type" value="teamwin"/>
+		<variable name="splash_bkg" value="%bg_rgb% %bg_rgb% %bg_rgb%"/>
+		<variable name="splash_accent" value="%accent_r% %accent_g% %accent_b%"/>
+		<variable name="splash_add" value="50 50 50"/>
+		<variable name="splash_place" value="960"/>
+		<variable name="splash_title" value="1"/>
+		<variable name="splash_inv" value="0"/>
+		<variable name="splash_includezip" value="0"/>
+		<variable name="splash_includearoma" value="0"/>
+	</variables>
+	<templates>
+		<template name="colorpicker">
+			<template name="body"/>
+			<template name="ab"/>
+			<template name="statusbarinfo"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@color_picker=Color picker}</text>
+			</text>
+			
+			<action>
+				<action function="set">color_r=0</action>
+				<action function="set">color_b=0</action>
+				<action function="set">color_g=0</action>
+			</action>
+		
+			<fill color="%accent%">
+				<placement x="974" y="134" w="44" h="44" placement="4"/>
+			</fill>
+			
+			<fill color="%background%">
+				<placement x="830" y="134" w="44" h="44" placement="4"/>
+			</fill>
+			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_color_sec" highlightresource="actionbar_color_sec_hl"/>
+				<action function="set">color_r=%accent_r%</action>
+				<action function="set">color_b=%accent_b%</action>
+				<action function="set">color_g=%accent_g%</action>
+			</button>
+			
+			<button>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_color_prim" highlightresource="actionbar_color_prim_hl"/>
+				<action function="set">color_r=%bg_rgb%</action>
+				<action function="set">color_b=%bg_rgb%</action>
+				<action function="set">color_g=%bg_rgb%</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_workshop_repack_colors</action>
+			</action>
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row1_2_y%"/>
+				<text>{@color_red=Red}: %color_r%</text>
+			</text>
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<text>{@color_blue=Blue}: %color_b%</text>
+			</text>
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@color_green=Green}: %color_g%</text>
+			</text>
+			
+			<slidervalue>
+				<placement x="%slider_x%" y="%row1_2a_y%" w="%slidervalue_w%"/>
+				<data variable="color_r" min="0" max="255" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+			<slidervalue>
+				<placement x="%slider_x%" y="%row4_2a_y%" w="%slidervalue_w%"/>
+				<data variable="color_b" min="0" max="255" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+			<slidervalue>
+				<placement x="%slider_x%" y="%row3_1_y%" w="%slidervalue_w%"/>
+				<data variable="color_g" min="0" max="255" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+			
+		</template>
+	</templates>	
+</recovery>
