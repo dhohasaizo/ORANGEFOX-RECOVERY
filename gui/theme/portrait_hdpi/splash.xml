@@ -9,7 +9,6 @@
 	</details>
 	
 	<resources>
-		<font name="splashtext1" filename="RobotoCondensed-Regular.ttf" size="50"/>
 		<image name="splash" filename="splash"/>
 	</resources>
 	
@@ -21,12 +20,6 @@
 	<pages>
 		<page name="splash">
 			<background color="%background%"/>		
-			
-			<text color="%text%">
-				<font resource="splashtext1"/>
-				<placement x="130" y="1590"/>
-				<text>%fox_actual_build%</text>
-			</text>	
 			
 			<object type="image">
 				<image resource="splash"/>
