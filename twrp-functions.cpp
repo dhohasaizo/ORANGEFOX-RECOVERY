@@ -92,24 +92,6 @@ static void AppendLineToFile(string file_path, string line)
     file << line << std::endl;
 }
 
-/* devices to avoid patching */
-static bool skip_patching_this_device(void)
-{
-/* first case: avoid nitrogen/tulip/sakura miui bootloops */
-#ifdef OF_USE_MAGISKBOOT
-  return false;
-#else
-  /*if (
-     (Fox_Current_Device == "nitrogen") 
-  || (Fox_Current_Device == "tulip")
-  || (Fox_Current_Device == "sakura")
-     )
-     return true;
-   else */
-     return false;
-#endif
-}
-
 /* Have we just installed OrangeFox on a device with a Treble ROM? */
 static bool New_Fox_On_Treble(void)
 {
@@ -873,7 +855,7 @@ int TWFunc::tw_reboot(RebootCommand command)
   // This code is currently disabled - Fox_AutoDeactivate_OnReboot is never set to 1
   if ((Fox_AutoDeactivate_OnReboot == 1) && (Fox_IsDeactivation_Process_Called == 0))
     {
-      if ( /*(Fox_Current_ROM_IsMIUI == 1) ||*/ 
+      if (
 	   (DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1)       
 	   || (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1)
          ) 
@@ -1550,7 +1532,6 @@ int TWFunc::Set_Brightness(std::string brightness_value)
 	//gui_print("DEBUG #2: brightness_value = %s\n", brightness_value.c_str());
       // DJ9 
 */
-
       LOGINFO("TWFunc::Set_Brightness: Setting brightness control to %s\n",
 	      brightness_value.c_str());
       result =
@@ -2985,13 +2966,13 @@ bool TWFunc::Patch_DM_Verity(void)
 	          LOGINFO("OrangeFox: Relevant DM_Verity flags are found in %s\n", path.c_str());
 		  status = true;
 		  found_verity = true;
+	  	  TWFunc::Replace_Word_In_File(path, remove);
 		}
 		else
 		{
 	          LOGINFO("OrangeFox: Relevant DM_Verity flags are not found in %s\n", path.c_str());		
 		}
 	    }
-	  TWFunc::Replace_Word_In_File(path, remove);
 	}
 	
       if (cmp == "default.prop")
@@ -3058,6 +3039,7 @@ bool TWFunc::Patch_DM_Verity(void)
 	    else 
 	    if (stat == 1)
 		LOGINFO("Unable to open '%s'\n", fstab1.c_str());
+		
 	    return false;
         }
      
@@ -3084,13 +3066,13 @@ bool TWFunc::Patch_DM_Verity(void)
 	               LOGINFO("OrangeFox: Relevant dm-verity settings are found in %s\n", path.c_str());
 		       status = true;
 		       found_verity = true;
+	      	       TWFunc::Replace_Word_In_File(path, remove);
 		    } 
 		    else
 		    {
 	               LOGINFO("OrangeFox: Relevant dm-verity settings are not found in %s\n", path.c_str());		    
 		    }
 		}
-	      TWFunc::Replace_Word_In_File(path, remove);
 	    }
 	  if (cmp == "default.prop")
 	    {
@@ -3102,11 +3084,10 @@ bool TWFunc::Patch_DM_Verity(void)
 		        status = true;
 		        found_verity = true;
 		        TWFunc::Replace_Word_In_File(path,
-						 "ro.config.dmverity=true;",
-						 "ro.config.dmverity=false");
+		        	"ro.config.dmverity=true;",
+				"ro.config.dmverity=false");
 		    }
 		}
-	      else
 		{
 		  ofstream File(path.c_str(), ios_base::app | ios_base::out);
 		  if (File.is_open())
@@ -3120,7 +3101,6 @@ bool TWFunc::Patch_DM_Verity(void)
 	}
       
       closedir(d1);
-      chmod(path.c_str(), 0644);
  
       //additional check for default.prop
       if (!def)
@@ -3136,11 +3116,13 @@ bool TWFunc::Patch_DM_Verity(void)
 	         {
 		     status = true;
 		     found_verity = true;
-		     TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;",
-					     "ro.config.dmverity=false");
+		     TWFunc::Replace_Word_In_File(path, 
+		     		"ro.config.dmverity=true;",
+				"ro.config.dmverity=false");
 		 }
 	    }
 	}
+
       //end
 
       if (New_Fox_Installation != 1)
@@ -3151,6 +3133,7 @@ bool TWFunc::Patch_DM_Verity(void)
        		if (PartitionManager.Is_Mounted_By_Path("/vendor"))
 	  		PartitionManager.UnMount_By_Path("/vendor", false);
 	 }
+	 
     } // stat == 0
 
   if (TWFunc::Path_Exists(firmware_key))
@@ -3344,8 +3327,6 @@ bool TWFunc::Patch_Forced_Encryption(void)
 	   }
 	}
       closedir(d1);
-      chmod(path.c_str(), 0644);
-
       if (New_Fox_Installation != 1)
          {
        		if (PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path()))
@@ -3481,9 +3462,6 @@ void TWFunc::PrepareToFinish(void)
 
 bool TWFunc::DontPatchBootImage(void)
 {
-   if (skip_patching_this_device() == true)
-      return true;
-   
    Fox_Force_Deactivate_Process = DataManager::GetIntValue(FOX_FORCE_DEACTIVATE_PROCESS);
    if (
           (Fox_Force_Deactivate_Process == 1) || 
@@ -3525,7 +3503,6 @@ bool patched_crypt = false;
      }   
   // end
   
-   
   // unpack boot image
   #ifdef OF_USE_MAGISKBOOT
   if (!PackRepackImage_MagiskBoot(true, true))
@@ -3539,8 +3516,8 @@ bool patched_crypt = false;
 
   gui_msg(Msg(msg::kProcess, "of_run_process=Starting '{1}' process")
       ("OrangeFox"));
- 
-  // dm-verity 
+
+  // dm-verity   
   if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
 	  patched_verity = Patch_DM_Verity();
@@ -3571,16 +3548,6 @@ bool patched_crypt = false;
 	        gui_msg("of_encryption_off=Forced Encryption is not enabled");
 	     #endif   
 	     }  
-     }
-
-  // did we patch anything? if not, bail out right now
-  if (!patched_verity && !patched_crypt)
-     {
-  	LOGINFO("OrangeFox: DM-Verity and Forced-Encryption - nothing to patch! Bailing out...\n");
-  	Fox_Force_Deactivate_Process = 0;
-  	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
-  	TWFunc::removeDir(Fox_tmp_dir, false);
-  	return;
      }
 
   // other stuff
