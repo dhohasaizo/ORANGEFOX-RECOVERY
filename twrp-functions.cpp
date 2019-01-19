@@ -63,7 +63,7 @@ extern "C"
 #include "libcrecovery/common.h"
 }
 
-static string tmp = Fox_tmp_dir;
+static string tmp = Fox_tmp_dir; // "/tmp/orangefox/"
 static string split_img = tmp + "/split_img";
 static string ramdisk = tmp + "/ramdisk";
 static string tmp_boot = tmp + "/boot.img";
@@ -3098,9 +3098,13 @@ bool TWFunc::Patch_DM_Verity(void)
 	      if (TWFunc::CheckWord(path, "ro.config.dmverity="))
 		{
 		  if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
-		    TWFunc::Replace_Word_In_File(path,
+		    { 
+		        status = true;
+		        found_verity = true;
+		        TWFunc::Replace_Word_In_File(path,
 						 "ro.config.dmverity=true;",
 						 "ro.config.dmverity=false");
+		    }
 		}
 	      else
 		{
@@ -3109,6 +3113,7 @@ bool TWFunc::Patch_DM_Verity(void)
 		    {
 		      File << "ro.config.dmverity=false" << endl;
 		      File.close();
+		      status = true;
 		    }
 		}
 	    }  
@@ -3128,8 +3133,12 @@ bool TWFunc::Patch_DM_Verity(void)
 	  if (TWFunc::CheckWord(path, "ro.config.dmverity="))
 	    {
 	      if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
-		TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;",
+	         {
+		     status = true;
+		     found_verity = true;
+		     TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;",
 					     "ro.config.dmverity=false");
+		 }
 	    }
 	}
       //end
@@ -3197,8 +3206,7 @@ bool TWFunc::Fstab_Has_Encryption_Flag(std::string path)
 void TWFunc::Patch_Encryption_Flags(std::string path)
 {
    TWFunc::Replace_Word_In_File(path, "fileencryption=ice;", "encryptable=footer");
-   TWFunc::Replace_Word_In_File(path, "forcefdeorfbe=;forceencrypt=;fileencryption=;", "encryptable=");
-   
+   TWFunc::Replace_Word_In_File(path, "forcefdeorfbe=;forceencrypt=;fileencryption=;", "encryptable=");   
 //   string remove = "errors=panic,;errors=panic;discard,;,discard;";
 //   TWFunc::Replace_Word_In_File(path, remove);
 }
@@ -3252,9 +3260,13 @@ bool TWFunc::Patch_Forced_Encryption(void)
 		 LOGINFO("OrangeFox: Relevant encryption settings are not found in %s\n", path.c_str());
 	      }
 	    }
-	    TWFunc::Patch_Encryption_Flags(path);
+	  if (Fstab_Has_Encryption_Flag(path))
+	     {
+	          status = true;
+	          TWFunc::Patch_Encryption_Flags(path);
+	     }
 	}
-    }
+    } // while
   closedir(d);  
 
   if (stat == 0)
@@ -3322,7 +3334,13 @@ bool TWFunc::Patch_Forced_Encryption(void)
 		      LOGINFO("OrangeFox: Relevant encryption settings are not found in %s\n", path.c_str());
 		  }
 	       }
-	       TWFunc::Patch_Encryption_Flags(path);
+	     
+	     if (Fstab_Has_Encryption_Flag(path))
+	       {
+	          status = true;
+	          TWFunc::Patch_Encryption_Flags(path);
+	       }
+	     
 	   }
 	}
       closedir(d1);
@@ -3480,6 +3498,9 @@ bool TWFunc::DontPatchBootImage(void)
 void TWFunc::Deactivation_Process(void)
 {
 
+bool patched_verity = false;
+bool patched_crypt = false;
+
   // don't call this on first boot following fresh installation
   if (New_Fox_Installation != 1)
      {
@@ -3522,7 +3543,8 @@ void TWFunc::Deactivation_Process(void)
   // dm-verity 
   if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
-	  if (Patch_DM_Verity())
+	  patched_verity = Patch_DM_Verity();
+	  if (patched_verity)
 	  {
               DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, 1);
 	      gui_msg("of_dm_verity=Successfully patched DM-Verity");
@@ -3538,7 +3560,8 @@ void TWFunc::Deactivation_Process(void)
   // forced encryption    
   if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
-	  if (Patch_Forced_Encryption())
+	  patched_crypt = Patch_Forced_Encryption();
+	  if (patched_crypt)
 	     {
 	        gui_msg("of_encryption=Successfully patched forced encryption");
 	     }
@@ -3548,6 +3571,16 @@ void TWFunc::Deactivation_Process(void)
 	        gui_msg("of_encryption_off=Forced Encryption is not enabled");
 	     #endif   
 	     }  
+     }
+
+  // did we patch anything? if not, bail out right now
+  if (!patched_verity && !patched_crypt)
+     {
+  	LOGINFO("OrangeFox: DM-Verity and Forced-Encryption - nothing to patch! Bailing out...\n");
+  	Fox_Force_Deactivate_Process = 0;
+  	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
+  	TWFunc::removeDir(Fox_tmp_dir, false);
+  	return;
      }
 
   // other stuff
