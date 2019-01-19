@@ -2,82 +2,95 @@
 <recovery>
 	<resources>
 		<!-- Pdoor icons -->
-		<image name="bs_adv_term" filename="Blue/Icons/term" retainaspect="1"/>
-		<image name="bs_adv_se" filename="Blue/Icons/se" retainaspect="1"/>
-		<image name="bs_adv_mount" filename="Blue/Icons/mount" retainaspect="1"/>
-		<image name="bs_adv_reboot" filename="Blue/Icons/reboot" retainaspect="1"/>
-		<image name="bs_adv_log" filename="Blue/Icons/log" retainaspect="1"/>
-		<image name="bs_adv_htc" filename="Blue/Icons/htc" retainaspect="1"/>
-		<image name="bs_adv_adb" filename="Blue/Icons/adb" retainaspect="1"/>
-		<image name="bs_adv_frp" filename="Blue/Icons/frp" retainaspect="1"/>
-		<image name="bs_adv_sd" filename="Blue/Icons/sd" retainaspect="1"/>
+		<image name="bs_adv_term" filename="Orange/Icons/term" retainaspect="1"/>
+		<image name="bs_adv_se" filename="Orange/Icons/se" retainaspect="1"/>
+		<image name="bs_adv_mount" filename="Orange/Icons/mount" retainaspect="1"/>
+		<image name="bs_adv_reboot" filename="Orange/Icons/reboot" retainaspect="1"/>
+		<image name="bs_adv_log" filename="Orange/Icons/log" retainaspect="1"/>
+		<image name="bs_adv_htc" filename="Orange/Icons/htc" retainaspect="1"/>
+		<image name="bs_adv_adb" filename="Orange/Icons/adb" retainaspect="1"/>
+		<image name="bs_adv_frp" filename="Orange/Icons/frp" retainaspect="1"/>
+		<image name="bs_adv_sd" filename="Orange/Icons/sd" retainaspect="1"/>
 		
 		<!-- Controls -->
-		<image name="radio_true_dialog" filename="Blue/Controls/radio_true_dialog" retainaspect="1"/>
-		<image name="checkbox_true_dialog" filename="Blue/Controls/checkbox_true_dialog" retainaspect="1"/>
-		<image name="radio_true" filename="Blue/Controls/radio_true_d" retainaspect="1"/>
-		<image name="checkbox_true" filename="Blue/Controls/checkbox_true_d" retainaspect="1"/>
-		<image name="slider_used" filename="Blue/Controls/slider_used"/>
-		<image name="handle" filename="Blue/Controls/handle" retainaspect="1"/>
-		<image name="handle_h" filename="Blue/Controls/handle_h" retainaspect="1"/>
-		<image name="handle_h_classic" filename="Blue/Controls/handle_h_classic" retainaspect="1"/>
-		<image name="btn_raised_hl" filename="Blue/Controls/btn_raised_hl"/>
+		<image name="radio_true_dialog" filename="Orange/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="Orange/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="Orange/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="Orange/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="Orange/Controls/slider_used"/>
+		<image name="handle" filename="Orange/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="Orange/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="Orange/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="Orange/Controls/btn_raised_hl"/>
+
+		<!-- Nav panel -->
+		<image name="nav_menu" filename="Orange/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="Orange/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="Orange/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="Orange/NavPanel/backup" retainaspect="1"/>
+		<image name="nav_menu_d" filename="Orange/NavPanel/menu_d" retainaspect="1"/>
+		<image name="nav_wipe_d" filename="Orange/NavPanel/wipe_d" retainaspect="1"/>
+		<image name="nav_files_d" filename="Orange/NavPanel/files_d" retainaspect="1"/>
+		<image name="nav_backup_d" filename="Orange/NavPanel/backup_d" retainaspect="1"/>
+		<image name="nav_empty" filename="Orange/NavPanel/empty" retainaspect="1"/>
+		<image name="nav_hl" filename="Orange/NavPanel/hl" retainaspect="1"/>
+		<image name="nav_shadow" filename="Orange/NavPanel/shadow" retainaspect="1"/>
 		
 		<!-- FAB -->
-		<image name="btn_float_arc" filename="Blue/FAB/btn_float_arc" retainaspect="1"/>
-		<image name="btn_float_img" filename="Blue/FAB/btn_float_img" retainaspect="1"/>
-		<image name="btn_float_accept" filename="Blue/FAB/btn_float_accept" retainaspect="1"/>
-		<image name="btn_float_folder" filename="Blue/FAB/btn_float_folder" retainaspect="1"/>
-		<image name="btn_float_close" filename="Blue/FAB/btn_float_close" retainaspect="1"/>
-		<image name="float_fm_plus" filename="Blue/FAB/float_fm_plus" retainaspect="1"/>
-		<image name="float_fm_close" filename="Blue/FAB/float_fm_close" retainaspect="1"/>
-		<image name="float_fm_close_hl" filename="Blue/FAB/float_fm_close_hl" retainaspect="1"/>
+		<image name="btn_float_arc" filename="Orange/FAB/btn_float_arc" retainaspect="1"/>
+		<image name="btn_float_img" filename="Orange/FAB/btn_float_img" retainaspect="1"/>
+		<image name="btn_float_accept" filename="Orange/FAB/btn_float_accept" retainaspect="1"/>
+		<image name="btn_float_folder" filename="Orange/FAB/btn_float_folder" retainaspect="1"/>
+		<image name="btn_float_close" filename="Orange/FAB/btn_float_close" retainaspect="1"/>
+		<image name="float_fm_plus" filename="Orange/FAB/float_fm_plus" retainaspect="1"/>
+		<image name="float_fm_close" filename="Orange/FAB/float_fm_close" retainaspect="1"/>
+		<image name="float_fm_close_hl" filename="Orange/FAB/float_fm_close_hl" retainaspect="1"/>
 		
 		<!-- File Manager -->
-		<image name="file_icon_small" filename="Blue/FileManager/file_small" retainaspect="1"/>
-		<image name="file_icon" filename="Blue/FileManager/file" retainaspect="1"/>
-		<image name="zip_icon_small" filename="Blue/FileManager/file_zip_small" retainaspect="1"/>
-		<image name="img_icon_small" filename="Blue/FileManager/file_img_small" retainaspect="1"/>
-		<image name="zip_icon" filename="Blue/FileManager/file_zip" retainaspect="1"/>
-		<image name="img_icon" filename="Blue/FileManager/file_img" retainaspect="1"/>
-		<image name="bkp_icon_small" filename="Blue/FileManager/file_bkp_small" retainaspect="1"/>
-		<image name="bkp_icon" filename="Blue/FileManager/file_bkp" retainaspect="1"/>
-		<image name="flash_icon" filename="Blue/FileManager/flash_icon" retainaspect="1"/>
+		<image name="file_icon_small" filename="Orange/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="Orange/FileManager/file" retainaspect="1"/>
+		<image name="zip_icon_small" filename="Orange/FileManager/file_zip_small" retainaspect="1"/>
+		<image name="img_icon_small" filename="Orange/FileManager/file_img_small" retainaspect="1"/>
+		<image name="zip_icon" filename="Orange/FileManager/file_zip" retainaspect="1"/>
+		<image name="img_icon" filename="Orange/FileManager/file_img" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="Orange/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="Orange/FileManager/file_bkp" retainaspect="1"/>
+		<image name="flash_icon" filename="Orange/FileManager/flash_icon" retainaspect="1"/>
 		
 		<!-- Info -->
-		<image name="icon_info" filename="Blue/Info/icon_info" retainaspect="1"/>
-		<image name="help_cloud" filename="Blue/Info/help_cloud" retainaspect="1"/>
+		<image name="icon_info" filename="Orange/Info/icon_info" retainaspect="1"/>
+		<image name="help_cloud" filename="Orange/Info/help_cloud" retainaspect="1"/>
 		
 		<!-- Keyboard -->
-		<image name="enter" filename="Blue/Keyboard/enter" retainaspect="1"/>
-		<image name="enter_new" filename="Blue/Keyboard/enter_new" retainaspect="1"/>
-		<image name="enter_num_new" filename="Blue/Keyboard/enter_num_new" retainaspect="1"/>
+		<image name="enter" filename="Orange/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="Orange/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="Orange/Keyboard/enter_num_new" retainaspect="1"/>
 
 		<!-- Nav Bar -->
-		<image name="home" filename="Blue/NavBar/home" retainaspect="1"/>
-		<image name="home_hl" filename="Blue/NavBar/home_hl" retainaspect="1"/>
-		<image name="back" filename="Blue/NavBar/back" retainaspect="1"/>
-		<image name="back_hl" filename="Blue/NavBar/back_hl" retainaspect="1"/>
-		<image name="slideout" filename="Blue/NavBar/slideout" retainaspect="1"/>
-		<image name="slideout_hl" filename="Blue/NavBar/slideout_hl" retainaspect="1"/>
-		<image name="keyboard_hide" filename="Blue/NavBar/keyboard_hide" retainaspect="1"/>
-		<image name="keyboard_hide_hl" filename="Blue/NavBar/keyboard_hide_hl" retainaspect="1"/>
-		<image name="home_ng" filename="Blue/NavBar/home_ng" retainaspect="1"/>
-		<image name="home_ng_hl" filename="Blue/NavBar/home_ng_hl" retainaspect="1"/>
-		<image name="back_ng" filename="Blue/NavBar/back_ng" retainaspect="1"/>
-		<image name="back_ng_hl" filename="Blue/NavBar/back_ng_hl" retainaspect="1"/>
-		<image name="slideout_ng" filename="Blue/NavBar/slideout_ng" retainaspect="1"/>
-		<image name="slideout_ng_hl" filename="Blue/NavBar/slideout_ng_hl" retainaspect="1"/>
-		<image name="keyboard_hide_ng" filename="Blue/NavBar/keyboard_hide_ng" retainaspect="1"/>
-		<image name="keyboard_hide_ng_hl" filename="Blue/NavBar/keyboard_hide_ng_hl" retainaspect="1"/>
+		<image name="home" filename="Orange/NavBar/home" retainaspect="1"/>
+		<image name="home_hl" filename="Orange/NavBar/home_hl" retainaspect="1"/>
+		<image name="back" filename="Orange/NavBar/back" retainaspect="1"/>
+		<image name="back_hl" filename="Orange/NavBar/back_hl" retainaspect="1"/>
+		<image name="slideout" filename="Orange/NavBar/slideout" retainaspect="1"/>
+		<image name="slideout_hl" filename="Orange/NavBar/slideout_hl" retainaspect="1"/>
+		<image name="keyboard_hide" filename="Orange/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="keyboard_hide_hl" filename="Orange/NavBar/keyboard_hide_hl" retainaspect="1"/>
+		<image name="home_ng" filename="Orange/NavBar/home_ng" retainaspect="1"/>
+		<image name="home_ng_hl" filename="Orange/NavBar/home_ng_hl" retainaspect="1"/>
+		<image name="back_ng" filename="Orange/NavBar/back_ng" retainaspect="1"/>
+		<image name="back_ng_hl" filename="Orange/NavBar/back_ng_hl" retainaspect="1"/>
+		<image name="slideout_ng" filename="Orange/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="slideout_ng_hl" filename="Orange/NavBar/slideout_ng_hl" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="Orange/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng_hl" filename="Orange/NavBar/keyboard_hide_ng_hl" retainaspect="1"/>
 	</resources>
 	<variables>
-		<variable name="accent" value="#1A73E8"/>
+		<variable name="accent" value="#ed6f02"/>
 		<variable name="accent_r" value="214"/>
 		<variable name="accent_g" value="88"/>
 		<variable name="accent_b" value="90"/>
-		<variable name="theme_accent" value="Blue"/>
-		<variable name="current_accent" value="Blue"/>
+		<variable name="theme_accent" value="Orange"/>
+		<variable name="current_accent" value="Orange"/>
 		<variable name="applied_accent_x" value="285"/>
 		<variable name="applied_accent_y" value="720"/>
 	</variables>

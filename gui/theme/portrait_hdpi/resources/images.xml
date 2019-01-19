@@ -10,17 +10,6 @@
 	<resources>
 	
 		<!-- pie door -->
-		<image name="nav_menu" filename="Default/NavPanel/menu" retainaspect="1"/>
-		<image name="nav_wipe" filename="Default/NavPanel/wipe" retainaspect="1"/>
-		<image name="nav_files" filename="Default/NavPanel/files" retainaspect="1"/>
-		<image name="nav_backup" filename="Default/NavPanel/backup" retainaspect="1"/>
-		<image name="nav_menu_d" filename="Default/NavPanel/menu_d" retainaspect="1"/>
-		<image name="nav_wipe_d" filename="Default/NavPanel/wipe_d" retainaspect="1"/>
-		<image name="nav_files_d" filename="Default/NavPanel/files_d" retainaspect="1"/>
-		<image name="nav_backup_d" filename="Default/NavPanel/backup_d" retainaspect="1"/>
-		<image name="nav_empty" filename="Default/NavPanel/empty" retainaspect="1"/>
-		<image name="nav_hl" filename="Default/NavPanel/hl" retainaspect="1"/>
-		<image name="nav_shadow" filename="Default/NavPanel/shadow" retainaspect="1"/>
 		<image name="actionbar_storage" filename="Default/ActionBar/storage" retainaspect="1"/>
 		<image name="actionbar_storage_hl" filename="Default/ActionBar/storage_hl" retainaspect="1"/>
 		<!---->
