@@ -2,11 +2,11 @@
 <recovery>
 	<details>
 		<resolution width="1080" height="1920"/>
-		<author>fordownloads</author>
-		<title>Pie Door</title>
-		<description>Дверь в мир Android P</description>
+		<author>fordownloads and OrangeFox</author>
+		<title>OrangeFox theme (Pie Door)</title>
+		<description></description>
 		<preview></preview>
-		<themeversion>3</themeversion> <!-- !!! МЕНЯТЬ НЕ РЕКОМЕНДУЕТСЯ (МИНИМУМ 2) !!! -->
+		<themeversion>3</themeversion>
 	</details>
 	
 	<include>
@@ -16,7 +16,7 @@
 		<xmlfile name="themes/accent.xml"/>
 		<xmlfile name="resources/images.xml"/>
 		<xmlfile name="resources/vars.xml"/>
-		<xmlfile name="resources/styles.xml"/> <!-- Фоновая картинка (пока) не поддерживается! Сорри! -->
+		<xmlfile name="resources/styles.xml"/> <!-- Background picture, not supported! -->
 	
 		<xmlfile name="pages/templates/keyboard.xml"/>
 		<xmlfile name="pages/templates/navbar.xml"/>
@@ -41,7 +41,7 @@
 		<xmlfile name="pages/dialogs.xml"/>
 	</include>
 	<variables>
-		<variable name="theme_version" value="PieDoor Beta v0.1"/>
+		<variable name="theme_version" value="OrangeFox theme R0.1"/>
 		<variable name="screen_h" value="1920"/>
 		<variable name="center_y" value="960"/>
 	</variables>
