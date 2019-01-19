@@ -339,7 +339,7 @@
 			<template name="statusbarinfo"/>
 		</template>
 			
-		<!--кнопоньки-->	
+		<!-- Buttons -->	
 		<template name="keys">
 			<action>
 				<touch key="power"/>
@@ -353,8 +353,7 @@
 			
 			<action>
 				<touch key="power+volup"/>
-				<action function="overlay">flash_key</action>
-				<action function="overlay"/>
+				<action function="flashlight"/>
 			</action>
 			
 			<!--action>

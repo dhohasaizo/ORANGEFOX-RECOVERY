@@ -214,6 +214,7 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(checkforapp);
       ADD_ACTION(togglebacklight);
       ADD_ACTION(disableled);
+      ADD_ACTION(flashlight);
  
       // remember actions that run in the caller thread
       for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
@@ -248,7 +249,6 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(twcmd);
       ADD_ACTION(setbootslot);
       ADD_ACTION(installapp);
-      ADD_ACTION(flashlight);
       ADD_ACTION(adb);
       ADD_ACTION(disableinstallled);
       ADD_ACTION(disablebackupled);
