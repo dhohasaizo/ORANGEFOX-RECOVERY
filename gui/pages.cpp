@@ -1534,17 +1534,14 @@ int PageManager::RunReload()
 		ret_val = 1;
 	}
 
-	theme_path += "/Fox/.bin./jq.zip"; 
-	if (ret_val != 0 || ReloadPackage("TWRP", theme_path) != 0)
+	// Loading the custom theme failed - try loading the stock theme
+	LOGINFO("Attempting to reload stock theme...\n");
+	if (ReloadPackage("TWRP", TWRES "ui.xml"))
 	{
-		// Loading the custom theme failed - try loading the stock theme
-		LOGINFO("Attempting to reload stock theme...\n");
-		if (ReloadPackage("TWRP", TWRES "ui.xml"))
-		{
-			LOGERR("Failed to load base packages.\n");
-			ret_val = 1;
-		}
+		LOGERR("Failed to load base packages.\n");
+		ret_val = 1;
 	}
+
 	if (ret_val == 0) 
 	{
 		if (DataManager::GetStrValue("tw_language") != "en.xml") 
@@ -1554,8 +1551,10 @@ int PageManager::RunReload()
 		}
 	}
 
+	LOGINFO("Theme reloaded");
+
 	// This makes the console re-translate
-	GUIConsole::Clear_For_Retranslation();
+	//GUIConsole::Clear_For_Retranslation();
 
 	return ret_val;
 }
