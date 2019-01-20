@@ -1397,12 +1397,11 @@
 			</text>
 		</page>
 	
-		<!-- Информация ☺ -->
+		<!-- About -->
 		<page name="about">
 			<template name="body"/>
 			
-			<fill color="#487BC3">
-				<condition var1="debug_open" op="!=" var2="7"/>
+			<fill color="#ed6f02">
 				<condition var1="theme_style" op="!=" var2="Light"/>
 				<placement x="0" y="0" w="1080" h="1080"/>
 			</fill>
@@ -1424,16 +1423,9 @@
 			<image>
 				<image resource="logo"/>
 				<condition var1="theme_style" op="!=" var2="Light"/>
-				<condition var1="debug_open" var2="5"/>
 				<placement x="284" y="284"/>
 			</image>
-			
-			<image>
-				<image resource="logo_debug"/>
-				<condition var1="debug_open" var2="5"/>
-				<condition var1="theme_style" var2="Light"/>
-				<placement x="284" y="284"/>
-			</image>
+		
 			
 			<fill color="%lightransparent%">
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
@@ -1465,7 +1457,7 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_cards%" y="%row6_1_y%"/>
-				<text>fordownloads</text>
+				<text>MrYacha & DarthJabba9</text>
 			</text>
 			
 			<image>
@@ -1480,7 +1472,7 @@
 			
 			<text style="text_body2">
 				<placement x="%col1_x_cards%" y="%row6_3a_y%"/>
-				<text>https://goo.gl/1Rp2G8</text>
+				<text>@MrYacha (in Telegram)</text>
 			</text>
 			
 			<image>
@@ -1495,12 +1487,17 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_cards%" y="%row7_3_y%"/>
-				<text>TWRP: %tw_version%</text>
+				<text>Version: %tw_version% | %fox_actual_build%</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_cards%" y="%row8_1_y%"/>
 				<text>{@theme_vers=Theme:} %theme_version%</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_cards%" y="%row8_2_y%"/>
+				<text>Maintainer - %of_maintainer%</text>
 			</text>
 			
 			<action>
