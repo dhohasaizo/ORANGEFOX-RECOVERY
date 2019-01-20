@@ -153,6 +153,19 @@
 		<image name="home_pie" filename="Default/NavBar/home_pie" retainaspect="1"/>
 		<image name="slideout_key_pie" filename="Default/NavBar/slideout_key_pie" retainaspect="1"/>
 		<image name="slideout_key_pie_hl" filename="Default/NavBar/slideout_key_pie_hl" retainaspect="1"/>
+
+		<!-- Pdoor icons -->
+		<image name="bs_adv_term" filename="Default/Icons/term" retainaspect="1"/>
+		<image name="bs_adv_se" filename="Default/Icons/se" retainaspect="1"/>
+		<image name="bs_adv_mount" filename="Default/Icons/mount" retainaspect="1"/>
+		<image name="bs_adv_reboot" filename="Default/Icons/reboot" retainaspect="1"/>
+		<image name="bs_adv_log" filename="Default/Icons/log" retainaspect="1"/>
+		<image name="bs_adv_htc" filename="Default/Icons/htc" retainaspect="1"/>
+		<image name="bs_adv_adb" filename="Default/Icons/adb" retainaspect="1"/>
+		<image name="bs_adv_frp" filename="Default/Icons/frp" retainaspect="1"/>
+		<image name="bs_adv_sd" filename="Default/Icons/sd" retainaspect="1"/>
+		<image name="ota" filename="Default/Icons/ota" retainaspect="1"/>
+		<image name="utils" filename="Default/Icons/utils" retainaspect="1"/>
 		
 		<!-- Other -->
 		<image name="actionbar_clear" filename="Default/Other/actionbar_clear" retainaspect="1"/>

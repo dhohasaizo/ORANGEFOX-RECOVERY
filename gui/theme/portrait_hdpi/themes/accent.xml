@@ -1,16 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
 	<resources>
-		<!-- Pdoor icons -->
-		<image name="bs_adv_term" filename="Orange/Icons/term" retainaspect="1"/>
-		<image name="bs_adv_se" filename="Orange/Icons/se" retainaspect="1"/>
-		<image name="bs_adv_mount" filename="Orange/Icons/mount" retainaspect="1"/>
-		<image name="bs_adv_reboot" filename="Orange/Icons/reboot" retainaspect="1"/>
-		<image name="bs_adv_log" filename="Orange/Icons/log" retainaspect="1"/>
-		<image name="bs_adv_htc" filename="Orange/Icons/htc" retainaspect="1"/>
-		<image name="bs_adv_adb" filename="Orange/Icons/adb" retainaspect="1"/>
-		<image name="bs_adv_frp" filename="Orange/Icons/frp" retainaspect="1"/>
-		<image name="bs_adv_sd" filename="Orange/Icons/sd" retainaspect="1"/>
 		
 		<!-- Controls -->
 		<image name="radio_true_dialog" filename="Orange/Controls/radio_true_dialog" retainaspect="1"/>
