@@ -13697,6 +13697,7 @@
 					<action function="set">fox_include_system_survival=0</action>
 					<action function="set">fox_verify_incremental_ota_signature=0</action>
 					<action function="set">fox_reboot_advanced_stock_recovery_check=0</action>
+					<action function="set">fox_reboot_dm_verity_check=0</action>
 					<action function="set">fox_reboot_forced_encryption_check=0</action>
 					<action function="set">fox_disable_ota_auto_reboot_check=0</action>
 				</actions>
