@@ -1402,7 +1402,7 @@
 			<template name="body"/>
 			
 			<fill color="#487BC3">
-				<condition var1="debug_open" op="!=" var2="5"/>
+				<condition var1="debug_open" op="!=" var2="7"/>
 				<condition var1="theme_style" op="!=" var2="Light"/>
 				<placement x="0" y="0" w="1080" h="1080"/>
 			</fill>
@@ -1451,13 +1451,6 @@
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">settings</action>
-			</button>
-			
-			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<condition var1="tw_fileexists" var2="1"/>
-				<image resource="actionbar_delete" highlightresource="actionbar_delete_hl"/>
-				<action function="overlay">dialog_remove_theme</action>
 			</button>
 			
 			<image>
