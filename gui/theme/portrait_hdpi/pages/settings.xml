@@ -555,6 +555,7 @@
 				<listitem name="{@fm_none=None}">2</listitem>
 				<listitem name="{@cust_navbar_cls=Classic}">0</listitem>
 				<listitem name="{@cust_navbar_noug=Nougat}">1</listitem>
+				<listitem name="Pie">3</listitem>
 			</listbox>
 
 			<listbox>
@@ -575,6 +576,7 @@
 				</listitem>
 				<listitem name="{@cust_navbar_white=Use white buttons}">
 					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="nougat" op="!=" var2="3"/>
 					<condition var1="theme_style_main" var2="Light"/>
 					<condition var1="theme_background" var2="on"/>
 					<data variable="navbar_accent"/>

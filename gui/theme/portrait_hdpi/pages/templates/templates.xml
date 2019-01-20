@@ -120,7 +120,9 @@
 				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
 			</fill>
 			<template name="navbar_bkg"/>
-			<template name="navbar"/>
+			<!-- template name="navbar"/ -->
+			<template name="navbar_home"/>
+			<template name="navbar_console"/>
 		</template>
 		
 		<template name="ab">

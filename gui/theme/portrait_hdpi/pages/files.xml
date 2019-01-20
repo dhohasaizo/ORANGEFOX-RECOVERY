@@ -119,11 +119,6 @@
 			</action>
 
 			<action>
-				<touch key="back"/>
-				<action function="page">filemanagerlist</action>
-			</action>
-
-			<action>
 				<condition var1="tw_filename1" op="modified"/>
 				<actions>
 					<action function="page">filemanageroptions</action>

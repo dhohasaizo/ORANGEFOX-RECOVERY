@@ -144,6 +144,15 @@
 		<image name="slideout_white_ng_hl" filename="Default/NavBar/slideout_white_ng_hl" retainaspect="1"/>
 		<image name="keyboard_hide_white_ng" filename="Default/NavBar/keyboard_hide_white_ng" retainaspect="1"/>
 		<image name="keyboard_hide_white_ng_hl" filename="Default/NavBar/keyboard_hide_white_ng_hl" retainaspect="1"/>
+		<!-- Pie Nav bar -->
+		<image name="back_hl_pie" filename="Default/NavBar/back_hl_pie" retainaspect="1"/>
+		<image name="back_key_hl_pie" filename="Default/NavBar/back_key_hl_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="Default/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="back_pie" filename="Default/NavBar/back_pie" retainaspect="1"/>
+		<image name="home_hl_pie" filename="Default/NavBar/home_hl_pie" retainaspect="1"/>
+		<image name="home_pie" filename="Default/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="Default/NavBar/slideout_key_pie" retainaspect="1"/>
+		<image name="slideout_key_pie_hl" filename="Default/NavBar/slideout_key_pie_hl" retainaspect="1"/>
 		
 		<!-- Other -->
 		<image name="actionbar_clear" filename="Default/Other/actionbar_clear" retainaspect="1"/>
