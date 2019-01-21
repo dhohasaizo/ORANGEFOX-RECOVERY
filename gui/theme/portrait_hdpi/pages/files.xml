@@ -962,7 +962,7 @@
 			
 			<button style="bs_btn">
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%bs_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">tw_back=filemanageroptions</action>
 				<action function="set">sum=1</action>
 				<action function="page">checksum_confirm</action>
@@ -970,19 +970,19 @@
 			
 			<image>
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x%" y="%bs_row6_y%"/>
+				<placement x="%col1_x%" y="%bs_row4_y%"/>
 				<image resource="bs_btn_checksum"/>
 			</image>
 
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x_indent%" y="%bs_row6_text_y%"/>
+				<placement x="%col1_x_indent%" y="%bs_row4_text_y%"/>
 				<text>{@fm_sums=Checksum}</text>
 			</text>
 			
 			<button style="bs_btn">
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">tw_back=filemanageroptions</action>
 				<action function="set">sum=0</action>
 				<action function="page">checksum_confirm</action>
@@ -990,13 +990,13 @@
 			
 			<image>
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x%" y="%bs_row7_y%"/>
-				<image resource="bs_btn_set_about"/>
+				<placement x="%col1_x%" y="%bs_row5_y%"/>
+				<image resource="info"/>
 			</image>
 
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x_indent%" y="%bs_row7_text_y%"/>
+				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
 				<text>{@info=Information}</text>
 			</text>
 			

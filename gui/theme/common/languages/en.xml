@@ -1006,6 +1006,15 @@
 		<string name="orangefox_msg3">[Version]: {1}</string>
 		<string name="orangefox_msg4">[Build]: {1}</string>
 
+		<!-- MIUI OTA -->
+		<string name="fox_advanced_stock_recovery">Aggressive stock recovery deactivation</string>
+		<string name="fox_support_miui_ota_chk">Support MIUI Incremental OTA</string>
+		<string name="fox_include_system_survival_chk">Include system in OTA survival</string>
+		<string name="fox_verify_incremental_ota_signature_chk">Incremental OTA signature verification</string>
+		<string name="fox_dmverity_chk">Disable DM-Verity</string>
+		<string name="fox_forced_encryption_chk">Disable Forced Encryption</string>
+		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Prevent auto reboot after installing OTA</string>
+
 		
 	</resources>
 </language>

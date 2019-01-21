@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+        <page name="fox_ota">
+            <template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+            <text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>MIUI OTA</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>OTA settings</text>
+			</text>
+
+            <listbox style="settingslist">
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%row5_2_y%"/>
+				<listitem name="{@fox_support_miui_ota_chk=}">
+					<data variable="fox_support_miui_ota"/>
+				</listitem>	
+				<listitem name="{@fox_include_system_survival_chk}">
+					<data variable="fox_include_system_survival"/>
+				</listitem>
+				<listitem name="{@fox_verify_incremental_ota_signature_chk}">
+					<data variable="fox_verify_incremental_ota_signature"/>
+				</listitem>
+				<listitem name="{@fox_advanced_stock_recovery}">
+					<data variable="fox_reboot_advanced_stock_recovery_check"/>
+				</listitem>
+				<listitem name="{@fox_dmverity_chk}">
+					<data variable="fox_reboot_dm_verity_check"/>
+				</listitem>
+				<listitem name="{@fox_forced_encryption_chk}">
+					<data variable="fox_reboot_forced_encryption_check"/>
+				</listitem>
+				<listitem name="{@FOX_DISABLE_OTA_AUTO_REBOOT_chk}">
+					<data variable="fox_disable_ota_auto_reboot_check"/>
+				</listitem>
+			</listbox>
+
+            <action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">advanced</action>
+			</action>
+
+        </page>
+    </pages>
+</recovery>

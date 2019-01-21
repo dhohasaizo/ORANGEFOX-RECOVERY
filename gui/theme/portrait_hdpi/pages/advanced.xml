@@ -137,8 +137,7 @@
 			<!-- MIUI OTA -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
-				<action function="set">tw_action_param=mount /data; rm -f data/system/*.key data/system/locksettings.*</action>
-				<action function="page">remlock</action>
+				<action function="page">fox_ota</action>
 			</button>
 			<image>
 				<placement x="%col1_x%" y="%set_row5_y%"/>
@@ -157,7 +156,7 @@
 			</button>
 			<image>
 				<placement x="%col1_x%" y="%set_row6_y%"/>
-				<image resource="utils"/>
+				<image resource="bs_btn_image"/>
 			</image>
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
