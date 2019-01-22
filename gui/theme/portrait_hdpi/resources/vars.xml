@@ -3,6 +3,8 @@
 	<variables>
 		<!-- OrangeFox vars -->
 		<variable name="ota_back_file" value="0"/>
+		<!-- Lockscreen -->
+		<variable name="clock_style" value="0" persist="1"/>
 		
 		<!-- Favorites menu -->
 		<variable name="book_1" value="/system/app" persist="1"/>

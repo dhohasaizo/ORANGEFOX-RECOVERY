@@ -11,6 +11,7 @@
 			
 			<button>
 				<condition var1="lock_action" var2="1"/>
+				<condition var1="clock_style" var2="0"/>
 				<image resource="unlock_icon"/>
 				<placement x="%center_x%" y="%center_y%" placement="4"/>
 				<action function="togglebacklight"/>
@@ -18,9 +19,24 @@
 			
 			<image>
 				<condition var1="lock_action" var2="0"/>
+				<condition var1="clock_style" var2="0"/>
 				<image resource="unlock_icon"/>
 				<placement x="%center_x%" y="%center_y%" placement="4"/>
 			</image>
+
+			<text color="%accent%">
+				<condition var1="clock_style" op="!=" var2="0"/>
+				<font resource="font_b"/>
+				<placement x="%center_x%" y="%row2_2_y%" placement="4"/>
+				<text>%tw_time%</text>
+			</text>
+
+			<text color="%accent%">
+				<condition var1="clock_style" var2="2"/>
+				<font resource="font_l"/>
+				<placement x="%center_x%" y="%row3_2_y%" placement="4"/>
+				<text>{@cpu_temp} | {@battery}: %tw_battery%</text>
+			</text>
 			
 			<text color="%text_light%">
 				<font resource="caption"/>
