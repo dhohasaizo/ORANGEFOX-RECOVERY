@@ -4,9 +4,14 @@
         <page name="fox_ota">
             <template name="body"/>
 
-			<template name="ab"/>
+			<template name="ab_without_shadow"/>
 
 			<template name="statusbarinfo"/>
+
+			<image>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="%row2_2_y%"/>
+			</image>
 
             <text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
@@ -15,13 +20,13 @@
 
 			<image>
 				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="0" y="%row1_1_y%"/>
+				<placement x="0" y="180"/>
 				<image resource="ota_poster"/>
 			</image>
 
 			<image>
 				<condition var1="fox_support_miui_ota" op="!=" var2="1"/>
-				<placement x="0" y="%row1_1_y%"/>
+				<placement x="0" y="180"/>
 				<image resource="ota_error"/>
 			</image>
 
@@ -53,27 +58,27 @@
 			<image>
 				<condition var1="ota_back_file" var2="0"/>
 				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="%col1_x%" y="%row3_1_y%"/>
+				<placement x="%col1_x%" y="%row2_3_y%"/>
 				<image resource="icon_warning"/>
 			</image>
 
 			<text style="text_body2_fail">
 				<condition var1="ota_back_file" var2="0"/>
 				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
+				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
 				<text>Please flash full MIUI ROM!</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="ota_back_file" var2="1"/>
 				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
+				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
 				<text>You are ready to receive updates!</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="fox_support_miui_ota" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
+				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
 				<text>Enabled custom ROM mode</text>
 			</text>
 			
@@ -83,7 +88,7 @@
 			</text>
 
             <listbox style="settingslist">
-				<placement x="0" y="%row4_1_y%" w="%screen_w%" h="%row4_1_y%"/>
+				<placement x="0" y="%row3_3_y%" w="%screen_w%" h="%row4_1_y%"/>
 				<listitem name="{@fox_support_miui_ota_chk=}">
 					<data variable="fox_support_miui_ota"/>
 				</listitem>	

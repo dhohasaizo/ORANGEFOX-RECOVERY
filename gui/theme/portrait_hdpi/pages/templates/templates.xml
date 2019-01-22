@@ -153,6 +153,31 @@
 				<action function="key">back</action>
 			</button>
 		</template>
+
+		<template name="ab_without_shadow">
+
+			<fill color="%accent%">
+				<condition var1="accent_title" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
+			
+			<fill color="#222222FF">
+				<condition var1="accent_title" var2="0"/>
+				<condition var1="theme_style" var2="Light_classic"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
+
+			<fill color="%lightransparent%">
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
+				<action function="key">back</action>
+			</button>
+		</template>
 		
 		<template name="ab_main">
 			<image>

@@ -1006,7 +1006,17 @@
 		<string name="orangefox_msg3">[Version]: {1}</string>
 		<string name="orangefox_msg4">[Build]: {1}</string>
 
+		<!-- Temp -->
+		<string name="fox_wipe_substratum_overlays">Substratum overlays</string>
+
+		<!-- Utilities -->
+		<string name="utilities">Utilities</string>
+
 		<!-- MIUI OTA -->
+		<string name="fox_ota_settings">OTA Settings</string>
+		<string name="fox_ota_off">Disable OTA</string>
+		<string name="fox_ota_on">Enable OTA</string>
+
 		<string name="fox_advanced_stock_recovery">Aggressive stock recovery deactivation</string>
 		<string name="fox_support_miui_ota_chk">Support MIUI Incremental OTA</string>
 		<string name="fox_include_system_survival_chk">Include system in OTA survival</string>
