@@ -210,6 +210,9 @@
 		<variable name="dbg_b" value="main"/>
 		
 		<!-- end -->
+
+		<!-- Fox vars -->
+		<variable name="ota_back_file" value="0"/>
 		
 		<!--theme settings-->
 		<variable name="tw_hide_kb" value="0"/>
