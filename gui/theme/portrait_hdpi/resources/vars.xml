@@ -1,13 +1,7 @@
 <?xml version="1.0"?>
 <recovery>
 	<variables>
-		
-		<!-- [!] Sorting and cleaning by fordownloads -->
-	
-		<!-------------->
-		<!-- Editable -->
-		<!-------------->
-		
+				
 		<!-- Favorites menu -->
 		<variable name="book_1" value="/system/app" persist="1"/>
 		<variable name="book_2" value="/system/framework" persist="1"/>
