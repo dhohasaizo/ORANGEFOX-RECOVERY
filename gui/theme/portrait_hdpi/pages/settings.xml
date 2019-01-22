@@ -54,14 +54,8 @@
 			
 			<!-- Customization -->
 			<button style="bs_btn">
-				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_navbar</action>
-			</button>
-			<button style="bs_btn">
-				<condition var1="navbar_disable" var2="1"/>
-				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom</action>
+				<action function="page">customization_menu</action>
 			</button>
 			<image>
 				<placement x="%col1_set_x%" y="%set_row3_y%"/>
@@ -587,6 +581,80 @@
 				<condition var1="accent_title" var2="1"/>
 				<action function="set">accent_title=0</action>
 			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+
+		<page name="customization_menu">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_ui=Customization}</text>
+			</text>
+
+			<!-- Navbar -->
+			<button style="bs_btn">
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_navbar</action>
+			</button>
+			<button style="bs_btn">
+				<condition var1="navbar_disable" var2="1"/>
+				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row1_y%"/>
+				<image resource="nav"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
+				<text>Navigation keys</text>
+			</text>
+			<!-- -->
+
+			<!-- Statusbar -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row2_y%"/>
+				<image resource="statusbar"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
+				<text>Statusbar</text>
+			</text>
+			<!-- -->
+
+			<!-- Keyboard -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row3_y%"/>
+				<image resource="keyboard"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
+				<text>Keyboard</text>
+			</text>
+			<!-- -->
 
 			<action>
 				<touch key="home"/>
