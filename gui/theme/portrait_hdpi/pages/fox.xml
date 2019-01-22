@@ -12,14 +12,26 @@
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>MIUI OTA</text>
 			</text>
+
+			<image>
+				<condition var1="fox_support_miui_ota" var2="1"/>
+				<placement x="0" y="%row1_1_y%"/>
+				<image resource="ota_poster"/>
+			</image>
+
+			<image>
+				<condition var1="fox_support_miui_ota" var2="0"/>
+				<placement x="0" y="%row1_1_y%"/>
+				<image resource="ota_error"/>
+			</image>
 			
 			<text style="caption">
-				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
 				<text>OTA settings</text>
 			</text>
 
             <listbox style="settingslist">
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%row5_2_y%"/>
+				<placement x="0" y="%row3_3_y%" w="%screen_w%" h="%row4_1_y%"/>
 				<listitem name="{@fox_support_miui_ota_chk=}">
 					<data variable="fox_support_miui_ota"/>
 				</listitem>	
@@ -43,6 +55,38 @@
 				</listitem>
 			</listbox>
 
+			<text style="caption">
+				<placement x="%col1_x%" y="%row8_1_y%"/>
+				<text>Fast actions</text>
+			</text>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="%row8_2_y%"/>
+				<text>Disable OTA</text>
+				<actions>
+					<action function="set">fox_support_miui_ota=0</action>
+					<action function="set">fox_include_system_survival=0</action>
+					<action function="set">fox_verify_incremental_ota_signature=0</action>
+					<action function="set">fox_reboot_advanced_stock_recovery_check=0</action>
+					<action function="set">fox_reboot_forced_encryption_check=0</action>
+					<action function="set">fox_disable_ota_auto_reboot_check=0</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_right_x%" y="%row8_2_y%" placement="1"/>
+				<text>Enable OTA</text>
+				<actions>
+					<action function="set">fox_support_miui_ota=1</action>
+					<action function="set">fox_include_system_survival=1</action>
+					<action function="set">fox_verify_incremental_ota_signature=1</action>
+					<action function="set">fox_reboot_advanced_stock_recovery_check=1</action>
+					<action function="set">fox_reboot_dm_verity_check=1</action>
+					<action function="set">fox_reboot_forced_encryption_check=1</action>
+					<action function="set">fox_disable_ota_auto_reboot_check=1</action>
+				</actions>
+			</button>
+
             <action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -50,7 +94,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">advanced</action>
+				<action function="page">settings</action>
 			</action>
 
         </page>

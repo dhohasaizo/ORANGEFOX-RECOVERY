@@ -126,7 +126,7 @@
 				<action function="page">main</action>
 			</action>
 		</page>
-		<!-- Настройки ☺ -->
+		<!-- Settings -->
 		<page name="settings">
 			<template name="body"/>
 
@@ -146,7 +146,7 @@
 			</button>
 			
 			
-			<!-- Основные -->
+			<!-- General -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
 				<action function="set">general_back=settings</action>
@@ -162,38 +162,22 @@
 			</text>
 			<!---->
 			
-			<!-- Workshop -->
+			<!-- MIUI OTA -->
 			<button style="bs_btn">
-				<condition var1="beta_wh" var2="1"/>
 				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_themeexist=0</action>
-				<action function="set">checkpage=ext_workshop_ar</action>
-				
-				<action function="set">theme_ar=%screen_h%</action>
-				<action function="compute">theme_ar-%rem_navbar_add%</action>
-				<action function="set">ar_display=%theme_ar%</action>
-				<action function="compute">ar_display/120</action>
-				<action function="set">ar_display=%ar_display%:9</action>
-				<action function="set">rem_navbar=</action>
-				
-				<action function="page">aik_test</action>
-			</button>
-			<button style="bs_btn">
-				<condition var1="beta_wh" op="!=" var2="1"/>
-				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="overlay">beta</action>
+				<action function="page">fox_ota</action>
 			</button>
 			<image>
 				<placement x="%col1_set_x%" y="%set_row2_y%"/>
-				<image resource="bs_btn_brush"/>
+				<image resource="bs_btn_set_ota"/>
 			</image>
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>TWRP Workshop</text>
+				<text>MIUI OTA</text>
 			</text>
 			<!---->
 			
-			<!-- Персонализация -->
+			<!-- Customization -->
 			<button style="bs_btn">
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
@@ -214,7 +198,7 @@
 			</text>
 			<!---->
 			
-			<!-- Файлы -->
+			<!-- Files -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">tw_filecheck=/twres/aroma.zip</action>
@@ -232,7 +216,7 @@
 			</text>
 			<!---->
 			
-			<!-- Экран -->
+			<!-- Screen -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_screen</action>
@@ -247,7 +231,7 @@
 			</text>
 			<!---->
 			
-			<!-- Вибрация -->
+			<!-- Vibration -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_vibrate</action>
@@ -262,7 +246,7 @@
 			</text>
 			<!---->
 			
-			<!-- Резервная копия -->
+			<!-- Backup -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">backup_back=settings</action>
@@ -278,7 +262,7 @@
 			</text>
 			<!---->
 			
-			<!-- Региональные настройки -->
+			<!-- Regional -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row8_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_time</action>
@@ -293,7 +277,7 @@
 			</text>
 			<!---->
 			
-			<!-- Отладка -->
+			<!-- Debug -->
 			<button style="bs_btn">
 				<condition var1="debug_open" var2="5"/>
 				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>

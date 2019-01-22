@@ -102,6 +102,7 @@
 		<image name="bs_btn_set_custom" filename="Default/Icons/bs_btn_set_custom" retainaspect="1"/>
 		<image name="bs_btn_set_vibro" filename="Default/Icons/bs_btn_set_vibro" retainaspect="1"/>
 		<image name="bs_btn_set_screen" filename="Default/Icons/bs_btn_set_screen" retainaspect="1"/>
+		<image name="bs_btn_set_ota" filename="Default/Icons/bs_btn_set_ota" retainaspect="1"/>
 		<image name="bs_btn_copy" filename="Default/Icons/bs_btn_copy" retainaspect="1"/>
 		<image name="bs_btn_cut" filename="Default/Icons/bs_btn_cut" retainaspect="1"/>
 		<image name="bs_btn_chmod" filename="Default/Icons/bs_btn_chmod" retainaspect="1"/>
@@ -115,6 +116,10 @@
 		<image name="icon_warning" filename="Default/Info/icon_warning" retainaspect="1"/>
 		<image name="icon_person" filename="Default/Info/icon_person" retainaspect="1"/>
 		<image name="icon_mail" filename="Default/Info/icon_mail" retainaspect="1"/>
+
+		<!-- Poster -->
+		<image name="ota_poster" filename="Default/Poster/ota_poster" retainaspect="1"/>
+		<image name="ota_error" filename="Default/Poster/ota_error" retainaspect="1"/>
 		
 		<!-- Keyboard -->
 		<image name="backspace" filename="Default/Keyboard/backspace" retainaspect="1"/>
