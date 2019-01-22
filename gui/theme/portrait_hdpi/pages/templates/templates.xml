@@ -358,22 +358,9 @@
 				<action function="flashlight"/>
 			</action>
 			
-			<!--action>
-				<touch key="voldown"/>
-				<action function="overlay">voldown_key</action>
-				<action function="overlay"/>
-			</action>
-			
-			<action>
-				<touch key="volup"/>
-				<action function="overlay">volup_key</action>
-				<action function="overlay"/>
-			</action-->
-			
 		</template>
 		
 		<template name="find_file">
-			
 			
 			<image>
 				<placement x="0" y="%fileselector_shadow_terminal_x%"/>

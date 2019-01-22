@@ -384,7 +384,6 @@
 						echo "Theme Version: %theme_version%";
 						echo "Is theme built-in: %tw_themeexist%";
 						echo "Screen Height: %screen_h%";
-						echo "AIK: %aik_installed%";
 						echo "NavBar: %rem_navbar_add%";
 					</action>
 				</actions>

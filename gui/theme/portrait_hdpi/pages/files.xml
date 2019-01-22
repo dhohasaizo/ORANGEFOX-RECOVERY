@@ -642,23 +642,72 @@
 			</text>
 
 			<button style="bs_btn">
-				<placement x="0" y="%bs_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<condition var1="tw_fm_isfolder" var2="0"/>
+				<placement x="0" y="%bs_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">openas</action>
 			</button>
 			<image>
-				<placement x="%col1_x%" y="%bs_row1_y%"/>
+				<placement x="%col1_x%" y="%bs_row2_y%"/>
+				<condition var1="tw_fm_isfolder" var2="0"/>
 				<image resource="bs_btn_open"/>
 			</image>
 
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
+				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
+				<condition var1="tw_fm_isfolder" var2="0"/>
 				<text>{@fm_open=Open as...}</text>
+			</text>
+			
+			<button style="bs_btn">
+				<condition var1="tw_fm_isfolder" var2="1"/>
+				<placement x="0" y="%bs_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_artype=0</action>
+				<action function="set">tw_extract_action=1</action>
+				<action function="set">tw_pack_lvl=9</action>
+				<action function="set">tw_back=filemanageroptions</action>
+				<action function="page">archive_confirm</action>
+			</button>
+			
+			<image>
+				<condition var1="tw_fm_isfolder" var2="1"/>
+				<placement x="%col1_x%" y="%bs_row2_y%"/>
+				<image resource="bs_btn_archive"/>
+			</image>
+
+			<text style="bs_text">
+				<condition var1="tw_fm_isfolder" var2="1"/>
+				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
+				<text>{@fm_open_makezip=Compress}</text>
+			</text>
+			
+			
+			
+			<button style="bs_btn">
+				<condition var1="tw_fm_isfolder" var2="1"/>
+				<placement x="0" y="%bs_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_restore_name=%tw_selection1%</action>
+				<action function="set">tw_restore=%tw_filename1%</action>
+				<action function="set">restore_back=filemanagerlist</action>
+				<action function="readBackup"/>
+				<action function="page">restore_read</action> 
+			</button>
+			
+			<image>
+				<condition var1="tw_fm_isfolder" var2="1"/>
+				<placement x="%col1_x%" y="%bs_row1_y%"/>
+				<image resource="bs_btn_backup"/>
+			</image>
+
+			<text style="bs_text">
+				<condition var1="tw_fm_isfolder" var2="1"/>
+				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
+				<text>{@fm_open_backup=Backup}</text>
 			</text>
 
 
 			<button style="bs_btn">
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%bs_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">tw_file=%tw_selection1%</action>
 				<action function="set">tw_filename=%tw_filename1%</action>
 				<action function="set">install_back=filemanagerlist</action>
@@ -669,45 +718,23 @@
 			</button>
 			<image>
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x%" y="%bs_row2_y%"/>
+				<placement x="%col1_x%" y="%bs_row1_y%"/>
 				<image resource="bs_btn_archive"/>
 			</image>
 
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
+				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
 				<text>{@fm_open_ZIP=Flashable ZIP}</text>
 			</text>
 				
 			
 			
+
+
 			<button style="bs_btn">
 				<condition var1="tw_fm_isfolder" var2="0"/>
 				<placement x="0" y="%bs_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_file=%tw_selection1%</action>
-				<action function="set">install_back=filemanagerlist</action>
-				<action function="set">tw_filename=%tw_filename1%</action>
-				<action function="set">tw_zip_location=%tw_file_location1%</action>
-				<action function="set">tw_flash_partition=</action>
-				<action function="page">flash_image_confirm</action>
-			</button>
-			
-			<image>
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x%" y="%bs_row3_y%"/>
-				<image resource="bs_btn_image"/>
-			</image>
-
-			<text style="bs_text">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x_indent%" y="%bs_row3_text_y%"/>
-				<text>{@fm_open_image=Flashable image}</text>
-			</text>
-
-
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_command=cp</action>
 					<action function="set">tw_fm_text1={@fm_copying=Copying}</action>
@@ -718,7 +745,7 @@
 
 			<button style="bs_btn">
 				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="0" y="%bs_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%bs_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_command=cd "%tw_file_location1%" &amp;&amp; cd .. &amp;&amp; cp -R</action>
 					<action function="set">tw_fm_text1={@fm_copying=Copying}</action>
@@ -728,19 +755,19 @@
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%bs_row4_y%"/>
+				<placement x="%col1_x%" y="%bs_row3_y%"/>
 				<image resource="bs_btn_copy"/>
 			</image>
 
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row4_text_y%"/>
+				<placement x="%col1_x_indent%" y="%bs_row3_text_y%"/>
 				<text>{@fm_copy_btn=Copy}</text>
 			</text>
 
 			
 			
 			<button style="bs_btn">
-				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%bs_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_command=mv</action>
 					<action function="set">tw_fm_text1={@fm_moving=Moving}</action>
@@ -750,12 +777,12 @@
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%bs_row5_y%"/>
+				<placement x="%col1_x%" y="%bs_row4_y%"/>
 				<image resource="bs_btn_cut"/>
 			</image>
 
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
+				<placement x="%col1_x_indent%" y="%bs_row4_text_y%"/>
 				<text>{@fm_move_btn=Move}</text>
 			</text>
 
@@ -763,7 +790,7 @@
 
 			<button style="bs_btn">
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_rename=tw_selection1</action>
 					<action function="set">tw_fm_text1={@fm_renaming=Renaming}</action>
@@ -775,7 +802,7 @@
 
 			<button style="bs_btn">
 				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="0" y="%bs_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_rename=tw_selection1</action>
 					<action function="set">tw_fm_text1={@fm_renaming=Renaming}</action>
@@ -786,17 +813,17 @@
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%bs_row6_y%"/>
+				<placement x="%col1_x%" y="%bs_row5_y%"/>
 				<image resource="bs_btn_rename"/>
 			</image>
 
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row6_text_y%"/>
+				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
 				<text>{@fm_rename_btn=Rename}</text>
 			</text>
 
 			<button style="bs_btn">
-				<placement x="0" y="%bs_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%bs_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_rename=0000</action>
 					<action function="set">tw_fm_text2=</action>
@@ -807,18 +834,18 @@
 				</actions>
 			</button>
 			<image>
-				<placement x="%col1_x%" y="%bs_row7_y%"/>
+				<placement x="%col1_x%" y="%bs_row6_y%"/>
 				<image resource="bs_btn_chmod"/>
 			</image>
 			
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row7_text_y%"/>
+				<placement x="%col1_x_indent%" y="%bs_row6_text_y%"/>
 				<text>{@fm_chmod_btn=chmod}</text>
 			</text>
 
 			<button style="bs_btn">
-				<placement x="0" y="%bs_row8_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%bs_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_command=rm -rf</action>
 					<action function="set">tw_fm_text1={@fm_deleting=Deleting}</action>
@@ -831,12 +858,12 @@
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%bs_row8_y%"/>
+				<placement x="%col1_x%" y="%bs_row7_y%"/>
 				<image resource="bs_btn_delete"/>
 			</image>
 
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row8_text_y%"/>
+				<placement x="%col1_x_indent%" y="%bs_row7_text_y%"/>
 				<text>{@fm_delete_btn=Delete}</text>
 			</text>
 
@@ -852,7 +879,7 @@
 			</action>
 		</page>
 		
-		<page name="openas"> <!--перевод-->
+		<page name="openas">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -936,53 +963,44 @@
 				<text>{@fm_open_makezip=Compress}</text>
 			</text>
 			
-			
-			
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="0" y="%bs_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_restore_name=%tw_selection1%</action>
-				<action function="set">tw_restore=%tw_filename1%</action>
-				<action function="set">restore_back=filemanagerlist</action>
-				<action function="readBackup"/>
-				<action function="page">restore_read</action> 
-			</button>
-			
-			<image>
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="%col1_x%" y="%bs_row1_y%"/>
-				<image resource="bs_btn_restore"/>
-			</image>
-
-			<text style="bs_text">
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
-				<text>{@fm_open_backup=Backup}</text>
-			</text>
-			
 			<button style="bs_btn">
 				<condition var1="tw_fm_isfolder" var2="0"/>
 				<placement x="0" y="%bs_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_back=filemanageroptions</action>
-				<action function="set">sum=1</action>
-				<action function="page">checksum_confirm</action>
+				<action function="set">tw_file=%tw_selection1%</action>
+				<action function="set">install_back=filemanagerlist</action>
+				<action function="set">tw_filename=%tw_filename1%</action>
+				<action function="set">tw_zip_location=%tw_file_location1%</action>
+				<action function="set">tw_flash_partition=</action>
+				<action function="page">flash_image_confirm</action>
 			</button>
 			
 			<image>
 				<condition var1="tw_fm_isfolder" var2="0"/>
 				<placement x="%col1_x%" y="%bs_row4_y%"/>
-				<image resource="bs_btn_checksum"/>
+				<image resource="bs_btn_image"/>
 			</image>
 
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
 				<placement x="%col1_x_indent%" y="%bs_row4_text_y%"/>
+				<text>{@fm_open_image=Flashable image}</text>
+			</text>
+			
+			<image>
+				<condition var1="tw_fm_isfolder" var2="0"/>
+				<placement x="%col1_x%" y="%bs_row5_y%"/>
+				<image resource="bs_btn_checksum"/>
+			</image>
+
+			<text style="bs_text">
+				<condition var1="tw_fm_isfolder" var2="0"/>
+				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
 				<text>{@fm_sums=Checksum}</text>
 			</text>
 			
 			<button style="bs_btn">
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%bs_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">tw_back=filemanageroptions</action>
 				<action function="set">sum=0</action>
 				<action function="page">checksum_confirm</action>
@@ -990,13 +1008,13 @@
 			
 			<image>
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x%" y="%bs_row5_y%"/>
+				<placement x="%col1_x%" y="%bs_row6_y%"/>
 				<image resource="info"/>
 			</image>
 
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
+				<placement x="%col1_x_indent%" y="%bs_row6_text_y%"/>
 				<text>{@info=Information}</text>
 			</text>
 			
@@ -1189,7 +1207,7 @@
 
 			<button style="floating_btn">
 				<placement x="%btn_float_x%" y="%btn_float_y%"/>
-				<image resource="btn_float_folder"/>
+				<image resource="btn_float_accept"/>
 				<actions>
 					<action function="set">tw_fm_text2={@fordowns_to=to}</action>
 					<action function="set">tw_fm_text3=%tw_file_location2%</action>

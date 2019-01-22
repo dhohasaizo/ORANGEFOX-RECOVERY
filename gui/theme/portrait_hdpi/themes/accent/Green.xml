@@ -25,10 +25,10 @@
 		<!-- File Manager -->
 		<image name="file_icon_small" filename="Green/FileManager/file_small" retainaspect="1"/>
 		<image name="file_icon" filename="Green/FileManager/file" retainaspect="1"/>
-		<image name="zip_icon_small" filename="Green/FileManager/file_zip_small" retainaspect="1"/>
-		<image name="img_icon_small" filename="Green/FileManager/file_img_small" retainaspect="1"/>
-		<image name="zip_icon" filename="Green/FileManager/file_zip" retainaspect="1"/>
-		<image name="img_icon" filename="Green/FileManager/file_img" retainaspect="1"/>
+		<image name="file_icon_small" filename="Green/FileManager/file_zip_small" retainaspect="1"/>
+		<image name="file_icon_small" filename="Green/FileManager/file_img_small" retainaspect="1"/>
+		<image name="file_icon" filename="Green/FileManager/file_zip" retainaspect="1"/>
+		<image name="file_icon" filename="Green/FileManager/file_img" retainaspect="1"/>
 		<image name="bkp_icon_small" filename="Green/FileManager/file_bkp_small" retainaspect="1"/>
 		<image name="bkp_icon" filename="Green/FileManager/file_bkp" retainaspect="1"/>
 		<image name="flash_icon" filename="Green/FileManager/flash_icon" retainaspect="1"/>

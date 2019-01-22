@@ -73,23 +73,5 @@
 				<action function="page">main</action>
 			</action>
 		</page>
-		
-		<page name="flash_key">
-			<action>
-				<condition var1="flashlight_on" var2="1"/>
-				<action function="set">tw_busy_temp=%tw_busy%</action>
-				<action function="cmd">
-					flashfile=/sys/class/leds/%flashlight_default%/brightness
-					state="$(cat $flashfile)"
-					if [[ $state = 0 ]]
-					then
-						echo %flash_active% > $flashfile
-					else
-						echo 0 > $flashfile
-					fi
-				</action>
-				<action function="set">tw_busy=%tw_busy_temp%</action>
-			</action>
-		</page>
 	</pages>
 </recovery>

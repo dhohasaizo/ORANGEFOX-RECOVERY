@@ -27,11 +27,7 @@
 		<image name="nav_shadow" filename="Orange/NavPanel/shadow" retainaspect="1"/>
 		
 		<!-- FAB -->
-		<image name="btn_float_arc" filename="Orange/FAB/btn_float_arc" retainaspect="1"/>
-		<image name="btn_float_img" filename="Orange/FAB/btn_float_img" retainaspect="1"/>
 		<image name="btn_float_accept" filename="Orange/FAB/btn_float_accept" retainaspect="1"/>
-		<image name="btn_float_folder" filename="Orange/FAB/btn_float_folder" retainaspect="1"/>
-		<image name="btn_float_close" filename="Orange/FAB/btn_float_close" retainaspect="1"/>
 		<image name="float_fm_plus" filename="Orange/FAB/float_fm_plus" retainaspect="1"/>
 		<image name="float_fm_close" filename="Orange/FAB/float_fm_close" retainaspect="1"/>
 		<image name="float_fm_close_hl" filename="Orange/FAB/float_fm_close_hl" retainaspect="1"/>
@@ -39,17 +35,11 @@
 		<!-- File Manager -->
 		<image name="file_icon_small" filename="Orange/FileManager/file_small" retainaspect="1"/>
 		<image name="file_icon" filename="Orange/FileManager/file" retainaspect="1"/>
-		<image name="zip_icon_small" filename="Orange/FileManager/file_zip_small" retainaspect="1"/>
-		<image name="img_icon_small" filename="Orange/FileManager/file_img_small" retainaspect="1"/>
-		<image name="zip_icon" filename="Orange/FileManager/file_zip" retainaspect="1"/>
-		<image name="img_icon" filename="Orange/FileManager/file_img" retainaspect="1"/>
 		<image name="bkp_icon_small" filename="Orange/FileManager/file_bkp_small" retainaspect="1"/>
 		<image name="bkp_icon" filename="Orange/FileManager/file_bkp" retainaspect="1"/>
-		<image name="flash_icon" filename="Orange/FileManager/flash_icon" retainaspect="1"/>
 		
 		<!-- Info -->
 		<image name="icon_info" filename="Orange/Info/icon_info" retainaspect="1"/>
-		<image name="help_cloud" filename="Orange/Info/help_cloud" retainaspect="1"/>
 		
 		<!-- Keyboard -->
 		<image name="enter" filename="Orange/Keyboard/enter" retainaspect="1"/>

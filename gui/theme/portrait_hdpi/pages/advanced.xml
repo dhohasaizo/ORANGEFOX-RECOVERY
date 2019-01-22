@@ -20,30 +20,18 @@
 			</button>
 			
 			<button>
-				<condition var1="flashlight_on" var2="1"/>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_flash" highlightresource="actionbar_flash_hl"/>
-				<action function="overlay">flash_key</action>
-				<action function="overlay"/>
+				<action function="flashlight"/>
 			</button>
 			
 			<button>
-				<condition var1="flashlight_on" var2="1"/>
 				<condition var1="use_pass" var2="1"/>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_encr_ena" highlightresource="actionbar_encr_ena_hl"/>
 				<action function="set">pass_open=0</action>
 				<action function="page">main</action>
 			</button>
-			<button>
-				<condition var1="flashlight_on" var2="0"/>
-				<condition var1="use_pass" var2="1"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_encr_ena" highlightresource="actionbar_encr_ena_hl"/>
-				<action function="set">pass_open=0</action>
-				<action function="page">main</action>
-			</button>
-			
 			<text style="text_ab_title">
 				<placement x="%col1_x%" y="%ab_bc_y%"/>
 				<text>{@menu_btn=Menu}</text>
@@ -142,11 +130,11 @@
 			</button>
 			<image>
 				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="bs_btn_image"/>
+				<image resource="utils"/>
 			</image>
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>Utilities</text>
+				<text>{@utilities}</text>
 			</text>
 			
 			<!-- SD -->
@@ -686,7 +674,7 @@
 			</text>
 			
 			<listbox style="settingslist">
-				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%listbox_settings_backup_height%"/>
+				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%lb_l2%"/>
 				<listitem name="{@sideload_wipe_dalvik_chk=Wipe Dalvik Cache}">
 					<data variable="tw_wipe_dalvik"/>
 				</listitem>

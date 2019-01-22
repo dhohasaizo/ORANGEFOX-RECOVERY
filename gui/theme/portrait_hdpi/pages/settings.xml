@@ -1,131 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
 	<pages>
-		<page name="themecheck2">
-			<!-- Чекаем всратось -->
-			<action>
-				<action function="set">tw_simulate_actions=0</action>
-				<action function="set">tw_simulate_fail=0</action>
-				<action function="fileexists">/twres/images/Default/Workshop/ColorBlue.png</action>
-			</action>
-
-			<!-- ОК -->
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="0"/>
-				</conditions>
-				<actions>
-					<action function="set">splash_includezip=0</action>
-					<action function="set">tw_themeexist=0</action>
-					<action function="page">%checkpage%</action>
-				</actions>
-			</action>
-
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="1"/>
-				</conditions>
-				<actions>
-					<action function="page">find_theme</action>
-				</actions>
-			</action>
-		</page>
-		<page name="themecheck1">
-			<action>
-				<condition var1="tw_simulate_actions" var2="1"/>
-				<action function="page">debug</action>
-			</action>
-			<action>
-				<condition var1="tw_simulate_fail" var2="1"/>
-				<action function="page">debug</action>
-			</action>
-			<!-- Чекаем пользовательский путь -->
-			<action>
-				<action function="set">tw_simulate_actions=0</action>
-				<action function="set">tw_simulate_fail=0</action>
-				<action function="mount">data</action>
-				<action function="fileexists">%tw_theme_path%/ui.zip</action>
-			</action>
-
-			<!-- ОК -->
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="0"/>
-				</conditions>
-				<actions>
-					<action function="set">tw_themeexist=1</action>
-					<action function="page">%checkpage%</action>
-				</actions>
-			</action>
-
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="1"/>
-				</conditions>
-				<actions>
-					<action function="page">themecheck2</action>
-				</actions>
-			</action>
-		</page>
-		<page name="find_theme">
-			<template name="body"/>
-			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
-				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon" file="zip_icon" />
-				<filter extn=".png" folders="1" files="1"/>
-				<path name="tw_zip_location" default="/sdcard"/>
-				<data name="tw_filename"/>
-				<selection name="tw_file"/>
-			</fileselector>
-
-			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
-				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon_small" file="zip_icon_small" />
-				<filter extn=".png" folders="1" files="1"/>
-				<path name="tw_zip_location" default="/sdcard"/>
-				<data name="tw_filename"/>
-				<selection name="tw_file"/>
-			</fileselector>
-			
-			<template name="find_file"/>
-			
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>TWRP Workshop</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@tw_zip_location_hdr=Select Theme ZIP}</text>
-			</text>
-
-			<action>
-				<condition var1="tw_filename" op="modified"/>
-				<actions>
-					<action function="set">tw_theme_path=%tw_zip_location%</action>
-					<action function="set">tw_themeexist=1</action>
-					<action function="page">%checkpage%</action>
-				</actions>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">settings</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-		</page>
 		<!-- Settings -->
 		<page name="settings">
 			<template name="body"/>
@@ -179,8 +54,14 @@
 			
 			<!-- Customization -->
 			<button style="bs_btn">
+				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">customization_menu</action>
+				<action function="page">ext_navbar</action>
+			</button>
+			<button style="bs_btn">
+				<condition var1="navbar_disable" var2="1"/>
+				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom</action>
 			</button>
 			<image>
 				<placement x="%col1_set_x%" y="%set_row3_y%"/>
@@ -289,14 +170,11 @@
 			</text>
 			<!---->
 			
-			<!-- Информация (отладка выключена) -->
+			<!-- Info -->
 			<button style="bs_btn">
 				<condition var1="debug_open" op="!=" var2="5"/>
 				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_filecheck=%tw_theme_path%/ui.zip</action>
-				<action function="set">tw_existpage=about</action>
-				<action function="set">tw_notexistpage=about</action>
-				<action function="page">filecheck</action>
+				<action function="page">about</action>
 			</button>
 			<image>
 				<condition var1="debug_open" op="!=" var2="5"/>
@@ -310,14 +188,11 @@
 			</text>
 			<!---->
 			
-			<!-- Информация (отладка включена) -->
+			<!-- Info -->
 			<button style="bs_btn">
 				<condition var1="debug_open" var2="5"/>
 				<placement x="0" y="%set_row10_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_filecheck=%tw_theme_path%/ui.zip</action>
-				<action function="set">tw_existpage=about</action>
-				<action function="set">tw_notexistpage=about</action>
-				<action function="page">filecheck</action>
+				<action function="page">about</action>
 			</button>
 			<image>
 				<condition var1="debug_open" var2="5"/>
@@ -723,80 +598,6 @@
 				<action function="page">settings</action>
 			</action>
 		</page>
-
-		<page name="customization_menu">
-			<template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@settings_ui=Customization}</text>
-			</text>
-
-			<!-- Navbar -->
-			<button style="bs_btn">
-				<condition var1="navbar_disable" op="!=" var2="1"/>
-				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_navbar</action>
-			</button>
-			<button style="bs_btn">
-				<condition var1="navbar_disable" var2="1"/>
-				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom</action>
-			</button>
-			<image>
-				<placement x="%col1_set_x%" y="%set_row1_y%"/>
-				<image resource="nav"/>
-			</image>
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>Navigation keys</text>
-			</text>
-			<!-- -->
-
-			<!-- Statusbar -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom</action>
-			</button>
-			<image>
-				<placement x="%col1_set_x%" y="%set_row2_y%"/>
-				<image resource="statusbar"/>
-			</image>
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>Statusbar</text>
-			</text>
-			<!-- -->
-
-			<!-- Keyboard -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom</action>
-			</button>
-			<image>
-				<placement x="%col1_set_x%" y="%set_row3_y%"/>
-				<image resource="keyboard"/>
-			</image>
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>Keyboard</text>
-			</text>
-			<!-- -->
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">settings</action>
-			</action>
-		</page>
 	
 		<!-- Файлы ☺ -->
 		<page name="ext_fm">
@@ -830,7 +631,7 @@
 			</text>
 			
 			<listbox>
-				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width%" h="%lb_l3%"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="bookmark"/>
 				<listitem name="{@fm_none=None}">2</listitem>
 				<listitem name="{@fm_book=Bookmark button}">1</listitem>
@@ -843,7 +644,7 @@
 			</text>
 			
 			<listbox>
-				<placement x="0" y="%row3_2a_y%" w="%listbox_tz_width%" h="%lb_l2%"/>
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l2%"/>
 				<data name="list_font"/>
 				<listitem name="{@cust_fm_font_s=Small}">small</listitem>
 				<listitem name="{@cust_fm_font_b=Big}">big</listitem>
@@ -918,7 +719,7 @@
 				<condition var1="list_font" var2="big"/>
 				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon" file="zip_icon" />
+				<icon folder="folder_icon" file="file_icon" />
 				<filter extn=".zip" folders="1" files="1"/>
 				<path name="tw_zip_location" default="/sdcard"/>
 				<data name="tw_filename"/>
@@ -929,7 +730,7 @@
 				<condition var1="list_font" var2="small"/>
 				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon_small" file="zip_icon_small" />
+				<icon folder="folder_icon_small" file="file_icon_small" />
 				<filter extn=".zip" folders="1" files="1"/>
 				<path name="tw_zip_location" default="/sdcard"/>
 				<data name="tw_filename"/>
@@ -967,7 +768,7 @@
 			</action>
 		</page>
 	
-		<!-- Screen -->
+		<!-- Экран ☺-->
 		<page name="ext_screen">
 			
 			<template name="body"/>
@@ -1021,92 +822,6 @@
 				<placement x="%slider_x%" y="%row3_1_y%" w="%slidervalue_w%"/>
 				<data variable="tw_screen_timeout_secs" min="0" max="300" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
-		
-			<text style="caption">
-				<placement x="%col1_x%" y="%row4_2a_y%"/>
-				<text>{@flashlight=Flashlight source}</text>
-			</text>
-		
-			<button style="bs_btn">
-				<placement x="0" y="%flash_cord%" w="%screen_w%" h="%lb_l1%"/>
-				<action function="set">flashlight_on=0</action>
-			</button>
-			<image>
-				<placement x="0" y="%flash_cord%"/>
-				<image resource="flash_dis"/>
-			</image>
-			<text style="bs_text">
-				<placement x="%flash_text_x%" y="%flash_text_y%"/>
-				<text>{@areb_off=Off}</text>
-			</text>
-			
-			<button style="bs_btn">
-				<placement x="0" y="%flash_cord2%" w="%screen_w%" h="%lb_l1%"/>
-				<action function="set">flash_active_temp=%flash_active%</action>
-				<action function="overlay">dialog_activeflash</action>
-			</button>
-			<image>
-				<placement x="0" y="%flash_cord2%"/>
-				<image resource="flash_set"/>
-			</image>
-			<text style="bs_text">
-				<placement x="%flash_text_x%" y="%flash_text2_y%"/>
-				<text>{@flashlight_set=Brightness level (current: %flash_active%)}</text>
-			</text>
-			
-			<fileselector style="fileselector_s">
-				<placement x="0" y="%flash_files%" w="%screen_w%" h="%lb_l4%"/>
-				<sort name="1"/>
-				<icon folder="flash_icon" file="flash_icon" />
-				<filter folders="1" files="1" nav="0"/>
-				<path name="sysclass" default="/sys/class/leds"/>
-				<data name="flashlight_modify"/>
-				<selection name="flashlight_file"/>
-			</fileselector>
-			
-			<action>
-				<condition var1="flashlight_modify" op="modified"/>
-				<action function="set">flashlight_govno=0</action>
-				<action function="overlay">dialog_flashset</action>
-			</action>
-			
-			<action>
-				<condition var1="tw_screen_timeout_secs" op="&lt;" var2="15"/>
-				<condition var1="tw_screen_timeout_secs" op="&gt;" var2="0"/>
-				<action function="set">tw_screen_timeout_secs=0</action>
-			</action>
-		
-			<button>
-				<condition var1="screen_hint" var2="1"/>
-				<image resource="help_cloud"/>
-				<placement x="55" y="295"/>
-				<action function="set">screen_hint=2</action>
-				<action function="page">ext_screen</action>
-			</button>
-			
-			<text>
-				<condition var1="screen_hint" var2="1"/>
-				<font resource="body2" color="#ffffffff"/>
-				<placement x="120" y="345"/>
-				<text>{@extra_keys=Hint:}</text> <!--34-->
-			</text>
-			
-			
-			<text>
-				<condition var1="screen_hint" var2="1"/>
-				<font resource="body2" color="#ffffffff"/>
-				<placement x="120" y="410"/>
-				<text>{@extra_keys3=Turn on the flashlight by pressing}</text>
-			</text>
-			
-			<text>
-				<condition var1="screen_hint" var2="1"/>
-				<font resource="body2" color="#ffffffff"/>
-				<placement x="120" y="475"/>
-				<text>{@extra_keys4=power and the volume up buttons!}</text>
-			</text>
-			
-			
 			
 			<action>
 				<touch key="home"/>
@@ -1119,7 +834,7 @@
 			</action>
 		</page>
 		
-		<!-- Vibration -->
+		<!-- Вибрация ☺ -->
 		<page name="ext_vibrate">
 			<template name="body"/>
 
@@ -1199,7 +914,7 @@
 			</action>
 		</page>
 		
-		<!-- Backup -->
+		<!-- Резервная копия ☺ -->
 		<page name="ext_backup">
 			<template name="body"/>
 
@@ -1218,7 +933,7 @@
 			</text>
 			
 			<listbox>
-				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width%" h="%lb_l3%"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="auto_generate"/>
 				<listitem name="{@settings_backup_name_user=Do not change}">2</listitem>
 				<listitem name="{@settings_backup_name_auto=Defined automatically}">1</listitem>
@@ -1273,7 +988,7 @@
 			</action>
 		</page>
 	
-		<!-- Regional -->
+		<!-- Региональные настройки ☺ -->
 		<page name="ext_time">
 			<template name="body"/>
 
@@ -1292,7 +1007,7 @@
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width%" h="%listbox_tz_height%"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l7%"/>
 				<data name="tw_time_zone_guisel"/>
 				<listitem name="{@utcm11=(UTC -11) Samoa, Midway Island}">BST11;BDT</listitem>
 				<listitem name="{@utcm10=(UTC -10) Hawaii}">HST10;HDT</listitem>
@@ -1544,17 +1259,12 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_cards%" y="%row8_1_y%"/>
-				<text>Maintainer: %of_maintainer%</text>
+				<text>{@theme_vers=Theme:} %theme_version%</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_cards%" y="%row8_2_y%"/>
-				<text>Theme version: %theme_version%</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%col1_x_cards%" y="%row8_3_y%"/>
-				<text>Theme author: fordownloads</text>
+				<text>Maintainer - %of_maintainer%</text>
 			</text>
 			
 			<action>
@@ -1567,7 +1277,7 @@
 				<action function="page">settings</action>
 			</action>
 		</page>
-		<!-- Debug -->
+		<!-- Отладка ☺ -->
 		<page name="debug">
 			<template name="body_key"/>
 			
@@ -1601,7 +1311,7 @@
 			</text>
 			
 			<listbox>
-				<placement x="0" y="%row2_2_y%" w="%listbox_tz_width%" h="%lb_l3%"/>
+				<placement x="0" y="%row2_2_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="dbg"/>
 				<listitem name="{@dbg_page=Page}">page</listitem>
 				<listitem name="{@dbg_set=Set}">set</listitem>

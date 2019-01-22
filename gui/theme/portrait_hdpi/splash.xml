@@ -11,21 +11,14 @@
 	<resources>
 		<image name="splash" filename="splash"/>
 	</resources>
-	
-	<variables>
-		<variable name="background" value="#222222FF"/>
-		<variable name="text" value="#000000"/>
-	</variables>
 
 	<pages>
 		<page name="splash">
-			<background color="%background%"/>		
-			
+			<background color="#222222FF"/>
 			<object type="image">
 				<image resource="splash"/>
 				<placement x="0" y="0"/>
 			</object>
-
 		</page>
 	</pages>
 </recovery>

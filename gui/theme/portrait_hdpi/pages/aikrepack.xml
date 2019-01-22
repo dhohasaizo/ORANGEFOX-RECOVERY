@@ -578,7 +578,7 @@
 				<condition var1="list_font" var2="big"/>
 				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon" file="img_icon" />
+				<icon folder="folder_icon" file="file_icon" />
 				<filter extn=".img" folders="1" files="1"/>
 				<path name="tw_zip_location" default="/sdcard"/>
 				<data name="tw_filename"/>
@@ -589,7 +589,7 @@
 				<condition var1="list_font" var2="small"/>
 				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon_small" file="img_icon_small" />
+				<icon folder="folder_icon_small" file="file_icon_small" />
 				<filter extn=".img" folders="1" files="1"/>
 				<path name="tw_zip_location" default="/sdcard"/>
 				<data name="tw_filename"/>
@@ -646,7 +646,7 @@
 			</text>
 			
 			<listbox>
-				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width%" h="%lb_l4%"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l4%"/>
 				<data name="splash_logo_type"/>
 				<listitem name="{@fm_none=None}">none<condition var1="tw_splash_png_name"/></listitem>
 				<listitem name="{@sph_newclassic=New classic}">classic</listitem>
@@ -661,7 +661,7 @@
 			</text>
 			
 			<listbox>
-				<placement x="0" y="%row4_1_y%" w="%listbox_tz_width%" h="%lb_l3%"/>
+				<placement x="0" y="%row4_1_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="splash_logo_type" op="!=" var2="none"/>
 				<data name="splash_place"/>
 				<listitem name="{@top=Top}">290<condition var1="splash_logo_type" op="!=" var2="classic"/></listitem>

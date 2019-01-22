@@ -20,70 +20,18 @@
 			</image>
 
 			<image>
-				<condition var1="fox_support_miui_ota" var2="0"/>
+				<condition var1="fox_support_miui_ota" op="!=" var2="1"/>
 				<placement x="0" y="%row1_1_y%"/>
 				<image resource="ota_error"/>
 			</image>
-
-			<!-- Check MIUI Bak file -->
-			<action>
-				<action function="set">tw_simulate_actions=0</action>
-				<action function="set">tw_simulate_fail=0</action>
-				<action function="mount">data</action>
-				<action function="fileexists">/sdcard/Fox/OTA/boot.emmc.win</action>
-			</action>
-
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="0"/>
-				</conditions>
-				<action function="set">ota_back_file=1</action>
-			</action>
-
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="1"/>
-				</conditions>
-				<action function="set">ota_back_file=0</action>
-			</action>
-			<!-- -->
-
-			<image>
-				<condition var1="ota_back_file" var2="0"/>
-				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="%col1_x%" y="%row3_1_y%"/>
-				<image resource="icon_warning"/>
-			</image>
-
-			<text style="text_body2_fail">
-				<condition var1="ota_back_file" var2="0"/>
-				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
-				<text>Please flash full MIUI ROM!</text>
-			</text>
-
-			<text style="text_body2">
-				<condition var1="ota_back_file" var2="1"/>
-				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
-				<text>You are ready to receive updates!</text>
-			</text>
-
-			<text style="text_body2">
-				<condition var1="fox_support_miui_ota" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
-				<text>Enabled custom ROM mode</text>
-			</text>
 			
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_3_y%"/>
-				<text>OTA settings</text>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<text>{@fox_ota_settings}</text>
 			</text>
 
             <listbox style="settingslist">
-				<placement x="0" y="%row4_1_y%" w="%screen_w%" h="%row4_1_y%"/>
+				<placement x="0" y="%row3_3_y%" w="%screen_w%" h="%row4_1_y%"/>
 				<listitem name="{@fox_support_miui_ota_chk=}">
 					<data variable="fox_support_miui_ota"/>
 				</listitem>	
@@ -107,14 +55,9 @@
 				</listitem>
 			</listbox>
 
-			<text style="caption">
-				<placement x="%col1_x%" y="%row8_1_y%"/>
-				<text>Fast actions</text>
-			</text>
-
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row8_2_y%"/>
-				<text>Disable OTA</text>
+				<text>{@fox_ota_off}</text>
 				<actions>
 					<action function="set">fox_support_miui_ota=0</action>
 					<action function="set">fox_include_system_survival=0</action>
@@ -127,7 +70,7 @@
 
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row8_2_y%" placement="1"/>
-				<text>Enable OTA</text>
+				<text>{@fox_ota_on}</text>
 				<actions>
 					<action function="set">fox_support_miui_ota=1</action>
 					<action function="set">fox_include_system_survival=1</action>

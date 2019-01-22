@@ -4,8 +4,8 @@
 		<resolution width="1080" height="1920"/>
 		<author>fordownloads and OrangeFox</author>
 		<title>OrangeFox theme (Pie Door)</title>
-		<description></description>
-		<preview></preview>
+		<description/>
+		<preview/>
 		<themeversion>3</themeversion>
 	</details>
 	
@@ -16,7 +16,7 @@
 		<xmlfile name="themes/accent.xml"/>
 		<xmlfile name="resources/images.xml"/>
 		<xmlfile name="resources/vars.xml"/>
-		<xmlfile name="resources/styles.xml"/> <!-- Background picture, not supported! -->
+		<xmlfile name="resources/styles.xml"/>
 	
 		<xmlfile name="pages/templates/keyboard.xml"/>
 		<xmlfile name="pages/templates/navbar.xml"/>
@@ -34,8 +34,6 @@
 		<xmlfile name="pages/advanced.xml"/>
 		<xmlfile name="pages/reboot.xml"/>
 		<xmlfile name="pages/settings.xml"/>
-		<xmlfile name="pages/workshop.xml"/>
-		<xmlfile name="pages/aikrepack.xml"/>
 		<xmlfile name="pages/universal.xml"/>
 		<xmlfile name="pages/anywhere.xml"/>
 		<xmlfile name="pages/dialogs.xml"/>
