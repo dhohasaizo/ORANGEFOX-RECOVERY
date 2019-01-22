@@ -518,7 +518,7 @@
 			<action>
 				<touch key="home"/>
 				<actions>
-					<action function="set">tw_clear_destination=main2</action>
+					<action function="set">tw_clear_destination=main</action>
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
