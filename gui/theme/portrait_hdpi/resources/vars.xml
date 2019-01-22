@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <recovery>
 	<variables>
-				
+		<!-- OrangeFox vars -->
+		<variable name="ota_back_file" value="0"/>
+		
 		<!-- Favorites menu -->
 		<variable name="book_1" value="/system/app" persist="1"/>
 		<variable name="book_2" value="/system/framework" persist="1"/>
@@ -67,9 +69,7 @@
 		<variable name="inject_theme" value="0"/>
 		<variable name="tw_install_reboot" value="0"/>
 		
-		<!--------------->
 		<!-- Placement -->
-		<!--------------->
 		
 		<!-- FAB above NavPanel -->
 		<variable name="btn_float_x" value="852"/>
