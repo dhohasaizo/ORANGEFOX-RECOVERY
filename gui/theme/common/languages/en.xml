@@ -61,7 +61,7 @@
 		<string name="folder">Folder</string>
 		<string name="file">File</string>
 		<string name="zip_sig_chk">ZIP signature verification</string>
-		<string name="inject_twrp_chk">Inject TWRP after install</string>
+		<string name="inject_twrp_chk">Inject OrangeFox after install</string>
 		<string name="install_reboot_chk">Reboot after installation is complete</string>
 		<string name="options_hdr">Options</string>
 		<string name="zip_queue">Queue:</string>
@@ -196,11 +196,11 @@
 		<string name="swipe_power_off">Swipe to Power Off</string>
 		<string name="sys_ro">System Partition</string>
 		<string name="sys_ro_hdr">Unmodified System Partition</string>
-		<string name="sys_rop1">TWRP can leave your system partition</string>
+		<string name="sys_rop1">OrangeFox can leave your system partition</string>
 		<string name="sys_rop2">unmodified to make it easier for you to</string>
 		<string name="sys_rop2a">take official updates.</string>
-		<string name="sys_rop3">TWRP will be unable to prevent the</string>
-		<string name="sys_rop4">stock ROM from replacing TWRP and</string>
+		<string name="sys_rop3">OrangeFox will be unable to prevent the</string>
+		<string name="sys_rop4">stock ROM from replacing OrangeFox and</string>
 		<string name="sys_rop4a">will not offer to root your device.</string>
 		<string name="sys_rop5">ZIP installations or ADB operations</string>
 		<string name="sys_rop6">may still modify the system partition.</string>
@@ -276,10 +276,10 @@
 		<string name="terminal_btn">Terminal</string>
 		<string name="dumlock_note1">For information about the workings</string>
 		<string name="dumlock_note2">of HTC Dumlock please see:</string>
-		<string name="inject_twrp_btn">INJECT TWRP</string>
-		<string name="inject_twrp_confirm">Re-Inject TWRP?</string>
-		<string name="injecting_twrp">Re-Injecting TWRP...</string>
-		<string name="inject_twrp_complete">TWRP Injection completed</string>
+		<string name="inject_twrp_btn">INJECT OrangeFox</string>
+		<string name="inject_twrp_confirm">Re-Inject OrangeFox?</string>
+		<string name="injecting_twrp">Re-Injecting OrangeFox...</string>
+		<string name="inject_twrp_complete">OrangeFox Injection completed</string>
 		<string name="swipe_to_confirm">Swipe to Confirm</string>
 		<string name="part_sd_hdr">Partition SD Card</string>
 		<string name="rem_sd">Removable Storage</string>
@@ -513,7 +513,7 @@
 		<string name="need_new_adb">You need adb 1.0.32 or newer to sideload to this device.</string>
 		<string name="no_pwd">No password provided.</string>
 		<string name="done_ors">Done processing script file</string>
-		<string name="injecttwrp">Injecting TWRP into boot image...</string>
+		<string name="injecttwrp">Injecting OrangeFox into boot image...</string>
 		<string name="zip_err">Error installing ZIP file '{1}'</string>
 		<string name="installing_zip">Installing ZIP file '{1}'</string>
 		<string name="select_backup_opt">Setting backup options:</string>
@@ -541,7 +541,7 @@
 		<string name="dumlock_restore">Restoring original boot...</string>
 		<string name="dumlock_reflash">Reflashing recovery to boot...</string>
 		<string name="run_script">Running {1} script...</string>
-		<string name="rename_stock">Renamed stock recovery file in /system to prevent the stock ROM from replacing TWRP.</string>
+		<string name="rename_stock">Renamed stock recovery file in /system to prevent the stock ROM from replacing OrangeFox.</string>
 		<string name="split_backup">Breaking backup file into multiple archives...</string>
 		<string name="backup_error">Error creating backup.</string>
 		<string name="restore_error">Error during restore process.</string>
@@ -553,8 +553,8 @@
 		<string name="base_pkg_err">Failed to load base packages.</string>
 		<string name="simulating">SIMULATING ACTIONS</string>
 		<string name="backup_cancel">Backup Cancelled</string>
-		<string name="config_twrp">Configuring TWRP...</string>
-		<string name="config_twrp_err">Unable to configure TWRP with this kernel.</string>
+		<string name="config_twrp">Configuring OrangeFox...</string>
+		<string name="config_twrp_err">Unable to configure OrangeFox with this kernel.</string>
 		<string name="copy_log">Copied recovery log to {1}.</string>
 		<string name="max_queue">Maximum ZIP queue reached!</string>
 		<string name="min_queue">Minimum ZIP queue reached!</string>
@@ -571,7 +571,7 @@
 		<string name="cancel_sideload">Cancelling ADB sideload...</string>
 		<string name="change_fs_err">Error changing file system.</string>
 		<string name="change_fs_hdr">Change File System</string>
-		<string name="theme_ver_err">Custom theme version does not match TWRP version. Using stock theme.</string>
+		<string name="theme_ver_err">Custom theme version does not match OrangeFox version. Using stock theme.</string>
 		<string name="up_a_level">..</string>
 
 		<!-- new-->
@@ -594,12 +594,12 @@
 		<string name="use_menu_btn">Use buttons on main menu</string>
 		<string name="use_color_navbar">Use accent color for navbar</string>
 		<string name="tw_zip_location_hdr">Select Theme ZIP</string>
-		<string name="theme_splash_hdr">TWRP modification</string>
-		<string name="theme_splash_adapt_hdr">Adapt TWRP Splash</string>
+		<string name="theme_splash_hdr">OrangeFox modification</string>
+		<string name="theme_splash_adapt_hdr">Adapt OrangeFox Splash</string>
 		<string name="theme_image_kitchken">Android Image Kitchen</string>
 		<string name="im_kitchen1">The repacked IMG will be saved</string>
 		<string name="im_kitchen2">to the same folder as the stock IMG</string>
-		<string name="stock_recovery_im">Stock TWRP Image</string>
+		<string name="stock_recovery_im">Stock OrangeFox Image</string>
 		<string name="not_selected">not selected</string>
 		<string name="tw_splash_png_btn">PNG as Splash Screen</string>
 		<string name="install_flash_repack">Install repacked recovery</string>
@@ -668,7 +668,7 @@
 		<string name="dialog_splash_btn">CHANGE SPLASH</string>
 		<string name="dialog_splash_adapt">ADAPT SPLASH</string>
 		<string name="dialog_reset_note_1">Do you want to restore the</string>
-		<string name="dialog_reset_note_2">default settings for TWRP recovery</string>
+		<string name="dialog_reset_note_2">default settings for OrangeFox recovery</string>
 		<string name="dialog_reset_note_3">and theme? Reboot required.</string>
 		<string name="dialog_reset_theme_hdr">Default Settings</string>
 		<string name="dialog_reset_theme_note_1">Do you want to restore the default</string>
@@ -696,7 +696,7 @@
 		<string name="theme_path_subhdr">Select the UI.ZIP</string>
 		<!-- added by fordownloads -->
 		<string name="fordowns_theme">Theme</string>
-		<string name="fordowns_about">TWRP Materialised+</string>
+		<string name="fordowns_about">OrangeFox Materialised+</string>
 		<string name="fordowns_about2">Recovery gone App</string>
 		<string name="fordowns_sl">Starting Sideload...</string>
 		<string name="fordowns_recovery">Recovery</string>
@@ -893,7 +893,7 @@
 		
 		<string name="removelock_1">Remove password and getsure key</string>
 		<string name="removelock_2">Disable FRP</string>
-		<string name="removelock_3">Wipe FRP using TWRP</string>
+		<string name="removelock_3">Wipe FRP using OrangeFox</string>
 		<string name="removelock_4">Wipe FRP automatically</string>
 		
 		<string name="sph_set">Splash settings</string>
@@ -923,7 +923,7 @@
 		<string name="color_add">Additional color</string>
 		<string name="getreco_title">Extract recovery</string>
 		<string name="getreco_err">Can't extract recovery.img!</string>
-		<string name="getreco_btn">Extract TWRP recovery from device</string>
+		<string name="getreco_btn">Extract OrangeFox recovery from device</string>
 		<string name="cleanup">Clean up</string>
 		<string name="ws_create_t">Create theme</string>
 		<string name="ws_create_t_1">Workshop will create ui.zip</string>
@@ -938,7 +938,7 @@
 		<string name="access">Access</string>
 		<string name="fm_sums">Checksum</string>
 		
-		<string name="compatibility_321">Compatibility with TWRP 3.2.1</string>
+		<string name="compatibility_321">Compatibility with OrangeFox 3.2.1</string>
 		<string name="aspect_ratio">Aspect Ratio</string>
 		
 		<string name="use_fixed_font">Monospace font in terminal</string>
