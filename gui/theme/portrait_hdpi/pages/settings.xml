@@ -899,7 +899,7 @@
 			</action>
 		</page>
 	
-		<!-- Экран ☺-->
+		<!-- Screen -->
 		<page name="ext_screen">
 			
 			<template name="body"/>
@@ -1051,7 +1051,7 @@
 			</action>
 		</page>
 		
-		<!-- Вибрация ☺ -->
+		<!-- Vibration -->
 		<page name="ext_vibrate">
 			<template name="body"/>
 
@@ -1131,7 +1131,7 @@
 			</action>
 		</page>
 		
-		<!-- Резервная копия ☺ -->
+		<!-- Backup -->
 		<page name="ext_backup">
 			<template name="body"/>
 
@@ -1205,7 +1205,7 @@
 			</action>
 		</page>
 	
-		<!-- Региональные настройки ☺ -->
+		<!-- Regional -->
 		<page name="ext_time">
 			<template name="body"/>
 
@@ -1476,12 +1476,17 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x_cards%" y="%row8_1_y%"/>
-				<text>{@theme_vers=Theme:} %theme_version%</text>
+				<text>Maintainer: %of_maintainer%</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_cards%" y="%row8_2_y%"/>
-				<text>Maintainer - %of_maintainer%</text>
+				<text>Theme version: %theme_version%</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_cards%" y="%row8_3_y%"/>
+				<text>Theme author: fordownloads</text>
 			</text>
 			
 			<action>
@@ -1494,7 +1499,7 @@
 				<action function="page">settings</action>
 			</action>
 		</page>
-		<!-- Отладка ☺ -->
+		<!-- Debug -->
 		<page name="debug">
 			<template name="body_key"/>
 			
