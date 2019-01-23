@@ -409,7 +409,6 @@ int OpenRecoveryScript::run_script_file(void) {
 				else 
 				if (TWinstall_zip(FUSE_SIDELOAD_HOST_PATHNAME, &wipe_cache) == 0) 
 				{
-				    //Run_Fox_Process_After_ORS(); // DJ9
 				    if (wipe_cache)
 					PartitionManager.Wipe_By_Path("/cache");
 				} 
@@ -580,7 +579,6 @@ int OpenRecoveryScript::Install_Command(string Zip)
 	  } 
 	else 
 	  {
-	  	//Run_Fox_Process_After_ORS(); // DJ9
 		if (wipe_cache)
 		   PartitionManager.Wipe_By_Path("/cache");
 	  }
@@ -725,17 +723,11 @@ int OpenRecoveryScript::Run_OpenRecoveryScript_Action()
 
 	if (reboot || code1 == 3 || code2 == 3) 
 	  {
- 		/* - run Deactivation_Process() at the end of run_script_file() - * DJ9
- 		// Disable stock recovery reflashing
-		TWFunc::Disable_Stock_Recovery_Replace();
-    		
-    		// run dm-verity + disabled forced-encryption
-		if (DataManager::GetIntValue(FOX_CALL_DEACTIVATION) != 0) 
-	          {
-		     TWFunc::Deactivation_Process();
-		     DataManager::SetValue(FOX_CALL_DEACTIVATION, 0);
-		   }
- 		*/
+	  
+		// DJ9
+		//Run_Fox_Process_After_ORS();
+		// DJ9
+	  
     		// have we disabled auto-reboot?
     		if (code1 == 3 || code2 == 3) 
        		  { 
@@ -750,7 +742,7 @@ int OpenRecoveryScript::Run_OpenRecoveryScript_Action()
 		     TWFunc::tw_reboot(rb_system);
 		     usleep(5000000); // Sleep for 5 seconds to allow reboot to occur
 		  }
-        } 
+          } 
       else 
      	{
 	  DataManager::SetValue("tw_page_done", 1);

@@ -3185,11 +3185,33 @@ bool TWFunc::Fstab_Has_Encryption_Flag(std::string path)
         return false;
 }
 
-void TWFunc::Patch_Encryption_Flags(std::string path)
+void TWFunc::Patch_Encryption_Flags(std::string path, bool isVendor)
 {
+   LOGINFO("OrangeFox: Patch_Encryption_Flags: processing file:%s\n", path.c_str());
    TWFunc::Replace_Word_In_File(path, "fileencryption=ice;", "encryptable=footer");
    TWFunc::Replace_Word_In_File(path, "forcefdeorfbe=;forceencrypt=;fileencryption=;", "encryptable=");
-   
+   usleep(250000); 
+   if ((isVendor) && (Fstab_Has_Encryption_Flag(path)))
+   {
+        LOGINFO("OrangeFox: Patch_Encryption_Flags: trying again...\n");
+	int res;
+	string result;
+	string cmd_script = "/tmp/fenc.sh";
+   	CreateNewFile (cmd_script);
+   	chmod (cmd_script.c_str(), 0755);
+   	AppendLineToFile (cmd_script, "#!/sbin/sh");
+   	AppendLineToFile (cmd_script, "mount -o rw,remount /vendor");
+   	AppendLineToFile (cmd_script, "mount -o rw,remount /vendor /vendor");
+   	AppendLineToFile (cmd_script, "sed -i -e \"s|fileencryption=ice|encryptable=footer|g\" " + path);
+   	AppendLineToFile (cmd_script, "sed -i -e \"s|forcefdeorfbe=|encryptable=|g\" " + path);
+   	AppendLineToFile (cmd_script, "sed -i -e \"s|forceencrypt=|encryptable=|g\" " + path);
+   	AppendLineToFile (cmd_script, "sed -i -e \"s|fileencryption=|encryptable=|g\" " + path);
+   	AppendLineToFile (cmd_script, "umount /vendor > /dev/null 2>&1");
+   	AppendLineToFile (cmd_script, "");
+   	AppendLineToFile (cmd_script, "exit 0");
+   	res = Exec_Cmd (cmd_script, result);
+   	unlink(cmd_script.c_str());
+   }
 //   string remove = "errors=panic,;errors=panic;discard,;,discard;";
 //   TWFunc::Replace_Word_In_File(path, remove);
 }
@@ -3243,7 +3265,11 @@ bool TWFunc::Patch_Forced_Encryption(void)
 		 LOGINFO("OrangeFox: Relevant encryption settings are not found in %s\n", path.c_str());
 	      }
 	    }
-	    TWFunc::Patch_Encryption_Flags(path);
+	  if (Fstab_Has_Encryption_Flag(path))
+	     {
+	          status = true;
+	          TWFunc::Patch_Encryption_Flags(path, false);
+	     }
 	}
     }
   closedir(d);  
@@ -3313,7 +3339,13 @@ bool TWFunc::Patch_Forced_Encryption(void)
 		      LOGINFO("OrangeFox: Relevant encryption settings are not found in %s\n", path.c_str());
 		  }
 	       }
-	       TWFunc::Patch_Encryption_Flags(path);
+	     
+	     if (Fstab_Has_Encryption_Flag(path))
+	       {
+	          status = true;
+	          TWFunc::Patch_Encryption_Flags(path, true);
+	       }
+	     
 	   }
 	}
       closedir(d1);
