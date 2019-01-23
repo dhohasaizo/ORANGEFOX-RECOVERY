@@ -186,8 +186,10 @@ bool InputHandler::processInput(int timeout_ms)
 		// This path means that we did not get any new touch data, but
 		// we do not get new touch data if you press and hold on either
 		// the screen or on a keyboard key or mouse button
-		if (touch_status || key_status)
-			processHoldAndRepeat();
+		if (touch_status || key_status){
+			if(!(ev.code == KEY_MENU || ev.code == KEY_HOME || ev.code == KEY_BACK))
+				processHoldAndRepeat();
+		}
 		return (ret != -2);  // -2 means no more events in the queue
 	}
 
@@ -202,7 +204,38 @@ bool InputHandler::processInput(int timeout_ms)
 		break;
 
 	case EV_KEY:
-		process_EV_KEY(ev);
+		LOGINFO("Button!");
+		if((ev.code == KEY_MENU || ev.code == KEY_HOME || ev.code == KEY_BACK) && DataManager::GetIntValue("tw_enable_keys") != 0) {
+		    if(ev.value != 0){
+		         if(ev.code == KEY_HOME && DataManager::GetStrValue("tw_menu_key") != "")
+	                       PageManager::NotifyKey(KEY_HOMEPAGE, true);
+		         if(ev.code == KEY_BACK && DataManager::GetStrValue("tw_menu_key") != "")
+	                       PageManager::NotifyKey(KEY_BACK, true);
+		         DataManager::Vibrate("tw_button_vibrate");
+		    }else{
+	                 switch (ev.code)
+	                 {
+	                  case KEY_MENU:
+	                  	  if(DataManager::GetIntValue("tw_busy") == 0)
+								PageManager::ChangeOverlay("console");
+		                  break;
+	                  case KEY_HOME:
+							if(DataManager::GetStrValue("tw_menu_key") != "")
+								PageManager::NotifyKey(KEY_HOMEPAGE, false);
+							else
+								gui_changeOverlay("");
+		                  break;
+	                  case KEY_BACK:
+							if(DataManager::GetStrValue("tw_menu_key") != "")
+								PageManager::NotifyKey(KEY_BACK, false);
+							else
+								gui_changeOverlay("");
+		                  break;
+		          }
+	            }
+	        }else if(ev.code != KEY_BACK){
+			process_EV_KEY(ev);
+		}
 		break;
 	}
 
@@ -671,6 +704,10 @@ int gui_changePage(std::string newPage)
 int gui_changeOverlay(std::string overlay)
 {
 	LOGINFO("Set overlay: '%s'\n", overlay.c_str());
+	if(overlay != "slideout")
+	    DataManager::SetValue("tw_menu_key", "slideout");
+	else
+	    DataManager::SetValue("tw_menu_key", "");
 	PageManager::ChangeOverlay(overlay);
 	gForceRender.set_value(1);
 	return 0;

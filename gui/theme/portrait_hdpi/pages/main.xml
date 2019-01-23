@@ -28,6 +28,13 @@
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
+			
+			<!-- Mido buttons -->
+			<action>
+				<action function="cmd">
+					echo 0 > /proc/touchpanel/capacitive_keys_disable
+				</action>
+			</action>
 		</page>
 		
 		<page name="aroma_busy">

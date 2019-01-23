@@ -5,6 +5,11 @@
 		<variable name="ota_back_file" value="0"/>
 		<!-- Lockscreen -->
 		<variable name="clock_style" value="0" persist="1"/>
+
+		<!-- Device settings -->
+		<variable name="tw_enable_keys" value="1"/>
+		<variable name="tw_menu_key" value="slideout"/>
+		
 		
 		<!-- Favorites menu -->
 		<variable name="book_1" value="/system/app" persist="1"/>
@@ -29,7 +34,6 @@
 		<!-- FRP -->
 		<variable name="use_pass" value="0" persist="1"/>
 		<variable name="pass_true" value="qwerty" persist="1"/>
-		<variable name="lock_action" value="1" persist="1"/>
 		
 		<!-- Backups -->
 		<variable name="tw_backup_list_quick" value="/system;/data;" persist="1"/>
