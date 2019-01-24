@@ -1650,6 +1650,9 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 // Disable flashing of stock recovery
 void TWFunc::Disable_Stock_Recovery_Replace(void)
 {
+#ifdef OF_DISABLE_MIUI_SPECIFIC_FEATURES
+     return;
+#endif
   if (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false))
      { 
          Disable_Stock_Recovery_Replace_Func();           
@@ -1937,7 +1940,11 @@ void TWFunc::OrangeFox_Startup(void)
   std::string device_two = kernel_proc_check + "disable";
   std::string password_file = "/sbin/wlfx";
 
-  DataManager::GetValue(FOX_COMPATIBILITY_DEVICE, Fox_Current_Device); 
+  DataManager::GetValue(FOX_COMPATIBILITY_DEVICE, Fox_Current_Device);
+  
+  if (TWFunc::Path_Exists(FOX_PS_BIN)) 
+      chmod (FOX_PS_BIN, 0755);
+  
   Check_MIUI_Treble();
   
   if (TWFunc::Path_Exists(device_one))

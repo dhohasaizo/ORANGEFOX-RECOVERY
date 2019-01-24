@@ -65,8 +65,9 @@ static int Fox_Current_ROM_IsMIUI = 0; // is the currently installed ROM a MIUI 
 #define FOX_ZIP_INSTALLER_TREBLE "fox_zip_installer_treble"
 #define FOX_DISABLE_OTA_AUTO_REBOOT "fox_disable_ota_auto_reboot_check"
 #define FOX_STARTUP_SCRIPT "/sbin/findmiui.sh"
-
+#define FOX_PS_BIN "/FFiles/ps"
 // **** //
+
 #define FOX_SURVIVAL_FOLDER_VAR      "fox_survival_backup_folder_path"
 #define FOX_SURVIVAL_BACKUP_NAME       "fox_survival_backup_folder_name"
 #define FOX_SURVIVAL_BACKUP       "OTA"
