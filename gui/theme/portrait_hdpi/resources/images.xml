@@ -35,6 +35,10 @@
 		<image name="style_apply" filename="Default/Workshop/StyleApply"/>
 	
 		<font name="fixed" filename="RobotoMono.ttf" size="34"/>
+
+		<!-- Switches -->
+		<image name="switch_off" filename="Default/Other/switch_off" retainaspect="1"/>
+		<image name="switch_on" filename="Default/Other/switch_on" retainaspect="1"/>
 		
 		<!-- Battery -->
 		<image name="battery15" filename="Default/Battery/battery15" retainaspect="1"/>

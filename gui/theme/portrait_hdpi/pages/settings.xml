@@ -762,7 +762,7 @@
 		<page name="custm_keys">
 			<template name="body"/>
 
-			<template name="ab"/>
+			<template name="ab_without_shadow"/>
 
 			<template name="statusbarinfo"/>
 
@@ -771,13 +771,46 @@
 				<text>Navigation bar</text>
 			</text>
 
+			<fill color="%accent%">
+				<placement x="0" y="apanel_y" w="%screen_w%" h="apanel"/>
+			</fill>
+
+			<text style="text_dlg_title">
+				<placement x="%col1_x%" y="275"/>
+				<text>Enable Navigation bar</text>
+			</text>
+
+			<image>
+				<condition var1="navbar_disable" var2="0"/>
+				<image resource="switch_on" placement="2"/>
+				<placement x="%apanel_checkbox_x%" y="%apanel_checkbox_y%"/>
+			</image>
+
+			<image>
+				<condition var1="navbar_disable" var2="1"/>
+				<image resource="switch_off" placement="2"/>
+				<placement x="%apanel_checkbox_x%" y="%apanel_checkbox_y%"/>
+			</image>
+
+			<image>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="397"/>
+			</image>
+
+			<image>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="230"/>
+			</image>
+
 			<text style="caption">
-				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<text>{@settings_ui_style=NavBar style}</text>
 			</text>
 			
 			<listbox>
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l4%"/>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="0" y="%row2_2_y%" w="%screen_w%" h="%lb_l4%"/>
 				<data name="nougat"/>
 				<!--listitem name="{@fm_none=None}">2</listitem-->
 				<listitem name="{@cust_navbar_cls=Classic}">0</listitem>
@@ -786,12 +819,14 @@
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_3_y%"/>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="%col1_x%" y="%row4_2_y%"/>
 				<text>{@settings_ui_color=NavBar background}</text>
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row4_1_y%" w="%screen_w%" h="%lb_l3%"/>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="navbar_bkg"/>
 				<listitem name="{@fm_none=None}">0</listitem>
 				<listitem name="{@cust_navbar_accent=Accent}">1</listitem>
@@ -800,12 +835,14 @@
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row5_3_y%"/>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="%col1_x%" y="%row6_2_y%"/>
 				<text>Navbar settings</text>
 			</text>
 			
 			<listbox style="settingslist">
-				<placement x="0" y="%row6_1_y%" w="%screen_w%" h="%lb_l2%"/>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="0" y="%row6_3_y%" w="%screen_w%" h="%lb_l2%"/>
 				<listitem name="{@cust_navbar_white=Use white buttons}">
 					<condition var1="navbar_bkg" op="!=" var2="1"/>
 					<condition var1="theme_style_main" op="!=" var2="Light"/>
@@ -828,8 +865,9 @@
 				</listitem>
 			</listbox>
 
-			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="%row7_2_y%"/>
+			<button style="bs_btn">
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="0" y="apanel_y" w="%screen_w%" h="apanel"/>
 				<text>Disable navbar</text>
 				<actions>
 					<action function="wlfw"/>
@@ -837,8 +875,13 @@
 					cd "/twres";
 					sed "s/1920/1920+144/g" "ui.xml" > "/tmp/ui-temp.xml";
 					sed "s/960/1032/g" "/tmp/ui-temp.xml" > "/tmp/ui-temp1.xml";
+					sed "s/0\"/1\"/g" "themes/bar.xml" > "/tmp/bar.xml";
+
 					cp -r -f "/tmp/ui-temp1.xml" "/tmp/orangefox/ramdisk/twres/ui.xml";
 					cp -r -f "/tmp/ui-temp1.xml" "/twres/ui.xml";
+
+					cp -r -f "/tmp/bar.xml" "/twres/themes/bar.xml";
+					cp -r -f "/tmp/bar.xml" "/tmp/orangefox/ramdisk/twres/themes/bar.xml";
 					</action>
 					<action function="wlfx"/>
 					<action function="set">nougat=2</action>
@@ -846,8 +889,9 @@
 				</actions>
 			</button>
 
-			<button style="btn_raised">
-				<placement x="%btn_raised_right_x%" y="%row7_2_y%" placement="4"/>
+			<button style="bs_btn">
+				<condition var1="navbar_disable" var2="1"/>
+				<placement x="0" y="apanel_y" w="%screen_w%" h="apanel"/>
 				<text>Enable navbar</text>
 				<actions>
 					<action function="wlfw"/>
@@ -855,8 +899,13 @@
 					cd "/twres";
 					sed "s/1920+144/1920/g" "ui.xml" > "/tmp/ui-temp.xml";
 					sed "s/1032/960/g" "/tmp/ui-temp.xml" > "/tmp/ui-temp1.xml";
+					sed "s/1\"/0\"/g" "themes/bar.xml" > "/tmp/bar.xml";
+
 					cp -r -f "/tmp/ui-temp1.xml" "/tmp/orangefox/ramdisk/twres/ui.xml";
 					cp -r -f "/tmp/ui-temp1.xml" "/twres/ui.xml";
+
+					cp -r -f "/tmp/bar.xml" "/twres/themes/bar.xml";
+					cp -r -f "/tmp/bar.xml" "/tmp/orangefox/ramdisk/twres/themes/bar.xml";
 					</action>
 					<action function="wlfx"/>
 					<action function="set">nougat=3</action>
