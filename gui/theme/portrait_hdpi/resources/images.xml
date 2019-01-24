@@ -10,8 +10,6 @@
 	<resources>
 	
 		<!-- pie door -->
-		<image name="actionbar_storage" filename="Default/ActionBar/storage" retainaspect="1"/>
-		<image name="actionbar_storage_hl" filename="Default/ActionBar/storage_hl" retainaspect="1"/>
 		<!---->
 		<font name="GSans" filename="GoogleSans-Medium.ttf" size="42"/>
 		
@@ -33,9 +31,6 @@
 		<image name="style_apply" filename="Default/Workshop/StyleApply"/>
 	
 		<font name="fixed" filename="RobotoMono.ttf" size="34"/>
-		
-		<!-- Action Bar -->
-		<image name="actionbar_shadow" filename="Default/ActionBar/shadow"/>
 		
 		<!-- Battery -->
 		<image name="battery15" filename="Default/Battery/battery15" retainaspect="1"/>

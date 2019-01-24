@@ -13,6 +13,47 @@
 		<image name="handle_h_classic" filename="Orange/Controls/handle_h_classic" retainaspect="1"/>
 		<image name="btn_raised_hl" filename="Orange/Controls/btn_raised_hl"/>
 
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="Orange/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_back_hl" filename="Orange/ActionBar/back_hl" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="Orange/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_hl" filename="Orange/ActionBar/cancel_hl" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="Orange/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_cancel_no_hl" filename="Orange/ActionBar/cancel_no_hl" retainaspect="1"/>
+		<image name="actionbar_delete" filename="Orange/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_delete_hl" filename="Orange/ActionBar/delete_hl" retainaspect="1"/>
+		<image name="actionbar_edit" filename="Orange/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_edit_hl" filename="Orange/ActionBar/edit_hl" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="Orange/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_dis_hl" filename="Orange/ActionBar/encr_dis_hl" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="Orange/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_encr_ena_hl" filename="Orange/ActionBar/encr_ena_hl" retainaspect="1"/>
+		<image name="actionbar_flash" filename="Orange/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_flash_hl" filename="Orange/ActionBar/flash_hl" retainaspect="1"/>
+		<image name="actionbar_font_big" filename="Orange/ActionBar/font_big" retainaspect="1"/>
+		<image name="actionbar_font_big_hl" filename="Orange/ActionBar/font_big_hl" retainaspect="1"/>
+		<image name="actionbar_font_small" filename="Orange/ActionBar/font_small" retainaspect="1"/>
+		<image name="actionbar_font_small_hl" filename="Orange/ActionBar/font_small_hl" retainaspect="1"/>
+		<image name="actionbar_pin" filename="Orange/ActionBar/pin" retainaspect="1"/>
+		<image name="actionbar_pin_hl" filename="Orange/ActionBar/pin_hl" retainaspect="1"/>
+		<image name="actionbar_pinned" filename="Orange/ActionBar/pinned" retainaspect="1"/>
+		<image name="actionbar_pinned_hl" filename="Orange/ActionBar/pinned_hl" retainaspect="1"/>
+		<image name="actionbar_reset" filename="Orange/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_reset_hl" filename="Orange/ActionBar/reset_hl" retainaspect="1"/>
+		<image name="actionbar_settings" filename="Orange/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_settings_hl" filename="Orange/ActionBar/settings_hl" retainaspect="1"/>
+		<image name="actionbar_sort" filename="Orange/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_sort_hl" filename="Orange/ActionBar/sort_hl" retainaspect="1"/>
+		<image name="actionbar_color_prim" filename="Orange/ActionBar/color_prim" retainaspect="1"/>
+		<image name="actionbar_color_prim_hl" filename="Orange/ActionBar/color_prim_hl" retainaspect="1"/>
+		<image name="actionbar_color_sec" filename="Orange/ActionBar/color_sec" retainaspect="1"/>
+		<image name="actionbar_color_sec_hl" filename="Orange/ActionBar/color_sec_hl" retainaspect="1"/>
+		<image name="power_off" filename="Orange/ActionBar/power_off" retainaspect="1"/>
+		<image name="power_off_hl" filename="Orange/ActionBar/power_off_hl" retainaspect="1"/>
+		<image name="actionbar_storage" filename="Orange/ActionBar/storage" retainaspect="1"/>
+		<image name="actionbar_storage_hl" filename="Orange/ActionBar/storage_hl" retainaspect="1"/>
+		<image name="actionbar_shadow" filename="Orange/ActionBar/shadow"/>
+
 		<!-- Nav panel -->
 		<image name="nav_menu" filename="Orange/NavPanel/menu" retainaspect="1"/>
 		<image name="nav_wipe" filename="Orange/NavPanel/wipe" retainaspect="1"/>
