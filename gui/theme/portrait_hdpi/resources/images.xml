@@ -8,7 +8,11 @@
 	</mousecursor>
 	
 	<resources>
-	
+		<!-- ota -->
+		<image name="ota_icon" filename="Default/FullscreenIcons/ota_icon" retainaspect="1"/>
+		<image name="progress_empty_small" filename="Default/Progress/progress_empty_small"/>
+		<image name="progress_fill_small" filename="Default/Progress/progress_fill_small"/>
+		
 		<!-- pie door -->
 		<!---->
 		<font name="GSans" filename="GoogleSans-Medium.ttf" size="42"/>
