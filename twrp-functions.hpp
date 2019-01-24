@@ -133,6 +133,7 @@ private:
     	static bool Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
     	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
     	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
+    	static void Patch_Verity_Flags(string path); // patch the fstab's dm-verity flags
     	static void PrepareToFinish(void); // call this only when we are about to shutdown or reboot
     	static bool DontPatchBootImage(void); // return true to avoid patching the boot image
 };

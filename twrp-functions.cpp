@@ -2984,8 +2984,7 @@ bool TWFunc::Patch_DM_Verity(void)
 	        if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
 	           {
 			status = true;
-		        TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;",
-					     "ro.config.dmverity=false");
+			TWFunc::Patch_Verity_Flags(path);
 		   }			     
 	    }
 	  else
@@ -3079,25 +3078,26 @@ bool TWFunc::Patch_DM_Verity(void)
 	      def = true;
 	      if (TWFunc::CheckWord(path, "ro.config.dmverity="))
 		{
-		  if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
-		    { 
-		        status = true;
-		        found_verity = true;
-		        TWFunc::Replace_Word_In_File(path,
-		        	"ro.config.dmverity=true;",
-				"ro.config.dmverity=false");
-		    }
+		    found_verity = true;
+		    if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
+		       {
+	    	    	   status = true;
+		    	   TWFunc::Patch_Verity_Flags(path);
+		       }
 		}
+		else
 		{
 		  ofstream File(path.c_str(), ios_base::app | ios_base::out);
 		  if (File.is_open())
-		    {
-		      File << "ro.config.dmverity=false" << endl;
-		      File.close();
-		    }
+		     {
+		        File << "ro.config.dmverity=false" << endl;
+		        File.close();
+		        status = true;
+		     }
 		}
-	    }  
-	}
+	    }  // default.prop
+	    
+	} // while
       
       closedir(d1);
  
@@ -3109,20 +3109,14 @@ bool TWFunc::Patch_DM_Verity(void)
 	  else
 	    path = fstab1 + "/default.prop";
 	    
-	  if (TWFunc::CheckWord(path, "ro.config.dmverity="))
-	    {
-	      if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
-	         {
-		     status = true;
-		     found_verity = true;
-		     TWFunc::Replace_Word_In_File(path, 
-		     		"ro.config.dmverity=true;",
-				"ro.config.dmverity=false");
-		 }
-	    }
-	}
-
-      //end
+	  if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
+	     {
+		status = true;
+		found_verity = true;
+		TWFunc::Patch_Verity_Flags(path);
+	     }
+	} // !def
+    //end
 
       if (New_Fox_Installation != 1)
          {
@@ -3159,6 +3153,33 @@ bool TWFunc::Patch_DM_Verity(void)
   return status;
 }
 
+void TWFunc::Patch_Verity_Flags(string path)
+{
+   TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;", "ro.config.dmverity=false");
+   usleep(125000); 
+   if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
+   {
+      string root = Get_Root_Path (path);
+      if ((root == "/vendor") || (root == PartitionManager.Get_Android_Root_Path()))
+      {
+        LOGINFO("OrangeFox: Patch_Encryption_Flags: trying again...\n");
+	int res;
+	string result;
+	string cmd_script = "/tmp/dmver.sh";
+   	CreateNewFile (cmd_script);
+   	chmod (cmd_script.c_str(), 0755);
+   	AppendLineToFile (cmd_script, "#!/sbin/sh");
+   	AppendLineToFile (cmd_script, "mount -o rw,remount " + root);
+   	AppendLineToFile (cmd_script, "mount -o rw,remount " + root + " " + root);
+   	AppendLineToFile (cmd_script, "sed -i -e \"s|ro.config.dmverity=true|ro.config.dmverity=false|g\" " + path);
+   	AppendLineToFile (cmd_script, "umount " + root + " > /dev/null 2>&1");
+   	AppendLineToFile (cmd_script, "");
+   	AppendLineToFile (cmd_script, "exit 0");
+   	res = Exec_Cmd (cmd_script, result);
+   	unlink(cmd_script.c_str());
+      }    
+  }
+}
 
 bool TWFunc::Fstab_Has_Verity_Flag(std::string path)
 {
@@ -3262,12 +3283,12 @@ bool TWFunc::Patch_Forced_Encryption(void)
 	    {
 	      if (Fstab_Has_Encryption_Flag(path))
 	      {  
-		LOGINFO("OrangeFox: Relevant encryption settings are found in %s\n", path.c_str());
-		status = true;
+		  LOGINFO("OrangeFox: Relevant encryption settings are found in %s\n", path.c_str());
+		  status = true;
 	      }
 	      else
 	      {
-		 LOGINFO("OrangeFox: Relevant encryption settings are not found in %s\n", path.c_str());
+		  LOGINFO("OrangeFox: Relevant encryption settings are not found in %s\n", path.c_str());
 	      }
 	    }
 	  if (Fstab_Has_Encryption_Flag(path))
@@ -3276,7 +3297,8 @@ bool TWFunc::Patch_Forced_Encryption(void)
 	          TWFunc::Patch_Encryption_Flags(path);
 	     }
 	}
-    }
+    } // while
+    
   closedir(d);  
 
   if (stat == 0)
@@ -3510,7 +3532,8 @@ void TWFunc::Deactivation_Process(void)
      }
   
   // advanced stock replace
-  Disable_Stock_Recovery_Replace();
+  if (Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
+  	Disable_Stock_Recovery_Replace();
 
   // Should we skip the boot image patches?
   if (DontPatchBootImage() == true)
