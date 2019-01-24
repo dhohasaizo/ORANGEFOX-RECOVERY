@@ -3,12 +3,18 @@
 	<variables>
 		<!-- OrangeFox vars -->
 		<variable name="ota_back_file" value="0"/>
+
 		<!-- Lockscreen -->
 		<variable name="clock_style" value="0" persist="1"/>
+
+		<!-- NavBar -->
+		<variable name="fox_navbar_disabled" value="0" persist="1"/>
 
 		<!-- Device settings -->
 		<variable name="tw_enable_keys" value="1"/>
 		<variable name="tw_menu_key" value="slideout"/>
+
+		<variable name="navbar_check" value="0" persist="1"/>
 		
 		
 		<!-- Favorites menu -->

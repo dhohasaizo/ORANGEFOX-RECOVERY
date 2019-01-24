@@ -2760,6 +2760,7 @@ int GUIAction::wlfx(std::string arg __unused)
     }
   else
     {
+      DataManager::Flush();
       #ifdef OF_USE_MAGISKBOOT
       TWFunc::PackRepackImage_MagiskBoot(false, false);
       #else

@@ -460,47 +460,7 @@
 				<condition var1="navbar_disable" var2="1"/>
 				<text>{@theme_apply=Applying theme...}</text>
 			</text>
-			
-			<action>
-				<action function="set">tw_simulate_actions=0</action>
-				<action function="set">tw_simulate_fail=0</action>
-				<condition var1="tw_themeexist" var2="0"/>
-				<action function="cmd">
-					cd "/twres";
-					chmod 777 ./zip;
-					./zip -r9 ./ui.zip *;
-				</action>
-				<action function="set">theme_cmd=</action>
-				<action function="queueclear"/>
-				<action function="set">tw_filename=/twres/ui.zip</action>
-				<action function="queuezip"/>
-				<action function="flash">ext_theme_busy_flashing</action>
-			</action>
-			
-			<action>
-				<action function="set">tw_simulate_actions=0</action>
-				<action function="set">tw_simulate_fail=0</action>
-				<action function="mount">data</action>
-				<condition var1="tw_themeexist" var2="1"/>
-				<action function="cmd">
-					cd "%tw_theme_path%";
-					rm -rf "./repack";
-					mkdir repack;
-					cd "./repack";
-					
-					mkdir themes images fonts;
-					
-					if [ ! -f "../zip" ]; then unzip -p ../ui.zip zip > ../zip; fi;
-					if [ ! -x "../zip" ]; then chmod 777 ../zip; fi;
-					
-					unzip -p ../ui.zip %theme_cmd%;
-					
-					../zip -9r ../ui.zip .;
-					
-					rm -rf "../repack"; 
-					pkill recovery;
-				</action>
-				<action function="set">theme_cmd=</action>
+
 			</action>
 		</page>
 		
