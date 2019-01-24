@@ -691,54 +691,35 @@
 
 			<button style="btn_dlg_hl">
 				<placement x="%db_right_x%" y="%db_y%"/>
+				<condition var1="tw_reboot_recovery" var2="1"/>
 				<text>{@ok_btn=OK}</text>
 				<actions>
-					<action function="overlay">console</action>
-					<action function="cmd">  
-					#!/sbin/sh
-					FOX=/sdcard/Fox
-					OUTFD=/proc/self/fd/$2
-					ui_print() {
-					echo -n -e "ui_print $1\n" > $OUTFD
-					echo -n -e "ui_print\n" > $OUTFD
-					}
-
-					ui_print "- OrangeFox Recovery Project"
-					ui_print "- Reset OrangeFox to default settings"
-					ui_print "- Author: DarthJabba9"
-
-					ui_print "- Mounting filesystems..."
-					mount /sdcard
-					mount /persist
-
-					ui_print "- Removing OrangeFox configuration files ..."
-					rm -f $FOX/aromafm.cfg
-					rm -f $FOX/.foxs
-					rm -f /persist/.foxs
-
-					ui_print "- Unmounting filesystems..."
-					umount /sdcard
-					umount /persist
-
-					# Finish and reboot
-					ui_print "- Finished removing the OrangeFox configuration settings!" 
-					ui_print " "
-					ui_print " >> Rebooting to Recovery in 5 seconds ..."
-					sleep 1
-					ui_print "-3s..."
-					sleep 1
-					ui_print "-2s.."
-					sleep 1
-					ui_print "-1s."
-					sleep 1
-					ui_print " "
-					ui_print "- Rebooting to Recovery now ..."
-					reboot recovery
-
-					# if the reboot command fails, try this instead
-					sleep 3
-					killall recovery
-					</action>
+					<action function="restoredefaultsettings"/>
+					<action function="overlay"/>
+					<action function="reboot">recovery</action>
+				</actions>
+			</button>
+			
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<condition var1="tw_reboot_system" var2="1"/>
+				<condition var1="tw_reboot_recovery" op="!=" var2="1"/>
+				<text>{@ok_btn=OK}</text>
+				<actions>
+					<action function="restoredefaultsettings"/>
+					<action function="overlay"/>
+					<action function="reboot">system</action>
+				</actions>
+			</button>
+			
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<condition var1="tw_reboot_system" op="!=" var2="1"/>
+				<condition var1="tw_reboot_recovery" op="!=" var2="1"/>
+				<text>{@ok_btn=OK}</text>
+				<actions>
+					<action function="restoredefaultsettings"/>
+					<action function="overlay"/>
 				</actions>
 			</button>
 			
