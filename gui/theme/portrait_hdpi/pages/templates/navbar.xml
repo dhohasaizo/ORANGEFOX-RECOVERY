@@ -657,6 +657,14 @@
 			<!-- Pie -->
 			<button>
 				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="nougat" var2="3"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_key_pie" highlightresource="back_key_hl_pie"/>
+				<action function="key">back</action>
+			</button>
+			<button>
+				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="nougat" var2="3"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>

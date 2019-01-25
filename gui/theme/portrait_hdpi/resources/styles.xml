@@ -6,22 +6,25 @@
 	</variables>
 	<styles>
 		<style name="nav_panel">
-			<font resource="GSans" color="%accent%"/>
+			<font resource="Secondary" color="%accent%"/>
 		</style>
 		<style name="nav_panel_d">
-			<font resource="GSans" color="%color_disable%"/>
+			<font resource="Secondary" color="%color_disable%"/>
 		</style>
 		
 		<style name="text_ab_title">
-			<font resource="title" color="%accent%"/>
+			<font resource="Secondary-title" color="%accent%"/>
+		</style>
+		<style name="text_ab_switch">
+			<font resource="title" color="#fafafa"/>
 		</style>
 		
 		<style name="text_ab_subtitle">
-			<font resource="body1" color="%text_actionbar%"/>
+			<font resource="Secondary" color="%accent%"/>
 		</style>
 
 		<style name="text_dlg_title">
-			<font resource="title" color="%text%"/>
+			<font resource="Secondary-title" color="%text%"/>
 		</style>
 
 		<style name="text_input_fail">
@@ -119,37 +122,37 @@
 
 		<style name="btn_raised">
 			<highlight color="%highlight_color%"/>
-			<font resource="GSans" color="%text_raisedbtn%"/>
+			<font resource="Secondary" color="%text_raisedbtn%"/>
 			<image resource="btn_raised"/>
 		</style>
 
 		<style name="btn_raised_warn">
 			<highlight color="%highlight_color%"/>
-			<font resource="GSans" color="%text_raisedbtn%"/>
+			<font resource="Secondary" color="%text_raisedbtn%"/>
 			<image resource="btn_raised_warn"/>
 		</style>
 
 		<style name="btn_raised_hl">
 			<highlight color="%highlight_color%"/>
-			<font resource="GSans" color="%text_raisedbtn%"/>
+			<font resource="Secondary" color="%text_raisedbtn%"/>
 			<image resource="btn_raised_hl"/>
 		</style>
 
 		<style name="btn_flat_qw">
 			<highlight color="%highlight_color%"/>
-			<font resource="GSans" color="%text_raisedbtn%"/>
+			<font resource="Secondary" color="%text_raisedbtn%"/>
 			<image resource="btn_flat_qw"/>
 		</style>
 
 		<style name="btn_dlg">
 			<highlight color="%highlight_color%"/>
-			<font resource="GSans" color="%text_menu%"/>
+			<font resource="Secondary" color="%text_menu%"/>
 			<image resource="db_empty" highlightresource="db_hl" />
 		</style>
 
 		<style name="btn_dlg_hl">
 			<highlight color="%highlight_color%"/>
-			<font resource="GSans" color="%accent%"/>
+			<font resource="Secondary" color="%accent%"/>
 			<image resource="db_empty" highlightresource="db_hl" />
 		</style>
 

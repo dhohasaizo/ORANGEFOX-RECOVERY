@@ -24,11 +24,17 @@
 		<font name="keylabel-num" filename="GoogleSans-Regular.ttf" size="72"/>
 		<font name="keylabel-small" filename="GoogleSans-Regular.ttf" size="46"/>
 		<font name="keylabel-longpress" filename="GoogleSans-Regular.ttf" size="32"/>
+		
+		<font name="Secondary" filename="GoogleSans-Medium.ttf" size="42"/>
+		<font name="Secondary-title" filename="GoogleSans-Medium.ttf" size="64"/>
 	</resources>
 	
 	<variables>
-		<variable name="theme_font" value="Roboto"/>
-		<variable name="current_font" value="Roboto"/>
-		<variable name="theme_font_name" value="Roboto"/>
+		<variable name="theme_font" value="GoogleSans"/>
+		<variable name="current_font" value="GoogleSans"/>
+		<variable name="theme_font_name" value="GoogleSans"/>
+		<variable name="theme_sec_font" value="GoogleSans"/>
+		<variable name="current_sec_font" value="GoogleSans"/>
+		<variable name="theme_sec_font_name" value="Google Sans"/>
 	</variables>
 </recovery>
