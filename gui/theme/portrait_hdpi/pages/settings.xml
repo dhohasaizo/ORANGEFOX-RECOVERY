@@ -383,37 +383,122 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@settings_ui_status}</text>
+				<text>{@settings_ui=Customization}</text>
 			</text>
 			
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@status_clock_pos}</text>
+				<text>{@settings_ui_style=NavBar style}</text>
 			</text>
+			
+			<text style="caption">
+				<placement x="%col2_x_text%" y="%row1_1_y%"/>
+				<text>{@settings_ui_color=NavBar background}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l3%"/>
+				<data name="nougat"/>
+				<listitem name="{@fm_none=None}">2</listitem>
+				<listitem name="{@cust_navbar_cls=Classic}">0</listitem>
+				<listitem name="{@cust_navbar_noug=Nougat}">1</listitem>
+				<listitem name="Pie">3</listitem>
+			</listbox>
 
 			<listbox>
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
-				<data name="center_clock"/>
-				<listitem name="{@status_clock_left}">2</listitem>
-				<listitem name="{@status_clock_center}">1</listitem>
-				<listitem name="{@status_clock_right}">0</listitem>
+				<placement x="%col2_x%" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l3%"/>
+				<data name="navbar_bkg"/>
+				<listitem name="{@fm_none=None}">0</listitem>
+				<listitem name="{@cust_navbar_accent=Accent}">1</listitem>
+				<listitem name="{@cust_navbar_black=Black}">2<condition var1="theme_style" op="!=" var2="Black"/></listitem>
+				<listitem name="{@cust_navbar_black=Black}">2<condition var1="theme_style" var2="Black"/><condition var1="theme_background" var2="on"/></listitem>
+			</listbox>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row2_3a_y%" w="%screen_w%" h="%lb_l2%"/>
+				<listitem name="{@cust_navbar_white=Use white buttons}">
+					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="theme_style_main" op="!=" var2="Light"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@cust_navbar_white=Use white buttons}">
+					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="nougat" op="!=" var2="3"/>
+					<condition var1="theme_style_main" var2="Light"/>
+					<condition var1="theme_background" var2="on"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@cust_navbar_white=Use white buttons}">
+					<condition var1="navbar_bkg" var2="2"/>
+					<condition var1="theme_style_main" var2="Light"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@rev_navbar_chk=Reversed navbar layout}">
+					<data variable="navbar_sams"/>
+				</listitem>
 			</listbox>
 			
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<placement x="%col1_x%" y="%row4_1a_y%"/>
 				<text>{@settings_ui_status=Status bar}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<placement x="0" y="%row4_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<listitem name="{@center_clock_bar=Center clock in statusbar}">
+					<data variable="center_clock"/>
+				</listitem>
 				<listitem name="{@show_cpu_temp_bar=Show CPU temperature}">
 					<data variable="show_cpu_temp"/>
-					<condition var1="center_clock" op="!=" var2="2"/>
 				</listitem>
 				<listitem name="{@settings_ui_battery=Show battery icon}">
 					<data variable="enable_battery"/>
 				</listitem>
+				
 			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row6_2_y%"/>
+				<text>{@cust_oth=Other}</text>
+			</text>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row6_3_y%" w="%screen_w%" h="%lb_l4%"/>
+				<listitem name="{@use_menu_btn=Use buttons on main menu}">
+					<data variable="menu_btn_solid"/>
+				</listitem>
+				<listitem name="{@alt_btn=Alternative buttons style}">
+					<data variable="alt_style_btn"/>
+				</listitem>
+				<listitem name="{@accent_title=Use accent color in title}">
+					<data variable="accent_title"/>
+					<condition var1="theme_style" op="!=" var2="Light"/>
+				</listitem>
+				<listitem name="{@accent_title=Use accent color in title}">
+					<data variable="accent_title"/>
+					<condition var1="theme_background" var2="on"/>
+					<condition var1="theme_style" var2="Light"/>
+				</listitem>
+				<listitem name="{@new_key=Use new style for keyboard}">
+					<data variable="key_buttons"/>
+				</listitem>
+			</listbox>
+			
+			<action>
+				<condition var1="navbar_bkg" var2="1"/>
+				<action function="set">navbar_accent=1</action>
+			</action>
+			
+			<action>
+				<condition var1="navbar_bkg" var2="0"/>
+				<condition var1="theme_style_main" var2="Light"/>
+				<action function="set">navbar_accent=0</action>
+			</action>
+			
+			<action>
+				<condition var1="nougat" var2="2"/>
+				<action function="set">navbar_bkg=0</action>
+			</action>
 
 			<action>
 				<touch key="home"/>
@@ -422,69 +507,75 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">customization_menu</action>
+				<action function="page">settings</action>
 			</action>
 		</page>
 		
-		<!-- Keyboard ☺ -->
+		<!-- Персонализация ☺ -->
 		<page name="ext_custom">
-			<template name="body_key"/>
-			<fill color="%accent%">
-				<condition var1="key_buttons" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-			</fill>
-			<fill color="%unactive_title%">
-				<condition var1="key_buttons" op="!=" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-			</fill>
-			
-			<image>
-				<condition var1="key_buttons" var2="1"/>
-				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
-				<image resource="switch_on"/>
-			</image>
-			<image>
-				<condition var1="key_buttons" op="!=" var2="1"/>
-				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
-				<image resource="switch_off"/>
-			</image>
-			
-			<text style="text_ab_switch">
-				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
-				<text>{@keyboard_newstyle}</text>
-			</text>
+			<template name="body"/>
 
-			<button style="bs_btn">
-				<condition var1="key_buttons" op="!=" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-				<actions>
-					<action function="set">key_buttons=1</action>
-				</actions>
-			</button>
-			<button style="bs_btn">
-				<condition var1="key_buttons" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-				<actions>
-					<action function="set">key_buttons=0</action>
-				</actions>
-			</button>
-			
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@keyboard_title}</text>
+				<text>{@settings_ui=Customization}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@settings_ui_status=Status bar}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row1_3a_y%" w="%screen_w%" h="%lb_l1%"/>
-				<listitem name="WIP: Numbers row">
-					<data variable="xxx"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
+				<listitem name="{@center_clock_bar=Center clock in statusbar}">
+					<data variable="center_clock"/>
 				</listitem>
+				<listitem name="{@show_cpu_temp_bar=Show CPU temperature}">
+					<data variable="show_cpu_temp"/>
+				</listitem>
+				<listitem name="{@settings_ui_battery=Show battery icon}">
+					<data variable="enable_battery"/>
+				</listitem>
+				
 			</listbox>
 			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>{@cust_oth=Other}</text>
+			</text>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l4%"/>
+				<listitem name="{@use_menu_btn=Use buttons on main menu}">
+					<data variable="menu_btn_solid"/>
+				</listitem>
+				<listitem name="{@alt_btn=Alternative buttons style}">
+					<data variable="alt_style_btn"/>
+				</listitem>
+				<listitem name="{@accent_title=Use accent color in title}">
+					<data variable="accent_title"/>
+					<condition var1="theme_style" op="!=" var2="Light"/>
+				</listitem>
+				<listitem name="{@accent_title=Use accent color in title}">
+					<data variable="accent_title"/>
+					<condition var1="theme_background" var2="on"/>
+					<condition var1="theme_style" var2="Light"/>
+				</listitem>
+				<listitem name="{@new_key=Use new style for keyboard}">
+					<data variable="key_buttons"/>
+				</listitem>
+			</listbox>
+				
+			<action>
+				<condition var1="theme_style" var2="Light"/>
+				<condition var1="accent_title" var2="1"/>
+				<action function="set">accent_title=0</action>
+			</action>
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -492,7 +583,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">customization_menu</action>
+				<action function="page">settings</action>
 			</action>
 		</page>
 
@@ -519,7 +610,7 @@
 			</image>
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>{@navbar_title}</text>
+				<text>Navigation keys</text>
 			</text>
 			<!-- -->
 
@@ -534,7 +625,7 @@
 			</image>
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>{@settings_ui_status}</text>
+				<text>Statusbar</text>
 			</text>
 			<!-- -->
 
@@ -564,7 +655,7 @@
 			</image>
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@keyboard_title}</text>
+				<text>Keyboard</text>
 			</text>
 			<!-- -->
 
@@ -670,84 +761,56 @@
 
 		<page name="custm_keys">
 			<template name="body"/>
-			
-			<fill color="%accent%">
-				<condition var1="navbar_disable" var2="0"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-			</fill>
-			<fill color="%unactive_title%">
-				<condition var1="navbar_disable" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-			</fill>
-			
-			<image>
-				<condition var1="navbar_disable" var2="1"/>
-				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
-				<image resource="switch_off"/>
-			</image>
-			<image>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
-				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
-				<image resource="switch_on"/>
-			</image>
-			
-			<text style="text_ab_switch">
-				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
-				<text>{@navbar_onscreen}</text>
-			</text>
 
-			<button style="bs_btn">
-				<condition var1="navbar_disable" op="!=" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-				<actions>
-					<action function="wlfw"/>
-					<action function="cmd">
-					cat "/twres/themes/sed/navbar.xml" | sed -e "
-					s/#NAVBAR_DISABLE#/1/g;
-					s/#SCREEN_H#/$(expr %screen_original_h% + 144)/g
-					" > /tmp/orangefox/ramdisk/twres/themes/navbar.xml;
-					cat "/tmp/orangefox/ramdisk/twres/themes/navbar.xml" > /twres/themes/navbar.xml
-					</action>
-					<action function="wlfx"/>
-					<action function="reload"/>
-				</actions>
-			</button>
+			<template name="ab_without_shadow"/>
 
-			<button style="bs_btn">
-				<condition var1="navbar_disable" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-				<actions>
-					<action function="wlfw"/>
-					<action function="cmd">
-					cat "/twres/themes/sed/navbar.xml" | sed -e "
-					s/#NAVBAR_DISABLE#/0/g;
-					s/#SCREEN_H#/%screen_original_h%/g
-					" > /tmp/orangefox/ramdisk/twres/themes/navbar.xml;
-					cat "/tmp/orangefox/ramdisk/twres/themes/navbar.xml" > /twres/themes/navbar.xml
-					</action>
-					<action function="wlfx"/>
-					<action function="reload"/>
-				</actions>
-			</button>
-
-			<template name="ab"/>
-			
 			<template name="statusbarinfo"/>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@navbar_title}</text>
+				<text>Navigation bar</text>
 			</text>
 
+			<fill color="%accent%">
+				<placement x="0" y="apanel_y" w="%screen_w%" h="apanel"/>
+			</fill>
+
+			<text style="text_dlg_title">
+				<placement x="%col1_x%" y="275"/>
+				<text>Enable Navigation bar</text>
+			</text>
+
+			<image>
+				<condition var1="navbar_disable" var2="0"/>
+				<image resource="switch_on" placement="2"/>
+				<placement x="%apanel_checkbox_x%" y="%apanel_checkbox_y%"/>
+			</image>
+
+			<image>
+				<condition var1="navbar_disable" var2="1"/>
+				<image resource="switch_off" placement="2"/>
+				<placement x="%apanel_checkbox_x%" y="%apanel_checkbox_y%"/>
+			</image>
+
+			<image>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="397"/>
+			</image>
+
+			<image>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="230"/>
+			</image>
+
 			<text style="caption">
-				<placement x="%col1_x%" y="%row1_3a_y%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<text>{@settings_ui_style=NavBar style}</text>
 			</text>
 			
 			<listbox>
-				<placement x="0" y="%row2_1a_y%" w="%screen_w%" h="%lb_l3%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="0" y="%row2_2_y%" w="%screen_w%" h="%lb_l4%"/>
 				<data name="nougat"/>
 				<!--listitem name="{@fm_none=None}">2</listitem-->
 				<listitem name="{@cust_navbar_cls=Classic}">0</listitem>
@@ -756,29 +819,30 @@
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row4_1_y%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="%col1_x%" y="%row4_2_y%"/>
 				<text>{@settings_ui_color=NavBar background}</text>
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row4_2_y%" w="%screen_w%" h="%lb_l3%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="navbar_bkg"/>
 				<listitem name="{@fm_none=None}">0</listitem>
 				<listitem name="{@cust_navbar_accent=Accent}">1</listitem>
 				<listitem name="{@cust_navbar_black=Black}">2<condition var1="theme_style" op="!=" var2="Black"/></listitem>
+				<listitem name="{@cust_navbar_black=Black}">2<condition var1="theme_style" var2="Black"/><condition var1="theme_background" var2="on"/></listitem>
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row6_1a_y%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
-				<text>{@cust_oth}</text>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="%col1_x%" y="%row6_2_y%"/>
+				<text>Navbar settings</text>
 			</text>
 			
 			<listbox style="settingslist">
-				<placement x="0" y="%row6_2a_y%" w="%screen_w%" h="%lb_l2%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="0" y="%row6_3_y%" w="%screen_w%" h="%lb_l2%"/>
 				<listitem name="{@cust_navbar_white=Use white buttons}">
 					<condition var1="navbar_bkg" op="!=" var2="1"/>
 					<condition var1="theme_style_main" op="!=" var2="Light"/>
@@ -801,11 +865,54 @@
 				</listitem>
 			</listbox>
 
-			<button>
-				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
-				<condition var1="tw_busy" var2="1"/>
+			<button style="bs_btn">
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="0" y="apanel_y" w="%screen_w%" h="apanel"/>
+				<text>Disable navbar</text>
+				<actions>
+					<action function="wlfw"/>
+					<action function="cmd">  
+					cd "/twres";
+					sed "s/1920/1920+144/g" "ui.xml" > "/tmp/ui-temp.xml";
+					sed "s/960/1032/g" "/tmp/ui-temp.xml" > "/tmp/ui-temp1.xml";
+					sed "s/0\"/1\"/g" "themes/bar.xml" > "/tmp/bar.xml";
+
+					cp -r -f "/tmp/ui-temp1.xml" "/tmp/orangefox/ramdisk/twres/ui.xml";
+					cp -r -f "/tmp/ui-temp1.xml" "/twres/ui.xml";
+
+					cp -r -f "/tmp/bar.xml" "/twres/themes/bar.xml";
+					cp -r -f "/tmp/bar.xml" "/tmp/orangefox/ramdisk/twres/themes/bar.xml";
+					</action>
+					<action function="wlfx"/>
+					<action function="set">nougat=2</action>
+					<action function="reload"/>
+				</actions>
 			</button>
-			
+
+			<button style="bs_btn">
+				<condition var1="navbar_disable" var2="1"/>
+				<placement x="0" y="apanel_y" w="%screen_w%" h="apanel"/>
+				<text>Enable navbar</text>
+				<actions>
+					<action function="wlfw"/>
+					<action function="cmd">  
+					cd "/twres";
+					sed "s/1920+144/1920/g" "ui.xml" > "/tmp/ui-temp.xml";
+					sed "s/1032/960/g" "/tmp/ui-temp.xml" > "/tmp/ui-temp1.xml";
+					sed "s/1\"/0\"/g" "themes/bar.xml" > "/tmp/bar.xml";
+
+					cp -r -f "/tmp/ui-temp1.xml" "/tmp/orangefox/ramdisk/twres/ui.xml";
+					cp -r -f "/tmp/ui-temp1.xml" "/twres/ui.xml";
+
+					cp -r -f "/tmp/bar.xml" "/twres/themes/bar.xml";
+					cp -r -f "/tmp/bar.xml" "/tmp/orangefox/ramdisk/twres/themes/bar.xml";
+					</action>
+					<action function="wlfx"/>
+					<action function="set">nougat=3</action>
+					<action function="reload"/>
+				</actions>
+			</button>
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
