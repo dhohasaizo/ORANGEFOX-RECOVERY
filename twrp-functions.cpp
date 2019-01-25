@@ -63,7 +63,7 @@ extern "C"
 #include "libcrecovery/common.h"
 }
 
-static string tmp = Fox_tmp_dir;
+static string tmp = Fox_tmp_dir; // "/tmp/orangefox/"
 static string split_img = tmp + "/split_img";
 static string ramdisk = tmp + "/ramdisk";
 static string tmp_boot = tmp + "/boot.img";
@@ -3532,6 +3532,9 @@ bool TWFunc::DontPatchBootImage(void)
 void TWFunc::Deactivation_Process(void)
 {
 
+bool patched_verity = false;
+bool patched_crypt = false;
+
   // don't call this on first boot following fresh installation
   if (New_Fox_Installation != 1)
      {
@@ -3574,7 +3577,8 @@ void TWFunc::Deactivation_Process(void)
   // dm-verity   
   if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
-	  if (Patch_DM_Verity())
+	  patched_verity = Patch_DM_Verity();
+	  if (patched_verity)
 	  {
               DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, 1);
 	      gui_msg("of_dm_verity=Successfully patched DM-Verity");
@@ -3590,7 +3594,8 @@ void TWFunc::Deactivation_Process(void)
   // forced encryption    
   if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
-	  if (Patch_Forced_Encryption())
+	  patched_crypt = Patch_Forced_Encryption();
+	  if (patched_crypt)
 	     {
 	        gui_msg("of_encryption=Successfully patched forced encryption");
 	     }
