@@ -7,14 +7,9 @@
 		<!-- Lockscreen -->
 		<variable name="clock_style" value="0" persist="1"/>
 
-		<!-- NavBar -->
-		<variable name="fox_navbar_disabled" value="0" persist="1"/>
-
 		<!-- Device settings -->
 		<variable name="tw_menu_key" value="slideout"/>
-
 		<variable name="navbar_check" value="0" persist="1"/>
-		
 		
 		<!-- Favorites menu -->
 		<variable name="book_1" value="/system/app" persist="1"/>
@@ -52,15 +47,13 @@
 		<variable name="nougat" value="1" persist="1"/>
 		<variable name="key_buttons" value="1" persist="1"/>
 		<variable name="storage_select_on" value="1" persist="1"/>
-		<variable name="alt_style_btn" value="0" persist="1"/>
 		<variable name="use_fixed_font" value="0" persist="1"/>
 		<variable name="show_cpu_temp" value="1" persist="1"/>
-		<variable name="center_clock" value="1" persist="1"/>
+		<variable name="center_clock" value="2" persist="1"/>
 		<variable name="list_font" value="small" persist="1"/>
 		<variable name="bookmark" value="2" persist="1"/>
 		<variable name="navbar_sams" value="0" persist="1"/>
 		<variable name="navbar_accent" value="0" persist="1"/>
-		<variable name="menu_btn_solid" value="1" persist="1"/>
 		<variable name="darker_ui" value="1" persist="1"/>
 		
 		<!-- Other... -->
@@ -235,12 +228,6 @@
 		<!-- Info -->
 		<variable name="col1_x_cards" value="228"/>
 		<variable name="col1_x_cards_icon" value="60"/>
-
-		<!-- Accent panel with checkbox -->
-		<variable name="apanel" value="160"/>
-		<variable name="apanel_y" value="237"/>
-		<variable name="apanel_checkbox_x" value="860"/>
-		<variable name="apanel_checkbox_y" value="245"/>
 		
 		<!-- Big invisible button -->
 		<variable name="mb_h_hide" value="120"/>
@@ -279,14 +266,17 @@
 		
 		<!-- Title / Title buttons -->
 		<variable name="ab_y" value="84"/>
+		<variable name="ab2_y" value="252"/>
 		<variable name="ab_btn1_x" value="924"/>
 		<variable name="ab_btn2_x" value="780"/>
 		<variable name="ab_btn3_x" value="636"/>
 		<variable name="ab_back_x" value="12"/>
 		<variable name="ab_bc_y" value="108"/>
+		<variable name="ab_bc2_y" value="276"/>
 		<variable name="ab_h" value="240"/>
 		<variable name="ab_ex_h" value="456"/>
 		<variable name="row_ab_ex_y" value="456"/>
+		<variable name="ab_btn_h" value="168"/>
 		
 		<!-- Sort menu -->
 		<variable name="ab_menu_y" value="72"/>
@@ -403,6 +393,7 @@
 		<variable name="text_fail" value="#FF0101"/>
 		<variable name="warning" value="#FF6600FF"/>
 		<variable name="error" value="#FF0000FF"/>
+		<variable name="unactive_title" value="#80868B"/>
 		
 		<!-- Rows -->
 		<variable name="row0_y" value="240"/>

@@ -10,7 +10,7 @@
 	</details>
 	
 	<include>
-		<xmlfile name="themes/bar.xml"/>
+		<xmlfile name="themes/navbar.xml"/>
 		<xmlfile name="themes/font.xml"/>
 		<xmlfile name="themes/style.xml"/>
 		<xmlfile name="themes/accent.xml"/>
@@ -42,7 +42,7 @@
 	</include>
 	<variables>
 		<variable name="theme_version" value="A3 | Alpha"/>
-		<variable name="screen_h" value="1920"/>
+		<variable name="screen_h" value="1920+%navbar_add%"/>
 		<variable name="center_y" value="960"/>
 	</variables>
 </recovery>
