@@ -72,6 +72,7 @@ static string fstab2 = "/vendor/etc";
 
 int Fox_Current_ROM_IsTreble = 0;
 int New_Fox_Installation = 0;
+static int FBE_Already_Decrypted = 0;
 
 static void CreateNewFile(string file_path)
 {
@@ -175,6 +176,26 @@ bool i = Path_Exists("/tmp/orangefox.cfg");
      return false;
    
    Exec_Cmd(FOX_STARTUP_SCRIPT);
+   return true;
+}
+
+/* rerun startup if needed after decryption */
+bool TWFunc::Rerun_Startup(void)
+{
+   LOGINFO("OrangeFox: Starting possible running of OrangeFox_Startup() again...\n");
+
+   if (FBE_Already_Decrypted == 1)
+      return false;
+
+   string tprop = Get_Property("orangefox.postinit.status");
+   bool i = Path_Exists("/tmp/orangefox.cfg");
+   if (i == true || tprop == "1")
+     return false;
+
+   FBE_Already_Decrypted = 1;
+
+   OrangeFox_Startup();
+   LOGINFO("OrangeFox: OrangeFox_Startup() executed again\n");
    return true;
 }
 

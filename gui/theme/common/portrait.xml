@@ -2781,10 +2781,10 @@
 			</action>
 
 			<!-- Reboot if failed last time  -->
-			<action>
+			<!--action>
 				<condition var1="fox_need_reboot" var2="1"/>
 				<action function="reboot">%tw_reboot_param%</action>
-			</action>
+			</action-->
 
 		</page>
 
