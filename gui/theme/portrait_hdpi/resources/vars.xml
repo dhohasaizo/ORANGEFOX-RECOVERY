@@ -44,7 +44,7 @@
 		<variable name="enable_battery" value="1" persist="1"/>
 		<variable name="navbar_bkg" value="0" persist="1"/>
 		<variable name="fl_shadow" value="1" persist="1"/>
-		<variable name="nougat" value="1" persist="1"/>
+		<variable name="nougat" value="2" persist="1"/>
 		<variable name="key_buttons" value="1" persist="1"/>
 		<variable name="storage_select_on" value="1" persist="1"/>
 		<variable name="use_fixed_font" value="0" persist="1"/>
@@ -55,6 +55,8 @@
 		<variable name="navbar_sams" value="0" persist="1"/>
 		<variable name="navbar_accent" value="0" persist="1"/>
 		<variable name="darker_ui" value="1" persist="1"/>
+		<variable name="show_slideout" value="0" persist="1"/>
+		<variable name="separate_status" value="0" persist="1"/>
 		
 		<!-- Other... -->
 		<variable name="disable_no_os" value="0" persist="1"/>
@@ -85,7 +87,7 @@
 		
 		<!-- NavPanel -->
 		<variable name="nav_item_w" value="270"/>
-		<variable name="nav_panel_h" value="168"/>
+		<variable name="nav_panel_h" value="312"/> <!-- 168+navbar -->
 		<variable name="nav_panel_id" value="0"/>
 		<variable name="nav_panel_y" value="%screen_h%-312"/>
 		<variable name="nav_icon_y" value="%screen_h%-256"/>
@@ -107,10 +109,7 @@
 		<variable name="slider_text_np_y" value="%screen_h%-594"/>
 		
 		<!-- NavPanel colors -->
-		<variable name="color_navpan" value="#202020"/>
-		<variable name="color_navpan_nb" value="#191919"/>
 		<variable name="color_disable" value="#666666"/>
-		<variable name="google_blue" value="#1A73E8"/>
 		
 		<!-- Screen size -->
 		<variable name="center_x" value="540"/>

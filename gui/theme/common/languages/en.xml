@@ -1015,16 +1015,23 @@
 		<string name="status_clock_left">Left</string>
 		<string name="status_clock_center">Center</string>
 		<string name="status_clock_right">Right</string>
+		<string name="dark_title">Make title darker</string>
+		<string name="separate_status">Flat styled status bar</string>
 		<!-- NavBar -->
 		<string name="navbar_title">Naviagtion Bar</string>
 		<string name="navbar_onscreen">Enable NavBar</string>
+		<string name="show_slideout">Show console button</string>
+		<string name="dark_nav">Dark</string>
 		<!-- Keyboard -->
 		<string name="keyboard_title">Keyboard</string>
-		<string name="keyboard_newstyle">New style</string>
+		<string name="keyboard_newstyle">Refreshed style</string>
+		<string name="keyboard_nums">Numbers row</string>
+		<!-- Lockscreen -->
+		<string name="lockscreen_title">Lock screen</string>
 
 		<!-- OTA working page -->
-		<string name="ota_console_title">Updating</string>
-		<string name="ota_simple_title">Updating</string>
+		<string name="ota_console_title">Installing OTA...</string>
+		<string name="ota_simple_title">Updating...</string>
 		<string name="ota_simple_log_btn">Log</string>
 
 		<string name="battery">Battery</string>
@@ -1045,7 +1052,5 @@
 		<string name="fox_dmverity_chk">Disable DM-Verity</string>
 		<string name="fox_forced_encryption_chk">Disable Forced Encryption</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Prevent auto reboot after installing OTA</string>
-
-		
 	</resources>
 </language>

@@ -104,6 +104,16 @@
 		<image name="slideout_ng_hl" filename="Orange/NavBar/slideout_ng_hl" retainaspect="1"/>
 		<image name="keyboard_hide_ng" filename="Orange/NavBar/keyboard_hide_ng" retainaspect="1"/>
 		<image name="keyboard_hide_ng_hl" filename="Orange/NavBar/keyboard_hide_ng_hl" retainaspect="1"/>
+		
+		<!-- Pie Nav bar -->
+		<image name="back_hl_pie" filename="Orange/NavBar/back_hl_pie" retainaspect="1"/>
+		<image name="back_key_hl_pie" filename="Orange/NavBar/back_key_hl_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="Orange/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="back_pie" filename="Orange/NavBar/back_pie" retainaspect="1"/>
+		<image name="home_hl_pie" filename="Orange/NavBar/home_hl_pie" retainaspect="1"/>
+		<image name="home_pie" filename="Orange/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="Orange/NavBar/slideout_key_pie" retainaspect="1"/>
+		<image name="slideout_key_pie_hl" filename="Orange/NavBar/slideout_key_pie_hl" retainaspect="1"/>
 	</resources>
 	<variables>
 		<variable name="accent" value="#ed6f02"/>

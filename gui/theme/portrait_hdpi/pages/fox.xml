@@ -61,6 +61,17 @@
 				<placement x="%col1_x%" y="%row2_3_y%"/>
 				<image resource="icon_warning"/>
 			</image>
+			<image>
+				<condition var1="ota_back_file" var2="1"/>
+				<condition var1="fox_support_miui_ota" var2="1"/>
+				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<image resource="icon_info"/>
+			</image>
+			<image>
+				<condition var1="fox_support_miui_ota" var2="0"/>
+				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<image resource="icon_info"/>
+			</image>
 
 			<text style="text_body2_fail">
 				<condition var1="ota_back_file" var2="0"/>
@@ -69,14 +80,14 @@
 				<text>Please flash full MIUI ROM!</text>
 			</text>
 
-			<text style="text_body2">
+			<text style="text_body2_hl">
 				<condition var1="ota_back_file" var2="1"/>
 				<condition var1="fox_support_miui_ota" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
 				<text>You are ready to receive updates!</text>
 			</text>
 
-			<text style="text_body2">
+			<text style="text_body2_hl">
 				<condition var1="fox_support_miui_ota" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
 				<text>Enabled custom ROM mode</text>

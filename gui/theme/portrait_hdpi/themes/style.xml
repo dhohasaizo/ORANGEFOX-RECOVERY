@@ -19,8 +19,8 @@
 		<image name="aroma_folder" filename="Default/FullscreenIcons/aroma_folder" retainaspect="1"/>
 		
 		<!-- Keyboard -->
-		<image name="keyback" filename="Default/Keyboard/key_butts" retainaspect="1"/>
-		<image name="keyback_num" filename="Default/Keyboard/key_num" retainaspect="1"/>
+		<image name="keyback" filename="Default/Keyboard/key_butts"/>
+		<image name="keyback_num" filename="Default/Keyboard/key_num"/>
 		
 		<!-- Progress -->
 		<animation name="progress" filename="Default/Progress/indeterminate"/>
@@ -60,7 +60,7 @@
 		<variable name="console_foreground" value="#E3E3E3FF"/>
 		<variable name="linecolor" value="#383838FF"/>
 		<variable name="darktransparent" value="#000000BB"/>
-		<variable name="lightransparent" value="#00000033"/>
+		<variable name="lightransparent" value="#00000011"/>
 		<variable name="theme_style" value="Gray"/>
 		<variable name="theme_style_main" value="Gray"/>
 		<variable name="applied_style_x" value="285"/>

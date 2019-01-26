@@ -443,6 +443,7 @@
 			<background color="%background%"/>
 			<template name="background_image"/>
 			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 			<template name="statusbarinfo"/>
@@ -468,6 +469,7 @@
 			<background color="%background%"/>
 			<template name="background_image"/>
 			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 			<template name="statusbarinfo"/>

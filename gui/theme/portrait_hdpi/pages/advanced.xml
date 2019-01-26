@@ -559,11 +559,6 @@
 		<page name="terminal">
 			<background color="%background%"/>
 			<template name="background_image"/>
-			<template name="navbar_bkg"/>
-			<template name="navbar_home"/>
-			<template name="navbar_console"/>
-			<template name="keyboardtemplate"/>
-			<template name="keyboardterminaltemplate"/>
 			
 			<template name="ab"/>
 
@@ -613,6 +608,13 @@
 				<action function="set">general_back=terminal</action>
 				<action function="page">ext_general</action>
 			</button>
+			
+			<template name="keyboardtemplate"/>
+			<template name="keyboardterminaltemplate"/>
+			<template name="navbar_bkg"/>
+			<template name="navbar_home"/>
+			<template name="navbar_console"/>
+			<template name="navbar_terminal"/>
 			
 			<action>
 				<touch key="power"/>

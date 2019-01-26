@@ -20,7 +20,6 @@
 				<action function="overlay">dialog_reset</action>
 			</button>
 			
-			
 			<!-- General -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
@@ -55,7 +54,7 @@
 			<!-- Customization -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">customization_menu</action>
+				<action function="page">ext_custom</action>
 			</button>
 			<image>
 				<placement x="%col1_set_x%" y="%set_row3_y%"/>
@@ -211,7 +210,7 @@
 			</action>
 		</page>
 	
-		<!-- Основные ☺ -->
+		<!-- General -->
 		<page name="ext_general">
 			<template name="body"/>
 
@@ -280,12 +279,6 @@
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
 				
-				
-				<listitem name="{@compatibility_321=Compatibility with TWRP 3.2.1}">
-					<data variable="compatibility_321"/>
-					<condition var1="general_back" var2="settings"/>
-				</listitem>
-				
 				<listitem name="{@inject_twrp_chk=Inject TWRP after install}">
 					<condition var1="tw_has_injecttwrp" var2="1"/>
 					<condition var1="general_back" var2="settings"/>
@@ -294,7 +287,7 @@
 			</listbox>
 			
 			<text style="caption">
-				<placement x="%col1_x%" y="%row7_2_y%"/>
+				<placement x="%col1_x%" y="%row6_3a_y%"/>
 					<condition var1="general_back" var2="settings"/>
 				<text>{@enter_password_cptn=Password}</text>
 			</text>
@@ -302,20 +295,20 @@
 			<text style="text_body2">
 				<condition var1="use_pass" var2="0"/>
 					<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<placement x="%col1_x%" y="%row7_1a_y%"/>
 				<text>{@disabled=Disabled}</text>
 			</text>
 			<text style="text_body2">
 				<condition var1="use_pass" var2="1"/>
 				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<placement x="%col1_x%" y="%row7_1a_y%"/>
 				<text>{@enabled=Enabled}</text>
 			</text>
 
 			<button style="menu_btn">
 				<condition var1="general_back" var2="settings"/>
 				<condition var1="use_pass" var2="0"/>
-				<placement x="%col1_x%" y="%row7_2_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<placement x="%col1_x%" y="%row6_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<action function="set">pass_new_1=</action>
 				<action function="set">pass_new_2=</action>
 				<action function="set">pass_notm=0</action>
@@ -325,7 +318,7 @@
 			<button style="menu_btn">
 				<condition var1="general_back" var2="settings"/>
 				<condition var1="use_pass" var2="1"/>
-				<placement x="%col1_x%" y="%row7_2_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<placement x="%col1_x%" y="%row6_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<action function="set">pass_new_1=</action>
 				<action function="set">pass_new_2=</action>
 				<action function="set">pass_notm=0</action>
@@ -333,13 +326,13 @@
 			</button>
 			
 			<text style="caption">
-				<placement x="%col1_x%" y="%row5_1a_y%"/>
+				<placement x="%col1_x%" y="%row4_3_y%"/>
 				<condition var1="general_back" var2="settings"/>
 				<text>{@areb_confirm=Reboot confirmation dialog}</text>
 			</text>
 			
 			<listbox>
-				<placement x="0" y="%row5_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<placement x="0" y="%row5_1_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="general_back" var2="settings"/>
 				<data name="disable_no_os"/>
 				<listitem name="{@otp_never=Never}">1</listitem>
@@ -373,8 +366,92 @@
 			</action>
 		</page>
 		
-		<!-- Персонализация ☺ -->
-		<page name="ext_navbar">
+		<!-- Customization -->
+		<page name="ext_custom">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_ui=Customization}</text>
+			</text>
+
+			<!-- Navbar -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom_nav</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row1_y%"/>
+				<image resource="nav"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
+				<text>{@navbar_title}</text>
+			</text>
+			<!-- -->
+
+			<!-- Statusbar -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom_status</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row2_y%"/>
+				<image resource="statusbar"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
+				<text>{@settings_ui_status}</text>
+			</text>
+			<!-- -->
+
+			<!-- Lockscreen -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom_lock</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row3_y%"/>
+				<image resource="lockscreen"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
+				<text>{@lockscreen_title}</text>
+			</text>
+			<!-- -->
+
+			<!-- Keyboard -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom_key</action>
+			</button>
+			<image>
+				<placement x="%col1_set_x%" y="%set_row4_y%"/>
+				<image resource="keyboard"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
+				<text>{@keyboard_title}</text>
+			</text>
+			<!-- -->
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+		
+		<!-- Statusbar -->
+		<page name="ext_custom_status">
 			<template name="body"/>
 
 			<template name="ab"/>
@@ -406,6 +483,12 @@
 
 			<listbox style="settingslist">
 				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<listitem name="{@dark_title}">
+					<data variable="darker_ui"/>
+				</listitem>
+				<listitem name="{@separate_status}">
+					<data variable="separate_status"/>
+				</listitem>
 				<listitem name="{@show_cpu_temp_bar=Show CPU temperature}">
 					<data variable="show_cpu_temp"/>
 					<condition var1="center_clock" op="!=" var2="2"/>
@@ -422,12 +505,12 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">customization_menu</action>
+				<action function="page">ext_custom</action>
 			</action>
 		</page>
 		
-		<!-- Keyboard ☺ -->
-		<page name="ext_custom">
+		<!-- Keyboard -->
+		<page name="ext_custom_key">
 			<template name="body_key"/>
 			<fill color="%accent%">
 				<condition var1="key_buttons" var2="1"/>
@@ -480,7 +563,7 @@
 
 			<listbox style="settingslist">
 				<placement x="0" y="%row1_3a_y%" w="%screen_w%" h="%lb_l1%"/>
-				<listitem name="WIP: Numbers row">
+				<listitem name="{@keyboard_nums}">
 					<data variable="xxx"/>
 				</listitem>
 			</listbox>
@@ -492,94 +575,12 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">customization_menu</action>
-			</action>
-		</page>
-
-		<page name="customization_menu">
-			<template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@settings_ui=Customization}</text>
-			</text>
-
-			<!-- Navbar -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">custm_keys</action>
-			</button>
-			<image>
-				<placement x="%col1_set_x%" y="%set_row1_y%"/>
-				<image resource="nav"/>
-			</image>
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>{@navbar_title}</text>
-			</text>
-			<!-- -->
-
-			<!-- Statusbar -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_navbar</action>
-			</button>
-			<image>
-				<placement x="%col1_set_x%" y="%set_row2_y%"/>
-				<image resource="statusbar"/>
-			</image>
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>{@settings_ui_status}</text>
-			</text>
-			<!-- -->
-
-			<!-- Lockscreen -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">custm_lock</action>
-			</button>
-			<image>
-				<placement x="%col1_set_x%" y="%set_row3_y%"/>
-				<image resource="lockscreen"/>
-			</image>
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>Lockscreen</text>
-			</text>
-			<!-- -->
-
-			<!-- Keyboard -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_custom</action>
-			</button>
-			<image>
-				<placement x="%col1_set_x%" y="%set_row4_y%"/>
-				<image resource="keyboard"/>
-			</image>
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@keyboard_title}</text>
-			</text>
-			<!-- -->
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">settings</action>
 			</action>
 		</page>
 
-		<page name="custm_lock">
+		<!-- Lockscreen -->
+		<page name="ext_custom_lock">
 			<template name="body"/>
 
 			<template name="ab"/>
@@ -588,7 +589,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Lock screen</text>
+				<text>{@lockscreen_title}</text>
 			</text>
 
 			<!-- Lockscreen preview -->
@@ -664,11 +665,11 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">customization_menu</action>
+				<action function="page">ext_custom</action>
 			</action>
 		</page>
 
-		<page name="custm_keys">
+		<page name="ext_custom_nav">
 			<template name="body"/>
 			
 			<fill color="%accent%">
@@ -701,19 +702,13 @@
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
 					<action function="wlfw"/>
-					<action function="cmd">  
-					cd "/twres";
-					sed "s/1920/1920+144/g" "ui.xml" > "/tmp/ui-temp.xml";
-					sed "s/960/1032/g" "/tmp/ui-temp.xml" > "/tmp/ui-temp1.xml";
-					sed "s/0\"/1\"/g" "themes/bar.xml" > "/tmp/bar.xml";
-
-					cp -r -f "/tmp/ui-temp1.xml" "/tmp/orangefox/ramdisk/twres/ui.xml";
-					cp -r -f "/tmp/ui-temp1.xml" "/twres/ui.xml";
-
-					cp -r -f "/tmp/bar.xml" "/twres/themes/bar.xml";
-					cp -r -f "/tmp/bar.xml" "/tmp/orangefox/ramdisk/twres/themes/bar.xml";
+					<action function="cmd">
+					cat "/twres/themes/sed/navbar.xml" | sed -e "
+					s/#NAVBAR_DISABLE#/1/g;
+					s/#SCREEN_H#/$(expr %screen_original_h% + 144)/g
+					" > /tmp/orangefox/ramdisk/twres/themes/navbar.xml;
+					cat "/tmp/orangefox/ramdisk/twres/themes/navbar.xml" > /twres/themes/navbar.xml
 					</action>
-
 					<action function="wlfx"/>
 					<action function="reload"/>
 				</actions>
@@ -724,19 +719,13 @@
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
 					<action function="wlfw"/>
-					<action function="cmd">  
-					cd "/twres";
-					sed "s/1920+144/1920/g" "ui.xml" > "/tmp/ui-temp.xml";
-					sed "s/1032/960/g" "/tmp/ui-temp.xml" > "/tmp/ui-temp1.xml";
-					sed "s/1\"/0\"/g" "themes/bar.xml" > "/tmp/bar.xml";
-
-					cp -r -f "/tmp/ui-temp1.xml" "/tmp/orangefox/ramdisk/twres/ui.xml";
-					cp -r -f "/tmp/ui-temp1.xml" "/twres/ui.xml";
-
-					cp -r -f "/tmp/bar.xml" "/twres/themes/bar.xml";
-					cp -r -f "/tmp/bar.xml" "/tmp/orangefox/ramdisk/twres/themes/bar.xml";
+					<action function="cmd">
+					cat "/twres/themes/sed/navbar.xml" | sed -e "
+					s/#NAVBAR_DISABLE#/0/g;
+					s/#SCREEN_H#/%screen_original_h%/g
+					" > /tmp/orangefox/ramdisk/twres/themes/navbar.xml;
+					cat "/tmp/orangefox/ramdisk/twres/themes/navbar.xml" > /twres/themes/navbar.xml
 					</action>
-
 					<action function="wlfx"/>
 					<action function="reload"/>
 				</actions>
@@ -761,7 +750,6 @@
 				<placement x="0" y="%row2_1a_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<data name="nougat"/>
-				<!--listitem name="{@fm_none=None}">2</listitem-->
 				<listitem name="{@cust_navbar_cls=Classic}">0</listitem>
 				<listitem name="{@cust_navbar_noug=Nougat}">1</listitem>
 				<listitem name="Pie">3</listitem>
@@ -774,22 +762,23 @@
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row4_2_y%" w="%screen_w%" h="%lb_l3%"/>
+				<placement x="0" y="%row4_2_y%" w="%screen_w%" h="%lb_l4%"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<data name="navbar_bkg"/>
 				<listitem name="{@fm_none=None}">0</listitem>
+				<listitem name="{@dark_nav}">3</listitem>
 				<listitem name="{@cust_navbar_accent=Accent}">1</listitem>
 				<listitem name="{@cust_navbar_black=Black}">2<condition var1="theme_style" op="!=" var2="Black"/></listitem>
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row6_1a_y%"/>
+				<placement x="%col1_x%" y="%row6_3_y%"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<text>{@cust_oth}</text>
 			</text>
 			
 			<listbox style="settingslist">
-				<placement x="0" y="%row6_2a_y%" w="%screen_w%" h="%lb_l2%"/>
+				<placement x="0" y="%row7_1_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<listitem name="{@cust_navbar_white=Use white buttons}">
 					<condition var1="navbar_bkg" op="!=" var2="1"/>
@@ -811,12 +800,16 @@
 				<listitem name="{@rev_navbar_chk=Reversed navbar layout}">
 					<data variable="navbar_sams"/>
 				</listitem>
+				<listitem name="{@show_slideout}">
+					<data variable="show_slideout"/>
+				</listitem>
 			</listbox>
-
-			<!--button>
-				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
-				<condition var1="tw_busy" var2="1"/>
-			</button-->
+			
+			<action>
+				<condition var1="navbar_bkg" var2="1"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<action function="set">navbar_accent=1</action>
+			</action>
 			
 			<action>
 				<touch key="home"/>
@@ -825,7 +818,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">customization_menu</action>
+				<action function="page">ext_custom</action>
 			</action>
 		</page>
 	
@@ -1373,6 +1366,7 @@
 			<template name="background_image"/>
 			
 			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 			
@@ -1425,6 +1419,7 @@
 		
 			
 			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 			

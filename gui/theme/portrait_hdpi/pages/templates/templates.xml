@@ -3,7 +3,8 @@
 	<templates>
 		<template name="nav_panel">
 		
-			<fill color="%color_navpan%">
+			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
 				<placement x="0" y="%nav_panel_y%" w="%screen_w%" h="%nav_panel_h%"/>
 			</fill>
 			<image>
@@ -116,11 +117,7 @@
 				<image resource="nav_shadow"/>
 			</image>
 			
-			<fill color="%color_navpan_nb%">
-				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
-			</fill>
 			<template name="navbar_bkg"/>
-			<!-- template name="navbar"/ -->
 			<template name="navbar_home"/>
 			<template name="navbar_console"/>
 		</template>
@@ -141,8 +138,14 @@
 				<condition var1="theme_style" var2="Light_classic"/>
 				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
 			</fill>
+			
+			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
 
 			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 			
@@ -166,8 +169,14 @@
 				<condition var1="theme_style" var2="Light_classic"/>
 				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
 			</fill>
+			
+			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
 
 			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 			
@@ -195,8 +204,14 @@
 				<condition var1="accent_title" var2="0"/>
 				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
 			</fill>
+			
+			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
 
 			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 		</template>
@@ -219,6 +234,12 @@
 			</fill>
 			
 			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_ex_h%"/>
+			</fill>
+			
+			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 			
