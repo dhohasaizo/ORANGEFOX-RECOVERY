@@ -72,7 +72,8 @@ static string fstab2 = "/vendor/etc";
 
 int Fox_Current_ROM_IsTreble = 0;
 int New_Fox_Installation = 0;
-static int FBE_Already_Decrypted = 0;
+int OrangeFox_Startup_Executed = 0;
+int Fox_Has_Welcomed = 0;
 
 static void CreateNewFile(string file_path)
 {
@@ -182,21 +183,29 @@ bool i = Path_Exists("/tmp/orangefox.cfg");
 /* rerun startup if needed after decryption */
 bool TWFunc::Rerun_Startup(void)
 {
-   LOGINFO("OrangeFox: Starting possible running of OrangeFox_Startup() again...\n");
-
-   if (FBE_Already_Decrypted == 1)
+   if (OrangeFox_Startup_Executed > 0)
       return false;
 
+   LOGINFO("OrangeFox: Starting possible running of OrangeFox_Startup() again...\n");
    string tprop = Get_Property("orangefox.postinit.status");
    bool i = Path_Exists("/tmp/orangefox.cfg");
    if (i == true || tprop == "1")
      return false;
 
-   FBE_Already_Decrypted = 1;
-
-   OrangeFox_Startup();
-   LOGINFO("OrangeFox: OrangeFox_Startup() executed again\n");
+   //LOGINFO("OrangeFox: Reading settings file - again...\n");
+   DataManager::ReadSettingsFile();
+   
+   //LOGINFO("OrangeFox: Executing OrangeFox_Startup() again...\n");
+   OrangeFox_Startup(); 
+   LOGINFO("OrangeFox: Finished rerun.\n");
+   
    return true;
+}
+
+/* function to run just before every reboot */
+void TWFunc::Run_Before_Reboot(void)
+{
+  // copy_file("/tmp/recovery.log", "/data/media/0/Fox/lastrecoverylog.log", 0644);
 }
 
 /* Execute a command */
@@ -885,6 +894,8 @@ int TWFunc::tw_reboot(RebootCommand command)
         }
     }
   //***//
+
+  TWFunc::Run_Before_Reboot();
    
   switch (command)
     {
@@ -1942,6 +1953,18 @@ int TWFunc::Check_MIUI_Treble(void)
    return 0;
 }
 
+void TWFunc::Welcome_Message(void)
+{
+   if (Fox_Has_Welcomed > 0)
+     return;
+   gui_print("**************************");
+   gui_msg("orangefox_msg2=[OrangeFox]: Welcome! ^_^");
+   gui_msg(Msg("orangefox_msg3=[Version]: '{1}'") (FOX_VERSION));
+   gui_msg(Msg("orangefox_msg4=[Build]: {1}") (FOX_BUILD));
+   gui_print("**************************");
+   Fox_Has_Welcomed++;
+}
+
 void TWFunc::OrangeFox_Startup(void)
 {
   int i;
@@ -1961,12 +1984,21 @@ void TWFunc::OrangeFox_Startup(void)
   std::string device_two = kernel_proc_check + "disable";
   std::string password_file = "/sbin/wlfx";
 
-  DataManager::GetValue(FOX_COMPATIBILITY_DEVICE, Fox_Current_Device);
+//gui_print("DEBUG: - OrangeFox_Startup_Executed=%i\n", OrangeFox_Startup_Executed);
+  // don't repeat this
+  if (OrangeFox_Startup_Executed > 0)
+     return;
   
+  OrangeFox_Startup_Executed++;
+  
+  DataManager::GetValue(FOX_COMPATIBILITY_DEVICE, Fox_Current_Device);
+ 
   if (TWFunc::Path_Exists(FOX_PS_BIN)) 
       chmod (FOX_PS_BIN, 0755);
   
-  Check_MIUI_Treble();
+  TWFunc::Welcome_Message();
+  
+  TWFunc::Check_MIUI_Treble();
   
   if (TWFunc::Path_Exists(device_one))
     TWFunc::write_to_file(device_one, disable);
@@ -2083,6 +2115,8 @@ void TWFunc::OrangeFox_Startup(void)
     {
       DataManager::SetValue("fox_resource_dir", Fox_Home_Files.c_str());
     }
+
+  TWFunc::Fresh_Fox_Install();
 }
 
 void TWFunc::copy_kernel_log(string curr_storage)
@@ -2929,7 +2963,7 @@ bool TWFunc::Fresh_Fox_Install()
 {
   std::string fox_file = "/cache/recovery/Fox_Installed";
   New_Fox_Installation = 0;
-  
+
   if ((PartitionManager.Is_Mounted_By_Path("/cache")) || (PartitionManager.Mount_By_Path("/cache", true)))
     {
 	if (!Path_Exists(fox_file))
