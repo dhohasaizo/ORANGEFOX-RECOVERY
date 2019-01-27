@@ -3385,51 +3385,11 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_0_y%"/>
-				<text>SuperSU</text>
-			</text>
-
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row1_1a_y%"/>
-				<text>{@fox_comm_ins}</text>
-				<actions>
-					<action function="set">tw_filecheck=%fox_home_files_dir%/SuperSU.zip</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/SuperSU.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_menu</action>
-					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1={@fox_comm_su_txt1}</action>
-					<action function="set">fox_flash_txt2={@fox_comm_su_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_su_sld}</action>
-					<action function="set">fox_flash_info=1</action>
-					<action function="set">fox_flash_i1={@fox_comm_su_i1}</action>
-				</actions>
-			</button>
-
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row1_1a_y%" placement="1"/>
-				<text>{@fox_comm_del}</text>
-				<actions>
-					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootsupersu.zip</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/unrootsupersu.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_menu</action>
-					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1={@fox_comm_rm_su_txt1}</action>
-					<action function="set">fox_flash_txt2={@fox_comm_rm_su_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_rm_su_sld}</action>
-					<action function="set">fox_flash_info=0</action>
-				</actions>
-			</button>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<text>Magisk</text>
 			</text>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row2_2_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row1_1a_y%"/>
 				<text>{@fox_comm_ins}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/Magisk.zip</action>
@@ -3446,7 +3406,7 @@
 			</button>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row2_2_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row1_1a_y%" placement="1"/>
 				<text>{@fox_comm_del}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/unrootmagisk.zip</action>
@@ -3463,12 +3423,12 @@
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<text>{@fox_menu_other}</text>
 			</text>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row3_3_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row2_2_y%" placement="1"/>
 				<text>Google Sans</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/GoogleSans.zip</action>
@@ -3485,7 +3445,7 @@
 				</actions>
 			</button>
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row3_3_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row2_2_y%"/>
 				<text>Initd</text>
 				<actions>
 					<action function="set">tw_filecheck=/FFiles/OF_initd/OF_initd.zip</action>
@@ -3500,25 +3460,9 @@
 					<action function="set">fox_flash_info=0</action>
 				</actions>
 			</button>
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_left_x%" y="%row4_2_y%"/>
-				<text>Cam2Api</text>
-				<actions>
-					<action function="set">tw_filecheck=%fox_home_files_dir%/Camera2Api.zip</action>
-					<action function="set">tw_filename=%fox_home_files_dir%/Camera2Api.zip</action>
-					<action function="set">tw_existpage=fox_flash</action>
-					<action function="set">tw_back=fox_menu</action>
-					<action function="set">tw_notexistpage=fox_prebuilt_fox_not_found</action>
-					<action function="page">filecheck</action>
-					<action function="set">fox_flash_txt1={@fox_comm_cam_txt1}</action>
-					<action function="set">fox_flash_txt2={@fox_comm_cam_txt2}</action>
-					<action function="set">fox_flash_sld={@fox_comm_cam_sld}</action>
-					<action function="set">fox_flash_info=0</action>
-				</actions>
-			</button>
 
 			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row4_2_y%" placement="1"/>
+				<placement x="%btn_raised_left_x%" y="%row3_1_y%"/>
 				<text>{@fox_dellp_btn}</text>
 				<actions>
 					<action function="set">tw_filecheck=%fox_home_files_dir%/PassReset.zip</action>
