@@ -917,7 +917,7 @@
 		
 		<string name="accent_title">Использовать акцент в заголовке</string>
 		
-		<string name="update_btn">ОБНОВИТЬ</string>
+		<string name="update_btn">Обновить</string>
 		<string name="include_kernel_log">Сохранить лог ядра</string>
 		
 		<string name="new_battery">Калибровка батареи</string>
@@ -1007,7 +1007,7 @@
 		<string name="keep">Оставить</string>
 		<string name="remove">Убрать</string>
 		
-		<string name="theme_apply">Применение темы...</string>
+		<string name="theme_apply">Применение настроек...</string>
 		<string name="theme_font">Шрифт</string>
 		<string name="theme_fonts">Шрифты</string>
 		<string name="theme_style">Стиль</string>
@@ -1015,7 +1015,8 @@
 		<string name="theme_bkg">Фон</string>
 		<string name="theme_default">Однотонный</string>
 		<string name="theme_userdef">Пользовательский</string>
-		<string name="theme_font_sel">Выберите шрифт</string>
+		<string name="theme_font_sel">Основной шрифт</string>
+		<string name="theme_sec_font_sel">Дополнительный шрифт</string>
 		<string name="theme_ar_sel">Выберите соотношение сторон</string>
 		<string name="theme_dim">Затемнение</string>
 		<string name="alt_btn">Альтернативный вид кнопок</string>

@@ -777,7 +777,7 @@
 		<string name="accent_title">Use accent color in title</string>
 		<string name="lockscreen_quicklock">Tapping the lock icon locks the screen</string>
 		
-		<string name="update_btn">UPDATE</string>
+		<string name="update_btn">Update</string>
 		<string name="include_kernel_log">Include Kernel Log</string>
 		
 		<string name="new_battery">Battery Calibration</string>
@@ -864,7 +864,7 @@
 		
 		<string name="aroma_inimg">Built-in AromaFM</string>
 		
-		<string name="theme_apply">Applying theme...</string>
+		<string name="theme_apply">Applying settings...</string>
 		<string name="theme_font">Font</string>
 		<string name="theme_fonts">Fonts</string>
 		<string name="theme_style">Style</string>
@@ -873,7 +873,8 @@
 		<string name="theme_default">Solid</string>
 		<string name="theme_userdef">User-defined</string>
 		<string name="theme_dim">Dim level</string>
-		<string name="theme_font_sel">Select font</string>
+		<string name="theme_font_sel">Primary font</string>
+		<string name="theme_sec_font_sel">Secondary font</string>
 		<string name="theme_pngselect">Select background image</string>
 		<string name="theme_delbkg">Remove background image</string>
 		<string name="theme_newpng">Choose new background image</string>

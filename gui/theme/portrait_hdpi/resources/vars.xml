@@ -4,9 +4,6 @@
 		<!-- OrangeFox vars -->
 		<variable name="ota_back_file" value="0"/>
 
-		<!-- Maintainers vars -->
-		<variable name="ota_back_file" value="0"/>
-
 		<!-- Lockscreen -->
 		<variable name="clock_style" value="0" persist="1"/>
 
@@ -45,9 +42,9 @@
 		<!-- Design -->
 		<variable name="accent_title" value="0" persist="1"/>
 		<variable name="enable_battery" value="1" persist="1"/>
-		<variable name="navbar_bkg" value="0" persist="1"/>
+		<variable name="navbar_bkg" value="3" persist="1"/>
 		<variable name="fl_shadow" value="1" persist="1"/>
-		<variable name="nougat" value="2" persist="1"/>
+		<variable name="nougat" value="3" persist="1"/>
 		<variable name="key_buttons" value="1" persist="1"/>
 		<variable name="storage_select_on" value="1" persist="1"/>
 		<variable name="use_fixed_font" value="0" persist="1"/>
@@ -77,6 +74,7 @@
 		<variable name="screen_hint" value="0" persist="1"/>
 		<variable name="inject_theme" value="0"/>
 		<variable name="tw_install_reboot" value="0"/>
+		<variable name="needs_repack" value="0"/>
 		
 		<!-- Placement -->
 		
@@ -364,6 +362,10 @@
 		<variable name="bg_storage_hdr_y" value="706"/>
 		<variable name="bg_encrypt_y" value="302"/>
 		<variable name="bg_encrypt_hdr_y" value="416"/>
+		<variable name="snackbar_text_x" value="72"/>
+		<variable name="snackbar_text_y" value="%screen_h%-268"/>
+		<variable name="snackbar_button_x" value="776"/>
+		<variable name="snackbar_button_y" value="%screen_h%-294"/>
 		
 		<!-- Fast scroll -->
 		<variable name="fastscroll_w" value="48"/>

@@ -122,6 +122,50 @@
 			<template name="navbar_console"/>
 		</template>
 		
+		<template name="busy_screen">
+			<background color="%background%"/>
+			<template name="background_image"/>
+			<fill color="%lightransparent%">
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			<template name="statusbarinfo"/>
+			<image>
+				<image resource="palette"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text_l%" placement="4"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<text>{@theme_apply}</text>
+			</text>
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text%" placement="4"/>
+				<condition var1="navbar_disable" var2="1"/>
+				<text>{@theme_apply}</text>
+			</text>
+		</template>
+		
+		<template name="snackbar_update">
+
+			<image>
+				<image resource="snackbar"/>
+				<condition var1="needs_repack" var2="1"/>
+				<placement x="0" y="%row_nav_y%" placement="2"/>
+			</image>
+			<text style="text_body1">
+				<condition var1="needs_repack" var2="1"/>
+				<placement x="%snackbar_text_x%" y="%snackbar_text_y%"/>
+				<text>Recovery needs to be updated</text>
+			</text>
+			<button style="btn_dlg_hl">
+				<condition var1="needs_repack" var2="1"/>
+				<placement x="%snackbar_button_x%" y="%snackbar_button_y%"/>
+				<text>{@update_btn}</text>
+				<action function="cmd">needs_repack=0</action>
+				<action function="page">apply_changes</action>
+			</button>
+		</template>
+		
 		<template name="ab">
 			<image>
 				<image resource="actionbar_shadow"/>

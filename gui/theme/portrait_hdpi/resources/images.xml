@@ -8,10 +8,25 @@
 	</mousecursor>
 	
 	<resources>
+		<!-- TODO: move it to styles -->
+		<image name="snackbar" filename="Default/Dialog/snackbar" retainaspect="1"/>
+		<image name="LOL" filename="LOL" retainaspect="1"/>
+		
 		<!-- ota -->
 		<image name="ota_icon" filename="Default/FullscreenIcons/ota_icon" retainaspect="1"/>
 		<image name="progress_empty_small" filename="Default/Progress/progress_empty_small"/>
 		<image name="progress_fill_small" filename="Default/Progress/progress_fill_small"/>
+		
+		<!-- Fonts Preview -->
+		<font name="font1" filename="Roboto-Regular.ttf" size="42"/>
+		<font name="font2" filename="RobotoSlab.ttf" size="42"/>
+		<font name="font3" filename="GoogleSans-Regular.ttf" size="42"/>
+		<font name="font4" filename="SamsungSans-Regular.ttf" size="42"/>
+		<font name="font5" filename="Chococooky.ttf" size="42"/>
+		<font name="font6" filename="Cooljazz.ttf" size="42"/>
+		<font name="font7" filename="Bender.ttf" size="42"/>
+		<font name="font8" filename="Amatic.ttf" size="42"/>
+		<font name="font9" filename="AngryBirds.ttf" size="42"/>
 		
 		<!-- Workshop -->
 		<image name="style_gray" filename="Default/Workshop/StyleGray"/>
@@ -158,6 +173,7 @@
 		<image name="statusbar" filename="Default/Icons/statusbar" retainaspect="1"/>
 		<image name="keyboard" filename="Default/Icons/keyboard" retainaspect="1"/>
 		<image name="lockscreen" filename="Default/Icons/lockscreen" retainaspect="1"/>
+		<image name="ws_font" filename="Default/Icons/ws_font" retainaspect="1"/>
 		
 		<!-- Other -->
 		<image name="actionbar_clear" filename="Default/Other/actionbar_clear" retainaspect="1"/>

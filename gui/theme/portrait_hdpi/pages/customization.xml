@@ -1,0 +1,718 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<!-- Customization -->
+		<page name="ext_custom">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_ui=Customization}</text>
+			</text>
+
+			<!-- Navbar -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom_nav</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%set_row1_y%"/>
+				<image resource="nav"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
+				<text>{@navbar_title}</text>
+			</text>
+			<!-- -->
+
+			<!-- Statusbar -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom_status</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%set_row2_y%"/>
+				<image resource="statusbar"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
+				<text>{@settings_ui_status}</text>
+			</text>
+			<!-- -->
+
+			<!-- Lockscreen -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom_lock</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%set_row3_y%"/>
+				<image resource="lockscreen"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
+				<text>{@lockscreen_title}</text>
+			</text>
+			<!-- -->
+
+			<!-- Keyboard -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom_key</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%set_row4_y%"/>
+				<image resource="keyboard"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
+				<text>{@keyboard_title}</text>
+			</text>
+			<!-- -->
+
+			<!-- Fonts -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">theme_sec_font_tmp=%theme_sec_font%</action>
+				<action function="set">theme_font_tmp=%theme_font%</action>
+				<action function="page">ext_custom_fonts</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%set_row5_y%"/>
+				<image resource="ws_font"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
+				<text>{@theme_fonts}</text>
+			</text>
+			<!-- -->
+			<template name="snackbar_update"/>
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+		
+		<!-- Statusbar -->
+		<page name="ext_custom_status">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_ui_status}</text>
+			</text>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@status_clock_pos}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
+				<data name="center_clock"/>
+				<listitem name="{@status_clock_left}">2</listitem>
+				<listitem name="{@status_clock_center}">1</listitem>
+				<listitem name="{@status_clock_right}">0</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>{@settings_ui_status=Status bar}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<listitem name="{@dark_title}">
+					<data variable="darker_ui"/>
+				</listitem>
+				<listitem name="{@separate_status}">
+					<data variable="separate_status"/>
+				</listitem>
+				<listitem name="{@show_cpu_temp_bar=Show CPU temperature}">
+					<data variable="show_cpu_temp"/>
+					<condition var1="center_clock" op="!=" var2="2"/>
+				</listitem>
+				<listitem name="{@settings_ui_battery=Show battery icon}">
+					<data variable="enable_battery"/>
+				</listitem>
+			</listbox>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_custom</action>
+			</action>
+		</page>
+		
+		<!-- Keyboard -->
+		<page name="ext_custom_key">
+			<template name="body_key"/>
+			<fill color="%accent%">
+				<condition var1="key_buttons" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			<fill color="%unactive_title%">
+				<condition var1="key_buttons" op="!=" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			
+			<image>
+				<condition var1="key_buttons" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_on"/>
+			</image>
+			<image>
+				<condition var1="key_buttons" op="!=" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_off"/>
+			</image>
+			
+			<text style="text_ab_switch">
+				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
+				<text>{@keyboard_newstyle}</text>
+			</text>
+
+			<button style="bs_btn">
+				<condition var1="key_buttons" op="!=" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="set">key_buttons=1</action>
+				</actions>
+			</button>
+			<button style="bs_btn">
+				<condition var1="key_buttons" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="set">key_buttons=0</action>
+				</actions>
+			</button>
+			
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@keyboard_title}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row1_3a_y%" w="%screen_w%" h="%lb_l1%"/>
+				<listitem name="{@keyboard_nums}">
+					<data variable="xxx"/>
+				</listitem>
+			</listbox>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_custom</action>
+			</action>
+		</page>
+
+		<!-- Lockscreen -->
+		<page name="ext_custom_lock">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@lockscreen_title}</text>
+			</text>
+
+			<!-- Lockscreen preview -->
+
+			<image>
+				<condition var1="clock_style" var2="0"/>
+				<image resource="unlock_icon"/>
+				<placement x="350" y="%row1_1_y%"/>
+			</image>
+
+			<text color="%accent%">
+				<condition var1="clock_style" op="!=" var2="0"/>
+				<font resource="font_b"/>
+				<placement x="280" y="%row1_1_y%"/>
+				<text>%tw_time%</text>
+			</text>
+
+			<text color="%accent%">
+				<condition var1="clock_style" var2="2"/>
+				<font resource="font_l"/>
+				<placement x="250" y="660"/>
+				<text>{@cpu_temp} | Battery: %tw_battery%</text>
+			</text>
+
+			<!-- -->
+
+			<image>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="%row4_1_y%"/>
+			</image>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<text>Lockscreen style</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row4_3_y%" w="%row2_1_y%" h="%lb_l3%"/>
+				<data name="clock_style"/>
+				<listitem name="Lock logo">0</listitem>
+				<listitem name="Clock">1</listitem>
+				<listitem name="Clock with info">2</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row6_2_y%"/>
+				<text>Lockscreen settings</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row6_3_y%" w="%screen_w%" h="%row2_1_y%"/>
+				<listitem name="Enable clock">
+					<data variable="lockscr_clock"/>
+				</listitem>
+				<listitem name="Battery and CPU teamp info">
+					<data variable="lockscr_more_info"/>
+				</listitem>
+				<listitem name="Button to unlock">
+					<data variable="lockscr_btn"/>
+				</listitem>
+				<listitem name="Turn off transparency">
+					<data variable="lockscr_tranprns"/>
+				</listitem>
+				<listitem name="Tap to lock">
+					<data variable="lockscr_t2l"/>
+				</listitem>
+			</listbox>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_custom</action>
+			</action>
+		</page>
+
+		<page name="ext_custom_nav">
+			<template name="body"/>
+			
+			<fill color="%accent%">
+				<condition var1="navbar_disable" var2="0"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			<fill color="%unactive_title%">
+				<condition var1="navbar_disable" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			
+			<image>
+				<condition var1="navbar_disable" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_off"/>
+			</image>
+			<image>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_on"/>
+			</image>
+			
+			<text style="text_ab_switch">
+				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
+				<text>{@navbar_onscreen}</text>
+			</text>
+
+			<button style="bs_btn">
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="set">navbar_disable=1</action>
+					<action function="set">navbar_disable_add=144</action>
+					<action function="set">needs_repack=1</action>
+				</actions>
+			</button>
+
+			<button style="bs_btn">
+				<condition var1="navbar_disable" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="set">navbar_disable=0</action>
+					<action function="set">navbar_disable_add=0</action>
+					<action function="set">needs_repack=1</action>
+				</actions>
+			</button>
+
+			<template name="ab"/>
+			
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@navbar_title}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_3a_y%"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<text>{@settings_ui_style=NavBar style}</text>
+			</text>
+			
+			<listbox>
+				<placement x="0" y="%row2_1a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<data name="nougat"/>
+				<listitem name="{@cust_navbar_cls=Classic}">0</listitem>
+				<listitem name="{@cust_navbar_noug=Nougat}">1</listitem>
+				<listitem name="Pie">3</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_1_y%"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<text>{@settings_ui_color=NavBar background}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row4_2_y%" w="%screen_w%" h="%lb_l4%"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<data name="navbar_bkg"/>
+				<listitem name="{@fm_none=None}">0</listitem>
+				<listitem name="{@dark_nav}">3</listitem>
+				<listitem name="{@cust_navbar_accent=Accent}">1</listitem>
+				<listitem name="{@cust_navbar_black=Black}">2<condition var1="theme_style" op="!=" var2="Black"/></listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row6_3_y%"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<text>{@cust_oth}</text>
+			</text>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row7_1_y%" w="%screen_w%" h="%lb_l3%"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<listitem name="{@cust_navbar_white=Use white buttons}">
+					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="theme_style_main" op="!=" var2="Light"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@cust_navbar_white=Use white buttons}">
+					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="nougat" op="!=" var2="3"/>
+					<condition var1="theme_style_main" var2="Light"/>
+					<condition var1="theme_background" var2="on"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@cust_navbar_white=Use white buttons}">
+					<condition var1="navbar_bkg" var2="2"/>
+					<condition var1="theme_style_main" var2="Light"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@rev_navbar_chk=Reversed navbar layout}">
+					<data variable="navbar_sams"/>
+				</listitem>
+				<listitem name="{@show_slideout}">
+					<data variable="show_slideout"/>
+				</listitem>
+			</listbox>
+			
+			<action>
+				<condition var1="navbar_bkg" var2="1"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<action function="set">navbar_accent=1</action>
+			</action>
+			
+			<template name="snackbar_update"/>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_custom</action>
+			</action>
+		</page>
+		
+		<!-- WorkShop by fordownloads -->
+		<page name="ext_custom_fonts">
+			<template name="body"/>
+			<template name="ab"/>
+			<template name="statusbarinfo"/>
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@theme_fonts}</text>
+			</text>
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%" />
+				<text>{@theme_font_sel}</text>
+			</text>
+			<text style="caption">
+				<placement x="%col2_x_text%" y="%row1_1_y%"/>
+				<text>{@theme_sec_font_sel}</text>
+			</text>
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font1" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_font_tmp"/>
+				<listitem name="Roboto">Roboto</listitem>
+			</listbox>
+			<listbox>
+				<placement x="0" y="%row1_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font2" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_font_tmp"/>
+				<listitem name="Roboto Slab">RobotoSlab</listitem>
+			</listbox>
+			<listbox>
+				<placement x="0" y="%row2_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font3" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_font_tmp"/>
+				<listitem name="Google Sans">GoogleSans</listitem>
+			</listbox>
+			<listbox>
+				<placement x="0" y="%row2_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font4" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_font_tmp"/>
+				<listitem name="Samsung Sans">SamsungSans</listitem>
+			</listbox>
+			<listbox>
+				<placement x="0" y="%row3_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font5" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_font_tmp"/>
+				<listitem name="Choco Cooky">Chococooky</listitem>
+			</listbox>
+			<listbox>
+				<placement x="0" y="%row3_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font6" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_font_tmp"/>
+				<listitem name="Cool Jazz">Cooljazz</listitem>
+			</listbox>
+			<listbox>
+				<placement x="0" y="%row4_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font7" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_font_tmp"/>
+				<listitem name="Bender">Bender</listitem>
+			</listbox>
+			<listbox>
+				<placement x="0" y="%row4_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font8" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_font_tmp"/>
+				<listitem name="Amatic">Amatic</listitem>
+			</listbox>
+			<listbox>
+				<placement x="0" y="%row5_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font9" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_font_tmp"/>
+				<listitem name="Angry Birds">AngryBirds</listitem>
+			</listbox>
+			<listbox>
+				<placement x="%col2_x%" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font1" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_sec_font_tmp"/>
+				<listitem name="Roboto">Roboto</listitem>
+			</listbox>
+			<listbox>
+				<placement x="%col2_x%" y="%row1_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font2" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_sec_font_tmp"/>
+				<listitem name="Roboto Slab">RobotoSlab</listitem>
+			</listbox>
+			<listbox>
+				<placement x="%col2_x%" y="%row2_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font3" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_sec_font_tmp"/>
+				<listitem name="Google Sans">GoogleSans</listitem>
+			</listbox>
+			<listbox>
+				<placement x="%col2_x%" y="%row2_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font4" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_sec_font_tmp"/>
+				<listitem name="Samsung Sans">SamsungSans</listitem>
+			</listbox>
+			<listbox>
+				<placement x="%col2_x%" y="%row3_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font5" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_sec_font_tmp"/>
+				<listitem name="Choco Cooky">Chococooky</listitem>
+			</listbox>
+			<listbox>
+				<placement x="%col2_x%" y="%row3_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font6" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_sec_font_tmp"/>
+				<listitem name="Cool Jazz">Cooljazz</listitem>
+			</listbox>
+			<listbox>
+				<placement x="%col2_x%" y="%row4_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font7" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_sec_font_tmp"/>
+				<listitem name="Bender">Bender</listitem>
+			</listbox>
+			<listbox>
+				<placement x="%col2_x%" y="%row4_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font8" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_sec_font_tmp"/>
+				<listitem name="Amatic">Amatic</listitem>
+			</listbox>
+			<listbox>
+				<placement x="%col2_x%" y="%row5_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
+				<font resource="font9" spacing="%fileselector_spacing%" color="%text%" />
+				<data name="theme_sec_font_tmp"/>
+				<listitem name="Angry Birds">AngryBirds</listitem>
+			</listbox>
+			<!--button style="btn_raised">
+				<condition var1="theme_font_tmp" op="!=" var2="Custom"/>
+				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+				<text>{@custom_font}</text>
+				<action function="page">ext_custom_fonts_cust</action>
+			</button>
+			<button style="btn_raised_hl">
+				<condition var1="theme_font_tmp" var2="Custom"/>
+				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+				<text>{@custom_font}</text>
+				<action function="page">ext_custom_fonts_cust</action>
+			</button-->
+			<action>
+				<condition var1="theme_font_tmp" op="modified"/>
+				<action function="set">needs_repack=1</action>
+			</action>
+			<action>
+				<condition var1="theme_sec_font_tmp" op="modified"/>
+				<action function="set">needs_repack=1</action>
+			</action>
+			
+			<template name="snackbar_update"/>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_custom</action>
+			</action>
+		</page>
+		<page name="ext_custom_fonts_cust">
+			<template name="body"/>
+			<fileselector style="fileselector_b">
+				<condition var1="list_font" var2="big"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon" file="file_icon" />
+				<filter extn=".ttf" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="list_font" var2="small"/>
+				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon_small" file="file_icon_small" />
+				<filter extn=".ttf" folders="1" files="1"/>
+				<path name="tw_zip_location" default="/sdcard"/>
+				<data name="tw_filename"/>
+				<selection name="tw_file"/>
+			</fileselector>
+			
+			<template name="find_file"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@theme_fonts=Fonts}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@select_custom_font=Select font}</text>
+			</text>
+
+			<action>
+				<condition var1="tw_filename" op="modified"/>
+				<actions>
+					<action function="set">ttf_path=%tw_filename%</action>
+					<action function="set">theme_cmd=themes/fonts/Custom.xml > ./themes/font.xml;cp "%ttf_path%" "./fonts/Custom.ttf"</action>
+					<action function="page">apply_font</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_custom_fonts</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+		<page name="apply_changes">
+			<template name="busy_screen"/>
+			<action>
+				<action function="wlfw"/>
+				<action function="cmd">
+					#Fonts
+					if [ -f "/twres/fonts/%theme_sec_font_tmp%.ttf" ];
+						then sec_med=;
+							 sec_reg=;
+						else sec_med=-Medium;
+							 sec_reg=-Regular;
+					fi;
+					if [ -f "/twres/fonts/%theme_font_tmp%.ttf" ];
+						then prim_med=;
+							 prim_reg=;
+						else prim_med=-Medium;
+							 prim_reg=-Regular;
+					fi;
+					cat "/twres/themes/sed/font.xml" | sed -e "
+					s/#PRIMARY_FONT_MED#/%theme_font_tmp%${prim_med}/g;
+					s/#PRIMARY_FONT_REG#/%theme_font_tmp%${prim_reg}/g;
+					s/#SECONDARY_FONT_MED#/%theme_sec_font_tmp%${sec_med}/g;
+					s/#SECONDARY_FONT_REG#/%theme_sec_font_tmp%${sec_reg}/g;
+					s/#PRIMARY_NAME#/%theme_font_tmp%/g;
+					s/#SECONDARY_NAME#/%theme_sec_font_tmp%/g
+					" > /tmp/orangefox/ramdisk/twres/themes/font.xml;
+					cat "/tmp/orangefox/ramdisk/twres/themes/font.xml" > /twres/themes/font.xml
+					
+					#Navbar
+					cat "/twres/themes/sed/navbar.xml" | sed -e "
+					s/#NAVBAR_DISABLE#/%navbar_disable%/g;
+					s/#SCREEN_H#/$(expr %screen_original_h% + %navbar_disable_add%)/g
+					" > /tmp/orangefox/ramdisk/twres/themes/navbar.xml;
+					cat "/tmp/orangefox/ramdisk/twres/themes/navbar.xml" > /twres/themes/navbar.xml
+				</action>
+				<action function="wlfx"/>
+				<action function="reload"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+	</pages>
+</recovery>
