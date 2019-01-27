@@ -10642,10 +10642,7 @@
 					<condition var1="tw_operation_status" op="=" var2="0"/>
 				</conditions>
 				<actions>
-					<action function="set">tw_back=main</action>
-					<action function="set">tw_action_param=bootloader</action>
-					<action function="set">tw_reboot_param=bootloader</action>
-					<action function="page">rebootcheck</action>
+					<action function="page">main</action>
 				</actions>
 			</action>
 		</page>
