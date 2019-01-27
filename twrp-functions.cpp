@@ -205,7 +205,7 @@ bool TWFunc::Rerun_Startup(void)
 /* function to run just before every reboot */
 void TWFunc::Run_Before_Reboot(void)
 {
-  // copy_file("/tmp/recovery.log", "/data/media/0/Fox/lastrecoverylog.log", 0644);
+  copy_file("/tmp/recovery.log", "/data/media/0/Fox/lastrecoverylog.log", 0644);
 }
 
 /* Execute a command */
