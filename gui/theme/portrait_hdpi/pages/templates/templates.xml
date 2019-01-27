@@ -161,7 +161,6 @@
 				<condition var1="needs_repack" var2="1"/>
 				<placement x="%snackbar_button_x%" y="%snackbar_button_y%"/>
 				<text>{@update_btn}</text>
-				<action function="cmd">needs_repack=0</action>
 				<action function="page">apply_changes</action>
 			</button>
 		</template>
