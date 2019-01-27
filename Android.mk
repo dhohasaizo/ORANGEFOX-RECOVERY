@@ -46,7 +46,7 @@ ifneq ($(TW_DEVICE_VERSION),)
     export FOX_DEVICE_VERSION=$(TW_DEVICE_VERSION)
 else
     LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"Unofficial"'
-    export FOX_DEVICE_VERSION=R8.1
+    export FOX_DEVICE_VERSION=R9
 endif
 
 DEVICE := $(subst omni_,,$(TARGET_PRODUCT))
@@ -66,7 +66,7 @@ endif
 ifneq ($(OF_MAINTAINER),)
     LOCAL_CFLAGS += -DOF_MAINTAINER='"$(OF_MAINTAINER)"'
 else
-    LOCAL_CFLAGS += -DOF_MAINTAINER='"MrYacha and DarthJabba9"'
+    LOCAL_CFLAGS += -DOF_MAINTAINER='"Testing build (unofficial)"'
 endif
 
 ifneq ($(OF_FLASHLIGHT_ENABLE),)
