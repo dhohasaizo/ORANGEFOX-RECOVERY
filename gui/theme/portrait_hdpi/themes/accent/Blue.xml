@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <recovery>
 	<resources>
+		
 		<!-- Controls -->
 		<image name="radio_true_dialog" filename="Blue/Controls/radio_true_dialog" retainaspect="1"/>
 		<image name="checkbox_true_dialog" filename="Blue/Controls/checkbox_true_dialog" retainaspect="1"/>
@@ -11,13 +12,62 @@
 		<image name="handle_h" filename="Blue/Controls/handle_h" retainaspect="1"/>
 		<image name="handle_h_classic" filename="Blue/Controls/handle_h_classic" retainaspect="1"/>
 		<image name="btn_raised_hl" filename="Blue/Controls/btn_raised_hl"/>
+
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="Blue/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_back_hl" filename="Blue/ActionBar/back_hl" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="Blue/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_hl" filename="Blue/ActionBar/cancel_hl" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="Blue/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_cancel_no_hl" filename="Blue/ActionBar/cancel_no_hl" retainaspect="1"/>
+		<image name="actionbar_delete" filename="Blue/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_delete_hl" filename="Blue/ActionBar/delete_hl" retainaspect="1"/>
+		<image name="actionbar_edit" filename="Blue/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_edit_hl" filename="Blue/ActionBar/edit_hl" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="Blue/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_dis_hl" filename="Blue/ActionBar/encr_dis_hl" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="Blue/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_encr_ena_hl" filename="Blue/ActionBar/encr_ena_hl" retainaspect="1"/>
+		<image name="actionbar_flash" filename="Blue/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_flash_hl" filename="Blue/ActionBar/flash_hl" retainaspect="1"/>
+		<image name="actionbar_font_big" filename="Blue/ActionBar/font_big" retainaspect="1"/>
+		<image name="actionbar_font_big_hl" filename="Blue/ActionBar/font_big_hl" retainaspect="1"/>
+		<image name="actionbar_font_small" filename="Blue/ActionBar/font_small" retainaspect="1"/>
+		<image name="actionbar_font_small_hl" filename="Blue/ActionBar/font_small_hl" retainaspect="1"/>
+		<image name="actionbar_pin" filename="Blue/ActionBar/pin" retainaspect="1"/>
+		<image name="actionbar_pin_hl" filename="Blue/ActionBar/pin_hl" retainaspect="1"/>
+		<image name="actionbar_pinned" filename="Blue/ActionBar/pinned" retainaspect="1"/>
+		<image name="actionbar_pinned_hl" filename="Blue/ActionBar/pinned_hl" retainaspect="1"/>
+		<image name="actionbar_reset" filename="Blue/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_reset_hl" filename="Blue/ActionBar/reset_hl" retainaspect="1"/>
+		<image name="actionbar_settings" filename="Blue/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_settings_hl" filename="Blue/ActionBar/settings_hl" retainaspect="1"/>
+		<image name="actionbar_sort" filename="Blue/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_sort_hl" filename="Blue/ActionBar/sort_hl" retainaspect="1"/>
+		<image name="actionbar_color_prim" filename="Blue/ActionBar/color_prim" retainaspect="1"/>
+		<image name="actionbar_color_prim_hl" filename="Blue/ActionBar/color_prim_hl" retainaspect="1"/>
+		<image name="actionbar_color_sec" filename="Blue/ActionBar/color_sec" retainaspect="1"/>
+		<image name="actionbar_color_sec_hl" filename="Blue/ActionBar/color_sec_hl" retainaspect="1"/>
+		<image name="power_off" filename="Blue/ActionBar/power_off" retainaspect="1"/>
+		<image name="power_off_hl" filename="Blue/ActionBar/power_off_hl" retainaspect="1"/>
+		<image name="actionbar_storage" filename="Blue/ActionBar/storage" retainaspect="1"/>
+		<image name="actionbar_storage_hl" filename="Blue/ActionBar/storage_hl" retainaspect="1"/>
+
+		<!-- Nav panel -->
+		<image name="nav_menu" filename="Blue/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="Blue/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="Blue/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="Blue/NavPanel/backup" retainaspect="1"/>
+		<image name="nav_menu_d" filename="Blue/NavPanel/menu_d" retainaspect="1"/>
+		<image name="nav_wipe_d" filename="Blue/NavPanel/wipe_d" retainaspect="1"/>
+		<image name="nav_files_d" filename="Blue/NavPanel/files_d" retainaspect="1"/>
+		<image name="nav_backup_d" filename="Blue/NavPanel/backup_d" retainaspect="1"/>
+		<image name="nav_empty" filename="Blue/NavPanel/empty" retainaspect="1"/>
+		<image name="nav_hl" filename="Blue/NavPanel/hl" retainaspect="1"/>
+		<image name="nav_shadow" filename="Blue/NavPanel/shadow" retainaspect="1"/>
 		
 		<!-- FAB -->
-		<image name="btn_float_arc" filename="Blue/FAB/btn_float_arc" retainaspect="1"/>
-		<image name="btn_float_img" filename="Blue/FAB/btn_float_img" retainaspect="1"/>
 		<image name="btn_float_accept" filename="Blue/FAB/btn_float_accept" retainaspect="1"/>
-		<image name="btn_float_folder" filename="Blue/FAB/btn_float_folder" retainaspect="1"/>
-		<image name="btn_float_close" filename="Blue/FAB/btn_float_close" retainaspect="1"/>
 		<image name="float_fm_plus" filename="Blue/FAB/float_fm_plus" retainaspect="1"/>
 		<image name="float_fm_close" filename="Blue/FAB/float_fm_close" retainaspect="1"/>
 		<image name="float_fm_close_hl" filename="Blue/FAB/float_fm_close_hl" retainaspect="1"/>
@@ -25,17 +75,11 @@
 		<!-- File Manager -->
 		<image name="file_icon_small" filename="Blue/FileManager/file_small" retainaspect="1"/>
 		<image name="file_icon" filename="Blue/FileManager/file" retainaspect="1"/>
-		<image name="file_icon_small" filename="Blue/FileManager/file_zip_small" retainaspect="1"/>
-		<image name="file_icon_small" filename="Blue/FileManager/file_img_small" retainaspect="1"/>
-		<image name="file_icon" filename="Blue/FileManager/file_zip" retainaspect="1"/>
-		<image name="file_icon" filename="Blue/FileManager/file_img" retainaspect="1"/>
 		<image name="bkp_icon_small" filename="Blue/FileManager/file_bkp_small" retainaspect="1"/>
 		<image name="bkp_icon" filename="Blue/FileManager/file_bkp" retainaspect="1"/>
-		<image name="flash_icon" filename="Blue/FileManager/flash_icon" retainaspect="1"/>
 		
 		<!-- Info -->
 		<image name="icon_info" filename="Blue/Info/icon_info" retainaspect="1"/>
-		<image name="help_cloud" filename="Blue/Info/help_cloud" retainaspect="1"/>
 		
 		<!-- Keyboard -->
 		<image name="enter" filename="Blue/Keyboard/enter" retainaspect="1"/>
@@ -59,12 +103,22 @@
 		<image name="slideout_ng_hl" filename="Blue/NavBar/slideout_ng_hl" retainaspect="1"/>
 		<image name="keyboard_hide_ng" filename="Blue/NavBar/keyboard_hide_ng" retainaspect="1"/>
 		<image name="keyboard_hide_ng_hl" filename="Blue/NavBar/keyboard_hide_ng_hl" retainaspect="1"/>
+		
+		<!-- Pie Nav bar -->
+		<image name="back_hl_pie" filename="Blue/NavBar/back_hl_pie" retainaspect="1"/>
+		<image name="back_key_hl_pie" filename="Blue/NavBar/back_key_hl_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="Blue/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="back_pie" filename="Blue/NavBar/back_pie" retainaspect="1"/>
+		<image name="home_hl_pie" filename="Blue/NavBar/home_hl_pie" retainaspect="1"/>
+		<image name="home_pie" filename="Blue/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="Blue/NavBar/slideout_key_pie" retainaspect="1"/>
+		<image name="slideout_key_pie_hl" filename="Blue/NavBar/slideout_key_pie_hl" retainaspect="1"/>
 	</resources>
 	<variables>
-		<variable name="accent" value="#0090CAFF"/>
-		<variable name="accent_r" value="0"/>
-		<variable name="accent_g" value="144"/>
-		<variable name="accent_b" value="202"/>
+		<variable name="accent" value="#1A73E8"/>
+		<variable name="accent_r" value="214"/>
+		<variable name="accent_g" value="88"/>
+		<variable name="accent_b" value="90"/>
 		<variable name="theme_accent" value="Blue"/>
 		<variable name="current_accent" value="Blue"/>
 		<variable name="applied_accent_x" value="285"/>

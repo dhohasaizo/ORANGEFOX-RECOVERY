@@ -52,7 +52,6 @@
 		<image name="power_off_hl" filename="Orange/ActionBar/power_off_hl" retainaspect="1"/>
 		<image name="actionbar_storage" filename="Orange/ActionBar/storage" retainaspect="1"/>
 		<image name="actionbar_storage_hl" filename="Orange/ActionBar/storage_hl" retainaspect="1"/>
-		<image name="actionbar_shadow" filename="Orange/ActionBar/shadow"/>
 
 		<!-- Nav panel -->
 		<image name="nav_menu" filename="Orange/NavPanel/menu" retainaspect="1"/>
@@ -117,9 +116,9 @@
 	</resources>
 	<variables>
 		<variable name="accent" value="#ed6f02"/>
-		<variable name="accent_r" value="214"/>
-		<variable name="accent_g" value="88"/>
-		<variable name="accent_b" value="90"/>
+		<variable name="accent_r" value="27"/>
+		<variable name="accent_g" value="99"/>
+		<variable name="accent_b" value="92"/>
 		<variable name="theme_accent" value="Orange"/>
 		<variable name="current_accent" value="Orange"/>
 		<variable name="applied_accent_x" value="285"/>

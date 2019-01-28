@@ -880,7 +880,7 @@
 			<button>
 				<placement x="285" y="975"/>
 				<image resource="color_fox"/>
-				<action function="set">theme_accent=Fox</action>
+				<action function="set">theme_accent=Orange</action>
 			</button>
 
 			<image>
@@ -938,7 +938,7 @@
 			</image>
 			<image>
 				<placement x="285" y="975"/>
-				<condition var1="theme_accent" var2="Fox"/>
+				<condition var1="theme_accent" var2="Orange"/>
 				<image resource="style_apply"/>
 			</image>
 			<image>

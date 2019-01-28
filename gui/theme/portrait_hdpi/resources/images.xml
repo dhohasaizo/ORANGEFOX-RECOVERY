@@ -8,6 +8,15 @@
 	</mousecursor>
 	
 	<resources>
+		<!-- NavPanel -->
+		<image name="nav_menu_d" filename="Default/NavPanel/menu_d" retainaspect="1"/>
+		<image name="nav_wipe_d" filename="Default/NavPanel/wipe_d" retainaspect="1"/>
+		<image name="nav_files_d" filename="Default/NavPanel/files_d" retainaspect="1"/>
+		<image name="nav_backup_d" filename="Default/NavPanel/backup_d" retainaspect="1"/>
+		<image name="nav_empty" filename="Default/NavPanel/empty" retainaspect="1"/>
+		<image name="nav_hl" filename="Default/NavPanel/hl" retainaspect="1"/>
+		<image name="nav_shadow" filename="Default/NavPanel/shadow" retainaspect="1"/>
+		<image name="actionbar_shadow" filename="Default/ActionBar/shadow"/>
 		
 		<!-- Fonts Preview -->
 		<font name="font1" filename="Roboto-Regular.ttf" size="42"/>
