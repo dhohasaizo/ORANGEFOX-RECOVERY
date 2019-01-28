@@ -46,17 +46,17 @@
 		<string name="reboot_btn">Reboot</string>
 		<string name="copy_log_btn">Copy Log to SD</string>
 		<string name="install_zip_hdr">Install ZIP</string>
-		<string name="install_zip_btn">INSTALL ZIP</string>
+		<string name="install_zip_btn">Install ZIP</string>
 		<string name="install_image_hdr">Install Image</string>
-		<string name="install_image_btn">INSTALL IMAGE</string>
+		<string name="install_image_btn">Install IMAGE</string>
 		<string name="install_select_file_hdr">Select File</string>
-		<string name="install_select_file_btn">SELECT FILE</string>
+		<string name="install_select_file_btn">Select File</string>
 		<string name="adb_sideload_btn">ADB Sideload</string>
 		<string name="select_storage_hdr">Select Storage</string>
-		<string name="select_storage_btn">SELECT STORAGE</string>
+		<string name="select_storage_btn">Select Storage</string>
 		<string name="queue_hdr">Queue</string>
-		<string name="raised_clearqueue_btn">CLEAR QUEUE</string>
-		<string name="raised_viewqueue_btn">VIEW QUEUE</string>
+		<string name="raised_clearqueue_btn">Clear Queue</string>
+		<string name="raised_viewqueue_btn">View Queue</string>
 		<string name="zip_queue_count">%tw_zip_queue_count% of max of 10 Files queued</string>
 		<string name="folder">Folder</string>
 		<string name="file">File</string>
@@ -69,9 +69,9 @@
 		<string name="working">Working...</string>
 		<string name="failed">Failed</string>
 		<string name="successful">Successful</string>
-		<string name="wipe_cache_btn">WIPE CACHES</string>
-		<string name="reboot_system_btn">REBOOT SYSTEM</string>
-		<string name="reboot_recovery_btn">REBOOT RECOVERY</string>
+		<string name="wipe_cache_btn">Wipe Caches</string>
+		<string name="reboot_system_btn">Reboot System</string>
+		<string name="reboot_recovery_btn">Reboot Recovery</string>
 		<string name="install_sel_target">Select Target Partition</string>
 		<string name="flash_image_select">Partition</string>
 		<string name="flashing_image">Flashing Image...</string>
@@ -83,7 +83,7 @@
 		<string name="rebooting">Rebooting...</string>
 		<string name="swipe_reboot">Swipe to Reboot</string>
 		<string name="confirm_action">Confirm Action</string>
-		<string name="cancel_btn">CANCEL</string>
+		<string name="cancel_btn">Cancel</string>
 		<string name="wipe_hdr">Wipe</string>
 		<string name="factory_reset_hdr">Factory Reset</string>
 		<string name="factory_reset1">Wipes Data, Cache, and Dalvik</string>
@@ -92,7 +92,7 @@
 		<string name="factory_reset4">the only wipe that you need.</string>
 		<string name="factory_resetting">Wiping Data, Cache and Dalvik...</string>
 		<string name="advanced_wipe_hdr">Advanced Wipe</string>
-		<string name="advanced_wipe_btn">ADVANCED WIPE</string>
+		<string name="advanced_wipe_btn">Advanced Wipe</string>
 		<string name="wipe_enc_confirm">Wipe Encryption from Data?</string>
 		<string name="formatting_data">Formatting Data...</string>
 		<string name="swipe_format_data">Swipe to Format Data</string>
@@ -102,7 +102,7 @@
 		<string name="wiping_part">Wiping Partitions...</string>
 		<string name="wipe_complete">Wipe completed</string>
 		<string name="format_data_hdr">Format Data</string>
-		<string name="format_data_btn">FORMAT DATA</string>
+		<string name="format_data_btn">Format Data</string>
 		<string name="format_data_ptr1">Format Data will wipe all of your apps,</string>
 		<string name="format_data_ptr2">backups, pictures, videos, media, and</string>
 		<string name="format_data_ptr3">removes encryption on internal storage.</string>
@@ -112,7 +112,7 @@
 		<!-- Translator note: the word "yes" must remain English! -->
 		<string name="yes_continue">Type "yes" to confirm.</string>
 		<string name="part_opt_hdr">Partition Options</string>
-		<string name="file_sys_opt">PARTITION OPTIONS</string>
+		<string name="file_sys_opt">Partition Options</string>
 		<string name="part_mount_point">Mount Point:</string>
 		<string name="part_curr_fs">File system:</string>
 		<string name="part_present">Present:</string>
@@ -123,17 +123,17 @@
 		<string name="part_used">Used:</string>
 		<string name="part_free">Free:</string>
 		<string name="part_backup_size">Backup Size:</string>
-		<string name="resize_btn">RESIZE FS</string>
+		<string name="resize_btn">Resize FS</string>
 		<string name="resize_confirm">Resize partition</string>
 		<string name="resizing">Resizing...</string>
 		<string name="resize_complete">Resize completed</string>
 		<string name="swipe_resize">Swipe to Resize</string>
-		<string name="repair_btn">REPAIR FS</string>
+		<string name="repair_btn">Repair FS</string>
 		<string name="repair_confirm">Repair partition</string>
 		<string name="repairing">Repairing...</string>
 		<string name="repair_complete">Repair completed</string>
 		<string name="swipe_repair">Swipe to Repair</string>
-		<string name="change_fs_btn">CHANGE FS</string>
+		<string name="change_fs_btn">Change FS</string>
 		<string name="change_fs_warn1">Some ROMs or kernels may not support</string>
 		<string name="change_fs_warn2">some file systems. Proceed with caution!</string>
 		<string name="change_fs_confirm">Change FS to</string>
@@ -141,9 +141,9 @@
 		<string name="format_complete">Format completed</string>
 		<string name="swipe_change_fs">Swipe to Change</string>
 		<string name="back_btn">BACK</string>
-		<string name="wipe_enc_btn">WIPE ENCRYPTION</string>
+		<string name="wipe_enc_btn">Wipe Encryption</string>
 		<string name="swipe_factory_reset">Swipe to Factory Reset</string>
-		<string name="backup_hdr">New backup</string>
+		<string name="backup_hdr">Backup</string>
 		<string name="encryption_hdr">Enable Encryption</string>
 		<string name="name">Name</string>
 		<string name="enable_backup_comp_chk">Enable compression</string>
@@ -177,15 +177,15 @@
 		<string name="swipe_to_rename">Swipe to Rename</string>
 		<string name="mount_hdr">Mount</string>
 		<string name="mount_sys_ro_chk">Mount system partition read-only</string>
-		<string name="decrypt_data_btn">DECRYPT DATA</string>
-		<string name="disable_mtp_btn">DISABLE MTP</string>
-		<string name="enable_mtp_btn">ENABLE MTP</string>
+		<string name="decrypt_data_btn">Decrypt Data</string>
+		<string name="disable_mtp_btn">Disable MTP</string>
+		<string name="enable_mtp_btn">Enable MTP</string>
 		<string name="usb_storage_hdr">USB Storage</string>
-		<string name="usb_storage_btn">USB STORAGE</string>
+		<string name="usb_storage_btn">USB Storage</string>
 		<string name="usb_stor_mnt1">USB Storage mounted</string>
 		<string name="usb_stor_mnt2">Be sure to safely remove your device</string>
 		<string name="usb_stor_mnt3">from your computer before unmounting!</string>
-		<string name="unmount_btn">UNMOUNT</string>
+		<string name="unmount_btn">Unmount</string>
 		<string name="rb_system_btn">System</string>
 		<string name="rb_poweroff_btn">Power Off</string>
 		<string name="rb_recovery_btn">Recovery</string>
@@ -205,7 +205,7 @@
 		<string name="sys_rop5">ZIP installations or ADB operations</string>
 		<string name="sys_rop6">may still modify the system partition.</string>
 		<string name="sys_ro_never_show_chk">Never show this screen again</string>
-		<string name="sys_ro_keep_ro_btn">KEEP READ-ONLY</string>
+		<string name="sys_ro_keep_ro_btn">Keep Read-Only</string>
 		<string name="swipe_allow_mod">Swipe to Allow Modifications</string>
 		<string name="settings_hdr">Settings</string>
 		<string name="settings_cptn">General</string>
@@ -276,7 +276,7 @@
 		<string name="terminal_btn">Terminal</string>
 		<string name="dumlock_note1">For information about the workings</string>
 		<string name="dumlock_note2">of HTC Dumlock please see:</string>
-		<string name="inject_twrp_btn">INJECT OrangeFox</string>
+		<string name="inject_twrp_btn">Inject OrangeFox</string>
 		<string name="inject_twrp_confirm">Re-Inject OrangeFox?</string>
 		<string name="injecting_twrp">Re-Injecting OrangeFox...</string>
 		<string name="inject_twrp_complete">OrangeFox Injection completed</string>
@@ -301,15 +301,15 @@
 		<string name="partitioning_sd2">This will take a few minutes.</string>
 		<string name="part_sd_complete">Partitioning completed</string>
 		<string name="dumlock_hdr">HTC Dumlock</string>
-		<string name="dumlock_restore_btn">RESTORE ORIGINAL BOOT</string>
+		<string name="dumlock_restore_btn">Restore Original Boot</string>
 		<string name="dumlock_restore_confirm">Restore original boot image?</string>
 		<string name="dumlock_restoring">Restoring Original Boot...</string>
 		<string name="dumlock_restore_complete">Restore original boot completed</string>
-		<string name="dumlock_reflash_btn">REFLSH RECOVERY</string>
+		<string name="dumlock_reflash_btn">Reflsh Recovery</string>
 		<string name="dumlock_reflash_confirm">Reflash recovery to boot?</string>
 		<string name="dumlock_reflashing">Flashing recovery to boot...</string>
 		<string name="dumlock_reflash_complete">Recovery flash to boot completed</string>
-		<string name="dumlock_install_btn">INSTALL DUMLOCK</string>
+		<string name="dumlock_install_btn">Install Dumlock</string>
 		<string name="dumlock_install_confirm">Install HTC dumlock files to ROM?</string>
 		<string name="dumlock_installing">Installing HTC Dumlock...</string>
 		<string name="dumlock_install_complete">HTC Dumlock install completed</string>
@@ -375,7 +375,7 @@
 		<string name="swipe_su_to_install">Swipe to Install</string>
 		<string name="su_installing">Installing SuperSU</string>
 		<string name="sel_storage_list">Select Storage</string>
-		<string name="ok_btn">OK</string>
+		<string name="ok_btn">Ok</string>
 
 		<!-- Various console messages - these consist of user displayed messages, oftentimes errors -->
 		<string name="no_kernel_selinux">Kernel does not have support for reading SELinux contexts.</string>
@@ -643,10 +643,6 @@
 		<string name="author">Author</string>
 		<string name="contact">Contact</string>
 		<string name="credits">Credits</string>
-		<string name="helpful">to all the helpful souls that make the</string>
-		<string name="irc">IRC channel #twrp a fun place to learn</string>
-		<string name="osm0sis">to &quot;osm0sis&quot; for the FlashIt script</string>
-		<string name="dsm">to &quot;DSM_&quot; for the color changing script</string>
 		<string name="version_twrp">Version</string>
 		<string name="theme">Install Theme</string>
 		<string name="theme_hdr">Select Theme</string>
@@ -659,14 +655,14 @@
 		<string name="dialog_label_color_hdr">Reboot required</string>
 		<string name="dialog_color_note_1">Don't tell me again</string>
 		<string name="dialog_settheme_hdr">Change Theme</string>
-		<string name="dialog_settheme_btn">CHANGE THEME</string>
+		<string name="dialog_settheme_btn">Change Theme</string>
 		<string name="dialog_settheme_note_1">The recovery will now reboot</string>
 		<string name="dialog_settheme_note_2">to apply the selected theme.</string>
 		<string name="dialog_settheme_note_2a">to apply the selected color.</string>
 		<string name="dialog_offset_note">Select your offset value</string>
-		<string name="dialog_settheme_color_btn">CHANGE COLOR</string>
-		<string name="dialog_splash_btn">CHANGE SPLASH</string>
-		<string name="dialog_splash_adapt">ADAPT SPLASH</string>
+		<string name="dialog_settheme_color_btn">Change Color</string>
+		<string name="dialog_splash_btn">Change Splash</string>
+		<string name="dialog_splash_adapt">Adapt Splash</string>
 		<string name="dialog_reset_note_1">Do you want to restore the</string>
 		<string name="dialog_reset_note_2">default settings for OrangeFox recovery</string>
 		<string name="dialog_reset_note_3">and theme? Reboot required.</string>
@@ -746,8 +742,8 @@
 		<string name="bkp_date">Add date</string>
 		<string name="bkp_gen">Generate backup name</string>
 		<string name="bkp_gen_whilebkp">Generate backup name while backing up</string>
-		<string name="bkp_quick">QUICK BACKUP</string>
-		<string name="bkp_clear">CLEAR</string>
+		<string name="bkp_quick">Quick Backup</string>
+		<string name="bkp_clear">Clear</string>
 		
 		<string name="language_cptn">Language</string>
 		<string name="cust_oth">Other</string>
@@ -780,19 +776,8 @@
 		<string name="update_btn">Update</string>
 		<string name="include_kernel_log">Include Kernel Log</string>
 		
-		<string name="new_battery">Battery Calibration</string>
-		<string name="swipe_to_calibrate">Swipe to Calibrate</string>
-		<string name="new_battery_note1">Calibration will help to correct</string>
-		<string name="new_battery_note2">the uneven discharge of the battery.</string>
-		<string name="new_battery_note3">Battery not fully charged!</string>
-		
-		<string name="new_battery_wait">Calibrating...</string>
-		<string name="new_battery_done">Battery calibrated</string>
 		<string name="new_lock_wait">Removing...</string>
 		<string name="new_lock_done">Removing complete</string>
-		
-		<string name="fordowns_power">Power</string>
-		<string name="fordowns_cant">Can't cancel this action!</string>
 		
 		<string name="new_lock">FRP and Lockscreen</string>
 		
@@ -851,15 +836,13 @@
 		
 		<string name="new_key">Use new style for keyboard</string>
 		
-		<string name="test_btn">TEST</string>
-		
 		<string name="bkp_nametitle">Backup name</string>
 		<string name="bkp_namesub">Type or generate backup name</string>
 		
 		<string name="aroma_select">Select AromaFM ZIP</string>
-		<string name="goto_storage">STORAGE</string>
+		<string name="goto_storage">Storage</string>
 		
-		<string name="custom_font">CUSTOM FONT</string>
+		<string name="custom_font">Custom Font</string>
 		<string name="select_custom_font">Select font</string>
 		
 		<string name="aroma_inimg">Built-in AromaFM</string>
@@ -906,7 +889,7 @@
 		<string name="top">Top</string>
 		<string name="center">Center</string>
 		<string name="bottom">Bottom</string>
-		<string name="preview_btn">PREVIEW</string>
+		<string name="preview_btn">Preview</string>
 		<string name="sph_newclassic">New classic</string>
 		<string name="sph_classtitle">Bottom title</string>
 		<string name="sph_classic">(classic)</string>
@@ -964,7 +947,7 @@
 		<string name="data_backup">Data</string>
 		<string name="autostorage">Storage</string>
 		<string name="install_reboot">Rebooting in %tw_sleep% seconds</string>
-		<string name="cancel_reboot_btn">CANCEL REBOOT</string>
+		<string name="cancel_reboot_btn">Cancel Reboot</string>
 		<string name="skip_digest_backup_chk" version="2">Skip Digest generation during backup</string>
 		<string name="restore_digest_chk" version="2">Enable Digest verification of backups</string>
 		<string name="restore_enable_digest_chk" version="2">Enable Digest verification of backups</string>

@@ -38,13 +38,6 @@
 		<string name="sort_by_name_desc">Имя</string>
 		<string name="sort_by_date_desc">Дата</string>
 		<string name="sort_by_size_desc">Размер</string>
-		<string name="tab_general">ОСНОВНЫЕ</string>
-		<string name="tab_options">НАСТРОЙКИ</string>
-		<string name="tab_backup">КОПИИ</string>
-		<string name="tab_time_zone">ЧАСОВОЙ ПОЯС</string>
-		<string name="tab_screen">ЭКРАН</string>
-		<string name="tab_vibration">ВИБРАЦИЯ</string>
-		<string name="tab_language">ЯЗЫК</string>
 		<string name="install_btn">Установка</string>
 		<string name="wipe_btn">Очистка</string>
 		<string name="backup_btn">Копия</string>
@@ -59,18 +52,18 @@
 		<string name="install_zip_hdr">Установка ZIP</string>
 		<string name="install_zip_btn">УСТАНОВКА ZIP</string>
 		<string name="install_image_hdr">Установка IMG</string>
-		<string name="install_image_btn">УСТАНОВКА IMG</string>
+		<string name="install_image_btn">Установка IMG</string>
 		<string name="install_select_file_hdr">Выбор файла</string>
-		<string name="install_select_file_btn">ВЫБРАТЬ ФАЙЛ</string>
+		<string name="install_select_file_btn">Выбрать файл</string>
 		<string name="file_selector_folders_hdr">Папки</string>
 		<string name="select_file_from_storage">Выбор файла из %tw_storage_display_name% (%tw_storage_free_size% МБ)</string>
 		<string name="adb_sideload_btn">ADB Sideload</string>
 		<string name="install_hdr">Установка</string>
 		<string name="install_reboot_chk">Перезагрузка по окончании</string>
 		<string name="select_storage_hdr">Накопитель</string>
-		<string name="select_storage_btn">НАКОПИТЕЛЬ</string>
-		<string name="raised_clearqueue_btn">ОЧИСТИТЬ</string>
-		<string name="raised_viewqueue_btn">ОЧЕРЕДЬ</string>
+		<string name="select_storage_btn">Накопитель</string>
+		<string name="raised_clearqueue_btn">Очистить</string>
+		<string name="raised_viewqueue_btn">Очередь</string>
 		<string name="queue_hdr">Очередь</string>
 		<string name="zip_queue_count">%tw_zip_queue_count% из 10 возможных</string>
 		<string name="zip_queue_count_s">Файл %tw_zip_queue_count% из 10:</string>
@@ -87,15 +80,15 @@
 		<string name="zip_queue">Очередь</string>
 		<string name="options">Настройки</string>
 		<string name="swipe_confirm">   Подтвердить</string>
-		<string name="zip_add_btn">ДОБАВИТЬ ZIP</string>
-		<string name="zip_clear_btn">ОЧИСТИТЬ ОЧЕРЕДЬ</string>
+		<string name="zip_add_btn">Добавить ZIP</string>
+		<string name="zip_clear_btn">Очистить очередь</string>
 		<string name="install_zip_count_hdr">Установка ZIP %tw_zip_index% из %tw_zip_queue_count%</string>
 		<string name="installing_zip_xml">Установка ZIP: %tw_file%</string>
 		<string name="failed">Неудача</string>
 		<string name="successful">Успешно</string>
 		<string name="install_failed">Установка не удалась</string>
 		<string name="install_successful">Установка выполнена успешно</string>
-		<string name="reboot_system_btn">ПЕРЕЗАГРУЗИТЬ</string>
+		<string name="reboot_system_btn">Перезагрузить</string>
 		<string name="install_sel_target">Выбор раздела</string>
 		<string name="flash_image_select">Выберите раздел для прошивки образа</string>
 		<string name="target_partition">Целевой раздел:</string>
@@ -113,7 +106,7 @@
 		<string name="swipe_flash">Проведите для прошивки</string>
 		<string name="confirm_action">Подтвердить действие</string>
 		<string name="back_cancel">Нажмите назад для отмены.</string>
-		<string name="cancel_btn">ОТМЕНА</string>
+		<string name="cancel_btn">Отмена</string>
 		<string name="wipe_hdr">Очистка</string>
 		<string name="factory_reset_hdr">Сброс устройства</string>
 		<string name="factory_reset_btn">Сброс устройства</string>
@@ -123,7 +116,7 @@
 		<string name="factory_reset4">этих разделов достаточна.</string>
 		<string name="factory_resetting">Сброс до заводского состояния...</string>
 		<string name="advanced_wipe_hdr">Выборочная очистка</string>
-		<string name="advanced_wipe_btn">ИНФОРМАЦИЯ</string>
+		<string name="advanced_wipe_btn">Информация</string>
 		<string name="wipe_enc_confirm">Очистить шифрованные данные</string>
 		<string name="formatting_data">Форматирование Data...</string>
 		<string name="swipe_format_data">Проведите для форматирования</string>
@@ -136,7 +129,7 @@
 		<string name="sel_part_wipe">Выберите разделы для очистки:</string>
 		<string name="invalid_part_sel">Выбран неверный раздел</string>
 		<string name="format_data_hdr">Очистить Data</string>
-		<string name="format_data_btn">ОЧИСТИТЬ DATA</string>
+		<string name="format_data_btn">Очистить Data</string>
 		<string name="format_data_ptr1">Форматирование Data удалит</string>
 		<string name="format_data_ptr2">резервные копии, все приложения,</string>
 		<string name="format_data_ptr3">медиафайлы и зашифрованные файлы.</string>
@@ -151,7 +144,7 @@
 		<string name="yes_continue">Введите "yes" для продолжения...</string>
 		<string name="part_opt_hdr">Информация о разделе</string>
 		<string name="sel_act_hdr">Выбор действия</string>
-		<string name="file_sys_opt">ДОПОЛНИТЕЛЬНО</string>
+		<string name="file_sys_opt">Дополнительно</string>
 		<string name="partition">Раздел</string>
 		<string name="part_mount_point">Точка монтирования</string>
 		<string name="part_curr_fs">Файловая система</string>
@@ -163,22 +156,22 @@
 		<string name="part_used">Использовано</string>
 		<string name="part_free">Свободно</string>
 		<string name="part_backup_size">Резервные копии</string>
-		<string name="resize_btn">ИСПРАВИТЬ</string>
-		<string name="resize_btn_s">ИСПРАВИТЬ</string>
+		<string name="resize_btn">Исправить</string>
+		<string name="resize_btn_s">Исправить</string>
 		<string name="resize_confirm">Исправить размер</string>
 		<string name="resizing">Исправление размера...</string>
 		<string name="resize_complete">Размер раздела исправлен</string>
 		<string name="swipe_resize">Проведите для исправления размера</string>
 		<string name="swipe_resize_s">   Исправить размер</string>
-		<string name="repair_btn">ВОССТАНОВИТЬ</string>
+		<string name="repair_btn">Восстановить</string>
 		<string name="repair_btn_s">Восстановление</string>
 		<string name="repair_confirm">Восстановить</string>
 		<string name="repairing">Восстановление...</string>
 		<string name="repair_complete">Восстановление завершено</string>
 		<string name="swipe_repair">Проведите для восстановления</string>
 		<string name="swipe_repair_s">   Восстановление</string>
-		<string name="change_fs_btn">ФАЙЛ. СИСТЕМА</string>
-		<string name="change_fs_btn_s">ФАЙЛ. СИСТЕМА</string>
+		<string name="change_fs_btn">Файл. система</string>
+		<string name="change_fs_btn_s">Файл. система</string>
 		<string name="change_fs_hdr">Изменить файл. систему</string>
 		<string name="change_fs_warn1">Некоторые прошивки не поддерживают</string>
 		<string name="change_fs_warn2">некоторые файловые системы!</string>
@@ -187,12 +180,12 @@
 		<string name="format_complete">Форматирование завершено</string>
 		<string name="swipe_change_fs">Проведите для изменения</string>
 		<string name="swipe_change_s">   Изменить</string>
-		<string name="back_btn">НАЗАД</string>
-		<string name="wipe_enc_btn">СТЕРЕТЬ ШИФРОВАНИЕ</string>
+		<string name="back_btn">Назад</string>
+		<string name="wipe_enc_btn">Стереть шифрование</string>
 		<string name="swipe_factory_reset">Проведите для подтверждения</string>
 		<string name="backup_hdr">Резервная копия</string>
 		<string name="backup_confirm_hdr">Подтверждение резервного копирования</string>
-		<string name="encryption_tab">ШИФРОВАНИЕ</string>
+		<string name="encryption_tab">Шифрование</string>
 		<string name="encryption">Шифрование:</string>
 		<string name="encryption_hdr">Шифрование</string>
 		<string name="name">Имя</string>
@@ -250,15 +243,15 @@
 		<string name="mount_sel_part">Выбор разделов для монтирования:</string>
 		<string name="mount_sys_ro_chk">Системный раздел только для чтения</string>
 		<string name="mount_sys_ro_s_chk"> Система RO</string>
-		<string name="decrypt_data_btn">РАСШИФРОВАТЬ</string>
-		<string name="disable_mtp_btn">ВЫКЛЮЧИТЬ MTP</string>
-		<string name="enable_mtp_btn">ВКЛЮЧИТЬ MTP</string>
+		<string name="decrypt_data_btn">Расшифровать</string>
+		<string name="disable_mtp_btn">Выключить MTP</string>
+		<string name="enable_mtp_btn">Включить MTP</string>
 		<string name="mount_usb_storage_btn">Смонтировать как USB</string>
 		<string name="usb_storage_hdr">USB накопитель</string>
 		<string name="usb_stor_mnt1">USB накопитель смонтирован</string>
 		<string name="usb_stor_mnt2">Для безопасного отключения вашего устройства</string>
 		<string name="usb_stor_mnt3">от компьютера, выполните размонтирование!</string>
-		<string name="unmount_btn">РАЗМОНТИРОВАТЬ</string>
+		<string name="unmount_btn">Размонтировать</string>
 		<string name="rb_system_btn">Система</string>
 		<string name="rb_poweroff_btn">Выключение</string>
 		<string name="rb_recovery_btn">Режим восстановления</string>
@@ -374,7 +367,7 @@
 		<string name="terminal_btn">Терминал</string>
 		<string name="reload_theme_btn">Перезагрузить тему</string>
 		<string name="dumlock_btn">HTC Dumlock</string>
-		<string name="inject_twrp_btn">ИНТЕГРИРОВАТЬ TWRP</string>
+		<string name="inject_twrp_btn">Интегрировать TWRP</string>
 		<string name="inject_twrp_confirm">Интегрировать TWRP заново</string>
 		<string name="injecting_twrp">Интегрирование TWRP...</string>
 		<string name="inject_twrp_complete">Интегрирование TWRP завершено</string>
@@ -394,15 +387,15 @@
 		<string name="partitioning_sd2">Это может занять несколько минут.</string>
 		<string name="part_sd_complete">Разметка завершена</string>
 		<string name="dumlock_hdr">HTC Dumlock</string>
-		<string name="dumlock_restore_btn">ВОССТАНОВЛЕНИЕ ОРИГИНАЛЬНОГО BOOT</string>
+		<string name="dumlock_restore_btn">Восстановление оригинального Boot</string>
 		<string name="dumlock_restore_confirm">Восстановить Boot</string>
 		<string name="dumlock_restoring">Восстановление оригинального Boot...</string>
 		<string name="dumlock_restore_complete">Восстановление Boot завершено</string>
-		<string name="dumlock_reflash_btn">ПЕРЕПРОШИВКА TWRP</string>
+		<string name="dumlock_reflash_btn">Перепрошивка TWRP</string>
 		<string name="dumlock_reflash_confirm">Перепрошить Recovery в Boot</string>
 		<string name="dumlock_reflashing">Прошивка Recovery в Boot...</string>
 		<string name="dumlock_reflash_complete">Прошивка Recovery в Boot завершена</string>
-		<string name="dumlock_install_btn">УСТАНОВИТЬ HTC DUMLOCK</string>
+		<string name="dumlock_install_btn">Установить HTC Dumlock</string>
 		<string name="dumlock_install_confirm">Установить HTC Dumlock</string>
 		<string name="dumlock_installing">Установка HTC Dumlock...</string>
 		<string name="dumlock_install_complete">Установка HTC Dumlock завершена</string>
@@ -468,12 +461,12 @@
 		<string name="su_note1">В вашем устройстве отсутствует ROOT.</string>
 		<string name="su_note2">Установить SuperSU сейчас?</string>
 		<string name="su_note3">ROOT-доступ будет активирован.</string>
-		<string name="su_cancel">ОТМЕНА</string>
+		<string name="su_cancel">Отмена</string>
 		<string name="swipe_su_to_install">Проведите для установки</string>
 		<string name="swipe_su_install">   Установка</string>
 		<string name="su_installing">Установка SuperSU</string>
 		<string name="sel_storage_list">Выбор хранилища</string>
-		<string name="ok_btn">OK</string>
+		<string name="ok_btn">Ок</string>
 
 		<!-- Various console messages - these consist of user displayed messages, oftentimes errors -->
 		<string name="no_kernel_selinux">Чтение SELinux-контекста не поддерживается ядром.</string>
@@ -708,7 +701,7 @@
 		<string name="install_flash_repack">Установить перепакованный образ</string>
 		<string name="splash_preview">Просмотр</string>
 		<string name="splash_preview_note">Просмотр новой заставки</string>
-		<string name="theme_splash_preview">ПРОСМОТР</string>
+		<string name="theme_splash_preview">Просмотр</string>
 		<string name="auto_flash_repack_chb">Сразу установить перепакованный образ</string>
 		<string name="include_flash_repack">Встроить текущую тему в образ</string>
 		<string name="not_include_theme">(Образ не будет содержать тему!)</string>
@@ -739,17 +732,13 @@
 		<string name="sel_part_single1">Выберите один раздел</string>
 		<string name="sel_part_single2">для доступа к настройкам</string>
 		<string name="part_fs_error_1">Просмотр параметров не</string>
-		<string name="part_fs_error_2">доступн для этого раздела!</string>
+		<string name="part_fs_error_2">доступен для этого раздела!</string>
 		<string name="new_file_system">Новая файловая система</string>
 		<string name="adb_sideload_opt">Настройки Sideload</string>
 		<string name="about_hdr">Информация</string>
 		<string name="author">Автор</string>
 		<string name="contact">Контакты</string>
 		<string name="credits">Благодарности</string>
-		<string name="helpful">Всем, кто помог сделать IRC канал #twrp</string>
-		<string name="irc">местом для весёлого обучения;</string>
-		<string name="osm0sis">osm0sis'у за скрипт FlashIt;</string>
-		<string name="dsm">DSM_'у за цветовые решения.</string>
 		<string name="version_twrp">Версии</string>
 		<string name="theme">Установка темы</string>
 		<string name="theme_hdr">Выбор темы</string>
@@ -766,9 +755,9 @@
 		<string name="dialog_settheme_note_1">TWRP сейчас перезагрузится</string>
 		<string name="dialog_settheme_note_2">для применения выбраной темы.</string>
 		<string name="dialog_settheme_note_2a">для применения выбраного цвета.</string>
-		<string name="dialog_settheme_color_btn">ЦВЕТ ТЕМЫ</string>
-		<string name="dialog_splash_btn">ЗАСТАВКА</string>
-		<string name="dialog_splash_adapt">ПОДОГНАТЬ</string>
+		<string name="dialog_settheme_color_btn">Цвет темы</string>
+		<string name="dialog_splash_btn">Заставка</string>
+		<string name="dialog_splash_adapt">Подогнать</string>
 		<string name="dialog_reset_note_1">Восстановить настройки по</string>
 		<string name="dialog_reset_note_2">умолчанию для TWRP и темы?</string>
 		<string name="dialog_reset_note_3">Требуется перезагрузка.</string>
@@ -817,11 +806,11 @@
 		<string name="fordowns_about2">Материальный дизайн TWRP</string>
 		<string name="restore_backup_hdr">Воосстановить копию</string>
 		<string name="restore_md5_chk">Проверить MD5 копий</string>
-		<string name="part_yes">ДА</string>
-		<string name="part_no">НЕТ</string>
+		<string name="part_yes">Да</string>
+		<string name="part_no">Нет</string>
 		<string name="part_present">Присутствует</string>
 		<string name="part_removable">Съёмное</string>
-		<string name="wipe_cache_btn">ОЧИСТИТЬ CACHE</string>
+		<string name="wipe_cache_btn">Очистить Cache</string>
 		<string name="reboot_recovery_btn">TWRP</string>
 		<string name="btn_flat_more">+</string>
 		<string name="btn_flat_less">-</string>
@@ -855,7 +844,7 @@
 		<string name="fm_book">Кнопка закладок</string>
 		<string name="fm_font">Кнопка размера значков</string>
 		
-		<string name="cust_fm">ФАЙЛЫ</string>
+		<string name="cust_fm">Файлы</string>
 		<string name="cust_fm_t">Файлы</string>
 		<string name="cust_fm_font">Размер значков</string>
 		<string name="cust_fm_font_b">Большой</string>
@@ -889,8 +878,8 @@
 		<string name="bkp_date">Добавить дату</string>
 		<string name="bkp_gen">Сгенерировать</string>
 		<string name="bkp_gen_whilebkp">Сгенерировать в процессе создания</string>
-		<string name="bkp_quick">БЫСТРАЯ КОПИЯ</string>
-		<string name="bkp_clear">ОЧИСТИТЬ</string>
+		<string name="bkp_quick">Быстрая копия</string>
+		<string name="bkp_clear">Очистить</string>
 		
 		<string name="settings_general">Основные</string>
 		<string name="settings_ui">Персонализация</string>
@@ -919,14 +908,6 @@
 		
 		<string name="update_btn">Обновить</string>
 		<string name="include_kernel_log">Сохранить лог ядра</string>
-		
-		<string name="new_battery">Калибровка батареи</string>
-		<string name="swipe_to_calibrate">Проведите для калибровки</string>
-		<string name="new_battery_note1">Калибровка поможет исправить</string>
-		<string name="new_battery_note2">неравномерную разрядку батареи.</string>
-		<string name="new_battery_note3">Недостаточный заряд батареи!</string>
-		
-		<string name="fordowns_power">Питание</string>
 		
 		<string name="new_lock">FRP и экран блокировки</string>
 
@@ -992,15 +973,13 @@
 		
 		<string name="new_key">Использовать новый вид клавиатуры</string>
 		
-		<string name="test_btn">ТЕСТ</string>
-		
 		<string name="bkp_nametitle">Имя копии</string>
 		<string name="bkp_namesub">Введите или сгенерируйте имя</string>
 		
 		<string name="aroma_select">Выберите AromaFM</string>
-		<string name="goto_storage">ПАМЯТЬ</string>
+		<string name="goto_storage">Память</string>
 		
-		<string name="custom_font">CВОЙ ШРИФТ</string>
+		<string name="custom_font">Cвой шрифт</string>
 		<string name="select_custom_font">Выберите шрифт</string>
 		
 		<string name="aroma_inimg">Встроенный AromaFM</string>
@@ -1100,7 +1079,7 @@
 		<string name="data_backup">Data</string>
 		<string name="autostorage">Хранилище</string>
 		<string name="install_reboot">Перезагрузка через %tw_sleep% секунд...</string>
-		<string name="cancel_reboot_btn">ОТМЕНИТЬ</string>
+		<string name="cancel_reboot_btn">Отменить</string>
 		<string name="skip_digest_backup_chk" version="2">Пропуск создания контрольной суммы</string>
 		<string name="restore_digest_chk" version="2">Проверять контрольные суммы</string>
 		<string name="restore_enable_digest_chk" version="2">Проверять контрольные суммы</string>
@@ -1125,10 +1104,10 @@
 		<string name="digest_match" version="2">Контрольные суммы совпадают</string>
 		<string name="password">Пароль</string>
 		<string name="boot_slot">Загрузочный слот</string>
-		<string name="boot_slot_a">СЛОТ A</string>
-		<string name="boot_slot_use_a">ПЕРЕКЛЮЧИТЬ НА СЛОТ A</string>
-		<string name="boot_slot_b">СЛОТ B</string>
-		<string name="boot_slot_use_b">ПЕРЕКЛЮЧИТЬ НА СЛОТ B</string>
+		<string name="boot_slot_a">Слот A</string>
+		<string name="boot_slot_use_a">Переключить на слот A</string>
+		<string name="boot_slot_b">Слот B</string>
+		<string name="boot_slot_use_b">Переключить на слот B</string>
 		<string name="changing_boot_slot">Изменить загрузочный слот</string>
 		<string name="changing_boot_slot_complete">Загрузочный слот изменен</string>
 		<string name="unable_set_boot_slot">Ошибка изменения загрузочного слота {1}</string>
