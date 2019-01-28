@@ -192,11 +192,14 @@ int main(int argc, char **argv)
 	gui_msg("full_selinux=Full SELinux support is present.");
       }
   }
-  gui_print("**************************");
-  gui_msg("orangefox_msg2=[OrangeFox]: Welcome! ^_^");
-  gui_msg(Msg("orangefox_msg3=[Version]: '{1}'") (FOX_VERSION));
-  gui_msg(Msg("orangefox_msg4=[Build]: {1}") (FOX_BUILD));
-  gui_print("**************************");
+  /*
+   TWFunc::Welcome_Message();
+   //gui_print("**************************");
+   //gui_msg("orangefox_msg2=[OrangeFox]: Welcome! ^_^");
+   //gui_msg(Msg("orangefox_msg3=[Version]: '{1}'") (FOX_VERSION));
+   //gui_msg(Msg("orangefox_msg4=[Build]: {1}") (FOX_BUILD));
+   //gui_print("**************************");
+  */
   PartitionManager.Mount_By_Path("/cache", false);
 
   bool Shutdown = false;
@@ -484,7 +487,7 @@ int main(int argc, char **argv)
 
   // check for fresh OrangeFox installation
   TWFunc::Fresh_Fox_Install(); // DJ9
-
+  
   // Launch the main GUI
   gui_start();
 #ifndef TW_OEM_BUILD
