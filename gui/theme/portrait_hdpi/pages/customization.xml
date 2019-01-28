@@ -624,6 +624,26 @@
 				<action function="set">needs_repack=1</action>
 				<action function="set">update_fonts=1</action>
 			</action>
+
+			<!-- Font Size -->
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row6_1_y%" />
+				<text>Font size</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row6_2_y%" w="%screen_w%" h="%lb_l2%"/>
+				<data name="theme_font_size"/>
+				<listitem name="Normal">n</listitem>
+				<listitem name="Small">s</listitem>
+			</listbox>
+
+			<action>
+				<condition var1="theme_font_size" op="modified"/>
+				<action function="set">needs_repack=1</action>
+				<action function="set">update_fonts=1</action>
+			</action>
 			
 			<template name="snackbar_update"/>
 			
@@ -982,7 +1002,7 @@
 							else prim_med=-Medium;
 								 prim_reg=-Regular;
 						fi;
-						cat "/twres/themes/sed/font.xml" | sed -e "
+						cat "/twres/themes/sed/font_%theme_font_size%.xml" | sed -e "
 						s/#PRIMARY_FONT_MED#/%theme_font%${prim_med}/g;
 						s/#PRIMARY_FONT_REG#/%theme_font%${prim_reg}/g;
 						s/#SECONDARY_FONT_MED#/%theme_sec_font%${sec_med}/g;
