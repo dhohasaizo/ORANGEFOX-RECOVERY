@@ -8,13 +8,6 @@
 	</mousecursor>
 	
 	<resources>
-		<!-- TODO: move it to styles -->
-		<image name="snackbar" filename="Default/Dialog/snackbar"/>
-		
-		<!-- ota -->
-		<image name="ota_icon" filename="Default/FullscreenIcons/ota_icon" retainaspect="1"/>
-		<image name="progress_empty_small" filename="Default/Progress/progress_empty_small"/>
-		<image name="progress_fill_small" filename="Default/Progress/progress_fill_small"/>
 		
 		<!-- Fonts Preview -->
 		<font name="font1" filename="Roboto-Regular.ttf" size="42"/>
@@ -36,13 +29,13 @@
 		<image name="color_blue" filename="Default/Workshop/ColorBlue"/>
 		<image name="color_cyan" filename="Default/Workshop/ColorCyan"/>
 		<image name="color_gray" filename="Default/Workshop/ColorGray"/>
-		<image name="color_purple" filename="Default/Workshop/ColorPurple"/>
+		<image name="color_fox" filename="Default/Workshop/ColorFox"/>
 		<image name="color_green" filename="Default/Workshop/ColorGreen"/>
 		<image name="color_red" filename="Default/Workshop/ColorRed"/>
 		<image name="color_pink" filename="Default/Workshop/ColorPink"/>
 		
-		<image name="color_apply" filename="Default/Workshop/ColorApply"/>
-		<image name="style_apply" filename="Default/Workshop/StyleApply"/>
+		<image name="style_apply" filename="Default/Workshop/ColorApply"/>
+		<image name="style_apply_black" filename="Default/Workshop/StyleApply"/>
 	
 		<font name="fixed" filename="RobotoMono.ttf" size="34"/>
 		<!-- Battery -->
@@ -59,6 +52,7 @@
 		<image name="radio_false_dialog" filename="Default/Controls/radio_false_dialog" retainaspect="1"/>
 		<image name="switch_off" filename="Default/Controls/switch_off" retainaspect="1"/>
 		<image name="switch_on" filename="Default/Controls/switch_on" retainaspect="1"/>
+		<image name="progress_empty_small" filename="Default/Progress/progress_empty_small"/>
 		
 		<!-- FAB -->
 		<image name="btn_float_addtoqueue" filename="Default/FAB/btn_float_addtoqueue" retainaspect="1"/>
@@ -110,10 +104,6 @@
 		<image name="icon_warning" filename="Default/Info/icon_warning" retainaspect="1"/>
 		<image name="icon_person" filename="Default/Info/icon_person" retainaspect="1"/>
 		<image name="icon_mail" filename="Default/Info/icon_mail" retainaspect="1"/>
-
-		<!-- Poster -->
-		<image name="ota_poster" filename="Default/Poster/ota_poster" retainaspect="1"/>
-		<image name="ota_error" filename="Default/Poster/ota_error" retainaspect="1"/>
 		
 		<!-- Keyboard -->
 		<image name="backspace" filename="Default/Keyboard/backspace" retainaspect="1"/>

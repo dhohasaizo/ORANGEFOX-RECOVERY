@@ -147,7 +147,7 @@
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l4%"/>
 				<listitem name="{@dark_title}">
 					<data variable="darker_ui"/>
 				</listitem>
@@ -366,7 +366,7 @@
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
-					<action function="set">navbar_disable_tmp=1</action>
+					<action function="set">navbar_disable=1</action>
 					<action function="set">navbar_disable_add=144</action>
 					<action function="set">needs_repack=1</action>
 					<action function="set">update_navbar=1</action>
@@ -377,7 +377,7 @@
 				<condition var1="navbar_disable" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
-					<action function="set">navbar_disable_tmp=0</action>
+					<action function="set">navbar_disable=0</action>
 					<action function="set">navbar_disable_add=0</action>
 					<action function="set">needs_repack=1</action>
 					<action function="set">update_navbar=1</action>
@@ -695,19 +695,20 @@
 			<template name="body"/>
 			<template name="ab"/>
 			<template name="statusbarinfo"/>
-
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>Theme</text>
 			</text>
-
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%" />
-				<text>{@theme_style=Style}</text>
+				<text>{@theme_style}</text>
 			</text>
+<<<<<<< HEAD
+=======
 			
 			<!-- Themes -->
 			<!-- Black -->
+>>>>>>> d20b68c3e86427251c7abfd5fd5d1165d9b03376
 			<button>
 				<placement x="30" y="360"/>
 				<image resource="style_black"/>
@@ -757,6 +758,27 @@
 			</button>
 
 			<image>
+<<<<<<< HEAD
+				<placement x="30" y="360"/>
+				<condition var1="theme_style" var2="Black"/>
+				<image resource="style_apply"/>
+			</image>
+			<image>
+				<placement x="285" y="360"/>
+				<condition var1="theme_style" var2="Gray"/>
+				<image resource="style_apply"/>
+			</image>
+			<image>
+				<placement x="540" y="360"/>
+				<condition var1="theme_style" var2="Light"/>
+				<image resource="style_apply_black"/>
+			</image>
+			<image>
+				<placement x="795" y="360"/>
+				<condition var1="theme_style" var2="Light_classic"/>
+				<image resource="style_apply"/>
+			</image>
+=======
 				<placement x="795" y="360"/>
 				<condition var1="theme_style" var2="Light_classic"/>
 				<image resource="color_apply"/>
@@ -764,11 +786,15 @@
 			<!-- -->
 
 			<!-- Accent colors -->
+>>>>>>> d20b68c3e86427251c7abfd5fd5d1165d9b03376
 			<text style="caption">
 				<placement x="%col1_x%" y="%row3_1_y%" />
-				<text>{@theme_accent=Accent}</text>
+				<text>{@theme_accent}</text>
 			</text>
+<<<<<<< HEAD
+=======
 			<!-- Amber -->
+>>>>>>> d20b68c3e86427251c7abfd5fd5d1165d9b03376
 			<button>
 				<placement x="30" y="%row3_2_y%"/>
 				<image resource="color_amber"/>
@@ -841,8 +867,8 @@
 			<!-- Purple -->
 			<button>
 				<placement x="285" y="975"/>
-				<image resource="color_purple"/>
-				<action function="set">theme_accent=Purple</action>
+				<image resource="color_fox"/>
+				<action function="set">theme_accent=Fox</action>
 			</button>
 
 			<image>
@@ -874,15 +900,70 @@
 			</button>
 
 			<image>
+<<<<<<< HEAD
+				<placement x="30" y="%row3_2_y%"/>
+				<condition var1="theme_accent" var2="Amber"/>
+				<image resource="style_apply"/>
+			</image>
+			<image>
+				<placement x="285" y="%row3_2_y%"/>
+				<condition var1="theme_accent" var2="Blue"/>
+				<image resource="style_apply"/>
+			</image>
+			<image>
+				<placement x="540" y="%row3_2_y%"/>
+				<condition var1="theme_accent" var2="Cyan"/>
+				<image resource="style_apply"/>
+			</image>
+			<image>
+				<placement x="795" y="%row3_2_y%"/>
+				<condition var1="theme_accent" var2="Gray"/>
+				<image resource="style_apply"/>
+			</image>
+			<image>
+				<placement x="30" y="975"/>
+				<condition var1="theme_accent" var2="Green"/>
+				<image resource="style_apply"/>
+			</image>
+			<image>
+				<placement x="285" y="975"/>
+				<condition var1="theme_accent" var2="Fox"/>
+				<image resource="style_apply"/>
+			</image>
+			<image>
+				<placement x="540" y="975"/>
+				<condition var1="theme_accent" var2="Red"/>
+				<image resource="style_apply"/>
+			</image>
+			<image>
+				<placement x="795" y="975"/>
+				<condition var1="theme_accent" var2="Pink"/>
+				<image resource="style_apply"/>
+			</image>
+			<action>
+				<condition var1="theme_style" op="modified"/>
+				<action function="set">needs_repack=1</action>
+				<action function="set">update_style=1</action>
+			</action>
+			<action>
+				<condition var1="theme_accent" op="modified"/>
+				<action function="set">needs_repack=1</action>
+				<action function="set">update_accent=1</action>
+			</action>
+			
+			<template name="snackbar_update"/>
+			
+=======
 				<condition var1="theme_accent" var2="Pink"/>
 				<placement x="795" y="975"/>
 				<image resource="color_apply"/>
 			</image>
 			<!-- -->
 
+>>>>>>> d20b68c3e86427251c7abfd5fd5d1165d9b03376
 			<action>
 				<touch key="back"/>
-				<action function="page">ext_custom_fonts</action>
+				<action function="page">ext_custom</action>
 			</action>
 
 			<action>
@@ -926,7 +1007,7 @@
 					#Navbar
 					if [[ '%update_navbar%' = '1' ]]; then
 						cat "/twres/themes/sed/navbar.xml" | sed -e "
-						s/#NAVBAR_DISABLE#/%navbar_disable_tmp%/g;
+						s/#NAVBAR_DISABLE#/%navbar_disable%/g;
 						s/#SCREEN_H#/$(expr %screen_original_h% + %navbar_disable_add%)/g
 						" > /tmp/orangefox/ramdisk/twres/themes/navbar.xml;
 						cat "/tmp/orangefox/ramdisk/twres/themes/navbar.xml" > /twres/themes/navbar.xml;
@@ -946,11 +1027,6 @@
 				</action>
 				<action function="wlfx"/>
 				<action function="reload"/>
-				<action function="set">fox_busy=0</action>
-				<action function="set">update_navbar=0</action>
-				<action function="set">update_fonts=0</action>
-				<action function="set">update_style=0</action>
-				<action function="set">update_accent=0</action>
 			</action>
 		</page>
 	</pages>

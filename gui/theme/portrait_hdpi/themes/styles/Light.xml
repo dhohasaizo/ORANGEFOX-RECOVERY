@@ -1,48 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
 		<resources>	
-		<!-- Fullscreen Icons -->
-		<image name="logo" filename="Light/FullscreenIcons/logo" retainaspect="1"/>
-		<image name="unlock_icon" filename="Light/FullscreenIcons/unlock_icon" retainaspect="1"/>
-		
-		<!-- Action Bar -->
-		<image name="actionbar_back" filename="Light/ActionBar/back" retainaspect="1"/>
-		<image name="actionbar_back_hl" filename="Light/ActionBar/back_hl" retainaspect="1"/>
-		<image name="actionbar_cancel" filename="Light/ActionBar/cancel" retainaspect="1"/>
-		<image name="actionbar_cancel_hl" filename="Light/ActionBar/cancel_hl" retainaspect="1"/>
-		<image name="actionbar_cancel_no" filename="Light/ActionBar/cancel_no" retainaspect="1"/>
-		<image name="actionbar_cancel_no_hl" filename="Light/ActionBar/cancel_no_hl" retainaspect="1"/>
-		<image name="actionbar_delete" filename="Light/ActionBar/delete" retainaspect="1"/>
-		<image name="actionbar_delete_hl" filename="Light/ActionBar/delete_hl" retainaspect="1"/>
-		<image name="actionbar_edit" filename="Light/ActionBar/edit" retainaspect="1"/>
-		<image name="actionbar_edit_hl" filename="Light/ActionBar/edit_hl" retainaspect="1"/>
-		<image name="actionbar_encr_dis" filename="Light/ActionBar/encr_dis" retainaspect="1"/>
-		<image name="actionbar_encr_dis_hl" filename="Light/ActionBar/encr_dis_hl" retainaspect="1"/>
-		<image name="actionbar_encr_ena" filename="Light/ActionBar/encr_ena" retainaspect="1"/>
-		<image name="actionbar_encr_ena_hl" filename="Light/ActionBar/encr_ena_hl" retainaspect="1"/>
-		<image name="actionbar_flash" filename="Light/ActionBar/flash" retainaspect="1"/>
-		<image name="actionbar_flash_hl" filename="Light/ActionBar/flash_hl" retainaspect="1"/>
-		<image name="actionbar_font_big" filename="Light/ActionBar/font_big" retainaspect="1"/>
-		<image name="actionbar_font_big_hl" filename="Light/ActionBar/font_big_hl" retainaspect="1"/>
-		<image name="actionbar_font_small" filename="Light/ActionBar/font_small" retainaspect="1"/>
-		<image name="actionbar_font_small_hl" filename="Light/ActionBar/font_small_hl" retainaspect="1"/>
-		<image name="actionbar_pin" filename="Light/ActionBar/pin" retainaspect="1"/>
-		<image name="actionbar_pin_hl" filename="Light/ActionBar/pin_hl" retainaspect="1"/>
-		<image name="actionbar_pinned" filename="Light/ActionBar/pinned" retainaspect="1"/>
-		<image name="actionbar_pinned_hl" filename="Light/ActionBar/pinned_hl" retainaspect="1"/>
-		<image name="actionbar_reset" filename="Light/ActionBar/reset" retainaspect="1"/>
-		<image name="actionbar_reset_hl" filename="Light/ActionBar/reset_hl" retainaspect="1"/>
-		<image name="actionbar_settings" filename="Light/ActionBar/settings" retainaspect="1"/>
-		<image name="actionbar_settings_hl" filename="Light/ActionBar/settings_hl" retainaspect="1"/>
-		<image name="actionbar_sort" filename="Light/ActionBar/sort" retainaspect="1"/>
-		<image name="actionbar_sort_hl" filename="Light/ActionBar/sort_hl" retainaspect="1"/>
-		<image name="actionbar_color_prim" filename="Light/ActionBar/color_prim" retainaspect="1"/>
-		<image name="actionbar_color_prim_hl" filename="Light/ActionBar/color_prim_hl" retainaspect="1"/>
-		<image name="actionbar_color_sec" filename="Light/ActionBar/color_sec" retainaspect="1"/>
-		<image name="actionbar_color_sec_hl" filename="Light/ActionBar/color_sec_hl" retainaspect="1"/>
-		<image name="power_off" filename="Light/ActionBar/power_off" retainaspect="1"/>
-		<image name="power_off_hl" filename="Light/ActionBar/power_off_hl" retainaspect="1"/>
-		
 		<!-- Battery -->
 		<image name="battery100" filename="Light/Battery/battery100" retainaspect="1"/>
 		<image name="battery75" filename="Light/Battery/battery75" retainaspect="1"/>
@@ -55,6 +13,8 @@
 		<image name="palette" filename="Light/FullscreenIcons/palette" retainaspect="1"/>
 		<image name="usb" filename="Light/FullscreenIcons/usb" retainaspect="1"/>
 		<image name="aroma_folder" filename="Light/FullscreenIcons/aroma_folder" retainaspect="1"/>
+		<image name="logo" filename="Light/FullscreenIcons/logo" retainaspect="1"/>
+		<image name="unlock_icon" filename="Light/FullscreenIcons/unlock_icon" retainaspect="1"/>
 		
 		<!-- Keyboard -->
 		<image name="keyback" filename="Light/Keyboard/key_butts" retainaspect="1"/>
@@ -65,6 +25,9 @@
 		<image name="progress_empty" filename="Light/Progress/progress_empty"/>
 		<image name="progress_fill" filename="Light/Progress/progress_fill"/>
 		
+		<!-- File Manager -->
+		<image name="filelist_shadow" filename="Light/FileManager/filelist_shadow" retainaspect="1"/>
+		
 		<!-- Controls -->
 		<image name="slider_classic" filename="Light/Controls/slider_classic"/>
 		
@@ -73,38 +36,35 @@
 		<image name="db_hl" filename="Light/Dialog/db_hl"/>
 		<image name="arrow" filename="Light/Dialog/arrow"/>
 		<image name="arrow_d" filename="Light/Dialog/arrow_d"/>
-		
-		<!-- File Manager -->
-		<image name="filelist_shadow" filename="Light/FileManager/filelist_shadow" retainaspect="1"/>
-		
-		<!-- Dialogs -->
+		<image name="snackbar" filename="Light/Dialog/snackbar"/>
 		<image name="dialog_bg" filename="Light/Dialog/dialog_bg"/>
 		<image name="menu_sort" filename="Light/Dialog/menu_sort"/>
+
+		<!-- Poster -->
+		<image name="ota_poster" filename="Light/Poster/ota_poster" retainaspect="1"/>
+		<image name="ota_error" filename="Light/Poster/ota_error" retainaspect="1"/>
+		
+		<!-- ota -->
+		<image name="ota_icon" filename="Light/FullscreenIcons/ota_icon" retainaspect="1"/>
+		<image name="progress_fill_small" filename="Light/Progress/progress_fill_small"/>
 	</resources>
 	<variables>
-		
-		<variable name="highlight" value="#E3E3E3FF"/>
-		<variable name="highlight_color" value="#E3E3E366"/>
+		<variable name="highlight" value="#FAFAFAFF"/>
+		<variable name="highlight_color" value="#FAFAFA66"/>
 		<variable name="highlight_color_full" value="#D3D3D3AA"/>
-		
-		
-		<variable name="text_raisedbtn" value="#E3E3E3FF"/>
-		<variable name="background" value="#E3E3E3FF"/>
-		<variable name="bg_rgb" value="227"/>
-		<variable name="text_dark" value="#E3E3E3FF"/>
-		
+		<variable name="text_raisedbtn" value="#FAFAFAFF"/>
+		<variable name="background" value="#FAFAFAFF"/>
+		<variable name="bg_rgb" value="224"/>
+		<variable name="text_dark" value="#FAFAFAFF"/>
 		<variable name="linecolor" value="#D0D0D0FF"/>
-		<variable name="text_light" value="#777777FF"/>
-		
-		<variable name="text_menu" value="#404040FF"/>
-		<variable name="console_foreground" value="#404040FF"/>
-		<variable name="text_actionbar" value="#404040FF"/>
-		<variable name="text" value="#404040FF"/>
-		<variable name="text_status" value="#404040FF"/>
-		
-		<variable name="darktransparent" value="#E3E3E3BB"/>
-		<variable name="lightransparent" value="#E3E3E333"/>
-		
+		<variable name="text_light" value="#666666FF"/>
+		<variable name="text_menu" value="#3f3f3fFF"/>
+		<variable name="console_foreground" value="#3f3f3fFF"/>
+		<variable name="text_actionbar" value="#3f3f3fFF"/>
+		<variable name="text" value="#3f3f3fFF"/>
+		<variable name="text_status" value="#3f3f3fFF"/>
+		<variable name="darktransparent" value="#FAFAFABB"/>
+		<variable name="lightransparent" value="#00000005"/>
 		<variable name="theme_style" value="Light"/>
 		<variable name="theme_style_main" value="Light"/>
 		<variable name="applied_style_x" value="540"/>

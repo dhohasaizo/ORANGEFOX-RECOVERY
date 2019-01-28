@@ -1,47 +1,9 @@
 <?xml version="1.0"?>
 <recovery>
-	<resources>	
+		<resources>	
 		<!-- Fullscreen Icons -->
 		<image name="logo" filename="Default/FullscreenIcons/logo" retainaspect="1"/>
 		<image name="unlock_icon" filename="Default/FullscreenIcons/unlock_icon" retainaspect="1"/>
-		
-		<!-- Action Bar -->
-		<image name="actionbar_back" filename="Default/ActionBar/back" retainaspect="1"/>
-		<image name="actionbar_back_hl" filename="Default/ActionBar/back_hl" retainaspect="1"/>
-		<image name="actionbar_cancel" filename="Default/ActionBar/cancel" retainaspect="1"/>
-		<image name="actionbar_cancel_hl" filename="Default/ActionBar/cancel_hl" retainaspect="1"/>
-		<image name="actionbar_cancel_no" filename="Default/ActionBar/cancel_no" retainaspect="1"/>
-		<image name="actionbar_cancel_no_hl" filename="Default/ActionBar/cancel_no_hl" retainaspect="1"/>
-		<image name="actionbar_delete" filename="Default/ActionBar/delete" retainaspect="1"/>
-		<image name="actionbar_delete_hl" filename="Default/ActionBar/delete_hl" retainaspect="1"/>
-		<image name="actionbar_edit" filename="Default/ActionBar/edit" retainaspect="1"/>
-		<image name="actionbar_edit_hl" filename="Default/ActionBar/edit_hl" retainaspect="1"/>
-		<image name="actionbar_encr_dis" filename="Default/ActionBar/encr_dis" retainaspect="1"/>
-		<image name="actionbar_encr_dis_hl" filename="Default/ActionBar/encr_dis_hl" retainaspect="1"/>
-		<image name="actionbar_encr_ena" filename="Default/ActionBar/encr_ena" retainaspect="1"/>
-		<image name="actionbar_encr_ena_hl" filename="Default/ActionBar/encr_ena_hl" retainaspect="1"/>
-		<image name="actionbar_flash" filename="Default/ActionBar/flash" retainaspect="1"/>
-		<image name="actionbar_flash_hl" filename="Default/ActionBar/flash_hl" retainaspect="1"/>
-		<image name="actionbar_font_big" filename="Default/ActionBar/font_big" retainaspect="1"/>
-		<image name="actionbar_font_big_hl" filename="Default/ActionBar/font_big_hl" retainaspect="1"/>
-		<image name="actionbar_font_small" filename="Default/ActionBar/font_small" retainaspect="1"/>
-		<image name="actionbar_font_small_hl" filename="Default/ActionBar/font_small_hl" retainaspect="1"/>
-		<image name="actionbar_pin" filename="Default/ActionBar/pin" retainaspect="1"/>
-		<image name="actionbar_pin_hl" filename="Default/ActionBar/pin_hl" retainaspect="1"/>
-		<image name="actionbar_pinned" filename="Default/ActionBar/pinned" retainaspect="1"/>
-		<image name="actionbar_pinned_hl" filename="Default/ActionBar/pinned_hl" retainaspect="1"/>
-		<image name="actionbar_reset" filename="Default/ActionBar/reset" retainaspect="1"/>
-		<image name="actionbar_reset_hl" filename="Default/ActionBar/reset_hl" retainaspect="1"/>
-		<image name="actionbar_settings" filename="Default/ActionBar/settings" retainaspect="1"/>
-		<image name="actionbar_settings_hl" filename="Default/ActionBar/settings_hl" retainaspect="1"/>
-		<image name="actionbar_sort" filename="Default/ActionBar/sort" retainaspect="1"/>
-		<image name="actionbar_sort_hl" filename="Default/ActionBar/sort_hl" retainaspect="1"/>
-		<image name="actionbar_color_prim" filename="Default/ActionBar/color_prim" retainaspect="1"/>
-		<image name="actionbar_color_prim_hl" filename="Default/ActionBar/color_prim_hl" retainaspect="1"/>
-		<image name="actionbar_color_sec" filename="Default/ActionBar/color_sec" retainaspect="1"/>
-		<image name="actionbar_color_sec_hl" filename="Default/ActionBar/color_sec_hl" retainaspect="1"/>
-		<image name="power_off" filename="Default/ActionBar/power_off" retainaspect="1"/>
-		<image name="power_off_hl" filename="Default/ActionBar/power_off_hl" retainaspect="1"/>
 		
 		<!-- Battery -->
 		<image name="battery100" filename="Default/Battery/battery100" retainaspect="1"/>
@@ -52,13 +14,13 @@
 		
 		<!-- Fullscreen Icons -->
 		<image name="language_busy" filename="Default/FullscreenIcons/language_busy" retainaspect="1"/>
-		<image name="aroma_folder" filename="Default/FullscreenIcons/aroma_folder" retainaspect="1"/>
 		<image name="palette" filename="Default/FullscreenIcons/palette" retainaspect="1"/>
 		<image name="usb" filename="Default/FullscreenIcons/usb" retainaspect="1"/>
+		<image name="aroma_folder" filename="Default/FullscreenIcons/aroma_folder" retainaspect="1"/>
 		
 		<!-- Keyboard -->
-		<image name="keyback" filename="Black/Keyboard/key_butts" retainaspect="1"/>
-		<image name="keyback_num" filename="Black/Keyboard/key_num" retainaspect="1"/>
+		<image name="keyback" filename="Black/Keyboard/key_butts"/>
+		<image name="keyback_num" filename="Black/Keyboard/key_num"/>
 		
 		<!-- Progress -->
 		<animation name="progress" filename="Default/Progress/indeterminate"/>
@@ -73,13 +35,22 @@
 		<image name="db_hl" filename="Default/Dialog/db_hl"/>
 		<image name="arrow" filename="Default/Dialog/arrow"/>
 		<image name="arrow_d" filename="Default/Dialog/arrow_d"/>
-	
+		
 		<!-- File Manager -->
 		<image name="filelist_shadow" filename="Black/FileManager/filelist_shadow" retainaspect="1"/>
 		
 		<!-- Dialogs -->
 		<image name="dialog_bg" filename="Black/Dialog/dialog_bg"/>
 		<image name="menu_sort" filename="Black/Dialog/menu_sort"/>
+		<image name="snackbar" filename="Black/Dialog/snackbar"/>
+
+		<!-- Poster -->
+		<image name="ota_poster" filename="Default/Poster/ota_poster" retainaspect="1"/>
+		<image name="ota_error" filename="Default/Poster/ota_error" retainaspect="1"/>
+		
+		<!-- ota -->
+		<image name="ota_icon" filename="Default/FullscreenIcons/ota_icon" retainaspect="1"/>
+		<image name="progress_fill_small" filename="Default/Progress/progress_fill_small"/>
 	</resources>
 	<variables>
 		<variable name="background" value="#000000FF"/>
