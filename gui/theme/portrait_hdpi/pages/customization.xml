@@ -158,9 +158,22 @@
 					<data variable="show_cpu_temp"/>
 					<condition var1="center_clock" op="!=" var2="2"/>
 				</listitem>
-				<listitem name="{@settings_ui_battery=Show battery icon}">
+				<!--listitem name="{@settings_ui_battery=Show battery icon}">
 					<data variable="enable_battery"/>
-				</listitem>
+				</listitem-->
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_2_y%"/>
+				<text>Battery icon</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row5_3_y%" w="%screen_w%" h="%lb_l3%"/>
+				<data name="style_battery"/>
+				<listitem name="Disable">0</listitem>
+				<listitem name="Pie">2</listitem>
+				<listitem name="Circle">1</listitem>
 			</listbox>
 
 			<action>
