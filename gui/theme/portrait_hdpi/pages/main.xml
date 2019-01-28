@@ -29,12 +29,12 @@
 				</actions>
 			</action>
 			
-			<!-- Mido buttons -->
+			<!-- Mido buttons
 			<action>
 				<action function="cmd">
 					echo 0 > /proc/touchpanel/capacitive_keys_disable
 				</action>
-			</action>
+			</action> -->
 		</page>
 		
 		<page name="aroma_busy">

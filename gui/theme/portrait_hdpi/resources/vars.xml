@@ -4,8 +4,10 @@
 		<!-- OrangeFox vars -->
 		<variable name="ota_back_file" value="0"/>
 		<variable name="fox_busy" value="0"/>
-		<variable name="navbar_disable_add" value="0"/>
-		
+		<variable name="update_fonts" value="0"/>
+		<variable name="update_navbar" value="0"/>
+		<variable name="update_accent" value="0"/>
+		<variable name="update_style" value="0"/>
 
 		<!-- Lockscreen -->
 		<variable name="clock_style" value="0" persist="1"/>

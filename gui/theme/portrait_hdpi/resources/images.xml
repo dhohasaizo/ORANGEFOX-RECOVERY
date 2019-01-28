@@ -9,8 +9,7 @@
 	
 	<resources>
 		<!-- TODO: move it to styles -->
-		<image name="snackbar" filename="Default/Dialog/snackbar" retainaspect="1"/>
-		<image name="LOL" filename="LOL" retainaspect="1"/>
+		<image name="snackbar" filename="Default/Dialog/snackbar"/>
 		
 		<!-- ota -->
 		<image name="ota_icon" filename="Default/FullscreenIcons/ota_icon" retainaspect="1"/>
