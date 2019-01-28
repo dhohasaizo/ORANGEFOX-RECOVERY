@@ -74,17 +74,32 @@
 			</text>
 			<!-- -->
 
-			<!-- Fonts -->
+			<!-- Theme -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom_fonts</action>
+				<action function="page">ext_custom_theme</action>
 			</button>
 			<image>
 				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="ws_font"/>
+				<image resource="invert"/>
 			</image>
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
+				<text>Theme</text>
+			</text>
+			<!-- -->
+
+			<!-- Fonts -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom_fonts</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%set_row6_y%"/>
+				<image resource="ws_font"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
 				<text>{@theme_fonts}</text>
 			</text>
 			<!-- -->
@@ -676,6 +691,113 @@
 				<action function="page">main</action>
 			</action>
 		</page>
+		<page name="ext_custom_theme">
+			<template name="body"/>
+			<template name="ab"/>
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>Theme</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%" />
+				<text>{@theme_style=Style}</text>
+			</text>
+			
+			<button>
+				<placement x="30" y="360"/>
+				<image resource="style_black"/>
+				<action function="set">theme_style=Black</action>
+			</button>
+			<button>
+				<placement x="285" y="360"/>
+				<image resource="style_gray"/>
+				<action function="set">theme_style=Gray</action>
+			</button>
+			<button>
+				<placement x="540" y="360"/>
+				<image resource="style_light"/>
+				<action function="set">theme_style=Light</action>
+			</button>
+			<button>
+				<placement x="795" y="360"/>
+				<image resource="style_light_c"/>
+				<action function="set">theme_style=Light_classic</action>
+			</button>
+			<image>
+				<placement x="%applied_style_x%" y="360"/>
+				<condition var1="theme_style" var2="Light"/>
+				<image resource="style_apply"/>
+			</image>
+			<image>
+				<placement x="%applied_style_x%" y="360"/>
+				<condition var1="theme_style" op="!=" var2="Light"/>
+				<image resource="color_apply"/>
+			</image>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1_y%" />
+				<text>{@theme_accent=Accent}</text>
+			</text>
+			
+			<button>
+				<placement x="30" y="%row3_2_y%"/>
+				<image resource="color_amber"/>
+				<action function="set">theme_accent=Amber</action>
+			</button>
+			<button>
+				<placement x="285" y="%row3_2_y%"/>
+				<image resource="color_blue"/>
+				<action function="set">theme_accent=Blue</action>
+			</button>
+			<button>
+				<placement x="540" y="%row3_2_y%"/>
+				<image resource="color_cyan"/>
+				<action function="set">theme_accent=Cyan</action>
+			</button>
+			<button>
+				<placement x="795" y="%row3_2_y%"/>
+				<image resource="color_gray"/>
+				<action function="set">theme_accent=Gray</action>
+			</button>
+			<button>
+				<placement x="30" y="975"/>
+				<image resource="color_green"/>
+				<action function="set">theme_accent=Green</action>
+			</button>
+			<button>
+				<placement x="285" y="975"/>
+				<image resource="color_purple"/>
+				<action function="set">theme_accent=Purple</action>
+			</button>
+			<button>
+				<placement x="540" y="975"/>
+				<image resource="color_red"/>
+				<action function="set">theme_accent=Red</action>
+			</button>
+			<button>
+				<placement x="795" y="975"/>
+				<image resource="color_pink"/>
+				<action function="set">theme_accent=Pink</action>
+			</button>
+			<image>
+				<placement x="%applied_accent_x%" y="%applied_accent_y%"/>
+				<image resource="color_apply"/>
+			</image>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_custom_fonts</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+		
 		<page name="apply_changes">
 			<template name="busy_screen"/>
 			<action>
