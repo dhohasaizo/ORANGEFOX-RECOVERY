@@ -703,12 +703,9 @@
 				<placement x="%col1_x%" y="%row1_1_y%" />
 				<text>{@theme_style}</text>
 			</text>
-<<<<<<< HEAD
-=======
-			
+
 			<!-- Themes -->
 			<!-- Black -->
->>>>>>> d20b68c3e86427251c7abfd5fd5d1165d9b03376
 			<button>
 				<placement x="30" y="360"/>
 				<image resource="style_black"/>
@@ -758,7 +755,6 @@
 			</button>
 
 			<image>
-<<<<<<< HEAD
 				<placement x="30" y="360"/>
 				<condition var1="theme_style" var2="Black"/>
 				<image resource="style_apply"/>
@@ -778,7 +774,7 @@
 				<condition var1="theme_style" var2="Light_classic"/>
 				<image resource="style_apply"/>
 			</image>
-=======
+			<image>
 				<placement x="795" y="360"/>
 				<condition var1="theme_style" var2="Light_classic"/>
 				<image resource="color_apply"/>
@@ -786,15 +782,11 @@
 			<!-- -->
 
 			<!-- Accent colors -->
->>>>>>> d20b68c3e86427251c7abfd5fd5d1165d9b03376
 			<text style="caption">
 				<placement x="%col1_x%" y="%row3_1_y%" />
 				<text>{@theme_accent}</text>
 			</text>
-<<<<<<< HEAD
-=======
 			<!-- Amber -->
->>>>>>> d20b68c3e86427251c7abfd5fd5d1165d9b03376
 			<button>
 				<placement x="30" y="%row3_2_y%"/>
 				<image resource="color_amber"/>
@@ -900,7 +892,6 @@
 			</button>
 
 			<image>
-<<<<<<< HEAD
 				<placement x="30" y="%row3_2_y%"/>
 				<condition var1="theme_accent" var2="Amber"/>
 				<image resource="style_apply"/>
@@ -952,15 +943,13 @@
 			</action>
 			
 			<template name="snackbar_update"/>
-			
-=======
+
+			<image>
 				<condition var1="theme_accent" var2="Pink"/>
 				<placement x="795" y="975"/>
 				<image resource="color_apply"/>
 			</image>
 			<!-- -->
-
->>>>>>> d20b68c3e86427251c7abfd5fd5d1165d9b03376
 			<action>
 				<touch key="back"/>
 				<action function="page">ext_custom</action>
