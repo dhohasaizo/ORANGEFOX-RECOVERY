@@ -77,8 +77,6 @@
 			<!-- Fonts -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">theme_sec_font_tmp=%theme_sec_font%</action>
-				<action function="set">theme_font_tmp=%theme_font%</action>
 				<action function="page">ext_custom_fonts</action>
 			</button>
 			<image>
@@ -353,9 +351,10 @@
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
-					<action function="set">navbar_disable=1</action>
+					<action function="set">navbar_disable_tmp=1</action>
 					<action function="set">navbar_disable_add=144</action>
 					<action function="set">needs_repack=1</action>
+					<action function="set">update_navbar=1</action>
 				</actions>
 			</button>
 
@@ -363,9 +362,10 @@
 				<condition var1="navbar_disable" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
-					<action function="set">navbar_disable=0</action>
+					<action function="set">navbar_disable_tmp=0</action>
 					<action function="set">navbar_disable_add=0</action>
 					<action function="set">needs_repack=1</action>
+					<action function="set">update_navbar=1</action>
 				</actions>
 			</button>
 
@@ -482,130 +482,132 @@
 			<listbox>
 				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font1" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font_tmp"/>
+				<data name="theme_font"/>
 				<listitem name="Roboto">Roboto</listitem>
 			</listbox>
 			<listbox>
 				<placement x="0" y="%row1_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font2" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font_tmp"/>
+				<data name="theme_font"/>
 				<listitem name="Roboto Slab">RobotoSlab</listitem>
 			</listbox>
 			<listbox>
 				<placement x="0" y="%row2_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font3" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font_tmp"/>
+				<data name="theme_font"/>
 				<listitem name="Google Sans">GoogleSans</listitem>
 			</listbox>
 			<listbox>
 				<placement x="0" y="%row2_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font4" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font_tmp"/>
+				<data name="theme_font"/>
 				<listitem name="Samsung Sans">SamsungSans</listitem>
 			</listbox>
 			<listbox>
 				<placement x="0" y="%row3_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font5" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font_tmp"/>
+				<data name="theme_font"/>
 				<listitem name="Choco Cooky">Chococooky</listitem>
 			</listbox>
 			<listbox>
 				<placement x="0" y="%row3_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font6" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font_tmp"/>
+				<data name="theme_font"/>
 				<listitem name="Cool Jazz">Cooljazz</listitem>
 			</listbox>
 			<listbox>
 				<placement x="0" y="%row4_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font7" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font_tmp"/>
+				<data name="theme_font"/>
 				<listitem name="Bender">Bender</listitem>
 			</listbox>
 			<listbox>
 				<placement x="0" y="%row4_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font8" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font_tmp"/>
+				<data name="theme_font"/>
 				<listitem name="Amatic">Amatic</listitem>
 			</listbox>
 			<listbox>
 				<placement x="0" y="%row5_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font9" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font_tmp"/>
+				<data name="theme_font"/>
 				<listitem name="Angry Birds">AngryBirds</listitem>
 			</listbox>
 			<listbox>
 				<placement x="%col2_x%" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font1" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font_tmp"/>
+				<data name="theme_sec_font"/>
 				<listitem name="Roboto">Roboto</listitem>
 			</listbox>
 			<listbox>
 				<placement x="%col2_x%" y="%row1_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font2" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font_tmp"/>
+				<data name="theme_sec_font"/>
 				<listitem name="Roboto Slab">RobotoSlab</listitem>
 			</listbox>
 			<listbox>
 				<placement x="%col2_x%" y="%row2_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font3" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font_tmp"/>
+				<data name="theme_sec_font"/>
 				<listitem name="Google Sans">GoogleSans</listitem>
 			</listbox>
 			<listbox>
 				<placement x="%col2_x%" y="%row2_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font4" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font_tmp"/>
+				<data name="theme_sec_font"/>
 				<listitem name="Samsung Sans">SamsungSans</listitem>
 			</listbox>
 			<listbox>
 				<placement x="%col2_x%" y="%row3_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font5" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font_tmp"/>
+				<data name="theme_sec_font"/>
 				<listitem name="Choco Cooky">Chococooky</listitem>
 			</listbox>
 			<listbox>
 				<placement x="%col2_x%" y="%row3_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font6" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font_tmp"/>
+				<data name="theme_sec_font"/>
 				<listitem name="Cool Jazz">Cooljazz</listitem>
 			</listbox>
 			<listbox>
 				<placement x="%col2_x%" y="%row4_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font7" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font_tmp"/>
+				<data name="theme_sec_font"/>
 				<listitem name="Bender">Bender</listitem>
 			</listbox>
 			<listbox>
 				<placement x="%col2_x%" y="%row4_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font8" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font_tmp"/>
+				<data name="theme_sec_font"/>
 				<listitem name="Amatic">Amatic</listitem>
 			</listbox>
 			<listbox>
 				<placement x="%col2_x%" y="%row5_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font9" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font_tmp"/>
+				<data name="theme_sec_font"/>
 				<listitem name="Angry Birds">AngryBirds</listitem>
 			</listbox>
 			<!--button style="btn_raised">
-				<condition var1="theme_font_tmp" op="!=" var2="Custom"/>
+				<condition var1="theme_font" op="!=" var2="Custom"/>
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
 				<text>{@custom_font}</text>
 				<action function="page">ext_custom_fonts_cust</action>
 			</button>
 			<button style="btn_raised_hl">
-				<condition var1="theme_font_tmp" var2="Custom"/>
+				<condition var1="theme_font" var2="Custom"/>
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
 				<text>{@custom_font}</text>
 				<action function="page">ext_custom_fonts_cust</action>
 			</button-->
 			<action>
-				<condition var1="theme_font_tmp" op="modified"/>
+				<condition var1="theme_font" op="modified"/>
 				<action function="set">needs_repack=1</action>
+				<action function="set">update_fonts=1</action>
 			</action>
 			<action>
-				<condition var1="theme_sec_font_tmp" op="modified"/>
+				<condition var1="theme_sec_font" op="modified"/>
 				<action function="set">needs_repack=1</action>
+				<action function="set">update_fonts=1</action>
 			</action>
 			
 			<template name="snackbar_update"/>
@@ -677,45 +679,63 @@
 		<page name="apply_changes">
 			<template name="busy_screen"/>
 			<action>
-				<condition var1="fox_busy" var2="0"/>
+				<condition var1="fox_busy" op="!=" var2="1"/>
 				<action function="set">fox_busy=1</action>
 				<action function="wlfw"/>
 				<action function="cmd">
-					#!/bin/bash
-					needs_repack=0
 					#Fonts
-					if [ -f "/twres/fonts/%theme_sec_font_tmp%.ttf" ];
-						then sec_med=;
-							 sec_reg=;
-						else sec_med=-Medium;
-							 sec_reg=-Regular;
+					if [[ '%update_fonts%' = '1' ]]; then
+						if [ -f "/twres/fonts/%theme_sec_font%.ttf" ];
+							then sec_med=;
+								 sec_reg=;
+							else sec_med=-Medium;
+								 sec_reg=-Regular;
+						fi;
+						if [ -f "/twres/fonts/%theme_font%.ttf" ];
+							then prim_med=;
+								 prim_reg=;
+							else prim_med=-Medium;
+								 prim_reg=-Regular;
+						fi;
+						cat "/twres/themes/sed/font.xml" | sed -e "
+						s/#PRIMARY_FONT_MED#/%theme_font%${prim_med}/g;
+						s/#PRIMARY_FONT_REG#/%theme_font%${prim_reg}/g;
+						s/#SECONDARY_FONT_MED#/%theme_sec_font%${sec_med}/g;
+						s/#SECONDARY_FONT_REG#/%theme_sec_font%${sec_reg}/g;
+						s/#PRIMARY_NAME#/%theme_font%/g;
+						s/#SECONDARY_NAME#/%theme_sec_font%/g
+						" > /tmp/orangefox/ramdisk/twres/themes/font.xml;
+						cat "/tmp/orangefox/ramdisk/twres/themes/font.xml" > /twres/themes/font.xml;
 					fi;
-					if [ -f "/twres/fonts/%theme_font_tmp%.ttf" ];
-						then prim_med=;
-							 prim_reg=;
-						else prim_med=-Medium;
-							 prim_reg=-Regular;
-					fi;
-					cat "/twres/themes/sed/font.xml" | sed -e "
-					s/#PRIMARY_FONT_MED#/%theme_font_tmp%${prim_med}/g;
-					s/#PRIMARY_FONT_REG#/%theme_font_tmp%${prim_reg}/g;
-					s/#SECONDARY_FONT_MED#/%theme_sec_font_tmp%${sec_med}/g;
-					s/#SECONDARY_FONT_REG#/%theme_sec_font_tmp%${sec_reg}/g;
-					s/#PRIMARY_NAME#/%theme_font_tmp%/g;
-					s/#SECONDARY_NAME#/%theme_sec_font_tmp%/g
-					" > /tmp/orangefox/ramdisk/twres/themes/font.xml;
-					cat "/tmp/orangefox/ramdisk/twres/themes/font.xml" > /twres/themes/font.xml;
 					
 					#Navbar
-					cat "/twres/themes/sed/navbar.xml" | sed -e "
-					s/#NAVBAR_DISABLE#/%navbar_disable%/g;
-					s/#SCREEN_H#/$(expr %screen_original_h% + %navbar_disable_add%)/g
-					" > /tmp/orangefox/ramdisk/twres/themes/navbar.xml;
-					cat "/tmp/orangefox/ramdisk/twres/themes/navbar.xml" > /twres/themes/navbar.xml;
+					if [[ '%update_navbar%' = '1' ]]; then
+						cat "/twres/themes/sed/navbar.xml" | sed -e "
+						s/#NAVBAR_DISABLE#/%navbar_disable_tmp%/g;
+						s/#SCREEN_H#/$(expr %screen_original_h% + %navbar_disable_add%)/g
+						" > /tmp/orangefox/ramdisk/twres/themes/navbar.xml;
+						cat "/tmp/orangefox/ramdisk/twres/themes/navbar.xml" > /twres/themes/navbar.xml;
+					fi;
+					
+					#Style
+					if [[ '%update_style%' = '1' ]]; then
+						cat "/twres/themes/styles/%theme_style%.xml" > /tmp/orangefox/ramdisk/twres/themes/style.xml;
+						cat "/tmp/orangefox/ramdisk/twres/themes/style.xml" > /twres/themes/style.xml;
+					fi;
+					
+					#Accent
+					if [[ '%update_accent%' = '1' ]]; then
+						cat "/twres/themes/accent/%theme_accent%.xml" > /tmp/orangefox/ramdisk/twres/themes/accent.xml;
+						cat "/tmp/orangefox/ramdisk/twres/themes/accent.xml" > /twres/themes/accent.xml;
+					fi;
 				</action>
 				<action function="wlfx"/>
 				<action function="reload"/>
-				<action function="page">main</action>
+				<action function="set">fox_busy=0</action>
+				<action function="set">update_navbar=0</action>
+				<action function="set">update_fonts=0</action>
+				<action function="set">update_style=0</action>
+				<action function="set">update_accent=0</action>
 			</action>
 		</page>
 	</pages>
