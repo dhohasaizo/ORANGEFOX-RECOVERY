@@ -375,10 +375,21 @@
 				<conditions>
 					<condition var1="tw_operation_state" var2="1"/>
 					<condition var1="tw_operation_status" var2="0"/>
+					<condition var1="fox_busy" var2="0"/>
 				</conditions>
 				<actions>
+					<action function="set">fox_busy=1</action>
+					<action function="cmd">
+						rm -rf "/tmp/mmgui/info/";
+						mkdir "/tmp/mmgui/info/";
+						ver=$(grep "version=" "magisk/%mmgui_select%/module.prop");
+						author=$(grep "author" "magisk/%mmgui_select%/module.prop");
+						touch "/tmp/mmgui/info/$ver";
+						touch "/tmp/mmgui/info/$author";
+					</action>
 					<action function="set">mmodule_amnt=1</action>
 					<action function="page">magisk_actions</action>
+					<action function="set">fox_busy=0</action>
 				</actions>
 			</action>
 
@@ -502,6 +513,15 @@
 					<action function="page">filemanagerconfirm</action>
 				</actions>
 			</button>
+
+			<fileselector style="fileselector_s">
+				<placement x="0" y="%row4_1_y%" w="%screen_w%" h="%lb_l3%"/>
+				<sort name="tw_gui_sort_order"/>
+				<filter folders="0" files="1"/>
+				<path name="mmgui_info" default="/tmp/mmgui/info"/>
+				<data name="mmgui_info"/>
+				<selection name="mmgui_info"/>
+			</fileselector>
 			
 			<action>
 				<condition var1="mmodule_amnt" op="modified"/>
