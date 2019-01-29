@@ -112,8 +112,8 @@
 		
 		<!-- File Selector w/ NavPanel -->
 		<variable name="files_np_w" value="%screen_h%-552"/>
-		<variable name="files_np_wide_w" value="%screen_h%-384"/>
 		<variable name="files_np_y" value="240"/>
+		<variable name="files_np_mm_y" value="408"/>
 		
 		<!-- UI w/ NavPanel -->
 		<variable name="row_btn2_np_y" value="%screen_h%-768"/>

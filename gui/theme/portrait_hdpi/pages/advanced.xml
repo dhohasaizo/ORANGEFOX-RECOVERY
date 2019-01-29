@@ -246,7 +246,7 @@
 				</conditions>
 				<actions>
 					<action function="set">mmgui_path=/tmp/mmgui</action>
-					<action function="page">magisk</action>
+					<action function="page">magisk_core</action>
 				</actions>
 			</action>
 
@@ -260,13 +260,42 @@
 				</actions>
 			</action>
 		</page>
+
+		<page name="magisk_core">
+			<action>
+				<action function="fileexists">/cache/.disable_magisk</action>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">magisk_core=1</action>
+					<action function="page">magisk</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="set">magisk_core=0</action>
+					<action function="page">magisk</action>
+				</actions>
+			</action>
+		</page>
 		
 		<page name="magisk">
 			<template name="body"/>
 			
 			<fileselector style="fileselector_b">
+				<condition var1="magisk_core" op="!=" var2="1"/>
 				<condition var1="list_font" var2="big"/>
-				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_wide_w%"/>
+				<placement x="0" y="%files_np_mm_y%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon" file="module_icon" />
 				<filter folders="0" files="1"/>
@@ -276,8 +305,9 @@
 			</fileselector>
 
 			<fileselector style="fileselector_s">
+				<condition var1="magisk_core" op="!=" var2="1"/>
 				<condition var1="list_font" var2="small"/>
-				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_wide_w%"/>
+				<placement x="0" y="%files_np_mm_y%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon_small" file="module_icon_small" />
 				<filter folders="0" files="1"/>
@@ -285,6 +315,49 @@
 				<data name="mmgui_file"/>
 				<selection name="mmgui_select"/>
 			</fileselector>
+			
+			<fill color="%accent%">
+				<condition var1="magisk_core" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			<fill color="%unactive_title%">
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			
+			<image>
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_off"/>
+			</image>
+			<image>
+				<condition var1="magisk_core" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_on"/>
+			</image>
+			
+			<text style="text_ab_switch">
+				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
+				<text>Magisk Core</text>
+			</text>
+
+			<button style="bs_btn">
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="cmd">touch "/cache/.disable_magisk";</action>
+					<action function="page">magisk_core</action>
+				</actions>
+			</button>
+
+			<button style="bs_btn">
+				<condition var1="magisk_core" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="cmd">rm "/cache/.disable_magisk";</action>
+					<action function="page">magisk_core</action>
+				</actions>
+			</button>
 			
 			<template name="ab"/>
 			<template name="statusbarinfo"/>
