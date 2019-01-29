@@ -126,7 +126,7 @@
 			<!-- MM GUI -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
-				<action function="page">magisk_mount</action>
+				<action function="page">check_magisk</action>
 			</button>
 			<image>
 				<placement x="%col1_x%" y="%set_row5_y%"/>
@@ -234,29 +234,43 @@
 			</action>
 		</page>
 
-		<page name="magisk_mount">
+		<page name="check_magisk">
 			<action>
-				<action function="cmd">mmgui mnt</action>
+				<action function="fileexists">/data/adb/magisk/util_functions.sh</action>
 			</action>
 
 			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="0"/>
-				</conditions>
+				<condition var1="tw_operation_state" var2="1"/>
+				<condition var1="tw_operation_status" var2="1"/>
 				<actions>
-					<action function="set">mmgui_path=/tmp/mmgui</action>
-					<action function="page">magisk_core</action>
+					<action function="set">magisk_installed=0</action>
+					<action function="overlay">dialog_magisk_not_found</action>
 				</actions>
 			</action>
 
 			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="1"/>
-				</conditions>
+				<condition var1="tw_operation_state" var2="1"/>
+				<condition var1="tw_operation_status" var2="0"/>
+				<condition var1="fox_busy" var2="0"/>
 				<actions>
-					<action function="page">advanced</action>
+					<action function="set">fox_busy=1</action>
+					<action function="set">magisk_installed=1</action>
+					<action function="cmd">
+						echo TEST
+						mmgui mnt
+						
+						work="/tmp/mminfo/m_ver";
+						rm -rf $work;
+						mkdir $work;
+						cd $work;
+						
+						prop="/data/adb/magisk/util_functions.sh";
+						ver=$(cat $prop | grep "MAGISK_VER=" | cut -d'=' -f2 | sed "s/\""//g);
+						
+						echo $ver
+						echo "" > "$work/$ver";
+					</action>
+					<action function="page">magisk_core</action>
 				</actions>
 			</action>
 		</page>
@@ -273,6 +287,7 @@
 				</conditions>
 				<actions>
 					<action function="set">magisk_core=1</action>
+					<action function="set">fox_busy=0</action>
 					<action function="page">magisk</action>
 				</actions>
 			</action>
@@ -284,18 +299,25 @@
 				</conditions>
 				<actions>
 					<action function="set">magisk_core=0</action>
+					<action function="set">fox_busy=0</action>
 					<action function="page">magisk</action>
 				</actions>
 			</action>
 		</page>
-		
+
 		<page name="magisk">
 			<template name="body"/>
+
+			<text style="caption">
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row3_3_y%"/>
+				<text>Modules</text>
+			</text>
 			
 			<fileselector style="fileselector_b">
 				<condition var1="magisk_core" op="!=" var2="1"/>
 				<condition var1="list_font" var2="big"/>
-				<placement x="0" y="%files_np_mm_y%" w="%fileselector_width%" h="%files_np_w%"/>
+				<placement x="0" y="%row4_1_y%" w="%fileselector_width%" h="%lb_l6%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon" file="module_icon" />
 				<filter folders="0" files="1"/>
@@ -307,7 +329,7 @@
 			<fileselector style="fileselector_s">
 				<condition var1="magisk_core" op="!=" var2="1"/>
 				<condition var1="list_font" var2="small"/>
-				<placement x="0" y="%files_np_mm_y%" w="%fileselector_width%" h="%files_np_w%"/>
+				<placement x="0" y="%row4_1_y%" w="%fileselector_width%" h="%lb_l6%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon_small" file="module_icon_small" />
 				<filter folders="0" files="1"/>
@@ -340,6 +362,61 @@
 				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
 				<text>Magisk Core</text>
 			</text>
+
+			<image>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="408"/>
+			</image>
+
+			<!-- Magisk version / toolbox tile -->
+
+			<fill color="#383838">
+				<placement x="0" y="410" w="%screen_w%" h="336"/>
+			</fill>
+
+			<image>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="745"/>
+			</image>
+
+			<text style="text_dlg_title">
+				<placement x="%btn_raised_left_x%" y="450"/>
+				<text>Magisk version: </text>
+			</text>
+
+			<fileselector>
+				<placement x="530" y="450" w="%screen_w%" h="108"/>
+				<highlight color="%transparent%"/>
+				<background color="%transparent%" />
+				<font resource="Secondary-title" spacing="%fileselector_spacing%" color="%text%" />
+				<sort name="tw_gui_sort_order"/>
+				<filter folders="0" files="1"/>
+				<path name="mmgui_info" default="/tmp/mminfo/m_ver"/>
+				<data name="mmgui_info"/>
+				<selection name="mmgui_info"/>
+			</fileselector>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="570"/>
+				<text>Uninstall</text>
+				<actions>
+					<action function="set">prebuild_action=magisk_uninstall</action>
+					<action function="cmd">mmgui unmnt</action>
+					<action function="page">check_prebuild_stuff</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_right_x%" y="570" placement="1"/>
+				<text>Reinstall</text>
+				<actions>
+					<action function="set">prebuild_action=magisk_install</action>
+					<action function="cmd">mmgui unmnt</action>
+					<action function="page">check_prebuild_stuff</action>
+				</actions>
+			</button>
+
+			<!-- -->
 
 			<button style="bs_btn">
 				<condition var1="magisk_core" op="!=" var2="1"/>
@@ -1172,6 +1249,52 @@
 			<action>
 				<touch key="back"/>
 				<action function="page">advanced</action>
+			</action>
+		</page>
+
+		<page name="check_prebuild_stuff">
+			<action>
+				<action function="fileexists">/sdcard/Fox/FoxFiles/Magisk.zip</action>
+			</action>
+
+			<action>
+				<condition var1="prebuild_action" var2="magisk_uninstall"/>
+				<condition var1="tw_operation_state" var2="1"/>
+				<condition var1="tw_operation_status" var2="0"/>
+				<actions>
+					<action function="queueclear"/>
+					<action function="set">tw_file=/sdcard/Fox/FoxFiles/unrootmagisk.zip</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/unrootmagisk.zip</action>
+					<action function="set">install_back=advanced</action>
+					<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles/unrootmagisk.zip</action>
+					<action function="queuezip"/>
+					<action function="set">tw_q_1=%tw_file%</action>
+					<action function="page">flash_confirm</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="prebuild_action" var2="magisk_install"/>
+				<condition var1="tw_operation_state" var2="1"/>
+				<condition var1="tw_operation_status" var2="0"/>
+				<actions>
+					<action function="queueclear"/>
+					<action function="set">tw_file=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+					<action function="set">install_back=advanced</action>
+					<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+					<action function="queuezip"/>
+					<action function="set">tw_q_1=%tw_file%</action>
+					<action function="page">flash_confirm</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<action function="page">%prebuild_fail_page%</action>
 			</action>
 		</page>
 	</pages>

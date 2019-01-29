@@ -733,6 +733,61 @@
 				<action function="overlay"/>
 			</action>
 		</page>
+
+		<page name="dialog_magisk_not_found">
+			<template name="dialog_body"/>
+			
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>Magisk not found!</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text1_y%"/>
+				<text>Do you wanna install</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text2_y%"/>
+				<text>prebuilded Magisk?</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text3_y%"/>
+				<text>Reboot required.</text>
+			</text>
+
+			<button style="btn_dlg">
+				<placement x="%db_left_x%" y="%db_y%"/>
+				<text>{@cancel_btn=CANCEL}</text>
+				<action function="overlay"/>
+			</button>
+
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@ok_btn=OK}</text>
+				<actions>
+					<action function="set">prebuild_action=magisk_install</action>
+					<action function="overlay"></action>
+					<action function="page">check_prebuild_stuff</action>
+				</actions>
+			</button>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
 		
 	</pages>
 </recovery>
