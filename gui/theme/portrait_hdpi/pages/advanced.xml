@@ -122,19 +122,19 @@
 			</text>
 			<-->
 
-			<!-- Utilities -->
+			<!-- Utilities {@utilities} -->
+			<!-- MM GUI -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
-				<action function="set">tw_action_param=mount /data; rm -f data/system/*.key data/system/locksettings.*</action>
-				<action function="page">remlock</action>
+				<action function="page">magisk_mount</action>
 			</button>
 			<image>
 				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="utils"/>
+				<image resource="magisk"/>
 			</image>
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>{@utilities}</text>
+				<text>Magisk Manager</text>
 			</text>
 			
 			<!-- SD -->
@@ -234,22 +234,277 @@
 			</action>
 		</page>
 
-		<page name="partsdcardsel">
-			
-			
-			<template name="body"/>
+		<page name="magisk_mount">
+			<action>
+				<action function="cmd">mmgui mnt</action>
+			</action>
 
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">mmgui_path=/tmp/mmgui</action>
+					<action function="page">magisk</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="page">advanced</action>
+				</actions>
+			</action>
+		</page>
+		
+		<page name="magisk">
+			<template name="body"/>
+			
+			<fileselector style="fileselector_b">
+				<condition var1="list_font" var2="big"/>
+				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_wide_w%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon" file="file_icon" />
+				<filter folders="0" files="1"/>
+				<path name="mmgui_path" default="/tmp/mmgui"/>
+				<data name="mmgui_file"/>
+				<selection name="mmgui_select"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="list_font" var2="small"/>
+				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_wide_w%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon_small" file="file_icon_small" />
+				<filter folders="0" files="1"/>
+				<path name="mmgui_path" default="/tmp/mmgui"/>
+				<data name="mmgui_file"/>
+				<selection name="mmgui_select"/>
+			</fileselector>
+			
 			<template name="ab"/>
+			<template name="statusbarinfo"/>
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>Magisk Manager</text>
+			</text>
+			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
+				<action function="overlay">menu_sort</action>
+			</button>
+			<button>
+				<condition var1="list_font" var2="big"/>
+				<condition var1="bookmark" var2="0"/>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
+				<actions>
+					<action function="set">list_font=small</action>
+				</actions>
+			</button>
+
+			<button>
+				<condition var1="list_font" var2="small"/>
+				<condition var1="bookmark" var2="0"/>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
+				<actions>
+					<action function="set">list_font=big</action>
+				</actions>
+			</button>
+			
+			<action>
+				<condition var1="mmgui_file" op="modified"/>
+				<actions>
+					<action function="page">magisk_parse</action>
+				</actions>
+			</action>
+			
+			<action>
+				<touch key="home"/>
+				<action function="cmd">mmgui unmnt</action>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="cmd">mmgui unmnt</action>
+				<action function="page">advanced</action>
+			</action>
+		</page>
+
+		<page name="magisk_parse">
+			<action>
+				<action function="fileexists">/magisk/%mmgui_select%/disable</action>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">mmodule_disable=1</action>
+					<action function="page">magisk_parse_2</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="set">mmodule_disable=0</action>
+					<action function="page">magisk_parse_2</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="magisk_parse_2">
+			<action>
+				<action function="fileexists">/magisk/%mmgui_select%/auto_mount</action>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">mmodule_amnt=1</action>
+					<action function="page">magisk_actions</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="set">mmodule_amnt=0</action>
+					<action function="page">magisk_actions</action>
+				</actions>
+			</action>
+		</page>
+		
+		<page name="magisk_actions">
+			<template name="body"/>
+			
+			<fill color="%accent%">
+				<condition var1="mmodule_disable" op="!=" var2="1"/>
+				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			<fill color="%unactive_title%">
+				<condition var1="mmodule_disable" var2="1"/>
+				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			
+			<image>
+				<condition var1="mmodule_disable" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab3_y%"/>
+				<image resource="switch_off"/>
+			</image>
+			<image>
+				<condition var1="mmodule_disable" op="!=" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab3_y%"/>
+				<image resource="switch_on"/>
+			</image>
+			
+			<text style="text_ab_switch">
+				<placement x="%col1_x_indent%" y="%ab_bc3_y%"/>
+				<text>{@mm_module_active}</text>
+			</text>
+
+			<button style="bs_btn">
+				<condition var1="mmodule_disable" var2="1"/>
+				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="cmd">rm "/magisk/%mmgui_select%/disable"</action>
+					<action function="page">magisk_parse</action>
+				</actions>
+			</button>
+
+			<button style="bs_btn">
+				<condition var1="mmodule_disable" op="!=" var2="1"/>
+				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="cmd">touch "/magisk/%mmgui_select%/disable"</action>
+					<action function="page">magisk_parse</action>
+				</actions>
+			</button>
+
+			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@part_sd_hdr=Partition SD Card}</text>
+				<text>Magisk Manager</text>
 			</text>
 
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@mm_module}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%mmgui_select%</text>
+			</text>
+
+			<button style="bs_btn">
+				<condition var1="tw_fm_isfolder" var2="0"/>
+				<placement x="0" y="%bs_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<actions>
+					<action function="set">tw_filemanager_command=rm -rf</action>
+					<action function="set">tw_filename1=/magisk/%mmgui_select%</action>
+					<action function="set">tw_fm_text1={@fm_deleting=Deleting}</action>
+					<action function="set">tw_fm_text2=</action>
+					<action function="set">tw_fm_text3=</action>
+					<action function="set">tw_include_text3=0</action>
+					<action function="set">tw_back=filemanageroptions</action>
+					<action function="page">filemanagerconfirm</action>
+				</actions>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%bs_row2_y%"/>
+				<condition var1="tw_fm_isfolder" var2="0"/>
+				<image resource="bs_btn_delete"/>
+			</image>
+
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
+				<condition var1="tw_fm_isfolder" var2="0"/>
+				<text>{@fm_delete_btn=Delete}</text>
+			</text>
 			
-			
+			<action>
+				<touch key="home"/>
+				<action function="cmd">mmgui unmnt</action>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">magisk</action>
+			</action>
+		</page>
+		
+		<page name="partsdcardsel">
+			<template name="body"/>
+			<template name="ab"/>
+			<template name="statusbarinfo"/>
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@part_sd_hdr=Partition SD Card}</text>
+			</text>
 			<image>
 				<placement x="%col1_x%" y="%row1_1_y%"/>
 				<image resource="icon_warning"/>

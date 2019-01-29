@@ -13,8 +13,8 @@
 		<image name="nav_wipe_d" filename="Default/NavPanel/wipe_d" retainaspect="1"/>
 		<image name="nav_files_d" filename="Default/NavPanel/files_d" retainaspect="1"/>
 		<image name="nav_backup_d" filename="Default/NavPanel/backup_d" retainaspect="1"/>
-		<image name="nav_empty" filename="Default/NavPanel/empty" retainaspect="1"/>
-		<image name="nav_hl" filename="Default/NavPanel/hl" retainaspect="1"/>
+		<image name="nav_empty" filename="Default/NavPanel/empty"/>
+		<image name="nav_hl" filename="Default/NavPanel/hl"/>
 		<image name="nav_shadow" filename="Default/NavPanel/shadow" retainaspect="1"/>
 		<image name="actionbar_shadow" filename="Default/ActionBar/shadow"/>
 		
@@ -30,21 +30,21 @@
 		<font name="font9" filename="AngryBirds.ttf" size="42"/>
 		
 		<!-- Workshop -->
-		<image name="style_gray" filename="Default/Workshop/StyleGray"/>
-		<image name="style_black" filename="Default/Workshop/StyleBlack"/>
-		<image name="style_light_c" filename="Default/Workshop/StyleLight_c"/>
-		<image name="style_light" filename="Default/Workshop/StyleLight"/>
-		<image name="color_amber" filename="Default/Workshop/ColorAmber"/>
-		<image name="color_blue" filename="Default/Workshop/ColorBlue"/>
-		<image name="color_cyan" filename="Default/Workshop/ColorCyan"/>
-		<image name="color_gray" filename="Default/Workshop/ColorGray"/>
-		<image name="color_fox" filename="Default/Workshop/ColorFox"/>
-		<image name="color_green" filename="Default/Workshop/ColorGreen"/>
-		<image name="color_red" filename="Default/Workshop/ColorRed"/>
-		<image name="color_pink" filename="Default/Workshop/ColorPink"/>
+		<image name="style_gray" filename="Default/Workshop/StyleGray" retainaspect="1"/>
+		<image name="style_black" filename="Default/Workshop/StyleBlack" retainaspect="1"/>
+		<image name="style_light_c" filename="Default/Workshop/StyleLight_c" retainaspect="1"/>
+		<image name="style_light" filename="Default/Workshop/StyleLight" retainaspect="1"/>
+		<image name="color_amber" filename="Default/Workshop/ColorAmber" retainaspect="1"/>
+		<image name="color_blue" filename="Default/Workshop/ColorBlue" retainaspect="1"/>
+		<image name="color_cyan" filename="Default/Workshop/ColorCyan" retainaspect="1"/>
+		<image name="color_gray" filename="Default/Workshop/ColorGray" retainaspect="1"/>
+		<image name="color_fox" filename="Default/Workshop/ColorFox" retainaspect="1"/>
+		<image name="color_green" filename="Default/Workshop/ColorGreen" retainaspect="1"/>
+		<image name="color_red" filename="Default/Workshop/ColorRed" retainaspect="1"/>
+		<image name="color_pink" filename="Default/Workshop/ColorPink" retainaspect="1"/>
 		
-		<image name="style_apply" filename="Default/Workshop/ColorApply"/>
-		<image name="style_apply_black" filename="Default/Workshop/StyleApply"/>
+		<image name="style_apply" filename="Default/Workshop/ColorApply" retainaspect="1"/>
+		<image name="style_apply_black" filename="Default/Workshop/StyleApply" retainaspect="1"/>
 	
 		<font name="fixed" filename="RobotoMono.ttf" size="34"/>
 		<!-- Battery -->
@@ -173,10 +173,11 @@
 		<image name="lockscreen" filename="Default/Icons/lockscreen" retainaspect="1"/>
 		<image name="ws_font" filename="Default/Icons/ws_font" retainaspect="1"/>
 		<image name="invert" filename="Default/Icons/invert" retainaspect="1"/>
+		<image name="magisk" filename="Default/Icons/magisk" retainaspect="1"/>
 		
 		<!-- Other -->
 		<image name="actionbar_clear" filename="Default/Other/actionbar_clear" retainaspect="1"/>
-		<image name="cursor" filename="Default/Other/cursor"/>
+		<image name="cursor" filename="Default/Other/cursor" retainaspect="1"/>
 		<image name="logo_debug" filename="Default/FullscreenIcons/logo_debug" retainaspect="1"/>
 	</resources>
 </recovery>

@@ -38,7 +38,7 @@
 		<image name="progress_fill" filename="Default/Progress/progress_fill"/>
 		
 		<!-- Controls -->
-		<image name="slider_classic" filename="Default/Controls/slider_classic"/>
+		<image name="slider_classic" filename="Default/Controls/slider_classic" retainaspect="1"/>
 		
 		<!-- Dialogs -->
 		<image name="db_empty" filename="Default/Dialog/db"/>

@@ -19,8 +19,8 @@
 		<image name="usb" filename="Light/FullscreenIcons/usb" retainaspect="1"/>
 		
 		<!-- Keyboard -->
-		<image name="keyback" filename="Light/Keyboard/key_butts" retainaspect="1"/>
-		<image name="keyback_num" filename="Light/Keyboard/key_num" retainaspect="1"/>
+		<image name="keyback" filename="Light/Keyboard/key_butts" />
+		<image name="keyback_num" filename="Light/Keyboard/key_num" />
 		
 		<!-- Progress -->
 		<animation name="progress" filename="Light/Progress/indeterminate"/>
@@ -28,7 +28,7 @@
 		<image name="progress_fill" filename="Light/Progress/progress_fill"/>
 		
 		<!-- Controls -->
-		<image name="slider_classic" filename="Light/Controls/slider_classic"/>
+		<image name="slider_classic" filename="Light/Controls/slider_classic" retainaspect="1"/>
 		
 		<!-- Dialogs -->
 		<image name="db_empty" filename="Light/Dialog/db"/>

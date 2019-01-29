@@ -8,6 +8,8 @@
 		<variable name="update_navbar" value="0"/>
 		<variable name="update_accent" value="0"/>
 		<variable name="update_style" value="0"/>
+		
+		<variable name="mmgui_path" value="/tmp/mmgui"/>
 
 		<!-- Lockscreen -->
 		<variable name="clock_style" value="0" persist="1"/>
@@ -110,6 +112,7 @@
 		
 		<!-- File Selector w/ NavPanel -->
 		<variable name="files_np_w" value="%screen_h%-552"/>
+		<variable name="files_np_wide_w" value="%screen_h%-384"/>
 		<variable name="files_np_y" value="240"/>
 		
 		<!-- UI w/ NavPanel -->
@@ -275,12 +278,14 @@
 		<!-- Title / Title buttons -->
 		<variable name="ab_y" value="84"/>
 		<variable name="ab2_y" value="252"/>
+		<variable name="ab3_y" value="468"/>
 		<variable name="ab_btn1_x" value="924"/>
 		<variable name="ab_btn2_x" value="780"/>
 		<variable name="ab_btn3_x" value="636"/>
 		<variable name="ab_back_x" value="12"/>
 		<variable name="ab_bc_y" value="108"/>
 		<variable name="ab_bc2_y" value="276"/>
+		<variable name="ab_bc3_y" value="492"/>
 		<variable name="ab_h" value="240"/>
 		<variable name="ab_ex_h" value="456"/>
 		<variable name="row_ab_ex_y" value="456"/>
