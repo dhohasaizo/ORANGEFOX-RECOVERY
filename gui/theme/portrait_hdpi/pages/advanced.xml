@@ -268,7 +268,7 @@
 				<condition var1="list_font" var2="big"/>
 				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_wide_w%"/>
 				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon" file="file_icon" />
+				<icon folder="folder_icon" file="module_icon" />
 				<filter folders="0" files="1"/>
 				<path name="mmgui_path" default="/tmp/mmgui"/>
 				<data name="mmgui_file"/>
@@ -279,7 +279,7 @@
 				<condition var1="list_font" var2="small"/>
 				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_wide_w%"/>
 				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon_small" file="file_icon_small" />
+				<icon folder="folder_icon_small" file="module_icon_small" />
 				<filter folders="0" files="1"/>
 				<path name="mmgui_path" default="/tmp/mmgui"/>
 				<data name="mmgui_file"/>
@@ -393,6 +393,28 @@
 				</actions>
 			</action>
 		</page>
+
+		<page name="magisk_switch_amnt">
+			<action>
+				<conditions>
+					<condition var1="mmodule_amnt" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="cmd">rm "/magisk/%mmgui_select%/auto_mount";</action>
+					<action function="page">magisk_parse</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="mmodule_amnt" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="cmd">touch "/magisk/%mmgui_select%/auto_mount";</action>
+					<action function="page">magisk_parse</action>
+				</actions>
+			</action>
+		</page>
 		
 		<page name="magisk_actions">
 			<template name="body"/>
@@ -426,7 +448,7 @@
 				<condition var1="mmodule_disable" var2="1"/>
 				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
-					<action function="cmd">rm "/magisk/%mmgui_select%/disable"</action>
+					<action function="cmd">rm "/magisk/%mmgui_select%/disable";</action>
 					<action function="page">magisk_parse</action>
 				</actions>
 			</button>
@@ -435,7 +457,7 @@
 				<condition var1="mmodule_disable" op="!=" var2="1"/>
 				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
-					<action function="cmd">touch "/magisk/%mmgui_select%/disable"</action>
+					<action function="cmd">touch "/magisk/%mmgui_select%/disable";</action>
 					<action function="page">magisk_parse</action>
 				</actions>
 			</button>
@@ -458,10 +480,17 @@
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>%mmgui_select%</text>
 			</text>
-
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%lb_l1%"/>
+				<listitem name="{@mm_module_mount}">
+					<data variable="mmodule_amnt"/>
+				</listitem>
+			</listbox>
+			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_delete" highlightresource="actionbar_delete_hl"/>
 				<actions>
 					<action function="set">tw_filemanager_command=rm -rf</action>
 					<action function="set">tw_filename1=/magisk/%mmgui_select%</action>
@@ -473,17 +502,13 @@
 					<action function="page">filemanagerconfirm</action>
 				</actions>
 			</button>
-			<image>
-				<placement x="%col1_x%" y="%bs_row2_y%"/>
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<image resource="bs_btn_delete"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<text>{@fm_delete_btn=Delete}</text>
-			</text>
+			
+			<action>
+				<condition var1="mmodule_amnt" op="modified"/>
+				<actions>
+					<action function="page">magisk_switch_amnt</action>
+				</actions>
+			</action>
 			
 			<action>
 				<touch key="home"/>
