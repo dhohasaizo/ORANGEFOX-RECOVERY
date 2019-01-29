@@ -321,6 +321,21 @@
 			<action>
 				<condition var1="mmgui_file" op="modified"/>
 				<actions>
+					<action function="cmd">
+						work="/tmp/mminfo/";
+						[ -d $work ] && rm -rf $work;
+						mkdir $work;
+						cd $work;
+						mkdir title subtitle;
+						
+						prop=/magisk/%mmgui_select%/module.prop;
+						name=$(cat $prop | grep "name" | cut -d'=' -f2);
+						ver=$(cat $prop | grep "version" | cut -d'=' -f2);
+						author=$(cat $prop | grep "author" | cut -d'=' -f2);
+						
+						echo "" > "$work/title/$name";
+						echo "" > "$work/subtitle/by $author I Ver: $ver";
+					</action>
 					<action function="page">magisk_parse</action>
 				</actions>
 			</action>
@@ -375,21 +390,10 @@
 				<conditions>
 					<condition var1="tw_operation_state" var2="1"/>
 					<condition var1="tw_operation_status" var2="0"/>
-					<condition var1="fox_busy" var2="0"/>
 				</conditions>
 				<actions>
-					<action function="set">fox_busy=1</action>
-					<action function="cmd">
-						rm -rf "/tmp/mmgui/info/";
-						mkdir "/tmp/mmgui/info/";
-						ver=$(grep "version=" "magisk/%mmgui_select%/module.prop");
-						author=$(grep "author" "magisk/%mmgui_select%/module.prop");
-						touch "/tmp/mmgui/info/$ver";
-						touch "/tmp/mmgui/info/$author";
-					</action>
 					<action function="set">mmodule_amnt=1</action>
 					<action function="page">magisk_actions</action>
-					<action function="set">fox_busy=0</action>
 				</actions>
 			</action>
 
@@ -482,15 +486,45 @@
 				<text>Magisk Manager</text>
 			</text>
 
-			<text style="text_ab_title">
+			<!--text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@mm_module}</text>
-			</text>
+				<text></text>
+			</text-->
+			
+			<fileselector>
+				<placement x="208" y="278" w="%screen_w%" h="108"/>
+				<highlight color="%transparent%"/>
+				<background color="%transparent%" />
+				<font resource="Secondary-title" spacing="%fileselector_spacing%" color="%accent%" />
+				<sort name="tw_gui_sort_order"/>
+				<filter folders="0" files="1"/>
+				<path name="mmgui_info" default="/tmp/mminfo/title"/>
+				<data name="mmgui_info"/>
+				<selection name="mmgui_info"/>
+			</fileselector>
+			
+			<fileselector>
+				<placement x="208" y="%row1_2_y%" w="%screen_w%" h="56"/>
+				<highlight color="%transparent%"/>
+				<background color="%transparent%" />
+				<font resource="Secondary" spacing="%fileselector_spacing%" color="%accent%" />
+				<sort name="tw_gui_sort_order"/>
+				<filter folders="0" files="1"/>
+				<path name="mmgui_info2" default="/tmp/mminfo/subtitle"/>
+				<data name="mmgui_info2"/>
+				<selection name="mmgui_info2"/>
+			</fileselector>
 
-			<text style="text_ab_subtitle">
+			<!-- User can't tap on fileselectors -->
+			<button>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="216"/>
+				<fill color="%transparent%"/>
+			</button>
+
+			<!--text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>%mmgui_select%</text>
-			</text>
+			</text-->
 			
 			<listbox style="settingslist">
 				<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%lb_l1%"/>
@@ -513,15 +547,6 @@
 					<action function="page">filemanagerconfirm</action>
 				</actions>
 			</button>
-
-			<fileselector style="fileselector_s">
-				<placement x="0" y="%row4_1_y%" w="%screen_w%" h="%lb_l3%"/>
-				<sort name="tw_gui_sort_order"/>
-				<filter folders="0" files="1"/>
-				<path name="mmgui_info" default="/tmp/mmgui/info"/>
-				<data name="mmgui_info"/>
-				<selection name="mmgui_info"/>
-			</fileselector>
 			
 			<action>
 				<condition var1="mmodule_amnt" op="modified"/>
