@@ -45,6 +45,7 @@ mount_image() {
 
 mnt() {
   echo "Mounting Magisk to $mountPath...";
+  mount | grep -qi /magisk && echo "Already mounted! Exiting w/o errors." & exit 0;
   
   mount /data 2>/dev/null
   mount /cache 2>/dev/null
