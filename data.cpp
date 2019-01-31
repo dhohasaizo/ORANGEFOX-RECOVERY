@@ -1189,7 +1189,7 @@ int DataManager::GetMagicValue(const string & varName, string & value)
           DataManager::SetValue("charging_now", "0");
         }
 	    }
-	  nextSecCheck = curTime.tv_sec + 60;
+	  nextSecCheck = curTime.tv_sec + 1;
 	}
 
       sprintf(tmp, "%i%%%c", lastVal, charging);
