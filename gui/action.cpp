@@ -2636,21 +2636,6 @@ int GUIAction::disableled(std::string arg __unused)
   return 0;
 }
 
-int GUIAction::disableinstallled(std::string arg __unused)
-{
-  return disableled("Installed");
-}
-
-int GUIAction::disablebackupled(std::string arg __unused)
-{
-  return disableled("Backup");
-}
-
-int GUIAction::disablerestoreled(std::string arg __unused)
-{
-  return disableled("Restore");
-}
-
 int GUIAction::removepassword(std::string arg __unused)
 {
   operation_start("Remove Recovery Password");
