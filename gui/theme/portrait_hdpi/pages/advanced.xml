@@ -106,22 +106,6 @@
 			</text>
 			<!---->
 			
-			<!-- FRP>
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
-				<action function="set">tw_action_param=mount /data; rm -f data/system/*.key data/system/locksettings.*</action>
-				<action function="page">remlock</action>
-			</button>
-			<image>
-				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="bs_adv_frp"/>
-			</image>
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>{@new_lock=Remove Lock Screen}</text>
-			</text>
-			<-->
-
 			<!-- Utilities {@utilities} -->
 			<!-- MM GUI -->
 			<button style="bs_btn">
@@ -136,11 +120,26 @@
 				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
 				<text>Magisk Manager</text>
 			</text>
+
+			<!-- Utilities -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row6_y%"/>
+				<action function="set">tw_action_param=mount /data; rm -f data/system/*.key data/system/locksettings.*</action>
+				<action function="page">remlock</action>
+			</button>
+			<image>
+				<placement x="%col1_x%" y="%set_row6_y%"/>
+				<image resource="utils"/>
+			</image>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
+				<text>Utilities</text>
+			</text>
 			
 			<!-- SD -->
 			<button style="bs_btn">
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row6_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
 				<actions>
 					<action function="set">partitionlisterror=0</action>
 					<action function="page">partsdcardsel</action>
@@ -148,12 +147,12 @@
 			</button>
 			<image>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x%" y="%set_row6_y%"/>
+				<placement x="%col1_x%" y="%set_row7_y%"/>
 				<image resource="bs_adv_sd"/>
 			</image>
 			<text style="bs_text">
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
 				<text>{@part_sd_hdr=Partition SD Card}</text>
 			</text>
 			<!---->
@@ -180,19 +179,19 @@
 			<button style="bs_btn">
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
 				<action function="page">mount</action>
 			</button>
 			<image>
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x%" y="%set_row7_y%"/>
+				<placement x="%col1_x%" y="%set_row8_y%"/>
 				<image resource="bs_adv_mount"/>
 			</image>
 			<text style="bs_text">
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
 				<text>{@mount_hdr=Mount}</text>
 			</text>
 	
@@ -204,19 +203,19 @@
 			<button style="bs_btn">
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row9_y%"/>
 				<action function="page">reboot</action>
 			</button>
 			<image>
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x%" y="%set_row8_y%"/>
+				<placement x="%col1_x%" y="%set_row9_y%"/>
 				<image resource="bs_adv_reboot"/>
 			</image>
 			<text style="bs_text">
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
 				<text>{@reboot_btn=Reboot}</text>
 			</text>
 			<!---->

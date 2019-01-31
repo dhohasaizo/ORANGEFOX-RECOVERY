@@ -78,6 +78,8 @@
 		<!-- File Manager -->
 		<image name="folder_icon" filename="Default/FileManager/folder" retainaspect="1"/>
 		<image name="folder_icon_small" filename="Default/FileManager/folder_small" retainaspect="1"/>
+		<image name="module_icon_small" filename="Default/FileManager/module_small" retainaspect="1"/>
+		<image name="module_icon" filename="Default/FileManager/module" retainaspect="1"/>
 		
 		<!-- Icons -->
 		<image name="bs_btn_open" filename="Default/Icons/bs_btn_open" retainaspect="1"/>
