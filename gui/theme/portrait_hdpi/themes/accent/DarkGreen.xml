@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<!-- Controls -->
+		<image name="radio_true_dialog" filename="DarkGreen/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="DarkGreen/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="DarkGreen/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="DarkGreen/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="DarkGreen/Controls/slider_used"/>
+		<image name="handle" filename="DarkGreen/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="DarkGreen/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="DarkGreen/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="DarkGreen/Controls/btn_raised_hl"/>
+
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="DarkGreen/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="DarkGreen/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="DarkGreen/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_delete" filename="DarkGreen/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_edit" filename="DarkGreen/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="DarkGreen/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="DarkGreen/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_flash" filename="DarkGreen/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_reset" filename="DarkGreen/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_settings" filename="DarkGreen/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_sort" filename="DarkGreen/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_color_prim" filename="DarkGreen/ActionBar/color_prim" retainaspect="1"/>
+		<image name="actionbar_color_sec" filename="DarkGreen/ActionBar/color_sec" retainaspect="1"/>
+		<image name="actionbar_power_off" filename="DarkGreen/ActionBar/power_off" retainaspect="1"/>
+		<image name="actionbar_storage" filename="DarkGreen/ActionBar/storage" retainaspect="1"/>
+
+		<!-- Nav panel -->
+		<image name="nav_menu" filename="DarkGreen/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="DarkGreen/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="DarkGreen/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="DarkGreen/NavPanel/backup" retainaspect="1"/>
+		
+		<!-- FAB -->
+		<image name="fab" filename="DarkGreen/FAB/fab" retainaspect="1"/>
+		<image name="fab_hl" filename="DarkGreen/FAB/fab_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="file_icon_small" filename="DarkGreen/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="DarkGreen/FileManager/file" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="DarkGreen/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="DarkGreen/FileManager/file_bkp" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info" filename="DarkGreen/Info/icon_info" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="enter" filename="DarkGreen/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="DarkGreen/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="DarkGreen/Keyboard/enter_num_new" retainaspect="1"/>
+
+		<!-- Nav Bar -->
+		<image name="home" filename="DarkGreen/NavBar/home" retainaspect="1"/>
+		<image name="back" filename="DarkGreen/NavBar/back" retainaspect="1"/>
+		<image name="slideout" filename="DarkGreen/NavBar/slideout" retainaspect="1"/>
+		<image name="keyboard_hide" filename="DarkGreen/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="home_ng" filename="DarkGreen/NavBar/home_ng" retainaspect="1"/>
+		<image name="back_ng" filename="DarkGreen/NavBar/back_ng" retainaspect="1"/>
+		<image name="slideout_ng" filename="DarkGreen/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="DarkGreen/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		
+		<!-- Pie Nav bar -->
+		<image name="back_pie" filename="DarkGreen/NavBar/back_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="DarkGreen/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="home_pie" filename="DarkGreen/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="DarkGreen/NavBar/slideout_key_pie" retainaspect="1"/>
+	</resources>
+	<variables>
+		<variable name="accent" value="#009788"/>
+		<variable name="accent_r" value="0"/>
+		<variable name="accent_g" value="151"/>
+		<variable name="accent_b" value="136"/>
+		<variable name="theme_accent" value="DarkGreen"/>
+		<variable name="current_accent" value="DarkGreen"/>
+	</variables>
+</recovery>

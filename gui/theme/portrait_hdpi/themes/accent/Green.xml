@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
-<resources>
+	<resources>
 		<!-- Controls -->
 		<image name="radio_true_dialog" filename="Green/Controls/radio_true_dialog" retainaspect="1"/>
 		<image name="checkbox_true_dialog" filename="Green/Controls/checkbox_true_dialog" retainaspect="1"/>
@@ -70,13 +70,11 @@
 		<image name="slideout_key_pie" filename="Green/NavBar/slideout_key_pie" retainaspect="1"/>
 	</resources>
 	<variables>
-		<variable name="accent" value="#4CB050"/>
-		<variable name="accent_r" value="122"/>
-		<variable name="accent_g" value="56"/>
-		<variable name="accent_b" value="69"/>
+		<variable name="accent" value="#4cb050"/>
+		<variable name="accent_r" value="76"/>
+		<variable name="accent_g" value="176"/>
+		<variable name="accent_b" value="80"/>
 		<variable name="theme_accent" value="Green"/>
 		<variable name="current_accent" value="Green"/>
-		<variable name="applied_accent_x" value="30"/>
-		<variable name="applied_accent_y" value="975"/>
 	</variables>
 </recovery>
