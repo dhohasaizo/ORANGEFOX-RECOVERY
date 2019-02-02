@@ -748,7 +748,7 @@
 			<image>
 				<placement x="30" y="360"/>
 				<condition var1="theme_style" var2="Black"/>
-				<image resource="color_apply"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
@@ -762,7 +762,7 @@
 			<image>
 				<placement x="285" y="360"/>
 				<condition var1="theme_style" var2="Gray"/>
-				<image resource="color_apply"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
@@ -810,7 +810,7 @@
 			<image>
 				<placement x="795" y="360"/>
 				<condition var1="theme_style" var2="Light_classic"/>
-				<image resource="color_apply"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
@@ -829,7 +829,7 @@
 			<image>
 				<condition var1="theme_accent" var2="Amber"/>
 				<placement x="30" y="%row3_2_y%"/>
-				<image resource="color_apply"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
@@ -843,7 +843,7 @@
 			<image>
 				<condition var1="theme_accent" var2="Blue"/>
 				<placement x="285" y="%row3_2_y%"/>
-				<image resource="color_apply"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
@@ -857,7 +857,7 @@
 			<image>
 				<condition var1="theme_accent" var2="Cyan"/>
 				<placement x="540" y="%row3_2_y%"/>
-				<image resource="color_apply"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
@@ -871,7 +871,7 @@
 			<image>
 				<condition var1="theme_accent" var2="Gray"/>
 				<placement x="795" y="%row3_2_y%"/>
-				<image resource="color_apply"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
@@ -885,7 +885,7 @@
 			<image>
 				<condition var1="theme_accent" var2="Green"/>
 				<placement x="30" y="975"/>
-				<image resource="color_apply"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
@@ -899,7 +899,7 @@
 			<image>
 				<condition var1="theme_accent" var2="Purple"/>
 				<placement x="285" y="975"/>
-				<image resource="color_apply"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
@@ -913,7 +913,7 @@
 			<image>
 				<condition var1="theme_accent" var2="Red"/>
 				<placement x="540" y="975"/>
-				<image resource="color_apply"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
@@ -980,7 +980,7 @@
 			<image>
 				<condition var1="theme_accent" var2="Pink"/>
 				<placement x="795" y="975"/>
-				<image resource="color_apply"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 			<action>
