@@ -918,56 +918,32 @@
 
 			<!-- Black / Gray (based on selected theme) -->
 			<button>
-				<condition var1="theme_style" var2="Gray"/>
-				<placement x="795" y="%row3_2_y%"/>
-				<image resource="color_gray"/>
-				<action function="set">theme_accent=Gray</action>
-			</button>
-
-			<button>
-				<condition var1="theme_style" var2="Black"/>
-				<placement x="795" y="%row3_2_y%"/>
-				<image resource="color_gray"/>
-				<action function="set">theme_accent=Gray</action>
-			</button>
-
-			<button>
-				<condition var1="theme_style" var2="Light"/>
-				<placement x="795" y="%row3_2_y%"/>
-				<image resource="style_black"/>
-				<action function="set">theme_accent=Black</action>
-			</button>
-
-			<button>
-				<condition var1="theme_style" var2="Light_classic"/>
-				<placement x="795" y="%row3_2_y%"/>
-				<image resource="style_black"/>
-				<action function="set">theme_accent=Black</action>
-			</button>
-
-			<image>
-				<condition var1="theme_accent" var2="Gray"/>
-				<placement x="795" y="%row3_2_y%"/>
-				<image resource="style_apply"/>
-			</image>
-
-			<image>
-				<condition var1="theme_accent" var2="Black"/>
-				<placement x="795" y="%row3_2_y%"/>
-				<image resource="style_apply"/>
-			</image>
-
-			<action>
-				<condition var1="theme_style" var2="Light"/>
-				<condition var1="theme_accent" var2="Gray"/>
-				<action function="set">theme_accent=Black</action>
-			</action>
-
-			<action>
 				<condition var1="theme_style" op="!=" var2="Light"/>
-				<condition var1="theme_accent" var2="Black"/>
+				<placement x="795" y="%row3_2_y%"/>
+				<image resource="color_gray"/>
 				<action function="set">theme_accent=Gray</action>
-			</action>
+			</button>
+
+			<button>
+				<condition var1="theme_style" var2="Light"/>
+				<placement x="795" y="%row3_2_y%"/>
+				<image resource="style_black"/>
+				<action function="set">theme_accent=Black</action>
+			</button>
+
+			<image>
+				<condition var1="theme_accent" var2="Gray"/>
+				<condition var1="theme_style" op="!=" var2="Light"/>
+				<placement x="795" y="%row3_2_y%"/>
+				<image resource="style_apply"/>
+			</image>
+
+			<image>
+				<condition var1="theme_accent" var2="Black"/>
+				<condition var1="theme_style" var2="Light"/>
+				<placement x="795" y="%row3_2_y%"/>
+				<image resource="style_apply"/>
+			</image>
 			<!-- -->
 
 			<!-- Green -->
