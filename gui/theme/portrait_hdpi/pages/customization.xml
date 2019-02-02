@@ -972,15 +972,15 @@
 			</image>
 			<!-- -->
 
-			<!-- Pink -->
+			<!-- Red -->
 			<button>
 				<placement x="795" y="975"/>
-				<image resource="color_pink"/>
-				<action function="set">theme_accent=Pink</action>
+				<image resource="color_red"/>
+				<action function="set">theme_accent=Red</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Pink"/>
+				<condition var1="theme_accent" var2="Red"/>
 				<placement x="795" y="975"/>
 				<image resource="style_apply"/>
 			</image>

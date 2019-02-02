@@ -11,31 +11,42 @@
 		<image name="handle_h" filename="Gray/Controls/handle_h" retainaspect="1"/>
 		<image name="handle_h_classic" filename="Gray/Controls/handle_h_classic" retainaspect="1"/>
 		<image name="btn_raised_hl" filename="Gray/Controls/btn_raised_hl"/>
+
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="Gray/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="Gray/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="Gray/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_delete" filename="Gray/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_edit" filename="Gray/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="Gray/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="Gray/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_flash" filename="Gray/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_reset" filename="Gray/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_settings" filename="Gray/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_sort" filename="Gray/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_color_prim" filename="Gray/ActionBar/color_prim" retainaspect="1"/>
+		<image name="actionbar_color_sec" filename="Gray/ActionBar/color_sec" retainaspect="1"/>
+		<image name="actionbar_power_off" filename="Gray/ActionBar/power_off" retainaspect="1"/>
+		<image name="actionbar_storage" filename="Gray/ActionBar/storage" retainaspect="1"/>
+
+		<!-- Nav panel -->
+		<image name="nav_menu" filename="Gray/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="Gray/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="Gray/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="Gray/NavPanel/backup" retainaspect="1"/>
 		
 		<!-- FAB -->
-		<image name="btn_float_arc" filename="Gray/FAB/btn_float_arc" retainaspect="1"/>
-		<image name="btn_float_img" filename="Gray/FAB/btn_float_img" retainaspect="1"/>
-		<image name="btn_float_accept" filename="Gray/FAB/btn_float_accept" retainaspect="1"/>
-		<image name="btn_float_folder" filename="Gray/FAB/btn_float_folder" retainaspect="1"/>
-		<image name="btn_float_close" filename="Gray/FAB/btn_float_close" retainaspect="1"/>
-		<image name="float_fm_plus" filename="Gray/FAB/float_fm_plus" retainaspect="1"/>
-		<image name="float_fm_close" filename="Gray/FAB/float_fm_close" retainaspect="1"/>
-		<image name="float_fm_close_hl" filename="Gray/FAB/float_fm_close_hl" retainaspect="1"/>
+		<image name="fab" filename="Gray/FAB/fab" retainaspect="1"/>
+		<image name="fab_hl" filename="Gray/FAB/fab_hl" retainaspect="1"/>
 		
 		<!-- File Manager -->
 		<image name="file_icon_small" filename="Gray/FileManager/file_small" retainaspect="1"/>
 		<image name="file_icon" filename="Gray/FileManager/file" retainaspect="1"/>
-		<image name="file_icon_small" filename="Gray/FileManager/file_zip_small" retainaspect="1"/>
-		<image name="file_icon_small" filename="Gray/FileManager/file_img_small" retainaspect="1"/>
-		<image name="file_icon" filename="Gray/FileManager/file_zip" retainaspect="1"/>
-		<image name="file_icon" filename="Gray/FileManager/file_img" retainaspect="1"/>
 		<image name="bkp_icon_small" filename="Gray/FileManager/file_bkp_small" retainaspect="1"/>
 		<image name="bkp_icon" filename="Gray/FileManager/file_bkp" retainaspect="1"/>
-		<image name="flash_icon" filename="Gray/FileManager/flash_icon" retainaspect="1"/>
 		
 		<!-- Info -->
 		<image name="icon_info" filename="Gray/Info/icon_info" retainaspect="1"/>
-		<image name="help_cloud" filename="Gray/Info/help_cloud" retainaspect="1"/>
 		
 		<!-- Keyboard -->
 		<image name="enter" filename="Gray/Keyboard/enter" retainaspect="1"/>
@@ -44,21 +55,19 @@
 
 		<!-- Nav Bar -->
 		<image name="home" filename="Gray/NavBar/home" retainaspect="1"/>
-		<image name="home_hl" filename="Gray/NavBar/home_hl" retainaspect="1"/>
 		<image name="back" filename="Gray/NavBar/back" retainaspect="1"/>
-		<image name="back_hl" filename="Gray/NavBar/back_hl" retainaspect="1"/>
 		<image name="slideout" filename="Gray/NavBar/slideout" retainaspect="1"/>
-		<image name="slideout_hl" filename="Gray/NavBar/slideout_hl" retainaspect="1"/>
 		<image name="keyboard_hide" filename="Gray/NavBar/keyboard_hide" retainaspect="1"/>
-		<image name="keyboard_hide_hl" filename="Gray/NavBar/keyboard_hide_hl" retainaspect="1"/>
 		<image name="home_ng" filename="Gray/NavBar/home_ng" retainaspect="1"/>
-		<image name="home_ng_hl" filename="Gray/NavBar/home_ng_hl" retainaspect="1"/>
 		<image name="back_ng" filename="Gray/NavBar/back_ng" retainaspect="1"/>
-		<image name="back_ng_hl" filename="Gray/NavBar/back_ng_hl" retainaspect="1"/>
 		<image name="slideout_ng" filename="Gray/NavBar/slideout_ng" retainaspect="1"/>
-		<image name="slideout_ng_hl" filename="Gray/NavBar/slideout_ng_hl" retainaspect="1"/>
 		<image name="keyboard_hide_ng" filename="Gray/NavBar/keyboard_hide_ng" retainaspect="1"/>
-		<image name="keyboard_hide_ng_hl" filename="Gray/NavBar/keyboard_hide_ng_hl" retainaspect="1"/>
+		
+		<!-- Pie Nav bar -->
+		<image name="back_pie" filename="Gray/NavBar/back_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="Gray/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="home_pie" filename="Gray/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="Gray/NavBar/slideout_key_pie" retainaspect="1"/>
 	</resources>
 	<variables>
 		<variable name="accent" value="#646464FF"/>
