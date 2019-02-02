@@ -91,6 +91,12 @@
 		
 		<!-- Placement -->
 		
+		<!-- OTA -->
+		<variable name="ota_update_title_y" value="%center_y%+320"/>
+		<variable name="ota_update_progress_y" value="%center_y%+400"/>
+		<variable name="ota_update_progress_x" value="326"/>
+		<variable name="ota_update_log_y" value="%center_y%+600"/>
+		
 		<!-- FAB above NavPanel -->
 		<variable name="btn_float_x" value="852"/>
 		<variable name="btn_float_y" value="%screen_h%-390"/>

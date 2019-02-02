@@ -10,19 +10,19 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@mount_hdr=Mount}</text>
+				<text>{@mount_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@sel_part_hdr=Select Partitions}</text>
+				<text>{@sel_part_hdr}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>%tw_storage_display_name% (%tw_storage_free_size% MB)</text>
 			</text>
-			
+
 			<button>
 				<condition var1="storage_select_on" var2="1"/>
 				<placement x="%btn_float_x%" y="%row1_2_y%"/>
@@ -32,7 +32,7 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@partitions=Partitions}</text>
+				<text>{@partitions}</text>
 			</text>
 
 			<partitionlist>
@@ -42,43 +42,45 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%mount_ro_opt_y%"/>
-				<text>{@options_hdr=Options}</text>
+				<text>{@options_hdr}</text>
 			</text>
 
 			<!--readonly-->
-			
 			<button style="menu_btn_sort">
 				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
 				<placement x="0" y="%mount_ro_check_y%" w="%screen_w%" h="90"/>
 				<action function="mountsystemtoggle">1</action>
 			</button>
-			
+
 			<button style="menu_btn_sort">
 				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
 				<placement x="0" y="%mount_ro_check_y%" w="%screen_w%" h="90"/>
 				<action function="set">tw_lifetime_writes=2</action>
 				<action function="page">system_readonly_check_mount</action>
 			</button>
+			
 			<image>
 				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
 				<placement x="0" y="%mount_ro_check_y%"/>
 				<image resource="checkbox_false"/>
 			</image>
+			
 			<image>
 				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
 				<placement x="0" y="%mount_ro_check_y%"/>
 				<image resource="checkbox_true"/>
 			</image>
+			
 			<text>
 				<placement x="160" y="mount_ro_txt_y"/>
 				<font resource="body1" color="%text%"/>
-				<text>{@mount_sys_ro_chk=Mount system partition read-only}</text>
+				<text>{@mount_sys_ro_chk}</text>
 			</text>
-			
+
 			<button style="btn_raised">
 				<condition var1="tw_has_usb_storage" var2="1"/>
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
-				<text>{@usb_storage_btn=USB STORAGE}</text>
+				<text>{@usb_storage_btn}</text>
 				<actions>
 					<action function="mount">usb</action>
 					<action function="page">usb_mount</action>
@@ -91,7 +93,7 @@
 					<condition var1="tw_is_decrypted" var2="0"/>
 				</conditions>
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-				<text>{@decrypt_data_btn=DECRYPT DATA}</text>
+				<text>{@decrypt_data_btn}</text>
 				<action function="page">decrypt</action>
 			</button>
 
@@ -101,7 +103,7 @@
 					<condition var1="tw_mtp_enabled" var2="0"/>
 				</conditions>
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-				<text>{@enable_mtp_btn=ENABLE MTP}</text>
+				<text>{@enable_mtp_btn}</text>
 				<action function="startmtp"/>
 			</button>
 
@@ -111,7 +113,7 @@
 					<condition var1="tw_mtp_enabled" var2="1"/>
 				</conditions>
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-				<text>{@disable_mtp_btn=DISABLE MTP}</text>
+				<text>{@disable_mtp_btn}</text>
 				<action function="stopmtp"/>
 			</button>
 
@@ -135,17 +137,17 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@mount_hdr=Mount}</text>
+				<text>{@mount_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@usb_storage_hdr=USB Storage}</text>
+				<text>{@usb_storage_hdr}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@usb_stor_mnt1=USB Storage mounted}</text>
+				<text>{@usb_stor_mnt1}</text>
 			</text>
 
 			<image>
@@ -166,7 +168,7 @@
 				<action function="set">tw_busy=1</action>
 			</action>
 		</page>
-		
+
 		<page name="usb_umount">
 			<action>
 				<action function="unmount">usb</action>
@@ -196,7 +198,7 @@
 				<action function="page">system_readonly</action>
 			</action>
 		</page>
-		
+
 		<page name="system_readonly_check_mount">
 			<action>
 				<action function="checkpartitionlifetimewrites">/system</action>
@@ -235,7 +237,7 @@
 				<action function="page">main</action>
 			</action>
 		</page>
-		
+
 		<page name="system_readonly_mount">
 			<template name="t_system"/>
 
@@ -270,17 +272,17 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@mount_hdr=Mount}</text>
+				<text>{@mount_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@decrypt=Decrypt}</text>
+				<text>{@decrypt}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@data_part=Data Partition}</text>
+				<text>{@data_part}</text>
 			</text>
 
 			<image>
@@ -290,22 +292,22 @@
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
-				<text>{@encrypt_data_part=Data Partition is encrypted.}</text>
+				<text>{@encrypt_data_part}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_3a_y%"/>
-				<text>{@decrypt_data_enter_note1=Please enter the password or}</text>
+				<text>{@decrypt_data_enter_note1}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_1a_y%"/>
-				<text>{@decrypt_data_enter_note2=press the back button to cancel.}</text>
+				<text>{@decrypt_data_enter_note2}</text>
 			</text>
 
 			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row4_1_y%"/>
-				<text>{@decrypt_data_enter_pass=Password}</text>
+				<text>{@decrypt_data_enter_pass}</text>
 			</text>
 
 			<input>
@@ -331,7 +333,7 @@
 			<text style="text_input_fail">
 				<condition var1="tw_password_fail" var2="1"/>
 				<placement x="%col1_x%" y="%row4_3_y%"/>
-				<text>{@restore_dec_fail=Password failed, please try again!}</text>
+				<text>{@restore_dec_fail}</text>
 			</text>
 
 			<action>
@@ -360,17 +362,17 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@mount_hdr=Mount}</text>
+				<text>{@mount_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@decrypt=Decrypt}</text>
+				<text>{@decrypt}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@data_part=Data Partition}</text>
+				<text>{@data_part}</text>
 			</text>
 
 			<image>
@@ -380,25 +382,25 @@
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
-				<text>{@encrypt_data_part=Data Partition is encrypted.}</text>
+				<text>{@encrypt_data_part}</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="tw_password_fail" op="!=" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row2_3a_y%"/>
-				<text>{@decrypt_data_enter_note1a=Please enter the pattern or}</text>
+				<text>{@decrypt_data_enter_note1a}</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="tw_password_fail" op="!=" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row3_1a_y%"/>
-				<text>{@decrypt_data_enter_note2=press the back button to cancel.}</text>
+				<text>{@decrypt_data_enter_note2}</text>
 			</text>
 
 			<text style="text_body2_fail">
 				<condition var1="tw_password_fail" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row2_3a_y%"/>
-				<text>{@decrypt_data_failed_pattern=Pattern failed!}</text>
+				<text>{@decrypt_data_failed_pattern}</text>
 			</text>
 
 			<text style="text_body2">
@@ -468,18 +470,18 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@mount_hdr=Mount}</text>
+				<text>{@mount_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@decrypt_data_trying=Trying Decryption}</text>
+				<text>{@decrypt_data_trying}</text>
 			</text>
 
 			<template name="action_page_console"/>
+			
 			<template name="cant_cancel" />
-			
-			
+
 			<action>
 				<action function="decrypt"/>
 			</action>

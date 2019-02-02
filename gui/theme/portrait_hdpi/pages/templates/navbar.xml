@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
 	<templates>
-		<!--разделение navbar'а специально для клавиатуры-->
-		<!--сборка-->
 		<template name="navbar">
 			<template name="navbar_home"/>
 			<template name="navbar_console"/>
@@ -15,20 +13,20 @@
 				<condition var1="navbar_bkg" var2="1"/>
 				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
 			</fill>
-			
+
 			<fill color="#000000">
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_bkg" var2="2"/>
 				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
 			</fill>
-			
+
 			<fill color="%lightransparent%">
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_bkg" var2="3"/>
 				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
 			</fill>
 		</template>
-		
+
 		<template name="navbar_home">
 			<button>
 				<condition var1="tw_busy" var2="0"/>
@@ -47,7 +45,7 @@
 				<image resource="home_white_ng" highlightresource="home_white_ng_hl"/>
 				<action function="key">home</action>
 			</button>
-			
+
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="nougat" var2="0"/>
@@ -75,6 +73,7 @@
 				<image resource="home_white_pie" highlightresource="home_white_hl_pie"/>
 				<action function="key">home</action>
 			</button>
+			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="nougat" var2="3"/>
@@ -83,7 +82,6 @@
 				<image resource="home_pie" highlightresource="home_hl_pie"/>
 				<action function="key">home</action>
 			</button>
-
 		</template>
 
 		<template name="navbar_console">
@@ -130,7 +128,7 @@
 				<image resource="slideout_white_ng" highlightresource="slideout_white_ng_hl"/>
 				<action function="overlay">console</action>
 			</button>
-		
+
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -197,6 +195,7 @@
 				<image resource="slideout_white_key_pie" highlightresource="slideout_white_key_pie_hl"/>
 				<action function="overlay">console</action>
 			</button>
+			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -219,18 +218,18 @@
 				<action function="overlay">console</action>
 			</button>
 		</template>
-		
+
 		<template name="navbar_console_hide">
 			<fill color="%accent%">
 				<condition var1="navbar_bkg" var2="1"/>
 				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
 			</fill>
-			
+
 			<fill color="#000000">
 				<condition var1="navbar_bkg" var2="2"/>
 				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
 			</fill>
-		
+
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -270,7 +269,7 @@
 				<image resource="keyboard_hide_white" highlightresource="keyboard_hide_white_hl"/>
 				<action function="overlay"/>
 			</button>
-			
+
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -320,6 +319,7 @@
 				<image resource="back_white_key_pie" highlightresource="back_white_key_hl_pie"/>
 				<action function="overlay"/>
 			</button>
+			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="nougat" var2="3"/>
@@ -329,7 +329,7 @@
 				<action function="overlay"/>
 			</button>
 		</template>
-		
+
 		<template name="navbar_back">
 			<button>
 				<condition var1="tw_busy" var2="0"/>
@@ -431,6 +431,7 @@
 				<image resource="back_white_pie" highlightresource="back_white_hl_pie"/>
 				<action function="key">back</action>
 			</button>
+			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -451,7 +452,7 @@
 				<action function="key">back</action>
 			</button>
 		</template>
-		
+
 		<template name="navbar_terminal">
 			<button>
 				<condition var1="tw_busy" var2="0"/>
@@ -496,7 +497,7 @@
 				<image resource="back_white_ng" highlightresource="back_white_ng_hl"/>
 				<action function="key">back</action>
 			</button>
-		
+
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -540,7 +541,7 @@
 				<image resource="back_white" highlightresource="back_white_hl"/>
 				<action function="key">back</action>
 			</button>
-			
+
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -584,7 +585,7 @@
 				<image resource="keyboard_hide_white_ng" highlightresource="keyboard_hide_white_ng_hl"/>
 				<action function="set">tw_hide_kb=1</action>
 			</button>
-		
+
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -651,6 +652,7 @@
 				<image resource="back_key_pie" highlightresource="back_key_hl_pie"/>
 				<action function="set">tw_hide_kb=1</action>
 			</button>
+			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -672,6 +674,7 @@
 				<image resource="back_white_key_pie" highlightresource="back_white_key_hl_pie"/>
 				<action function="set">tw_hide_kb=1</action>
 			</button>
+			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -693,6 +696,7 @@
 				<image resource="back_pie" highlightresource="back_hl_pie"/>
 				<action function="key">back</action>
 			</button>
+			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -715,7 +719,7 @@
 				<action function="key">back</action>
 			</button>
 		</template>
-		
+
 		<template name="navbar_key">
 			<button>
 				<condition var1="tw_busy" var2="0"/>
@@ -756,7 +760,7 @@
 				<image resource="keyboard_hide_white" highlightresource="keyboard_hide_white_hl"/>
 				<action function="key">back</action>
 			</button>
-			
+
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -807,6 +811,7 @@
 				<image resource="back_white_key_pie" highlightresource="back_white_key_hl_pie"/>
 				<action function="key">back</action>
 			</button>
+			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
@@ -816,6 +821,7 @@
 				<image resource="back_white_key_pie" highlightresource="back_white_key_hl_pie"/>
 				<action function="key">back</action>
 			</button>
+			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
@@ -825,6 +831,7 @@
 				<image resource="back_key_pie" highlightresource="back_key_hl_pie"/>
 				<action function="key">back</action>
 			</button>
+			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>

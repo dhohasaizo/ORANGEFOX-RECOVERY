@@ -10,35 +10,37 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@reboot_btn=Reboot}</text>
+				<text>{@reboot_btn}</text>
 			</text>
-			
+
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
 				<action function="set">general_back=reboot</action>
 				<action function="page">ext_general</action>
 			</button>
-			
-			<!-- Система -->
+
+			<!-- System -->
 			<button style="bs_btn">
 				<condition var1="tw_reboot_system" var2="1"/>
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
 				<action function="set">tw_back=reboot</action>
 				<action function="page">reboot_system_routine</action>
 			</button>
+			
 			<image>
 				<condition var1="tw_reboot_system" var2="1"/>
 				<placement x="%col1_x%" y="%set_row1_y%"/>
 				<image resource="bs_adv_reboot"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="tw_reboot_system" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>{@rb_system_btn=System}</text>
+				<text>{@rb_system_btn}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Recovery -->
 			<button style="bs_btn">
 				<condition var1="tw_reboot_recovery" var2="1"/>
@@ -48,18 +50,20 @@
 				<action function="set">tw_reboot_param=recovery</action>
 				<action function="page">rebootcheck</action>
 			</button>
+			
 			<image>
 				<condition var1="tw_reboot_recovery" var2="1"/>
 				<placement x="%col1_x%" y="%set_row2_y%"/>
 				<image resource="bs_adv_reboot"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="tw_reboot_recovery" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>{@rb_recovery_btn=Recovery}</text>
+				<text>{@rb_recovery_btn}</text>
 			</text>
 			<!---->
-			
+
 			<!-- fastboot -->
 			<button style="bs_btn">
 				<condition var1="tw_reboot_bootloader" var2="1"/>
@@ -71,18 +75,20 @@
 					<action function="page">rebootcheck</action>
 				</actions>
 			</button>
+			
 			<image>
 				<condition var1="tw_reboot_bootloader" var2="1"/>
 				<placement x="%col1_x%" y="%set_row3_y%"/>
 				<image resource="bs_adv_reboot"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="tw_reboot_bootloader" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>{@rb_bootloader_btn=Bootloader}</text>
+				<text>{@rb_bootloader_btn}</text>
 			</text>
 			<!---->
-			
+
 			<!-- samsa -->
 			<button style="bs_btn">
 				<condition var1="tw_reboot_bootloader" op="!=" var2="1"/>
@@ -95,20 +101,22 @@
 					<action function="page">rebootcheck</action>
 				</actions>
 			</button>
+			
 			<image>
 				<condition var1="tw_reboot_bootloader" op="!=" var2="1"/>
 				<condition var1="tw_download_mode" var2="1"/>
 				<placement x="%col1_x%" y="%set_row3_y%"/>
 				<image resource="bs_adv_reboot"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="tw_reboot_bootloader" op="!=" var2="1"/>
 				<condition var1="tw_download_mode" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>{@rb_download_btn=Download}</text>
+				<text>{@rb_download_btn}</text>
 			</text>
 			<!---->
-			
+
 			<!-- samsa2 -->
 			<button style="bs_btn">
 				<condition var1="tw_reboot_bootloader" var2="1"/>
@@ -121,20 +129,22 @@
 					<action function="page">rebootcheck</action>
 				</actions>
 			</button>
+			
 			<image>
 				<condition var1="tw_reboot_bootloader" var2="1"/>
 				<condition var1="tw_download_mode" var2="1"/>
 				<placement x="%col1_x%" y="%set_row4_y%"/>
 				<image resource="bs_adv_reboot"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="tw_reboot_bootloader" var2="1"/>
 				<condition var1="tw_download_mode" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@rb_download_btn=Download}</text>
+				<text>{@rb_download_btn}</text>
 			</text>
 			<!---->
-			
+
 			<!-- power -->
 			<button style="bs_btn">
 				<condition var1="tw_reboot_poweroff" var2="1"/>
@@ -147,20 +157,22 @@
 					<action function="page">rebootcheck</action>
 				</actions>
 			</button>
+			
 			<image>
 				<condition var1="tw_reboot_poweroff" var2="1"/>
 				<condition var1="tw_download_mode" op="!=" var2="1"/>
 				<placement x="%col1_x%" y="%set_row4_y%"/>
 				<image resource="bs_adv_reboot"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="tw_reboot_poweroff" var2="1"/>
 				<condition var1="tw_download_mode" op="!=" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@rb_poweroff_btn=Power Off}</text>
+				<text>{@rb_poweroff_btn}</text>
 			</text>
 			<!---->
-			
+
 			<!-- power2 -->
 			<button style="bs_btn">
 				<condition var1="tw_reboot_poweroff" var2="1"/>
@@ -173,24 +185,26 @@
 					<action function="page">rebootcheck</action>
 				</actions>
 			</button>
+			
 			<image>
 				<condition var1="tw_reboot_poweroff" var2="1"/>
 				<condition var1="tw_download_mode" var2="1"/>
 				<placement x="%col1_x%" y="%set_row5_y%"/>
 				<image resource="bs_adv_reboot"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="tw_reboot_poweroff" var2="1"/>
 				<condition var1="tw_download_mode" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>{@rb_poweroff_btn=Power Off}</text>
+				<text>{@rb_poweroff_btn}</text>
 			</text>
 			<!---->
 
 			<text style="caption">
 				<condition var1="tw_has_boot_slots" var2="1"/>
 				<placement x="%col1_x%" y="%row7_2_y%"/>
-				<text>{@boot_slot=Boot Slot}</text>
+				<text>{@boot_slot}</text>
 			</text>
 
 			<button style="btn_raised_hl">
@@ -199,15 +213,15 @@
 					<condition var1="tw_active_slot" var2="A"/>
 				</conditions>
 				<placement x="%btn_raised_left_x%" y="%row_btn_y%"/>
-				<text>{@boot_slot_a=SLOT A}</text>
+				<text>{@boot_slot_a}</text>
 				<actions>
 					<action function="set">tw_back=reboot</action>
 					<action function="set">tw_action=setbootslot</action>
 					<action function="set">tw_action_param=A</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_action_text1={@changing_boot_slot=Changing Boot Slot}</action>
+					<action function="set">tw_action_text1={@changing_boot_slot}</action>
 					<action function="set">tw_action_text2=</action>
-					<action function="set">tw_complete_text1={@changing_boot_slot_complete=Change Boot Slot Complete}</action>
+					<action function="set">tw_complete_text1={@changing_boot_slot_complete}</action>
 					<action function="page">action_page</action>
 				</actions>
 			</button>
@@ -218,15 +232,15 @@
 					<condition var1="tw_active_slot" var2="B"/>
 				</conditions>
 				<placement x="%btn_raised_left_x%" y="%row_btn_y%"/>
-				<text>{@boot_slot_use_a=SWITCH TO SLOT A}</text>
+				<text>{@boot_slot_use_a}</text>
 				<actions>
 					<action function="set">tw_back=reboot</action>
 					<action function="set">tw_action=setbootslot</action>
 					<action function="set">tw_action_param=A</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_action_text1={@changing_boot_slot=Changing Boot Slot}</action>
+					<action function="set">tw_action_text1={@changing_boot_slot}</action>
 					<action function="set">tw_action_text2=</action>
-					<action function="set">tw_complete_text1={@changing_boot_slot_complete=Change Boot Slot Complete}</action>
+					<action function="set">tw_complete_text1={@changing_boot_slot_complete}</action>
 					<action function="page">action_page</action>
 				</actions>
 			</button>
@@ -237,15 +251,15 @@
 					<condition var1="tw_active_slot" var2="B"/>
 				</conditions>
 				<placement x="%btn_raised_right_x%" y="%row_btn_y%" placement="1"/>
-				<text>{@boot_slot_b=SLOT B}</text>
+				<text>{@boot_slot_b}</text>
 				<actions>
 					<action function="set">tw_back=reboot</action>
 					<action function="set">tw_action=setbootslot</action>
 					<action function="set">tw_action_param=B</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_action_text1={@changing_boot_slot=Changing Boot Slot}</action>
+					<action function="set">tw_action_text1={@changing_boot_slot}</action>
 					<action function="set">tw_action_text2=</action>
-					<action function="set">tw_complete_text1={@changing_boot_slot_complete=Change Boot Slot Complete}</action>
+					<action function="set">tw_complete_text1={@changing_boot_slot_complete}</action>
 					<action function="page">action_page</action>
 				</actions>
 			</button>
@@ -256,15 +270,15 @@
 					<condition var1="tw_active_slot" var2="A"/>
 				</conditions>
 				<placement x="%btn_raised_right_x%" y="%row_btn_y%" placement="1"/>
-				<text>{@boot_slot_use_b=SWITCH TO SLOT B}</text>
+				<text>{@boot_slot_use_b}</text>
 				<actions>
 					<action function="set">tw_back=reboot</action>
 					<action function="set">tw_action=setbootslot</action>
 					<action function="set">tw_action_param=B</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_action_text1={@changing_boot_slot=Changing Boot Slot}</action>
+					<action function="set">tw_action_text1={@changing_boot_slot}</action>
 					<action function="set">tw_action_text2=</action>
-					<action function="set">tw_complete_text1={@changing_boot_slot_complete=Change Boot Slot Complete}</action>
+					<action function="set">tw_complete_text1={@changing_boot_slot_complete}</action>
 					<action function="page">action_page</action>
 				</actions>
 			</button>

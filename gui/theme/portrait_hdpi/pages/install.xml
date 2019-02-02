@@ -10,7 +10,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@install_zip_hdr=Install Zip}</text>
+				<text>{@install_zip_hdr}</text>
 			</text>
 
 			<button>
@@ -22,17 +22,17 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@queue_hdr=Queue}</text>
+				<text>{@queue_hdr}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@zip_queue_count=%tw_zip_queue_count% of max of 10 Files queued}</text>
+				<text>{@zip_queue_count}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@file=File}</text>
+				<text>{@file}</text>
 			</text>
 
 			<text style="text_body2">
@@ -42,29 +42,29 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row3_1a_y%"/>
-				<text>{@folder=Folder}</text>
+				<text>{@folder}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x%" y="%row3_2a_y%"/>
 				<text>%tw_zip_location%</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_1a_y%"/>
-				<text>{@options_hdr=Options}</text>
+				<text>{@options_hdr}</text>
 			</text>
-			
+
 			<listbox style="settingslist">
 				<placement x="0" y="%row4_2a_y%" w="%screen_w%" h="%lb_l3%"/>
-				<listitem name="{@zip_sig_chk=Zip signature verification}">
+				<listitem name="{@zip_sig_chk}">
 					<data variable="tw_signed_zip_verify"/>
 				</listitem>
-				<listitem name="{@install_reboot_chk=Reboot after installation is complete}">
+				<listitem name="{@install_reboot_chk}">
 					<condition var1="tw_reboot_system" var2="1"/>
 					<data variable="tw_install_reboot"/>
 				</listitem>
-				<listitem name="{@inject_twrp_chk=Inject TWRP after install}">
+				<listitem name="{@inject_twrp_chk}">
 					<condition var1="tw_has_injecttwrp" var2="1"/>
 					<data variable="tw_inject_after_zip"/>
 				</listitem>
@@ -73,22 +73,22 @@
 			<button style="btn_raised">
 				<condition var1="tw_zip_queue_count" op="&gt;" var2="1"/>
 				<placement x="%btn_raised_left_x%" y="%row_btn2_y%"/>
-				<text>{@raised_viewqueue_btn=VIEW QUEUE}</text>
+				<text>{@raised_viewqueue_btn}</text>
 				<action function="page">queueview</action>
 			</button>
 
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
-				<text>{@raised_clearqueue_btn=CLEAR QUEUE}</text>
+				<text>{@raised_clearqueue_btn}</text>
 				<actions>
 					<action function="queueclear"/>
 					<action function="page">%install_back%</action>
 				</actions>
 			</button>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_to_install=Swipe to Install}</text>
+				<text>{@swipe_to_install}</text>
 			</text>
 
 			<slider style="slider_action">
@@ -118,7 +118,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@install_zip_hdr=Install Zip}</text>
+				<text>{@install_zip_hdr}</text>
 			</text>
 
 			<button>
@@ -130,22 +130,22 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@zip_queue=Queued}</text>
+				<text>{@zip_queue}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@zip_queue_count=%tw_zip_queue_count% of max of 10 Files queued}</text>
+				<text>{@zip_queue_count}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@queue_no=#}</text>
+				<text>{@queue_no}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
-				<text>{@file=File}</text>
+				<text>{@file}</text>
 			</text>
 
 			<text style="text_body2">
@@ -268,13 +268,13 @@
 
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
-				<text>{@back_btn=BACK}</text>
+				<text>{@back_btn}</text>
 				<action function="page">flash_confirm</action>
 			</button>
 
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-				<text>{@raised_clearqueue_btn=CLEAR QUEUE}</text>
+				<text>{@raised_clearqueue_btn}</text>
 				<actions>
 					<action function="queueclear"/>
 					<action function="page">%install_back%</action>
@@ -292,7 +292,6 @@
 			</action>
 		</page>
 
-
 		<page name="flash_image_confirm">
 			<template name="body"/>
 
@@ -302,22 +301,22 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@install_image_hdr=Install Image}</text>
+				<text>{@install_image_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@flash_img_confirm=Flash Image File}</text>
+				<text>{@flash_img_confirm}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@install_sel_target=Select Target Partition}</text>
+				<text>{@install_sel_target}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@file=File}</text>
+				<text>{@file}</text>
 			</text>
 
 			<text style="text_body2">
@@ -327,7 +326,7 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row3_1a_y%"/>
-				<text>{@folder=Folder}</text>
+				<text>{@folder}</text>
 			</text>
 
 			<text style="text_body2">
@@ -337,7 +336,7 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_1a_y%"/>
-				<text>{@flash_image_select=Partition}</text>
+				<text>{@flash_image_select}</text>
 			</text>
 
 			<partitionlist style="partitionlist_radio">
@@ -346,7 +345,7 @@
 				<data name="tw_flash_partition"/>
 				<listtype name="flashimg"/>
 			</partitionlist>
-			
+
 			<partitionlist style="partitionlist_radio">
 				<condition var1="tw_flash_partition" op="!="/>
 				<placement x="0" y="%row4_2a_y%" w="%screen_w%" h="%part_list_btns_9_h%"/>
@@ -358,14 +357,14 @@
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<condition var1="tw_flash_partition"/>
 				<condition var1="install_back" op="!=" var2="ext_workshop_repack" />
-				<text>{@swipe_to_install_img=Swipe to install Image}</text>
+				<text>{@swipe_to_install_img}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
 				<condition var1="tw_flash_partition"/>
 				<condition var1="install_back" var2="ext_workshop_repack" />
-				<text>{@swipe_to_install_img_reb=Swipe to install Image and Reboot}</text>
+				<text>{@swipe_to_install_img_reb}</text>
 			</text>
 
 			<slider style="slider_action">
@@ -377,9 +376,9 @@
 					<action function="set">tw_has_action2=0</action>
 					<action function="set">tw_action2_param=</action>
 					<action function="set">tw_action2=</action>
-					<action function="set">tw_action_text1={@flashing_image=Flashing Image...}</action>
+					<action function="set">tw_action_text1={@flashing_image}</action>
 					<action function="set">tw_action_text2=%tw_file%</action>
-					<action function="set">tw_complete_text1={@image_flashed=Image Flashed}</action>
+					<action function="set">tw_complete_text1={@image_flashed}</action>
 					<action function="page">flash_image</action>
 				</actions>
 			</slider>
@@ -392,9 +391,9 @@
 					<action function="set">tw_action2_param=rm -f "%tw_theme_path%/ui.zip";reboot recovery;</action>
 					<action function="set">tw_action2=cmd</action>
 					<action function="set">tw_has_action2=%splash_includezip%</action>
-					<action function="set">tw_action_text1={@flashing_image=Flashing Image...}</action>
+					<action function="set">tw_action_text1={@flashing_image}</action>
 					<action function="set">tw_action_text2=%tw_file%</action>
-					<action function="set">tw_complete_text1={@image_flashed=Image Flashed}</action>
+					<action function="set">tw_complete_text1={@image_flashed}</action>
 					<action function="page">flash_image</action>
 				</actions>
 			</slider>
@@ -440,7 +439,7 @@
 				<data name="tw_filename"/>
 				<selection name="tw_file"/>
 			</fileselector>
-			
+
 			<image>
 				<placement x="0" y="%fileselector_shadow_terminal_x%"/>
 				<image resource="filelist_shadow"/>
@@ -453,7 +452,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@install_zip_hdr=Install Zip}</text>
+				<text>{@install_zip_hdr}</text>
 			</text>
 
 			<image>
@@ -515,7 +514,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@zip_add_queue=Add File to Queue}</text>
+				<text>{@zip_add_queue}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -600,7 +599,7 @@
 			<action>
 				<action function="set">qcount_temp=%tw_zip_queue_count%</action>
 			</action>
-		
+
 			<template name="body"/>
 
 			<template name="progress_bar"/>
@@ -612,12 +611,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@install_zip_hdr=Install Zip}</text>
+				<text>{@install_zip_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@install_zip_count_hdr=Installing file %tw_zip_index% of %tw_zip_queue_count%}</text>
+				<text>{@install_zip_count_hdr}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -626,7 +625,7 @@
 			</text>
 
 			<template name="action_page_console"/>
-			
+
 			<action>
 				<condition var1="tw_operation_state" var2="1"/>
 				<action function="page">flash_done</action>
@@ -644,7 +643,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@install_image_hdr=Install Image}</text>
+				<text>{@install_image_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
@@ -658,6 +657,7 @@
 			</text>
 
 			<template name="action_page_console"/>
+			
 			<template name="cant_cancel" />
 
 			<action>
@@ -705,31 +705,31 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@install_zip_hdr=Install Zip}</text>
+				<text>{@install_zip_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_operation_status" op="!=" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@failed=Failed}</text>
+				<text>{@failed}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_operation_status" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@successful=Successful}</text>
+				<text>{@successful}</text>
 			</text>
-			
+
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>%tw_zip_index% {@of=of} %qcount_temp%</text>
+				<text>%tw_zip_index% {@of} %qcount_temp%</text>
 			</text>
 
 			<template name="action_page_console"/>
 
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
-				<text>{@wipe_cache_btn=WIPE CACHES}</text>
+				<text>{@wipe_cache_btn}</text>
 				<actions>
 					<action function="set">tw_back=flash_done</action>
 					<action function="set">tw_action=wipe</action>
@@ -737,10 +737,10 @@
 					<action function="set">tw_has_action2=1</action>
 					<action function="set">tw_action2=wipe</action>
 					<action function="set">tw_action2_param=dalvik</action>
-					<action function="set">tw_text1={@wipe_cache_dalvik_confirm=Wipe Cache &amp; Dalvik?}</action>
-					<action function="set">tw_action_text1={@wiping_cache_dalvik=Wiping Cache &amp; Dalvik...}</action>
-					<action function="set">tw_complete_text1={@wipe_cache_dalvik_complete=Cache &amp; Dalvik Wipe Complete}</action>
-					<action function="set">tw_slider_text={@swipe_wipe=Swipe to Wipe}</action>
+					<action function="set">tw_text1={@wipe_cache_dalvik_confirm}</action>
+					<action function="set">tw_action_text1={@wiping_cache_dalvik}</action>
+					<action function="set">tw_complete_text1={@wipe_cache_dalvik_complete}</action>
+					<action function="set">tw_slider_text={@swipe_wipe}</action>
 					<action function="page">confirm_action</action>
 				</actions>
 			</button>
@@ -748,7 +748,7 @@
 			<button style="btn_raised_hl">
 				<condition var1="tw_reboot_system" var2="1"/>
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-				<text>{@reboot_system_btn=REBOOT SYSTEM}</text>
+				<text>{@reboot_system_btn}</text>
 				<actions>
 					<action function="set">tw_back=main</action>
 					<action function="set">tw_action_param=system</action>
@@ -768,7 +768,7 @@
 					<action function="page">flash_sleep_and_reboot</action>
 				</actions>
 			</action>
-			
+
 			<action>
 				<touch key="back"/>
 				<actions>
@@ -782,7 +782,7 @@
 				<action function="page">main</action>
 			</action>
 		</page>
-		
+
 		<page name="flash_sleep_and_reboot">
 			<template name="body"/>
 
@@ -794,21 +794,21 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@install_zip_hdr=Install Zip}</text>
+				<text>{@install_zip_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@successful=Successful}</text>
+				<text>{@successful}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@install_reboot=Rebooting in %tw_sleep% second(s)}</text>
+				<text>{@install_reboot}</text>
 			</text>
 
 			<template name="action_page_console"/>
-			
+
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<condition var1="tw_busy" var2="1"/>
@@ -848,19 +848,19 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@install_image_hdr=Install Image}</text>
+				<text>{@install_image_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_operation_status" op="!=" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@failed=Failed}</text>
+				<text>{@failed}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_operation_status" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@successful=Successful}</text>
+				<text>{@successful}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -873,7 +873,7 @@
 			<button style="btn_raised">
 				<condition var1="tw_reboot_recovery" var2="1"/>
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
-				<text>{@reboot_recovery_btn=REBOOT RECOVERY}</text>
+				<text>{@reboot_recovery_btn}</text>
 				<actions>
 					<action function="set">tw_back=main</action>
 					<action function="set">tw_action_param=recovery</action>
@@ -885,7 +885,7 @@
 			<button style="btn_raised_hl">
 				<condition var1="tw_reboot_system" var2="1"/>
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-				<text>{@reboot_system_btn=REBOOT SYSTEM}</text>
+				<text>{@reboot_system_btn}</text>
 				<actions>
 					<action function="set">tw_back=main</action>
 					<action function="set">tw_action_param=system</action>

@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
 	<pages>
-		
 		<page name="advanced">
 			<template name="body_nav"/>
 
@@ -12,19 +11,19 @@
 			<action>
 				<action function="set">nav_panel_id=3</action>
 			</action>
-			
+
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
 				<action function="page">settings</action>
 			</button>
-			
+
 			<button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_flash" highlightresource="actionbar_flash_hl"/>
 				<action function="flashlight"/>
 			</button>
-			
+
 			<button>
 				<condition var1="use_pass" var2="1"/>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
@@ -34,88 +33,98 @@
 			</button>
 			<text style="text_ab_title">
 				<placement x="%col1_x%" y="%ab_bc_y%"/>
-				<text>{@menu_btn=Menu}</text>
+				<text>{@menu_btn}</text>
 			</text>
-			
-			<!-- Лог -->
+
+			<!-- Log -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
 				<actions>
 					<action function="set">tw_back=advanced</action>
 					<action function="set">tw_action=copylog</action>
-					<action function="set">tw_text1={@copy_log_confirm=Copy Log to SD Card?}</action>
-					<action function="set">tw_action_text1={@copy_log_btn=Copy Log to SD}</action>
-					<action function="set">tw_action_text2={@copying_log=Copying Log to SD Card...}</action>
-					<action function="set">tw_complete_text1={@copy_log_complete=Log copied}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
+					<action function="set">tw_text1={@copy_log_confirm}</action>
+					<action function="set">tw_action_text1={@copy_log_btn}</action>
+					<action function="set">tw_action_text2={@copying_log}</action>
+					<action function="set">tw_complete_text1={@copy_log_complete}</action>
+					<action function="set">tw_slider_text={@swipe_to_confirm}</action>
 					<action function="page">confirm_action</action>
 				</actions>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row1_y%"/>
 				<image resource="bs_adv_log"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>{@copy_log_btn=Copy Log to SD}</text>
+				<text>{@copy_log_btn}</text>
 			</text>
 			<!---->
-			
+
 			<!-- SELINUX -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
 				<action function="page">fixcontexts</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row2_y%"/>
 				<image resource="bs_adv_se"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>{@fix_contexts_hdr=Fix Contexts}</text>
+				<text>{@fix_contexts_hdr}</text>
 			</text>
 			<!---->
-			
-			<!-- Терминал -->
+
+			<!-- Terminal -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
 				<action function="page">terminal</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row3_y%"/>
 				<image resource="bs_adv_term"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>{@terminal_btn=Terminal}</text>
+				<text>{@terminal_btn}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Sideload -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
 				<action function="page">sideload</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row4_y%"/>
 				<image resource="bs_adv_adb"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@adb_sideload_btn=ADB Sideload}</text>
+				<text>{@adb_sideload_btn}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Utilities {@utilities} -->
 			<!-- MM GUI -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
 				<action function="page">magisk_mount</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row5_y%"/>
 				<image resource="magisk"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
 				<text>Magisk Manager</text>
@@ -127,15 +136,18 @@
 				<action function="set">tw_action_param=mount /data; rm -f data/system/*.key data/system/locksettings.*</action>
 				<action function="page">remlock</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row6_y%"/>
 				<image resource="utils"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
 				<text>Utilities</text>
 			</text>
-			
+			<!---->
+
 			<!-- SD -->
 			<button style="bs_btn">
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
@@ -145,36 +157,40 @@
 					<action function="page">partsdcardsel</action>
 				</actions>
 			</button>
+			
 			<image>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="%col1_x%" y="%set_row7_y%"/>
 				<image resource="bs_adv_sd"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
-				<text>{@part_sd_hdr=Partition SD Card}</text>
+				<text>{@part_sd_hdr}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Dumblock>
 			<button style="bs_btn">
 				<condition var1="tw_show_dumlock" var2="1"/>
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
 				<action function="page">htcdumlock</action>
 			</button>
+			
 			<image>
 				<condition var1="tw_show_dumlock" var2="1"/>
 				<placement x="%col1_x%" y="%set_row8_y%"/>
 				<image resource="bs_adv_htc"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="tw_show_dumlock" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
-				<text>{@dumlock_hdr=HTC Dumlock}</text>
+				<text>{@dumlock_hdr}</text>
 			</text>
 			<!-->
-			
+
 			<!-- Монтирование -->
 			<button style="bs_btn">
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
@@ -182,23 +198,22 @@
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
 				<action function="page">mount</action>
 			</button>
+			
 			<image>
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="%col1_x%" y="%set_row8_y%"/>
 				<image resource="bs_adv_mount"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
-				<text>{@mount_hdr=Mount}</text>
+				<text>{@mount_hdr}</text>
 			</text>
-	
 			<!---->
-		
-			<!---->
-			
+
 			<!-- Перезагрузка -->
 			<button style="bs_btn">
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
@@ -206,22 +221,24 @@
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row9_y%"/>
 				<action function="page">reboot</action>
 			</button>
+			
 			<image>
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="%col1_x%" y="%set_row9_y%"/>
 				<image resource="bs_adv_reboot"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
-				<text>{@reboot_btn=Reboot}</text>
+				<text>{@reboot_btn}</text>
 			</text>
 			<!---->
-			
+
 			<template name="nav_panel"/>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">advanced</action>
@@ -298,7 +315,7 @@
 				<placement x="%col1_x%" y="%row3_3_y%"/>
 				<text>Modules</text>
 			</text>
-			
+
 			<fileselector style="fileselector_b">
 				<condition var1="magisk_core" op="!=" var2="1"/>
 				<condition var1="list_font" var2="big"/>
@@ -322,32 +339,34 @@
 				<data name="mmgui_file"/>
 				<selection name="mmgui_select"/>
 			</fileselector>
-			
+
 			<fill color="%accent%">
 				<condition var1="magisk_core" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 			</fill>
+			
 			<fill color="%unactive_title%">
 				<condition var1="magisk_core" op="!=" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 			</fill>
-			
+
 			<image>
 				<condition var1="magisk_core" op="!=" var2="1"/>
 				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
 				<image resource="switch_off"/>
 			</image>
+			
 			<image>
 				<condition var1="magisk_core" var2="1"/>
 				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
 				<image resource="switch_on"/>
 			</image>
-			
+
 			<text style="text_ab_switch">
 				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
 				<text>Magisk Core</text>
 			</text>
-			
+
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_cancel" highlightresource="actionbar_cancel_hl"/>
@@ -361,7 +380,6 @@
 			</image>
 
 			<!-- Magisk version / toolbox tile -->
-
 			<fill color="#383838">
 				<placement x="0" y="410" w="%screen_w%" h="336"/>
 			</fill>
@@ -407,7 +425,6 @@
 					<action function="page">check_prebuild_stuff</action>
 				</actions>
 			</button>
-
 			<!-- -->
 
 			<button style="bs_btn">
@@ -427,14 +444,16 @@
 					<action function="page">magisk_core</action>
 				</actions>
 			</button>
-			
+
 			<template name="ab"/>
+			
 			<template name="statusbarinfo"/>
+			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>Magisk Manager</text>
 			</text>
-			
+
 			<button>
 				<condition var1="list_font" var2="big"/>
 				<condition var1="bookmark" var2="0"/>
@@ -454,7 +473,7 @@
 					<action function="set">list_font=big</action>
 				</actions>
 			</button>
-			
+
 			<action>
 				<condition var1="mmgui_file" op="modified"/>
 				<actions>
@@ -464,818 +483,822 @@
 						mkdir $work;
 						cd $work;
 						mkdir title subtitle;
-						
+					
 						prop=/magisk/%mmgui_select%/module.prop;
 						name=$(cat $prop | grep "name" | cut -d'=' -f2);
 						ver=$(cat $prop | grep "version" | cut -d'=' -f2);
 						author=$(cat $prop | grep "author" | cut -d'=' -f2);
-						
+					
 						echo "" > "$work/title/$name";
 						echo "" > "$work/subtitle/by $author I Ver: $ver";
 					</action>
 					<action function="set">mmgui_info=/tmp/mminfo/title</action>
-					<action function="set">mmgui_info2=/tmp/mminfo/subtitle</action>
-					<action function="page">magisk_parse</action>
-				</actions>
-			</action>
-			
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
+						<action function="set">mmgui_info2=/tmp/mminfo/subtitle</action>
+						<action function="page">magisk_parse</action>
+					</actions>
+				</action>
 
-			<action>
-				<touch key="back"/>
-				<action function="page">advanced</action>
-			</action>
-		</page>
-
-		<page name="magisk_parse">
-			<action>
-				<action function="fileexists">/magisk/%mmgui_select%/disable</action>
-			</action>
-
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="0"/>
-				</conditions>
-				<actions>
-					<action function="set">mmodule_disable=1</action>
-					<action function="page">magisk_parse_2</action>
-				</actions>
-			</action>
-
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="1"/>
-				</conditions>
-				<actions>
-					<action function="set">mmodule_disable=0</action>
-					<action function="page">magisk_parse_2</action>
-				</actions>
-			</action>
-		</page>
-
-		<page name="magisk_parse_2">
-			<action>
-				<action function="fileexists">/magisk/%mmgui_select%/auto_mount</action>
-			</action>
-
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="0"/>
-				</conditions>
-				<actions>
-					<action function="set">mmodule_amnt=1</action>
-					<action function="page">magisk_actions</action>
-				</actions>
-			</action>
-
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="1"/>
-				</conditions>
-				<actions>
-					<action function="set">mmodule_amnt=0</action>
-					<action function="page">magisk_actions</action>
-				</actions>
-			</action>
-		</page>
-
-		<page name="magisk_switch_amnt">
-			<action>
-				<conditions>
-					<condition var1="mmodule_amnt" var2="0"/>
-				</conditions>
-				<actions>
-					<action function="cmd">rm "/magisk/%mmgui_select%/auto_mount";</action>
-					<action function="page">magisk_parse</action>
-				</actions>
-			</action>
-
-			<action>
-				<conditions>
-					<condition var1="mmodule_amnt" var2="1"/>
-				</conditions>
-				<actions>
-					<action function="cmd">touch "/magisk/%mmgui_select%/auto_mount";</action>
-					<action function="page">magisk_parse</action>
-				</actions>
-			</action>
-		</page>
-		
-		<page name="magisk_actions">
-			<template name="body"/>
-			
-			<fill color="%accent%">
-				<condition var1="mmodule_disable" op="!=" var2="1"/>
-				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
-			</fill>
-			<fill color="%unactive_title%">
-				<condition var1="mmodule_disable" var2="1"/>
-				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
-			</fill>
-			
-			<image>
-				<condition var1="mmodule_disable" var2="1"/>
-				<placement x="%ab_btn1_x%" y="%ab3_y%"/>
-				<image resource="switch_off"/>
-			</image>
-			<image>
-				<condition var1="mmodule_disable" op="!=" var2="1"/>
-				<placement x="%ab_btn1_x%" y="%ab3_y%"/>
-				<image resource="switch_on"/>
-			</image>
-			
-			<text style="text_ab_switch">
-				<placement x="%col1_x_indent%" y="%ab_bc3_y%"/>
-				<text>{@mm_module_active}</text>
-			</text>
-
-			<button style="bs_btn">
-				<condition var1="mmodule_disable" var2="1"/>
-				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
-				<actions>
-					<action function="cmd">rm "/magisk/%mmgui_select%/disable";</action>
-					<action function="page">magisk_parse</action>
-				</actions>
-			</button>
-
-			<button style="bs_btn">
-				<condition var1="mmodule_disable" op="!=" var2="1"/>
-				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
-				<actions>
-					<action function="cmd">touch "/magisk/%mmgui_select%/disable";</action>
-					<action function="page">magisk_parse</action>
-				</actions>
-			</button>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Magisk Manager</text>
-			</text>
-
-			<!--text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text></text>
-			</text-->
-			
-			<fileselector>
-				<placement x="208" y="278" w="%screen_w%" h="108"/>
-				<highlight color="%transparent%"/>
-				<background color="%transparent%" />
-				<font resource="Secondary-title" spacing="%fileselector_spacing%" color="%accent%" />
-				<sort name="0"/>
-				<filter folders="0" files="1" nav="0"/>
-				<path name="mmgui_info" default="/tmp/mminfo/title"/>
-				<data name="xxx"/>
-				<selection name="xxx"/>
-			</fileselector>
-			
-			<fileselector>
-				<placement x="208" y="%row1_2_y%" w="%screen_w%" h="56"/>
-				<highlight color="%transparent%"/>
-				<background color="%transparent%" />
-				<font resource="Secondary" spacing="%fileselector_spacing%" color="%accent%" />
-				<sort name="0"/>
-				<filter folders="0" files="1" nav="0"/>
-				<path name="mmgui_info2" default="/tmp/mminfo/subtitle"/>
-				<data name="xxx"/>
-				<selection name="xxx"/>
-			</fileselector>
-
-			<!--text style="text_ab_subtitle">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>%mmgui_select%</text>
-			</text-->
-			
-			<listbox style="settingslist">
-				<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%lb_l1%"/>
-				<listitem name="{@mm_module_mount}">
-					<data variable="mmodule_amnt"/>
-				</listitem>
-			</listbox>
-			
-			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_delete" highlightresource="actionbar_delete_hl"/>
-				<actions>
-					<action function="set">tw_filemanager_command=rm -rf</action>
-					<action function="set">tw_filename1=/magisk/%mmgui_select%</action>
-					<action function="set">tw_fm_text1={@fm_deleting=Deleting}</action>
-					<action function="set">tw_fm_text2=</action>
-					<action function="set">tw_fm_text3=</action>
-					<action function="set">tw_include_text3=0</action>
-					<action function="set">tw_back=filemanageroptions</action>
-					<action function="page">filemanagerconfirm</action>
-				</actions>
-			</button>
-			
-			<action>
-				<condition var1="mmodule_amnt" op="modified"/>
-				<actions>
-					<action function="page">magisk_switch_amnt</action>
-				</actions>
-			</action>
-			
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">magisk</action>
-			</action>
-		</page>
-		
-		<page name="partsdcardsel">
-			<template name="body"/>
-			<template name="ab"/>
-			<template name="statusbarinfo"/>
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@part_sd_hdr=Partition SD Card}</text>
-			</text>
-			<image>
-				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<image resource="icon_warning"/>
-			</image>
-			
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
-				<text>{@part_sdcard_sel_note_1=Partitioning will delete all files}</text>
-			</text>
-
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@part_sdcard_sel_note_2=on your SD card!}</text>
-			</text>
-
-			<text style="text_body2_fail">
-				<condition var1="partitionlisterror" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
-				<text>{@part_sd_undo=This action cannot be undone!}</text>
-			</text>
-			
-			<text style="text_body2_fail">
-				<condition var1="partitionlisterror" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
-				<text>{@rem_sd_sel=Select a removable device!}</text>
-			</text>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row2_2_y%"/>
-				<text>{@rem_sd=Removable Storage}</text>
-			</text>
-
-			<partitionlist style="partitionlist_radio">
-				<placement x="0" y="%row2_3_y%" w="%screen_w%" h="%part_list_btns_h%"/>
-				<data name="tw_storage_path"/>
-				<listtype name="storage"/>
-			</partitionlist>
-			
-			<button style="floating_btn">
-				<placement x="%btn_float_x%" y="%btn_float_y%"/>
-				<image resource="btn_float_accept"/>
-				<action function="getpartitiondetails">tw_storage_path</action>
-				<action function="page">partsdcardcheck</action>
-			</button>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">advanced</action>
-			</action>
-		</page>
-		
-		<page name="remlock">
-			<template name="body"/>
-			<template name="ab"/>
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@new_lock=FRP and Lockscreen}</text>
-			</text>
-			
-			<text style="caption">
-				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@options_cptn=Options}</text>
-			</text>
-			
-			<!-- THX to NFound / kory-vadim http://4pda.ru/forum/index.php?showtopic=725345&view=findpost&p=71305432 / kaito373 http://4pda.ru/forum/index.php?showtopic=725345&view=findpost&p=57019639 -->
-			
-			<listbox>
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l5%"/>
-				<data name="tw_action_param"/>
-				<listitem name="{@removelock_1=Remove password and getsure key}">mount /data; rm -f data/system/*.key data/system/locksettings.*</listitem>
-				<listitem name="{@removelock_2=Disable FRP}">mount /system; mount -o rw,remount,rw /system; sed -i "s/ro.frp.pst=.*./&amp;=false/" /system/build.prop; umount /system;</listitem>
-				<listitem name="{@removelock_3=Wipe FRP using TWRP}">dd if=/dev/zero of=$(grep '\/frp' /tmp/recovery.log | sort -u | grep '\/dev' | awk '{ print $3 }') bs=524288 count=1 || echo "Error wiping FRP!"</listitem>
-				<listitem name="{@removelock_4=Wipe FRP automatically}">dd if=/dev/zero of=$(readlink $(find /dev/block -type l | grep 'by-name' | grep '/frp')) bs=524288 count=1 || echo "Error wiping FRP!"</listitem>
-			</listbox>
-
-			<text style="caption">
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_to_confirm=Swipe to Confirm}</text>
-			</text>
-
-			<slider style="slider_action">
-				<placement x="%center_x%" y="%slider_y%" placement="5"/>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_action=cmd</action>
-					<action function="set">tw_action_text1={@new_lock=FRP and Lockscreen}</action>
-					<action function="set">tw_action_text2={@new_lock_wait=Removing...}</action>
-					<action function="set">tw_complete_text1={@new_lock_done=Removing complete}</action>
-					<action function="page">action_page</action>
-				</actions>
-			</slider>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">advanced</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-		</page>
-		
-		<page name="partsdcardcheck">
-			<action>
-				<condition var1="tw_partition_removable" op="=" var2="1"/>
-				<actions>
-					<action function="set">partitionlisterror=0</action>
-					<action function="page">partsdcard</action>
-				</actions>
-			</action>
-
-			<action>
-				<condition var1="tw_partition_removable" op="!=" var2="1"/>
-				<actions>
-					<action function="set">partitionlisterror=1</action>
-					<action function="page">partsdcardsel</action>
-				</actions>
-			</action>
-		</page>
-
-		<page name="partsdcard">
-			<template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@part_sd_hdr=Partition SD Card}</text>
-			</text>
-
-			<button style="btn_flat_qw">
-				<placement x="%btn_raised_left_x%" y="%row1_1_y%"/>
-				<text>{@btn_flat_less=LESS}</text>
-				<action function="addsubtract">tw_sdext_size-128</action>
-			</button>
-
-			<text style="text_body2">
-				<placement x="%center_x%" y="%row1_1a_y%" placement="5"/>
-				<text>{@part_sd_ext_sz=EXT Size:} %tw_sdext_size%</text>
-			</text>
-
-			<button style="btn_flat_qw">
-				<placement x="%btn_raised_right_x%" y="%row1_1_y%" placement="1"/>
-				<text>{@btn_flat_more=MORE}</text>
-				<action function="addsubtract">tw_sdext_size+128</action>
-			</button>
-
-			<button style="btn_flat_qw">
-				<placement x="%btn_raised_left_x%" y="%row2_1_y%"/>
-				<text>{@btn_flat_less=LESS}</text>
-				<action function="addsubtract">tw_swap_size-32</action>
-			</button>
-
-			<text style="text_body2">
-				<placement x="%center_x%" y="%row2_1a_y%" placement="5"/>
-				<text>{@part_sd_swap_sz=Swap Size:} %tw_swap_size%</text>
-			</text>
-
-			<button style="btn_flat_qw">
-				<placement x="%btn_raised_right_x%" y="%row2_1_y%" placement="1"/>
-				<text>{@btn_flat_more=MORE}</text>
-				<action function="addsubtract">tw_swap_size+32</action>
-			</button>
-
-			<button style="btn_flat_qw">
-				<placement x="%btn_raised_left_x%" y="%row3_1_y%"/>
-				<text>{@btn_flat_ext3=EXT3}</text>
-				<action function="set">tw_sdpart_file_system=ext3</action>
-			</button>
-
-			<text style="text_body2">
-				<placement x="%center_x%" y="%row3_1a_y%" placement="5"/>
-				<text>{@current_color=Current:} %tw_sdpart_file_system%</text>
-			</text>
-
-			<button style="btn_flat_qw">
-				<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
-				<text>{@btn_flat_ext4=EXT4}</text>
-				<action function="set">tw_sdpart_file_system=ext4</action>
-			</button>
-
-			<text style="caption">
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_part_sd=Swipe to Partition}</text>
-			</text>
-
-			<slider style="slider_action">
-				<placement x="%center_x%" y="%slider_y%" placement="5"/>
-				<action function="page">partsdcardaction</action>
-				<actions>
-					<action function="set">tw_back=partsdcard</action>
-					<action function="set">tw_action=partitionsd</action>
-					<action function="set">tw_has_action2=1</action>
-					<action function="set">tw_action2=set</action>
-					<action function="set">tw_action2_param=tw_zip_location=/sdcard</action>
-					<action function="set">tw_action_text1={@partitioning_sd=Partitioning SD Card...}</action>
-					<action function="set">tw_action_text2={@partitioning_sd2=This will take a few minutes.}</action>
-					<action function="set">tw_complete_text1={@part_sd_complete=Partitioning completed}</action>
-					<action function="page">action_page</action>
-				</actions>
-			</slider>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<actions>
-					<action function="set">partitionlisterror=0</action>
-					<action function="page">partsdcardsel</action>
-				</actions>
-			</action>
-		</page>
-
-		<page name="htcdumlock">
-			<template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@dumlock_hdr=HTC Dumlock}</text>
-			</text>
-			
-			<button style="btn_raised">
-				<condition var1="tw_has_injecttwrp" var2="1"/>
-				<placement x="%btn_raised_left_x%" y="%row_btn_y%"/>
-				<text>{@inject_twrp_btn=Inject TWRP}</text>
-				<actions>
-					<action function="set">tw_back=htcdumlock</action>
-					<action function="set">tw_action=reinjecttwrp</action>
-					<action function="set">tw_text1={@inject_twrp_confirm=Re-Inject TWRP?}</action>
-					<action function="set">tw_action_text1={@injecting_twrp=Re-Injecting TWRP...}</action>
-					<action function="set">tw_complete_text1={@inject_twrp_complete=TWRP Injection completed}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-
-			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
-				<text>{@dumlock_restore_btn=RESTORE ORIGINAL BOOT}</text>
-				<actions>
-					<action function="set">tw_back=htcdumlock</action>
-					<action function="set">tw_action=htcdumlockrestoreboot</action>
-					<action function="set">tw_text1={@dumlock_restore_confirm=Restore original boot image?}</action>
-					<action function="set">tw_action_text1={@dumlock_restoring=Restoring original boot...}</action>
-					<action function="set">tw_complete_text1={@dumlock_restore_complete=Restore original boot completed}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<button style="btn_raised">
-				<placement x="%btn_raised_right_x%" y="%row_btn_y%" placement="1"/>
-				<text>{@dumlock_reflash_btn=REFLASH RECOVERY}</text>
-				<actions>
-					<action function="set">tw_back=htcdumlock</action>
-					<action function="set">tw_action=htcdumlockreflashrecovery</action>
-					<action function="set">tw_text1={@dumlock_reflash_confirm=Reflash recovery to boot?}</action>
-					<action function="set">tw_action_text1={@dumlock_reflashing=Flashing recovery to boot...}</action>
-					<action function="set">tw_complete_text1={@dumlock_reflash_complete=Recovery flash to boot completed}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-				<text>{@dumlock_install_btn=INSTALL DUMLOCK}</text>
-				<actions>
-					<action function="set">tw_back=htcdumlock</action>
-					<action function="set">tw_action=installhtcdumlock</action>
-					<action function="set">tw_text1={@dumlock_install_confirm=Install HTC dumlock files to ROM?}</action>
-					<action function="set">tw_action_text1={@dumlock_installing=Installing HTC Dumlock...}</action>
-					<action function="set">tw_complete_text1={@dumlock_install_complete=HTC Dumlock install completed}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">advanced</action>
-			</action>
-		</page>
-
-		<page name="terminal">
-			<background color="%background%"/>
-			<template name="background_image"/>
-			
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@term_s_hdr=Terminal}</text>
-			</text>
-
-			<terminal>
-				<condition var1="tw_hide_kb" var2="0"/>
-				<condition var1="use_fixed_font" var2="0"/>
-				<placement x="%col1_x%" y="%terminal_y%" w="%terminal_width%" h="%terminal_height%"/>
-			</terminal>
-
-			<terminal>
-				<condition var1="tw_hide_kb" var2="1"/>
-				<condition var1="use_fixed_font" var2="0"/>
-				<placement x="%col1_x%" y="%terminal_y%" w="%terminal_width%" h="%terminal_nokb_height%"/>
-			</terminal>
-			
-			<terminal>
-				<condition var1="tw_hide_kb" var2="0"/>
-				<condition var1="use_fixed_font" var2="1"/>
-				<font resource="fixed" spacing="3" color="%text%"/>
-				<placement x="%col1_x%" y="%terminal_y%" w="%terminal_width%" h="%terminal_height%"/>
-			</terminal>
-
-			<terminal>
-				<condition var1="tw_hide_kb" var2="1"/>
-				<condition var1="use_fixed_font" var2="1"/>
-				<font resource="fixed" spacing="3" color="%text%"/>
-				<placement x="%col1_x%" y="%terminal_y%" w="%terminal_width%" h="%terminal_nokb_height%"/>
-			</terminal>
-			
-			<button>
-				<fill color="%transparent%"/>
-				<condition var1="tw_hide_kb" var2="1"/>
-				<placement x="%col1_x%" y="%terminal_y%" w="%terminal_width%" h="%terminal_nokb_height%"/>
-				<action function="set">tw_hide_kb=0</action>
-			</button>
-			
-			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
-				<action function="set">general_back=terminal</action>
-				<action function="page">ext_general</action>
-			</button>
-			
-			<template name="keyboardtemplate"/>
-			<template name="keyboardterminaltemplate"/>
-			<template name="navbar_bkg"/>
-			<template name="navbar_home"/>
-			<template name="navbar_console"/>
-			<template name="navbar_terminal"/>
-			
-			<action>
-				<touch key="power"/>
-				<action function="togglebacklight"/>
-			</action>
-			
-			<action>
-				<touch key="power+voldown"/>
-				<action function="screenshotinternal"/>
-			</action>
-			
-			<action>
-				<touch key="power+volup"/>
-				<action function="flashlight"/>
-			</action>
-			
-			<action>
-				<touch key="home"/>
-				<actions>
-					<action function="set">tw_hide_kb=0</action>
+				<action>
+					<touch key="home"/>
 					<action function="page">main</action>
-				</actions>
-			</action>
+				</action>
 
-			<action>
-				<touch key="back"/>
-				<actions>
-					<action function="set">tw_hide_kb=0</action>
+				<action>
+					<touch key="back"/>
 					<action function="page">advanced</action>
-				</actions>
-			</action>
-		</page>
+				</action>
+			</page>
 
-		<page name="sideload">
-			<template name="body"/>
+			<page name="magisk_parse">
+				<action>
+					<action function="fileexists">/magisk/%mmgui_select%/disable</action>
+				</action>
 
-			<template name="ab"/>
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+						<condition var1="tw_operation_status" var2="0"/>
+					</conditions>
+					<actions>
+						<action function="set">mmodule_disable=1</action>
+						<action function="page">magisk_parse_2</action>
+					</actions>
+				</action>
 
-			<template name="statusbarinfo"/>
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+						<condition var1="tw_operation_status" var2="1"/>
+					</conditions>
+					<actions>
+						<action function="set">mmodule_disable=0</action>
+						<action function="page">magisk_parse_2</action>
+					</actions>
+				</action>
+			</page>
 
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@adb_sideload_hdr=ADB Sideload}</text>
-			</text>
+			<page name="magisk_parse_2">
+				<action>
+					<action function="fileexists">/magisk/%mmgui_select%/auto_mount</action>
+				</action>
 
-			<image>
-				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<image resource="icon_info"/>
-			</image>
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+						<condition var1="tw_operation_status" var2="0"/>
+					</conditions>
+					<actions>
+						<action function="set">mmodule_amnt=1</action>
+						<action function="page">magisk_actions</action>
+					</actions>
+				</action>
 
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
-				<text>{@sideload_usage=Usage: adb sideload file.zip}</text>
-			</text>
-			
-			<text style="caption">
-				<placement x="%col1_x%" y="%row1_3_y%"/>
-				<text>{@options_cptn=Options}</text>
-			</text>
-			
-			<listbox style="settingslist">
-				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%lb_l2%"/>
-				<listitem name="{@sideload_wipe_dalvik_chk=Wipe Dalvik Cache}">
-					<data variable="tw_wipe_dalvik"/>
-				</listitem>
-				<listitem name="{@sideload_wipe_cache_chk=Wipe Cache}">
-					<data variable="tw_wipe_cache"/>
-				</listitem>
-			</listbox>
-			
-			<text style="caption">
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_to_sideload=Swipe to start Sideload}</text>
-			</text>
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+						<condition var1="tw_operation_status" var2="1"/>
+					</conditions>
+					<actions>
+						<action function="set">mmodule_amnt=0</action>
+						<action function="page">magisk_actions</action>
+					</actions>
+				</action>
+			</page>
 
-			<slider style="slider_action">
-				<placement x="%center_x%" y="%slider_y%" placement="5"/>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_action=adbsideload</action>
-					<action function="set">tw_action_text1={@sideload_confirm=ADB Sideload}</action>
-					<action function="set">tw_action_text2={@fordowns_sl=Starting Sideload...}</action>
-					<action function="set">tw_complete_text1={@sideload_complete=ADB Sideload completed}</action>
-					<action function="set">tw_has_cancel=1</action>
-					<action function="set">tw_show_reboot=1</action>
-					<action function="set">tw_cancel_action=adbsideloadcancel</action>
-					<action function="page">action_page</action>
-				</actions>
-			</slider>
+			<page name="magisk_switch_amnt">
+				<action>
+					<conditions>
+						<condition var1="mmodule_amnt" var2="0"/>
+					</conditions>
+					<actions>
+						<action function="cmd">rm "/magisk/%mmgui_select%/auto_mount";</action>
+						<action function="page">magisk_parse</action>
+					</actions>
+				</action>
 
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
+				<action>
+					<conditions>
+						<condition var1="mmodule_amnt" var2="1"/>
+					</conditions>
+					<actions>
+						<action function="cmd">touch "/magisk/%mmgui_select%/auto_mount";</action>
+						<action function="page">magisk_parse</action>
+					</actions>
+				</action>
+			</page>
 
-			<action>
-				<touch key="back"/>
-				<action function="page">advanced</action>
-			</action>
-		</page>
+			<page name="magisk_actions">
+				<template name="body"/>
 
-		<page name="fixcontexts">
-			<template name="body"/>
+				<fill color="%accent%">
+					<condition var1="mmodule_disable" op="!=" var2="1"/>
+					<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				</fill>
+				
+				<fill color="%unactive_title%">
+					<condition var1="mmodule_disable" var2="1"/>
+					<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				</fill>
 
-			<template name="ab"/>
+				<image>
+					<condition var1="mmodule_disable" var2="1"/>
+					<placement x="%ab_btn1_x%" y="%ab3_y%"/>
+					<image resource="switch_off"/>
+				</image>
+				
+				<image>
+					<condition var1="mmodule_disable" op="!=" var2="1"/>
+					<placement x="%ab_btn1_x%" y="%ab3_y%"/>
+					<image resource="switch_on"/>
+				</image>
 
-			<template name="statusbarinfo"/>
+				<text style="text_ab_switch">
+					<placement x="%col1_x_indent%" y="%ab_bc3_y%"/>
+					<text>{@mm_module_active}</text>
+				</text>
 
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fix_contexts_confirm=Fix SELinux contexts?}</text>
-			</text>
+				<button style="bs_btn">
+					<condition var1="mmodule_disable" var2="1"/>
+					<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+					<actions>
+						<action function="cmd">rm "/magisk/%mmgui_select%/disable";</action>
+						<action function="page">magisk_parse</action>
+					</actions>
+				</button>
 
-			<image>
-				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<image resource="icon_warning"/>
-			</image>
+				<button style="bs_btn">
+					<condition var1="mmodule_disable" op="!=" var2="1"/>
+					<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+					<actions>
+						<action function="cmd">touch "/magisk/%mmgui_select%/disable";</action>
+						<action function="page">magisk_parse</action>
+					</actions>
+				</button>
 
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
-				<text>{@fix_contexts_note1=Note: Fixing contexts is rarely needed.}</text>
-			</text>
+				<template name="ab_ex"/>
 
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@fix_contexts_note2=Fixing SELinux contexts may cause}</text>
-			</text>
+				<template name="statusbarinfo"/>
 
-			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
-				<text>{@fix_contexts_note3=your device to not boot properly.}</text>
-			</text>
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>Magisk Manager</text>
+				</text>
 
-			<text style="caption">
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_to_fix_contexts=Swipe to fix contexts}</text>
-			</text>
+				<fileselector>
+					<placement x="208" y="278" w="%screen_w%" h="108"/>
+					<highlight color="%transparent%"/>
+					<background color="%transparent%" />
+					<font resource="Secondary-title" spacing="%fileselector_spacing%" color="%accent%" />
+					<sort name="0"/>
+					<filter folders="0" files="1" nav="0"/>
+					<path name="mmgui_info" default="/tmp/mminfo/title"/>
+					<data name="xxx"/>
+					<selection name="xxx"/>
+				</fileselector>
 
-			<slider style="slider_action">
-				<placement x="%center_x%" y="%slider_y%" placement="5"/>
-				<actions>
-					<action function="set">tw_back=advanced</action>
-					<action function="set">tw_action=fixcontexts</action>
-					<action function="set">tw_action_text1={@fixing_contexts=Fixing Contexts...}</action>
-					<action function="set">tw_complete_text1={@fix_contexts_complete=Fix Contexts completed}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm=Swipe to Confirm}</action>
-					<action function="set">tw_show_reboot=1</action>
-					<action function="page">action_page</action>
-				</actions>
-			</slider>
+				<fileselector>
+					<placement x="208" y="%row1_2_y%" w="%screen_w%" h="56"/>
+					<highlight color="%transparent%"/>
+					<background color="%transparent%" />
+					<font resource="Secondary" spacing="%fileselector_spacing%" color="%accent%" />
+					<sort name="0"/>
+					<filter folders="0" files="1" nav="0"/>
+					<path name="mmgui_info2" default="/tmp/mminfo/subtitle"/>
+					<data name="xxx"/>
+					<selection name="xxx"/>
+				</fileselector>
 
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
+				<listbox style="settingslist">
+					<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%lb_l1%"/>
+					<listitem name="{@mm_module_mount}">
+						<data variable="mmodule_amnt"/>
+					</listitem>
+				</listbox>
 
-			<action>
-				<touch key="back"/>
-				<action function="page">advanced</action>
-			</action>
-		</page>
+				<button>
+					<placement x="%ab_btn1_x%" y="%ab_y%"/>
+					<image resource="actionbar_delete" highlightresource="actionbar_delete_hl"/>
+					<actions>
+						<action function="set">tw_filemanager_command=rm -rf</action>
+						<action function="set">tw_filename1=/magisk/%mmgui_select%</action>
+						<action function="set">tw_fm_text1={@fm_deleting}</action>
+						<action function="set">tw_fm_text2=</action>
+						<action function="set">tw_fm_text3=</action>
+						<action function="set">tw_include_text3=0</action>
+						<action function="set">tw_back=filemanageroptions</action>
+						<action function="page">filemanagerconfirm</action>
+					</actions>
+				</button>
 
-		<page name="check_prebuild_stuff">
-			<action>
-				<action function="fileexists">/sdcard/Fox/FoxFiles/Magisk.zip</action>
-			</action>
+				<action>
+					<condition var1="mmodule_amnt" op="modified"/>
+					<actions>
+						<action function="page">magisk_switch_amnt</action>
+					</actions>
+				</action>
 
-			<action>
-				<condition var1="prebuild_action" var2="magisk_uninstall"/>
-				<condition var1="tw_operation_state" var2="1"/>
-				<condition var1="tw_operation_status" var2="0"/>
-				<actions>
-					<action function="queueclear"/>
-					<action function="set">tw_file=/sdcard/Fox/FoxFiles/unrootmagisk.zip</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/unrootmagisk.zip</action>
-					<action function="set">install_back=advanced</action>
-					<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles/unrootmagisk.zip</action>
-					<action function="queuezip"/>
-					<action function="set">tw_q_1=%tw_file%</action>
-					<action function="page">flash_confirm</action>
-				</actions>
-			</action>
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
 
-			<action>
-				<condition var1="prebuild_action" var2="magisk_install"/>
-				<condition var1="tw_operation_state" var2="1"/>
-				<condition var1="tw_operation_status" var2="0"/>
-				<actions>
-					<action function="queueclear"/>
-					<action function="set">tw_file=/sdcard/Fox/FoxFiles/Magisk.zip</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
-					<action function="set">install_back=advanced</action>
-					<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles/Magisk.zip</action>
-					<action function="queuezip"/>
-					<action function="set">tw_q_1=%tw_file%</action>
-					<action function="page">flash_confirm</action>
-				</actions>
-			</action>
+				<action>
+					<touch key="back"/>
+					<action function="page">magisk</action>
+				</action>
+			</page>
 
-			<action>
-				<conditions>
+			<page name="partsdcardsel">
+				<template name="body"/>
+				
+				<template name="ab"/>
+				
+				<template name="statusbarinfo"/>
+				
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>{@part_sd_hdr}</text>
+				</text>
+				
+				<image>
+					<placement x="%col1_x%" y="%row1_1_y%"/>
+					<image resource="icon_warning"/>
+				</image>
+
+				<text style="text_body2_fail">
+					<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+					<text>{@part_sdcard_sel_note_1}</text>
+				</text>
+
+				<text style="text_body2_fail">
+					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+					<text>{@part_sdcard_sel_note_2}</text>
+				</text>
+
+				<text style="text_body2_fail">
+					<condition var1="partitionlisterror" var2="0"/>
+					<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+					<text>{@part_sd_undo}</text>
+				</text>
+
+				<text style="text_body2_fail">
+					<condition var1="partitionlisterror" var2="1"/>
+					<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+					<text>{@rem_sd_sel}</text>
+				</text>
+
+				<text style="caption">
+					<placement x="%col1_x%" y="%row2_2_y%"/>
+					<text>{@rem_sd}</text>
+				</text>
+
+				<partitionlist style="partitionlist_radio">
+					<placement x="0" y="%row2_3_y%" w="%screen_w%" h="%part_list_btns_h%"/>
+					<data name="tw_storage_path"/>
+					<listtype name="storage"/>
+				</partitionlist>
+
+				<button style="floating_btn">
+					<placement x="%btn_float_x%" y="%btn_float_y%"/>
+					<image resource="btn_float_accept"/>
+					<action function="getpartitiondetails">tw_storage_path</action>
+					<action function="page">partsdcardcheck</action>
+				</button>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">advanced</action>
+				</action>
+			</page>
+
+			<page name="remlock">
+				<template name="body"/>
+				
+				<template name="ab"/>
+				
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>{@new_lock}</text>
+				</text>
+
+				<text style="caption">
+					<placement x="%col1_x%" y="%row1_1_y%"/>
+					<text>{@options_cptn}</text>
+				</text>
+
+				<!-- THX to NFound / kory-vadim http://4pda.ru/forum/index.php?showtopic=725345&view=findpost&p=71305432 / kaito373 http://4pda.ru/forum/index.php?showtopic=725345&view=findpost&p=57019639 -->
+				<listbox>
+					<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l5%"/>
+					<data name="tw_action_param"/>
+					<listitem name="{@removelock_1}">mount /data; rm -f data/system/*.key data/system/locksettings.*</listitem>
+					<listitem name="{@removelock_2}">mount /system; mount -o rw,remount,rw /system; sed -i "s/ro.frp.pst=.*./&amp;=false/" /system/build.prop; umount /system;</listitem>
+					<listitem name="{@removelock_3=Wipe FRP using TWRP}">dd if=/dev/zero of}') bs=524288 count=1 || echo "Error wiping FRP!"</listitem>
+					<listitem name="{@removelock_4}">dd if=/dev/zero of=$(readlink $(find /dev/block -type l | grep 'by-name' | grep '/frp')) bs=524288 count=1 || echo "Error wiping FRP!"</listitem>
+				</listbox>
+
+				<text style="caption">
+					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+					<text>{@swipe_to_confirm}</text>
+				</text>
+
+				<slider style="slider_action">
+					<placement x="%center_x%" y="%slider_y%" placement="5"/>
+					<actions>
+						<action function="set">tw_back=advanced</action>
+						<action function="set">tw_action=cmd</action>
+						<action function="set">tw_action_text1={@new_lock}</action>
+						<action function="set">tw_action_text2={@new_lock_wait}</action>
+						<action function="set">tw_complete_text1={@new_lock_done}</action>
+						<action function="page">action_page</action>
+					</actions>
+				</slider>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">advanced</action>
+				</action>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+			</page>
+
+			<page name="partsdcardcheck">
+				<action>
+					<condition var1="tw_partition_removable" op="=" var2="1"/>
+					<actions>
+						<action function="set">partitionlisterror=0</action>
+						<action function="page">partsdcard</action>
+					</actions>
+				</action>
+
+				<action>
+					<condition var1="tw_partition_removable" op="!=" var2="1"/>
+					<actions>
+						<action function="set">partitionlisterror=1</action>
+						<action function="page">partsdcardsel</action>
+					</actions>
+				</action>
+			</page>
+
+			<page name="partsdcard">
+				<template name="body"/>
+
+				<template name="ab"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>{@part_sd_hdr}</text>
+				</text>
+
+				<button style="btn_flat_qw">
+					<placement x="%btn_raised_left_x%" y="%row1_1_y%"/>
+					<text>{@btn_flat_less}</text>
+					<action function="addsubtract">tw_sdext_size-128</action>
+				</button>
+
+				<text style="text_body2">
+					<placement x="%center_x%" y="%row1_1a_y%" placement="5"/>
+					<text>{@part_sd_ext_sz} %tw_sdext_size%</text>
+				</text>
+
+				<button style="btn_flat_qw">
+					<placement x="%btn_raised_right_x%" y="%row1_1_y%" placement="1"/>
+					<text>{@btn_flat_more}</text>
+					<action function="addsubtract">tw_sdext_size+128</action>
+				</button>
+
+				<button style="btn_flat_qw">
+					<placement x="%btn_raised_left_x%" y="%row2_1_y%"/>
+					<text>{@btn_flat_less}</text>
+					<action function="addsubtract">tw_swap_size-32</action>
+				</button>
+
+				<text style="text_body2">
+					<placement x="%center_x%" y="%row2_1a_y%" placement="5"/>
+					<text>{@part_sd_swap_sz} %tw_swap_size%</text>
+				</text>
+
+				<button style="btn_flat_qw">
+					<placement x="%btn_raised_right_x%" y="%row2_1_y%" placement="1"/>
+					<text>{@btn_flat_more}</text>
+					<action function="addsubtract">tw_swap_size+32</action>
+				</button>
+
+				<button style="btn_flat_qw">
+					<placement x="%btn_raised_left_x%" y="%row3_1_y%"/>
+					<text>{@btn_flat_ext3}</text>
+					<action function="set">tw_sdpart_file_system=ext3</action>
+				</button>
+
+				<text style="text_body2">
+					<placement x="%center_x%" y="%row3_1a_y%" placement="5"/>
+					<text>{@current_color} %tw_sdpart_file_system%</text>
+				</text>
+
+				<button style="btn_flat_qw">
+					<placement x="%btn_raised_right_x%" y="%row3_1_y%" placement="1"/>
+					<text>{@btn_flat_ext4}</text>
+					<action function="set">tw_sdpart_file_system=ext4</action>
+				</button>
+
+				<text style="caption">
+					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+					<text>{@swipe_part_sd}</text>
+				</text>
+
+				<slider style="slider_action">
+					<placement x="%center_x%" y="%slider_y%" placement="5"/>
+					<action function="page">partsdcardaction</action>
+					<actions>
+						<action function="set">tw_back=partsdcard</action>
+						<action function="set">tw_action=partitionsd</action>
+						<action function="set">tw_has_action2=1</action>
+						<action function="set">tw_action2=set</action>
+						<action function="set">tw_action2_param=tw_zip_location=/sdcard</action>
+						<action function="set">tw_action_text1={@partitioning_sd}</action>
+						<action function="set">tw_action_text2={@partitioning_sd2}</action>
+						<action function="set">tw_complete_text1={@part_sd_complete}</action>
+						<action function="page">action_page</action>
+					</actions>
+				</slider>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<actions>
+						<action function="set">partitionlisterror=0</action>
+						<action function="page">partsdcardsel</action>
+					</actions>
+				</action>
+			</page>
+
+			<page name="htcdumlock">
+				<template name="body"/>
+
+				<template name="ab"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>{@dumlock_hdr}</text>
+				</text>
+
+				<button style="btn_raised">
+					<condition var1="tw_has_injecttwrp" var2="1"/>
+					<placement x="%btn_raised_left_x%" y="%row_btn_y%"/>
+					<text>{@inject_twrp_btn}</text>
+					<actions>
+						<action function="set">tw_back=htcdumlock</action>
+						<action function="set">tw_action=reinjecttwrp</action>
+						<action function="set">tw_text1={@inject_twrp_confirm}</action>
+						<action function="set">tw_action_text1={@injecting_twrp}</action>
+						<action function="set">tw_complete_text1={@inject_twrp_complete}</action>
+						<action function="set">tw_slider_text={@swipe_to_confirm}</action>
+						<action function="page">confirm_action</action>
+					</actions>
+				</button>
+
+				<button style="btn_raised">
+					<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+					<text>{@dumlock_restore_btn}</text>
+					<actions>
+						<action function="set">tw_back=htcdumlock</action>
+						<action function="set">tw_action=htcdumlockrestoreboot</action>
+						<action function="set">tw_text1={@dumlock_restore_confirm}</action>
+						<action function="set">tw_action_text1={@dumlock_restoring}</action>
+						<action function="set">tw_complete_text1={@dumlock_restore_complete}</action>
+						<action function="set">tw_slider_text={@swipe_to_confirm}</action>
+						<action function="page">confirm_action</action>
+					</actions>
+				</button>
+
+				<button style="btn_raised">
+					<placement x="%btn_raised_right_x%" y="%row_btn_y%" placement="1"/>
+					<text>{@dumlock_reflash_btn}</text>
+					<actions>
+						<action function="set">tw_back=htcdumlock</action>
+						<action function="set">tw_action=htcdumlockreflashrecovery</action>
+						<action function="set">tw_text1={@dumlock_reflash_confirm}</action>
+						<action function="set">tw_action_text1={@dumlock_reflashing}</action>
+						<action function="set">tw_complete_text1={@dumlock_reflash_complete}</action>
+						<action function="set">tw_slider_text={@swipe_to_confirm}</action>
+						<action function="page">confirm_action</action>
+					</actions>
+				</button>
+
+				<button style="btn_raised_hl">
+					<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+					<text>{@dumlock_install_btn}</text>
+					<actions>
+						<action function="set">tw_back=htcdumlock</action>
+						<action function="set">tw_action=installhtcdumlock</action>
+						<action function="set">tw_text1={@dumlock_install_confirm}</action>
+						<action function="set">tw_action_text1={@dumlock_installing}</action>
+						<action function="set">tw_complete_text1={@dumlock_install_complete}</action>
+						<action function="set">tw_slider_text={@swipe_to_confirm}</action>
+						<action function="page">confirm_action</action>
+					</actions>
+				</button>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">advanced</action>
+				</action>
+			</page>
+
+			<page name="terminal">
+				<background color="%background%"/>
+				
+				<template name="background_image"/>
+
+				<template name="ab"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>{@term_s_hdr}</text>
+				</text>
+
+				<terminal>
+					<condition var1="tw_hide_kb" var2="0"/>
+					<condition var1="use_fixed_font" var2="0"/>
+					<placement x="%col1_x%" y="%terminal_y%" w="%terminal_width%" h="%terminal_height%"/>
+				</terminal>
+
+				<terminal>
+					<condition var1="tw_hide_kb" var2="1"/>
+					<condition var1="use_fixed_font" var2="0"/>
+					<placement x="%col1_x%" y="%terminal_y%" w="%terminal_width%" h="%terminal_nokb_height%"/>
+				</terminal>
+
+				<terminal>
+					<condition var1="tw_hide_kb" var2="0"/>
+					<condition var1="use_fixed_font" var2="1"/>
+					<font resource="fixed" spacing="3" color="%text%"/>
+					<placement x="%col1_x%" y="%terminal_y%" w="%terminal_width%" h="%terminal_height%"/>
+				</terminal>
+
+				<terminal>
+					<condition var1="tw_hide_kb" var2="1"/>
+					<condition var1="use_fixed_font" var2="1"/>
+					<font resource="fixed" spacing="3" color="%text%"/>
+					<placement x="%col1_x%" y="%terminal_y%" w="%terminal_width%" h="%terminal_nokb_height%"/>
+				</terminal>
+
+				<button>
+					<fill color="%transparent%"/>
+					<condition var1="tw_hide_kb" var2="1"/>
+					<placement x="%col1_x%" y="%terminal_y%" w="%terminal_width%" h="%terminal_nokb_height%"/>
+					<action function="set">tw_hide_kb=0</action>
+				</button>
+
+				<button>
+					<placement x="%ab_btn1_x%" y="%ab_y%"/>
+					<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
+					<action function="set">general_back=terminal</action>
+					<action function="page">ext_general</action>
+				</button>
+
+				<template name="keyboardtemplate"/>
+				
+				<template name="keyboardterminaltemplate"/>
+				
+				<template name="navbar_bkg"/>
+				
+				<template name="navbar_home"/>
+				
+				<template name="navbar_console"/>
+				
+				<template name="navbar_terminal"/>
+				
+
+				<action>
+					<touch key="power"/>
+					<action function="togglebacklight"/>
+				</action>
+
+				<action>
+					<touch key="power+voldown"/>
+					<action function="screenshotinternal"/>
+				</action>
+
+				<action>
+					<touch key="power+volup"/>
+					<action function="flashlight"/>
+				</action>
+
+				<action>
+					<touch key="home"/>
+					<actions>
+						<action function="set">tw_hide_kb=0</action>
+						<action function="page">main</action>
+					</actions>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<actions>
+						<action function="set">tw_hide_kb=0</action>
+						<action function="page">advanced</action>
+					</actions>
+				</action>
+			</page>
+
+			<page name="sideload">
+				<template name="body"/>
+
+				<template name="ab"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>{@adb_sideload_hdr}</text>
+				</text>
+
+				<image>
+					<placement x="%col1_x%" y="%row1_1_y%"/>
+					<image resource="icon_info"/>
+				</image>
+
+				<text style="text_body2_hl">
+					<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+					<text>{@sideload_usage}</text>
+				</text>
+
+				<text style="caption">
+					<placement x="%col1_x%" y="%row1_3_y%"/>
+					<text>{@options_cptn}</text>
+				</text>
+
+				<listbox style="settingslist">
+					<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%lb_l2%"/>
+					<listitem name="{@sideload_wipe_dalvik_chk}">
+						<data variable="tw_wipe_dalvik"/>
+					</listitem>
+					<listitem name="{@sideload_wipe_cache_chk}">
+						<data variable="tw_wipe_cache"/>
+					</listitem>
+				</listbox>
+
+				<text style="caption">
+					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+					<text>{@swipe_to_sideload}</text>
+				</text>
+
+				<slider style="slider_action">
+					<placement x="%center_x%" y="%slider_y%" placement="5"/>
+					<actions>
+						<action function="set">tw_back=advanced</action>
+						<action function="set">tw_action=adbsideload</action>
+						<action function="set">tw_action_text1={@sideload_confirm}</action>
+						<action function="set">tw_action_text2={@fordowns_sl}</action>
+						<action function="set">tw_complete_text1={@sideload_complete}</action>
+						<action function="set">tw_has_cancel=1</action>
+						<action function="set">tw_show_reboot=1</action>
+						<action function="set">tw_cancel_action=adbsideloadcancel</action>
+						<action function="page">action_page</action>
+					</actions>
+				</slider>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">advanced</action>
+				</action>
+			</page>
+
+			<page name="fixcontexts">
+				<template name="body"/>
+
+				<template name="ab"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>{@fix_contexts_confirm}</text>
+				</text>
+
+				<image>
+					<placement x="%col1_x%" y="%row1_1_y%"/>
+					<image resource="icon_warning"/>
+				</image>
+
+				<text style="text_body2_fail">
+					<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+					<text>{@fix_contexts_note1}</text>
+				</text>
+
+				<text style="text_body2_fail">
+					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+					<text>{@fix_contexts_note2}</text>
+				</text>
+
+				<text style="text_body2_fail">
+					<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+					<text>{@fix_contexts_note3}</text>
+				</text>
+
+				<text style="caption">
+					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+					<text>{@swipe_to_fix_contexts}</text>
+				</text>
+
+				<slider style="slider_action">
+					<placement x="%center_x%" y="%slider_y%" placement="5"/>
+					<actions>
+						<action function="set">tw_back=advanced</action>
+						<action function="set">tw_action=fixcontexts</action>
+						<action function="set">tw_action_text1={@fixing_contexts}</action>
+						<action function="set">tw_complete_text1={@fix_contexts_complete}</action>
+						<action function="set">tw_slider_text={@swipe_to_confirm}</action>
+						<action function="set">tw_show_reboot=1</action>
+						<action function="page">action_page</action>
+					</actions>
+				</slider>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">advanced</action>
+				</action>
+			</page>
+
+			<page name="check_prebuild_stuff">
+				<action>
+					<action function="fileexists">/sdcard/Fox/FoxFiles/Magisk.zip</action>
+				</action>
+
+				<action>
+					<condition var1="prebuild_action" var2="magisk_uninstall"/>
 					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="1"/>
-				</conditions>
-				<action function="page">%prebuild_fail_page%</action>
-			</action>
-		</page>
-	</pages>
-</recovery>
+					<condition var1="tw_operation_status" var2="0"/>
+					<actions>
+						<action function="queueclear"/>
+						<action function="set">tw_file=/sdcard/Fox/FoxFiles/unrootmagisk.zip</action>
+						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/unrootmagisk.zip</action>
+						<action function="set">install_back=advanced</action>
+						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles/unrootmagisk.zip</action>
+						<action function="queuezip"/>
+						<action function="set">tw_q_1=%tw_file%</action>
+						<action function="page">flash_confirm</action>
+					</actions>
+				</action>
+
+				<action>
+					<condition var1="prebuild_action" var2="magisk_install"/>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+					<actions>
+						<action function="queueclear"/>
+						<action function="set">tw_file=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+						<action function="set">install_back=advanced</action>
+						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+						<action function="queuezip"/>
+						<action function="set">tw_q_1=%tw_file%</action>
+						<action function="page">flash_confirm</action>
+					</actions>
+				</action>
+
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+						<condition var1="tw_operation_status" var2="1"/>
+					</conditions>
+					<action function="page">%prebuild_fail_page%</action>
+				</action>
+			</page>
+		</pages>
+	</recovery>

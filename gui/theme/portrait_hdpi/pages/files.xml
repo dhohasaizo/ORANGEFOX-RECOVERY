@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
 	<pages>
-		
 		<page name="filemanagerlist">
 			<template name="body_nav"/>
 
@@ -42,7 +41,7 @@
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
@@ -108,7 +107,7 @@
 			
 			<action>
 				<actions>
-					<action function="set">tw_fm_type={@fm_type_file=File}</action>
+					<action function="set">tw_fm_type={@fm_type_file}</action>
 					<action function="set">tw_fm_isfolder=0</action>
 				</actions>
 			</action>
@@ -161,7 +160,7 @@
 					<action function="overlay"/>
 					<action function="set">tw_filename1=tw_file_location1</action>
 					<action function="set">tw_fm_isfolder=1</action>
-					<action function="set">tw_fm_type={@fm_type_folder=Folder}</action>
+					<action function="set">tw_fm_type={@fm_type_folder}</action>
 					<action function="page">filemanageroptions</action>
 				</actions>
 			</button>
@@ -188,37 +187,37 @@
 		<page name="files_bookmarks_prepare">
 			<action>
 				<condition var1="book_1" var2="notset"/>
-				<action function="set">book_1={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_1={@fm_books_empty}</action>
 			</action>
 			
 			<action>
 				<condition var1="book_2" var2="notset"/>
-				<action function="set">book_2={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_2={@fm_books_empty}</action>
 			</action>
 			
 			<action>
 				<condition var1="book_3" var2="notset"/>
-				<action function="set">book_3={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_3={@fm_books_empty}</action>
 			</action>
 			
 			<action>
 				<condition var1="book_4" var2="notset"/>
-				<action function="set">book_4={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_4={@fm_books_empty}</action>
 			</action>
 			
 			<action>
 				<condition var1="book_5" var2="notset"/>
-				<action function="set">book_5={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_5={@fm_books_empty}</action>
 			</action>
 			
 			<action>
 				<condition var1="book_6" var2="notset"/>
-				<action function="set">book_6={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_6={@fm_books_empty}</action>
 			</action>
 			
 			<action>
 				<condition var1="book_7" var2="notset"/>
-				<action function="set">book_7={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_7={@fm_books_empty}</action>
 			</action>
 			
 			<action>
@@ -235,30 +234,30 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_books=Bookmarks}</text>
+				<text>{@fm_books}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<condition var1="book_edit" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@fm_books_desc=Manage your bookmarks}</text>
+				<text>{@fm_books_desc}</text>
 			</text>
 			
 			<text style="text_ab_subtitle">
 				<condition var1="book_edit" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@fm_books_desc_edit=Edit your bookmarks}</text>
+				<text>{@fm_books_desc_edit}</text>
 			</text>
 			
 			
 			<!-- book_1 -->
 			<button style="bs_btn">
-				<condition var1="book_1" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_1" op="!=" var2="{@fm_books_empty}"/>
 				<condition var1="book_edit" var2="0"/>
 				<placement x="0" y="%bs_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
@@ -268,13 +267,13 @@
 			</button>
 			<image>
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_1" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_1" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x%" y="%bs_row1_y%"/>
 				<image resource="bs_btn_bookmark"/>
 			</image>
 			<text style="bs_text">
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_1" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_1" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
 				<text>%book_1%</text>
 			</text>
@@ -297,7 +296,7 @@
 			<button style="bs_btn">
 				<condition var1="book_edit" var2="1"/>
 				<placement x="%bs_del%" y="%bs_row1_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_1={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_1={@fm_books_empty}</action>
 			</button>
 			<image>
 				<condition var1="book_edit" var2="1"/>
@@ -306,7 +305,7 @@
 			</image>
 			<!-- book_2 -->
 			<button style="bs_btn">
-				<condition var1="book_2" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_2" op="!=" var2="{@fm_books_empty}"/>
 				<condition var1="book_edit" var2="0"/>
 				<placement x="0" y="%bs_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
@@ -316,13 +315,13 @@
 			</button>
 			<image>
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_2" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_2" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x%" y="%bs_row2_y%"/>
 				<image resource="bs_btn_bookmark"/>
 			</image>
 			<text style="bs_text">
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_2" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_2" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
 				<text>%book_2%</text>
 			</text>
@@ -345,7 +344,7 @@
 			<button style="bs_btn">
 				<condition var1="book_edit" var2="1"/>
 				<placement x="%bs_del%" y="%bs_row2_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_2={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_2={@fm_books_empty}</action>
 			</button>
 			<image>
 				<condition var1="book_edit" var2="1"/>
@@ -354,7 +353,7 @@
 			</image>
 			<!-- book_3 -->
 			<button style="bs_btn">
-				<condition var1="book_3" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_3" op="!=" var2="{@fm_books_empty}"/>
 				<condition var1="book_edit" var2="0"/>
 				<placement x="0" y="%bs_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
@@ -364,13 +363,13 @@
 			</button>
 			<image>
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_3" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_3" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x%" y="%bs_row3_y%"/>
 				<image resource="bs_btn_bookmark"/>
 			</image>
 			<text style="bs_text">
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_3" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_3" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x_indent%" y="%bs_row3_text_y%"/>
 				<text>%book_3%</text>
 			</text>
@@ -393,7 +392,7 @@
 			<button style="bs_btn">
 				<condition var1="book_edit" var2="1"/>
 				<placement x="%bs_del%" y="%bs_row3_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_3={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_3={@fm_books_empty}</action>
 			</button>
 			<image>
 				<condition var1="book_edit" var2="1"/>
@@ -402,7 +401,7 @@
 			</image>
 			<!-- book_4 -->
 			<button style="bs_btn">
-				<condition var1="book_4" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_4" op="!=" var2="{@fm_books_empty}"/>
 				<condition var1="book_edit" var2="0"/>
 				<placement x="0" y="%bs_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
@@ -412,13 +411,13 @@
 			</button>
 			<image>
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_4" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_4" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x%" y="%bs_row4_y%"/>
 				<image resource="bs_btn_bookmark"/>
 			</image>
 			<text style="bs_text">
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_4" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_4" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x_indent%" y="%bs_row4_text_y%"/>
 				<text>%book_4%</text>
 			</text>
@@ -441,7 +440,7 @@
 			<button style="bs_btn">
 				<condition var1="book_edit" var2="1"/>
 				<placement x="%bs_del%" y="%bs_row4_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_4={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_4={@fm_books_empty}</action>
 			</button>
 			<image>
 				<condition var1="book_edit" var2="1"/>
@@ -450,7 +449,7 @@
 			</image>
 			<!-- book_5 -->
 			<button style="bs_btn">
-				<condition var1="book_5" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_5" op="!=" var2="{@fm_books_empty}"/>
 				<condition var1="book_edit" var2="0"/>
 				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
@@ -460,13 +459,13 @@
 			</button>
 			<image>
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_5" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_5" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x%" y="%bs_row5_y%"/>
 				<image resource="bs_btn_bookmark"/>
 			</image>
 			<text style="bs_text">
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_5" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_5" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
 				<text>%book_5%</text>
 			</text>
@@ -489,7 +488,7 @@
 			<button style="bs_btn">
 				<condition var1="book_edit" var2="1"/>
 				<placement x="%bs_del%" y="%bs_row5_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_5={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_5={@fm_books_empty}</action>
 			</button>
 			<image>
 				<condition var1="book_edit" var2="1"/>
@@ -498,7 +497,7 @@
 			</image>
 			<!-- book_6 -->
 			<button style="bs_btn">
-				<condition var1="book_6" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_6" op="!=" var2="{@fm_books_empty}"/>
 				<condition var1="book_edit" var2="0"/>
 				<placement x="0" y="%bs_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
@@ -508,13 +507,13 @@
 			</button>
 			<image>
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_6" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_6" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x%" y="%bs_row6_y%"/>
 				<image resource="bs_btn_bookmark"/>
 			</image>
 			<text style="bs_text">
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_6" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_6" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x_indent%" y="%bs_row6_text_y%"/>
 				<text>%book_6%</text>
 			</text>
@@ -537,7 +536,7 @@
 			<button style="bs_btn">
 				<condition var1="book_edit" var2="1"/>
 				<placement x="%bs_del%" y="%bs_row6_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_6={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_6={@fm_books_empty}</action>
 			</button>
 			<image>
 				<condition var1="book_edit" var2="1"/>
@@ -546,7 +545,7 @@
 			</image>
 			<!-- book_7 -->
 			<button style="bs_btn">
-				<condition var1="book_7" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_7" op="!=" var2="{@fm_books_empty}"/>
 				<condition var1="book_edit" var2="0"/>
 				<placement x="0" y="%bs_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
@@ -556,13 +555,13 @@
 			</button>
 			<image>
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_7" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_7" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x%" y="%bs_row7_y%"/>
 				<image resource="bs_btn_bookmark"/>
 			</image>
 			<text style="bs_text">
 				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_7" op="!=" var2="{@fm_books_empty=(Empty)}"/>
+				<condition var1="book_7" op="!=" var2="{@fm_books_empty}"/>
 				<placement x="%col1_x_indent%" y="%bs_row7_text_y%"/>
 				<text>%book_7%</text>
 			</text>
@@ -585,7 +584,7 @@
 			<button style="bs_btn">
 				<condition var1="book_edit" var2="1"/>
 				<placement x="%bs_del%" y="%bs_row7_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_7={@fm_books_empty=(Empty)}</action>
+				<action function="set">book_7={@fm_books_empty}</action>
 			</button>
 			<image>
 				<condition var1="book_edit" var2="1"/>
@@ -628,7 +627,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
@@ -655,7 +654,7 @@
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
 				<condition var1="tw_fm_isfolder" var2="0"/>
-				<text>{@fm_open=Open as...}</text>
+				<text>{@fm_open}</text>
 			</text>
 			
 			<button style="bs_btn">
@@ -677,7 +676,7 @@
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="1"/>
 				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
-				<text>{@fm_open_makezip=Compress}</text>
+				<text>{@fm_open_makezip}</text>
 			</text>
 			
 			
@@ -701,7 +700,7 @@
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="1"/>
 				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
-				<text>{@fm_open_backup=Backup}</text>
+				<text>{@fm_open_backup}</text>
 			</text>
 
 
@@ -725,7 +724,7 @@
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
 				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
-				<text>{@fm_open_ZIP=Flashable ZIP}</text>
+				<text>{@fm_open_ZIP}</text>
 			</text>
 				
 			
@@ -737,7 +736,7 @@
 				<placement x="0" y="%bs_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_command=cp</action>
-					<action function="set">tw_fm_text1={@fm_copying=Copying}</action>
+					<action function="set">tw_fm_text1={@fm_copying}</action>
 					<action function="set">tw_back=choosedestinationfolder</action>
 					<action function="page">choosedestinationfolder</action>
 				</actions>
@@ -748,7 +747,7 @@
 				<placement x="0" y="%bs_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_command=cd "%tw_file_location1%" &amp;&amp; cd .. &amp;&amp; cp -R</action>
-					<action function="set">tw_fm_text1={@fm_copying=Copying}</action>
+					<action function="set">tw_fm_text1={@fm_copying}</action>
 					<action function="set">tw_back=choosedestinationfolder</action>
 					<action function="page">choosedestinationfolder</action>
 				</actions>
@@ -761,7 +760,7 @@
 
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%bs_row3_text_y%"/>
-				<text>{@fm_copy_btn=Copy}</text>
+				<text>{@fm_copy_btn}</text>
 			</text>
 
 			
@@ -770,7 +769,7 @@
 				<placement x="0" y="%bs_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_command=mv</action>
-					<action function="set">tw_fm_text1={@fm_moving=Moving}</action>
+					<action function="set">tw_fm_text1={@fm_moving}</action>
 					<action function="set">tw_back=choosedestinationfolder</action>
 					<action function="page">choosedestinationfolder</action>
 				</actions>
@@ -783,7 +782,7 @@
 
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%bs_row4_text_y%"/>
-				<text>{@fm_move_btn=Move}</text>
+				<text>{@fm_move_btn}</text>
 			</text>
 
 			
@@ -793,7 +792,7 @@
 				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_rename=tw_selection1</action>
-					<action function="set">tw_fm_text1={@fm_renaming=Renaming}</action>
+					<action function="set">tw_fm_text1={@fm_renaming}</action>
 					<action function="set">tw_filemanager_command=mv</action>
 					<action function="set">tw_back=filemanageroptions</action>
 					<action function="page">filemanagerrenamefile</action>
@@ -805,7 +804,7 @@
 				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_rename=tw_selection1</action>
-					<action function="set">tw_fm_text1={@fm_renaming=Renaming}</action>
+					<action function="set">tw_fm_text1={@fm_renaming}</action>
 					<action function="set">tw_filemanager_command=cd "%tw_file_location1%" &amp;&amp; cd .. &amp;&amp; mv</action>
 					<action function="set">tw_back=filemanageroptions</action>
 					<action function="page">filemanagerrenamefolder</action>
@@ -819,7 +818,7 @@
 
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
-				<text>{@fm_rename_btn=Rename}</text>
+				<text>{@fm_rename_btn}</text>
 			</text>
 
 			<button style="bs_btn">
@@ -841,14 +840,14 @@
 			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%bs_row6_text_y%"/>
-				<text>{@fm_chmod_btn=chmod}</text>
+				<text>{@fm_chmod_btn}</text>
 			</text>
 
 			<button style="bs_btn">
 				<placement x="0" y="%bs_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_command=rm -rf</action>
-					<action function="set">tw_fm_text1={@fm_deleting=Deleting}</action>
+					<action function="set">tw_fm_text1={@fm_deleting}</action>
 					<action function="set">tw_fm_text2=</action>
 					<action function="set">tw_fm_text3=</action>
 					<action function="set">tw_include_text3=0</action>
@@ -864,7 +863,7 @@
 
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%bs_row7_text_y%"/>
-				<text>{@fm_delete_btn=Delete}</text>
+				<text>{@fm_delete_btn}</text>
 			</text>
 
 			
@@ -888,12 +887,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_open=Open as...}</text>
+				<text>{@fm_open}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -916,7 +915,7 @@
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
 				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
-				<text>{@fm_open_text=Text file}</text>
+				<text>{@fm_open_text}</text>
 			</text>
 			
 			
@@ -939,7 +938,7 @@
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
 				<placement x="%col1_x_indent%" y="%bs_row3_text_y%"/>
-				<text>{@fm_open_unpackzip=Unpack archive}</text>
+				<text>{@fm_open_unpackzip}</text>
 			</text>
 				
 			
@@ -960,7 +959,7 @@
 
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
-				<text>{@fm_open_makezip=Compress}</text>
+				<text>{@fm_open_makezip}</text>
 			</text>
 			
 			<button style="bs_btn">
@@ -983,7 +982,7 @@
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
 				<placement x="%col1_x_indent%" y="%bs_row4_text_y%"/>
-				<text>{@fm_open_image=Flashable image}</text>
+				<text>{@fm_open_image}</text>
 			</text>
 			
 			<image>
@@ -995,7 +994,7 @@
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
 				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
-				<text>{@fm_sums=Checksum}</text>
+				<text>{@fm_sums}</text>
 			</text>
 			
 			<button style="bs_btn">
@@ -1015,7 +1014,7 @@
 			<text style="bs_text">
 				<condition var1="tw_fm_isfolder" var2="0"/>
 				<placement x="%col1_x_indent%" y="%bs_row6_text_y%"/>
-				<text>{@info=Information}</text>
+				<text>{@info}</text>
 			</text>
 			
 			
@@ -1040,12 +1039,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@info=Information}</text>
+				<text>{@info}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -1063,7 +1062,7 @@
 				</conditions>
 				<actions>
 					<action function="set">tw_back=filemanagerlist</action>
-					<action function="set">tw_complete_text1={@fm_complete=File operation completed}</action>
+					<action function="set">tw_complete_text1={@fm_complete}</action>
 					<action function="page">filemanagercomplete</action>
 				</actions>
 			</action>
@@ -1074,7 +1073,7 @@
 					<condition var1="tw_operation_status" op="!=" var2="0"/>
 				</conditions>
 				<actions>
-					<action function="set">tw_complete_text1={@fm_complete=File operation completed}</action>
+					<action function="set">tw_complete_text1={@fm_complete}</action>
 					<action function="page">filemanagercomplete</action>
 				</actions>
 			</action>
@@ -1084,15 +1083,15 @@
 				<actions>
 					<action function="mount">data</action>
 					<action function="cmd">
-					printf "{@name=Name}: " > /data/local/stat.txt;
+					printf "{@name}: " > /data/local/stat.txt;
 					echo "%tw_filename1%" >> /data/local/stat.txt;
-					printf "{@name=Name} ({@real=real}): " >> /data/local/stat.txt;
+					printf "{@name=Name} ({@real}): " >> /data/local/stat.txt;
 					realpath "%tw_filename1%" >> /data/local/stat.txt;
-					printf "{@part_size=Size}: " >> /data/local/stat.txt;
+					printf "{@part_size}: " >> /data/local/stat.txt;
 					du -h "%tw_filename1%" | sed 's*%tw_filename1%**g' >> /data/local/stat.txt;
-					stat "%tw_filename1%" | grep Access | sed 's/Access/{@access=Access}/g' 2>/dev/null 1>> /data/local/stat.txt;
-					stat "%tw_filename1%" | grep Modify | sed 's/Modify/{@time_m=Modify}/g' 2>/dev/null 1>> /data/local/stat.txt;
-					stat "%tw_filename1%" | grep Change | sed 's/Change/{@time_c=Change}/g' 2>/dev/null 1>> /data/local/stat.txt;
+					stat "%tw_filename1%" | grep Access | sed 's/Access/{@access}/g' 2>/dev/null 1>> /data/local/stat.txt;
+					stat "%tw_filename1%" | grep Modify | sed 's/Modify/{@time_m}/g' 2>/dev/null 1>> /data/local/stat.txt;
+					stat "%tw_filename1%" | grep Change | sed 's/Change/{@time_c}/g' 2>/dev/null 1>> /data/local/stat.txt;
 					</action>
 					<action function="terminalcommand">cat /data/local/stat.txt;</action>
 				</actions>
@@ -1172,7 +1171,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<button>
@@ -1197,7 +1196,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_sel_dest=Destination Folder}</text>
+				<text>{@fm_sel_dest}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -1209,7 +1208,7 @@
 				<placement x="%btn_float_x%" y="%btn_float_y%"/>
 				<image resource="btn_float_accept"/>
 				<actions>
-					<action function="set">tw_fm_text2={@fordowns_to=to}</action>
+					<action function="set">tw_fm_text2={@fordowns_to}</action>
 					<action function="set">tw_fm_text3=%tw_file_location2%</action>
 					<action function="set">tw_include_text3=1</action>
 					<action function="set">tw_back=filemanageroptions</action>
@@ -1237,12 +1236,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_rename_hdr=Rename}</text>
+				<text>{@fm_rename_hdr}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -1252,7 +1251,7 @@
 
 			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@name=Name}</text>
+				<text>{@name}</text>
 			</text>
 
 			<input>
@@ -1261,7 +1260,7 @@
 				<data name="tw_filemanager_rename"/>
 				<restrict minlen="1" maxlen="64"/>
 				<actions>
-					<action function="set">tw_fm_text2={@fordowns_to=to}</action>
+					<action function="set">tw_fm_text2={@fordowns_to}</action>
 					<action function="set">tw_fm_text3="%tw_file_location1%/%tw_filemanager_rename%"</action>
 					<action function="set">tw_include_text3=1</action>
 					<action function="set">tw_back=filemanageroptions</action>
@@ -1293,12 +1292,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_rename_hdr=Rename}</text>
+				<text>{@fm_rename_hdr}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -1308,7 +1307,7 @@
 
 			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@name=Name}</text>
+				<text>{@name}</text>
 			</text>
 
 			<input>
@@ -1317,7 +1316,7 @@
 				<data name="tw_filemanager_rename"/>
 				<restrict minlen="1" maxlen="64"/>
 				<actions>
-					<action function="set">tw_fm_text2={@fordowns_to=to}</action>
+					<action function="set">tw_fm_text2={@fordowns_to}</action>
 					<action function="set">tw_fm_text3=%tw_filemanager_rename%</action>
 					<action function="set">tw_include_text3=1</action>
 					<action function="set">tw_back=filemanageroptions</action>
@@ -1349,12 +1348,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_set_perms_hdr=Set Permissions}</text>
+				<text>{@fm_set_perms_hdr}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -1364,14 +1363,14 @@
 
 			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@fm_perms=Permissions}</text>
+				<text>{@fm_perms}</text>
 			</text>
 
 			<button style="bs_btn">
 				<placement x="0" y="%actbtn_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_command=chmod 755</action>
-					<action function="set">tw_fm_text1={@fm_chmod755ing=chmod 755}</action>
+					<action function="set">tw_fm_text1={@fm_chmod755ing}</action>
 					<action function="set">tw_fm_text2=</action>
 					<action function="set">tw_fm_text3=</action>
 					<action function="set">tw_include_text3=0</action>
@@ -1384,7 +1383,7 @@
 				<placement x="0" y="%actbtn_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<actions>
 					<action function="set">tw_filemanager_command=chmod 644</action>
-					<action function="set">tw_fm_text1={@fm_chmod644ing=chmod 644}</action>
+					<action function="set">tw_fm_text1={@fm_chmod644ing}</action>
 					<action function="set">tw_fm_text2=</action>
 					<action function="set">tw_fm_text3=</action>
 					<action function="set">tw_include_text3=0</action>
@@ -1395,7 +1394,7 @@
 			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%actbtn_row2_text_y%"/>
-				<text>{@fm_chmod755_btn=chmod 755}</text>
+				<text>{@fm_chmod755_btn}</text>
 			</text>
 
 			<image>
@@ -1405,7 +1404,7 @@
 
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%actbtn_row1_text_y%"/>
-				<text>{@fm_chmod644_btn=chmod 644}</text>
+				<text>{@fm_chmod644_btn}</text>
 			</text>
 
 			<image>
@@ -1448,7 +1447,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
@@ -1473,7 +1472,7 @@
 
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_to_confirm=Swipe to Confirm}</text>
+				<text>{@swipe_to_confirm}</text>
 			</text>
 			
 			<slider style="slider_action">
@@ -1499,19 +1498,19 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_extract_action" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_open_makezip=Unpack archive}</text>
+				<text>{@fm_open_makezip}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_extract_action" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_open_unpackzip=Compress}</text>
+				<text>{@fm_open_unpackzip}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -1521,7 +1520,7 @@
 
 				<text style="caption">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@arc_type=Archive type}</text>
+				<text>{@arc_type}</text>
 			</text>
 			
 			<listbox>
@@ -1543,7 +1542,7 @@
 				<placement x="%col1_x%" y="%row5_3a_y%"/>
 				<condition var1="tw_extract_action" var2="1"/>
 				<condition var1="tw_artype" op="!=" var2="1"/>
-				<text>{@arc_lvl_title=Compression}</text>
+				<text>{@arc_lvl_title}</text>
 			</text>
 			<slidervalue>
 				<placement x="%slider_x%" y="%row6_1a_y%" w="%slidervalue_w%"/>
@@ -1562,12 +1561,12 @@
 				<condition var1="tw_extract_action" var2="1"/>
 				<condition var1="tw_artype" op="!=" var2="1"/>
 				<placement x="%col1_x%" y="%row6_1a_y%"/>
-				<text>{@arc_lvl=Compression level:} %tw_pack_lvl%</text>
+				<text>{@arc_lvl} %tw_pack_lvl%</text>
 			</text>
 			
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_to_confirm=Swipe to Confirm}</text>
+				<text>{@swipe_to_confirm}</text>
 			</text>
 			
 			<slider style="slider_action">
@@ -1603,7 +1602,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 
@@ -1617,7 +1616,7 @@
 				</conditions>
 				<actions>
 					<action function="set">tw_back=filemanagerlist</action>
-					<action function="set">tw_complete_text1={@fm_complete=File operation completed}</action>
+					<action function="set">tw_complete_text1={@fm_complete}</action>
 					<action function="page">filemanagercomplete</action>
 				</actions>
 			</action>
@@ -1628,7 +1627,7 @@
 					<condition var1="tw_operation_status" op="!=" var2="0"/>
 				</conditions>
 				<actions>
-					<action function="set">tw_complete_text1={@fm_complete=File operation completed}</action>
+					<action function="set">tw_complete_text1={@fm_complete}</action>
 					<action function="page">filemanagercomplete</action>
 				</actions>
 			</action>
@@ -1754,13 +1753,13 @@
 			<text style="text_ab_title">
 				<condition var1="tw_extract_action" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_open_makezip=Unpack archive}</text>
+				<text>{@fm_open_makezip}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_extract_action" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_open_unpackzip=Compress}</text>
+				<text>{@fm_open_unpackzip}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -1780,7 +1779,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
@@ -1803,7 +1802,7 @@
 				</conditions>
 				<actions>
 					<action function="set">tw_back=filemanagerlist</action>
-					<action function="set">tw_complete_text1={@fm_complete=File operation completed}</action>
+					<action function="set">tw_complete_text1={@fm_complete}</action>
 					<action function="page">filemanagercomplete</action>
 				</actions>
 			</action>
@@ -1814,7 +1813,7 @@
 					<condition var1="tw_operation_status" op="!=" var2="0"/>
 				</conditions>
 				<actions>
-					<action function="set">tw_complete_text1={@fm_complete=File operation completed}</action>
+					<action function="set">tw_complete_text1={@fm_complete}</action>
 					<action function="page">filemanagercomplete</action>
 				</actions>
 			</action>
@@ -1843,19 +1842,19 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_operation_status" op="!=" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@failed=Failed}</text>
+				<text>{@failed}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_operation_status" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@successful=Successful}</text>
+				<text>{@successful}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -1867,7 +1866,7 @@
 
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
-				<text>{@back_btn=BACK}</text>
+				<text>{@back_btn}</text>
 				<actions>
 					<action function="set">tw_clear_destination=%tw_back%</action>
 					<action function="page">clear_vars</action>
@@ -1877,7 +1876,7 @@
 			<button style="btn_raised_hl">
 				<condition var1="tw_reboot_system" var2="1"/>
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-				<text>{@reboot_system_btn=REBOOT SYSTEM}</text>
+				<text>{@reboot_system_btn}</text>
 				<actions>
 					<action function="set">tw_back=main</action>
 					<action function="set">tw_action_param=system</action>
@@ -1923,12 +1922,12 @@
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr=File Manager}</text>
+				<text>{@fm_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_open_text=Text file}</text>
+				<text>{@fm_open_text}</text>
 			</text>
 
 			<text style="text_ab_subtitle">

@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <recovery>
 	<pages>
-		
 		<page name="dialog_mkdir">
 			<template name="dialog_body_key"/>
-			
+
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
 				<image resource="dialog_bg"/>
@@ -12,12 +11,12 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
-				<text>{@fm_mkdir=Create folder}</text>
+				<text>{@fm_mkdir}</text>
 			</text>
 
 			<text style="caption_hl">
 				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
-				<text>{@fm_mkdir_folder=Folder name}</text>
+				<text>{@fm_mkdir_folder}</text>
 			</text>
 
 			<input>
@@ -39,10 +38,10 @@
 
 			<button style="btn_dlg">
 				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
+				<text>{@cancel_btn}</text>
 				<action function="key">back</action>
 			</button>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -53,10 +52,10 @@
 				<action function="overlay"/>
 			</action>
 		</page>
-		
+
 		<page name="dialog_path">
 			<template name="dialog_body_key"/>
-			
+
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
 				<image resource="dialog_bg"/>
@@ -64,12 +63,12 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
-				<text>{@fm_path=Enter path}</text>
+				<text>{@fm_path}</text>
 			</text>
 
 			<text style="caption_hl">
 				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
-				<text>{@fm_path2=Path}</text>
+				<text>{@fm_path2}</text>
 			</text>
 
 			<input>
@@ -87,21 +86,21 @@
 			<fill color="%accent%">
 				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
 			</fill>
-			
+
 			<button style="btn_dlg">
 				<placement x="%db_left_x%" y="%db_encrypt_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
+				<text>{@cancel_btn}</text>
 				<action function="key">back</action>
 			</button>
-			
+
 			<button style="btn_dlg_hl">
 				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
-				<text>{@goto_storage=STORAGE}</text>
+				<text>{@goto_storage}</text>
 				<action function="set">storage_tofiles=1</action>
 				<action function="overlay"/>
 				<action function="overlay">dialog_storage</action>
 			</button>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -112,11 +111,10 @@
 				<action function="overlay"/>
 			</action>
 		</page>
-		
-		
+
 		<page name="menu_sort">
 			<template name="dialog_body"/>
-			
+
 			<button>
 				<placement x="%screen_w%" y="%ab_menu_y%" placement="1"/>
 				<image resource="menu_sort"/>
@@ -124,15 +122,15 @@
 
 			<text style="menu_text">
 				<placement x="%ab_menu_sort_text_x%" y="%ab_menu_inst_1_text_y%"/>
-				<text>{@sort_by_name_asc=Name}</text>
+				<text>{@sort_by_name_asc}</text>
 			</text>
-			
+
 			<image>
 				<condition var1="tw_gui_sort_order" op="=" var2="1"/>
 				<placement x="%ab_menu_x%" y="%ab_menu_inst_1_y%"/>
 				<image resource="arrow"/>
 			</image>
-			
+
 			<image>
 				<condition var1="tw_gui_sort_order" op="=" var2="-1"/>
 				<placement x="%ab_menu_x%" y="%ab_menu_inst_1_y%"/>
@@ -144,24 +142,24 @@
 				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_1_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">tw_gui_sort_order=-1</action>
 			</button>
-			
+
 			<button style="menu_btn_sort">
 				<condition var1="tw_gui_sort_order" op="!=" var2="1"/>
 				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_1_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">tw_gui_sort_order=1</action>
 			</button>
-			
+
 			<text style="menu_text">
 				<placement x="%ab_menu_sort_text_x%" y="%ab_menu_inst_2_text_y%"/>
-				<text>{@sort_by_date_asc=Date}</text>
+				<text>{@sort_by_date_asc}</text>
 			</text>
-			
+
 			<image>
 				<condition var1="tw_gui_sort_order" op="=" var2="2"/>
 				<placement x="%ab_menu_x%" y="%ab_menu_inst_2_y%"/>
 				<image resource="arrow"/>
 			</image>
-			
+
 			<image>
 				<condition var1="tw_gui_sort_order" op="=" var2="-2"/>
 				<placement x="%ab_menu_x%" y="%ab_menu_inst_2_y%"/>
@@ -173,7 +171,7 @@
 				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_2_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">tw_gui_sort_order=-2</action>
 			</button>
-			
+
 			<button style="menu_btn_sort">
 				<condition var1="tw_gui_sort_order" op="!=" var2="2"/>
 				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_2_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
@@ -182,7 +180,7 @@
 
 			<text style="menu_text">
 				<placement x="%ab_menu_sort_text_x%" y="%ab_menu_inst_3_text_y%"/>
-				<text>{@sort_by_size_asc=Size}</text>
+				<text>{@sort_by_size_asc}</text>
 			</text>
 
 			<image>
@@ -190,13 +188,13 @@
 				<placement x="%ab_menu_x%" y="%ab_menu_inst_3_y%"/>
 				<image resource="arrow"/>
 			</image>
-			
+
 			<image>
 				<condition var1="tw_gui_sort_order" op="=" var2="-3"/>
 				<placement x="%ab_menu_x%" y="%ab_menu_inst_3_y%"/>
 				<image resource="arrow_d"/>
 			</image>
-			
+
 			<button style="menu_btn_sort">
 				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_3_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">tw_gui_sort_order=-3</action>
@@ -207,7 +205,7 @@
 				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_3_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">tw_gui_sort_order=3</action>
 			</button>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -221,19 +219,19 @@
 
 		<page name="dialog_storage">
 			<template name="dialog_body"/>
-			
+
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
 				<image resource="dialog_bg"/>
 			</button>
-			
+
 			<partitionlist style="partitionlist_dialog">
 				<condition var1="storage_tofiles" op="!=" var2="1"/>
 				<placement x="%storage_indent_x%" y="%storage_indent_y%" w="%dialog_w%" h="%storage_height%"/>
 				<data name="tw_storage_path"/>
 				<listtype name="storage"/>
 			</partitionlist>
-			
+
 			<partitionlist style="partitionlist_dialog">
 				<condition var1="storage_tofiles" var2="1"/>
 				<placement x="%storage_indent_x%" y="%storage_indent_y%" w="%dialog_w%" h="%storage_height%"/>
@@ -243,21 +241,21 @@
 
 			<button style="btn_dlg_hl">
 				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<action function="key">back</action>
 			</button>
-			
+
 			<button style="btn_dlg">
 				<placement x="%db_left_x%" y="%db_y%"/>
-				<text>{@update_btn=UPDATE}</text>
+				<text>{@update_btn}</text>
 				<action function="refreshsizes"/>
 			</button>
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>{@select_storage_hdr=Select Storage}</text>
+				<text>{@select_storage_hdr}</text>
 			</text>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="set">storage_tofiles=0</action>
@@ -271,10 +269,9 @@
 			</action>
 		</page>
 
-
 		<page name="dialog_encryption1">
 			<template name="dialog_body_key"/>
-			
+
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
 				<image resource="dialog_bg"/>
@@ -282,12 +279,12 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
-				<text>{@encryption_hdr=Enable Encryption}</text>
+				<text>{@encryption_hdr}</text>
 			</text>
 
 			<text style="caption_hl">
 				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
-				<text>{@set_password=Set Password}</text>
+				<text>{@set_password}</text>
 			</text>
 
 			<input>
@@ -314,15 +311,15 @@
 			<text style="text_input_fail">
 				<condition var1="tw_password_not_match" var2="1"/>
 				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%"/>
-				<text>{@pass_not_match=Passwords do not match!}</text>
+				<text>{@pass_not_match}</text>
 			</text>
 
 			<button style="btn_dlg">
 				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
+				<text>{@cancel_btn}</text>
 				<action function="key">back</action>
 			</button>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="key">back</action>
@@ -342,7 +339,7 @@
 
 		<page name="dialog_encryption2">
 			<template name="dialog_body_key"/>
-			
+
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
 				<image resource="dialog_bg"/>
@@ -350,12 +347,12 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
-				<text>{@encryption_hdr=Enable Encryption}</text>
+				<text>{@encryption_hdr}</text>
 			</text>
 
 			<text style="caption_hl">
 				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
-				<text>{@verifying_pas=Verify Password}</text>
+				<text>{@verifying_pas}</text>
 			</text>
 
 			<input>
@@ -375,10 +372,10 @@
 
 			<button style="btn_dlg">
 				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
+				<text>{@cancel_btn}</text>
 				<action function="key">back</action>
 			</button>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="key">back</action>
@@ -398,7 +395,7 @@
 
 		<page name="dialog_folder">
 			<template name="dialog_body"/>
-			
+
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
 				<image resource="dialog_bg"/>
@@ -406,29 +403,29 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>{@set_bookmark_hdr=Set Bookmark}</text>
+				<text>{@set_bookmark_hdr}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%bg_storage_hdr_x%" y="%db_text1_y%"/>
-				<text>{@dialog_folder_note_1=Do you want to set the current folder}</text>
+				<text>{@dialog_folder_note_1}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%bg_storage_hdr_x%" y="%db_text2_y%"/>
-				<text>{@dialog_folder_note_2=as the default folder for this list?}</text>
+				<text>{@dialog_folder_note_2}</text>
 			</text>
 
 			<listbox style="settingslist_dialog">
 				<placement x="%storage_indent_x%" y="%db_checkbox_y%" w="%dialog_w%" h="%lb_l1%"/>
-				<listitem name="{@hide_folder=Don't ask me again}">
+				<listitem name="{@hide_folder}">
 					<data variable="dialog_hide_folder"/>
 				</listitem>
 			</listbox>
-			
+
 			<button style="btn_dlg">
 				<placement x="%db_left_x%" y="%db_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
+				<text>{@cancel_btn}</text>
 				<actions>
 					<action function="set">dialog_hide_folder=0</action>
 					<action function="set">dialog_context=none</action>
@@ -439,7 +436,7 @@
 			<button style="btn_dlg_hl">
 				<condition var1="dialog_context" var2="loc_files"/>
 				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<actions>
 					<action function="set">location_filemanager=%tw_file_location1%</action>
 					<action function="set">tw_file_location1=%location_filemanager%</action>
@@ -447,11 +444,11 @@
 					<action function="overlay"/>
 				</actions>
 			</button>
-			
+
 			<button style="btn_dlg_hl">
 				<condition var1="dialog_context" var2="loc_install"/>
 				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<actions>
 					<action function="set">location_install=%tw_zip_location%</action>
 					<action function="set">tw_zip_location=%location_install%</action>
@@ -463,7 +460,7 @@
 			<button style="btn_dlg_hl">
 				<condition var1="dialog_context" var2="loc_addfile"/>
 				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<actions>
 					<action function="set">location_addfile=%tw_zip_location%</action>
 					<action function="set">tw_zip_location=%location_addfile%</action>
@@ -475,7 +472,7 @@
 			<button style="btn_dlg_hl">
 				<condition var1="dialog_context" var2="loc_theme"/>
 				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<actions>
 					<action function="set">location_themes=%tw_zip_location%</action>
 					<action function="set">tw_zip_location=%location_themes%</action>
@@ -487,7 +484,7 @@
 			<button style="btn_dlg_hl">
 				<condition var1="dialog_context" var2="loc_image"/>
 				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<actions>
 					<action function="set">location_install_image=%tw_zip_location%</action>
 					<action function="set">tw_zip_location=%location_install_image%</action>
@@ -499,7 +496,7 @@
 			<button style="btn_dlg_hl">
 				<condition var1="dialog_context" var2="loc_splash_image"/>
 				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<actions>
 					<action function="set">location_install_splash_image=%tw_zip_location%</action>
 					<action function="set">tw_zip_location=%location_install_splash_image%</action>
@@ -511,7 +508,7 @@
 			<button style="btn_dlg_hl">
 				<condition var1="dialog_context" var2="loc_splash_png"/>
 				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<actions>
 					<action function="set">location_install_splash_png=%tw_zip_location%</action>
 					<action function="set">tw_zip_location=%location_install_splash_png%</action>
@@ -519,49 +516,7 @@
 					<action function="overlay"/>
 				</actions>
 			</button>
-			
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
 
-			<action>
-				<touch key="back"/>
-				<action function="overlay"/>
-			</action>
-		</page>
-		<page name="beta">
-			<template name="dialog_body"/>
-			
-			<button>
-				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
-				<image resource="dialog_bg"/>
-			</button>
-
-			<text style="text_dlg_title">
-				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>Это - бета!</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%bg_storage_hdr_x%" y="%db_text1_y%"/>
-				<text>Workshop сейчас лучше не</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%bg_storage_hdr_x%" y="%db_text2_y%"/>
-				<text>использовать, тема еще не готова!</text>
-			</text>
-
-			<button style="btn_dlg_hl">
-				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
-				<actions>
-					<action function="set">beta_wh=1</action>
-					<action function="overlay"/>
-				</actions>
-			</button>
-			
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -575,7 +530,7 @@
 
 		<page name="dialog_offset">
 			<template name="dialog_body_num"/>
-			
+
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
 				<image resource="dialog_bg"/>
@@ -583,14 +538,14 @@
 
 			<text style="caption_hl">
 				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
-				<text>{@dialog_offset_note=Select your offset value}</text>
+				<text>{@dialog_offset_note}</text>
 			</text>
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
-				<text>{@tz_offset_hdr=Time Offset}</text>
+				<text>{@tz_offset_hdr}</text>
 			</text>
-			
+
 			<input>
 				<placement x="%bg_storage_hdr_x%" y="%input_encr_y%" w="%input_encr_width%" h="%input_height%"/>
 				<text>%zone_temp%</text>
@@ -603,7 +558,7 @@
 					<action function="page">check_zone</action>
 				</actions>
 			</input>
-			
+
 			<fill color="%accent%">
 				<condition var1="zone_error" op="!=" var2="1"/>
 				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
@@ -617,16 +572,16 @@
 			<text style="text_input_fail">
 				<condition var1="zone_error" var2="1"/>
 				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%"/>
-				<text>{@offset_wrong=Wrong offset!}</text>
+				<text>{@offset_wrong}</text>
 			</text>
-			
+
 			<button style="btn_dlg">
 				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
+				<text>{@cancel_btn}</text>
 				<action function="set">zone_error=0</action>
 				<action function="overlay"/>
 			</button>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -645,6 +600,7 @@
 				<action function="page">ext_time</action>
 				<action function="overlay">dialog_offset</action>
 			</action>
+			
 			<action>
 				<condition var1="zone_temp" op="&lt;" var2="60"/>
 				<action function="set">zone_error=0</action>
@@ -654,10 +610,10 @@
 				<action function="overlay"/>
 			</action>
 		</page>
-		
+
 		<page name="dialog_reset">
 			<template name="dialog_body"/>
-			
+
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
 				<image resource="dialog_bg"/>
@@ -665,64 +621,64 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>{@dialog_reset_theme_hdr=Default Settings}</text>
+				<text>{@dialog_reset_theme_hdr}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%bg_storage_hdr_x%" y="%db_text1_y%"/>
-				<text>{@dialog_reset_note_1=Do you want to restore the}</text>
+				<text>{@dialog_reset_note_1}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%bg_storage_hdr_x%" y="%db_text2_y%"/>
-				<text>{@dialog_reset_note_2=default settings for TWRP recovery}</text>
+				<text>{@dialog_reset_note_2}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%bg_storage_hdr_x%" y="%db_text3_y%"/>
-				<text>{@dialog_reset_note_3=and theme? Reboot required.}</text>
+				<text>{@dialog_reset_note_3}</text>
 			</text>
 
 			<button style="btn_dlg">
 				<placement x="%db_left_x%" y="%db_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
+				<text>{@cancel_btn}</text>
 				<action function="overlay"/>
 			</button>
 
 			<button style="btn_dlg_hl">
 				<placement x="%db_right_x%" y="%db_y%"/>
 				<condition var1="tw_reboot_recovery" var2="1"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<actions>
 					<action function="restoredefaultsettings"/>
 					<action function="overlay"/>
 					<action function="reboot">recovery</action>
 				</actions>
 			</button>
-			
+
 			<button style="btn_dlg_hl">
 				<placement x="%db_right_x%" y="%db_y%"/>
 				<condition var1="tw_reboot_system" var2="1"/>
 				<condition var1="tw_reboot_recovery" op="!=" var2="1"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<actions>
 					<action function="restoredefaultsettings"/>
 					<action function="overlay"/>
 					<action function="reboot">system</action>
 				</actions>
 			</button>
-			
+
 			<button style="btn_dlg_hl">
 				<placement x="%db_right_x%" y="%db_y%"/>
 				<condition var1="tw_reboot_system" op="!=" var2="1"/>
 				<condition var1="tw_reboot_recovery" op="!=" var2="1"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<actions>
 					<action function="restoredefaultsettings"/>
 					<action function="overlay"/>
 				</actions>
 			</button>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -736,7 +692,7 @@
 
 		<page name="dialog_magisk_not_found">
 			<template name="dialog_body"/>
-			
+
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
 				<image resource="dialog_bg"/>
@@ -764,20 +720,20 @@
 
 			<button style="btn_dlg">
 				<placement x="%db_left_x%" y="%db_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
+				<text>{@cancel_btn}</text>
 				<action function="overlay"/>
 			</button>
 
 			<button style="btn_dlg_hl">
 				<placement x="%db_right_x%" y="%db_y%"/>
-				<text>{@ok_btn=OK}</text>
+				<text>{@ok_btn}</text>
 				<actions>
 					<action function="set">prebuild_action=magisk_install</action>
-					<action function="overlay"></action>
+					<action function="overlay"/>
 					<action function="page">check_prebuild_stuff</action>
 				</actions>
 			</button>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -788,6 +744,5 @@
 				<action function="overlay"/>
 			</action>
 		</page>
-		
 	</pages>
 </recovery>

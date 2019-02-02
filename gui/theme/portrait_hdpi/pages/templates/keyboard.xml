@@ -7,6 +7,7 @@
 				<placement x="0" y="%keyboard_bg_terminal_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
+			
 			<keyboard>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="0" y="%keyboard_terminal_y%" w="%screen_w%" h="96"/>
@@ -30,24 +31,28 @@
 				</layout1>
 			</keyboard>
 		</template>
+		
 		<template name="keyboardtemplate">
 			<image>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
+			
 			<image>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<condition var1="key_buttons" var2="1"/>
 				<placement x="0" y="%keyboard_y%"/>
 				<image resource="keyback"/>
 			</image>
+			
 			<image>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<condition var1="key_buttons" var2="1"/>
 				<placement x="926" y="%key_enter_new%"/>
 				<image resource="enter_new"/>
 			</image>
+			
 			<keyboard>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<condition var1="key_buttons" var2="1"/>
@@ -97,6 +102,7 @@
 					<keylabel key="0:layout3" text="?123"/>
 				</layout4>
 			</keyboard>
+			
 			<keyboard>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<condition var1="key_buttons" var2="0"/>
@@ -148,30 +154,35 @@
 					<keylabel key="0:layout3" text="?123"/>
 				</layout4>
 			</keyboard>
+			
 			<fill color="%background%">
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_bkg" var2="0"/>
 				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
 			</fill>
 		</template>
+		
 		<template name="keyboardnum">
 			<image>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
 			</image>
+			
 			<image>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<condition var1="key_buttons" var2="1"/>
 				<placement x="0" y="%keyboard_y%"/>
 				<image resource="keyback_num"/>
 			</image>
+			
 			<image>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<condition var1="key_buttons" var2="1"/>
 				<placement x="655" y="%key_enter_new%"/>
 				<image resource="enter_num_new"/>
 			</image>
+			
 			<keyboard>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<condition var1="key_buttons" var2="1"/>
@@ -188,6 +199,7 @@
 					<row4 key01="220:" key02="220:c:8" key03="0" key04="220:action" key05="220:"/>
 				</layout1>
 			</keyboard>
+			
 			<keyboard>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<condition var1="key_buttons" var2="0"/>
@@ -206,6 +218,7 @@
 					<row4 key01="220:" key02="220:c:8" key03="0" key04="220:action" key05="220:"/>
 				</layout1>
 			</keyboard>
+			
 			<fill color="%background%">
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_bkg" var2="0"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <recovery>
 	<pages>
-        <page name="fox_ota">
-            <template name="body"/>
+		<page name="fox_ota">
+			<template name="body"/>
 
 			<template name="ab_without_shadow"/>
 
@@ -13,7 +13,7 @@
 				<placement x="0" y="%row2_2_y%"/>
 			</image>
 
-            <text style="text_ab_title">
+			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>MIUI OTA</text>
 			</text>
@@ -61,12 +61,14 @@
 				<placement x="%col1_x%" y="%row2_3_y%"/>
 				<image resource="icon_warning"/>
 			</image>
+			
 			<image>
 				<condition var1="ota_back_file" var2="1"/>
 				<condition var1="fox_support_miui_ota" var2="1"/>
 				<placement x="%col1_x%" y="%row2_3_y%"/>
 				<image resource="icon_info"/>
 			</image>
+			
 			<image>
 				<condition var1="fox_support_miui_ota" var2="0"/>
 				<placement x="%col1_x%" y="%row2_3_y%"/>
@@ -92,15 +94,15 @@
 				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
 				<text>Enabled custom ROM mode</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row3_2_y%"/>
 				<text>{@fox_ota_settings}</text>
 			</text>
 
-            <listbox style="settingslist">
+			<listbox style="settingslist">
 				<placement x="0" y="%row3_3_y%" w="%screen_w%" h="%row4_1_y%"/>
-				<listitem name="{@fox_support_miui_ota_chk=}">
+				<listitem name="{@fox_support_miui_ota_chk}">
 					<data variable="fox_support_miui_ota"/>
 				</listitem>	
 				<listitem name="{@fox_include_system_survival_chk}">
@@ -150,7 +152,7 @@
 				</actions>
 			</button>
 
-            <action>
+			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
 			</action>
@@ -159,7 +161,6 @@
 				<touch key="back"/>
 				<action function="page">settings</action>
 			</action>
-
-        </page>
-    </pages>
+		</page>
+	</pages>
 </recovery>

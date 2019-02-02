@@ -11,7 +11,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@settings_ui=Customization}</text>
+				<text>{@settings_ui}</text>
 			</text>
 
 			<!-- Navbar -->
@@ -19,10 +19,12 @@
 				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_custom_nav</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row1_y%"/>
 				<image resource="nav"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
 				<text>{@navbar_title}</text>
@@ -34,10 +36,12 @@
 				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_custom_status</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row2_y%"/>
 				<image resource="statusbar"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
 				<text>{@settings_ui_status}</text>
@@ -49,10 +53,12 @@
 				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_custom_lock</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row3_y%"/>
 				<image resource="lockscreen"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
 				<text>{@lockscreen_title}</text>
@@ -64,10 +70,12 @@
 				<placement x="0" y="%set_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_custom_key</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row4_y%"/>
 				<image resource="keyboard"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
 				<text>{@keyboard_title}</text>
@@ -79,10 +87,12 @@
 				<placement x="0" y="%set_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_custom_theme</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row5_y%"/>
 				<image resource="invert"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
 				<text>Theme</text>
@@ -94,16 +104,20 @@
 				<placement x="0" y="%set_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_custom_fonts</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_x%" y="%set_row6_y%"/>
 				<image resource="ws_font"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
 				<text>{@theme_fonts}</text>
 			</text>
 			<!-- -->
+			
 			<template name="snackbar_update"/>
+			
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -114,7 +128,7 @@
 				<action function="page">settings</action>
 			</action>
 		</page>
-		
+
 		<!-- Statusbar -->
 		<page name="ext_custom_status">
 			<template name="body"/>
@@ -127,7 +141,7 @@
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@settings_ui_status}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
 				<text>{@status_clock_pos}</text>
@@ -140,38 +154,37 @@
 				<listitem name="{@status_clock_center}">1</listitem>
 				<listitem name="{@status_clock_right}">0</listitem>
 			</listbox>
-			
+
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_1a_y%"/>
-				<text>{@settings_ui_status=Status bar}</text>
+				<placement x="%col1_x%" y="%row4_3a_y%"/>
+				<text>{@settings_ui_status}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l4%"/>
+				<placement x="0" y="%row5_1a_y%" w="%screen_w%" h="%lb_l4%"/>
 				<listitem name="{@dark_title}">
 					<data variable="darker_ui"/>
 				</listitem>
 				<listitem name="{@separate_status}">
 					<data variable="separate_status"/>
 				</listitem>
-				<listitem name="{@show_cpu_temp_bar=Show CPU temperature}">
+				<listitem name="{@show_cpu_temp_bar}">
 					<data variable="show_cpu_temp"/>
 					<condition var1="center_clock" op="!=" var2="2"/>
 				</listitem>
-				<!--listitem name="{@settings_ui_battery=Show battery icon}">
+				<listitem name="{@settings_ui_battery}">
 					<data variable="enable_battery"/>
-				</listitem-->
+				</listitem>
 			</listbox>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row5_2_y%"/>
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
 				<text>Battery icon</text>
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row5_3_y%" w="%screen_w%" h="%lb_l3%"/>
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="style_battery"/>
-				<listitem name="Disable">0</listitem>
 				<listitem name="Pie">2</listitem>
 				<listitem name="Circle">1</listitem>
 			</listbox>
@@ -186,19 +199,21 @@
 				<action function="page">ext_custom</action>
 			</action>
 		</page>
-		
+
 		<!-- Keyboard -->
 		<page name="ext_custom_key">
 			<template name="body_key"/>
+			
 			<fill color="%accent%">
 				<condition var1="key_buttons" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 			</fill>
+			
 			<fill color="%unactive_title%">
 				<condition var1="key_buttons" op="!=" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 			</fill>
-			
+
 			<image>
 				<condition var1="key_buttons" var2="1"/>
 				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
@@ -209,7 +224,7 @@
 				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
 				<image resource="switch_off"/>
 			</image>
-			
+
 			<text style="text_ab_switch">
 				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
 				<text>{@keyboard_newstyle}</text>
@@ -222,6 +237,7 @@
 					<action function="set">key_buttons=1</action>
 				</actions>
 			</button>
+			
 			<button style="bs_btn">
 				<condition var1="key_buttons" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
@@ -229,7 +245,7 @@
 					<action function="set">key_buttons=0</action>
 				</actions>
 			</button>
-			
+
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
@@ -245,7 +261,7 @@
 					<data variable="xxx"/>
 				</listitem>
 			</listbox>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -271,7 +287,6 @@
 			</text>
 
 			<!-- Lockscreen preview -->
-
 			<image>
 				<condition var1="clock_style" var2="0"/>
 				<image resource="unlock_icon"/>
@@ -291,7 +306,6 @@
 				<placement x="250" y="660"/>
 				<text>{@cpu_temp} | Battery: %tw_battery%</text>
 			</text>
-
 			<!-- -->
 
 			<image>
@@ -349,7 +363,7 @@
 
 		<page name="ext_custom_nav">
 			<template name="body"/>
-			
+
 			<fill color="%accent%">
 				<condition var1="navbar_disable" var2="0"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
@@ -358,18 +372,19 @@
 				<condition var1="navbar_disable" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 			</fill>
-			
+
 			<image>
 				<condition var1="navbar_disable" var2="1"/>
 				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
 				<image resource="switch_off"/>
 			</image>
+			
 			<image>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
 				<image resource="switch_on"/>
 			</image>
-			
+
 			<text style="text_ab_switch">
 				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
 				<text>{@navbar_onscreen}</text>
@@ -398,7 +413,7 @@
 			</button>
 
 			<template name="ab"/>
-			
+
 			<template name="statusbarinfo"/>
 
 			<text style="text_ab_title">
@@ -409,32 +424,33 @@
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_3a_y%"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
-				<text>{@settings_ui_style=NavBar style}</text>
+				<text>{@settings_ui_style}</text>
 			</text>
-			
+
 			<listbox>
 				<placement x="0" y="%row2_1a_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<data name="nougat"/>
-				<listitem name="{@cust_navbar_cls=Classic}">0</listitem>
-				<listitem name="{@cust_navbar_noug=Nougat}">1</listitem>
+				<listitem name="{@cust_navbar_cls}">0</listitem>
+				<listitem name="{@cust_navbar_noug}">1</listitem>
 				<listitem name="Pie">3</listitem>
 			</listbox>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_1_y%"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
-				<text>{@settings_ui_color=NavBar background}</text>
+				<text>{@settings_ui_color}</text>
 			</text>
 
 			<listbox>
 				<placement x="0" y="%row4_2_y%" w="%screen_w%" h="%lb_l4%"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<data name="navbar_bkg"/>
-				<listitem name="{@fm_none=None}">0</listitem>
+				<listitem name="{@fm_none}">0</listitem>
 				<listitem name="{@dark_nav}">3</listitem>
-				<listitem name="{@cust_navbar_accent=Accent}">1</listitem>
-				<listitem name="{@cust_navbar_black=Black}">2<condition var1="theme_style" op="!=" var2="Black"/></listitem>
+				<listitem name="{@cust_navbar_accent}">1</listitem>
+				<listitem name="{@cust_navbar_black}">2<condition var1="theme_style" op="!=" var2="Black"/>
+				</listitem>
 			</listbox>
 
 			<text style="caption">
@@ -442,43 +458,43 @@
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<text>{@cust_oth}</text>
 			</text>
-			
+
 			<listbox style="settingslist">
 				<placement x="0" y="%row7_1_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
-				<listitem name="{@cust_navbar_white=Use white buttons}">
+				<listitem name="{@cust_navbar_white}">
 					<condition var1="navbar_bkg" op="!=" var2="1"/>
 					<condition var1="theme_style_main" op="!=" var2="Light"/>
 					<data variable="navbar_accent"/>
 				</listitem>
-				<listitem name="{@cust_navbar_white=Use white buttons}">
+				<listitem name="{@cust_navbar_white}">
 					<condition var1="navbar_bkg" op="!=" var2="1"/>
 					<condition var1="nougat" op="!=" var2="3"/>
 					<condition var1="theme_style_main" var2="Light"/>
 					<condition var1="theme_background" var2="on"/>
 					<data variable="navbar_accent"/>
 				</listitem>
-				<listitem name="{@cust_navbar_white=Use white buttons}">
+				<listitem name="{@cust_navbar_white}">
 					<condition var1="navbar_bkg" var2="2"/>
 					<condition var1="theme_style_main" var2="Light"/>
 					<data variable="navbar_accent"/>
 				</listitem>
-				<listitem name="{@rev_navbar_chk=Reversed navbar layout}">
+				<listitem name="{@rev_navbar_chk}">
 					<data variable="navbar_sams"/>
 				</listitem>
 				<listitem name="{@show_slideout}">
 					<data variable="show_slideout"/>
 				</listitem>
 			</listbox>
-			
+
 			<action>
 				<condition var1="navbar_bkg" var2="1"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<action function="set">navbar_accent=1</action>
 			</action>
-			
+
 			<template name="snackbar_update"/>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -489,149 +505,176 @@
 				<action function="page">ext_custom</action>
 			</action>
 		</page>
-		
+
 		<!-- WorkShop by fordownloads -->
 		<page name="ext_custom_fonts">
 			<template name="body"/>
+			
 			<template name="ab"/>
+			
 			<template name="statusbarinfo"/>
+			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@theme_fonts}</text>
 			</text>
+			
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%" />
 				<text>{@theme_font_sel}</text>
 			</text>
+			
 			<text style="caption">
 				<placement x="%col2_x_text%" y="%row1_1_y%"/>
 				<text>{@theme_sec_font_sel}</text>
 			</text>
+			
 			<listbox>
 				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font1" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_font"/>
 				<listitem name="Roboto">Roboto</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="0" y="%row1_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font2" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_font"/>
 				<listitem name="Roboto Slab">RobotoSlab</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="0" y="%row2_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font3" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_font"/>
 				<listitem name="Google Sans">GoogleSans</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="0" y="%row2_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font4" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_font"/>
 				<listitem name="Samsung Sans">SamsungSans</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="0" y="%row3_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font5" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_font"/>
 				<listitem name="Choco Cooky">Chococooky</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="0" y="%row3_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font6" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_font"/>
 				<listitem name="Cool Jazz">Cooljazz</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="0" y="%row4_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font7" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_font"/>
 				<listitem name="Bender">Bender</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="0" y="%row4_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font8" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_font"/>
 				<listitem name="Amatic">Amatic</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="0" y="%row5_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font9" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_font"/>
 				<listitem name="Angry Birds">AngryBirds</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="%col2_x%" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font1" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_sec_font"/>
 				<listitem name="Roboto">Roboto</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="%col2_x%" y="%row1_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font2" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_sec_font"/>
 				<listitem name="Roboto Slab">RobotoSlab</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="%col2_x%" y="%row2_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font3" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_sec_font"/>
 				<listitem name="Google Sans">GoogleSans</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="%col2_x%" y="%row2_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font4" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_sec_font"/>
 				<listitem name="Samsung Sans">SamsungSans</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="%col2_x%" y="%row3_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font5" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_sec_font"/>
 				<listitem name="Choco Cooky">Chococooky</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="%col2_x%" y="%row3_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font6" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_sec_font"/>
 				<listitem name="Cool Jazz">Cooljazz</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="%col2_x%" y="%row4_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font7" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_sec_font"/>
 				<listitem name="Bender">Bender</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="%col2_x%" y="%row4_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font8" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_sec_font"/>
 				<listitem name="Amatic">Amatic</listitem>
 			</listbox>
+			
 			<listbox>
 				<placement x="%col2_x%" y="%row5_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font9" spacing="%fileselector_spacing%" color="%text%" />
 				<data name="theme_sec_font"/>
 				<listitem name="Angry Birds">AngryBirds</listitem>
 			</listbox>
+			
 			<!--button style="btn_raised">
 				<condition var1="theme_font" op="!=" var2="Custom"/>
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
 				<text>{@custom_font}</text>
 				<action function="page">ext_custom_fonts_cust</action>
 			</button>
+			
 			<button style="btn_raised_hl">
 				<condition var1="theme_font" var2="Custom"/>
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
 				<text>{@custom_font}</text>
 				<action function="page">ext_custom_fonts_cust</action>
 			</button-->
+			
 			<action>
 				<condition var1="theme_font" op="modified"/>
 				<action function="set">needs_repack=1</action>
 				<action function="set">update_fonts=1</action>
 			</action>
+			
 			<action>
 				<condition var1="theme_sec_font" op="modified"/>
 				<action function="set">needs_repack=1</action>
@@ -639,7 +682,6 @@
 			</action>
 
 			<!-- Font Size -->
-
 			<text style="caption">
 				<placement x="%col1_x%" y="%row6_1_y%" />
 				<text>Font size</text>
@@ -657,20 +699,23 @@
 				<action function="set">needs_repack=1</action>
 				<action function="set">update_fonts=1</action>
 			</action>
-			
+
 			<template name="snackbar_update"/>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
 			</action>
+			
 			<action>
 				<touch key="back"/>
 				<action function="page">ext_custom</action>
 			</action>
 		</page>
+		
 		<page name="ext_custom_fonts_cust">
 			<template name="body"/>
+			
 			<fileselector style="fileselector_b">
 				<condition var1="list_font" var2="big"/>
 				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
@@ -692,17 +737,17 @@
 				<data name="tw_filename"/>
 				<selection name="tw_file"/>
 			</fileselector>
-			
+
 			<template name="find_file"/>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@theme_fonts=Fonts}</text>
+				<text>{@theme_fonts}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@select_custom_font=Select font}</text>
+				<text>{@select_custom_font}</text>
 			</text>
 
 			<action>
@@ -724,14 +769,19 @@
 				<action function="page">main</action>
 			</action>
 		</page>
+		
 		<page name="ext_custom_theme">
 			<template name="body"/>
+			
 			<template name="ab"/>
+			
 			<template name="statusbarinfo"/>
+			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>Theme</text>
 			</text>
+			
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%" />
 				<text>{@theme_style}</text>
@@ -792,21 +842,25 @@
 				<condition var1="theme_style" var2="Black"/>
 				<image resource="style_apply"/>
 			</image>
+			
 			<image>
 				<placement x="285" y="360"/>
 				<condition var1="theme_style" var2="Gray"/>
 				<image resource="style_apply"/>
 			</image>
+			
 			<image>
 				<placement x="540" y="360"/>
 				<condition var1="theme_style" var2="Light"/>
 				<image resource="style_apply_black"/>
 			</image>
+			
 			<image>
 				<placement x="795" y="360"/>
 				<condition var1="theme_style" var2="Light_classic"/>
 				<image resource="style_apply"/>
 			</image>
+			
 			<image>
 				<placement x="795" y="360"/>
 				<condition var1="theme_style" var2="Light_classic"/>
@@ -819,6 +873,7 @@
 				<placement x="%col1_x%" y="%row3_1_y%" />
 				<text>{@theme_accent}</text>
 			</text>
+			
 			<!-- Amber -->
 			<button>
 				<placement x="30" y="%row3_2_y%"/>
@@ -925,64 +980,26 @@
 			</button>
 
 			<image>
-				<placement x="30" y="%row3_2_y%"/>
-				<condition var1="theme_accent" var2="Amber"/>
-				<image resource="style_apply"/>
-			</image>
-			<image>
-				<placement x="285" y="%row3_2_y%"/>
-				<condition var1="theme_accent" var2="Blue"/>
-				<image resource="style_apply"/>
-			</image>
-			<image>
-				<placement x="540" y="%row3_2_y%"/>
-				<condition var1="theme_accent" var2="Cyan"/>
-				<image resource="style_apply"/>
-			</image>
-			<image>
-				<placement x="795" y="%row3_2_y%"/>
-				<condition var1="theme_accent" var2="Gray"/>
-				<image resource="style_apply"/>
-			</image>
-			<image>
-				<placement x="30" y="975"/>
-				<condition var1="theme_accent" var2="Green"/>
-				<image resource="style_apply"/>
-			</image>
-			<image>
-				<placement x="285" y="975"/>
-				<condition var1="theme_accent" var2="Orange"/>
-				<image resource="style_apply"/>
-			</image>
-			<image>
-				<placement x="540" y="975"/>
-				<condition var1="theme_accent" var2="Red"/>
-				<image resource="style_apply"/>
-			</image>
-			<image>
-				<placement x="795" y="975"/>
-				<condition var1="theme_accent" var2="Pink"/>
-				<image resource="style_apply"/>
-			</image>
-			<action>
-				<condition var1="theme_style" op="modified"/>
-				<action function="set">needs_repack=1</action>
-				<action function="set">update_style=1</action>
-			</action>
-			<action>
-				<condition var1="theme_accent" op="modified"/>
-				<action function="set">needs_repack=1</action>
-				<action function="set">update_accent=1</action>
-			</action>
-			
-			<template name="snackbar_update"/>
-
-			<image>
 				<condition var1="theme_accent" var2="Pink"/>
 				<placement x="795" y="975"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
+			
+			<action>
+				<condition var1="theme_style" op="modified"/>
+				<action function="set">needs_repack=1</action>
+				<action function="set">update_style=1</action>
+			</action>
+			
+			<action>
+				<condition var1="theme_accent" op="modified"/>
+				<action function="set">needs_repack=1</action>
+				<action function="set">update_accent=1</action>
+			</action>
+
+			<template name="snackbar_update"/>
+			
 			<action>
 				<touch key="back"/>
 				<action function="page">ext_custom</action>
@@ -993,9 +1010,10 @@
 				<action function="page">main</action>
 			</action>
 		</page>
-		
+
 		<page name="apply_changes">
 			<template name="busy_screen"/>
+			
 			<action>
 				<condition var1="fox_busy" op="!=" var2="1"/>
 				<action function="set">fox_busy=1</action>
@@ -1025,7 +1043,7 @@
 						" > /tmp/orangefox/ramdisk/twres/themes/font.xml;
 						cat "/tmp/orangefox/ramdisk/twres/themes/font.xml" > /twres/themes/font.xml;
 					fi;
-					
+				
 					#Navbar
 					if [[ '%update_navbar%' = '1' ]]; then
 						cat "/twres/themes/sed/navbar.xml" | sed -e "
@@ -1034,13 +1052,13 @@
 						" > /tmp/orangefox/ramdisk/twres/themes/navbar.xml;
 						cat "/tmp/orangefox/ramdisk/twres/themes/navbar.xml" > /twres/themes/navbar.xml;
 					fi;
-					
+				
 					#Style
 					if [[ '%update_style%' = '1' ]]; then
 						cat "/twres/themes/styles/%theme_style%.xml" > /tmp/orangefox/ramdisk/twres/themes/style.xml;
 						cat "/tmp/orangefox/ramdisk/twres/themes/style.xml" > /twres/themes/style.xml;
 					fi;
-					
+				
 					#Accent
 					if [[ '%update_accent%' = '1' ]]; then
 						cat "/twres/themes/accent/%theme_accent%.xml" > /tmp/orangefox/ramdisk/twres/themes/accent.xml;

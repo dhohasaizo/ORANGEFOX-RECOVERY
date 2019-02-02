@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
 <recovery>
 	<pages>
-		
 		<page name="lock">
 			<background color="%darktransparent%"/>
-			
+
 			<template name="keys"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<button>
 				<condition var1="lock_action" var2="1"/>
 				<condition var1="clock_style" var2="0"/>
@@ -16,7 +15,7 @@
 				<placement x="%center_x%" y="%center_y%" placement="4"/>
 				<action function="togglebacklight"/>
 			</button>
-			
+
 			<image>
 				<condition var1="lock_action" var2="0"/>
 				<condition var1="clock_style" var2="0"/>
@@ -37,58 +36,61 @@
 				<placement x="%center_x%" y="%row3_2_y%" placement="4"/>
 				<text>{@cpu_temp} | {@battery}: %tw_battery%</text>
 			</text>
-			
+
 			<text color="%text_light%">
 				<font resource="caption"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<placement x="%center_x%" y="%slider_text_y_l%" placement="5"/>
-				<text>{@swipe_to_unlock=Swipe to Unlock}</text>
+				<text>{@swipe_to_unlock}</text>
 			</text>
-			
+
 			<slider style="slider_action">
 				<placement x="%center_x%" y="%slider_y_l%" placement="5"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<action function="overlay"/>
 			</slider>
+			
 			<text color="%text_light%">
 				<font resource="caption"/>
 				<condition var1="navbar_disable" var2="1"/>
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_to_unlock=Swipe to Unlock}</text>
+				<text>{@swipe_to_unlock}</text>
 			</text>
-			
+
 			<slider style="slider_action">
 				<condition var1="navbar_disable" var2="1"/>
 				<placement x="%center_x%" y="%slider_y%" placement="5"/>
 				<action function="overlay"/>
 			</slider>
-
 		</page>
-		
+
 		<page name="console">
 			<background color="%background%"/>
+			
 			<template name="background_image"/>
+			
 			<template name="keys"/>
-			
+
 			<template name="navbar_console_hide"/>
-			
+
 			<console>
 				<placement x="%col1_x%" y="%ab_bc_y%" w="%console_width%" h="%console_height%"/> 
 				<condition var1="use_fixed_font" var2="0"/>
 			</console>
+			
 			<console>
 				<placement x="%col1_x%" y="%ab_bc_y%" w="%console_width%" h="%console_height%"/> 
 				<condition var1="use_fixed_font" var2="1"/>
 				<font resource="fixed"/>
 			</console>
-			
+
 			<fill color="%lightransparent%">
 				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
-			
+
 			<template name="statusbarinfo"/>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="overlay"/>
@@ -99,14 +101,14 @@
 				<action function="overlay"/>
 			</action>
 		</page>
-		
+
 		<page name="installsu">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>SuperSU</text>
@@ -114,12 +116,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@su_install=Install SuperSU}</text>
+				<text>{@su_install}</text>
 			</text>
-			
+
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@su_device=Root the Device}</text>
+				<text>{@su_device}</text>
 			</text>
 
 			<image>
@@ -129,40 +131,41 @@
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
-				<text>{@su_note1=Your device does not appear}</text>
+				<text>{@su_note1}</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
-				<text>{@su_note2=to be rooted. Install SuperSU now?}</text>
+				<text>{@su_note2}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_1a_y%"/>
-				<text>{@su_note3=This will root your device.}</text>
+				<text>{@su_note3}</text>
 			</text>
 
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
-				<text>{@su_cancel=DO NOT INSTALL}</text>
+				<text>{@su_cancel}</text>
 				<action function="set">tw_page_done=1</action>
 				<action function="page">main</action>
 			</button>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_su_to_install=Swipe to Install}</text>
+				<text>{@swipe_su_to_install}</text>
 			</text>
 
 			<slider style="slider_action">
 				<placement x="%center_x%" y="%slider_y%" placement="5"/>
 				<actions>
 					<action function="set">tw_action=installsu</action>
-					<action function="set">tw_action_text1={@su_installing=Installing SuperSU}</action>
+					<action function="set">tw_action_text1={@su_installing}</action>
 					<action function="set">tw_action_text2=</action>
 					<action function="page">singleaction_page</action>
 				</actions>
 			</slider>
+			
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>

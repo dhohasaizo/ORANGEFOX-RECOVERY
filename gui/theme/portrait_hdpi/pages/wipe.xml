@@ -1,127 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
 	<pages>
-		<page name="wipe_deprecated">
-			<template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wipe_hdr=Wipe}</text>
-			</text>
-
-			<image>
-				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<image resource="icon_info"/>
-			</image>
-
-			<text style="text_body2_hl">
-				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
-				<text>{@factory_reset1=Wipes Data, Cache, and Dalvik}</text>
-			</text>
-
-			<text style="text_body2_hl">
-				<condition var1="tw_has_data_media" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@factory_reset2=(not including internal storage)}</text>
-			</text>
-
-			<text style="text_body2_hl">
-				<conditions>
-					<condition var1="tw_has_android_secure" var2="1"/>
-					<condition var1="fileexists" var2="/and-sec"/>
-				</conditions>
-				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
-				<text>{@also_wipes=Also wipes} {@android_secure=Android Secure}</text>
-			</text>
-
-			<text style="text_body2_hl">
-				<condition var1="tw_has_sdext_partition" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
-				<text>{@also_wipes=Also wipes} {@sdext=SD-EXT}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
-				<text>{@factory_reset3=Most of the time this is}</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
-				<text>{@factory_reset4=the only wipe that you need.}</text>
-			</text>
-
-			<button style="btn_raised_warn">
-				<condition var1="tw_has_data_media" var2="1"/>
-				<placement x="%btn_raised_left_x%" y="%row_btn2_y%"/>
-				<text>{@format_data_btn=FORMAT DATA}</text>
-				<actions>
-					<action function="page">formatdata</action>
-				</actions>
-			</button>
-
-			<button style="btn_raised_warn">
-				<conditions>
-					<condition var1="tw_is_encrypted" var2="1"/>
-					<condition var1="tw_has_data_media" var2="0"/>
-				</conditions>
-				<placement x="%btn_raised_left_x%" y="%row_btn2_y%"/>
-				<text>{@wipe_enc_btn=WIPE ENCRYPTION}</text>
-				<actions>
-					<action function="set">tw_back=wipe</action>
-					<action function="set">tw_action=wipe</action>
-					<action function="set">tw_action_param=DATAMEDIA</action>
-					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@wipe_enc_confirm=Wipe Encryption from Data?}</action>
-					<action function="set">tw_text2=</action>
-					<action function="set">tw_action_text1={@formatting_data=Formatting Data...}</action>
-					<action function="set">tw_complete_text1={@format_data_complete=Data Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_format_data=Swipe to Format Data}</action>
-					<action function="page">wipe_confirm_action</action>
-				</actions>
-			</button>
-
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
-				<text>{@advanced_wipe_btn=ADVANCED WIPE}</text>
-				<actions>
-					<action function="set">partitionlisterror=0</action>
-					<action function="page">wipe</action>
-				</actions>
-			</button>
-
-			<text style="caption">
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_factory_reset=Swipe to Factory Reset}</text>
-			</text>
-
-			<slider style="slider_action">
-				<placement x="%center_x%" y="%slider_y%" placement="5"/>
-				<actions>
-					<action function="set">tw_back=wipe</action>
-					<action function="set">tw_action=wipe</action>
-					<action function="set">tw_action_param=data</action>
-					<action function="set">tw_action_text1={@factory_reset_hdr=Factory Reset}</action>
-					<action function="set">tw_action_text2={@factory_resetting=Wiping Data, Cache and Dalvik...}</action>
-					<action function="set">tw_complete_text1={@factory_reset_complete=Factory Reset Complete}</action>
-					<action function="page">wipe_action_page</action>
-				</actions>
-			</slider>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">wipe</action>
-			</action>
-		</page>
-
 		<page name="wipe">
 			<action>
 				<action function="set">tw_wipe_list=</action>
@@ -136,7 +15,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x%" y="%ab_bc_y%"/>
-				<text>{@wipe_hdr=Wipe}</text>
+				<text>{@wipe_hdr}</text>
 			</text>
 
 			<image>
@@ -148,13 +27,13 @@
 			<text style="text_body2_hl">
 				<condition var1="partitionlisterror" op="!=" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
-				<text>{@sel_part_single1=Single select partitions if you want}</text>
+				<text>{@sel_part_single1}</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<condition var1="partitionlisterror" op="!=" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@sel_part_single2=to use the Partition Options!}</text>
+				<text>{@sel_part_single2}</text>
 			</text>
 
 			<image>
@@ -166,18 +45,18 @@
 			<text style="text_body2_fail">
 				<condition var1="partitionlisterror" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
-				<text>{@part_fs_error_1=Partition Options are not}</text>
+				<text>{@part_fs_error_1}</text>
 			</text>
 
 			<text style="text_body2_fail">
 				<condition var1="partitionlisterror" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@part_fs_error_2=available for this partition!}</text>
+				<text>{@part_fs_error_2}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1_y%"/>
-				<text>{@partitions=Partitions}</text>
+				<text>{@partitions}</text>
 			</text>
 
 			<partitionlist>
@@ -189,7 +68,7 @@
 			<button style="btn_raised_warn">
 				<condition var1="tw_has_data_media" var2="1"/>
 				<placement x="%btn_raised_left_x%" y="%row_btn2_np_y%"/>
-				<text>{@format_data_btn=FORMAT DATA}</text>
+				<text>{@format_data_btn}</text>
 				<actions>
 					<action function="page">formatdata</action>
 				</actions>
@@ -201,24 +80,24 @@
 					<condition var1="tw_has_data_media" var2="0"/>
 				</conditions>
 				<placement x="%btn_raised_left_x%" y="%row_btn2_np_y%"/>
-				<text>{@wipe_enc_btn=WIPE ENCRYPTION}</text>
+				<text>{@wipe_enc_btn}</text>
 				<actions>
 					<action function="set">tw_back=wipe</action>
 					<action function="set">tw_action=wipe</action>
 					<action function="set">tw_action_param=DATAMEDIA</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@wipe_enc_confirm=Wipe Encryption from Data?}</action>
+					<action function="set">tw_text1={@wipe_enc_confirm}</action>
 					<action function="set">tw_text2=</action>
-					<action function="set">tw_action_text1={@formatting_data=Formatting Data...}</action>
-					<action function="set">tw_complete_text1={@format_data_complete=Data Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_format_data=Swipe to Format Data}</action>
+					<action function="set">tw_action_text1={@formatting_data}</action>
+					<action function="set">tw_complete_text1={@format_data_complete}</action>
+					<action function="set">tw_slider_text={@swipe_format_data}</action>
 					<action function="page">wipe_confirm_action</action>
 				</actions>
 			</button>
-			
+
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row_btn2_np_y%" placement="1"/>
-				<text>{@file_sys_opt=PARTITION OPTIONS}</text>
+				<text>{@file_sys_opt}</text>
 				<actions>
 					<action function="checkpartitionlist"/>
 					<action function="page">checkpartitionlist</action>
@@ -227,7 +106,7 @@
 
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_np_y%" placement="5"/>
-				<text>{@swipe_wipe=Swipe to Wipe}</text>
+				<text>{@swipe_wipe}</text>
 			</text>
 
 			<slider style="slider_action">
@@ -236,14 +115,14 @@
 					<action function="set">tw_back=wipe</action>
 					<action function="set">tw_action=wipe</action>
 					<action function="set">tw_action_param=LIST</action>
-					<action function="set">tw_text1={@wipe_sel_confirm=Wipe Selected Partition(s)?}</action>
-					<action function="set">tw_action_text1={@advanced_wipe_hdr=Advanced Wipe}</action>
-					<action function="set">tw_action_text2={@wiping_part=Wiping Partition(s)...}</action>
-					<action function="set">tw_complete_text1={@wipe_complete=Wipe complete}</action>
+					<action function="set">tw_text1={@wipe_sel_confirm}</action>
+					<action function="set">tw_action_text1={@advanced_wipe_hdr}</action>
+					<action function="set">tw_action_text2={@wiping_part}</action>
+					<action function="set">tw_complete_text1={@wipe_complete}</action>
 					<action function="page">wipe_action_page</action>
 				</actions>
 			</slider>
-			
+
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
@@ -252,7 +131,7 @@
 			</button>
 
 			<template name="nav_panel"/>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">wipe</action>
@@ -273,17 +152,17 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wipe_hdr=Wipe}</text>
+				<text>{@wipe_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@factory_reset_hdr=Factory Reset}</text>
+				<text>{@factory_reset_hdr}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@format_data_hdr=Format Data}</text>
+				<text>{@format_data_hdr}</text>
 			</text>
 
 			<image>
@@ -293,33 +172,33 @@
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
-				<text>{@format_data_ptr1=Format Data will wipe all of your apps,}</text>
+				<text>{@format_data_ptr1}</text>
 			</text>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
-				<text>{@format_data_ptr2=backups, pictures, videos, media, and}</text>
+				<text>{@format_data_ptr2}</text>
 			</text>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="%row2_3a_y%"/>
-				<text>{@format_data_ptr3=removes encryption on internal storage.}</text>
+				<text>{@format_data_ptr3}</text>
 			</text>
 
 			<text style="text_body2_fail">
 				<condition var1="tw_has_adopted_storage" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row3_1a_y%"/>
-				<text>{@also_wipes=Also wipes} {@adopted_storage=Adopted Storage}</text>
+				<text>{@also_wipes=Also wipes} {@adopted_storage}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_2a_y%"/>
-				<text>{@yes_continue=Type "yes" to confirm.}</text>
+				<text>{@yes_continue}</text>
 			</text>
 
 			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row4_2_y%"/>
-				<text>{@confirm_wipe_cptn=Confirm Wipe}</text>
+				<text>{@confirm_wipe_cptn}</text>
 			</text>
 
 			<input>
@@ -352,8 +231,8 @@
 					<action function="set">tw_back=formatdata</action>
 					<action function="set">tw_action=wipe</action>
 					<action function="set">tw_action_param=DATAMEDIA</action>
-					<action function="set">tw_action_text1={@formatting_data=Formatting Data...}</action>
-					<action function="set">tw_complete_text1={@format_data_complete=Data Format Complete}</action>
+					<action function="set">tw_action_text1={@formatting_data}</action>
+					<action function="set">tw_complete_text1={@format_data_complete}</action>
 					<action function="page">wipe_action_page</action>
 				</actions>
 			</action>
@@ -393,12 +272,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wipe_hdr=Wipe}</text>
+				<text>{@wipe_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@part_opt_hdr=Partition Options}</text>
+				<text>{@part_opt_hdr}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -408,7 +287,7 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@part_mount_point=Mount Point:}</text>
+				<text>{@part_mount_point}</text>
 			</text>
 
 			<text style="text_body2">
@@ -418,7 +297,7 @@
 
 			<text style="caption">
 				<placement x="%col2_x%" y="%row2_1a_y%"/>
-				<text>{@part_curr_fs=File system:}</text>
+				<text>{@part_curr_fs}</text>
 			</text>
 
 			<text style="text_body2">
@@ -428,41 +307,41 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row3_1a_y%"/>
-				<text>{@part_present=Present:}</text>
+				<text>{@part_present}</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="tw_partition_is_present" op="!=" var2="0"/>
 				<placement x="%col1_x%" y="%row3_2a_y%"/>
-				<text>{@part_yes=Yes}</text>
+				<text>{@part_yes}</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="tw_partition_is_present" op="=" var2="0"/>
 				<placement x="%col1_x%" y="%row3_2a_y%"/>
-				<text>{@part_no=No}</text>
+				<text>{@part_no}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col2_x%" y="%row3_1a_y%"/>
-				<text>{@part_removable=Removable:}</text>
+				<text>{@part_removable}</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="tw_partition_removable" op="!=" var2="0"/>
 				<placement x="%col2_x%" y="%row3_2a_y%"/>
-				<text>{@part_yes=Yes}</text>
+				<text>{@part_yes}</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="tw_partition_removable" op="=" var2="0"/>
 				<placement x="%col2_x%" y="%row3_2a_y%"/>
-				<text>{@part_no=No}</text>
+				<text>{@part_no}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_1a_y%"/>
-				<text>{@part_size=Size:}</text>
+				<text>{@part_size}</text>
 			</text>
 
 			<text style="text_body2">
@@ -472,7 +351,7 @@
 
 			<text style="caption">
 				<placement x="%col2_x%" y="%row4_1a_y%"/>
-				<text>{@part_backup_size=Backup Size:}</text>
+				<text>{@part_backup_size}</text>
 			</text>
 
 			<text style="text_body2">
@@ -482,7 +361,7 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row5_1a_y%"/>
-				<text>{@part_used=Used:}</text>
+				<text>{@part_used}</text>
 			</text>
 
 			<text style="text_body2">
@@ -492,7 +371,7 @@
 
 			<text style="caption">
 				<placement x="%col2_x%" y="%row5_1a_y%"/>
-				<text>{@part_free=Free:}</text>
+				<text>{@part_free}</text>
 			</text>
 
 			<text style="text_body2">
@@ -503,18 +382,18 @@
 			<button style="btn_raised">
 				<condition var1="tw_partition_can_resize" op="=" var2="1"/>
 				<placement x="%btn_raised_left_x%" y="%row_btn_y%"/>
-				<text>{@resize_btn=RESIZE FS}</text>
+				<text>{@resize_btn}</text>
 				<actions>
 					<action function="set">tw_back=partitionoptions</action>
 					<action function="set">tw_action=resize</action>
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_has_action2=1</action>
 					<action function="set">tw_action2=getpartitiondetails</action>
-					<action function="set">tw_text1={@resize_confirm=Resize partition}</action>
+					<action function="set">tw_text1={@resize_confirm}</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@resizing=Resizing...}</action>
-					<action function="set">tw_complete_text1={@resize_complete=Resize Complete}</action>
-					<action function="set">tw_slider_text={@swipe_resize=Swipe to Resize}</action>
+					<action function="set">tw_action_text1={@resizing}</action>
+					<action function="set">tw_complete_text1={@resize_complete}</action>
+					<action function="set">tw_slider_text={@swipe_resize}</action>
 					<action function="page">wipe_confirm_action</action>
 				</actions>
 			</button>
@@ -522,24 +401,24 @@
 			<button style="btn_raised">
 				<condition var1="tw_partition_can_repair" op="=" var2="1"/>
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
-				<text>{@repair_btn=REPAIR FS}</text>
+				<text>{@repair_btn}</text>
 				<actions>
 					<action function="set">tw_back=partitionoptions</action>
 					<action function="set">tw_action=repair</action>
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@repair_confirm=Repair p0}</action>
+					<action function="set">tw_text1={@repair_confirm}</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@repairing=Repairing...}</action>
-					<action function="set">tw_complete_text1={@repair_complete=Repair Complete}</action>
-					<action function="set">tw_slider_text={@swipe_repair=Swipe to Repair}</action>
+					<action function="set">tw_action_text1={@repairing}</action>
+					<action function="set">tw_complete_text1={@repair_complete}</action>
+					<action function="set">tw_slider_text={@swipe_repair}</action>
 					<action function="page">wipe_confirm_action</action>
 				</actions>
 			</button>
 
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-				<text>{@change_fs_btn=CHANGE FS}</text>
+				<text>{@change_fs_btn}</text>
 				<action function="page">selectfilesystem</action>
 			</button>
 
@@ -587,12 +466,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wipe_hdr=Wipe}</text>
+				<text>{@wipe_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@change_fs_hdr=Change File System}</text>
+				<text>{@change_fs_hdr}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -602,7 +481,7 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@part_mount_point=Mount Point:}</text>
+				<text>{@part_mount_point}</text>
 			</text>
 
 			<text style="text_body2">
@@ -612,7 +491,7 @@
 
 			<text style="caption">
 				<placement x="%col2_x%" y="%row2_1a_y%"/>
-				<text>{@part_curr_fs=File system:}</text>
+				<text>{@part_curr_fs}</text>
 			</text>
 
 			<text style="text_body2">
@@ -629,18 +508,18 @@
 			<text style="text_body2_fail">
 				<condition var1="tw_partition_is_present" op="!=" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row3_1a_y%"/>
-				<text>{@change_fs_warn1=Some ROMs or kernels may not support}</text>
+				<text>{@change_fs_warn1}</text>
 			</text>
 
 			<text style="text_body2_fail">
 				<condition var1="tw_partition_is_present" op="!=" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row3_2a_y%"/>
-				<text>{@change_fs_warn2=some file systems. Proceed with caution!}</text>
+				<text>{@change_fs_warn2}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_1a_y%"/>
-				<text>{@new_file_system=New File System}</text>
+				<text>{@new_file_system}</text>
 			</text>
 
 			<button>
@@ -656,11 +535,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=ext2</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} EXT2</action>
+					<action function="set">tw_text1={@change_fs_confirm} EXT2</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -677,11 +556,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=ext2</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} EXT2</action>
+					<action function="set">tw_text1={@change_fs_confirm} EXT2</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -698,11 +577,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=ext3</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} EXT3</action>
+					<action function="set">tw_text1={@change_fs_confirm} EXT3</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -719,11 +598,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=ext3</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} EXT3</action>
+					<action function="set">tw_text1={@change_fs_confirm} EXT3</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -740,11 +619,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=ext4</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} EXT4</action>
+					<action function="set">tw_text1={@change_fs_confirm} EXT4</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -761,11 +640,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=ext4</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} EXT4</action>
+					<action function="set">tw_text1={@change_fs_confirm} EXT4</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -782,11 +661,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=fat</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} FAT</action>
+					<action function="set">tw_text1={@change_fs_confirm} FAT</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -803,11 +682,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=fat</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} FAT</action>
+					<action function="set">tw_text1={@change_fs_confirm} FAT</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -824,11 +703,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=exfat</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} exFAT</action>
+					<action function="set">tw_text1={@change_fs_confirm} exFAT</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -845,11 +724,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=exfat</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} exFAT</action>
+					<action function="set">tw_text1={@change_fs_confirm} exFAT</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -866,11 +745,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=f2fs</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} F2FS</action>
+					<action function="set">tw_text1={@change_fs_confirm} F2FS</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -887,11 +766,11 @@
 					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
 					<action function="set">tw_action_new_file_system=f2fs</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@change_fs_confirm=Change FS to} F2FS</action>
+					<action function="set">tw_text1={@change_fs_confirm} F2FS</action>
 					<action function="set">tw_text2=%tw_partition_name%</action>
-					<action function="set">tw_action_text1={@formatting=Formatting...}</action>
-					<action function="set">tw_complete_text1={@format_complete=Format Complete}</action>
-					<action function="set">tw_slider_text={@swipe_change_fs=Swipe to Change}</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_slider_text={@swipe_change_fs}</action>
 				</actions>
 			</button>
 
@@ -927,7 +806,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wipe_hdr=Wipe}</text>
+				<text>{@wipe_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
@@ -975,7 +854,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wipe_hdr=Wipe}</text>
+				<text>{@wipe_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
@@ -990,7 +869,7 @@
 
 			<template name="action_page_console"/>
 			<template name="cant_cancel" />
-			
+
 			<action>
 				<conditions>
 					<condition var1="tw_operation_state" var2="1"/>
@@ -1036,19 +915,19 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@wipe_hdr=Wipe}</text>
+				<text>{@wipe_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_operation_status" op="!=" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@failed=Failed}</text>
+				<text>{@failed}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_operation_status" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@successful=Successful}</text>
+				<text>{@successful}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -1057,10 +936,10 @@
 			</text>
 
 			<template name="action_page_console"/>
-			
+
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
-				<text>{@back_btn=BACK}</text>
+				<text>{@back_btn}</text>
 				<actions>
 					<action function="set">tw_clear_destination=%tw_back%</action>
 					<action function="page">clear_vars</action>
@@ -1070,17 +949,17 @@
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
 				<condition var1="tw_reboot_system" var2="1"/>
-				<text>{@reboot_system_btn=REBOOT SYSTEM}</text>
+				<text>{@reboot_system_btn}</text>
 				<actions>
 					<action function="set">tw_back=main</action>
 					<action function="set">tw_action=reboot</action>
 					<action function="set">tw_action_param=system</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@no_os1=No OS Installed! Are you}</action>
-					<action function="set">tw_text2={@no_osrb=sure you wish to reboot?}</action>
-					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
+					<action function="set">tw_text1={@no_os1}</action>
+					<action function="set">tw_text2={@no_osrb}</action>
+					<action function="set">tw_action_text1={@rebooting}</action>
+					<action function="set">tw_complete_text1={@rebooting}</action>
+					<action function="set">tw_slider_text={@swipe_reboot}</action>
 					<action function="page">rebootcheck</action>
 				</actions>
 			</button>

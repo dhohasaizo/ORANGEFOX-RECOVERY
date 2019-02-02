@@ -6,12 +6,12 @@
 				<actions>
 					<action function="set">adb_backup_pc=1</action>
 					<action function="set">tw_fileexists=0</action>
-					<action function="set">tw_backup_name={@auto_gen=(Auto Generate)}</action>
+					<action function="set">tw_backup_name={@auto_gen}</action>
 					<action function="page">backup_device</action>
 				</actions>
 			</action>
 		</page>
-		
+
 		<page name="backup_device">
 			<template name="body"/>
 
@@ -21,19 +21,18 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@backup_hdr=Backup}</text>
+				<text>{@backup_hdr}</text>
 			</text>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@sel_part_hdr=Select Partitions}</text>
+				<text>{@sel_part_hdr}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>%tw_storage_display_name% (%tw_storage_free_size% MB)</text>
 			</text>
-			
 
 			<button>
 				<conditions>
@@ -87,7 +86,7 @@
 					<action function="set">tw_password_not_match=0</action>
 				</actions>
 			</button>
-			
+
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
@@ -104,19 +103,19 @@
 			<text style="text_body2_hl">
 				<condition var1="adb_backup_pc" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
-				<text>{@adb_backup_pc1=This backup will be}</text>
+				<text>{@adb_backup_pc1}</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<condition var1="adb_backup_pc" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
-				<text>{@adb_backup_pc2=saved on your PC}</text>
+				<text>{@adb_backup_pc2}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
 				<condition var1="adb_backup_pc" var2="0"/>
-				<text>{@name=Name}</text>
+				<text>{@name}</text>
 			</text>
 
 			<input>
@@ -127,46 +126,46 @@
 				<restrict minlen="0" maxlen="64" disable="1"/>
 				<text>%tw_backup_name%</text>
 			</input>
-			
+
 			<fill color="%linecolor%">
 				<condition var1="tw_fileexists" var2="0"/>
-				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen=(Auto Generate)}"/>
+				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen}"/>
 				<condition var1="adb_backup_pc" var2="0"/>
 				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
-			
+
 			<fill color="%linecolor%">
-				<condition var1="tw_backup_name" var2="{@auto_gen=(Auto Generate)}"/>
+				<condition var1="tw_backup_name" var2="{@auto_gen}"/>
 				<condition var1="adb_backup_pc" var2="0"/>
 				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
-			
+
 			<fill color="%text_fail%">
 				<condition var1="tw_fileexists" var2="1"/>
-				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen=(Auto Generate)}"/>
+				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen}"/>
 				<condition var1="adb_backup_pc" var2="0"/>
 				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
 			<text style="text_input_fail">
 				<condition var1="tw_fileexists" var2="1"/>
-				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen=(Auto Generate)}"/>
+				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen}"/>
 				<condition var1="adb_backup_pc" var2="0"/>
 				<placement x="%col1_x%" y="%row2_3a_y%"/>
-				<text>{@backup_name_exists=A backup with that name already exists!}</text>
+				<text>{@backup_name_exists}</text>
 			</text>
 
 			<button style="menu_btn">
-				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen=(Auto Generate)}"/>
+				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen}"/>
 				<condition var1="adb_backup_pc" var2="0"/>
 				<placement x="%col1_x%" y="%row2_1a_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<actions>
 					<action function="page">backupname</action>
 				</actions>
 			</button>
-			
+
 			<button style="menu_btn">
-				<condition var1="tw_backup_name" var2="{@auto_gen=(Auto Generate)}"/>
+				<condition var1="tw_backup_name" var2="{@auto_gen}"/>
 				<condition var1="adb_backup_pc" var2="0"/>
 				<placement x="%col1_x%" y="%row2_1a_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<actions>
@@ -176,7 +175,7 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row3_1a_y%"/>
-				<text>{@partitions=Partitions}</text>
+				<text>{@partitions}</text>
 			</text>
 
 			<partitionlist>
@@ -184,42 +183,42 @@
 				<data name="tw_backup_list"/>
 				<listtype name="backup"/>
 			</partitionlist>
-			
+
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row_btn2_y%"/>
-				<text>{@bkp_clear=CLEAR}</text>
+				<text>{@bkp_clear}</text>
 				<action function="set">tw_backup_list=</action>
 			</button>
 
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
-				<text>{@bkp_quick=QUICK BACKUP}</text>
+				<text>{@bkp_quick}</text>
 				<action function="set">tw_backup_list=%tw_backup_list_quick%</action>
 			</button>
-			
+
 			<button>
 				<condition var1="storage_select_on" var2="1"/>
 				<placement x="%btn_float_x%" y="%row1_2_y%"/>
 				<image resource="btn_float_storage" highlightresource="btn_float_storage_hl"/>
 				<action function="overlay">dialog_storage</action>
 			</button>
-			
+
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_backup=Swipe to Backup}</text>
+				<text>{@swipe_backup}</text>
 			</text>
 
 			<slider style="slider_action">
-				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen=(Auto Generate)}"/>
+				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen}"/>
 				<placement x="%center_x%" y="%slider_y%" placement="5"/>
 				<action function="set">tw_filecheck=%tw_backups_folder%/%tw_backup_name%</action>
 				<action function="set">tw_existpage=backup_device</action>
 				<action function="set">tw_notexistpage=backup_run</action>
 				<action function="page">filecheck</action>
 			</slider>
-			
+
 			<slider style="slider_action">
-				<condition var1="tw_backup_name" var2="{@auto_gen=(Auto Generate)}"/>
+				<condition var1="tw_backup_name" var2="{@auto_gen}"/>
 				<placement x="%center_x%" y="%slider_y%" placement="5"/>
 				<action function="page">backup_run</action>
 			</slider>
@@ -244,22 +243,22 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@backup_hdr=Backup}</text>
+				<text>{@backup_hdr}</text>
 			</text>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@bkp_nametitle=Backup name}</text>
+				<text>{@bkp_nametitle}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@bkp_namesub=Type or generate backup name}</text>
+				<text>{@bkp_namesub}</text>
 			</text>
-			
+
 			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@name=Name}</text>
+				<text>{@name}</text>
 			</text>
 
 			<input>
@@ -277,38 +276,38 @@
 				<placement x="0" y="%actbtn_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="generatebackupname"/>
 			</button>
-			
+
 			<image>
 				<placement x="%col1_x%" y="%actbtn_row2_y%"/>
 				<image resource="bs_btn_new"/>
 			</image>
-			
+
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%actbtn_row2_text_y%"/>
-				<text>{@bkp_gen=Generate backup name}</text>
+				<text>{@bkp_gen}</text>
 			</text>
 
 			<button style="bs_btn">
 				<placement x="0" y="%actbtn_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_backup_name={@auto_gen=(Auto Generate)}</action>
+				<action function="set">tw_backup_name={@auto_gen}</action>
 				<action function="page">backupname_foolprotection</action>
 			</button>
-			
+
 			<image>
 				<placement x="%col1_x%" y="%actbtn_row3_y%"/>
 				<image resource="bs_btn_wut"/>
 			</image>
-			
+
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%actbtn_row3_text_y%"/>
-				<text>{@bkp_gen_whilebkp=Generate backup name while backing up}</text>
+				<text>{@bkp_gen_whilebkp}</text>
 			</text>
 
 			<button style="bs_btn">
 				<placement x="0" y="%actbtn_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="appenddatetobackupname"/>
 			</button>
-			
+
 			<image>
 				<placement x="%col1_x%" y="%actbtn_row1_y%"/>
 				<image resource="bs_btn_time"/>
@@ -316,7 +315,7 @@
 
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%actbtn_row1_text_y%"/>
-				<text>{@bkp_date=Add date}</text>
+				<text>{@bkp_date}</text>
 			</text>
 
 			<button>
@@ -325,13 +324,12 @@
 				<action function="set">tw_backup_name=</action>
 				<action function="page">backupname</action>
 			</button>
-			
+
 			<fill color="%accent%">
 				<condition var1="tw_fileexists" var2="0"/>
 				<placement x="%col1_x%" y="%row2_3a_y%" w="%input_backup_width%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			
 			<fill color="%text_fail%">
 				<condition var1="tw_fileexists" var2="1"/>
 				<placement x="%col1_x%" y="%row2_3a_y%" w="%input_backup_width%" h="%input_line_height%" placement="1"/>
@@ -340,9 +338,9 @@
 			<text style="text_input_fail">
 				<condition var1="tw_fileexists" var2="1"/>
 				<placement x="%col1_x%" y="%row2_3a_y%"/>
-				<text>{@backup_name_exists=A backup with that name already exists!}</text>
+				<text>{@backup_name_exists}</text>
 			</text>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -355,7 +353,7 @@
 		</page>
 
 		<page name="backupname_foolprotection">
-		
+
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -364,22 +362,22 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@backup_hdr=Backup}</text>
+				<text>{@backup_hdr}</text>
 			</text>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@bkp_nametitle=Backup name}</text>
+				<text>{@bkp_nametitle}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@bkp_namesub=Type or generate backup name}</text>
+				<text>{@bkp_namesub}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
-				<text>{@name=Name}</text>
+				<text>{@name}</text>
 			</text>
 
 			<input>
@@ -395,21 +393,21 @@
 				<action function="generatebackupname"/>
 				<action function="page">backupname</action>
 			</button>
-			
+
 			<button style="bs_btn">
 				<placement x="0" y="%actbtn_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="generatebackupname"/>
 				<action function="page">backupname</action>
 			</button>
-			
+
 			<image>
 				<placement x="%col1_x%" y="%actbtn_row2_y%"/>
 				<image resource="bs_btn_new"/>
 			</image>
-			
+
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%actbtn_row2_text_y%"/>
-				<text>{@bkp_gen=Generate backup name}</text>
+				<text>{@bkp_gen}</text>
 			</text>
 
 			<button style="bs_btn">
@@ -418,7 +416,7 @@
 				<action function="page">backupname</action>
 				<action function="appenddatetobackupname"/>
 			</button>
-			
+
 			<image>
 				<placement x="%col1_x%" y="%actbtn_row1_y%"/>
 				<image resource="bs_btn_time"/>
@@ -426,13 +424,13 @@
 
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%actbtn_row1_text_y%"/>
-				<text>{@bkp_date=Add date}</text>
+				<text>{@bkp_date}</text>
 			</text>
 
 			<fill color="%linecolor%">
 				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -443,9 +441,8 @@
 				<action function="page">backup_device</action>
 			</action>
 		</page>
-		
-		<page name="checkbackuppassword">
 
+		<page name="checkbackuppassword">
 			<action>
 				<condition var1="tw_backup_password" op="=" var2="tw_backup_password2"/>
 				<actions>
@@ -454,6 +451,7 @@
 					<action function="page">backup_device</action>
 				</actions>
 			</action>
+
 			<action>
 				<condition var1="tw_backup_password" op="!=" var2="tw_backup_password2"/>
 				<actions>
@@ -461,7 +459,7 @@
 				</actions>
 			</action>
 		</page>
-		
+
 		<page name="checkbackuppassword2">
 			<action>
 				<actions>
@@ -488,12 +486,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@backup_hdr=Backup}</text>
+				<text>{@backup_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@backing=Backing Up}</text>
+				<text>{@backing}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -502,17 +500,16 @@
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>%tw_partition%: %tw_file_progress%</text>
 			</text>
-			
-			<!-- Чтобы не было строки типа ":", выглядит некрасиво, согласитесь? -->
+
 			<text style="text_ab_subtitle">
 				<condition var1="tw_partition" op="!="/>
 				<condition var1="tw_file_progress" op="!="/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@lang_wait=Please wait...}</text>
+				<text>{@lang_wait}</text>
 			</text>
 
 			<template name="action_page_console"/>
-			
+
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<condition var1="tw_busy" var2="1"/>
@@ -522,14 +519,14 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row7_1a_y%"/>
-				<text>{@progress=Progress}</text>
+				<text>{@progress}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x%" y="%row7_2a_y%"/>
 				<text>%tw_size_progress%</text>
 			</text>
-			
+
 			<action>
 				<action function="nandroid">backup</action>
 			</action>
@@ -538,7 +535,7 @@
 				<condition var1="tw_operation_state" var2="1"/>
 				<condition var1="tw_cancel_backup" var2="0"/>
 				<actions>
-					<action function="set">tw_complete_text1={@backup_complete=Backup Complete}</action>
+					<action function="set">tw_complete_text1={@backup_complete}</action>
 					<action function="set">tw_show_reboot=1</action>
 					<action function="page">backup_action_complete</action>
 				</actions>
@@ -548,7 +545,7 @@
 				<condition var1="tw_operation_state" var2="1"/>
 				<condition var1="tw_cancel_backup" var2="1"/>
 				<actions>
-					<action function="set">tw_complete_text1={@backup_cancel=Backup cancelled}</action>
+					<action function="set">tw_complete_text1={@backup_cancel}</action>
 					<action function="set">tw_show_reboot=1</action>
 					<action function="page">backup_action_complete</action>
 				</actions>
@@ -564,19 +561,19 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@backup_hdr=Backup}</text>
+				<text>{@backup_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_operation_status" op="!=" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@failed=Failed}</text>
+				<text>{@failed}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<condition var1="tw_operation_status" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@successful=Successful}</text>
+				<text>{@successful}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -588,7 +585,7 @@
 
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
-				<text>{@back_btn=BACK}</text>
+				<text>{@back_btn}</text>
 				<actions>
 					<action function="set">tw_clear_destination=backup_device</action>
 					<action function="page">clear_vars</action>
@@ -598,17 +595,17 @@
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
 				<condition var1="tw_reboot_system" var2="1"/>
-				<text>{@reboot_system_btn=REBOOT SYSTEM}</text>
+				<text>{@reboot_system_btn}</text>
 				<actions>
 					<action function="set">tw_back=main</action>
 					<action function="set">tw_action=reboot</action>
 					<action function="set">tw_action_param=system</action>
 					<action function="set">tw_has_action2=0</action>
-					<action function="set">tw_text1={@no_os1=No OS Installed! Are you}</action>
-					<action function="set">tw_text2={@no_osrb=sure you wish to reboot?}</action>
-					<action function="set">tw_action_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_complete_text1={@rebooting=Rebooting...}</action>
-					<action function="set">tw_slider_text={@swipe_reboot=Swipe to Reboot}</action>
+					<action function="set">tw_text1={@no_os1}</action>
+					<action function="set">tw_text2={@no_osrb}</action>
+					<action function="set">tw_action_text1={@rebooting}</action>
+					<action function="set">tw_complete_text1={@rebooting}</action>
+					<action function="set">tw_slider_text={@swipe_reboot}</action>
 					<action function="page">rebootcheck</action>
 				</actions>
 			</button>

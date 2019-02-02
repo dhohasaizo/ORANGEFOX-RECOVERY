@@ -2,16 +2,15 @@
 <recovery>
 	<pages>
 		<page name="password_enter">
-			
 			<template name="body_key"/>
-			
+
 			<template name="ab_main"/>
 
 			<template name="statusbarinfo"/>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x%" y="%ab_bc_y%"/>
-				<text>{@enter_password_cptn=Password}</text>
+				<text>{@enter_password_cptn}</text>
 			</text>
 
 			<button>
@@ -23,6 +22,7 @@
 				<action function="set">tw_reboot_param=poweroff</action>
 				<action function="page">rebootcheck</action>
 			</button>
+			
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<condition var1="tw_reboot_poweroff" op="!=" var2="1"/>
@@ -31,10 +31,10 @@
 				<action function="set">tw_back=password_enter</action>
 				<action function="page">reboot_system_routine</action>
 			</button>
-			
+
 			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@decrypt_data_enter_pass=Enter password}</text>
+				<text>{@decrypt_data_enter_pass}</text>
 			</text>
 
 			<input>
@@ -45,13 +45,12 @@
 				<restrict minlen="0" maxlen="64" />
 				<action function="page">password_check</action>
 			</input>
-			
+
 			<fill color="%accent%">
 				<condition var1="pass_govno" var2="0"/>
 				<placement x="%col1_x%" y="%row1_3_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
-			
 			<fill color="%text_fail%">
 				<condition var1="pass_govno" var2="1"/>
 				<placement x="%col1_x%" y="%row1_3_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
@@ -60,9 +59,9 @@
 			<text style="text_input_fail">
 				<condition var1="pass_govno" var2="1"/>
 				<placement x="%col1_x%" y="%row1_3_y%"/>
-				<text>{@pass_not_match=Password do not match!}</text>
+				<text>{@pass_not_match}</text>
 			</text>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">password_enter</action>
@@ -73,14 +72,14 @@
 				<action function="page">password_enter</action>
 			</action>
 		</page>
-		
-		
+
 		<page name="password_check">
 			<action>
 				<condition var1="pass_enter" op="=" var2="%pass_true%"/>
 				<condition var1="tw_has_mtp" var2="1"/>
 				<action function="startmtp"/>
 			</action>
+			
 			<action>
 				<condition var1="pass_enter" op="=" var2="%pass_true%"/>
 				<actions>
@@ -88,6 +87,7 @@
 					<action function="page">main</action>
 				</actions>
 			</action>
+			
 			<action>
 				<condition var1="pass_enter" op="!=" var2="%pass_true%"/>
 				<actions>
@@ -96,10 +96,10 @@
 				</actions>
 			</action>
 		</page>
-		
+
 		<page name="dialog_setpass1">
 			<template name="dialog_body_key"/>
-			
+
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
 				<image resource="dialog_bg"/>
@@ -107,12 +107,12 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
-				<text>{@enter_password_cptn=Password}</text>
+				<text>{@enter_password_cptn}</text>
 			</text>
 
 			<text style="caption_hl">
 				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
-				<text>{@set_password=Set Password}</text>
+				<text>{@set_password}</text>
 			</text>
 
 			<input>
@@ -139,15 +139,15 @@
 			<text style="text_input_fail">
 				<condition var1="pass_notm" var2="1"/>
 				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%"/>
-				<text>{@pass_not_match=Passwords do not match!}</text>
+				<text>{@pass_not_match}</text>
 			</text>
 
 			<button style="btn_dlg">
 				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
+				<text>{@cancel_btn}</text>
 				<action function="key">back</action>
 			</button>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="key">back</action>
@@ -165,7 +165,7 @@
 
 		<page name="dialog_setpass2">
 			<template name="dialog_body_key"/>
-			
+
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
 				<image resource="dialog_bg"/>
@@ -173,12 +173,12 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
-				<text>{@enter_password_cptn=Password}</text>
+				<text>{@enter_password_cptn}</text>
 			</text>
 
 			<text style="caption_hl">
 				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
-				<text>{@verifying_pas=Verify Password}</text>
+				<text>{@verifying_pas}</text>
 			</text>
 
 			<input>
@@ -198,10 +198,10 @@
 
 			<button style="btn_dlg">
 				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
-				<text>{@cancel_btn=CANCEL}</text>
+				<text>{@cancel_btn}</text>
 				<action function="key">back</action>
 			</button>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="key">back</action>
@@ -216,7 +216,7 @@
 				<action function="overlay"/>
 			</action>
 		</page>
-		
+
 		<page name="pass_check">
 			<action>
 				<condition var1="pass_new_2" op="=" var2="%pass_new_1%"/>

@@ -2,109 +2,128 @@
 <recovery>
 	<templates>
 		<template name="nav_panel">
-		
 			<fill color="%lightransparent%">
 				<condition var1="darker_ui" var2="1"/>
 				<placement x="0" y="%nav_panel_y%" w="%screen_w%" h="%nav_panel_h%"/>
 			</fill>
+			
 			<image>
 				<image resource="nav_files"/>
 				<condition var1="nav_panel_id" var2="0"/>
 				<placement x="%nav_item_1%" y="%nav_icon_y%" placement="4"/>
 			</image>
+			
 			<text style="nav_panel">
 				<condition var1="nav_panel_id" var2="0"/>
 				<placement x="%nav_item_1%" y="%nav_text_y%" placement="4"/>
-				<text>{@file_manager_btn=Files}</text>
+				<text>{@file_manager_btn}</text>
 			</text>
+			
 			<image>
 				<image resource="nav_files_d"/>
 				<condition var1="nav_panel_id" op="!=" var2="0"/>
 				<placement x="%nav_item_1%" y="%nav_icon_y%" placement="4"/>
 			</image>
+			
 			<text style="nav_panel_d">
 				<condition var1="nav_panel_id" op="!=" var2="0"/>
 				<placement x="%nav_item_1%" y="%nav_text_y%" placement="4"/>
-				<text>{@file_manager_btn=Files}</text>
+				<text>{@file_manager_btn}</text>
 			</text>
+			
 			<button>
 				<condition var1="nav_panel_id" op="!=" var2="0"/>
 				<placement x="%nav_item_1%" y="%nav_item_y%" placement="4"/>
 				<image resource="nav_empty" highlightresource="nav_hl"/>
 				<action function="page">filemanagerlist</action>
 			</button>
+			
 			<image>
 				<image resource="nav_backup_d"/>
 				<condition var1="nav_panel_id" op="!=" var2="1"/>
 				<placement x="%nav_item_2%" y="%nav_icon_y%" placement="4"/>
 			</image>
+			
 			<text style="nav_panel_d">
 				<condition var1="nav_panel_id" op="!=" var2="1"/>
 				<placement x="%nav_item_2%" y="%nav_text_y%" placement="4"/>
-				<text>{@backup_btn=Backup}</text>
+				<text>{@backup_btn}</text>
 			</text>
+			
 			<image>
 				<image resource="nav_backup"/>
 				<condition var1="nav_panel_id" var2="1"/>
 				<placement x="%nav_item_2%" y="%nav_icon_y%" placement="4"/>
 			</image>
+			
 			<text style="nav_panel">
 				<condition var1="nav_panel_id" var2="1"/>
 				<placement x="%nav_item_2%" y="%nav_text_y%" placement="4"/>
-				<text>{@backup_btn=Backup}</text>
+				<text>{@backup_btn}</text>
 			</text>
+			
 			<button>
 				<placement x="%nav_item_2%" y="%nav_item_y%" placement="4"/>
 				<condition var1="nav_panel_id" op="!=" var2="1"/>
 				<image resource="nav_empty" highlightresource="nav_hl"/>
 				<action function="page">restore</action>
 			</button>
+			
 			<image>
 				<image resource="nav_wipe_d"/>
 				<condition var1="nav_panel_id" op="!=" var2="2"/>
 				<placement x="%nav_item_3%" y="%nav_icon_y%" placement="4"/>
 			</image>
+			
 			<text style="nav_panel_d">
 				<condition var1="nav_panel_id" op="!=" var2="2"/>
 				<placement x="%nav_item_3%" y="%nav_text_y%" placement="4"/>
-				<text>{@wipe_btn=Wipe}</text>
+				<text>{@wipe_btn}</text>
 			</text>
+			
 			<image>
 				<image resource="nav_wipe"/>
 				<condition var1="nav_panel_id" var2="2"/>
 				<placement x="%nav_item_3%" y="%nav_icon_y%" placement="4"/>
 			</image>
+			
 			<text style="nav_panel">
 				<condition var1="nav_panel_id" var2="2"/>
 				<placement x="%nav_item_3%" y="%nav_text_y%" placement="4"/>
-				<text>{@wipe_btn=Wipe}</text>
+				<text>{@wipe_btn}</text>
 			</text>
+			
 			<button>
 				<condition var1="nav_panel_id" op="!=" var2="2"/>
 				<placement x="%nav_item_3%" y="%nav_item_y%" placement="4"/>
 				<image resource="nav_empty" highlightresource="nav_hl"/>
 				<action function="page">wipe</action>
 			</button>
+			
 			<image>
 				<image resource="nav_menu_d"/>
 				<condition var1="nav_panel_id" op="!=" var2="3"/>
 				<placement x="%nav_item_4%" y="%nav_icon_y%" placement="4"/>
 			</image>
+			
 			<text style="nav_panel_d">
 				<condition var1="nav_panel_id" op="!=" var2="3"/>
 				<placement x="%nav_item_4%" y="%nav_text_y%" placement="4"/>
-				<text>{@menu_btn=Menu}</text>
+				<text>{@menu_btn}</text>
 			</text>
+			
 			<image>
 				<image resource="nav_menu"/>
 				<condition var1="nav_panel_id" var2="3"/>
 				<placement x="%nav_item_4%" y="%nav_icon_y%" placement="4"/>
 			</image>
+			
 			<text style="nav_panel">
 				<condition var1="nav_panel_id" var2="3"/>
 				<placement x="%nav_item_4%" y="%nav_text_y%" placement="4"/>
-				<text>{@menu_btn=Menu}</text>
+				<text>{@menu_btn}</text>
 			</text>
+			
 			<button>
 				<condition var1="nav_panel_id" op="!=" var2="3"/>
 				<placement x="%nav_item_4%" y="%nav_item_y%" placement="4"/>
@@ -118,26 +137,34 @@
 			</image>
 			
 			<template name="navbar_bkg"/>
+			
 			<template name="navbar_home"/>
+			
 			<template name="navbar_console"/>
 		</template>
 		
 		<template name="busy_screen">
 			<background color="%background%"/>
+			
 			<template name="background_image"/>
+			
 			<fill color="%lightransparent%">
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
+			
 			<template name="statusbarinfo"/>
+			
 			<image>
 				<image resource="palette"/>
 				<placement x="%center_x%" y="%center_y%" placement="4"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%center_x%" y="%busy_text_l%" placement="4"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
 				<text>{@theme_apply}</text>
 			</text>
+			
 			<text style="bs_text">
 				<placement x="%center_x%" y="%busy_text%" placement="4"/>
 				<condition var1="navbar_disable" var2="1"/>
@@ -146,17 +173,18 @@
 		</template>
 		
 		<template name="snackbar_update">
-
 			<image>
 				<image resource="snackbar"/>
 				<condition var1="needs_repack" var2="1"/>
 				<placement x="0" y="%row_nav_y%" placement="2"/>
 			</image>
+			
 			<text style="text_body1">
 				<condition var1="needs_repack" var2="1"/>
 				<placement x="%snackbar_text_x%" y="%snackbar_text_y%"/>
 				<text>font (%update_fonts%) / nav (%update_navbar%) / accent (%update_accent%) / style (%update_style%)</text>
 			</text>
+			
 			<button style="btn_dlg_hl">
 				<condition var1="needs_repack" var2="1"/>
 				<placement x="%snackbar_button_x%" y="%snackbar_button_y%"/>
@@ -202,7 +230,6 @@
 		</template>
 
 		<template name="ab_without_shadow">
-
 			<fill color="%accent%">
 				<condition var1="accent_title" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
@@ -320,6 +347,7 @@
 				<speed fps="30" render="2"/>
 				<loop frame="1"/>
 			</animation>
+			
 			<animation>
 				<condition var1="ui_progress" var2="100"/>
 				<placement x="%progressbar_x%" y="%progressbar_y%"/>
@@ -334,6 +362,7 @@
 				<placement x="%col1_x%" y="%row2_1_y%" w="%console_width%" h="%console_action_height%"/> 
 				<condition var1="use_fixed_font" var2="0"/>
 			</console>
+			
 			<console>
 				<placement x="%col1_x%" y="%row2_1_y%" w="%console_width%" h="%console_action_height%"/> 
 				<condition var1="use_fixed_font" var2="1"/>
@@ -349,10 +378,9 @@
 			</fill>
 		</template>
 		
-		<!--комон эври-->
 		<template name="body">
 			<background color="%background%"/>
-			<template name="background_image" />
+			<template name="background_image"/>
 			<template name="navbar_bkg"/>
 			<template name="keys"/>
 			<template name="navbar"/>
@@ -447,11 +475,9 @@
 				<touch key="power+volup"/>
 				<action function="flashlight"/>
 			</action>
-			
 		</template>
 		
 		<template name="find_file">
-			
 			<image>
 				<placement x="0" y="%fileselector_shadow_terminal_x%"/>
 				<image resource="filelist_shadow"/>
@@ -461,6 +487,7 @@
 			<template name="ab_ex"/>
 
 			<template name="statusbarinfo"/>
+			
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
@@ -497,8 +524,8 @@
 				<image resource="btn_float_storage" highlightresource="btn_float_storage_hl"/>
 				<action function="overlay">dialog_storage</action>
 			</button>
-			
 		</template>
+		
 		<template name="t_system">
 			<template name="body"/>
 
@@ -508,17 +535,17 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@mount_hdr=Mount}</text>
+				<text>{@mount_hdr}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@sys_ro=System Partition}</text>
+				<text>{@sys_ro}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@sys_ro_hdr=Unmodified System Partition}</text>
+				<text>{@sys_ro_hdr}</text>
 			</text>
 
 			<image>
@@ -528,65 +555,65 @@
 
 			<text style="text_body2_hl">
 				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
-				<text>{@ts_inform=Information}</text>
+				<text>{@ts_inform}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
-				<text>{@sys_rop1=TWRP can leave your system partition}</text>
+				<text>{@sys_rop1}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
-				<text>{@sys_rop2=unmodified to make it easier for you to}</text>
+				<text>{@sys_rop2}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
-				<text>{@sys_rop2a=take official updates.}</text>
+				<text>{@sys_rop2a}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
-				<text>{@sys_rop3=TWRP will be unable to prevent the}</text>
+				<text>{@sys_rop3}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row4_1_y%"/>
-				<text>{@sys_rop4=stock ROM from replacing TWRP and}</text>
+				<text>{@sys_rop4}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_indent%" y="%row4_2_y%"/>
-				<text>{@sys_rop4a=will not offer to root your device.}</text>
+				<text>{@sys_rop4a}</text>
 			</text>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="%row4_3a_y%"/>
-				<text>{@sys_rop5=Zip installations or ADB operations}</text>
+				<text>{@sys_rop5}</text>
 			</text>
 
 			<text style="text_body2_fail">
 				<placement x="%col1_x_indent%" y="%row5_1a_y%"/>
-				<text>{@sys_rop6=may still modify the system partition.}</text>
+				<text>{@sys_rop6}</text>
 			</text>
 			
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
-				<text>{@sys_ro_keep_ro_btn=KEEP READ-ONLY}</text>
+				<text>{@sys_ro_keep_ro_btn}</text>
 				<action function="key">back</action>
 			</button>
 			
 			<listbox style="settingslist">
 				<placement x="0" y="%row6_1_y%" w="%screen_w%" h="%lb_l1%"/>
-				<listitem name="{@sys_ro_never_show_chk=Never show this screen during boot again}">
+				<listitem name="{@sys_ro_never_show_chk}">
 					<data variable="tw_never_show_system_ro_page"/>
 				</listitem>
 			</listbox>
 			
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<text>{@swipe_allow_mod=Swipe to Allow Modifications}</text>
+				<text>{@swipe_allow_mod}</text>
 			</text>
 			
 			<action>

@@ -6,14 +6,14 @@
 				<condition var1="show_cpu_temp" var2="0"/>
 				<condition var1="center_clock" op="!=" var2="2"/>
 				<placement x="%version_x%" y="%status_info_y%"/>
-				<text>{@twrp_watch_header=%tw_version%}</text>
+				<text>{@twrp_watch_header}</text>
 			</text>
 
 			<text style="text_status">
 				<condition var1="show_cpu_temp" var2="1"/>
 				<condition var1="center_clock" op="!=" var2="2"/>
 				<placement x="%version_x%" y="%status_info_y%"/>
-				<text>{@cpu_temp=CPU: %tw_cpu_temp%&#xB0;C}</text>
+				<text>{@cpu_temp}</text>
 			</text>
 			
 			<text style="text_status">
@@ -25,10 +25,10 @@
 			<text style="text_status_fail">
 				<condition var1="tw_simulate_actions" var2="1"/>
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/>
-				<text>{@simulating=SIMULATING ACTIONS}</text>
+				<text>{@simulating}</text>
 			</text>
 
-			<!-- 12 часов -->
+			<!-- 12 hrs -->
 			<image>
 				<image resource="battery100"/>
 				<placement x="%battery_12_x%" y="0"/>
@@ -40,6 +40,7 @@
 					<condition var1="tw_battery" op="&gt;" var2="99"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery75"/>
 				<placement x="%battery_12_x%" y="0"/>
@@ -52,6 +53,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="100"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery50"/>
 				<placement x="%battery_12_x%" y="0"/>
@@ -64,6 +66,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="75"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery25"/>
 				<placement x="%battery_12_x%" y="0"/>
@@ -76,6 +79,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="50"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery15_good"/>
 				<placement x="%battery_12_x%" y="0"/>
@@ -88,6 +92,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="25"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery15"/>
 				<placement x="%battery_12_x%" y="0"/>
@@ -100,6 +105,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery15"/>
 				<placement x="%battery_12_x%" y="0"/>
@@ -112,6 +118,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery5"/>
 				<placement x="%battery_12_x%" y="0"/>
@@ -124,7 +131,7 @@
 				</conditions>
 			</image>
 			
-			<!-- текст -->
+			<!-- text -->
 			<text style="text_status">
 				<placement x="%battery_12_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -149,6 +156,7 @@
 				</conditions>
 				<text>%tw_battery%</text>
 			</text>
+			
 			<text style="text_status">
 				<placement x="%battery_12_t_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -173,9 +181,9 @@
 				</conditions>
 				<text>%tw_battery%</text>
 			</text>
-			<!-- батарея конец -->
+			<!-- end -->
 
-			<!-- 24 часа -->
+			<!-- 24 hrs -->
 			<image>
 				<image resource="battery100"/>
 				<placement x="%battery_24_x%" y="0"/>
@@ -188,6 +196,7 @@
 					<condition var1="tw_battery" op="&gt;" var2="99"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery75"/>
 				<placement x="%battery_24_x%" y="0"/>
@@ -201,6 +210,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="100"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery50"/>
 				<placement x="%battery_24_x%" y="0"/>
@@ -214,6 +224,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="75"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery25"/>
 				<placement x="%battery_24_x%" y="0"/>
@@ -227,6 +238,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="50"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery15_good"/>
 				<placement x="%battery_24_x%" y="0"/>
@@ -240,6 +252,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="25"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery15"/>
 				<placement x="%battery_24_x%" y="0"/>
@@ -253,6 +266,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery15"/>
 				<placement x="%battery_24_x%" y="0"/>
@@ -266,6 +280,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery5"/>
 				<placement x="%battery_24_x%" y="0"/>
@@ -279,7 +294,7 @@
 				</conditions>
 			</image>
 			
-			<!-- текст -->
+			<!-- text -->
 			<text style="text_status">
 				<placement x="%battery_24_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -304,6 +319,7 @@
 				</conditions>
 				<text>%tw_battery%</text>
 			</text>
+			
 			<text style="text_status">
 				<placement x="%battery_24_t_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -328,9 +344,9 @@
 				</conditions>
 				<text>%tw_battery%</text>
 			</text>
-			<!-- батарея конец -->
+			<!-- end -->
 
-			<!-- часы по центру -->
+			<!-- center -->
 			<!-- Circle battery style -->
 			<image>
 				<image resource="battery100"/>
@@ -343,6 +359,7 @@
 					<condition var1="tw_battery" op="&gt;" var2="99"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery75"/>
 				<placement x="%battery_center_x%" y="0"/>
@@ -355,6 +372,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="100"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery50"/>
 				<placement x="%battery_center_x%" y="0"/>
@@ -367,6 +385,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="75"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery25"/>
 				<placement x="%battery_center_x%" y="0"/>
@@ -379,6 +398,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="50"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery15_good"/>
 				<placement x="%battery_center_x%" y="0"/>
@@ -391,6 +411,7 @@
 					<condition var1="tw_battery" op="&lt;" var2="25"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery15"/>
 				<placement x="%battery_center_x%" y="0"/>
@@ -403,6 +424,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery15"/>
 				<placement x="%battery_center_x%" y="0"/>
@@ -415,6 +437,7 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 				</conditions>
 			</image>
+			
 			<image>
 				<image resource="battery5"/>
 				<placement x="%battery_center_x%" y="0"/>
@@ -550,7 +573,7 @@
 				</conditions>
 			</image>
 			
-			<!-- текст -->
+			<!-- text -->
 			<text style="text_status">
 				<placement x="%battery_center_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -573,6 +596,7 @@
 				</conditions>
 				<text>%tw_battery%</text>
 			</text>
+			
 			<text style="text_status">
 				<placement x="%battery_center_t_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
@@ -595,7 +619,7 @@
 				</conditions>
 				<text>%tw_battery%</text>
 			</text>
-			<!-- батарея конец -->
+			<!-- end -->
 
 			<text style="text_status">
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/> <!--right align-->

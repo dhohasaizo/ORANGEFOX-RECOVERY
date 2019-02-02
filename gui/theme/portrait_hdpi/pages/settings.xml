@@ -11,61 +11,67 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@settings_hdr=Settings}</text>
+				<text>{@settings_hdr}</text>
 			</text>
-			
+
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
 				<action function="overlay">dialog_reset</action>
 			</button>
-			
+
 			<!-- General -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
 				<action function="set">general_back=settings</action>
 				<action function="page">ext_general</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_set_x%" y="%set_row1_y%"/>
 				<image resource="bs_btn_set_global"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>{@settings_general=General}</text>
+				<text>{@settings_general}</text>
 			</text>
 			<!---->
-			
+
 			<!-- MIUI OTA -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">fox_ota</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_set_x%" y="%set_row2_y%"/>
 				<image resource="bs_btn_set_ota"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
 				<text>MIUI OTA</text>
 			</text>
 			<!---->
-			
+
 			<!-- Customization -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_custom</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_set_x%" y="%set_row3_y%"/>
 				<image resource="bs_btn_set_custom"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>{@settings_ui=Customization}</text>
+				<text>{@settings_ui}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Files -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
@@ -74,128 +80,144 @@
 				<action function="set">tw_notexistpage=ext_fm</action>
 				<action function="page">filecheck</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_set_x%" y="%set_row4_y%"/>
 				<image resource="bs_btn_set_files"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@file_manager_btn=Files}</text>
+				<text>{@file_manager_btn}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Screen -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_screen</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_set_x%" y="%set_row5_y%"/>
 				<image resource="bs_btn_set_screen"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>{@settings_screen=Display}</text>
+				<text>{@settings_screen}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Vibration -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_vibrate</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_set_x%" y="%set_row6_y%"/>
 				<image resource="bs_btn_set_vibro"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
-				<text>{@vibration_hdr=Vibration}</text>
+				<text>{@vibration_hdr}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Backup -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">backup_back=settings</action>
 				<action function="page">ext_backup</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_set_x%" y="%set_row7_y%"/>
 				<image resource="bs_btn_restore"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
-				<text>{@backup_hdr=Backup}</text>
+				<text>{@backup_hdr}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Regional -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row8_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_time</action>
 			</button>
+			
 			<image>
 				<placement x="%col1_set_x%" y="%set_row8_y%"/>
 				<image resource="bs_btn_set_regional"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
-				<text>{@settings_time=Regional}</text>
+				<text>{@settings_time}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Debug -->
 			<button style="bs_btn">
 				<condition var1="debug_open" var2="5"/>
 				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">debug</action>
 			</button>
+			
 			<image>
 				<condition var1="debug_open" var2="5"/>
 				<placement x="%col1_set_x%" y="%set_row9_y%"/>
 				<image resource="bs_btn_set_bug"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="debug_open" var2="5"/>
 				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
-				<text>{@dbg=Debug}</text>
+				<text>{@dbg}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Info -->
 			<button style="bs_btn">
 				<condition var1="debug_open" op="!=" var2="5"/>
 				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">about</action>
 			</button>
+			
 			<image>
 				<condition var1="debug_open" op="!=" var2="5"/>
 				<placement x="%col1_set_x%" y="%set_row9_y%"/>
 				<image resource="bs_btn_set_about"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="debug_open" op="!=" var2="5"/>
 				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
-				<text>{@about_hdr=About}</text>
+				<text>{@about_hdr}</text>
 			</text>
 			<!---->
-			
+
 			<!-- Info -->
 			<button style="bs_btn">
 				<condition var1="debug_open" var2="5"/>
 				<placement x="0" y="%set_row10_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">about</action>
 			</button>
+			
 			<image>
 				<condition var1="debug_open" var2="5"/>
 				<placement x="%col1_set_x%" y="%set_row10_y%"/>
 				<image resource="bs_btn_set_about"/>
 			</image>
+			
 			<text style="bs_text">
 				<condition var1="debug_open" var2="5"/>
 				<placement x="%col1_x_indent%" y="%set_row10_text_y%"/>
-				<text>{@about_hdr=About}</text>
+				<text>{@about_hdr}</text>
 			</text>
 			<!---->
 
@@ -209,7 +231,7 @@
 				<action function="page">advanced</action>
 			</action>
 		</page>
-	
+
 		<!-- General -->
 		<page name="ext_general">
 			<template name="body"/>
@@ -217,92 +239,90 @@
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<condition var1="general_back" var2="settings"/>
-				<text>{@settings_general=General}</text>
+				<text>{@settings_general}</text>
 			</text>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<condition var1="general_back" var2="wipe"/>
-				<text>{@wipe_hdr=Wipe}</text>
+				<text>{@wipe_hdr}</text>
 			</text>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<condition var1="general_back" var2="reboot"/>
-				<text>{@reboot_btn=Reboot}</text>
+				<text>{@reboot_btn}</text>
 			</text>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<condition var1="general_back" var2="terminal"/>
-				<text>{@term_s_hdr=Terminal}</text>
+				<text>{@term_s_hdr}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
 				<condition var1="general_back" op="!=" var2="reboot"/>
-				<text>{@options_hdr=Options}</text>
+				<text>{@options_hdr}</text>
 			</text>
-			
+
 			<listbox style="settingslist">
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l7%"/>
-				
-				<listitem name="{@use_rmrf_chk=Use rm -rf instead of formatting}">
+				<listitem name="{@use_rmrf_chk}">
 					<condition var1="general_back" op="!=" var2="terminal"/>
 					<data variable="tw_rm_rf"/>
 				</listitem>
-				<listitem name="{@use_fixed_font=Do not theme terminal font}">
+				<listitem name="{@use_fixed_font}">
 					<condition var1="general_back" op="!=" var2="wipe"/>
 					<condition var1="general_back" op="!=" var2="reboot"/>
 					<data variable="use_fixed_font"/>
 				</listitem>
-				<listitem name="{@install_reboot_chk=Reboot after installation is complete}">
+				<listitem name="{@install_reboot_chk}">
 					<condition var1="tw_reboot_system" var2="1"/>
 					<condition var1="general_back" var2="settings"/>
 					<data variable="tw_install_reboot"/>
 				</listitem>
-				<listitem name="{@zip_sig_chk=Zip signature verification}">
+				<listitem name="{@zip_sig_chk}">
 					<data variable="tw_signed_zip_verify"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
-				<listitem name="{@lockscreen_quicklock=Tapping the lock icon locks the screen}">
+				<listitem name="{@lockscreen_quicklock}">
 					<data variable="lock_action"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
-				
-				<listitem name="{@restoredialog_readonly=Never show mount system read-only dialog}">
+				<listitem name="{@restoredialog_readonly}">
 					<data variable="tw_never_show_system_ro_page"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
-				
-				<listitem name="{@inject_twrp_chk=Inject TWRP after install}">
+				<listitem name="{@inject_twrp_chk}">
 					<condition var1="tw_has_injecttwrp" var2="1"/>
 					<condition var1="general_back" var2="settings"/>
 					<data variable="tw_inject_after_zip"/>
 				</listitem>
 			</listbox>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row6_3a_y%"/>
-					<condition var1="general_back" var2="settings"/>
-				<text>{@enter_password_cptn=Password}</text>
+				<condition var1="general_back" var2="settings"/>
+				<text>{@enter_password_cptn}</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="use_pass" var2="0"/>
-					<condition var1="general_back" var2="settings"/>
+				<condition var1="general_back" var2="settings"/>
 				<placement x="%col1_x%" y="%row7_1a_y%"/>
-				<text>{@disabled=Disabled}</text>
+				<text>{@disabled}</text>
 			</text>
+			
 			<text style="text_body2">
 				<condition var1="use_pass" var2="1"/>
 				<condition var1="general_back" var2="settings"/>
 				<placement x="%col1_x%" y="%row7_1a_y%"/>
-				<text>{@enabled=Enabled}</text>
+				<text>{@enabled}</text>
 			</text>
 
 			<button style="menu_btn">
@@ -324,37 +344,37 @@
 				<action function="set">pass_notm=0</action>
 				<action function="set">use_pass=0</action>
 			</button>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_3_y%"/>
 				<condition var1="general_back" var2="settings"/>
-				<text>{@areb_confirm=Reboot confirmation dialog}</text>
+				<text>{@areb_confirm}</text>
 			</text>
-			
+
 			<listbox>
 				<placement x="0" y="%row5_1_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="general_back" var2="settings"/>
 				<data name="disable_no_os"/>
-				<listitem name="{@otp_never=Never}">1</listitem>
-				<listitem name="{@opt_always=Always}">2</listitem>
-				<listitem name="{@areb_noos=When no OS installed}">0</listitem>
+				<listitem name="{@otp_never}">1</listitem>
+				<listitem name="{@opt_always}">2</listitem>
+				<listitem name="{@areb_noos}">0</listitem>
 			</listbox>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
 				<condition var1="general_back" var2="reboot"/>
-				<text>{@areb_confirm=Reboot confirmation dialog}</text>
+				<text>{@areb_confirm}</text>
 			</text>
-			
+
 			<listbox>
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="general_back" var2="reboot"/>
 				<data name="disable_no_os"/>
-				<listitem name="{@otp_never=Never}">1</listitem>
-				<listitem name="{@opt_always=Always}">2</listitem>
-				<listitem name="{@areb_noos=When no OS installed}">0</listitem>
+				<listitem name="{@otp_never}">1</listitem>
+				<listitem name="{@opt_always}">2</listitem>
+				<listitem name="{@areb_noos}">0</listitem>
 			</listbox>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -365,8 +385,8 @@
 				<action function="page">%general_back%</action>
 			</action>
 		</page>
-	
-		<!-- Файлы ☺ -->
+
+		<!-- Files -->
 		<page name="ext_fm">
 			<action>
 				<condition var1="aroma_path" var2="/twres/aroma.zip"/>
@@ -375,12 +395,13 @@
 				<action function="set">splash_includearoma=0</action>
 				<action function="set">aroma_enabled=0</action>
 			</action>
+			
 			<action>
 				<condition var1="aroma_path" var2="none"/>
 				<condition var1="tw_fileexists" var2="1"/>
 				<action function="set">aroma_path=/twres/aroma.zip</action>
 			</action>
-		
+
 			<template name="body"/>
 
 			<template name="ab"/>
@@ -389,34 +410,34 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@file_manager_btn=Files}</text>
+				<text>{@file_manager_btn}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@fm_butts=Button in File Manager}</text>
+				<text>{@fm_butts}</text>
 			</text>
-			
+
 			<listbox>
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="bookmark"/>
-				<listitem name="{@fm_none=None}">2</listitem>
-				<listitem name="{@fm_book=Bookmark button}">1</listitem>
-				<listitem name="{@fm_font=Font button}">0</listitem>
+				<listitem name="{@fm_none}">2</listitem>
+				<listitem name="{@fm_book}">1</listitem>
+				<listitem name="{@fm_font}">0</listitem>
 			</listbox>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row3_1a_y%"/>
-				<text>{@cust_fm_font=Font Size}</text>
+				<text>{@cust_fm_font}</text>
 			</text>
-			
+
 			<listbox>
 				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l2%"/>
 				<data name="list_font"/>
-				<listitem name="{@cust_fm_font_s=Small}">small</listitem>
-				<listitem name="{@cust_fm_font_b=Big}">big</listitem>
+				<listitem name="{@cust_fm_font_s}">small</listitem>
+				<listitem name="{@cust_fm_font_b}">big</listitem>
 			</listbox>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_3a_y%"/>
 				<text>AromaFM</text>
@@ -427,40 +448,40 @@
 				<placement x="%col1_x%" y="%row5_1a_y%"/>
 				<text>%aroma_path%</text>
 			</text>
-			
+
 			<text style="text_body2">
 				<condition var1="aroma_path" var2="none"/>
 				<placement x="%col1_x%" y="%row5_1a_y%"/>
-				<text>{@not_set=Not set}</text>
+				<text>{@not_set}</text>
 			</text>
 
 			<button style="menu_btn">
 				<placement x="%col1_x%" y="%row4_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<action function="page">ext_fm_aroma</action>
 			</button>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row5_3a_y%"/>
-				<text>{@cust_oth=Other}</text>
+				<text>{@cust_oth}</text>
 			</text>
-			
+
 			<listbox style="settingslist">
 				<placement x="0" y="%row6_1a_y%" w="%screen_w%" h="%lb_l4%"/>
-				<listitem name="{@aroma_on=Enable AromaFM}">
+				<listitem name="{@aroma_on}">
 					<condition var1="aroma_path" op="!=" var2="none"/>
 					<data variable="aroma_enabled"/>
 				</listitem>
-				<listitem name="{@storagedialog_enable=Enable storage selection dialog}">
+				<listitem name="{@storagedialog_enable}">
 					<data variable="storage_select_on"/>
 				</listitem>
-				<listitem name="{@restoredialog_books=Newer show set bookmaks dialog}">
+				<listitem name="{@restoredialog_books}">
 					<data variable="dialog_hide_folder"/>
 				</listitem>
-				<listitem name="{@cust_fm_shad=Enable shadow}">
+				<listitem name="{@cust_fm_shad}">
 					<data variable="fl_shadow"/>
 				</listitem>
 			</listbox>
-			
+
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<condition var1="aroma_path" op="!=" var2="/twres/aroma.zip"/>
@@ -468,7 +489,7 @@
 				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
 				<action function="set">aroma_path=/twres/aroma.zip</action>
 			</button>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -479,7 +500,7 @@
 				<action function="page">settings</action>
 			</action>
 		</page>
-		
+
 		<page name="ext_fm_aroma">
 			<template name="body"/>
 			<fileselector style="fileselector_b">
@@ -503,17 +524,17 @@
 				<data name="tw_filename"/>
 				<selection name="tw_file"/>
 			</fileselector>
-			
+
 			<template name="find_file"/>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@file_manager_btn=Files}</text>
+				<text>{@file_manager_btn}</text>
 			</text>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@aroma_select=Select AromaFM ZIP}</text>
+				<text>{@aroma_select}</text>
 			</text>
 
 			<action>
@@ -534,28 +555,29 @@
 				<action function="page">main</action>
 			</action>
 		</page>
-	
+
 		<!-- Screen -->
 		<page name="ext_screen">
-			
 			<template name="body"/>
-			<template name="ab"/>
-			<template name="statusbarinfo"/>
 			
+			<template name="ab"/>
+			
+			<template name="statusbarinfo"/>
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@settings_screen=Display}</text>
+				<text>{@settings_screen}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@settings_screen_cptn=Screen Settings}</text>
+				<text>{@settings_screen_cptn}</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="tw_has_brightnesss_file" var2="1"/>
 				<placement x="%col1_x%" y="%row1_2_y%"/>
-				<text>{@screen_bright_slider=Brightness: %tw_brightness_pct%%}</text>
+				<text>{@screen_bright_slider}</text>
 			</text>
 
 			<slidervalue>
@@ -574,14 +596,14 @@
 				<condition var1="tw_screen_timeout_secs" op="=" var2="0"/>
 				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
 				<placement x="%col1_x%" y="%row2_3a_y%"/>
-				<text>{@settings_screen_timeout_cptn=Timeout}</text>
+				<text>{@settings_screen_timeout_cptn}</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="tw_screen_timeout_secs" op="!=" var2="0"/>
 				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
 				<placement x="%col1_x%" y="%row2_3a_y%"/>
-				<text>{@settings_screen_timeout_cptn2=Timeout:} %tw_screen_timeout_secs% {@timeout_unit=seconds}</text>
+				<text>{@settings_screen_timeout_cptn2=Timeout:} %tw_screen_timeout_secs% {@timeout_unit}</text>
 			</text>
 
 			<slidervalue>
@@ -589,7 +611,7 @@
 				<placement x="%slider_x%" y="%row3_1_y%" w="%slidervalue_w%"/>
 				<data variable="tw_screen_timeout_secs" min="0" max="300" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -600,7 +622,7 @@
 				<action function="page">settings</action>
 			</action>
 		</page>
-		
+
 		<!-- Vibration -->
 		<page name="ext_vibrate">
 			<template name="body"/>
@@ -608,27 +630,27 @@
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@vibration_hdr=Vibration}</text>
+				<text>{@vibration_hdr}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@vibration_hdr=Vibration}</text>
+				<text>{@vibration_hdr}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x%" y="%row1_2_y%"/>
 				<condition var1="tw_button_vibrate" op="!=" var2="0"/>
-				<text>{@button_vibration=Button Vibration:} %tw_button_vibrate%</text>
+				<text>{@button_vibration} %tw_button_vibrate%</text>
 			</text>
-			
+
 			<text style="text_body2">
 				<condition var1="tw_button_vibrate" op="=" var2="0"/>
 				<placement x="%col1_x%" y="%row1_2_y%"/>
-				<text>{@button_vibration_hdr=Button Vibration is off}</text>
+				<text>{@button_vibration_hdr}</text>
 			</text>
 
 			<slidervalue>
@@ -639,13 +661,13 @@
 			<text style="text_body2">
 				<condition var1="tw_keyboard_vibrate" op="!=" var2="0"/>
 				<placement x="%col1_x%" y="%row2_3a_y%"/>
-				<text>{@kb_vibration=Keyboard Vibration:} %tw_keyboard_vibrate%</text>
+				<text>{@kb_vibration} %tw_keyboard_vibrate%</text>
 			</text>
-			
+
 			<text style="text_body2">
 				<condition var1="tw_keyboard_vibrate" op="=" var2="0"/>
 				<placement x="%col1_x%" y="%row2_3a_y%"/>
-				<text>{@kb_vibration_hdr=Keyboard Vibration is off}</text>
+				<text>{@kb_vibration_hdr}</text>
 			</text>
 
 			<slidervalue>
@@ -656,13 +678,13 @@
 			<text style="text_body2">
 				<condition var1="tw_action_vibrate" op="!=" var2="0"/>
 				<placement x="%col1_x%" y="%row4_2_y%"/>
-				<text>{@act_vibration=Action Vibration:} %tw_action_vibrate%</text>
+				<text>{@act_vibration} %tw_action_vibrate%</text>
 			</text>
-			
+
 			<text style="text_body2">
 				<condition var1="tw_action_vibrate" op="=" var2="0"/>
 				<placement x="%col1_x%" y="%row4_2_y%"/>
-				<text>{@act_vibration_hdr=Action Vibration is off}</text>
+				<text>{@act_vibration_hdr}</text>
 			</text>
 
 			<slidervalue>
@@ -680,7 +702,7 @@
 				<action function="page">settings</action>
 			</action>
 		</page>
-		
+
 		<!-- Backup -->
 		<page name="ext_backup">
 			<template name="body"/>
@@ -691,53 +713,53 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@backup_hdr=Backup}</text>
+				<text>{@backup_hdr}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@settings_backup_name=Backup name}</text>
+				<text>{@settings_backup_name}</text>
 			</text>
-			
+
 			<listbox>
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="auto_generate"/>
-				<listitem name="{@settings_backup_name_user=Do not change}">2</listitem>
-				<listitem name="{@settings_backup_name_auto=Defined automatically}">1</listitem>
-				<listitem name="{@settings_backup_name_auto_hide=While backing up}">0</listitem>
+				<listitem name="{@settings_backup_name_user}">2</listitem>
+				<listitem name="{@settings_backup_name_auto}">1</listitem>
+				<listitem name="{@settings_backup_name_auto_hide}">0</listitem>
 			</listbox>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row5_3a_y%"/>
-				<text>{@cust_oth=Other}</text>
+				<text>{@cust_oth}</text>
 			</text>
-			
+
 			<listbox style="settingslist">
 				<placement x="0" y="%row6_1a_y%" w="%screen_w%" h="%lb_l5%"/>		
-				<listitem name="{@enable_backup_comp_chk=Enable compression}">
+				<listitem name="{@enable_backup_comp_chk}">
 					<data variable="tw_use_compression"/>
 				</listitem>
-				<listitem name="{@disable_backup_space_chk=Disable free space check before backup}">
+				<listitem name="{@disable_backup_space_chk}">
 					<data variable="tw_disable_free_space"/>
 				</listitem>
-				<listitem name="{@restore_enable_digest_chk=Enable Digest verification of backups}">
+				<listitem name="{@restore_enable_digest_chk}">
 					<data variable="tw_skip_digest_check"/>
 					<condition var1="backup_back" var2="settings"/>
 				</listitem>
-				<listitem name="{@skip_digest_backup_chk=Skip Digest generation during backup}">
+				<listitem name="{@skip_digest_backup_chk}">
 					<data variable="tw_skip_digest_generate"/>
 				</listitem>
-				<listitem name="{@sha2_chk=Use SHA2 for hashing}">
+				<listitem name="{@sha2_chk}">
 					<condition var1="tw_no_sha2" var2="0"/>
 					<data variable="tw_use_sha2"/>
 				</listitem>
 			</listbox>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row3_1a_y%"/>
-				<text>{@settings_backup_qbkp_custom=Quick backup partitions}</text>
+				<text>{@settings_backup_qbkp_custom}</text>
 			</text>
-			
+
 			<partitionlist>
 				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l4%"/>
 				<data name="tw_backup_list_quick"/>
@@ -754,7 +776,7 @@
 				<action function="page">%backup_back%</action>
 			</action>
 		</page>
-	
+
 		<!-- Regional -->
 		<page name="ext_time">
 			<template name="body"/>
@@ -762,69 +784,69 @@
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@settings_time=Regional}</text>
+				<text>{@settings_time}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@sel_tz_list=Time Zone}</text>
+				<text>{@sel_tz_list}</text>
 			</text>
 
 			<listbox>
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l7%"/>
 				<data name="tw_time_zone_guisel"/>
-				<listitem name="{@utcm11=(UTC -11) Samoa, Midway Island}">BST11;BDT</listitem>
-				<listitem name="{@utcm10=(UTC -10) Hawaii}">HST10;HDT</listitem>
-				<listitem name="{@utcm9=(UTC -9) Alaska}">AST9;ADT</listitem>
-				<listitem name="{@utcm8=(UTC -8) Pacific Time}">PST8;PDT,M3.2.0,M11.1.0</listitem>
-				<listitem name="{@utcm7=(UTC -7) Mountain Time}">MST7;MDT,M3.2.0,M11.1.0</listitem>
-				<listitem name="{@utcm6=(UTC -6) Central Time}">CST6;CDT,M3.2.0,M11.1.0</listitem>
-				<listitem name="{@utcm5=(UTC -5) Eastern Time}">EST5;EDT,M3.2.0,M11.1.0</listitem>
-				<listitem name="{@utcm4=(UTC -4) Atlantic Time}">AST4;ADT</listitem>
-				<listitem name="{@utcm3=(UTC -3) Brazil, Buenos Aires}">GRNLNDST3;GRNLNDDT</listitem>
-				<listitem name="{@utcm2=(UTC -2) Mid-Atlantic}">FALKST2;FALKDT</listitem>
-				<listitem name="{@utcm1=(UTC -1) Azores, Cape Verde}">AZOREST1;AZOREDT</listitem>
-				<listitem name="{@utc0=(UTC  0) London, Dublin, Lisbon}">GMT0;BST,M3.5.0,M10.5.0</listitem>
-				<listitem name="{@utcp1=(UTC +1) Berlin, Brussels, Paris}">CET-1;CEST,M3.5.0,M10.5.0</listitem>
-				<listitem name="{@utcp2=(UTC +2) Athens, Istanbul, South Africa}">WET-2;WET,M3.5.0,M10.5.0</listitem>
-				<listitem name="{@utcp3=(UTC +3) Moscow, Baghdad}">SAUST-3;SAUDT</listitem>
-				<listitem name="{@utcp4=(UTC +4) Abu Dhabi, Tbilisi, Muscat}">WST-4;WDT</listitem>
-				<listitem name="{@utcp5=(UTC +5) Yekaterinburg, Islamabad}">PAKST-5;PAKDT</listitem>
-				<listitem name="{@utcp6=(UTC +6) Almaty, Dhaka, Colombo}">TASHST-6;TASHDT</listitem>
-				<listitem name="{@utcp7=(UTC +7) Bangkok, Hanoi, Jakarta}">THAIST-7;THAIDT</listitem>
-				<listitem name="{@utcp8=(UTC +8) Beijing, Singapore, Hong Kong}">TAIST-8;TAIDT</listitem>
-				<listitem name="{@utcp9=(UTC +9) Tokyo, Seoul, Yakutsk}">JST-9;JSTDT</listitem>
-				<listitem name="{@utcp10=(UTC +10) Eastern Australia, Guam}">EET-10;EETDT</listitem>
-				<listitem name="{@utcp11=(UTC +11) Vladivostok, Solomon Islands}">MET-11;METDT</listitem>
-				<listitem name="{@utcp12=(UTC +12) Auckland, Wellington, Fiji}">NZST-12;NZDT</listitem>
+				<listitem name="{@utcm11}">BST11;BDT</listitem>
+				<listitem name="{@utcm10}">HST10;HDT</listitem>
+				<listitem name="{@utcm9}">AST9;ADT</listitem>
+				<listitem name="{@utcm8}">PST8;PDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm7}">MST7;MDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm6}">CST6;CDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm5}">EST5;EDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm4}">AST4;ADT</listitem>
+				<listitem name="{@utcm3}">GRNLNDST3;GRNLNDDT</listitem>
+				<listitem name="{@utcm2}">FALKST2;FALKDT</listitem>
+				<listitem name="{@utcm1}">AZOREST1;AZOREDT</listitem>
+				<listitem name="{@utc0}">GMT0;BST,M3.5.0,M10.5.0</listitem>
+				<listitem name="{@utcp1}">CET-1;CEST,M3.5.0,M10.5.0</listitem>
+				<listitem name="{@utcp2}">WET-2;WET,M3.5.0,M10.5.0</listitem>
+				<listitem name="{@utcp3}">SAUST-3;SAUDT</listitem>
+				<listitem name="{@utcp4}">WST-4;WDT</listitem>
+				<listitem name="{@utcp5}">PAKST-5;PAKDT</listitem>
+				<listitem name="{@utcp6}">TASHST-6;TASHDT</listitem>
+				<listitem name="{@utcp7}">THAIST-7;THAIDT</listitem>
+				<listitem name="{@utcp8}">TAIST-8;TAIDT</listitem>
+				<listitem name="{@utcp9}">JST-9;JSTDT</listitem>
+				<listitem name="{@utcp10}">EET-10;EETDT</listitem>
+				<listitem name="{@utcp11}">MET-11;METDT</listitem>
+				<listitem name="{@utcp12}">NZST-12;NZDT</listitem>
 			</listbox>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row5_1a_y%"/>
-				<text>{@options_cptn=Options}</text>
+				<text>{@options_cptn}</text>
 			</text>
 
 			<listbox style="settingslist">
 				<placement x="0" y="%row5_2a_y%" w="%screen_w%" h="%lb_l2%"/>
-				<listitem name="{@use_dst_chk=Use daylight savings time (DST)}">
+				<listitem name="{@use_dst_chk}">
 					<data variable="tw_time_zone_guidst"/>
 				</listitem>
-				<listitem name="{@use24clock_chk=Use 24-hour clock}">
+				<listitem name="{@use24clock_chk}">
 					<data variable="tw_military_time"/>
 				</listitem>
 			</listbox>
-		
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row6_3a_y%"/>
-				<text>{@tz_offset=Offset}</text>
+				<text>{@tz_offset}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x%" y="%row7_1a_y%"/>
-				<text>{@sel_tz_offset=Select Offset (usually 0): %tw_time_zone_guioffset%}</text>
+				<text>{@sel_tz_offset}</text>
 			</text>
 
 			<button style="menu_btn">
@@ -833,28 +855,28 @@
 				<action function="set">zone_error=0</action>
 				<action function="overlay">dialog_offset</action>
 			</button>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row7_3a_y%"/>
-				<text>{@language_cptn=Language}</text>
+				<text>{@language_cptn}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x%" y="%row8_1a_y%"/>
-				<text>{@lang_file=Built-in English}</text>
+				<text>{@lang_file}</text>
 			</text>
 
 			<button style="menu_btn">
 				<placement x="%col1_x%" y="%row7_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<action function="page">ext_time_lang</action>
 			</button>
-			
+
 			<action>
 				<condition var1="tw_time_zone_guisel" op="modified"/>
 				<action function="page">ext_time</action>
 				<action function="setguitimezone"/>
 			</action>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -865,7 +887,7 @@
 				<action function="page">settings</action>
 			</action>
 		</page>
-		
+
 		<page name="ext_time_lang">
 			<template name="body"/>
 
@@ -875,19 +897,19 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@language_cptn=Language}</text>
+				<text>{@language_cptn}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%" />
-				<text>{@language_cptn=Language}</text>
+				<text>{@language_cptn}</text>
 			</text>
 
 			<listbox>
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l15%"/>
 				<data name="tw_language"/>
 			</listbox>
-			
+
 			<action>
 				<condition var1="tw_language" op="modified"/>
 				<action function="page">ext_time_lang_busy</action>
@@ -904,49 +926,52 @@
 				<action function="page">ext_time</action>
 			</action>
 		</page>
-		
+
 		<page name="ext_time_lang_busy">
 			<background color="%background%"/>
-			<template name="background_image"/>
 			
+			<template name="background_image"/>
+
 			<fill color="%lightransparent%">
 				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
-			
+
 			<template name="statusbarinfo"/>
-			
+
 			<image>
 				<image resource="language_busy"/>
 				<placement x="%center_x%" y="%center_y%" placement="4"/>
 			</image>
+			
 			<text style="bs_text">
 				<placement x="%center_x%" y="%busy_text_l%" placement="4"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
-				<text>{@lang_set_wait=Changing language...}</text>
+				<text>{@lang_set_wait}</text>
 			</text>
+			
 			<text style="bs_text">
 				<placement x="%center_x%" y="%busy_text%" placement="4"/>
 				<condition var1="navbar_disable" var2="1"/>
-				<text>{@lang_set_wait=Changing language...}</text>
+				<text>{@lang_set_wait}</text>
 			</text>
 		</page>
-	
+
 		<!-- About -->
 		<page name="about">
 			<template name="body"/>
-			
+
 			<fill color="#ed6f02">
 				<condition var1="theme_style" op="!=" var2="Light"/>
 				<placement x="0" y="0" w="1080" h="1080"/>
 			</fill>
-			
+
 			<fill color="#DB414F">
 				<condition var1="debug_open" var2="5"/>
 				<condition var1="theme_style" op="!=" var2="Light"/>
 				<placement x="0" y="0" w="1080" h="1080"/>
 			</fill>
-			
+
 			<button>
 				<image resource="logo"/>
 				<condition var1="debug_open" op="!=" var2="5"/>
@@ -954,33 +979,32 @@
 				<action function="compute">debug_open+1</action>
 				<action function="page">about</action>
 			</button>
-			
+
 			<image>
 				<image resource="logo"/>
 				<condition var1="theme_style" op="!=" var2="Light"/>
 				<placement x="284" y="284"/>
 			</image>
-		
-			
+
 			<fill color="%lightransparent%">
 				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
-			
+
 			<template name="statusbarinfo"/>
-			
+
 			<image>
 				<placement x="0" y="1054"/>
 				<condition var1="theme_style" op="!=" var2="Light"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-			
+
 			<button>
 				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
 				<action function="page">settings</action>
 			</button>
-			
+
 			<image>
 				<placement x="%col1_x_cards_icon%" y="%row5_3_y%"/>
 				<image resource="icon_person"/>
@@ -988,29 +1012,29 @@
 
 			<text style="caption">
 				<placement x="%col1_x_cards%" y="%row5_3_y%"/>
-				<text>{@author=Author}</text>
+				<text>{@author}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%col1_x_cards%" y="%row6_1_y%"/>
 				<text>MrYacha & DarthJabba9</text>
 			</text>
-			
+
 			<image>
 				<placement x="%col1_x_cards_icon%" y="%row6_2a_y%"/>
 				<image resource="icon_mail"/>
 			</image>
-			
+
 			<text style="caption">
 				<placement x="%col1_x_cards%" y="%row6_2a_y%"/>
-				<text>{@contact=Contact}</text>
+				<text>{@contact}</text>
 			</text>
-			
+
 			<text style="text_body2">
 				<placement x="%col1_x_cards%" y="%row6_3a_y%"/>
 				<text>@MrYacha (in Telegram)</text>
 			</text>
-			
+
 			<image>
 				<placement x="%col1_x_cards_icon%" y="%row7_2_y%"/>
 				<image resource="icon_info2"/>
@@ -1018,7 +1042,7 @@
 
 			<text style="caption">
 				<placement x="%col1_x_cards%" y="%row7_2_y%"/>
-				<text>{@version_twrp=Version}</text>
+				<text>{@version_twrp}</text>
 			</text>
 
 			<text style="text_body2">
@@ -1040,7 +1064,7 @@
 				<placement x="%col1_x_cards%" y="%row8_3_y%"/>
 				<text>Theme author: fordownloads</text>
 			</text>
-			
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -1051,14 +1075,15 @@
 				<action function="page">settings</action>
 			</action>
 		</page>
+		
 		<!-- Debug -->
 		<page name="debug">
 			<template name="body_key"/>
-			
+
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
-			
+
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="power_off" highlightresource="power_off_hl"/>
@@ -1067,45 +1092,45 @@
 				<action function="set">debug_open=0</action>
 				<action function="page">settings</action>
 			</button>
-			
+
 			<button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
 				<action function="page">debug_plus</action>
 			</button>
-			
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@dbg=Debug}</text>
+				<text>{@dbg}</text>
 			</text>
-			
+
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_1_y%"/>
-				<text>{@dbg_func=Function}</text>
+				<text>{@dbg_func}</text>
 			</text>
-			
+
 			<listbox>
 				<placement x="0" y="%row2_2_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="dbg"/>
-				<listitem name="{@dbg_page=Page}">page</listitem>
-				<listitem name="{@dbg_set=Set}">set</listitem>
-				<listitem name="{@dbg_overlay=Overlay}">overlay</listitem>
+				<listitem name="{@dbg_page}">page</listitem>
+				<listitem name="{@dbg_set}">set</listitem>
+				<listitem name="{@dbg_overlay}">overlay</listitem>
 			</listbox>
-			
+
 			<listbox style="settingslist">
 				<placement x="0" y="%row3_3a_y%" w="%screen_w%" h="%lb_l2%"/>
-				<listitem name="{@simact_chk=Simulate actions for theme testing}">
+				<listitem name="{@simact_chk}">
 					<data variable="tw_simulate_actions"/>
 				</listitem>
-				<listitem name="{@simfail_chk=Simulate failure for actions}">
+				<listitem name="{@simfail_chk}">
 					<condition var1="tw_simulate_actions" var2="1"/>
 					<data variable="tw_simulate_fail"/>
 				</listitem>
 			</listbox>
-		
+
 			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@dbg_act=Action}</text>
+				<text>{@dbg_act}</text>
 			</text>
 
 			<input>
@@ -1116,7 +1141,7 @@
 				<action function="set">tw_back=debug</action>
 				<action function="%dbg%">%dbg_b%</action>
 			</input>
-			
+
 			<fill color="%accent%">
 				<placement x="%col1_x%" y="%row1_3_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
@@ -1131,20 +1156,22 @@
 				<action function="page">settings</action>
 			</action>
 		</page>
-		
+
 		<page name="debug_plus">
 			<template name="body_key"/>
-			<template name="ab"/>
-			<template name="statusbarinfo"/>
 			
+			<template name="ab"/>
+			
+			<template name="statusbarinfo"/>
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@dbg=Debug}</text>
+				<text>{@dbg}</text>
 			</text>
-			
+
 			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@dbg_func=Function}</text>
+				<text>{@dbg_func}</text>
 			</text>
 
 			<input>
@@ -1154,7 +1181,7 @@
 				<restrict minlen="1" maxlen="32" allow="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_="/>
 				<action function="page">debug</action>
 			</input>
-			
+
 			<fill color="%accent%">
 				<placement x="%col1_x%" y="%row1_3_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
