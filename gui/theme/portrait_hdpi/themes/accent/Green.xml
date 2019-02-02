@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
-	<resources>
+<resources>
 		<!-- Controls -->
 		<image name="radio_true_dialog" filename="Green/Controls/radio_true_dialog" retainaspect="1"/>
 		<image name="checkbox_true_dialog" filename="Green/Controls/checkbox_true_dialog" retainaspect="1"/>
@@ -11,31 +11,42 @@
 		<image name="handle_h" filename="Green/Controls/handle_h" retainaspect="1"/>
 		<image name="handle_h_classic" filename="Green/Controls/handle_h_classic" retainaspect="1"/>
 		<image name="btn_raised_hl" filename="Green/Controls/btn_raised_hl"/>
+
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="Green/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="Green/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="Green/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_delete" filename="Green/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_edit" filename="Green/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="Green/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="Green/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_flash" filename="Green/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_reset" filename="Green/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_settings" filename="Green/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_sort" filename="Green/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_color_prim" filename="Green/ActionBar/color_prim" retainaspect="1"/>
+		<image name="actionbar_color_sec" filename="Green/ActionBar/color_sec" retainaspect="1"/>
+		<image name="actionbar_power_off" filename="Green/ActionBar/power_off" retainaspect="1"/>
+		<image name="actionbar_storage" filename="Green/ActionBar/storage" retainaspect="1"/>
+
+		<!-- Nav panel -->
+		<image name="nav_menu" filename="Green/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="Green/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="Green/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="Green/NavPanel/backup" retainaspect="1"/>
 		
 		<!-- FAB -->
-		<image name="btn_float_arc" filename="Green/FAB/btn_float_arc" retainaspect="1"/>
-		<image name="btn_float_img" filename="Green/FAB/btn_float_img" retainaspect="1"/>
-		<image name="btn_float_accept" filename="Green/FAB/btn_float_accept" retainaspect="1"/>
-		<image name="btn_float_folder" filename="Green/FAB/btn_float_folder" retainaspect="1"/>
-		<image name="btn_float_close" filename="Green/FAB/btn_float_close" retainaspect="1"/>
-		<image name="float_fm_plus" filename="Green/FAB/float_fm_plus" retainaspect="1"/>
-		<image name="float_fm_close" filename="Green/FAB/float_fm_close" retainaspect="1"/>
-		<image name="float_fm_close_hl" filename="Green/FAB/float_fm_close_hl" retainaspect="1"/>
+		<image name="fab" filename="Green/FAB/fab" retainaspect="1"/>
+		<image name="fab_hl" filename="Green/FAB/fab_hl" retainaspect="1"/>
 		
 		<!-- File Manager -->
 		<image name="file_icon_small" filename="Green/FileManager/file_small" retainaspect="1"/>
 		<image name="file_icon" filename="Green/FileManager/file" retainaspect="1"/>
-		<image name="file_icon_small" filename="Green/FileManager/file_zip_small" retainaspect="1"/>
-		<image name="file_icon_small" filename="Green/FileManager/file_img_small" retainaspect="1"/>
-		<image name="file_icon" filename="Green/FileManager/file_zip" retainaspect="1"/>
-		<image name="file_icon" filename="Green/FileManager/file_img" retainaspect="1"/>
 		<image name="bkp_icon_small" filename="Green/FileManager/file_bkp_small" retainaspect="1"/>
 		<image name="bkp_icon" filename="Green/FileManager/file_bkp" retainaspect="1"/>
-		<image name="flash_icon" filename="Green/FileManager/flash_icon" retainaspect="1"/>
 		
 		<!-- Info -->
 		<image name="icon_info" filename="Green/Info/icon_info" retainaspect="1"/>
-		<image name="help_cloud" filename="Green/Info/help_cloud" retainaspect="1"/>
 		
 		<!-- Keyboard -->
 		<image name="enter" filename="Green/Keyboard/enter" retainaspect="1"/>
@@ -44,27 +55,25 @@
 
 		<!-- Nav Bar -->
 		<image name="home" filename="Green/NavBar/home" retainaspect="1"/>
-		<image name="home_hl" filename="Green/NavBar/home_hl" retainaspect="1"/>
 		<image name="back" filename="Green/NavBar/back" retainaspect="1"/>
-		<image name="back_hl" filename="Green/NavBar/back_hl" retainaspect="1"/>
 		<image name="slideout" filename="Green/NavBar/slideout" retainaspect="1"/>
-		<image name="slideout_hl" filename="Green/NavBar/slideout_hl" retainaspect="1"/>
 		<image name="keyboard_hide" filename="Green/NavBar/keyboard_hide" retainaspect="1"/>
-		<image name="keyboard_hide_hl" filename="Green/NavBar/keyboard_hide_hl" retainaspect="1"/>
 		<image name="home_ng" filename="Green/NavBar/home_ng" retainaspect="1"/>
-		<image name="home_ng_hl" filename="Green/NavBar/home_ng_hl" retainaspect="1"/>
 		<image name="back_ng" filename="Green/NavBar/back_ng" retainaspect="1"/>
-		<image name="back_ng_hl" filename="Green/NavBar/back_ng_hl" retainaspect="1"/>
 		<image name="slideout_ng" filename="Green/NavBar/slideout_ng" retainaspect="1"/>
-		<image name="slideout_ng_hl" filename="Green/NavBar/slideout_ng_hl" retainaspect="1"/>
 		<image name="keyboard_hide_ng" filename="Green/NavBar/keyboard_hide_ng" retainaspect="1"/>
-		<image name="keyboard_hide_ng_hl" filename="Green/NavBar/keyboard_hide_ng_hl" retainaspect="1"/>
+		
+		<!-- Pie Nav bar -->
+		<image name="back_pie" filename="Green/NavBar/back_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="Green/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="home_pie" filename="Green/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="Green/NavBar/slideout_key_pie" retainaspect="1"/>
 	</resources>
 	<variables>
-		<variable name="accent" value="#58B000FF"/>
-		<variable name="accent_r" value="88"/>
-		<variable name="accent_g" value="176"/>
-		<variable name="accent_b" value="0"/>
+		<variable name="accent" value="#4CB050"/>
+		<variable name="accent_r" value="122"/>
+		<variable name="accent_g" value="56"/>
+		<variable name="accent_b" value="69"/>
 		<variable name="theme_accent" value="Green"/>
 		<variable name="current_accent" value="Green"/>
 		<variable name="applied_accent_x" value="30"/>
