@@ -10,31 +10,6 @@
 
 			<fileselector style="fileselector_b">
 				<condition var1="list_font" var2="big"/>
-				<condition var1="compatibility_321" var2="0"/>
-				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_w%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="bkp_icon" file="bkp_icon" />
-				<filter folders="1" files="0" nav="0"/>
-				<path name="tw_backups_folder"/>
-				<data name="tw_restore" default=""/>
-				<selection name="tw_restore_name"/>
-			</fileselector>
-
-			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
-				<condition var1="compatibility_321" var2="0"/>
-				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_w%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="bkp_icon_small" file="bkp_icon_small" />
-				<filter folders="1" files="0" nav="0"/>
-				<path name="tw_backups_folder"/>
-				<data name="tw_restore" default=""/>
-				<selection name="tw_restore_name"/>
-			</fileselector>
-
-			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
-				<condition var1="compatibility_321" var2="1"/>
 				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="bkp_icon" file="bkp_icon" />
@@ -46,7 +21,6 @@
 
 			<fileselector style="fileselector_s">
 				<condition var1="list_font" var2="small"/>
-				<condition var1="compatibility_321" var2="1"/>
 				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="bkp_icon_small" file="bkp_icon_small" />
@@ -65,37 +39,18 @@
 				<text>{@restore_hdr}</text>
 			</text>
 
-			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
-				<action function="overlay">menu_sort</action>
-			</button>
-
+			<template name="actionbar_sort"/>
+			
 			<button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_storage" highlightresource="actionbar_storage_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="overlay">dialog_storage</action>
 			</button>
 
-			<button>
-				<condition var1="bookmark" var2="0"/>
-				<condition var1="list_font" var2="big"/>
-				<placement x="%ab_btn3_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
-				<actions>
-					<action function="set">list_font=small</action>
-				</actions>
-			</button>
-
-			<button>
-				<condition var1="bookmark" var2="0"/>
-				<condition var1="list_font" var2="small"/>
-				<placement x="%ab_btn3_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
-				<actions>
-					<action function="set">list_font=big</action>
-				</actions>
-			</button>
+			<image>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_storage"/>
+			</image>
 
 			<action>
 				<condition var1="tw_restore" op="modified"/>
@@ -111,7 +66,6 @@
 			<button style="floating_btn">
 				<condition var1="auto_generate" var2="0"/>
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
-				<image resource="float_fm_plus"/>
 				<actions>
 					<action function="set">tw_backup_name={@auto_gen}</action>
 					<action function="set">tw_fileexists=0</action>
@@ -123,7 +77,6 @@
 			<button style="floating_btn">
 				<condition var1="auto_generate" var2="1"/>
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
-				<image resource="float_fm_plus"/>
 				<actions>
 					<action function="generatebackupname"/>
 					<action function="set">tw_fileexists=0</action>
@@ -135,13 +88,17 @@
 			<button style="floating_btn">
 				<condition var1="auto_generate" var2="2"/>
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
-				<image resource="float_fm_plus"/>
 				<actions>
 					<action function="set">tw_fileexists=0</action>
 					<action function="set">adb_backup_pc=0</action>
 					<action function="page">backup_device</action>
 				</actions>
 			</button>
+			
+			<image>
+				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
+				<image resource="fab_add"/>
+			</image>
 
 			<action>
 				<touch key="back"/>
@@ -182,10 +139,10 @@
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@restore_hdr}</text>
 			</text>
-
+			
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_delete" highlightresource="actionbar_delete_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<actions>
 					<action function="set">tw_back=restore_decrypt</action>
 					<action function="set">tw_action=cmd</action>
@@ -199,6 +156,11 @@
 					<action function="page">deletebackup</action>
 				</actions>
 			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_delete"/>
+			</image>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
@@ -342,17 +304,22 @@
 
 			<button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_edit" highlightresource="actionbar_edit_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<actions>
 					<action function="set">tw_backup_rename=%tw_restore_name%</action>
 					<action function="set">tw_fileexists=0</action>
 					<action function="page">renamebackup</action>
 				</actions>
 			</button>
-
+			
+			<image>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_edit"/>
+			</image>
+			
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_delete" highlightresource="actionbar_delete_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<actions>
 					<action function="set">tw_back=restore_select</action>
 					<action function="set">tw_action=cmd</action>
@@ -366,6 +333,11 @@
 					<action function="page">deletebackup</action>
 				</actions>
 			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_delete"/>
+			</image>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>

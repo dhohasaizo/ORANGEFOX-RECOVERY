@@ -125,10 +125,15 @@
 
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="set">general_back=wipe</action>
 				<action function="page">ext_general</action>
 			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_settings"/>
+			</image>
 
 			<template name="nav_panel"/>
 

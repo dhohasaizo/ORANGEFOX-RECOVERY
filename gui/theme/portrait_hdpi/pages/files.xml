@@ -6,7 +6,7 @@
 
 			<action>
 				<condition var1="bookmark" var2="1"/>
-				<action function="set">tw_file_location1=%location_filemanager%</action>
+				<action function="set">tw_file_location1=%location_fm%</action>
 			</action>
 			<action>
 				<action function="set">nav_panel_id=0</action>
@@ -38,72 +38,25 @@
 
 			<template name="statusbarinfo"/>
 
-			
 			<text style="text_ab_title">
 				<placement x="%col1_x%" y="%ab_bc_y%"/>
 				<text>{@fm_hdr}</text>
 			</text>
-			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
-				<action function="overlay">menu_sort</action>
-			</button>
+			
+			<template name="actionbar_sort"/>
+			
 			<button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_storage" highlightresource="actionbar_storage_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="set">tw_file_location_temp=%tw_file_location1%</action>
 				<action function="overlay">dialog_path</action>
 			</button>
-			<button>
-				<condition var1="list_font" var2="big"/>
-				<condition var1="bookmark" var2="0"/>
-				<placement x="%ab_btn3_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
-				<actions>
-					<action function="set">list_font=small</action>
-				</actions>
-			</button>
 
-			<button>
-				<condition var1="list_font" var2="small"/>
-				<condition var1="bookmark" var2="0"/>
-				<placement x="%ab_btn3_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
-				<actions>
-					<action function="set">list_font=big</action>
-				</actions>
-			</button>
-			
 			<image>
-				<condition var1="bookmark" var2="1"/>
-				<condition var1="tw_file_location1" var2="%location_filemanager%"/>
-				<placement x="%ab_btn3_x%" y="%ab_y%"/>
-				<image resource="actionbar_pinned"/>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_storage"/>
 			</image>
-
-			<button>
-				<condition var1="bookmark" var2="1"/>
-				<condition var1="dialog_hide_folder" var2="1"/>
-				<condition var1="tw_file_location1" op="!=" var2="%location_filemanager%"/>
-				<placement x="%ab_btn3_x%" y="%ab_y%"/>
-				<image resource="actionbar_pin" highlightresource="actionbar_pin_hl"/>
-				<actions>
-					<action function="set">location_filemanager=%tw_file_location1%</action>
-					<action function="set">tw_file_location1=%location_filemanager%</action>
-				</actions>
-			</button>
-
-			<button>
-				<condition var1="bookmark" var2="1"/>
-				<condition var1="dialog_hide_folder" var2="0"/>
-				<condition var1="tw_file_location1" op="!=" var2="%location_filemanager%"/>
-				<placement x="%ab_btn3_x%" y="%ab_y%"/>
-				<image resource="actionbar_pin" highlightresource="actionbar_pin_hl"/>
-				<actions>
-					<action function="set">dialog_context=loc_files</action>
-					<action function="overlay">dialog_folder</action>
-				</actions>
-			</button>
+			
 			
 			<action>
 				<actions>
@@ -127,9 +80,13 @@
 			<!-- менюха внизу -->
 			<button style="floating_btn">
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
-				<image resource="float_fm_plus"/>
 				<action function="overlay">files_ex_menu</action>
 			</button>
+			
+			<image>
+				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
+				<image resource="fab_add"/>
+			</image>
 			
 			<template name="nav_panel"/>
 		</page>
@@ -165,12 +122,15 @@
 				</actions>
 			</button>
 			
-			
-			<button>
+			<button style="floating_btn">
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
-				<image resource="float_fm_close" highlightresource="float_fm_close_hl"/>
 				<action function="overlay"/>
 			</button>
+			
+			<image>
+				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
+				<image resource="fab_close"/>
+			</image>
 			
 			<action>
 				<touch key="home"/>
@@ -596,16 +556,26 @@
 			<button style="floating_btn">
 				<condition var1="book_edit" var2="0"/>
 				<placement x="%btn_float_x%" y="%btn_float_y%"/>
-				<image resource="float_fm_plus"/>
 				<action function="set">book_edit=1</action>
 			</button>
 			
 			<button style="floating_btn">
 				<condition var1="book_edit" var2="1"/>
 				<placement x="%btn_float_x%" y="%btn_float_y%"/>
-				<image resource="float_fm_close"/>
 				<action function="set">book_edit=0</action>
 			</button>
+			
+			<image>
+				<condition var1="book_edit" var2="1"/>
+				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<image resource="fab_close"/>
+			</image>
+			
+			<image>
+				<condition var1="book_edit" var2="0"/>
+				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<image resource="fab_add"/>
+			</image>
 			
 			<action>
 				<touch key="home"/>
@@ -1163,36 +1133,12 @@
 
 			<template name="statusbarinfo"/>
 
-			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
-				<action function="overlay">menu_sort</action>
-			</button>
+			<template name="actionbar_sort"/>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@fm_hdr}</text>
 			</text>
-
-			<button>
-				<condition var1="list_font" var2="big"/>
-				<condition var1="bookmark" var2="0"/>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
-				<actions>
-					<action function="set">list_font=small</action>
-				</actions>
-			</button>
-
-			<button>
-				<condition var1="list_font" var2="small"/>
-				<condition var1="bookmark" var2="0"/>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
-				<actions>
-					<action function="set">list_font=big</action>
-				</actions>
-			</button>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
@@ -1206,7 +1152,6 @@
 
 			<button style="floating_btn">
 				<placement x="%btn_float_x%" y="%btn_float_y%"/>
-				<image resource="btn_float_accept"/>
 				<actions>
 					<action function="set">tw_fm_text2={@fordowns_to}</action>
 					<action function="set">tw_fm_text3=%tw_file_location2%</action>
@@ -1215,6 +1160,11 @@
 					<action function="page">filemanagerconfirm</action>
 				</actions>
 			</button>
+			
+			<image>
+				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<image resource="fab_accept"/>
+			</image>
 
 			<action>
 				<touch key="home"/>

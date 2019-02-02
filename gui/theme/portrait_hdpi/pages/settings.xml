@@ -13,12 +13,17 @@
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@settings_hdr}</text>
 			</text>
-
+			
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="overlay">dialog_reset</action>
 			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_reset"/>
+			</image>
 
 			<!-- General -->
 			<button style="bs_btn">
@@ -388,20 +393,6 @@
 
 		<!-- Files -->
 		<page name="ext_fm">
-			<action>
-				<condition var1="aroma_path" var2="/twres/aroma.zip"/>
-				<condition var1="tw_fileexists" var2="0"/>
-				<action function="set">aroma_path=none</action>
-				<action function="set">splash_includearoma=0</action>
-				<action function="set">aroma_enabled=0</action>
-			</action>
-			
-			<action>
-				<condition var1="aroma_path" var2="none"/>
-				<condition var1="tw_fileexists" var2="1"/>
-				<action function="set">aroma_path=/twres/aroma.zip</action>
-			</action>
-
 			<template name="body"/>
 
 			<template name="ab"/>
@@ -998,12 +989,8 @@
 				<condition var1="theme_style" op="!=" var2="Light"/>
 				<image resource="keyboard_shadow"/>
 			</image>
-
-			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="page">settings</action>
-			</button>
+			
+			<template name="actionbar_back"/>
 
 			<image>
 				<placement x="%col1_x_cards_icon%" y="%row5_3_y%"/>
@@ -1083,21 +1070,31 @@
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
-
+			
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="power_off" highlightresource="power_off_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="set">tw_simulate_actions=0</action>
 				<action function="set">tw_simulate_fail=0</action>
 				<action function="set">debug_open=0</action>
 				<action function="page">settings</action>
 			</button>
 
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_power_off"/>
+			</image>
+			
 			<button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="page">debug_plus</action>
 			</button>
+
+			<image>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_settings"/>
+			</image>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>

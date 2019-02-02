@@ -14,9 +14,9 @@
 			</text>
 
 			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<condition var1="tw_reboot_poweroff" var2="1"/>
-				<image resource="power_off" highlightresource="power_off_hl"/>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="set">tw_back=password_enter</action>
 				<action function="set">tw_action_param=poweroff</action>
 				<action function="set">tw_reboot_param=poweroff</action>
@@ -24,13 +24,18 @@
 			</button>
 			
 			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<condition var1="tw_reboot_poweroff" op="!=" var2="1"/>
 				<condition var1="tw_reboot_system" var2="1"/>
-				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="set">tw_back=password_enter</action>
 				<action function="page">reboot_system_routine</action>
 			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_power_off"/>
+			</image>
 
 			<text style="caption_hl">
 				<placement x="%col1_x%" y="%row1_1_y%"/>

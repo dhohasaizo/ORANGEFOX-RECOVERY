@@ -16,7 +16,14 @@
 		<image name="nav_empty" filename="Default/NavPanel/empty"/>
 		<image name="nav_hl" filename="Default/NavPanel/hl"/>
 		<image name="nav_shadow" filename="Default/NavPanel/shadow" retainaspect="1"/>
+		
 		<image name="actionbar_shadow" filename="Default/ActionBar/shadow"/>
+		<image name="actionbar_btn" filename="Default/ActionBar/actionbar_btn" retainaspect="1"/>
+		<image name="actionbar_btn_hl" filename="Default/ActionBar/actionbar_btn_hl" retainaspect="1"/>
+		
+		<image name="fab_accept" filename="Default/FAB/accept" retainaspect="1"/>
+		<image name="fab_close" filename="Default/FAB/close" retainaspect="1"/>
+		<image name="fab_add" filename="Default/FAB/add" retainaspect="1"/>
 		
 		<!-- Fonts Preview -->
 		<font name="font1" filename="Roboto-Regular.ttf" size="42"/>
@@ -129,31 +136,22 @@
 		
 		<!-- Nav Bar -->
 		<image name="home_white" filename="Default/NavBar/home_white" retainaspect="1"/>
-		<image name="home_white_hl" filename="Default/NavBar/home_white_hl" retainaspect="1"/>
 		<image name="back_white" filename="Default/NavBar/back_white" retainaspect="1"/>
-		<image name="back_white_hl" filename="Default/NavBar/back_white_hl" retainaspect="1"/>
 		<image name="slideout_white" filename="Default/NavBar/slideout_white" retainaspect="1"/>
-		<image name="slideout_white_hl" filename="Default/NavBar/slideout_white_hl" retainaspect="1"/>
 		<image name="keyboard_hide_white" filename="Default/NavBar/keyboard_hide_white" retainaspect="1"/>
-		<image name="keyboard_hide_white_hl" filename="Default/NavBar/keyboard_hide_white_hl" retainaspect="1"/>
 		<image name="home_white_ng" filename="Default/NavBar/home_white_ng" retainaspect="1"/>
-		<image name="home_white_ng_hl" filename="Default/NavBar/home_white_ng_hl" retainaspect="1"/>
 		<image name="back_white_ng" filename="Default/NavBar/back_white_ng" retainaspect="1"/>
-		<image name="back_white_ng_hl" filename="Default/NavBar/back_white_ng_hl" retainaspect="1"/>
 		<image name="slideout_white_ng" filename="Default/NavBar/slideout_white_ng" retainaspect="1"/>
-		<image name="slideout_white_ng_hl" filename="Default/NavBar/slideout_white_ng_hl" retainaspect="1"/>
 		<image name="keyboard_hide_white_ng" filename="Default/NavBar/keyboard_hide_white_ng" retainaspect="1"/>
-		<image name="keyboard_hide_white_ng_hl" filename="Default/NavBar/keyboard_hide_white_ng_hl" retainaspect="1"/>
 		
 		<!-- Pie Nav bar -->
-		<image name="back_white_hl_pie" filename="Default/NavBar/back_hl_pie" retainaspect="1"/>
-		<image name="back_white_key_hl_pie" filename="Default/NavBar/back_key_hl_pie" retainaspect="1"/>
 		<image name="back_white_key_pie" filename="Default/NavBar/back_key_pie" retainaspect="1"/>
 		<image name="back_white_pie" filename="Default/NavBar/back_pie" retainaspect="1"/>
-		<image name="home_white_hl_pie" filename="Default/NavBar/home_hl_pie" retainaspect="1"/>
 		<image name="home_white_pie" filename="Default/NavBar/home_pie" retainaspect="1"/>
 		<image name="slideout_white_key_pie" filename="Default/NavBar/slideout_key_pie" retainaspect="1"/>
-		<image name="slideout_white_key_pie_hl" filename="Default/NavBar/slideout_key_pie_hl" retainaspect="1"/>
+		
+		<image name="nb_btn" filename="Default/NavBar/btn" retainaspect="1"/>
+		<image name="nb_btn_hl" filename="Default/NavBar/btn_hl" retainaspect="1"/>
 
 		<!-- Pdoor icons -->
 		<image name="bs_adv_term" filename="Default/Icons/term" retainaspect="1"/>

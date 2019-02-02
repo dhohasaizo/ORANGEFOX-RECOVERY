@@ -154,13 +154,19 @@
 				<image resource="usb"/>
 				<placement x="%center_x%" y="%center_y%" placement="4"/>
 			</image>
-
+			
 			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<condition var1="tw_busy" var2="1"/>
-				<image resource="actionbar_cancel" highlightresource="actionbar_cancel_hl"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="page">usb_umount</action>
 			</button>
+
+			<image>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_cancel"/>
+			</image>
 
 			<action>
 				<touch key="back"/>

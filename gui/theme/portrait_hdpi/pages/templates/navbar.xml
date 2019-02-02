@@ -30,817 +30,793 @@
 		<template name="navbar_home">
 			<button>
 				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="1"/>
 				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="home_ng" highlightresource="home_ng_hl"/>
-				<action function="key">home</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="1"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="home_white_ng" highlightresource="home_white_ng_hl"/>
-				<action function="key">home</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="nougat" var2="0"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="home" highlightresource="home_hl"/>
-				<action function="key">home</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="0"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="home_white" highlightresource="home_white_hl"/>
-				<action function="key">home</action>
-			</button>
-
-			<!-- Pie -->
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="nougat" var2="3"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="home_white_pie" highlightresource="home_white_hl_pie"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
 				<action function="key">home</action>
 			</button>
 			
-			<button>
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<condition var1="nougat" var2="1"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="home_ng"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="1"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="home_white_ng"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="nougat" var2="0"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="home"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="0"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="home_white"/>
+			</image>
+
+			<!-- Pie -->
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="nougat" var2="3"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="home_white_pie"/>
+			</image>
+			
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="home_pie" highlightresource="home_hl_pie"/>
-				<action function="key">home</action>
-			</button>
+				<image resource="home_pie"/>
+			</image>
 		</template>
 
 		<template name="navbar_console">
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="1"/>
 				<condition var1="show_slideout" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout_ng" highlightresource="slideout_ng_hl"/>
-				<action function="overlay">console</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="1"/>
-				<condition var1="show_slideout" var2="1"/>
-				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout_white_ng" highlightresource="slideout_white_ng_hl"/>
-				<action function="overlay">console</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="1"/>
-				<condition var1="show_slideout" var2="1"/>
-				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout_ng" highlightresource="slideout_ng_hl"/>
-				<action function="overlay">console</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="1"/>
-				<condition var1="show_slideout" var2="1"/>
-				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout_white_ng" highlightresource="slideout_white_ng_hl"/>
-				<action function="overlay">console</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="nougat" var2="0"/>
-				<condition var1="show_slideout" var2="1"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout" highlightresource="slideout_hl"/>
-				<action function="overlay">console</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="nougat" var2="0"/>
-				<condition var1="show_slideout" var2="1"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout_white" highlightresource="slideout_white_hl"/>
-				<action function="overlay">console</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="0"/>
-				<condition var1="show_slideout" var2="1"/>
-				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout" highlightresource="slideout_hl"/>
-				<action function="overlay">console</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="0"/>
-				<condition var1="show_slideout" var2="1"/>
-				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout_white" highlightresource="slideout_white_hl"/>
-				<action function="overlay">console</action>
-			</button>
-
-			<!-- Pie -->
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="3"/>
-				<condition var1="show_slideout" var2="1"/>
-				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout_white_key_pie" highlightresource="slideout_white_key_pie_hl"/>
-				<action function="overlay">console</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="3"/>
-				<condition var1="show_slideout" var2="1"/>
-				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout_white_key_pie" highlightresource="slideout_white_key_pie_hl"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
 				<action function="overlay">console</action>
 			</button>
 			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="show_slideout" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
+				<action function="overlay">console</action>
+			</button>
+			
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<condition var1="nougat" var2="1"/>
+				<condition var1="show_slideout" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout_ng"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="1"/>
+				<condition var1="show_slideout" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout_white_ng"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<condition var1="nougat" var2="1"/>
+				<condition var1="show_slideout" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout_ng"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="1"/>
+				<condition var1="show_slideout" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout_white_ng"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="nougat" var2="0"/>
+				<condition var1="show_slideout" var2="1"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="nougat" var2="0"/>
+				<condition var1="show_slideout" var2="1"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout_white"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<condition var1="nougat" var2="0"/>
+				<condition var1="show_slideout" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="0"/>
+				<condition var1="show_slideout" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout_white"/>
+			</image>
+
+			<!-- Pie -->
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="3"/>
+				<condition var1="show_slideout" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout_white_key_pie"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="3"/>
+				<condition var1="show_slideout" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="slideout_white_key_pie"/>
+			</image>
+			
+			<image>
+				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="show_slideout" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout_key_pie" highlightresource="slideout_key_pie_hl"/>
-				<action function="overlay">console</action>
-			</button>
+				<image resource="slideout_key_pie"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="show_slideout" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="slideout_key_pie" highlightresource="slideout_key_pie_hl"/>
-				<action function="overlay">console</action>
-			</button>
+				<image resource="slideout_key_pie"/>
+			</image>
 		</template>
 
 		<template name="navbar_console_hide">
-			<fill color="%accent%">
-				<condition var1="navbar_bkg" var2="1"/>
-				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
-			</fill>
-
-			<fill color="#000000">
-				<condition var1="navbar_bkg" var2="2"/>
-				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
-			</fill>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="0"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide" highlightresource="keyboard_hide_hl"/>
-				<action function="overlay"/>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="0"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white" highlightresource="keyboard_hide_white_hl"/>
-				<action function="overlay"/>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="0"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide" highlightresource="keyboard_hide_hl"/>
-				<action function="overlay"/>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="0"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white" highlightresource="keyboard_hide_white_hl"/>
-				<action function="overlay"/>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="1"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_ng" highlightresource="keyboard_hide_ng_hl"/>
-				<action function="overlay"/>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="1"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white_ng" highlightresource="keyboard_hide_white_ng_hl"/>
-				<action function="overlay"/>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="1"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_ng" highlightresource="keyboard_hide_ng_hl"/>
-				<action function="overlay"/>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="1"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white_ng" highlightresource="keyboard_hide_white_ng_hl"/>
-				<action function="overlay"/>
-			</button>
-
-			<!-- Pie -->
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="nougat" var2="3"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_key_pie" highlightresource="back_white_key_hl_pie"/>
-				<action function="overlay"/>
-			</button>
+			<template name="navbar_bkg"/>
 			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
+				<action function="overlay"/>
+			</button>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<condition var1="nougat" var2="0"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="keyboard_hide"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="0"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="keyboard_hide_white"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<condition var1="nougat" var2="1"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="keyboard_hide_ng"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="1"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="keyboard_hide_white_ng"/>
+			</image>
+
+			<!-- Pie -->
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="nougat" var2="3"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_white_key_pie"/>
+			</image>
+			
+			<image>
+				<condition var1="tw_busy" var2="0"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<placement x="%center_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_key_pie" highlightresource="back_key_hl_pie"/>
-				<action function="overlay"/>
-			</button>
+				<image resource="back_key_pie"/>
+			</image>
 		</template>
 
 		<template name="navbar_back">
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_ng" highlightresource="back_ng_hl"/>
-				<action function="key">back</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="1"/>
-				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_ng" highlightresource="back_white_ng_hl"/>
-				<action function="key">back</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="1"/>
-				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_ng" highlightresource="back_ng_hl"/>
-				<action function="key">back</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="1"/>
-				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_ng" highlightresource="back_white_ng_hl"/>
-				<action function="key">back</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="0"/>
-				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back" highlightresource="back_hl"/>
-				<action function="key">back</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<condition var1="nougat" var2="0"/>
-				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white" highlightresource="back_white_hl"/>
-				<action function="key">back</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="navbar_accent" var2="0"/>
-				<condition var1="nougat" var2="0"/>
-				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back" highlightresource="back_hl"/>
-				<action function="key">back</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="nougat" var2="0"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white" highlightresource="back_white_hl"/>
-				<action function="key">back</action>
-			</button>
-
-			<!-- Pie -->
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="0"/>
-				<condition var1="nougat" var2="3"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_pie" highlightresource="back_white_hl_pie"/>
-				<action function="key">back</action>
-			</button>
-
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_sams" var2="1"/>
-				<condition var1="nougat" var2="3"/>
-				<condition var1="navbar_accent" var2="1"/>
-				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_pie" highlightresource="back_white_hl_pie"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
 				<action function="key">back</action>
 			</button>
 			
 			<button>
 				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
+				<action function="key">back</action>
+			</button>
+			
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<condition var1="nougat" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_ng"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_white_ng"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<condition var1="nougat" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_ng"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_white_ng"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<condition var1="nougat" var2="0"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<condition var1="nougat" var2="0"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_white"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<condition var1="nougat" var2="0"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="nougat" var2="0"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_white"/>
+			</image>
+
+			<!-- Pie -->
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="nougat" var2="3"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_white_pie"/>
+			</image>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="nougat" var2="3"/>
+				<condition var1="navbar_accent" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="back_white_pie"/>
+			</image>
+			
+			<image>
+				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_pie" highlightresource="back_hl_pie"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_pie"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_pie" highlightresource="back_hl_pie"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_pie"/>
+			</image>
 		</template>
 
 		<template name="navbar_terminal">
 			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="tw_hide_kb" var2="1"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
+				<action function="key">back</action>
+			</button>
+			
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="tw_hide_kb" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
+				<action function="key">back</action>
+			</button>
+			
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<condition var1="tw_hide_kb" var2="0"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
+				<action function="set">tw_hide_kb=1</action>
+			</button>
+			
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<condition var1="tw_hide_kb" var2="0"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
+				<action function="set">tw_hide_kb=1</action>
+			</button>
+		
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="1"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_ng" highlightresource="back_ng_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_ng"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="1"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_ng" highlightresource="back_white_ng_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_white_ng"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="1"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_ng" highlightresource="back_ng_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_ng"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="1"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_ng" highlightresource="back_white_ng_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_white_ng"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="0"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back" highlightresource="back_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="0"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white" highlightresource="back_white_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_white"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="0"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back" highlightresource="back_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="nougat" var2="0"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white" highlightresource="back_white_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_white"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="1"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_ng" highlightresource="keyboard_hide_ng_hl"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="keyboard_hide_ng"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="1"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white_ng" highlightresource="keyboard_hide_white_ng_hl"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="keyboard_hide_white_ng"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="1"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_ng" highlightresource="keyboard_hide_ng_hl"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="keyboard_hide_ng"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="1"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white_ng" highlightresource="keyboard_hide_white_ng_hl"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="keyboard_hide_white_ng"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="nougat" var2="0"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide" highlightresource="keyboard_hide_hl"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="keyboard_hide"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="0"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white" highlightresource="keyboard_hide_white_hl"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="keyboard_hide_white"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="0"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide" highlightresource="keyboard_hide_hl"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="keyboard_hide"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="0"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white" highlightresource="keyboard_hide_white_hl"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="keyboard_hide_white"/>
+			</image>
 
 			<!-- Pie -->
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_key_pie" highlightresource="back_key_hl_pie"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="back_key_pie"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_key_pie" highlightresource="back_key_hl_pie"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="back_key_pie"/>
+			</image>
 			
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_key_pie" highlightresource="back_white_key_hl_pie"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="back_white_key_pie"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_key_pie" highlightresource="back_white_key_hl_pie"/>
-				<action function="set">tw_hide_kb=1</action>
-			</button>
+				<image resource="back_white_key_pie"/>
+			</image>
 			
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_pie" highlightresource="back_hl_pie"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_pie"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_pie" highlightresource="back_hl_pie"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_pie"/>
+			</image>
 			
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_pie" highlightresource="back_white_hl_pie"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_white_pie"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="tw_hide_kb" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_pie" highlightresource="back_white_hl_pie"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_white_pie"/>
+			</image>
 		</template>
 
 		<template name="navbar_key">
-			<button>
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="0"/>
+				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
+				<action function="key">back</action>
+			</image>
+			
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="navbar_sams" var2="1"/>
+				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
+				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
+				<action function="key">back</action>
+			</image>
+			
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide" highlightresource="keyboard_hide_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="keyboard_hide"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white" highlightresource="keyboard_hide_white_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="keyboard_hide_white"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="0"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide" highlightresource="keyboard_hide_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="keyboard_hide"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="0"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white" highlightresource="keyboard_hide_white_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="keyboard_hide_white"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_ng" highlightresource="keyboard_hide_ng_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="keyboard_hide_ng"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white_ng" highlightresource="keyboard_hide_white_ng_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="keyboard_hide_white_ng"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<condition var1="nougat" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_ng" highlightresource="keyboard_hide_ng_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="keyboard_hide_ng"/>
+			</image>
 
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<condition var1="nougat" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="keyboard_hide_white_ng" highlightresource="keyboard_hide_white_ng_hl"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="keyboard_hide_white_ng"/>
+			</image>
 
 			<!-- Pie -->
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_key_pie" highlightresource="back_white_key_hl_pie"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_white_key_pie"/>
+			</image>
 			
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_white_key_pie" highlightresource="back_white_key_hl_pie"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_white_key_pie"/>
+			</image>
 			
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_key_pie" highlightresource="back_key_hl_pie"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_key_pie"/>
+			</image>
 			
-			<button>
+			<image>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<condition var1="nougat" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
-				<image resource="back_key_pie" highlightresource="back_key_hl_pie"/>
-				<action function="key">back</action>
-			</button>
+				<image resource="back_key_pie"/>
+			</image>
 		</template>
 	</templates>
 </recovery>

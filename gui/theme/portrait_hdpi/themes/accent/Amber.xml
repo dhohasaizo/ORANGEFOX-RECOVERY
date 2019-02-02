@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <recovery>
 	<resources>
-		
 		<!-- Controls -->
 		<image name="radio_true_dialog" filename="Amber/Controls/radio_true_dialog" retainaspect="1"/>
 		<image name="checkbox_true_dialog" filename="Amber/Controls/checkbox_true_dialog" retainaspect="1"/>
@@ -15,43 +14,20 @@
 
 		<!-- Action Bar -->
 		<image name="actionbar_back" filename="Amber/ActionBar/back" retainaspect="1"/>
-		<image name="actionbar_back_hl" filename="Amber/ActionBar/back_hl" retainaspect="1"/>
 		<image name="actionbar_cancel" filename="Amber/ActionBar/cancel" retainaspect="1"/>
-		<image name="actionbar_cancel_hl" filename="Amber/ActionBar/cancel_hl" retainaspect="1"/>
 		<image name="actionbar_cancel_no" filename="Amber/ActionBar/cancel_no" retainaspect="1"/>
-		<image name="actionbar_cancel_no_hl" filename="Amber/ActionBar/cancel_no_hl" retainaspect="1"/>
 		<image name="actionbar_delete" filename="Amber/ActionBar/delete" retainaspect="1"/>
-		<image name="actionbar_delete_hl" filename="Amber/ActionBar/delete_hl" retainaspect="1"/>
 		<image name="actionbar_edit" filename="Amber/ActionBar/edit" retainaspect="1"/>
-		<image name="actionbar_edit_hl" filename="Amber/ActionBar/edit_hl" retainaspect="1"/>
 		<image name="actionbar_encr_dis" filename="Amber/ActionBar/encr_dis" retainaspect="1"/>
-		<image name="actionbar_encr_dis_hl" filename="Amber/ActionBar/encr_dis_hl" retainaspect="1"/>
 		<image name="actionbar_encr_ena" filename="Amber/ActionBar/encr_ena" retainaspect="1"/>
-		<image name="actionbar_encr_ena_hl" filename="Amber/ActionBar/encr_ena_hl" retainaspect="1"/>
 		<image name="actionbar_flash" filename="Amber/ActionBar/flash" retainaspect="1"/>
-		<image name="actionbar_flash_hl" filename="Amber/ActionBar/flash_hl" retainaspect="1"/>
-		<image name="actionbar_font_big" filename="Amber/ActionBar/font_big" retainaspect="1"/>
-		<image name="actionbar_font_big_hl" filename="Amber/ActionBar/font_big_hl" retainaspect="1"/>
-		<image name="actionbar_font_small" filename="Amber/ActionBar/font_small" retainaspect="1"/>
-		<image name="actionbar_font_small_hl" filename="Amber/ActionBar/font_small_hl" retainaspect="1"/>
-		<image name="actionbar_pin" filename="Amber/ActionBar/pin" retainaspect="1"/>
-		<image name="actionbar_pin_hl" filename="Amber/ActionBar/pin_hl" retainaspect="1"/>
-		<image name="actionbar_pinned" filename="Amber/ActionBar/pinned" retainaspect="1"/>
-		<image name="actionbar_pinned_hl" filename="Amber/ActionBar/pinned_hl" retainaspect="1"/>
 		<image name="actionbar_reset" filename="Amber/ActionBar/reset" retainaspect="1"/>
-		<image name="actionbar_reset_hl" filename="Amber/ActionBar/reset_hl" retainaspect="1"/>
 		<image name="actionbar_settings" filename="Amber/ActionBar/settings" retainaspect="1"/>
-		<image name="actionbar_settings_hl" filename="Amber/ActionBar/settings_hl" retainaspect="1"/>
 		<image name="actionbar_sort" filename="Amber/ActionBar/sort" retainaspect="1"/>
-		<image name="actionbar_sort_hl" filename="Amber/ActionBar/sort_hl" retainaspect="1"/>
 		<image name="actionbar_color_prim" filename="Amber/ActionBar/color_prim" retainaspect="1"/>
-		<image name="actionbar_color_prim_hl" filename="Amber/ActionBar/color_prim_hl" retainaspect="1"/>
 		<image name="actionbar_color_sec" filename="Amber/ActionBar/color_sec" retainaspect="1"/>
-		<image name="actionbar_color_sec_hl" filename="Amber/ActionBar/color_sec_hl" retainaspect="1"/>
-		<image name="power_off" filename="Amber/ActionBar/power_off" retainaspect="1"/>
-		<image name="power_off_hl" filename="Amber/ActionBar/power_off_hl" retainaspect="1"/>
+		<image name="actionbar_power_off" filename="Amber/ActionBar/power_off" retainaspect="1"/>
 		<image name="actionbar_storage" filename="Amber/ActionBar/storage" retainaspect="1"/>
-		<image name="actionbar_storage_hl" filename="Amber/ActionBar/storage_hl" retainaspect="1"/>
 
 		<!-- Nav panel -->
 		<image name="nav_menu" filename="Amber/NavPanel/menu" retainaspect="1"/>
@@ -60,10 +36,8 @@
 		<image name="nav_backup" filename="Amber/NavPanel/backup" retainaspect="1"/>
 		
 		<!-- FAB -->
-		<image name="btn_float_accept" filename="Amber/FAB/btn_float_accept" retainaspect="1"/>
-		<image name="float_fm_plus" filename="Amber/FAB/float_fm_plus" retainaspect="1"/>
-		<image name="float_fm_close" filename="Amber/FAB/float_fm_close" retainaspect="1"/>
-		<image name="float_fm_close_hl" filename="Amber/FAB/float_fm_close_hl" retainaspect="1"/>
+		<image name="fab" filename="Amber/FAB/fab" retainaspect="1"/>
+		<image name="fab_hl" filename="Amber/FAB/fab_hl" retainaspect="1"/>
 		
 		<!-- File Manager -->
 		<image name="file_icon_small" filename="Amber/FileManager/file_small" retainaspect="1"/>
@@ -81,31 +55,19 @@
 
 		<!-- Nav Bar -->
 		<image name="home" filename="Amber/NavBar/home" retainaspect="1"/>
-		<image name="home_hl" filename="Amber/NavBar/home_hl" retainaspect="1"/>
 		<image name="back" filename="Amber/NavBar/back" retainaspect="1"/>
-		<image name="back_hl" filename="Amber/NavBar/back_hl" retainaspect="1"/>
 		<image name="slideout" filename="Amber/NavBar/slideout" retainaspect="1"/>
-		<image name="slideout_hl" filename="Amber/NavBar/slideout_hl" retainaspect="1"/>
 		<image name="keyboard_hide" filename="Amber/NavBar/keyboard_hide" retainaspect="1"/>
-		<image name="keyboard_hide_hl" filename="Amber/NavBar/keyboard_hide_hl" retainaspect="1"/>
 		<image name="home_ng" filename="Amber/NavBar/home_ng" retainaspect="1"/>
-		<image name="home_ng_hl" filename="Amber/NavBar/home_ng_hl" retainaspect="1"/>
 		<image name="back_ng" filename="Amber/NavBar/back_ng" retainaspect="1"/>
-		<image name="back_ng_hl" filename="Amber/NavBar/back_ng_hl" retainaspect="1"/>
 		<image name="slideout_ng" filename="Amber/NavBar/slideout_ng" retainaspect="1"/>
-		<image name="slideout_ng_hl" filename="Amber/NavBar/slideout_ng_hl" retainaspect="1"/>
 		<image name="keyboard_hide_ng" filename="Amber/NavBar/keyboard_hide_ng" retainaspect="1"/>
-		<image name="keyboard_hide_ng_hl" filename="Amber/NavBar/keyboard_hide_ng_hl" retainaspect="1"/>
 		
 		<!-- Pie Nav bar -->
-		<image name="back_hl_pie" filename="Amber/NavBar/back_hl_pie" retainaspect="1"/>
-		<image name="back_key_hl_pie" filename="Amber/NavBar/back_key_hl_pie" retainaspect="1"/>
-		<image name="back_key_pie" filename="Amber/NavBar/back_key_pie" retainaspect="1"/>
 		<image name="back_pie" filename="Amber/NavBar/back_pie" retainaspect="1"/>
-		<image name="home_hl_pie" filename="Amber/NavBar/home_hl_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="Amber/NavBar/back_key_pie" retainaspect="1"/>
 		<image name="home_pie" filename="Amber/NavBar/home_pie" retainaspect="1"/>
 		<image name="slideout_key_pie" filename="Amber/NavBar/slideout_key_pie" retainaspect="1"/>
-		<image name="slideout_key_pie_hl" filename="Amber/NavBar/slideout_key_pie_hl" retainaspect="1"/>
 	</resources>
 	<variables>
 		<variable name="accent" value="#C9B500FF"/>

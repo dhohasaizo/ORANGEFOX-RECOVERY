@@ -411,11 +411,6 @@
 		</page>
 
 		<page name="add_zip">
-			<action>
-				<condition var1="bookmark" var2="1"/>
-				<action function="set">tw_zip_location=%location_addfile%</action>
-			</action>
-
 			<template name="body"/>
 
 			<fileselector style="fileselector_b">
@@ -455,62 +450,9 @@
 				<text>{@install_zip_hdr}</text>
 			</text>
 
-			<image>
-				<condition var1="bookmark" var2="1"/>
-				<condition var1="tw_zip_location" var2="%location_addfile%"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_pinned"/>
-			</image>
-
-			<button>
-				<condition var1="bookmark" var2="1"/>
-				<condition var1="dialog_hide_folder" var2="1"/>
-				<condition var1="tw_zip_location" op="!=" var2="%location_addfile%"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_pin" highlightresource="actionbar_pin_hl"/>
-				<actions>
-					<action function="set">location_addfile=%tw_zip_location%</action>
-					<action function="set">tw_zip_location=%location_addfile%</action>
-				</actions>
-			</button>
-
-			<button>
-				<condition var1="bookmark" var2="1"/>
-				<condition var1="dialog_hide_folder" var2="0"/>
-				<condition var1="tw_zip_location" op="!=" var2="%location_addfile%"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_pin" highlightresource="actionbar_pin_hl"/>
-				<actions>
-					<action function="set">dialog_context=loc_addfile</action>
-					<action function="overlay">dialog_folder</action>
-				</actions>
-			</button>
-
-			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
-				<action function="overlay">menu_sort</action>
-			</button>
-
-			<button>
-				<condition var1="list_font" var2="big"/>
-				<condition var1="bookmark" var2="0"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
-				<actions>
-					<action function="set">list_font=small</action>
-				</actions>
-			</button>
-
-			<button>
-				<condition var1="list_font" var2="small"/>
-				<condition var1="bookmark" var2="0"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
-				<actions>
-					<action function="set">list_font=big</action>
-				</actions>
-			</button>
+			<template name="actionbar_sort"/>
+			
+			<template name="actionbar_font"/>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
@@ -810,13 +752,19 @@
 			<template name="action_page_console"/>
 
 			<button>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
 				<condition var1="tw_busy" var2="1"/>
-				<image resource="actionbar_cancel" highlightresource="actionbar_cancel_hl"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="set">tw_install_reboot=0</action>
 				<action function="set">tw_busy=0</action>
 				<action function="page">flash_done</action>
 			</button>
+
+			<image>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_cancel"/>
+			</image>
 
 			<action>
 				<conditions>

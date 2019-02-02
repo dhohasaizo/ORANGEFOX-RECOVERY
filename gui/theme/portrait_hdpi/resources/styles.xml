@@ -259,7 +259,7 @@
 			<font resource="body1"/>
 		</style>	
 		<style name="floating_btn">
-			<highlight color="%highlight_color%"/>
+			<image resource="fab" highlightresource="fab_hl"/>
 		</style>	
 		<style name="input">
 			<background color="%background%"/>

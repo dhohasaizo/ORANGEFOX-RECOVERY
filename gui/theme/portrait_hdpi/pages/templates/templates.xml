@@ -143,6 +143,34 @@
 			<template name="navbar_console"/>
 		</template>
 		
+		<template name="actionbar_back">
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="key">back</action>
+			</button>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back"/>
+			</image>
+		</template>
+		
+		<template name="actionbar_sort">
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="overlay">menu_sort</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_sort"/>
+			</image>
+		</template>
+		
 		<template name="busy_screen">
 			<background color="%background%"/>
 			
@@ -221,12 +249,7 @@
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 			
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="key">back</action>
-			</button>
+			<template name="actionbar_back"/>
 		</template>
 
 		<template name="ab_without_shadow">
@@ -251,12 +274,7 @@
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 			
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="key">back</action>
-			</button>
+			<template name="actionbar_back"/>
 		</template>
 		
 		<template name="ab_main">
@@ -314,12 +332,7 @@
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 			
-			<button>
-				<condition var1="tw_busy" var2="0"/>
-				<placement x="%ab_back_x%" y="%ab_y%"/>
-				<image resource="actionbar_back" highlightresource="actionbar_back_hl"/>
-				<action function="key">back</action>
-			</button>
+			<template name="actionbar_back"/>
 		</template>
 		
 		<template name="cant_cancel">
@@ -488,31 +501,8 @@
 
 			<template name="statusbarinfo"/>
 			
-			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_sort" highlightresource="actionbar_sort_hl"/>
-				<action function="overlay">menu_sort</action>
-			</button>
+			<template name="actionbar_sort"/>
 
-			<button>
-				<condition var1="list_font" var2="big"/>
-				<condition var1="bookmark" var2="0"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
-				<actions>
-					<action function="set">list_font=small</action>
-				</actions>
-			</button>
-
-			<button>
-				<condition var1="list_font" var2="small"/>
-				<condition var1="bookmark" var2="0"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
-				<actions>
-					<action function="set">list_font=big</action>
-				</actions>
-			</button>
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>%tw_zip_location%</text>

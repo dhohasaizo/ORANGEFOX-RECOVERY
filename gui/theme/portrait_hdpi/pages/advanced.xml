@@ -14,23 +14,40 @@
 
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="page">settings</action>
 			</button>
 
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_settings"/>
+			</image>
+			
 			<button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_flash" highlightresource="actionbar_flash_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="flashlight"/>
 			</button>
 
+			<image>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_flash"/>
+			</image>
+			
 			<button>
 				<condition var1="use_pass" var2="1"/>
-				<placement x="%ab_btn3_x%" y="%ab_y%"/>
-				<image resource="actionbar_encr_ena" highlightresource="actionbar_encr_ena_hl"/>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="set">pass_open=0</action>
 				<action function="page">main</action>
 			</button>
+
+			<image>
+				<condition var1="use_pass" var2="1"/>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_encr_ena"/>
+			</image>
+			
 			<text style="text_ab_title">
 				<placement x="%col1_x%" y="%ab_bc_y%"/>
 				<text>{@menu_btn}</text>
@@ -369,10 +386,15 @@
 
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_cancel" highlightresource="actionbar_cancel_hl"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="cmd">mmgui unmnt</action>
 				<action function="page">advanced</action>
 			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_cancel"/>
+			</image>
 
 			<image>
 				<image resource="actionbar_shadow"/>
@@ -454,25 +476,7 @@
 				<text>Magisk Manager</text>
 			</text>
 
-			<button>
-				<condition var1="list_font" var2="big"/>
-				<condition var1="bookmark" var2="0"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
-				<actions>
-					<action function="set">list_font=small</action>
-				</actions>
-			</button>
-
-			<button>
-				<condition var1="list_font" var2="small"/>
-				<condition var1="bookmark" var2="0"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
-				<actions>
-					<action function="set">list_font=big</action>
-				</actions>
-			</button>
+			<template name="actionbar_font"/>
 
 			<action>
 				<condition var1="mmgui_file" op="modified"/>
@@ -677,7 +681,7 @@
 
 				<button>
 					<placement x="%ab_btn1_x%" y="%ab_y%"/>
-					<image resource="actionbar_delete" highlightresource="actionbar_delete_hl"/>
+					<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 					<actions>
 						<action function="set">tw_filemanager_command=rm -rf</action>
 						<action function="set">tw_filename1=/magisk/%mmgui_select%</action>
@@ -689,6 +693,11 @@
 						<action function="page">filemanagerconfirm</action>
 					</actions>
 				</button>
+
+				<image>
+					<placement x="%ab_btn1_x%" y="%ab_y%"/>
+					<image resource="actionbar_delete"/>
+				</image>
 
 				<action>
 					<condition var1="mmodule_amnt" op="modified"/>
@@ -760,10 +769,14 @@
 
 				<button style="floating_btn">
 					<placement x="%btn_float_x%" y="%btn_float_y%"/>
-					<image resource="btn_float_accept"/>
 					<action function="getpartitiondetails">tw_storage_path</action>
 					<action function="page">partsdcardcheck</action>
 				</button>
+
+				<image>
+					<placement x="%btn_float_x%" y="%btn_float_y%"/>
+					<image resource="fab_accept"/>
+				</image>
 
 				<action>
 					<touch key="home"/>
@@ -1076,10 +1089,15 @@
 
 				<button>
 					<placement x="%ab_btn1_x%" y="%ab_y%"/>
-					<image resource="actionbar_settings" highlightresource="actionbar_settings_hl"/>
+					<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 					<action function="set">general_back=terminal</action>
 					<action function="page">ext_general</action>
 				</button>
+
+				<image>
+					<placement x="%ab_btn1_x%" y="%ab_y%"/>
+					<image resource="actionbar_settings"/>
+				</image>
 
 				<template name="keyboardtemplate"/>
 				
@@ -1093,7 +1111,6 @@
 				
 				<template name="navbar_terminal"/>
 				
-
 				<action>
 					<touch key="power"/>
 					<action function="togglebacklight"/>
