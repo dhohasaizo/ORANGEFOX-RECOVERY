@@ -944,7 +944,7 @@
 			</image>
 			<!-- -->
 
-			<!-- Purple -->
+			<!-- Orange -->
 			<button>
 				<placement x="285" y="975"/>
 				<image resource="color_fox"/>
@@ -952,7 +952,7 @@
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Purple"/>
+				<condition var1="theme_accent" var2="Orange"/>
 				<placement x="285" y="975"/>
 				<image resource="style_apply"/>
 			</image>
