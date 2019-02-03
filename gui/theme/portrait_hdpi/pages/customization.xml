@@ -165,6 +165,9 @@
 				<listitem name="{@dark_title}">
 					<data variable="darker_ui"/>
 				</listitem>
+				<listitem name="{@noshadow_title}">
+					<data variable="flat_tbar"/>
+				</listitem>
 				<listitem name="{@separate_status}">
 					<data variable="separate_status"/>
 				</listitem>
@@ -310,6 +313,7 @@
 
 			<image>
 				<image resource="actionbar_shadow"/>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
 				<placement x="0" y="%row4_1_y%"/>
 			</image>
 
@@ -332,9 +336,9 @@
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row6_3_y%" w="%screen_w%" h="%row2_1_y%"/>
-				<listitem name="Enable clock">
-					<data variable="lockscr_clock"/>
+				<placement x="0" y="%row6_3_y%" w="%screen_w%" h="%lb_l5%"/>
+				<listitem name="[WIP] disable Power key = power menu">
+					<data variable="skip_powermenu"/>
 				</listitem>
 				<listitem name="Battery and CPU teamp info">
 					<data variable="lockscr_more_info"/>

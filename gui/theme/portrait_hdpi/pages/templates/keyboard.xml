@@ -6,6 +6,7 @@
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="0" y="%keyboard_bg_terminal_y%"/>
 				<image resource="keyboard_shadow"/>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
 			</image>
 			
 			<keyboard>
@@ -37,6 +38,7 @@
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
 			</image>
 			
 			<image>
@@ -168,6 +170,7 @@
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
 			</image>
 			
 			<image>

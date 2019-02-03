@@ -9,6 +9,7 @@
 			<template name="statusbarinfo"/>
 
 			<image>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
 				<image resource="actionbar_shadow"/>
 				<placement x="0" y="%row2_2_y%"/>
 			</image>

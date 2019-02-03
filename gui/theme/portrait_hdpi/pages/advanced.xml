@@ -236,7 +236,7 @@
 				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row9_y%"/>
-				<action function="page">reboot</action>
+				<action function="overlay">reboot</action>
 			</button>
 			
 			<image>
@@ -398,6 +398,7 @@
 
 			<image>
 				<image resource="actionbar_shadow"/>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
 				<placement x="0" y="408"/>
 			</image>
 
@@ -408,6 +409,7 @@
 
 			<image>
 				<image resource="actionbar_shadow"/>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
 				<placement x="0" y="745"/>
 			</image>
 
@@ -1113,7 +1115,7 @@
 				
 				<action>
 					<touch key="power"/>
-					<action function="togglebacklight"/>
+					<action function="overlay">reboot</action>
 				</action>
 
 				<action>

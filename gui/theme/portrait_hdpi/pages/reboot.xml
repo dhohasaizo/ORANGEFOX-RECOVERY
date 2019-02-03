@@ -2,18 +2,43 @@
 <recovery>
 	<pages>
 		<page name="reboot">
-			<template name="body"/>
+			<background color="%transparent%"/>
+			<template name="navbar_bkg"/>
+			<button>
+				<fill color="%darktransparent%"/>
+				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
+				<action function="key">back</action>
+			</button>
+			<template name="navbar"/>
+		
+			<action>
+				<condition var1="skip_powermenu" var2="1"/>
+				<action function="overlay"/>
+				<action function="togglebacklight"/>
+			</action>
+		
+			<action>
+				<touch key="power"/>
+				<action function="overlay"/>
+				<action function="togglebacklight"/>
+			</action>
+			
+			<action>
+				<touch key="power+voldown"/>
+				<action function="screenshotinternal"/>
+			</action>
+			
+			<action>
+				<touch key="power+volup"/>
+				<action function="flashlight"/>
+			</action>
 
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
+			<!--text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@reboot_btn}</text>
-			</text>
+			</text-->
 
-			<button>
+			<!--button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="set">general_back=reboot</action>
@@ -23,7 +48,7 @@
 			<image>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_settings"/>
-			</image>
+			</image-->
 
 			<!-- System -->
 			<button style="bs_btn">
@@ -290,12 +315,12 @@
 
 			<action>
 				<touch key="home"/>
-				<action function="page">advanced</action>
+				<action function="page">main</action>
 			</action>
 
 			<action>
 				<touch key="back"/>
-				<action function="page">advanced</action>
+				<action function="overlay"/>
 			</action>
 		</page>
 		<page name="reboot_system_routine">
