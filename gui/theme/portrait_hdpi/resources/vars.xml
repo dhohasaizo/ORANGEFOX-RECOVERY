@@ -417,9 +417,10 @@
 		<variable name="transparent" value="#00000000"/>
 		<variable name="text_success" value="#68B60B"/>
 		<variable name="text_fail" value="#FF0101"/>
-		<variable name="warning" value="#FF6600FF"/>
-		<variable name="error" value="#FF0000FF"/>
+		<variable name="warning" value="#FF6600"/>
+		<variable name="error" value="#FF0000"/>
 		<variable name="unactive_title" value="#80868B"/>
+		<variable name="text_raisedbtn" value="#FFFFFF"/>
 		
 		<!-- Rows -->
 		<variable name="row0_y" value="240"/>

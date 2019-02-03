@@ -49,24 +49,21 @@
 		<image name="progress_fill_small" filename="Light/Progress/progress_fill_small"/>
 	</resources>
 	<variables>
-		<variable name="highlight" value="#FAFAFAFF"/>
+		<variable name="background" value="#FAFAFA"/>
+		<variable name="bg_rgb" value="250"/>
+		
 		<variable name="highlight_color" value="#FAFAFA66"/>
-		<variable name="highlight_color_full" value="#D3D3D3AA"/>
-		<variable name="text_raisedbtn" value="#FAFAFAFF"/>
-		<variable name="background" value="#FAFAFAFF"/>
-		<variable name="bg_rgb" value="224"/>
-		<variable name="text_dark" value="#FAFAFAFF"/>
-		<variable name="linecolor" value="#D0D0D0FF"/>
-		<variable name="text_light" value="#666666FF"/>
-		<variable name="text_menu" value="#3f3f3fFF"/>
-		<variable name="console_foreground" value="#3f3f3fFF"/>
-		<variable name="text_actionbar" value="#3f3f3fFF"/>
-		<variable name="text" value="#3f3f3fFF"/>
-		<variable name="text_status" value="#3f3f3fFF"/>
+		<variable name="highlight_color_full" value="#E9E9E944"/>
+		<variable name="text" value="#666666"/>
+		<variable name="text_status" value="#666666"/>
+		<variable name="text_menu" value="#666666"/>
+		<variable name="text_light" value="#666666"/>
+		<variable name="text_dark" value="#666666"/>
+		<variable name="console_foreground" value="#666666"/>
+		<variable name="linecolor" value="#666666"/>
 		<variable name="darktransparent" value="#FAFAFABB"/>
-		<variable name="lightransparent" value="#00000005"/>
+		<variable name="lightransparent" value="#00000008"/>
 		<variable name="theme_style" value="Light"/>
 		<variable name="theme_style_main" value="Light"/>
-		<variable name="applied_style_x" value="540"/>
 	</variables>
 </recovery>

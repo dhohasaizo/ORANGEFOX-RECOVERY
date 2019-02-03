@@ -53,25 +53,21 @@
 		<image name="progress_fill_small" filename="Default/Progress/progress_fill_small"/>
 	</resources>
 	<variables>
-		<variable name="background" value="#222222FF"/>
-		<variable name="bg_rgb" value="34"/>
+		<variable name="background" value="#222222"/> <!-- bg color -->
+		<variable name="bg_rgb" value="34"/> <!-- bg color for splash -->
 		
-		<variable name="highlight" value="#0090CAFF"/>
-		<variable name="highlight_color" value="#22222266"/>
-		<variable name="highlight_color_full" value="#11111144"/>
-		<variable name="text" value="#E3E3E3FF"/>
-		<variable name="text_status" value="#E3E3E3FF"/>
-		<variable name="text_raisedbtn" value="#E3E3E3FF"/>
-		<variable name="text_actionbar" value="#DEF1F8FF"/>
-		<variable name="text_menu" value="#E3E3E3FF"/>
-		<variable name="text_light" value="#777777FF"/>
-		<variable name="text_dark" value="#313131FF"/>
-		<variable name="console_foreground" value="#E3E3E3FF"/>
-		<variable name="linecolor" value="#383838FF"/>
-		<variable name="darktransparent" value="#000000BB"/>
-		<variable name="lightransparent" value="#00000011"/>
-		<variable name="theme_style" value="Gray"/>
-		<variable name="theme_style_main" value="Gray"/>
-		<variable name="applied_style_x" value="285"/>
+		<variable name="highlight_color" value="#22222266"/> <!-- obj pressed (btn) -->
+		<variable name="highlight_color_full" value="#11111144"/> <!-- hl behind obj (filemanager) -->
+		<variable name="text" value="#FFFFFF"/> <!-- text (on bg) -->
+		<variable name="text_status" value="#FFFFFF"/> <!-- text (statusbar) -->
+		<variable name="text_menu" value="#FFFFFF"/> <!-- text (long btns) -->
+		<variable name="text_light" value="#666666"/> <!-- text (unactive,gray) -->
+		<variable name="text_dark" value="#666666"/> <!-- text (unused) -->
+		<variable name="console_foreground" value="#FFFFFF"/> <!-- text (console) -->
+		<variable name="linecolor" value="#666666"/> <!-- dividers -->
+		<variable name="darktransparent" value="#000000BB"/> <!-- dialog bgs -->
+		<variable name="lightransparent" value="#00000011"/> <!-- dark statusbar -->
+		<variable name="theme_style" value="Gray"/> <!-- name -->
+		<variable name="theme_style_main" value="Gray"/> <!-- group name -->
 	</variables>
 </recovery>

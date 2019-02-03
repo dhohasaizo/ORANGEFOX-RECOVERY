@@ -97,10 +97,6 @@
 			<fill color="%transparent%"/>
 		</style>
 
-		<style name="mb_text">
-			<font resource="mainbutton" color="%text_menu%"/>
-		</style>
-
 		<style name="mb_btn_edit">
 			<highlight color="%highlight_color%"/>
 			<image resource="btn_empty"/>

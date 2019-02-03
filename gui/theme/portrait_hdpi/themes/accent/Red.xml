@@ -70,10 +70,10 @@
 		<image name="slideout_key_pie" filename="Red/NavBar/slideout_key_pie" retainaspect="1"/>
 	</resources>
 	<variables>
-		<variable name="accent" value="#ff5252"/>
-		<variable name="accent_r" value="255"/>
-		<variable name="accent_g" value="82"/>
-		<variable name="accent_b" value="82"/>
+		<variable name="accent" value="#E53935"/>
+		<variable name="accent_r" value="229"/>
+		<variable name="accent_g" value="57"/>
+		<variable name="accent_b" value="53"/>
 		<variable name="theme_accent" value="Red"/>
 		<variable name="current_accent" value="Red"/>
 	</variables>
