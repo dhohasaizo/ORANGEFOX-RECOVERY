@@ -106,7 +106,7 @@
 			<keyboard>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<condition var1="key_buttons" var2="0"/>
-				<placement x="0" y="%keyboard_y%" w="%screen_w%" h="644"/>
+				<placement x="0" y="%keyboard_y%" w="%screen_w%" h="645"/>
 				<keymargin x="4" y="8"/>
 				<background color="%background%"/>
 				<key-alphanumeric color="%background%" font="keylabel" textcolor="%text%"/>
@@ -157,7 +157,8 @@
 			
 			<fill color="%background%">
 				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_bkg" var2="0"/>
+				<condition var1="navbar_bkg" op="!=" var2="1"/>
+				<condition var1="navbar_bkg" op="!=" var2="2"/>
 				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
 			</fill>
 		</template>
@@ -221,7 +222,8 @@
 			
 			<fill color="%background%">
 				<condition var1="tw_busy" var2="0"/>
-				<condition var1="navbar_bkg" var2="0"/>
+				<condition var1="navbar_bkg" op="!=" var2="1"/>
+				<condition var1="navbar_bkg" op="!=" var2="2"/>
 				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
 			</fill>
 		</template>

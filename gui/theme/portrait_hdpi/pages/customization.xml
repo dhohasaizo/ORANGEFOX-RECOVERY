@@ -791,13 +791,22 @@
 			<!-- Black -->
 			<button>
 				<placement x="30" y="360"/>
-				<image resource="style_black"/>
-				<action function="set">theme_style=Black</action>
+				<condition var1="theme_accent" op="!=" var2="Black"/>
+				<image resource="style_gray"/>
+				<action function="set">theme_style=Gray</action>
+			</button>
+			
+			<button>
+				<placement x="30" y="360"/>
+				<condition var1="theme_accent" var2="Black"/>
+				<image resource="style_gray"/>
+				<action function="set">theme_style=Gray</action>
+				<action function="set">theme_accent=Gray</action>
 			</button>
 
 			<image>
 				<placement x="30" y="360"/>
-				<condition var1="theme_style" var2="Black"/>
+				<condition var1="theme_style" var2="Gray"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
@@ -805,13 +814,22 @@
 			<!-- Gray -->
 			<button>
 				<placement x="285" y="360"/>
-				<image resource="style_gray"/>
-				<action function="set">theme_style=Gray</action>
+				<condition var1="theme_accent" op="!=" var2="Black"/>
+				<image resource="style_black"/>
+				<action function="set">theme_style=Black</action>
+			</button>
+			
+			<button>
+				<placement x="285" y="360"/>
+				<condition var1="theme_accent" var2="Black"/>
+				<image resource="style_black"/>
+				<action function="set">theme_style=Black</action>
+				<action function="set">theme_accent=Gray</action>
 			</button>
 
 			<image>
 				<placement x="285" y="360"/>
-				<condition var1="theme_style" var2="Gray"/>
+				<condition var1="theme_style" var2="Black"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
@@ -819,47 +837,41 @@
 			<!-- Light -->
 			<button>
 				<placement x="540" y="360"/>
+				<condition var1="theme_accent" op="!=" var2="Gray"/>
 				<image resource="style_light"/>
 				<action function="set">theme_style=Light</action>
+			</button>
+			
+			<button>
+				<placement x="540" y="360"/>
+				<condition var1="theme_accent" var2="Gray"/>
+				<image resource="style_light"/>
+				<action function="set">theme_style=Light</action>
+				<action function="set">theme_accent=Black</action>
 			</button>
 
 			<image>
 				<placement x="540" y="360"/>
 				<condition var1="theme_style" var2="Light"/>
-				<image resource="style_apply"/>
+				<image resource="style_apply_black"/>
 			</image>
 			<!-- -->
 
 			<!-- Light classic -->
 			<button>
 				<placement x="795" y="360"/>
+				<condition var1="theme_accent" op="!=" var2="Black"/>
 				<image resource="style_light_c"/>
 				<action function="set">theme_style=Light_classic</action>
 			</button>
-
-			<image>
-				<placement x="30" y="360"/>
-				<condition var1="theme_style" var2="Black"/>
-				<image resource="style_apply"/>
-			</image>
 			
-			<image>
-				<placement x="285" y="360"/>
-				<condition var1="theme_style" var2="Gray"/>
-				<image resource="style_apply"/>
-			</image>
-			
-			<image>
-				<placement x="540" y="360"/>
-				<condition var1="theme_style" var2="Light"/>
-				<image resource="style_apply_black"/>
-			</image>
-			
-			<image>
+			<button>
 				<placement x="795" y="360"/>
-				<condition var1="theme_style" var2="Light_classic"/>
-				<image resource="style_apply"/>
-			</image>
+				<condition var1="theme_accent" var2="Black"/>
+				<image resource="style_light_c"/>
+				<action function="set">theme_style=Light_classic</action>
+				<action function="set">theme_accent=Gray</action>
+			</button>
 			
 			<image>
 				<placement x="795" y="360"/>
@@ -873,16 +885,16 @@
 				<placement x="%col1_x%" y="%row3_1_y%" />
 				<text>{@theme_accent}</text>
 			</text>
-			
-			<!-- DarkGreen -->
+
+			<!-- Orange -->
 			<button>
 				<placement x="30" y="%row3_2_y%"/>
-				<image resource="color_cyan"/>
-				<action function="set">theme_accent=DarkGreen</action>
+				<image resource="color_fox"/>
+				<action function="set">theme_accent=Orange</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="DarkGreen"/>
+				<condition var1="theme_accent" var2="Orange"/>
 				<placement x="30" y="%row3_2_y%"/>
 				<image resource="style_apply"/>
 			</image>
@@ -901,16 +913,16 @@
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
-
-			<!-- Purple -->
+			
+			<!-- Teal -->
 			<button>
 				<placement x="540" y="%row3_2_y%"/>
-				<image resource="color_purple"/>
-				<action function="set">theme_accent=Purple</action>
+				<image resource="color_cyan"/>
+				<action function="set">theme_accent=Teal</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Purple"/>
+				<condition var1="theme_accent" var2="Teal"/>
 				<placement x="540" y="%row3_2_y%"/>
 				<image resource="style_apply"/>
 			</image>
@@ -946,57 +958,57 @@
 			</image>
 			<!-- -->
 
-			<!-- Green -->
-			<button>
-				<placement x="30" y="975"/>
-				<image resource="color_green"/>
-				<action function="set">theme_accent=Green</action>
-			</button>
-
-			<image>
-				<condition var1="theme_accent" var2="Green"/>
-				<placement x="30" y="975"/>
-				<image resource="style_apply"/>
-			</image>
-			<!-- -->
-
-			<!-- Orange -->
-			<button>
-				<placement x="285" y="975"/>
-				<image resource="color_fox"/>
-				<action function="set">theme_accent=Orange</action>
-			</button>
-
-			<image>
-				<condition var1="theme_accent" var2="Orange"/>
-				<placement x="285" y="975"/>
-				<image resource="style_apply"/>
-			</image>
-			<!-- -->
-
-			<!-- Amber -->
-			<button>
-				<placement x="540" y="975"/>
-				<image resource="color_amber"/>
-				<action function="set">theme_accent=Amber</action>
-			</button>
-
-			<image>
-				<condition var1="theme_accent" var2="Amber"/>
-				<placement x="540" y="975"/>
-				<image resource="style_apply"/>
-			</image>
-			<!-- -->
-
 			<!-- Red -->
 			<button>
-				<placement x="795" y="975"/>
+				<placement x="30" y="975"/>
 				<image resource="color_red"/>
 				<action function="set">theme_accent=Red</action>
 			</button>
 
 			<image>
 				<condition var1="theme_accent" var2="Red"/>
+				<placement x="30" y="975"/>
+				<image resource="style_apply"/>
+			</image>
+			<!-- -->
+
+			<!-- Purple -->
+			<button>
+				<placement x="285" y="975"/>
+				<image resource="color_purple"/>
+				<action function="set">theme_accent=Purple</action>
+			</button>
+
+			<image>
+				<condition var1="theme_accent" var2="Purple"/>
+				<placement x="285" y="975"/>
+				<image resource="style_apply"/>
+			</image>
+			<!-- -->
+
+			<!-- Green -->
+			<button>
+				<placement x="540" y="975"/>
+				<image resource="color_green"/>
+				<action function="set">theme_accent=Green</action>
+			</button>
+
+			<image>
+				<condition var1="theme_accent" var2="Green"/>
+				<placement x="540" y="975"/>
+				<image resource="style_apply"/>
+			</image>
+			<!-- -->
+
+			<!-- Amber -->
+			<button>
+				<placement x="795" y="975"/>
+				<image resource="color_amber"/>
+				<action function="set">theme_accent=Amber</action>
+			</button>
+
+			<image>
+				<condition var1="theme_accent" var2="Amber"/>
 				<placement x="795" y="975"/>
 				<image resource="style_apply"/>
 			</image>

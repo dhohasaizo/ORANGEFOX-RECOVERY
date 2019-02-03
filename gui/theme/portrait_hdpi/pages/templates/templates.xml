@@ -436,8 +436,8 @@
 				<action function="key">back</action>
 			</button>
 			<template name="keys"/>
-			<template name="navbar"/>
 			<template name="statusbarinfo"/>
+			<template name="navbar"/>
 		</template>
 		
 		<template name="dialog_body_key">
@@ -449,11 +449,11 @@
 			</button>
 			<template name="keys"/>
 			<template name="keyboardtemplate"/>
+			<template name="statusbarinfo"/>
 			<template name="navbar_bkg"/>
 			<template name="navbar_home"/>
 			<template name="navbar_console"/>
 			<template name="navbar_key"/>
-			<template name="statusbarinfo"/>
 		</template>
 
 		<template name="dialog_body_num">
@@ -465,11 +465,11 @@
 			</button>
 			<template name="keys"/>
 			<template name="keyboardnum"/>
+			<template name="statusbarinfo"/>
 			<template name="navbar_bkg"/>
 			<template name="navbar_home"/>
 			<template name="navbar_console"/>
 			<template name="navbar_key"/>
-			<template name="statusbarinfo"/>
 		</template>
 			
 		<!-- Buttons -->	

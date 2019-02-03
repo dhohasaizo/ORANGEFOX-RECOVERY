@@ -693,21 +693,21 @@
 		</template>
 
 		<template name="navbar_key">
-			<image>
+			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="0"/>
 				<placement x="%back_button_x%" y="%row_navbtn_y%" placement="4"/>
 				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
 				<action function="key">back</action>
-			</image>
+			</button>
 			
-			<image>
+			<button>
 				<condition var1="tw_busy" var2="0"/>
 				<condition var1="navbar_sams" var2="1"/>
 				<placement x="%slideout_button_x%" y="%row_navbtn_y%" placement="4"/>
 				<image resource="nb_btn" highlightresource="nb_btn_hl"/>
 				<action function="key">back</action>
-			</image>
+			</button>
 			
 			<image>
 				<condition var1="tw_busy" var2="0"/>
