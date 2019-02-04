@@ -574,6 +574,7 @@ int OpenRecoveryScript::Install_Command(string Zip)
 	ret_val = TWinstall_zip(Zip.c_str(), &wipe_cache);
 	if (ret_val != 0) 
 	  {
+		LOGINFO ("OpenRecoveryScript::Install_Command() error.\n");
 		gui_msg(Msg(msg::kError, "zip_err=Error installing zip file '{1}'")(Zip));
 		ret_val = 1;
 	  } 
