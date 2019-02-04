@@ -1682,9 +1682,6 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 // Disable flashing of stock recovery
 void TWFunc::Disable_Stock_Recovery_Replace(void)
 {
-#ifdef OF_DISABLE_MIUI_SPECIFIC_FEATURES
-     return;
-#endif
   if (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false))
      { 
          Disable_Stock_Recovery_Replace_Func();           
