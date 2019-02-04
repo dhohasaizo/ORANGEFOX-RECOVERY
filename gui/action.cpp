@@ -1247,6 +1247,7 @@ int GUIAction::flash(std::string arg)
       if (ret_val != 0)
 	{
 	  gui_msg(Msg(msg::kError, "zip_err=Error installing zip file '{1}'") (zip_path));
+	  gui_print_color("error", "Hmmm ... does someone have a patched boot image?\n");
 	  ret_val = 1;
 	  break;
 	}
