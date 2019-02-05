@@ -210,22 +210,16 @@
 
 			<!-- Монтирование -->
 			<button style="bs_btn">
-				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
-				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
 				<action function="page">mount</action>
 			</button>
 			
 			<image>
-				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
-				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="%col1_x%" y="%set_row8_y%"/>
 				<image resource="bs_adv_mount"/>
 			</image>
 			
 			<text style="bs_text">
-				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
-				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
 				<text>{@mount_hdr}</text>
 			</text>
@@ -233,21 +227,38 @@
 
 			<!-- Перезагрузка -->
 			<button style="bs_btn">
-				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
+				<condition var1="tw_allow_partition_sdcard" op="!=" var2="1"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
+				<action function="overlay">reboot</action>
+			</button>
+			
+			<image>
+				<condition var1="tw_allow_partition_sdcard" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%set_row7_y%"/>
+				<image resource="bs_adv_reboot"/>
+			</image>
+			
+			<text style="bs_text">
+				<condition var1="tw_allow_partition_sdcard" op="!=" var2="1"/>
+				<placement x="%col1_x_indent%" y="%set_row7_y%"/>
+				<text>{@reboot_btn}</text>
+			</text>
+			<!---->
+
+			<!-- Перезагрузка -->
+			<button style="bs_btn">
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row9_y%"/>
 				<action function="overlay">reboot</action>
 			</button>
 			
 			<image>
-				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="%col1_x%" y="%set_row9_y%"/>
 				<image resource="bs_adv_reboot"/>
 			</image>
 			
 			<text style="bs_text">
-				<condition var1="tw_show_dumlock" op="!=" var2="1"/>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
 				<text>{@reboot_btn}</text>

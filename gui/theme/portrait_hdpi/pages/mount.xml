@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <recovery>
 	<pages>
-		<page name="mount">
+		<page name="mount_deprecated">
 			<template name="body"/>
 
 			<template name="ab_ex"/>
@@ -89,16 +89,6 @@
 
 			<button style="btn_raised_hl">
 				<conditions>
-					<condition var1="tw_is_encrypted" var2="1"/>
-					<condition var1="tw_is_decrypted" var2="0"/>
-				</conditions>
-				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-				<text>{@decrypt_data_btn}</text>
-				<action function="page">decrypt</action>
-			</button>
-
-			<button style="btn_raised_hl">
-				<conditions>
 					<condition var1="tw_has_mtp" var2="1"/>
 					<condition var1="tw_mtp_enabled" var2="0"/>
 				</conditions>
@@ -116,6 +106,145 @@
 				<text>{@disable_mtp_btn}</text>
 				<action function="stopmtp"/>
 			</button>
+
+			<button style="btn_raised_hl">
+				<conditions>
+					<condition var1="tw_is_encrypted" var2="1"/>
+					<condition var1="tw_is_decrypted" var2="0"/>
+				</conditions>
+				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+				<text>{@decrypt_data_btn}</text>
+				<action function="page">decrypt</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">advanced</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">advanced</action>
+			</action>
+		</page>
+		
+		<page name="mount">
+			<template name="body"/>
+
+			<fill color="%accent%">
+				<condition var1="tw_mtp_enabled" var2="1"/>
+				<condition var1="tw_has_mtp" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			
+			<fill color="%unactive_title%">
+				<condition var1="tw_mtp_enabled" var2="0"/>
+				<condition var1="tw_has_mtp" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="tw_mtp_enabled" var2="0"/>
+				<condition var1="tw_has_mtp" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_off"/>
+			</image>
+			
+			<image>
+				<condition var1="tw_mtp_enabled" var2="1"/>
+				<condition var1="tw_has_mtp" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_on"/>
+			</image>
+
+			<text style="text_ab_switch">
+				<condition var1="tw_has_mtp" var2="1"/>
+				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
+				<text>{@enable_mtp_btn}</text>
+			</text>
+
+			<button style="bs_btn">
+				<condition var1="tw_mtp_enabled" var2="1"/>
+				<condition var1="tw_has_mtp" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<action function="stopmtp"/>
+			</button>
+
+			<button style="bs_btn">
+				<condition var1="tw_mtp_enabled" var2="0"/>
+				<condition var1="tw_has_mtp" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<action function="startmtp"/>
+			</button>
+			
+			<fill color="%error%">
+				<conditions>
+					<condition var1="tw_is_encrypted" var2="1"/>
+					<condition var1="tw_is_decrypted" var2="0"/>
+				</conditions>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+
+			<text style="text_ab_switch">
+				<conditions>
+					<condition var1="tw_is_encrypted" var2="1"/>
+					<condition var1="tw_is_decrypted" var2="0"/>
+				</conditions>
+				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
+				<text>{@decrypt_data_btn}</text>
+			</text>
+			
+			<image>
+				<conditions>
+					<condition var1="tw_is_encrypted" var2="1"/>
+					<condition var1="tw_is_decrypted" var2="0"/>
+				</conditions>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="continue_btn"/>
+			</image>
+
+			<button style="bs_btn">
+				<conditions>
+					<condition var1="tw_is_encrypted" var2="1"/>
+					<condition var1="tw_is_decrypted" var2="0"/>
+				</conditions>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<action function="page">decrypt</action>
+			</button>
+			
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@mount_hdr}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_3a_y%"/>
+				<text>{@partitions}</text>
+			</text>
+
+			<partitionlist>
+				<placement x="0" y="%row2_1a_y%" w="%screen_w%" h="%part_list_btns_9_h%"/>
+				<listtype name="mount"/>
+			</partitionlist>
+			
+			<button style="floating_btn">
+				<condition var1="tw_has_usb_storage" var2="1"/>
+				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<actions>
+					<action function="mount">usb</action>
+					<action function="page">usb_mount</action>
+				</actions>
+			</button>
+			
+			<image>
+				<condition var1="tw_has_usb_storage" var2="1"/>
+				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<image resource="fab_usb"/>
+			</image>
 
 			<action>
 				<touch key="home"/>
@@ -412,7 +541,7 @@
 			<text style="text_body2">
 				<condition var1="tw_password_fail" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row3_1a_y%"/>
-				<text>{@decrypt_try_again=Please try again.</text>
+				<text>{@decrypt_try_again}</text>
 			</text>
 
 			<patternpassword>
@@ -425,25 +554,25 @@
 			</patternpassword>
 
 			<button style="btn_flat_qw">
-				<placement x="%btn_raised_left_x%" y="%row8_1a_y%"/>
+				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
 				<text>3x3</text>
 				<action function="set">tw_gui_pattern_grid_size=3</action>
 			</button>
 
 			<button style="btn_flat_qw">
-				<placement x="%btn_rot_2_x%" y="%row8_1a_y%" placement="1"/>
+				<placement x="303" y="%row_btn1_y%" placement="1"/>
 				<text>4x4</text>
 				<action function="set">tw_gui_pattern_grid_size=4</action>
 			</button>
 
 			<button style="btn_flat_qw">
-				<placement x="%btn_rot_3_x%" y="%row8_1a_y%"/>
+				<placement x="579" y="%row_btn1_y%"/>
 				<text>5x5</text>
 				<action function="set">tw_gui_pattern_grid_size=5</action>
 			</button>
 
 			<button style="btn_flat_qw">
-				<placement x="%btn_raised_right_x%" y="%row8_1a_y%" placement="1"/>
+				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
 				<text>6x6</text>
 				<action function="set">tw_gui_pattern_grid_size=6</action>
 			</button>

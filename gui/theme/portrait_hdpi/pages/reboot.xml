@@ -11,11 +11,6 @@
 			</button>
 			<template name="navbar"/>
 		
-			<action>
-				<condition var1="skip_powermenu" var2="1"/>
-				<action function="overlay"/>
-				<action function="togglebacklight"/>
-			</action>
 		
 			<action>
 				<touch key="power"/>

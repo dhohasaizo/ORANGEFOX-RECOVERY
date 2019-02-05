@@ -24,6 +24,7 @@
 		<image name="fab_accept" filename="Default/FAB/accept" retainaspect="1"/>
 		<image name="fab_close" filename="Default/FAB/close" retainaspect="1"/>
 		<image name="fab_add" filename="Default/FAB/add" retainaspect="1"/>
+		<image name="fab_usb" filename="Default/FAB/usb" retainaspect="1"/>
 		
 		<!-- Fonts Preview -->
 		<font name="font1" filename="Roboto-Regular.ttf" size="42"/>
@@ -73,6 +74,7 @@
 		<image name="switch_off" filename="Default/Controls/switch_off" retainaspect="1"/>
 		<image name="switch_on" filename="Default/Controls/switch_on" retainaspect="1"/>
 		<image name="progress_empty_small" filename="Default/Progress/progress_empty_small"/>
+		<image name="continue_btn" filename="Default/Controls/continue" retainaspect="1"/>
 		
 		<!-- FAB -->
 		<image name="btn_float_addtoqueue" filename="Default/FAB/btn_float_addtoqueue" retainaspect="1"/>

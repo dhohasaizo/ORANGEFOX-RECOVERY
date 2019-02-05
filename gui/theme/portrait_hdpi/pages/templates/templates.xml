@@ -480,7 +480,7 @@
 		<template name="keys">
 			<action>
 				<touch key="power"/>
-				<action function="overlay">reboot</action>
+				<action function="togglebacklight"/>
 			</action>
 			
 			<action>
