@@ -22,6 +22,14 @@
 		<style name="text_ab_subtitle">
 			<font resource="Secondary" color="%accent%"/>
 		</style>
+		
+		<style name="about_name">
+			<font resource="font_l" color="#222222"/>
+		</style>
+		
+		<style name="about_info">
+			<font resource="body1" color="#666666"/>
+		</style>
 
 		<style name="text_dlg_title">
 			<font resource="Secondary-title" color="%text%"/>

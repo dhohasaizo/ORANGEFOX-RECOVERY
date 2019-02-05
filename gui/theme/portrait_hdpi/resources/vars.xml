@@ -204,6 +204,10 @@
 		<variable name="set_row9_text_y" value="%set_row9_y%+%bs_text_offset%"/>
 		<variable name="set_row10_text_y" value="%set_row10_y%+%bs_text_offset%"/>
 		
+		<!-- Long buttons (bottom) -->
+		<variable name="db_row1_y" value="%screen_h%-288"/>
+		<variable name="db_row1_text_y" value="%db_row1_y%+%bs_text_offset%"/>
+		
 		<!-- Long buttons in file manager -->
 		<variable name="bs_row1_y" value="480"/>
 		<variable name="bs_row2_y" value="624"/>
@@ -245,10 +249,6 @@
 		<variable name="version_x" value="20"/>
 		<variable name="time_x" value="1060"/>
 		<variable name="status_info_y" value="8"/>
-		
-		<!-- Info -->
-		<variable name="col1_x_cards" value="228"/>
-		<variable name="col1_x_cards_icon" value="60"/>
 		
 		<!-- Big invisible button -->
 		<variable name="mb_h_hide" value="120"/>

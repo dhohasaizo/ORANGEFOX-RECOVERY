@@ -1032,106 +1032,117 @@
 		<!-- About -->
 		<page name="about">
 			<template name="body"/>
-
-			<fill color="#ed6f02">
-				<condition var1="theme_style" op="!=" var2="Light"/>
-				<placement x="0" y="0" w="1080" h="1080"/>
-			</fill>
-
-			<fill color="#DB414F">
-				<condition var1="debug_open" var2="5"/>
-				<condition var1="theme_style" op="!=" var2="Light"/>
-				<placement x="0" y="0" w="1080" h="1080"/>
-			</fill>
+			
+			<template name="actionbar_back"/> <!--template name="ab"/-->
+			
+			<template name="statusbarinfo"/>
 
 			<button>
-				<image resource="logo"/>
-				<condition var1="debug_open" op="!=" var2="5"/>
-				<placement x="284" y="284"/>
+				<image resource="logo_big"/>
+				<placement x="%center_x%" y="330" placement="4"/>
 				<action function="compute">debug_open+1</action>
 				<action function="page">about</action>
 			</button>
+			
+			<text style="text_ab_title">
+				<placement x="%center_x%" y="590" placement="4"/>
+				<text>OrangeFox Recovery Project</text>
+			</text>
 
+			<text style="text_ab_subtitle">
+				<placement x="%center_x%" y="660" placement="4"/>
+				<text>v%tw_version% | %fox_actual_build%</text>
+			</text>
+			
+			<!-- Yan Card -->
 			<image>
-				<image resource="logo"/>
-				<condition var1="theme_style" op="!=" var2="Light"/>
-				<placement x="284" y="284"/>
-			</image>
-
-			<fill color="%lightransparent%">
-				<condition var1="separate_status" op="!=" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
-
-			<template name="statusbarinfo"/>
-
-			<image>
-				<placement x="0" y="1054"/>
-				<condition var1="theme_style" op="!=" var2="Light"/>
-				<image resource="keyboard_shadow"/>
+				<image resource="card"/>
+				<placement x="0" y="720"/>
 			</image>
 			
-			<template name="actionbar_back"/>
-
 			<image>
-				<placement x="%col1_x_cards_icon%" y="%row5_3_y%"/>
-				<image resource="icon_person"/>
+				<image resource="author_yan"/>
+				<placement x="72" y="792"/>
 			</image>
 
-			<text style="caption">
-				<placement x="%col1_x_cards%" y="%row5_3_y%"/>
-				<text>{@author}</text>
+			<text style="about_name">
+				<placement x="300" y="792"/>
+				<text>MrYacha</text>
 			</text>
-
-			<text style="text_body2">
-				<placement x="%col1_x_cards%" y="%row6_1_y%"/>
-				<text>MrYacha & DarthJabba9</text>
+			<text style="about_info">
+				<placement x="300" y="858"/>
+				<text>Developer</text>
 			</text>
-
+			<text style="about_info">
+				<placement x="300" y="910"/>
+				<text>Developer</text>
+			</text>
+			<!-- Card -->
+			
+			<!-- fd Card -->
 			<image>
-				<placement x="%col1_x_cards_icon%" y="%row6_2a_y%"/>
-				<image resource="icon_mail"/>
+				<image resource="card"/>
+				<placement x="0" y="1008"/>
+			</image>
+			
+			<image>
+				<image resource="author_fd"/>
+				<placement x="72" y="1080"/>
 			</image>
 
-			<text style="caption">
-				<placement x="%col1_x_cards%" y="%row6_2a_y%"/>
-				<text>{@contact}</text>
+			<text style="about_name">
+				<placement x="300" y="1080"/>
+				<text>fordownloads</text>
 			</text>
-
-			<text style="text_body2">
-				<placement x="%col1_x_cards%" y="%row6_3a_y%"/>
-				<text>@MrYacha (in Telegram)</text>
+			<text style="about_info">
+				<placement x="300" y="1146"/>
+				<text>Developer</text>
 			</text>
-
+			<text style="about_info">
+				<placement x="300" y="1198"/>
+				<text>Developer</text>
+			</text>
+			<!-- Card -->
+			
+			<!-- jabba Card -->
 			<image>
-				<placement x="%col1_x_cards_icon%" y="%row7_2_y%"/>
-				<image resource="icon_info2"/>
+				<image resource="card"/>
+				<placement x="0" y="1296"/>
+			</image>
+			
+			<image>
+				<image resource="author_jabba"/>
+				<placement x="72" y="1368"/>
 			</image>
 
-			<text style="caption">
-				<placement x="%col1_x_cards%" y="%row7_2_y%"/>
-				<text>{@version_twrp}</text>
+			<text style="about_name">
+				<placement x="300" y="1368"/>
+				<text>DarthJabba9</text>
 			</text>
+			<text style="about_info">
+				<placement x="300" y="1434"/>
+				<text>Developer</text>
+			</text>
+			<text style="about_info">
+				<placement x="300" y="1486"/>
+				<text>Developer</text>
+			</text>
+			<!-- Card -->
+			
+			<image>
+				<placement x="%col1_x%" y="%db_row1_y%"/>
+				<image resource="bs_btn_open"/>
+			</image>
 
-			<text style="text_body2">
-				<placement x="%col1_x_cards%" y="%row7_3_y%"/>
-				<text>Version: %tw_version% | %fox_actual_build%</text>
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%db_row1_text_y%"/>
+				<text>More...</text>
 			</text>
-
-			<text style="text_body2">
-				<placement x="%col1_x_cards%" y="%row8_1_y%"/>
-				<text>Maintainer: %of_maintainer%</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%col1_x_cards%" y="%row8_2_y%"/>
-				<text>Theme version: %theme_version%</text>
-			</text>
-
-			<text style="text_body2">
-				<placement x="%col1_x_cards%" y="%row8_3_y%"/>
-				<text>Theme author: fordownloads</text>
-			</text>
+			
+			<button style="bs_btn">
+				<placement x="0" y="%db_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">about</action>
+			</button>
 
 			<action>
 				<touch key="home"/>

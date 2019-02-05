@@ -196,5 +196,12 @@
 		<image name="actionbar_clear" filename="Default/Other/actionbar_clear" retainaspect="1"/>
 		<image name="cursor" filename="Default/Other/cursor" retainaspect="1"/>
 		<image name="logo_debug" filename="Default/FullscreenIcons/logo_debug" retainaspect="1"/>
+		
+		
+		<image name="logo_big" filename="Default/About/logo" retainaspect="1"/>
+		<image name="card" filename="Default/About/card" retainaspect="1"/>
+		<image name="author_fd" filename="Default/About/author_fd" retainaspect="1"/>
+		<image name="author_yan" filename="Default/About/author_yan" retainaspect="1"/>
+		<image name="author_jabba" filename="Default/About/author_jabba" retainaspect="1"/>
 	</resources>
 </recovery>
