@@ -3562,6 +3562,18 @@ void TWFunc::PrepareToFinish(void)
 
 bool TWFunc::DontPatchBootImage(void)
 {
+
+  // check whether to patch on new OrangeFox installations 
+  if (New_Fox_Installation == 1)
+     { 
+        if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) != 1) 
+        && (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) != 1))
+           {  // if we get here, the user has turned off these settings manually
+              return true;
+           }
+     }
+
+   // proceed with other checks
    Fox_Force_Deactivate_Process = DataManager::GetIntValue(FOX_FORCE_DEACTIVATE_PROCESS);
    if (
           (Fox_Force_Deactivate_Process == 1) || 
@@ -3578,13 +3590,13 @@ void TWFunc::Deactivation_Process(void)
 
 bool patched_verity = false;
 bool patched_crypt = false;
-
+    
   // don't call this on first boot following fresh installation
   if (New_Fox_Installation != 1)
      {
          PrepareToFinish();
      }
-  
+   
   // advanced stock replace
   if (Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
   	Disable_Stock_Recovery_Replace();
