@@ -265,6 +265,12 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<condition var1="general_back" var2="mount"/>
+				<text>{@mount_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<condition var1="general_back" var2="terminal"/>
 				<text>{@term_s_hdr}</text>
 			</text>
@@ -277,6 +283,7 @@
 
 			<listbox style="settingslist">
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l7%"/>
+				<condition var1="general_back" op="!=" var2="mount"/>
 				<listitem name="{@use_rmrf_chk}">
 					<condition var1="general_back" op="!=" var2="terminal"/>
 					<data variable="tw_rm_rf"/>
@@ -309,9 +316,83 @@
 					<data variable="tw_inject_after_zip"/>
 				</listitem>
 			</listbox>
+			
+			<!-- Read-only system -->
+			<button style="menu_btn_sort">
+				<condition var1="general_back" var2="settings"/>
+				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
+				<placement x="0" y="%row4_2_y%" w="%screen_w%" h="90"/>
+				<action function="mountsystemtoggle">1</action>
+			</button>
 
+			<button style="menu_btn_sort">
+				<condition var1="general_back" var2="settings"/>
+				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
+				<placement x="0" y="%row4_2_y%" w="%screen_w%" h="90"/>
+				<action function="set">tw_lifetime_writes=2</action>
+				<action function="page">system_readonly_check_mount</action>
+			</button>
+			
+			<image>
+				<condition var1="general_back" var2="settings"/>
+				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
+				<placement x="0" y="%row4_2_y%"/>
+				<image resource="checkbox_false"/>
+			</image>
+			
+			<image>
+				<condition var1="general_back" var2="settings"/>
+				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
+				<placement x="0" y="%row4_2_y%"/>
+				<image resource="checkbox_true"/>
+			</image>
+			
+			<text>
+				<condition var1="general_back" var2="settings"/>
+				<placement x="160" y="916"/>
+				<font resource="body1" color="%text%"/>
+				<text>{@mount_sys_ro_chk}</text>
+			</text>
+			
+			<button style="menu_btn_sort">
+				<condition var1="general_back" var2="mount"/>
+				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="90"/>
+				<action function="mountsystemtoggle">1</action>
+			</button>
+
+			<button style="menu_btn_sort">
+				<condition var1="general_back" var2="mount"/>
+				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="90"/>
+				<action function="set">tw_lifetime_writes=2</action>
+				<action function="page">system_readonly_check_mount</action>
+			</button>
+			
+			<image>
+				<condition var1="general_back" var2="mount"/>
+				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
+				<placement x="0" y="%row1_2_y%"/>
+				<image resource="checkbox_false"/>
+			</image>
+			
+			<image>
+				<condition var1="general_back" var2="mount"/>
+				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
+				<placement x="0" y="%row1_2_y%"/>
+				<image resource="checkbox_true"/>
+			</image>
+			
+			<text>
+				<condition var1="general_back" var2="mount"/>
+				<placement x="160" y="374"/>
+				<font resource="body1" color="%text%"/>
+				<text>{@mount_sys_ro_chk}</text>
+			</text>
+			<!---->
+			
 			<text style="caption">
-				<placement x="%col1_x%" y="%row6_3a_y%"/>
+				<placement x="%col1_x%" y="%row7_2_y%"/>
 				<condition var1="general_back" var2="settings"/>
 				<text>{@enter_password_cptn}</text>
 			</text>
@@ -319,21 +400,21 @@
 			<text style="text_body2">
 				<condition var1="use_pass" var2="0"/>
 				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row7_1a_y%"/>
+				<placement x="%col1_x%" y="%row7_3_y%"/>
 				<text>{@disabled}</text>
 			</text>
 			
 			<text style="text_body2">
 				<condition var1="use_pass" var2="1"/>
 				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row7_1a_y%"/>
+				<placement x="%col1_x%" y="%row7_3_y%"/>
 				<text>{@enabled}</text>
 			</text>
 
 			<button style="menu_btn">
 				<condition var1="general_back" var2="settings"/>
 				<condition var1="use_pass" var2="0"/>
-				<placement x="%col1_x%" y="%row6_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<placement x="%col1_x%" y="%row7_2_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<action function="set">pass_new_1=</action>
 				<action function="set">pass_new_2=</action>
 				<action function="set">pass_notm=0</action>
@@ -343,7 +424,7 @@
 			<button style="menu_btn">
 				<condition var1="general_back" var2="settings"/>
 				<condition var1="use_pass" var2="1"/>
-				<placement x="%col1_x%" y="%row6_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<placement x="%col1_x%" y="%row7_2_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<action function="set">pass_new_1=</action>
 				<action function="set">pass_new_2=</action>
 				<action function="set">pass_notm=0</action>
@@ -351,13 +432,13 @@
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row4_3_y%"/>
+				<placement x="%col1_x%" y="%row5_1a_y%"/>
 				<condition var1="general_back" var2="settings"/>
 				<text>{@areb_confirm}</text>
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row5_1_y%" w="%screen_w%" h="%lb_l3%"/>
+				<placement x="0" y="%row5_2a_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="general_back" var2="settings"/>
 				<data name="disable_no_os"/>
 				<listitem name="{@otp_never}">1</listitem>

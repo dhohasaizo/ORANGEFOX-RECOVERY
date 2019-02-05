@@ -48,26 +48,26 @@
 			<!--readonly-->
 			<button style="menu_btn_sort">
 				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
-				<placement x="0" y="%mount_ro_check_y%" w="%screen_w%" h="90"/>
+				<placement x="0" y="%row4_3a_y%" w="%screen_w%" h="90"/>
 				<action function="mountsystemtoggle">1</action>
 			</button>
 
 			<button style="menu_btn_sort">
 				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
-				<placement x="0" y="%mount_ro_check_y%" w="%screen_w%" h="90"/>
+				<placement x="0" y="%row4_3a_y%" w="%screen_w%" h="90"/>
 				<action function="set">tw_lifetime_writes=2</action>
 				<action function="page">system_readonly_check_mount</action>
 			</button>
 			
 			<image>
 				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
-				<placement x="0" y="%mount_ro_check_y%"/>
+				<placement x="0" y="%row4_3a_y%"/>
 				<image resource="checkbox_false"/>
 			</image>
 			
 			<image>
 				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
-				<placement x="0" y="%mount_ro_check_y%"/>
+				<placement x="0" y="%row4_3a_y%"/>
 				<image resource="checkbox_true"/>
 			</image>
 			
@@ -220,6 +220,18 @@
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@mount_hdr}</text>
 			</text>
+
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">general_back=mount</action>
+				<action function="page">ext_general</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_settings"/>
+			</image>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_3a_y%"/>
