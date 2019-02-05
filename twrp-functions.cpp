@@ -3014,9 +3014,7 @@ bool TWFunc::Patch_DM_Verity(void)
       path = ramdisk + "/" + cmp;
       if (cmp.find("fstab.") != string::npos)
 	{
-	  #ifndef OF_USE_MAGISKBOOT
 	  //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
-	  #endif
 	  stat = 1;
 	  if (!status)
 	    {
@@ -3114,9 +3112,7 @@ bool TWFunc::Patch_DM_Verity(void)
 	  
 	  if (cmp.find("fstab.") != string::npos)
 	    {
-	      #ifndef OF_USE_MAGISKBOOT
 	      //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
-	      #endif
 	      if (!status)
 		{
 		  if (Fstab_Has_Verity_Flag(path))
@@ -3332,9 +3328,7 @@ bool TWFunc::Patch_Forced_Encryption(void)
 	{
 	  if (encryption != 1)
 	    {
-	      #ifndef OF_USE_MAGISKBOOT
 	      //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
-	      #endif
 	      stat = 1;
 	    }
 	    
@@ -3407,9 +3401,7 @@ bool TWFunc::Patch_Forced_Encryption(void)
 	      
 	      if (encryption != 1)
 		{
-		  #ifndef OF_USE_MAGISKBOOT
 		  //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
-		  #endif
 		  stat = 1;
 		}
 	     
@@ -3612,6 +3604,9 @@ bool patched_crypt = false;
      }   
   // end
   
+  gui_msg(Msg(msg::kProcess, "of_run_process=Starting '{1}' process")
+      ("OrangeFox"));
+
   // unpack boot image
   #ifdef OF_USE_MAGISKBOOT
   if (!PackRepackImage_MagiskBoot(true, true))
@@ -3623,9 +3618,10 @@ bool patched_crypt = false;
 	return;
      }
 
-  gui_msg(Msg(msg::kProcess, "of_run_process=Starting '{1}' process")
-      ("OrangeFox"));
-
+  // do the patches
+#ifdef OF_USE_MAGISKBOOT
+   //LOGINFO("OrangeFox: dm-verity/forced-encryption are handled by PackRepackImage_MagiskBoot(): \n");
+#else
   // dm-verity   
   if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
@@ -3637,9 +3633,7 @@ bool patched_crypt = false;
 	  }
 	  else
 	  {
-	  #ifndef OF_USE_MAGISKBOOT
 	     gui_msg("of_dm_verity_off=DM-Verity is not enabled");
-	  #endif   
 	  }
      }
 
@@ -3653,11 +3647,10 @@ bool patched_crypt = false;
 	     }
 	  else
 	     {
-	     #ifndef OF_USE_MAGISKBOOT
 	        gui_msg("of_encryption_off=Forced Encryption is not enabled");
-	     #endif   
 	     }  
      }
+#endif // ifdef OF_USE_MAGISKBOOT
 
   // other stuff
   Patch_Others();
