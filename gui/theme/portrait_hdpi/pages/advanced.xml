@@ -229,7 +229,7 @@
 			<button style="bs_btn">
 				<condition var1="tw_allow_partition_sdcard" op="!=" var2="1"/>
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
-				<action function="overlay">reboot</action>
+				<action function="page">reboot</action>
 			</button>
 			
 			<image>
@@ -249,7 +249,7 @@
 			<button style="bs_btn">
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row9_y%"/>
-				<action function="overlay">reboot</action>
+				<action function="page">reboot</action>
 			</button>
 			
 			<image>
@@ -1126,7 +1126,7 @@
 				
 				<action>
 					<touch key="power"/>
-					<action function="overlay">reboot</action>
+					<action function="togglebacklight"/>
 				</action>
 
 				<action>

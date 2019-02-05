@@ -337,9 +337,6 @@
 
 			<listbox style="settingslist">
 				<placement x="0" y="%row6_3_y%" w="%screen_w%" h="%lb_l5%"/>
-				<listitem name="[WIP] disable Power key = power menu">
-					<data variable="skip_powermenu"/>
-				</listitem>
 				<listitem name="Battery and CPU teamp info">
 					<data variable="lockscr_more_info"/>
 				</listitem>
