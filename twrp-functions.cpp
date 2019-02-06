@@ -2748,7 +2748,7 @@ bool TWFunc::Unpack_Image(string mount_point)
     local = "gzip -dc";
   else if (result == "0221")
     local = "lz4 -d";
-  else if (result == "5d00")
+  else if (result == "5d00" || result == "5d0")
     local = "lzma -dc";
   else if (result == "894c")
     local = "lzop -dc";
@@ -2806,7 +2806,7 @@ bool TWFunc::Repack_Image(string mount_point)
     local = "gzip -9c";
   else if (result == "0221")
     local = "lz4 -9";
-  else if (result == "5d00")
+  else if (result == "5d00" || result == "5d0")
     local = "lzma -c";
   else if (result == "894c")
     local = "lzop -9c";
