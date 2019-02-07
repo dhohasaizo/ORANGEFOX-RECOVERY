@@ -36,7 +36,7 @@
 			<image>
 				<condition var1="tw_reboot_system" var2="1"/>
 				<placement x="%col1_x%" y="%set_row1_y%"/>
-				<image resource="bs_adv_reboot"/>
+				<image resource="reboot_sys"/>
 			</image>
 			
 			<text style="bs_text">
@@ -59,7 +59,7 @@
 			<image>
 				<condition var1="tw_reboot_recovery" var2="1"/>
 				<placement x="%col1_x%" y="%set_row2_y%"/>
-				<image resource="bs_adv_reboot"/>
+				<image resource="reboot_recovery"/>
 			</image>
 			
 			<text style="bs_text">
@@ -84,7 +84,7 @@
 			<image>
 				<condition var1="tw_reboot_bootloader" var2="1"/>
 				<placement x="%col1_x%" y="%set_row3_y%"/>
-				<image resource="bs_adv_reboot"/>
+				<image resource="reboot_bootloader"/>
 			</image>
 			
 			<text style="bs_text">
@@ -111,7 +111,7 @@
 				<condition var1="tw_reboot_bootloader" op="!=" var2="1"/>
 				<condition var1="tw_download_mode" var2="1"/>
 				<placement x="%col1_x%" y="%set_row3_y%"/>
-				<image resource="bs_adv_reboot"/>
+				<image resource="reboot_bootloader"/>
 			</image>
 			
 			<text style="bs_text">
@@ -139,7 +139,7 @@
 				<condition var1="tw_reboot_bootloader" var2="1"/>
 				<condition var1="tw_download_mode" var2="1"/>
 				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="bs_adv_reboot"/>
+				<image resource="reboot_bootloader"/>
 			</image>
 			
 			<text style="bs_text">
@@ -167,7 +167,7 @@
 				<condition var1="tw_reboot_poweroff" var2="1"/>
 				<condition var1="tw_download_mode" op="!=" var2="1"/>
 				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="bs_adv_reboot"/>
+				<image resource="reboot_power"/>
 			</image>
 			
 			<text style="bs_text">
@@ -195,7 +195,7 @@
 				<condition var1="tw_reboot_poweroff" var2="1"/>
 				<condition var1="tw_download_mode" var2="1"/>
 				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="bs_adv_reboot"/>
+				<image resource="reboot_power"/>
 			</image>
 			
 			<text style="bs_text">

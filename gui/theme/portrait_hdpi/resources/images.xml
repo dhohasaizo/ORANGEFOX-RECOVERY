@@ -122,6 +122,10 @@
 		<image name="bs_btn_rename" filename="Default/Icons/bs_btn_rename" retainaspect="1"/>
 		<image name="bs_btn_brush" filename="Default/Icons/bs_btn_brush" retainaspect="1"/>
 		<image name="bs_btn_get" filename="Default/Icons/bs_btn_get" retainaspect="1"/>
+		<image name="reboot_sys" filename="Default/Icons/reboot_sys" retainaspect="1"/>
+		<image name="reboot_bootloader" filename="Default/Icons/reboot_bootloader" retainaspect="1"/>
+		<image name="reboot_power" filename="Default/Icons/reboot_power" retainaspect="1"/>
+		<image name="reboot_recovery" filename="Default/Icons/reboot_recovery" retainaspect="1"/>
 		
 		<!-- Info -->
 		<image name="icon_info2" filename="Default/Info/icon_info2" retainaspect="1"/>
