@@ -2763,8 +2763,23 @@ bool TWFunc::Unpack_Image(string mount_point)
   result = "cd " + ramdisk + "; " + local + " < " + split_img + "/" + Command + " | cpio -i";
   if (TWFunc::Exec_Cmd(result, null) != 0)
     {
-      TWFunc::removeDir(tmp, false);
       LOGERR("TWFunc::Unpack_Image: Command failed '%s'\n", result.c_str());
+//      
+      LOGERR ("DEBUG INFO: **********************************************\n");
+      LOGERR("TWFunc::Unpack_Image: the output was '%s'\n", null.c_str());
+      null = split_img + "/" + Command;
+      if (!TWFunc::Path_Exists(null))
+         LOGERR("TWFunc::Unpack_Image: invalid DIR: '%s'\n", null.c_str());
+      else
+         LOGERR("TWFunc::Unpack_Image: path exists: '%s'\n", null.c_str());
+      null = ramdisk;
+      if (!TWFunc::Path_Exists(null))
+         LOGERR("TWFunc::Unpack_Image: invalid DIR: '%s'\n", null.c_str());
+      else
+         LOGERR("TWFunc::Unpack_Image: path exists: '%s'\n", null.c_str());
+      LOGERR ("DEBUG INFO: **********************************************\n");
+//
+      TWFunc::removeDir(tmp, false);
       return false;
     }
     
@@ -2807,7 +2822,7 @@ bool TWFunc::Repack_Image(string mount_point)
   else if (result == "0221")
     local = "lz4 -9";
   else if (result == "5d00" || result == "5d0")
-    local = "lzma -c";
+    local = "lzma -4c";
   else if (result == "894c")
     local = "lzop -9c";
   else if (result == "fd37")
@@ -3534,11 +3549,11 @@ void TWFunc::PrepareToFinish(void)
 	  if (mkdir
 	      (aromafm_path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
 	    {
-	      LOGERR("Error making %s directory: %s\n", aromafm_path.c_str(), strerror(errno));
+	      LOGERR("Error creating %s directory: %s\n", aromafm_path.c_str(), strerror(errno));
 	    }
 	}
       // Save AromaFM config (AromaFM.cfg)
-      if (copy_file(FFiles_dir + "/AromaFM/AromaFM.zip.cfg", aromafm_file, 0644))
+      if (copy_file(Fox_aroma_cfg/*FFiles_dir + "/AromaFM/AromaFM.zip.cfg"*/, aromafm_file, 0644))
 	{
 	  LOGERR("Error copying AromaFM config\n");
 	}
