@@ -806,10 +806,10 @@
 		<!--  -->
 		<string name="fox_no_os_btn">Reboot</string>
 		<string name="fox_no_foxos_hdr">No OS installed!</string>
-		<string name="fox_no_os_fox_txt1">OrangeFox detected that OS</string>
-		<string name="fox_no_os_fox_txt2">isn't installed. If you are sure</string>
-		<string name="fox_no_os_fox_txt3">that OS is installed and this detection</string>
-		<string name="fox_no_os_fox_txt4">is wrong then swipe to confirm</string>
+		<string name="fox_no_os_fox_txt1">OrangeFox has detected that no OS</string>
+		<string name="fox_no_os_fox_txt2">is installed. If you are sure that</string>
+		<string name="fox_no_os_fox_txt3">that an OS is installed and this conclusion</string>
+		<string name="fox_no_os_fox_txt4">is wrong, then swipe to confirm</string>
 		<string name="fox_no_os_fox_txt5">the reboot.</string>
 		<string name="fox_no_os_fox_slider_txt">Swipe to ignore this detection and reboot</string>
 

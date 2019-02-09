@@ -2764,25 +2764,9 @@ bool TWFunc::Unpack_Image(string mount_point)
   if (TWFunc::Exec_Cmd(result, null) != 0)
     {
       LOGERR("TWFunc::Unpack_Image: Command failed '%s'\n", result.c_str());
-//      
-      LOGERR ("DEBUG INFO: **********************************************\n");
-      LOGERR("TWFunc::Unpack_Image: the output was '%s'\n", null.c_str());
-      null = split_img + "/" + Command;
-      if (!TWFunc::Path_Exists(null))
-         LOGERR("TWFunc::Unpack_Image: invalid DIR: '%s'\n", null.c_str());
-      else
-         LOGERR("TWFunc::Unpack_Image: path exists: '%s'\n", null.c_str());
-      null = ramdisk;
-      if (!TWFunc::Path_Exists(null))
-         LOGERR("TWFunc::Unpack_Image: invalid DIR: '%s'\n", null.c_str());
-      else
-         LOGERR("TWFunc::Unpack_Image: path exists: '%s'\n", null.c_str());
-      LOGERR ("DEBUG INFO: **********************************************\n");
-//
       TWFunc::removeDir(tmp, false);
       return false;
-    }
-    
+    }    
   return true;
 }
 
@@ -2822,7 +2806,7 @@ bool TWFunc::Repack_Image(string mount_point)
   else if (result == "0221")
     local = "lz4 -9";
   else if (result == "5d00" || result == "5d0")
-    local = "lzma -4c";
+    local = "lzma -2c";
   else if (result == "894c")
     local = "lzop -9c";
   else if (result == "fd37")
