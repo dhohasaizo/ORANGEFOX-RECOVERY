@@ -2080,7 +2080,7 @@
 					<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
 					<action function="set">tw_screen_timeout_secs=0</action>
 					<action function="set">fox_aromafm=1</action>
-					<action function="set">tw_filename=%fox_resource_dir%/AromaFM/AromaFM.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/AromaFM/AromaFM.zip</action>
 					<action function="queuezip"/>
 					<action function="flash">flash_zip</action>
 					<action function="disableled"/>
@@ -2449,7 +2449,7 @@
 					<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
 					<action function="set">tw_screen_timeout_secs=0</action>
 					<action function="set">fox_aromafm=1</action>
-					<action function="set">tw_filename=%fox_resource_dir%/AromaFM/AromaFM.zip</action>
+					<action function="set">tw_filename=%fox_home_files_dir%/AromaFM/AromaFM.zip</action>
 					<action function="queuezip"/>
 					<action function="flash">flash_zip</action>
 					<action function="disableled"/>
