@@ -36,7 +36,7 @@
 			
 			<button>
 				<condition var1="use_pass" var2="1"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="set">pass_open=0</action>
 				<action function="page">main</action>
@@ -44,13 +44,166 @@
 
 			<image>
 				<condition var1="use_pass" var2="1"/>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_encr_ena"/>
 			</image>
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x%" y="%ab_bc_y%"/>
 				<text>{@menu_btn}</text>
+			</text>
+
+			<!-- Монтирование -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
+				<action function="page">mount</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row1_y%"/>
+				<image resource="bs_adv_mount"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
+				<text>{@mount_hdr}</text>
+			</text>
+			<!---->
+
+			<!-- Terminal -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
+				<action function="page">terminal</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row2_y%"/>
+				<image resource="bs_adv_term"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
+				<text>{@terminal_btn}</text>
+			</text>
+			<!---->
+
+			<!-- MM GUI -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
+				<action function="page">magisk_mount</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row3_y%"/>
+				<image resource="magisk"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
+				<text>Magisk Manager</text>
+			</text>
+
+			<!-- Перезагрузка -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
+				<action function="queueclear"/>
+				<action function="set">tw_signed_zip_verify_tmp=%tw_signed_zip_verify%</action>
+				<action function="set">tw_signed_zip_verify=0</action>
+				<action function="set">fox_inject_after_zip_tmp=%fox_inject_after_zip%</action>
+				<action function="set">fox_inject_after_zip=0</action>
+				<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
+				<action function="set">tw_screen_timeout_secs=0</action>
+				<action function="set">tw_filename=%fox_resource_dir%/AromaFM/AromaFM.zip</action>
+				<action function="set">qcount_temp=1</action>
+				<action function="queuezip"/>
+				<action function="flash">aroma_busy</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row4_y%"/>
+				<image resource="bs_adv_aroma"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
+				<text>AromaFM</text>
+			</text>
+			<!---->
+
+			<!-- Sideload -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
+				<action function="page">sideload</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row5_y%"/>
+				<image resource="bs_adv_adb"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
+				<text>{@adb_sideload_btn}</text>
+			</text>
+			<!---->
+
+			<!-- Utilities -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row6_y%"/>
+				<action function="page">utilities</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row6_y%"/>
+				<image resource="utils"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
+				<text>{@utilities}</text>
+			</text>
+			<!---->
+
+			<!-- Перезагрузка -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
+				<action function="page">reboot</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row7_y%"/>
+				<image resource="bs_adv_reboot"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
+				<text>{@reboot_btn}</text>
+			</text>
+			<!---->
+
+			<template name="nav_panel"/>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">advanced</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">advanced</action>
+			</action>
+		</page>
+		
+		<page name="utilities">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@utilities}</text>
 			</text>
 
 			<!-- Log -->
@@ -96,79 +249,28 @@
 			</text>
 			<!---->
 
-			<!-- Terminal -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
-				<action function="page">terminal</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row3_y%"/>
-				<image resource="bs_adv_term"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>{@terminal_btn}</text>
-			</text>
-			<!---->
-
-			<!-- Sideload -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
-				<action function="page">sideload</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="bs_adv_adb"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@adb_sideload_btn}</text>
-			</text>
-			<!---->
-
-			<!-- Utilities {@utilities} -->
-			<!-- MM GUI -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
-				<action function="page">magisk_mount</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="magisk"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>Magisk Manager</text>
-			</text>
-
 			<!-- Utilities -->
 			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row6_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
 				<action function="set">tw_action_param=mount /data; rm -f data/system/*.key data/system/locksettings.*</action>
 				<action function="page">remlock</action>
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row6_y%"/>
-				<image resource="utils"/>
+				<placement x="%col1_x%" y="%set_row3_y%"/>
+				<image resource="bs_adv_frp"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
-				<text>Utilities</text>
+				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
+				<text>{@new_lock}</text>
 			</text>
 			<!---->
-
+			
 			<!-- SD -->
 			<button style="bs_btn">
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
 				<actions>
 					<action function="set">partitionlisterror=0</action>
 					<action function="page">partsdcardsel</action>
@@ -177,95 +279,34 @@
 			
 			<image>
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x%" y="%set_row7_y%"/>
+				<placement x="%col1_x%" y="%set_row4_y%"/>
 				<image resource="bs_adv_sd"/>
 			</image>
 			
 			<text style="bs_text">
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
 				<text>{@part_sd_hdr}</text>
 			</text>
 			<!---->
 
-			<!-- Dumblock>
 			<button style="bs_btn">
 				<condition var1="tw_show_dumlock" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
 				<action function="page">htcdumlock</action>
 			</button>
 			
 			<image>
 				<condition var1="tw_show_dumlock" var2="1"/>
-				<placement x="%col1_x%" y="%set_row8_y%"/>
+				<placement x="%col1_x%" y="%set_row5_y%"/>
 				<image resource="bs_adv_htc"/>
 			</image>
 			
 			<text style="bs_text">
 				<condition var1="tw_show_dumlock" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
 				<text>{@dumlock_hdr}</text>
 			</text>
-			<!-->
-
-			<!-- Монтирование -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
-				<action function="page">mount</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row8_y%"/>
-				<image resource="bs_adv_mount"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
-				<text>{@mount_hdr}</text>
-			</text>
-			<!---->
-
-			<!-- Перезагрузка -->
-			<button style="bs_btn">
-				<condition var1="tw_allow_partition_sdcard" op="!=" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
-				<action function="page">reboot</action>
-			</button>
-			
-			<image>
-				<condition var1="tw_allow_partition_sdcard" op="!=" var2="1"/>
-				<placement x="%col1_x%" y="%set_row7_y%"/>
-				<image resource="bs_adv_reboot"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_allow_partition_sdcard" op="!=" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row7_y%"/>
-				<text>{@reboot_btn}</text>
-			</text>
-			<!---->
-
-			<!-- Перезагрузка -->
-			<button style="bs_btn">
-				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row9_y%"/>
-				<action function="page">reboot</action>
-			</button>
-			
-			<image>
-				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x%" y="%set_row9_y%"/>
-				<image resource="bs_adv_reboot"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
-				<text>{@reboot_btn}</text>
-			</text>
-			<!---->
-
-			<template name="nav_panel"/>
 
 			<action>
 				<touch key="home"/>

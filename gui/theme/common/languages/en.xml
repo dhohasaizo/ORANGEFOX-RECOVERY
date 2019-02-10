@@ -983,6 +983,42 @@
 		<string name="sha2_chk">Use SHA2 for hashing</string>
 		<string name="disabled">Disabled</string>
 		<string name="enabled">Enabled</string>
+		<string name="zip_compatible_err">Zip Treble compatibility error!</string>
+		
+		
+		<!-- Console Messages -->
+		<string name="fox_incremental_ota_compatibility_chk">Verifying Incremental Package Signature...</string>
+		<string name="fox_incremental_ota_compatibility_false">Incremental package isn't compatible with this ROM!</string>
+		<string name="fox_incremental_ota_compatibility_true">Incremental package is compatible</string>
+		<string name="fox_incremental_ota_status_enabled">Support MIUI Incremental package status: Enabled</string>
+		<string name="fox_incremental_ota_status_disabled">Support MIUI Incremental package status: Disabled</string>
+		<string name="fox_incremental_package_detected">Detected Incremental package '{1}'</string>
+		<string name="fox_survival_does_not_exist">OTA Survival does not exist! Please flash a full ROM first!</string>
+		<string name="fox_install_detecting">Detecting Current Package</string>
+		<string name="fox_install_standard_detected">- Detected Standard Package</string>
+		<string name="fox_install_miui_detected">- Detected MIUI Update Package</string>
+		<string name="fox_zip_have_bootloader">Warning: Detected reinstallation of the bootloader which was called by '{1}'.</string>
+		<string name="substratum_done">-- Substratum Overlays Wipe Complete!</string>
+		<string name="fox_no_space_ota_survival">Not enough free space on internal storage for creating the OTA survival.</string>
+		<string name="fox_incremental_ota_res">OTA_RES -- done!</string>
+		<string name="fox_incremental_ota_res_run">Running OTA_RES process...</string>
+		<string name="fox_incremental_ota_bak_run">Running OTA_BAK process...</string>
+		<string name="fox_incremental_ota_bak">OTA_BAK -- done!</string>
+		<string name="fox_set_new_access_password">Changing recovery access password...</string>
+		<string name="fox_internal_fatal_i1">OrangeFox: FATAL ERROR! You cannot backup Internal Storage onto itself!</string>
+		<string name="fox_internal_fatal_i2">You MUST change the backup destination to MicroSD/USB-OTG.</string>
+		<string name="fox_internal_q1">OrangeFox - Internal Storage - take care!</string>
+
+		<string name="fox_remove_access_password_one">Removing recovery access password...</string>
+
+		<string name="of_run_process">Starting '{1}' process</string>
+		<string name="of_run_process_fail">Unable to finish '{1}' process</string>
+		<string name="of_run_process_done">Finished '{1}' process</string>
+		<string name="of_dm_verity">Successfully patched DM-Verity</string>
+		<string name="of_dm_verity_off">DM-Verity is not enabled</string>
+		<string name="of_encryption">Successfully patched forced encryption</string>
+		<string name="of_encryption_off">Forced Encryption is not enabled</string>
+		<string name="of_fstab">Detected fstab: '{1}'</string>
 
 		<!-- OrangeFox Recovery - Pie Door theme -->
 
