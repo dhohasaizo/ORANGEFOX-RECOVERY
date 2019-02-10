@@ -1,4 +1,5 @@
 # Copyright (C) 2007 The Android Open Source Project
+# Copyright (C) 2018-2019 OrangeFox Recovery Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -46,7 +47,7 @@ ifneq ($(TW_DEVICE_VERSION),)
     export FOX_DEVICE_VERSION=$(TW_DEVICE_VERSION)
 else
     LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"Unofficial"'
-    export FOX_DEVICE_VERSION=R8.1
+    export FOX_DEVICE_VERSION=R9.0
 endif
 
 DEVICE := $(subst omni_,,$(TARGET_PRODUCT))
