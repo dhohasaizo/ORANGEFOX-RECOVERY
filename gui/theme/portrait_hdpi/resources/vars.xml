@@ -16,6 +16,9 @@
 
 		<!-- Lockscreen -->
 		<variable name="clock_style" value="0" persist="1"/>
+		<variable name="lock_action" value="1" persist="1"/>
+		<variable name="lock_info" value="1" persist="1"/>
+		<variable name="lock_btn" value="0" persist="1"/>
 
 		<!-- Device settings -->
 		<variable name="charging_now" value="0"/>
@@ -53,7 +56,6 @@
 		<variable name="navbar_bkg" value="3" persist="1"/>
 		<variable name="nougat" value="3" persist="1"/>
 		<variable name="key_buttons" value="1" persist="1"/>
-		<variable name="storage_select_on" value="1" persist="1"/>
 		<variable name="use_fixed_font" value="1" persist="1"/>
 		<variable name="show_cpu_temp" value="1" persist="1"/>
 		<variable name="center_clock" value="2" persist="1"/>

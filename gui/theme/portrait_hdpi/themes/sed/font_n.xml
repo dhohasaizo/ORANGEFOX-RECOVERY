@@ -27,6 +27,9 @@
 		<font name="Secondary" filename="#SECONDARY_FONT_MED#.ttf" size="42"/>
 		<font name="Secondary-title" filename="#SECONDARY_FONT_MED#.ttf" size="64"/>
 		<font name="caption" filename="#SECONDARY_FONT_MED#.ttf" size="36"/>
+		
+		<font name="clock" filename="#SECONDARY_FONT_MED#.ttf" size="240"/>
+		<font name="info" filename="#SECONDARY_FONT_REG#.ttf" size="50"/>
 	</resources>
 	
 	<variables>

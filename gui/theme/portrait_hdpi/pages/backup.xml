@@ -39,7 +39,7 @@
 					<condition var1="tw_include_encrypted_backup" var2="1"/>
 					<condition var1="tw_encrypt_backup" var2="0"/>
 				</conditions>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<actions>
 					<action function="set">tw_password_not_match=0</action>
@@ -56,7 +56,7 @@
 					<condition var1="tw_include_encrypted_backup" var2="1"/>
 					<condition var1="tw_encrypt_backup" var2="0"/>
 				</conditions>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_encr_dis"/>
 			</image>
 
@@ -66,7 +66,7 @@
 					<condition var1="tw_encrypt_backup" var2="1"/>
 					<condition var1="tw_password_not_match" var2="0"/>
 				</conditions>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<actions>
 					<action function="set">tw_encrypt_backup=0</action>
@@ -84,7 +84,7 @@
 					<condition var1="tw_encrypt_backup" var2="1"/>
 					<condition var1="tw_password_not_match" var2="0"/>
 				</conditions>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_encr_ena"/>
 			</image>
 
@@ -94,7 +94,7 @@
 					<condition var1="tw_encrypt_backup" var2="1"/>
 					<condition var1="tw_password_not_match" var2="1"/>
 				</conditions>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<actions>
 					<action function="set">tw_encrypt_backup=0</action>
@@ -112,7 +112,7 @@
 					<condition var1="tw_encrypt_backup" var2="1"/>
 					<condition var1="tw_password_not_match" var2="1"/>
 				</conditions>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_encr_dis"/>
 			</image>
 
@@ -127,6 +127,8 @@
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_settings"/>
 			</image>
+			
+			<template name="actionbar_storage"/>
 
 			<image>
 				<condition var1="adb_backup_pc" var2="1"/>
@@ -228,13 +230,6 @@
 				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
 				<text>{@bkp_quick}</text>
 				<action function="set">tw_backup_list=%tw_backup_list_quick%</action>
-			</button>
-
-			<button>
-				<condition var1="storage_select_on" var2="1"/>
-				<placement x="%btn_float_x%" y="%row1_2_y%"/>
-				<image resource="btn_float_storage" highlightresource="btn_float_storage_hl"/>
-				<action function="overlay">dialog_storage</action>
 			</button>
 
 			<text style="caption">

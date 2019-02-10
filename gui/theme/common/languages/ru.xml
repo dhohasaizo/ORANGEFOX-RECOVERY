@@ -727,7 +727,7 @@
 		<string name="install_flashit_script">Установите скрипт FlashIt для продолжения!</string>
 		<string name="swipe_to_install_img">Проведите для установки образа</string>
 		<string name="sel_image_type">Выбор типа образа</string>
-		<string name="zip_add_queue">Добавить в очередь</string>
+		<string name="zip_add_queue">Добавить ZIP</string>
 		<string name="tw_aroma_btn">AROMA File Manager</string>
 		<string name="sel_part_single1">Выберите один раздел</string>
 		<string name="sel_part_single2">для доступа к настройкам</string>
@@ -1114,6 +1114,8 @@
 		<string name="backup_storage_warning">Резервные копии {1} не включают в себя файлы внутреннего хранилища.</string>
 		<string name="sha2_chk">Использовать SHA2</string>
 		
+		<string name="install_remlatest">Убрать последний</string>
+		
 		<!-- OrangeFox Recovery - Pie Door theme -->
 
 		<string name="orangefox_msg2">[OrangeFox]: Добро пожаловать!</string>
@@ -1146,7 +1148,13 @@
 		<string name="keyboard_newstyle">Обновленный стиль</string>
 		<string name="keyboard_nums">Строка с цифрами</string>
 		<!-- Lockscreen -->
+		<string name="lockscreen_unlock">Разблокировать</string>
 		<string name="lockscreen_title">Экран блокировки</string>
+		<string name="lockscreen_style">Стиль экрана</string>
+		<string name="lockscreen_clock">Часы</string>
+		<string name="lockscreen_icon">Значок</string>
+		<string name="lockscreen_btn">Заменить слайдер кнопкой</string>
+		<string name="lockscreen_info">Показывать информацию о CPU и батареи</string>
 
 		<!-- OTA working page -->
 		<string name="ota_console_title">Установка OTA</string>

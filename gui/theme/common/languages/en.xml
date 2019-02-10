@@ -64,7 +64,7 @@
 		<string name="inject_twrp_chk">Inject OrangeFox after install</string>
 		<string name="install_reboot_chk">Reboot after installation is complete</string>
 		<string name="options_hdr">Options</string>
-		<string name="zip_queue">Queue:</string>
+		<string name="zip_queue">Queue</string>
 		<string name="install_zip_count_hdr">Installing file %tw_zip_index% of %tw_zip_queue_count%</string>
 		<string name="working">Working...</string>
 		<string name="failed">Failed</string>
@@ -140,7 +140,7 @@
 		<string name="formatting">Formatting...</string>
 		<string name="format_complete">Format completed</string>
 		<string name="swipe_change_fs">Swipe to Change</string>
-		<string name="back_btn">BACK</string>
+		<string name="back_btn">Back</string>
 		<string name="wipe_enc_btn">Wipe Encryption</string>
 		<string name="swipe_factory_reset">Swipe to Factory Reset</string>
 		<string name="backup_hdr">Backup</string>
@@ -631,7 +631,7 @@
 		<string name="install_flashit_script">Install the FlashIt script to continue!</string>
 		<string name="swipe_to_install_img">Swipe to install Image</string>
 		<string name="sel_image_type">Select Image Type!</string>
-		<string name="zip_add_queue">Add File to Queue</string>
+		<string name="zip_add_queue">Add to Queue</string>
 		<string name="tw_aroma_btn">AROMA Filemanager</string>
 		<string name="sel_part_single1">Single select partitions if you want</string>
 		<string name="sel_part_single2">to use the Partition Options!</string>
@@ -771,7 +771,6 @@
 		<string name="settings_backup_name_auto_hide">While backing up</string>
 		
 		<string name="accent_title">Use accent color in title</string>
-		<string name="lockscreen_quicklock">Tapping the lock icon locks the screen</string>
 		
 		<string name="update_btn">Update</string>
 		<string name="include_kernel_log">Include Kernel Log</string>
@@ -1020,6 +1019,8 @@
 		<string name="of_encryption_off">Forced Encryption is not enabled</string>
 		<string name="of_fstab">Detected fstab: '{1}'</string>
 
+		<string name="install_remlatest">Remove Latest</string>
+		
 		<!-- OrangeFox Recovery - Pie Door theme -->
 
 		<string name="orangefox_msg2">[OrangeFox]: Welcome!</string>
@@ -1048,7 +1049,14 @@
 		<string name="keyboard_newstyle">Refreshed style</string>
 		<string name="keyboard_nums">Numbers row</string>
 		<!-- Lockscreen -->
-		<string name="lockscreen_title">Lock screen</string>
+		<string name="lockscreen_unlock">Unlock</string>
+		<string name="lockscreen_title">Lockscreen</string>
+		<string name="lockscreen_style">Lockscreen style</string>
+		<string name="lockscreen_clock">Clock</string>
+		<string name="lockscreen_icon">Icon</string>
+		<string name="lockscreen_btn">Replace slider with button</string>
+		<string name="lockscreen_info">Show battery and CPU info</string>
+		<string name="lockscreen_quicklock">Tapping the lock icon locks the screen</string>
 
 		<!-- OTA working page -->
 		<string name="ota_console_title">Installing OTA...</string>

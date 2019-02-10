@@ -530,8 +530,6 @@
 				<text>Magisk Manager</text>
 			</text>
 
-			<template name="actionbar_font"/>
-
 			<action>
 				<condition var1="mmgui_file" op="modified"/>
 				<actions>

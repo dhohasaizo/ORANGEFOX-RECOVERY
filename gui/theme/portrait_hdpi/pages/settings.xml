@@ -302,10 +302,6 @@
 					<data variable="tw_signed_zip_verify"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
-				<listitem name="{@lockscreen_quicklock}">
-					<data variable="lock_action"/>
-					<condition var1="general_back" var2="settings"/>
-				</listitem>
 				<listitem name="{@restoredialog_readonly}">
 					<data variable="tw_never_show_system_ro_page"/>
 					<condition var1="general_back" var2="settings"/>

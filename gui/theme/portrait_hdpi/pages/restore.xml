@@ -41,16 +41,7 @@
 
 			<template name="actionbar_sort"/>
 			
-			<button>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
-				<action function="overlay">dialog_storage</action>
-			</button>
-
-			<image>
-				<placement x="%ab_btn2_x%" y="%ab_y%"/>
-				<image resource="actionbar_storage"/>
-			</image>
+			<template name="actionbar_storage"/>
 
 			<action>
 				<condition var1="tw_restore" op="modified"/>

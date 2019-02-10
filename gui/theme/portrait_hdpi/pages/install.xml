@@ -13,13 +13,6 @@
 				<text>{@install_zip_hdr}</text>
 			</text>
 
-			<button>
-				<condition var1="tw_zip_queue_count" op="!=" var2="10"/>
-				<placement x="%btn_float_x%" y="%row1_2_y%"/>
-				<image resource="btn_float_addtoqueue" highlightresource="btn_float_addtoqueue_hl"/>
-				<action function="page">add_zip</action>
-			</button>
-
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@queue_hdr}</text>
@@ -78,12 +71,18 @@
 			</button>
 
 			<button style="btn_raised_hl">
+				<condition var1="tw_zip_queue_count" op="&lt;" var2="10"/>
+				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
+				<text>{@zip_add_queue}</text>
+				<action function="page">add_zip</action>
+			</button>
+
+			<button style="btn_raised_hl">
+				<condition var1="tw_zip_queue_count" op="&gt;=" var2="10"/>
 				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
 				<text>{@raised_clearqueue_btn}</text>
-				<actions>
-					<action function="queueclear"/>
-					<action function="page">%install_back%</action>
-				</actions>
+				<action function="queueclear"/>
+				<action function="page">%install_back%</action>
 			</button>
 
 			<text style="caption">
@@ -98,13 +97,15 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="cancelzip"/>
+				<!--action function="cancelzip"/-->
+				<action function="queueclear"/>
 				<action function="page">%install_back%</action>
 			</action>
 
 			<action>
 				<touch key="home"/>
-				<action function="cancelzip"/>
+				<!--action function="cancelzip"/-->
+				<action function="queueclear"/>
 				<action function="page">main</action>
 			</action>
 		</page>
@@ -120,13 +121,6 @@
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@install_zip_hdr}</text>
 			</text>
-
-			<button>
-				<condition var1="tw_zip_queue_count" op="!=" var2="10"/>
-				<placement x="%btn_float_x%" y="%row1_2_y%"/>
-				<image resource="btn_float_addtoqueue" highlightresource="btn_float_addtoqueue_hl"/>
-				<action function="page">add_zip</action>
-			</button>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
@@ -268,17 +262,24 @@
 
 			<button style="btn_raised">
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
-				<text>{@back_btn}</text>
-				<action function="page">flash_confirm</action>
+				<text>{@raised_clearqueue_btn}</text>
+				<action function="queueclear"/>
+				<action function="page">%install_back%</action>
 			</button>
 
 			<button style="btn_raised_hl">
+				<condition var1="tw_zip_queue_count" op="&gt;" var2="2"/>
 				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-				<text>{@raised_clearqueue_btn}</text>
-				<actions>
-					<action function="queueclear"/>
-					<action function="page">%install_back%</action>
-				</actions>
+				<text>{@install_remlatest}</text>
+				<action function="cancelzip"/>
+			</button>
+
+			<button style="btn_raised_hl">
+				<condition var1="tw_zip_queue_count" op="&lt;=" var2="2"/>
+				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+				<text>{@install_remlatest}</text>
+				<action function="cancelzip"/>
+				<action function="page">flash_confirm</action>
 			</button>
 
 			<action>
@@ -288,6 +289,7 @@
 
 			<action>
 				<touch key="home"/>
+				<action function="queueclear"/>
 				<action function="page">main</action>
 			</action>
 		</page>
@@ -446,7 +448,7 @@
 
 			<template name="actionbar_sort"/>
 			
-			<template name="actionbar_font"/>
+			<template name="actionbar_storage"/>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
@@ -457,13 +459,6 @@
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>%tw_zip_location%</text>
 			</text>
-
-			<button>
-				<condition var1="storage_select_on" var2="1"/>
-				<placement x="%btn_float_x%" y="%row1_2_y%"/>
-				<image resource="btn_float_storage" highlightresource="btn_float_storage_hl"/>
-				<action function="overlay">dialog_storage</action>
-			</button>
 
 			<action>
 				<condition var1="tw_filename" op="modified"/>

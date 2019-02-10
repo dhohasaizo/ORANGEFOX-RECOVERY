@@ -172,6 +172,19 @@
 			</image>
 		</template>
 		
+		<template name="actionbar_storage">
+			<button>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="overlay">dialog_storage</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_storage"/>
+			</image>
+		</template>
+		
 		<template name="busy_screen">
 			<background color="%background%"/>
 			
@@ -501,18 +514,12 @@
 			<template name="statusbarinfo"/>
 			
 			<template name="actionbar_sort"/>
+			<template name="actionbar_storage"/>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>%tw_zip_location%</text>
 			</text>
-			
-			<button>
-				<condition var1="storage_select_on" var2="1"/>
-				<placement x="%btn_float_x%" y="%row1_2_y%"/>
-				<image resource="btn_float_storage" highlightresource="btn_float_storage_hl"/>
-				<action function="overlay">dialog_storage</action>
-			</button>
 		</template>
 		
 		<template name="t_system">
