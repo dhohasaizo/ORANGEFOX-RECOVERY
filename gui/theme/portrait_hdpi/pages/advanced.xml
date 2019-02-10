@@ -114,6 +114,7 @@
 				<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
 				<action function="set">tw_screen_timeout_secs=0</action>
 				<action function="set">tw_filename=%fox_resource_dir%/AromaFM/AromaFM.zip</action>
+				<action function="set">qcount_temp=1</action>
 				<action function="queuezip"/>
 				<action function="flash">aroma_busy</action>
 			</button>
