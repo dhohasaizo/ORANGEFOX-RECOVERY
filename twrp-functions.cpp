@@ -2748,7 +2748,7 @@ bool TWFunc::Unpack_Image(string mount_point)
     local = "gzip -dc";
   else if (result == "0221")
     local = "lz4 -d";
-  else if (result == "5d00")
+  else if (result == "5d00" || result == "5d0")
     local = "lzma -dc";
   else if (result == "894c")
     local = "lzop -dc";
@@ -2763,11 +2763,10 @@ bool TWFunc::Unpack_Image(string mount_point)
   result = "cd " + ramdisk + "; " + local + " < " + split_img + "/" + Command + " | cpio -i";
   if (TWFunc::Exec_Cmd(result, null) != 0)
     {
-      TWFunc::removeDir(tmp, false);
       LOGERR("TWFunc::Unpack_Image: Command failed '%s'\n", result.c_str());
+      TWFunc::removeDir(tmp, false);
       return false;
-    }
-    
+    }    
   return true;
 }
 
@@ -2806,8 +2805,8 @@ bool TWFunc::Repack_Image(string mount_point)
     local = "gzip -9c";
   else if (result == "0221")
     local = "lz4 -9";
-  else if (result == "5d00")
-    local = "lzma -c";
+  else if (result == "5d00" || result == "5d0")
+    local = "lzma -2c";
   else if (result == "894c")
     local = "lzop -9c";
   else if (result == "fd37")
@@ -3534,11 +3533,11 @@ void TWFunc::PrepareToFinish(void)
 	  if (mkdir
 	      (aromafm_path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
 	    {
-	      LOGERR("Error making %s directory: %s\n", aromafm_path.c_str(), strerror(errno));
+	      LOGERR("Error creating %s directory: %s\n", aromafm_path.c_str(), strerror(errno));
 	    }
 	}
       // Save AromaFM config (AromaFM.cfg)
-      if (copy_file(FFiles_dir + "/AromaFM/AromaFM.zip.cfg", aromafm_file, 0644))
+      if (copy_file(Fox_aroma_cfg/*FFiles_dir + "/AromaFM/AromaFM.zip.cfg"*/, aromafm_file, 0644))
 	{
 	  LOGERR("Error copying AromaFM config\n");
 	}
@@ -3562,6 +3561,18 @@ void TWFunc::PrepareToFinish(void)
 
 bool TWFunc::DontPatchBootImage(void)
 {
+
+  // check whether to patch on new OrangeFox installations 
+  if (New_Fox_Installation == 1)
+     { 
+        if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) != 1) 
+        && (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) != 1))
+           {  // if we get here, the user has turned off these settings manually
+              return true;
+           }
+     }
+
+   // proceed with other checks
    Fox_Force_Deactivate_Process = DataManager::GetIntValue(FOX_FORCE_DEACTIVATE_PROCESS);
    if (
           (Fox_Force_Deactivate_Process == 1) || 
@@ -3578,13 +3589,13 @@ void TWFunc::Deactivation_Process(void)
 
 bool patched_verity = false;
 bool patched_crypt = false;
-
+    
   // don't call this on first boot following fresh installation
   if (New_Fox_Installation != 1)
      {
          PrepareToFinish();
      }
-  
+   
   // advanced stock replace
   if (Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
   	Disable_Stock_Recovery_Replace();

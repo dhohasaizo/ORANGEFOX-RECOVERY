@@ -80,6 +80,7 @@
 #if defined(__linux__) && defined(HAVE_SYS_SYSCALL_H)
 #include <sys/syscall.h>
 #endif
+#include <sys/file.h>
 
 #include "all-io.h"
 #include "uuidP.h"

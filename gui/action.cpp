@@ -1240,7 +1240,7 @@ int GUIAction::flash(std::string arg)
       if (ret_val != 0)
 	{
 	  gui_msg(Msg(msg::kError, "zip_err=Error installing zip file '{1}'") (zip_path));
-	  gui_print_color("error", "Hmmm ... does someone have a patched boot image?\n");
+	  //gui_print_color("error", "Hmmm ... does someone have a patched boot image?\n");
 	  ret_val = 1;
 	  break;
 	}
@@ -2415,11 +2415,7 @@ int GUIAction::wlfw(std::string arg __unused)
     }
   else
     {
-      #ifdef OF_USE_MAGISKBOOT
-      TWFunc::PackRepackImage_MagiskBoot(true, false);
-      #else
       TWFunc::Unpack_Image("/recovery");
-      #endif
     }
   operation_end(0);
   return 0;
@@ -2435,11 +2431,7 @@ int GUIAction::wlfx(std::string arg __unused)
   else
     {
       DataManager::Flush();
-      #ifdef OF_USE_MAGISKBOOT
-      TWFunc::PackRepackImage_MagiskBoot(false, false);
-      #else
       TWFunc::Repack_Image("/recovery");
-      #endif
     }
   operation_end(0);
   return 0;
@@ -2459,21 +2451,13 @@ int GUIAction::changesplash(std::string arg __unused)
 	  DataManager::GetValue("tw_splash_png_path", path);
 	  DataManager::GetValue("tw_splash_png_name", filename);
 	  std::string filepath = path + "/" + filename;
-	  #ifdef OF_USE_MAGISKBOOT
-	  if (TWFunc::PackRepackImage_MagiskBoot(true, false))
-	  #else
 	  if (TWFunc::Unpack_Image("/recovery"))
-	  #endif
 	     {
 	  	if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
 	    	{
 	      		unlink(ramdisk_path.c_str());
 	      		TWFunc::copy_file(filepath, ramdisk_path, 0644);
-	      		#ifdef OF_USE_MAGISKBOOT
-	      		TWFunc::PackRepackImage_MagiskBoot(false, false);
-	      		#else
 	      		TWFunc::Repack_Image("/recovery");
-	      		#endif
 	    	}
 	  	else
 	    	{
