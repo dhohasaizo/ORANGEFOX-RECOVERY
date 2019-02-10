@@ -39,10 +39,6 @@
 		<variable name="location_addfile" value="/sdcard" persist="1"/>
 		<variable name="location_filemanager" value="/sdcard" persist="1"/>
 		
-		<!-- AromaFM -->
-		<variable name="aroma_path" value="none" persist="1"/>
-		<variable name="aroma_enabled" value="0" persist="1"/>
-		
 		<!-- FRP -->
 		<variable name="use_pass" value="0" persist="1"/>
 		<variable name="pass_true" value="qwerty" persist="1"/>
@@ -55,11 +51,10 @@
 		<variable name="accent_title" value="0" persist="1"/>
 		<variable name="enable_battery" value="1" persist="1"/>
 		<variable name="navbar_bkg" value="3" persist="1"/>
-		<variable name="fl_shadow" value="1" persist="1"/>
 		<variable name="nougat" value="3" persist="1"/>
 		<variable name="key_buttons" value="1" persist="1"/>
 		<variable name="storage_select_on" value="1" persist="1"/>
-		<variable name="use_fixed_font" value="0" persist="1"/>
+		<variable name="use_fixed_font" value="1" persist="1"/>
 		<variable name="show_cpu_temp" value="1" persist="1"/>
 		<variable name="center_clock" value="2" persist="1"/>
 		<variable name="list_font" value="small" persist="1"/>
@@ -74,8 +69,6 @@
 		
 		<!-- Other... -->
 		<variable name="disable_no_os" value="0" persist="1"/>
-		<variable name="dialog_hide_folder" value="0" persist="1"/>
-		<variable name="compatibility_321" value="0" persist="1"/>
 		
 		<!-- Default values -->
 		<variable name="tw_hide_kb" value="0"/>
@@ -84,9 +77,6 @@
 		<variable name="tw_app_install_status" value="2"/>
 		<variable name="tw_include_kernel_log" value="0"/>
 		<variable name="include_bugreport" value="0"/>
-		<variable name="dialog_context" value="none" persist="1"/>
-		<variable name="screen_hint" value="0" persist="1"/>
-		<variable name="inject_theme" value="0"/>
 		<variable name="tw_install_reboot" value="0"/>
 		<variable name="needs_repack" value="0"/>
 		

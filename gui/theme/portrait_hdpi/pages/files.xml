@@ -1122,12 +1122,6 @@
 				<data name="tw_filename2"/>
 				<selection name="tw_selection2"/>
 			</fileselector>
-			
-			<image>
-				<placement x="0" y="%fileselector_shadow_terminal_x%"/>
-				<image resource="filelist_shadow"/>
-				<condition var1="fl_shadow" var2="1"/>
-			</image>
 
 			<template name="ab_ex"/>
 

@@ -512,55 +512,15 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_3a_y%"/>
-				<text>AromaFM</text>
-			</text>
-
-			<text style="text_body2">
-				<condition var1="aroma_path" op="!=" var2="none"/>
-				<placement x="%col1_x%" y="%row5_1a_y%"/>
-				<text>%aroma_path%</text>
-			</text>
-
-			<text style="text_body2">
-				<condition var1="aroma_path" var2="none"/>
-				<placement x="%col1_x%" y="%row5_1a_y%"/>
-				<text>{@not_set}</text>
-			</text>
-
-			<button style="menu_btn">
-				<placement x="%col1_x%" y="%row4_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
-				<action function="page">ext_fm_aroma</action>
-			</button>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row5_3a_y%"/>
 				<text>{@cust_oth}</text>
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row6_1a_y%" w="%screen_w%" h="%lb_l4%"/>
-				<listitem name="{@aroma_on}">
-					<condition var1="aroma_path" op="!=" var2="none"/>
-					<data variable="aroma_enabled"/>
-				</listitem>
+				<placement x="0" y="%row5_1a_y%" w="%screen_w%" h="%lb_l4%"/>
 				<listitem name="{@storagedialog_enable}">
 					<data variable="storage_select_on"/>
 				</listitem>
-				<listitem name="{@restoredialog_books}">
-					<data variable="dialog_hide_folder"/>
-				</listitem>
-				<listitem name="{@cust_fm_shad}">
-					<data variable="fl_shadow"/>
-				</listitem>
 			</listbox>
-
-			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<condition var1="aroma_path" op="!=" var2="/twres/aroma.zip"/>
-				<condition var1="tw_fileexists" var2="1"/>
-				<image resource="actionbar_reset" highlightresource="actionbar_reset_hl"/>
-				<action function="set">aroma_path=/twres/aroma.zip</action>
-			</button>
 
 			<action>
 				<touch key="home"/>
@@ -570,61 +530,6 @@
 			<action>
 				<touch key="back"/>
 				<action function="page">settings</action>
-			</action>
-		</page>
-
-		<page name="ext_fm_aroma">
-			<template name="body"/>
-			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
-				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon" file="file_icon" />
-				<filter extn=".zip" folders="1" files="1"/>
-				<path name="tw_zip_location" default="/sdcard"/>
-				<data name="tw_filename"/>
-				<selection name="tw_file"/>
-			</fileselector>
-
-			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
-				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon_small" file="file_icon_small" />
-				<filter extn=".zip" folders="1" files="1"/>
-				<path name="tw_zip_location" default="/sdcard"/>
-				<data name="tw_filename"/>
-				<selection name="tw_file"/>
-			</fileselector>
-
-			<template name="find_file"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@file_manager_btn}</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@aroma_select}</text>
-			</text>
-
-			<action>
-				<condition var1="tw_filename" op="modified"/>
-				<actions>
-					<action function="set">aroma_path=%tw_filename%</action>
-					<action function="page">ext_fm</action>
-				</actions>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">ext_fm</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
 			</action>
 		</page>
 

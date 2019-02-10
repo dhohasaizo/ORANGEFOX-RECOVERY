@@ -71,19 +71,21 @@
 			<action>
 				<condition var1="tw_operation_state" var2="1"/>
 				<action function="set">tw_signed_zip_verify=%tw_signed_zip_verify_tmp%</action>
+				<action function="set">fox_inject_after_zip=%fox_inject_after_zip_tmp%</action>
+				<action function="set">tw_screen_timeout_secs=%tw_screen_timeout_temp%</action>
 			</action>
 
 			<action>
 				<condition var1="tw_operation_state" var2="1"/>
 				<condition var1="tw_operation_status" op="!=" var2="0"/>
-				<action function="set">install_back=main</action>
+				<action function="set">install_back=advanced</action>
 				<action function="page">flash_done</action>
 			</action>
 
 			<action>
 				<condition var1="tw_operation_state" var2="1"/>
 				<condition var1="tw_operation_status" var2="0"/>
-				<action function="page">main</action>
+				<action function="page">advanced</action>
 			</action>
 		</page>
 	</pages>
