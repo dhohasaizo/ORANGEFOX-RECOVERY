@@ -416,7 +416,7 @@
 			<template name="body"/>
 
 			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font" var2="1"/>
 				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon" file="file_icon" />
@@ -427,7 +427,7 @@
 			</fileselector>
 
 			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font" op="!=" var2="1"/>
 				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon_small" file="file_icon_small" />

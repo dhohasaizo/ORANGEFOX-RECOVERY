@@ -59,7 +59,7 @@
 		<variable name="use_fixed_font" value="1" persist="1"/>
 		<variable name="show_cpu_temp" value="1" persist="1"/>
 		<variable name="center_clock" value="2" persist="1"/>
-		<variable name="list_font" value="small" persist="1"/>
+		<variable name="list_font" value="0" persist="1"/>
 		<variable name="bookmark" value="2" persist="1"/>
 		<variable name="navbar_sams" value="0" persist="1"/>
 		<variable name="navbar_accent" value="0" persist="1"/>

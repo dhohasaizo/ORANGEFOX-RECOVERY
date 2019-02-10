@@ -387,7 +387,7 @@
 
 			<fileselector style="fileselector_b">
 				<condition var1="magisk_core" op="!=" var2="1"/>
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font" var2="1"/>
 				<placement x="0" y="%row4_1_y%" w="%fileselector_width%" h="%lb_l6%"/>
 				<sort name="0"/>
 				<icon folder="folder_icon" file="module_icon" />
@@ -399,7 +399,7 @@
 
 			<fileselector style="fileselector_s">
 				<condition var1="magisk_core" op="!=" var2="1"/>
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font" op="!=" var2="1"/>
 				<placement x="0" y="%row4_1_y%" w="%fileselector_width%" h="%lb_l6%"/>
 				<sort name="0"/>
 				<icon folder="folder_icon_small" file="module_icon_small" />

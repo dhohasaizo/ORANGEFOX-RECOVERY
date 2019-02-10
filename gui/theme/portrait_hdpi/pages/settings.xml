@@ -77,91 +77,71 @@
 			</text>
 			<!---->
 
-			<!-- Files -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_filecheck=/twres/aroma.zip</action>
-				<action function="set">tw_existpage=ext_fm</action>
-				<action function="set">tw_notexistpage=ext_fm</action>
-				<action function="page">filecheck</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_set_x%" y="%set_row4_y%"/>
-				<image resource="bs_btn_set_files"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@file_manager_btn}</text>
-			</text>
-			<!---->
-
 			<!-- Screen -->
 			<button style="bs_btn">
-				<placement x="0" y="%set_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%set_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_screen</action>
 			</button>
 			
 			<image>
-				<placement x="%col1_set_x%" y="%set_row5_y%"/>
+				<placement x="%col1_set_x%" y="%set_row4_y%"/>
 				<image resource="bs_btn_set_screen"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
 				<text>{@settings_screen}</text>
 			</text>
 			<!---->
 
 			<!-- Vibration -->
 			<button style="bs_btn">
-				<placement x="0" y="%set_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%set_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_vibrate</action>
 			</button>
 			
 			<image>
-				<placement x="%col1_set_x%" y="%set_row6_y%"/>
+				<placement x="%col1_set_x%" y="%set_row5_y%"/>
 				<image resource="bs_btn_set_vibro"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
 				<text>{@vibration_hdr}</text>
 			</text>
 			<!---->
 
 			<!-- Backup -->
 			<button style="bs_btn">
-				<placement x="0" y="%set_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%set_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="set">backup_back=settings</action>
 				<action function="page">ext_backup</action>
 			</button>
 			
 			<image>
-				<placement x="%col1_set_x%" y="%set_row7_y%"/>
+				<placement x="%col1_set_x%" y="%set_row6_y%"/>
 				<image resource="bs_btn_restore"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
 				<text>{@backup_hdr}</text>
 			</text>
 			<!---->
 
 			<!-- Regional -->
 			<button style="bs_btn">
-				<placement x="0" y="%set_row8_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%set_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_time</action>
 			</button>
 			
 			<image>
-				<placement x="%col1_set_x%" y="%set_row8_y%"/>
+				<placement x="%col1_set_x%" y="%set_row7_y%"/>
 				<image resource="bs_btn_set_regional"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
 				<text>{@settings_time}</text>
 			</text>
 			<!---->
@@ -169,19 +149,19 @@
 			<!-- Debug -->
 			<button style="bs_btn">
 				<condition var1="debug_open" var2="5"/>
-				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%set_row8_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">debug</action>
 			</button>
 			
 			<image>
 				<condition var1="debug_open" var2="5"/>
-				<placement x="%col1_set_x%" y="%set_row9_y%"/>
+				<placement x="%col1_set_x%" y="%set_row8_y%"/>
 				<image resource="bs_btn_set_bug"/>
 			</image>
 			
 			<text style="bs_text">
 				<condition var1="debug_open" var2="5"/>
-				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
 				<text>{@dbg}</text>
 			</text>
 			<!---->
@@ -189,19 +169,19 @@
 			<!-- Info -->
 			<button style="bs_btn">
 				<condition var1="debug_open" op="!=" var2="5"/>
-				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%set_row8_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">about</action>
 			</button>
 			
 			<image>
 				<condition var1="debug_open" op="!=" var2="5"/>
-				<placement x="%col1_set_x%" y="%set_row9_y%"/>
+				<placement x="%col1_set_x%" y="%set_row8_y%"/>
 				<image resource="bs_btn_set_about"/>
 			</image>
 			
 			<text style="bs_text">
 				<condition var1="debug_open" op="!=" var2="5"/>
-				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
 				<text>{@about_hdr}</text>
 			</text>
 			<!---->
@@ -209,19 +189,19 @@
 			<!-- Info -->
 			<button style="bs_btn">
 				<condition var1="debug_open" var2="5"/>
-				<placement x="0" y="%set_row10_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">about</action>
 			</button>
 			
 			<image>
 				<condition var1="debug_open" var2="5"/>
-				<placement x="%col1_set_x%" y="%set_row10_y%"/>
+				<placement x="%col1_set_x%" y="%set_row9_y%"/>
 				<image resource="bs_btn_set_about"/>
 			</image>
 			
 			<text style="bs_text">
 				<condition var1="debug_open" var2="5"/>
-				<placement x="%col1_x_indent%" y="%set_row10_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
 				<text>{@about_hdr}</text>
 			</text>
 			<!---->
@@ -304,6 +284,10 @@
 				</listitem>
 				<listitem name="{@restoredialog_readonly}">
 					<data variable="tw_never_show_system_ro_page"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
+				<listitem name="{@fm_icons_simple}">
+					<data variable="list_font"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
 				<listitem name="{@inject_twrp_chk}">
@@ -465,67 +449,6 @@
 			<action>
 				<touch key="back"/>
 				<action function="page">%general_back%</action>
-			</action>
-		</page>
-
-		<!-- Files -->
-		<page name="ext_fm">
-			<template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@file_manager_btn}</text>
-			</text>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@fm_butts}</text>
-			</text>
-
-			<listbox>
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
-				<data name="bookmark"/>
-				<listitem name="{@fm_none}">2</listitem>
-				<listitem name="{@fm_book}">1</listitem>
-				<listitem name="{@fm_font}">0</listitem>
-			</listbox>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row3_1a_y%"/>
-				<text>{@cust_fm_font}</text>
-			</text>
-
-			<listbox>
-				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l2%"/>
-				<data name="list_font"/>
-				<listitem name="{@cust_fm_font_s}">small</listitem>
-				<listitem name="{@cust_fm_font_b}">big</listitem>
-			</listbox>
-
-			<text style="caption">
-				<placement x="%col1_x%" y="%row4_3a_y%"/>
-				<text>{@cust_oth}</text>
-			</text>
-
-			<listbox style="settingslist">
-				<placement x="0" y="%row5_1a_y%" w="%screen_w%" h="%lb_l4%"/>
-				<listitem name="{@storagedialog_enable}">
-					<data variable="storage_select_on"/>
-				</listitem>
-			</listbox>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">settings</action>
 			</action>
 		</page>
 
