@@ -1054,7 +1054,7 @@
 				<text>v%tw_version% | %fox_actual_build%</text>
 			</text>
 			
-			<!-- Yan Card -->
+			<!-- Yan's Card -->
 			<image>
 				<image resource="card"/>
 				<placement x="0" y="720"/>
@@ -1071,15 +1071,15 @@
 			</text>
 			<text style="about_info">
 				<placement x="300" y="858"/>
-				<text>Developer</text>
+				<text>Frontend developer</text>
 			</text>
 			<text style="about_info">
 				<placement x="300" y="910"/>
-				<text>Developer</text>
+				<text>CEO, UI, site developer</text>
 			</text>
 			<!-- Card -->
 			
-			<!-- fd Card -->
+			<!-- fd's Card -->
 			<image>
 				<image resource="card"/>
 				<placement x="0" y="1008"/>
@@ -1096,15 +1096,15 @@
 			</text>
 			<text style="about_info">
 				<placement x="300" y="1146"/>
-				<text>Developer</text>
+				<text>Frontend developer</text>
 			</text>
 			<text style="about_info">
 				<placement x="300" y="1198"/>
-				<text>Developer</text>
+				<text>Theme developer</text>
 			</text>
 			<!-- Card -->
 			
-			<!-- jabba Card -->
+			<!-- Bim's Card -->
 			<image>
 				<image resource="card"/>
 				<placement x="0" y="1296"/>
@@ -1121,11 +1121,11 @@
 			</text>
 			<text style="about_info">
 				<placement x="300" y="1434"/>
-				<text>Developer</text>
+				<text>Backend developer</text>
 			</text>
 			<text style="about_info">
 				<placement x="300" y="1486"/>
-				<text>Developer</text>
+				<text>Build system, C++ developer</text>
 			</text>
 			<!-- Card -->
 			
