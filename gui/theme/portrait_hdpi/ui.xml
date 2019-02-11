@@ -308,7 +308,7 @@
 		<variable name="fox_rem_pass_after_restoring" value="0" persist="1"/>
 
 		<!-- For Maintainers -->
-		<variable name="fox_debug_build" value="1"/> <!-- Enable this function if you wanna enable debug mode switch -->
+		<variable name="fox_debug_build" value="0"/> <!-- Enable this function if you wanna enable debug mode switch -->
 		<variable name="fox_notch" value="%fox_notch%"/> <!-- Enable this variable for enable notch -->
 		<variable name="fox_18_9" value="1" /> <!-- Enable this variable if your device have 18:9 screen -->
 
