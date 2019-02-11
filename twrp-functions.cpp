@@ -2761,6 +2761,7 @@ bool TWFunc::Unpack_Image(string mount_point)
    }
        
   result = "cd " + ramdisk + "; " + local + " < " + split_img + "/" + Command + " | cpio -i";
+  //LOGINFO("TWFunc::Unpack_Image: Running Command: '%s'\n", result.c_str());
   if (TWFunc::Exec_Cmd(result, null) != 0)
     {
       LOGERR("TWFunc::Unpack_Image: Command failed '%s'\n", result.c_str());
@@ -2820,7 +2821,8 @@ bool TWFunc::Repack_Image(string mount_point)
   string repack =
     "cd " + ramdisk + "; find | cpio -o -H newc | " + local + " > " + tmp +
     "/ramdisk-new";
-  
+
+  //LOGINFO("TWFunc::Repack_Image: Running Command: '%s'\n", repack.c_str());  
   TWFunc::Exec_Cmd(repack, null);
   dir = opendir(split_img.c_str());
   if (dir == NULL)
@@ -2915,7 +2917,7 @@ bool TWFunc::Repack_Image(string mount_point)
   closedir(dir);
   Command += " --output " + tmp_boot;
   string bk1 = tmp_boot + ".bak";
-  rename(tmp_boot.c_str(), bk1.c_str());
+  rename(tmp_boot.c_str(), bk1.c_str());  
   if (TWFunc::Exec_Cmd(Command, null) != 0)
     {
       TWFunc::removeDir(tmp, false);
