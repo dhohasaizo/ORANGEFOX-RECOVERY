@@ -704,12 +704,14 @@
 				<touch key="back"/>
 				<actions>
 					<action function="set">tw_clear_destination=%install_back%</action>
+					<action function="disableled"/>
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
 
 			<action>
 				<touch key="home"/>
+				<action function="disableled"/>
 				<action function="page">main</action>
 			</action>
 		</page>

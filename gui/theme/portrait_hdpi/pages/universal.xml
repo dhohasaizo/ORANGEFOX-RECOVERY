@@ -579,6 +579,7 @@
 				<text>{@back_btn}</text>
 				<actions>
 					<action function="set">tw_clear_destination=%tw_back%</action>
+					<action function="disableled"/>
 					<action function="page">clear_vars</action>
 				</actions>
 			</button>
@@ -599,6 +600,7 @@
 				<touch key="home"/>
 				<actions>
 					<action function="set">tw_clear_destination=main</action>
+					<action function="disableled"/>
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
@@ -607,6 +609,7 @@
 				<touch key="back"/>
 				<actions>
 					<action function="set">tw_clear_destination=%tw_back%</action>
+					<action function="disableled"/>
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
