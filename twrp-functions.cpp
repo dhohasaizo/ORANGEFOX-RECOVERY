@@ -3598,7 +3598,7 @@ bool patched_crypt = false;
 
   // do the patches
 #ifdef OF_USE_MAGISKBOOT
-   //LOGINFO("OrangeFox: dm-verity/forced-encryption are handled by PackRepackImage_MagiskBoot(): \n");
+   //LOGINFO("OrangeFox: DM-Verity is handled by PackRepackImage_MagiskBoot(): \n");
 #else
   // dm-verity   
   if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
@@ -3614,6 +3614,7 @@ bool patched_crypt = false;
 	     gui_msg("of_dm_verity_off=DM-Verity is not enabled");
 	  }
      }
+#endif
 
   // forced encryption    
   if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
@@ -3625,10 +3626,13 @@ bool patched_crypt = false;
 	     }
 	  else
 	     {
+	 #ifdef OF_USE_MAGISKBOOT
+   		//LOGINFO("OrangeFox: Probably nothing left to patch in Forced Encryption... \n");
+	 #else
 	        gui_msg("of_encryption_off=Forced Encryption is not enabled");
-	     }  
+	 #endif
+	     }
      }
-#endif // ifdef OF_USE_MAGISKBOOT
 
   // other stuff
   Patch_Others();
