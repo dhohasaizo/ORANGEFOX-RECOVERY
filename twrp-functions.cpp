@@ -69,7 +69,8 @@ static string ramdisk = tmp + "/ramdisk";
 static string tmp_boot = tmp + "/boot.img";
 static string fstab1 = "/system/vendor/etc";
 static string fstab2 = "/vendor/etc";
-
+static string exec_error_str = "EXEC_ERROR!";
+static string popen_error_str = "popen error!";
 int Fox_Current_ROM_IsTreble = 0;
 int New_Fox_Installation = 0;
 int OrangeFox_Startup_Executed = 0;
@@ -118,7 +119,10 @@ static string Trim_Trailing_NewLine (const string src)
 static string Get_Property (const string propname)
 {
    string ret = TWFunc::Exec_With_Output ("getprop " + propname);
-   return (Trim_Trailing_NewLine (ret));
+   if (ret == exec_error_str)
+       return "";
+   else
+      return ret;//(Trim_Trailing_NewLine (ret));
 }
 
 /* Get the device name */
@@ -215,8 +219,11 @@ int TWFunc::Exec_Cmd(const string & cmd, string & result)
   char buffer[130];
   int ret = 0;
   exec = __popen(cmd.c_str(), "r");
-  if (!exec)
+  if (!exec) 
+  {  
+    result = popen_error_str;
     return -1;
+  }
   while (!feof(exec))
     {
       if (fgets(buffer, 128, exec) != NULL)
@@ -292,11 +299,15 @@ string TWFunc::Exec_With_Output(const string &cmd)
   if (stream)
     {
       while (!feof(stream))
-	if (fgets(buffer, max_buffer, stream) != NULL)
-	  data.append(buffer);
+	{
+	  if (fgets(buffer, max_buffer, stream) != NULL)
+	     data.append(buffer);
+	}
       pclose(stream);
+      return (Trim_Trailing_NewLine (data));
     }
-  return (Trim_Trailing_NewLine (data));
+ else 
+    return exec_error_str;
 }
 
 int TWFunc::Wait_For_Child(pid_t pid, int *status, string Child_Name)
@@ -2365,108 +2376,6 @@ bool TWFunc::Verify_Loaded_OTA_Signature(std::string loadedfp,
   return false;
 }
 
-/*
-bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
-{
-  string result, tmpstr, output;
-  std::string k = "/";
-  std::string cd_dir = "cd ";
-  output = "new-boot.img";
-  std::string end_command = "; ";
-  std::string magiskboot = "magiskboot";
-  std::string magiskboot_sbin = "/sbin/" + magiskboot;
-  std::string magiskboot_action = magiskboot + " --";
-  std::string cpio = "ramdisk.cpio";
-  std::string tmp_cpio = Fox_tmp_dir + k + cpio;
-  std::string ramdisk_cpio = Fox_ramdisk_dir + k + cpio;
-  std::string dump_cpio = cd_dir + Fox_ramdisk_dir + end_command + "cpio -i < \"" + cpio + "\"";
-  bool retval = false;
-  int res = 0;  
-
-  if (!TWFunc::Path_Exists(magiskboot_sbin)) TWFunc::tw_reboot(rb_recovery);
- 
-  if (!PartitionManager.Mount_By_Path("/system", false))
-     {
-     	LOGERR("TWFunc::PackRepackImage_MagiskBoot: Failed to mount system!");
-        return false;
-     }
- 
-  TWPartition *Boot = PartitionManager.Find_Partition_By_Path("/boot");
-  TWPartition *Recovery = PartitionManager.Find_Partition_By_Path("/recovery");
- 
-  if (Boot != NULL && Recovery != NULL)
-    {
-      if (is_boot)
-	tmpstr = Boot->Actual_Block_Device;
-      else
-	tmpstr = Recovery->Actual_Block_Device;
-	
-      if (do_unpack) // unpack
-	{
-	  if (TWFunc::Path_Exists(Fox_tmp_dir))
-	      TWFunc::removeDir(Fox_tmp_dir, false);
-	    
-	  if (TWFunc::Recursive_Mkdir(Fox_ramdisk_dir))
-	    {
-	        std::string unpack_partition = cd_dir + Fox_tmp_dir + end_command + magiskboot_action + "unpack \"" + tmpstr + "\"";
-		//gui_print("DEBUG: unpack command=%s\n", unpack_partition.c_str());
-	        res = Exec_Cmd(unpack_partition, result);
-	        if (res != 0)
-	        {
-  		   PartitionManager.UnMount_By_Path("/system", false);
-	           LOGERR("TWFunc::PackRepackImage_MagiskBoot: Failed to unpack image!");
-  		   return false;	      
-	        }	        
-	        rename(tmp_cpio.c_str(), ramdisk_cpio.c_str());
-		//gui_print("DEBUG: unpack command=%s\n", dump_cpio.c_str());
-	        res = Exec_Cmd(dump_cpio, result);
-	        unlink(ramdisk_cpio.c_str());
-	        if (res != 0)
-	        {
-  		   PartitionManager.UnMount_By_Path("/system", false);
-	           LOGERR("TWFunc::PackRepackImage_MagiskBoot: Failed to unpack ramdisk!");
-  		   return false;	      
-	        }        
-	        retval = true;
-	    } // if
-	} // do_unpack
-      else // repack
-	{
-	  std::string build_cpio = cd_dir + Fox_ramdisk_dir + end_command + "find | cpio -o -H newc > \"" + tmp_cpio + "\"";
-	  //gui_print("DEBUG: repack command=%s\n", build_cpio.c_str());
-	  res = Exec_Cmd(build_cpio, result);
-	  if (res != 0)
-	      {
-	  	 TWFunc::removeDir(Fox_tmp_dir, false);
-  		 PartitionManager.UnMount_By_Path("/system", false);
-	         LOGERR("TWFunc::PackRepackImage_MagiskBoot: Failed to pack ramdisk!");
-  		 return false;	      
-	      }	  
-	  std::string repack_partition = cd_dir + Fox_tmp_dir + end_command + magiskboot_action + "repack \"" + tmpstr + "\"";
-	  //gui_print("DEBUG: repack command=%s\n", repack_partition.c_str());
-	  res = Exec_Cmd(repack_partition, result);
-	  if (res != 0)
-	      {
-	  	 TWFunc::removeDir(Fox_tmp_dir, false);
-  		 PartitionManager.UnMount_By_Path("/system", false);
-	         LOGERR("TWFunc::PackRepackImage_MagiskBoot: Failed to repack image!");
-  		 return false;	      
-	      }
-	  if (!PartitionManager.Flash_Repacked_Image(tmp, output, is_boot))
-	     {
-	        retval = false;
-	        LOGERR("TWFunc::PackRepackImage_MagiskBoot: Failed to flash repacked image!");
-	     }
-	     else
-	       retval = true;
-	  TWFunc::removeDir(Fox_tmp_dir, false);
-	}
-    }
-  PartitionManager.UnMount_By_Path("/system", false);
-  return retval;
-}
-*/
-
 bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 {
   string result, tmpstr, output;
@@ -2623,9 +2532,8 @@ int TWFunc::stream_adb_backup(string & Restore_Name)
 }
 
 
-//* from here onwards, credits PBRP 
 void TWFunc::Read_Write_Specific_Partition(string path, string partition_name,
-					   bool backup)
+					   bool backup) // credits PBRP
 {
   TWPartition *Partition =
     PartitionManager.Find_Partition_By_Path(partition_name);
@@ -2676,6 +2584,34 @@ string TWFunc::Load_File(string extension)
   return line;
 }
 
+/* DJ9 */
+std::string DataToHexString(char *data, const int len)
+{
+    std::stringstream ss;
+    ss<<std::hex;
+    for(int i(0);i<len;++i)
+        ss<<(int)(data[i] & 0xff);
+    return ss.str();
+}
+
+std::string GetFileHeaderMagic (string fname)
+{
+  FILE *f = fopen(fname.c_str(), "rb");
+  char head[2];
+  int len = sizeof(head);
+  size_t read_len;
+  if (!f)
+  {
+     return "00";
+  }
+  memset (head, 0, len);
+  read_len = fread(head, 1, len, f);
+  fclose (f);
+  return DataToHexString(head, len);
+}
+
+//#define OF_USE_HEXDUMP 1
+/* DJ9 */
 bool TWFunc::Unpack_Image(string mount_point)
 {
   string null;
@@ -2735,6 +2671,7 @@ bool TWFunc::Unpack_Image(string mount_point)
     return false;
   }
 
+#ifdef OF_USE_HEXDUMP
   hexdump = "hexdump -vn2 -e '2/1 \"%x\"' " + split_img + "/" + Command;
   if (TWFunc::Exec_Cmd(hexdump, result) != 0)
     {
@@ -2742,6 +2679,18 @@ bool TWFunc::Unpack_Image(string mount_point)
       LOGERR("TWFunc::Unpack_Image: Command failed '%s'\n", hexdump.c_str());
       return false;
     }
+#else
+  result = GetFileHeaderMagic (split_img + "/" + Command);
+  hexdump = "GetFileHeaderMagic(" + split_img + "/" + Command + ")";
+  if (result == "00")
+    {
+      TWFunc::removeDir(tmp, false);
+      LOGERR("TWFunc::Unpack_Image: Command failed '%s'\n", hexdump.c_str());
+      return false;
+    }
+#endif
+    
+  //LOGINFO("TWFunc::Unpack_Image: Running Command: '%s' and result='%s'\n", hexdump.c_str(), result.c_str()); // !!!!!!
   if (result == "425a")
     local = "bzip2 -dc";
   else if (result == "1f8b" || result == "1f9e")
@@ -2761,13 +2710,24 @@ bool TWFunc::Unpack_Image(string mount_point)
    }
        
   result = "cd " + ramdisk + "; " + local + " < " + split_img + "/" + Command + " | cpio -i";
-  //LOGINFO("TWFunc::Unpack_Image: Running Command: '%s'\n", result.c_str());
-  if (TWFunc::Exec_Cmd(result, null) != 0)
-    {
-      LOGERR("TWFunc::Unpack_Image: Command failed '%s'\n", result.c_str());
-      TWFunc::removeDir(tmp, false);
-      return false;
-    }    
+  null = Exec_With_Output (result);
+  if (null.empty())
+     return true;
+  
+  if (null == exec_error_str)
+     {
+        LOGERR("TWFunc::Unpack_Image: Command failed '%s'\n", result.c_str());
+        TWFunc::removeDir(tmp, false);
+        return false;    
+     }
+  else
+     {
+        LOGINFO("TWFunc::Unpack_Image: output of command:'%s' was:\n'%s'\n", result.c_str(), null.c_str());
+        /*
+        TWFunc::removeDir(tmp, false);
+        return false;
+        */
+      }
   return true;
 }
 
@@ -2798,8 +2758,14 @@ bool TWFunc::Repack_Image(string mount_point)
     return false;
    }
     
+#ifdef OF_USE_HEXDUMP
   hexdump = "hexdump -vn2 -e '2/1 \"%x\"' " + split_img + "/" + local;
   TWFunc::Exec_Cmd(hexdump, result);
+#else
+  result = GetFileHeaderMagic (split_img + "/" + local);
+  hexdump = "GetFileHeaderMagic(" + split_img + "/" + local + ")";
+#endif
+  //LOGINFO("TWFunc::Repack_Image: Running Command: '%s' and result='%s'\n", hexdump.c_str(), result.c_str()); // !!!!!!
   if (result == "425a")
     local = "bzip2 -9c";
   else if (result == "1f8b" || result == "1f9e")
@@ -2822,7 +2788,7 @@ bool TWFunc::Repack_Image(string mount_point)
     "cd " + ramdisk + "; find | cpio -o -H newc | " + local + " > " + tmp +
     "/ramdisk-new";
 
-  //LOGINFO("TWFunc::Repack_Image: Running Command: '%s'\n", repack.c_str());  
+  //LOGINFO("TWFunc::Repack_Image: Running Command: '%s'\n", repack.c_str());  // !!!!!!!
   TWFunc::Exec_Cmd(repack, null);
   dir = opendir(split_img.c_str());
   if (dir == NULL)
@@ -2982,7 +2948,6 @@ bool TWFunc::Fresh_Fox_Install()
    else
         return false;
 }
-
 
 bool TWFunc::Patch_DM_Verity(void)
 {
@@ -3633,7 +3598,7 @@ bool patched_crypt = false;
 
   // do the patches
 #ifdef OF_USE_MAGISKBOOT
-   //LOGINFO("OrangeFox: dm-verity/forced-encryption are handled by PackRepackImage_MagiskBoot(): \n");
+   //LOGINFO("OrangeFox: DM-Verity is handled by PackRepackImage_MagiskBoot(): \n");
 #else
   // dm-verity   
   if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
@@ -3649,6 +3614,7 @@ bool patched_crypt = false;
 	     gui_msg("of_dm_verity_off=DM-Verity is not enabled");
 	  }
      }
+#endif
 
   // forced encryption    
   if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
@@ -3660,10 +3626,13 @@ bool patched_crypt = false;
 	     }
 	  else
 	     {
+	 #ifdef OF_USE_MAGISKBOOT
+   		//LOGINFO("OrangeFox: Probably nothing left to patch in Forced Encryption... \n");
+	 #else
 	        gui_msg("of_encryption_off=Forced Encryption is not enabled");
-	     }  
+	 #endif
+	     }
      }
-#endif // ifdef OF_USE_MAGISKBOOT
 
   // other stuff
   Patch_Others();

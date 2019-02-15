@@ -86,6 +86,14 @@ else
     LOCAL_CFLAGS += -DFOX_NOTCH='"0"'
 endif
 
+ifeq ($(OF_USE_HEXDUMP),1)
+    LOCAL_CFLAGS += -DOF_USE_HEXDUMP='"1"'
+endif
+
+ifeq ($(TW_USE_TOOLBOX), true)
+    LOCAL_CFLAGS += -DTW_USE_TOOLBOX='"1"'
+endif
+
 LOCAL_SRC_FILES := \
     twrp.cpp \
     fixContexts.cpp \
