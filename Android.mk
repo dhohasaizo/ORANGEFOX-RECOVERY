@@ -47,7 +47,7 @@ ifneq ($(TW_DEVICE_VERSION),)
     export FOX_DEVICE_VERSION=$(TW_DEVICE_VERSION)
 else
     LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"Unofficial"'
-    export FOX_DEVICE_VERSION=R9
+    export FOX_DEVICE_VERSION=R10.0
 endif
 
 DEVICE := $(subst omni_,,$(TARGET_PRODUCT))
