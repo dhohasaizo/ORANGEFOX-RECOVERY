@@ -407,6 +407,19 @@
 				<placement x="%col1_x%" y="%row7_1_y%" w="%content_w%" h="%fileselector_separatorheight%"/>
 			</fill>
 		</template>
+
+		<template name="action_page_console_big">
+			<console>
+				<placement x="%col1_x%" y="%row2_1_y%" w="%console_width%" h="%console_action_height_big%"/> 
+				<condition var1="use_fixed_font" var2="0"/>
+			</console>
+			
+			<console>
+				<placement x="%col1_x%" y="%row2_1_y%" w="%console_width%" h="%console_action_height_big%"/> 
+				<condition var1="use_fixed_font" var2="1"/>
+				<font resource="fixed"/>
+			</console>
+		</template>
 		
 		<template name="body">
 			<background color="%background%"/>

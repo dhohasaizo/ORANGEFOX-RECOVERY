@@ -555,7 +555,7 @@
 				<text>%tw_file%</text>
 			</text>
 
-			<template name="action_page_console"/>
+			<template name="action_page_console_big"/>
 
 			<action>
 				<condition var1="tw_operation_state" var2="1"/>
