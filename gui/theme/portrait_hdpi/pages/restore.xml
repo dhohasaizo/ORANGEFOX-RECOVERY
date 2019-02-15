@@ -1,0 +1,777 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="restore">
+			<template name="body_nav"/>
+
+			<action>
+				<action function="set">nav_panel_id=1</action>
+			</action>
+
+			<fileselector style="fileselector_b">
+				<condition var1="list_font" var2="1"/>
+				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_w%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="bkp_icon" file="bkp_icon" />
+				<filter folders="1" files="1" nav="0" extn=".ab"/>
+				<path name="tw_backups_folder"/>
+				<data name="tw_restore" default=""/>
+				<selection name="tw_restore_name"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="list_font" op="!=" var2="1"/>
+				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_w%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="bkp_icon_small" file="bkp_icon_small" />
+				<filter folders="1" files="1" nav="0" extn=".ab"/>
+				<path name="tw_backups_folder"/>
+				<data name="tw_restore" default=""/>
+				<selection name="tw_restore_name"/>
+			</fileselector>
+
+			<template name="ab_main"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x%" y="%ab_bc_y%"/>
+				<text>{@restore_hdr}</text>
+			</text>
+
+			<template name="actionbar_sort"/>
+			
+			<template name="actionbar_storage"/>
+
+			<action>
+				<condition var1="tw_restore" op="modified"/>
+				<actions>
+					<action function="readBackup"/>
+					<action function="set">restore_back=restore</action>
+					<action function="page">restore_read</action>
+				</actions>
+			</action>
+
+			<template name="nav_panel"/>
+
+			<button style="floating_btn">
+				<condition var1="auto_generate" var2="0"/>
+				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
+				<actions>
+					<action function="set">tw_backup_name={@auto_gen}</action>
+					<action function="set">tw_fileexists=0</action>
+					<action function="set">adb_backup_pc=0</action>
+					<action function="page">backup_device</action>
+				</actions>
+			</button>
+			
+			<button style="floating_btn">
+				<condition var1="auto_generate" var2="1"/>
+				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
+				<actions>
+					<action function="generatebackupname"/>
+					<action function="set">tw_fileexists=0</action>
+					<action function="set">adb_backup_pc=0</action>
+					<action function="page">backup_device</action>
+				</actions>
+			</button>
+			
+			<button style="floating_btn">
+				<condition var1="auto_generate" var2="2"/>
+				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
+				<actions>
+					<action function="set">tw_fileexists=0</action>
+					<action function="set">adb_backup_pc=0</action>
+					<action function="page">backup_device</action>
+				</actions>
+			</button>
+			
+			<image>
+				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
+				<image resource="fab_add"/>
+			</image>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">restore</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">restore</action>
+			</action>
+		</page>
+
+		<page name="restore_read">
+			<action>
+				<condition var1="tw_restore_encrypted" var2="1"/>
+				<actions>
+					<action function="set">tw_password_fail=0</action>
+					<action function="page">restore_decrypt</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_restore_encrypted" var2="0"/>
+				<actions>
+					<action function="page">restore_select</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="restore_decrypt">
+			<template name="body_key"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@restore_hdr}</text>
+			</text>
+			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<actions>
+					<action function="set">tw_back=restore_decrypt</action>
+					<action function="set">tw_action=cmd</action>
+					<action function="set">tw_action_param=cd %tw_backups_folder% &amp;&amp; rm -rf "%tw_restore_name%"</action>
+					<action function="set">tw_text1={@del_backup_confirm}</action>
+					<action function="set">tw_text2=%tw_restore_name%</action>
+					<action function="set">tw_text4={@del_backup_confirm2}</action>
+					<action function="set">tw_action_text1={@deleting_backup}</action>
+					<action function="set">tw_complete_text1={@backup_deleted}</action>
+					<action function="set">tw_slider_text={@swipe_delete}</action>
+					<action function="page">deletebackup</action>
+				</actions>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_delete"/>
+			</image>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@restore_backup_hdr}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_restore_name%</text>
+			</text>
+
+			<image>
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
+				<text>{@sel_encrypt_backup}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_3a_y%"/>
+				<text>{@decrypt_data_enter_note1}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_1a_y%"/>
+				<text>{@decrypt_data_enter_note2}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%col1_x%" y="%row4_1_y%"/>
+				<text>{@enter_password_cptn}</text>
+			</text>
+
+			<input>
+				<placement x="%col1_x%" y="%input_decr_y%" w="%input_width%" h="%input_height%"/>
+				<text>%tw_restore_display%</text>
+				<data name="tw_restore_password" mask="*" maskvariable="tw_restore_display"/>
+				<restrict minlen="1" maxlen="32" allow="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"/>
+				<action function="page">try_restore_decrypt</action>
+			</input>
+
+			<fill color="%accent%">
+				<condition var1="tw_password_fail" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row4_3_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<fill color="%text_fail%">
+				<condition var1="tw_password_fail" var2="1"/>
+				<placement x="%col1_x%" y="%row4_3_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<text style="text_input_fail">
+				<condition var1="tw_password_fail" var2="1"/>
+				<placement x="%col1_x%" y="%row4_3_y%"/>
+				<text>{@restore_dec_fail}</text>
+			</text>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<actions>
+					<action function="set">tw_page_done=1</action>
+					<action function="page">%restore_back%</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="try_restore_decrypt">
+			<template name="body"/>
+
+			<template name="progress_bar"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@restore_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@decrypt_data_trying}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_restore_name%</text>
+			</text>
+
+			<template name="action_page_console"/>
+			
+			<template name="cant_cancel" />
+
+			<action>
+				<action function="decrypt_backup"/>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" op="!=" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">tw_password_fail=1</action>
+					<action function="page">restore_decrypt</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" op="=" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">tw_page_done=1</action>
+					<action function="page">restore_select</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="restore_select">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@restore_hdr}</text>
+			</text>
+
+			<button>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<actions>
+					<action function="set">tw_backup_rename=%tw_restore_name%</action>
+					<action function="set">tw_fileexists=0</action>
+					<action function="page">renamebackup</action>
+				</actions>
+			</button>
+			
+			<image>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_edit"/>
+			</image>
+			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<actions>
+					<action function="set">tw_back=restore_select</action>
+					<action function="set">tw_action=cmd</action>
+					<action function="set">tw_action_param=cd %tw_backups_folder% &amp;&amp; rm -rf "%tw_restore_name%"</action>
+					<action function="set">tw_text1={@del_backup_confirm}</action>
+					<action function="set">tw_text2=%tw_restore_name%</action>
+					<action function="set">tw_text4={@del_backup_confirm2}</action>
+					<action function="set">tw_action_text1={@deleting_backup}</action>
+					<action function="set">tw_complete_text1={@backup_deleted}</action>
+					<action function="set">tw_slider_text={@swipe_delete}</action>
+					<action function="page">deletebackup</action>
+				</actions>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_delete"/>
+			</image>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@restore_backup_hdr}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_restore_name%</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<text>{@restore_backup_date}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row2_2a_y%"/>
+				<text>%tw_restore_file_date%</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>{@options_hdr}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l1%"/>
+				<listitem name="{@restore_enable_digest_chk}">
+					<data variable="tw_skip_digest_check"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<text>{@partitions}</text>
+			</text>
+
+			<partitionlist>
+				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%lb_l5%"/>
+				<data name="tw_restore_list" selectedlist="tw_restore_selected"/>
+				<listtype name="restore"/>
+			</partitionlist>
+
+			<text style="caption">
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@swipe_restore}</text>
+			</text>
+
+			<slider style="slider_action">
+				<placement x="%center_x%" y="%slider_y%" placement="5"/>
+				<action function="page">restore_run</action>
+			</slider>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">%restore_back%</action>
+			</action>
+		</page>
+
+		<page name="renamebackup">
+			<template name="body_key"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@restore_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@rename_backup_hdr}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_restore_name%</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<text>{@name}</text>
+			</text>
+
+			<input>
+				<placement x="%col1_x%" y="%input_rename_y%" w="%input_width%" h="%input_height%"/>
+				<text>%tw_backup_rename%</text>
+				<data name="tw_backup_rename"/>
+				<restrict minlen="1" maxlen="64" allow=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_.{}[]"/>
+				<actions>
+					<action function="set">tw_back=%restore_back%</action>
+					<action function="set">tw_action=cmd</action>
+					<action function="set">tw_action_param=cd %tw_backups_folder% &amp;&amp; mv "%tw_restore_name%" "%tw_backup_rename%"</action>
+					<action function="set">tw_text1={@rename_backup_confirm}</action>
+					<action function="set">tw_text2={@rename_backup_confirm2}</action>
+					<action function="set">tw_action_text1={@renaming_backup}</action>
+					<action function="set">tw_complete_text1={@rename_backup_complete}</action>
+					<action function="set">tw_slider_text={@swipe_to_rename}</action>
+					<action function="set">tw_filecheck=%tw_backups_folder%/%tw_backup_rename%</action>
+					<action function="set">tw_existpage=renamebackup</action>
+					<action function="set">tw_notexistpage=restore_confirm_action</action>
+					<action function="page">filecheck</action>
+				</actions>
+			</input>
+
+			<fill color="%accent%">
+				<condition var1="tw_fileexists" var2="0"/>
+				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<fill color="%text_fail%">
+				<condition var1="tw_fileexists" var2="1"/>
+				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<text style="text_input_fail">
+				<condition var1="tw_fileexists" var2="1"/>
+				<placement x="%col1_x%" y="%row3_1_y%"/>
+				<text>{@backup_name_exists}</text>
+			</text>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">restore_select</action>
+			</action>
+		</page>
+
+		<page name="deletebackup">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@restore_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>%tw_text1%</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_text2%</text>
+			</text>
+
+			<image>
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<image resource="icon_warning"/>
+			</image>
+
+			<text style="text_body2_fail">
+				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
+				<text>%tw_text4%</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>%tw_slider_text%</text>
+			</text>
+
+			<slider style="slider_action">
+				<placement x="%center_x%" y="%slider_y%" placement="5"/>
+				<action function="set">tw_back=%restore_back%</action>
+				<action function="page">restore_action_page</action>
+			</slider>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">%tw_back%</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+
+		<page name="restore_run">
+			<template name="body"/>
+
+			<template name="progress_bar"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@restore_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@restoring_hdr}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_partition%</text>
+			</text>
+
+			<template name="action_page_console"/>
+			
+			<template name="cant_cancel" />
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row7_1a_y%"/>
+				<text>{@progress}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row7_2a_y%"/>
+				<text>%tw_size_progress%</text>
+			</text>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">tw_back=restore_select</action>
+					<action function="set">tw_complete_text1={@restore_complete}</action>
+					<action function="page">restore_action_complete</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="set">tw_back=restore_select</action>
+					<action function="set">tw_complete_text1={@restore_complete}</action>
+					<action function="page">restore_action_complete</action>
+				</actions>
+			</action>
+
+			<action>
+				<action function="nandroid">restore</action>
+			</action>
+		</page>
+
+		<page name="restore_confirm_action">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@restore_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>%tw_text1%</text>
+			</text>
+
+			<image>
+				<placement x="%col1_x%" y="%row2_2_y%"/>
+				<image resource="icon_warning"/>
+			</image>
+
+			<text style="text_body2_fail">
+				<placement x="%col1_x_indent%" y="%row2_2_y%"/>
+				<text>%tw_text2%</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>%tw_slider_text%</text>
+			</text>
+
+			<slider style="slider_action">
+				<placement x="%center_x%" y="%slider_y%" placement="5"/>
+				<action function="page">restore_action_page</action>
+			</slider>
+
+			<action>
+				<touch key="back"/>
+				<actions>
+					<action function="set">tw_clear_destination=%tw_back%</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+
+		<page name="restore_action_page">
+			<template name="body"/>
+
+			<template name="progress_bar"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@restore_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>%tw_action_text1%</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_action_text2%</text>
+			</text>
+
+			<template name="action_page_console"/>
+			
+			<template name="cant_cancel" />
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="page">restore_action_complete</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" op="!=" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="page">restore_action_complete</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_has_action2" var2="0"/>
+				<actions>
+					<action function="%tw_action%">%tw_action_param%</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_has_action2" var2="1"/>
+				<actions>
+					<action function="%tw_action%">%tw_action_param%</action>
+					<action function="%tw_action2%">%tw_action2_param%</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="restore_action_complete">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@restore_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_operation_status" op="!=" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@failed}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_operation_status" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@successful}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_complete_text1%</text>
+			</text>
+
+			<template name="action_page_console"/>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+				<text>{@back_btn}</text>
+				<actions>
+					<action function="set">tw_clear_destination=%tw_back%</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised_hl">
+				<condition var1="tw_reboot_system" var2="1"/>
+				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+				<text>{@reboot_system_btn}</text>
+				<actions>
+					<action function="set">tw_back=main</action>
+					<action function="set">tw_action_param=system</action>
+					<action function="set">tw_reboot_param=system</action>
+					<action function="page">rebootcheck</action>
+				</actions>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<actions>
+					<action function="set">tw_clear_destination=main</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<actions>
+					<action function="set">tw_clear_destination=%tw_back%</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</action>
+		</page>
+	</pages>
+</recovery>

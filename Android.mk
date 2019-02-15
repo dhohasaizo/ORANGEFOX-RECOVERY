@@ -47,7 +47,7 @@ ifneq ($(TW_DEVICE_VERSION),)
     export FOX_DEVICE_VERSION=$(TW_DEVICE_VERSION)
 else
     LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"Unofficial"'
-    export FOX_DEVICE_VERSION=R9.0
+    export FOX_DEVICE_VERSION=R9
 endif
 
 DEVICE := $(subst omni_,,$(TARGET_PRODUCT))
@@ -67,7 +67,7 @@ endif
 ifneq ($(OF_MAINTAINER),)
     LOCAL_CFLAGS += -DOF_MAINTAINER='"$(OF_MAINTAINER)"'
 else
-    LOCAL_CFLAGS += -DOF_MAINTAINER='"MrYacha and DarthJabba9"'
+    LOCAL_CFLAGS += -DOF_MAINTAINER='"Testing build (unofficial)"'
 endif
 
 ifneq ($(OF_FLASHLIGHT_ENABLE),)
@@ -232,7 +232,7 @@ LOCAL_SHARED_LIBRARIES += libselinux
 
 ifeq ($(AB_OTA_UPDATER),true)
     LOCAL_CFLAGS += -DAB_OTA_UPDATER=1
-    LOCAL_SHARED_LIBRARIES += libhardware
+    LOCAL_SHARED_LIBRARIES += libhardware android.hardware.boot@1.0
     LOCAL_REQUIRED_MODULES += libhardware
 endif
 
@@ -350,6 +350,9 @@ ifeq ($(TW_INCLUDE_CRYPTO), true)
         LOCAL_CFLAGS += -DTW_INCLUDE_FBE
         LOCAL_SHARED_LIBRARIES += libe4crypt
     endif
+    ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 24; echo $$?),0)
+        LOCAL_SHARED_LIBRARIES += android.hardware.weaver@1.0
+    endif
     ifneq ($(TW_CRYPTO_USE_SYSTEM_VOLD),)
     ifneq ($(TW_CRYPTO_USE_SYSTEM_VOLD),false)
         LOCAL_CFLAGS += -DTW_CRYPTO_USE_SYSTEM_VOLD
@@ -417,8 +420,7 @@ endif
 ifneq ($(TW_CLOCK_OFFSET),)
    LOCAL_CFLAGS += -DTW_CLOCK_OFFSET=$(TW_CLOCK_OFFSET)
 endif
-
-LOCAL_ADDITIONAL_DEPENDENCIES += \
+LOCAL_REQUIRED_MODULES += \
     dump_image \
     erase_image \
     flash_image \
@@ -430,14 +432,15 @@ LOCAL_ADDITIONAL_DEPENDENCIES += \
     fsck.fat \
     fatlabel \
     mkfs.fat \
-    magiskboot \
     mkbootimg \
     unpackbootimg \
     permissive.sh \
     simg2img_twrp \
     libbootloader_message_twrp \
     init.recovery.hlthchrg.rc \
-    init.recovery.service.rc
+    init.recovery.service.rc \
+    parted \
+    magiskboot
 
 ifneq ($(TARGET_ARCH), arm64)
     ifneq ($(TARGET_ARCH), x86_64)

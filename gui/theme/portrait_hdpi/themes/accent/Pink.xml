@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<!-- Controls -->
+		<image name="radio_true_dialog" filename="Pink/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="Pink/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="Pink/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="Pink/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="Pink/Controls/slider_used"/>
+		<image name="handle" filename="Pink/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="Pink/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="Pink/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="Pink/Controls/btn_raised_hl"/>
+
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="Pink/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="Pink/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="Pink/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_delete" filename="Pink/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_edit" filename="Pink/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="Pink/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="Pink/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_flash" filename="Pink/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_reset" filename="Pink/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_settings" filename="Pink/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_sort" filename="Pink/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_color_prim" filename="Pink/ActionBar/color_prim" retainaspect="1"/>
+		<image name="actionbar_color_sec" filename="Pink/ActionBar/color_sec" retainaspect="1"/>
+		<image name="actionbar_power_off" filename="Pink/ActionBar/power_off" retainaspect="1"/>
+		<image name="actionbar_storage" filename="Pink/ActionBar/storage" retainaspect="1"/>
+
+		<!-- Nav panel -->
+		<image name="nav_menu" filename="Pink/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="Pink/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="Pink/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="Pink/NavPanel/backup" retainaspect="1"/>
+		
+		<!-- FAB -->
+		<image name="fab" filename="Pink/FAB/fab" retainaspect="1"/>
+		<image name="fab_hl" filename="Pink/FAB/fab_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="file_icon_small" filename="Pink/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="Pink/FileManager/file" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="Pink/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="Pink/FileManager/file_bkp" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info" filename="Pink/Info/icon_info" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="enter" filename="Pink/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="Pink/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="Pink/Keyboard/enter_num_new" retainaspect="1"/>
+
+		<!-- Nav Bar -->
+		<image name="home" filename="Pink/NavBar/home" retainaspect="1"/>
+		<image name="back" filename="Pink/NavBar/back" retainaspect="1"/>
+		<image name="slideout" filename="Pink/NavBar/slideout" retainaspect="1"/>
+		<image name="keyboard_hide" filename="Pink/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="home_ng" filename="Pink/NavBar/home_ng" retainaspect="1"/>
+		<image name="back_ng" filename="Pink/NavBar/back_ng" retainaspect="1"/>
+		<image name="slideout_ng" filename="Pink/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="Pink/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		
+		<!-- Pie Nav bar -->
+		<image name="back_pie" filename="Pink/NavBar/back_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="Pink/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="home_pie" filename="Pink/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="Pink/NavBar/slideout_key_pie" retainaspect="1"/>
+	</resources>
+	<variables>
+		<variable name="accent" value="#ff5252"/>
+		<variable name="accent_r" value="255"/>
+		<variable name="accent_g" value="82"/>
+		<variable name="accent_b" value="82"/>
+		<variable name="theme_accent" value="Pink"/>
+		<variable name="current_accent" value="Pink"/>
+	</variables>
+</recovery>

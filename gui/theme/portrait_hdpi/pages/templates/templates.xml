@@ -1,0 +1,623 @@
+<?xml version="1.0"?>
+<recovery>
+	<templates>
+		<template name="nav_panel">
+			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="%nav_panel_y%" w="%screen_w%" h="%nav_panel_h%"/>
+			</fill>
+			
+			<image>
+				<image resource="nav_files"/>
+				<condition var1="nav_panel_id" var2="0"/>
+				<placement x="%nav_item_1%" y="%nav_icon_y%" placement="4"/>
+			</image>
+			
+			<text style="nav_panel">
+				<condition var1="nav_panel_id" var2="0"/>
+				<placement x="%nav_item_1%" y="%nav_text_y%" placement="4"/>
+				<text>{@file_manager_btn}</text>
+			</text>
+			
+			<image>
+				<image resource="nav_files_d"/>
+				<condition var1="nav_panel_id" op="!=" var2="0"/>
+				<placement x="%nav_item_1%" y="%nav_icon_y%" placement="4"/>
+			</image>
+			
+			<text style="nav_panel_d">
+				<condition var1="nav_panel_id" op="!=" var2="0"/>
+				<placement x="%nav_item_1%" y="%nav_text_y%" placement="4"/>
+				<text>{@file_manager_btn}</text>
+			</text>
+			
+			<button>
+				<condition var1="nav_panel_id" op="!=" var2="0"/>
+				<placement x="%nav_item_1%" y="%nav_item_y%" placement="4"/>
+				<image resource="nav_empty" highlightresource="nav_hl"/>
+				<action function="page">filemanagerlist</action>
+			</button>
+			
+			<image>
+				<image resource="nav_backup_d"/>
+				<condition var1="nav_panel_id" op="!=" var2="1"/>
+				<placement x="%nav_item_2%" y="%nav_icon_y%" placement="4"/>
+			</image>
+			
+			<text style="nav_panel_d">
+				<condition var1="nav_panel_id" op="!=" var2="1"/>
+				<placement x="%nav_item_2%" y="%nav_text_y%" placement="4"/>
+				<text>{@backup_btn}</text>
+			</text>
+			
+			<image>
+				<image resource="nav_backup"/>
+				<condition var1="nav_panel_id" var2="1"/>
+				<placement x="%nav_item_2%" y="%nav_icon_y%" placement="4"/>
+			</image>
+			
+			<text style="nav_panel">
+				<condition var1="nav_panel_id" var2="1"/>
+				<placement x="%nav_item_2%" y="%nav_text_y%" placement="4"/>
+				<text>{@backup_btn}</text>
+			</text>
+			
+			<button>
+				<placement x="%nav_item_2%" y="%nav_item_y%" placement="4"/>
+				<condition var1="nav_panel_id" op="!=" var2="1"/>
+				<image resource="nav_empty" highlightresource="nav_hl"/>
+				<action function="page">restore</action>
+			</button>
+			
+			<image>
+				<image resource="nav_wipe_d"/>
+				<condition var1="nav_panel_id" op="!=" var2="2"/>
+				<placement x="%nav_item_3%" y="%nav_icon_y%" placement="4"/>
+			</image>
+			
+			<text style="nav_panel_d">
+				<condition var1="nav_panel_id" op="!=" var2="2"/>
+				<placement x="%nav_item_3%" y="%nav_text_y%" placement="4"/>
+				<text>{@wipe_btn}</text>
+			</text>
+			
+			<image>
+				<image resource="nav_wipe"/>
+				<condition var1="nav_panel_id" var2="2"/>
+				<placement x="%nav_item_3%" y="%nav_icon_y%" placement="4"/>
+			</image>
+			
+			<text style="nav_panel">
+				<condition var1="nav_panel_id" var2="2"/>
+				<placement x="%nav_item_3%" y="%nav_text_y%" placement="4"/>
+				<text>{@wipe_btn}</text>
+			</text>
+			
+			<button>
+				<condition var1="nav_panel_id" op="!=" var2="2"/>
+				<placement x="%nav_item_3%" y="%nav_item_y%" placement="4"/>
+				<image resource="nav_empty" highlightresource="nav_hl"/>
+				<action function="page">wipe</action>
+			</button>
+			
+			<image>
+				<image resource="nav_menu_d"/>
+				<condition var1="nav_panel_id" op="!=" var2="3"/>
+				<placement x="%nav_item_4%" y="%nav_icon_y%" placement="4"/>
+			</image>
+			
+			<text style="nav_panel_d">
+				<condition var1="nav_panel_id" op="!=" var2="3"/>
+				<placement x="%nav_item_4%" y="%nav_text_y%" placement="4"/>
+				<text>{@menu_btn}</text>
+			</text>
+			
+			<image>
+				<image resource="nav_menu"/>
+				<condition var1="nav_panel_id" var2="3"/>
+				<placement x="%nav_item_4%" y="%nav_icon_y%" placement="4"/>
+			</image>
+			
+			<text style="nav_panel">
+				<condition var1="nav_panel_id" var2="3"/>
+				<placement x="%nav_item_4%" y="%nav_text_y%" placement="4"/>
+				<text>{@menu_btn}</text>
+			</text>
+			
+			<button>
+				<condition var1="nav_panel_id" op="!=" var2="3"/>
+				<placement x="%nav_item_4%" y="%nav_item_y%" placement="4"/>
+				<image resource="nav_empty" highlightresource="nav_hl"/>
+				<action function="page">advanced</action>
+			</button>
+			
+			<image>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<placement x="0" y="%nav_panel_y%" placement="2"/>
+				<image resource="nav_shadow"/>
+			</image>
+			
+			<template name="navbar_bkg"/>
+			
+			<template name="navbar_home"/>
+			
+			<template name="navbar_console"/>
+		</template>
+		
+		<template name="actionbar_back">
+			<button>
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="key">back</action>
+			</button>
+
+			<image>
+				<condition var1="tw_busy" var2="0"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_back"/>
+			</image>
+		</template>
+		
+		<template name="actionbar_sort">
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="overlay">menu_sort</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_sort"/>
+			</image>
+		</template>
+		
+		<template name="actionbar_storage">
+			<button>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="overlay">dialog_storage</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_storage"/>
+			</image>
+		</template>
+		
+		<template name="busy_screen">
+			<background color="%background%"/>
+			
+			<template name="background_image"/>
+			
+			<fill color="%lightransparent%">
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<template name="statusbarinfo"/>
+			
+			<image>
+				<image resource="palette"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text_l%" placement="4"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<text>{@theme_apply}</text>
+			</text>
+			
+			<text style="bs_text">
+				<placement x="%center_x%" y="%busy_text%" placement="4"/>
+				<condition var1="navbar_disable" var2="1"/>
+				<text>{@theme_apply}</text>
+			</text>
+		</template>
+		
+		<template name="snackbar_update">
+			<image>
+				<image resource="snackbar"/>
+				<condition var1="needs_repack" var2="1"/>
+				<placement x="0" y="%row_nav_y%" placement="2"/>
+			</image>
+			
+			<text style="text_body1">
+				<condition var1="needs_repack" var2="1"/>
+				<placement x="%snackbar_text_x%" y="%snackbar_text_y%"/>
+				<text>font (%update_fonts%) / nav (%update_navbar%) / accent (%update_accent%) / style (%update_style%)</text>
+			</text>
+			
+			<button style="btn_dlg_hl">
+				<condition var1="needs_repack" var2="1"/>
+				<placement x="%snackbar_button_x%" y="%snackbar_button_y%"/>
+				<text>{@update_btn}</text>
+				<action function="set">needs_repack=0</action>
+				<action function="page">apply_changes</action>
+			</button>
+		</template>
+		
+		<template name="ab">
+			<image>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="236"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="accent_title" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
+			
+			<fill color="#222222FF">
+				<condition var1="accent_title" var2="0"/>
+				<condition var1="theme_style" var2="Light_classic"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
+			
+			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
+
+			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<template name="actionbar_back"/>
+		</template>
+
+		<template name="ab_without_shadow">
+			<fill color="%accent%">
+				<condition var1="accent_title" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
+			
+			<fill color="#222222FF">
+				<condition var1="accent_title" var2="0"/>
+				<condition var1="theme_style" var2="Light_classic"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
+			
+			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
+
+			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<template name="actionbar_back"/>
+		</template>
+		
+		<template name="ab_main">
+			<image>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="236"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="accent_title" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
+			
+			<fill color="#222222FF">
+				<condition var1="theme_style" var2="Light_classic"/>
+				<condition var1="accent_title" var2="0"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
+			
+			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
+			</fill>
+
+			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+		</template>
+		
+		<template name="ab_ex">
+			<image>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<image resource="actionbar_shadow"/>
+				<placement x="0" y="452"/>
+			</image>
+
+			<fill color="%accent%">
+				<condition var1="accent_title" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_ex_h%"/>
+			</fill>
+			
+			<fill color="#222222FF">
+				<condition var1="accent_title" var2="0"/>
+				<condition var1="theme_style" var2="Light_classic"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_ex_h%"/>
+			</fill>
+			
+			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%ab_ex_h%"/>
+			</fill>
+			
+			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<template name="actionbar_back"/>
+		</template>
+		
+		<template name="cant_cancel">
+			<image>
+				<condition var1="tw_has_cancel" var2="0"/>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_cancel_no"/>
+			</image>
+		</template>
+
+		<template name="progress_bar">
+			<progressbar>
+				<condition var1="ui_progress" op="&lt;" var2="100"/>
+				<condition var1="ui_progress" op="&gt;" var2="0"/>
+				<placement x="%progressbar_x%" y="%progressbar_y%"/>
+				<resource empty="progress_empty" full="progress_fill"/>
+				<data name="ui_progress"/>
+			</progressbar>
+
+			<animation>
+				<condition var1="ui_progress" var2="0"/>
+				<placement x="%progressbar_x%" y="%progressbar_y%"/>
+				<resource name="progress"/>
+				<speed fps="30" render="2"/>
+				<loop frame="1"/>
+			</animation>
+			
+			<animation>
+				<condition var1="ui_progress" var2="100"/>
+				<placement x="%progressbar_x%" y="%progressbar_y%"/>
+				<resource name="progress"/>
+				<speed fps="30" render="2"/>
+				<loop frame="1"/>
+			</animation>
+		</template>
+
+		<template name="action_page_console">
+			<console>
+				<placement x="%col1_x%" y="%row2_1_y%" w="%console_width%" h="%console_action_height%"/> 
+				<condition var1="use_fixed_font" var2="0"/>
+			</console>
+			
+			<console>
+				<placement x="%col1_x%" y="%row2_1_y%" w="%console_width%" h="%console_action_height%"/> 
+				<condition var1="use_fixed_font" var2="1"/>
+				<font resource="fixed"/>
+			</console>
+
+			<fill color="%linecolor%">
+				<placement x="%col1_x%" y="%row2_1_y%" w="%content_w%" h="%fileselector_separatorheight%"/>
+			</fill>
+
+			<fill color="%linecolor%">
+				<placement x="%col1_x%" y="%row7_1_y%" w="%content_w%" h="%fileselector_separatorheight%"/>
+			</fill>
+		</template>
+		
+		<template name="body">
+			<background color="%background%"/>
+			<template name="background_image"/>
+			<template name="navbar_bkg"/>
+			<template name="keys"/>
+			<template name="navbar"/>
+		</template>
+		
+		<template name="body_nav">
+			<background color="%background%"/>
+			<template name="background_image" />
+			<template name="keys"/>
+		</template>
+		
+		<template name="body_key">
+			<background color="%background%"/>
+			<template name="background_image" />
+			<template name="keys"/>
+			<template name="keyboardtemplate"/>
+			<template name="navbar_bkg"/>
+			<template name="navbar_home"/>
+			<template name="navbar_console"/>
+			<template name="navbar_key"/>
+		</template>
+		
+		<template name="body_num">
+			<background color="%background%"/>
+			<template name="background_image" />
+			<template name="keys"/>
+			<template name="keyboardnum"/>
+			<template name="navbar_bkg"/>
+			<template name="navbar_home"/>
+			<template name="navbar_console"/>
+			<template name="navbar_key"/>
+		</template>
+		
+		<template name="dialog_body">
+			<background color="%transparent%"/>
+			<template name="navbar_bkg"/>
+			<button>
+				<fill color="%darktransparent%"/>
+				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
+				<action function="key">back</action>
+			</button>
+			<template name="keys"/>
+			<template name="statusbarinfo"/>
+			<template name="navbar"/>
+		</template>
+		
+		<template name="dialog_body_key">
+			<background color="%transparent%"/>
+			<button>
+				<fill color="%darktransparent%"/>
+				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
+				<action function="key">back</action>
+			</button>
+			<template name="keys"/>
+			<template name="keyboardtemplate"/>
+			<template name="statusbarinfo"/>
+			<template name="navbar_bkg"/>
+			<template name="navbar_home"/>
+			<template name="navbar_console"/>
+			<template name="navbar_key"/>
+		</template>
+
+		<template name="dialog_body_num">
+			<background color="%transparent%"/>
+			<button>
+				<fill color="%darktransparent%"/>
+				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
+				<action function="key">back</action>
+			</button>
+			<template name="keys"/>
+			<template name="keyboardnum"/>
+			<template name="statusbarinfo"/>
+			<template name="navbar_bkg"/>
+			<template name="navbar_home"/>
+			<template name="navbar_console"/>
+			<template name="navbar_key"/>
+		</template>
+			
+		<!-- Buttons -->	
+		<template name="keys">
+			<action>
+				<touch key="power"/>
+				<action function="togglebacklight"/>
+			</action>
+			
+			<action>
+				<touch key="power+voldown"/>
+				<action function="screenshotinternal"/>
+			</action>
+			
+			<action>
+				<touch key="power+volup"/>
+				<action function="flashlight"/>
+			</action>
+		</template>
+		
+		<template name="find_file">
+			
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+			
+			<template name="actionbar_sort"/>
+			<template name="actionbar_storage"/>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_zip_location%</text>
+			</text>
+		</template>
+		
+		<template name="t_system">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@mount_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@sys_ro}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@sys_ro_hdr}</text>
+			</text>
+
+			<image>
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
+				<text>{@ts_inform}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
+				<text>{@sys_rop1}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_1_y%"/>
+				<text>{@sys_rop2}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_2_y%"/>
+				<text>{@sys_rop2a}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_3_y%"/>
+				<text>{@sys_rop3}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row4_1_y%"/>
+				<text>{@sys_rop4}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row4_2_y%"/>
+				<text>{@sys_rop4a}</text>
+			</text>
+
+			<text style="text_body2_fail">
+				<placement x="%col1_x_indent%" y="%row4_3a_y%"/>
+				<text>{@sys_rop5}</text>
+			</text>
+
+			<text style="text_body2_fail">
+				<placement x="%col1_x_indent%" y="%row5_1a_y%"/>
+				<text>{@sys_rop6}</text>
+			</text>
+			
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
+				<text>{@sys_ro_keep_ro_btn}</text>
+				<action function="key">back</action>
+			</button>
+			
+			<listbox style="settingslist">
+				<placement x="0" y="%row6_1_y%" w="%screen_w%" h="%lb_l1%"/>
+				<listitem name="{@sys_ro_never_show_chk}">
+					<data variable="tw_never_show_system_ro_page"/>
+				</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@swipe_allow_mod}</text>
+			</text>
+			
+			<action>
+				<touch key="home"/>
+				<action function="mountsystemtoggle">1</action>
+				<action function="set">tw_page_done=1</action>
+				<action function="page">main</action>
+			</action>
+		</template>
+	</templates>
+</recovery>

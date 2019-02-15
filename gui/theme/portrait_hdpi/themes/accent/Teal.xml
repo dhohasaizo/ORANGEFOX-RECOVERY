@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<!-- Controls -->
+		<image name="radio_true_dialog" filename="Teal/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="Teal/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="Teal/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="Teal/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="Teal/Controls/slider_used"/>
+		<image name="handle" filename="Teal/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="Teal/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="Teal/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="Teal/Controls/btn_raised_hl"/>
+
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="Teal/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="Teal/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="Teal/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_delete" filename="Teal/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_edit" filename="Teal/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="Teal/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="Teal/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_flash" filename="Teal/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_reset" filename="Teal/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_settings" filename="Teal/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_sort" filename="Teal/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_color_prim" filename="Teal/ActionBar/color_prim" retainaspect="1"/>
+		<image name="actionbar_color_sec" filename="Teal/ActionBar/color_sec" retainaspect="1"/>
+		<image name="actionbar_power_off" filename="Teal/ActionBar/power_off" retainaspect="1"/>
+		<image name="actionbar_storage" filename="Teal/ActionBar/storage" retainaspect="1"/>
+
+		<!-- Nav panel -->
+		<image name="nav_menu" filename="Teal/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="Teal/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="Teal/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="Teal/NavPanel/backup" retainaspect="1"/>
+		
+		<!-- FAB -->
+		<image name="fab" filename="Teal/FAB/fab" retainaspect="1"/>
+		<image name="fab_hl" filename="Teal/FAB/fab_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="file_icon_small" filename="Teal/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="Teal/FileManager/file" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="Teal/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="Teal/FileManager/file_bkp" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info" filename="Teal/Info/icon_info" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="enter" filename="Teal/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="Teal/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="Teal/Keyboard/enter_num_new" retainaspect="1"/>
+
+		<!-- Nav Bar -->
+		<image name="home" filename="Teal/NavBar/home" retainaspect="1"/>
+		<image name="back" filename="Teal/NavBar/back" retainaspect="1"/>
+		<image name="slideout" filename="Teal/NavBar/slideout" retainaspect="1"/>
+		<image name="keyboard_hide" filename="Teal/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="home_ng" filename="Teal/NavBar/home_ng" retainaspect="1"/>
+		<image name="back_ng" filename="Teal/NavBar/back_ng" retainaspect="1"/>
+		<image name="slideout_ng" filename="Teal/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="Teal/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		
+		<!-- Pie Nav bar -->
+		<image name="back_pie" filename="Teal/NavBar/back_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="Teal/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="home_pie" filename="Teal/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="Teal/NavBar/slideout_key_pie" retainaspect="1"/>
+	</resources>
+	<variables>
+		<variable name="accent" value="#009788"/>
+		<variable name="accent_r" value="0"/>
+		<variable name="accent_g" value="151"/>
+		<variable name="accent_b" value="136"/>
+		<variable name="theme_accent" value="Teal"/>
+		<variable name="current_accent" value="Teal"/>
+	</variables>
+</recovery>

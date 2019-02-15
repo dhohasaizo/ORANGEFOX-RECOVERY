@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<recovery>
+
+	<mousecursor>
+		<placement w="0" h="0"/>
+		<background color="#FFFFFF00" resource="cursor"/>
+		<speed multiplier="2.5"/>
+	</mousecursor>
+	
+	<resources>
+		<!-- NavPanel -->
+		<image name="nav_menu_d" filename="Default/NavPanel/menu_d" retainaspect="1"/>
+		<image name="nav_wipe_d" filename="Default/NavPanel/wipe_d" retainaspect="1"/>
+		<image name="nav_files_d" filename="Default/NavPanel/files_d" retainaspect="1"/>
+		<image name="nav_backup_d" filename="Default/NavPanel/backup_d" retainaspect="1"/>
+		<image name="nav_empty" filename="Default/NavPanel/empty"/>
+		<image name="nav_hl" filename="Default/NavPanel/hl"/>
+		<image name="nav_shadow" filename="Default/NavPanel/shadow" retainaspect="1"/>
+		
+		<image name="actionbar_shadow" filename="Default/ActionBar/shadow"/>
+		<image name="actionbar_btn" filename="Default/ActionBar/actionbar_btn" retainaspect="1"/>
+		<image name="actionbar_btn_hl" filename="Default/ActionBar/actionbar_btn_hl" retainaspect="1"/>
+		
+		<image name="fab_accept" filename="Default/FAB/accept" retainaspect="1"/>
+		<image name="fab_close" filename="Default/FAB/close" retainaspect="1"/>
+		<image name="fab_add" filename="Default/FAB/add" retainaspect="1"/>
+		<image name="fab_usb" filename="Default/FAB/usb" retainaspect="1"/>
+		
+		<!-- Fonts Preview -->
+		<font name="font1" filename="Roboto-Regular.ttf" size="42"/>
+		<font name="font2" filename="RobotoSlab.ttf" size="42"/>
+		<font name="font3" filename="GoogleSans-Regular.ttf" size="42"/>
+		<font name="font4" filename="SamsungSans-Regular.ttf" size="42"/>
+		<font name="font5" filename="Chococooky.ttf" size="42"/>
+		<font name="font6" filename="Cooljazz.ttf" size="42"/>
+		<font name="font7" filename="Bender.ttf" size="42"/>
+		<font name="font8" filename="Amatic.ttf" size="42"/>
+		<font name="font9" filename="AngryBirds.ttf" size="42"/>
+		
+		<!-- Workshop -->
+		<image name="style_gray" filename="Default/Workshop/StyleGray" retainaspect="1"/>
+		<image name="style_black" filename="Default/Workshop/StyleBlack" retainaspect="1"/>
+		<image name="style_light_c" filename="Default/Workshop/StyleLight_c" retainaspect="1"/>
+		<image name="style_light" filename="Default/Workshop/StyleLight" retainaspect="1"/>
+		<image name="color_amber" filename="Default/Workshop/ColorAmber" retainaspect="1"/>
+		<image name="color_blue" filename="Default/Workshop/ColorBlue" retainaspect="1"/>
+		<image name="color_cyan" filename="Default/Workshop/ColorCyan" retainaspect="1"/>
+		<image name="color_gray" filename="Default/Workshop/ColorGray" retainaspect="1"/>
+		<image name="color_fox" filename="Default/Workshop/ColorFox" retainaspect="1"/>
+		<image name="color_green" filename="Default/Workshop/ColorGreen" retainaspect="1"/>
+		<image name="color_red" filename="Default/Workshop/ColorRed" retainaspect="1"/>
+		<image name="color_purple" filename="Default/Workshop/ColorPurple" retainaspect="1"/>
+		<image name="color_pink" filename="Default/Workshop/ColorPink" retainaspect="1"/>
+		<image name="color_brown" filename="Default/Workshop/ColorBrown" retainaspect="1"/>
+		<image name="color_indigo" filename="Default/Workshop/ColorIndigo" retainaspect="1"/>
+		<image name="color_bluegray" filename="Default/Workshop/ColorBlueGray" retainaspect="1"/>
+		
+		<image name="style_apply" filename="Default/Workshop/ColorApply" retainaspect="1"/>
+		<image name="style_apply_black" filename="Default/Workshop/StyleApply" retainaspect="1"/>
+	
+		<font name="fixed" filename="RobotoMono.ttf" size="34"/>
+		<!-- Battery -->
+		<image name="battery15" filename="Default/Battery/battery15" retainaspect="1"/>
+		<image name="battery5" filename="Default/Battery/battery5" retainaspect="1"/>
+		
+		<!-- Controls -->
+		<image name="btn_raised" filename="Default/Controls/btn_raised"/>
+		<image name="btn_raised_warn" filename="Default/Controls/btn_raised_warn"/>
+		<image name="btn_flat_qw" filename="Default/Controls/btn_flat_qw"/>
+		<image name="checkbox_false" filename="Default/Controls/checkbox_false_d" retainaspect="1"/>
+		<image name="radio_false" filename="Default/Controls/radio_false_d" retainaspect="1"/>
+		<image name="checkbox_false_dialog" filename="Default/Controls/checkbox_false_dialog" retainaspect="1"/>
+		<image name="radio_false_dialog" filename="Default/Controls/radio_false_dialog" retainaspect="1"/>
+		<image name="switch_off" filename="Default/Controls/switch_off" retainaspect="1"/>
+		<image name="switch_on" filename="Default/Controls/switch_on" retainaspect="1"/>
+		<image name="progress_empty_small" filename="Default/Progress/progress_empty_small"/>
+		<image name="continue_btn" filename="Default/Controls/continue" retainaspect="1"/>
+		
+		<!-- FAB -->
+		<image name="float_fm_books" filename="Default/FAB/float_fm_books" retainaspect="1"/>
+		<image name="float_fm_new" filename="Default/FAB/float_fm_new" retainaspect="1"/>
+		<image name="float_fm_select" filename="Default/FAB/float_fm_select" retainaspect="1"/>
+		<image name="float_fm_books_hl" filename="Default/FAB/float_fm_books_hl" retainaspect="1"/>
+		<image name="float_fm_new_hl" filename="Default/FAB/float_fm_new_hl" retainaspect="1"/>
+		<image name="float_fm_select_hl" filename="Default/FAB/float_fm_select_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="folder_icon" filename="Default/FileManager/folder" retainaspect="1"/>
+		<image name="folder_icon_small" filename="Default/FileManager/folder_small" retainaspect="1"/>
+		<image name="module_icon_small" filename="Default/FileManager/module_small" retainaspect="1"/>
+		<image name="module_icon" filename="Default/FileManager/module" retainaspect="1"/>
+		
+		<!-- Icons -->
+		<image name="bs_btn_open" filename="Default/Icons/bs_btn_open" retainaspect="1"/>
+		<image name="bs_btn_checksum" filename="Default/Icons/bs_btn_checksum" retainaspect="1"/>
+		<image name="bs_btn_doc" filename="Default/Icons/bs_btn_doc" retainaspect="1"/>
+		<image name="bs_btn_archive" filename="Default/Icons/bs_btn_archive" retainaspect="1"/>
+		<image name="bs_btn_unzip" filename="Default/Icons/bs_btn_unzip" retainaspect="1"/>
+		<image name="bs_btn_image" filename="Default/Icons/bs_btn_image" retainaspect="1"/>
+		<image name="bs_btn_restore" filename="Default/Icons/bs_btn_restore" retainaspect="1"/>
+		<image name="bs_btn_time" filename="Default/Icons/bs_btn_time" retainaspect="1"/>
+		<image name="bs_btn_new" filename="Default/Icons/bs_btn_new" retainaspect="1"/>
+		<image name="bs_btn_wut" filename="Default/Icons/bs_btn_wut" retainaspect="1"/>
+		<image name="bs_btn_bookmark" filename="Default/Icons/bs_btn_bookmark" retainaspect="1"/>
+		<image name="bs_btn_set_global" filename="Default/Icons/bs_btn_set_global" retainaspect="1"/>
+		<image name="bs_btn_set_regional" filename="Default/Icons/bs_btn_set_regional" retainaspect="1"/>
+		<image name="bs_btn_set_about" filename="Default/Icons/bs_btn_set_about" retainaspect="1"/>
+		<image name="bs_btn_set_bug" filename="Default/Icons/bs_btn_set_bug" retainaspect="1"/>
+		<image name="bs_btn_set_custom" filename="Default/Icons/bs_btn_set_custom" retainaspect="1"/>
+		<image name="bs_btn_set_vibro" filename="Default/Icons/bs_btn_set_vibro" retainaspect="1"/>
+		<image name="bs_btn_set_screen" filename="Default/Icons/bs_btn_set_screen" retainaspect="1"/>
+		<image name="bs_btn_set_ota" filename="Default/Icons/bs_btn_set_ota" retainaspect="1"/>
+		<image name="bs_btn_copy" filename="Default/Icons/bs_btn_copy" retainaspect="1"/>
+		<image name="bs_btn_cut" filename="Default/Icons/bs_btn_cut" retainaspect="1"/>
+		<image name="bs_btn_chmod" filename="Default/Icons/bs_btn_chmod" retainaspect="1"/>
+		<image name="bs_btn_delete" filename="Default/Icons/bs_btn_delete" retainaspect="1"/>
+		<image name="bs_btn_rename" filename="Default/Icons/bs_btn_rename" retainaspect="1"/>
+		<image name="bs_btn_brush" filename="Default/Icons/bs_btn_brush" retainaspect="1"/>
+		<image name="bs_btn_get" filename="Default/Icons/bs_btn_get" retainaspect="1"/>
+		<image name="reboot_sys" filename="Default/Icons/reboot_sys" retainaspect="1"/>
+		<image name="reboot_bootloader" filename="Default/Icons/reboot_bootloader" retainaspect="1"/>
+		<image name="reboot_power" filename="Default/Icons/reboot_power" retainaspect="1"/>
+		<image name="reboot_recovery" filename="Default/Icons/reboot_recovery" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info2" filename="Default/Info/icon_info2" retainaspect="1"/>
+		<image name="icon_warning" filename="Default/Info/icon_warning" retainaspect="1"/>
+		<image name="icon_person" filename="Default/Info/icon_person" retainaspect="1"/>
+		<image name="icon_mail" filename="Default/Info/icon_mail" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="backspace" filename="Default/Keyboard/backspace" retainaspect="1"/>
+		<image name="shift" filename="Default/Keyboard/shift" retainaspect="1"/>
+		<image name="shift_fill" filename="Default/Keyboard/shift_fill" retainaspect="1"/>
+		<image name="space" filename="Default/Keyboard/space" retainaspect="1"/>
+		<image name="keyboard_shadow" filename="Default/Keyboard/keyboard_shadow"/>
+		<image name="kb_arrow_left" filename="Default/Keyboard/kb_arrow_left" retainaspect="1"/>
+		<image name="kb_arrow_right" filename="Default/Keyboard/kb_arrow_right" retainaspect="1"/>
+		<image name="kb_arrow_up" filename="Default/Keyboard/kb_arrow_up" retainaspect="1"/>
+		<image name="kb_arrow_down" filename="Default/Keyboard/kb_arrow_down" retainaspect="1"/>
+		
+		<!-- Nav Bar -->
+		<image name="home_white" filename="Default/NavBar/home" retainaspect="1"/>
+		<image name="back_white" filename="Default/NavBar/back" retainaspect="1"/>
+		<image name="slideout_white" filename="Default/NavBar/slideout" retainaspect="1"/>
+		<image name="keyboard_hide_white" filename="Default/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="home_white_ng" filename="Default/NavBar/home_ng" retainaspect="1"/>
+		<image name="back_white_ng" filename="Default/NavBar/back_ng" retainaspect="1"/>
+		<image name="slideout_white_ng" filename="Default/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="keyboard_hide_white_ng" filename="Default/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		<image name="back_white_key_pie" filename="Default/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="back_white_pie" filename="Default/NavBar/back_pie" retainaspect="1"/>
+		<image name="home_white_pie" filename="Default/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_white_key_pie" filename="Default/NavBar/slideout_key_pie" retainaspect="1"/>
+		
+		<!---image name="home_dark" filename="Light/NavBar/home" retainaspect="1"/>
+		<image name="back_dark" filename="Light/NavBar/back" retainaspect="1"/>
+		<image name="slideout_dark" filename="Light/NavBar/slideout" retainaspect="1"/>
+		<image name="keyboard_hide_dark" filename="Light/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="home_dark_ng" filename="Light/NavBar/home_ng" retainaspect="1"/>
+		<image name="back_dark_ng" filename="Light/NavBar/back_ng" retainaspect="1"/>
+		<image name="slideout_dark_ng" filename="Light/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="keyboard_hide_dark_ng" filename="Light/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		<image name="back_dark_key_pie" filename="Light/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="back_dark_pie" filename="Light/NavBar/back_pie" retainaspect="1"/>
+		<image name="home_dark_pie" filename="Light/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_dark_key_pie" filename="Light/NavBar/slideout_key_pie" retainaspect="1"/--->
+		
+		<image name="nb_btn" filename="Default/NavBar/btn" retainaspect="1"/>
+		<image name="nb_btn_hl" filename="Default/NavBar/btn_hl" retainaspect="1"/>
+
+		<!-- Pdoor icons -->
+		<image name="bs_adv_term" filename="Default/Icons/term" retainaspect="1"/>
+		<image name="bs_adv_se" filename="Default/Icons/se" retainaspect="1"/>
+		<image name="bs_adv_mount" filename="Default/Icons/mount" retainaspect="1"/>
+		<image name="bs_adv_reboot" filename="Default/Icons/reboot" retainaspect="1"/>
+		<image name="bs_adv_log" filename="Default/Icons/log" retainaspect="1"/>
+		<image name="bs_adv_htc" filename="Default/Icons/htc" retainaspect="1"/>
+		<image name="bs_adv_adb" filename="Default/Icons/adb" retainaspect="1"/>
+		<image name="bs_adv_frp" filename="Default/Icons/frp" retainaspect="1"/>
+		<image name="bs_adv_aroma" filename="Default/Icons/aroma" retainaspect="1"/>
+		<image name="bs_adv_sd" filename="Default/Icons/sd" retainaspect="1"/>
+		<image name="ota" filename="Default/Icons/ota" retainaspect="1"/>
+		<image name="utils" filename="Default/Icons/utils" retainaspect="1"/>
+		<image name="info" filename="Default/Icons/info" retainaspect="1"/>
+		<image name="bs_btn_backup" filename="Default/Icons/backup" retainaspect="1"/>
+		<image name="nav" filename="Default/Icons/nav" retainaspect="1"/>
+		<image name="statusbar" filename="Default/Icons/statusbar" retainaspect="1"/>
+		<image name="keyboard" filename="Default/Icons/keyboard" retainaspect="1"/>
+		<image name="lockscreen" filename="Default/Icons/lockscreen" retainaspect="1"/>
+		<image name="ws_font" filename="Default/Icons/ws_font" retainaspect="1"/>
+		<image name="invert" filename="Default/Icons/invert" retainaspect="1"/>
+		<image name="magisk" filename="Default/Icons/magisk" retainaspect="1"/>
+		
+		<!-- Other -->
+		<image name="actionbar_clear" filename="Default/Other/actionbar_clear" retainaspect="1"/>
+		<image name="cursor" filename="Default/Other/cursor" retainaspect="1"/>
+		<image name="logo_debug" filename="Default/FullscreenIcons/logo_debug" retainaspect="1"/>
+		
+		
+		<image name="logo_big" filename="Default/About/logo" retainaspect="1"/>
+		<image name="card" filename="Default/About/card" retainaspect="1"/>
+		<image name="author_fd" filename="Default/About/author_fd" retainaspect="1"/>
+		<image name="author_yan" filename="Default/About/author_yan" retainaspect="1"/>
+		<image name="author_jabba" filename="Default/About/author_jabba" retainaspect="1"/>
+	</resources>
+</recovery>

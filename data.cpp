@@ -1179,11 +1179,17 @@ int DataManager::GetMagicValue(const string & varName, string & value)
 	      fgets(cap_s, 2, cap);
 	      fclose(cap);
 	      if (cap_s[0] == 'C')
-		charging = '+';
+        {
+          charging = '+';
+          DataManager::SetValue("charging_now", "1");
+        }
 	      else
-		charging = ' ';
+        {
+          charging = ' ';
+          DataManager::SetValue("charging_now", "0");
+        }
 	    }
-	  nextSecCheck = curTime.tv_sec + 60;
+	  nextSecCheck = curTime.tv_sec + 1;
 	}
 
       sprintf(tmp, "%i%%%c", lastVal, charging);
