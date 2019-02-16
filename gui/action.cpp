@@ -1377,20 +1377,6 @@ int GUIAction::wipe(std::string arg)
 			  skip = true;
 			}
 		    }
-		  else if (wipe_path == "SUBSTRATUM")
-		    {
-		      if (!PartitionManager.Wipe_Substratum_Overlays())
-			{
-			  gui_err
-			    ("fox_substratum_wipe_err=Failed to wipe substratum overlays");
-			  ret_val = false;
-			  break;
-			}
-		      else
-			{
-			  skip = true;
-			}
-		    }
 		  else if (wipe_path == "INTERNAL")
 		    {
 		      if (!PartitionManager.Wipe_Media_From_Data())
