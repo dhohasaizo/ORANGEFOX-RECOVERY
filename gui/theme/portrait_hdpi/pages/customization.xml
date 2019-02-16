@@ -151,8 +151,8 @@
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="center_clock"/>
 				<listitem name="{@status_clock_left}">2</listitem>
-				<listitem name="{@status_clock_center}">1</listitem>
-				<listitem name="{@status_clock_right}">0</listitem>
+				<listitem name="{@status_clock_center}">1<condition var1="cutout_clock" var2="0"/></listitem>
+				<listitem name="{@status_clock_right}">0<condition var1="cutout_clock" op="&lt;=" var2="1"/></listitem>
 			</listbox>
 
 			<text style="caption">
@@ -167,6 +167,10 @@
 				</listitem>
 				<listitem name="{@noshadow_title}">
 					<data variable="flat_tbar"/>
+				</listitem>
+				<listitem name="{@hide_notch}">
+					<data variable="hide_notch"/>
+					<condition var1="allow_hide_notch" var2="1"/>
 				</listitem>
 				<listitem name="{@separate_status}">
 					<data variable="separate_status"/>

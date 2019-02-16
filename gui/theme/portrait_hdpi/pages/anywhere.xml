@@ -99,6 +99,11 @@
 				<condition var1="separate_status" op="!=" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
+			
+			<fill color="#000000">
+				<condition var1="hide_notch" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
 
 			<template name="statusbarinfo"/>
 

@@ -2,10 +2,13 @@
 <recovery>
 	<variables>
 		<!-- Cutout -->
+		<variable name="center_clock" value="2" persist="1"/> <!-- default clock placement (0 - right; 1 - center; 2 - left) -->
+		<variable name="cutout_clock" value="0"/> <!-- 0 - all; 1 - left & right clock; 2 - only left clock  -->
+		<variable name="allow_hide_notch" value="0"/> <!-- Show option that hides notch  -->
 		<variable name="status_h" value="72"/> <!-- statusbar height --> <!-- def: 72 -->
 		<variable name="status_info_y" value="8"/> <!-- battery & clock Y --> <!-- %status_h%/2 - 28 --> <!-- def: 8 -->
 		
-		<!-- Rounded corners -->
+		<!-- If device have rounded corners -->
 		<variable name="status_indent_left" value="0"/> <!-- left indent for clock or CPU -->
 		<variable name="status_indent_right" value="0"/> <!-- right indent for battery -->
 		
@@ -66,7 +69,6 @@
 		<variable name="key_buttons" value="1" persist="1"/>
 		<variable name="use_fixed_font" value="1" persist="1"/>
 		<variable name="show_cpu_temp" value="1" persist="1"/>
-		<variable name="center_clock" value="2" persist="1"/>
 		<variable name="list_font" value="0" persist="1"/>
 		<variable name="bookmark" value="2" persist="1"/>
 		<variable name="navbar_sams" value="0" persist="1"/>
@@ -76,6 +78,7 @@
 		<variable name="separate_status" value="0" persist="1"/>
 		<variable name="style_battery" value="1" persist="1"/>
 		<variable name="flat_tbar" value="0" persist="1"/>
+		<variable name="hide_notch" value="0" persist="1"/> 
 		
 		<!-- Other... -->
 		<variable name="disable_no_os" value="0" persist="1"/>
