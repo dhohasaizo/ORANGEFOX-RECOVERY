@@ -15,7 +15,7 @@
 			</text>
 
 			<text style="caption_hl">
-				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_cap%"/>
 				<text>{@fm_mkdir_folder}</text>
 			</text>
 
@@ -33,7 +33,7 @@
 			</input>
 
 			<fill color="%accent%">
-				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
 			</fill>
 
 			<button style="btn_dlg">
@@ -67,7 +67,7 @@
 			</text>
 
 			<text style="caption_hl">
-				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_cap%"/>
 				<text>{@fm_path2}</text>
 			</text>
 
@@ -84,7 +84,7 @@
 			</input>
 
 			<fill color="%accent%">
-				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
 			</fill>
 
 			<button style="btn_dlg">
@@ -283,7 +283,7 @@
 			</text>
 
 			<text style="caption_hl">
-				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_cap%"/>
 				<text>{@set_password}</text>
 			</text>
 
@@ -300,17 +300,17 @@
 
 			<fill color="%accent%">
 				<condition var1="tw_password_not_match" op="!=" var2="1"/>
-				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
 			</fill>
 
 			<fill color="%text_fail%">
 				<condition var1="tw_password_not_match" var2="1"/>
-				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
 			</fill>
 
 			<text style="text_input_fail">
 				<condition var1="tw_password_not_match" var2="1"/>
-				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%"/>
 				<text>{@pass_not_match}</text>
 			</text>
 
@@ -351,7 +351,7 @@
 			</text>
 
 			<text style="caption_hl">
-				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_cap%"/>
 				<text>{@verifying_pas}</text>
 			</text>
 
@@ -367,7 +367,7 @@
 			</input>
 
 			<fill color="%accent%">
-				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
 			</fill>
 
 			<button style="btn_dlg">
@@ -402,7 +402,7 @@
 			</button>
 
 			<text style="caption_hl">
-				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_cap%"/>
 				<text>{@dialog_offset_note}</text>
 			</text>
 
@@ -426,17 +426,17 @@
 
 			<fill color="%accent%">
 				<condition var1="zone_error" op="!=" var2="1"/>
-				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
 			</fill>
 
 			<fill color="%text_fail%">
 				<condition var1="zone_error" var2="1"/>
-				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
 			</fill>
 
 			<text style="text_input_fail">
 				<condition var1="zone_error" var2="1"/>
-				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%"/>
 				<text>{@offset_wrong}</text>
 			</text>
 

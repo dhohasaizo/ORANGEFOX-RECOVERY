@@ -240,7 +240,7 @@
 			<image>
 				<condition var1="flat_tbar" op="!=" var2="1"/>
 				<image resource="actionbar_shadow"/>
-				<placement x="0" y="236"/>
+				<placement x="0" y="%ab_shad_y%"/>
 			</image>
 
 			<fill color="%accent%">
@@ -296,7 +296,7 @@
 			<image>
 				<condition var1="flat_tbar" op="!=" var2="1"/>
 				<image resource="actionbar_shadow"/>
-				<placement x="0" y="236"/>
+				<placement x="0" y="%ab_shad_y%"/>
 			</image>
 
 			<fill color="%accent%">
@@ -325,7 +325,7 @@
 			<image>
 				<condition var1="flat_tbar" op="!=" var2="1"/>
 				<image resource="actionbar_shadow"/>
-				<placement x="0" y="452"/>
+				<placement x="0" y="%ab_ex_shad_y%"/>
 			</image>
 
 			<fill color="%accent%">

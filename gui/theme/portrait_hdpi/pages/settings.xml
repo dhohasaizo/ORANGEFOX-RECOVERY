@@ -329,7 +329,7 @@
 			
 			<text>
 				<condition var1="general_back" var2="settings"/>
-				<placement x="160" y="916"/>
+				<placement x="160" y="%check_mount_ro_1%"/>
 				<font resource="body1" color="%text%"/>
 				<text>{@mount_sys_ro_chk}</text>
 			</text>
@@ -365,7 +365,7 @@
 			
 			<text>
 				<condition var1="general_back" var2="mount"/>
-				<placement x="160" y="374"/>
+				<placement x="160" y="%check_mount_ro_2%"/>
 				<font resource="body1" color="%text%"/>
 				<text>{@mount_sys_ro_chk}</text>
 			</text>

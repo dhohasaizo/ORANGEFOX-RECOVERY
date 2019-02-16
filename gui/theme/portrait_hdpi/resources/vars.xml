@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
 <recovery>
 	<variables>
+		<!-- Cutout -->
+		<variable name="status_h" value="72"/> <!-- statusbar height --> <!-- def: 72 -->
+		<variable name="status_info_y" value="8"/> <!-- battery & clock Y --> <!-- %status_h%/2 - 28 --> <!-- def: 8 -->
+		
+		<!-- Rounded corners -->
+		<variable name="status_indent_left" value="0"/> <!-- left indent for clock or CPU -->
+		<variable name="status_indent_right" value="0"/> <!-- right indent for battery -->
+		
 		<!-- OrangeFox vars -->
 		<variable name="ota_back_file" value="0"/>
 		<variable name="fox_busy" value="0"/>
@@ -83,6 +91,9 @@
 		<variable name="needs_repack" value="0"/>
 		
 		<!-- Placement -->
+		<variable name="cutout_w" value="%status_h%-72"/>
+		<variable name="check_mount_ro_1" value="916+%cutout_w%"/>
+		<variable name="check_mount_ro_2" value="374+%cutout_w%"/>
 		
 		<!-- OTA -->
 		<variable name="ota_update_title_y" value="%center_y%+320"/>
@@ -113,9 +124,10 @@
 		<variable name="nav_path_w" value="648"/>
 		
 		<!-- File Selector w/ NavPanel -->
-		<variable name="files_np_w" value="%screen_h%-552"/>
-		<variable name="files_np_y" value="240"/>
-		<variable name="files_np_mm_y" value="408"/>
+		<variable name="prep_files" value="%screen_h%-552"/>
+		<variable name="files_np_w" value="%prep_files%-%cutout_w%"/>
+		<variable name="files_np_y" value="240+%cutout_w%"/>
+		<variable name="files_np_mm_y" value="408+%cutout_w%"/>
 		
 		<!-- UI w/ NavPanel -->
 		<variable name="row_btn2_np_y" value="%screen_h%-768"/>
@@ -134,12 +146,12 @@
 		<variable name="busy_text_l" value="%screen_h%-144"/>
 		
 		<!-- AR UI -->
-		<variable name="part_list_btns_h" value="%screen_h%-1380"/>
-		<variable name="part_list_btns_9_h" value="%screen_h%-1110"/>
-		<variable name="part_list_btns_np_h" value="%screen_h%-1338"/>
-		<variable name="mount_ro_opt_y" value="%screen_h%-480"/>
-		<variable name="mount_ro_check_y" value="%screen_h%-420"/>
-		<variable name="mount_ro_txt_y" value="%screen_h%-406"/>
+		<variable name="prep_ar_1" value="%screen_h%-1380"/>
+		<variable name="prep_ar_2" value="%screen_h%-1110"/>
+		<variable name="prep_ar_3" value="%screen_h%-1338"/>
+		<variable name="part_list_btns_h" value="%prep_ar_1%-%cutout_w%"/>
+		<variable name="part_list_btns_9_h" value="%prep_ar_2%-%cutout_w%"/>
+		<variable name="part_list_btns_np_h" value="%prep_ar_3%-%cutout_w%"/>
 		
 		<!-- Favorites -->
 		<variable name="book_edit" value="0"/>
@@ -175,16 +187,16 @@
 		<variable name="bs_text_offset" value="42"/>
 		
 		<!-- Long buttons in settings -->
-		<variable name="set_row1_y" value="264"/>
-		<variable name="set_row2_y" value="408"/>
-		<variable name="set_row3_y" value="552"/>
-		<variable name="set_row4_y" value="696"/>
-		<variable name="set_row5_y" value="840"/>
-		<variable name="set_row6_y" value="984"/>
-		<variable name="set_row7_y" value="1128"/>
-		<variable name="set_row8_y" value="1272"/>
-		<variable name="set_row9_y" value="1416"/>
-		<variable name="set_row10_y" value="1560"/>
+		<variable name="set_row1_y" value="264+%cutout_w%"/>
+		<variable name="set_row2_y" value="408+%cutout_w%"/>
+		<variable name="set_row3_y" value="552+%cutout_w%"/>
+		<variable name="set_row4_y" value="696+%cutout_w%"/>
+		<variable name="set_row5_y" value="840+%cutout_w%"/>
+		<variable name="set_row6_y" value="984+%cutout_w%"/>
+		<variable name="set_row7_y" value="1128+%cutout_w%"/>
+		<variable name="set_row8_y" value="1272+%cutout_w%"/>
+		<variable name="set_row9_y" value="1416+%cutout_w%"/>
+		<variable name="set_row10_y" value="1560+%cutout_w%"/>
 		<variable name="set_row1_text_y" value="%set_row1_y%+%bs_text_offset%"/>
 		<variable name="set_row2_text_y" value="%set_row2_y%+%bs_text_offset%"/>
 		<variable name="set_row3_text_y" value="%set_row3_y%+%bs_text_offset%"/>
@@ -201,15 +213,15 @@
 		<variable name="db_row1_text_y" value="%db_row1_y%+%bs_text_offset%"/>
 		
 		<!-- Long buttons in file manager -->
-		<variable name="bs_row1_y" value="480"/>
-		<variable name="bs_row2_y" value="624"/>
-		<variable name="bs_row3_y" value="768"/>
-		<variable name="bs_row4_y" value="912"/>
-		<variable name="bs_row5_y" value="1056"/>
-		<variable name="bs_row6_y" value="1200"/>
-		<variable name="bs_row7_y" value="1344"/>
-		<variable name="bs_row8_y" value="1488"/>
-		<variable name="bs_row9_y" value="1632"/>
+		<variable name="bs_row1_y" value="480+%cutout_w%"/>
+		<variable name="bs_row2_y" value="624+%cutout_w%"/>
+		<variable name="bs_row3_y" value="768+%cutout_w%"/>
+		<variable name="bs_row4_y" value="912+%cutout_w%"/>
+		<variable name="bs_row5_y" value="1056+%cutout_w%"/>
+		<variable name="bs_row6_y" value="1200+%cutout_w%"/>
+		<variable name="bs_row7_y" value="1344+%cutout_w%"/>
+		<variable name="bs_row8_y" value="1488+%cutout_w%"/>
+		<variable name="bs_row9_y" value="1632+%cutout_w%"/>
 		<variable name="bs_row1_text_y" value="%bs_row1_y%+%bs_text_offset%"/>
 		<variable name="bs_row2_text_y" value="%bs_row2_y%+%bs_text_offset%"/>
 		<variable name="bs_row3_text_y" value="%bs_row3_y%+%bs_text_offset%"/>
@@ -221,9 +233,9 @@
 		<variable name="bs_row9_text_y" value="%bs_row9_y%+%bs_text_offset%"/>
 		
 		<!-- Long buttons in backup name -->
-		<variable name="actbtn_row1_y" value="666"/>
-		<variable name="actbtn_row2_y" value="810"/>
-		<variable name="actbtn_row3_y" value="954"/>
+		<variable name="actbtn_row1_y" value="666+%cutout_w%"/>
+		<variable name="actbtn_row2_y" value="810+%cutout_w%"/>
+		<variable name="actbtn_row3_y" value="954+%cutout_w%"/>
 		<variable name="actbtn_row1_text_y" value="%actbtn_row1_y%+%bs_text_offset%"/>
 		<variable name="actbtn_row2_text_y" value="%actbtn_row2_y%+%bs_text_offset%"/>
 		<variable name="actbtn_row3_text_y" value="%actbtn_row3_y%+%bs_text_offset%"/>
@@ -237,10 +249,8 @@
 		<variable name="nav_h" value="144"/>
 		
 		<!-- Status Bar -->
-		<variable name="status_h" value="72"/>
-		<variable name="version_x" value="20"/>
-		<variable name="time_x" value="1060"/>
-		<variable name="status_info_y" value="8"/>
+		<variable name="version_x" value="20+%status_indent_left%"/>
+		<variable name="time_x" value="1060-%status_indent_right%"/>
 		
 		<!-- Big invisible button -->
 		<variable name="mb_h_hide" value="120"/>
@@ -263,12 +273,13 @@
 		<variable name="lb_l15" value="1350"/>
 		
 		<!-- Battery -->
-		<variable name="battery_12_x" value="810"/>
-		<variable name="battery_24_x" value="875"/>
-		<variable name="battery_center_x" value="1005"/>
-		<variable name="battery_12_t_x" value="873"/>
-		<variable name="battery_24_t_x" value="938"/>
-		<variable name="battery_center_t_x" value="1068"/>
+		<variable name="battery_12_x" value="810-%status_indent_right%"/>
+		<variable name="battery_24_x" value="875-%status_indent_right%"/>
+		<variable name="battery_center_x" value="1005-%status_indent_right%"/>
+		<variable name="battery_12_t_x" value="873-%status_indent_right%"/>
+		<variable name="battery_24_t_x" value="938-%status_indent_right%"/>
+		<variable name="battery_center_t_x" value="1068-%status_indent_right%"/>
+		<variable name="battery_y" value="%status_info_y%-8"/>
 		
 		<!-- File list -->
 		<variable name="fileselector_width" value="%screen_w%"/>
@@ -278,35 +289,37 @@
 		<variable name="fileselector_spacing" value="0"/>
 		
 		<!-- Title / Title buttons -->
-		<variable name="ab_y" value="84"/>
-		<variable name="ab2_y" value="252"/>
-		<variable name="ab3_y" value="468"/>
+		<variable name="ab_y" value="84+%cutout_w%"/>
+		<variable name="ab2_y" value="252+%cutout_w%"/>
+		<variable name="ab3_y" value="468+%cutout_w%"/>
 		<variable name="ab_btn1_x" value="924"/>
 		<variable name="ab_btn2_x" value="780"/>
 		<variable name="ab_btn3_x" value="636"/>
 		<variable name="ab_back_x" value="12"/>
-		<variable name="ab_bc_y" value="108"/>
-		<variable name="ab_bc2_y" value="276"/>
-		<variable name="ab_bc3_y" value="492"/>
-		<variable name="ab_h" value="240"/>
-		<variable name="ab_ex_h" value="456"/>
-		<variable name="row_ab_ex_y" value="456"/>
+		<variable name="ab_bc_y" value="108+%cutout_w%"/>
+		<variable name="ab_bc2_y" value="276+%cutout_w%"/>
+		<variable name="ab_bc3_y" value="492+%cutout_w%"/>
+		<variable name="ab_h" value="240+%cutout_w%"/>
+		<variable name="ab_ex_h" value="456+%cutout_w%"/>
+		<variable name="row_ab_ex_y" value="456+%cutout_w%"/>
 		<variable name="ab_btn_h" value="168"/>
+		<variable name="ab_shad_y" value="236+%cutout_w%"/>
+		<variable name="ab_ex_shad_y" value="452+%cutout_w%"/>
 		
 		<!-- Sort menu -->
-		<variable name="ab_menu_y" value="72"/>
+		<variable name="ab_menu_y" value="72+%cutout_w%"/>
 		<variable name="ab_menu_x" value="900"/>
 		<variable name="ab_menu_sort_x" value="592"/>
 		<variable name="ab_menu_sort_btn_w" value="460"/>
 		<variable name="ab_menu_sort_btn_h" value="144"/>
 		<variable name="ab_menu_sort_text_x" value="638"/>
 		<variable name="ab_menu_text_offset" value="40"/>
-		<variable name="ab_menu_inst_1_y" value="120"/>
-		<variable name="ab_menu_inst_2_y" value="264"/>
-		<variable name="ab_menu_inst_3_y" value="408"/>
-		<variable name="ab_menu_inst_4_y" value="552"/>
-		<variable name="ab_menu_inst_5_y" value="696"/>
-		<variable name="ab_menu_inst_6_y" value="840"/>
+		<variable name="ab_menu_inst_1_y" value="120+%cutout_w%"/>
+		<variable name="ab_menu_inst_2_y" value="264+%cutout_w%"/>
+		<variable name="ab_menu_inst_3_y" value="408+%cutout_w%"/>
+		<variable name="ab_menu_inst_4_y" value="552+%cutout_w%"/>
+		<variable name="ab_menu_inst_5_y" value="696+%cutout_w%"/>
+		<variable name="ab_menu_inst_6_y" value="840+%cutout_w%"/>
 		<variable name="ab_menu_inst_1_text_y" value="%ab_menu_inst_1_y%+%ab_menu_text_offset%"/>
 		<variable name="ab_menu_inst_2_text_y" value="%ab_menu_inst_2_y%+%ab_menu_text_offset%"/>
 		<variable name="ab_menu_inst_3_text_y" value="%ab_menu_inst_3_y%+%ab_menu_text_offset%"/>
@@ -323,7 +336,7 @@
 		
 		<!-- Progress -->
 		<variable name="progressbar_x" value="0"/>
-		<variable name="progressbar_y" value="456"/>
+		<variable name="progressbar_y" value="456+%cutout_w%"/>
 		
 		<!-- Keyboard -->
 		<variable name="keyboard_y" value="%screen_h%-788"/>
@@ -347,13 +360,14 @@
 		
 		<!-- Terminal / Console -->
 		<variable name="console_width" value="984"/>
-		<variable name="console_height" value="1620"/>
+		<variable name="console_height" value="1620-%cutout_w%"/>
 		<variable name="console_action_height" value="900"/>
-		<variable name="console_action_height_big" value="1330"/>
-		<variable name="terminal_y" value="280"/>
+		<variable name="terminal_y" value="280+%cutout_w%"/>
 		<variable name="terminal_width" value="1032"/>
-		<variable name="terminal_height" value="%screen_h%-1210"/>
-		<variable name="terminal_nokb_height" value="%screen_h%-460"/>
+		<variable name="prep_term_1" value="%screen_h%-1210"/>
+		<variable name="prep_term_2" value="%screen_h%-460"/>
+		<variable name="terminal_height" value="%prep_term_1%-%cutout_w%"/>
+		<variable name="terminal_nokb_height" value="%prep_term_2%-%cutout_w%"/>
 		
 		<!-- Dialogs -->
 		<variable name="dialog_w" value="840"/>
@@ -382,6 +396,8 @@
 		<variable name="snackbar_text_y" value="%screen_h%-268"/>
 		<variable name="snackbar_button_x" value="776"/>
 		<variable name="snackbar_button_y" value="%screen_h%-294"/>
+		<variable name="dlg_input_cap" value="570"/>
+		<variable name="dlg_input_line" value="690"/>
 		
 		<!-- Fast scroll -->
 		<variable name="fastscroll_w" value="48"/>
@@ -417,56 +433,56 @@
 		<variable name="text_raisedbtn" value="#FFFFFF"/>
 		
 		<!-- Rows -->
-		<variable name="row0_y" value="240"/>
-		<variable name="row0_a_y" value="270"/>
-		<variable name="row1_1_y" value="300"/>
-		<variable name="row1_1a_y" value="330"/>
-		<variable name="row1_2_y" value="360"/>
-		<variable name="row1_2a_y" value="390"/>
-		<variable name="row1_3_y" value="420"/>
-		<variable name="row1_3a_y" value="450"/>
-		<variable name="row2_1_y" value="480"/>
-		<variable name="row2_1a_y" value="510"/>
-		<variable name="row2_2_y" value="540"/>
-		<variable name="row2_2a_y" value="570"/>
-		<variable name="row2_3_y" value="600"/>
-		<variable name="row2_3a_y" value="630"/>
-		<variable name="row3_1_y" value="660"/>
-		<variable name="row3_1a_y" value="690"/>
-		<variable name="row3_2_y" value="720"/>
-		<variable name="row3_2a_y" value="750"/>
-		<variable name="row3_3_y" value="780"/>
-		<variable name="row3_3a_y" value="810"/>
-		<variable name="row4_1_y" value="840"/>
-		<variable name="row4_1a_y" value="870"/>
-		<variable name="row4_2_y" value="900"/>
-		<variable name="row4_2a_y" value="930"/>
-		<variable name="row4_3_y" value="960"/>
-		<variable name="row4_3a_y" value="990"/>
-		<variable name="row5_1_y" value="1020"/>
-		<variable name="row5_1a_y" value="1050"/>
-		<variable name="row5_2_y" value="1080"/>
-		<variable name="row5_2a_y" value="1110"/>
-		<variable name="row5_3_y" value="1140"/>
-		<variable name="row5_3a_y" value="1170"/>
-		<variable name="row6_1_y" value="1200"/>
-		<variable name="row6_1a_y" value="1230"/>
-		<variable name="row6_2_y" value="1260"/>
-		<variable name="row6_2a_y" value="1290"/>
-		<variable name="row6_3_y" value="1320"/>
-		<variable name="row6_3a_y" value="1350"/>
-		<variable name="row7_1_y" value="1380"/>
-		<variable name="row7_1a_y" value="1410"/>
-		<variable name="row7_2_y" value="1440"/>
-		<variable name="row7_2a_y" value="1470"/>
-		<variable name="row7_3_y" value="1500"/>
-		<variable name="row7_3a_y" value="1530"/>
-		<variable name="row8_1_y" value="1560"/>
-		<variable name="row8_1a_y" value="1590"/>
-		<variable name="row8_2_y" value="1620"/>
-		<variable name="row8_2a_y" value="1650"/>
-		<variable name="row8_3_y" value="1680"/>
-		<variable name="row8_3a_y" value="1710"/>
-		<variable name="row9_1_y" value="1740"/>
+		<variable name="row0_y" value="240+%cutout_w%"/>
+		<variable name="row0_a_y" value="270+%cutout_w%"/>
+		<variable name="row1_1_y" value="300+%cutout_w%"/>
+		<variable name="row1_1a_y" value="330+%cutout_w%"/>
+		<variable name="row1_2_y" value="360+%cutout_w%"/>
+		<variable name="row1_2a_y" value="390+%cutout_w%"/>
+		<variable name="row1_3_y" value="420+%cutout_w%"/>
+		<variable name="row1_3a_y" value="450+%cutout_w%"/>
+		<variable name="row2_1_y" value="480+%cutout_w%"/>
+		<variable name="row2_1a_y" value="510+%cutout_w%"/>
+		<variable name="row2_2_y" value="540+%cutout_w%"/>
+		<variable name="row2_2a_y" value="570+%cutout_w%"/>
+		<variable name="row2_3_y" value="600+%cutout_w%"/>
+		<variable name="row2_3a_y" value="630+%cutout_w%"/>
+		<variable name="row3_1_y" value="660+%cutout_w%"/>
+		<variable name="row3_1a_y" value="690+%cutout_w%"/>
+		<variable name="row3_2_y" value="720+%cutout_w%"/>
+		<variable name="row3_2a_y" value="750+%cutout_w%"/>
+		<variable name="row3_3_y" value="780+%cutout_w%"/>
+		<variable name="row3_3a_y" value="810+%cutout_w%"/>
+		<variable name="row4_1_y" value="840+%cutout_w%"/>
+		<variable name="row4_1a_y" value="870+%cutout_w%"/>
+		<variable name="row4_2_y" value="900+%cutout_w%"/>
+		<variable name="row4_2a_y" value="930+%cutout_w%"/>
+		<variable name="row4_3_y" value="960+%cutout_w%"/>
+		<variable name="row4_3a_y" value="990+%cutout_w%"/>
+		<variable name="row5_1_y" value="1020+%cutout_w%"/>
+		<variable name="row5_1a_y" value="1050+%cutout_w%"/>
+		<variable name="row5_2_y" value="1080+%cutout_w%"/>
+		<variable name="row5_2a_y" value="1110+%cutout_w%"/>
+		<variable name="row5_3_y" value="1140+%cutout_w%"/>
+		<variable name="row5_3a_y" value="1170+%cutout_w%"/>
+		<variable name="row6_1_y" value="1200+%cutout_w%"/>
+		<variable name="row6_1a_y" value="1230+%cutout_w%"/>
+		<variable name="row6_2_y" value="1260+%cutout_w%"/>
+		<variable name="row6_2a_y" value="1290+%cutout_w%"/>
+		<variable name="row6_3_y" value="1320+%cutout_w%"/>
+		<variable name="row6_3a_y" value="1350+%cutout_w%"/>
+		<variable name="row7_1_y" value="1380+%cutout_w%"/>
+		<variable name="row7_1a_y" value="1410+%cutout_w%"/>
+		<variable name="row7_2_y" value="1440+%cutout_w%"/>
+		<variable name="row7_2a_y" value="1470+%cutout_w%"/>
+		<variable name="row7_3_y" value="1500+%cutout_w%"/>
+		<variable name="row7_3a_y" value="1530+%cutout_w%"/>
+		<variable name="row8_1_y" value="1560+%cutout_w%"/>
+		<variable name="row8_1a_y" value="1590+%cutout_w%"/>
+		<variable name="row8_2_y" value="1620+%cutout_w%"/>
+		<variable name="row8_2a_y" value="1650+%cutout_w%"/>
+		<variable name="row8_3_y" value="1680+%cutout_w%"/>
+		<variable name="row8_3a_y" value="1710+%cutout_w%"/>
+		<variable name="row9_1_y" value="1740+%cutout_w%"/>
 	</variables>
 </recovery>
