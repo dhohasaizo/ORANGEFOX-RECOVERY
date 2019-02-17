@@ -290,6 +290,23 @@
 			</text>
 			<!---->
 
+			<!-- Substratum -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
+				<action function="page">wipe_subs</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row5_y%"/>
+				<image resource="subs"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
+				<text>Wipe Substratum overlays</text>
+			</text>
+			<!---->
+
 			<button style="bs_btn">
 				<condition var1="tw_show_dumlock" var2="1"/>
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
@@ -1367,6 +1384,53 @@
 						<condition var1="tw_operation_status" var2="1"/>
 					</conditions>
 					<action function="page">%prebuild_fail_page%</action>
+				</action>
+			</page>
+
+			<page name="wipe_subs">
+				<template name="body"/>
+				
+				<template name="ab"/>
+				
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>Wipe Substratum overlays</text>
+				</text>
+
+				<listbox>
+					<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l5%"/>
+					<data name="tw_action_param"/>
+					<listitem name="SubstratumRescue">SubstratumRescue_Legacy.zip</listitem>
+					<listitem name="SubstratumRescue_Legacy">SubstratumRescue.zip</listitem>
+				</listbox>
+
+				<slider style="slider_action">
+					<placement x="%center_x%" y="%slider_y%" placement="5"/>
+					<actions>
+						<action function="set">tw_back=advanced</action>
+						<action function="set">tw_action=cmd</action>
+						<action function="set">tw_action_text1=Substratum</action>
+						<action function="set">tw_action_text2=Wiping substratum...</action>
+						<action function="set">tw_complete_text1=Substratum overlays wiped!</action>
+						<action function="set">tw_file=/sdcard/Fox/FoxFiles/%tw_action_param%</action>
+						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/%tw_action_param%</action>
+						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles/%tw_action_param%</action>
+						<action function="set">tw_q_1=%tw_file%</action>
+						<action function="queuezip"/>
+						<action function="flash">flash_zip</action>
+					</actions>
+				</slider>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">advanced</action>
+				</action>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
 				</action>
 			</page>
 		</pages>

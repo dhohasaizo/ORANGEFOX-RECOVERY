@@ -164,7 +164,7 @@
 		<image name="back_dark_key_pie" filename="Light/NavBar/back_key_pie" retainaspect="1"/>
 		<image name="back_dark_pie" filename="Light/NavBar/back_pie" retainaspect="1"/>
 		<image name="home_dark_pie" filename="Light/NavBar/home_pie" retainaspect="1"/>
-		<image name="slideout_dark_key_pie" filename="Light/NavBar/slideout_key_pie" retainaspect="1"/--->
+		<image name="slideout_dark_key_pie" filename="Light/NavBar/slideout_key_pie" retainaspect="1"/-->
 		
 		<image name="nb_btn" filename="Default/NavBar/btn" retainaspect="1"/>
 		<image name="nb_btn_hl" filename="Default/NavBar/btn_hl" retainaspect="1"/>
@@ -191,6 +191,7 @@
 		<image name="ws_font" filename="Default/Icons/ws_font" retainaspect="1"/>
 		<image name="invert" filename="Default/Icons/invert" retainaspect="1"/>
 		<image name="magisk" filename="Default/Icons/magisk" retainaspect="1"/>
+		<image name="subs" filename="Default/Icons/subs" retainaspect="1"/>
 		
 		<!-- Other -->
 		<image name="actionbar_clear" filename="Default/Other/actionbar_clear" retainaspect="1"/>
