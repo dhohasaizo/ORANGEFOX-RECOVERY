@@ -63,11 +63,12 @@ extern "C"
 #include "libcrecovery/common.h"
 }
 
+// Globals
 static string tmp = Fox_tmp_dir; // "/tmp/orangefox/"
 static string split_img = tmp + "/split_img";
 static string ramdisk = tmp + "/ramdisk";
 static string tmp_boot = tmp + "/boot.img";
-static string fstab1 = "/system/vendor/etc";
+static string fstab1 = PartitionManager.Get_Android_Root_Path() + "/vendor/etc"; // /system/vendor/etc 
 static string fstab2 = "/vendor/etc";
 static string exec_error_str = "EXEC_ERROR!";
 static string popen_error_str = "popen error!";
@@ -76,6 +77,7 @@ int New_Fox_Installation = 0;
 int OrangeFox_Startup_Executed = 0;
 int Fox_Has_Welcomed = 0;
 
+/* create a new (text) file */
 static void CreateNewFile(string file_path)
 {
   string blank = "";
@@ -88,6 +90,7 @@ static void CreateNewFile(string file_path)
   chmod (file_path.c_str(), 0644);
 }
 
+/* append a line to a text file */
 static void AppendLineToFile(string file_path, string line)
 {
     std::ofstream file;
@@ -131,13 +134,35 @@ static string GetDeviceName(void)
   return (Get_Property("ro.product.device"));
 }
 
+/* Are we running a MIUI ROM (old or freshly installed) ? */
+static bool MIUI_Is_Running(void)
+{
+   if (Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
+      return true;
+   else
+      return false; 
+}
+
 /* Return whether the device's storage is encrypted */
 static bool StorageIsEncrypted(void)
 {
-  return PartitionManager.Partition_Is_Encrypted("/data");
+  bool ret = PartitionManager.Partition_Is_Encrypted("/data");
+  if (ret)
+     {
+     	return ret;
+     }
+  string cmd, res;
+  res = "";
+  cmd = "cat /proc/mounts  | grep /data | grep dm-";
+  TWFunc::Exec_Cmd(cmd, res);
+  //gui_print("RESULT of command:\n|%s|\n is |%s|\n", cmd.c_str(), res.c_str());
+  if (res.empty() || TWFunc::Path_Exists("/data/unencrypted"))
+     return false;
+  else
+     return true;
 }
 
-// convert number to string
+/* convert number to string */
 std::string num_to_string(int value)
 {
   std::ostringstream os;
@@ -152,7 +177,7 @@ std::string num_to_string(long value)
   return os.str();
 }
 
-// convert string to number, with default value in case of error
+/* convert string to number, with default value in case of error */
 int string_to_int(string String, int def_value)
 {
 int tmp;
@@ -286,7 +311,7 @@ string TWFunc::Get_Path(const string & Path)
     return Path;
 }
 
-// run a command and return its output
+/* run a command and return its output */
 string TWFunc::Exec_With_Output(const string &cmd)
 {
   string data;
@@ -2447,9 +2472,16 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 		        }
 		      
 		      	if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
-		           keepforcedencryption = "false";
+		      	  {
+		      	     #ifdef OF_DONT_PATCH_ENCRYPTED_DEVICE
+		             if (StorageIsEncrypted())
+		                keepforcedencryption = "true";
+		             else
+		             #endif
+		                keepforcedencryption = "false";
+		          }
 		      	else
-		           keepforcedencryption = "true";
+		             keepforcedencryption = "true";
 		        		
 	              AppendLineToFile (cmd_script, "cp -af ramdisk.cpio ramdisk.cpio.orig");
 	              AppendLineToFile (cmd_script, "LOGINFO \"- Patching ramdisk (verity/encryption) ...\"");
@@ -2690,7 +2722,7 @@ bool TWFunc::Unpack_Image(string mount_point)
     }
 #endif
     
-  //LOGINFO("TWFunc::Unpack_Image: Running Command: '%s' and result='%s'\n", hexdump.c_str(), result.c_str()); // !!!!!!
+  //LOGINFO("TWFunc::Unpack_Image: Running Command: '%s' and result='%s'\n", hexdump.c_str(), result.c_str()); // !!
   if (result == "425a")
     local = "bzip2 -dc";
   else if (result == "1f8b" || result == "1f9e")
@@ -2765,7 +2797,7 @@ bool TWFunc::Repack_Image(string mount_point)
   result = GetFileHeaderMagic (split_img + "/" + local);
   hexdump = "GetFileHeaderMagic(" + split_img + "/" + local + ")";
 #endif
-  //LOGINFO("TWFunc::Repack_Image: Running Command: '%s' and result='%s'\n", hexdump.c_str(), result.c_str()); // !!!!!!
+  //LOGINFO("TWFunc::Repack_Image: Running Command: '%s' and result='%s'\n", hexdump.c_str(), result.c_str()); // !!
   if (result == "425a")
     local = "bzip2 -9c";
   else if (result == "1f8b" || result == "1f9e")
@@ -2788,7 +2820,7 @@ bool TWFunc::Repack_Image(string mount_point)
     "cd " + ramdisk + "; find | cpio -o -H newc | " + local + " > " + tmp +
     "/ramdisk-new";
 
-  //LOGINFO("TWFunc::Repack_Image: Running Command: '%s'\n", repack.c_str());  // !!!!!!!
+  //LOGINFO("TWFunc::Repack_Image: Running Command: '%s'\n", repack.c_str());  // !!
   TWFunc::Exec_Cmd(repack, null);
   dir = opendir(split_img.c_str());
   if (dir == NULL)
@@ -2953,19 +2985,15 @@ bool TWFunc::Patch_DM_Verity(void)
 {
   bool status = false;
   bool found_verity = false;
-  bool def = false;
-  int stat = 0;
-  int treble = 0;
   DIR *d = NULL;
-  DIR *d1 = NULL;
   struct dirent *de = NULL;
-  string path, cmp, command;
+  string path, cmp;
   string firmware_key = ramdisk + "/sbin/firmware_key.cer";
   string remove = "verify,;,verify;verify;avb,;,avb;avb;support_scfs,;,support_scfs;support_scfs;";
 
   LOGINFO("OrangeFox: entering Patch_DM_Verity()\n");
-  DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);
 
+  // /tmp/orangefox/ramdisk
   d = opendir(ramdisk.c_str());
   if (d == NULL)
     {
@@ -2981,7 +3009,6 @@ bool TWFunc::Patch_DM_Verity(void)
       if (cmp.find("fstab.") != string::npos)
 	{
 	  //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
-	  stat = 1;
 	  if (!status)
 	    {
 	      if (Fstab_Has_Verity_Flag(path))
@@ -3031,10 +3058,110 @@ bool TWFunc::Patch_DM_Verity(void)
     }
   closedir(d);
 
-  if (stat == 0)
-    {    
-      d1 = NULL;
+  if (TWFunc::Path_Exists(firmware_key))
+    {
+      if (!status)
+	status = true;
+      unlink(firmware_key.c_str());
+    }
 
+  #ifndef OF_USE_MAGISKBOOT
+  if ((status == true) && (found_verity == false))
+    {
+       LOGINFO("OrangeFox: Partial success - DM-Verity settings not found in fstab, but key file was successfully removed.\n");
+    }
+    
+  if (found_verity == false && status == false && JustInstalledMiui() == true)
+     {
+         LOGINFO("OrangeFox: Dm-verity not patched. This MIUI ROM might not boot without flashing magisk.\n");
+         gui_print_color("warning", "\nI could not patch dm-verity.\nTry flashing magisk from the OrangeFox menu now!\n");
+     } 
+  #endif
+       
+  LOGINFO("OrangeFox: leaving Patch_DM_Verity()\n");
+  return status;
+}
+
+
+void TWFunc::Patch_Verity_Flags(string path)
+{
+   TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;", "ro.config.dmverity=false");
+   usleep(64000); 
+   if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
+   {
+      string root = Get_Root_Path (path);
+      if ((root == "/vendor") || (root == PartitionManager.Get_Android_Root_Path()))
+      {
+        LOGINFO("OrangeFox: Patch_Encryption_Flags: trying again...\n");
+	int res;
+	string result;
+	string cmd_script = "/tmp/dmver.sh";
+   	CreateNewFile (cmd_script);
+   	chmod (cmd_script.c_str(), 0755);
+   	AppendLineToFile (cmd_script, "#!/sbin/sh");
+   	AppendLineToFile (cmd_script, "mount -o rw,remount " + root);
+   	AppendLineToFile (cmd_script, "mount -o rw,remount " + root + " " + root);
+   	AppendLineToFile (cmd_script, "sed -i -e \"s|ro.config.dmverity=true|ro.config.dmverity=false|g\" " + path);
+   	AppendLineToFile (cmd_script, "umount " + root + " > /dev/null 2>&1");
+    	//AppendLineToFile (cmd_script, "chmod 0644 " + path);  	
+   	AppendLineToFile (cmd_script, "");
+   	AppendLineToFile (cmd_script, "exit 0");
+   	res = Exec_Cmd (cmd_script, result);
+   	unlink(cmd_script.c_str());
+      }    
+  }
+}
+
+bool TWFunc::Fstab_Has_Verity_Flag(std::string path)
+{
+    if (
+       (TWFunc::CheckWord(path, "verify")) 
+    || (TWFunc::CheckWord(path, "support_scfs"))
+    || (TWFunc::CheckWord(path, "avb"))
+       )
+        return true;
+   else
+        return false;
+}
+
+bool TWFunc::Fstab_Has_Encryption_Flag(std::string path)
+{
+   if (
+        (CheckWord(path, "forceencrypt")) 
+     || (CheckWord(path, "forcefdeorfbe"))
+     || (CheckWord(path, "fileencryption"))
+//     || (CheckWord(path, "errors=panic")) 
+//     || (CheckWord(path, "discard"))
+      )
+        return true;
+   else
+        return false;
+}
+
+/* patch the /system || /vendor fstab */
+bool Patch_DM_Verity_In_System_Fstab(void)
+{
+  bool status = false;
+  bool found_verity = false;
+  bool def = false;
+  int stat = 0;
+  int treble = 0;
+  int verity = 0;
+  DIR *d1 = NULL;
+  struct dirent *de = NULL;
+  string path, cmp, command;
+  string firmware_key = ramdisk + "/sbin/firmware_key.cer";
+  string remove = "verify,;,verify;verify;avb,;,avb;avb;support_scfs,;,support_scfs;support_scfs;";
+
+      DataManager::GetValue(FOX_DISABLE_DM_VERITY, verity);
+      if (verity != 1)
+       {
+          gui_print ("OrangeFox: 'Disable DM-Verity' not enabled.\n");
+          return false;
+       }
+  
+      DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);
+      d1 = NULL;
       if (treble == 1 || New_Fox_On_Treble())
       {
           if ((PartitionManager.Is_Mounted_By_Path("/vendor")) || (PartitionManager.Mount_By_Path("/vendor", false)))
@@ -3081,7 +3208,7 @@ bool TWFunc::Patch_DM_Verity(void)
 	      //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
 	      if (!status)
 		{
-		  if (Fstab_Has_Verity_Flag(path))
+		  if (TWFunc::Fstab_Has_Verity_Flag(path))
 		    {
 	               LOGINFO("OrangeFox: Relevant dm-verity settings are found in %s\n", path.c_str());
 		       status = true;
@@ -3117,11 +3244,9 @@ bool TWFunc::Patch_DM_Verity(void)
 		     }
 		}
 	    }  // default.prop
-	    
-	} // while
-      
+	} // while      
       closedir(d1);
- 
+      
       //additional check for default.prop
       if (!def)
 	{
@@ -3137,7 +3262,6 @@ bool TWFunc::Patch_DM_Verity(void)
 		TWFunc::Patch_Verity_Flags(path);
 	     }
 	} // !def
-    //end
 
       if (New_Fox_Installation != 1)
          {
@@ -3148,92 +3272,16 @@ bool TWFunc::Patch_DM_Verity(void)
 	  		PartitionManager.UnMount_By_Path("/vendor", false);
 	 }
 	 
-    } // stat == 0
-
-  if (TWFunc::Path_Exists(firmware_key))
-    {
-      if (!status)
-	status = true;
-      unlink(firmware_key.c_str());
-    }
-
-  #ifndef OF_USE_MAGISKBOOT
-  if ((status == true) && (found_verity == false))
-    {
-       LOGINFO("OrangeFox: Partial success - DM-Verity settings not found in fstab, but key file was successfully removed.\n");
-    }
-    
-  if (found_verity == false && status == false && JustInstalledMiui() == true)
-     {
-         LOGINFO("OrangeFox: Dm-verity not patched. This MIUI ROM might not boot without flashing magisk.\n");
-         gui_print_color("warning", "\nI could not patch dm-verity.\nTry flashing magisk from the OrangeFox menu now!\n");
-     } 
-  #endif
-       
-  LOGINFO("OrangeFox: leaving Patch_DM_Verity()\n");
-  return status;
+      return status;
 }
 
-void TWFunc::Patch_Verity_Flags(string path)
-{
-   TWFunc::Replace_Word_In_File(path, "ro.config.dmverity=true;", "ro.config.dmverity=false");
-   usleep(125000); 
-   if (TWFunc::CheckWord(path, "ro.config.dmverity=true"))
-   {
-      string root = Get_Root_Path (path);
-      if ((root == "/vendor") || (root == PartitionManager.Get_Android_Root_Path()))
-      {
-        LOGINFO("OrangeFox: Patch_Encryption_Flags: trying again...\n");
-	int res;
-	string result;
-	string cmd_script = "/tmp/dmver.sh";
-   	CreateNewFile (cmd_script);
-   	chmod (cmd_script.c_str(), 0755);
-   	AppendLineToFile (cmd_script, "#!/sbin/sh");
-   	AppendLineToFile (cmd_script, "mount -o rw,remount " + root);
-   	AppendLineToFile (cmd_script, "mount -o rw,remount " + root + " " + root);
-   	AppendLineToFile (cmd_script, "sed -i -e \"s|ro.config.dmverity=true|ro.config.dmverity=false|g\" " + path);
-   	AppendLineToFile (cmd_script, "umount " + root + " > /dev/null 2>&1");
-   	AppendLineToFile (cmd_script, "");
-   	AppendLineToFile (cmd_script, "exit 0");
-   	res = Exec_Cmd (cmd_script, result);
-   	unlink(cmd_script.c_str());
-      }    
-  }
-}
-
-bool TWFunc::Fstab_Has_Verity_Flag(std::string path)
-{
-    if (
-       (TWFunc::CheckWord(path, "verify")) 
-    || (TWFunc::CheckWord(path, "support_scfs"))
-    || (TWFunc::CheckWord(path, "avb"))
-       )
-        return true;
-   else
-        return false;
-}
-
-bool TWFunc::Fstab_Has_Encryption_Flag(std::string path)
-{
-   if (
-        (CheckWord(path, "forceencrypt")) 
-     || (CheckWord(path, "forcefdeorfbe"))
-     || (CheckWord(path, "fileencryption"))
-//     || (CheckWord(path, "errors=panic")) 
-//     || (CheckWord(path, "discard"))
-      )
-        return true;
-   else
-        return false;
-}
 
 void TWFunc::Patch_Encryption_Flags(std::string path)
 {
    LOGINFO("OrangeFox: Patch_Encryption_Flags: processing file:%s\n", path.c_str());
    TWFunc::Replace_Word_In_File(path, "fileencryption=ice;", "encryptable=footer");
    TWFunc::Replace_Word_In_File(path, "forcefdeorfbe=;forceencrypt=;fileencryption=;", "encryptable=");
-   usleep(125000); 
+   usleep(64000); 
    if (Fstab_Has_Encryption_Flag(path))
    {
       string root = Get_Root_Path (path);
@@ -3252,6 +3300,7 @@ void TWFunc::Patch_Encryption_Flags(std::string path)
    	AppendLineToFile (cmd_script, "sed -i -e \"s|forcefdeorfbe=|encryptable=|g\" " + path);
    	AppendLineToFile (cmd_script, "sed -i -e \"s|forceencrypt=|encryptable=|g\" " + path);
    	AppendLineToFile (cmd_script, "sed -i -e \"s|fileencryption=|encryptable=|g\" " + path);
+   	//AppendLineToFile (cmd_script, "chmod 0644 " + path);
    	AppendLineToFile (cmd_script, "umount " + root + " > /dev/null 2>&1");
    	AppendLineToFile (cmd_script, "");
    	AppendLineToFile (cmd_script, "exit 0");
@@ -3263,67 +3312,35 @@ void TWFunc::Patch_Encryption_Flags(std::string path)
 //   TWFunc::Replace_Word_In_File(path, remove);
 }
 
-bool TWFunc::Patch_Forced_Encryption(void)
+/* patch the /sytem || /vendor fstab for forced-encrpytion - only if we are not already encrypted */
+bool Patch_Forced_Encryption_In_System_Fstab(void)
 {
-  string path, cmp;
+  string path = "";
+  string cmp = "";
   int stat = 0;
   bool status = false;
-  int encryption, treble;
-  DataManager::GetValue(FOX_DISABLE_DM_VERITY, encryption);
-  DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);
-  DIR *d;
-  DIR *d1;
+  int encryption = 0;
+  int treble = 0;
+  DIR *d1 = NULL;
   struct dirent *de;
   
-  LOGINFO("OrangeFox: entering Patch_Forced_Encyption()\n");   
-  d = opendir(ramdisk.c_str());
-  if (d == NULL)
-    {
-      LOGINFO("Unable to open '%s'\n", ramdisk.c_str());
-      return false;
-    }
-
-  //*** /tmp/orangefox/ramdisk/    
-  while ((de = readdir(d)) != NULL)
-    {
-      usleep (32);
-      cmp = de->d_name;
-      path = ramdisk + "/" + cmp;
-      
-      if (cmp.find("fstab.") != string::npos)
-	{
-	  if (encryption != 1)
-	    {
-	      //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
-	      stat = 1;
-	    }
-	    
-	  if (!status)
-	    {
-	      if (Fstab_Has_Encryption_Flag(path))
-	      {  
-		  LOGINFO("OrangeFox: Relevant encryption settings are found in %s\n", path.c_str());
-		  status = true;
-	      }
-	      else
-	      {
-		  LOGINFO("OrangeFox: Relevant encryption settings are not found in %s\n", path.c_str());
-	      }
-	    }
-	  if (Fstab_Has_Encryption_Flag(path))
-	     {
-	          status = true;
-	          TWFunc::Patch_Encryption_Flags(path);
-	     }
-	}
-    } // while
-    
-  closedir(d);  
-
-  if (stat == 0)
-  {
+      DataManager::GetValue(FOX_DISABLE_FORCED_ENCRYPTION, encryption);
+      if (encryption != 1)
+         {
+            gui_print ("OrangeFox: 'Disable Forced-Encryption' not enabled.\n");
+            return false;
+         }
+  
+      #ifdef OF_DONT_PATCH_ENCRYPTED_DEVICE
+      if (StorageIsEncrypted())
+        {
+            gui_print ("OrangeFox: Storage is encrypted. Not patching system fstab.\n");
+            return false;
+        }
+      #endif
+  
       d1 = NULL;
-
+      DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);  
       if (treble == 1 || New_Fox_On_Treble())
       {
          if ((PartitionManager.Is_Mounted_By_Path("/vendor")) || (PartitionManager.Mount_By_Path("/vendor", false)))
@@ -3364,16 +3381,9 @@ bool TWFunc::Patch_Forced_Encryption(void)
 	       path = fstab1 + "/" + cmp;
 	  if (cmp.find("fstab.") != string::npos)
 	    {
-	      
-	      if (encryption != 1)
-		{
-		  //gui_msg(Msg("of_fstab=Detected fstab: '{1}'") (cmp));
-		  stat = 1;
-		}
-	     
 	     if (!status)
 	        {
-	          if (Fstab_Has_Encryption_Flag(path))
+	          if (TWFunc::Fstab_Has_Encryption_Flag(path))
 	          {
 		      LOGINFO("OrangeFox: Relevant encryption settings are found in %s\n", path.c_str());
 		      status = true;
@@ -3384,14 +3394,14 @@ bool TWFunc::Patch_Forced_Encryption(void)
 		  }
 	       }
 	     
-	     if (Fstab_Has_Encryption_Flag(path))
+	     if (TWFunc::Fstab_Has_Encryption_Flag(path))
 	       {
 	          status = true;
 	          TWFunc::Patch_Encryption_Flags(path);
 	       }
 	     
 	   }
-	}
+	} // while
       closedir(d1);
       if (New_Fox_Installation != 1)
          {
@@ -3401,8 +3411,64 @@ bool TWFunc::Patch_Forced_Encryption(void)
        		if (PartitionManager.Is_Mounted_By_Path("/vendor"))
     	      		PartitionManager.UnMount_By_Path("/vendor", false);
     	  }
-    	  
-  } // stat == 0   
+  return status;
+}
+
+bool TWFunc::Patch_Forced_Encryption(void)
+{
+  string path, cmp;
+  bool status = false;
+  DIR *d;
+  struct dirent *de;
+  
+  LOGINFO("OrangeFox: entering Patch_Forced_Encyption()\n");
+  
+  #ifdef OF_DONT_PATCH_ENCRYPTED_DEVICE
+  if (StorageIsEncrypted())
+    {
+  	gui_print("OrangeFox: Storage is already encrypted. Not patching the boot image.\n");
+  	return false;	     
+    }
+  #endif
+   
+  d = opendir(ramdisk.c_str());
+  if (d == NULL)
+    {
+      LOGINFO("Unable to open '%s'\n", ramdisk.c_str());
+      return false;
+    }
+
+  //*** /tmp/orangefox/ramdisk/    
+  while ((de = readdir(d)) != NULL)
+    {
+      usleep (32);
+      cmp = de->d_name;
+      path = ramdisk + "/" + cmp;
+      
+      if (cmp.find("fstab.") != string::npos)
+	{
+	  if (!status)
+	    {
+	      if (Fstab_Has_Encryption_Flag(path))
+	      {  
+		  LOGINFO("OrangeFox: Relevant encryption settings are found in %s\n", path.c_str());
+		  status = true;
+	      }
+	      else
+	      {
+		  LOGINFO("OrangeFox: Relevant encryption settings are not found in %s\n", path.c_str());
+	      }
+	    }
+	  if (Fstab_Has_Encryption_Flag(path))
+	     {
+	          status = true;
+	          TWFunc::Patch_Encryption_Flags(path);
+	     }
+	}
+    } // while
+    
+  closedir(d);  
+
   LOGINFO("OrangeFox: leaving Patch_Forced_Encyption()\n");
   return status;
 }
@@ -3469,7 +3535,6 @@ void TWFunc::Patch_Others(void)
 
 void TWFunc::PrepareToFinish(void)
 {
-
    // unmount stuff
    if (PartitionManager.Is_Mounted_By_Path("/vendor"))
 	PartitionManager.UnMount_By_Path("/vendor", false);
@@ -3528,7 +3593,6 @@ void TWFunc::PrepareToFinish(void)
 
 bool TWFunc::DontPatchBootImage(void)
 {
-
   // check whether to patch on new OrangeFox installations 
   if (New_Fox_Installation == 1)
      { 
@@ -3553,7 +3617,6 @@ bool TWFunc::DontPatchBootImage(void)
 
 void TWFunc::Deactivation_Process(void)
 {
-
 bool patched_verity = false;
 bool patched_crypt = false;
     
@@ -3564,13 +3627,25 @@ bool patched_crypt = false;
      }
    
   // advanced stock replace
-  if (Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
+  if (MIUI_Is_Running())
   	Disable_Stock_Recovery_Replace();
 
+// !patch ROM's fstab
+  if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
+     {
+         patched_crypt = Patch_Forced_Encryption_In_System_Fstab();
+     }
+  
+  if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
+     {
+	patched_verity = Patch_DM_Verity_In_System_Fstab();
+     }
+// !!patch ROM's fstab
+  
   // Should we skip the boot image patches?
   if (DontPatchBootImage() == true)
      {
-     	if (New_Fox_Installation == 1 || Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
+     	if (New_Fox_Installation == 1 || MIUI_Is_Running())
      	   {
 	      gui_print("Not patching boot image on %s. Flash magisk after this.\n", Fox_Current_Device.c_str());
 	   }
@@ -3600,23 +3675,26 @@ bool patched_crypt = false;
 #ifdef OF_USE_MAGISKBOOT
    //LOGINFO("OrangeFox: DM-Verity is handled by PackRepackImage_MagiskBoot(): \n");
 #else
-  // dm-verity   
+  // dm-verity #2
   if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
 	  patched_verity = Patch_DM_Verity();
 	  if (patched_verity)
 	  {
-              DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, 1);
+              //DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, 1);
 	      gui_msg("of_dm_verity=Successfully patched DM-Verity");
 	  }
 	  else
 	  {
+	 #ifdef OF_USE_MAGISKBOOT
+   		//LOGINFO("OrangeFox: Probably nothing left to patch in DM-Verity ... \n");
+	 #else
 	     gui_msg("of_dm_verity_off=DM-Verity is not enabled");
+	 #endif
 	  }
      }
-#endif
 
-  // forced encryption    
+  // forced encryption #2
   if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
 	  patched_crypt = Patch_Forced_Encryption();
@@ -3627,12 +3705,13 @@ bool patched_crypt = false;
 	  else
 	     {
 	 #ifdef OF_USE_MAGISKBOOT
-   		//LOGINFO("OrangeFox: Probably nothing left to patch in Forced Encryption... \n");
+   		//LOGINFO("OrangeFox: Probably nothing left to patch in Forced Encryption ... \n");
 	 #else
 	        gui_msg("of_encryption_off=Forced Encryption is not enabled");
 	 #endif
 	     }
      }
+#endif
 
   // other stuff
   Patch_Others();
