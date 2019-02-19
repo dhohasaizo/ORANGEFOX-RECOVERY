@@ -451,6 +451,101 @@
 				<action function="page">%general_back%</action>
 			</action>
 		</page>
+		
+		<page name="pass_pattern">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>Experement</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>Pattern Password</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>!PASSWORD WILL APPLY W/O CONFIRMATION!</text>
+			</text>
+
+			<image>
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
+				<text>Debug</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row2_3a_y%"/>
+				<text>Pass:</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x_indent%" y="%row3_1a_y%"/>
+				<text>%pass_true%</text>
+			</text>
+
+			<patternpassword>
+				<size name="pass_pattern_grid" default="3"/>
+				<placement x="%pattern_x%" y="%row4_1a_y%" w="%pattern_size%" h="%pattern_size%"/>
+				<dot color="%text_dark%" activecolor="%accent%" radius="%pattern_dot_dia%"/>
+				<line color="%text_dark%" width="%pattern_line_w%"/>
+				<data name="pass_true"/>
+				<actions>
+					<action function="set">use_pass=1</action>
+					<action function="set">pass_notm=0</action>
+					<action function="set">pass_is_pattern=1</action>
+					<action function="page">ext_general</action>
+				</actions>
+			</patternpassword>
+
+			<button style="btn_flat_qw">
+				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+				<text>3x3</text>
+				<action function="set">pass_pattern_grid=3</action>
+			</button>
+
+			<button style="btn_flat_qw">
+				<placement x="286" y="%row_btn1_y%"/>
+				<text>4x4</text>
+				<action function="set">pass_pattern_grid=4</action>
+			</button>
+
+			<button style="btn_flat_qw">
+				<placement x="545" y="%row_btn1_y%"/>
+				<text>5x5</text>
+				<action function="set">pass_pattern_grid=5</action>
+			</button>
+
+			<button style="btn_flat_qw">
+				<placement x="804" y="%row_btn1_y%"/>
+				<text>6x6</text>
+				<action function="set">pass_pattern_grid=6</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<actions>
+					<action function="page">main</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<actions>
+					<action function="page">ext_general</action>
+				</actions>
+			</action>
+		</page>
 
 		<!-- Screen -->
 		<page name="ext_screen">

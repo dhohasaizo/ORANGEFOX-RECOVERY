@@ -10,19 +10,30 @@
 				<action function="stopmtp"/>
 			</action>
 			
+				<!--action function="cmd">
+					stop adbd
+					setprop sys.usb.config charging
+				</action-->
 			<action>
 				<condition var1="use_pass" var2="1"/>
 				<condition var1="pass_open" var2="0"/>
-				<action function="cmd">
-					stop adbd
-					setprop sys.usb.config charging
-				</action>
 				<action function="set">pass_enter=</action>
 				<action function="set">pass_govno=0</action>
 				<action function="page">password_enter</action>
 			</action>
 
 			<action>
+				<condition var1="use_pass" var2="0"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_clear_destination=filemanagerlist</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="use_pass" var2="1"/>
+				<condition var1="pass_open" var2="1"/>
 				<actions>
 					<action function="overlay"/>
 					<action function="set">tw_clear_destination=filemanagerlist</action>

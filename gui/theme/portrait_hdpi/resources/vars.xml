@@ -56,6 +56,8 @@
 		<!-- FRP -->
 		<variable name="use_pass" value="0" persist="1"/>
 		<variable name="pass_true" value="qwerty" persist="1"/>
+		<variable name="pass_is_pattern" value="0" persist="1"/>
+		<variable name="pass_pattern_grid" value="3" persist="1"/>
 		
 		<!-- Backups -->
 		<variable name="tw_backup_list_quick" value="/system;/data;" persist="1"/>

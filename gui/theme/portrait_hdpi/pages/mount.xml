@@ -445,19 +445,19 @@
 			</button>
 
 			<button style="btn_flat_qw">
-				<placement x="303" y="%row_btn1_y%" placement="1"/>
+				<placement x="286" y="%row_btn1_y%"/>
 				<text>4x4</text>
 				<action function="set">tw_gui_pattern_grid_size=4</action>
 			</button>
 
 			<button style="btn_flat_qw">
-				<placement x="579" y="%row_btn1_y%"/>
+				<placement x="545" y="%row_btn1_y%"/>
 				<text>5x5</text>
 				<action function="set">tw_gui_pattern_grid_size=5</action>
 			</button>
 
 			<button style="btn_flat_qw">
-				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+				<placement x="804" y="%row_btn1_y%"/>
 				<text>6x6</text>
 				<action function="set">tw_gui_pattern_grid_size=6</action>
 			</button>
