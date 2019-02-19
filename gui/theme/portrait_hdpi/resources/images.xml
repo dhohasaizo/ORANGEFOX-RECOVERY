@@ -121,6 +121,8 @@
 		<image name="reboot_bootloader" filename="Default/Icons/reboot_bootloader" retainaspect="1"/>
 		<image name="reboot_power" filename="Default/Icons/reboot_power" retainaspect="1"/>
 		<image name="reboot_recovery" filename="Default/Icons/reboot_recovery" retainaspect="1"/>
+		<image name="pass_classic" filename="Default/Icons/pass_classic" retainaspect="1"/>
+		<image name="pass_gesture" filename="Default/Icons/pass_gesture" retainaspect="1"/>
 		
 		<!-- Info -->
 		<image name="icon_info2" filename="Default/Info/icon_info2" retainaspect="1"/>
