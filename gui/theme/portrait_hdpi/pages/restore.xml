@@ -43,6 +43,28 @@
 			
 			<template name="actionbar_storage"/>
 
+			<button>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<actions>
+					<action function="set">restore_back=restore</action>
+					<action function="set">tw_action=cmd</action>
+					<action function="set">tw_action_param=if [ -d "%tw_backups_folder%" ]; then cd %tw_backups_folder% &amp;&amp; rm -rf *; fi;</action>
+					<action function="set">tw_text1={@backups_remove}</action>
+					<action function="set">tw_text2={@backups_remove_all}</action>
+					<action function="set">tw_text4={@del_backup_confirm2}</action>
+					<action function="set">tw_action_text1={@deleting_backup}</action>
+					<action function="set">tw_complete_text1={@backup_deleted}</action>
+					<action function="set">tw_slider_text={@swipe_delete}</action>
+					<action function="page">deletebackup</action>
+				</actions>
+			</button>
+
+			<image>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<image resource="actionbar_delete"/>
+			</image>
+			
 			<action>
 				<condition var1="tw_restore" op="modified"/>
 				<actions>
