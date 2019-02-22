@@ -1,35 +1,84 @@
 <?xml version="1.0"?>
 <recovery>
 	<pages>
-		<page name="fox_ota">
-			<template name="body"/>
+        <page name="fox_ota">
+			<fill color="%unactive_title%">
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_off"/>
+			</image>
+			<fill color="%accent%">
+				<condition var1="fox_support_miui_ota" var2="1"/>
+				<condition var1="fox_include_system_survival" var2="1"/>
+				<condition var1="fox_verify_incremental_ota_signature" var2="1"/>
+				<condition var1="fox_reboot_advanced_stock_recovery_check" var2="1"/>
+				<condition var1="fox_reboot_forced_encryption_check" var2="1"/>
+				<condition var1="fox_reboot_dm_verity_check" var2="1"/>
+				<condition var1="fox_disable_ota_auto_reboot_check" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			<image>
+				<condition var1="fox_support_miui_ota" var2="1"/>
+				<condition var1="fox_include_system_survival" var2="1"/>
+				<condition var1="fox_verify_incremental_ota_signature" var2="1"/>
+				<condition var1="fox_reboot_advanced_stock_recovery_check" var2="1"/>
+				<condition var1="fox_reboot_forced_encryption_check" var2="1"/>
+				<condition var1="fox_reboot_dm_verity_check" var2="1"/>
+				<condition var1="fox_disable_ota_auto_reboot_check" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_on"/>
+			</image>
+			
+			<text style="text_ab_switch">
+				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
+				<text>{@fox_ota_on}</text>
+			</text>
 
-			<template name="ab_without_shadow"/>
+			<button style="bs_btn">
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="set">fox_support_miui_ota=1</action>
+					<action function="set">fox_include_system_survival=1</action>
+					<action function="set">fox_verify_incremental_ota_signature=1</action>
+					<action function="set">fox_reboot_advanced_stock_recovery_check=1</action>
+					<action function="set">fox_reboot_dm_verity_check=1</action>
+					<action function="set">fox_reboot_forced_encryption_check=1</action>
+					<action function="set">fox_disable_ota_auto_reboot_check=1</action>
+				</actions>
+			</button>
+
+			<button style="bs_btn">
+				<condition var1="fox_support_miui_ota" var2="1"/>
+				<condition var1="fox_include_system_survival" var2="1"/>
+				<condition var1="fox_verify_incremental_ota_signature" var2="1"/>
+				<condition var1="fox_reboot_advanced_stock_recovery_check" var2="1"/>
+				<condition var1="fox_reboot_forced_encryption_check" var2="1"/>
+				<condition var1="fox_reboot_dm_verity_check" var2="1"/>
+				<condition var1="fox_disable_ota_auto_reboot_check" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="set">fox_support_miui_ota=0</action>
+					<action function="set">fox_include_system_survival=0</action>
+					<action function="set">fox_verify_incremental_ota_signature=0</action>
+					<action function="set">fox_reboot_advanced_stock_recovery_check=0</action>
+					<action function="set">fox_reboot_forced_encryption_check=0</action>
+					<action function="set">fox_reboot_dm_verity_check=0</action>
+					<action function="set">fox_disable_ota_auto_reboot_check=0</action>
+				</actions>
+			</button>
+		
+            <template name="body"/>
+
+			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
 
-			<image>
-				<condition var1="flat_tbar" op="!=" var2="1"/>
-				<image resource="actionbar_shadow"/>
-				<placement x="0" y="%row2_2_y%"/>
-			</image>
-
-			<text style="text_ab_title">
+            <text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>MIUI OTA</text>
 			</text>
-
-			<image>
-				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="0" y="180"/>
-				<image resource="ota_poster"/>
-			</image>
-
-			<image>
-				<condition var1="fox_support_miui_ota" op="!=" var2="1"/>
-				<placement x="0" y="180"/>
-				<image resource="ota_error"/>
-			</image>
 
 			<!-- Check MIUI Bak file -->
 			<action>
@@ -59,51 +108,49 @@
 			<image>
 				<condition var1="ota_back_file" var2="0"/>
 				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<placement x="%col1_x%" y="%row1_3a_y%"/>
 				<image resource="icon_warning"/>
 			</image>
-			
 			<image>
 				<condition var1="ota_back_file" var2="1"/>
 				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<placement x="%col1_x%" y="%row1_3a_y%"/>
 				<image resource="icon_info"/>
 			</image>
-			
 			<image>
 				<condition var1="fox_support_miui_ota" var2="0"/>
-				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<placement x="%col1_x%" y="%row1_3a_y%"/>
 				<image resource="icon_info"/>
 			</image>
 
 			<text style="text_body2_fail">
 				<condition var1="ota_back_file" var2="0"/>
 				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
+				<placement x="%col1_x_indent%" y="%row1_3a_y%"/>
 				<text>Please flash full MIUI ROM!</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<condition var1="ota_back_file" var2="1"/>
 				<condition var1="fox_support_miui_ota" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
+				<placement x="%col1_x_indent%" y="%row1_3a_y%"/>
 				<text>You are ready to receive updates!</text>
 			</text>
 
 			<text style="text_body2_hl">
 				<condition var1="fox_support_miui_ota" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row2_3_y%"/>
+				<placement x="%col1_x_indent%" y="%row1_3a_y%"/>
 				<text>Enabled custom ROM mode</text>
 			</text>
-
+			
 			<text style="caption">
-				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<placement x="%col1_x%" y="%row2_2a_y%"/>
 				<text>{@fox_ota_settings}</text>
 			</text>
 
-			<listbox style="settingslist">
-				<placement x="0" y="%row3_3_y%" w="%screen_w%" h="%row4_1_y%"/>
-				<listitem name="{@fox_support_miui_ota_chk}">
+            <listbox style="settingslist">
+				<placement x="0" y="%row2_3a_y%" w="%screen_w%" h="%lb_l7%"/>
+				<listitem name="{@fox_support_miui_ota_chk=}">
 					<data variable="fox_support_miui_ota"/>
 				</listitem>	
 				<listitem name="{@fox_include_system_survival_chk}">
@@ -126,34 +173,7 @@
 				</listitem>
 			</listbox>
 
-			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="%row8_2_y%"/>
-				<text>{@fox_ota_off}</text>
-				<actions>
-					<action function="set">fox_support_miui_ota=0</action>
-					<action function="set">fox_include_system_survival=0</action>
-					<action function="set">fox_verify_incremental_ota_signature=0</action>
-					<action function="set">fox_reboot_advanced_stock_recovery_check=0</action>
-					<action function="set">fox_reboot_forced_encryption_check=0</action>
-					<action function="set">fox_disable_ota_auto_reboot_check=0</action>
-				</actions>
-			</button>
-
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="%row8_2_y%" placement="1"/>
-				<text>{@fox_ota_on}</text>
-				<actions>
-					<action function="set">fox_support_miui_ota=1</action>
-					<action function="set">fox_include_system_survival=1</action>
-					<action function="set">fox_verify_incremental_ota_signature=1</action>
-					<action function="set">fox_reboot_advanced_stock_recovery_check=1</action>
-					<action function="set">fox_reboot_dm_verity_check=1</action>
-					<action function="set">fox_reboot_forced_encryption_check=1</action>
-					<action function="set">fox_disable_ota_auto_reboot_check=1</action>
-				</actions>
-			</button>
-
-			<action>
+            <action>
 				<touch key="home"/>
 				<action function="page">main</action>
 			</action>
@@ -162,6 +182,7 @@
 				<touch key="back"/>
 				<action function="page">settings</action>
 			</action>
-		</page>
-	</pages>
+
+        </page>
+    </pages>
 </recovery>
