@@ -3,8 +3,13 @@
 	<pages>
 		<page name="password_enter">
 			<action>
-				<condition var1="pass_is_pattern" var2="1"/>
+				<condition var1="pass_type" var2="1"/>
 				<action function="page">password_enter_pattern</action>
+			</action>
+
+			<action>
+				<condition var1="pass_type" var2="3"/>
+				<action function="page">password_enter_num</action>
 			</action>
 		
 			<template name="body_key"/>
@@ -105,6 +110,109 @@
 			<action>
 				<touch key="back"/>
 				<action function="page">password_enter</action>
+			</action>
+		</page>
+
+		<page name="password_enter_num">
+		
+			<template name="body_num"/>
+
+			<template name="ab_main"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x%" y="%ab_bc_y%"/>
+				<text>{@enter_password_cptn}</text>
+			</text>
+
+			<button>
+				<condition var1="tw_reboot_poweroff" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">tw_back=password_enter_num</action>
+				<action function="set">tw_action_param=poweroff</action>
+				<action function="set">tw_reboot_param=poweroff</action>
+				<action function="page">rebootcheck</action>
+			</button>
+			
+			<button>
+				<condition var1="tw_reboot_poweroff" op="!=" var2="1"/>
+				<condition var1="tw_reboot_system" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">tw_back=password_enter_num</action>
+				<action function="page">reboot_system_routine</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_power_off"/>
+			</image>
+			
+			<image>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+				<text>{@locked_info_1}</text>
+			</text>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@locked_info_2}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<text>{@locked_info_3}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>{@locked_info_4}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<text>{@decrypt_data_enter_pass}</text>
+			</text>
+
+			<input>
+				<condition var1="pass_govno" op="!=" var2="2"/>
+				<placement x="%col1_x%" y="%row3_1_y%" w="%input_width%" h="%input_height%"/>
+				<text>%pass_enter_mask%</text>
+				<data name="pass_enter" mask="*" maskvariable="pass_enter_mask"/>
+				<restrict minlen="0" maxlen="64" />
+				<action function="page">password_check</action>
+			</input>
+
+			<fill color="%accent%">
+				<condition var1="pass_govno" var2="0"/>
+				<placement x="%col1_x%" y="%row3_2_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<fill color="%text_fail%">
+				<condition var1="pass_govno" var2="1"/>
+				<placement x="%col1_x%" y="%row3_2_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<text style="text_input_fail">
+				<condition var1="pass_govno" var2="1"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<text>{@pass_not_match}</text>
+			</text>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">password_enter_num</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">password_enter_num</action>
 			</action>
 		</page>
 		
@@ -311,8 +419,8 @@
 				<actions>
 					<action function="overlay"/>
 					<action function="set">checked_page=pass_select</action>
-					<action function="set">pass_is_pattern_tmp=%pass_is_pattern%</action>
-					<action function="set">pass_is_pattern=0</action>
+					<action function="set">pass_type_tmp=%pass_type%</action>
+					<action function="set">pass_type=0</action>
 					<action function="page">pass_check</action>
 				</actions>
 			</input>
@@ -343,8 +451,8 @@
 		</page>
 
 		<page name="dialog_setpass_num1">
-			<template name="keyboardnum"/>
-
+			<template name="dialog_body_num"/>
+			
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
 				<image resource="dialog_bg"/>
@@ -409,7 +517,7 @@
 		</page>
 
 		<page name="dialog_setpass_num2">
-			<template name="keyboardnum"/>
+			<template name="dialog_body_num"/>
 
 			<button>
 				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
@@ -434,8 +542,8 @@
 				<actions>
 					<action function="overlay"/>
 					<action function="set">checked_page=pass_select</action>
-					<action function="set">pass_is_pattern_tmp=%pass_is_pattern%</action>
-					<action function="set">pass_is_pattern=0</action>
+					<action function="set">pass_type_tmp=%pass_type%</action>
+					<action function="set">pass_type=3</action>
 					<action function="page">pass_check</action>
 				</actions>
 			</input>
@@ -480,7 +588,7 @@
 				<condition var1="pass_new_2" op="!=" var2="%pass_new_1%"/>
 				<actions>
 					<action function="set">pass_notm=1</action>
-					<action function="set">pass_is_pattern=%pass_is_pattern_tmp%</action>
+					<action function="set">pass_type=%pass_type_tmp%</action>
 					<action function="page">%checked_page%</action>
 				</actions>
 			</action>
