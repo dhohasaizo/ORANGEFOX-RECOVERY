@@ -470,9 +470,29 @@
 			</text>
 			<!---->
 
-			<!-- Gesture -->
+			<!-- PIN -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
+				<action function="set">pass_new_1=</action>
+				<action function="set">pass_new_2=</action>
+				<action function="set">pass_notm=0</action>
+				<action function="overlay">dialog_setpass_num1</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row2_y%"/>
+				<image resource="pass_classic"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
+				<text>PIN password</text>
+			</text>
+			<!---->
+
+			<!-- Gesture -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
 				<action function="set">pass_new_1=</action>
 				<action function="set">pass_new_2=</action>
 				<action function="set">pass_notm=0</action>
@@ -481,19 +501,19 @@
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row2_y%"/>
+				<placement x="%col1_x%" y="%set_row3_y%"/>
 				<image resource="pass_gesture"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
 				<text>{@pass_gk}</text>
 			</text>
 			<!---->
 
 			<!-- Disable -->
 			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
 				<action function="set">pass_new_1=</action>
 				<action function="set">pass_new_2=</action>
 				<action function="set">pass_notm=0</action>
@@ -505,13 +525,13 @@
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row3_y%"/>
+				<placement x="%col1_x%" y="%set_row4_y%"/>
 				<condition var1="use_pass" var2="1"/>
 				<image resource="bs_adv_frp"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
 				<condition var1="use_pass" var2="1"/>
 				<text>{@pass_dis}</text>
 			</text>

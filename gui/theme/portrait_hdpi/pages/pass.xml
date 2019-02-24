@@ -342,6 +342,129 @@
 			</action>
 		</page>
 
+		<page name="dialog_setpass_num1">
+			<template name="keyboardnum"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
+				<text>{@enter_password_cptn}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
+				<text>{@set_password}</text>
+			</text>
+
+			<input>
+				<placement x="%bg_storage_hdr_x%" y="%input_encr_y%" w="%input_encr_width%" h="%input_height%"/>
+				<text>%pass_new_1_mask%</text>
+				<data name="pass_new_1" mask="*" maskvariable="pass_new_1_mask"/>
+				<restrict minlen="0" maxlen="64"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="overlay">dialog_setpass_num2</action>
+				</actions>
+			</input>
+
+			<fill color="%accent%">
+				<condition var1="pass_notm" op="!=" var2="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<fill color="%text_fail%">
+				<condition var1="pass_notm" var2="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<text style="text_input_fail">
+				<condition var1="pass_notm" var2="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%"/>
+				<text>{@pass_not_match}</text>
+			</text>
+
+			<button style="btn_dlg">
+				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
+				<text>{@cancel_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="key">back</action>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="set">pass_new_1=</action>
+				<action function="set">pass_new_2=</action>
+				<action function="set">pass_notm=0</action>
+				<action function="overlay"/>
+			</action>
+		</page>
+
+		<page name="dialog_setpass_num2">
+			<template name="keyboardnum"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
+				<text>{@enter_password_cptn}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%bg_storage_hdr_x%" y="%row2_2a_y%"/>
+				<text>{@verifying_pas}</text>
+			</text>
+
+			<input>
+				<placement x="%bg_storage_hdr_x%" y="%input_encr_y%" w="%input_encr_width%" h="%input_height%"/>
+				<text>%pass_new_2_mask%</text>
+				<data name="pass_new_2" mask="*" maskvariable="pass_new_2_mask"/>
+				<restrict minlen="0" maxlen="64"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="set">checked_page=pass_select</action>
+					<action function="set">pass_is_pattern_tmp=%pass_is_pattern%</action>
+					<action function="set">pass_is_pattern=0</action>
+					<action function="page">pass_check</action>
+				</actions>
+			</input>
+
+			<fill color="%accent%">
+				<placement x="%bg_storage_hdr_x%" y="%row3_1a_y%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<button style="btn_dlg">
+				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
+				<text>{@cancel_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="key">back</action>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="set">pass_new_1=</action>
+				<action function="set">pass_new_2=</action>
+				<action function="set">pass_notm=0</action>
+				<action function="overlay"/>
+			</action>
+		</page>
+
 		<page name="pass_check">
 			<action>
 				<condition var1="pass_new_2" op="=" var2="%pass_new_1%"/>
