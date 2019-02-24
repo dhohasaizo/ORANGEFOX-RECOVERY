@@ -146,63 +146,40 @@
 			</text>
 			<!---->
 
+			<!-- Info -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row8_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">about</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_set_x%" y="%set_row8_y%"/>
+				<image resource="bs_btn_set_about"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
+				<text>{@about_hdr}</text>
+			</text>
+			<!---->
+
 			<!-- Debug -->
 			<button style="bs_btn">
-				<condition var1="debug_open" var2="5"/>
-				<placement x="0" y="%set_row8_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<condition var1="debug_mode" var2="1"/>
+				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">debug</action>
 			</button>
 			
 			<image>
-				<condition var1="debug_open" var2="5"/>
-				<placement x="%col1_set_x%" y="%set_row8_y%"/>
+				<condition var1="debug_mode" var2="1"/>
+				<placement x="%col1_set_x%" y="%set_row9_y%"/>
 				<image resource="bs_btn_set_bug"/>
 			</image>
 			
 			<text style="bs_text">
-				<condition var1="debug_open" var2="5"/>
-				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
-				<text>{@dbg}</text>
-			</text>
-			<!---->
-
-			<!-- Info -->
-			<button style="bs_btn">
-				<condition var1="debug_open" op="!=" var2="5"/>
-				<placement x="0" y="%set_row8_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">about</action>
-			</button>
-			
-			<image>
-				<condition var1="debug_open" op="!=" var2="5"/>
-				<placement x="%col1_set_x%" y="%set_row8_y%"/>
-				<image resource="bs_btn_set_about"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="debug_open" op="!=" var2="5"/>
-				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
-				<text>{@about_hdr}</text>
-			</text>
-			<!---->
-
-			<!-- Info -->
-			<button style="bs_btn">
-				<condition var1="debug_open" var2="5"/>
-				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">about</action>
-			</button>
-			
-			<image>
-				<condition var1="debug_open" var2="5"/>
-				<placement x="%col1_set_x%" y="%set_row9_y%"/>
-				<image resource="bs_btn_set_about"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="debug_open" var2="5"/>
+				<condition var1="debug_mode" var2="1"/>
 				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
-				<text>{@about_hdr}</text>
+				<text>{@dbg}</text>
 			</text>
 			<!---->
 
