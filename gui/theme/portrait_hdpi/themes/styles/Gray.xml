@@ -50,10 +50,6 @@
 		<image name="dialog_bg" filename="Default/Dialog/dialog_bg"/>
 		<image name="menu_sort" filename="Default/Dialog/menu_sort"/>
 		<image name="snackbar" filename="Default/Dialog/snackbar"/>
-
-		<!-- Poster -->
-		<image name="ota_poster" filename="Default/Poster/ota_poster" retainaspect="1"/>
-		<image name="ota_error" filename="Default/Poster/ota_error" retainaspect="1"/>
 		
 		<!-- ota -->
 		<image name="ota_icon" filename="Default/FullscreenIcons/ota_icon" retainaspect="1"/>
