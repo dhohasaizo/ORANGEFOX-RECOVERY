@@ -185,6 +185,244 @@
 			</image>
 		</template>
 		
+		<template name="page_new_pass_2">
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@enter_password_cptn}</text>
+			</text>
+			
+			<image>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+				<text>{@new_pass_info_1}</text>
+			</text>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@new_pass_info_2}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<text>{@new_pass_info_3}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>{@new_pass_info_4_2}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<text>{@decrypt_data_enter_pass}</text>
+			</text><fill color="%accent%">
+				<placement x="%col1_x%" y="%row3_2_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">pass_select</action>
+			</action>
+		</template>
+		
+		<template name="page_new_pass">
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@enter_password_cptn}</text>
+			</text>
+			
+			<image>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+				<text>{@new_pass_info_1}</text>
+			</text>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@new_pass_info_2}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<text>{@new_pass_info_3}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>{@new_pass_info_4}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<text>{@decrypt_data_enter_pass}</text>
+			</text><fill color="%accent%">
+				<condition var1="pass_notm" var2="0"/>
+				<placement x="%col1_x%" y="%row3_2_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<fill color="%text_fail%">
+				<condition var1="pass_notm" var2="1"/>
+				<placement x="%col1_x%" y="%row3_2_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<text style="text_input_fail">
+				<condition var1="pass_notm" var2="1"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<text>{@pass_not_match}</text>
+			</text>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">pass_select</action>
+			</action>
+		</template>
+		
+		
+		<template name="page_enter_pass">
+			<template name="body_nav"/>
+			
+			<template name="ab_main"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x%" y="%ab_bc_y%"/>
+				<text>{@enter_password_cptn}</text>
+			</text>
+
+			<button>
+				<condition var1="tw_reboot_poweroff" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">tw_back=password_enter</action>
+				<action function="set">tw_action_param=poweroff</action>
+				<action function="set">tw_reboot_param=poweroff</action>
+				<action function="page">rebootcheck</action>
+			</button>
+			
+			<button>
+				<condition var1="tw_reboot_poweroff" op="!=" var2="1"/>
+				<condition var1="tw_reboot_system" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">tw_back=password_enter</action>
+				<action function="page">reboot_system_routine</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_power_off"/>
+			</image>
+			
+			<image>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+				<text>{@locked_info_1}</text>
+			</text>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@locked_info_2}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<condition var1="pass_type" op="!=" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<text>{@locked_info_3}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<condition var1="pass_type" var2="1"/>
+				<condition var1="pass_govno" op="!=" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<text>{@locked_info_3}</text>
+			</text>
+			
+			<text style="text_body2_hl">
+				<condition var1="pass_type" op="!=" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>{@locked_info_4}</text>
+			</text>
+			
+			<text style="text_body2_hl">
+				<condition var1="pass_type" var2="1"/>
+				<condition var1="pass_govno" op="!=" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>{@locked_info_4_gk}</text>
+			</text>
+			
+			<text style="text_body2_fail">
+				<condition var1="pass_type" var2="1"/>
+				<condition var1="pass_govno" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>{@pass_not_match}</text>
+			</text>
+		</template>
+		
+		<template name="page_enter_pass_txt">
+			<template name="page_enter_pass"/>
+			
+			<text style="caption_hl">
+				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<text>{@decrypt_data_enter_pass}</text>
+			</text>
+
+			<input>
+				<placement x="%col1_x%" y="%row3_1_y%" w="%input_width%" h="%input_height%"/>
+				<text>%pass_enter_mask%</text>
+				<data name="pass_enter" mask="*" maskvariable="pass_enter_mask"/>
+				<restrict minlen="0" maxlen="64" />
+				<action function="page">password_check</action>
+			</input>
+
+			<fill color="%accent%">
+				<condition var1="pass_govno" var2="0"/>
+				<placement x="%col1_x%" y="%row3_2_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<fill color="%text_fail%">
+				<condition var1="pass_govno" var2="1"/>
+				<placement x="%col1_x%" y="%row3_2_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<text style="text_input_fail">
+				<condition var1="pass_govno" var2="1"/>
+				<placement x="%col1_x%" y="%row3_2_y%"/>
+				<text>{@pass_not_match}</text>
+			</text>
+		</template>
+		
 		<template name="busy_screen">
 			<background color="%background%"/>
 			

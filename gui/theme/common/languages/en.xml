@@ -1029,6 +1029,8 @@
 		<string name="orangefox_msg2">[OrangeFox]: Welcome!</string>
 		<string name="orangefox_msg3">[Version]: {1}</string>
 		<string name="orangefox_msg4">[Build]: {1}</string>
+		<string name="unpack">Unpack</string>
+		<string name="repack">Repack</string>
 
 		<!-- Customization -->
 		<string name="fm_icons_simple">Make file icons bigger</string>
@@ -1072,6 +1074,8 @@
 		<string name="pass_gk">Gesture key</string>
 		<string name="pass_classic">Text password</string>
 		<string name="pass_dis">Disable password</string>
+		<string name="pass_pin">PIN Code</string>
+		
 		<string name="locked_info_1">Recovery is protected against unauthorized</string>
 		<string name="locked_info_2">access.</string>
 		<string name="locked_info_3">To use main recovery features</string>
@@ -1084,6 +1088,8 @@
 		<string name="new_pass_info_3">unauthorized access.</string>
 		<string name="new_pass_info_4">You need to enter your password twice.</string>
 		<string name="new_pass_info_4_gk">You need to draw gesture key twice.</string>
+		<string name="new_pass_info_4_2">Enter your password again.</string>
+		<string name="new_pass_info_4_2_gk">Draw gesture key again.</string>
 		
 		
 		<!-- Utilities -->

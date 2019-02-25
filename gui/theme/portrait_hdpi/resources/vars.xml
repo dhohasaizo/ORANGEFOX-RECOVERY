@@ -56,8 +56,7 @@
 		<!-- FRP -->
 		<variable name="use_pass" value="0" persist="1"/>
 		<variable name="pass_true" value="qwerty" persist="1"/>
-		<variable name="pass_is_pattern" value="0" persist="1"/>
-		<variable name="pass_pattern_grid" value="3" persist="1"/>
+		<variable name="pass_type" value="0" persist="1"/>
 		
 		<!-- Backups -->
 		<variable name="tw_backup_list_quick" value="/system;/data;" persist="1"/>
@@ -94,6 +93,7 @@
 		<variable name="include_bugreport" value="0"/>
 		<variable name="tw_install_reboot" value="0"/>
 		<variable name="needs_repack" value="0"/>
+		<variable name="secret_features" value="0"/>
 		
 		<!-- Placement -->
 		<variable name="cutout_w" value="%status_h%-72"/>
@@ -119,6 +119,7 @@
 		<variable name="nav_panel_h" value="312"/> <!-- 168+navbar -->
 		<variable name="nav_panel_id" value="0"/>
 		<variable name="nav_panel_y" value="%screen_h%-312"/>
+		<variable name="ee_y" value="%screen_h%-486"/>
 		<variable name="nav_icon_y" value="%screen_h%-256"/>
 		<variable name="nav_text_y" value="%screen_h%-193"/>
 		<variable name="nav_item_y" value="%screen_h%-228"/>
@@ -422,7 +423,7 @@
 		<variable name="slider_y_l" value="%screen_h%-202"/>
 		<variable name="slider_text_y_l" value="%screen_h%-281"/>
 		
-		<!-- Decrypt (graphical key) -->
+		<!-- Decrypt (gesture key) -->
 		<variable name="pattern_x" value="216"/>
 		<variable name="pattern_dot_dia" value="32"/>
 		<variable name="pattern_line_w" value="12"/>

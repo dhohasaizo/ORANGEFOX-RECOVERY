@@ -1124,6 +1124,8 @@
 		<string name="orangefox_msg2">[OrangeFox]: Добро пожаловать!</string>
 		<string name="orangefox_msg3">[Версия]: {1}</string>
 		<string name="orangefox_msg4">[Сборка]: {1}</string>
+		<string name="unpack">Распаковать</string>
+		<string name="repack">Запаковать</string>
 
 		<!-- Temp -->
 		<string name="fox_wipe_substratum_overlays">Слои Substratum</string>
@@ -1164,6 +1166,7 @@
 		<string name="pass_gk">Графический ключ</string>
 		<string name="pass_classic">Обычный пароль</string>
 		<string name="pass_dis">Отключить пароль</string>
+		<string name="pass_pin">PIN код</string>
 		<string name="locked_info_1">OrangeFox защищен от</string>
 		<string name="locked_info_2">несанкционированного доступа.</string>
 		<string name="locked_info_3">Чтобы воспользоваться OrangeFox,</string>
