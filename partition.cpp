@@ -34,8 +34,7 @@
 #include <sys/param.h>
 #include <fcntl.h>
 
-#include "cutils/properties.h" 
-
+#include "cutils/properties.h"
 #include "libblkid/include/blkid.h"
 #include "variables.h"
 #include "twcommon.h"
@@ -179,6 +178,7 @@ const struct flag_list tw_flags[] = {
 	{ "defaults",               TWFLAG_DEFAULTS },
 	{ "display=",               TWFLAG_DISPLAY },
 	{ "encryptable=",           TWFLAG_ENCRYPTABLE },
+	{ "fileencryption=",        TWFLAG_FILEENCRYPTION },
 	{ "flashimg",               TWFLAG_FLASHIMG },
 	{ "forceencrypt=",          TWFLAG_FORCEENCRYPT },
 	{ "fsflags=",               TWFLAG_FSFLAGS },

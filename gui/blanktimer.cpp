@@ -16,8 +16,6 @@
         along with TWRP.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <iostream>
-using namespace std;
 #include <string>
 #include <pthread.h>
 #include <sys/time.h>
