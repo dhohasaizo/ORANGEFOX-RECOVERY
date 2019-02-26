@@ -63,6 +63,22 @@
 			<!-- Customization -->
 			<button style="bs_btn">
 				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">needs_repack=0</action>
+				<action function="set">update_fonts=0</action>
+				<action function="set">update_navbar=0</action>
+				<action function="set">update_accent=0</action>
+				<action function="set">update_style=0</action>
+				
+				<action function="set">navbar_disable_tmp=%navbar_disable%</action>
+				<action function="set">navbar_disable_add_tmp=%navbar_disable_add%</action>
+				
+				<action function="set">theme_font_tmp=%theme_font%</action>
+				<action function="set">theme_sec_font_tmp=%theme_sec_font%</action>
+				<action function="set">theme_font_size_tmp=%theme_font_size%</action>
+				
+				<action function="set">theme_accent_tmp=%theme_accent%</action>
+				<action function="set">theme_style_tmp=%theme_style%</action>
+				
 				<action function="page">ext_custom</action>
 			</button>
 			

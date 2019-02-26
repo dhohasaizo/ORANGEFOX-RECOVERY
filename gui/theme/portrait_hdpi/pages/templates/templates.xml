@@ -462,13 +462,13 @@
 			<text style="text_body1">
 				<condition var1="needs_repack" var2="1"/>
 				<placement x="%snackbar_text_x%" y="%snackbar_text_y%"/>
-				<text>font (%update_fonts%) / nav (%update_navbar%) / accent (%update_accent%) / style (%update_style%)</text>
+				<text>{@theme_engine_update}</text>
 			</text>
 			
 			<button style="btn_dlg_hl">
 				<condition var1="needs_repack" var2="1"/>
 				<placement x="%snackbar_button_x%" y="%snackbar_button_y%"/>
-				<text>{@update_btn}</text>
+				<text>{@apply_btn}</text>
 				<action function="set">needs_repack=0</action>
 				<action function="page">apply_changes</action>
 			</button>

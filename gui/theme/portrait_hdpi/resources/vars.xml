@@ -19,6 +19,7 @@
 		<variable name="update_navbar" value="0"/>
 		<variable name="update_accent" value="0"/>
 		<variable name="update_style" value="0"/>
+		<variable name="update_combined" value="0"/>
 
 		<variable name="prebuild_action" value="0"/>
 		
@@ -401,6 +402,7 @@
 		<variable name="snackbar_text_x" value="72"/>
 		<variable name="snackbar_text_y" value="%screen_h%-268"/>
 		<variable name="snackbar_button_x" value="776"/>
+		<variable name="snackbar_button_2_x" value="512"/>
 		<variable name="snackbar_button_y" value="%screen_h%-294"/>
 		<variable name="dlg_input_cap" value="570"/>
 		<variable name="dlg_input_line" value="690"/>
