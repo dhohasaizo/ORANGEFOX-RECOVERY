@@ -368,6 +368,7 @@
 		<variable name="console_width" value="984"/>
 		<variable name="console_height" value="1620-%cutout_w%"/>
 		<variable name="console_action_height" value="900"/>
+		<variable name="console_action_height_big" value="1330"/>
 		<variable name="terminal_y" value="280+%cutout_w%"/>
 		<variable name="terminal_width" value="1032"/>
 		<variable name="prep_term_1" value="%screen_h%-1210"/>
