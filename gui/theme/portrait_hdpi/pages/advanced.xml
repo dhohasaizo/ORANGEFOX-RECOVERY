@@ -303,7 +303,7 @@
 			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>Wipe Substratum overlays</text>
+				<text>{@subs_wipe}</text>
 			</text>
 			<!---->
 
@@ -399,7 +399,7 @@
 			<text style="caption">
 				<condition var1="magisk_core" op="!=" var2="1"/>
 				<placement x="%col1_x%" y="%row3_3_y%"/>
-				<text>Modules</text>
+				<text>{@mm_modules}</text>
 			</text>
 
 			<fileselector style="fileselector_b">
@@ -453,18 +453,6 @@
 				<text>Magisk Core</text>
 			</text>
 
-			<button>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
-				<action function="cmd">mmgui unmnt</action>
-				<action function="page">advanced</action>
-			</button>
-
-			<image>
-				<placement x="%ab_btn1_x%" y="%ab_y%"/>
-				<image resource="actionbar_cancel"/>
-			</image>
-
 			<image>
 				<image resource="actionbar_shadow"/>
 				<condition var1="flat_tbar" op="!=" var2="1"/>
@@ -484,7 +472,7 @@
 
 			<text style="text_dlg_title">
 				<placement x="%btn_raised_left_x%" y="450"/>
-				<text>Magisk version: </text>
+				<text>{@mm_ver}: </text>
 			</text>
 
 			<fileselector>
@@ -546,6 +534,18 @@
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>Magisk Manager</text>
 			</text>
+
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="cmd">mmgui unmnt</action>
+				<action function="page">advanced</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_cancel"/>
+			</image>
 
 			<action>
 				<condition var1="mmgui_file" op="modified"/>
@@ -1396,16 +1396,26 @@
 
 				<text style="text_ab_title">
 					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>Wipe Substratum overlays</text>
+					<text>{@subs_wipe}</text>
 				</text>
-
+				
+				<text style="caption">
+					<placement x="%col1_x%" y="%row1_1_y%"/>
+					<text>{@subs_method}</text>
+				</text>
+				
 				<listbox>
 					<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l5%"/>
 					<data name="tw_action_param"/>
-					<listitem name="SubstratumRescue">SubstratumRescue_Legacy.zip</listitem>
-					<listitem name="SubstratumRescue_Legacy">SubstratumRescue.zip</listitem>
+					<listitem name="RRO (Legacy)">SubstratumRescue_Legacy.zip</listitem>
+					<listitem name="OMS">SubstratumRescue.zip</listitem>
 				</listbox>
 
+				<text style="caption">
+					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+					<text>{@swipe_wipe}</text>
+				</text>
+				
 				<slider style="slider_action">
 					<placement x="%center_x%" y="%slider_y%" placement="5"/>
 					<actions>

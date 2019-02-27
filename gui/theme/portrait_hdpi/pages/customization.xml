@@ -13,6 +13,33 @@
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@settings_ui}</text>
 			</text>
+			
+			<button>
+				<condition var1="needs_repack" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">needs_repack=0</action>
+				<action function="set">update_fonts=0</action>
+				<action function="set">update_navbar=0</action>
+				<action function="set">update_accent=0</action>
+				<action function="set">update_style=0</action>
+				
+				<action function="set">navbar_disable_tmp=%navbar_disable%</action>
+				<action function="set">navbar_disable_add_tmp=%navbar_disable_add%</action>
+				
+				<action function="set">theme_font_tmp=%theme_font%</action>
+				<action function="set">theme_sec_font_tmp=%theme_sec_font%</action>
+				<action function="set">theme_font_size_tmp=%theme_font_size%</action>
+				
+				<action function="set">theme_accent_tmp=%theme_accent%</action>
+				<action function="set">theme_style_tmp=%theme_style%</action>
+			</button>
+
+			<image>
+				<condition var1="needs_repack" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_reset"/>
+			</image>
 
 			<!-- Navbar -->
 			<button style="bs_btn">
@@ -95,7 +122,7 @@
 			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>Theme</text>
+				<text>{@theme_hdr}</text>
 			</text>
 			<!-- -->
 
@@ -186,14 +213,14 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row3_1a_y%"/>
-				<text>Battery icon</text>
+				<text>{@status_battery_style}</text>
 			</text>
 
 			<listbox>
 				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l2%"/>
 				<data name="style_battery"/>
 				<listitem name="Pie">2</listitem>
-				<listitem name="Circle">1</listitem>
+				<listitem name="{@status_battery_circle}">1</listitem>
 			</listbox>
 
 			<action>
@@ -369,22 +396,22 @@
 			<template name="body"/>
 
 			<fill color="%accent%">
-				<condition var1="navbar_disable" var2="0"/>
+				<condition var1="navbar_disable_tmp" var2="0"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 			</fill>
 			<fill color="%unactive_title%">
-				<condition var1="navbar_disable" var2="1"/>
+				<condition var1="navbar_disable_tmp" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 			</fill>
 
 			<image>
-				<condition var1="navbar_disable" var2="1"/>
+				<condition var1="navbar_disable_tmp" var2="1"/>
 				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
 				<image resource="switch_off"/>
 			</image>
 			
 			<image>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
 				<image resource="switch_on"/>
 			</image>
@@ -395,22 +422,22 @@
 			</text>
 
 			<button style="bs_btn">
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
-					<action function="set">navbar_disable=1</action>
-					<action function="set">navbar_disable_add=144</action>
+					<action function="set">navbar_disable_tmp=1</action>
+					<action function="set">navbar_disable_add_tmp=144</action>
 					<action function="set">needs_repack=1</action>
 					<action function="set">update_navbar=1</action>
 				</actions>
 			</button>
 
 			<button style="bs_btn">
-				<condition var1="navbar_disable" var2="1"/>
+				<condition var1="navbar_disable_tmp" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
-					<action function="set">navbar_disable=0</action>
-					<action function="set">navbar_disable_add=0</action>
+					<action function="set">navbar_disable_tmp=0</action>
+					<action function="set">navbar_disable_add_tmp=0</action>
 					<action function="set">needs_repack=1</action>
 					<action function="set">update_navbar=1</action>
 				</actions>
@@ -427,13 +454,13 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_3a_y%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				<text>{@settings_ui_style}</text>
 			</text>
 
 			<listbox>
 				<placement x="0" y="%row2_1a_y%" w="%screen_w%" h="%lb_l3%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				<data name="nougat"/>
 				<listitem name="{@cust_navbar_cls}">0</listitem>
 				<listitem name="{@cust_navbar_noug}">1</listitem>
@@ -442,45 +469,45 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_1_y%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				<text>{@settings_ui_color}</text>
 			</text>
 
 			<listbox>
 				<placement x="0" y="%row4_2_y%" w="%screen_w%" h="%lb_l4%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				<data name="navbar_bkg"/>
 				<listitem name="{@fm_none}">0</listitem>
 				<listitem name="{@dark_nav}">3</listitem>
 				<listitem name="{@cust_navbar_accent}">1</listitem>
-				<listitem name="{@cust_navbar_black}">2<condition var1="theme_style" op="!=" var2="Black"/>
+				<listitem name="{@cust_navbar_black}">2<condition var1="theme_style_tmp" op="!=" var2="Black"/>
 				</listitem>
 			</listbox>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row6_3_y%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				<text>{@cust_oth}</text>
 			</text>
 
 			<listbox style="settingslist">
 				<placement x="0" y="%row7_1_y%" w="%screen_w%" h="%lb_l3%"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				<listitem name="{@cust_navbar_white}">
 					<condition var1="navbar_bkg" op="!=" var2="1"/>
-					<condition var1="theme_style_main" op="!=" var2="Light"/>
+					<condition var1="theme_style_tmp_main" op="!=" var2="Light"/>
 					<data variable="navbar_accent"/>
 				</listitem>
 				<listitem name="{@cust_navbar_white}">
 					<condition var1="navbar_bkg" op="!=" var2="1"/>
 					<condition var1="nougat" op="!=" var2="3"/>
-					<condition var1="theme_style_main" var2="Light"/>
+					<condition var1="theme_style_tmp_main" var2="Light"/>
 					<condition var1="theme_background" var2="on"/>
 					<data variable="navbar_accent"/>
 				</listitem>
 				<listitem name="{@cust_navbar_white}">
 					<condition var1="navbar_bkg" var2="2"/>
-					<condition var1="theme_style_main" var2="Light"/>
+					<condition var1="theme_style_tmp_main" var2="Light"/>
 					<data variable="navbar_accent"/>
 				</listitem>
 				<listitem name="{@rev_navbar_chk}">
@@ -536,126 +563,126 @@
 			<listbox>
 				<placement x="0" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font1" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font"/>
+				<data name="theme_font_tmp"/>
 				<listitem name="Roboto">Roboto</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="0" y="%row1_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font2" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font"/>
+				<data name="theme_font_tmp"/>
 				<listitem name="Roboto Slab">RobotoSlab</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="0" y="%row2_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font3" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font"/>
+				<data name="theme_font_tmp"/>
 				<listitem name="Google Sans">GoogleSans</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="0" y="%row2_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font4" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font"/>
+				<data name="theme_font_tmp"/>
 				<listitem name="Samsung Sans">SamsungSans</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="0" y="%row3_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font5" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font"/>
+				<data name="theme_font_tmp"/>
 				<listitem name="Choco Cooky">Chococooky</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="0" y="%row3_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font6" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font"/>
+				<data name="theme_font_tmp"/>
 				<listitem name="Cool Jazz">Cooljazz</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="0" y="%row4_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font7" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font"/>
+				<data name="theme_font_tmp"/>
 				<listitem name="Bender">Bender</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="0" y="%row4_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font8" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font"/>
+				<data name="theme_font_tmp"/>
 				<listitem name="Amatic">Amatic</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="0" y="%row5_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font9" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_font"/>
+				<data name="theme_font_tmp"/>
 				<listitem name="Angry Birds">AngryBirds</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="%col2_x%" y="%row1_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font1" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font"/>
+				<data name="theme_sec_font_tmp"/>
 				<listitem name="Roboto">Roboto</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="%col2_x%" y="%row1_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font2" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font"/>
+				<data name="theme_sec_font_tmp"/>
 				<listitem name="Roboto Slab">RobotoSlab</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="%col2_x%" y="%row2_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font3" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font"/>
+				<data name="theme_sec_font_tmp"/>
 				<listitem name="Google Sans">GoogleSans</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="%col2_x%" y="%row2_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font4" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font"/>
+				<data name="theme_sec_font_tmp"/>
 				<listitem name="Samsung Sans">SamsungSans</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="%col2_x%" y="%row3_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font5" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font"/>
+				<data name="theme_sec_font_tmp"/>
 				<listitem name="Choco Cooky">Chococooky</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="%col2_x%" y="%row3_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font6" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font"/>
+				<data name="theme_sec_font_tmp"/>
 				<listitem name="Cool Jazz">Cooljazz</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="%col2_x%" y="%row4_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font7" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font"/>
+				<data name="theme_sec_font_tmp"/>
 				<listitem name="Bender">Bender</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="%col2_x%" y="%row4_3a_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font8" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font"/>
+				<data name="theme_sec_font_tmp"/>
 				<listitem name="Amatic">Amatic</listitem>
 			</listbox>
 			
 			<listbox>
 				<placement x="%col2_x%" y="%row5_2_y%" w="%listbox_tz_width_2%" h="%lb_l1%"/>
 				<font resource="font9" spacing="%fileselector_spacing%" color="%text%" />
-				<data name="theme_sec_font"/>
+				<data name="theme_sec_font_tmp"/>
 				<listitem name="Angry Birds">AngryBirds</listitem>
 			</listbox>
 			
@@ -674,13 +701,13 @@
 			</button-->
 			
 			<action>
-				<condition var1="theme_font" op="modified"/>
+				<condition var1="theme_font_tmp" op="modified"/>
 				<action function="set">needs_repack=1</action>
 				<action function="set">update_fonts=1</action>
 			</action>
 			
 			<action>
-				<condition var1="theme_sec_font" op="modified"/>
+				<condition var1="theme_sec_font_tmp" op="modified"/>
 				<action function="set">needs_repack=1</action>
 				<action function="set">update_fonts=1</action>
 			</action>
@@ -688,18 +715,18 @@
 			<!-- Font Size -->
 			<text style="caption">
 				<placement x="%col1_x%" y="%row6_1_y%" />
-				<text>Font size</text>
+				<text>{@font_size}</text>
 			</text>
 
 			<listbox>
 				<placement x="0" y="%row6_2_y%" w="%screen_w%" h="%lb_l2%"/>
-				<data name="theme_font_size"/>
-				<listitem name="Normal">n</listitem>
-				<listitem name="Small">s</listitem>
+				<data name="theme_font_size_tmp"/>
+				<listitem name="{@font_norm}">n</listitem>
+				<listitem name="{@font_small}">s</listitem>
 			</listbox>
 
 			<action>
-				<condition var1="theme_font_size" op="modified"/>
+				<condition var1="theme_font_size_tmp" op="modified"/>
 				<action function="set">needs_repack=1</action>
 				<action function="set">update_fonts=1</action>
 			</action>
@@ -783,7 +810,7 @@
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Theme</text>
+				<text>{@theme_hdr}</text>
 			</text>
 			
 			<text style="caption">
@@ -795,22 +822,22 @@
 			<!-- Black -->
 			<button>
 				<placement x="30" y="360"/>
-				<condition var1="theme_accent" op="!=" var2="Black"/>
+				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
 				<image resource="style_gray"/>
-				<action function="set">theme_style=Gray</action>
+				<action function="set">theme_style_tmp=Gray</action>
 			</button>
 			
 			<button>
 				<placement x="30" y="360"/>
-				<condition var1="theme_accent" var2="Black"/>
+				<condition var1="theme_accent_tmp" var2="Black"/>
 				<image resource="style_gray"/>
-				<action function="set">theme_style=Gray</action>
-				<action function="set">theme_accent=Gray</action>
+				<action function="set">theme_style_tmp=Gray</action>
+				<action function="set">theme_accent_tmp=Gray</action>
 			</button>
 
 			<image>
 				<placement x="30" y="360"/>
-				<condition var1="theme_style" var2="Gray"/>
+				<condition var1="theme_style_tmp" var2="Gray"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
@@ -818,22 +845,22 @@
 			<!-- Gray -->
 			<button>
 				<placement x="285" y="360"/>
-				<condition var1="theme_accent" op="!=" var2="Black"/>
+				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
 				<image resource="style_black"/>
-				<action function="set">theme_style=Black</action>
+				<action function="set">theme_style_tmp=Black</action>
 			</button>
 			
 			<button>
 				<placement x="285" y="360"/>
-				<condition var1="theme_accent" var2="Black"/>
+				<condition var1="theme_accent_tmp" var2="Black"/>
 				<image resource="style_black"/>
-				<action function="set">theme_style=Black</action>
-				<action function="set">theme_accent=Gray</action>
+				<action function="set">theme_style_tmp=Black</action>
+				<action function="set">theme_accent_tmp=Gray</action>
 			</button>
 
 			<image>
 				<placement x="285" y="360"/>
-				<condition var1="theme_style" var2="Black"/>
+				<condition var1="theme_style_tmp" var2="Black"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
@@ -841,22 +868,22 @@
 			<!-- Light -->
 			<button>
 				<placement x="540" y="360"/>
-				<condition var1="theme_accent" op="!=" var2="Gray"/>
+				<condition var1="theme_accent_tmp" op="!=" var2="Gray"/>
 				<image resource="style_light"/>
-				<action function="set">theme_style=Light</action>
+				<action function="set">theme_style_tmp=Light</action>
 			</button>
 			
 			<button>
 				<placement x="540" y="360"/>
-				<condition var1="theme_accent" var2="Gray"/>
+				<condition var1="theme_accent_tmp" var2="Gray"/>
 				<image resource="style_light"/>
-				<action function="set">theme_style=Light</action>
-				<action function="set">theme_accent=Black</action>
+				<action function="set">theme_style_tmp=Light</action>
+				<action function="set">theme_accent_tmp=Black</action>
 			</button>
 
 			<image>
 				<placement x="540" y="360"/>
-				<condition var1="theme_style" var2="Light"/>
+				<condition var1="theme_style_tmp" var2="Light"/>
 				<image resource="style_apply_black"/>
 			</image>
 			<!-- -->
@@ -864,22 +891,22 @@
 			<!-- Light classic -->
 			<button>
 				<placement x="795" y="360"/>
-				<condition var1="theme_accent" op="!=" var2="Black"/>
+				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
 				<image resource="style_light_c"/>
-				<action function="set">theme_style=Light_classic</action>
+				<action function="set">theme_style_tmp=Light_classic</action>
 			</button>
 			
 			<button>
 				<placement x="795" y="360"/>
-				<condition var1="theme_accent" var2="Black"/>
+				<condition var1="theme_accent_tmp" var2="Black"/>
 				<image resource="style_light_c"/>
-				<action function="set">theme_style=Light_classic</action>
-				<action function="set">theme_accent=Gray</action>
+				<action function="set">theme_style_tmp=Light_classic</action>
+				<action function="set">theme_accent_tmp=Gray</action>
 			</button>
 			
 			<image>
 				<placement x="795" y="360"/>
-				<condition var1="theme_style" var2="Light_classic"/>
+				<condition var1="theme_style_tmp" var2="Light_classic"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
@@ -894,11 +921,11 @@
 			<button>
 				<placement x="30" y="720"/>
 				<image resource="color_fox"/>
-				<action function="set">theme_accent=Orange</action>
+				<action function="set">theme_accent_tmp=Orange</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Orange"/>
+				<condition var1="theme_accent_tmp" var2="Orange"/>
 				<placement x="30" y="720"/>
 				<image resource="style_apply"/>
 			</image>
@@ -908,11 +935,11 @@
 			<button>
 				<placement x="285" y="720"/>
 				<image resource="color_blue"/>
-				<action function="set">theme_accent=Blue</action>
+				<action function="set">theme_accent_tmp=Blue</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Blue"/>
+				<condition var1="theme_accent_tmp" var2="Blue"/>
 				<placement x="285" y="720"/>
 				<image resource="style_apply"/>
 			</image>
@@ -922,11 +949,11 @@
 			<button>
 				<placement x="540" y="720"/>
 				<image resource="color_cyan"/>
-				<action function="set">theme_accent=Teal</action>
+				<action function="set">theme_accent_tmp=Teal</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Teal"/>
+				<condition var1="theme_accent_tmp" var2="Teal"/>
 				<placement x="540" y="720"/>
 				<image resource="style_apply"/>
 			</image>
@@ -934,29 +961,29 @@
 
 			<!-- Black / Gray (based on selected theme) -->
 			<button>
-				<condition var1="theme_style" op="!=" var2="Light"/>
+				<condition var1="theme_style_tmp" op="!=" var2="Light"/>
 				<placement x="795" y="720"/>
 				<image resource="color_gray"/>
-				<action function="set">theme_accent=Gray</action>
+				<action function="set">theme_accent_tmp=Gray</action>
 			</button>
 
 			<button>
-				<condition var1="theme_style" var2="Light"/>
+				<condition var1="theme_style_tmp" var2="Light"/>
 				<placement x="795" y="720"/>
 				<image resource="style_black"/>
-				<action function="set">theme_accent=Black</action>
+				<action function="set">theme_accent_tmp=Black</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Gray"/>
-				<condition var1="theme_style" op="!=" var2="Light"/>
+				<condition var1="theme_accent_tmp" var2="Gray"/>
+				<condition var1="theme_style_tmp" op="!=" var2="Light"/>
 				<placement x="795" y="720"/>
 				<image resource="style_apply"/>
 			</image>
 
 			<image>
-				<condition var1="theme_accent" var2="Black"/>
-				<condition var1="theme_style" var2="Light"/>
+				<condition var1="theme_accent_tmp" var2="Black"/>
+				<condition var1="theme_style_tmp" var2="Light"/>
 				<placement x="795" y="720"/>
 				<image resource="style_apply"/>
 			</image>
@@ -966,11 +993,11 @@
 			<button>
 				<placement x="30" y="975"/>
 				<image resource="color_red"/>
-				<action function="set">theme_accent=Red</action>
+				<action function="set">theme_accent_tmp=Red</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Red"/>
+				<condition var1="theme_accent_tmp" var2="Red"/>
 				<placement x="30" y="975"/>
 				<image resource="style_apply"/>
 			</image>
@@ -980,11 +1007,11 @@
 			<button>
 				<placement x="285" y="975"/>
 				<image resource="color_indigo"/>
-				<action function="set">theme_accent=Indigo</action>
+				<action function="set">theme_accent_tmp=Indigo</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Indigo"/>
+				<condition var1="theme_accent_tmp" var2="Indigo"/>
 				<placement x="285" y="975"/>
 				<image resource="style_apply"/>
 			</image>
@@ -994,11 +1021,11 @@
 			<button>
 				<placement x="540" y="975"/>
 				<image resource="color_green"/>
-				<action function="set">theme_accent=Green</action>
+				<action function="set">theme_accent_tmp=Green</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Green"/>
+				<condition var1="theme_accent_tmp" var2="Green"/>
 				<placement x="540" y="975"/>
 				<image resource="style_apply"/>
 			</image>
@@ -1008,11 +1035,11 @@
 			<button>
 				<placement x="795" y="975"/>
 				<image resource="color_bluegray"/>
-				<action function="set">theme_accent=BlueGray</action>
+				<action function="set">theme_accent_tmp=BlueGray</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="BlueGray"/>
+				<condition var1="theme_accent_tmp" var2="BlueGray"/>
 				<placement x="795" y="975"/>
 				<image resource="style_apply"/>
 			</image>
@@ -1022,11 +1049,11 @@
 			<button>
 				<placement x="30" y="1230"/>
 				<image resource="color_pink"/>
-				<action function="set">theme_accent=Pink</action>
+				<action function="set">theme_accent_tmp=Pink</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Pink"/>
+				<condition var1="theme_accent_tmp" var2="Pink"/>
 				<placement x="30" y="1230"/>
 				<image resource="style_apply"/>
 			</image>
@@ -1036,11 +1063,11 @@
 			<button>
 				<placement x="285" y="1230"/>
 				<image resource="color_purple"/>
-				<action function="set">theme_accent=Purple</action>
+				<action function="set">theme_accent_tmp=Purple</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Purple"/>
+				<condition var1="theme_accent_tmp" var2="Purple"/>
 				<placement x="285" y="1230"/>
 				<image resource="style_apply"/>
 			</image>
@@ -1050,11 +1077,11 @@
 			<button>
 				<placement x="540" y="1230"/>
 				<image resource="color_amber"/>
-				<action function="set">theme_accent=Amber</action>
+				<action function="set">theme_accent_tmp=Amber</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Amber"/>
+				<condition var1="theme_accent_tmp" var2="Amber"/>
 				<placement x="540" y="1230"/>
 				<image resource="style_apply"/>
 			</image>
@@ -1064,24 +1091,24 @@
 			<button>
 				<placement x="795" y="1230"/>
 				<image resource="color_brown"/>
-				<action function="set">theme_accent=Brown</action>
+				<action function="set">theme_accent_tmp=Brown</action>
 			</button>
 
 			<image>
-				<condition var1="theme_accent" var2="Brown"/>
+				<condition var1="theme_accent_tmp" var2="Brown"/>
 				<placement x="795" y="1230"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 			
 			<action>
-				<condition var1="theme_style" op="modified"/>
+				<condition var1="theme_style_tmp" op="modified"/>
 				<action function="set">needs_repack=1</action>
 				<action function="set">update_style=1</action>
 			</action>
 			
 			<action>
-				<condition var1="theme_accent" op="modified"/>
+				<condition var1="theme_accent_tmp" op="modified"/>
 				<action function="set">needs_repack=1</action>
 				<action function="set">update_accent=1</action>
 			</action>
@@ -1109,25 +1136,25 @@
 				<action function="cmd">
 					#Fonts
 					if [[ '%update_fonts%' = '1' ]]; then
-						if [ -f "/twres/fonts/%theme_sec_font%.ttf" ];
+						if [ -f "/twres/fonts/%theme_sec_font_tmp%.ttf" ];
 							then sec_med=;
 								 sec_reg=;
 							else sec_med=-Medium;
 								 sec_reg=-Regular;
 						fi;
-						if [ -f "/twres/fonts/%theme_font%.ttf" ];
+						if [ -f "/twres/fonts/%theme_font_tmp%.ttf" ];
 							then prim_med=;
 								 prim_reg=;
 							else prim_med=-Medium;
 								 prim_reg=-Regular;
 						fi;
-						cat "/twres/themes/sed/font_%theme_font_size%.xml" | sed -e "
-						s/#PRIMARY_FONT_MED#/%theme_font%${prim_med}/g;
-						s/#PRIMARY_FONT_REG#/%theme_font%${prim_reg}/g;
-						s/#SECONDARY_FONT_MED#/%theme_sec_font%${sec_med}/g;
-						s/#SECONDARY_FONT_REG#/%theme_sec_font%${sec_reg}/g;
-						s/#PRIMARY_NAME#/%theme_font%/g;
-						s/#SECONDARY_NAME#/%theme_sec_font%/g
+						cat "/twres/themes/sed/font_%theme_font_size_tmp%.xml" | sed -e "
+						s/#PRIMARY_FONT_MED#/%theme_font_tmp%${prim_med}/g;
+						s/#PRIMARY_FONT_REG#/%theme_font_tmp%${prim_reg}/g;
+						s/#SECONDARY_FONT_MED#/%theme_sec_font_tmp%${sec_med}/g;
+						s/#SECONDARY_FONT_REG#/%theme_sec_font_tmp%${sec_reg}/g;
+						s/#PRIMARY_NAME#/%theme_font_tmp%/g;
+						s/#SECONDARY_NAME#/%theme_sec_font_tmp%/g
 						" > /tmp/orangefox/ramdisk/twres/themes/font.xml;
 						cat "/tmp/orangefox/ramdisk/twres/themes/font.xml" > /twres/themes/font.xml;
 					fi;
@@ -1135,21 +1162,21 @@
 					#Navbar
 					if [[ '%update_navbar%' = '1' ]]; then
 						cat "/twres/themes/sed/navbar.xml" | sed -e "
-						s/#NAVBAR_DISABLE#/%navbar_disable%/g;
-						s/#SCREEN_H#/$(expr %screen_original_h% + %navbar_disable_add%)/g
+						s/#NAVBAR_DISABLE#/%navbar_disable_tmp%/g;
+						s/#SCREEN_H#/$(expr %screen_original_h% + %navbar_disable_add_tmp%)/g
 						" > /tmp/orangefox/ramdisk/twres/themes/navbar.xml;
 						cat "/tmp/orangefox/ramdisk/twres/themes/navbar.xml" > /twres/themes/navbar.xml;
 					fi;
 				
 					#Style
 					if [[ '%update_style%' = '1' ]]; then
-						cat "/twres/themes/styles/%theme_style%.xml" > /tmp/orangefox/ramdisk/twres/themes/style.xml;
+						cat "/twres/themes/styles/%theme_style_tmp%.xml" > /tmp/orangefox/ramdisk/twres/themes/style.xml;
 						cat "/tmp/orangefox/ramdisk/twres/themes/style.xml" > /twres/themes/style.xml;
 					fi;
 				
 					#Accent
 					if [[ '%update_accent%' = '1' ]]; then
-						cat "/twres/themes/accent/%theme_accent%.xml" > /tmp/orangefox/ramdisk/twres/themes/accent.xml;
+						cat "/twres/themes/accent/%theme_accent_tmp%.xml" > /tmp/orangefox/ramdisk/twres/themes/accent.xml;
 						cat "/tmp/orangefox/ramdisk/twres/themes/accent.xml" > /twres/themes/accent.xml;
 					fi;
 				</action>

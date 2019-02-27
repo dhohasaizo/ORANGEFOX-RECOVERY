@@ -645,7 +645,6 @@
 		<string name="credits">Credits</string>
 		<string name="version_twrp">Version</string>
 		<string name="theme">Install Theme</string>
-		<string name="theme_hdr">Select Theme</string>
 		<string name="theme_vers">Theme:</string>
 		<string name="set_password">Set Password</string>
 		<string name="verifying_pas">Verify Password</string>
@@ -664,8 +663,8 @@
 		<string name="dialog_splash_btn">Change Splash</string>
 		<string name="dialog_splash_adapt">Adapt Splash</string>
 		<string name="dialog_reset_note_1">Do you want to restore the</string>
-		<string name="dialog_reset_note_2">default settings for OrangeFox recovery</string>
-		<string name="dialog_reset_note_3">and theme? Reboot required.</string>
+		<string name="dialog_reset_note_2">default settings for recovery?</string>
+		<string name="dialog_reset_note_3">Reboot required.</string>
 		<string name="dialog_reset_theme_hdr">Default Settings</string>
 		<string name="dialog_reset_theme_note_1">Do you want to restore the default</string>
 		<string name="dialog_reset_theme_note_2">settings for the Materialised theme?</string>
@@ -846,7 +845,7 @@
 		
 		<string name="aroma_inimg">Built-in AromaFM</string>
 		
-		<string name="theme_apply">Applying settings...</string>
+		<string name="theme_apply">Updating theme...</string>
 		<string name="theme_font">Font</string>
 		<string name="theme_fonts">Fonts</string>
 		<string name="theme_style">Style</string>
@@ -1034,6 +1033,16 @@
 
 		<!-- Customization -->
 		<string name="fm_icons_simple">Make file icons bigger</string>
+		<string name="theme_engine_update">Restart recovery & apply changes?</string>
+		<string name="apply_btn">Apply</string>
+		<string name="theme_hdr">Theme</string>
+		
+		<string name="font_small">Small</string>
+		<string name="font_norm">Normal</string>
+		<string name="font_size">Font size</string>
+		
+		<string name="status_battery_style">Battery style</string>
+		<string name="status_battery_circle">Circle</string>
 		<!-- Status bar -->
 		<string name="status_clock_pos">Clock position</string>
 		<string name="status_clock_left">Left</string>
@@ -1098,6 +1107,12 @@
 		<!-- MMGUI -->
 		<string name="mm_module_active">Active</string>
 		<string name="mm_module_mount">Auto mount</string>
+		<string name="mm_modules">Modules</string>
+		<string name="mm_ver">Magisk Version</string>
+		
+		<!-- Substratum -->
+		<string name="subs_wipe">Wipe Substratum Overrlays</string>
+		<string name="subs_method">Method</string>
 
 		<!-- MIUI OTA -->
 		<string name="fox_ota_settings">OTA Settings</string>

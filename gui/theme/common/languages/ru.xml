@@ -741,7 +741,6 @@
 		<string name="credits">Благодарности</string>
 		<string name="version_twrp">Версии</string>
 		<string name="theme">Установка темы</string>
-		<string name="theme_hdr">Выбор темы</string>
 		<string name="theme_vers">Тема:</string>
 		<string name="set_password">Установка пароля</string>
 		<string name="verifying_pas">Подтверждение пароля</string>
@@ -986,7 +985,7 @@
 		<string name="keep">Оставить</string>
 		<string name="remove">Убрать</string>
 		
-		<string name="theme_apply">Применение настроек...</string>
+		<string name="theme_apply">Обновление темы...</string>
 		<string name="theme_font">Шрифт</string>
 		<string name="theme_fonts">Шрифты</string>
 		<string name="theme_style">Стиль</string>
@@ -1127,15 +1126,28 @@
 		<string name="unpack">Распаковать</string>
 		<string name="repack">Запаковать</string>
 
-		<!-- Temp -->
-		<string name="fox_wipe_substratum_overlays">Слои Substratum</string>
-
 		<!-- MMGUI -->
 		<string name="mm_module_active">Активен</string>
 		<string name="mm_module_mount">Авто-монтирование</string>
+		<string name="mm_modules">Модули</string>
+		<string name="mm_ver">Версия Magisk</string>
+		
+		<!-- Substratum -->
+		<string name="subs_wipe">Удалить слои Substratum</string>
+		<string name="subs_method">Метод</string>
 		
 		<!-- Customization -->
 		<string name="fm_icons_simple">Сделать значки файлов больше</string>
+		<string name="theme_engine_update">Применить и перезагрузиться?</string>
+		<string name="apply_btn">Применить</string>
+		<string name="theme_hdr">Тема</string>
+		
+		<string name="font_small">Маленький</string>
+		<string name="font_norm">Нормальный</string>
+		<string name="font_size">Размер шрифта</string>
+		
+		<string name="status_battery_style">Стиль значка батареи</string>
+		<string name="status_battery_circle">Круг</string>
 		<!-- Status bar -->
 		<string name="status_clock_pos">Позиция часов</string>
 		<string name="status_clock_left">Слева</string>
