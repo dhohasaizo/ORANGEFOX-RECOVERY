@@ -72,7 +72,9 @@ static string fstab1 = PartitionManager.Get_Android_Root_Path() + "/vendor/etc";
 static string fstab2 = "/vendor/etc";
 static string exec_error_str = "EXEC_ERROR!";
 static string popen_error_str = "popen error!";
+static string fox_cfg = "/tmp/orangefox.cfg";
 int Fox_Current_ROM_IsTreble = 0;
+int ROM_IsRealTreble = 0;
 int New_Fox_Installation = 0;
 int OrangeFox_Startup_Executed = 0;
 int Fox_Has_Welcomed = 0;
@@ -101,13 +103,22 @@ static void AppendLineToFile(string file_path, string line)
 /* Have we just installed OrangeFox on a device with a Treble ROM? */
 static bool New_Fox_On_Treble(void)
 {
- return ((Fox_Current_ROM_IsTreble == 1) && (New_Fox_Installation == 1));
+ return ((Fox_Current_ROM_IsTreble == 1 || ROM_IsRealTreble == 1) && (New_Fox_Installation == 1));
 }
 
 /* Get the display ID of the installed ROM */
 static string GetInstalledRom(void)
 {
-   return TWFunc::System_Property_Get ("ro.build.display.id");
+   string s = TWFunc::System_Property_Get ("ro.build.display.id");
+   usleep(16);
+   if (s.empty())
+      s = TWFunc::System_Property_Get ("ro.build.id");
+   usleep(16);
+   if (s.empty())
+      s = TWFunc::System_Property_Get ("ro.build.flavor");
+   if (s.empty())
+      s = TWFunc::System_Property_Get ("ro.build.description");
+   return s;
 }
 
 /* remove trailing newline from string */
@@ -132,6 +143,35 @@ static string Get_Property (const string propname)
 static string GetDeviceName(void)
 {
   return (Get_Property("ro.product.device"));
+}
+
+static bool Is_Real_Treble(void)
+{
+   if (ROM_IsRealTreble == 1)
+   {
+      return true;
+   }
+   else
+   {
+      string s = Get_Property ("orangefox.realtreble.rom");
+      if (s == "1")
+        {
+           ROM_IsRealTreble = 1;
+           return true;
+        }
+      else 
+           return false;
+   }
+}
+
+/* Are we running a Treble ROM (old or freshly installed) ? */
+static bool Treble_Is_Running(void)
+{ 
+   int treble = DataManager::GetIntValue(FOX_ZIP_INSTALLER_TREBLE);
+   if (Fox_Current_ROM_IsTreble == 1 || treble == 1 || ROM_IsRealTreble == 1 || Is_Real_Treble())
+      return true;
+   else
+      return false; 
 }
 
 /* Are we running a MIUI ROM (old or freshly installed) ? */
@@ -1916,16 +1956,18 @@ void TWFunc::Write_MIUI_Install_Status(std::string install_status,
     }
 }
 
+/* read cfg file to confirm treble/miui */
 int TWFunc::Check_MIUI_Treble(void)
 {
-  //read cfg file to confirm treble/miui
-  string fox_cfg = "/tmp/orangefox.cfg";
   string fox_is_miui_rom_installed = "0";
   string fox_is_treble_rom_installed = "0";
+  string fox_is_real_treble_rom = "0";  
   Fox_Current_ROM_IsTreble = 0;
+  ROM_IsRealTreble = 0;
+  bool treble = false;
   Fox_Current_ROM_IsMIUI = 0;
-  string display_panel;
-  string rom_desc;
+  string display_panel = "";
+  string rom_desc = "";
   
   // * run startup script
   RunStartupScript();
@@ -1935,12 +1977,24 @@ int TWFunc::Check_MIUI_Treble(void)
     {
   	fox_is_miui_rom_installed = TWFunc::File_Property_Get (fox_cfg, "MIUI");
   	fox_is_treble_rom_installed = TWFunc::File_Property_Get (fox_cfg, "TREBLE");
-  	display_panel = TWFunc::File_Property_Get (fox_cfg, "panel_name");
-  	if ((fox_is_miui_rom_installed.empty()) || (fox_is_treble_rom_installed.empty()))
-  	  return 1; // emtpy value in cfg 
+  	fox_is_real_treble_rom = TWFunc::File_Property_Get (fox_cfg, "REALTREBLE");
+  	display_panel = TWFunc::File_Property_Get (fox_cfg, "panel_name");	
     }
-    else 
-    	return -1; // error - cfg not found
+
+   // Treble ?
+   if (strncmp(fox_is_treble_rom_installed.c_str(), "1", 1) == 0)
+      Fox_Current_ROM_IsTreble = 1;
+        
+   if (strncmp(fox_is_real_treble_rom.c_str(), "1", 1) == 0)
+        ROM_IsRealTreble = 1;
+   
+   if (ROM_IsRealTreble == 1 || Fox_Current_ROM_IsTreble == 1)
+       treble = true;
+   else
+       treble = Is_Real_Treble();
+   
+   if (treble)
+      Fox_Current_ROM_IsTreble = 1;
 
   // is the device encrypted?
   if (StorageIsEncrypted())
@@ -1960,10 +2014,8 @@ int TWFunc::Check_MIUI_Treble(void)
   if (!rom_desc.empty()) 
     {  
   	string tmp = "(non-Treble)";
-  	if (strncmp(fox_is_treble_rom_installed.c_str(), "1", 1) == 0)
-  	   Fox_Current_ROM_IsTreble = 1;
-        
-        if (Fox_Current_ROM_IsTreble == 1)
+
+        if (treble)
            tmp = "(Treble)";
   	
   	if (strncmp(fox_is_miui_rom_installed.c_str(), "1", 1) == 0)
@@ -2107,7 +2159,8 @@ void TWFunc::OrangeFox_Startup(void)
 	    TWFunc::write_to_file(a, interactive);
 	}
     }
-  string info = TWFunc::System_Property_Get("ro.build.display.id");
+  //string info = TWFunc::System_Property_Get("ro.build.display.id");
+  string info = GetInstalledRom();
   if (info.empty())
     {
       LOGINFO("ROM Status: Is not installed\n");
@@ -3145,7 +3198,6 @@ bool Patch_DM_Verity_In_System_Fstab(void)
   bool found_verity = false;
   bool def = false;
   int stat = 0;
-  int treble = 0;
   int verity = 0;
   DIR *d1 = NULL;
   struct dirent *de = NULL;
@@ -3160,9 +3212,8 @@ bool Patch_DM_Verity_In_System_Fstab(void)
           return false;
        }
   
-      DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);
       d1 = NULL;
-      if (treble == 1 || New_Fox_On_Treble())
+      if (Treble_Is_Running())
       {
           if ((PartitionManager.Is_Mounted_By_Path("/vendor")) || (PartitionManager.Mount_By_Path("/vendor", false)))
 	   {
@@ -3182,7 +3233,9 @@ bool Patch_DM_Verity_In_System_Fstab(void)
  
       if (d1 == NULL)
         {
-	    gui_print ("OrangeFox: DM-Verity patch failed - cannot mount system/vendor. Reboot OrangeFox and try again.\n");     
+	    #ifndef OF_USE_MAGISKBOOT
+	    gui_print ("OrangeFox: DM-Verity not patched in system fstab - cannot mount either /system or /vendor. Reboot OrangeFox and try again.\n");
+	    #endif 
 	    if (stat == 2)
 		LOGINFO("Unable to open '%s'\n", fstab2.c_str());
 	    else 
@@ -3300,7 +3353,6 @@ void TWFunc::Patch_Encryption_Flags(std::string path)
    	AppendLineToFile (cmd_script, "sed -i -e \"s|forcefdeorfbe=|encryptable=|g\" " + path);
    	AppendLineToFile (cmd_script, "sed -i -e \"s|forceencrypt=|encryptable=|g\" " + path);
    	AppendLineToFile (cmd_script, "sed -i -e \"s|fileencryption=|encryptable=|g\" " + path);
-   	//AppendLineToFile (cmd_script, "chmod 0644 " + path);
    	AppendLineToFile (cmd_script, "umount " + root + " > /dev/null 2>&1");
    	AppendLineToFile (cmd_script, "");
    	AppendLineToFile (cmd_script, "exit 0");
@@ -3312,7 +3364,7 @@ void TWFunc::Patch_Encryption_Flags(std::string path)
 //   TWFunc::Replace_Word_In_File(path, remove);
 }
 
-/* patch the /sytem || /vendor fstab for forced-encrpytion - only if we are not already encrypted */
+/* patch the /sytem || /vendor fstab for forced-encryption - only if we are not already encrypted */
 bool Patch_Forced_Encryption_In_System_Fstab(void)
 {
   string path = "";
@@ -3320,7 +3372,6 @@ bool Patch_Forced_Encryption_In_System_Fstab(void)
   int stat = 0;
   bool status = false;
   int encryption = 0;
-  int treble = 0;
   DIR *d1 = NULL;
   struct dirent *de;
   
@@ -3340,8 +3391,7 @@ bool Patch_Forced_Encryption_In_System_Fstab(void)
       #endif
   
       d1 = NULL;
-      DataManager::GetValue(FOX_ZIP_INSTALLER_TREBLE, treble);  
-      if (treble == 1 || New_Fox_On_Treble())
+      if (Treble_Is_Running())
       {
          if ((PartitionManager.Is_Mounted_By_Path("/vendor")) || (PartitionManager.Mount_By_Path("/vendor", false)))
 	   {
@@ -3361,7 +3411,7 @@ bool Patch_Forced_Encryption_In_System_Fstab(void)
  
       if (d1 == NULL)
         {
-	    gui_print ("OrangeFox: Forced-Encryption not patched - cannot mount system/vendor. Reboot OrangeFox and try again.\n");
+	    gui_print ("OrangeFox: Forced-Encryption not patched in system fstab - cannot mount either /system or /vendor. Reboot OrangeFox and try again.\n");
 	    if (stat == 2)
 		LOGINFO("Unable to open '%s'\n", fstab2.c_str());
 	    else 
@@ -3619,7 +3669,11 @@ void TWFunc::Deactivation_Process(void)
 {
 bool patched_verity = false;
 bool patched_crypt = false;
-    
+  
+  #ifdef OF_TWRP_COMPATIBILITY_MODE
+     return;
+  #endif  
+
   // don't call this on first boot following fresh installation
   if (New_Fox_Installation != 1)
      {
