@@ -9,15 +9,20 @@
 	</details>
 	
 	<resources>
-		<image name="splash" filename="splash"/>
+		<image name="splash_logo_w" filename="Splash/logo_w" retainaspect="1"/>
+		<image name="splash_bg" filename="Splash/original" retainaspect="1"/>
 	</resources>
 
 	<pages>
 		<page name="splash">
-			<background color="#222222FF"/>
+			<background color="#8B3506FF"/>
 			<object type="image">
-				<image resource="splash"/>
+				<image resource="splash_bg"/>
 				<placement x="0" y="0"/>
+			</object>
+			<object type="image">
+				<image resource="splash_logo_w"/>
+				<placement x="540" y="960" placement="4"/>
 			</object>
 		</page>
 	</pages>

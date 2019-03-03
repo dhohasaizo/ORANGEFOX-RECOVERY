@@ -142,6 +142,25 @@
 				<text>{@theme_fonts}</text>
 			</text>
 			<!-- -->
+
+			<!-- Splash -->
+			<button style="bs_btn">
+				<placement x="0" y="%set_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">spl_logo_type_tmp=1</action>
+				<action function="set">spl_bg_default_tmp=1</action>
+				<action function="page">ext_custom_splash</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row7_y%"/>
+				<image resource="ws_font"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
+				<text>Splash</text>
+			</text>
+			<!-- -->
 			
 			<template name="snackbar_update"/>
 			
@@ -1123,6 +1142,161 @@
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
+			</action>
+		</page>
+		
+		<!-- Splash -->
+		<page name="ext_custom_splash">
+			<background color="%background%"/>
+			<template name="background_image"/>
+			
+			<image>
+				<image resource="splash_bg"/>
+				<condition var1="spl_bg_default_tmp" var2="1"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+			
+			<image>
+				<image resource="splash_user"/>
+				<condition var1="spl_bg_default_tmp" var2="2"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+			
+			<fill color="#ed6f02">
+				<condition var1="spl_bg_default_tmp" var2="3"/>
+				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
+			</fill>
+			<fill color="#222222">
+				<condition var1="spl_bg_default_tmp" var2="4"/>
+				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
+			</fill>
+			<fill color="#000000">
+				<condition var1="spl_bg_default_tmp" var2="5"/>
+				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
+			</fill>
+			<fill color="#FAFAFA">
+				<condition var1="spl_bg_default_tmp" var2="6"/>
+				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
+			</fill>
+			<fill color="%accent%">
+				<condition var1="spl_bg_default_tmp" var2="7"/>
+				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
+			</fill>
+			
+			<image>
+				<condition var1="spl_logo_type_tmp" var2="1"/>
+				<image resource="splash_logo_w"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+			<image>
+				<condition var1="spl_logo_type_tmp" var2="2"/>
+				<image resource="splash_logo_d"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+			<image>
+				<condition var1="spl_logo_type_tmp" var2="3"/>
+				<image resource="splash_logo_o"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+			
+			<template name="navbar_bkg"/>
+			<template name="keys"/>
+			<template name="navbar"/>
+			<template name="statusbarinfo"/>
+
+			<button>
+				<placement x="30" y="%spl_custom_btn%" placement="2"/>
+				<image resource="spl_restore"/>
+				<action function="set">spl_bg_default_tmp=1</action>
+			</button>
+			<button>
+				<placement x="200" y="%spl_custom_btn%" placement="2"/>
+				<image resource="spl_image"/>
+			</button>
+			<button>
+				<placement x="370" y="%spl_custom_btn%" placement="2"/>
+				<image resource="spl_color"/>
+				<action function="set">spl_bg_show_tmp=1</action>
+			</button>
+			<button>
+				<condition var1="spl_logo_type_tmp" var2="0"/>
+				<placement x="540" y="%spl_custom_btn%" placement="2"/>
+				<image resource="spl_logo_n"/>
+				<action function="set">spl_logo_type_tmp=1</action>
+			</button>
+			<button>
+				<condition var1="spl_logo_type_tmp" var2="1"/>
+				<placement x="540" y="%spl_custom_btn%" placement="2"/>
+				<image resource="spl_logo_w"/>
+				<action function="set">spl_logo_type_tmp=2</action>
+			</button>
+			<button>
+				<condition var1="spl_logo_type_tmp" var2="2"/>
+				<placement x="540" y="%spl_custom_btn%" placement="2"/>
+				<image resource="spl_logo_d"/>
+				<action function="set">spl_logo_type_tmp=3</action>
+			</button>
+			<button>
+				<condition var1="spl_logo_type_tmp" var2="3"/>
+				<placement x="540" y="%spl_custom_btn%" placement="2"/>
+				<image resource="spl_logo_o"/>
+				<action function="set">spl_logo_type_tmp=0</action>
+			</button>
+			<button>
+				<placement x="710" y="%spl_custom_btn%" placement="2"/>
+				<image resource="spl_hideui"/>
+			</button>
+			<button>
+				<placement x="880" y="%spl_custom_btn%" placement="2"/>
+				<image resource="spl_apply"/>
+				<action function="page">ext_custom</action>
+			</button>
+			
+			<button>
+				<condition var1="spl_bg_show_tmp" var2="1"/>
+				<placement x="30" y="%spl_custom_2_btn%" placement="2"/>
+				<image resource="spl_hide"/>
+				<action function="set">spl_bg_show_tmp=0</action>
+			</button>
+			<button>
+				<condition var1="spl_bg_show_tmp" var2="1"/>
+				<placement x="200" y="%spl_custom_2_btn%" placement="2"/>
+				<image resource="spl_color_a"/>
+				<action function="set">spl_bg_default_tmp=7</action>
+			</button>
+			<button>
+				<condition var1="spl_bg_show_tmp" var2="1"/>
+				<placement x="370" y="%spl_custom_2_btn%" placement="2"/>
+				<image resource="spl_color_o"/>
+				<action function="set">spl_bg_default_tmp=3</action>
+			</button>
+			<button>
+				<condition var1="spl_bg_show_tmp" var2="1"/>
+				<placement x="540" y="%spl_custom_2_btn%" placement="2"/>
+				<image resource="spl_color_d"/>
+				<action function="set">spl_bg_default_tmp=4</action>
+			</button>
+			<button>
+				<condition var1="spl_bg_show_tmp" var2="1"/>
+				<placement x="710" y="%spl_custom_2_btn%" placement="2"/>
+				<image resource="spl_color_b"/>
+				<action function="set">spl_bg_default_tmp=5</action>
+			</button>
+			<button>
+				<condition var1="spl_bg_show_tmp" var2="1"/>
+				<placement x="880" y="%spl_custom_2_btn%" placement="2"/>
+				<image resource="spl_color_w"/>
+				<action function="set">spl_bg_default_tmp=6</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_custom</action>
 			</action>
 		</page>
 

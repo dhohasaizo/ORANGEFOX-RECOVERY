@@ -37,6 +37,13 @@
 		<font name="font8" filename="Amatic.ttf" size="42"/>
 		<font name="font9" filename="AngryBirds.ttf" size="42"/>
 		
+		<!-- Splash Preview -->
+		<image name="splash_user" filename="Splash/user" retainaspect="1"/>
+		<image name="splash_bg" filename="Splash/original" retainaspect="1"/>
+		<image name="splash_logo_d" filename="Splash/logo_d" retainaspect="1"/>
+		<image name="splash_logo_o" filename="Splash/logo_o" retainaspect="1"/>
+		<image name="splash_logo_w" filename="Splash/logo_w" retainaspect="1"/>
+		
 		<!-- Workshop -->
 		<image name="style_gray" filename="Default/Workshop/StyleGray" retainaspect="1"/>
 		<image name="style_black" filename="Default/Workshop/StyleBlack" retainaspect="1"/>
@@ -55,8 +62,31 @@
 		<image name="color_indigo" filename="Default/Workshop/ColorIndigo" retainaspect="1"/>
 		<image name="color_bluegray" filename="Default/Workshop/ColorBlueGray" retainaspect="1"/>
 		
-		<image name="style_apply" filename="Default/Workshop/ColorApply" retainaspect="1"/>
-		<image name="style_apply_black" filename="Default/Workshop/StyleApply" retainaspect="1"/>
+		<image name="style_apply" filename="Default/Workshop/style_apply" retainaspect="1"/>
+		<image name="style_apply_black" filename="Default/Workshop/style_apply_black" retainaspect="1"/>
+		
+		<image name="color_apply_w" filename="Default/Workshop/color_apply_w" retainaspect="1"/>
+		<image name="color_apply_d" filename="Default/Workshop/color_apply_d" retainaspect="1"/>
+		<image name="color_apply_btn" filename="Default/Workshop/color_apply_btn" retainaspect="1"/>
+		
+		<image name="spl_color_o_combined" filename="Default/Workshop/spl_color_o_combined" retainaspect="1"/>
+		<image name="spl_color_o" filename="Default/Workshop/spl_color_o" retainaspect="1"/>
+		<image name="spl_color_w" filename="Default/Workshop/spl_color_w" retainaspect="1"/>
+		<image name="spl_color_d" filename="Default/Workshop/spl_color_d" retainaspect="1"/>
+		<image name="spl_color_b" filename="Default/Workshop/spl_color_b" retainaspect="1"/>
+		<image name="spl_color_a" filename="Default/Workshop/spl_color_a" retainaspect="1"/>
+		<image name="spl_color" filename="Default/Workshop/spl_color" retainaspect="1"/>
+		
+		<image name="spl_logo_o" filename="Default/Workshop/spl_logo_o" retainaspect="1"/>
+		<image name="spl_logo_w" filename="Default/Workshop/spl_logo_w" retainaspect="1"/>
+		<image name="spl_logo_d" filename="Default/Workshop/spl_logo_d" retainaspect="1"/>
+		<image name="spl_logo_n" filename="Default/Workshop/spl_logo_n" retainaspect="1"/>
+		
+		<image name="spl_apply" filename="Default/Workshop/spl_apply" retainaspect="1"/>
+		<image name="spl_hide" filename="Default/Workshop/spl_hide" retainaspect="1"/>
+		<image name="spl_hideui" filename="Default/Workshop/spl_hideui" retainaspect="1"/>
+		<image name="spl_image" filename="Default/Workshop/spl_image" retainaspect="1"/>
+		<image name="spl_restore" filename="Default/Workshop/spl_restore" retainaspect="1"/>
 	
 		<font name="fixed" filename="RobotoMono.ttf" size="34"/>
 		<!-- Battery -->
@@ -201,7 +231,7 @@
 		<image name="cursor" filename="Default/Other/cursor" retainaspect="1"/>
 		<image name="logo_debug" filename="Default/FullscreenIcons/logo_debug" retainaspect="1"/>
 		
-		
+		<!-- About -->
 		<image name="logo_big" filename="Default/About/logo" retainaspect="1"/>
 		<image name="card" filename="Default/About/card" retainaspect="1"/>
 		<image name="author_fd" filename="Default/About/author_fd" retainaspect="1"/>
