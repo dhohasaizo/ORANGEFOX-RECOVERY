@@ -496,5 +496,13 @@
 		<variable name="row8_3_y" value="1680+%cutout_w%"/>
 		<variable name="row8_3a_y" value="1710+%cutout_w%"/>
 		<variable name="row9_1_y" value="1740+%cutout_w%"/>
+
+		<!-- Splash buttons -->
+		<variable name="spl_btn_x1" value="30"/>
+		<variable name="spl_btn_x2" value="200"/>
+		<variable name="spl_btn_x3" value="370"/>
+		<variable name="spl_btn_x4" value="540"/>
+		<variable name="spl_btn_x5" value="710"/>
+		<variable name="spl_btn_x6" value="880"/>
 	</variables>
 </recovery>
