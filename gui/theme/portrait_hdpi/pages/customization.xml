@@ -1209,11 +1209,13 @@
 			<template name="statusbarinfo"/>
 
 			<text style="text_body1">
+				<condition var1="spl_preview" var2="0"/>
 				<placement x="%col1_x%" y="%ab_bc_y%"/>
 				<text>Default?: %spl_bg_user% - BG?: %spl_bg_on% - Logo: %spl_logo_type% - col: %spl_bg_color%</text>
 			</text>
 			
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_user" var2="1"/>
 				<placement x="%spl_btn_x1%" y="%spl_custom_btn%" placement="2"/>
 				<image resource="spl_restore"/>
@@ -1222,28 +1224,33 @@
 				<action function="page">ext_custom_splash</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_on" var2="0"/>
 				<placement x="%spl_btn_x2%" y="%spl_custom_btn%" placement="2"/>
 				<image resource="spl_image"/>
 				<action function="page">ext_custom_splash_select</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_on" var2="1"/>
 				<placement x="%spl_btn_x2%" y="%spl_custom_btn%" placement="2"/>
 				<image resource="spl_image"/>
 				<action function="set">spl_bg_on=0</action>
 			</button>
 			<image>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_on" var2="1"/>
 				<placement x="%spl_btn_x2%" y="%spl_custom_btn%" placement="2"/>
 				<image resource="color_apply_btn"/>
 			</image>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<placement x="%spl_btn_x3%" y="%spl_custom_btn%" placement="2"/>
 				<image resource="spl_color"/>
 				<action function="set">spl_bg_show=1</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_logo_type" var2="0"/>
 				<condition var1="spl_bg_user" var2="1"/>
 				<placement x="%spl_btn_x4%" y="%spl_custom_btn%" placement="2"/>
@@ -1251,6 +1258,7 @@
 				<action function="set">spl_logo_type=w</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_logo_type" var2="w"/>
 				<condition var1="spl_bg_user" var2="1"/>
 				<placement x="%spl_btn_x4%" y="%spl_custom_btn%" placement="2"/>
@@ -1258,6 +1266,7 @@
 				<action function="set">spl_logo_type=d</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_logo_type" var2="d"/>
 				<condition var1="spl_bg_user" var2="1"/>
 				<placement x="%spl_btn_x4%" y="%spl_custom_btn%" placement="2"/>
@@ -1265,17 +1274,34 @@
 				<action function="set">spl_logo_type=o</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_logo_type" var2="o"/>
 				<condition var1="spl_bg_user" var2="1"/>
 				<placement x="%spl_btn_x4%" y="%spl_custom_btn%" placement="2"/>
 				<image resource="spl_logo_o"/>
 				<action function="set">spl_logo_type=0</action>
 			</button>
+
 			<button>
+				<condition var1="spl_preview" var2="0"/>	
 				<placement x="%spl_btn_x5%" y="%spl_custom_btn%" placement="2"/>
 				<image resource="spl_hideui"/>
+				<action function="set">spl_preview=1</action>
+				<action function="set">tw_busy=1</action>
+				<action function="set">hide_statusbar=1</action>
 			</button>
+
 			<button>
+				<condition var1="spl_preview" var2="1"/>	
+				<placement x="%spl_btn_x5%" y="%spl_custom_btn%" placement="2"/>
+				<image resource="spl_hideui"/>
+				<action function="set">spl_preview=0</action>
+				<action function="set">tw_busy=0</action>
+				<action function="set">hide_statusbar=0</action>
+			</button>
+
+			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_user" var2="1"/>
 				<placement x="%spl_btn_x6%" y="%spl_custom_btn%" placement="2"/>
 				<image resource="spl_apply"/>
@@ -1284,6 +1310,7 @@
 				<action function="page">ext_custom</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_user" var2="0"/>
 				<placement x="%spl_btn_x4%" y="%spl_custom_btn%" placement="2"/>
 				<image resource="spl_apply"/>
@@ -1293,12 +1320,14 @@
 			</button>
 			
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_show" var2="1"/>
 				<placement x="%spl_btn_x1%" y="%spl_custom_2_btn%" placement="2"/>
 				<image resource="spl_hide"/>
 				<action function="set">spl_bg_show=0</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_show" var2="1"/>
 				<placement x="%spl_btn_x2%" y="%spl_custom_2_btn%" placement="2"/>
 				<image resource="spl_color_a"/>
@@ -1306,6 +1335,7 @@
 				<action function="set">spl_bg_user=1</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_show" var2="1"/>
 				<placement x="%spl_btn_x3%" y="%spl_custom_2_btn%" placement="2"/>
 				<image resource="spl_color_o"/>
@@ -1313,6 +1343,7 @@
 				<action function="set">spl_bg_user=1</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_show" var2="1"/>
 				<placement x="%spl_btn_x4%" y="%spl_custom_2_btn%" placement="2"/>
 				<image resource="spl_color_d"/>
@@ -1320,6 +1351,7 @@
 				<action function="set">spl_bg_user=1</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_show" var2="1"/>
 				<placement x="%spl_btn_x5%" y="%spl_custom_2_btn%" placement="2"/>
 				<image resource="spl_color_b"/>
@@ -1327,6 +1359,7 @@
 				<action function="set">spl_bg_user=1</action>
 			</button>
 			<button>
+				<condition var1="spl_preview" var2="0"/>
 				<condition var1="spl_bg_show" var2="1"/>
 				<placement x="%spl_btn_x6%" y="%spl_custom_2_btn%" placement="2"/>
 				<image resource="spl_color_w"/>
