@@ -69,6 +69,12 @@
 				<action function="set">update_accent=0</action>
 				<action function="set">update_style=0</action>
 				
+				<action function="set">spl_logo_type=w</action>
+				<action function="set">spl_bg_color=%accent%</action>
+				<action function="set">spl_bg_user=0</action>
+				<action function="set">spl_bg_on=0</action>
+				<action function="set">spl_bg_show=0</action>
+				
 				<action function="set">navbar_disable_tmp=%navbar_disable%</action>
 				<action function="set">navbar_disable_add_tmp=%navbar_disable_add%</action>
 				

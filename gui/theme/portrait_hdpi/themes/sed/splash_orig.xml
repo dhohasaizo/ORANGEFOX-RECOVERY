@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<recovery>
+	<details>
+		<resolution width="1080" height="1920"/>
+		<author>OrangeFox dev team</author>
+		<title>OrangeFox</title>
+		<description>splash author - KMP design</description>
+		<themeversion>3</themeversion>
+	</details>
+	
+	<resources>
+		<image name="splash_logo_w" filename="Splash/logo_w" retainaspect="1"/>
+		<image name="splash_bg" filename="Splash/original" retainaspect="1"/>
+	</resources>
+
+	<pages>
+		<page name="splash">
+			<background color="#8B3506FF"/>
+			<object type="image">
+				<image resource="splash_bg"/>
+				<placement x="0" y="0"/>
+			</object>
+			<object type="image">
+				<image resource="splash_logo_w"/>
+				<placement x="540" y="960" placement="4"/>
+			</object>
+		</page>
+	</pages>
+</recovery>
