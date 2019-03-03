@@ -796,8 +796,6 @@
 
 			<template name="find_file"/>
 
-			2
-
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@select_custom_font}</text>

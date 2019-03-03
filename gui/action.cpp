@@ -644,6 +644,7 @@ int GUIAction::page(std::string arg)
 
 int GUIAction::reload(std::string arg __unused)
 {
+  DataManager::Flush();
   PageManager::RequestReload();
   // The actual reload is handled in pages.cpp in PageManager::RunReload()
   // The reload will occur on the next Update or Render call and will
