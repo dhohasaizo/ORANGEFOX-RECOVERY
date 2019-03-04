@@ -2,9 +2,9 @@
 <recovery>
 	<details>
 		<resolution width="1080" height="1920"/>
-		<author>OrangeFox dev team</author>
-		<title>OrangeFox</title>
-		<description>splash author - KMP design</description>
+		<author>OrangeFox dev team & KMP design</author>
+		<title>OrangeFox Original Splash</title>
+		<description>Design by KMP design</description>
 		<themeversion>3</themeversion>
 	</details>
 	
@@ -27,11 +27,6 @@
 				<image resource="splash_logo_w"/>
 				<placement x="540" y="960" placement="4"/>
 			</object>
-			<button>
-				<fill color="#00000000"/>
-				<placement x="0" y="0" w="1080" h="1920"/>
-				<action function="page">ext_custom_splash</action>
-			</button>
 		</page>
 	</pages>
 </recovery>
