@@ -26,9 +26,6 @@
 		<variable name="mmgui_path" value="/tmp/mmgui"/>
 		<variable name="magisk_installed" value="0"/>
 
-		<variable name="spl_preview" value="0"/>
-		<variable name="hide_statusbar" value="0"/>
-
 		<!-- Lockscreen -->
 		<variable name="clock_style" value="0" persist="1"/>
 		<variable name="lock_action" value="1" persist="1"/>
@@ -104,8 +101,8 @@
 		<variable name="check_mount_ro_1" value="916+%cutout_w%"/>
 		<variable name="check_mount_ro_2" value="374+%cutout_w%"/>
 		
-		<variable name="spl_custom_btn" value="%screen_h%-174"/>
-		<variable name="spl_custom_2_btn" value="%screen_h%-344"/>
+		<variable name="spl_custom_btn" value="%screen_h%-30"/>
+		<variable name="spl_custom_2_btn" value="%screen_h%-200"/>
 		
 		<!-- OTA -->
 		<variable name="ota_update_title_y" value="%center_y%+320"/>

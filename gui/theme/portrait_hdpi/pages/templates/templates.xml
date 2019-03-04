@@ -778,21 +778,6 @@
 			</action>
 		</template>
 		
-		<template name="find_file">
-			
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-			
-			<template name="actionbar_sort"/>
-			<template name="actionbar_storage"/>
-
-			<text style="text_ab_subtitle">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>%tw_zip_location%</text>
-			</text>
-		</template>
-		
 		<template name="t_system">
 			<template name="body"/>
 

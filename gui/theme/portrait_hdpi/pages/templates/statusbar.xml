@@ -3,7 +3,6 @@
 	<templates>
 		<template name="statusbarinfo">
 			<text style="text_status">
-				<condition var1="hide_statusbar" var2="0"/>
 				<condition var1="show_cpu_temp" var2="0"/>
 				<condition var1="center_clock" op="!=" var2="2"/>
 				<placement x="%version_x%" y="%status_info_y%"/>
@@ -11,7 +10,6 @@
 			</text>
 
 			<text style="text_status">
-				<condition var1="hide_statusbar" var2="0"/>
 				<condition var1="show_cpu_temp" var2="1"/>
 				<condition var1="center_clock" op="!=" var2="2"/>
 				<placement x="%version_x%" y="%status_info_y%"/>
@@ -19,14 +17,12 @@
 			</text>
 			
 			<text style="text_status">
-				<condition var1="hide_statusbar" var2="0"/>
 				<condition var1="center_clock" var2="2"/>
 				<placement x="%version_x%" y="%status_info_y%"/>
 				<text>%tw_time%</text>
 			</text>
 
 			<text style="text_status_fail">
-				<condition var1="hide_statusbar" var2="0"/>
 				<condition var1="tw_simulate_actions" var2="1"/>
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/>
 				<text>{@simulating}</text>
@@ -37,7 +33,6 @@
 				<image resource="battery100"/>
 				<placement x="%battery_12_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -50,7 +45,6 @@
 				<image resource="battery75"/>
 				<placement x="%battery_12_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -64,7 +58,6 @@
 				<image resource="battery50"/>
 				<placement x="%battery_12_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -78,7 +71,6 @@
 				<image resource="battery25"/>
 				<placement x="%battery_12_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -92,7 +84,6 @@
 				<image resource="battery15_good"/>
 				<placement x="%battery_12_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="14"/>
@@ -106,7 +97,6 @@
 				<image resource="battery15"/>
 				<placement x="%battery_12_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="9"/>
@@ -120,7 +110,6 @@
 				<image resource="battery15"/>
 				<placement x="%battery_12_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="4"/>
@@ -134,7 +123,6 @@
 				<image resource="battery5"/>
 				<placement x="%battery_12_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -147,7 +135,6 @@
 			<text style="text_status">
 				<placement x="%battery_12_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -161,7 +148,6 @@
 				<font resource="status"/>
 				<placement x="%battery_12_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
@@ -174,7 +160,6 @@
 			<text style="text_status">
 				<placement x="%battery_12_t_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="0"/>
 					<condition var1="enable_battery" var2="0"/>
@@ -188,7 +173,6 @@
 				<font resource="status"/>
 				<placement x="%battery_12_t_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="enable_battery" var2="0"/>
@@ -204,7 +188,6 @@
 				<image resource="battery100"/>
 				<placement x="%battery_24_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -218,7 +201,6 @@
 				<image resource="battery75"/>
 				<placement x="%battery_24_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -233,7 +215,6 @@
 				<image resource="battery50"/>
 				<placement x="%battery_24_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -248,7 +229,6 @@
 				<image resource="battery25"/>
 				<placement x="%battery_24_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -263,7 +243,6 @@
 				<image resource="battery15_good"/>
 				<placement x="%battery_24_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_battery" op="&gt;" var2="14"/>
@@ -278,7 +257,6 @@
 				<image resource="battery15"/>
 				<placement x="%battery_24_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_battery" op="&gt;" var2="9"/>
@@ -293,7 +271,6 @@
 				<image resource="battery15"/>
 				<placement x="%battery_24_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="tw_battery" op="&gt;" var2="4"/>
@@ -308,7 +285,6 @@
 				<image resource="battery5"/>
 				<placement x="%battery_24_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -322,7 +298,6 @@
 			<text style="text_status">
 				<placement x="%battery_24_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -336,7 +311,6 @@
 				<font resource="status"/>
 				<placement x="%battery_24_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
@@ -349,7 +323,6 @@
 			<text style="text_status">
 				<placement x="%battery_24_t_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
 					<condition var1="enable_battery" var2="0"/>
@@ -363,7 +336,6 @@
 				<font resource="status"/>
 				<placement x="%battery_24_t_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 					<condition var1="tw_military_time" var2="1"/>
@@ -380,7 +352,6 @@
 				<image resource="battery100"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -393,7 +364,6 @@
 				<image resource="battery75"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -407,7 +377,6 @@
 				<image resource="battery50"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="49"/>
@@ -421,7 +390,6 @@
 				<image resource="battery25"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -435,7 +403,6 @@
 				<image resource="battery15_good"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="14"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -449,7 +416,6 @@
 				<image resource="battery15"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="9"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -463,7 +429,6 @@
 				<image resource="battery15"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_battery" op="&gt;" var2="4"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -477,7 +442,6 @@
 				<image resource="battery5"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
 					<condition var1="style_battery" var2="1"/>
@@ -493,7 +457,6 @@
 				<image resource="pie_light"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="charging_now" var2="1"/>
 					<condition var1="style_battery" var2="2"/>
@@ -505,7 +468,6 @@
 				<image resource="pie_battery100"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
 					<condition var1="style_battery" var2="2"/>
@@ -519,7 +481,6 @@
 				<image resource="pie_battery90"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -534,7 +495,6 @@
 				<image resource="pie_battery70"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -549,7 +509,6 @@
 				<image resource="pie_battery50"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -564,7 +523,6 @@
 				<image resource="pie_battery30"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -579,7 +537,6 @@
 				<image resource="pie_battery20"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -594,7 +551,6 @@
 				<image resource="pie_battery10"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -609,7 +565,6 @@
 				<image resource="pie_battery_alert"/>
 				<placement x="%battery_center_x%" y="%battery_y%"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -622,7 +577,6 @@
 			<text style="text_status">
 				<placement x="%battery_center_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -635,7 +589,6 @@
 				<font resource="status"/>
 				<placement x="%battery_center_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="enable_battery" var2="1"/>
@@ -647,7 +600,6 @@
 			<text style="text_status">
 				<placement x="%battery_center_t_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
 					<condition var1="enable_battery" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
@@ -660,7 +612,6 @@
 				<font resource="status"/>
 				<placement x="%battery_center_t_x%" y="%status_info_y%" placement="1"/>
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="enable_battery" var2="0"/>
 					<condition var1="center_clock" op="!=" var2="0"/>
@@ -673,7 +624,6 @@
 			<text style="text_status">
 				<placement x="%time_x%" y="%status_info_y%" placement="1"/> <!--right align-->
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="0"/>
 				</conditions>
 				<text>%tw_time%</text>
@@ -682,7 +632,6 @@
 			<text style="text_status">
 				<placement x="%center_x%" y="%status_info_y%" placement="5"/> <!--centered-->
 				<conditions>
-					<condition var1="hide_statusbar" var2="0"/>
 					<condition var1="center_clock" var2="1"/>
 					<condition var1="tw_simulate_actions" op="!=" var2="1"/>
 				</conditions>

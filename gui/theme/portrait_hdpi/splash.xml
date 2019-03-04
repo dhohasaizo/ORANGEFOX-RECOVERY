@@ -16,14 +16,22 @@
 	<pages>
 		<page name="splash">
 			<background color="#8B3506FF"/>
+			<fill color="#E47718FF">
+				<placement x="0" y="0" w="1080" h="960"/>
+			</fill>
 			<object type="image">
 				<image resource="splash_bg"/>
-				<placement x="0" y="0"/>
+				<placement x="540" y="960" placement="4"/>
 			</object>
 			<object type="image">
 				<image resource="splash_logo_w"/>
 				<placement x="540" y="960" placement="4"/>
 			</object>
+			<button>
+				<fill color="#00000000"/>
+				<placement x="0" y="0" w="1080" h="1920"/>
+				<action function="page">ext_custom_splash</action>
+			</button>
 		</page>
 	</pages>
 </recovery>
