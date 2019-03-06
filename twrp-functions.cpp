@@ -83,7 +83,8 @@ int Fox_Has_Welcomed = 0;
 static void CreateNewFile(string file_path)
 {
   string blank = "";
-  if (TWFunc::Path_Exists(file_path))
+  string bak = file_path;
+  if (TWFunc::Path_Exists(bak))
     unlink(file_path.c_str());
   ofstream file;
   file.open(file_path.c_str());
@@ -110,14 +111,18 @@ static bool New_Fox_On_Treble(void)
 static string GetInstalledRom(void)
 {
    string s = TWFunc::System_Property_Get ("ro.build.display.id");
-   usleep(16);
    if (s.empty())
+   {
+      string prop1 = PartitionManager.Get_Android_Root_Path() + "/build.prop";
+      string prop2 = PartitionManager.Get_Android_Root_Path() + "/system/build.prop";
+      if ((!TWFunc::Path_Exists(prop1)) && (!TWFunc::Path_Exists(prop2)))
+         return s;
       s = TWFunc::System_Property_Get ("ro.build.id");
-   usleep(16);
-   if (s.empty())
-      s = TWFunc::System_Property_Get ("ro.build.flavor");
-   if (s.empty())
-      s = TWFunc::System_Property_Get ("ro.build.description");
+      if (s.empty())
+         s = TWFunc::System_Property_Get ("ro.build.flavor");
+      if (s.empty())
+         s = TWFunc::System_Property_Get ("ro.build.description");
+   }
    return s;
 }
 
@@ -145,6 +150,7 @@ static string GetDeviceName(void)
   return (Get_Property("ro.product.device"));
 }
 
+/* is this a real treble device? (else, treble is emulated via /cust) */
 static bool Is_Real_Treble(void)
 {
    if (ROM_IsRealTreble == 1)
@@ -153,8 +159,7 @@ static bool Is_Real_Treble(void)
    }
    else
    {
-      string s = Get_Property ("orangefox.realtreble.rom");
-      if (s == "1")
+      if (Get_Property ("orangefox.realtreble.rom") == "1" || TWFunc::Has_Vendor_Partition())
         {
            ROM_IsRealTreble = 1;
            return true;
@@ -234,6 +239,15 @@ long tmp;
       return tmp;
   else
       return def_value;
+}
+
+/* return whether there is a real vendor partition */
+bool TWFunc::Has_Vendor_Partition(void)
+{
+   if (TWFunc::Path_Exists ("/dev/block/bootdevice/by-name/vendor"))
+       return true;
+   else
+      return false;
 }
 
 /* run startup script, if not already run by init */
@@ -3219,15 +3233,42 @@ bool Patch_DM_Verity_In_System_Fstab(void)
 	   {
 	      d1 = opendir(fstab2.c_str());
 	      stat = 2;
-	   }        
+	      if (d1 == NULL) 
+	        {
+		  LOGINFO ("DEBUG: DM-Verity: Hmmm ... /vendor is mounted, but I can't open '%s'. This should not happen.\n", fstab2.c_str()); //!!
+		  gui_print ("- DM-Verity #1: Has 'someone' been wiping things, and then flashing a ROM without first rebooting the recovery?\n");//!!
+		  if (TWFunc::Path_Exists(fstab2)) 
+		    {
+			LOGINFO ("DEBUG: DM-Verity: '%s' actually exists!\n", fstab2.c_str()); //!!
+		    }
+		  else 
+		    {
+			LOGINFO ("DEBUG: DM-Verity: '%s' does not exist!\n", fstab2.c_str()); //!!			
+		    }		
+	        }
+	   } 
       } 
 
      if (d1 == NULL)
 	{
-          if ((PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path())) || (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false)))
+          if ((PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path())) 
+          || (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false)))
 	     {
 	        d1 = opendir(fstab1.c_str());
 	        stat = 1;
+	        if (d1 == NULL)
+	           {
+			LOGINFO ("DEBUG: DM-Verity: Hmmm ... /system is mounted, but I can't open '%s'. This should not happen.\n", fstab1.c_str());//!!
+			gui_print ("- DM-Verity #2: Has 'someone' been wiping things, and then flashing a ROM without first rebooting the recovery?\n");//!!
+			if (TWFunc::Path_Exists(fstab1)) 
+			  {
+		  	    LOGINFO ("DEBUG: DM-Verity: '%s' actually exists!\n", fstab1.c_str());//!!
+			  } 
+			else 
+			  {
+			    LOGINFO ("DEBUG: DM-Verity: '%s' does not exist!\n", fstab1.c_str());//!!		
+			  }
+	           }
 	     }
         }
  
@@ -3397,15 +3438,43 @@ bool Patch_Forced_Encryption_In_System_Fstab(void)
 	   {
 	      d1 = opendir(fstab2.c_str());
 	      stat = 2;
-	   }        
+	     
+	      if (d1 == NULL) 
+	      {
+		LOGINFO ("DEBUG: Forced-Encryption: Hmmm ... /vendor is mounted, but I can't open '%s'. This should not happen.\n", fstab2.c_str()); //!!
+		gui_print ("- Forced-Encryption #1: Has 'someone' been wiping things, and then flashing a ROM without first rebooting the recovery?\n");//!!
+		if (TWFunc::Path_Exists(fstab2)) 
+		  {
+			LOGINFO ("DEBUG: Forced-Encryption: '%s' actually exists!\n", fstab2.c_str()); //!!
+		  }
+		else 
+		  {
+			LOGINFO ("DEBUG: Forced-Encryption: '%s' does not exist!\n", fstab2.c_str()); //!!			
+		  }		
+	      }	      
+	   }
       } 
 
      if (d1 == NULL)
 	{
-          if ((PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path())) || (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false)))
+          if ((PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path())) 
+          || (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false)))
 	     {
 	        d1 = opendir(fstab1.c_str());
 	        stat = 1;
+	        if (d1 == NULL) 
+	        {
+		  LOGINFO ("DEBUG: Forced-Encryption: Hmmm ... /system is mounted, but I can't open '%s'. This should not happen.\n", fstab1.c_str()); //!!
+		  gui_print ("- Forced-Encryption #2: Has 'someone' been wiping things, and then flashing a ROM without first rebooting the recovery?\n");//!!
+		  if (TWFunc::Path_Exists(fstab2)) 
+		    {
+			LOGINFO ("DEBUG: Forced-Encryption: '%s' actually exists!\n", fstab1.c_str()); //!!
+		    }
+		  else 
+		    {
+			LOGINFO ("DEBUG: Forced-Encryption: '%s' does not exist!\n", fstab1.c_str()); //!!			
+		    }		
+	        }
 	     }
         }
  

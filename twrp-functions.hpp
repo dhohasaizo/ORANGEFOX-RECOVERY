@@ -134,6 +134,7 @@ public:
     	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
     	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
     	static void Patch_Verity_Flags(string path); // patch the fstab's dm-verity flags
+    	static bool Has_Vendor_Partition(void); // does the device have a real vendor partition?
     	//
 
 private:
