@@ -347,17 +347,6 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	       DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 1); // standard ROM
 	       gui_msg ("fox_install_standard_detected=- Detected standard ROM zip installer");
 	     }
-	     else 
-	     {
-	        /*
-	        if (Zip -> EntryExists("boot.img")) // contains boot.img, but is not a full ROM - disable DM-Verity here too ?
-	        {
-                   DataManager::SetValue(FOX_CALL_DEACTIVATION, 1);
-		   DataManager::SetValue(FOX_DISABLE_DM_VERITY, 1);
-		}   
-		gui_msg("fox_install_patch_detected=- Detected Either a Patch or Fix Package");
-		*/
-	     }
 	}
 
    //* treble
@@ -375,6 +364,22 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
            
            Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
            LOGINFO("OrangeFox: detected Treble ROM installer. [code=%i] \n", Fox_Zip_Installer_Code);
+        }
+        else 
+        if (TWFunc::Has_Vendor_Partition())
+        {
+           DataManager::SetValue(FOX_ZIP_INSTALLER_TREBLE, "1");
+           Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+           usleep (32);
+           
+           if (Fox_Zip_Installer_Code == 1) // custom
+                 DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 11);
+           
+           if (Fox_Zip_Installer_Code == 2) // miui 
+                 DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 22);
+           
+           Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+           LOGINFO("OrangeFox: detected standard ROM installer, on a real Treble device!\n");       
         }
    //* treble
 
