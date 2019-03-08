@@ -1165,15 +1165,20 @@ void TWPartition::Process_TW_Flags(char *flags, bool Display_Error,
     }
 }
 
-bool TWPartition::Is_File_System(string File_System)
-{
-  if (File_System == "ext2" || File_System == "ext3" || File_System == "ext4"
-      || File_System == "vfat" || File_System == "ntfs"
-      || File_System == "yaffs2" || File_System == "exfat"
-      || File_System == "f2fs" || File_System == "auto")
-    return true;
-  else
-    return false;
+bool TWPartition::Is_File_System(string File_System) {
+	if (File_System == "ext2" ||
+		File_System == "ext3" ||
+		File_System == "ext4" ||
+		File_System == "vfat" ||
+		File_System == "ntfs" ||
+		File_System == "yaffs2" ||
+		File_System == "exfat" ||
+		File_System == "f2fs" ||
+		File_System == "squashfs" ||
+		File_System == "auto")
+		return true;
+	else
+		return false;
 }
 
 bool TWPartition::Is_Image(string File_System)

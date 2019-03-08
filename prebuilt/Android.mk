@@ -492,6 +492,18 @@ ifeq ($(TW_INCLUDE_DUMLOCK), true)
 	include $(BUILD_PREBUILT)
 endif
 
+ifeq ($(TW_USE_TOOLBOX), true)
+    include $(CLEAR_VARS)
+    LOCAL_MODULE := mkshrc_twrp
+    LOCAL_MODULE_TAGS := eng
+    LOCAL_MODULE_CLASS := ETC
+    LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/etc
+    LOCAL_SRC_FILES := $(LOCAL_MODULE)
+    LOCAL_POST_INSTALL_CMD := \
+        $(hide) mv $(TARGET_RECOVERY_ROOT_OUT)/etc/mkshrc_twrp $(TARGET_RECOVERY_ROOT_OUT)/etc/mkshrc
+    include $(BUILD_PREBUILT)
+endif
+
 #TWRP App "placeholder"
 include $(CLEAR_VARS)
 LOCAL_MODULE := mkbootimg
@@ -519,3 +531,18 @@ LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 #
+
+ifeq ($(TW_INCLUDE_CRYPTO), true)
+    ifneq ($(TW_CRYPTO_USE_SYSTEM_VOLD),)
+        ifneq ($(shell test $(PLATFORM_SDK_VERSION) -ge 28; echo $$?),0)
+            # Prebuilt vdc_pie for pre-Pie SDK Platforms
+            include $(CLEAR_VARS)
+            LOCAL_MODULE := vdc_pie
+            LOCAL_MODULE_TAGS := eng
+            LOCAL_MODULE_CLASS := RECOVERY_EXECUTABLES
+            LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
+            LOCAL_SRC_FILES := vdc_pie-$(TARGET_ARCH)
+            include $(BUILD_PREBUILT)
+        endif
+    endif
+endif
