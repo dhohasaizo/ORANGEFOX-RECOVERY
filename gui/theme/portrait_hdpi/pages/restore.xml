@@ -30,12 +30,8 @@
 				<selection name="tw_restore_name"/>
 			</fileselector>
 
-			<template name="ab_main"/>
-
-			<template name="statusbarinfo"/>
-
 			<input>
-				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="696" h="64"/>
+				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="552" h="64"/>
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
 				<background color="%background%"/>
@@ -43,6 +39,10 @@
 				<restrict disable="1"/>
 				<text>%tw_backups_folder%</text>
 			</input>
+
+			<template name="ab_main"/>
+
+			<template name="statusbarinfo"/>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x%" y="%ab_bc_double_u_y%" placement="2"/>

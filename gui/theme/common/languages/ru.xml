@@ -1128,6 +1128,7 @@
 		
 		<string name="fox_modules_hdr">Дополнения OrangeFox</string>
 		<string name="fox_modules_inst">Установить дополнение</string>
+		<string name="backup_short_hdr">Новая копия</string>
 		
 		<string name="module_install">Установить</string>
 		<string name="module_uninstall">Удалить</string>
@@ -1142,10 +1143,10 @@
 		<string name="mm_module_mount">Авто-монтирование</string>
 		<string name="mm_modules">Модули</string>
 		<string name="mm_ver">Версия Magisk</string>
-		
-		<!-- Substratum -->
-		<string name="subs_wipe">Удалить слои Substratum</string>
-		<string name="subs_method">Метод</string>
+		<string name="magisk_not_found">Magisk не найден!</string>
+		<string name="magisk_not_found_1">Хотите ли вы перейти в "Дополнения</string>
+		<string name="magisk_not_found_2">OrangeFox и установить встроенный</string>
+		<string name="magisk_not_found_3">Magisk?</string>
 		
 		<!-- Customization -->
 		<string name="fm_icons_simple">Сделать значки файлов больше</string>

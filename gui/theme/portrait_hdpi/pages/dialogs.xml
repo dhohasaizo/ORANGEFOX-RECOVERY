@@ -617,22 +617,22 @@
 
 			<text style="text_dlg_title">
 				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
-				<text>Magisk not found!</text>
+				<text>{@magisk_not_found}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%bg_storage_hdr_x%" y="%db_text1_y%"/>
-				<text>Do you wanna install</text>
+				<text>{@magisk_not_found_1}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%bg_storage_hdr_x%" y="%db_text2_y%"/>
-				<text>prebuilded Magisk?</text>
+				<text>{@magisk_not_found_2}</text>
 			</text>
 
 			<text style="text_body2">
 				<placement x="%bg_storage_hdr_x%" y="%db_text3_y%"/>
-				<text>Reboot required.</text>
+				<text>{@magisk_not_found_3}</text>
 			</text>
 
 			<button style="btn_dlg">
@@ -645,9 +645,8 @@
 				<placement x="%db_right_x%" y="%db_y%"/>
 				<text>{@ok_btn}</text>
 				<actions>
-					<action function="set">prebuild_action=magisk_install</action>
 					<action function="overlay"/>
-					<action function="page">check_prebuild_stuff</action>
+					<action function="page">fox_modules</action>
 				</actions>
 			</button>
 
