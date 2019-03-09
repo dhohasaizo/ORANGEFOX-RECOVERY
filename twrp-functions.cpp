@@ -3033,8 +3033,11 @@ bool TWFunc::Fresh_Fox_Install()
 	    return false;
 	
 	unlink(fox_file.c_str());
+	#ifdef OF_DONT_PATCH_ON_FRESH_INSTALLATION
+	gui_print("Fresh OrangeFox installation - not running the dm-verity/forced-encryption patches\n");
+	#else
 	New_Fox_Installation = 1;
-	gui_print("Fresh OrangeFox installation\n");
+	gui_print("Fresh OrangeFox installation - about to run the dm-verity/forced-encryption patches\n");
      	if (Fox_Current_ROM_IsMIUI == 1)
      	   {
 		Fox_Force_Deactivate_Process = 1;
@@ -3042,6 +3045,7 @@ bool TWFunc::Fresh_Fox_Install()
 	   }
 	TWFunc::Deactivation_Process();
 	New_Fox_Installation = 0;
+	#endif
 	return true;
    }    
    else
@@ -3739,7 +3743,7 @@ void TWFunc::Deactivation_Process(void)
 bool patched_verity = false;
 bool patched_crypt = false;
   
-  #ifdef OF_TWRP_COMPATIBILITY_MODE
+  #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
      return;
   #endif  
 
