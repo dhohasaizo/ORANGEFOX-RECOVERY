@@ -1125,6 +1125,17 @@
 		<string name="orangefox_msg4">[Сборка]: {1}</string>
 		<string name="unpack">Распаковать</string>
 		<string name="repack">Запаковать</string>
+		
+		<string name="fox_modules_hdr">Дополнения OrangeFox</string>
+		<string name="fox_modules_inst">Установить дополнение</string>
+		
+		<string name="module_install">Установить</string>
+		<string name="module_uninstall">Удалить</string>
+		<string name="module_initd">Включить поддержку init.d</string>
+		<string name="module_cam">Включить поддержку Camera2API</string>
+		<string name="fox_files_not_exist_1">Файл не найден!</string>
+		<string name="fox_files_not_exist_2">Перепрошейте OrangeFox с</string>
+		<string name="fox_files_not_exist_3">помощью установочного ZIP.</string>
 
 		<!-- MMGUI -->
 		<string name="mm_module_active">Активен</string>

@@ -109,6 +109,111 @@
 				<action function="page">main</action>
 			</action>
 		</page>
+		
+		<page name="fox_modules_confirm">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@fox_modules_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@fox_modules_inst}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%fox_m_name%</text>
+			</text>
+			
+			<image>
+				<condition var1="tw_fileexists" var2="0"/>
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<image resource="icon_warning"/>
+			</image>
+
+			<text style="text_body2_fail">
+				<condition var1="tw_fileexists" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
+				<text>{@fox_files_not_exist_1}</text>
+			</text>
+
+			<text style="text_body2_fail">
+				<condition var1="tw_fileexists" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
+				<text>{@fox_files_not_exist_2}</text>
+			</text>
+
+			<text style="text_body2_fail">
+				<condition var1="tw_fileexists" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row2_3a_y%"/>
+				<text>{@fox_files_not_exist_3}</text>
+			</text>
+
+			<text style="caption">
+				<condition var1="tw_fileexists" var2="1"/>
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<text>{@author}</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="tw_fileexists" var2="1"/>
+				<placement x="%col1_x%" y="%row2_2a_y%"/>
+				<text>%fox_m_author%</text>
+			</text>
+
+			<text style="caption">
+				<condition var1="tw_fileexists" var2="1"/>
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>{@options_hdr}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<condition var1="tw_fileexists" var2="1"/>
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<listitem name="{@zip_sig_chk}">
+					<data variable="tw_signed_zip_verify"/>
+				</listitem>
+				<listitem name="{@install_reboot_chk}">
+					<condition var1="tw_reboot_system" var2="1"/>
+					<data variable="tw_install_reboot"/>
+				</listitem>
+				<listitem name="{@inject_twrp_chk}">
+					<condition var1="tw_has_injecttwrp" var2="1"/>
+					<data variable="tw_inject_after_zip"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<condition var1="tw_fileexists" var2="1"/>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@swipe_to_install}</text>
+			</text>
+
+			<slider style="slider_action">
+				<condition var1="tw_fileexists" var2="1"/>
+				<placement x="%center_x%" y="%slider_y%" placement="5"/>
+				<action function="flash">flash_zip</action>
+			</slider>
+
+			<action>
+				<touch key="back"/>
+				<action function="queueclear"/>
+				<action function="page">fox_modules</action>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="queueclear"/>
+				<action function="page">main</action>
+			</action>
+		</page>
 
 		<page name="queueview">
 			<template name="body"/>

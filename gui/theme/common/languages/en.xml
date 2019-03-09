@@ -1030,6 +1030,17 @@
 		<string name="orangefox_msg4">[Build]: {1}</string>
 		<string name="unpack">Unpack</string>
 		<string name="repack">Repack</string>
+		
+		<string name="fox_modules_hdr">Fox Addons</string>
+		<string name="fox_modules_inst">Install addon</string>
+		
+		<string name="module_install">Install</string>
+		<string name="module_uninstall">Uninstall</string>
+		<string name="module_initd">Enable init.d support</string>
+		<string name="module_cam">Enable Camera2API</string>
+		<string name="fox_files_not_exist_1">File doesn't exist!</string>
+		<string name="fox_files_not_exist_2">Please reflash recovery</string>
+		<string name="fox_files_not_exist_3">using the installation zip.</string>
 
 		<!-- Customization -->
 		<string name="fm_icons_simple">Make file icons bigger</string>
