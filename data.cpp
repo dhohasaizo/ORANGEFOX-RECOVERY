@@ -839,16 +839,21 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue(FOX_ENABLE_DEBUGGING, "1");
 
   // { R9.0
-  mPersist.SetValue(FOX_DISABLE_OTA_AUTO_REBOOT, "0"); // R9.0 - DJ9 disable auto-reboot after OTA updates? set to 1 to enable this feature
+  mPersist.SetValue(FOX_DISABLE_OTA_AUTO_REBOOT, "0");
   // R9.0 }
 
   // { MIUI
-  mPersist.SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "1");
-  mPersist.SetValue("fox_verify_incremental_ota_signature", "1"); // set to 1 [support miui ota]
-  mPersist.SetValue(FOX_INCREMENTAL_PACKAGE, "1"); // set to 1 [support miui ota]
-  mPersist.SetValue(FOX_DISABLE_DM_VERITY, "1");
-  mPersist.SetValue(FOX_DO_SYSTEM_ON_OTA, "1");
+  string miui_switch = "1";
+  #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
+  miui_switch = "0";
+  #endif  
+  mPersist.SetValue("fox_verify_incremental_ota_signature", miui_switch); // set to 1 [support miui ota]
+  mPersist.SetValue(FOX_INCREMENTAL_PACKAGE, miui_switch); 		  // set to 1 [support miui ota]
+  mPersist.SetValue(FOX_DO_SYSTEM_ON_OTA, miui_switch);
+  mPersist.SetValue(FOX_DISABLE_DM_VERITY, miui_switch);
+  mPersist.SetValue(FOX_DISABLE_FORCED_ENCRYPTION, miui_switch);
   //  MIUI }
+
   mPersist.SetValue(FOX_FORCE_DEACTIVATE_PROCESS, "0");
   mPersist.SetValue(FOX_ZIP_INSTALLER_CODE, "0");
   mPersist.SetValue(FOX_ZIP_INSTALLER_TREBLE, "0");
