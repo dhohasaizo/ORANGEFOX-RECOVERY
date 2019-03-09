@@ -536,7 +536,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">%tw_back%</action>
+				<action function="page">restore</action>
 			</action>
 
 			<action>
