@@ -658,42 +658,95 @@
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="%row1_2a_y%" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="%row1_2_y%" w="%slidervalue_w%"/>
 				<data variable="tw_button_vibrate" min="0" max="300" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
 
 			<text style="text_body2">
 				<condition var1="tw_keyboard_vibrate" op="!=" var2="0"/>
-				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<placement x="%col1_x%" y="%row2_3_y%"/>
 				<text>{@kb_vibration} %tw_keyboard_vibrate%</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="tw_keyboard_vibrate" op="=" var2="0"/>
-				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<placement x="%col1_x%" y="%row2_3_y%"/>
 				<text>{@kb_vibration_hdr}</text>
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="%row3_1_y%" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="%row2_3_y%" w="%slidervalue_w%"/>
 				<data variable="tw_keyboard_vibrate" min="0" max="300" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
 
 			<text style="text_body2">
 				<condition var1="tw_action_vibrate" op="!=" var2="0"/>
-				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<placement x="%col1_x%" y="%row4_1_y%"/>
 				<text>{@act_vibration} %tw_action_vibrate%</text>
 			</text>
 
 			<text style="text_body2">
 				<condition var1="tw_action_vibrate" op="=" var2="0"/>
-				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<placement x="%col1_x%" y="%row4_1_y%"/>
 				<text>{@act_vibration_hdr}</text>
 			</text>
 
 			<slidervalue>
-				<placement x="%slider_x%" y="%row4_2a_y%" w="%slidervalue_w%"/>
+				<placement x="%slider_x%" y="%row4_1_y%" w="%slidervalue_w%"/>
 				<data variable="tw_action_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+
+			<!-- OFox vibration -->
+			
+			<text style="text_body2">
+				<condition var1="fox_data_install_vibrate" op="!=" var2="0"/>
+				<placement x="%col1_x%" y="%row5_2_y%"/>
+				<text>{@fox_install_vibrate} %fox_data_install_vibrate%</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="fox_data_install_vibrate" op="=" var2="0"/>
+				<placement x="%col1_x%" y="%row5_2_y%"/>
+				<text>{@fox_install_vibrate_hdr}</text>
+			</text>
+
+			<slidervalue>
+				<placement x="%slider_x%" y="%row5_2_y%" w="%slidervalue_w%"/>
+				<data variable="fox_data_install_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+			
+			<text style="text_body2">
+				<condition var1="fox_data_backup_vibrate" op="!=" var2="0"/>
+				<placement x="%col1_x%" y="%row6_3_y%"/>
+				<text>{@fox_backup_vibrate} %fox_data_backup_vibrate%</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="fox_data_backup_vibrate" op="=" var2="0"/>
+				<placement x="%col1_x%" y="%row6_3_y%"/>
+				<text>{@fox_backup_vibrate_hdr}</text>
+			</text>
+
+			<slidervalue>
+				<placement x="%slider_x%" y="%row6_3_y%" w="%slidervalue_w%"/>
+				<data variable="fox_data_backup_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+			
+			<text style="text_body2">
+				<condition var1="fox_data_restore_vibrate" op="!=" var2="0"/>
+				<placement x="%col1_x%" y="%row8_1_y%"/>
+				<text>{@fox_restore_vibrate} %fox_data_restore_vibrate%</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="fox_data_restore_vibrate" op="=" var2="0"/>
+				<placement x="%col1_x%" y="%row8_1_y%"/>
+				<text>{@fox_restore_vibrate_hdr}</text>
+			</text>
+
+			<slidervalue>
+				<placement x="%slider_x%" y="%row8_1_y%" w="%slidervalue_w%"/>
+				<data variable="fox_data_restore_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
 
 			<action>

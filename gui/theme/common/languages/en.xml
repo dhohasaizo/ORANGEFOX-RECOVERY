@@ -1112,6 +1112,13 @@
 		<string name="new_pass_info_4_2">Enter your password again.</string>
 		<string name="new_pass_info_4_2_gk">Draw gesture key again.</string>
 		
+		<!-- Vibration -->
+		<string name="fox_install_vibrate">Install Vibration:</string>
+		<string name="fox_backup_vibrate">Backup Vibration:</string>
+		<string name="fox_restore_vibrate">Restore Vibration:</string>
+		<string name="fox_install_vibrate_hdr">Install Vibration is off</string>
+		<string name="fox_backup_vibrate_hdr">Backup Vibration is off</string>
+		<string name="fox_restore_vibrate_hdr">Restore Vibration is off</string>
 		
 		<!-- Utilities -->
 		<string name="utilities">Utilities</string>
@@ -1125,6 +1132,9 @@
 		<string name="magisk_not_found_1">Do you wanna go to Fox Addons</string>
 		<string name="magisk_not_found_2">and install prebuilded Magisk?</string>
 		<string name="magisk_not_found_3"></string>
+		
+		<!-- Substratum -->
+		<string name="subs_wipe">Wipe Substratum Overlays</string>
 		
 		<!-- MIUI OTA -->
 		<string name="fox_ota_settings">OTA Settings</string>
