@@ -34,8 +34,18 @@
 
 			<template name="statusbarinfo"/>
 
+			<input>
+				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="696" h="64"/>
+				<cursor color="%transparent%" hasfocus="0" width="0"/>
+				<font resource="Secondary" color="%accent%"/>
+				<background color="%background%"/>
+				<data name="tw_backups_folder"/>
+				<restrict disable="1"/>
+				<text>%tw_backups_folder%</text>
+			</input>
+
 			<text style="text_ab_title">
-				<placement x="%col1_x%" y="%ab_bc_y%"/>
+				<placement x="%col1_x%" y="%ab_bc_double_u_y%" placement="2"/>
 				<text>{@restore_hdr}</text>
 			</text>
 
