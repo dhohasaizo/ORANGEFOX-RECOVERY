@@ -101,6 +101,7 @@
 			<action>
 				<condition var1="tw_operation_state" var2="1"/>
 				<condition var1="tw_operation_status" var2="0"/>
+				<action function="disableled"/>
 				<action function="page">advanced</action>
 			</action>
 		</page>
