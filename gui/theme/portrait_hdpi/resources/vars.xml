@@ -101,8 +101,8 @@
 		<variable name="check_mount_ro_1" value="916+%cutout_w%"/>
 		<variable name="check_mount_ro_2" value="374+%cutout_w%"/>
 		
-		<variable name="spl_custom_btn" value="%screen_h%-30"/>
-		<variable name="spl_custom_2_btn" value="%screen_h%-200"/>
+		<variable name="spl_custom_btn" value="%screen_original_h%-30"/>
+		<variable name="spl_custom_2_btn" value="%screen_original_h%-200"/>
 		
 		<!-- OTA -->
 		<variable name="ota_update_title_y" value="%center_y%+320"/>
