@@ -2,6 +2,13 @@
 <recovery>
 	<pages>
 		<page name="restore">
+			<action>
+				<action function="cmd">if [ ! -d "%tw_backups_folder%" ]; then mkdir -p "%tw_backups_folder%"; fi;</action>
+				<action function="page">restore_prepared</action>
+			</action>
+		</page>
+		
+		<page name="restore_prepared">
 			<template name="body_nav"/>
 
 			<action>
@@ -35,9 +42,9 @@
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
 				<background color="%background%"/>
-				<data name="tw_backups_folder"/>
+				<data name="tw_backups_folder_fm"/>
 				<restrict disable="1"/>
-				<text>%tw_backups_folder%</text>
+				<text>%tw_backups_folder_fm%</text>
 			</input>
 
 			<template name="ab_main"/>
@@ -51,7 +58,16 @@
 
 			<template name="actionbar_sort"/>
 			
-			<template name="actionbar_storage"/>
+			<button>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="overlay">dialog_storage_restore</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_storage"/>
+			</image>
 
 			<button>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
@@ -59,7 +75,7 @@
 				<actions>
 					<action function="set">restore_back=restore</action>
 					<action function="set">tw_action=cmd</action>
-					<action function="set">tw_action_param=if [ -d "%tw_backups_folder%" ]; then cd %tw_backups_folder% &amp;&amp; rm -rf *; fi;</action>
+					<action function="set">tw_action_param=if [ -d "%tw_backups_folder%" ]; then rm -rf %tw_backups_folder%/*; fi;</action>
 					<action function="set">tw_text1={@backups_remove}</action>
 					<action function="set">tw_text2={@backups_remove_all}</action>
 					<action function="set">tw_text4={@del_backup_confirm2}</action>
@@ -83,6 +99,14 @@
 					<action function="page">restore_read</action>
 				</actions>
 			</action>
+			
+			<!--action>
+				<condition var1="tw_backups_folder_fm" op="!=" var2="%tw_backups_folder%"/>
+				<actions>
+					<action function="cmd">if [ ! -d "%tw_backups_folder%" ]; then mkdir -p %tw_backups_folder%; fi;</action>
+					<action function="page">restore</action>
+				</actions>
+			</action-->
 
 			<template name="nav_panel"/>
 

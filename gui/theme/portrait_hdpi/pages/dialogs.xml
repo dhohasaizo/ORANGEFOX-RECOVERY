@@ -269,6 +269,51 @@
 			</action>
 		</page>
 
+		<page name="dialog_storage_restore">
+			<template name="dialog_body"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<partitionlist style="partitionlist_dialog">
+				<placement x="%storage_indent_x%" y="%storage_indent_y%" w="%dialog_w%" h="%storage_height%"/>
+				<data name="tw_storage_path"/>
+				<listtype name="storage"/>
+			</partitionlist>
+
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@ok_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<button style="btn_dlg">
+				<placement x="%db_left_x%" y="%db_y%"/>
+				<text>{@update_btn}</text>
+				<action function="refreshsizes"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>{@select_storage_hdr}</text>
+			</text>
+
+			<action>
+				<touch key="home"/>
+				<action function="set">storage_tofiles=0</action>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="set">storage_tofiles=0</action>
+				<action function="page">restore</action>
+				<action function="overlay"/>
+			</action>
+		</page>
+
 		<page name="dialog_encryption1">
 			<template name="dialog_body_key"/>
 
