@@ -42,9 +42,9 @@
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
 				<background color="%background%"/>
-				<data name="tw_backups_folder_fm"/>
+				<data name="tw_backups_folder"/>
 				<restrict disable="1"/>
-				<text>%tw_backups_folder_fm%</text>
+				<text>%tw_backups_folder%</text>
 			</input>
 
 			<template name="ab_main"/>
@@ -99,14 +99,6 @@
 					<action function="page">restore_read</action>
 				</actions>
 			</action>
-			
-			<!--action>
-				<condition var1="tw_backups_folder_fm" op="!=" var2="%tw_backups_folder%"/>
-				<actions>
-					<action function="cmd">if [ ! -d "%tw_backups_folder%" ]; then mkdir -p %tw_backups_folder%; fi;</action>
-					<action function="page">restore</action>
-				</actions>
-			</action-->
 
 			<template name="nav_panel"/>
 

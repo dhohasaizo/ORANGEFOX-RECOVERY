@@ -42,6 +42,21 @@
 		<!-- ota -->
 		<image name="ota_icon" filename="Light/FullscreenIcons/ota_icon" retainaspect="1"/>
 		<image name="progress_fill_small" filename="Light/Progress/progress_fill_small"/>
+
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="Gray/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="Gray/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="Gray/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_delete" filename="Gray/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_edit" filename="Gray/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="Gray/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="Gray/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_flash" filename="Gray/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_reset" filename="Gray/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_settings" filename="Gray/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_sort" filename="Gray/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_power_off" filename="Gray/ActionBar/power_off" retainaspect="1"/>
+		<image name="actionbar_storage" filename="Gray/ActionBar/storage" retainaspect="1"/>
 	</resources>
 	<variables>
 		<variable name="background" value="#FAFAFA"/>
