@@ -863,29 +863,6 @@
 			</text>
 
 			<!-- Themes -->
-			<!-- Black -->
-			<button>
-				<placement x="30" y="360"/>
-				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
-				<image resource="style_gray"/>
-				<action function="set">theme_style_tmp=Gray</action>
-			</button>
-			
-			<button>
-				<placement x="30" y="360"/>
-				<condition var1="theme_accent_tmp" var2="Black"/>
-				<image resource="style_gray"/>
-				<action function="set">theme_style_tmp=Gray</action>
-				<action function="set">theme_accent_tmp=Gray</action>
-			</button>
-
-			<image>
-				<placement x="30" y="360"/>
-				<condition var1="theme_style_tmp" var2="Gray"/>
-				<image resource="style_apply"/>
-			</image>
-			<!-- -->
-
 			<!-- Gray -->
 			<button>
 				<placement x="285" y="360"/>
@@ -911,14 +888,14 @@
 
 			<!-- Night -->
 			<button>
-				<placement x="540" y="360"/>
+				<placement x="30" y="360"/>
 				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
 				<image resource="style_night"/>
 				<action function="set">theme_style_tmp=Night</action>
 			</button>
 			
 			<button>
-				<placement x="540" y="360"/>
+				<placement x="30" y="360"/>
 				<condition var1="theme_accent_tmp" var2="Black"/>
 				<image resource="style_night"/>
 				<action function="set">theme_style_tmp=Night</action>
@@ -926,8 +903,31 @@
 			</button>
 
 			<image>
-				<placement x="540" y="360"/>
+				<placement x="30" y="360"/>
 				<condition var1="theme_style_tmp" var2="Night"/>
+				<image resource="style_apply"/>
+			</image>
+			<!-- -->
+			
+			<!-- Black -->
+			<button>
+				<placement x="540" y="360"/>
+				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
+				<image resource="style_gray"/>
+				<action function="set">theme_style_tmp=Gray</action>
+			</button>
+			
+			<button>
+				<placement x="540" y="360"/>
+				<condition var1="theme_accent_tmp" var2="Black"/>
+				<image resource="style_gray"/>
+				<action function="set">theme_style_tmp=Gray</action>
+				<action function="set">theme_accent_tmp=Gray</action>
+			</button>
+
+			<image>
+				<placement x="540" y="360"/>
+				<condition var1="theme_style_tmp" var2="Gray"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
@@ -935,17 +935,17 @@
 			<!-- Light -->
 			<button>
 				<placement x="795" y="360"/>
-				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
+				<condition var1="theme_accent_tmp" op="!=" var2="Gray"/>
 				<image resource="style_light"/>
 				<action function="set">theme_style_tmp=Light</action>
 			</button>
 			
 			<button>
 				<placement x="795" y="360"/>
-				<condition var1="theme_accent_tmp" var2="Black"/>
+				<condition var1="theme_accent_tmp" var2="Gray"/>
 				<image resource="style_light"/>
 				<action function="set">theme_style_tmp=Light</action>
-				<action function="set">theme_accent_tmp=Gray</action>
+				<action function="set">theme_accent_tmp=Black</action>
 			</button>
 			
 			<image>
