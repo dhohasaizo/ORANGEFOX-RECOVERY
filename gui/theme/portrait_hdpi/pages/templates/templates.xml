@@ -478,49 +478,8 @@
 			<image>
 				<condition var1="flat_tbar" op="!=" var2="1"/>
 				<image resource="actionbar_shadow"/>
-				<placement x="0" y="%ab_shad_y%"/>
+				<placement x="0" y="%ab_h%"/>
 			</image>
-
-			<fill color="%accent%">
-				<condition var1="accent_title" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
-			</fill>
-			
-			<fill color="#222222FF">
-				<condition var1="accent_title" var2="0"/>
-				<condition var1="theme_style" var2="Light_classic"/>
-				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
-			</fill>
-			
-			<fill color="%lightransparent%">
-				<condition var1="darker_ui" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<condition var1="separate_status" op="!=" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
-			
-			<fill color="#000000">
-				<condition var1="hide_notch" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
-			
-			<template name="actionbar_back"/>
-		</template>
-
-		<template name="ab_without_shadow">
-			<fill color="%accent%">
-				<condition var1="accent_title" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
-			</fill>
-			
-			<fill color="#222222FF">
-				<condition var1="accent_title" var2="0"/>
-				<condition var1="theme_style" var2="Light_classic"/>
-				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
-			</fill>
 			
 			<fill color="%lightransparent%">
 				<condition var1="darker_ui" var2="1"/>
@@ -544,19 +503,8 @@
 			<image>
 				<condition var1="flat_tbar" op="!=" var2="1"/>
 				<image resource="actionbar_shadow"/>
-				<placement x="0" y="%ab_shad_y%"/>
+				<placement x="0" y="%ab_h%"/>
 			</image>
-
-			<fill color="%accent%">
-				<condition var1="accent_title" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
-			</fill>
-			
-			<fill color="#222222FF">
-				<condition var1="theme_style" var2="Light_classic"/>
-				<condition var1="accent_title" var2="0"/>
-				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
-			</fill>
 			
 			<fill color="%lightransparent%">
 				<condition var1="darker_ui" var2="1"/>
@@ -578,19 +526,8 @@
 			<image>
 				<condition var1="flat_tbar" op="!=" var2="1"/>
 				<image resource="actionbar_shadow"/>
-				<placement x="0" y="%ab_ex_shad_y%"/>
+				<placement x="0" y="%ab_ex_h%"/>
 			</image>
-
-			<fill color="%accent%">
-				<condition var1="accent_title" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%ab_ex_h%"/>
-			</fill>
-			
-			<fill color="#222222FF">
-				<condition var1="accent_title" var2="0"/>
-				<condition var1="theme_style" var2="Light_classic"/>
-				<placement x="0" y="0" w="%screen_w%" h="%ab_ex_h%"/>
-			</fill>
 			
 			<fill color="%lightransparent%">
 				<condition var1="darker_ui" var2="1"/>

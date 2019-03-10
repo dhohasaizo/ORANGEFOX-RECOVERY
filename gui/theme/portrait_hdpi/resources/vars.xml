@@ -64,7 +64,6 @@
 		<variable name="auto_generate" value="2" persist="1"/>
 		
 		<!-- Design -->
-		<variable name="accent_title" value="0" persist="1"/>
 		<variable name="enable_battery" value="1" persist="1"/>
 		<variable name="navbar_bkg" value="3" persist="1"/>
 		<variable name="nougat" value="3" persist="1"/>
@@ -315,8 +314,6 @@
 		<variable name="ab_ex_h" value="456+%cutout_w%"/>
 		<variable name="row_ab_ex_y" value="456+%cutout_w%"/>
 		<variable name="ab_btn_h" value="168"/>
-		<variable name="ab_shad_y" value="236+%cutout_w%"/>
-		<variable name="ab_ex_shad_y" value="452+%cutout_w%"/>
 		
 		<!-- Sort menu -->
 		<variable name="ab_menu_y" value="72+%cutout_w%"/>
@@ -445,6 +442,7 @@
 		<variable name="error" value="#FF0000"/>
 		<variable name="unactive_title" value="#80868B"/>
 		<variable name="text_raisedbtn" value="#FFFFFF"/>
+		<variable name="highlight" value="%accent%"/>
 		
 		<!-- Rows -->
 		<variable name="row0_y" value="240+%cutout_w%"/>

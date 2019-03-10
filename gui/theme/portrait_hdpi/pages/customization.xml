@@ -334,8 +334,23 @@
 		<!-- Lockscreen -->
 		<page name="ext_custom_lock">
 			<template name="body"/>
+			
+			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%row4_1_y%"/>
+			</fill>
 
-			<template name="ab"/>
+			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<fill color="#000000">
+				<condition var1="hide_notch" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<template name="actionbar_back"/>
 
 			<template name="statusbarinfo"/>
 
@@ -379,7 +394,7 @@
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row4_3_y%" w="%row2_1_y%" h="%lb_l3%"/>
+				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="clock_style"/>
 				<listitem name="{@lockscreen_icon}">0</listitem>
 				<listitem name="{@lockscreen_clock}">1</listitem>
@@ -738,12 +753,12 @@
 
 			<!-- Font Size -->
 			<text style="caption">
-				<placement x="%col1_x%" y="%row6_1_y%" />
+				<placement x="%col1_x%" y="%row6_1a_y%" />
 				<text>{@font_size}</text>
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row6_2_y%" w="%screen_w%" h="%lb_l2%"/>
+				<placement x="0" y="%row6_2a_y%" w="%screen_w%" h="%lb_l2%"/>
 				<data name="theme_font_size_tmp"/>
 				<listitem name="{@font_norm}">n</listitem>
 				<listitem name="{@font_small}">s</listitem>
@@ -894,49 +909,49 @@
 			</image>
 			<!-- -->
 
-			<!-- Light -->
+			<!-- Night -->
 			<button>
 				<placement x="540" y="360"/>
-				<condition var1="theme_accent_tmp" op="!=" var2="Gray"/>
-				<image resource="style_light"/>
-				<action function="set">theme_style_tmp=Light</action>
+				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
+				<image resource="style_night"/>
+				<action function="set">theme_style_tmp=Night</action>
 			</button>
 			
 			<button>
 				<placement x="540" y="360"/>
-				<condition var1="theme_accent_tmp" var2="Gray"/>
-				<image resource="style_light"/>
-				<action function="set">theme_style_tmp=Light</action>
-				<action function="set">theme_accent_tmp=Black</action>
+				<condition var1="theme_accent_tmp" var2="Black"/>
+				<image resource="style_night"/>
+				<action function="set">theme_style_tmp=Night</action>
+				<action function="set">theme_accent_tmp=Gray</action>
 			</button>
 
 			<image>
 				<placement x="540" y="360"/>
-				<condition var1="theme_style_tmp" var2="Light"/>
-				<image resource="style_apply_black"/>
+				<condition var1="theme_style_tmp" var2="Night"/>
+				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
-			<!-- Light classic -->
+			<!-- Light -->
 			<button>
 				<placement x="795" y="360"/>
 				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
-				<image resource="style_light_c"/>
-				<action function="set">theme_style_tmp=Light_classic</action>
+				<image resource="style_light"/>
+				<action function="set">theme_style_tmp=Light</action>
 			</button>
 			
 			<button>
 				<placement x="795" y="360"/>
 				<condition var1="theme_accent_tmp" var2="Black"/>
-				<image resource="style_light_c"/>
-				<action function="set">theme_style_tmp=Light_classic</action>
+				<image resource="style_light"/>
+				<action function="set">theme_style_tmp=Light</action>
 				<action function="set">theme_accent_tmp=Gray</action>
 			</button>
 			
 			<image>
 				<placement x="795" y="360"/>
-				<condition var1="theme_style_tmp" var2="Light_classic"/>
-				<image resource="style_apply"/>
+				<condition var1="theme_style_tmp" var2="Light"/>
+				<image resource="style_apply_black"/>
 			</image>
 			<!-- -->
 

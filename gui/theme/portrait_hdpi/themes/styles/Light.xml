@@ -43,7 +43,6 @@
 	</resources>
 	<variables>
 		<variable name="background" value="#FAFAFA"/>
-		<variable name="bg_rgb" value="250"/>
 		
 		<variable name="highlight_color" value="#FAFAFA66"/>
 		<variable name="highlight_color_full" value="#E9E9E944"/>
@@ -57,6 +56,5 @@
 		<variable name="darktransparent" value="#FAFAFABB"/>
 		<variable name="lightransparent" value="#00000008"/>
 		<variable name="theme_style" value="Light"/>
-		<variable name="theme_style_main" value="Light"/>
 	</variables>
 </recovery>

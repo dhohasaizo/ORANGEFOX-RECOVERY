@@ -57,7 +57,6 @@
 	</resources>
 	<variables>
 		<variable name="background" value="#222222"/> <!-- bg color -->
-		<variable name="bg_rgb" value="34"/> <!-- bg color for splash -->
 		
 		<variable name="highlight_color" value="#22222266"/> <!-- obj pressed (btn) -->
 		<variable name="highlight_color_full" value="#11111144"/> <!-- hl behind obj (filemanager) -->
@@ -71,6 +70,5 @@
 		<variable name="darktransparent" value="#000000BB"/> <!-- dialog bgs -->
 		<variable name="lightransparent" value="#00000011"/> <!-- dark statusbar -->
 		<variable name="theme_style" value="Gray"/> <!-- name -->
-		<variable name="theme_style_main" value="Gray"/> <!-- group name -->
 	</variables>
 </recovery>

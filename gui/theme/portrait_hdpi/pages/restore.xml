@@ -4,6 +4,7 @@
 		<page name="restore">
 			<action>
 				<action function="cmd">if [ ! -d "%tw_backups_folder%" ]; then mkdir -p "%tw_backups_folder%"; fi;</action>
+				<action function="set">tw_backups_folder_fm=%tw_backups_folder%</action>
 				<action function="page">restore_prepared</action>
 			</action>
 		</page>
@@ -21,7 +22,7 @@
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="bkp_icon" file="bkp_icon" />
 				<filter folders="1" files="1" nav="0" extn=".ab"/>
-				<path name="tw_backups_folder"/>
+				<path name="tw_backups_folder_fm"/>
 				<data name="tw_restore" default=""/>
 				<selection name="tw_restore_name"/>
 			</fileselector>
@@ -32,7 +33,7 @@
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="bkp_icon_small" file="bkp_icon_small" />
 				<filter folders="1" files="1" nav="0" extn=".ab"/>
-				<path name="tw_backups_folder"/>
+				<path name="tw_backups_folder_fm"/>
 				<data name="tw_restore" default=""/>
 				<selection name="tw_restore_name"/>
 			</fileselector>

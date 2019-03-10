@@ -683,55 +683,6 @@
 				<text>Magisk Core</text>
 			</text>
 
-			<!-- Magisk version / toolbox tile
-			<fill color="#383838">
-				<placement x="0" y="410" w="%screen_w%" h="336"/>
-			</fill>
-
-			<image>
-				<image resource="actionbar_shadow"/>
-				<condition var1="flat_tbar" op="!=" var2="1"/>
-				<placement x="0" y="745"/>
-			</image>
-
-			<text style="text_dlg_title">
-				<placement x="%btn_raised_left_x%" y="450"/>
-				<text>{@mm_ver}: </text>
-			</text>
-
-			<fileselector>
-				<placement x="530" y="450" w="%screen_w%" h="108"/>
-				<highlight color="%transparent%"/>
-				<background color="%transparent%" />
-				<font resource="Secondary-title" spacing="%fileselector_spacing%" color="%text%" />
-				<sort name="0"/>
-				<filter folders="0" files="1" nav="0"/>
-				<path name="mmgui_ver" default="/tmp/mmver"/>
-				<data name="xxx"/>
-				<selection name="xxx"/>
-			</fileselector>
-
-			<button style="btn_raised">
-				<placement x="%btn_raised_left_x%" y="570"/>
-				<text>Uninstall</text>
-				<actions>
-					<action function="set">prebuild_action=magisk_uninstall</action>
-					<action function="set">prebuild_fail_page=magisk</action>
-					<action function="page">check_prebuild_stuff</action>
-				</actions>
-			</button>
-
-			<button style="btn_raised_hl">
-				<placement x="%btn_raised_right_x%" y="570" placement="1"/>
-				<text>Reinstall</text>
-				<actions>
-					<action function="set">prebuild_action=magisk_install</action>
-					<action function="set">prebuild_fail_page=magisk</action>
-					<action function="page">check_prebuild_stuff</action>
-				</actions>
-			</button>
-			-->
-
 			<button style="bs_btn">
 				<condition var1="magisk_core" op="!=" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
