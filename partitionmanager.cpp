@@ -2737,7 +2737,22 @@ void TWPartitionManager::Get_Partition_List(string ListType,
 	    }
 	}
     }
-  else if (ListType == "storage")
+  else if (ListType == "part_option")
+    {
+      for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
+	{
+	  if ((*iter)->Wipe_Available_in_GUI && !(*iter)->Is_SubPartition)
+	    {
+	      struct PartitionList part;
+	      part.Display_Name = (*iter)->Display_Name;
+	      part.Mount_Point = (*iter)->Mount_Point;
+	      part.selected = 0;
+	      Partition_List->push_back(part);
+	    }
+	}
+
+    }
+    else if (ListType == "storage")
     {
       char free_space[255];
       string Current_Storage = DataManager::GetCurrentStoragePath();

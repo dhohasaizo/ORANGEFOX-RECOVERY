@@ -945,7 +945,7 @@ int GUIAction::checkpartitionlist(std::string arg)
   int count = 0;
 
   if (arg.empty())
-    arg = "tw_wipe_list";
+    arg = "part_option";
   DataManager::GetValue(arg, List);
   LOGINFO("checkpartitionlist list '%s'\n", List.c_str());
   if (!List.empty())

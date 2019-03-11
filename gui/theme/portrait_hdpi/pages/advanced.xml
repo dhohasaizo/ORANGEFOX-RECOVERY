@@ -70,7 +70,7 @@
 			</text>
 			<!---->
 
-			<!-- Terminal -->
+			<!-- Terminal>
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
 				<action function="page">terminal</action>
@@ -85,7 +85,24 @@
 				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
 				<text>{@terminal_btn}</text>
 			</text>
-			<!---->
+			<-->
+
+			<!-- Partition Options -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
+				<action function="page">part_options</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row2_y%"/>
+				<image resource="harddisk"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
+				<text>Partition Options</text>
+			</text>
+			<!-- -->
 
 			<!-- MM GUI -->
 			<button style="bs_btn">
@@ -504,7 +521,7 @@
 				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
 				<text>{@module_initd} </text>
 			</text>
-			<!----->
+			<!--- -->
 
 			<!-- Cam -->
 			<button style="bs_btn">
@@ -535,7 +552,7 @@
 				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
 				<text>{@module_cam}</text>
 			</text>
-			<!----->
+			<!-- -->
 			
 			<action>
 				<touch key="home"/>
@@ -1546,6 +1563,82 @@
 						<action function="page">action_page</action>
 					</actions>
 				</slider>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">advanced</action>
+				</action>
+			</page>
+
+			<page name="part_options">
+				<template name="body"/>
+
+				<template name="ab"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>Partition Options</text>
+				</text>
+
+				<image>
+					<condition var1="partitionlisterror" op="!=" var2="1"/>
+					<placement x="%col1_x%" y="%row1_1_y%"/>
+					<image resource="icon_info"/>
+				</image>
+
+				<text style="text_body2_hl">
+					<condition var1="partitionlisterror" op="!=" var2="1"/>
+					<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+					<text>{@sel_part_single1}</text>
+				</text>
+
+				<text style="text_body2_hl">
+					<condition var1="partitionlisterror" op="!=" var2="1"/>
+					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+					<text>{@sel_part_single2}</text>
+				</text>
+
+				<image>
+					<condition var1="partitionlisterror" var2="1"/>
+					<placement x="%col1_x%" y="%row1_1_y%"/>
+					<image resource="icon_warning"/>
+				</image>
+
+				<text style="text_body2_fail">
+					<condition var1="partitionlisterror" var2="1"/>
+					<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+					<text>{@part_fs_error_1}</text>
+				</text>
+
+				<text style="text_body2_fail">
+					<condition var1="partitionlisterror" var2="1"/>
+					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+					<text>{@part_fs_error_2}</text>
+				</text>
+
+				<text style="caption">
+					<placement x="%col1_x%" y="%row2_1_y%"/>
+					<text>{@partitions}</text>
+				</text>
+
+				<partitionlist style="partitionlist_dialog">
+					<placement x="0" y="%row2_2_y%" w="%screen_w%" h="%part_list_btns_np_h%"/>
+					<data name="tw_wipe_list"/>
+					<listtype name="part_option"/>
+				</partitionlist>
+
+				<button style="btn_raised_hl">
+					<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+					<text>Next</text>
+					<action function="page">checkpartitionlist</action>
+				</button>
 
 				<action>
 					<touch key="home"/>
