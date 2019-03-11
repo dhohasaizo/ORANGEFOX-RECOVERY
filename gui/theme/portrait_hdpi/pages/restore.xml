@@ -64,20 +64,33 @@
 				<text>{@restore_hdr}</text>
 			</text>
 
-			<template name="actionbar_sort"/>
+			<button>
+				<condition var1="tw_fileexists" var2="0"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="overlay">menu_sort</action>
+			</button>
+
+			<image>
+				<condition var1="tw_fileexists" var2="0"/>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_sort"/>
+			</image>
 			
 			<button>
+				<condition var1="tw_fileexists" var2="0"/>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="overlay">dialog_storage_restore</action>
 			</button>
 
 			<image>
+				<condition var1="tw_fileexists" var2="0"/>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_storage"/>
 			</image>
 
 			<button>
+				<condition var1="tw_fileexists" var2="0"/>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<actions>
@@ -95,6 +108,7 @@
 			</button>
 
 			<image>
+				<condition var1="tw_fileexists" var2="0"/>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_delete"/>
 			</image>
