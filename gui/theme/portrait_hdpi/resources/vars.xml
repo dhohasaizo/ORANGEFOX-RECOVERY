@@ -156,7 +156,7 @@
 		
 		<!-- AR UI -->
 		<variable name="prep_ar_1" value="%screen_h%-1380"/>
-		<variable name="prep_ar_2" value="%screen_h%-1110"/>
+		<variable name="prep_ar_2" value="%screen_h%-696"/>
 		<variable name="prep_ar_3" value="%screen_h%-1338"/>
 		<variable name="part_list_btns_h" value="%prep_ar_1%-%cutout_w%"/>
 		<variable name="part_list_btns_9_h" value="%prep_ar_2%-%cutout_w%"/>
