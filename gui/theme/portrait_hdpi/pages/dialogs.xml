@@ -705,5 +705,30 @@
 				<action function="overlay"/>
 			</action>
 		</page>
+
+		<page name="fox_tip">
+			<template name="dialog_body"/>
+			
+			<image>
+				<image resource="fox_tip"/>
+				<placement x="0" y="0"/>
+			</image>
+
+			<button>
+				<placement x="870" y="1080"/>
+				<image resource="actionbar_cancel" highlightresource="actionbar_btn_hl"/>
+				<action function="overlay"/>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
 	</pages>
 </recovery>
