@@ -383,7 +383,10 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
         }
    //* treble
 
-      if (zip_is_survival_trigger) //(DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) != 0)
+#if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
+     //LOGINFO("OrangeFox: not executing MIUI OTA restore\n");
+#else
+     if (zip_is_survival_trigger) //(DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) != 0)
 	{
 	  gui_msg
 	    ("fox_incremental_ota_status_enabled=Support MIUI Incremental package status: Enabled");
@@ -539,6 +542,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      return INSTALL_ERROR;
 	    }
 	}
+#endif // MIUI OTA
       if (Zip->EntryExists(bootloader))
 	gui_msg(Msg
 		(msg::kWarning,
@@ -1018,6 +1022,9 @@ int TWinstall_zip(const char *path, int *wipe_cache)
      {
 	set_miui_install_status(OTA_ERROR, false);
      }
+#if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
+   //LOGINFO("OrangeFox: not running the MIUI OTA backup.\n");
+#else    
   else  
   if (DataManager::GetIntValue(FOX_INCREMENTAL_OTA_FAIL) != 1)
     {
@@ -1076,9 +1083,12 @@ int TWinstall_zip(const char *path, int *wipe_cache)
       DataManager::SetValue(FOX_RUN_SURVIVAL_BACKUP, 0);
       
       LOGINFO("Install took %i second(s).\n", total_time);
-   } // FOX_INCREMENTAL_OTA_FAIL    
+   } // FOX_INCREMENTAL_OTA_FAIL
+#endif // MIUI OTA
+
    if (ret_val == INSTALL_SUCCESS)
       set_miui_install_status(OTA_SUCCESS, false);
+
 #ifdef USE_MINZIP
   sysReleaseMap(&map);
 #endif

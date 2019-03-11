@@ -2056,11 +2056,11 @@ void TWFunc::Welcome_Message(void)
 {
    if (Fox_Has_Welcomed > 0)
      return;
-   gui_print("**************************");
+   gui_print("**************************\n");
    gui_msg("orangefox_msg2=[OrangeFox]: Welcome! ^_^");
    gui_msg(Msg("orangefox_msg3=[Version]: '{1}'") (FOX_VERSION));
    gui_msg(Msg("orangefox_msg4=[Build]: {1}") (FOX_BUILD));
-   gui_print("**************************");
+   gui_print("**************************\n");
    Fox_Has_Welcomed++;
 }
 
@@ -3744,6 +3744,7 @@ bool patched_verity = false;
 bool patched_crypt = false;
   
   #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
+     LOGINFO("OrangeFox: not executing Deactivation_Process()\n");
      return;
   #endif  
 
