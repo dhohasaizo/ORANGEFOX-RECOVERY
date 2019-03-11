@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<font name="status" filename="#PRIMARY_FONT_MED#.ttf" size="45"/>
+		<font name="bigfont" filename="#PRIMARY_FONT_MED#.ttf" size="53"/>
+		<font name="body1" filename="#PRIMARY_FONT_REG#.ttf" size="47"/>
+		<font name="body2" filename="#PRIMARY_FONT_MED#.ttf" size="47"/>
+		<font name="subhead" filename="#PRIMARY_FONT_REG#.ttf" size="56"/>
+		<font name="title" filename="#PRIMARY_FONT_MED#.ttf" size="65"/>
+		<font name="mainbutton" filename="#PRIMARY_FONT_REG#.ttf" size="69"/>
+		<font name="button" filename="#PRIMARY_FONT_MED#.ttf" size="46"/>
+		<font name="menu" filename="#PRIMARY_FONT_MED#.ttf" size="49"/>
+		<font name="input_fail" filename="#PRIMARY_FONT_MED#.ttf" size="36"/>
+		<font name="splash" filename="#PRIMARY_FONT_MED#.ttf" size="53"/>
+
+		<font name="font_l" filename="#PRIMARY_FONT_MED#.ttf" size="56"/>
+		<font name="font_m" filename="#PRIMARY_FONT_MED#.ttf" size="46"/>
+		<font name="font_s" filename="#PRIMARY_FONT_MED#.ttf" size="41"/>
+		<font name="font_b" filename="#PRIMARY_FONT_MED#.ttf" size="205"/>
+
+		<font name="keylabel" filename="#PRIMARY_FONT_REG#.ttf" size="67"/>
+		<font name="keylabel-bold" filename="#PRIMARY_FONT_MED#.ttf" size="48"/>
+		<font name="keylabel-num" filename="#PRIMARY_FONT_REG#.ttf" size="76"/>
+		<font name="keylabel-small" filename="#PRIMARY_FONT_REG#.ttf" size="49"/>
+		<font name="keylabel-longpress" filename="#PRIMARY_FONT_REG#.ttf" size="38"/>
+		
+		<font name="Secondary" filename="#SECONDARY_FONT_MED#.ttf" size="46"/>
+		<font name="Secondary-title" filename="#SECONDARY_FONT_MED#.ttf" size="67"/>
+		<font name="caption" filename="#SECONDARY_FONT_MED#.ttf" size="36"/>
+		
+		<font name="clock" filename="#SECONDARY_FONT_MED#.ttf" size="240"/>
+		<font name="info" filename="#SECONDARY_FONT_REG#.ttf" size="50"/>
+	</resources>
+	
+	<variables>
+		<variable name="theme_font" value="#PRIMARY_NAME#"/>
+		<variable name="theme_sec_font" value="#SECONDARY_NAME#"/>
+		<variable name="theme_font_size" value="b"/>
+	</variables>
+</recovery>

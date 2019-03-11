@@ -758,10 +758,11 @@
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row6_2a_y%" w="%screen_w%" h="%lb_l2%"/>
+				<placement x="0" y="%row6_2a_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="theme_font_size_tmp"/>
-				<listitem name="{@font_norm}">n</listitem>
 				<listitem name="{@font_small}">s</listitem>
+				<listitem name="{@font_norm}">n</listitem>
+				<listitem name="{@font_big}">b</listitem>
 			</listbox>
 
 			<action>
