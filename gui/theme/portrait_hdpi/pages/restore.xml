@@ -116,7 +116,7 @@
 
 			<text style="text_ab_title">
 				<condition var1="tw_fileexists" var2="1"/>
-				<placement x="%center_x%" y="%row5_1a_y%" placement="4"/>
+				<placement x="%center_x%" y="%row5_1_y%" placement="4"/>
 				<text>{@backups_wat}</text>
 			</text>
 

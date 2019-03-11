@@ -452,7 +452,22 @@
 		<page name="pass_select">
 			<template name="body"/>
 
-			<template name="ab"/>
+			<fill color="%lightransparent%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%row4_1_y%"/>
+			</fill>
+
+			<fill color="%lightransparent%">
+				<condition var1="separate_status" op="!=" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<fill color="#000000">
+				<condition var1="hide_notch" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<template name="actionbar_back"/>
 
 			<template name="statusbarinfo"/>
 			
@@ -461,9 +476,45 @@
 				<text>{@enter_password_cptn}</text>
 			</text>
 
+			<image>
+				<image resource="fox_lock"/>
+				<placement x="30" y="%row1_1_y%"/>
+			</image>
+
+			<text style="text_body1_hl">
+				<placement x="450" y="%row1_1_y%"/>
+				<text>Current blocking method</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="450" y="%row1_2_y%"/>
+				<text>Password</text>
+			</text>
+
+			<text style="text_body1_hl">
+				<placement x="450" y="%row2_3_y%"/>
+				<text>You can sleep better knowing</text>
+			</text>
+
+			<text style="text_body1_hl">
+				<placement x="450" y="%row3_1_y%"/>
+				<text>that you are protected.</text>
+			</text>
+
+			<image>
+				<image resource="actionbar_shadow"/>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<placement x="0" y="%row4_1_y%"/>
+			</image>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<text>Select password type</text>
+			</text>
+
 			<!-- Classic -->
 			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row6_y%"/>
 				<action function="set">pass_new_1=</action>
 				<action function="set">pass_new_2=</action>
 				<action function="set">pass_notm=0</action>
@@ -471,19 +522,19 @@
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row1_y%"/>
+				<placement x="%col1_x%" y="%set_row6_y%"/>
 				<image resource="pass_classic"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
 				<text>{@pass_classic}</text>
 			</text>
 			<!---->
 
 			<!-- PIN -->
 			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
 				<action function="set">pass_new_1=</action>
 				<action function="set">pass_new_2=</action>
 				<action function="set">pass_notm=0</action>
@@ -491,19 +542,19 @@
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row2_y%"/>
+				<placement x="%col1_x%" y="%set_row7_y%"/>
 				<image resource="dialpad"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
 				<text>{@pass_pin}</text>
 			</text>
 			<!---->
 
 			<!-- Gesture -->
 			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
 				<action function="set">pass_new_1=</action>
 				<action function="set">pass_new_2=</action>
 				<action function="set">pass_notm=0</action>
@@ -512,12 +563,12 @@
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row3_y%"/>
+				<placement x="%col1_x%" y="%set_row8_y%"/>
 				<image resource="pass_gesture"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
 				<text>{@pass_gk}</text>
 			</text>
 			<!---->
@@ -525,7 +576,7 @@
 			<!-- Disable -->
 			<button style="bs_btn">
 				<condition var1="use_pass" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row9_y%"/>
 				<action function="set">pass_new_1=</action>
 				<action function="set">pass_new_2=</action>
 				<action function="set">pass_notm=0</action>
@@ -537,13 +588,13 @@
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row4_y%"/>
+				<placement x="%col1_x%" y="%set_row9_y%"/>
 				<condition var1="use_pass" var2="1"/>
 				<image resource="bs_adv_frp"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
 				<condition var1="use_pass" var2="1"/>
 				<text>{@pass_dis}</text>
 			</text>
