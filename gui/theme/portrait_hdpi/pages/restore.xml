@@ -3,9 +3,16 @@
 	<pages>
 		<page name="restore">
 			<action>
-				<action function="cmd">if [ ! -d "%tw_backups_folder%" ]; then mkdir -p "%tw_backups_folder%"; fi;</action>
+				<action function="cmd">
+					if [ ! -d "%tw_backups_folder%" ]; then mkdir -p "%tw_backups_folder%"; fi;
+					if [ -f "%tw_backups_folder%/.EMPTY" ]; then rm "%tw_backups_folder%/.EMPTY"; fi;
+					if [ $(find %tw_backups_folder%/* -maxdepth 0 -type d | wc -l) -eq 0 ]; then touch "%tw_backups_folder%/.EMPTY"; fi;
+				</action>
 				<action function="set">tw_backups_folder_fm=%tw_backups_folder%</action>
-				<action function="page">restore_prepared</action>
+				<action function="set">tw_filecheck=%tw_backups_folder%/.EMPTY</action>
+				<action function="set">tw_existpage=restore_prepared</action>
+				<action function="set">tw_notexistpage=restore_prepared</action>
+				<action function="page">filecheck</action>
 			</action>
 		</page>
 		
@@ -101,9 +108,61 @@
 				</actions>
 			</action>
 
+			<image>
+				<condition var1="tw_fileexists" var2="1"/>
+				<image resource="empty_folder"/>
+				<placement x="244" y="%row1_3_y%"/>
+			</image>
+
+			<text style="text_ab_title">
+				<condition var1="tw_fileexists" var2="1"/>
+				<placement x="%center_x%" y="%row5_1a_y%" placement="4"/>
+				<text>{@backups_wat}</text>
+			</text>
+
+			<button style="btn_raised_hl">
+				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="auto_generate" var2="0"/>
+				<placement x="%center_x%" y="%row6_1a_y%" placement="4"/>
+				<text>{@backup_short_hdr}</text>
+				<action function="set">tw_backup_name={@auto_gen}</action>
+				<action function="set">tw_fileexists=0</action>
+				<action function="set">adb_backup_pc=0</action>
+				<action function="page">backup_device</action>
+			</button>
+
+			<button style="btn_raised_hl">
+				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="auto_generate" var2="1"/>
+				<placement x="%center_x%" y="%row6_1a_y%" placement="4"/>
+				<text>{@backup_short_hdr}</text>
+				<action function="generatebackupname"/>
+				<action function="set">tw_fileexists=0</action>
+				<action function="set">adb_backup_pc=0</action>
+				<action function="page">backup_device</action>
+			</button>
+
+			<button style="btn_raised_hl">
+				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="auto_generate" var2="2"/>
+				<placement x="%center_x%" y="%row6_1a_y%" placement="4"/>
+				<text>{@backup_short_hdr}</text>
+				<action function="set">tw_fileexists=0</action>
+				<action function="set">adb_backup_pc=0</action>
+				<action function="page">backup_device</action>
+			</button>
+
+			<button style="btn_raised">
+				<condition var1="tw_fileexists" var2="1"/>
+				<text>{@select_storage_hdr}</text>
+				<placement x="%center_x%" y="%row7_1_y%" placement="4"/>
+				<action function="overlay">dialog_storage</action>
+			</button>
+
 			<template name="nav_panel"/>
 
 			<button style="floating_btn">
+				<condition var1="tw_fileexists" var2="0"/>
 				<condition var1="auto_generate" var2="0"/>
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
 				<actions>
@@ -115,6 +174,7 @@
 			</button>
 			
 			<button style="floating_btn">
+				<condition var1="tw_fileexists" var2="0"/>
 				<condition var1="auto_generate" var2="1"/>
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
 				<actions>
@@ -126,6 +186,7 @@
 			</button>
 			
 			<button style="floating_btn">
+				<condition var1="tw_fileexists" var2="0"/>
 				<condition var1="auto_generate" var2="2"/>
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
 				<actions>
@@ -136,6 +197,7 @@
 			</button>
 			
 			<image>
+				<condition var1="tw_fileexists" var2="0"/>
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
 				<image resource="fab_add"/>
 			</image>
