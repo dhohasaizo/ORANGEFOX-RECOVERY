@@ -247,7 +247,6 @@ LOCAL_SRC_FILES += \
     toys/android/sendevent.c \
     toys/android/start.c \
     toys/net/ifconfig.c \
-    toys/net/microcom.c \
     toys/net/netcat.c \
     toys/net/netstat.c \
     toys/net/rfkill.c \
@@ -533,7 +532,7 @@ ALL_TOOLS += \
     vconfig \
     watch \
     xxd
-ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 27; echo $$?),0)
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -le 27; echo $$?),0)
 ALL_TOOLS += \
     getprop \
     xzcat

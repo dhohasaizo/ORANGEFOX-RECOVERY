@@ -31,6 +31,23 @@
 
 using namespace std;
 
+// BasePartition is used for overriding so we can run custom, device
+// specific code.
+class BasePartition {
+	public:
+		explicit BasePartition() {}
+		virtual ~BasePartition() {}
+
+		virtual bool PreWipeEncryption() {
+			return true;
+		}
+
+		virtual bool PostWipeEncryption() {
+			return true;
+		}
+};
+BasePartition* make_partition();
+
 struct PartitionList {
 	std::string Display_Name;
 	std::string Mount_Point;
@@ -129,6 +146,7 @@ public:
 	void Partition_Post_Processing(bool Display_Error);                       // Apply partition specific settings after fstab processed
 	void Set_Backup_FileName(string fname);                                   // Set Backup_FileName for partition
 	string Get_Backup_Name();                                                 // Get Backup_Name for partition
+	bool Decrypt_FBE_DE();                                                    // If FBE is present, backup exclusions are set up and DE decrypt is attempted
 
 public:
 	string Current_File_System;                                               // Current file system
@@ -247,6 +265,8 @@ private:
 	bool SlotSelect;                                                          // Partition has A/B slots
 	TWExclude backup_exclusions;                                              // Exclusions for file based backups
 	TWExclude wipe_exclusions;                                                // Exclusions for file based wipes (data/media devices only)
+	string Key_Directory;                                                      // Metadata key directory needed for mounting FBE encrypted data partitions using metadata encryption
+
 	struct partition_fs_flags_struct {                                        // This struct is used to store mount flags and options for different file systems for the same partition
 		string File_System;
 		int Mount_Flags;
@@ -296,7 +316,6 @@ public:
 	int Wipe_By_Path(string Path, string New_File_System);                    // Wipes a partition based on path
 	int Factory_Reset();                                                      // Performs a factory reset
 	int Wipe_Dalvik_Cache();                                                  // Wipes dalvik cache
-	int Wipe_Substratum_Overlays();                                    // Wipe substratum overlays
 	int Wipe_Rotate_Data();                                                   // Wipes rotation data --
 	int Wipe_Battery_Stats();                                                 // Wipe battery stats -- /data/system/batterystats.bin
 	int Wipe_Android_Secure();                                                // Wipes android secure

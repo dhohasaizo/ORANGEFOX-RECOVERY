@@ -70,15 +70,22 @@ extern "C"
 }
 
 #ifdef TW_INCLUDE_CRYPTO
-#include "crypto/lollipop/cryptfs.h"
-#include "gui/rapidxml.hpp"
-#include "gui/pages.hpp"
-#ifdef TW_INCLUDE_FBE
-#include "crypto/ext4crypt/Decrypt.h"
+	#include "crypto/lollipop/cryptfs.h"
+	#include "gui/rapidxml.hpp"
+	#include "gui/pages.hpp"
+	#ifdef TW_INCLUDE_FBE
+		#include "crypto/ext4crypt/Decrypt.h"
+		#ifdef TW_INCLUDE_FBE_METADATA_DECRYPT
+			#include "crypto/ext4crypt/MetadataCrypt.h"
+		#endif
+	#endif
+	#ifdef TW_CRYPTO_USE_SYSTEM_VOLD
+		#include "crypto/vold_decrypt/vold_decrypt.h"
+	#endif
 #endif
+
 #ifdef TW_CRYPTO_USE_SYSTEM_VOLD
 #include "crypto/vold_decrypt/vold_decrypt.h"
-#endif
 #endif
 
 #ifdef AB_OTA_UPDATER
@@ -328,10 +335,44 @@ int TWPartitionManager::Process_Fstab(string Fstab_Filename,
       Setup_Settings_Storage_Partition(settings_partition);
     }
 #ifdef TW_INCLUDE_CRYPTO
-  TWPartition *Decrypt_Data = Find_Partition_By_Path("/data");
-  if (Decrypt_Data && Decrypt_Data->Is_Encrypted
-      && !Decrypt_Data->Is_Decrypted)
-    {
+	TWPartition* Decrypt_Data = Find_Partition_By_Path("/data");
+	if (Decrypt_Data && Decrypt_Data->Is_Encrypted && !Decrypt_Data->Is_Decrypted) {
+		if (!Decrypt_Data->Key_Directory.empty() && Mount_By_Path(Decrypt_Data->Key_Directory, false)) {
+#ifdef TW_INCLUDE_FBE_METADATA_DECRYPT
+			if (e4crypt_mount_metadata_encrypted(Decrypt_Data->Mount_Point, false, Decrypt_Data->Key_Directory, Decrypt_Data->Actual_Block_Device, &Decrypt_Data->Decrypted_Block_Device)) {
+				LOGINFO("Successfully decrypted metadata encrypted data partition with new block device: '%s'\n", Decrypt_Data->Decrypted_Block_Device.c_str());
+				property_set("ro.crypto.state", "encrypted");
+				Decrypt_Data->Is_Decrypted = true; // Needed to make the mount function work correctly
+				int retry_count = 10;
+				while (!Decrypt_Data->Mount(false) && --retry_count)
+					usleep(500);
+				if (Decrypt_Data->Mount(false)) {
+					Decrypt_Data->Decrypt_FBE_DE();
+				} else {
+					LOGINFO("Failed to mount data after metadata decrypt\n");
+				}
+			} else {
+				LOGINFO("Unable to decrypt metadata encryption\n");
+			}
+#else
+			LOGERR("Metadata FBE decrypt support not present in this TWRP\n");
+#endif
+		}
+		if (Decrypt_Data->Is_FBE) {
+			if (DataManager::GetIntValue(TW_CRYPTO_PWTYPE) == 0) {
+				if (Decrypt_Device("!") == 0) {
+					gui_msg("decrypt_success=Successfully decrypted with default password.");
+					DataManager::SetValue(TW_IS_ENCRYPTED, 0);
+				} else {
+					LOGINFO("Failed to mount data after metadata decrypt\n");
+				}
+			} else {
+				LOGINFO("Unable to decrypt metadata encryption\n");
+			}
+#else
+			LOGERR("Metadata FBE decrypt support not present in this TWRP\n");
+#endif
+		}
       if (Decrypt_Data->Is_FBE)
 	{
 	  if (DataManager::GetIntValue(TW_CRYPTO_PWTYPE) == 0)
@@ -380,7 +421,6 @@ int TWPartitionManager::Process_Fstab(string Fstab_Filename,
     {
       Decrypt_Adopted();
     }
-#endif
   Update_System_Details();
   UnMount_Main_Partitions();
 #ifdef AB_OTA_UPDATER
@@ -456,117 +496,110 @@ void TWPartitionManager::Output_Partition(TWPartition * Part)
 {
   unsigned long long mb = 1048576;
 
-  printf("%s | %s | Size: %iMB", Part->Mount_Point.c_str(),
-	 Part->Actual_Block_Device.c_str(), (int) (Part->Size / mb));
-  if (Part->Can_Be_Mounted)
-    {
-      printf(" Used: %iMB Free: %iMB Backup Size: %iMB",
-	     (int) (Part->Used / mb), (int) (Part->Free / mb),
-	     (int) (Part->Backup_Size / mb));
-    }
-  printf("\n   Flags: ");
-  if (Part->Can_Be_Mounted)
-    printf("Can_Be_Mounted ");
-  if (Part->Can_Be_Wiped)
-    printf("Can_Be_Wiped ");
-  if (Part->Use_Rm_Rf)
-    printf("Use_Rm_Rf ");
-  if (Part->Can_Be_Backed_Up)
-    printf("Can_Be_Backed_Up ");
-  if (Part->Wipe_During_Factory_Reset)
-    printf("Wipe_During_Factory_Reset ");
-  if (Part->Wipe_Available_in_GUI)
-    printf("Wipe_Available_in_GUI ");
-  if (Part->Is_SubPartition)
-    printf("Is_SubPartition ");
-  if (Part->Has_SubPartition)
-    printf("Has_SubPartition ");
-  if (Part->Removable)
-    printf("Removable ");
-  if (Part->Is_Present)
-    printf("IsPresent ");
-  if (Part->Can_Be_Encrypted)
-    printf("Can_Be_Encrypted ");
-  if (Part->Is_Encrypted)
-    printf("Is_Encrypted ");
-  if (Part->Is_Decrypted)
-    printf("Is_Decrypted ");
-  if (Part->Has_Data_Media)
-    printf("Has_Data_Media ");
-  if (Part->Can_Encrypt_Backup)
-    printf("Can_Encrypt_Backup ");
-  if (Part->Use_Userdata_Encryption)
-    printf("Use_Userdata_Encryption ");
-  if (Part->Has_Android_Secure)
-    printf("Has_Android_Secure ");
-  if (Part->Is_Storage)
-    printf("Is_Storage ");
-  if (Part->Is_Settings_Storage)
-    printf("Is_Settings_Storage ");
-  if (Part->Ignore_Blkid)
-    printf("Ignore_Blkid ");
-  if (Part->Retain_Layout_Version)
-    printf("Retain_Layout_Version ");
-  if (Part->Mount_To_Decrypt)
-    printf("Mount_To_Decrypt ");
-  if (Part->Can_Flash_Img)
-    printf("Can_Flash_Img ");
-  if (Part->Is_Adopted_Storage)
-    printf("Is_Adopted_Storage ");
-  if (Part->SlotSelect)
-    printf("SlotSelect ");
-  if (Part->Mount_Read_Only)
-    printf("Mount_Read_Only ");
-  printf("\n");
-  if (!Part->SubPartition_Of.empty())
-    printf("   SubPartition_Of: %s\n", Part->SubPartition_Of.c_str());
-  if (!Part->Symlink_Path.empty())
-    printf("   Symlink_Path: %s\n", Part->Symlink_Path.c_str());
-  if (!Part->Symlink_Mount_Point.empty())
-    printf("   Symlink_Mount_Point: %s\n", Part->Symlink_Mount_Point.c_str());
-  if (!Part->Primary_Block_Device.empty())
-    printf("   Primary_Block_Device: %s\n",
-	   Part->Primary_Block_Device.c_str());
-  if (!Part->Alternate_Block_Device.empty())
-    printf("   Alternate_Block_Device: %s\n",
-	   Part->Alternate_Block_Device.c_str());
-  if (!Part->Decrypted_Block_Device.empty())
-    printf("   Decrypted_Block_Device: %s\n",
-	   Part->Decrypted_Block_Device.c_str());
-  if (!Part->Crypto_Key_Location.empty()
-      && Part->Crypto_Key_Location != "footer")
-    printf("   Crypto_Key_Location: %s\n", Part->Crypto_Key_Location.c_str());
-  if (Part->Length != 0)
-    printf("   Length: %i\n", Part->Length);
-  if (!Part->Display_Name.empty())
-    printf("   Display_Name: %s\n", Part->Display_Name.c_str());
-  if (!Part->Storage_Name.empty())
-    printf("   Storage_Name: %s\n", Part->Storage_Name.c_str());
-  if (!Part->Backup_Path.empty())
-    printf("   Backup_Path: %s\n", Part->Backup_Path.c_str());
-  if (!Part->Backup_Name.empty())
-    printf("   Backup_Name: %s\n", Part->Backup_Name.c_str());
-  if (!Part->Backup_Display_Name.empty())
-    printf("   Backup_Display_Name: %s\n", Part->Backup_Display_Name.c_str());
-  if (!Part->Backup_FileName.empty())
-    printf("   Backup_FileName: %s\n", Part->Backup_FileName.c_str());
-  if (!Part->Storage_Path.empty())
-    printf("   Storage_Path: %s\n", Part->Storage_Path.c_str());
-  if (!Part->Current_File_System.empty())
-    printf("   Current_File_System: %s\n", Part->Current_File_System.c_str());
-  if (!Part->Fstab_File_System.empty())
-    printf("   Fstab_File_System: %s\n", Part->Fstab_File_System.c_str());
-  if (Part->Format_Block_Size != 0)
-    printf("   Format_Block_Size: %lu\n", Part->Format_Block_Size);
-  if (!Part->MTD_Name.empty())
-    printf("   MTD_Name: %s\n", Part->MTD_Name.c_str());
-  printf("   Backup_Method: %s\n", Part->Backup_Method_By_Name().c_str());
-  if (Part->Mount_Flags || !Part->Mount_Options.empty())
-    printf("   Mount_Flags: %i, Mount_Options: %s\n", Part->Mount_Flags,
-	   Part->Mount_Options.c_str());
-  if (Part->MTP_Storage_ID)
-    printf("   MTP_Storage_ID: %i\n", Part->MTP_Storage_ID);
-  printf("\n");
+	printf("%s | %s | Size: %iMB", Part->Mount_Point.c_str(), Part->Actual_Block_Device.c_str(), (int)(Part->Size / mb));
+	if (Part->Can_Be_Mounted) {
+		printf(" Used: %iMB Free: %iMB Backup Size: %iMB", (int)(Part->Used / mb), (int)(Part->Free / mb), (int)(Part->Backup_Size / mb));
+	}
+	printf("\n   Flags: ");
+	if (Part->Can_Be_Mounted)
+		printf("Can_Be_Mounted ");
+	if (Part->Can_Be_Wiped)
+		printf("Can_Be_Wiped ");
+	if (Part->Use_Rm_Rf)
+		printf("Use_Rm_Rf ");
+	if (Part->Can_Be_Backed_Up)
+		printf("Can_Be_Backed_Up ");
+	if (Part->Wipe_During_Factory_Reset)
+		printf("Wipe_During_Factory_Reset ");
+	if (Part->Wipe_Available_in_GUI)
+		printf("Wipe_Available_in_GUI ");
+	if (Part->Is_SubPartition)
+		printf("Is_SubPartition ");
+	if (Part->Has_SubPartition)
+		printf("Has_SubPartition ");
+	if (Part->Removable)
+		printf("Removable ");
+	if (Part->Is_Present)
+		printf("IsPresent ");
+	if (Part->Can_Be_Encrypted)
+		printf("Can_Be_Encrypted ");
+	if (Part->Is_Encrypted)
+		printf("Is_Encrypted ");
+	if (Part->Is_Decrypted)
+		printf("Is_Decrypted ");
+	if (Part->Has_Data_Media)
+		printf("Has_Data_Media ");
+	if (Part->Can_Encrypt_Backup)
+		printf("Can_Encrypt_Backup ");
+	if (Part->Use_Userdata_Encryption)
+		printf("Use_Userdata_Encryption ");
+	if (Part->Has_Android_Secure)
+		printf("Has_Android_Secure ");
+	if (Part->Is_Storage)
+		printf("Is_Storage ");
+	if (Part->Is_Settings_Storage)
+		printf("Is_Settings_Storage ");
+	if (Part->Ignore_Blkid)
+		printf("Ignore_Blkid ");
+	if (Part->Retain_Layout_Version)
+		printf("Retain_Layout_Version ");
+	if (Part->Mount_To_Decrypt)
+		printf("Mount_To_Decrypt ");
+	if (Part->Can_Flash_Img)
+		printf("Can_Flash_Img ");
+	if (Part->Is_Adopted_Storage)
+		printf("Is_Adopted_Storage ");
+	if (Part->SlotSelect)
+		printf("SlotSelect ");
+	if (Part->Mount_Read_Only)
+		printf("Mount_Read_Only ");
+	printf("\n");
+	if (!Part->SubPartition_Of.empty())
+		printf("   SubPartition_Of: %s\n", Part->SubPartition_Of.c_str());
+	if (!Part->Symlink_Path.empty())
+		printf("   Symlink_Path: %s\n", Part->Symlink_Path.c_str());
+	if (!Part->Symlink_Mount_Point.empty())
+		printf("   Symlink_Mount_Point: %s\n", Part->Symlink_Mount_Point.c_str());
+	if (!Part->Primary_Block_Device.empty())
+		printf("   Primary_Block_Device: %s\n", Part->Primary_Block_Device.c_str());
+	if (!Part->Alternate_Block_Device.empty())
+		printf("   Alternate_Block_Device: %s\n", Part->Alternate_Block_Device.c_str());
+	if (!Part->Decrypted_Block_Device.empty())
+		printf("   Decrypted_Block_Device: %s\n", Part->Decrypted_Block_Device.c_str());
+	if (!Part->Crypto_Key_Location.empty() && Part->Crypto_Key_Location != "footer")
+		printf("   Crypto_Key_Location: %s\n", Part->Crypto_Key_Location.c_str());
+	if (Part->Length != 0)
+		printf("   Length: %i\n", Part->Length);
+	if (!Part->Display_Name.empty())
+		printf("   Display_Name: %s\n", Part->Display_Name.c_str());
+	if (!Part->Storage_Name.empty())
+		printf("   Storage_Name: %s\n", Part->Storage_Name.c_str());
+	if (!Part->Backup_Path.empty())
+		printf("   Backup_Path: %s\n", Part->Backup_Path.c_str());
+	if (!Part->Backup_Name.empty())
+		printf("   Backup_Name: %s\n", Part->Backup_Name.c_str());
+	if (!Part->Backup_Display_Name.empty())
+		printf("   Backup_Display_Name: %s\n", Part->Backup_Display_Name.c_str());
+	if (!Part->Backup_FileName.empty())
+		printf("   Backup_FileName: %s\n", Part->Backup_FileName.c_str());
+	if (!Part->Storage_Path.empty())
+		printf("   Storage_Path: %s\n", Part->Storage_Path.c_str());
+	if (!Part->Current_File_System.empty())
+		printf("   Current_File_System: %s\n", Part->Current_File_System.c_str());
+	if (!Part->Fstab_File_System.empty())
+		printf("   Fstab_File_System: %s\n", Part->Fstab_File_System.c_str());
+	if (Part->Format_Block_Size != 0)
+		printf("   Format_Block_Size: %lu\n", Part->Format_Block_Size);
+	if (!Part->MTD_Name.empty())
+		printf("   MTD_Name: %s\n", Part->MTD_Name.c_str());
+	printf("   Backup_Method: %s\n", Part->Backup_Method_By_Name().c_str());
+	if (Part->Mount_Flags || !Part->Mount_Options.empty())
+		printf("   Mount_Flags: %i, Mount_Options: %s\n", Part->Mount_Flags, Part->Mount_Options.c_str());
+	if (Part->MTP_Storage_ID)
+		printf("   MTP_Storage_ID: %i\n", Part->MTP_Storage_ID);
+	if (!Part->Key_Directory.empty())
+		printf("   Metadata Key Directory: %s\n", Part->Key_Directory.c_str());
+	printf("\n");
 }
 
 int TWPartitionManager::Mount_By_Path(string Path, bool Display_Error)
@@ -1626,33 +1659,6 @@ int TWPartitionManager::Wipe_By_Path(string Path)
 	     "unable_find_part_path=Unable to find partition for path '{1}'")
 	    (Local_Path));
   return false;
-}
-
-int TWPartitionManager::Wipe_Substratum_Overlays(void)
-{
-  // Right now we don't support wipe of the overlays in the 
-  // Substratum Legacy mode
-  string data_path = "/data";
-  string data_system = data_path + "/system";
-  string overlays_xml = data_system + "/overlays.xml";
-  string theme_dir = data_system + "/theme";
-  string subs_dir = "/sdcard/substratum";
-
-
-  if (!Mount_By_Path("/data", true))
-    return false;
-
-  if (TWFunc::Path_Exists(overlays_xml))
-    unlink(overlays_xml.c_str());
-
-  if (TWFunc::Path_Exists(theme_dir))
-    TWFunc::removeDir(theme_dir, false);
-
-  if (TWFunc::Path_Exists(subs_dir))
-    TWFunc::removeDir(subs_dir, false);
-
-  gui_msg("substratum_done=-- Substratum Overlays Wipe Complete!");
-  return true;
 }
 
 int TWPartitionManager::Wipe_By_Path(string Path, string New_File_System)
@@ -2731,7 +2737,22 @@ void TWPartitionManager::Get_Partition_List(string ListType,
 	    }
 	}
     }
-  else if (ListType == "storage")
+  else if (ListType == "part_option")
+    {
+      for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
+	{
+	  if ((*iter)->Wipe_Available_in_GUI && !(*iter)->Is_SubPartition)
+	    {
+	      struct PartitionList part;
+	      part.Display_Name = (*iter)->Display_Name;
+	      part.Mount_Point = (*iter)->Mount_Point;
+	      part.selected = 0;
+	      Partition_List->push_back(part);
+	    }
+	}
+
+    }
+    else if (ListType == "storage")
     {
       char free_space[255];
       string Current_Storage = DataManager::GetCurrentStoragePath();
@@ -2846,13 +2867,7 @@ void TWPartitionManager::Get_Partition_List(string ListType,
       dalvik.Display_Name = gui_parse_text("{@dalvik}");
       dalvik.Mount_Point = "DALVIK";
       dalvik.selected = 0;
-      Partition_List->push_back(dalvik);
-      struct PartitionList substratum;
-      substratum.Display_Name =
-	gui_parse_text("{@fox_wipe_substratum_overlays}");
-      substratum.Mount_Point = "SUBSTRATUM";
-      substratum.selected = 0;
-      Partition_List->push_back(substratum);      
+      Partition_List->push_back(dalvik);    
       for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
 	{
 	  if ((*iter)->Wipe_Available_in_GUI && !(*iter)->Is_SubPartition)
@@ -3614,6 +3629,9 @@ bool TWPartitionManager::Decrypt_Adopted()
       doc->clear();
       delete doc;
       free(xmlFile);
+#ifdef OF_RELOAD_AFTER_DECRYPTION    
+      TWFunc::Rerun_Startup();
+#endif
     }
   return ret;
 #else

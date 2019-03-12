@@ -16,7 +16,7 @@
 LOCAL_PATH := $(call my-dir)
 commands_TWRP_local_path := $(LOCAL_PATH)
 
-ifdef project-path-for
+ifneq ($(project-path-for),)
     ifeq ($(LOCAL_PATH),$(call project-path-for,recovery))
         PROJECT_PATH_AGREES := true
         BOARD_SEPOLICY_DIRS += $(call project-path-for,recovery)/sepolicy
@@ -47,7 +47,7 @@ ifneq ($(TW_DEVICE_VERSION),)
     export FOX_DEVICE_VERSION=$(TW_DEVICE_VERSION)
 else
     LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"Unofficial"'
-    export FOX_DEVICE_VERSION=R9.0
+    export FOX_DEVICE_VERSION=R10.0
 endif
 
 DEVICE := $(subst omni_,,$(TARGET_PRODUCT))
@@ -75,7 +75,7 @@ endif
 ifneq ($(OF_MAINTAINER),)
     LOCAL_CFLAGS += -DOF_MAINTAINER='"$(OF_MAINTAINER)"'
 else
-    LOCAL_CFLAGS += -DOF_MAINTAINER='"MrYacha and DarthJabba9"'
+    LOCAL_CFLAGS += -DOF_MAINTAINER='"Testing build (unofficial)"'
 endif
 
 ifneq ($(OF_FLASHLIGHT_ENABLE),)
@@ -255,6 +255,11 @@ LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
 #else
 #  LOCAL_STATIC_LIBRARIES += $(TARGET_RECOVERY_UI_LIB)
 #endif
+ifeq ($(TARGET_RECOVERY_TWRP_LIB),)
+    LOCAL_SRC_FILES += BasePartition.cpp
+else
+    LOCAL_STATIC_LIBRARIES += $(TARGET_RECOVERY_TWRP_LIB)
+endif
 
 LOCAL_C_INCLUDES += system/extras/ext4_utils
 
@@ -361,6 +366,9 @@ ifeq ($(TW_INCLUDE_CRYPTO), true)
         TW_INCLUDE_CRYPTO_FBE := true
         LOCAL_CFLAGS += -DTW_INCLUDE_FBE
         LOCAL_SHARED_LIBRARIES += libe4crypt
+        ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 28; echo $$?),0)
+            LOCAL_CFLAGS += -DTW_INCLUDE_FBE_METADATA_DECRYPT
+        endif
     endif
     ifneq ($(TW_CRYPTO_USE_SYSTEM_VOLD),)
     ifneq ($(TW_CRYPTO_USE_SYSTEM_VOLD),false)
@@ -544,6 +552,9 @@ ifeq ($(shell test $(CM_PLATFORM_SDK_VERSION) -ge 3; echo $$?),0)
     LOCAL_REQUIRED_MODULES += \
         fsck.f2fs \
         mkfs.f2fs
+endif
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 28; echo $$?),0)
+    LOCAL_REQUIRED_MODULES += sload.f2fs
 endif
 endif
 

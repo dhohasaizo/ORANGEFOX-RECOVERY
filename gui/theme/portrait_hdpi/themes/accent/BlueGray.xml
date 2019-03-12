@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<!-- Controls -->
+		<image name="radio_true_dialog" filename="BlueGray/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="BlueGray/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="BlueGray/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="BlueGray/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="BlueGray/Controls/slider_used"/>
+		<image name="handle" filename="BlueGray/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="BlueGray/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="BlueGray/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="BlueGray/Controls/btn_raised_hl"/>
+
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="BlueGray/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="BlueGray/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="BlueGray/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_delete" filename="BlueGray/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_edit" filename="BlueGray/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="BlueGray/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="BlueGray/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_flash" filename="BlueGray/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_reset" filename="BlueGray/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_settings" filename="BlueGray/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_sort" filename="BlueGray/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_power_off" filename="BlueGray/ActionBar/power_off" retainaspect="1"/>
+		<image name="actionbar_storage" filename="BlueGray/ActionBar/storage" retainaspect="1"/>
+
+		<!-- Nav panel -->
+		<image name="nav_menu" filename="BlueGray/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="BlueGray/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="BlueGray/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="BlueGray/NavPanel/backup" retainaspect="1"/>
+		
+		<!-- FAB -->
+		<image name="fab" filename="BlueGray/FAB/fab" retainaspect="1"/>
+		<image name="fab_hl" filename="BlueGray/FAB/fab_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="file_icon_small" filename="BlueGray/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="BlueGray/FileManager/file" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="BlueGray/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="BlueGray/FileManager/file_bkp" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info" filename="BlueGray/Info/icon_info" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="enter" filename="BlueGray/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="BlueGray/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="BlueGray/Keyboard/enter_num_new" retainaspect="1"/>
+
+		<!-- Nav Bar -->
+		<image name="home" filename="BlueGray/NavBar/home" retainaspect="1"/>
+		<image name="back" filename="BlueGray/NavBar/back" retainaspect="1"/>
+		<image name="slideout" filename="BlueGray/NavBar/slideout" retainaspect="1"/>
+		<image name="keyboard_hide" filename="BlueGray/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="home_ng" filename="BlueGray/NavBar/home_ng" retainaspect="1"/>
+		<image name="back_ng" filename="BlueGray/NavBar/back_ng" retainaspect="1"/>
+		<image name="slideout_ng" filename="BlueGray/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="BlueGray/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		
+		<!-- Pie Nav bar -->
+		<image name="back_pie" filename="BlueGray/NavBar/back_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="BlueGray/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="home_pie" filename="BlueGray/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="BlueGray/NavBar/slideout_key_pie" retainaspect="1"/>
+	</resources>
+	<variables>
+		<variable name="accent" value="#607D8B"/>
+		<variable name="theme_accent" value="BlueGray"/>
+		<variable name="current_accent" value="BlueGray"/>
+	</variables>
+</recovery>

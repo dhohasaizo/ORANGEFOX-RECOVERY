@@ -176,12 +176,20 @@ for (const std::string & line:android::base::Split(metadata_str, "\n"))
   // numbers split by "|"; e.g. serialno=serialno1|serialno2|serialno3 ... We will fail the
   // verification if the device's serialno doesn't match any of these carried numbers.
   value = android::base::GetProperty("ro.serialno", "");
-  const std::string & pkg_serial_no = metadata["serialno"];
-  if (!pkg_serial_no.empty() && pkg_serial_no != value)
-    {
+  const std::string& pkg_serial_no = metadata["serialno"];
+  if (!pkg_serial_no.empty()) {
+    bool match = false;
+    for (const std::string& number : android::base::Split(pkg_serial_no, "|")) {
+      if (value == android::base::Trim(number)) {
+        match = true;
+        break;
+      }
+    }
+    if (!match) {
       LOG(ERROR) << "Package is for serial " << pkg_serial_no;
       return INSTALL_ERROR;
     }
+  }
 
   if (metadata["ota-type"] != "AB")
     {
@@ -209,36 +217,6 @@ for (const std::string & line:android::base::Split(metadata_str, "\n"))
       return INSTALL_ERROR;
     }
 
-/*
-  // Check for downgrade version.
-  int64_t build_timestamp =
-    android::base::GetIntProperty("ro.build.date.utc",
-				  std::numeric_limits < int64_t >::max());
-  int64_t pkg_post_timestamp = 0;
-  // We allow to full update to the same version we are running, in case there
-  // is a problem with the current copy of that version.
-  if (metadata["post-timestamp"].empty()
-      || !android::base::ParseInt(metadata["post-timestamp"].c_str(),
-				  &pkg_post_timestamp)
-      || pkg_post_timestamp < build_timestamp)
-    {
-      if (metadata["ota-downgrade"] != "yes")
-	{
-	  LOG(ERROR) <<
-	    "Update package is older than the current build, expected a build "
-	    "newer than timestamp " << build_timestamp <<
-	    " but package has timestamp " << pkg_post_timestamp <<
-	    " and downgrade not allowed.";
-	  return INSTALL_ERROR;
-	}
-      if (pkg_pre_build_fingerprint.empty())
-	{
-	  LOG(ERROR) <<
-	    "Downgrade package must have a pre-build version set, not allowed.";
-	  return INSTALL_ERROR;
-	}
-    }
-*/
   return 0;
 }
 
@@ -333,14 +311,15 @@ int update_binary_command(const std::string & package, ZipArchiveHandle zip,
       return INSTALL_ERROR;
     }
 
-  *cmd =
-  {
-    binary_path, EXPAND(RECOVERY_API_VERSION),	// defined in Android.mk
-  std::to_string(status_fd), package,};
-  if (retry_count > 0)
-    {
-      cmd->push_back("retry");
-    }
+  *cmd = {
+    binary_path,
+    std::to_string(kRecoveryApiVersion),
+    std::to_string(status_fd),
+    package,
+  };
+  if (retry_count > 0) {
+    cmd->push_back("retry");
+  }
   return 0;
 }
 #endif // !AB_OTA_UPDATER
@@ -383,12 +362,12 @@ static int try_update_binary(const std::string & package,
 			  pipefd[1],
 			  &args);
 #endif
-  if (ret)
-    {
-      close(pipefd[0]);
-      close(pipefd[1]);
-      return ret;
-    }
+  if (ret) {
+    close(pipefd[0]);
+    close(pipefd[1]);
+    log_buffer->push_back(android::base::StringPrintf("error: %d", kUpdateBinaryCommandFailure));
+    return ret;
+  }
 
   // When executing the update binary contained in the package, the
   // arguments passed are:
@@ -448,13 +427,13 @@ static int try_update_binary(const std::string & package,
 
   pid_t pid = fork();
 
-  if (pid == -1)
-    {
-      close(pipefd[0]);
-      close(pipefd[1]);
-      PLOG(ERROR) << "Failed to fork update binary";
-      return INSTALL_ERROR;
-    }
+  if (pid == -1) {
+    close(pipefd[0]);
+    close(pipefd[1]);
+    PLOG(ERROR) << "Failed to fork update binary";
+    log_buffer->push_back(android::base::StringPrintf("error: %d", kForkUpdateBinaryFailure));
+    return INSTALL_ERROR;
+  }
 
   if (pid == 0)
     {
@@ -710,11 +689,11 @@ static int really_install_package(const std::string & path, bool * wipe_cache,
     }
 
   MemMapping map;
-  if (!map.MapFile(path))
-    {
-      LOG(ERROR) << "failed to map file";
-      return INSTALL_CORRUPT;
-    }
+  if (!map.MapFile(path)) {
+    LOG(ERROR) << "failed to map file";
+    log_buffer->push_back(android::base::StringPrintf("error: %d", kMapFileFailure));
+    return INSTALL_CORRUPT;
+  }
 
   // Verify package.
   if (!verify_package(map.addr, map.length))

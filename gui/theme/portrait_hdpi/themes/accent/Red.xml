@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<!-- Controls -->
+		<image name="radio_true_dialog" filename="Red/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="Red/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="Red/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="Red/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="Red/Controls/slider_used"/>
+		<image name="handle" filename="Red/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="Red/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="Red/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="Red/Controls/btn_raised_hl"/>
+
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="Red/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="Red/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="Red/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_delete" filename="Red/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_edit" filename="Red/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="Red/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="Red/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_flash" filename="Red/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_reset" filename="Red/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_settings" filename="Red/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_sort" filename="Red/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_power_off" filename="Red/ActionBar/power_off" retainaspect="1"/>
+		<image name="actionbar_storage" filename="Red/ActionBar/storage" retainaspect="1"/>
+
+		<!-- Nav panel -->
+		<image name="nav_menu" filename="Red/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="Red/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="Red/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="Red/NavPanel/backup" retainaspect="1"/>
+		
+		<!-- FAB -->
+		<image name="fab" filename="Red/FAB/fab" retainaspect="1"/>
+		<image name="fab_hl" filename="Red/FAB/fab_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="file_icon_small" filename="Red/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="Red/FileManager/file" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="Red/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="Red/FileManager/file_bkp" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info" filename="Red/Info/icon_info" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="enter" filename="Red/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="Red/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="Red/Keyboard/enter_num_new" retainaspect="1"/>
+
+		<!-- Nav Bar -->
+		<image name="home" filename="Red/NavBar/home" retainaspect="1"/>
+		<image name="back" filename="Red/NavBar/back" retainaspect="1"/>
+		<image name="slideout" filename="Red/NavBar/slideout" retainaspect="1"/>
+		<image name="keyboard_hide" filename="Red/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="home_ng" filename="Red/NavBar/home_ng" retainaspect="1"/>
+		<image name="back_ng" filename="Red/NavBar/back_ng" retainaspect="1"/>
+		<image name="slideout_ng" filename="Red/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="Red/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		
+		<!-- Pie Nav bar -->
+		<image name="back_pie" filename="Red/NavBar/back_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="Red/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="home_pie" filename="Red/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="Red/NavBar/slideout_key_pie" retainaspect="1"/>
+	</resources>
+	<variables>
+		<variable name="accent" value="#E53935"/>
+		<variable name="theme_accent" value="Red"/>
+		<variable name="current_accent" value="Red"/>
+	</variables>
+</recovery>

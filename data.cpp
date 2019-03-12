@@ -161,93 +161,74 @@ void DataManager::get_device_id(void)
 #endif
 
 #ifndef TW_FORCE_CPUINFO_FOR_DEVICE_ID
-#ifdef TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID
-	// Check serial number system property
-	if (property_get("ro.serialno", line, "")) {
-		snprintf(device_id, DEVID_MAX, "%s", line);
-		sanitize_device_id(device_id);
-		mConst.SetValue("device_id", device_id);
-		return;
-	}
-#endif
-
 	// Check the cmdline to see if the serial number was supplied
 	fp = fopen("/proc/cmdline", "rt");
 	if (fp != NULL) {
 		fgets(line, sizeof(line), fp);
 		fclose(fp); // cmdline is only one line long
 
-      token = strtok(line, " ");
-      while (token)
-	{
-	  if (memcmp(token, CMDLINE_SERIALNO, CMDLINE_SERIALNO_LEN) == 0)
-	    {
-	      token += CMDLINE_SERIALNO_LEN;
-	      snprintf(device_id, DEVID_MAX, "%s", token);
-	      sanitize_device_id(device_id);	// also removes newlines
-	      mConst.SetValue("device_id", device_id);
-	      return;
-	    }
-	  token = strtok(NULL, " ");
+		token = strtok(line, " ");
+		while (token) {
+			if (memcmp(token, CMDLINE_SERIALNO, CMDLINE_SERIALNO_LEN) == 0) {
+				token += CMDLINE_SERIALNO_LEN;
+				snprintf(device_id, DEVID_MAX, "%s", token);
+				sanitize_device_id(device_id); // also removes newlines
+				mConst.SetValue("device_id", device_id);
+				return;
+			}
+			token = strtok(NULL, " ");
+		}
 	}
-    }
 #endif
-  // Check cpuinfo for serial number; if found, use as device_id
-  // If serial number is not found, fallback to hardware_id for the device_id
-  fp = fopen("/proc/cpuinfo", "rt");
-  if (fp != NULL)
-    {
-      while (fgets(line, sizeof(line), fp) != NULL)
-	{
-	  if (memcmp(line, CPUINFO_SERIALNO, CPUINFO_SERIALNO_LEN) == 0)
-	    {
-	      // skip past "Serial", spaces, and colon
-	      token = line + CPUINFO_SERIALNO_LEN;
-	      while (*token && (!isgraph(*token) || *token == ':'))
-		token++;
+	// Check cpuinfo for serial number; if found, use as device_id
+	// If serial number is not found, fallback to hardware_id for the device_id
+	fp = fopen("/proc/cpuinfo", "rt");
+	if (fp != NULL) {
+		while (fgets(line, sizeof(line), fp) != NULL) {
+			if (memcmp(line, CPUINFO_SERIALNO, CPUINFO_SERIALNO_LEN) == 0) {
+				// skip past "Serial", spaces, and colon
+				token = line + CPUINFO_SERIALNO_LEN;
+				while (*token && (!isgraph(*token) || *token == ':'))
+					token++;
 
-	      if (*token && *token != '\n')
-		{
-		  snprintf(device_id, DEVID_MAX, "%s", token);
-		  sanitize_device_id(device_id);	// also removes newlines
-		  LOGINFO("=> serial from cpuinfo: '%s'\n", device_id);
-		  mConst.SetValue("device_id", device_id);
-		  fclose(fp);
-		  return;
-		}
-	    }
-	  else if (memcmp(line, CPUINFO_HARDWARE, CPUINFO_HARDWARE_LEN) == 0)
-	    {
-	      // skip past "Hardware", spaces, and colon
-	      token = line + CPUINFO_HARDWARE_LEN;
-	      while (*token && (!isgraph(*token) || *token == ':'))
-		token++;
+				if (*token && *token != '\n') {
+					snprintf(device_id, DEVID_MAX, "%s", token);
+					sanitize_device_id(device_id); // also removes newlines
+					LOGINFO("=> serial from cpuinfo: '%s'\n", device_id);
+					mConst.SetValue("device_id", device_id);
+					fclose(fp);
+					return;
+				}
+			} else if (memcmp(line, CPUINFO_HARDWARE,
+					CPUINFO_HARDWARE_LEN) == 0) {
+				// skip past "Hardware", spaces, and colon
+				token = line + CPUINFO_HARDWARE_LEN;
+				while (*token && (!isgraph(*token) || *token == ':'))
+					token++;
 
-	      if (*token && *token != '\n')
-		{
-		  snprintf(hardware_id, HWID_MAX, "%s", token);
-		  if (hardware_id[strlen(hardware_id) - 1] == '\n')
-		    hardware_id[strlen(hardware_id) - 1] = 0;
-		  LOGINFO("=> hardware id from cpuinfo: '%s'\n", hardware_id);
+				if (*token && *token != '\n') {
+					snprintf(hardware_id, HWID_MAX, "%s", token);
+					if (hardware_id[strlen(hardware_id)-1] == '\n')
+						hardware_id[strlen(hardware_id)-1] = 0;
+					LOGINFO("=> hardware id from cpuinfo: '%s'\n", hardware_id);
+				}
+			}
 		}
-	    }
+		fclose(fp);
 	}
-      fclose(fp);
-    }
 
-  if (hardware_id[0] != 0)
-    {
-      LOGINFO("\nusing hardware id for device id: '%s'\n", hardware_id);
-      snprintf(device_id, DEVID_MAX, "%s", hardware_id);
-      sanitize_device_id(device_id);
-      mConst.SetValue("device_id", device_id);
-      return;
-    }
+	if (hardware_id[0] != 0) {
+		LOGINFO("\nusing hardware id for device id: '%s'\n", hardware_id);
+		snprintf(device_id, DEVID_MAX, "%s", hardware_id);
+		sanitize_device_id(device_id);
+		mConst.SetValue("device_id", device_id);
+		return;
+	}
 
-  strcpy(device_id, "serialno");
-  LOGINFO("=> device id not found, using '%s'\n", device_id);
-  mConst.SetValue("device_id", device_id);
-  return;
+	strcpy(device_id, "serialno");
+	LOGINFO("=> device id not found, using '%s'\n", device_id);
+	mConst.SetValue("device_id", device_id);
+	return;
 }
 
 int DataManager::ResetDefaults()
@@ -1184,11 +1165,17 @@ int DataManager::GetMagicValue(const string & varName, string & value)
 	      fgets(cap_s, 2, cap);
 	      fclose(cap);
 	      if (cap_s[0] == 'C')
-		charging = '+';
+        {
+          charging = '+';
+          DataManager::SetValue("charging_now", "1");
+        }
 	      else
-		charging = ' ';
+        {
+          charging = ' ';
+          DataManager::SetValue("charging_now", "0");
+        }
 	    }
-	  nextSecCheck = curTime.tv_sec + 60;
+	  nextSecCheck = curTime.tv_sec + 1;
 	}
 
       sprintf(tmp, "%i%%%c", lastVal, charging);

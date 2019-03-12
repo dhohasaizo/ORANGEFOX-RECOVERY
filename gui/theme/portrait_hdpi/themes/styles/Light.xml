@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<recovery>
+		<resources>	
+		<!-- Battery -->
+		<image name="battery100" filename="Light/Battery/battery100" retainaspect="1"/>
+		<image name="battery75" filename="Light/Battery/battery75" retainaspect="1"/>
+		<image name="battery50" filename="Light/Battery/battery50" retainaspect="1"/>
+		<image name="battery25" filename="Light/Battery/battery25" retainaspect="1"/>
+		<image name="battery15_good" filename="Light/Battery/battery15_good" retainaspect="1"/>
+		
+		<!-- Fullscreen Icons -->
+		<image name="language_busy" filename="Light/FullscreenIcons/language_busy" retainaspect="1"/>
+		<image name="palette" filename="Light/FullscreenIcons/palette" retainaspect="1"/>
+		<image name="usb" filename="Light/FullscreenIcons/usb" retainaspect="1"/>
+		<image name="aroma_folder" filename="Light/FullscreenIcons/aroma_folder" retainaspect="1"/>
+		<image name="logo" filename="Light/FullscreenIcons/logo" retainaspect="1"/>
+		<image name="unlock_icon" filename="Light/FullscreenIcons/unlock_icon" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="keyback" filename="Light/Keyboard/key_butts"/>
+		<image name="keyback_num" filename="Light/Keyboard/key_num"/>
+		
+		<!-- Progress -->
+		<animation name="progress" filename="Light/Progress/indeterminate"/>
+		<image name="progress_empty" filename="Light/Progress/progress_empty"/>
+		<image name="progress_fill" filename="Light/Progress/progress_fill"/>
+		
+		<!-- Controls -->
+		<image name="slider_classic" filename="Light/Controls/slider_classic" retainaspect="1"/>
+		
+		<!-- Dialogs -->
+		<image name="db_empty" filename="Light/Dialog/db"/>
+		<image name="db_hl" filename="Light/Dialog/db_hl"/>
+		<image name="arrow" filename="Light/Dialog/arrow"/>
+		<image name="arrow_d" filename="Light/Dialog/arrow_d"/>
+		<image name="snackbar" filename="Light/Dialog/snackbar"/>
+		<image name="dialog_bg" filename="Light/Dialog/dialog_bg"/>
+		<image name="menu_sort" filename="Light/Dialog/menu_sort"/>
+		
+		<!-- ota -->
+		<image name="ota_icon" filename="Light/FullscreenIcons/ota_icon" retainaspect="1"/>
+		<image name="progress_fill_small" filename="Light/Progress/progress_fill_small"/>
+	</resources>
+	<variables>
+		<variable name="background" value="#FAFAFA"/>
+		
+		<variable name="highlight_color" value="#FAFAFA66"/>
+		<variable name="highlight_color_full" value="#E9E9E944"/>
+		<variable name="text" value="#666666"/>
+		<variable name="text_status" value="#666666"/>
+		<variable name="text_menu" value="#666666"/>
+		<variable name="text_light" value="#666666"/>
+		<variable name="text_dark" value="#666666"/>
+		<variable name="console_foreground" value="#666666"/>
+		<variable name="linecolor" value="#666666"/>
+		<variable name="darktransparent" value="#FAFAFABB"/>
+		<variable name="lightransparent" value="#00000008"/>
+		<variable name="theme_style" value="Light"/>
+	</variables>
+</recovery>

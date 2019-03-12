@@ -50,7 +50,6 @@ static void overlay_exit(minui_backend*);
 
 static GRSurface gr_framebuffer;
 static GRSurface* gr_draw = NULL;
-static int displayed_buffer;
 
 static fb_var_screeninfo vi;
 static int fb_fd = -1;
@@ -100,7 +99,6 @@ static minui_backend my_backend = {
 
 bool target_has_overlay(char *version)
 {
-    int ret;
     int mdp_version;
     bool overlay_supported = false;
 
@@ -491,12 +489,10 @@ int overlay_display_frame(int fd, void* data, size_t size)
 static GRSurface* overlay_flip(minui_backend* backend __unused) {
 #if defined(RECOVERY_BGRA)
     // In case of BGRA, do some byte swapping
-    unsigned int idx;
-    unsigned char tmp;
     unsigned char* ucfb_vaddr = (unsigned char*)gr_draw->data;
-    for (idx = 0 ; idx < (gr_draw->height * gr_draw->row_bytes);
+    for (int idx = 0 ; idx < (gr_draw->height * gr_draw->row_bytes);
             idx += 4) {
-        tmp = ucfb_vaddr[idx];
+        unsigned char tmp = ucfb_vaddr[idx];
         ucfb_vaddr[idx    ] = ucfb_vaddr[idx + 2];
         ucfb_vaddr[idx + 2] = tmp;
     }
