@@ -301,29 +301,6 @@
 				<text>{@terminal_btn}</text>
 			</text>
 			<!-- -->
-			
-			<!-- SD >
-			<button style="bs_btn">
-				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
-				<actions>
-					<action function="set">partitionlisterror=0</action>
-					<action function="page">partsdcardsel</action>
-				</actions>
-			</button>
-			
-			<image>
-				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="bs_adv_sd"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_allow_partition_sdcard" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@part_sd_hdr}</text>
-			</text>
-			<-->
 
 			<button style="bs_btn">
 				<condition var1="tw_show_dumlock" var2="1"/>
@@ -978,78 +955,6 @@
 				</action>
 			</page>
 
-			<page name="partsdcardsel">
-				<template name="body"/>
-				
-				<template name="ab"/>
-				
-				<template name="statusbarinfo"/>
-				
-				<text style="text_ab_title">
-					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>{@part_sd_hdr}</text>
-				</text>
-				
-				<image>
-					<placement x="%col1_x%" y="%row1_1_y%"/>
-					<image resource="icon_warning"/>
-				</image>
-
-				<text style="text_body2_fail">
-					<placement x="%col1_x_indent%" y="%row1_1_y%"/>
-					<text>{@part_sdcard_sel_note_1}</text>
-				</text>
-
-				<text style="text_body2_fail">
-					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-					<text>{@part_sdcard_sel_note_2}</text>
-				</text>
-
-				<text style="text_body2_fail">
-					<condition var1="partitionlisterror" var2="0"/>
-					<placement x="%col1_x_indent%" y="%row1_3_y%"/>
-					<text>{@part_sd_undo}</text>
-				</text>
-
-				<text style="text_body2_fail">
-					<condition var1="partitionlisterror" var2="1"/>
-					<placement x="%col1_x_indent%" y="%row1_3_y%"/>
-					<text>{@rem_sd_sel}</text>
-				</text>
-
-				<text style="caption">
-					<placement x="%col1_x%" y="%row2_2_y%"/>
-					<text>{@rem_sd}</text>
-				</text>
-
-				<partitionlist style="partitionlist_radio">
-					<placement x="0" y="%row2_3_y%" w="%screen_w%" h="%part_list_btns_h%"/>
-					<data name="tw_storage_path"/>
-					<listtype name="storage"/>
-				</partitionlist>
-
-				<button style="floating_btn">
-					<placement x="%btn_float_x%" y="%btn_float_y%"/>
-					<action function="getpartitiondetails">tw_storage_path</action>
-					<action function="page">partsdcardcheck</action>
-				</button>
-
-				<image>
-					<placement x="%btn_float_x%" y="%btn_float_y%"/>
-					<image resource="fab_accept"/>
-				</image>
-
-				<action>
-					<touch key="home"/>
-					<action function="page">main</action>
-				</action>
-
-				<action>
-					<touch key="back"/>
-					<action function="page">advanced</action>
-				</action>
-			</page>
-
 			<page name="remlock">
 				<template name="body"/>
 				
@@ -1118,7 +1023,7 @@
 					<condition var1="tw_partition_removable" op="!=" var2="1"/>
 					<actions>
 						<action function="set">partitionlisterror=1</action>
-						<action function="page">partsdcardsel</action>
+						<action function="page">partitionoptions</action>
 					</actions>
 				</action>
 			</page>
@@ -1216,7 +1121,7 @@
 					<touch key="back"/>
 					<actions>
 						<action function="set">partitionlisterror=0</action>
-						<action function="page">partsdcardsel</action>
+						<action function="page">partitionoptions</action>
 					</actions>
 				</action>
 			</page>
