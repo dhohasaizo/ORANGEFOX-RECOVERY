@@ -407,7 +407,7 @@
 
 				<text style="text_ab_title">
 					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>{@part_opt_hdr}</text>
+					<text>{@part_menu_hdr}</text>
 				</text>
 
 				<text style="text_ab_title">
@@ -518,6 +518,7 @@
 					<condition var1="tw_partition_removable" op="=" var2="1"/>
 					<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
 					<text>{@part_sd_hdr}</text>
+					<action function="set">tw_storage_path=%part_option%</action>
 					<action function="page">partsdcardcheck</action>
 				</button>
 
@@ -616,7 +617,7 @@
 
 				<text style="text_ab_title">
 					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>{@part_opt_hdr}</text>
+					<text>{@part_menu_hdr}</text>
 				</text>
 
 				<text style="text_ab_title">
@@ -933,7 +934,7 @@
 
 				<text style="text_ab_title">
 					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>{@part_opt_hdr}</text>
+					<text>{@part_menu_hdr}</text>
 				</text>
 
 				<image>

@@ -83,7 +83,7 @@
 			
 			<text style="bs_text">
 				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>Partition Options</text>
+				<text>{@part_menu_hdr}</text>
 			</text>
 			<!-- -->
 

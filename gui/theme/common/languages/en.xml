@@ -111,18 +111,18 @@
 		<string name="format_data_complete">Data Format completed</string>
 		<!-- Translator note: the word "yes" must remain English! -->
 		<string name="yes_continue">Type "yes" to confirm.</string>
-		<string name="part_opt_hdr">Partition Options</string>
+		<string name="part_opt_hdr">Partition Info</string>
 		<string name="file_sys_opt">Partition Options</string>
-		<string name="part_mount_point">Mount Point:</string>
-		<string name="part_curr_fs">File system:</string>
-		<string name="part_present">Present:</string>
-		<string name="part_removable">Removable:</string>
+		<string name="part_mount_point">Mount Point</string>
+		<string name="part_curr_fs">File system</string>
+		<string name="part_present">Present</string>
+		<string name="part_removable">Removable</string>
 		<string name="part_yes">Yes</string>
 		<string name="part_no">No</string>
-		<string name="part_size">Size:</string>
-		<string name="part_used">Used:</string>
-		<string name="part_free">Free:</string>
-		<string name="part_backup_size">Backup Size:</string>
+		<string name="part_size">Size</string>
+		<string name="part_used">Used</string>
+		<string name="part_free">Free</string>
+		<string name="part_backup_size">Backup Size</string>
 		<string name="resize_btn">Resize FS</string>
 		<string name="resize_confirm">Resize partition</string>
 		<string name="resizing">Resizing...</string>
@@ -637,7 +637,7 @@
 		<string name="sel_part_single2">to use the Partition Options!</string>
 		<string name="part_fs_error_1">Partition Options are not</string>
 		<string name="part_fs_error_2">available for this partition!</string>
-		<string name="new_file_system">New File System:</string>
+		<string name="new_file_system">New File System</string>
 		<string name="adb_sideload_opt">Sideload Options</string>
 		<string name="about_hdr">About</string>
 		<string name="author">Author</string>
@@ -1124,6 +1124,7 @@
 		
 		<!-- Utilities -->
 		<string name="utilities">Utilities</string>
+		<string name="part_menu_hdr">Manage Partitions</string>
 
 		<!-- MMGUI -->
 		<string name="mm_module_active">Active</string>
