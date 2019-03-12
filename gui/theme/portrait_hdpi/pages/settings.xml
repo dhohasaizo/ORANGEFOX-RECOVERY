@@ -438,16 +438,6 @@
 				<listitem name="{@areb_noos}">0</listitem>
 			</listbox>
 
-			<!-- Format data in wipe settings -->
-
-			<button style="btn_raised_warn">
-				<condition var1="tw_has_data_media" var2="1"/>
-				<condition var1="general_back" var2="wipe"/>
-				<placement x="%btn_raised_right_x%" y="%row_btn_y%" placement="1"/>
-				<text>Format Data</text>
-				<action function="page">formatdata</action>
-			</button>
-
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
