@@ -3237,7 +3237,7 @@
 			<template name="body"/>
 
 			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter extn=".zip" folders="1" files="1"/>
@@ -3247,7 +3247,7 @@
 			</fileselector>
 
 			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter extn=".zip" folders="1" files="1"/>
@@ -3278,20 +3278,20 @@
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
 				<actions>
-					<action function="set">list_font=small</action>
+					<action function="set">list_font_old=small</action>
 				</actions>
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
 				<actions>
-					<action function="set">list_font=big</action>
+					<action function="set">list_font_old=big</action>
 				</actions>
 			</button>
 
@@ -3774,7 +3774,7 @@
 			<template name="body"/>
 
 			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_install_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter extn=".png" folders="1" files="1"/>
@@ -3784,7 +3784,7 @@
 			</fileselector>
 
 			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_install_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter extn=".png" folders="1" files="1"/>
@@ -3846,20 +3846,20 @@
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
 				<actions>
-					<action function="set">list_font=small</action>
+					<action function="set">list_font_old=small</action>
 				</actions>
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
 				<actions>
-					<action function="set">list_font=big</action>
+					<action function="set">list_font_old=big</action>
 				</actions>
 			</button>
 
@@ -4640,7 +4640,7 @@
 			<template name="body"/>
 
 			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_install_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter extn=".zip" folders="1" files="1"/>
@@ -4650,7 +4650,7 @@
 			</fileselector>
 
 			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_install_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter extn=".zip" folders="1" files="1"/>
@@ -4712,20 +4712,20 @@
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
 				<actions>
-					<action function="set">list_font=small</action>
+					<action function="set">list_font_old=small</action>
 				</actions>
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
 				<actions>
-					<action function="set">list_font=big</action>
+					<action function="set">list_font_old=big</action>
 				</actions>
 			</button>
 
@@ -6518,7 +6518,7 @@
 			<template name="body"/>
 
 			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_install_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter extn=".img" folders="1" files="1"/>
@@ -6528,7 +6528,7 @@
 			</fileselector>
 
 			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_install_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter extn=".img" folders="1" files="1"/>
@@ -6560,20 +6560,20 @@
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
 				<actions>
-					<action function="set">list_font=small</action>
+					<action function="set">list_font_old=small</action>
 				</actions>
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
 				<actions>
-					<action function="set">list_font=big</action>
+					<action function="set">list_font_old=big</action>
 				</actions>
 			</button>
 
@@ -6636,7 +6636,7 @@
 			<template name="body"/>
 
 			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_install_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter extn=".zip" folders="1" files="1"/>
@@ -6646,7 +6646,7 @@
 			</fileselector>
 
 			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_install_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter extn=".zip" folders="1" files="1"/>
@@ -6677,20 +6677,20 @@
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
 				<actions>
-					<action function="set">list_font=small</action>
+					<action function="set">list_font_old=small</action>
 				</actions>
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
 				<actions>
-					<action function="set">list_font=big</action>
+					<action function="set">list_font_old=big</action>
 				</actions>
 			</button>
 
@@ -8984,7 +8984,7 @@
 			<template name="body"/>
 
 			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_install_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter folders="1" files="0" nav="0" adbbackup="1"/>
@@ -8994,7 +8994,7 @@
 			</fileselector>
 
 			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_install_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter folders="1" files="1" nav="0" extn=".ab" adbbackup="1"/>
@@ -9044,20 +9044,20 @@
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
 				<actions>
-					<action function="set">list_font=small</action>
+					<action function="set">list_font_old=small</action>
 				</actions>
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
 				<actions>
-					<action function="set">list_font=big</action>
+					<action function="set">list_font_old=big</action>
 				</actions>
 			</button>
 
@@ -10595,7 +10595,7 @@
 			<template name="body"/>
 
 			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter folders="1" files="1"/>
@@ -10605,7 +10605,7 @@
 			</fileselector>
 
 			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter folders="1" files="1"/>
@@ -10636,20 +10636,20 @@
 			</text>
 
 			<button>
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
 				<actions>
-					<action function="set">list_font=small</action>
+					<action function="set">list_font_old=small</action>
 				</actions>
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
 				<actions>
-					<action function="set">list_font=big</action>
+					<action function="set">list_font_old=big</action>
 				</actions>
 			</button>
 
@@ -10704,7 +10704,7 @@
 			<template name="body"/>
 
 			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter folders="1" files="1"/>
@@ -10714,7 +10714,7 @@
 			</fileselector>
 
 			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon" file="file_icon"/>
@@ -10751,20 +10751,20 @@
 			</text>
 
 			<button>
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
 				<actions>
-					<action function="set">list_font=small</action>
+					<action function="set">list_font_old=small</action>
 				</actions>
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
 				<actions>
-					<action function="set">list_font=big</action>
+					<action function="set">list_font_old=big</action>
 				</actions>
 			</button>
 
@@ -11101,7 +11101,7 @@
 			<template name="body"/>
 
 			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter folders="1" files="0"/>
@@ -11111,7 +11111,7 @@
 			</fileselector>
 
 			<fileselector style="fileselector_s">
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%col1_x%" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
 				<sort name="tw_gui_sort_order"/>
 				<filter folders="1" files="0"/>
@@ -11142,20 +11142,20 @@
 			</text>
 
 			<button>
-				<condition var1="list_font" var2="big"/>
+				<condition var1="list_font_old" var2="big"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_big" highlightresource="actionbar_font_big_hl"/>
 				<actions>
-					<action function="set">list_font=small</action>
+					<action function="set">list_font_old=small</action>
 				</actions>
 			</button>
 
 			<button>
-				<condition var1="list_font" var2="small"/>
+				<condition var1="list_font_old" var2="small"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_font_small" highlightresource="actionbar_font_small_hl"/>
 				<actions>
-					<action function="set">list_font=big</action>
+					<action function="set">list_font_old=big</action>
 				</actions>
 			</button>
 
