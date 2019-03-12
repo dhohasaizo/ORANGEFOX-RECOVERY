@@ -286,7 +286,7 @@
 		<variable name="show_cpu_temp" value="1" persist="1"/>
 		<variable name="center_clock" value="0" persist="1"/>
 		<variable name="dialog_context" value="none" persist="1"/>
-		<variable name="list_font" value="small" persist="1"/>
+		<variable name="list_font_old" value="small"/>
 		<variable name="navbar_sams" value="0" persist="1"/>
 		<variable name="navbar_accent" value="0" persist="1"/>
 		<variable name="menu_btn_solid" value="1" persist="1"/>

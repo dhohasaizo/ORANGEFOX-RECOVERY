@@ -347,17 +347,6 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	       DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 1); // standard ROM
 	       gui_msg ("fox_install_standard_detected=- Detected standard ROM zip installer");
 	     }
-	     else 
-	     {
-	        /*
-	        if (Zip -> EntryExists("boot.img")) // contains boot.img, but is not a full ROM - disable DM-Verity here too ?
-	        {
-                   DataManager::SetValue(FOX_CALL_DEACTIVATION, 1);
-		   DataManager::SetValue(FOX_DISABLE_DM_VERITY, 1);
-		}   
-		gui_msg("fox_install_patch_detected=- Detected Either a Patch or Fix Package");
-		*/
-	     }
 	}
 
    //* treble
@@ -376,9 +365,28 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
            Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
            LOGINFO("OrangeFox: detected Treble ROM installer. [code=%i] \n", Fox_Zip_Installer_Code);
         }
+        else 
+        if (TWFunc::Has_Vendor_Partition())
+        {
+           DataManager::SetValue(FOX_ZIP_INSTALLER_TREBLE, "1");
+           Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+           usleep (32);
+           
+           if (Fox_Zip_Installer_Code == 1) // custom
+                 DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 11);
+           
+           if (Fox_Zip_Installer_Code == 2) // miui 
+                 DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 22);
+           
+           Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+           LOGINFO("OrangeFox: detected standard ROM installer, on a real Treble device!\n");       
+        }
    //* treble
 
-      if (zip_is_survival_trigger) //(DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) != 0)
+#if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
+     //LOGINFO("OrangeFox: not executing MIUI OTA restore\n");
+#else
+     if (zip_is_survival_trigger) //(DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) != 0)
 	{
 	  gui_msg
 	    ("fox_incremental_ota_status_enabled=Support MIUI Incremental package status: Enabled");
@@ -534,6 +542,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      return INSTALL_ERROR;
 	    }
 	}
+#endif // MIUI OTA
       if (Zip->EntryExists(bootloader))
 	gui_msg(Msg
 		(msg::kWarning,
@@ -1013,6 +1022,9 @@ int TWinstall_zip(const char *path, int *wipe_cache)
      {
 	set_miui_install_status(OTA_ERROR, false);
      }
+#if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
+   //LOGINFO("OrangeFox: not running the MIUI OTA backup.\n");
+#else    
   else  
   if (DataManager::GetIntValue(FOX_INCREMENTAL_OTA_FAIL) != 1)
     {
@@ -1071,9 +1083,12 @@ int TWinstall_zip(const char *path, int *wipe_cache)
       DataManager::SetValue(FOX_RUN_SURVIVAL_BACKUP, 0);
       
       LOGINFO("Install took %i second(s).\n", total_time);
-   } // FOX_INCREMENTAL_OTA_FAIL    
+   } // FOX_INCREMENTAL_OTA_FAIL
+#endif // MIUI OTA
+
    if (ret_val == INSTALL_SUCCESS)
       set_miui_install_status(OTA_SUCCESS, false);
+
 #ifdef USE_MINZIP
   sysReleaseMap(&map);
 #endif

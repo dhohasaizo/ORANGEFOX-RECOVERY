@@ -129,6 +129,13 @@ public:
     	static bool Rerun_Startup(void); // rerun startup
     	static void Welcome_Message(void); // provide the welcome message
     	static void Run_Before_Reboot(void); // run this just before rebooting
+    	//
+    	static bool Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
+    	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
+    	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
+    	static void Patch_Verity_Flags(string path); // patch the fstab's dm-verity flags
+    	static bool Has_Vendor_Partition(void); // does the device have a real vendor partition?
+    	//
 
 private:
 	static void Copy_Log(string Source, string Destination);
@@ -136,10 +143,6 @@ private:
 	static bool Patch_Forced_Encryption(void);
     	static bool Patch_DM_Verity(void);
     	static void Patch_Others(void);	
-    	static bool Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
-    	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
-    	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
-    	static void Patch_Verity_Flags(string path); // patch the fstab's dm-verity flags
     	static void PrepareToFinish(void); // call this only when we are about to shutdown or reboot
     	static bool DontPatchBootImage(void); // return true to avoid patching the boot image
 };
