@@ -981,7 +981,7 @@ int GUIAction::getpartitiondetails(std::string arg)
   string List, part_path;
 
   if (arg.empty())
-    arg = "tw_wipe_list";
+    arg = "part_option";
   DataManager::GetValue(arg, List);
   LOGINFO("getpartitiondetails list '%s'\n", List.c_str());
   if (!List.empty())
@@ -992,8 +992,7 @@ int GUIAction::getpartitiondetails(std::string arg)
 	{
 	  part_path = List.substr(start_pos, end_pos - start_pos);
 	  LOGINFO("getpartitiondetails part_path '%s'\n", part_path.c_str());
-	  if (part_path == "/and-sec" || part_path == "DALVIK"
-	      || part_path == "INTERNAL" || part_path == "SUBSTRATUM")
+	  if (part_path == "/and-sec" || part_path == "DALVIK" || part_path == "INTERNAL")
 	    {
 	      // Do nothing
 	    }

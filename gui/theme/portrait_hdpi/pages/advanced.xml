@@ -1630,13 +1630,14 @@
 
 				<partitionlist style="partitionlist_dialog">
 					<placement x="0" y="%row2_2_y%" w="%screen_w%" h="%part_list_btns_np_h%"/>
-					<data name="tw_wipe_list"/>
+					<data name="part_option"/>
 					<listtype name="part_option"/>
 				</partitionlist>
 
 				<button style="btn_raised_hl">
 					<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
 					<text>Next</text>
+					<action function="checkpartitionlist"/>
 					<action function="page">checkpartitionlist</action>
 				</button>
 
