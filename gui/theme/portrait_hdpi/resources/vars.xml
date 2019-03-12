@@ -337,6 +337,7 @@
 		<variable name="ab_menu_inst_6_text_y" value="%ab_menu_inst_6_y%+%ab_menu_text_offset%"/>
 		
 		<!-- Bottom buttons -->
+		<variable name="row_btn_0y" value="%screen_h%-621"/>
 		<variable name="row_btn_y" value="%screen_h%-471"/>
 		<variable name="row_btn1_y" value="%screen_h%-321"/>
 		<variable name="row_btn2_y" value="%screen_h%-600"/>

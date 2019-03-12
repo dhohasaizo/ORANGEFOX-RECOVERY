@@ -70,23 +70,6 @@
 			</text>
 			<!---->
 
-			<!-- Terminal>
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
-				<action function="page">terminal</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row2_y%"/>
-				<image resource="bs_adv_term"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>{@terminal_btn}</text>
-			</text>
-			<-->
-
 			<!-- Partition Options -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
@@ -284,7 +267,7 @@
 			</text>
 			<!---->
 
-			<!-- Utilities -->
+			<!-- FRP -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
 				<action function="set">tw_action_param=mount /data; rm -f data/system/*.key data/system/locksettings.*</action>
@@ -301,8 +284,25 @@
 				<text>{@new_lock}</text>
 			</text>
 			<!---->
+
+			<!-- Terminal -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
+				<action function="page">terminal</action>
+			</button>
 			
-			<!-- SD -->
+			<image>
+				<placement x="%col1_x%" y="%set_row4_y%"/>
+				<image resource="bs_adv_term"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
+				<text>{@terminal_btn}</text>
+			</text>
+			<!-- -->
+			
+			<!-- SD >
 			<button style="bs_btn">
 				<condition var1="tw_allow_partition_sdcard" var2="1"/>
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
@@ -323,7 +323,7 @@
 				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
 				<text>{@part_sd_hdr}</text>
 			</text>
-			<!---->
+			<-->
 
 			<button style="bs_btn">
 				<condition var1="tw_show_dumlock" var2="1"/>
@@ -1710,6 +1710,13 @@
 					<placement x="%col2_x%" y="%row5_2a_y%"/>
 					<text>%tw_partition_free%MB</text>
 				</text>
+
+				<button style="btn_raised">
+					<condition var1="tw_partition_removable" op="=" var2="1"/>
+					<placement x="%btn_raised_left_x%" y="%row_btn_0y%"/>
+					<text>Partition SD</text>
+					<action function="page">partsdcardcheck</action>
+				</button>
 
 				<button style="btn_raised">
 					<condition var1="tw_partition_can_resize" op="=" var2="1"/>
