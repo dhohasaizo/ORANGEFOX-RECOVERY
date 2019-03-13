@@ -94,8 +94,19 @@
 
 			<action>
 				<condition var1="tw_filename1" op="modified"/>
+				<condition var1="fm_auto_open" op="!=" var2="1"/>
 				<actions>
 					<action function="page">filemanageroptions</action>
+				</actions>
+			</action>
+			
+			<action>
+				<condition var1="tw_filename1" op="modified"/>
+				<condition var1="fm_auto_open" var2="1"/>
+				<actions>
+					<action function="set">tw_file_extension=</action>
+					<action function="fileextension">%tw_selection1%</action>
+					<action function="page">files_redirect</action>
 				</actions>
 			</action>
 			
@@ -118,6 +129,49 @@
 			</image>
 			
 			<template name="nav_panel"/>
+		</page>
+		
+		<page name="files_redirect">
+		
+			<action>
+				<condition var1="tw_file_extension" var2="zip"/>
+				<actions>
+					<action function="queueclear"/>
+					<action function="set">tw_file=%tw_selection1%</action>
+					<action function="set">tw_filename=%tw_filename1%</action>
+					<action function="set">install_back=filemanagerlist</action>
+					<action function="set">tw_zip_location=%tw_file_location1%</action>
+					<action function="queuezip"/>
+					<action function="set">tw_q_1=%tw_file%</action>
+					<action function="page">flash_confirm</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="tw_file_extension" var2="img"/>
+				<actions>
+					<action function="set">tw_file=%tw_selection1%</action>
+					<action function="set">install_back=filemanagerlist</action>
+					<action function="set">tw_filename=%tw_filename1%</action>
+					<action function="set">tw_zip_location=%tw_file_location1%</action>
+					<action function="set">tw_flash_partition=</action>
+					<action function="page">flash_image_confirm</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="tw_file_extension" var2="txt"/>
+				<actions>
+					<action function="page">cat_file</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="tw_file_extension" op="!=" var2="txt"/>
+				<condition var1="tw_file_extension" op="!=" var2="zip"/>
+				<condition var1="tw_file_extension" op="!=" var2="img"/>
+				<actions>
+					<action function="page">filemanageroptions</action>
+				</actions>
+			</action>
+		
 		</page>
 		
 		<page name="files_ex_menu">

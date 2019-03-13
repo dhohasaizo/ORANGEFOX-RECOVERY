@@ -284,6 +284,10 @@
 					<data variable="list_font"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
+				<listitem name="Automatically detect file type">
+					<data variable="fm_auto_open"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
 				<listitem name="{@inject_twrp_chk}">
 					<condition var1="tw_has_injecttwrp" var2="1"/>
 					<condition var1="general_back" var2="settings"/>
