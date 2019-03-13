@@ -33,8 +33,13 @@
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
 			</fileselector>
+			
+			<template name="ab_main"/>
+
+			<template name="statusbarinfo"/>
 
 			<input>
+				<condition var1="darker_ui" op="!=" var2="1"/>
 				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="696" h="64"/>
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
@@ -44,9 +49,16 @@
 				<text>%tw_file_location1%</text>
 			</input>
 			
-			<template name="ab_main"/>
-
-			<template name="statusbarinfo"/>
+			<input>
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="696" h="64"/>
+				<cursor color="%transparent%" hasfocus="0" width="0"/>
+				<font resource="Secondary" color="%accent%"/>
+				<background color="%title_solid_bg%"/>
+				<data name="tw_file_location1"/>
+				<restrict disable="1"/>
+				<text>%tw_file_location1%</text>
+			</input>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x%" y="%ab_bc_double_u_y%" placement="2"/>

@@ -68,7 +68,9 @@
 		<variable name="console_foreground" value="#FFFFFF"/> <!-- text (console) -->
 		<variable name="linecolor" value="#666666"/> <!-- dividers -->
 		<variable name="darktransparent" value="#000000BB"/> <!-- dialog bgs -->
-		<variable name="lightransparent" value="#00000011"/> <!-- dark statusbar -->
 		<variable name="theme_style" value="Night"/> <!-- name -->
+		
+		<variable name="status_solid_bg" value="#191A1C"/> <!-- status bar color -->
+		<variable name="title_solid_bg" value="#1C1D20"/> <!-- title color -->
 	</variables>
 </recovery>

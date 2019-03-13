@@ -56,19 +56,21 @@
 		<image name="progress_fill_small" filename="Default/Progress/progress_fill_small"/>
 	</resources>
 	<variables>
-		<variable name="background" value="#1e1f22"/> <!-- bg color -->
+		<variable name="background" value="#1e1f22"/>
 		
-		<variable name="highlight_color" value="#1e1f2266"/> <!-- obj pressed (btn) -->
-		<variable name="highlight_color_full" value="#11111144"/> <!-- hl behind obj (filemanager) -->
-		<variable name="text" value="#FFFFFF"/> <!-- text (on bg) -->
-		<variable name="text_status" value="#FFFFFF"/> <!-- text (statusbar) -->
-		<variable name="text_menu" value="#FFFFFF"/> <!-- text (long btns) -->
-		<variable name="text_light" value="#666666"/> <!-- text (unactive,gray) -->
-		<variable name="text_dark" value="#666666"/> <!-- text (unused) -->
-		<variable name="console_foreground" value="#FFFFFF"/> <!-- text (console) -->
-		<variable name="linecolor" value="#666666"/> <!-- dividers -->
-		<variable name="darktransparent" value="#000000BB"/> <!-- dialog bgs -->
-		<variable name="lightransparent" value="#00000011"/> <!-- dark statusbar -->
-		<variable name="theme_style" value="Night"/> <!-- name -->
+		<variable name="highlight_color" value="#1e1f2266"/>
+		<variable name="highlight_color_full" value="#11111144"/>
+		<variable name="text" value="#FFFFFF"/>
+		<variable name="text_status" value="#FFFFFF"/>
+		<variable name="text_menu" value="#FFFFFF"/>
+		<variable name="text_light" value="#666666"/>
+		<variable name="text_dark" value="#666666"/>
+		<variable name="console_foreground" value="#FFFFFF"/>
+		<variable name="linecolor" value="#666666"/>
+		<variable name="darktransparent" value="#000000BB"/>
+		<variable name="theme_style" value="Night"/>
+		
+		<variable name="status_solid_bg" value="#191A1C"/>
+		<variable name="title_solid_bg" value="#1C1D20"/>
 	</variables>
 </recovery>

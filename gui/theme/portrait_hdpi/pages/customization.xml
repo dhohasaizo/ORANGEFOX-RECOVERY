@@ -335,20 +335,12 @@
 		<page name="ext_custom_lock">
 			<template name="body"/>
 			
-			<fill color="%lightransparent%">
+			<fill color="%title_solid_bg%">
 				<condition var1="darker_ui" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%row4_1_y%"/>
 			</fill>
 
-			<fill color="%lightransparent%">
-				<condition var1="separate_status" op="!=" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
-			
-			<fill color="#000000">
-				<condition var1="hide_notch" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
+			<template name="status_bg"/>
 			
 			<template name="actionbar_back"/>
 

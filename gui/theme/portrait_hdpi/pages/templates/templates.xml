@@ -2,7 +2,7 @@
 <recovery>
 	<templates>
 		<template name="nav_panel">
-			<fill color="%lightransparent%">
+			<fill color="%title_solid_bg%">
 				<condition var1="darker_ui" var2="1"/>
 				<placement x="0" y="%nav_panel_y%" w="%screen_w%" h="%nav_panel_h%"/>
 			</fill>
@@ -428,9 +428,7 @@
 			
 			<template name="background_image"/>
 			
-			<fill color="%lightransparent%">
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
+			<template name="status_bg"/>
 			
 			<template name="statusbarinfo"/>
 			
@@ -481,20 +479,12 @@
 				<placement x="0" y="%ab_h%"/>
 			</image>
 			
-			<fill color="%lightransparent%">
+			<fill color="%title_solid_bg%">
 				<condition var1="darker_ui" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
 			</fill>
 
-			<fill color="%lightransparent%">
-				<condition var1="separate_status" op="!=" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
-			
-			<fill color="#000000">
-				<condition var1="hide_notch" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
+			<template name="status_bg"/>
 			
 			<template name="actionbar_back"/>
 		</template>
@@ -506,20 +496,12 @@
 				<placement x="0" y="%ab_h%"/>
 			</image>
 			
-			<fill color="%lightransparent%">
+			<fill color="%title_solid_bg%">
 				<condition var1="darker_ui" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%ab_h%"/>
 			</fill>
 			
-			<fill color="#000000">
-				<condition var1="hide_notch" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
-
-			<fill color="%lightransparent%">
-				<condition var1="separate_status" op="!=" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
+			<template name="status_bg"/>
 		</template>
 		
 		<template name="ab_ex">
@@ -529,20 +511,12 @@
 				<placement x="0" y="%ab_ex_h%"/>
 			</image>
 			
-			<fill color="%lightransparent%">
+			<fill color="%title_solid_bg%">
 				<condition var1="darker_ui" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%ab_ex_h%"/>
 			</fill>
 			
-			<fill color="%lightransparent%">
-				<condition var1="separate_status" op="!=" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
-			
-			<fill color="#000000">
-				<condition var1="hide_notch" var2="1"/>
-				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
-			</fill>
+			<template name="status_bg"/>
 			
 			<template name="actionbar_back"/>
 		</template>
@@ -811,6 +785,18 @@
 				<action function="set">tw_page_done=1</action>
 				<action function="page">main</action>
 			</action>
+		</template>
+		
+		<template name="status_bg">
+			<fill color="%status_solid_bg%">
+				<condition var1="separate_status" op="!=" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
+			
+			<fill color="#000000">
+				<condition var1="hide_notch" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
+			</fill>
 		</template>
 	</templates>
 </recovery>

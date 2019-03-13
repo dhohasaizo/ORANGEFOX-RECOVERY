@@ -54,7 +54,9 @@
 		<variable name="console_foreground" value="#666666"/>
 		<variable name="linecolor" value="#666666"/>
 		<variable name="darktransparent" value="#FAFAFABB"/>
-		<variable name="lightransparent" value="#00000008"/>
 		<variable name="theme_style" value="Light"/>
+		
+		<variable name="status_solid_bg" value="#E6E6E6"/>
+		<variable name="title_solid_bg" value="#F0F0F0"/>
 	</variables>
 </recovery>
