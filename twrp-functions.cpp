@@ -2572,7 +2572,8 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        res = Exec_Cmd (cmd_script, result);
 	        if (res == 0) 
 	           retval = true;
-	        unlink(cmd_script.c_str());
+	        usleep (128);
+		unlink(cmd_script.c_str());
 		//gui_print("DEBUG: result of unpack command %s=%i, and output=%s\n",cmd_script.c_str(), res, result.c_str());   
 	    } // if
 	} // do_unpack
@@ -2597,7 +2598,8 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        AppendLineToFile (cmd_script2, magiskboot_action + "cleanup > /dev/null 2>&1");
 	        AppendLineToFile (cmd_script2, "exit 0");
 	        res = Exec_Cmd (cmd_script2, result);
-	        unlink(cmd_script2.c_str());
+		usleep (128);
+		unlink(cmd_script2.c_str());
 		//gui_print("DEBUG: result of repack command %s=%i and output=%s\n",cmd_script2.c_str(), res, result.c_str());
 	        if (res == 0) 
 	          retval = true;
@@ -2709,8 +2711,21 @@ std::string GetFileHeaderMagic (string fname)
   return DataToHexString(head, len);
 }
 
-//#define OF_USE_HEXDUMP 1
 /* DJ9 */
+// #define OF_USE_MAGISKBOOT_FOR_ALL_PATCHES 1
+#ifdef OF_USE_MAGISKBOOT_FOR_ALL_PATCHES
+bool TWFunc::Repack_Image(string mount_point)
+{
+  bool is_boot = (mount_point == "/boot");
+  return (PackRepackImage_MagiskBoot(false, is_boot));
+}
+
+bool TWFunc::Unpack_Image(string mount_point)
+{
+  bool is_boot = (mount_point == "/boot");
+  return (PackRepackImage_MagiskBoot(true, is_boot));
+}
+#else // OF_USE_MAGISKBOOT_FOR_ALL_PATCHES
 bool TWFunc::Unpack_Image(string mount_point)
 {
   string null;
@@ -2889,6 +2904,16 @@ bool TWFunc::Repack_Image(string mount_point)
 
   //LOGINFO("TWFunc::Repack_Image: Running Command: '%s'\n", repack.c_str());  // !!
   TWFunc::Exec_Cmd(repack, null);
+  if (null == exec_error_str)
+     {
+        LOGERR("TWFunc::Repack_Image: Command failed '%s'\n", repack.c_str());
+     }
+  else
+  if (!null.empty())
+     {
+        LOGINFO("TWFunc::Repack_Image: output of command:'%s' was:\n'%s'\n", repack.c_str(), null.c_str());
+     }
+
   dir = opendir(split_img.c_str());
   if (dir == NULL)
     {
@@ -2989,7 +3014,7 @@ bool TWFunc::Repack_Image(string mount_point)
       LOGERR("TWFunc::Repack_Image: the command %s was unsuccessful.\n", Command.c_str());
       return false;
     }
-
+  //if (!null.empty()) LOGINFO("TWFunc::Repack_Image: output of final command:'%s' was:\n'%s'\n", Command.c_str(), null.c_str()); //!!
   char brand[PROPERTY_VALUE_MAX];
   property_get("ro.product.manufacturer", brand, "");
   hexdump = brand;
@@ -3006,11 +3031,13 @@ bool TWFunc::Repack_Image(string mount_point)
 	      File.close();
 	    }
 	}
+     //LOGINFO("TWFunc::Repack_Image: Manufacturer='%s'\n", hexdump.c_str());  // !! 
     }
   Read_Write_Specific_Partition(tmp_boot.c_str(), mount_point, false);
   TWFunc::removeDir(tmp, false);
   return true;
 }
+#endif // OF_USE_MAGISKBOOT_FOR_ALL_PATCHES
 
 bool TWFunc::JustInstalledMiui(void)
 {
