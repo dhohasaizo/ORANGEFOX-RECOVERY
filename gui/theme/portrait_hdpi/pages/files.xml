@@ -88,11 +88,6 @@
 			</action>
 
 			<action>
-				<touch key="home"/>
-				<action function="page">filemanagerlist</action>
-			</action>
-
-			<action>
 				<condition var1="tw_filename1" op="modified"/>
 				<condition var1="fm_auto_open" op="!=" var2="1"/>
 				<actions>
@@ -129,6 +124,17 @@
 			</image>
 			
 			<template name="nav_panel"/>
+			<template name="navbar_back"/>
+
+			<action>
+				<touch key="home"/>
+				<action function="set">tw_file_location1=/sdcard</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="set">tw_file_location1=%tw_file_location1%\</action>
+			</action>
 		</page>
 		
 		<page name="files_redirect">
