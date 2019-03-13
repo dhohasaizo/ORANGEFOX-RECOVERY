@@ -368,6 +368,7 @@ protected:
 	int twcmd(std::string arg);
 	int setbootslot(std::string arg);
 	int flashlight(std::string arg);
+	int fileextension(std::string arg);
 	int adb(std::string arg);
 	int disableled(std::string arg);	
 	int changesplash(std::string arg);

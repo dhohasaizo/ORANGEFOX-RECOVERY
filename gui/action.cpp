@@ -214,6 +214,7 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(togglebacklight);
       ADD_ACTION(disableled);
       ADD_ACTION(flashlight);
+      ADD_ACTION(fileextension);
  
       // remember actions that run in the caller thread
       for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
@@ -681,6 +682,13 @@ int GUIAction::set(std::string arg)
 int GUIAction::clear(std::string arg)
 {
   DataManager::SetValue(arg, "0");
+  return 0;
+}
+
+int GUIAction::fileextension(std::string arg)
+{
+  string f_ext = arg.substr(arg.find_last_of(".") + 1);
+  DataManager::SetValue("tw_file_extension", f_ext);
   return 0;
 }
 
