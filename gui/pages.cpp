@@ -1358,8 +1358,8 @@ int PageManager::LoadPackage(std::string name, std::string package, std::string 
 		tw_w_offset = TW_W_OFFSET;
 		tw_h_offset = TW_H_OFFSET;
 		if (name != "splash") {
-			LoadLanguageList(NULL);
-			languageFile = LoadFileToBuffer(TWRES "languages/en.xml", NULL);
+			//LoadLanguageList(NULL);
+			//languageFile = LoadFileToBuffer(TWRES "languages/en.xml", NULL);
 		}
 		ctx.basepath = TWRES;
 	}
