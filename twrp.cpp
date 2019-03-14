@@ -91,12 +91,6 @@ int main(int argc, char **argv)
 
   signal(SIGPIPE, SIG_IGN);
 
-  // Load default values to set DataManager constants and handle ifdefs
-  DataManager::SetDefaultValues();
-
-  printf("Starting the UI...\n");
-  gui_init();
-
   // Handle ADB sideload
   if (argc == 3 && strcmp(argv[1], "--adbd") == 0)
     {
@@ -128,8 +122,14 @@ int main(int argc, char **argv)
   printf("Starting OrangeFox TWRP %s-%s-%s on %s (pid %d)\n", FOX_VERSION,
 	 FOX_BUILD, TW_GIT_REVISION, ctime(&StartupTime), getpid());
 
+  // Load default values to set DataManager constants and handle ifdefs
+  DataManager::SetDefaultValues();
+
   /* OrangeFox Startup Script [now called in twrp-functions.cpp]
   //  TWFunc::RunStartupScript(); */ 
+      
+  printf("Starting the UI...\n");
+  gui_init();
 
   printf("=> Linking mtab\n");
   symlink("/proc/mounts", "/etc/mtab");
