@@ -118,6 +118,8 @@
 		<!-- File Manager -->
 		<image name="folder_icon" filename="Default/FileManager/folder" retainaspect="1"/>
 		<image name="folder_icon_small" filename="Default/FileManager/folder_small" retainaspect="1"/>
+		<image name="up_icon" filename="Default/FileManager/up" retainaspect="1"/>
+		<image name="up_icon_small" filename="Default/FileManager/up_small" retainaspect="1"/>
 		<image name="module_icon_small" filename="Default/FileManager/module_small" retainaspect="1"/>
 		<image name="module_icon" filename="Default/FileManager/module" retainaspect="1"/>
 		

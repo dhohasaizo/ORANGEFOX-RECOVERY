@@ -619,6 +619,11 @@ protected:
 	static int mSortOrder; // must be static because it is used by the static function fileSort
 	ImageResource* mFolderIcon;
 	ImageResource* mFileIcon;
+	ImageResource* mUpIcon;
+	ImageResource* mExZipIcon;
+	ImageResource* mExImgIcon;
+	ImageResource* mExTxtIcon;
+	ImageResource* mExPngIcon;
 	bool updateFileList;
 };
 

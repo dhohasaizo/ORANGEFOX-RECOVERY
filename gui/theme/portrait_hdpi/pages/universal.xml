@@ -219,6 +219,7 @@
 				<action function="set">tw_cancel_param=</action>
 				<action function="set">tw_show_exclamation=0</action>
 				<action function="set">tw_show_reboot=0</action>
+				<action function="disableled"/>
 				<action function="page">%tw_clear_destination%</action>
 			</action>
 		</page>

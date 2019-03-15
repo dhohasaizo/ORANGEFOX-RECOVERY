@@ -27,7 +27,7 @@
 				<condition var1="list_font" op="!=" var2="1"/>
 				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon_small" file="file_icon_small" />
+				<icon folder="folder_icon_small" file="file_icon_small"/>
 				<filter folders="1" files="1"/>
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>

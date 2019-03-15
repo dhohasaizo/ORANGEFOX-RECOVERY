@@ -39,7 +39,7 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 	xml_attribute<>* attr;
 	xml_node<>* child;
 
-	mFolderIcon = mFileIcon = NULL;
+	mFolderIcon = mFileIcon = mUpIcon = mExZipIcon = mExImgIcon = mExTxtIcon = mExPngIcon = NULL;
 	mShowFolders = mShowFiles = mShowNavFolders = 1;
 	mUpdate = 0;
 	mPathVar = "cwd";
@@ -110,9 +110,29 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 	child = FindNode(node, "icon");
 	if (child) {
 		mFolderIcon = LoadAttrImage(child, "folder");
-		mFileIcon = LoadAttrImage(child, "file");
+		mFileIcon   = LoadAttrImage(child, "file");
 	}
+	
+	// Get additional icons
+	child = FindNode(node, "exicon");
+	if (child) {
+		mExZipIcon  = LoadAttrImage(child, "zip");
+		mExImgIcon  = LoadAttrImage(child, "img");
+		mExTxtIcon  = LoadAttrImage(child, "txt");
+		mExPngIcon  = LoadAttrImage(child, "png");
+		mUpIcon     = LoadAttrImage(child, "up");
+	}
+	
 	int iconWidth = 0, iconHeight = 0;
+	
+	// Get size for icons
+	child = FindNode(node, "iconsize");
+	if (child) {
+		iconWidth = LoadAttrInt(child, "w", iconWidth);
+		iconHeight = LoadAttrInt(child, "h", iconHeight);
+	}
+	
+	/*
 	if (mFolderIcon && mFolderIcon->GetResource() && mFileIcon && mFileIcon->GetResource()) {
 		iconWidth = std::max(mFolderIcon->GetWidth(), mFileIcon->GetWidth());
 		iconHeight = std::max(mFolderIcon->GetHeight(), mFileIcon->GetHeight());
@@ -123,6 +143,8 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 		iconWidth = mFileIcon->GetWidth();
 		iconHeight = mFileIcon->GetHeight();
 	}
+	*/
+	
 	SetMaxIconSize(iconWidth, iconHeight);
 
 	// Fetch the file/folder list
@@ -321,15 +343,30 @@ void GUIFileSelector::RenderItem(size_t itemindex, int yPos, bool selected)
 
 	ImageResource* icon;
 	std::string text;
+	std::string ext;
 
 	if (itemindex < folderSize) {
 		text = mFolderList.at(itemindex).fileName;
-		icon = mFolderIcon;
-		if (text == "..")
+		if (text == "..") {
 			text = gui_lookup("up_a_level", "(Up A Level)");
+			icon = mUpIcon;
+		} else {
+			icon = mFolderIcon;
+		}
 	} else {
 		text = mFileList.at(itemindex - folderSize).fileName;
-		icon = mFileIcon;
+		ext = text.substr(text.find_last_of(".") + 1);
+		if (ext == "zip" || ext == "apk" || ext == "tar" || ext == "gz" || ext == "bz2" || ext == "xz") {
+			icon = mExZipIcon;
+		} else if (ext == "img") {
+			icon = mExImgIcon;
+		} else if (ext == "png") {
+			icon = mExPngIcon;
+		} else if (ext == "txt" || ext == "log" || ext == "cfg" || ext == "prop" || ext == "xml" || ext == "sh" || ext == "rc") {
+			icon = mExTxtIcon;
+		} else {
+			icon = mFileIcon;
+		}
 	}
 
 	RenderStdItem(yPos, selected, icon, text.c_str());
