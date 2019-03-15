@@ -83,11 +83,12 @@ static const char* properties_path = "/dev/__properties__";
 static const char* properties_path_renamed = "/dev/__properties_kk__";
 static bool legacy_props_env_initd = false;
 static bool legacy_props_path_modified = false;
+#endif
+
 static bool zip_is_for_specific_build = false;
 static bool zip_is_rom_package = false;
 static bool zip_survival_failed = false;
 static bool zip_is_survival_trigger = false;
-#endif
 
 enum zip_type
 {
@@ -476,12 +477,6 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
       ota_location_folder += "/" + ota_location_backup;
       DataManager::GetValue(FOX_LOADED_FINGERPRINT, loadedfp);
 
-			#ifndef TW_NO_LEGACY_PROPS
-			static bool update_binary_has_legacy_properties(const char *binary) {
-			const char str_to_match[] = "ANDROID_PROPERTY_WORKSPACE";
-			int len_to_match = sizeof(str_to_match) - 1;
-			bool found = false;
-
       if (DataManager::GetIntValue(FOX_METADATA_PRE_BUILD) != 0
 	  && !TWFunc::Verify_Loaded_OTA_Signature(loadedfp, ota_location_folder))
 	{
@@ -594,6 +589,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   return INSTALL_SUCCESS;
 }
 
+#ifndef TW_NO_LEGACY_PROPS
 static bool update_binary_has_legacy_properties(const char *binary)
 {
   const char str_to_match[] = "ANDROID_PROPERTY_WORKSPACE";

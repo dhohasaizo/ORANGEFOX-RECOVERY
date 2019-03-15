@@ -103,9 +103,25 @@
 				<text>Magisk Manager</text>
 			</text>
 
-			<!-- Aroma -->
+			<!-- Apps GUI -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
+				<action function="page">apps_mount</action>
+			</button>
+			
+			<image>
+				<placement x="%col1_x%" y="%set_row4_y%"/>
+				<image resource="magisk"/>
+			</image>
+			
+			<text style="bs_text">
+				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
+				<text>Manage Apps</text>
+			</text>
+
+			<!-- Aroma -->
+			<button style="bs_btn">
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
 				<action function="queueclear"/>
 				<action function="set">fox_install_built_in_zip=1</action>
 				<action function="set">tw_signed_zip_verify_tmp=%tw_signed_zip_verify%</action>
@@ -121,80 +137,80 @@
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row4_y%"/>
+				<placement x="%col1_x%" y="%set_row5_y%"/>
 				<image resource="bs_adv_aroma"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
 				<text>AromaFM</text>
 			</text>
 			<!---->
 
 			<!-- Sideload -->
 			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row6_y%"/>
 				<action function="page">sideload</action>
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row5_y%"/>
+				<placement x="%col1_x%" y="%set_row6_y%"/>
 				<image resource="bs_adv_adb"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
 				<text>{@adb_sideload_btn}</text>
 			</text>
 			<!---->
 
 			<!-- Fox Modules -->
 			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row6_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
 				<action function="page">fox_modules</action>
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row6_y%"/>
+				<placement x="%col1_x%" y="%set_row7_y%"/>
 				<image resource="bs_btn_archive"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
 				<text>{@fox_modules_hdr}</text>
 			</text>
 			<!---->
 
 			<!-- Utilities -->
 			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
 				<action function="page">utilities</action>
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row7_y%"/>
+				<placement x="%col1_x%" y="%set_row8_y%"/>
 				<image resource="utils"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
 				<text>{@utilities}</text>
 			</text>
 			<!---->
 
 			<!-- Перезагрузка -->
 			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
+				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row9_y%"/>
 				<action function="page">reboot</action>
 			</button>
 			
 			<image>
-				<placement x="%col1_x%" y="%set_row8_y%"/>
+				<placement x="%col1_x%" y="%set_row9_y%"/>
 				<image resource="bs_adv_reboot"/>
 			</image>
 			
 			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
+				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
 				<text>{@reboot_btn}</text>
 			</text>
 			<!---->
@@ -1479,5 +1495,176 @@
 					<action function="page">advanced</action>
 				</action>
 			</page>
+
+			<page name="app_info">
+				<template name="body"/>
+
+				<template name="ab_ex"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>App Manager</text>
+				</text>
+
+				<fileselector>
+					<placement x="208" y="278" w="%screen_w%" h="108"/>
+					<highlight color="%transparent%"/>
+					<background color="%transparent%" />
+					<font resource="Secondary-title" spacing="%fileselector_spacing%" color="%accent%" />
+					<sort name="0"/>
+					<filter folders="0" files="1" nav="0"/>
+					<path name="apps_info" default="/tmp/android-apps/label"/>
+					<data name="xxx"/>
+					<selection name="xxx"/>
+				</fileselector>
+
+				<fileselector>
+					<placement x="208" y="%row1_2_y%" w="%screen_w%" h="56"/>
+					<highlight color="%transparent%"/>
+					<background color="%transparent%" />
+					<font resource="Secondary" spacing="%fileselector_spacing%" color="%accent%" />
+					<sort name="0"/>
+					<filter folders="0" files="1" nav="0"/>
+					<path name="apps_info2" default="/tmp/android-apps/version"/>
+					<data name="xxx"/>
+					<selection name="xxx"/>
+				</fileselector>
+
+				<listbox style="settingslist">
+					<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%lb_l1%"/>
+					<listitem name="{@mm_module_mount}">
+						<data variable="mmodule_amnt"/>
+					</listitem>
+				</listbox>
+
+				<button>
+					<placement x="%ab_btn1_x%" y="%ab_y%"/>
+					<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+					<actions>
+						<action function="set">tw_filemanager_command=rm -rf</action>
+						<action function="set">tw_filename1=/magisk/%mmgui_select%</action>
+						<action function="set">tw_fm_text1={@fm_deleting}</action>
+						<action function="set">tw_fm_text2=</action>
+						<action function="set">tw_fm_text3=</action>
+						<action function="set">tw_include_text3=0</action>
+						<action function="set">tw_back=filemanageroptions</action>
+						<action function="page">filemanagerconfirm</action>
+					</actions>
+				</button>
+
+				<image>
+					<placement x="%ab_btn1_x%" y="%ab_y%"/>
+					<image resource="actionbar_delete"/>
+				</image>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">apps_list</action>
+				</action>
+			</page>
+
+			<page name="apps_mount">
+				<action>
+					<action function="cmd">appsgui list /data/app</action>
+				</action>
+
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+						<condition var1="tw_operation_status" var2="0"/>
+					</conditions>
+					<actions>
+						<action function="page">apps_list</action>
+					</actions>
+				</action>
+
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+						<condition var1="tw_operation_status" var2="1"/>
+					</conditions>
+					<actions>
+						<action function="page">advanced</action>
+					</actions>
+				</action>
+			</page>
+
+			<page name="apps_list">
+				<template name="body"/>
+
+				<!--fileselector style="fileselector_b">
+					<condition var1="magisk_core" op="!=" var2="1"/>
+					<condition var1="list_font" var2="1"/>
+					<placement x="0" y="%row3_1a_y%" w="%fileselector_width%" h="%lb_l6%"/>
+					<sort name="0"/>
+					<icon folder="folder_icon" file="module_icon" />
+					<filter folders="0" files="1"/>
+					<path name="mmgui_path" default="/tmp/mmgui"/>
+					<data name="mmgui_file"/>
+					<selection name="mmgui_select"/>
+				</fileselector-->
+
+				<fileselector style="fileselector_s">
+					<condition var1="list_font" op="!=" var2="1"/>
+					<placement x="0" y="%row1_1_y%" w="%fileselector_width%" h="%lb_l13%"/>
+					<sort name="0"/>
+					<icon folder="folder_icon_small" file="module_icon_small" />
+					<filter folders="1" files="1"/>
+					<path name="apps_path" default="/tmp/android-apps/list"/>
+					<data name="apps_select"/>
+					<selection name="apps_select"/>
+				</fileselector>
+
+				<template name="ab"/>
+				
+				<template name="statusbarinfo"/>
+				
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>Manage Apps</text>
+				</text>
+
+				<!--button>
+					<placement x="%ab_btn1_x%" y="%ab_y%"/>
+					<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+					<action function="cmd">mmgui unmnt</action>
+					<action function="page">advanced</action>
+				</button-->
+
+				<image>
+					<placement x="%ab_btn1_x%" y="%ab_y%"/>
+					<image resource="actionbar_cancel"/>
+				</image>
+
+				<action>
+					<condition var1="apps_select" op="modified"/>
+					<actions>
+						<action function="cmd">
+							appsgui info %apps_select%
+						</action>
+
+					<action function="set">apps_info=/tmp/android-apps/label</action>
+					<action function="set">apps_info2=/tmp/android-apps/version</action>
+					<action function="page">app_info</action>
+				</action>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">advanced</action>
+				</action>
+			</page>
+
 		</pages>
 	</recovery>
