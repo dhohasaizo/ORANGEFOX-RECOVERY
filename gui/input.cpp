@@ -439,6 +439,9 @@ int GUIInput::NotifyKey(int key, bool down)
 	if (!HasInputFocus || !down)
 		return 1;
 
+	if (mValue == "")
+		mCursorLocation = -1;
+	
 	switch (key)
 	{
 		case KEY_LEFT:

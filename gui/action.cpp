@@ -216,9 +216,9 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(disableled);
       ADD_ACTION(flashlight);
 	  
-	  //fordownloads actions (говнокод)
-      ADD_ACTION(fileextension); //get file extension
-      ADD_ACTION(up_a_level); //Up a folder
+	  //fordownloads actions
+      ADD_ACTION(fileextension);
+      ADD_ACTION(up_a_level);
  
       // remember actions that run in the caller thread
       for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
