@@ -680,7 +680,7 @@
 			
 			<action>
 				<touch key="power+voldown"/>
-				<action function="screenshotinternal"/>
+				<action function="screenshot"/>
 			</action>
 			
 			<action>

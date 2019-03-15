@@ -133,7 +133,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="set">tw_file_location1=%tw_file_location1%\</action>
+				<action function="up_a_level">tw_file_location1</action>
 			</action>
 		</page>
 		

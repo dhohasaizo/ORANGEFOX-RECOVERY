@@ -1284,7 +1284,7 @@
 
 				<action>
 					<touch key="power+voldown"/>
-					<action function="screenshotinternal"/>
+					<action function="screenshot"/>
 				</action>
 
 				<action>
@@ -1342,7 +1342,7 @@
 				<condition var1="fox_adb" op="!=" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
-					<action function="set">fox_adb=1</action>
+					<action function="adb">enable</action>
 				</actions>
 			</button>
 
@@ -1350,7 +1350,7 @@
 				<condition var1="fox_adb" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
-					<action function="set">fox_adb=0</action>
+					<action function="adb">disable</action>
 				</actions>
 			</button>
 

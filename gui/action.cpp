@@ -198,7 +198,8 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(generatebackupname);
       ADD_ACTION(checkpartitionlist);
       ADD_ACTION(getpartitiondetails);
-      ADD_ACTION(screenshotinternal);
+      ADD_ACTION(screenshot);
+      ADD_ACTION_EX("screenshotinternal", screenshot);
       ADD_ACTION(screenshotexternal);
       ADD_ACTION(setbrightness);
       ADD_ACTION(fileexists);
@@ -214,7 +215,10 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(togglebacklight);
       ADD_ACTION(disableled);
       ADD_ACTION(flashlight);
-      ADD_ACTION(fileextension);
+	  
+	  //fordownloads actions (говнокод)
+      ADD_ACTION(fileextension); //get file extension
+      ADD_ACTION(up_a_level); //Up a folder
  
       // remember actions that run in the caller thread
       for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
@@ -251,7 +255,6 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(adb);
       ADD_ACTION(wlfw);
       ADD_ACTION(wlfx);
-      ADD_ACTION(changesplash);
       ADD_ACTION(calldeactivateprocess);
    }
 
@@ -685,6 +688,21 @@ int GUIAction::clear(std::string arg)
   return 0;
 }
 
+int GUIAction::up_a_level(std::string arg)
+{
+    string fm_path;
+    DataManager::GetValue(arg, fm_path);
+	size_t found;
+	found = fm_path.find_last_of('/');
+	if (found != string::npos) {
+		string new_folder = fm_path.substr(0, found);
+		if (new_folder.length() < 2)
+			new_folder = "/";
+		DataManager::SetValue(arg, new_folder);
+	}
+	return 0;
+}
+
 int GUIAction::fileextension(std::string arg)
 {
   string f_ext = arg.substr(arg.find_last_of(".") + 1);
@@ -1074,7 +1092,7 @@ int GUIAction::getpartitiondetails(std::string arg)
   return 0;
 }
 
-int GUIAction::screenshotinternal(std::string arg __unused)
+int GUIAction::screenshot(std::string arg __unused)
 {
   time_t tm;
   char path[256];
@@ -2409,40 +2427,6 @@ int GUIAction::wlfx(std::string arg __unused)
     {
       DataManager::Flush();
       TWFunc::Repack_Image("/recovery");
-    }
-  operation_end(0);
-  return 0;
-}
-
-int GUIAction::changesplash(std::string arg __unused)
-{
-  operation_start("Change Recovery Splash Screen");
-  if (simulate)
-    {
-      simulate_progress_bar();
-    }
-  else
-    {
-	  std::string path, filename;
-	  std::string ramdisk_path = Fox_ramdisk_dir + "/twres/images/splash.png";
-	  DataManager::GetValue("tw_splash_png_path", path);
-	  DataManager::GetValue("tw_splash_png_name", filename);
-	  std::string filepath = path + "/" + filename;
-	  if (TWFunc::Unpack_Image("/recovery"))
-	     {
-	  	if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
-	    	{
-	      		unlink(ramdisk_path.c_str());
-	      		TWFunc::copy_file(filepath, ramdisk_path, 0644);
-	      		TWFunc::Repack_Image("/recovery");
-	    	}
-	  	else
-	    	{
-	      		LOGERR("Failed to load splash engine\n");
-	    	}
-	     } 
-	  	else
-	  		LOGERR("Failed to unpack recovery image to load splash engine\n");
     }
   operation_end(0);
   return 0;

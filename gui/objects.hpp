@@ -325,7 +325,7 @@ protected:
 	int generatebackupname(std::string arg);
 	int checkpartitionlist(std::string arg);
 	int getpartitiondetails(std::string arg);
-	int screenshotinternal(std::string arg);
+	int screenshot(std::string arg);
 	int screenshotexternal(std::string arg);
 	int setbrightness(std::string arg);
 
@@ -369,9 +369,9 @@ protected:
 	int setbootslot(std::string arg);
 	int flashlight(std::string arg);
 	int fileextension(std::string arg);
+	int up_a_level(std::string arg);
 	int adb(std::string arg);
-	int disableled(std::string arg);	
-	int changesplash(std::string arg);
+	int disableled(std::string arg);
 	int wlfx(std::string arg);
 	int wlfw(std::string arg);
 	int calldeactivateprocess(std::string arg);
