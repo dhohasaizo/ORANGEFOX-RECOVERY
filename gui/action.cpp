@@ -1728,7 +1728,8 @@ int GUIAction::terminalcommand(std::string arg)
 
   DataManager::GetValue("tw_terminal_location", cmdpath);
   operation_start("CommandOutput");
-  gui_print("%s # %s\n", cmdpath.c_str(), arg.c_str());
+  //[f/d] Silent terminal
+  //gui_print("%s # %s\n", cmdpath.c_str(), arg.c_str());
   if (simulate)
     {
       simulate_progress_bar();

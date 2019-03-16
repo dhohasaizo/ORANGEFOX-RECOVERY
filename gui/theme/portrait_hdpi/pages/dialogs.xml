@@ -706,6 +706,48 @@
 			</action>
 		</page>
 
+		<page name="dialog_error_partition">
+			<template name="dialog_body"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>{@part_menu_hdr}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text1_y%"/>
+				<text>{@part_fs_error_1}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text2_y%"/>
+				<text>{@part_fs_error_2}</text>
+			</text>
+
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@ok_btn}</text>
+				<actions>
+					<action function="overlay"/>
+				</actions>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+
 		<page name="fox_tip">
 			<template name="dialog_body"/>
 			

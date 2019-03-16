@@ -532,7 +532,7 @@
 			</text>
 
 			<partitionlist>
-				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%lb_l5%"/>
+				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%restore_part%"/>
 				<data name="tw_restore_list" selectedlist="tw_restore_selected"/>
 				<listtype name="restore"/>
 			</partitionlist>

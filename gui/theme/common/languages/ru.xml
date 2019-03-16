@@ -1144,6 +1144,7 @@
 		<string name="mm_module_mount">Авто-монтирование</string>
 		<string name="mm_modules">Модули</string>
 		<string name="mm_ver">Версия Magisk</string>
+		<string name="mm_mod_ver">Версия модуля</string>
 		<string name="magisk_not_found">Magisk не найден!</string>
 		<string name="magisk_not_found_1">Хотите ли вы перейти в "Дополнения</string>
 		<string name="magisk_not_found_2">OrangeFox и установить встроенный</string>
@@ -1225,6 +1226,10 @@
 
 		<string name="battery">Батарея</string>
 		<string name="password">Пароль</string>
+		
+		<!-- Files -->
+		<string name="files_show_hidden">Показывать скрытые файлы</string>
+		<string name="files_auto_open">Автооткрытие поддерживаемых файлов</string>
 
 		<!-- Utilities -->
 		<string name="utilities">Утилиты</string>

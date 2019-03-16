@@ -212,7 +212,7 @@
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row5_1a_y%" w="%screen_w%" h="%lb_l4%"/>
+				<placement x="0" y="%row5_1a_y%" w="%screen_w%" h="%lb_l6%"/>
 				<listitem name="{@dark_title}">
 					<data variable="darker_ui"/>
 				</listitem>
@@ -386,7 +386,7 @@
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%lb_l3%"/>
+				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%lb_l2%"/>
 				<data name="clock_style"/>
 				<listitem name="{@lockscreen_icon}">0</listitem>
 				<listitem name="{@lockscreen_clock}">1</listitem>
@@ -398,7 +398,7 @@
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row6_2_y%" w="%screen_w%" h="%lb_l5%"/>
+				<placement x="0" y="%row6_2_y%" w="%screen_w%" h="%lb_l3%"/>
 				<listitem name="{@lockscreen_info}">
 					<condition var1="clock_style" var2="1"/>
 					<data variable="lock_info"/>

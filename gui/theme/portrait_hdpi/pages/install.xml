@@ -447,57 +447,30 @@
 			</text>
 
 			<partitionlist style="partitionlist_radio">
-				<condition var1="tw_flash_partition"/>
-				<placement x="0" y="%row4_2a_y%" w="%screen_w%" h="%part_list_btns_h%"/>
+				<placement x="0" y="%row4_2a_y%" w="%screen_w%" h="%flash_img_part%"/>
 				<data name="tw_flash_partition"/>
 				<listtype name="flashimg"/>
 			</partitionlist>
 
-			<partitionlist style="partitionlist_radio">
+			<!--partitionlist style="partitionlist_radio">
 				<condition var1="tw_flash_partition" op="!="/>
-				<placement x="0" y="%row4_2a_y%" w="%screen_w%" h="%part_list_btns_9_h%"/>
+				<placement x="0" y="%row4_2a_y%" w="%screen_w%" h="%flash_img_part_expanded%"/>
 				<data name="tw_flash_partition"/>
 				<listtype name="flashimg"/>
-			</partitionlist>
+			</partitionlist-->
 
 			<text style="caption">
 				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<condition var1="tw_flash_partition"/>
-				<condition var1="install_back" op="!=" var2="ext_workshop_repack" />
 				<text>{@swipe_to_install_img}</text>
-			</text>
-
-			<text style="caption">
-				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-				<condition var1="tw_flash_partition"/>
-				<condition var1="install_back" var2="ext_workshop_repack" />
-				<text>{@swipe_to_install_img_reb}</text>
 			</text>
 
 			<slider style="slider_action">
 				<placement x="%center_x%" y="%slider_y%" placement="5"/>
-				<condition var1="tw_flash_partition"/>
-				<condition var1="install_back" op="!=" var2="ext_workshop_repack" />
 				<actions>
 					<action function="set">tw_action=flashimage</action>
 					<action function="set">tw_has_action2=0</action>
 					<action function="set">tw_action2_param=</action>
 					<action function="set">tw_action2=</action>
-					<action function="set">tw_action_text1={@flashing_image}</action>
-					<action function="set">tw_action_text2=%tw_file%</action>
-					<action function="set">tw_complete_text1={@image_flashed}</action>
-					<action function="page">flash_image</action>
-				</actions>
-			</slider>
-			<slider style="slider_action">
-				<placement x="%center_x%" y="%slider_y%" placement="5"/>
-				<condition var1="tw_flash_partition"/>
-				<condition var1="install_back" var2="ext_workshop_repack" />
-				<actions>
-					<action function="set">tw_action=flashimage</action>
-					<action function="set">tw_action2_param=rm -f "%tw_theme_path%/ui.zip";reboot recovery;</action>
-					<action function="set">tw_action2=cmd</action>
-					<action function="set">tw_has_action2=%splash_includezip%</action>
 					<action function="set">tw_action_text1={@flashing_image}</action>
 					<action function="set">tw_action_text2=%tw_file%</action>
 					<action function="set">tw_complete_text1={@image_flashed}</action>
@@ -660,7 +633,7 @@
 				<text>%tw_file%</text>
 			</text>
 
-			<template name="action_page_console_big"/>
+			<template name="action_page_console"/>
 
 			<action>
 				<condition var1="tw_operation_state" var2="1"/>

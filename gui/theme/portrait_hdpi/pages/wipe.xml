@@ -383,7 +383,6 @@
 				<action>
 					<condition var1="tw_check_partition_list" op="=" var2="1"/>
 					<actions>
-						<action function="set">partitionlisterror=0</action>
 						<action function="getpartitiondetails"/>
 						<action function="page">partitionoptions</action>
 					</actions>
@@ -392,7 +391,7 @@
 				<action>
 					<condition var1="tw_check_partition_list" op="!=" var2="1"/>
 					<actions>
-						<action function="set">partitionlisterror=1</action>
+						<action function="overlay">dialog_error_partition</action>
 						<action function="page">part_options</action>
 					</actions>
 				</action>
@@ -516,6 +515,7 @@
 
 				<button style="btn_raised">
 					<condition var1="tw_partition_removable" op="=" var2="1"/>
+					<condition var1="tw_allow_partition_sdcard" var2="1"/>
 					<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
 					<text>{@part_sd_hdr}</text>
 					<action function="set">tw_storage_path=%part_option%</action>
@@ -932,59 +932,28 @@
 
 				<template name="statusbarinfo"/>
 
+				<action>
+					<action function="set">part_option=</action>
+				</action>
+				
 				<text style="text_ab_title">
 					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 					<text>{@part_menu_hdr}</text>
 				</text>
 
-				<image>
-					<condition var1="partitionlisterror" op="!=" var2="1"/>
-					<placement x="%col1_x%" y="%row1_1_y%"/>
-					<image resource="icon_info"/>
-				</image>
-
-				<text style="text_body2_hl">
-					<condition var1="partitionlisterror" op="!=" var2="1"/>
-					<placement x="%col1_x_indent%" y="%row1_1_y%"/>
-					<text>{@sel_part_single1}</text>
-				</text>
-
-				<text style="text_body2_hl">
-					<condition var1="partitionlisterror" op="!=" var2="1"/>
-					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-					<text>{@sel_part_single2}</text>
-				</text>
-
-				<image>
-					<condition var1="partitionlisterror" var2="1"/>
-					<placement x="%col1_x%" y="%row1_1_y%"/>
-					<image resource="icon_warning"/>
-				</image>
-
-				<text style="text_body2_fail">
-					<condition var1="partitionlisterror" var2="1"/>
-					<placement x="%col1_x_indent%" y="%row1_1_y%"/>
-					<text>{@part_fs_error_1}</text>
-				</text>
-
-				<text style="text_body2_fail">
-					<condition var1="partitionlisterror" var2="1"/>
-					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-					<text>{@part_fs_error_2}</text>
-				</text>
-
 				<text style="caption">
-					<placement x="%col1_x%" y="%row2_1_y%"/>
+					<placement x="%col1_x%" y="%row1_1_y%"/>
 					<text>{@partitions}</text>
 				</text>
 
 				<partitionlist style="partitionlist_radio">
-					<placement x="0" y="%row2_2_y%" w="%screen_w%" h="%part_list_btns_np_h%"/>
+					<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%fullscreen_list_h%"/>
 					<data name="part_option"/>
 					<listtype name="part_option"/>
 				</partitionlist>
 
 				<button style="floating_btn">
+					<condition var1="part_option"/>
 					<placement x="%btn_float_x%" y="%btn_float_y%"/>
 					<actions>
 						<action function="checkpartitionlist"/>
@@ -993,6 +962,7 @@
 				</button>
 				
 				<image>
+					<condition var1="part_option"/>
 					<placement x="%btn_float_x%" y="%btn_float_y%"/>
 					<image resource="fab_accept"/>
 				</image>

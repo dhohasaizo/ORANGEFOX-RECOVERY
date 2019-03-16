@@ -1131,6 +1131,7 @@
 		<string name="mm_module_mount">Auto mount</string>
 		<string name="mm_modules">Modules</string>
 		<string name="mm_ver">Magisk Version</string>
+		<string name="mm_mod_ver">Module Version</string>
 		<string name="magisk_not_found">Magisk not found!</string>
 		<string name="magisk_not_found_1">Do you wanna go to Fox Addons</string>
 		<string name="magisk_not_found_2">and install prebuilded Magisk?</string>
@@ -1143,6 +1144,10 @@
 		<string name="fox_ota_settings">OTA Settings</string>
 		<string name="fox_ota_off">Disable OTA</string>
 		<string name="fox_ota_on">Enable OTA</string>
+		
+		<!-- Files -->
+		<string name="files_show_hidden">Show hidden files in Files</string>
+		<string name="files_auto_open">Auto detect file type in Files</string>
 
 		<string name="fox_advanced_stock_recovery">Aggressive stock recovery deactivation</string>
 		<string name="fox_support_miui_ota_chk">Support MIUI Incremental OTA</string>

@@ -284,11 +284,11 @@
 					<data variable="list_font"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
-				<listitem name="Automatically detect file type">
+				<listitem name="{@files_auto_open}">
 					<data variable="fm_auto_open"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
-				<listitem name="Show hidden files in File Manager">
+				<listitem name="{@files_show_hidden}">
 					<data variable="tw_hidden_files"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
@@ -1014,7 +1014,7 @@
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l15%"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%fullscreen_list_h%"/>
 				<data name="tw_language"/>
 			</listbox>
 

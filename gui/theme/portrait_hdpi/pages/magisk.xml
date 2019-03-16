@@ -1,0 +1,616 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="magisk_mount">
+			<action>
+				<action function="cmd">mmgui mnt</action>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">mmgui_path=/tmp/mmgui</action>
+					<action function="set">mmgui_ver=/tmp/mmver</action>
+					<action function="page">magisk_core</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="overlay">dialog_magisk_not_found</action>
+					<action function="page">advanced</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="magisk_core">
+			<action>
+				<action function="fileexists">/cache/.disable_magisk</action>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">magisk_core=1</action>
+					<action function="page">magisk</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="set">magisk_core=0</action>
+					<action function="page">magisk</action>
+				</actions>
+			</action>
+		</page>
+		
+		<page name="magisk">
+			<template name="body"/>
+
+			<text style="caption">
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row1_3a_y%"/>
+				<text>{@mm_ver}</text>
+			</text>
+			<fileselector>
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row2_1a_y%" w="%screen_w%" h="60"/>
+				<highlight color="%transparent%"/>
+				<background color="%transparent%" />
+				<font resource="body2" spacing="%fileselector_spacing%" color="%text%" />
+				<sort name="0"/>
+				<filter folders="0" files="1" nav="0"/>
+				<path name="mmgui_ver" default="/tmp/mmver"/>
+				<data name="xxx"/>
+				<selection name="xxx"/>
+			</fileselector>
+			
+			<text style="caption">
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@mm_modules}</text>
+			</text>
+
+			<fileselector style="fileselector_b">
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<condition var1="list_font" var2="1"/>
+				<placement x="0" y="%row3_1a_y%" w="%fileselector_width%" h="%magisk_list_h%"/>
+				<sort name="0"/>
+				<icon folder="folder_icon" file="module_icon" />
+				<filter folders="0" files="1"/>
+				<path name="mmgui_path" default="/tmp/mmgui"/>
+				<data name="mmgui_file"/>
+				<selection name="mmgui_select"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<condition var1="list_font" op="!=" var2="1"/>
+				<placement x="0" y="%row3_1a_y%" w="%fileselector_width%" h="%magisk_list_h%"/>
+				<sort name="0"/>
+				<icon folder="folder_icon_small" file="module_icon_small" />
+				<filter folders="0" files="1"/>
+				<path name="mmgui_path" default="/tmp/mmgui"/>
+				<data name="mmgui_file"/>
+				<selection name="mmgui_select"/>
+			</fileselector>
+
+			<fill color="%accent%">
+				<condition var1="magisk_core" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+			
+			<fill color="%unactive_title%">
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+			</fill>
+
+			<image>
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_off"/>
+			</image>
+			
+			<image>
+				<condition var1="magisk_core" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
+				<image resource="switch_on"/>
+			</image>
+
+			<text style="text_ab_switch">
+				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
+				<text>Magisk Core</text>
+			</text>
+
+			<button style="bs_btn">
+				<condition var1="magisk_core" op="!=" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="cmd">touch "/cache/.disable_magisk";</action>
+					<action function="page">magisk_core</action>
+				</actions>
+			</button>
+
+			<button style="bs_btn">
+				<condition var1="magisk_core" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				<actions>
+					<action function="cmd">rm "/cache/.disable_magisk";</action>
+					<action function="page">magisk_core</action>
+				</actions>
+			</button>
+
+			<template name="ab"/>
+			
+			<template name="statusbarinfo"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>Magisk Manager</text>
+			</text>
+
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="cmd">mmgui unmnt</action>
+				<action function="page">advanced</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_cancel"/>
+			</image>
+
+			<action>
+				<condition var1="mmgui_file" op="modified"/>
+				<actions>
+						<action function="cmd">
+							work="/tmp/mminfo/";
+							[ -d $work ] && rm -rf $work;
+							mkdir $work;
+							cd $work;
+							mkdir title subtitle ver;
+						
+							prop="/magisk/%mmgui_select%/module.prop";
+							name=$(cat $prop | grep "name=" | cut -d'=' -f2);
+							ver=$(cat $prop | grep "version=" | cut -d'=' -f2);
+							author=$(cat $prop | grep "author=" | cut -d'=' -f2);
+						
+							echo "" > "$work/title/$name";
+							echo "" > "$work/subtitle/$author";
+							echo "" > "$work/ver/$ver";
+						</action>
+						<action function="set">mmgui_info=/tmp/mminfo/title</action>
+						<action function="set">mmgui_info2=/tmp/mminfo/subtitle</action>
+						<action function="set">mmgui_info3=/tmp/mminfo/ver</action>
+						<action function="page">magisk_parse</action>
+					</actions>
+				</action>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">advanced</action>
+				</action>
+			</page>
+
+			<page name="magisk_parse">
+				<action>
+					<action function="fileexists">/magisk/%mmgui_select%/disable</action>
+				</action>
+
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+						<condition var1="tw_operation_status" var2="0"/>
+					</conditions>
+					<actions>
+						<action function="set">mmodule_disable=1</action>
+						<action function="page">magisk_parse_2</action>
+					</actions>
+				</action>
+
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+						<condition var1="tw_operation_status" var2="1"/>
+					</conditions>
+					<actions>
+						<action function="set">mmodule_disable=0</action>
+						<action function="page">magisk_parse_2</action>
+					</actions>
+				</action>
+			</page>
+
+			<page name="magisk_parse_2">
+				<action>
+					<action function="fileexists">/magisk/%mmgui_select%/auto_mount</action>
+				</action>
+
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+						<condition var1="tw_operation_status" var2="0"/>
+					</conditions>
+					<actions>
+						<action function="set">mmodule_amnt=1</action>
+						<action function="page">magisk_actions</action>
+					</actions>
+				</action>
+
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+						<condition var1="tw_operation_status" var2="1"/>
+					</conditions>
+					<actions>
+						<action function="set">mmodule_amnt=0</action>
+						<action function="page">magisk_actions</action>
+					</actions>
+				</action>
+			</page>
+
+			<page name="magisk_switch_amnt">
+				<action>
+					<conditions>
+						<condition var1="mmodule_amnt" var2="0"/>
+					</conditions>
+					<actions>
+						<action function="cmd">rm "/magisk/%mmgui_select%/auto_mount";</action>
+						<action function="page">magisk_parse</action>
+					</actions>
+				</action>
+
+				<action>
+					<conditions>
+						<condition var1="mmodule_amnt" var2="1"/>
+					</conditions>
+					<actions>
+						<action function="cmd">touch "/magisk/%mmgui_select%/auto_mount";</action>
+						<action function="page">magisk_parse</action>
+					</actions>
+				</action>
+			</page>
+
+			<page name="magisk_actions">
+				<template name="body"/>
+
+				<fill color="%accent%">
+					<condition var1="mmodule_disable" op="!=" var2="1"/>
+					<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				</fill>
+				
+				<fill color="%unactive_title%">
+					<condition var1="mmodule_disable" var2="1"/>
+					<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+				</fill>
+
+				<image>
+					<condition var1="mmodule_disable" var2="1"/>
+					<placement x="%ab_btn1_x%" y="%ab3_y%"/>
+					<image resource="switch_off"/>
+				</image>
+				
+				<image>
+					<condition var1="mmodule_disable" op="!=" var2="1"/>
+					<placement x="%ab_btn1_x%" y="%ab3_y%"/>
+					<image resource="switch_on"/>
+				</image>
+
+				<text style="text_ab_switch">
+					<placement x="%col1_x_indent%" y="%ab_bc3_y%"/>
+					<text>{@mm_module_active}</text>
+				</text>
+
+				<button style="bs_btn">
+					<condition var1="mmodule_disable" var2="1"/>
+					<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+					<actions>
+						<action function="cmd">rm "/magisk/%mmgui_select%/disable";</action>
+						<action function="page">magisk_parse</action>
+					</actions>
+				</button>
+
+				<button style="bs_btn">
+					<condition var1="mmodule_disable" op="!=" var2="1"/>
+					<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%ab_btn_h%"/>
+					<actions>
+						<action function="cmd">touch "/magisk/%mmgui_select%/disable";</action>
+						<action function="page">magisk_parse</action>
+					</actions>
+				</button>
+
+				<template name="ab_ex"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>Magisk Manager</text>
+				</text>
+
+				<fileselector>
+					<placement x="208" y="278" w="%screen_w%" h="108"/>
+					<highlight color="%transparent%"/>
+					<background color="%transparent%" />
+					<font resource="Secondary-title" spacing="%fileselector_spacing%" color="%accent%" />
+					<sort name="0"/>
+					<filter folders="0" files="1" nav="0"/>
+					<path name="mmgui_info" default="/tmp/mminfo/title"/>
+					<data name="xxx"/>
+					<selection name="xxx"/>
+				</fileselector>
+
+				<fileselector>
+					<placement x="208" y="%row1_2_y%" w="%screen_w%" h="56"/>
+					<highlight color="%transparent%"/>
+					<background color="%transparent%" />
+					<font resource="Secondary" spacing="%fileselector_spacing%" color="%accent%" />
+					<sort name="0"/>
+					<filter folders="0" files="1" nav="0"/>
+					<path name="mmgui_info2" default="/tmp/mminfo/subtitle"/>
+					<data name="xxx"/>
+					<selection name="xxx"/>
+				</fileselector>
+				
+				<text style="caption">
+					<placement x="%col1_x%" y="%row3_1_y%"/>
+					<text>{@mm_mod_ver}</text>
+				</text>
+				
+				<fileselector>
+					<placement x="%col1_x%" y="%row3_2_y%" w="%screen_w%" h="60"/>
+					<highlight color="%transparent%"/>
+					<background color="%transparent%" />
+					<font resource="body2" spacing="%fileselector_spacing%" color="%text%" />
+					<sort name="0"/>
+					<filter folders="0" files="1" nav="0"/>
+					<path name="mmgui_info3" default="/tmp/mminfo/ver"/>
+					<data name="xxx"/>
+					<selection name="xxx"/>
+				</fileselector>
+				
+				<text style="caption">
+					<placement x="%col1_x%" y="%row4_1_y%"/>
+					<text>{@fm_path2}</text>
+				</text>
+				
+				<text style="text_body2">
+					<placement x="%col1_x%" y="%row4_2_y%"/>
+					<text>/magisk/%mmgui_select%</text>
+				</text>
+
+				<button style="menu_btn">
+					<placement x="%col1_x%" y="%row4_1_y%" w="%content_w%" h="%mb_h_hide%"/>
+					<action function="set">tw_file_location1=/magisk/%mmgui_select%</action>
+					<action function="page">filemanagerlist</action>
+				</button>
+
+				<text style="caption">
+					<placement x="%col1_x%" y="%row5_1_y%"/>
+					<text>{@options_hdr}</text>
+				</text>
+				
+				<listbox style="settingslist">
+					<placement x="0" y="%row5_2_y%" w="%screen_w%" h="%lb_l1%"/>
+					<listitem name="{@mm_module_mount}">
+						<data variable="mmodule_amnt"/>
+					</listitem>
+				</listbox>
+
+				<button>
+					<placement x="%ab_btn1_x%" y="%ab_y%"/>
+					<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+					<actions>
+						<action function="page">magisk_confirm</action>
+					</actions>
+				</button>
+
+				<image>
+					<placement x="%ab_btn1_x%" y="%ab_y%"/>
+					<image resource="actionbar_delete"/>
+				</image>
+
+				<action>
+					<condition var1="mmodule_amnt" op="modified"/>
+					<actions>
+						<action function="page">magisk_switch_amnt</action>
+					</actions>
+				</action>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">magisk</action>
+				</action>
+			</page>
+			
+			<page name="magisk_confirm">
+				<template name="body"/>
+				<template name="ab_ex"/>
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>Magisk Manager</text>
+				</text>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+					<text>{@fm_deleting}</text>
+				</text>
+
+				<text style="text_ab_subtitle">
+					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+					<text>%mmgui_select%</text>
+				</text>
+
+				<image>
+					<placement x="%col1_x%" y="%row2_1a_y%"/>
+					<image resource="icon_warning"/>
+				</image>
+
+				<text style="text_body2_fail">
+					<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
+					<text>{@del_backup_confirm2}</text>
+				</text>
+
+				<text style="caption">
+					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+					<text>{@swipe_to_confirm}</text>
+				</text>
+				
+				<slider style="slider_action">
+					<placement x="%center_x%" y="%slider_y%" placement="5"/>
+					<action function="page">magisk_action_console</action>
+				</slider>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">magisk_actions</action>
+				</action>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+			</page>
+			
+			<page name="magisk_action_console">
+				<template name="body"/>
+
+				<template name="progress_bar"/>
+
+				<template name="ab_ex"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>Magisk Manager</text>
+				</text>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+					<text>{@fm_deleting}</text>
+				</text>
+				
+				<text style="text_ab_subtitle">
+					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+					<text>%mmgui_select%</text>
+				</text>
+
+				<template name="action_page_console"/>
+				<template name="cant_cancel" />
+				
+				<action>
+					<actions>
+						<action function="cmd">
+							rm -rf "/magisk/%mmgui_select%";
+							mmgui unmnt;
+						</action>
+					</actions>
+				</action>
+				
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+					</conditions>
+					<actions>
+						<action function="page">magisk_complete</action>
+					</actions>
+				</action>
+			</page>
+			
+			<page name="magisk_complete">
+				<template name="body"/>
+
+				<template name="ab_ex"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>Magisk Manager</text>
+				</text>
+
+				<text style="text_ab_title">
+					<condition var1="tw_operation_status" op="!=" var2="0"/>
+					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+					<text>{@failed}</text>
+				</text>
+
+				<text style="text_ab_title">
+					<condition var1="tw_operation_status" var2="0"/>
+					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+					<text>{@successful}</text>
+				</text>
+
+				<text style="text_ab_subtitle">
+					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+					<text>{@fm_complete}</text>
+				</text>
+
+				<template name="action_page_console"/>
+
+				<button style="btn_raised">
+					<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+					<text>{@back_btn}</text>
+					<actions>
+						<action function="set">tw_clear_destination=magisk_mount</action>
+						<action function="page">clear_vars</action>
+					</actions>
+				</button>
+
+				<button style="btn_raised_hl">
+					<condition var1="tw_reboot_system" var2="1"/>
+					<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+					<text>{@reboot_system_btn}</text>
+					<actions>
+						<action function="set">tw_back=main</action>
+						<action function="set">tw_action_param=system</action>
+						<action function="set">tw_reboot_param=system</action>
+						<action function="page">rebootcheck</action>
+					</actions>
+				</button>
+
+				<action>
+					<touch key="home"/>
+					<actions>
+						<action function="set">tw_clear_destination=main</action>
+						<action function="page">clear_vars</action>
+					</actions>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<actions>
+						<action function="set">tw_clear_destination=magisk_mount</action>
+						<action function="page">clear_vars</action>
+					</actions>
+				</action>
+			</page>
+		</pages>
+	</recovery>

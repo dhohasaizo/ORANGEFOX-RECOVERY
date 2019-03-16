@@ -80,11 +80,11 @@
 		<variable name="style_battery" value="1" persist="1"/>
 		<variable name="flat_tbar" value="0" persist="1"/>
 		<variable name="hide_notch" value="0" persist="1"/> 
-		<variable name="tw_hidden_files" value="0" persist="1"/> 
 		
 		<!-- Other... -->
 		<variable name="disable_no_os" value="0" persist="1"/>
 		<variable name="fm_auto_open" value="1" persist="1"/>
+		<variable name="tw_hidden_files" value="0" persist="1"/> 
 		
 		<!-- Default values -->
 		<variable name="tw_hide_kb" value="0"/>
@@ -98,12 +98,13 @@
 		<variable name="secret_features" value="0"/>
 		
 		<!-- Placement -->
-		<variable name="cutout_w" value="%status_h%-72"/>
-		<variable name="check_mount_ro_1" value="1096+%cutout_w%"/>
-		<variable name="check_mount_ro_2" value="374+%cutout_w%"/>
 		
-		<variable name="spl_custom_btn" value="%screen_original_h%-30"/>
-		<variable name="spl_custom_2_btn" value="%screen_original_h%-200"/>
+		<!-- Screen size -->
+		<variable name="cutout_w" value="%status_h%-72"/>
+		<variable name="center_x" value="540"/>
+		<variable name="screen_w" value="1080"/>
+		<variable name="screen_min_cut" value="%screen_h%-%cutout_w%"/>
+		<variable name="screen_plus_cut" value="%screen_h%+%cutout_w%"/>
 		
 		<!-- OTA -->
 		<variable name="ota_update_title_y" value="%center_y%+320"/>
@@ -135,8 +136,7 @@
 		<variable name="nav_path_w" value="648"/>
 		
 		<!-- File Selector w/ NavPanel -->
-		<variable name="prep_files" value="%screen_h%-552"/>
-		<variable name="files_np_w" value="%prep_files%-%cutout_w%"/>
+		<variable name="files_np_w" value="%screen_min_cut%-552"/>
 		<variable name="files_np_y" value="240+%cutout_w%"/>
 		<variable name="files_np_mm_y" value="408+%cutout_w%"/>
 		
@@ -148,21 +148,27 @@
 		<!-- NavPanel colors -->
 		<variable name="color_disable" value="#666666"/>
 		
-		<!-- Screen size -->
-		<variable name="center_x" value="540"/>
-		<variable name="screen_w" value="1080"/>
-		
 		<!-- Wait screens -->
 		<variable name="busy_text" value="%screen_h%-288"/>
 		<variable name="busy_text_l" value="%screen_h%-144"/>
 		
 		<!-- AR UI -->
-		<variable name="prep_ar_1" value="%screen_h%-1380"/>
-		<variable name="prep_ar_2" value="%screen_h%-696"/>
-		<variable name="prep_ar_3" value="%screen_h%-1138"/>
-		<variable name="part_list_btns_h" value="%prep_ar_1%-%cutout_w%"/>
-		<variable name="part_list_btns_9_h" value="%prep_ar_2%-%cutout_w%"/>
-		<variable name="part_list_btns_np_h" value="%prep_ar_3%-%cutout_w%"/>
+		<variable name="check_mount_ro_1" value="1096+%cutout_w%"/>
+		<variable name="check_mount_ro_2" value="374+%cutout_w%"/>
+		
+		<variable name="magisk_list_h" value="%screen_min_cut%-882"/>
+		<variable name="fullscreen_list_h" value="%screen_min_cut%-552"/>
+		<variable name="part_list_btns_h" value="%screen_min_cut%-1380"/> <!-- Backup parts -->
+		<variable name="part_list_btns_9_h" value="%screen_min_cut%-696"/> <!-- Mount parts -->
+		<variable name="part_list_btns_np_h" value="%screen_min_cut%-1008"/> <!-- Wipe parts -->
+		
+		<!--variable name="flash_img_part_expanded" value="%screen_min_cut%-1122"/-->
+		<variable name="flash_img_part" value="%screen_min_cut%-1396"/>
+		<variable name="restore_part" value="%screen_min_cut%-1426"/>
+		
+		<!-- Splash -->
+		<variable name="spl_custom_btn" value="%screen_original_h%-30"/>
+		<variable name="spl_custom_2_btn" value="%screen_original_h%-200"/>
 		
 		<!-- Favorites -->
 		<variable name="book_edit" value="0"/>
@@ -372,15 +378,13 @@
 		
 		<!-- Terminal / Console -->
 		<variable name="console_width" value="984"/>
-		<variable name="console_height" value="1620-%cutout_w%"/>
+		<variable name="console_height" value="%screen_min_cut%-312"/>
 		<variable name="console_action_height" value="900"/>
 		<variable name="console_action_height_big" value="1330"/>
 		<variable name="terminal_y" value="280+%cutout_w%"/>
 		<variable name="terminal_width" value="1032"/>
-		<variable name="prep_term_1" value="%screen_h%-1210"/>
-		<variable name="prep_term_2" value="%screen_h%-460"/>
-		<variable name="terminal_height" value="%prep_term_1%-%cutout_w%"/>
-		<variable name="terminal_nokb_height" value="%prep_term_2%-%cutout_w%"/>
+		<variable name="terminal_height" value="%screen_min_cut%-1210"/>
+		<variable name="terminal_nokb_height" value="%screen_min_cut%-460"/>
 		
 		<!-- Dialogs -->
 		<variable name="dialog_w" value="840"/>
