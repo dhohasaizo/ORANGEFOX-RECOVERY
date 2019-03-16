@@ -106,7 +106,7 @@
 			<!-- Apps GUI -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
-				<action function="page">apps_mount</action>
+				<action function="page">apps_load</action>
 			</button>
 			
 			<image>
@@ -1083,83 +1083,25 @@
 				</action>
 			</page>
 
-			<page name="app_info">
-				<template name="body"/>
-
-				<template name="ab_ex"/>
-
-				<template name="statusbarinfo"/>
-
-				<text style="text_ab_title">
-					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>App Manager</text>
-				</text>
-
-				<fileselector>
-					<placement x="208" y="278" w="%screen_w%" h="108"/>
-					<highlight color="%transparent%"/>
-					<background color="%transparent%" />
-					<font resource="Secondary-title" spacing="%fileselector_spacing%" color="%accent%" />
-					<sort name="0"/>
-					<filter folders="0" files="1" nav="0"/>
-					<path name="apps_info" default="/tmp/android-apps/label"/>
-					<data name="xxx"/>
-					<selection name="xxx"/>
-				</fileselector>
-
-				<fileselector>
-					<placement x="208" y="%row1_2_y%" w="%screen_w%" h="56"/>
-					<highlight color="%transparent%"/>
-					<background color="%transparent%" />
-					<font resource="Secondary" spacing="%fileselector_spacing%" color="%accent%" />
-					<sort name="0"/>
-					<filter folders="0" files="1" nav="0"/>
-					<path name="apps_info2" default="/tmp/android-apps/version"/>
-					<data name="xxx"/>
-					<selection name="xxx"/>
-				</fileselector>
-
-				<listbox style="settingslist">
-					<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%lb_l1%"/>
-					<listitem name="{@mm_module_mount}">
-						<data variable="mmodule_amnt"/>
-					</listitem>
-				</listbox>
-
-				<button>
-					<placement x="%ab_btn1_x%" y="%ab_y%"/>
-					<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
-					<actions>
-						<action function="set">tw_filemanager_command=rm -rf</action>
-						<action function="set">tw_filename1=/magisk/%mmgui_select%</action>
-						<action function="set">tw_fm_text1={@fm_deleting}</action>
-						<action function="set">tw_fm_text2=</action>
-						<action function="set">tw_fm_text3=</action>
-						<action function="set">tw_include_text3=0</action>
-						<action function="set">tw_back=filemanageroptions</action>
-						<action function="page">filemanagerconfirm</action>
-					</actions>
-				</button>
-
-				<image>
-					<placement x="%ab_btn1_x%" y="%ab_y%"/>
-					<image resource="actionbar_delete"/>
-				</image>
-
+			<page name="apps_load">
 				<action>
-					<touch key="home"/>
-					<action function="page">main</action>
-				</action>
-
-				<action>
-					<touch key="back"/>
-					<action function="page">apps_list</action>
-				</action>
-			</page>
-
-			<page name="apps_mount">
-				<action>
-					<action function="cmd">appsgui list /data/app</action>
+					<action function="cmd">
+					
+						tmp=/tmp/listapps
+						list=$tmp/list
+						apps_dir=/data/app
+						namestr="application-label:'"
+						
+						[ -d $list ] && exit
+						mkdir $tmp $list
+						cd $apps_dir
+						
+						for pkgname in * ; do
+							name=$(aapt dump badging "$pkgname/base.apk" | grep $namestr | sed "s/$namestr//" | sed "s/'//")
+							echo "$apps_dir/$pkgname" > $list/$name;
+						done
+					
+					</action>
 				</action>
 
 				<action>
@@ -1168,6 +1110,7 @@
 						<condition var1="tw_operation_status" var2="0"/>
 					</conditions>
 					<actions>
+						<action function="set">amgr_path=/tmp/listapps/list</action>
 						<action function="page">apps_list</action>
 					</actions>
 				</action>
@@ -1186,27 +1129,31 @@
 			<page name="apps_list">
 				<template name="body"/>
 
-				<!--fileselector style="fileselector_b">
-					<condition var1="magisk_core" op="!=" var2="1"/>
+				<text style="caption">
+					<placement x="%col1_x%" y="%row1_1_y%"/>
+					<text>Apps</text>
+				</text>
+				
+				<fileselector style="fileselector_b">
 					<condition var1="list_font" var2="1"/>
-					<placement x="0" y="%row3_1a_y%" w="%fileselector_width%" h="%lb_l6%"/>
+					<placement x="0" y="%row1_2_y%" w="%fileselector_width%" h="%fullscreen_list_h%"/>
 					<sort name="0"/>
 					<icon folder="folder_icon" file="module_icon" />
-					<filter folders="0" files="1"/>
-					<path name="mmgui_path" default="/tmp/mmgui"/>
-					<data name="mmgui_file"/>
-					<selection name="mmgui_select"/>
-				</fileselector-->
+					<filter folders="0" files="1" nav="0"/>
+					<path name="amgr_path" default="/tmp/listapps/list"/>
+					<data name="amgr_file"/>
+					<selection name="amgr_select"/>
+				</fileselector>
 
 				<fileselector style="fileselector_s">
 					<condition var1="list_font" op="!=" var2="1"/>
-					<placement x="0" y="%row1_1_y%" w="%fileselector_width%" h="%lb_l13%"/>
+					<placement x="0" y="%row1_2_y%" w="%fileselector_width%" h="%fullscreen_list_h%"/>
 					<sort name="0"/>
 					<icon folder="folder_icon_small" file="module_icon_small" />
-					<filter folders="1" files="1"/>
-					<path name="apps_path" default="/tmp/android-apps/list"/>
-					<data name="apps_select"/>
-					<selection name="apps_select"/>
+					<filter folders="0" files="1" nav="0"/>
+					<path name="amgr_path" default="/tmp/listapps/list"/>
+					<data name="amgr_file"/>
+					<selection name="amgr_select"/>
 				</fileselector>
 
 				<template name="ab"/>
@@ -1218,27 +1165,23 @@
 					<text>Manage Apps</text>
 				</text>
 
-				<!--button>
+				<button>
 					<placement x="%ab_btn1_x%" y="%ab_y%"/>
 					<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
-					<action function="cmd">mmgui unmnt</action>
+					<action function="cmd">rm -rf /tmp/listapps</action>
 					<action function="page">advanced</action>
-				</button-->
-
+				</button>
+				
 				<image>
 					<placement x="%ab_btn1_x%" y="%ab_y%"/>
 					<image resource="actionbar_cancel"/>
 				</image>
 
 				<action>
-					<condition var1="apps_select" op="modified"/>
-						<action function="cmd">
-							appsgui info %apps_select%
-						</action>
-
-					<action function="set">apps_info=/tmp/android-apps/label</action>
-					<action function="set">apps_info2=/tmp/android-apps/version</action>
-					<action function="page">app_info</action>
+					<condition var1="amgr_select" op="modified"/>
+					<actions>
+						<action function="page">amgr_confirm</action>
+					</actions>
 				</action>
 
 				<action>
@@ -1251,6 +1194,169 @@
 					<action function="page">advanced</action>
 				</action>
 			</page>
+			<page name="amgr_confirm">
+				<template name="body"/>
+				<template name="ab_ex"/>
+				<template name="statusbarinfo"/>
 
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>App Manager</text>
+				</text>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+					<text>{@fm_deleting}</text>
+				</text>
+
+				<text style="text_ab_subtitle">
+					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+					<text>%amgr_select%</text>
+				</text>
+
+				<image>
+					<placement x="%col1_x%" y="%row2_1a_y%"/>
+					<image resource="icon_warning"/>
+				</image>
+
+				<text style="text_body2_fail">
+					<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
+					<text>{@del_backup_confirm2}</text>
+				</text>
+
+				<text style="caption">
+					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+					<text>{@swipe_to_confirm}</text>
+				</text>
+				
+				<slider style="slider_action">
+					<placement x="%center_x%" y="%slider_y%" placement="5"/>
+					<action function="page">amgr_action_console</action>
+				</slider>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">apps_list</action>
+				</action>
+
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+			</page>
+			
+			<page name="amgr_action_console">
+				<template name="body"/>
+
+				<template name="progress_bar"/>
+
+				<template name="ab_ex"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>App Manager</text>
+				</text>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+					<text>{@fm_deleting}</text>
+				</text>
+				
+				<text style="text_ab_subtitle">
+					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+					<text>%amgr_select%</text>
+				</text>
+
+				<template name="action_page_console"/>
+				<template name="cant_cancel" />
+				
+				<action>
+					<actions>
+						<action function="cmd">
+							echo "/data/app/$(cat %amgr_file%)";
+						</action>
+					</actions>
+				</action>
+				
+				<action>
+					<conditions>
+						<condition var1="tw_operation_state" var2="1"/>
+					</conditions>
+					<actions>
+						<action function="page">amgr_complete</action>
+					</actions>
+				</action>
+			</page>
+			
+			<page name="amgr_complete">
+				<template name="body"/>
+
+				<template name="ab_ex"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>App Manager</text>
+				</text>
+
+				<text style="text_ab_title">
+					<condition var1="tw_operation_status" op="!=" var2="0"/>
+					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+					<text>{@failed}</text>
+				</text>
+
+				<text style="text_ab_title">
+					<condition var1="tw_operation_status" var2="0"/>
+					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+					<text>{@successful}</text>
+				</text>
+
+				<text style="text_ab_subtitle">
+					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+					<text>{@fm_complete}</text>
+				</text>
+
+				<template name="action_page_console"/>
+
+				<button style="btn_raised">
+					<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+					<text>{@back_btn}</text>
+					<actions>
+						<action function="set">tw_clear_destination=advanced</action>
+						<action function="page">clear_vars</action>
+					</actions>
+				</button>
+
+				<button style="btn_raised_hl">
+					<condition var1="tw_reboot_system" var2="1"/>
+					<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+					<text>{@reboot_system_btn}</text>
+					<actions>
+						<action function="set">tw_back=main</action>
+						<action function="set">tw_action_param=system</action>
+						<action function="set">tw_reboot_param=system</action>
+						<action function="page">rebootcheck</action>
+					</actions>
+				</button>
+
+				<action>
+					<touch key="home"/>
+					<actions>
+						<action function="set">tw_clear_destination=main</action>
+						<action function="page">clear_vars</action>
+					</actions>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<actions>
+						<action function="set">tw_clear_destination=advanced</action>
+						<action function="page">clear_vars</action>
+					</actions>
+				</action>
+			</page>
 		</pages>
 	</recovery>

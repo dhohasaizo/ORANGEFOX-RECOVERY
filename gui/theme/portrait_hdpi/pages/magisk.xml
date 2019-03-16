@@ -91,7 +91,7 @@
 				<placement x="0" y="%row3_1a_y%" w="%fileselector_width%" h="%magisk_list_h%"/>
 				<sort name="0"/>
 				<icon folder="folder_icon" file="module_icon" />
-				<filter folders="0" files="1"/>
+				<filter folders="0" files="1" nav="0"/>
 				<path name="mmgui_path" default="/tmp/mmgui"/>
 				<data name="mmgui_file"/>
 				<selection name="mmgui_select"/>
@@ -103,7 +103,7 @@
 				<placement x="0" y="%row3_1a_y%" w="%fileselector_width%" h="%magisk_list_h%"/>
 				<sort name="0"/>
 				<icon folder="folder_icon_small" file="module_icon_small" />
-				<filter folders="0" files="1"/>
+				<filter folders="0" files="1" nav="0"/>
 				<path name="mmgui_path" default="/tmp/mmgui"/>
 				<data name="mmgui_file"/>
 				<selection name="mmgui_select"/>
