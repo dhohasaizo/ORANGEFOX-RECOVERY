@@ -53,7 +53,7 @@
 				<text>{@menu_btn}</text>
 			</text>
 
-			<!-- Монтирование -->
+			<!-- Mounting -->
 			<button style="bs_btn">
 				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
 				<action function="page">mount</action>
@@ -111,7 +111,7 @@
 			
 			<image>
 				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="magisk"/>
+				<image resource="apps"/>
 			</image>
 			
 			<text style="bs_text">
