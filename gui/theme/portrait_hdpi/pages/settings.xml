@@ -256,7 +256,7 @@
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l7%"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l8%"/>
 				<condition var1="general_back" op="!=" var2="mount"/>
 				<listitem name="{@use_rmrf_chk}">
 					<condition var1="general_back" op="!=" var2="terminal"/>
@@ -288,6 +288,10 @@
 					<data variable="fm_auto_open"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
+				<listitem name="Show hidden files in File Manager">
+					<data variable="tw_hidden_files"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
 				<listitem name="{@inject_twrp_chk}">
 					<condition var1="tw_has_injecttwrp" var2="1"/>
 					<condition var1="general_back" var2="settings"/>
@@ -299,14 +303,14 @@
 			<button style="menu_btn_sort">
 				<condition var1="general_back" var2="settings"/>
 				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
-				<placement x="0" y="%row4_2_y%" w="%screen_w%" h="90"/>
+				<placement x="0" y="%row5_2_y%" w="%screen_w%" h="90"/>
 				<action function="mountsystemtoggle">1</action>
 			</button>
 
 			<button style="menu_btn_sort">
 				<condition var1="general_back" var2="settings"/>
 				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
-				<placement x="0" y="%row4_2_y%" w="%screen_w%" h="90"/>
+				<placement x="0" y="%row5_2_y%" w="%screen_w%" h="90"/>
 				<action function="set">tw_lifetime_writes=2</action>
 				<action function="page">system_readonly_check_mount</action>
 			</button>
@@ -314,14 +318,14 @@
 			<image>
 				<condition var1="general_back" var2="settings"/>
 				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
-				<placement x="0" y="%row4_2_y%"/>
+				<placement x="0" y="%row5_2_y%"/>
 				<image resource="checkbox_false"/>
 			</image>
 			
 			<image>
 				<condition var1="general_back" var2="settings"/>
 				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
-				<placement x="0" y="%row4_2_y%"/>
+				<placement x="0" y="%row5_2_y%"/>
 				<image resource="checkbox_true"/>
 			</image>
 			
@@ -370,7 +374,7 @@
 			<!---->
 			
 			<text style="caption">
-				<placement x="%col1_x%" y="%row7_2_y%"/>
+				<placement x="%col1_x%" y="%row8_2_y%"/>
 				<condition var1="general_back" var2="settings"/>
 				<text>{@enter_password_cptn}</text>
 			</text>
@@ -378,7 +382,7 @@
 			<text style="text_body2">
 				<condition var1="use_pass" var2="0"/>
 				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<placement x="%col1_x%" y="%row8_3_y%"/>
 				<text>{@disabled}</text>
 			</text>
 			
@@ -386,7 +390,7 @@
 				<condition var1="use_pass" var2="1"/>
 				<condition var1="pass_type" var2="1"/>
 				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<placement x="%col1_x%" y="%row8_3_y%"/>
 				<text>{@pass_gk}</text>
 			</text>
 			
@@ -394,7 +398,7 @@
 				<condition var1="use_pass" var2="1"/>
 				<condition var1="pass_type" var2="0"/>
 				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<placement x="%col1_x%" y="%row8_3_y%"/>
 				<text>{@pass_classic}</text>
 			</text>
 			
@@ -402,24 +406,24 @@
 				<condition var1="use_pass" var2="1"/>
 				<condition var1="pass_type" var2="2"/>
 				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row7_3_y%"/>
+				<placement x="%col1_x%" y="%row8_3_y%"/>
 				<text>{@pass_pin}</text>
 			</text>
 
 			<button style="menu_btn">
 				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row7_2_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<placement x="%col1_x%" y="%row8_2_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<action function="page">pass_select</action>
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row5_1a_y%"/>
+				<placement x="%col1_x%" y="%row6_1a_y%"/>
 				<condition var1="general_back" var2="settings"/>
 				<text>{@areb_confirm}</text>
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row5_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<placement x="0" y="%row6_2a_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="general_back" var2="settings"/>
 				<data name="disable_no_os"/>
 				<listitem name="{@otp_never}">1</listitem>

@@ -113,7 +113,11 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 		mFileIcon   = LoadAttrImage(child, "file");
 	}
 	
-	// Get additional icons
+	// [f/d] Use file & folder icons for add. icons when exicon node not found
+	mExZipIcon = mExImgIcon = mExTxtIcon = mExPngIcon = mFileIcon;
+	mUpIcon = mFolderIcon;
+	
+	// [f/d] Get additional icons
 	child = FindNode(node, "exicon");
 	if (child) {
 		mExZipIcon  = LoadAttrImage(child, "zip");
@@ -125,7 +129,7 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 	
 	int iconWidth = 0, iconHeight = 0;
 	
-	// Get size for icons
+	// [f/d] Get size for icons
 	child = FindNode(node, "iconsize");
 	if (child) {
 		iconWidth = LoadAttrInt(child, "w", iconWidth);
@@ -272,6 +276,9 @@ int GUIFileSelector::GetFileList(const std::string folder)
 		}
 		return -1;
 	}
+	
+	string showHiddenFiles;
+	DataManager::GetValue("tw_hidden_files", showHiddenFiles);
 
 	while ((de = readdir(d)) != NULL) {
 		FileData data;
@@ -280,6 +287,10 @@ int GUIFileSelector::GetFileList(const std::string folder)
 		if (data.fileName == ".")
 			continue;
 		if (data.fileName == ".." && folder == "/")
+			continue;
+		
+		// [f/d] Remove hidden files/folders when tw_hidden_files = 0
+		if (showHiddenFiles == "0" && data.fileName != ".." && data.fileName.substr(0, 1) == ".")
 			continue;
 
 		data.fileType = de->d_type;
@@ -345,6 +356,7 @@ void GUIFileSelector::RenderItem(size_t itemindex, int yPos, bool selected)
 	std::string text;
 	std::string ext;
 
+
 	if (itemindex < folderSize) {
 		text = mFolderList.at(itemindex).fileName;
 		if (text == "..") {
@@ -355,14 +367,15 @@ void GUIFileSelector::RenderItem(size_t itemindex, int yPos, bool selected)
 		}
 	} else {
 		text = mFileList.at(itemindex - folderSize).fileName;
+		// [f/d] Detect file extension and set icon
 		ext = text.substr(text.find_last_of(".") + 1);
-		if (ext == "zip" || ext == "apk" || ext == "tar" || ext == "gz" || ext == "bz2" || ext == "xz") {
+		if (ext == "zip" || ext == "apk" || ext == "tar" || ext == "gz" || ext == "bz2" || ext == "xz" || ext == "lzo" || ext == "cpio" || ext == "lzma" || ext == "z" || ext == "zz") {
 			icon = mExZipIcon;
 		} else if (ext == "img") {
 			icon = mExImgIcon;
-		} else if (ext == "png") {
+		} else if (ext == "png" || ext == "jpg" || ext == "bmp" || ext == "gif") {
 			icon = mExPngIcon;
-		} else if (ext == "txt" || ext == "log" || ext == "cfg" || ext == "prop" || ext == "xml" || ext == "sh" || ext == "rc") {
+		} else if (ext == "txt" || ext == "log" || ext == "cfg" || ext == "prop" || ext == "xml" || ext == "sh" || ext == "rc" || ext == "conf" || ext == "fstab" || ext == "default") {
 			icon = mExTxtIcon;
 		} else {
 			icon = mFileIcon;

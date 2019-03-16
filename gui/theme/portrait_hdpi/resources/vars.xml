@@ -80,6 +80,7 @@
 		<variable name="style_battery" value="1" persist="1"/>
 		<variable name="flat_tbar" value="0" persist="1"/>
 		<variable name="hide_notch" value="0" persist="1"/> 
+		<variable name="tw_hidden_files" value="0" persist="1"/> 
 		
 		<!-- Other... -->
 		<variable name="disable_no_os" value="0" persist="1"/>
@@ -98,7 +99,7 @@
 		
 		<!-- Placement -->
 		<variable name="cutout_w" value="%status_h%-72"/>
-		<variable name="check_mount_ro_1" value="916+%cutout_w%"/>
+		<variable name="check_mount_ro_1" value="1096+%cutout_w%"/>
 		<variable name="check_mount_ro_2" value="374+%cutout_w%"/>
 		
 		<variable name="spl_custom_btn" value="%screen_original_h%-30"/>

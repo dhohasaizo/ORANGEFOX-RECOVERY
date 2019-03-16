@@ -5,10 +5,6 @@
 			<template name="body_nav"/>
 
 			<action>
-				<condition var1="bookmark" var2="1"/>
-				<action function="set">tw_file_location1=%location_fm%</action>
-			</action>
-			<action>
 				<action function="set">nav_panel_id=0</action>
 			</action>
 			
@@ -100,8 +96,25 @@
 				<condition var1="fm_auto_open" var2="1"/>
 				<actions>
 					<action function="set">tw_file_extension=</action>
+					<action function="set">fex_found=0</action>
 					<action function="fileextension">%tw_selection1%</action>
 					<action function="page">files_redirect</action>
+				</actions>
+			</action>
+			
+			<action>
+				<condition var1="tw_file_location1" var2="/system"/>
+				<condition var1="fileexists" op="!=" var2="/system/build.prop"/>
+				<actions>
+					<action function="mount">/system</action>
+				</actions>
+			</action>
+			
+			<action>
+				<condition var1="tw_file_location1" var2="/data"/>
+				<condition var1="fileexists" op="!=" var2="/data/*"/>
+				<actions>
+					<action function="mount">/data</action>
 				</actions>
 			</action>
 			
@@ -142,6 +155,7 @@
 			<action>
 				<condition var1="tw_file_extension" var2="zip"/>
 				<actions>
+					<action function="set">fex_found=1</action>
 					<action function="queueclear"/>
 					<action function="set">tw_file=%tw_selection1%</action>
 					<action function="set">tw_filename=%tw_filename1%</action>
@@ -155,6 +169,7 @@
 			<action>
 				<condition var1="tw_file_extension" var2="img"/>
 				<actions>
+					<action function="set">fex_found=1</action>
 					<action function="set">tw_file=%tw_selection1%</action>
 					<action function="set">install_back=filemanagerlist</action>
 					<action function="set">tw_filename=%tw_filename1%</action>
@@ -166,13 +181,93 @@
 			<action>
 				<condition var1="tw_file_extension" var2="txt"/>
 				<actions>
+					<action function="set">fex_found=1</action>
 					<action function="page">cat_file</action>
 				</actions>
 			</action>
 			<action>
-				<condition var1="tw_file_extension" op="!=" var2="txt"/>
-				<condition var1="tw_file_extension" op="!=" var2="zip"/>
-				<condition var1="tw_file_extension" op="!=" var2="img"/>
+				<condition var1="tw_file_extension" var2="tar"/>
+				<actions>
+					<action function="set">fex_found=1</action>
+					<action function="set">tw_artype=1</action>
+					<action function="set">tw_extract_action=1</action>
+					<action function="page">archive_confirm</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="tw_file_extension" var2="gz"/>
+				<actions>
+					<action function="set">fex_found=1</action>
+					<action function="set">tw_artype=3</action>
+					<action function="set">tw_extract_action=1</action>
+					<action function="page">archive_confirm</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="tw_file_extension" var2="bz2"/>
+				<actions>
+					<action function="set">fex_found=1</action>
+					<action function="set">tw_artype=4</action>
+					<action function="set">tw_extract_action=1</action>
+					<action function="page">archive_confirm</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="tw_file_extension" var2="lzo"/>
+				<actions>
+					<action function="set">fex_found=1</action>
+					<action function="set">tw_artype=6</action>
+					<action function="set">tw_extract_action=1</action>
+					<action function="page">archive_confirm</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="tw_file_extension" var2="zz"/>
+				<actions>
+					<action function="set">fex_found=1</action>
+					<action function="set">tw_artype=8</action>
+					<action function="set">tw_extract_action=1</action>
+					<action function="page">archive_confirm</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="tw_file_extension" var2="lzma"/>
+				<actions>
+					<action function="set">fex_found=1</action>
+					<action function="set">tw_artype=5</action>
+					<action function="set">tw_extract_action=1</action>
+					<action function="page">archive_confirm</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="tw_file_extension" var2="xz"/>
+				<actions>
+					<action function="set">fex_found=1</action>
+					<action function="set">tw_artype=7</action>
+					<action function="set">tw_extract_action=1</action>
+					<action function="page">archive_confirm</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="tw_file_extension" var2="z"/>
+				<actions>
+					<action function="set">fex_found=1</action>
+					<action function="set">tw_artype=9</action>
+					<action function="set">tw_extract_action=1</action>
+					<action function="page">archive_confirm</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="tw_file_extension" var2="cpio"/>
+				<actions>
+					<action function="set">fex_found=1</action>
+					<action function="set">tw_artype=2</action>
+					<action function="set">tw_extract_action=1</action>
+					<action function="page">archive_confirm</action>
+				</actions>
+			</action>
+			<action>
+				<condition var1="fex_found" op="!=" var2="1"/>
 				<actions>
 					<action function="page">filemanageroptions</action>
 				</actions>
