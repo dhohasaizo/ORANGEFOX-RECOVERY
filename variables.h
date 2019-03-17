@@ -30,7 +30,21 @@
 #define FOX_VERSION              TW_MAIN_VERSION_STR
 #define OF_MAINTAINER_STR      	"of_maintainer"
 #define OF_FLASHLIGHT_ENABLE_STR "of_flashlight_enable"
-#define FOX_NOTCH_STR "fox_notch"
+
+// fordownloads values
+#define OF_SCREEN_H_S              "screen_original_h"
+#define OF_SCREEN_NAV_H_S          "screen_h"
+#define OF_CENTER_Y_S              "center_y"
+
+#define OF_STATUS_H_S              "status_h"
+#define OF_HIDE_NOTCH_S            "allow_hide_notch"
+#define OF_STATUS_INDENT_LEFT_S    "status_indent_left"
+#define OF_STATUS_INDENT_RIGHT_S   "status_indent_right"
+
+#define OF_STATUS_PLACEMENT_S      "status_info_y"
+#define OF_CLOCK_POS_S             "cutout_clock"
+
+#define OF_ALLOW_DISABLE_NAVBAR_S  "allow_disable_nav"
 
 // *** OrangeFox - Variables ** //
 #include <stdio.h>

@@ -634,8 +634,25 @@ void DataManager::SetDefaultValues()
   mConst.SetValue(TW_VERSION_VAR, FOX_VERSION);
   mConst.SetValue(OF_MAINTAINER_STR, OF_MAINTAINER);
   mConst.SetValue(OF_FLASHLIGHT_ENABLE_STR, OF_FLASHLIGHT_ENABLE);
-  mConst.SetValue(FOX_NOTCH_STR, FOX_NOTCH);
-    
+  
+  //[f/d] UI Vars
+  int of_status_placement = (atoi(OF_STATUS_H) / 2) - 28;
+  int of_center_y = atoi(OF_SCREEN_H) / 2;
+  
+  mConst.SetValue(OF_STATUS_PLACEMENT_S, of_status_placement);
+  mConst.SetValue(OF_CENTER_Y_S, of_center_y);
+  
+  mConst.SetValue(OF_SCREEN_H_S, OF_SCREEN_H);
+  mData.SetValue(OF_SCREEN_NAV_H_S, OF_SCREEN_H); // mData for nide navbar function
+  
+  mConst.SetValue(OF_STATUS_H_S, OF_STATUS_H);
+  mConst.SetValue(OF_HIDE_NOTCH_S, OF_HIDE_NOTCH);
+  mConst.SetValue(OF_STATUS_INDENT_LEFT_S, OF_STATUS_INDENT_LEFT);
+  mConst.SetValue(OF_STATUS_INDENT_RIGHT_S, OF_STATUS_INDENT_RIGHT);
+  mConst.SetValue(OF_CLOCK_POS_S, OF_CLOCK_POS);
+  mConst.SetValue(OF_ALLOW_DISABLE_NAVBAR_S, OF_ALLOW_DISABLE_NAVBAR);
+  //[f/d]
+  
   mPersist.SetValue("tw_button_vibrate", "40");
   mPersist.SetValue("tw_keyboard_vibrate", "40");
   mPersist.SetValue("tw_action_vibrate", "150");

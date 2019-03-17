@@ -880,11 +880,13 @@ int PageSet::LoadDetails(LoadingContext& ctx, xml_node<>* root)
 		if (resolution) {
 			LOGINFO("Checking resolution...\n");
 			xml_attribute<>* width_attr = resolution->first_attribute("width");
-			xml_attribute<>* height_attr = resolution->first_attribute("height");
+			//xml_attribute<>* height_attr = resolution->first_attribute("height");
+			int height_attr;
+			DataManager::GetValue("screen_original_h", height_attr);
 			xml_attribute<>* noscale_attr = resolution->first_attribute("noscaling");
 			if (width_attr && height_attr && !noscale_attr) {
 				int width = atoi(width_attr->value());
-				int height = atoi(height_attr->value());
+				int height = height_attr;
 				int offx = 0, offy = 0;
 #ifdef TW_ROUND_SCREEN
 				xml_node<>* roundscreen = child->first_node("roundscreen");

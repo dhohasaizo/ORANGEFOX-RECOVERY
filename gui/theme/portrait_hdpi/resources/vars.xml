@@ -3,14 +3,6 @@
 	<variables>
 		<!-- Cutout -->
 		<variable name="center_clock" value="2" persist="1"/> <!-- default clock placement (0 - right; 1 - center; 2 - left) -->
-		<variable name="cutout_clock" value="0"/> <!-- 0 - all; 1 - left & right clock; 2 - only left clock  -->
-		<variable name="allow_hide_notch" value="0"/> <!-- Show option that hides notch  -->
-		<variable name="status_h" value="72"/> <!-- statusbar height --> <!-- def: 72 -->
-		<variable name="status_info_y" value="8"/> <!-- battery & clock Y --> <!-- %status_h%/2 - 28 --> <!-- def: 8 -->
-		
-		<!-- If device have rounded corners -->
-		<variable name="status_indent_left" value="0"/> <!-- left indent for clock or CPU -->
-		<variable name="status_indent_right" value="0"/> <!-- right indent for battery -->
 		
 		<!-- OrangeFox vars -->
 		<variable name="ota_back_file" value="0"/>
@@ -266,8 +258,7 @@
 		<variable name="nav_h" value="144"/>
 		
 		<!-- Status Bar -->
-		<variable name="version_x" value="20+%status_indent_left%"/>
-		<variable name="time_x" value="1060-%status_indent_right%"/>
+		<variable name="time_x" value="1080-%status_indent_right%"/>
 		
 		<!-- Big invisible button -->
 		<variable name="mb_h_hide" value="120"/>
@@ -290,13 +281,13 @@
 		<variable name="lb_l15" value="1350"/>
 		
 		<!-- Battery -->
-		<variable name="battery_12_x" value="810-%status_indent_right%"/>
-		<variable name="battery_24_x" value="875-%status_indent_right%"/>
-		<variable name="battery_center_x" value="1005-%status_indent_right%"/>
-		<variable name="battery_12_t_x" value="873-%status_indent_right%"/>
-		<variable name="battery_24_t_x" value="938-%status_indent_right%"/>
-		<variable name="battery_center_t_x" value="1068-%status_indent_right%"/>
-		<variable name="battery_y" value="%status_info_y%-8"/>
+		<variable name="battery_12_x" value="830-%status_indent_right%"/>
+		<variable name="battery_24_x" value="895-%status_indent_right%"/>
+		<variable name="battery_center_x" value="1025-%status_indent_right%"/>
+		<variable name="battery_12_t_x" value="893-%status_indent_right%"/>
+		<variable name="battery_24_t_x" value="958-%status_indent_right%"/>
+		<variable name="battery_center_t_x" value="1088-%status_indent_right%"/>
+		<variable name="battery_y" value="%status_info_y%-5"/>
 		
 		<!-- File list -->
 		<variable name="fileselector_width" value="%screen_w%"/>
