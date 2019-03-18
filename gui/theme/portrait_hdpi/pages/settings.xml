@@ -483,22 +483,42 @@
 
 			<text style="text_body1_hl">
 				<placement x="450" y="%row1_1_y%"/>
-				<text>Current blocking method</text>
+				<text>{@pass_page_block}</text>
 			</text>
 
 			<text style="text_ab_title">
+				<condition var1="use_pass" op="!=" var2="1"/>
 				<placement x="450" y="%row1_2_y%"/>
-				<text>Password</text>
+				<text>{@fm_none}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="pass_type" op="!=" var2="1"/>
+				<condition var1="pass_type" op="!=" var2="2"/>
+				<condition var1="use_pass" var2="1"/>
+				<placement x="450" y="%row1_2_y%"/>
+				<text>{@pass_classic}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="pass_type" var2="2"/>
+				<condition var1="use_pass" var2="1"/>
+				<placement x="450" y="%row1_2_y%"/>
+				<text>{@pass_pin}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="use_pass" var2="1"/>
+				<condition var1="pass_type" var2="1"/>
+				<placement x="450" y="%row1_2_y%"/>
+				<text>{@pass_gk}</text>
 			</text>
 
 			<text style="text_body1_hl">
-				<placement x="450" y="%row2_3_y%"/>
-				<text>You can sleep better knowing</text>
+				<placement x="450" y="%row2_3a_y%"/>
+				<text>{@pass_page_block_inf1}</text>
 			</text>
 
 			<text style="text_body1_hl">
-				<placement x="450" y="%row3_1_y%"/>
-				<text>that you are protected.</text>
+				<placement x="450" y="%row3_1a_y%"/>
+				<text>{@pass_page_block_inf2}</text>
 			</text>
 
 			<image>

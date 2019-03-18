@@ -656,6 +656,11 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue("tw_button_vibrate", "40");
   mPersist.SetValue("tw_keyboard_vibrate", "40");
   mPersist.SetValue("tw_action_vibrate", "150");
+  
+  //[f/d] Default values for fox vibration
+  mPersist.SetValue("fox_data_install_vibrate", "500");
+  mPersist.SetValue("fox_data_backup_vibrate", "500");
+  mPersist.SetValue("fox_data_restore_vibrate", "500");
 
   TWPartition *store = PartitionManager.Get_Default_Storage_Partition();
   if (store)

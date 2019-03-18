@@ -24,17 +24,20 @@
 			</image>
 			
 			<button>
+				<condition var1="of_flashlight_enable" var2="1"/>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="flashlight"/>
 			</button>
 
 			<image>
+				<condition var1="of_flashlight_enable" var2="1"/>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_flash"/>
 			</image>
 			
 			<button>
+				<condition var1="of_flashlight_enable" var2="1"/>
 				<condition var1="use_pass" var2="1"/>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
@@ -43,8 +46,25 @@
 			</button>
 
 			<image>
+				<condition var1="of_flashlight_enable" var2="1"/>
 				<condition var1="use_pass" var2="1"/>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<image resource="actionbar_encr_ena"/>
+			</image>
+			
+			<button>
+				<condition var1="of_flashlight_enable" op="!=" var2="1"/>
+				<condition var1="use_pass" var2="1"/>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">pass_open=0</action>
+				<action function="page">main</action>
+			</button>
+
+			<image>
+				<condition var1="of_flashlight_enable" op="!=" var2="1"/>
+				<condition var1="use_pass" var2="1"/>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_encr_ena"/>
 			</image>
 			

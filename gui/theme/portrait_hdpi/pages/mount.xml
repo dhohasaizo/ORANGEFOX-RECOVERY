@@ -433,7 +433,7 @@
 				<size name="tw_gui_pattern_grid_size" default="3"/>
 				<placement x="%pattern_x%" y="%row4_1a_y%" w="%pattern_size%" h="%pattern_size%"/>
 				<dot color="%text_dark%" activecolor="%accent%" radius="%pattern_dot_dia%"/>
-				<line color="%text_dark%" width="%pattern_line_w%"/>
+				<line color="%accent%" width="%pattern_line_w%"/>
 				<data name="tw_crypto_password"/>
 				<action function="page">trydecrypt</action>
 			</patternpassword>

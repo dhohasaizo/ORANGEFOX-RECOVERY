@@ -44,8 +44,14 @@
 
 			<!-- Navbar -->
 			<button style="bs_btn">
+				<condition var1="allow_disable_nav" var2="1"/>
 				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
 				<action function="page">ext_custom_nav</action>
+			</button>
+			<button style="bs_btn">
+				<condition var1="allow_disable_nav" op="!=" var2="1"/>
+				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="page">ext_custom_nav_no_switch</action>
 			</button>
 			
 			<image>
@@ -556,6 +562,95 @@
 			</action>
 
 			<template name="snackbar_update"/>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_custom</action>
+			</action>
+		</page>
+
+		<page name="ext_custom_nav_no_switch">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@navbar_title}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@settings_ui_style}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
+				<data name="nougat"/>
+				<listitem name="{@cust_navbar_cls}">0</listitem>
+				<listitem name="{@cust_navbar_noug}">1</listitem>
+				<listitem name="Pie">3</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>{@settings_ui_color}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l4%"/>
+				<data name="navbar_bkg"/>
+				<listitem name="{@fm_none}">0</listitem>
+				<listitem name="{@dark_nav}">3</listitem>
+				<listitem name="{@cust_navbar_accent}">1</listitem>
+				<listitem name="{@cust_navbar_black}">2<condition var1="theme_style_tmp" op="!=" var2="Black"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_3a_y%"/>
+				<text>{@cust_oth}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row6_1a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<listitem name="{@cust_navbar_white}">
+					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="theme_style_tmp_main" op="!=" var2="Light"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@cust_navbar_white}">
+					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="nougat" op="!=" var2="3"/>
+					<condition var1="theme_style_tmp_main" var2="Light"/>
+					<condition var1="theme_background" var2="on"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@cust_navbar_white}">
+					<condition var1="navbar_bkg" var2="2"/>
+					<condition var1="theme_style_tmp_main" var2="Light"/>
+					<data variable="navbar_accent"/>
+				</listitem>
+				<listitem name="{@rev_navbar_chk}">
+					<data variable="navbar_sams"/>
+				</listitem>
+				<listitem name="{@show_slideout}">
+					<data variable="show_slideout"/>
+				</listitem>
+			</listbox>
+
+			<action>
+				<condition var1="navbar_bkg" var2="1"/>
+				<condition var1="navbar_accent" var2="0"/>
+				<action function="set">navbar_accent=1</action>
+			</action>
 
 			<action>
 				<touch key="home"/>

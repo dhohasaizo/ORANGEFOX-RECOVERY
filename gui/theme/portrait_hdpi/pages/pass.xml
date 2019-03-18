@@ -62,7 +62,7 @@
 				<size name="pass_pattern_grid" default="3"/>
 				<placement x="%pattern_x%" y="%row3_2a_y%" w="%pattern_size%" h="%pattern_size%"/>
 				<dot color="%text_dark%" activecolor="%accent%" radius="%pattern_dot_dia%"/>
-				<line color="%text_dark%" width="%pattern_line_w%"/>
+				<line color="%accent%" width="%pattern_line_w%"/>
 				<data name="pass_enter"/>
 				<action function="page">password_check</action>
 			</patternpassword>
@@ -180,7 +180,7 @@
 				<size name="pass_pattern_grid" default="%pass_pattern_grid%"/>
 				<placement x="%pattern_x%" y="%row3_2a_y%" w="%pattern_size%" h="%pattern_size%"/>
 				<dot color="%text_dark%" activecolor="%accent%" radius="%pattern_dot_dia%"/>
-				<line color="%text_dark%" width="%pattern_line_w%"/>
+				<line color="%accent%" width="%pattern_line_w%"/>
 				<data name="pass_new_1"/>
 				<action function="page">pass_pattern_2</action>
 			</patternpassword>
@@ -271,7 +271,7 @@
 				<size name="pass_pattern_grid" default="%pass_pattern_grid%"/>
 				<placement x="%pattern_x%" y="%row3_2a_y%" w="%pattern_size%" h="%pattern_size%"/>
 				<dot color="%text_dark%" activecolor="%accent%" radius="%pattern_dot_dia%"/>
-				<line color="%text_dark%" width="%pattern_line_w%"/>
+				<line color="%accent%" width="%pattern_line_w%"/>
 				<data name="pass_new_2"/>
 				<actions>
 					<action function="set">pass_type_tmp=1</action>
