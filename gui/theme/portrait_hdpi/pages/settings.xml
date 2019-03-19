@@ -991,7 +991,7 @@
 
 			<text style="text_body2">
 				<placement x="%col1_x%" y="%row8_1a_y%"/>
-				<text>{@lang_file}</text>
+				<text>%tw_language_display%</text>
 			</text>
 
 			<button style="menu_btn">
@@ -1201,7 +1201,7 @@
 			
 			<button style="bs_btn">
 				<placement x="0" y="%db_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">about</action>
+				<action function="page">about_credits</action>
 			</button>
 
 			<action>
@@ -1212,6 +1212,38 @@
 			<action>
 				<touch key="back"/>
 				<action function="page">settings</action>
+			</action>
+		</page>
+		
+		<page name="about_credits">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>Reading test: /twres/ui.xml</text>
+			</text>
+			
+			<listbox>
+				<background color="%background%"/>
+				<font resource="body2" spacing="8" color="%text%" />
+				<highlight color="%transparent%"/>
+				<icon/>
+				<placement x="0" y="%row1_1_y%" w="%screen_w%" h="%fullscreen_list_h%"/>
+				<read filename="/twres/ui.xml"/>
+			</listbox>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">about</action>
 			</action>
 		</page>
 		

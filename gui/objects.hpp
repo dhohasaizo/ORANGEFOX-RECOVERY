@@ -662,6 +662,8 @@ protected:
 	std::vector<ListItem> mListItems;
 	std::vector<size_t> mVisibleItems; // contains indexes in mListItems of visible items only
 	std::string mVariable;
+	std::string mFileName;
+	FILE* fp;
 	std::string currentValue;
 	ImageResource* mIconSelected;
 	ImageResource* mIconUnselected;
