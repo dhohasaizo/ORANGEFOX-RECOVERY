@@ -61,9 +61,6 @@ extern "C"
 }
 #endif
 
-#include <selinux/label.h>
-struct selabel_handle *selinux_handle;
-
 //extern int adb_server_main(int is_daemon, int server_port, int /* reply_fd */);
 
 TWPartitionManager PartitionManager;
@@ -123,294 +120,167 @@ int main(int argc, char **argv)
 	 FOX_BUILD, TW_GIT_REVISION, ctime(&StartupTime), getpid());
 
   // Load default values to set DataManager constants and handle ifdefs
-  DataManager::SetDefaultValues();
-
-  /* OrangeFox Startup Script [now called in twrp-functions.cpp]
-  //  TWFunc::RunStartupScript(); */ 
-      
-  printf("Starting the UI...\n");
-  gui_init();
-
-  printf("=> Linking mtab\n");
-  symlink("/proc/mounts", "/etc/mtab");
-  printf("=> Processing recovery.fstab\n");
-  if (!PartitionManager.Process_Fstab("/etc/recovery.fstab", 1))
-    {
-      LOGERR("Failing out of recovery due to problem with recovery.fstab.\n");
-      return -1;
-    }
-  PartitionManager.Output_Partition_Logging();
-  // Load up all the resources
-  gui_loadResources();
-
-  if (TWFunc::Path_Exists("/prebuilt_file_contexts"))
-    {
-      if (TWFunc::Path_Exists("/file_contexts"))
-	{
-	  printf("Renaming regular /file_contexts -> /file_contexts.bak\n");
-	  rename("/file_contexts", "/file_contexts.bak");
+	DataManager::SetDefaultValues();
+	printf("Starting the UI...\n");
+	gui_init();
+	printf("=> Linking mtab\n");
+	symlink("/proc/mounts", "/etc/mtab");
+	std::string fstab_filename = "/etc/twrp.fstab";
+	if (!TWFunc::Path_Exists(fstab_filename)) {
+		fstab_filename = "/etc/recovery.fstab";
 	}
-      printf("Moving /prebuilt_file_contexts -> /file_contexts\n");
-      rename("/prebuilt_file_contexts", "/file_contexts");
-    }
-  struct selinux_opt selinux_options[] = {
-    {SELABEL_OPT_PATH, "/file_contexts"}
-  };
-  selinux_handle = selabel_open(SELABEL_CTX_FILE, selinux_options, 1);
-  if (!selinux_handle)
-    printf("No file contexts for SELinux\n");
-  else
-    printf("SELinux contexts loaded from /file_contexts\n");
-  {				// Check to ensure SELinux can be supported by the kernel
-    char *contexts = NULL;
-
-    if (PartitionManager.Mount_By_Path("/cache", false)
-	&& TWFunc::Path_Exists("/cache/recovery"))
-      {
-	lgetfilecon("/cache/recovery", &contexts);
-	if (!contexts)
-	  {
-	    lsetfilecon("/cache/recovery", "test");
-	    lgetfilecon("/cache/recovery", &contexts);
-	  }
-      }
-    else
-      {
-	LOGINFO
-	  ("Could not check /cache/recovery SELinux contexts, using /sbin/teamwin instead which may be inaccurate.\n");
-	lgetfilecon("/sbin/teamwin", &contexts);
-      }
-
-    if (!contexts)
-      {
-	gui_warn
-	  ("no_kernel_selinux=Kernel does not have support for reading SELinux contexts.");
-      }
-    else
-      {
-	free(contexts);
-	gui_msg("full_selinux=Full SELinux support is present.");
-      }
-  }
-  /*
-   TWFunc::Welcome_Message();
-   //gui_print("**************************");
-   //gui_msg("orangefox_msg2=[OrangeFox]: Welcome! ^_^");
-   //gui_msg(Msg("orangefox_msg3=[Version]: '{1}'") (FOX_VERSION));
-   //gui_msg(Msg("orangefox_msg4=[Build]: {1}") (FOX_BUILD));
-   //gui_print("**************************");
-  */
-  PartitionManager.Mount_By_Path("/cache", false);
-
-  bool Shutdown = false;
-  bool SkipDecryption = false;
-  string Send_Intent = "";
-  {
-    TWPartition *misc = PartitionManager.Find_Partition_By_Path("/misc");
-    if (misc != NULL)
-      {
-	if (misc->Current_File_System == "emmc")
-	  {
-	    set_misc_device(misc->Actual_Block_Device.c_str());
-	  }
-	else
-	  {
-	    LOGERR("Only emmc /misc is supported\n");
-	  }
-      }
-    get_args(&argc, &argv);
-
-    int index, index2, len;
-    char *argptr;
-    char *ptr;
-    printf("Startup Commands: ");
-    for (index = 1; index < argc; index++)
-      {
-	argptr = argv[index];
-	printf(" '%s'", argv[index]);
-	len = strlen(argv[index]);
-	if (*argptr == '-')
-	  {
-	    argptr++;
-	    len--;
-	  }
-	if (*argptr == '-')
-	  {
-	    argptr++;
-	    len--;
-	  }
-	if (*argptr == 'u')
-	  {
-	    ptr = argptr;
-	    index2 = 0;
-	    while (*ptr != '=' && *ptr != '\n')
-	      ptr++;
-	    // skip the = before grabbing Zip_File
-	    while (*ptr == '=')
-	      ptr++;
-	    if (*ptr)
-	      {
-		string ORSCommand = "install ";
-		ORSCommand.append(ptr);
-		// If we have a map of blocks we don't need to mount data.
-		SkipDecryption = *ptr == '@';
-
-		if (!OpenRecoveryScript::Insert_ORS_Command(ORSCommand))
-		  break;
-	      }
-	    else
-	      LOGERR("argument error specifying zip file\n");
-	  }
-	else if (*argptr == 'w')
-	  {
-	    if (len == 9)
-	      {
-		if (!OpenRecoveryScript::Insert_ORS_Command("wipe data\n"))
-		  break;
-	      }
-	    else if (len == 10)
-	      {
-		if (!OpenRecoveryScript::Insert_ORS_Command("wipe cache\n"))
-		  break;
-	      }
-	    // Other 'w' items are wipe_ab and wipe_package_size which are related to bricking the device remotely. We will not bother to suppor these as having TWRP probably makes "bricking" the device in this manner useless
-	  }
-	else if (*argptr == 'n')
-	  {
-	    DataManager::SetValue(TW_BACKUP_NAME,
-				  gui_parse_text("{@auto_generate}"));
-	    if (!OpenRecoveryScript::Insert_ORS_Command("backup BSDCAE\n"))
-	      break;
-	  }
-	else if (*argptr == 'p')
-	  {
-	    Shutdown = true;
-	  }
-	else if (*argptr == 's')
-	  {
-	    if (strncmp(argptr, "send_intent", strlen("send_intent")) == 0)
-	      {
-		ptr = argptr + strlen("send_intent") + 1;
-		Send_Intent = *ptr;
-	      }
-	    else if (strncmp(argptr, "security", strlen("security")) == 0)
-	      {
-		LOGINFO("Security update\n");
-	      }
-	    else if (strncmp(argptr, "sideload", strlen("sideload")) == 0)
-	      {
-		if (!OpenRecoveryScript::Insert_ORS_Command("sideload\n"))
-		  break;
-	      }
-	    else if (strncmp(argptr, "stages", strlen("stages")) == 0)
-	      {
-		LOGINFO("ignoring stages command\n");
-	      }
-	  }
-	else if (*argptr == 'r')
-	  {
-	    if (strncmp(argptr, "reason", strlen("reason")) == 0)
-	      {
-		ptr = argptr + strlen("reason") + 1;
-		gui_print("%s\n", ptr);
-	      }
-	  }
-      }
-    printf("\n");
-  }
-
-  if (crash_counter == 0)
-    {
-      property_list(Print_Prop, NULL);
-      printf("\n");
-      char fingerprint[PROPERTY_VALUE_MAX];
-      property_get("ro.build.fingerprint", fingerprint, "");
-      std::string fpstr = fingerprint;
-      if (!fpstr.empty())
-	{
-	  usleep(2000000);
-	  TWFunc::tw_reboot(rb_recovery);
-	  usleep(5000000);
+	printf("=> Processing %s\n", fstab_filename.c_str());
+	if (!PartitionManager.Process_Fstab(fstab_filename, 1)) {
+		LOGERR("Failing out of recovery due to problem with fstab.\n");
+		return -1;
 	}
-    }
-  else
-    {
-      printf("twrp.crash_counter=%d\n", crash_counter);
-    }
+	PartitionManager.Output_Partition_Logging();
+	// Load up all the resources
+	gui_loadResources();
 
-  // Check for and run startup script if script exists
-  // TWFunc::check_and_run_script("/sbin/runatboot.sh", "boot");
-  // TWFunc::check_and_run_script("/sbin/postrecoveryboot.sh", "boot"); 
+	bool Shutdown = false;
+	bool SkipDecryption = false;
+	string Send_Intent = "";
+	{
+		TWPartition* misc = PartitionManager.Find_Partition_By_Path("/misc");
+		if (misc != NULL) {
+			if (misc->Current_File_System == "emmc") {
+				set_misc_device(misc->Actual_Block_Device.c_str());
+			} else {
+				LOGERR("Only emmc /misc is supported\n");
+			}
+		}
+		get_args(&argc, &argv);
+
+		int index, index2, len;
+		char* argptr;
+		char* ptr;
+		printf("Startup Commands: ");
+		for (index = 1; index < argc; index++) {
+			argptr = argv[index];
+			printf(" '%s'", argv[index]);
+			len = strlen(argv[index]);
+			if (*argptr == '-') {argptr++; len--;}
+			if (*argptr == '-') {argptr++; len--;}
+			if (*argptr == 'u') {
+				ptr = argptr;
+				index2 = 0;
+				while (*ptr != '=' && *ptr != '\n')
+					ptr++;
+				// skip the = before grabbing Zip_File
+				while (*ptr == '=')
+					ptr++;
+				if (*ptr) {
+					string ORSCommand = "install ";
+					ORSCommand.append(ptr);
+
+					// If we have a map of blocks we don't need to mount data.
+					SkipDecryption = *ptr == '@';
+
+					if (!OpenRecoveryScript::Insert_ORS_Command(ORSCommand))
+						break;
+				} else
+					LOGERR("argument error specifying zip file\n");
+			} else if (*argptr == 'w') {
+				if (len == 9) {
+					if (!OpenRecoveryScript::Insert_ORS_Command("wipe data\n"))
+						break;
+				} else if (len == 10) {
+					if (!OpenRecoveryScript::Insert_ORS_Command("wipe cache\n"))
+						break;
+				}
+				// Other 'w' items are wipe_ab and wipe_package_size which are related to bricking the device remotely. We will not bother to suppor these as having TWRP probably makes "bricking" the device in this manner useless
+			} else if (*argptr == 'n') {
+				DataManager::SetValue(TW_BACKUP_NAME, gui_parse_text("{@auto_generate}"));
+				if (!OpenRecoveryScript::Insert_ORS_Command("backup BSDCAE\n"))
+					break;
+			} else if (*argptr == 'p') {
+				Shutdown = true;
+			} else if (*argptr == 's') {
+				if (strncmp(argptr, "send_intent", strlen("send_intent")) == 0) {
+					ptr = argptr + strlen("send_intent") + 1;
+					Send_Intent = *ptr;
+				} else if (strncmp(argptr, "security", strlen("security")) == 0) {
+					LOGINFO("Security update\n");
+				} else if (strncmp(argptr, "sideload", strlen("sideload")) == 0) {
+					if (!OpenRecoveryScript::Insert_ORS_Command("sideload\n"))
+						break;
+				} else if (strncmp(argptr, "stages", strlen("stages")) == 0) {
+					LOGINFO("ignoring stages command\n");
+				}
+			} else if (*argptr == 'r') {
+				if (strncmp(argptr, "reason", strlen("reason")) == 0) {
+					ptr = argptr + strlen("reason") + 1;
+					gui_print("%s\n", ptr);
+				}
+			}
+		}
+		printf("\n");
+	}
+
+	if (crash_counter == 0) {
+		property_list(Print_Prop, NULL);
+		printf("\n");
+	} else {
+		printf("twrp.crash_counter=%d\n", crash_counter);
+	}
+
+	// Check for and run startup script if script exists
+	// TWFunc::check_and_run_script("/sbin/runatboot.sh", "boot");
+	// TWFunc::check_and_run_script("/sbin/postrecoveryboot.sh", "boot");
 
 #ifdef TW_INCLUDE_INJECTTWRP
-  // Back up TWRP Ramdisk if needed:
-  TWPartition *Boot = PartitionManager.Find_Partition_By_Path("/boot");
-  LOGINFO("Backing up TWRP ramdisk...\n");
-  if (Boot == NULL || Boot->Current_File_System != "emmc")
-    TWFunc::Exec_Cmd("injecttwrp --backup /tmp/backup_recovery_ramdisk.img");
-  else
-    {
-      string injectcmd =
-	"injecttwrp --backup /tmp/backup_recovery_ramdisk.img bd=" +
-	Boot->Actual_Block_Device;
-      TWFunc::Exec_Cmd(injectcmd);
-    }
-  LOGINFO("Backup of TWRP ramdisk done.\n");
+	// Back up TWRP Ramdisk if needed:
+	TWPartition* Boot = PartitionManager.Find_Partition_By_Path("/boot");
+	LOGINFO("Backing up TWRP ramdisk...\n");
+	if (Boot == NULL || Boot->Current_File_System != "emmc")
+		TWFunc::Exec_Cmd("injecttwrp --backup /tmp/backup_recovery_ramdisk.img");
+	else {
+		string injectcmd = "injecttwrp --backup /tmp/backup_recovery_ramdisk.img bd=" + Boot->Actual_Block_Device;
+		TWFunc::Exec_Cmd(injectcmd);
+	}
+	LOGINFO("Backup of TWRP ramdisk done.\n");
 #endif
 
-
-  TWFunc::Update_Log_File();
-  // Offer to decrypt if the device is encrypted
-  if (DataManager::GetIntValue(TW_IS_ENCRYPTED) != 0)
-    {
-	if (SkipDecryption) 
-	  {
-	     LOGINFO("Skipping decryption\n");
-	  }
-	  else 
-	    {
-		LOGINFO("Is encrypted, do decrypt page first\n");
-		if (gui_startPage("decrypt", 1, 1) != 0) 
-		{
-			LOGERR("Failed to start decrypt GUI page.\n");
-		} 
-		else 
-		{
-			// Check for and load custom theme if present
-			gui_loadCustomResources();
-		}	   
- 	    }  
-    }
-  else if (datamedia)
-    {
-      if (tw_get_default_metadata
-	  (DataManager::GetSettingsStoragePath().c_str()) != 0)
-	{
-	  LOGINFO
-	    ("Failed to get default contexts and file mode for storage files.\n");
+	// Offer to decrypt if the device is encrypted
+	if (DataManager::GetIntValue(TW_IS_ENCRYPTED) != 0) {
+		if (SkipDecryption) {
+			LOGINFO("Skipping decryption\n");
+		} else {
+			LOGINFO("Is encrypted, do decrypt page first\n");
+			if (gui_startPage("decrypt", 1, 1) != 0) {
+				LOGERR("Failed to start decrypt GUI page.\n");
+			} else {
+				// Check for and load custom theme if present
+				TWFunc::check_selinux_support();
+				gui_loadCustomResources();
+			}
+		}
+	} else if (datamedia) {
+		TWFunc::check_selinux_support();
+		if (tw_get_default_metadata(DataManager::GetSettingsStoragePath().c_str()) != 0) {
+			LOGINFO("Failed to get default contexts and file mode for storage files.\n");
+		} else {
+			LOGINFO("Got default contexts and file mode for storage files.\n");
+		}
 	}
-      else
-	{
-	  LOGINFO("Got default contexts and file mode for storage files.\n");
+
+	// Fixup the RTC clock on devices which require it
+	if (crash_counter == 0)
+		TWFunc::Fixup_Time_On_Boot();
+
+	// Read the settings file
+	TWFunc::Update_Log_File();
+	DataManager::ReadSettingsFile();
+	PageManager::LoadLanguage(DataManager::GetStrValue("tw_language"));
+	GUIConsole::Translate_Now();
+
+	// Run any outstanding OpenRecoveryScript
+	std::string cacheDir = TWFunc::get_cache_dir();
+	std::string orsFile = cacheDir + "/recovery/openrecoveryscript";
+	if ((DataManager::GetIntValue(TW_IS_ENCRYPTED) == 0 || SkipDecryption) && (TWFunc::Path_Exists(SCRIPT_FILE_TMP) || TWFunc::Path_Exists(orsFile))) {
+		OpenRecoveryScript::Run_OpenRecoveryScript();
 	}
-    }
-
-
-  // Read the settings file
-  DataManager::ReadSettingsFile();
-  PageManager::LoadLanguage(DataManager::GetStrValue("tw_language"));
-  GUIConsole::Translate_Now();
-
-  // Fixup the RTC clock on devices which require it
-  if (crash_counter == 0)
-    TWFunc::Fixup_Time_On_Boot();
-
-  // Run any outstanding OpenRecoveryScript
-  if ((DataManager::GetIntValue(TW_IS_ENCRYPTED) == 0 || SkipDecryption) && (TWFunc::Path_Exists(SCRIPT_FILE_TMP) || TWFunc::Path_Exists(SCRIPT_FILE_CACHE))) 
-     {
-            TWFunc::OrangeFox_Startup();
-	    OpenRecoveryScript::Run_OpenRecoveryScript();
-     }
 
 #ifdef TW_HAS_MTP
   char mtp_crash_check[PROPERTY_VALUE_MAX];
@@ -534,3 +404,4 @@ int main(int argc, char **argv)
 
   return 0;
 }
+

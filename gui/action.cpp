@@ -573,47 +573,48 @@ int GUIAction::doAction(Action action)
 
 void GUIAction::operation_start(const string operation_name)
 {
-  LOGINFO("operation_start: '%s'\n", operation_name.c_str());
-  time(&Start);
-  DataManager::SetValue(TW_ACTION_BUSY, 1);
-  DataManager::SetValue("ui_progress", 0);
-  DataManager::SetValue("tw_operation", operation_name);
-  DataManager::SetValue("tw_operation_state", 0);
-  DataManager::SetValue("tw_operation_status", 0);
+	LOGINFO("operation_start: '%s'\n", operation_name.c_str());
+	time(&Start);
+	DataManager::SetValue(TW_ACTION_BUSY, 1);
+	DataManager::SetValue("ui_progress", 0);
+	DataManager::SetValue("tw_operation", operation_name);
+	DataManager::SetValue("tw_operation_state", 0);
+	DataManager::SetValue("tw_operation_status", 0);
+	bool tw_ab_device = TWFunc::get_cache_dir() != NON_AB_CACHE_DIR;
+	DataManager::SetValue("tw_ab_device", tw_ab_device);
 }
 
 void GUIAction::operation_end(const int operation_status)
 {
-  time_t Stop;
-  int simulate_fail;
-  DataManager::SetValue("ui_progress", 100);
-  if (simulate)
-    {
-      DataManager::GetValue(TW_SIMULATE_FAIL, simulate_fail);
-      if (simulate_fail != 0)
-	DataManager::SetValue("tw_operation_status", 1);
-      else
-	DataManager::SetValue("tw_operation_status", 0);
-    }
-  else
-    {
-      if (operation_status != 0)
-	{
-	  DataManager::SetValue("tw_operation_status", 1);
+	time_t Stop;
+	int simulate_fail;
+	DataManager::SetValue("ui_progress", 100);
+	if (simulate) {
+		DataManager::GetValue(TW_SIMULATE_FAIL, simulate_fail);
+		if (simulate_fail != 0)
+			DataManager::SetValue("tw_operation_status", 1);
+		else
+			DataManager::SetValue("tw_operation_status", 0);
+	} else {
+		if (operation_status != 0) {
+			DataManager::SetValue("tw_operation_status", 1);
+		}
+		else {
+			DataManager::SetValue("tw_operation_status", 0);
+		}
 	}
-      else
-	{
-	  DataManager::SetValue("tw_operation_status", 0);
-	}
-    }
-  DataManager::SetValue("tw_operation_state", 1);
-  DataManager::SetValue(TW_ACTION_BUSY, 0);
-  blankTimer.resetTimerAndUnblank();
-  property_set("twrp.action_complete", "1");
-  time(&Stop);
-  if ((int) difftime(Stop, Start) > 10)
-    DataManager::Vibrate("tw_action_vibrate");
-  LOGINFO("operation_end - status=%d\n", operation_status);
+	DataManager::SetValue("tw_operation_state", 1);
+	DataManager::SetValue(TW_ACTION_BUSY, 0);
+	blankTimer.resetTimerAndUnblank();
+	property_set("twrp.action_complete", "1");
+	time(&Stop);
+
+#ifndef TW_NO_HAPTICS
+	if ((int) difftime(Stop, Start) > 10)
+		DataManager::Vibrate("tw_action_vibrate");
+#endif
+
+	LOGINFO("operation_end - status=%d\n", operation_status);
 }
 
 int GUIAction::reboot(std::string arg)

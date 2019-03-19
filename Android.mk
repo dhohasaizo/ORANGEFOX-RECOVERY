@@ -285,7 +285,7 @@ LOCAL_SHARED_LIBRARIES += libselinux
 
 ifeq ($(AB_OTA_UPDATER),true)
     LOCAL_CFLAGS += -DAB_OTA_UPDATER=1
-    LOCAL_SHARED_LIBRARIES += libhardware
+    LOCAL_SHARED_LIBRARIES += libhardware android.hardware.boot@1.0
     LOCAL_REQUIRED_MODULES += libhardware
 endif
 
@@ -392,6 +392,9 @@ ifeq ($(TW_FORCE_CPUINFO_FOR_DEVICE_ID), true)
 endif
 ifeq ($(TW_NO_EXFAT_FUSE), true)
     LOCAL_CFLAGS += -DTW_NO_EXFAT_FUSE
+endif
+ifeq ($(TW_NO_HAPTICS), true)
+    LOCAL_CFLAGS += -DTW_NO_HAPTICS
 endif
 ifeq ($(TW_INCLUDE_JB_CRYPTO), true)
     TW_INCLUDE_CRYPTO := true
@@ -599,12 +602,14 @@ ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 28; echo $$?),0)
 endif
 endif
 
-ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 25; echo $$?),0)
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26; echo $$?),0)
     LOCAL_REQUIRED_MODULES += file_contexts_text
+else ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 25; echo $$?),0)
+    LOCAL_ADDITIONAL_DEPENDENCIES += file_contexts_text
 endif
 
 ifeq ($(BOARD_CACHEIMAGE_PARTITION_SIZE),)
-LOCAL_REQUIRED_MODULES := recovery-persist recovery-refresh
+LOCAL_REQUIRED_MODULES += recovery-persist recovery-refresh
 endif
 
 include $(BUILD_EXECUTABLE)

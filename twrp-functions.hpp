@@ -29,6 +29,9 @@
 
 using namespace std;
 
+#define NON_AB_CACHE_DIR "/cache/"
+#define AB_CACHE_DIR "/data/cache/"
+
 typedef enum
 {
 	rb_current = 0,
@@ -123,19 +126,21 @@ public:
 	static bool isNumber(string strtocheck); // return true if number, false if not a number
 	static int  stream_adb_backup(string &Restore_Name); // Tell ADB Backup to Stream to TWRP from GUI selection
 	static int  Check_MIUI_Treble(void); // check whether we are running a MIUI or Treble ROM 
-    	static bool Fresh_Fox_Install(void); // have we just installed OrangeFox - do some stuff?
-    	static bool JustInstalledMiui(void); // has a MIUI ROM just been installed?
-    	static bool RunStartupScript(void); // run startup script if not already run by init
-    	static bool Rerun_Startup(void); // rerun startup
-    	static void Welcome_Message(void); // provide the welcome message
-    	static void Run_Before_Reboot(void); // run this just before rebooting
-    	//
-    	static bool Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
-    	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
-    	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
-    	static void Patch_Verity_Flags(string path); // patch the fstab's dm-verity flags
-    	static bool Has_Vendor_Partition(void); // does the device have a real vendor partition?
-    	//
+	static bool Fresh_Fox_Install(void); // have we just installed OrangeFox - do some stuff?
+	static bool JustInstalledMiui(void); // has a MIUI ROM just been installed?
+	static bool RunStartupScript(void); // run startup script if not already run by init
+	static bool Rerun_Startup(void); // rerun startup
+	static void Welcome_Message(void); // provide the welcome message
+	static void Run_Before_Reboot(void); // run this just before rebooting
+	//
+	static bool Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
+	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
+	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
+	static void Patch_Verity_Flags(string path); // patch the fstab's dm-verity flags
+	static bool Has_Vendor_Partition(void); // does the device have a real vendor partition?
+	//
+	static std::string get_cache_dir(); // return the cache partition existence
+	static void check_selinux_support(); // print whether selinux support is enabled to console
 
 private:
 	static void Copy_Log(string Source, string Destination);

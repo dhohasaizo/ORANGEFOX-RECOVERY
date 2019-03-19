@@ -653,14 +653,20 @@ void DataManager::SetDefaultValues()
   mConst.SetValue(OF_ALLOW_DISABLE_NAVBAR_S, OF_ALLOW_DISABLE_NAVBAR);
   //[f/d]
   
-  mPersist.SetValue("tw_button_vibrate", "40");
-  mPersist.SetValue("tw_keyboard_vibrate", "40");
-  mPersist.SetValue("tw_action_vibrate", "150");
-  
   //[f/d] Default values for fox vibration
   mPersist.SetValue("fox_data_install_vibrate", "500");
   mPersist.SetValue("fox_data_backup_vibrate", "500");
   mPersist.SetValue("fox_data_restore_vibrate", "500");
+  
+#ifndef TW_NO_HAPTICS
+	mPersist.SetValue("tw_button_vibrate", "80");
+	mPersist.SetValue("tw_keyboard_vibrate", "40");
+	mPersist.SetValue("tw_action_vibrate", "160");
+	mConst.SetValue("tw_disable_haptics", "0");
+#else
+	LOGINFO("TW_NO_HAPTICS := true\n");
+	mConst.SetValue("tw_disable_haptics", "1");
+#endif
 
   TWPartition *store = PartitionManager.Get_Default_Storage_Partition();
   if (store)

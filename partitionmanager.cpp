@@ -1735,42 +1735,52 @@ int TWPartitionManager::Factory_Reset(void)
 }
 
 
+int TWPartitionManager::Wipe_Dalvik_Cache(void) {
+	struct stat st;
+	vector <string> dir;
 
-int TWPartitionManager::Wipe_Dalvik_Cache(void)
-{
-  struct stat st;
-  vector < string > dir;
+	if (!Mount_By_Path("/data", true))
+		return false;
 
-  if (!Mount_By_Path("/data", true))
-    return false;
+	dir.push_back("/data/dalvik-cache");
 
-  dir.push_back("/data/dalvik-cache");
-  if (Mount_By_Path("/cache", false))
-    {
-      dir.push_back("/cache/dalvik-cache");
-      dir.push_back("/cache/dc");
-    }
-
-  TWPartition *sdext = Find_Partition_By_Path("/sd-ext");
-  if (sdext && sdext->Is_Present && sdext->Mount(false))
-    {
-      if (stat("/sd-ext/dalvik-cache", &st) == 0)
-	{
-	  dir.push_back("/sd-ext/dalvik-cache");
+	std::string cacheDir = TWFunc::get_cache_dir();
+	if (cacheDir == NON_AB_CACHE_DIR) {
+		if (!PartitionManager.Mount_By_Path(NON_AB_CACHE_DIR, false)) {
+			LOGINFO("Unable to mount %s for wiping cache.\n", NON_AB_CACHE_DIR);
+		}
+		dir.push_back(cacheDir + "dalvik-cache");
+		dir.push_back(cacheDir + "/dc");
 	}
-    }
 
-  gui_msg("wiping_dalvik=Wiping Dalvik Cache Directories...");
-  for (unsigned i = 0; i < dir.size(); ++i)
-    {
-      if (stat(dir.at(i).c_str(), &st) == 0)
+	TWPartition* sdext = Find_Partition_By_Path("/sd-ext");
+	if (sdext && sdext->Is_Present && sdext->Mount(false))
 	{
-	  TWFunc::removeDir(dir.at(i), false);
-	  gui_msg(Msg("cleaned=Cleaned: {1}...") (dir.at(i)));
+		if (stat("/sd-ext/dalvik-cache", &st) == 0)
+		{
+			dir.push_back("/sd-ext/dalvik-cache");
+		}
 	}
-    }
-  gui_msg("dalvik_done=-- Dalvik Cache Directories Wipe Complete!");
-  return true;
+
+	if (cacheDir == NON_AB_CACHE_DIR) {
+		gui_msg("wiping_cache_dalvik=Wiping Dalvik Cache Directories...");
+	} else {
+		gui_msg("wiping_dalvik=Wiping Dalvik Directory...");
+	}
+	for (unsigned i = 0; i < dir.size(); ++i) {
+		if (stat(dir.at(i).c_str(), &st) == 0) {
+			TWFunc::removeDir(dir.at(i), false);
+			gui_msg(Msg("cleaned=Cleaned: {1}...")(dir.at(i)));
+		}
+	}
+
+	if (cacheDir == NON_AB_CACHE_DIR) {
+		gui_msg("cache_dalvik_done=-- Dalvik Cache Directories Wipe Complete!");
+	} else {
+		gui_msg("dalvik_done=-- Dalvik Directory Wipe Complete!");
+	}
+
+	return true;
 }
 
 int TWPartitionManager::Wipe_Rotate_Data(void)
@@ -2926,13 +2936,18 @@ int TWPartitionManager::Fstab_Processed(void)
   return Partitions.size();
 }
 
+void TWPartitionManager::Output_Storage_Fstab(void) {
+	std::vector<TWPartition*>::iterator iter;
+	char storage_partition[255];
+	string Temp;
 
-void TWPartitionManager::Output_Storage_Fstab(void)
-{
-  std::vector < TWPartition * >::iterator iter;
-  char storage_partition[255];
-  string Temp;
-  FILE *fp = fopen("/cache/recovery/storage.fstab", "w");
+	std::string storageFstab = TWFunc::get_cache_dir() + "recovery/storage.fstab";
+	FILE *fp = fopen(storageFstab.c_str(), "w");
+
+	if (fp == NULL) {
+		gui_msg(Msg(msg::kError, "unable_to_open=Unable to open '{1}'.")(storageFstab));
+		return;
+	}
 
   if (fp == NULL)
     {

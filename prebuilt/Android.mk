@@ -199,7 +199,6 @@ ifeq ($(TW_INCLUDE_CRYPTO), true)
             RELINK_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.gatekeeper@1.0.so
             RELINK_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/hwservicemanager
             RELINK_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/avbctl
-            RELINK_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/hwservicemanager
             RELINK_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/keystore
             RELINK_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/keystore_cli
             RELINK_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/servicemanager
@@ -241,6 +240,7 @@ ifeq ($(TW_INCLUDE_CRYPTO), true)
     endif
 endif
 ifeq ($(AB_OTA_UPDATER), true)
+    RELINK_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.boot@1.0.so
     RELINK_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/bootctl
     ifneq ($(TW_INCLUDE_CRYPTO), true)
         RELINK_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libhardware.so
@@ -347,7 +347,9 @@ ifeq ($(shell test $(PLATFORM_SDK_VERSION) -gt 25; echo $$?),0)
     endif
 endif
 ifeq ($(shell test $(PLATFORM_SDK_VERSION) -gt 27; echo $$?),0)
-    RELINK_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libclang_rt.ubsan_standalone-aarch64-android.so
+    ifeq ($(TARGET_ARCH), arm64)
+        RELINK_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libclang_rt.ubsan_standalone-aarch64-android.so
+    endif
     RELINK_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/liblogwrap.so
     RELINK_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libext2_misc.so
 endif

@@ -77,6 +77,7 @@
 		<string name="flashing_image">Flashing Image...</string>
 		<string name="image_flashed">Image Flashed</string>
 		<string name="wipe_cache_dalvik_confirm">Wipe Cache &amp; Dalvik?</string>
+		<string name="wipe_dalvik_confirm">Wipe Dalvik?</string>
 		<string name="wiping_cache_dalvik">Wiping Cache &amp; Dalvik...</string>
 		<string name="wipe_cache_dalvik_complete">Cache &amp; Dalvik Wipe completed</string>
 		<string name="swipe_wipe">Swipe to Wipe</string>
@@ -428,7 +429,7 @@
 		<string name="unable_find_part_path">Unable to find partition for path '{1}'</string>
 		<string name="update_part_details">Updating partition details...</string>
 		<string name="update_part_details_done">...done</string>
-		<string name="wiping_dalvik">Wiping Dalvik Cache Directories...</string>
+		<string name="wiping_dalvik">Wiping Dalvik Directories...</string>
 		<string name="cleaned">Cleaned: {1}...</string>
 		<string name="dalvik_done">Dalvik Cache Directories Wipe completed!</string>
 		<string name="no_andsec">No android secure partitions found.</string>
