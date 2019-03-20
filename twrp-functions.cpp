@@ -1034,10 +1034,17 @@ int TWFunc::tw_reboot(RebootCommand command)
       return __reboot(LINUX_REBOOT_MAGIC1, LINUX_REBOOT_MAGIC2,
 		      LINUX_REBOOT_CMD_RESTART2, (void *) "download");
 #endif
-    default:
-      return -1;
-    }
-  return -1;
+		case rb_edl:
+			check_and_run_script("/sbin/rebootedl.sh", "reboot edl");
+#ifdef ANDROID_RB_PROPERTY
+			return property_set(ANDROID_RB_PROPERTY, "reboot,edl");
+#else
+			return __reboot(LINUX_REBOOT_MAGIC1, LINUX_REBOOT_MAGIC2, LINUX_REBOOT_CMD_RESTART2, (void*) "edl");
+#endif
+		default:
+			return -1;
+	}
+	return -1;
 }
 
 void TWFunc::check_and_run_script(const char *script_file,

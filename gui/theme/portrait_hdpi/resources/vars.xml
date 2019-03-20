@@ -97,7 +97,10 @@
 		<variable name="screen_w" value="1080"/>
 		<variable name="screen_min_cut" value="%screen_h%-%cutout_w%"/>
 		<variable name="screen_plus_cut" value="%screen_h%+%cutout_w%"/>
-		
+
+		<!-- EDL -->
+		<variable name="tw_edl_mode" value="%tw_edl_mode%"/>
+
 		<!-- OTA -->
 		<variable name="ota_update_title_y" value="%center_y%+320"/>
 		<variable name="ota_update_progress_y" value="%center_y%+400"/>
