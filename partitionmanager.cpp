@@ -58,9 +58,15 @@
 #include "adbbu/libtwadbbu.hpp"
 
 #ifdef TW_HAS_MTP
-#include "mtp/mtp_MtpServer.hpp"
-#include "mtp/twrpMtp.hpp"
-#include "mtp/MtpMessage.hpp"
+#ifdef TW_HAS_LEGACY_MTP
+#include "mtp/legacy/mtp_MtpServer.hpp"
+#include "mtp/legacy/twrpMtp.hpp"
+#include "mtp/legacy/MtpMessage.hpp"
+#else
+#include "mtp/ffs/mtp_MtpServer.hpp"
+#include "mtp/ffs/twrpMtp.hpp"
+#include "mtp/ffs/MtpMessage.hpp"
+#endif
 #endif
 
 extern "C"
@@ -70,7 +76,7 @@ extern "C"
 }
 
 #ifdef TW_INCLUDE_CRYPTO
-	#include "crypto/lollipop/cryptfs.h"
+	#include "crypto/fde/cryptfs.h"
 	#include "gui/rapidxml.hpp"
 	#include "gui/pages.hpp"
 	#ifdef TW_INCLUDE_FBE
@@ -3068,25 +3074,22 @@ void TWPartitionManager::Add_All_MTP_Storage(void)
 #endif
 }
 
-bool TWPartitionManager::Disable_MTP(void)
-{
-  char old_value[PROPERTY_VALUE_MAX];
-  property_get("sys.usb.config", old_value, "");
-  if (strcmp(old_value, "adb") != 0)
-    {
-      char vendor[PROPERTY_VALUE_MAX];
-      char product[PROPERTY_VALUE_MAX];
-      property_set("sys.usb.config", "none");
-      property_get("usb.vendor", vendor, "18D1");
-      property_get("usb.product.adb", product, "D001");
-      string vendorstr = vendor;
-      string productstr = product;
-      TWFunc::write_to_file("/sys/class/android_usb/android0/idVendor",
-			    vendorstr);
-      TWFunc::write_to_file("/sys/class/android_usb/android0/idProduct",
-			    productstr);
-      usleep(2000);
-    }
+bool TWPartitionManager::Disable_MTP(void) {
+	char old_value[PROPERTY_VALUE_MAX];
+	property_set("sys.usb.ffs.mtp.ready", "0");
+	property_get("sys.usb.config", old_value, "");
+	if (strcmp(old_value, "adb") != 0) {
+		char vendor[PROPERTY_VALUE_MAX];
+		char product[PROPERTY_VALUE_MAX];
+		property_set("sys.usb.config", "none");
+		property_get("usb.vendor", vendor, "18D1");
+		property_get("usb.product.adb", product, "D001");
+		string vendorstr = vendor;
+		string productstr = product;
+		TWFunc::write_to_file("/sys/class/android_usb/android0/idVendor", vendorstr);
+		TWFunc::write_to_file("/sys/class/android_usb/android0/idProduct", productstr);
+		usleep(2000);
+	}
 #ifdef TW_HAS_MTP
   if (mtppid)
     {
