@@ -2346,7 +2346,7 @@ bool TWPartition::Wipe_Encryption()
 	}
     }
 #endif
-	Decrypted_Block_Device = "";
+  Decrypted_Block_Device = "";
   Is_Decrypted = false;
   Is_Encrypted = false;
   Find_Actual_Block_Device();
