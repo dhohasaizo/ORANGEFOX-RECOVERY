@@ -65,7 +65,7 @@
 					<condition var1="utils_show" var2="1"/>
 					<icon res="bs_adv_log"/>
 					<actions>
-						<action function="set">tw_back=utilities</action>
+						<action function="set">tw_back=advanced</action>
 						<action function="set">tw_action=copylog</action>
 						<action function="set">tw_text1={@copy_log_confirm}</action>
 						<action function="set">tw_action_text1={@copy_log_btn}</action>
@@ -430,7 +430,7 @@
 				<slider style="slider_action">
 					<placement x="%center_x%" y="%slider_y%" placement="5"/>
 					<actions>
-						<action function="set">tw_back=utilities</action>
+						<action function="set">tw_back=advanced</action>
 						<action function="set">tw_action=cmd</action>
 						<action function="set">tw_action_text1={@new_lock}</action>
 						<action function="set">tw_action_text2={@new_lock_wait}</action>
@@ -441,7 +441,7 @@
 
 				<action>
 					<touch key="back"/>
-					<action function="page">utilities</action>
+					<action function="page">advanced</action>
 				</action>
 
 				<action>
@@ -744,7 +744,7 @@
 					<touch key="back"/>
 					<actions>
 						<action function="set">tw_hide_kb=0</action>
-						<action function="page">utilities</action>
+						<action function="page">advanced</action>
 					</actions>
 				</action>
 			</page>
@@ -916,7 +916,7 @@
 
 				<action>
 					<touch key="back"/>
-					<action function="page">utilities</action>
+					<action function="page">advanced</action>
 				</action>
 			</page>
 

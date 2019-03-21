@@ -4,6 +4,56 @@
 		<page name="reboot">
 			<template name="body"/>
 			
+			<listbox style="btn_list">
+				<placement x="0" y="%files_np_y%" w="%screen_w%" h="%files_np_w%"/>
+				<listitem name="{@rb_system_btn}">
+					<condition var1="tw_reboot_system" var2="1"/>
+					<icon res="reboot_sys"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="page">reboot_system_routine</action>
+				</listitem>
+				<listitem name="{@rb_recovery_btn}">
+					<condition var1="tw_reboot_recovery" var2="1"/>
+					<icon res="reboot_recovery"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action_param=recovery</action>
+					<action function="set">tw_reboot_param=recovery</action>
+					<action function="page">rebootcheck</action>
+				</listitem>
+				<listitem name="{@rb_bootloader_btn}">
+					<condition var1="tw_reboot_bootloader" var2="1"/>
+					<icon res="reboot_bootloader"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action_param=bootloader</action>
+					<action function="set">tw_reboot_param=bootloader</action>
+					<action function="page">rebootcheck</action>
+				</listitem>
+				<listitem name="{@rb_download_btn}">
+					<condition var1="tw_download_mode" var2="1"/>
+					<icon res="reboot_bootloader"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action_param=download</action>
+					<action function="set">tw_reboot_param=download</action>
+					<action function="page">rebootcheck</action>
+				</listitem>
+				<listitem name="EDL">
+					<condition var1="tw_edl_mode" var2="1"/>
+					<icon res="chip"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action_param=edl</action>
+					<action function="set">tw_reboot_param=edl</action>
+					<action function="page">rebootcheck</action>
+				</listitem>
+				<listitem name="{@rb_poweroff_btn}">
+					<condition var1="tw_reboot_poweroff" var2="1"/>
+					<icon res="reboot_power"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action_param=poweroff</action>
+					<action function="set">tw_reboot_param=poweroff</action>
+					<action function="page">rebootcheck</action>
+				</listitem>
+			</listbox>
+			
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
@@ -24,249 +74,6 @@
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_settings"/>
 			</image>
-
-			<!-- System -->
-			<button style="bs_btn">
-				<condition var1="tw_reboot_system" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
-				<action function="set">tw_back=reboot</action>
-				<action function="page">reboot_system_routine</action>
-			</button>
-			
-			<image>
-				<condition var1="tw_reboot_system" var2="1"/>
-				<placement x="%col1_x%" y="%set_row1_y%"/>
-				<image resource="reboot_sys"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_reboot_system" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>{@rb_system_btn}</text>
-			</text>
-			<!---->
-
-			<!-- Recovery -->
-			<button style="bs_btn">
-				<condition var1="tw_reboot_recovery" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
-				<action function="set">tw_back=reboot</action>
-				<action function="set">tw_action_param=recovery</action>
-				<action function="set">tw_reboot_param=recovery</action>
-				<action function="page">rebootcheck</action>
-			</button>
-			
-			<image>
-				<condition var1="tw_reboot_recovery" var2="1"/>
-				<placement x="%col1_x%" y="%set_row2_y%"/>
-				<image resource="reboot_recovery"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_reboot_recovery" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>{@rb_recovery_btn}</text>
-			</text>
-			<!---->
-
-			<!-- fastboot -->
-			<button style="bs_btn">
-				<condition var1="tw_reboot_bootloader" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
-				<actions>
-					<action function="set">tw_back=reboot</action>
-					<action function="set">tw_action_param=bootloader</action>
-					<action function="set">tw_reboot_param=bootloader</action>
-					<action function="page">rebootcheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<condition var1="tw_reboot_bootloader" var2="1"/>
-				<placement x="%col1_x%" y="%set_row3_y%"/>
-				<image resource="reboot_bootloader"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_reboot_bootloader" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>{@rb_bootloader_btn}</text>
-			</text>
-			<!---->
-
-			<!-- EDL -->
-			<button style="bs_btn">
-				<condition var1="tw_edl_mode" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
-				<actions>
-					<action function="set">tw_back=reboot</action>
-					<action function="set">tw_action_param=edl</action>
-					<action function="set">tw_reboot_param=edl</action>
-					<action function="page">rebootcheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<condition var1="tw_edl_mode" var2="1"/>
-				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="chip"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_edl_mode" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>EDL mode</text>
-			</text>
-			<!---->
-
-			<!-- samsa -->
-			<button style="bs_btn">
-				<condition var1="tw_reboot_bootloader" op="!=" var2="1"/>
-				<condition var1="tw_download_mode" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
-				<actions>
-					<action function="set">tw_back=reboot</action>
-					<action function="set">tw_action_param=download</action>
-					<action function="set">tw_reboot_param=download</action>
-					<action function="page">rebootcheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<condition var1="tw_reboot_bootloader" op="!=" var2="1"/>
-				<condition var1="tw_download_mode" var2="1"/>
-				<placement x="%col1_x%" y="%set_row3_y%"/>
-				<image resource="reboot_bootloader"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_reboot_bootloader" op="!=" var2="1"/>
-				<condition var1="tw_download_mode" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>{@rb_download_btn}</text>
-			</text>
-			<!---->
-
-			<!-- samsa2 -->
-			<button style="bs_btn">
-				<condition var1="tw_reboot_bootloader" var2="1"/>
-				<condition var1="tw_download_mode" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
-				<actions>
-					<action function="set">tw_back=reboot</action>
-					<action function="set">tw_action_param=download</action>
-					<action function="set">tw_reboot_param=download</action>
-					<action function="page">rebootcheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<condition var1="tw_reboot_bootloader" var2="1"/>
-				<condition var1="tw_download_mode" var2="1"/>
-				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="reboot_bootloader"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_reboot_bootloader" var2="1"/>
-				<condition var1="tw_download_mode" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@rb_download_btn}</text>
-			</text>
-			<!---->
-
-			<!-- power -->
-			<button style="bs_btn">
-				<condition var1="tw_reboot_poweroff" var2="1"/>
-				<condition var1="tw_edl_mode" op="!=" var2="1"/>
-				<condition var1="tw_download_mode" op="!=" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
-				<actions>
-					<action function="set">tw_back=reboot</action>
-					<action function="set">tw_action_param=poweroff</action>
-					<action function="set">tw_reboot_param=poweroff</action>
-					<action function="page">rebootcheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<condition var1="tw_reboot_poweroff" var2="1"/>
-				<condition var1="tw_edl_mode" op="!=" var2="1"/>
-				<condition var1="tw_download_mode" op="!=" var2="1"/>
-				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="reboot_power"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_reboot_poweroff" var2="1"/>
-				<condition var1="tw_edl_mode" op="!=" var2="1"/>
-				<condition var1="tw_download_mode" op="!=" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@rb_poweroff_btn}</text>
-			</text>
-			<!---->
-
-			<!-- power2 -->
-			<button style="bs_btn">
-				<condition var1="tw_reboot_poweroff" var2="1"/>
-				<condition var1="tw_edl_mode" op="!=" var2="1"/>
-				<condition var1="tw_download_mode" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
-				<actions>
-					<action function="set">tw_back=reboot</action>
-					<action function="set">tw_action_param=poweroff</action>
-					<action function="set">tw_reboot_param=poweroff</action>
-					<action function="page">rebootcheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<condition var1="tw_reboot_poweroff" var2="1"/>
-				<condition var1="tw_edl_mode" op="!=" var2="1"/>
-				<condition var1="tw_download_mode" var2="1"/>
-				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="reboot_power"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_reboot_poweroff" var2="1"/>
-				<condition var1="tw_edl_mode" op="!=" var2="1"/>
-				<condition var1="tw_download_mode" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>{@rb_poweroff_btn}</text>
-			</text>
-			<!---->
-
-			<!-- power3 (EDL) -->
-			<button style="bs_btn">
-				<condition var1="tw_reboot_poweroff" var2="1"/>
-				<condition var1="tw_edl_mode" var2="1"/>
-				<condition var1="tw_download_mode" op="!=" var2="0"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
-				<actions>
-					<action function="set">tw_back=reboot</action>
-					<action function="set">tw_action_param=poweroff</action>
-					<action function="set">tw_reboot_param=poweroff</action>
-					<action function="page">rebootcheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<condition var1="tw_reboot_poweroff" var2="1"/>
-				<condition var1="tw_edl_mode" var2="1"/>
-				<condition var1="tw_download_mode" op="!=" var2="0"/>
-				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="reboot_power"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_reboot_poweroff" var2="1"/>
-				<condition var1="tw_edl_mode" var2="1"/>
-				<condition var1="tw_download_mode" op="!=" var2="0"/>
-				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>{@rb_poweroff_btn}</text>
-			</text>
-			<!---->
 
 			<text style="caption">
 				<condition var1="tw_has_boot_slots" var2="1"/>
