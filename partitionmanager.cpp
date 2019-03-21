@@ -120,226 +120,178 @@ TWPartitionManager::TWPartitionManager(void)
 #endif
 }
 
-int TWPartitionManager::Process_Fstab(string Fstab_Filename,
-				      bool Display_Error)
-{
-  FILE *fstabFile;
-  char fstab_line[MAX_FSTAB_LINE_LENGTH];
-  TWPartition *settings_partition = NULL;
-  TWPartition *andsec_partition = NULL;
-  unsigned int storageid = 1 << 16;	// upper 16 bits are for physical storage device, we pretend to have only one
-  std::map < string, Flags_Map > twrp_flags;
+int TWPartitionManager::Process_Fstab(string Fstab_Filename, bool Display_Error) {
+	FILE *fstabFile;
+	char fstab_line[MAX_FSTAB_LINE_LENGTH];
+	TWPartition* settings_partition = NULL;
+	TWPartition* andsec_partition = NULL;
+	unsigned int storageid = 1 << 16;	// upper 16 bits are for physical storage device, we pretend to have only one
+	std::map<string, Flags_Map> twrp_flags;
 
-  fstabFile = fopen("/etc/twrp.flags", "rt");
-  if (fstabFile != NULL)
-    {
-      LOGINFO("reading /etc/twrp.flags\n");
-      while (fgets(fstab_line, sizeof(fstab_line), fstabFile) != NULL)
-	{
-	  if (fstab_line[0] != '/')
-	    continue;
+	fstabFile = fopen("/etc/twrp.flags", "rt");
+	if (fstabFile != NULL) {
+		LOGINFO("reading /etc/twrp.flags\n");
+		while (fgets(fstab_line, sizeof(fstab_line), fstabFile) != NULL) {
+			if (fstab_line[0] != '/')
+				continue;
 
-	  size_t line_size = strlen(fstab_line);
-	  if (fstab_line[line_size - 1] != '\n')
-	    fstab_line[line_size] = '\n';
-	  Flags_Map line_flags;
-	  line_flags.Primary_Block_Device = "";
-	  line_flags.Alternate_Block_Device = "";
-	  line_flags.fstab_line = (char *) malloc(MAX_FSTAB_LINE_LENGTH);
-	  if (!line_flags.fstab_line)
-	    {
-	      LOGERR("malloc error on line_flags.fstab_line\n");
-	      return false;
-	    }
-	  memcpy(line_flags.fstab_line, fstab_line, MAX_FSTAB_LINE_LENGTH);
-	  bool found_separator = false;
-	  char *fs_loc = NULL;
-	  char *block_loc = NULL;
-	  char *flags_loc = NULL;
-	  size_t index, item_index = 0;
-	  for (index = 0; index < line_size; index++)
-	    {
-	      if (fstab_line[index] <= 32)
-		{
-		  fstab_line[index] = '\0';
-		  found_separator = true;
-		}
-	      else if (found_separator)
-		{
-		  if (item_index == 0)
-		    {
-		      fs_loc = fstab_line + index;
-		    }
-		  else if (item_index == 1)
-		    {
-		      block_loc = fstab_line + index;
-		    }
-		  else if (item_index > 1)
-		    {
-		      char *ptr = fstab_line + index;
-		      if (*ptr == '/')
-			{
-			  line_flags.Alternate_Block_Device = ptr;
+			size_t line_size = strlen(fstab_line);
+			if (fstab_line[line_size - 1] != '\n')
+				fstab_line[line_size] = '\n';
+			Flags_Map line_flags;
+			line_flags.Primary_Block_Device = "";
+			line_flags.Alternate_Block_Device = "";
+			line_flags.fstab_line = (char*)malloc(MAX_FSTAB_LINE_LENGTH);
+			if (!line_flags.fstab_line) {
+				LOGERR("malloc error on line_flags.fstab_line\n");
+				return false;
 			}
-		      else if (strlen(ptr) > strlen("flags=")
-			       && strncmp(ptr, "flags=",
-					  strlen("flags=")) == 0)
-			{
-			  flags_loc = ptr;
-			  // Once we find the flags=, we're done scanning the line
-			  break;
+			memcpy(line_flags.fstab_line, fstab_line, MAX_FSTAB_LINE_LENGTH);
+			bool found_separator = false;
+			char *fs_loc = NULL;
+			char *block_loc = NULL;
+			char *flags_loc = NULL;
+			size_t index, item_index = 0;
+			for (index = 0; index < line_size; index++) {
+				if (fstab_line[index] <= 32) {
+					fstab_line[index] = '\0';
+					found_separator = true;
+				} else if (found_separator) {
+					if (item_index == 0) {
+						fs_loc = fstab_line + index;
+					} else if (item_index == 1) {
+						block_loc = fstab_line + index;
+					} else if (item_index > 1) {
+						char *ptr = fstab_line + index;
+						if (*ptr == '/') {
+							line_flags.Alternate_Block_Device = ptr;
+						} else if (strlen(ptr) > strlen("flags=") && strncmp(ptr, "flags=", strlen("flags=")) == 0) {
+							flags_loc = ptr;
+							// Once we find the flags=, we're done scanning the line
+							break;
+						}
+					}
+					found_separator = false;
+					item_index++;
+				}
 			}
-		    }
-		  found_separator = false;
-		  item_index++;
+			if (block_loc)
+				line_flags.Primary_Block_Device = block_loc;
+			if (fs_loc)
+				line_flags.File_System = fs_loc;
+			if (flags_loc)
+				line_flags.Flags = flags_loc;
+			string Mount_Point = fstab_line;
+			twrp_flags[Mount_Point] = line_flags;
+			memset(fstab_line, 0, sizeof(fstab_line));
 		}
-	    }
-	  if (block_loc)
-	    line_flags.Primary_Block_Device = block_loc;
-	  if (fs_loc)
-	    line_flags.File_System = fs_loc;
-	  if (flags_loc)
-	    line_flags.Flags = flags_loc;
-	  string Mount_Point = fstab_line;
-	  twrp_flags[Mount_Point] = line_flags;
-	  memset(fstab_line, 0, sizeof(fstab_line));
-	}
-      fclose(fstabFile);
-    }
-  fstabFile = fopen(Fstab_Filename.c_str(), "rt");
-  if (fstabFile == NULL)
-    {
-      LOGERR("Critical Error: Unable to open fstab at '%s'.\n",
-	     Fstab_Filename.c_str());
-      return false;
-    }
-  else
-    LOGINFO("Reading %s\n", Fstab_Filename.c_str());
-  while (fgets(fstab_line, sizeof(fstab_line), fstabFile) != NULL)
-    {
-      if (fstab_line[0] != '/')
-	continue;
-
-      if (strstr(fstab_line, "swap"))
-	continue;		// Skip swap in recovery
-
-      size_t line_size = strlen(fstab_line);
-      if (fstab_line[line_size - 1] != '\n')
-	fstab_line[line_size] = '\n';
-
-      TWPartition *partition = new TWPartition();
-      if (partition->
-	  Process_Fstab_Line(fstab_line, Display_Error, &twrp_flags))
-	Partitions.push_back(partition);
-      else
-	delete partition;
-
-      memset(fstab_line, 0, sizeof(fstab_line));
-    }
-  fclose(fstabFile);
-
-  if (twrp_flags.size() > 0)
-    {
-      LOGINFO("Processing remaining twrp.flags\n");
-      // Add any items from twrp.flags that did not exist in the recovery.fstab
-      for (std::map < string, Flags_Map >::iterator mapit =
-	   twrp_flags.begin(); mapit != twrp_flags.end(); mapit++)
-	{
-	  if (Find_Partition_By_Path(mapit->first) == NULL)
-	    {
-	      TWPartition *partition = new TWPartition();
-	      if (partition->
-		  Process_Fstab_Line(mapit->second.fstab_line, Display_Error,
-				     NULL))
-		Partitions.push_back(partition);
-	      else
-		delete partition;
-	    }
-	  if (mapit->second.fstab_line)
-	    free(mapit->second.fstab_line);
-	  mapit->second.fstab_line = NULL;
-	}
-    }
-  LOGINFO("Done processing fstab files\n");
-
-  std::vector < TWPartition * >::iterator iter;
-  for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
-    {
-      (*iter)->Partition_Post_Processing(Display_Error);
-
-      if ((*iter)->Is_Storage)
-	{
-	  ++storageid;
-	  (*iter)->MTP_Storage_ID = storageid;
+		fclose(fstabFile);
 	}
 
-      if (!settings_partition && (*iter)->Is_Settings_Storage
-	  && (*iter)->Is_Present)
-	settings_partition = (*iter);
-      else
-	(*iter)->Is_Settings_Storage = false;
+	fstabFile = fopen(Fstab_Filename.c_str(), "rt");
+	if (fstabFile == NULL) {
+		LOGERR("Critical Error: Unable to open fstab at '%s'.\n", Fstab_Filename.c_str());
+		return false;
+	} else
+		LOGINFO("Reading %s\n", Fstab_Filename.c_str());
 
-      if (!andsec_partition && (*iter)->Has_Android_Secure
-	  && (*iter)->Is_Present)
-	andsec_partition = (*iter);
-      else
-	(*iter)->Has_Android_Secure = false;
-    }
+	while (fgets(fstab_line, sizeof(fstab_line), fstabFile) != NULL) {
+		if (fstab_line[0] != '/')
+			continue;
 
-  if (!datamedia && !settings_partition
-      && Find_Partition_By_Path("/sdcard") == NULL
-      && Find_Partition_By_Path("/internal_sd") == NULL
-      && Find_Partition_By_Path("/internal_sdcard") == NULL
-      && Find_Partition_By_Path("/emmc") == NULL)
-    {
-      // Attempt to automatically identify /data/media emulated storage devices
-      TWPartition *Dat = Find_Partition_By_Path("/data");
-      if (Dat)
-	{
-	  LOGINFO
-	    ("Using automatic handling for /data/media emulated storage device.\n");
-	  datamedia = true;
-	  Dat->Setup_Data_Media();
-	  settings_partition = Dat;
-	  // Since /data was not considered a storage partition earlier, we still need to assign an MTP ID
-	  ++storageid;
-	  Dat->MTP_Storage_ID = storageid;
+		if (strstr(fstab_line, "swap"))
+			continue; // Skip swap in recovery
+
+		size_t line_size = strlen(fstab_line);
+		if (fstab_line[line_size - 1] != '\n')
+			fstab_line[line_size] = '\n';
+
+		TWPartition* partition = new TWPartition();
+		if (partition->Process_Fstab_Line(fstab_line, Display_Error, &twrp_flags))
+			Partitions.push_back(partition);
+		else
+			delete partition;
+
+		memset(fstab_line, 0, sizeof(fstab_line));
 	}
-    }
-  if (!settings_partition)
-    {
-      for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
-	{
-	  if ((*iter)->Is_Storage)
-	    {
-	      settings_partition = (*iter);
-	      break;
-	    }
-	}
-      if (!settings_partition)
-	LOGERR
-	  ("Unable to locate storage partition for storing settings file.\n");
-    }
-  if (!Write_Fstab())
-    {
-      if (Display_Error)
-	LOGERR("Error creating fstab\n");
-      else
-	LOGINFO("Error creating fstab\n");
-    }
+	fclose(fstabFile);
 
-  if (andsec_partition)
-    {
-      Setup_Android_Secure_Location(andsec_partition);
-    }
-  else if (settings_partition)
-    {
-      Setup_Android_Secure_Location(settings_partition);
-    }
-  if (settings_partition)
-    {
-      Setup_Settings_Storage_Partition(settings_partition);
-    }
+	if (twrp_flags.size() > 0) {
+		LOGINFO("Processing remaining twrp.flags\n");
+		// Add any items from twrp.flags that did not exist in the recovery.fstab
+		for (std::map<string, Flags_Map>::iterator mapit=twrp_flags.begin(); mapit!=twrp_flags.end(); mapit++) {
+			if (Find_Partition_By_Path(mapit->first) == NULL) {
+				TWPartition* partition = new TWPartition();
+				if (partition->Process_Fstab_Line(mapit->second.fstab_line, Display_Error, NULL))
+					Partitions.push_back(partition);
+				else
+					delete partition;
+			}
+			if (mapit->second.fstab_line)
+				free(mapit->second.fstab_line);
+			mapit->second.fstab_line = NULL;
+		}
+	}
+	LOGINFO("Done processing fstab files\n");
+
+	std::vector<TWPartition*>::iterator iter;
+	for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
+		(*iter)->Partition_Post_Processing(Display_Error);
+
+		if ((*iter)->Is_Storage) {
+			++storageid;
+			(*iter)->MTP_Storage_ID = storageid;
+		}
+
+		if (!settings_partition && (*iter)->Is_Settings_Storage && (*iter)->Is_Present)
+			settings_partition = (*iter);
+		else
+			(*iter)->Is_Settings_Storage = false;
+
+		if (!andsec_partition && (*iter)->Has_Android_Secure && (*iter)->Is_Present)
+			andsec_partition = (*iter);
+		else
+			(*iter)->Has_Android_Secure = false;
+	}
+
+	if (!datamedia && !settings_partition && Find_Partition_By_Path("/sdcard") == NULL && Find_Partition_By_Path("/internal_sd") == NULL && Find_Partition_By_Path("/internal_sdcard") == NULL && Find_Partition_By_Path("/emmc") == NULL) {
+		// Attempt to automatically identify /data/media emulated storage devices
+		TWPartition* Dat = Find_Partition_By_Path("/data");
+		if (Dat) {
+			LOGINFO("Using automatic handling for /data/media emulated storage device.\n");
+			datamedia = true;
+			Dat->Setup_Data_Media();
+			settings_partition = Dat;
+			// Since /data was not considered a storage partition earlier, we still need to assign an MTP ID
+			++storageid;
+			Dat->MTP_Storage_ID = storageid;
+		}
+	}
+	if (!settings_partition) {
+		for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
+			if ((*iter)->Is_Storage) {
+				settings_partition = (*iter);
+				break;
+			}
+		}
+		if (!settings_partition)
+			LOGERR("Unable to locate storage partition for storing settings file.\n");
+	}
+	if (!Write_Fstab()) {
+		if (Display_Error)
+			LOGERR("Error creating fstab\n");
+		else
+			LOGINFO("Error creating fstab\n");
+	}
+
+	if (andsec_partition) {
+		Setup_Android_Secure_Location(andsec_partition);
+	} else if (settings_partition) {
+		Setup_Android_Secure_Location(settings_partition);
+	}
+	if (settings_partition) {
+		Setup_Settings_Storage_Partition(settings_partition);
+	}
 #ifdef TW_INCLUDE_CRYPTO
 	TWPartition* Decrypt_Data = Find_Partition_By_Path("/data");
 	if (Decrypt_Data && Decrypt_Data->Is_Encrypted && !Decrypt_Data->Is_Decrypted) {
@@ -370,70 +322,35 @@ int TWPartitionManager::Process_Fstab(string Fstab_Filename,
 					gui_msg("decrypt_success=Successfully decrypted with default password.");
 					DataManager::SetValue(TW_IS_ENCRYPTED, 0);
 				} else {
-					LOGINFO("Failed to mount data after metadata decrypt\n");
+					gui_err("unable_to_decrypt=Unable to decrypt with default password.");
+				}
+			}
+		} else {
+			int password_type = cryptfs_get_password_type();
+			if (password_type == CRYPT_TYPE_DEFAULT) {
+				LOGINFO("Device is encrypted with the default password, attempting to decrypt.\n");
+				if (Decrypt_Device("default_password") == 0) {
+					gui_msg("decrypt_success=Successfully decrypted with default password.");
+					DataManager::SetValue(TW_IS_ENCRYPTED, 0);
+				} else {
+					gui_err("unable_to_decrypt=Unable to decrypt with default password.");
 				}
 			} else {
-				LOGINFO("Unable to decrypt metadata encryption\n");
+				DataManager::SetValue("TW_CRYPTO_TYPE", password_type);
 			}
-#else
-			LOGERR("Metadata FBE decrypt support not present in this TWRP\n");
+		}
+	}
+	if (Decrypt_Data && (!Decrypt_Data->Is_Encrypted || Decrypt_Data->Is_Decrypted) && Decrypt_Data->Mount(false)) {
+		Decrypt_Adopted();
+	}
 #endif
-		}
-      if (Decrypt_Data->Is_FBE)
-	{
-	  if (DataManager::GetIntValue(TW_CRYPTO_PWTYPE) == 0)
-	    {
-	      if (Decrypt_Device("!") == 0)
-		{
-		  gui_msg
-		    ("decrypt_success=Successfully decrypted with default password.");
-		  DataManager::SetValue(TW_IS_ENCRYPTED, 0);
-		}
-	      else
-		{
-		  gui_err
-		    ("unable_to_decrypt=Unable to decrypt with default password.");
-		}
-	    }
-	}
-      else
-	{
-	  int password_type = cryptfs_get_password_type();
-	  if (password_type == CRYPT_TYPE_DEFAULT)
-	    {
-	      LOGINFO
-		("Device is encrypted with the default password, attempting to decrypt.\n");
-	      if (Decrypt_Device("default_password") == 0)
-		{
-		  gui_msg
-		    ("decrypt_success=Successfully decrypted with default password.");
-		  DataManager::SetValue(TW_IS_ENCRYPTED, 0);
-		}
-	      else
-		{
-		  gui_err
-		    ("unable_to_decrypt=Unable to decrypt with default password.");
-		}
-	    }
-	  else
-	    {
-	      DataManager::SetValue("TW_CRYPTO_TYPE", password_type);
-	    }
-	}
-    }
-  if (Decrypt_Data
-      && (!Decrypt_Data->Is_Encrypted || Decrypt_Data->Is_Decrypted)
-      && Decrypt_Data->Mount(false))
-    {
-      Decrypt_Adopted();
-    }
-  Update_System_Details();
-  UnMount_Main_Partitions();
+	Update_System_Details();
+	UnMount_Main_Partitions();
 #ifdef AB_OTA_UPDATER
-  DataManager::SetValue("tw_active_slot", Get_Active_Slot_Display());
+	DataManager::SetValue("tw_active_slot", Get_Active_Slot_Display());
 #endif
-  setup_uevent();
-  return true;
+	setup_uevent();
+	return true;
 }
 
 int TWPartitionManager::Write_Fstab(void)
