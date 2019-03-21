@@ -656,6 +656,9 @@ protected:
 		unsigned int selected;
 		GUIAction* action;
 		std::vector<Condition> mConditions;
+		//[f/d] For btn list
+		ImageResource* icon;
+		bool hasicon;
 	};
 
 protected:

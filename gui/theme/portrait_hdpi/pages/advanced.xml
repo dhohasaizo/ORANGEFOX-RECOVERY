@@ -4,6 +4,104 @@
 		<page name="advanced">
 			<template name="body_nav"/>
 
+			<listbox style="btn_list">
+				<placement x="0" y="%files_np_y%" w="%screen_w%" h="%files_np_w%"/>
+				<listitem name="{@mount_hdr}">
+					<icon res="bs_adv_mount"/>
+					<action function="page">mount</action>
+				</listitem>
+				<listitem name="{@part_menu_hdr}">
+					<icon res="harddisk"/>
+					<action function="page">part_options</action>
+				</listitem>
+				<listitem name="Magisk Manager">
+					<icon res="magisk"/>
+					<action function="page">magisk_mount</action>
+				</listitem>
+				<listitem name="Delete Apps">
+					<icon res="apps"/>
+					<action function="page">apps_load</action>
+				</listitem>
+				<listitem name="AromaFM">
+					<icon res="bs_adv_aroma"/>
+					<actions>
+						<action function="queueclear"/>
+						<action function="set">fox_install_built_in_zip=1</action>
+						<action function="set">tw_signed_zip_verify_tmp=%tw_signed_zip_verify%</action>
+						<action function="set">tw_signed_zip_verify=0</action>
+						<action function="set">fox_inject_after_zip_tmp=%fox_inject_after_zip%</action>
+						<action function="set">fox_inject_after_zip=0</action>
+						<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
+						<action function="set">tw_screen_timeout_secs=0</action>
+						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/AromaFM/AromaFM.zip</action>
+						<action function="set">qcount_temp=1</action>
+						<action function="queuezip"/>
+						<action function="flash">aroma_busy</action>
+					</actions>
+				</listitem>
+				<listitem name="{@adb_sideload_btn}">
+					<icon res="bs_adv_adb"/>
+					<action function="page">sideload</action>
+				</listitem>
+				<listitem name="{@fox_modules_hdr}">
+					<icon res="bs_btn_archive"/>
+					<action function="page">fox_modules</action>
+				</listitem>
+				<listitem name="{@reboot_btn}">
+					<icon res="bs_adv_reboot"/>
+					<action function="page">reboot</action>
+				</listitem>
+				<listitem name="{@more}">
+					<condition var1="utils_show" op="!=" var2="1"/>
+					<icon res="utils"/>
+					<action function="set">utils_show=1</action>
+				</listitem>
+				<listitem name="{@hide}">
+					<condition var1="utils_show" var2="1"/>
+					<icon res="hide"/>
+					<action function="set">utils_show=0</action>
+				</listitem>
+				<listitem name="{@copy_log_btn}">
+					<condition var1="utils_show" var2="1"/>
+					<icon res="bs_adv_log"/>
+					<actions>
+						<action function="set">tw_back=utilities</action>
+						<action function="set">tw_action=copylog</action>
+						<action function="set">tw_text1={@copy_log_confirm}</action>
+						<action function="set">tw_action_text1={@copy_log_btn}</action>
+						<action function="set">tw_action_text2={@copying_log}</action>
+						<action function="set">tw_complete_text1={@copy_log_complete}</action>
+						<action function="set">tw_slider_text={@swipe_to_confirm}</action>
+						<action function="page">confirm_action</action>
+					</actions>
+				</listitem>
+				<listitem name="{@fix_contexts_hdr}">
+					<condition var1="utils_show" var2="1"/>
+					<condition var1="tw_has_data_media" var2="1"/>
+					<icon res="bs_adv_se"/>
+					<action function="page">fixcontexts</action>
+				</listitem>
+				<listitem name="{@new_lock}">
+					<condition var1="utils_show" var2="1"/>
+					<icon res="bs_adv_frp"/>
+					<actions>
+						<action function="set">tw_action_param=mount /data; rm -f data/system/*.key data/system/locksettings.*</action>
+						<action function="page">remlock</action>
+					</actions>
+				</listitem>
+				<listitem name="{@terminal_btn}">
+					<condition var1="utils_show" var2="1"/>
+					<icon res="bs_adv_term"/>
+					<action function="page">terminal</action>
+				</listitem>
+				<listitem name="{@dumlock_hdr}">
+					<condition var1="utils_show" var2="1"/>
+					<condition var1="tw_show_dumlock" var2="1"/>
+					<icon res="bs_adv_term"/>
+					<action function="page">htcdumlock</action>
+				</listitem>
+			</listbox>
+			
 			<template name="ab_main"/>
 
 			<template name="statusbarinfo"/>
@@ -72,289 +170,8 @@
 				<placement x="%col1_x%" y="%ab_bc_y%"/>
 				<text>{@menu_btn}</text>
 			</text>
-
-			<!-- Mounting -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
-				<action function="page">mount</action>
-			</button>
 			
-			<image>
-				<placement x="%col1_x%" y="%set_row1_y%"/>
-				<image resource="bs_adv_mount"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>{@mount_hdr}</text>
-			</text>
-			<!---->
-
-			<!-- Partition Options -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
-				<action function="page">part_options</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row2_y%"/>
-				<image resource="harddisk"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>{@part_menu_hdr}</text>
-			</text>
-			<!-- -->
-
-			<!-- MM GUI -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
-				<action function="page">magisk_mount</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row3_y%"/>
-				<image resource="magisk"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>Magisk Manager</text>
-			</text>
-
-			<!-- Apps GUI -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
-				<action function="page">apps_load</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="apps"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>Manage Apps</text>
-			</text>
-
-			<!-- Aroma -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
-				<action function="queueclear"/>
-				<action function="set">fox_install_built_in_zip=1</action>
-				<action function="set">tw_signed_zip_verify_tmp=%tw_signed_zip_verify%</action>
-				<action function="set">tw_signed_zip_verify=0</action>
-				<action function="set">fox_inject_after_zip_tmp=%fox_inject_after_zip%</action>
-				<action function="set">fox_inject_after_zip=0</action>
-				<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
-				<action function="set">tw_screen_timeout_secs=0</action>
-				<action function="set">tw_filename=/sdcard/Fox/FoxFiles/AromaFM/AromaFM.zip</action>
-				<action function="set">qcount_temp=1</action>
-				<action function="queuezip"/>
-				<action function="flash">aroma_busy</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="bs_adv_aroma"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>AromaFM</text>
-			</text>
-			<!---->
-
-			<!-- Sideload -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row6_y%"/>
-				<action function="page">sideload</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row6_y%"/>
-				<image resource="bs_adv_adb"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
-				<text>{@adb_sideload_btn}</text>
-			</text>
-			<!---->
-
-			<!-- Fox Modules -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
-				<action function="page">fox_modules</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row7_y%"/>
-				<image resource="bs_btn_archive"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
-				<text>{@fox_modules_hdr}</text>
-			</text>
-			<!---->
-
-			<!-- Utilities -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
-				<action function="page">utilities</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row8_y%"/>
-				<image resource="utils"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
-				<text>{@utilities}</text>
-			</text>
-			<!---->
-
-			<!-- Перезагрузка -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row9_y%"/>
-				<action function="page">reboot</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row9_y%"/>
-				<image resource="bs_adv_reboot"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
-				<text>{@reboot_btn}</text>
-			</text>
-			<!---->
-
 			<template name="nav_panel"/>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">advanced</action>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">advanced</action>
-			</action>
-		</page>
-		
-		<page name="utilities">
-			<template name="body"/>
-
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
-			
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@utilities}</text>
-			</text>
-
-			<!-- Log -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
-				<actions>
-					<action function="set">tw_back=utilities</action>
-					<action function="set">tw_action=copylog</action>
-					<action function="set">tw_text1={@copy_log_confirm}</action>
-					<action function="set">tw_action_text1={@copy_log_btn}</action>
-					<action function="set">tw_action_text2={@copying_log}</action>
-					<action function="set">tw_complete_text1={@copy_log_complete}</action>
-					<action function="set">tw_slider_text={@swipe_to_confirm}</action>
-					<action function="page">confirm_action</action>
-				</actions>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row1_y%"/>
-				<image resource="bs_adv_log"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>{@copy_log_btn}</text>
-			</text>
-			<!---->
-
-			<!-- SELINUX -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
-				<action function="page">fixcontexts</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row2_y%"/>
-				<image resource="bs_adv_se"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>{@fix_contexts_hdr}</text>
-			</text>
-			<!---->
-
-			<!-- FRP -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
-				<action function="set">tw_action_param=mount /data; rm -f data/system/*.key data/system/locksettings.*</action>
-				<action function="page">remlock</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row3_y%"/>
-				<image resource="bs_adv_frp"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>{@new_lock}</text>
-			</text>
-			<!---->
-
-			<!-- Terminal -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
-				<action function="page">terminal</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="bs_adv_term"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@terminal_btn}</text>
-			</text>
-			<!-- -->
-
-			<button style="bs_btn">
-				<condition var1="tw_show_dumlock" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
-				<action function="page">htcdumlock</action>
-			</button>
-			
-			<image>
-				<condition var1="tw_show_dumlock" var2="1"/>
-				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="bs_adv_htc"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="tw_show_dumlock" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>{@dumlock_hdr}</text>
-			</text>
 
 			<action>
 				<touch key="home"/>

@@ -184,6 +184,14 @@
 			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" />
 		</style>
 		
+		<style name="btn_list">
+			<background color="%background%"/>
+			<highlight color="%highlight_color_full%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<iconsize w="216" h="144"/>
+			<font resource="button" spacing="%fileselector_spacing%" color="%text_menu%"/>
+		</style>
+		
 		<style name="listbox_dialog">
 			<background color="%background%"/>
 			<highlight color="%highlight_color_full%"/>

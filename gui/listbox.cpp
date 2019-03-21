@@ -45,16 +45,25 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 		mIconUnselected = LoadAttrImage(child, "unselected");
 	}
 	int iconWidth = 0, iconHeight = 0;
-	if (mIconSelected && mIconSelected->GetResource() && mIconUnselected && mIconUnselected->GetResource()) {
-		iconWidth = std::max(mIconSelected->GetWidth(), mIconUnselected->GetWidth());
-		iconHeight = std::max(mIconSelected->GetHeight(), mIconUnselected->GetHeight());
-	} else if (mIconSelected && mIconSelected->GetResource()) {
-		iconWidth = mIconSelected->GetWidth();
-		iconHeight = mIconSelected->GetHeight();
-	} else if (mIconUnselected && mIconUnselected->GetResource()) {
-		iconWidth = mIconUnselected->GetWidth();
-		iconHeight = mIconUnselected->GetHeight();
+	
+	// [f/d] Get size for icons
+	child = FindNode(node, "iconsize");
+	if (child) {
+		iconWidth = LoadAttrInt(child, "w", iconWidth);
+		iconHeight = LoadAttrInt(child, "h", iconHeight);
+	} else {
+		if (mIconSelected && mIconSelected->GetResource() && mIconUnselected && mIconUnselected->GetResource()) {
+			iconWidth = std::max(mIconSelected->GetWidth(), mIconUnselected->GetWidth());
+			iconHeight = std::max(mIconSelected->GetHeight(), mIconUnselected->GetHeight());
+		} else if (mIconSelected && mIconSelected->GetResource()) {
+			iconWidth = mIconSelected->GetWidth();
+			iconHeight = mIconSelected->GetHeight();
+		} else if (mIconUnselected && mIconUnselected->GetResource()) {
+			iconWidth = mIconUnselected->GetWidth();
+			iconHeight = mIconUnselected->GetHeight();
+		}
 	}
+	
 	SetMaxIconSize(iconWidth, iconHeight);
 
 	// Handle the result variable
@@ -166,6 +175,16 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 			item.action = new GUIAction(child);
 			allowSelection = true;
 		}
+		
+		// [f/d] Load custom icon
+		xml_node<>* exicon = child->first_node("icon");
+		if (exicon) {
+			item.icon = LoadAttrImage(exicon, "res");
+			item.hasicon = true;
+		} else {
+			item.hasicon = false;
+		}
+		
 		xml_node<>* variable_name = child->first_node("data");
 		if (variable_name) {
 			attr = variable_name->first_attribute("variable");
@@ -283,7 +302,14 @@ void GUIListBox::RenderItem(size_t itemindex, int yPos, bool selected)
 	// note: the "selected" parameter above is for the currently touched item
 	// don't confuse it with the more persistent "selected" flag per list item used below
 	ListItem& item = mListItems[mVisibleItems[itemindex]];
-	ImageResource* icon = item.selected ? mIconSelected : mIconUnselected;
+	ImageResource* icon;
+	if (item.hasicon) {
+		//[f/d] Render custom icon
+		icon = item.icon;
+	} else {
+		//Render default (un)selected icon
+		icon = item.selected ? mIconSelected : mIconUnselected;
+	}
 	const std::string& text = item.displayName;
 
 	RenderStdItem(yPos, selected, icon, text.c_str());
