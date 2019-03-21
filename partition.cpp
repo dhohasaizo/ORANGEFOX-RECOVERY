@@ -2333,7 +2333,6 @@ bool TWPartition::Wipe_Encryption()
     return false;
 
   Has_Data_Media = false;
-  Decrypted_Block_Device = "";
 #ifdef TW_INCLUDE_CRYPTO
   if (Is_Decrypted && !Decrypted_Block_Device.empty())
     {
@@ -2345,6 +2344,7 @@ bool TWPartition::Wipe_Encryption()
 	}
     }
 #endif
+  Decrypted_Block_Device = "";
   Is_Decrypted = false;
   Is_Encrypted = false;
   Find_Actual_Block_Device();
