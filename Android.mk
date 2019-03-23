@@ -35,6 +35,10 @@ ifneq (,$(filter $(PLATFORM_SDK_VERSION), 21 22))
     BOARD_SEPOLICY_UNION += twrp.te
 endif
 
+ifeq ($(CM_PLATFORM_SDK_VERSION),)
+    CM_PLATFORM_SDK_VERSION := 0
+endif
+
 include $(CLEAR_VARS)
 
 TWRES_PATH := /twres/
@@ -146,6 +150,7 @@ endif
 ifeq ($(TW_USE_TOOLBOX), true)
     LOCAL_CFLAGS += -DTW_USE_TOOLBOX='"1"'
 endif
+LOCAL_CFLAGS += -DPLATFORM_SDK_VERSION=$(PLATFORM_SDK_VERSION)
 
 LOCAL_SRC_FILES := \
     twrp.cpp \
@@ -274,14 +279,6 @@ ifeq ($(TARGET_USERIMAGES_USE_EXT4), true)
 endif
 LOCAL_C_INCLUDES += external/libselinux/include
 LOCAL_SHARED_LIBRARIES += libselinux
-#ifneq ($(TARGET_USERIMAGES_USE_EXT4), true)
-#    LOCAL_CFLAGS += -DUSE_EXT4
-#    LOCAL_C_INCLUDES += system/extras/ext4_utils
-#    LOCAL_SHARED_LIBRARIES += libext4_utils
-#    ifneq ($(wildcard external/lz4/Android.mk),)
-#        LOCAL_STATIC_LIBRARIES += liblz4
-#    endif
-#endif
 
 ifeq ($(AB_OTA_UPDATER),true)
     LOCAL_CFLAGS += -DAB_OTA_UPDATER=1
