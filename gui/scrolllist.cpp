@@ -35,7 +35,7 @@ GUIScrollList::GUIScrollList(xml_node<>* node) : GUIObject(node)
 	xml_node<>* child;
 
 	firstDisplayedItem = mItemSpacing = mFontHeight = mSeparatorH = y_offset = scrollingSpeed = 0;
-	maxIconWidth = maxIconHeight =  mHeaderIconHeight = mHeaderIconWidth = 0;
+	mPadding = maxIconWidth = maxIconHeight =  mHeaderIconHeight = mHeaderIconWidth = 0;
 	mHeaderSeparatorH = mHeaderH = actualItemHeight = 0;
 	mHeaderIsStatic = false;
 	mBackground = mHeaderIcon = NULL;
@@ -57,6 +57,12 @@ GUIScrollList::GUIScrollList(xml_node<>* node) : GUIObject(node)
 	allowSelection = true;
 	selectedItem = NO_ITEM;
 
+	// [f/d] Icon right padding
+	child = FindNode(node, "iconsize");
+	if (child) {
+		mPadding = LoadAttrInt(child, "padding", mPadding);
+	}
+	
 	// Load header text
 	// note: node can be NULL for the emergency console
 	child = node ? node->first_node("text") : NULL;
@@ -341,7 +347,7 @@ void GUIScrollList::RenderStdItem(int yPos, bool selected, ImageResource* icon, 
 		int iconH = icon->GetHeight();
 		int iconW = icon->GetWidth();
 		int iconY = yPos + (iconAndTextH - iconH) / 2;
-		int iconX = mRenderX + (maxIconWidth - iconW) / 2;
+		int iconX = mRenderX + (maxIconWidth - iconW) / 2 - mPadding; //[f/d] right icon padding
 		gr_blit(icon->GetResource(), 0, 0, iconW, iconH, iconX, iconY);
 	}
 

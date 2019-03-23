@@ -132,7 +132,6 @@
 		
 		<!-- File Selector w/ NavPanel -->
 		<variable name="files_np_w" value="%screen_min_cut%-552"/>
-		<variable name="files_np_y" value="240+%cutout_w%"/>
 		<variable name="files_np_mm_y" value="408+%cutout_w%"/>
 		
 		<!-- UI w/ NavPanel -->
@@ -195,6 +194,24 @@
 		<variable name="content_w" value="984"/>
 		<variable name="listbox_tz_width_2" value="540"/>
 		
+		<!-- button list height -->
+		<variable name="bl_h1" value="144"/>
+		<variable name="bl_h2" value="288"/>
+		<variable name="bl_h3" value="432"/>
+		<variable name="bl_h4" value="576"/>
+		<variable name="bl_h5" value="720"/>
+		<variable name="bl_h6" value="864"/>
+		<variable name="bl_h7" value="1008"/>
+		<variable name="bl_h8" value="1152"/>
+		<variable name="bl_h9" value="1296"/>
+		<variable name="bl_h10" value="1440"/>
+		
+		<variable name="bl_fullscreen_h" value="%screen_min_cut%-432"/>
+		<variable name="bl_y" value="264+%cutout_w%"/>
+		<variable name="bl_np_h" value="%screen_min_cut%-600"/>
+		
+		<!-- WILL BE REMOVED SOON -->
+		
 		<!-- Long buttons -->
 		<variable name="bs_text_offset" value="42"/>
 		
@@ -222,7 +239,6 @@
 		
 		<!-- Long buttons (bottom) -->
 		<variable name="db_row1_y" value="%screen_h%-288"/>
-		<variable name="db_row1_text_y" value="%db_row1_y%+%bs_text_offset%"/>
 		
 		<!-- Long buttons in file manager -->
 		<variable name="bs_row1_y" value="480+%cutout_w%"/>
@@ -251,6 +267,8 @@
 		<variable name="actbtn_row1_text_y" value="%actbtn_row1_y%+%bs_text_offset%"/>
 		<variable name="actbtn_row2_text_y" value="%actbtn_row2_y%+%bs_text_offset%"/>
 		<variable name="actbtn_row3_text_y" value="%actbtn_row3_y%+%bs_text_offset%"/>
+		
+		<!-- WILL BE REMOVED SOON -->
 		
 		<!-- NavBar -->
 		<variable name="row_nav_text_y" value="%row_nav_y%+%bs_text_offset%"/>

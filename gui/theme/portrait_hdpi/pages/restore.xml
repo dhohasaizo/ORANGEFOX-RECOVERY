@@ -25,7 +25,7 @@
 
 			<fileselector style="fileselector_b">
 				<condition var1="list_font" var2="1"/>
-				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_w%"/>
+				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="bkp_icon" file="bkp_icon" />
 				<filter folders="1" files="1" nav="0" extn=".ab"/>
@@ -36,7 +36,7 @@
 
 			<fileselector style="fileselector_s">
 				<condition var1="list_font" op="!=" var2="1"/>
-				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_w%"/>
+				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="bkp_icon_small" file="bkp_icon_small" />
 				<filter folders="1" files="1" nav="0" extn=".ab"/>
@@ -164,7 +164,7 @@
 			<image>
 				<condition var1="tw_fileexists" var2="1"/>
 				<image resource="empty_folder"/>
-				<placement x="244" y="%row1_3_y%"/>
+				<placement x="304" y="%row1_3_y%"/>
 			</image>
 
 			<text style="text_ab_title">

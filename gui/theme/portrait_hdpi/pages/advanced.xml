@@ -4,8 +4,14 @@
 		<page name="advanced">
 			<template name="body_nav"/>
 
+			<action>
+				<action function="set">nav_panel_id=3</action>
+				<action function="set">utils_show=0</action>
+			</action>
+
+
 			<listbox style="btn_list">
-				<placement x="0" y="%files_np_y%" w="%screen_w%" h="%files_np_w%"/>
+				<placement x="0" y="%bl_y%" w="%screen_w%" h="%bl_np_h%"/>
 				<listitem name="{@mount_hdr}">
 					<icon res="bs_adv_mount"/>
 					<action function="page">mount</action>
@@ -59,7 +65,7 @@
 				<listitem name="{@hide}">
 					<condition var1="utils_show" var2="1"/>
 					<icon res="hide"/>
-					<action function="set">utils_show=0</action>
+					<action function="page">advanced</action>
 				</listitem>
 				<listitem name="{@copy_log_btn}">
 					<condition var1="utils_show" var2="1"/>
@@ -105,11 +111,7 @@
 			<template name="ab_main"/>
 
 			<template name="statusbarinfo"/>
-
-			<action>
-				<action function="set">nav_panel_id=3</action>
-			</action>
-
+			
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
@@ -187,6 +189,120 @@
 		<page name="fox_modules">
 			<template name="body"/>
 
+			<!-- fox_modules_confirm located in install.xml -->
+			
+			<listbox style="btn_list">
+				<placement x="0" y="%bl_y%" w="%screen_w%" h="%bl_fullscreen_h%"/>
+				<listitem name="{@module_install} Magisk 18.1">
+					<icon res="bs_btn_archive"/>
+					<actions>
+						<action function="queueclear"/>
+						<action function="set">fox_m_author=topjohnwu</action>
+						<action function="set">fox_m_name={@module_install} Magisk 18.1</action>
+						<action function="set">tw_file=Magisk.zip</action>
+						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
+						<action function="set">tw_filecheck=%tw_filename%</action>
+						<action function="set">install_back=fox_modules</action>
+						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
+						<action function="queuezip"/>
+						<action function="set">tw_q_1=%tw_file%</action>
+						<action function="set">tw_notexistpage=fox_modules_confirm</action>
+						<action function="set">tw_existpage=fox_modules_confirm</action>
+						<action function="page">filecheck</action>
+					</actions>
+				</listitem>
+				<listitem name="{@module_uninstall} Magisk">
+					<icon res="bs_btn_archive"/>
+					<actions>
+						<action function="queueclear"/>
+						<action function="set">fox_m_author=topjohnwu</action>
+						<action function="set">fox_m_name={@module_uninstall} Magisk</action>
+						<action function="set">tw_file=unrootmagisk.zip</action>
+						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/unrootmagisk.zip</action>
+						<action function="set">tw_filecheck=%tw_filename%</action>
+						<action function="set">install_back=fox_modules</action>
+						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
+						<action function="queuezip"/>
+						<action function="set">tw_q_1=%tw_file%</action>
+						<action function="set">tw_notexistpage=fox_modules_confirm</action>
+						<action function="set">tw_existpage=fox_modules_confirm</action>
+						<action function="page">filecheck</action>
+					</actions>
+				</listitem>
+				<listitem name="{@subs_wipe} (RRO, Legacy)">
+					<icon res="subs"/>
+					<actions>
+						<action function="queueclear"/>
+						<action function="set">fox_m_author=prjkt.</action>
+						<action function="set">fox_m_name={@subs_wipe} (RRO, Legacy)</action>
+						<action function="set">tw_file=SubstratumRescue_Legacy.zip</action>
+						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/SubstratumRescue_Legacy.zip</action>
+						<action function="set">tw_filecheck=%tw_filename%</action>
+						<action function="set">install_back=fox_modules</action>
+						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
+						<action function="queuezip"/>
+						<action function="set">tw_q_1=%tw_file%</action>
+						<action function="set">tw_notexistpage=fox_modules_confirm</action>
+						<action function="set">tw_existpage=fox_modules_confirm</action>
+						<action function="page">filecheck</action>
+					</actions>
+				</listitem>
+				<listitem name="{@subs_wipe} (OMS)">
+					<icon res="subs"/>
+					<actions>
+						<action function="queueclear"/>
+						<action function="set">fox_m_author=prjkt.</action>
+						<action function="set">fox_m_name={@subs_wipe} (OMS)</action>
+						<action function="set">tw_file=SubstratumRescue.zip</action>
+						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/SubstratumRescue.zip</action>
+						<action function="set">tw_filecheck=%tw_filename%</action>
+						<action function="set">install_back=fox_modules</action>
+						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
+						<action function="queuezip"/>
+						<action function="set">tw_q_1=%tw_file%</action>
+						<action function="set">tw_notexistpage=fox_modules_confirm</action>
+						<action function="set">tw_existpage=fox_modules_confirm</action>
+						<action function="page">filecheck</action>
+					</actions>
+				</listitem>
+				<listitem name="{@module_initd}">
+					<icon res="bs_btn_archive"/>
+					<actions>
+						<action function="queueclear"/>
+						<action function="set">fox_m_author=DarthJabba9</action>
+						<action function="set">fox_m_name={@module_initd}</action>
+						<action function="set">tw_file=OF_initd.zip</action>
+						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/OF_initd.zip</action>
+						<action function="set">tw_filecheck=%tw_filename%</action>
+						<action function="set">install_back=fox_modules</action>
+						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
+						<action function="queuezip"/>
+						<action function="set">tw_q_1=%tw_file%</action>
+						<action function="set">tw_notexistpage=fox_modules_confirm</action>
+						<action function="set">tw_existpage=fox_modules_confirm</action>
+						<action function="page">filecheck</action>
+					</actions>
+				</listitem>
+				<listitem name="{@module_cam}">
+					<icon res="bs_btn_archive"/>
+					<actions>
+						<action function="queueclear"/>
+						<action function="set">fox_m_author=XDA</action>
+						<action function="set">fox_m_name={@module_cam}</action>
+						<action function="set">tw_file=Cam2API.zip</action>
+						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Cam2API.zip</action>
+						<action function="set">tw_filecheck=%tw_filename%</action>
+						<action function="set">install_back=fox_modules</action>
+						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
+						<action function="queuezip"/>
+						<action function="set">tw_q_1=%tw_file%</action>
+						<action function="set">tw_notexistpage=fox_modules_confirm</action>
+						<action function="set">tw_existpage=fox_modules_confirm</action>
+						<action function="page">filecheck</action>
+					</actions>
+				</listitem>
+			</listbox>
+			
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
@@ -195,194 +311,6 @@
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@fox_modules_hdr}</text>
 			</text>
-			
-			<!-- fox_modules_confirm located in install.xml -->
-			
-			<!-- Magisk Inst -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
-				<actions>
-					<action function="queueclear"/>
-					<action function="set">fox_m_author=topjohnwu</action>
-					<action function="set">fox_m_name={@module_install} Magisk 18.1</action>
-					<action function="set">tw_file=Magisk.zip</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
-					<action function="set">tw_filecheck=%tw_filename%</action>
-					<action function="set">install_back=fox_modules</action>
-					<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
-					<action function="queuezip"/>
-					<action function="set">tw_q_1=%tw_file%</action>
-					<action function="set">tw_notexistpage=fox_modules_confirm</action>
-					<action function="set">tw_existpage=fox_modules_confirm</action>
-					<action function="page">filecheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row1_y%"/>
-				<image resource="bs_btn_archive"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>{@module_install} Magisk 18.1</text>
-			</text>
-			<!---->
-
-			<!-- Magisk Uninst -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row2_y%"/>
-				<actions>
-					<action function="queueclear"/>
-					<action function="set">fox_m_author=topjohnwu</action>
-					<action function="set">fox_m_name={@module_uninstall} Magisk</action>
-					<action function="set">tw_file=unrootmagisk.zip</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/unrootmagisk.zip</action>
-					<action function="set">tw_filecheck=%tw_filename%</action>
-					<action function="set">install_back=fox_modules</action>
-					<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
-					<action function="queuezip"/>
-					<action function="set">tw_q_1=%tw_file%</action>
-					<action function="set">tw_notexistpage=fox_modules_confirm</action>
-					<action function="set">tw_existpage=fox_modules_confirm</action>
-					<action function="page">filecheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row2_y%"/>
-				<image resource="bs_btn_archive"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>{@module_uninstall} Magisk</text>
-			</text>
-			<!---->
-
-			<!-- Subs Legacy -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row3_y%"/>
-				<actions>
-					<action function="queueclear"/>
-					<action function="set">fox_m_author=prjkt.</action>
-					<action function="set">fox_m_name={@subs_wipe} (RRO, Legacy)</action>
-					<action function="set">tw_file=SubstratumRescue_Legacy.zip</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/SubstratumRescue_Legacy.zip</action>
-					<action function="set">tw_filecheck=%tw_filename%</action>
-					<action function="set">install_back=fox_modules</action>
-					<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
-					<action function="queuezip"/>
-					<action function="set">tw_q_1=%tw_file%</action>
-					<action function="set">tw_notexistpage=fox_modules_confirm</action>
-					<action function="set">tw_existpage=fox_modules_confirm</action>
-					<action function="page">filecheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row3_y%"/>
-				<image resource="subs"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>{@subs_wipe} (RRO, Legacy)</text>
-			</text>
-			<!---->
-			
-			<!-- Subs OMS -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row4_y%"/>
-				<actions>
-					<action function="queueclear"/>
-					<action function="set">fox_m_author=prjkt.</action>
-					<action function="set">fox_m_name={@subs_wipe} (OMS)</action>
-					<action function="set">tw_file=SubstratumRescue.zip</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/SubstratumRescue.zip</action>
-					<action function="set">tw_filecheck=%tw_filename%</action>
-					<action function="set">install_back=fox_modules</action>
-					<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
-					<action function="queuezip"/>
-					<action function="set">tw_q_1=%tw_file%</action>
-					<action function="set">tw_notexistpage=fox_modules_confirm</action>
-					<action function="set">tw_existpage=fox_modules_confirm</action>
-					<action function="page">filecheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="subs"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@subs_wipe} (OMS)</text>
-			</text>
-			<!---->
-
-			<!-- InitD -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row5_y%"/>
-				<actions>
-					<action function="queueclear"/>
-					<action function="set">fox_m_author=DarthJabba9</action>
-					<action function="set">fox_m_name={@module_initd}</action>
-					<action function="set">tw_file=OF_initd.zip</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/OF_initd.zip</action>
-					<action function="set">tw_filecheck=%tw_filename%</action>
-					<action function="set">install_back=fox_modules</action>
-					<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
-					<action function="queuezip"/>
-					<action function="set">tw_q_1=%tw_file%</action>
-					<action function="set">tw_notexistpage=fox_modules_confirm</action>
-					<action function="set">tw_existpage=fox_modules_confirm</action>
-					<action function="page">filecheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="bs_btn_archive"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>{@module_initd} </text>
-			</text>
-			<!--- -->
-
-			<!-- Cam -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row6_y%"/>
-				<actions>
-					<action function="queueclear"/>
-					<action function="set">fox_m_author=XDA</action>
-					<action function="set">fox_m_name={@module_cam}</action>
-					<action function="set">tw_file=Cam2API.zip</action>
-					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Cam2API.zip</action>
-					<action function="set">tw_filecheck=%tw_filename%</action>
-					<action function="set">install_back=fox_modules</action>
-					<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
-					<action function="queuezip"/>
-					<action function="set">tw_q_1=%tw_file%</action>
-					<action function="set">tw_notexistpage=fox_modules_confirm</action>
-					<action function="set">tw_existpage=fox_modules_confirm</action>
-					<action function="page">filecheck</action>
-				</actions>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row6_y%"/>
-				<image resource="bs_btn_archive"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
-				<text>{@module_cam}</text>
-			</text>
-			<!-- -->
 			
 			<action>
 				<touch key="home"/>

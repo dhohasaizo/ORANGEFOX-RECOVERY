@@ -256,6 +256,7 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(wlfw);
       ADD_ACTION(wlfx);
       ADD_ACTION(calldeactivateprocess);
+      ADD_ACTION(xsleep);
    }
 
   // First, get the action
@@ -922,6 +923,17 @@ int GUIAction::sleep(std::string arg)
   operation_start("Sleep");
   usleep(atoi(arg.c_str()));
   operation_end(0);
+  return 0;
+}
+
+int GUIAction::xsleep(std::string arg)
+{
+  int total = atoi(arg.c_str());
+  for (int t = total; t > 0; t--)
+    {
+      ::sleep(1);
+      DataManager::SetValue("tw_xsleep", t - 1);
+    }
   return 0;
 }
 

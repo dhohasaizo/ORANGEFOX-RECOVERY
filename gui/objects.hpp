@@ -375,6 +375,7 @@ protected:
 	int wlfx(std::string arg);
 	int wlfw(std::string arg);
 	int calldeactivateprocess(std::string arg);
+	int xsleep(std::string arg);
 
 	int simulate;
 };
@@ -541,7 +542,8 @@ protected:
 	int mItemSpacing; // stores the spacing or padding on the y axis, part of the actualItemHeight
 	int mSeparatorH; // Height of the separator between items
 	COLOR mSeparatorColor; // color of the separator that is between items
-
+	int mPadding; //[f/d] right icon padding
+	
 	// Scrollbar
 	int mFastScrollW; // width of the fastscroll area
 	int mFastScrollLineW; // width of the line for fastscroll rendering
