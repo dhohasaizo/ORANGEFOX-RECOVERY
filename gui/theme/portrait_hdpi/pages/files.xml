@@ -10,7 +10,7 @@
 			
 			<fileselector style="fileselector_b">
 				<condition var1="list_font" var2="1"/>
-				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_w%"/>
+				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon" file="file_icon" />
 				<filter folders="1" files="1"/>
@@ -21,7 +21,7 @@
 
 			<fileselector style="fileselector_s">
 				<condition var1="list_font" op="!=" var2="1"/>
-				<placement x="0" y="%files_np_y%" w="%fileselector_width%" h="%files_np_w%"/>
+				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon_small" file="file_icon_small"/>
 				<filter folders="1" files="1"/>

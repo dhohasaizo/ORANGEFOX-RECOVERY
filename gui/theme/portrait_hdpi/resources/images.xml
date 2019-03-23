@@ -148,8 +148,6 @@
 		<image name="bs_btn_chmod" filename="Default/Icons/bs_btn_chmod" retainaspect="1"/>
 		<image name="bs_btn_delete" filename="Default/Icons/bs_btn_delete" retainaspect="1"/>
 		<image name="bs_btn_rename" filename="Default/Icons/bs_btn_rename" retainaspect="1"/>
-		<image name="bs_btn_brush" filename="Default/Icons/bs_btn_brush" retainaspect="1"/>
-		<image name="bs_btn_get" filename="Default/Icons/bs_btn_get" retainaspect="1"/>
 		<image name="reboot_sys" filename="Default/Icons/reboot_sys" retainaspect="1"/>
 		<image name="reboot_bootloader" filename="Default/Icons/reboot_bootloader" retainaspect="1"/>
 		<image name="reboot_power" filename="Default/Icons/reboot_power" retainaspect="1"/>
@@ -214,8 +212,6 @@
 		<image name="bs_adv_adb" filename="Default/Icons/adb" retainaspect="1"/>
 		<image name="bs_adv_frp" filename="Default/Icons/frp" retainaspect="1"/>
 		<image name="bs_adv_aroma" filename="Default/Icons/aroma" retainaspect="1"/>
-		<image name="bs_adv_sd" filename="Default/Icons/sd" retainaspect="1"/>
-		<image name="ota" filename="Default/Icons/ota" retainaspect="1"/>
 		<image name="utils" filename="Default/Icons/utils" retainaspect="1"/>
 		<image name="hide" filename="Default/Icons/hide" retainaspect="1"/>
 		<image name="info" filename="Default/Icons/info" retainaspect="1"/>
@@ -237,7 +233,6 @@
 		<!-- Other -->
 		<image name="actionbar_clear" filename="Default/Other/actionbar_clear" retainaspect="1"/>
 		<image name="cursor" filename="Default/Other/cursor" retainaspect="1"/>
-		<image name="logo_debug" filename="Default/FullscreenIcons/logo_debug" retainaspect="1"/>
 		<image name="empty_folder" filename="Default/FullscreenIcons/empty_folder" retainaspect="1"/>
 		<image name="fox_lock" filename="Default/FullscreenIcons/fox_lock" retainaspect="1"/>
 		<image name="fox_tip" filename="Default/Dialog/tip" retainaspect="1"/>

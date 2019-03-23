@@ -5,6 +5,50 @@
 		<page name="ext_custom">
 			<template name="body"/>
 
+			<listbox style="btn_list">
+				<placement x="0" y="%bl_y%" w="%screen_w%" h="%bl_fullscreen_h%"/>
+				<listitem name="{@navbar_title}">
+					<condition var1="allow_disable_nav" var2="1"/>
+					<icon res="nav"/>
+					<action function="page">ext_custom_nav</action>
+				</listitem>
+				<listitem name="{@navbar_title}">
+					<condition var1="allow_disable_nav" op="!=" var2="1"/>
+					<icon res="nav"/>
+					<action function="page">ext_custom_nav</action>
+				</listitem>
+				<listitem name="{@settings_ui_status}">
+					<icon res="statusbar"/>
+					<action function="page">ext_custom_status</action>
+				</listitem>
+				<listitem name="{@lockscreen_title}">
+					<icon res="lockscreen"/>
+					<action function="page">ext_custom_lock</action>
+				</listitem>
+				<listitem name="{@keyboard_title}">
+					<icon res="keyboard"/>
+					<action function="page">ext_custom_key</action>
+				</listitem>
+				<listitem name="{@theme_hdr}">
+					<icon res="invert"/>
+					<action function="page">ext_custom_theme</action>
+				</listitem>
+				<listitem name="{@theme_fonts}">
+					<icon res="ws_font"/>
+					<action function="page">ext_custom_fonts</action>
+				</listitem>
+				<listitem name="{@sph_sph}">
+					<icon res="boot_splash"/>
+					<action function="set">spl_bg_show=0</action>
+					<action function="set">spl_logo_type=w</action>
+					<action function="set">spl_bg_color=#000000ff</action>
+					<action function="set">spl_bg_user=0</action>
+					<action function="set">spl_bg_on=0</action>
+					<action function="set">update_splash=0</action>
+					<action function="page">ext_custom_splash</action>
+				</listitem>
+			</listbox>
+			
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
@@ -41,137 +85,6 @@
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_reset"/>
 			</image>
-
-			<!-- Navbar -->
-			<button style="bs_btn">
-				<condition var1="allow_disable_nav" var2="1"/>
-				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom_nav</action>
-			</button>
-			<button style="bs_btn">
-				<condition var1="allow_disable_nav" op="!=" var2="1"/>
-				<placement x="0" y="%set_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom_nav_no_switch</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row1_y%"/>
-				<image resource="nav"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>{@navbar_title}</text>
-			</text>
-			<!-- -->
-
-			<!-- Statusbar -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom_status</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row2_y%"/>
-				<image resource="statusbar"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>{@settings_ui_status}</text>
-			</text>
-			<!-- -->
-
-			<!-- Lockscreen -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom_lock</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row3_y%"/>
-				<image resource="lockscreen"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>{@lockscreen_title}</text>
-			</text>
-			<!-- -->
-
-			<!-- Keyboard -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom_key</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row4_y%"/>
-				<image resource="keyboard"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@keyboard_title}</text>
-			</text>
-			<!-- -->
-
-			<!-- Theme -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom_theme</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row5_y%"/>
-				<image resource="invert"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>{@theme_hdr}</text>
-			</text>
-			<!-- -->
-
-			<!-- Fonts -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_custom_fonts</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row6_y%"/>
-				<image resource="ws_font"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
-				<text>{@theme_fonts}</text>
-			</text>
-			<!-- -->
-
-			<!-- Splash -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">spl_bg_show=0</action>
-				<action function="set">spl_logo_type=w</action>
-				<action function="set">spl_bg_color=#000000ff</action>
-				<action function="set">spl_bg_user=0</action>
-				<action function="set">spl_bg_on=0</action>
-				<action function="set">update_splash=0</action>
-				<action function="page">ext_custom_splash</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row7_y%"/>
-				<image resource="boot_splash"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
-				<text>{@sph_sph}</text>
-			</text>
-			<!-- -->
 			
 			<template name="snackbar_update"/>
 			

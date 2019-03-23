@@ -5,6 +5,67 @@
 		<page name="settings">
 			<template name="body"/>
 
+			<listbox style="btn_list">
+				<placement x="0" y="%bl_y%" w="%screen_w%" h="%bl_np_h%"/>
+				<listitem name="{@settings_general}">
+					<icon res="bs_btn_set_global"/>
+					<action function="set">general_back=settings</action>
+					<action function="page">ext_general</action>
+				</listitem>
+				<listitem name="MIUI OTA">
+					<icon res="bs_btn_set_ota"/>
+					<action function="page">fox_ota</action>
+				</listitem>
+				<listitem name="{@settings_ui}">
+					<icon res="bs_btn_set_custom"/>
+					<action function="set">needs_repack=0</action>
+					<action function="set">update_fonts=0</action>
+					<action function="set">update_navbar=0</action>
+					<action function="set">update_accent=0</action>
+					<action function="set">update_style=0</action>
+					<action function="set">update_splash=0</action>
+					
+					<action function="set">navbar_disable_tmp=%navbar_disable%</action>
+					<action function="set">navbar_disable_add_tmp=%navbar_disable_add%</action>
+					
+					<action function="set">theme_font_tmp=%theme_font%</action>
+					<action function="set">theme_sec_font_tmp=%theme_sec_font%</action>
+					<action function="set">theme_font_size_tmp=%theme_font_size%</action>
+					
+					<action function="set">theme_accent_tmp=%theme_accent%</action>
+					<action function="set">theme_style_tmp=%theme_style%</action>
+					
+					<action function="page">ext_custom</action>
+				</listitem>
+				<listitem name="{@settings_screen}">
+					<icon res="bs_btn_set_screen"/>
+					<action function="page">ext_screen</action>
+				</listitem>
+				<listitem name="{@vibration_hdr}">
+					<icon res="bs_btn_set_vibro"/>
+					<condition var1="tw_disable_haptics" op="!=" var2="1"/>
+					<action function="page">ext_vibrate</action>
+				</listitem>
+				<listitem name="{@backup_hdr}">
+					<icon res="bs_btn_restore"/>
+					<action function="set">backup_back=settings</action>
+					<action function="page">ext_backup</action>
+				</listitem>
+				<listitem name="{@settings_time}">
+					<icon res="bs_btn_set_regional"/>
+					<action function="page">ext_time</action>
+				</listitem>
+				<listitem name="{@dbg}">
+					<icon res="bs_btn_set_bug"/>
+					<condition var1="debug_mode" var2="1"/>
+					<action function="page">debug</action>
+				</listitem>
+				<listitem name="{@about_hdr}">
+					<icon res="bs_btn_set_about"/>
+					<action function="page">about</action>
+				</listitem>
+			</listbox>
+			
 			<template name="ab"/>
 
 			<template name="statusbarinfo"/>
@@ -24,181 +85,6 @@
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_reset"/>
 			</image>
-
-			<!-- General -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row1_y%"/>
-				<action function="set">general_back=settings</action>
-				<action function="page">ext_general</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_set_x%" y="%set_row1_y%"/>
-				<image resource="bs_btn_set_global"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row1_text_y%"/>
-				<text>{@settings_general}</text>
-			</text>
-			<!---->
-
-			<!-- MIUI OTA -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">fox_ota</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_set_x%" y="%set_row2_y%"/>
-				<image resource="bs_btn_set_ota"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row2_text_y%"/>
-				<text>MIUI OTA</text>
-			</text>
-			<!---->
-
-			<!-- Customization -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">needs_repack=0</action>
-				<action function="set">update_fonts=0</action>
-				<action function="set">update_navbar=0</action>
-				<action function="set">update_accent=0</action>
-				<action function="set">update_style=0</action>
-				<action function="set">update_splash=0</action>
-				
-				<action function="set">navbar_disable_tmp=%navbar_disable%</action>
-				<action function="set">navbar_disable_add_tmp=%navbar_disable_add%</action>
-				
-				<action function="set">theme_font_tmp=%theme_font%</action>
-				<action function="set">theme_sec_font_tmp=%theme_sec_font%</action>
-				<action function="set">theme_font_size_tmp=%theme_font_size%</action>
-				
-				<action function="set">theme_accent_tmp=%theme_accent%</action>
-				<action function="set">theme_style_tmp=%theme_style%</action>
-				
-				<action function="page">ext_custom</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_set_x%" y="%set_row3_y%"/>
-				<image resource="bs_btn_set_custom"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row3_text_y%"/>
-				<text>{@settings_ui}</text>
-			</text>
-			<!---->
-
-			<!-- Screen -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_screen</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_set_x%" y="%set_row4_y%"/>
-				<image resource="bs_btn_set_screen"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row4_text_y%"/>
-				<text>{@settings_screen}</text>
-			</text>
-			<!---->
-
-			<!-- Vibration -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_vibrate</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_set_x%" y="%set_row5_y%"/>
-				<image resource="bs_btn_set_vibro"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row5_text_y%"/>
-				<text>{@vibration_hdr}</text>
-			</text>
-			<!---->
-
-			<!-- Backup -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">backup_back=settings</action>
-				<action function="page">ext_backup</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_set_x%" y="%set_row6_y%"/>
-				<image resource="bs_btn_restore"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
-				<text>{@backup_hdr}</text>
-			</text>
-			<!---->
-
-			<!-- Regional -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">ext_time</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_set_x%" y="%set_row7_y%"/>
-				<image resource="bs_btn_set_regional"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
-				<text>{@settings_time}</text>
-			</text>
-			<!---->
-
-			<!-- Info -->
-			<button style="bs_btn">
-				<placement x="0" y="%set_row8_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">about</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_set_x%" y="%set_row8_y%"/>
-				<image resource="bs_btn_set_about"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
-				<text>{@about_hdr}</text>
-			</text>
-			<!---->
-
-			<!-- Debug -->
-			<button style="bs_btn">
-				<condition var1="debug_mode" var2="1"/>
-				<placement x="0" y="%set_row9_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">debug</action>
-			</button>
-			
-			<image>
-				<condition var1="debug_mode" var2="1"/>
-				<placement x="%col1_set_x%" y="%set_row9_y%"/>
-				<image resource="bs_btn_set_bug"/>
-			</image>
-			
-			<text style="bs_text">
-				<condition var1="debug_mode" var2="1"/>
-				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
-				<text>{@dbg}</text>
-			</text>
-			<!---->
 
 			<action>
 				<touch key="home"/>
@@ -256,8 +142,25 @@
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l8%"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l9%"/>
 				<condition var1="general_back" op="!=" var2="mount"/>
+				<listitem name="{@mount_sys_ro_chk}">
+					<condition var1="general_back" op="!=" var2="wipe"/>
+					<condition var1="general_back" op="!=" var2="reboot"/>
+					<condition var1="general_back" op="!=" var2="terminal"/>
+					<icon res="checkbox_true"/>
+					<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
+					<action function="set">tw_lifetime_writes=2</action>
+					<action function="page">system_readonly_check_mount</action>
+				</listitem>
+				<listitem name="{@mount_sys_ro_chk}">
+					<condition var1="general_back" op="!=" var2="wipe"/>
+					<condition var1="general_back" op="!=" var2="reboot"/>
+					<condition var1="general_back" op="!=" var2="terminal"/>
+					<condition var1="tw_mount_system_ro" var2="0"/>
+					<icon res="checkbox_false"/>
+					<action function="mountsystemtoggle">1</action>
+				</listitem>
 				<listitem name="{@use_rmrf_chk}">
 					<condition var1="general_back" op="!=" var2="terminal"/>
 					<data variable="tw_rm_rf"/>
@@ -299,79 +202,6 @@
 				</listitem>
 			</listbox>
 			
-			<!-- Read-only system -->
-			<button style="menu_btn_sort">
-				<condition var1="general_back" var2="settings"/>
-				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
-				<placement x="0" y="%row5_2_y%" w="%screen_w%" h="90"/>
-				<action function="mountsystemtoggle">1</action>
-			</button>
-
-			<button style="menu_btn_sort">
-				<condition var1="general_back" var2="settings"/>
-				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
-				<placement x="0" y="%row5_2_y%" w="%screen_w%" h="90"/>
-				<action function="set">tw_lifetime_writes=2</action>
-				<action function="page">system_readonly_check_mount</action>
-			</button>
-			
-			<image>
-				<condition var1="general_back" var2="settings"/>
-				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
-				<placement x="0" y="%row5_2_y%"/>
-				<image resource="checkbox_false"/>
-			</image>
-			
-			<image>
-				<condition var1="general_back" var2="settings"/>
-				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
-				<placement x="0" y="%row5_2_y%"/>
-				<image resource="checkbox_true"/>
-			</image>
-			
-			<text>
-				<condition var1="general_back" var2="settings"/>
-				<placement x="160" y="%check_mount_ro_1%"/>
-				<font resource="body1" color="%text%"/>
-				<text>{@mount_sys_ro_chk}</text>
-			</text>
-			
-			<button style="menu_btn_sort">
-				<condition var1="general_back" var2="mount"/>
-				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="90"/>
-				<action function="mountsystemtoggle">1</action>
-			</button>
-
-			<button style="menu_btn_sort">
-				<condition var1="general_back" var2="mount"/>
-				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="90"/>
-				<action function="set">tw_lifetime_writes=2</action>
-				<action function="page">system_readonly_check_mount</action>
-			</button>
-			
-			<image>
-				<condition var1="general_back" var2="mount"/>
-				<condition var1="tw_mount_system_ro" op="=" var2="0"/>
-				<placement x="0" y="%row1_2_y%"/>
-				<image resource="checkbox_false"/>
-			</image>
-			
-			<image>
-				<condition var1="general_back" var2="mount"/>
-				<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
-				<placement x="0" y="%row1_2_y%"/>
-				<image resource="checkbox_true"/>
-			</image>
-			
-			<text>
-				<condition var1="general_back" var2="mount"/>
-				<placement x="160" y="%check_mount_ro_2%"/>
-				<font resource="body1" color="%text%"/>
-				<text>{@mount_sys_ro_chk}</text>
-			</text>
-			<!---->
 			
 			<text style="caption">
 				<placement x="%col1_x%" y="%row8_2_y%"/>
@@ -529,96 +359,46 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_2_y%"/>
-				<text>Select password type</text>
+				<text>{@pass_page_select}</text>
 			</text>
 
-			<!-- Classic -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row6_y%"/>
-				<action function="set">pass_new_1=</action>
-				<action function="set">pass_new_2=</action>
-				<action function="set">pass_notm=0</action>
-				<action function="page">pass_text</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row6_y%"/>
-				<image resource="pass_classic"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row6_text_y%"/>
-				<text>{@pass_classic}</text>
-			</text>
-			<!---->
-
-			<!-- PIN -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row7_y%"/>
-				<action function="set">pass_new_1=</action>
-				<action function="set">pass_new_2=</action>
-				<action function="set">pass_notm=0</action>
-				<action function="page">pass_pin</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row7_y%"/>
-				<image resource="dialpad"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row7_text_y%"/>
-				<text>{@pass_pin}</text>
-			</text>
-			<!---->
-
-			<!-- Gesture -->
-			<button style="bs_btn">
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row8_y%"/>
-				<action function="set">pass_new_1=</action>
-				<action function="set">pass_new_2=</action>
-				<action function="set">pass_notm=0</action>
-				<action function="set">pass_pattern_grid=3</action>
-				<action function="page">pass_pattern</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row8_y%"/>
-				<image resource="pass_gesture"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row8_text_y%"/>
-				<text>{@pass_gk}</text>
-			</text>
-			<!---->
-
-			<!-- Disable -->
-			<button style="bs_btn">
-				<condition var1="use_pass" var2="1"/>
-				<placement x="0" w="%screen_w%" h="%ab_menu_sort_btn_h%" y="%set_row9_y%"/>
-				<action function="set">pass_new_1=</action>
-				<action function="set">pass_new_2=</action>
-				<action function="set">pass_notm=0</action>
-				<action function="set">pass_true=qwerty</action>
-				<action function="set">pass_type=0</action>
-				<action function="set">pass_pattern_grid=3</action>
-				<action function="set">use_pass=0</action>
-				<action function="page">pass_select</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%set_row9_y%"/>
-				<condition var1="use_pass" var2="1"/>
-				<image resource="bs_adv_frp"/>
-			</image>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%set_row9_text_y%"/>
-				<condition var1="use_pass" var2="1"/>
-				<text>{@pass_dis}</text>
-			</text>
-			<!---->
+			<listbox style="btn_list">
+				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%bl_h4%"/>
+				<listitem name="{@pass_classic}">
+					<icon res="pass_classic"/>
+					<action function="set">pass_new_1=</action>
+					<action function="set">pass_new_2=</action>
+					<action function="set">pass_notm=0</action>
+					<action function="page">pass_text</action>
+				</listitem>
+				<listitem name="{@pass_pin}">
+					<icon res="dialpad"/>
+					<action function="set">pass_new_1=</action>
+					<action function="set">pass_new_2=</action>
+					<action function="set">pass_notm=0</action>
+					<action function="page">pass_pin</action>
+				</listitem>
+				<listitem name="{@pass_gk}">
+					<icon res="pass_gesture"/>
+					<action function="set">pass_new_1=</action>
+					<action function="set">pass_new_2=</action>
+					<action function="set">pass_notm=0</action>
+					<action function="set">pass_pattern_grid=3</action>
+					<action function="page">pass_pattern</action>
+				</listitem>
+				<listitem name="{@pass_dis}">
+					<condition var1="use_pass" var2="1"/>
+					<icon res="bs_adv_frp"/>
+					<action function="set">pass_new_1=</action>
+					<action function="set">pass_new_2=</action>
+					<action function="set">pass_notm=0</action>
+					<action function="set">pass_true=qwerty</action>
+					<action function="set">pass_type=0</action>
+					<action function="set">pass_pattern_grid=3</action>
+					<action function="set">use_pass=0</action>
+					<action function="page">pass_select</action>
+				</listitem>
+			</listbox>
 			
 			<action>
 				<touch key="home"/>
