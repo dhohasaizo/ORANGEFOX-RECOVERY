@@ -96,18 +96,18 @@ static void CreateNewFile(string file_path)
   chmod (file_path.c_str(), 0644);
 }
 
+/* Have we just installed OrangeFox on a device with a Treble ROM? */
+static bool New_Fox_On_Treble(void)
+{
+ return ((Fox_Current_ROM_IsTreble == 1 || ROM_IsRealTreble == 1) && (New_Fox_Installation == 1));
+}
+
 /* append a line to a text file */
 static void AppendLineToFile(string file_path, string line)
 {
     std::ofstream file;
     file.open(file_path, std::ios::out | std::ios::app);
     file << line << std::endl;
-}
-
-/* Have we just installed OrangeFox on a device with a Treble ROM? */
-static bool New_Fox_On_Treble(void)
-{
- return ((Fox_Current_ROM_IsTreble == 1 || ROM_IsRealTreble == 1) && (New_Fox_Installation == 1));
 }
 
 /* Get the display ID of the installed ROM */
@@ -129,14 +129,6 @@ static string GetInstalledRom(void)
    return s;
 }
 
-/* remove trailing newline from string */
-static string Trim_Trailing_NewLine (const string src)
-{
-   string ret = src;
-   ret.erase(std::remove(ret.begin(), ret.end(), '\n'), ret.end());   
-   return ret;
-}
-
 /* Get the value of a named variable from the prop file */
 static string Get_Property (const string propname)
 {
@@ -145,6 +137,14 @@ static string Get_Property (const string propname)
        return "";
    else
       return ret;//(Trim_Trailing_NewLine (ret));
+}
+
+/* remove trailing newline from string */
+static string Trim_Trailing_NewLine (const string src)
+{
+   string ret = src;
+   ret.erase(std::remove(ret.begin(), ret.end(), '\n'), ret.end());   
+   return ret;
 }
 
 /* Get the device name */
@@ -295,49 +295,41 @@ void TWFunc::Run_Before_Reboot(void)
 }
 
 /* Execute a command */
-int TWFunc::Exec_Cmd(const string & cmd, string & result)
-{
-  FILE *exec;
-  char buffer[130];
-  int ret = 0;
-  exec = __popen(cmd.c_str(), "r");
-  if (!exec) 
-  {  
-    result = popen_error_str;
-    return -1;
-  }
-  while (!feof(exec))
-    {
-      if (fgets(buffer, 128, exec) != NULL)
-	{
-	  result += buffer;
+int TWFunc::Exec_Cmd(const string& cmd, string &result) {
+	FILE* exec;
+	char buffer[130];
+	int ret = 0;
+	exec = __popen(cmd.c_str(), "r");
+	if (!exec) return -1;
+	while (!feof(exec)) {
+		if (fgets(buffer, 128, exec) != NULL) {
+			result += buffer;
+		}
 	}
-    }
-  ret = __pclose(exec);
-  return ret;
+	ret = __pclose(exec);
+	return ret;
 }
 
-int TWFunc::Exec_Cmd(const string & cmd)
-{
-  pid_t pid;
-  int status;
-  switch (pid = fork())
-    {
-    case -1:
-      LOGERR("Exec_Cmd(): vfork failed: %d!\n", errno);
-      return -1;
-    case 0:			// child
-      execl("/sbin/sh", "sh", "-c", cmd.c_str(), NULL);
-      _exit(127);
-      break;
-    default:
-      {
-	if (TWFunc::Wait_For_Child(pid, &status, cmd) != 0)
-	  return -1;
-	else
-	  return 0;
-      }
-    }
+int TWFunc::Exec_Cmd(const string& cmd, bool Show_Errors) {
+	pid_t pid;
+	int status;
+	switch(pid = fork())
+	{
+		case -1:
+			LOGERR("Exec_Cmd(): vfork failed: %d!\n", errno);
+			return -1;
+		case 0: // child
+			execl("/sbin/sh", "sh", "-c", cmd.c_str(), NULL);
+			_exit(127);
+			break;
+		default:
+		{
+			if (TWFunc::Wait_For_Child(pid, &status, cmd, Show_Errors) != 0)
+				return -1;
+			else
+				return 0;
+		}
+	}
 }
 
 // Returns "file.name" from a full /path/to/file.name
@@ -392,39 +384,31 @@ string TWFunc::Exec_With_Output(const string &cmd)
     return exec_error_str;
 }
 
-int TWFunc::Wait_For_Child(pid_t pid, int *status, string Child_Name)
-{
-  pid_t rc_pid;
+int TWFunc::Wait_For_Child(pid_t pid, int *status, string Child_Name, bool Show_Errors) {
+	pid_t rc_pid;
 
-  rc_pid = waitpid(pid, status, 0);
-  if (rc_pid > 0)
-    {
-      if (WIFSIGNALED(*status))
-	{
-	  gui_msg(Msg(msg::kError, "pid_signal={1} process ended with signal: {2}") (Child_Name) (WTERMSIG(*status)));	// Seg fault or some other non-graceful termination
-	  return -1;
+	rc_pid = waitpid(pid, status, 0);
+	if (rc_pid > 0) {
+		if (WIFSIGNALED(*status)) {
+			if (Show_Errors)
+				gui_msg(Msg(msg::kError, "pid_signal={1} process ended with signal: {2}")(Child_Name)(WTERMSIG(*status))); // Seg fault or some other non-graceful termination
+			return -1;
+		} else if (WEXITSTATUS(*status) == 0) {
+			LOGINFO("%s process ended with RC=%d\n", Child_Name.c_str(), WEXITSTATUS(*status)); // Success
+		} else {
+			if (Show_Errors)
+				gui_msg(Msg(msg::kError, "pid_error={1} process ended with ERROR: {2}")(Child_Name)(WEXITSTATUS(*status))); // Graceful exit, but there was an error
+			return -1;
+		}
+	} else { // no PID returned
+		if (errno == ECHILD)
+			LOGERR("%s no child process exist\n", Child_Name.c_str());
+		else {
+			LOGERR("%s Unexpected error %d\n", Child_Name.c_str(), errno);
+			return -1;
+		}
 	}
-      else if (WEXITSTATUS(*status) == 0)
-	{
-	  LOGINFO("%s process ended with RC=%d\n", Child_Name.c_str(), WEXITSTATUS(*status));	// Success
-	}
-      else
-	{
-	  gui_msg(Msg(msg::kError, "pid_error={1} process ended with ERROR: {2}") (Child_Name) (WEXITSTATUS(*status)));	// Graceful exit, but there was an error
-	  return -1;
-	}
-    }
-  else
-    {				// no PID returned
-      if (errno == ECHILD)
-	LOGERR("%s no child process exist\n", Child_Name.c_str());
-      else
-	{
-	  LOGERR("%s Unexpected error %d\n", Child_Name.c_str(), errno);
-	  return -1;
-	}
-    }
-  return 0;
+	return 0;
 }
 
 int TWFunc::Wait_For_Child_Timeout(pid_t pid, int *status,
