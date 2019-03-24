@@ -97,6 +97,7 @@
 		<string name="wipe_cache_dalvik_confirm">Очистить Cache &amp; Dalvik</string>
 		<string name="wiping_cache_dalvik">Очистка Cache &amp; Dalvik...</string>
 		<string name="wipe_cache_dalvik_complete">Cache &amp; Dalvik очистка завершена</string>
+		<string name="cache_dalvik_done">Cache &amp; Dalvik очистка завершена</string>
 		<string name="swipe_wipe">Проведите для очистки</string>
 		<string name="swipe_wipe_s">   Очистка</string>
 		
@@ -739,7 +740,7 @@
 		<string name="author">Автор</string>
 		<string name="contact">Контакты</string>
 		<string name="credits">Благодарности</string>
-		<string name="version_twrp">Версии</string>
+		<string name="version">Версия</string>
 		<string name="theme">Установка темы</string>
 		<string name="theme_vers">Тема:</string>
 		<string name="set_password">Установка пароля</string>
@@ -1241,6 +1242,19 @@
 		<string name="more">Еще...</string>
 		<string name="hide">Скрыть</string>
 		<string name="part_menu_hdr">Управление разделами</string>
+		
+		<!-- About -->
+		<string name="abt_maintainer">Сопровождающий</string>
+		<string name="abt_fd">Дизайнер и создатель темы</string>
+		<string name="abt_bork">CEO, сайт и UI</string>
+		<string name="abt_dj">Сборка системы, C++</string>
+		<string name="abt_device">Устройство</string>
+		<string name="abt_front">Frontend разработчик</string>
+		<string name="abt_back">Backend разработчик</string>
+		<string name="version_twrp">Версия TWRP</string>
+		<string name="abt_credits">Спасибо</string>
+		<string name="abt_trans">Перевод</string>
+		<string name="abt_changes">Изменения</string>
 
 		<!-- MIUI OTA -->
 		<string name="fox_ota_settings">Настройки OTA</string>

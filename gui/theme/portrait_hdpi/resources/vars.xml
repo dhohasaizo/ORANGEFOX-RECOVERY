@@ -210,6 +210,39 @@
 		<variable name="bl_y" value="264+%cutout_w%"/>
 		<variable name="bl_np_h" value="%screen_min_cut%-600"/>
 		
+		<!-- About -->
+		<variable name="about_title_h" value="576+%cutout_w%"/>
+		<variable name="tab_title_h" value="360+%cutout_w%"/>
+		<variable name="tab_btn_y" value="240+%cutout_w%"/>
+		<variable name="credits_listbox_h" value="%screen_min_cut%-552"/>
+		<variable name="about_logo_y" value="280+%cutout_w%"/>
+		<variable name="about_logo_x" value="40"/>
+		<variable name="about_txt_x" value="360"/>
+		<variable name="about_txt2_y" value="370+%cutout_w%"/>
+		<variable name="about_txt3_y" value="420+%cutout_w%"/>
+		<variable name="about_txt4_y" value="470+%cutout_w%"/>
+		
+		<variable name="cardtxt_1" value="718+%cutout_w%"/>
+		<variable name="cardtxt_2" value="778+%cutout_w%"/>
+		<variable name="cardtxt_3" value="1006+%cutout_w%"/>
+		<variable name="cardtxt_4" value="1066+%cutout_w%"/>
+		<variable name="cardtxt_5" value="1294+%cutout_w%"/>
+		<variable name="cardtxt_6" value="1354+%cutout_w%"/>
+		<variable name="cardtxt_7" value="1582+%cutout_w%"/>
+		<variable name="cardtxt_8" value="1642+%cutout_w%"/>
+		
+		<variable name="card2_y" value="864+%cutout_w%"/>
+		<variable name="card3_y" value="1152+%cutout_w%"/>
+		<variable name="card4_y" value="1440+%cutout_w%"/>
+		
+		<variable name="card_img1_y" value="648+%cutout_w%"/>
+		<variable name="card_img2_y" value="936+%cutout_w%"/>
+		<variable name="card_img3_y" value="1224+%cutout_w%"/>
+		<variable name="card_img4_y" value="1512+%cutout_w%"/>
+		
+		<variable name="card_txt_x" value="300"/>
+		<variable name="card_img_x" value="72"/>
+		
 		<!-- WILL BE REMOVED SOON -->
 		
 		<!-- Long buttons -->

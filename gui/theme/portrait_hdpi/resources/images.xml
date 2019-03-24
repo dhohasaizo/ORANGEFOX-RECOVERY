@@ -25,6 +25,7 @@
 		<image name="fab_close" filename="Default/FAB/close" retainaspect="1"/>
 		<image name="fab_add" filename="Default/FAB/add" retainaspect="1"/>
 		<image name="fab_usb" filename="Default/FAB/usb" retainaspect="1"/>
+		<image name="fab_credits" filename="Default/FAB/credits" retainaspect="1"/>
 		
 		<!-- Fonts Preview -->
 		<font name="font1" filename="Roboto-Regular.ttf" size="42"/>
@@ -243,5 +244,6 @@
 		<image name="author_fd" filename="Default/About/author_fd" retainaspect="1"/>
 		<image name="author_yan" filename="Default/About/author_yan" retainaspect="1"/>
 		<image name="author_jabba" filename="Default/About/author_jabba" retainaspect="1"/>
+		<image name="maintainer_img" filename="Default/About/maintainer" retainaspect="1"/>
 	</resources>
 </recovery>

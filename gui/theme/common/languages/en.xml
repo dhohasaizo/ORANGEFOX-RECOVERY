@@ -80,6 +80,7 @@
 		<string name="wipe_dalvik_confirm">Wipe Dalvik?</string>
 		<string name="wiping_cache_dalvik">Wiping Cache &amp; Dalvik...</string>
 		<string name="wipe_cache_dalvik_complete">Cache &amp; Dalvik Wipe completed</string>
+		<string name="cache_dalvik_done">Cache &amp; Dalvik Wipe completed</string>
 		<string name="swipe_wipe">Swipe to Wipe</string>
 		<string name="rebooting">Rebooting...</string>
 		<string name="swipe_reboot">Swipe to Reboot</string>
@@ -645,7 +646,7 @@
 		<string name="author">Author</string>
 		<string name="contact">Contact</string>
 		<string name="credits">Credits</string>
-		<string name="version_twrp">Version</string>
+		<string name="version">Version</string>
 		<string name="theme">Install Theme</string>
 		<string name="theme_vers">Theme:</string>
 		<string name="set_password">Set Password</string>
@@ -1152,6 +1153,20 @@
 		<string name="fox_ota_settings">OTA Settings</string>
 		<string name="fox_ota_off">Disable OTA</string>
 		<string name="fox_ota_on">Enable OTA</string>
+		
+		<!-- About -->
+		<string name="abt_maintainer">Maintainer</string>
+		<string name="abt_fd">Theme creator & designer</string>
+		<string name="abt_bork">CEO, Site & UI</string>
+		<string name="abt_dj">Build system, C++</string>
+		<string name="abt_front">Frontend developer</string>
+		<string name="abt_back">Backend developer</string>
+		<string name="abt_device">Device</string>
+		<string name="version_twrp">TWRP Version</string>
+		<string name="abt_credits">Credits</string>
+		<string name="abt_trans">Translators</string>
+		<string name="abt_changes">Change Log</string>
+		
 		
 		<!-- Files -->
 		<string name="files_show_hidden">Show hidden files in Files</string>

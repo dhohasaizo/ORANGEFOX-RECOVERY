@@ -308,7 +308,7 @@
 
 			<image>
 				<image resource="fox_lock"/>
-				<placement x="30" y="%row1_1_y%"/>
+				<placement x="68" y="%row1_1_y%"/>
 			</image>
 
 			<text style="text_body1_hl">
@@ -866,123 +866,162 @@
 		<page name="about">
 			<template name="body"/>
 			
-			<template name="actionbar_back"/> <!--template name="ab"/-->
+			<fill color="%title_solid_bg%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%about_title_h%"/>
+			</fill>
+
+			<template name="status_bg"/>
 			
+			<template name="actionbar_back"/>
+
 			<template name="statusbarinfo"/>
 
-			<button>
-				<image resource="logo_big"/>
-				<condition var1="secret_features" op="!=" var2="5"/>
-				<placement x="%center_x%" y="330" placement="4"/>
-				<action function="compute">secret_features+1</action>
-				<action function="page">about</action>
-			</button>
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@about_hdr}</text>
+			</text>
+			
+			<image>
+				<image resource="actionbar_shadow"/>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<placement x="0" y="%about_title_h%"/>
+			</image>
+
 			
 			<image>
 				<image resource="logo_big"/>
-				<condition var1="secret_features" var2="5"/>
-				<placement x="%center_x%" y="330" placement="4"/>
+				<placement x="%about_logo_x%" y="%about_logo_y%"/>
 			</image>
 			
 			<text style="text_ab_title">
-				<placement x="%center_x%" y="590" placement="4"/>
-				<text>OrangeFox Recovery Project</text>
+				<placement x="%about_txt_x%" y="%about_logo_y%" />
+				<text>OrangeFox</text>
 			</text>
 
 			<text style="text_ab_subtitle">
-				<placement x="%center_x%" y="660" placement="4"/>
-				<text>v%tw_version% | %fox_actual_build%</text>
+				<placement x="%about_txt_x%" y="%about_txt2_y%"/>
+				<text>Recovery Project</text>
+			</text>
+			<text style="text_ab_subtitle">
+				<placement x="%about_txt_x%" y="%about_txt3_y%"/>
+				<text>{@version}: %fox_actual_build%</text>
+			</text>
+			<text style="text_ab_subtitle">
+				<placement x="%about_txt_x%" y="%about_txt4_y%"/>
+				<text>{@version_twrp}: %tw_version%</text>
 			</text>
 			
 			<!-- Yan's Card -->
-			<image>
-				<image resource="card"/>
-				<placement x="0" y="720"/>
-			</image>
 			
 			<image>
 				<image resource="author_yan"/>
-				<placement x="72" y="792"/>
+				<placement x="%card_img_x%" y="%card_img1_y%"/>
 			</image>
 
+			<image>
+				<image resource="card"/>
+				<placement x="0" y="%about_title_h%"/>
+			</image>
 			<text style="about_name">
-				<placement x="300" y="792"/>
+				<placement x="%card_txt_x%" y="%card_img1_y%"/>
 				<text>MrYacha</text>
 			</text>
 			<text style="about_info">
-				<placement x="300" y="858"/>
-				<text>Frontend developer</text>
+				<placement x="%card_txt_x%" y="%cardtxt_1%" />
+				<text>{@abt_front}</text>
 			</text>
 			<text style="about_info">
-				<placement x="300" y="910"/>
-				<text>CEO, UI, site developer</text>
+				<placement x="%card_txt_x%" y="%cardtxt_2%" />
+				<text>{@abt_bork}</text>
 			</text>
 			<!-- Card -->
 			
 			<!-- fd's Card -->
-			<image>
-				<image resource="card"/>
-				<placement x="0" y="1008"/>
-			</image>
 			
 			<image>
 				<image resource="author_fd"/>
-				<placement x="72" y="1080"/>
+				<placement x="%card_img_x%" y="%card_img2_y%"/>
 			</image>
 
+			<image>
+				<image resource="card"/>
+				<placement x="0" y="%card2_y%"/>
+			</image>
 			<text style="about_name">
-				<placement x="300" y="1080"/>
+				<placement x="%card_txt_x%" y="%card_img2_y%"/>
 				<text>fordownloads</text>
 			</text>
 			<text style="about_info">
-				<placement x="300" y="1146"/>
-				<text>Frontend developer</text>
+				<placement x="%card_txt_x%" y="%cardtxt_3%"/>
+				<text>{@abt_front}</text>
 			</text>
 			<text style="about_info">
-				<placement x="300" y="1198"/>
-				<text>Theme developer</text>
+				<placement x="%card_txt_x%" y="%cardtxt_4%"/>
+				<text>{@abt_fd}</text>
 			</text>
 			<!-- Card -->
 			
 			<!-- Bim's Card -->
 			<image>
-				<image resource="card"/>
-				<placement x="0" y="1296"/>
+				<image resource="author_jabba"/>
+				<placement x="%card_img_x%" y="%card_img3_y%"/>
 			</image>
 			
 			<image>
-				<image resource="author_jabba"/>
-				<placement x="72" y="1368"/>
+				<image resource="card"/>
+				<placement x="0" y="%card3_y%"/>
 			</image>
 
 			<text style="about_name">
-				<placement x="300" y="1368"/>
+				<placement x="%card_txt_x%" y="%card_img3_y%"/>
 				<text>DarthJabba9</text>
 			</text>
 			<text style="about_info">
-				<placement x="300" y="1434"/>
-				<text>Backend developer</text>
+				<placement x="%card_txt_x%" y="%cardtxt_5%"/>
+				<text>{@abt_back}</text>
 			</text>
 			<text style="about_info">
-				<placement x="300" y="1486"/>
-				<text>Build system, C++ developer</text>
+				<placement x="%card_txt_x%" y="%cardtxt_6%"/>
+				<text>{@abt_dj}</text>
 			</text>
 			<!-- Card -->
 			
+			<!-- Maintainer -->
 			<image>
-				<placement x="%col1_x%" y="%db_row1_y%"/>
-				<image resource="bs_btn_open"/>
+				<image resource="maintainer_img"/>
+				<placement x="%card_img_x%" y="%card_img4_y%"/>
+			</image>
+			
+			<image>
+				<image resource="card"/>
+				<placement x="0" y="%card4_y%"/>
 			</image>
 
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%db_row1_text_y%"/>
-				<text>More...</text>
+			<text style="about_name">
+				<placement x="%card_txt_x%" y="%card_img4_y%"/>
+				<text>%of_maintainer%</text>
 			</text>
+			<text style="about_info">
+				<placement x="%card_txt_x%" y="%cardtxt_7%"/>
+				<text>{@abt_maintainer}</text>
+			</text>
+			<text style="about_info">
+				<placement x="%card_txt_x%" y="%cardtxt_8%"/>
+				<text>{@abt_device}: %of_device%</text>
+			</text>
+			<!-- Card -->
 			
-			<button style="bs_btn">
-				<placement x="0" y="%db_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
+			<button style="floating_btn">
+				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<action function="set">credits_page=0</action>
 				<action function="page">about_credits</action>
 			</button>
+			
+			<image>
+				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<image resource="fab_credits"/>
+			</image>
 
 			<action>
 				<touch key="home"/>
@@ -997,24 +1036,96 @@
 		
 		<page name="about_credits">
 			<template name="body"/>
+			
+			<listbox>
+				<condition var1="credits_page" var2="0"/>
+				<background color="%background%"/>
+				<font resource="body2" spacing="8" color="%text%" />
+				<highlight color="%transparent%"/>
+				<icon/>
+				<placement x="24" y="%tab_title_h%" w="1032" h="%credits_listbox_h%"/>
+				<read filename="/twres/credits.txt"/>
+			</listbox>
+			<listbox>
+				<condition var1="credits_page" var2="1"/>
+				<font resource="body2" spacing="8" color="%text%" />
+				<highlight color="%transparent%"/>
+				<icon/>
+				<placement x="24" y="%tab_title_h%" w="1032" h="%credits_listbox_h%"/>
+				<read filename="/twres/translators.txt"/>
+			</listbox>
+			<listbox>
+				<condition var1="credits_page" var2="2"/>
+				<background color="%background%"/>
+				<font resource="body2" spacing="8" color="%text%" />
+				<highlight color="%transparent%"/>
+				<icon/>
+				<placement x="24" y="%tab_title_h%" w="1032" h="%credits_listbox_h%"/>
+				<read filename="/twres/changelog.txt"/>
+			</listbox>
+			
+			<fill color="%title_solid_bg%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%tab_title_h%"/>
+			</fill>
 
-			<template name="ab"/>
+			<template name="status_bg"/>
+			
+			<template name="actionbar_back"/>
 
 			<template name="statusbarinfo"/>
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Reading test: /twres/ui.xml</text>
+				<text>{@about_hdr}</text>
 			</text>
 			
-			<listbox>
-				<background color="%background%"/>
-				<font resource="body2" spacing="8" color="%text%" />
-				<highlight color="%transparent%"/>
-				<icon/>
-				<placement x="0" y="%row1_1_y%" w="%screen_w%" h="%fullscreen_list_h%"/>
-				<read filename="/twres/ui.xml"/>
-			</listbox>
+			<image>
+				<image resource="actionbar_shadow"/>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<placement x="0" y="%tab_title_h%"/>
+			</image>
+			
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<font resource="Secondary" color="%accent%"/>
+				<placement x="0" y="%tab_btn_y%" w="360" h="84"/>
+				<text>{@abt_credits}</text>
+				<action function="set">credits_page=0</action>
+			</button>
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<font resource="Secondary" color="%accent%"/>
+				<placement x="360" y="%tab_btn_y%" w="360" h="84"/>
+				<text>{@abt_trans}</text>
+				<action function="set">credits_page=1</action>
+			</button>
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<font resource="Secondary" color="%accent%"/>
+				<placement x="720" y="%tab_btn_y%" w="360" h="84"/>
+				<text>{@abt_changes}</text>
+				<action function="set">credits_page=2</action>
+			</button>
+			
+			<image>
+				<condition var1="credits_page" var2="0"/>
+				<image resource="tab_hl"/>
+				<placement x="0" y="%tab_title_h%" placement="2"/>
+			</image>
+			<image>
+				<condition var1="credits_page" var2="1"/>
+				<image resource="tab_hl"/>
+				<placement x="360" y="%tab_title_h%" placement="2"/>
+			</image>
+			<image>
+				<condition var1="credits_page" var2="2"/>
+				<image resource="tab_hl"/>
+				<placement x="720" y="%tab_title_h%" placement="2"/>
+			</image>
 			
 			<action>
 				<touch key="home"/>
