@@ -652,12 +652,7 @@ void DataManager::SetDefaultValues()
   mConst.SetValue(OF_CLOCK_POS_S, OF_CLOCK_POS);
   mConst.SetValue(OF_ALLOW_DISABLE_NAVBAR_S, OF_ALLOW_DISABLE_NAVBAR);
   //[f/d]
-  
-  //[f/d] Default values for fox vibration
-  mPersist.SetValue("fox_data_install_vibrate", "500");
-  mPersist.SetValue("fox_data_backup_vibrate", "500");
-  mPersist.SetValue("fox_data_restore_vibrate", "500");
-  
+ 
 #ifndef TW_NO_HAPTICS
 	mPersist.SetValue("tw_button_vibrate", "80");
 	mPersist.SetValue("tw_keyboard_vibrate", "40");
