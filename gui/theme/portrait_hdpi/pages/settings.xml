@@ -928,8 +928,14 @@
 				<text>MrYacha</text>
 			</text>
 			<text style="about_info">
+				<condition var1="of_maintainer" op="!=" var2="1"/>
 				<placement x="%card_txt_x%" y="%cardtxt_1%" />
 				<text>{@abt_front}</text>
+			</text>
+			<text style="about_info">
+				<condition var1="of_maintainer" var2="1"/>
+				<placement x="%card_txt_x%" y="%cardtxt_1%" />
+				<text>{@abt_front}, {@abt_maintainer}</text>
 			</text>
 			<text style="about_info">
 				<placement x="%card_txt_x%" y="%cardtxt_2%" />
@@ -953,6 +959,12 @@
 				<text>fordownloads</text>
 			</text>
 			<text style="about_info">
+				<condition var1="of_maintainer" var2="2"/>
+				<placement x="%card_txt_x%" y="%cardtxt_3%"/>
+				<text>{@abt_front}, {@abt_maintainer}</text>
+			</text>
+			<text style="about_info">
+				<condition var1="of_maintainer" op="!=" var2="2"/>
 				<placement x="%card_txt_x%" y="%cardtxt_3%"/>
 				<text>{@abt_front}</text>
 			</text>
@@ -978,8 +990,14 @@
 				<text>DarthJabba9</text>
 			</text>
 			<text style="about_info">
+				<condition var1="of_maintainer" op="!=" var2="3"/>
 				<placement x="%card_txt_x%" y="%cardtxt_5%"/>
 				<text>{@abt_back}</text>
+			</text>
+			<text style="about_info">
+				<condition var1="of_maintainer" var2="3"/>
+				<placement x="%card_txt_x%" y="%cardtxt_5%"/>
+				<text>{@abt_back}, {@abt_maintainer}</text>
 			</text>
 			<text style="about_info">
 				<placement x="%card_txt_x%" y="%cardtxt_6%"/>
@@ -990,36 +1008,71 @@
 			<!-- Maintainer -->
 			<image>
 				<image resource="maintainer_img"/>
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
 				<placement x="%card_img_x%" y="%card_img4_y%"/>
 			</image>
 			
 			<image>
 				<image resource="card"/>
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
 				<placement x="0" y="%card4_y%"/>
 			</image>
 
 			<text style="about_name">
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
 				<placement x="%card_txt_x%" y="%card_img4_y%"/>
 				<text>%of_maintainer%</text>
 			</text>
 			<text style="about_info">
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
 				<placement x="%card_txt_x%" y="%cardtxt_7%"/>
 				<text>{@abt_maintainer}</text>
 			</text>
 			<text style="about_info">
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
+				<condition var1="of_device"/>
 				<placement x="%card_txt_x%" y="%cardtxt_8%"/>
 				<text>{@abt_device}: %of_device%</text>
 			</text>
 			<!-- Card -->
 			
 			<button style="floating_btn">
-				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<condition var1="screen_h" op="&gt;=" var2="2160"/>
+				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
 				<action function="set">credits_page=0</action>
 				<action function="page">about_credits</action>
 			</button>
 			
 			<image>
-				<placement x="%btn_float_x%" y="%btn_float_y%"/>
+				<condition var1="screen_h" op="&gt;=" var2="2160"/>
+				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
+				<image resource="fab_credits"/>
+			</image>
+			
+			<button style="floating_btn">
+				<condition var1="screen_h" op="&lt;" var2="2160"/>
+				<condition var1="of_maintainer" op="&lt;=" var2="3"/>
+				<condition var1="of_maintainer" op="&gt;=" var2="1"/>
+				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
+				<action function="set">credits_page=0</action>
+				<action function="page">about_credits</action>
+			</button>
+			
+			<image>
+				<condition var1="screen_h" op="&lt;" var2="2160"/>
+				<condition var1="of_maintainer" op="&lt;=" var2="3"/>
+				<condition var1="of_maintainer" op="&gt;=" var2="1"/>
+				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
 				<image resource="fab_credits"/>
 			</image>
 

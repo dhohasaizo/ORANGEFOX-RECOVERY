@@ -301,52 +301,6 @@
 				<action function="page">filecheck</action>
 			</input>
 
-			<button style="bs_btn">
-				<placement x="0" y="%actbtn_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="generatebackupname"/>
-			</button>
-
-			<image>
-				<placement x="%col1_x%" y="%actbtn_row2_y%"/>
-				<image resource="bs_btn_new"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%actbtn_row2_text_y%"/>
-				<text>{@bkp_gen}</text>
-			</text>
-
-			<button style="bs_btn">
-				<placement x="0" y="%actbtn_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_backup_name={@auto_gen}</action>
-				<action function="page">backupname_foolprotection</action>
-			</button>
-
-			<image>
-				<placement x="%col1_x%" y="%actbtn_row3_y%"/>
-				<image resource="bs_btn_wut"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%actbtn_row3_text_y%"/>
-				<text>{@bkp_gen_whilebkp}</text>
-			</text>
-
-			<button style="bs_btn">
-				<placement x="0" y="%actbtn_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="appenddatetobackupname"/>
-			</button>
-
-			<image>
-				<placement x="%col1_x%" y="%actbtn_row1_y%"/>
-				<image resource="bs_btn_time"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%actbtn_row1_text_y%"/>
-				<text>{@bkp_date}</text>
-			</text>
-
 			<button>
 				<placement x="%ab_btn1_x%" y="%row2_1a_y%"/>
 				<image resource="actionbar_clear"/>
@@ -369,6 +323,23 @@
 				<placement x="%col1_x%" y="%row2_3a_y%"/>
 				<text>{@backup_name_exists}</text>
 			</text>
+
+			<listbox style="btn_list">
+				<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%bl_h3%"/>
+				<listitem name="{@bkp_date}">
+					<icon res="nav"/>
+					<action function="appenddatetobackupname"/>
+				</listitem>
+				<listitem name="{@bkp_gen}">
+					<icon res="bs_btn_new"/>
+					<action function="generatebackupname"/>
+				</listitem>
+				<listitem name="{@bkp_gen_whilebkp}">
+					<icon res="bs_btn_wut"/>
+					<action function="set">tw_backup_name={@auto_gen}</action>
+					<action function="page">backupname_foolprotection</action>
+				</listitem>
+			</listbox>
 
 			<action>
 				<touch key="home"/>
@@ -417,48 +388,30 @@
 				<text>%tw_backup_name%</text>
 			</input>
 
+			<fill color="%linecolor%">
+				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+			
 			<button style="menu_btn">
 				<placement x="%col1_x%" y="%row2_1a_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<action function="generatebackupname"/>
 				<action function="page">backupname</action>
 			</button>
 
-			<button style="bs_btn">
-				<placement x="0" y="%actbtn_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="generatebackupname"/>
-				<action function="page">backupname</action>
-			</button>
-
-			<image>
-				<placement x="%col1_x%" y="%actbtn_row2_y%"/>
-				<image resource="bs_btn_new"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%actbtn_row2_text_y%"/>
-				<text>{@bkp_gen}</text>
-			</text>
-
-			<button style="bs_btn">
-				<placement x="0" y="%actbtn_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_backup_name=</action>
-				<action function="page">backupname</action>
-				<action function="appenddatetobackupname"/>
-			</button>
-
-			<image>
-				<placement x="%col1_x%" y="%actbtn_row1_y%"/>
-				<image resource="bs_btn_time"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%actbtn_row1_text_y%"/>
-				<text>{@bkp_date}</text>
-			</text>
-
-			<fill color="%linecolor%">
-				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
-			</fill>
+			<listbox style="btn_list">
+				<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%bl_h2%"/>
+				<listitem name="{@bkp_date}">
+					<icon res="nav"/>
+					<action function="set">tw_backup_name=</action>
+					<action function="page">backupname</action>
+					<action function="appenddatetobackupname"/>
+				</listitem>
+				<listitem name="{@bkp_gen}">
+					<icon res="bs_btn_new"/>
+					<action function="generatebackupname"/>
+					<action function="page">backupname</action>
+				</listitem>
+			</listbox>
 
 			<action>
 				<touch key="home"/>

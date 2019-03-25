@@ -235,7 +235,7 @@
 			<listbox style="settingslist">
 				<placement x="0" y="%row1_3a_y%" w="%screen_w%" h="%lb_l1%"/>
 				<listitem name="{@keyboard_nums}">
-					<data variable="xxx"/>
+					<data variable="key_numbar"/>
 				</listitem>
 			</listbox>
 

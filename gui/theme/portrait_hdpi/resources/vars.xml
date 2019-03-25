@@ -60,6 +60,7 @@
 		<variable name="navbar_bkg" value="3" persist="1"/>
 		<variable name="nougat" value="3" persist="1"/>
 		<variable name="key_buttons" value="1" persist="1"/>
+		<variable name="key_numbar" value="1" persist="1"/>
 		<variable name="use_fixed_font" value="1" persist="1"/>
 		<variable name="show_cpu_temp" value="1" persist="1"/>
 		<variable name="list_font" value="0" persist="1"/>
@@ -209,6 +210,7 @@
 		<variable name="bl_fullscreen_h" value="%screen_min_cut%-432"/>
 		<variable name="bl_y" value="264+%cutout_w%"/>
 		<variable name="bl_np_h" value="%screen_min_cut%-600"/>
+		<variable name="bl_files_h" value="%screen_min_cut%-648"/>
 		
 		<!-- About -->
 		<variable name="about_title_h" value="576+%cutout_w%"/>
@@ -243,32 +245,12 @@
 		<variable name="card_txt_x" value="300"/>
 		<variable name="card_img_x" value="72"/>
 		
+		<variable name="btn_float_center_y" value="%screen_h%-294"/>
+		
 		<!-- WILL BE REMOVED SOON -->
 		
 		<!-- Long buttons -->
 		<variable name="bs_text_offset" value="42"/>
-		
-		<!-- Long buttons in settings -->
-		<variable name="set_row1_y" value="264+%cutout_w%"/>
-		<variable name="set_row2_y" value="408+%cutout_w%"/>
-		<variable name="set_row3_y" value="552+%cutout_w%"/>
-		<variable name="set_row4_y" value="696+%cutout_w%"/>
-		<variable name="set_row5_y" value="840+%cutout_w%"/>
-		<variable name="set_row6_y" value="984+%cutout_w%"/>
-		<variable name="set_row7_y" value="1128+%cutout_w%"/>
-		<variable name="set_row8_y" value="1272+%cutout_w%"/>
-		<variable name="set_row9_y" value="1416+%cutout_w%"/>
-		<variable name="set_row10_y" value="1560+%cutout_w%"/>
-		<variable name="set_row1_text_y" value="%set_row1_y%+%bs_text_offset%"/>
-		<variable name="set_row2_text_y" value="%set_row2_y%+%bs_text_offset%"/>
-		<variable name="set_row3_text_y" value="%set_row3_y%+%bs_text_offset%"/>
-		<variable name="set_row4_text_y" value="%set_row4_y%+%bs_text_offset%"/>
-		<variable name="set_row5_text_y" value="%set_row5_y%+%bs_text_offset%"/>
-		<variable name="set_row6_text_y" value="%set_row6_y%+%bs_text_offset%"/>
-		<variable name="set_row7_text_y" value="%set_row7_y%+%bs_text_offset%"/>
-		<variable name="set_row8_text_y" value="%set_row8_y%+%bs_text_offset%"/>
-		<variable name="set_row9_text_y" value="%set_row9_y%+%bs_text_offset%"/>
-		<variable name="set_row10_text_y" value="%set_row10_y%+%bs_text_offset%"/>
 		
 		<!-- Long buttons (bottom) -->
 		<variable name="db_row1_y" value="%screen_h%-288"/>
@@ -281,8 +263,6 @@
 		<variable name="bs_row5_y" value="1056+%cutout_w%"/>
 		<variable name="bs_row6_y" value="1200+%cutout_w%"/>
 		<variable name="bs_row7_y" value="1344+%cutout_w%"/>
-		<variable name="bs_row8_y" value="1488+%cutout_w%"/>
-		<variable name="bs_row9_y" value="1632+%cutout_w%"/>
 		<variable name="bs_row1_text_y" value="%bs_row1_y%+%bs_text_offset%"/>
 		<variable name="bs_row2_text_y" value="%bs_row2_y%+%bs_text_offset%"/>
 		<variable name="bs_row3_text_y" value="%bs_row3_y%+%bs_text_offset%"/>
@@ -290,16 +270,6 @@
 		<variable name="bs_row5_text_y" value="%bs_row5_y%+%bs_text_offset%"/>
 		<variable name="bs_row6_text_y" value="%bs_row6_y%+%bs_text_offset%"/>
 		<variable name="bs_row7_text_y" value="%bs_row7_y%+%bs_text_offset%"/>
-		<variable name="bs_row8_text_y" value="%bs_row8_y%+%bs_text_offset%"/>
-		<variable name="bs_row9_text_y" value="%bs_row9_y%+%bs_text_offset%"/>
-		
-		<!-- Long buttons in backup name -->
-		<variable name="actbtn_row1_y" value="666+%cutout_w%"/>
-		<variable name="actbtn_row2_y" value="810+%cutout_w%"/>
-		<variable name="actbtn_row3_y" value="954+%cutout_w%"/>
-		<variable name="actbtn_row1_text_y" value="%actbtn_row1_y%+%bs_text_offset%"/>
-		<variable name="actbtn_row2_text_y" value="%actbtn_row2_y%+%bs_text_offset%"/>
-		<variable name="actbtn_row3_text_y" value="%actbtn_row3_y%+%bs_text_offset%"/>
 		
 		<!-- WILL BE REMOVED SOON -->
 		
@@ -404,6 +374,8 @@
 		<!-- Keyboard -->
 		<variable name="keyboard_y" value="%screen_h%-788"/>
 		<variable name="keyboard_terminal_y" value="%screen_h%-884"/>
+		<variable name="keyboard_num_y" value="%screen_h%-896"/>
+		<variable name="keyboard_term_num_y" value="%screen_h%-992"/>
 		<variable name="keyboard_bg_y" value="%screen_h%-812"/>
 		<variable name="keyboard_bg_terminal_y" value="%screen_h%-908"/>
 		<variable name="key_enter_new" value="%screen_h%-297"/>

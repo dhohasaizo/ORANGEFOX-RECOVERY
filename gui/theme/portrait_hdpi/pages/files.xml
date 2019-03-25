@@ -779,6 +779,10 @@
 
 			<template name="statusbarinfo"/>
 
+			<action>
+				<action function="set">opts_show=0</action>
+			</action>
+			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@fm_hdr}</text>
@@ -794,213 +798,64 @@
 				<text>%tw_filename1%</text>
 			</text>
 
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">openas</action>
-			</button>
-			<image>
-				<placement x="%col1_x%" y="%bs_row2_y%"/>
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<image resource="bs_btn_open"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<text>{@fm_open}</text>
-			</text>
-			
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="0" y="%bs_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_artype=1</action>
-				<action function="set">tw_extract_action=1</action>
-				<action function="set">tw_pack_lvl=9</action>
-				<action function="set">tw_back=filemanageroptions</action>
-				<action function="page">archive_confirm</action>
-			</button>
-			
-			<image>
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="%col1_x%" y="%bs_row2_y%"/>
-				<image resource="bs_btn_archive"/>
-			</image>
-
-			<text style="bs_text">
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
-				<text>{@fm_open_makezip}</text>
-			</text>
-			
-			
-			
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="0" y="%bs_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_restore_name=%tw_selection1%</action>
-				<action function="set">tw_restore=%tw_filename1%</action>
-				<action function="set">restore_back=filemanagerlist</action>
-				<action function="readBackup"/>
-				<action function="page">restore_read</action> 
-			</button>
-			
-			<image>
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="%col1_x%" y="%bs_row1_y%"/>
-				<image resource="bs_btn_backup"/>
-			</image>
-
-			<text style="bs_text">
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
-				<text>{@fm_open_backup}</text>
-			</text>
-
-
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="queueclear"/>
-				<action function="set">tw_file=%tw_selection1%</action>
-				<action function="set">tw_filename=%tw_filename1%</action>
-				<action function="set">install_back=filemanagerlist</action>
-				<action function="set">tw_zip_location=%tw_file_location1%</action>
-				<action function="queuezip"/>
-				<action function="set">tw_q_1=%tw_file%</action>
-				<action function="page">flash_confirm</action>
-			</button>
-			<image>
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x%" y="%bs_row1_y%"/>
-				<image resource="bs_btn_archive"/>
-			</image>
-
-			<text style="bs_text">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
-				<text>{@fm_open_ZIP}</text>
-			</text>
-				
-			
-			
-
-
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
-					<action function="set">tw_filemanager_command=cp</action>
-					<action function="set">tw_fm_text1={@fm_copying}</action>
-					<action function="set">tw_back=choosedestinationfolder</action>
-					<action function="page">choosedestinationfolder</action>
-				</actions>
-			</button>
-
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="0" y="%bs_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
+			<listbox style="btn_list">
+				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%bl_files_h%"/>
+				<listitem name="{@fm_open}">
+					<icon res="bs_btn_open"/>
+					<action function="page">openas</action>
+				</listitem>
+				<listitem name="{@fm_copy_btn}">
+					<condition var1="tw_fm_isfolder" var2="1"/>
+					<icon res="bs_btn_copy"/>
 					<action function="set">tw_filemanager_command=cd "%tw_file_location1%" &amp;&amp; cd .. &amp;&amp; cp -R</action>
 					<action function="set">tw_fm_text1={@fm_copying}</action>
 					<action function="set">tw_back=choosedestinationfolder</action>
 					<action function="page">choosedestinationfolder</action>
-				</actions>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%bs_row3_y%"/>
-				<image resource="bs_btn_copy"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row3_text_y%"/>
-				<text>{@fm_copy_btn}</text>
-			</text>
-
-			
-			
-			<button style="bs_btn">
-				<placement x="0" y="%bs_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
+				</listitem>
+				<listitem name="{@fm_copy_btn}">
+					<condition var1="tw_fm_isfolder" op="!=" var2="1"/>
+					<icon res="bs_btn_copy"/>
+					<action function="set">tw_filemanager_command=cp</action>
+					<action function="set">tw_fm_text1={@fm_copying}</action>
+					<action function="set">tw_back=choosedestinationfolder</action>
+					<action function="page">choosedestinationfolder</action>
+				</listitem>
+				<listitem name="{@fm_move_btn}">
+					<icon res="bs_btn_cut"/>
 					<action function="set">tw_filemanager_command=mv</action>
 					<action function="set">tw_fm_text1={@fm_moving}</action>
 					<action function="set">tw_back=choosedestinationfolder</action>
 					<action function="page">choosedestinationfolder</action>
-				</actions>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%bs_row4_y%"/>
-				<image resource="bs_btn_cut"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row4_text_y%"/>
-				<text>{@fm_move_btn}</text>
-			</text>
-
-			
-
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
-					<action function="set">tw_filemanager_rename=tw_selection1</action>
-					<action function="set">tw_fm_text1={@fm_renaming}</action>
-					<action function="set">tw_filemanager_command=mv</action>
-					<action function="set">tw_back=filemanageroptions</action>
-					<action function="page">filemanagerrenamefile</action>
-				</actions>
-			</button>
-
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
+				</listitem>
+				<listitem name="{@fm_rename_btn}">
+					<condition var1="tw_fm_isfolder" var2="1"/>
+					<icon res="bs_btn_rename"/>
 					<action function="set">tw_filemanager_rename=tw_selection1</action>
 					<action function="set">tw_fm_text1={@fm_renaming}</action>
 					<action function="set">tw_filemanager_command=cd "%tw_file_location1%" &amp;&amp; cd .. &amp;&amp; mv</action>
 					<action function="set">tw_back=filemanageroptions</action>
 					<action function="page">filemanagerrenamefolder</action>
-				</actions>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%bs_row5_y%"/>
-				<image resource="bs_btn_rename"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
-				<text>{@fm_rename_btn}</text>
-			</text>
-
-			<button style="bs_btn">
-				<placement x="0" y="%bs_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
+				</listitem>
+				<listitem name="{@fm_rename_btn}">
+					<condition var1="tw_fm_isfolder" op="!=" var2="1"/>
+					<icon res="bs_btn_rename"/>
+					<action function="set">tw_filemanager_rename=tw_selection1</action>
+					<action function="set">tw_fm_text1={@fm_renaming}</action>
+					<action function="set">tw_filemanager_command=mv</action>
+					<action function="set">tw_back=filemanageroptions</action>
+					<action function="page">filemanagerrenamefile</action>
+				</listitem>
+				<listitem name="{@fm_chmod_btn}">
+					<icon res="bs_btn_chmod"/>
 					<action function="set">tw_filemanager_rename=0000</action>
 					<action function="set">tw_fm_text2=</action>
 					<action function="set">tw_fm_text3=</action>
 					<action function="set">tw_include_text3=0</action>
 					<action function="set">tw_back=filemanageroptions</action>
 					<action function="page">filemanagerchmod</action>
-				</actions>
-			</button>
-			<image>
-				<placement x="%col1_x%" y="%bs_row6_y%"/>
-				<image resource="bs_btn_chmod"/>
-			</image>
-			
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row6_text_y%"/>
-				<text>{@fm_chmod_btn}</text>
-			</text>
-
-			<button style="bs_btn">
-				<placement x="0" y="%bs_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
+				</listitem>
+				<listitem name="{@fm_delete_btn}">
+					<icon res="bs_btn_delete"/>
 					<action function="set">tw_filemanager_command=rm -rf</action>
 					<action function="set">tw_fm_text1={@fm_deleting}</action>
 					<action function="set">tw_fm_text2=</action>
@@ -1008,20 +863,54 @@
 					<action function="set">tw_include_text3=0</action>
 					<action function="set">tw_back=filemanageroptions</action>
 					<action function="page">filemanagerconfirm</action>
-				</actions>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%bs_row7_y%"/>
-				<image resource="bs_btn_delete"/>
-			</image>
+				</listitem>
+				<listitem name="{@more}">
+					<condition var1="opts_show" op="!=" var2="1"/>
+					<icon res="utils"/>
+					<action function="set">opts_show=1</action>
+				</listitem>
+				<listitem name="{@hide}">
+					<condition var1="opts_show" var2="1"/>
+					<icon res="hide"/>
+					<action function="page">filemanageroptions</action>
+				</listitem>
+				<listitem name="{@fm_open_makezip}">
+					<condition var1="opts_show" var2="1"/>
+					<icon res="bs_btn_archive"/>
+					<action function="set">tw_artype=%tw_fm_isfolder%</action>
+					<action function="set">tw_extract_action=1</action>
+					<action function="set">tw_pack_lvl=9</action>
+					<action function="set">tw_back=filemanageroptions</action>
+					<action function="page">archive_confirm</action>
+				</listitem>
+				<listitem name="{@fm_open_unpackzip}">
+					<condition var1="opts_show" var2="1"/>
+					<condition var1="tw_fm_isfolder" var2="0"/>
+					<icon res="bs_btn_unzip"/>
+					<action function="set">tw_artype=0</action>
+					<action function="set">tw_extract_action=0</action>
+					<action function="set">tw_pack_lvl=9</action>
+					<action function="set">tw_back=filemanageroptions</action>
+					<action function="page">archive_confirm</action>
+				</listitem>
+				<listitem name="{@fm_sums}">
+					<condition var1="opts_show" var2="1"/>
+					<condition var1="tw_fm_isfolder" var2="0"/>
+					<icon res="bs_btn_checksum"/>
+					<action function="set">tw_back=filemanageroptions</action>
+					<action function="set">sum=1</action>
+					<action function="page">checksum_confirm</action>
+				</listitem>
+				<listitem name="{@info}">
+					<condition var1="opts_show" var2="1"/>
+					<condition var1="tw_fm_isfolder" var2="0"/>
+					<icon res="info"/>
+					<action function="set">tw_back=filemanageroptions</action>
+					<action function="set">sum=0</action>
+					<action function="page">checksum_confirm</action>
+				</listitem>
+			</listbox>
 
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row7_text_y%"/>
-				<text>{@fm_delete_btn}</text>
-			</text>
-
-			
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -1055,133 +944,45 @@
 				<text>%tw_filename1%</text>
 			</text>
 		
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="page">cat_file</action>
-			</button>
-		
-			<image>
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x%" y="%bs_row1_y%"/>
-				<image resource="bs_btn_doc"/>
-			</image>
-
-			<text style="bs_text">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
-				<text>{@fm_open_text}</text>
-			</text>
-			
-			
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_artype=0</action>
-				<action function="set">tw_extract_action=0</action>
-				<action function="set">tw_pack_lvl=9</action>
-				<action function="set">tw_back=filemanageroptions</action>
-				<action function="page">archive_confirm</action>
-			</button>
-			
-			<image>
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x%" y="%bs_row3_y%"/>
-				<image resource="bs_btn_unzip"/>
-			</image>
-
-			<text style="bs_text">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x_indent%" y="%bs_row3_text_y%"/>
-				<text>{@fm_open_unpackzip}</text>
-			</text>
-				
-			
-			
-			<button style="bs_btn">
-				<placement x="0" y="%bs_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_artype=0</action>
-				<action function="set">tw_extract_action=1</action>
-				<action function="set">tw_pack_lvl=9</action>
-				<action function="set">tw_back=filemanageroptions</action>
-				<action function="page">archive_confirm</action>
-			</button>
-			
-			<image>
-				<placement x="%col1_x%" y="%bs_row2_y%"/>
-				<image resource="bs_btn_archive"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
-				<text>{@fm_open_makezip}</text>
-			</text>
-			
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_file=%tw_selection1%</action>
-				<action function="set">install_back=filemanagerlist</action>
-				<action function="set">tw_filename=%tw_filename1%</action>
-				<action function="set">tw_zip_location=%tw_file_location1%</action>
-				<action function="set">tw_flash_partition=</action>
-				<action function="page">flash_image_confirm</action>
-			</button>
-			
-			<image>
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x%" y="%bs_row4_y%"/>
-				<image resource="bs_btn_image"/>
-			</image>
-
-			<text style="bs_text">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x_indent%" y="%bs_row4_text_y%"/>
-				<text>{@fm_open_image}</text>
-			</text>
-			
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_back=filemanageroptions</action>
-				<action function="set">sum=1</action>
-				<action function="page">checksum_confirm</action>
-			</button>
-			
-			<image>
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x%" y="%bs_row5_y%"/>
-				<image resource="bs_btn_checksum"/>
-			</image>
-
-			<text style="bs_text">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
-				<text>{@fm_sums}</text>
-			</text>
-			
-			
-			<button style="bs_btn">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="0" y="%bs_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">tw_back=filemanageroptions</action>
-				<action function="set">sum=0</action>
-				<action function="page">checksum_confirm</action>
-			</button>
-			
-			<image>
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x%" y="%bs_row6_y%"/>
-				<image resource="info"/>
-			</image>
-
-			<text style="bs_text">
-				<condition var1="tw_fm_isfolder" var2="0"/>
-				<placement x="%col1_x_indent%" y="%bs_row6_text_y%"/>
-				<text>{@info}</text>
-			</text>
-			
-			
+			<listbox style="btn_list">
+				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%bl_files_h%"/>
+				<listitem name="{@fm_open_text}">
+					<condition var1="tw_fm_isfolder" var2="0"/>
+					<icon res="bs_btn_doc"/>
+					<action function="page">cat_file</action>
+				</listitem>
+				<listitem name="{@fm_open_ZIP}">
+					<condition var1="tw_fm_isfolder" var2="0"/>
+					<icon res="bs_btn_archive"/>
+					<action function="queueclear"/>
+					<action function="set">tw_file=%tw_selection1%</action>
+					<action function="set">tw_filename=%tw_filename1%</action>
+					<action function="set">install_back=filemanagerlist</action>
+					<action function="set">tw_zip_location=%tw_file_location1%</action>
+					<action function="queuezip"/>
+					<action function="set">tw_q_1=%tw_file%</action>
+					<action function="page">flash_confirm</action>
+				</listitem>
+				<listitem name="{@fm_open_image}">
+					<condition var1="tw_fm_isfolder" var2="0"/>
+					<icon res="bs_btn_image"/>
+					<action function="set">tw_file=%tw_selection1%</action>
+					<action function="set">install_back=filemanagerlist</action>
+					<action function="set">tw_filename=%tw_filename1%</action>
+					<action function="set">tw_zip_location=%tw_file_location1%</action>
+					<action function="set">tw_flash_partition=</action>
+					<action function="page">flash_image_confirm</action>
+				</listitem>
+				<listitem name="{@fm_open_backup}">
+					<condition var1="tw_fm_isfolder" var2="1"/>
+					<icon res="bs_btn_backup"/>
+					<action function="set">tw_restore_name=%tw_selection1%</action>
+					<action function="set">tw_restore=%tw_filename1%</action>
+					<action function="set">restore_back=filemanagerlist</action>
+					<action function="readBackup"/>
+					<action function="page">restore_read</action> 
+				</listitem>
+			</listbox>
 		
 			<action>
 				<touch key="home"/>
@@ -1503,52 +1304,6 @@
 				<placement x="%col1_x%" y="%row2_1a_y%"/>
 				<text>{@fm_perms}</text>
 			</text>
-
-			<button style="bs_btn">
-				<placement x="0" y="%actbtn_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
-					<action function="set">tw_filemanager_command=chmod 755</action>
-					<action function="set">tw_fm_text1={@fm_chmod755ing}</action>
-					<action function="set">tw_fm_text2=</action>
-					<action function="set">tw_fm_text3=</action>
-					<action function="set">tw_include_text3=0</action>
-					<action function="set">tw_back=filemanageroptions</action>
-					<action function="page">filemanagerconfirm</action>
-				</actions>
-			</button>
-			
-			<button style="bs_btn">
-				<placement x="0" y="%actbtn_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
-					<action function="set">tw_filemanager_command=chmod 644</action>
-					<action function="set">tw_fm_text1={@fm_chmod644ing}</action>
-					<action function="set">tw_fm_text2=</action>
-					<action function="set">tw_fm_text3=</action>
-					<action function="set">tw_include_text3=0</action>
-					<action function="set">tw_back=filemanageroptions</action>
-					<action function="page">filemanagerconfirm</action>
-				</actions>
-			</button>
-			
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%actbtn_row2_text_y%"/>
-				<text>{@fm_chmod755_btn}</text>
-			</text>
-
-			<image>
-				<placement x="%col1_x%" y="%actbtn_row2_y%"/>
-				<image resource="bs_btn_chmod"/>
-			</image>
-
-			<text style="bs_text">
-				<placement x="%col1_x_indent%" y="%actbtn_row1_text_y%"/>
-				<text>{@fm_chmod644_btn}</text>
-			</text>
-
-			<image>
-				<placement x="%col1_x%" y="%actbtn_row1_y%"/>
-				<image resource="bs_btn_chmod"/>
-			</image>
 			
 			<input>
 				<placement x="%col1_x%" y="%input_rename_y%" w="%input_width%" h="%input_height%"/>
@@ -1567,6 +1322,30 @@
 				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
 			</fill>
 
+			<listbox style="btn_list">
+				<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%bl_h2%"/>
+				<listitem name="{@fm_chmod644_btn}">
+					<icon res="bs_btn_chmod"/>
+					<action function="set">tw_filemanager_command=chmod 644</action>
+					<action function="set">tw_fm_text1={@fm_chmod644ing}</action>
+					<action function="set">tw_fm_text2=</action>
+					<action function="set">tw_fm_text3=</action>
+					<action function="set">tw_include_text3=0</action>
+					<action function="set">tw_back=filemanageroptions</action>
+					<action function="page">filemanagerconfirm</action>
+				</listitem>
+				<listitem name="{@fm_chmod755_btn}">
+					<icon res="bs_btn_chmod"/>
+					<action function="set">tw_filemanager_command=chmod 755</action>
+					<action function="set">tw_fm_text1={@fm_chmod755ing}</action>
+					<action function="set">tw_fm_text2=</action>
+					<action function="set">tw_fm_text3=</action>
+					<action function="set">tw_include_text3=0</action>
+					<action function="set">tw_back=filemanageroptions</action>
+					<action function="page">filemanagerconfirm</action>
+				</listitem>
+			</listbox>
+			
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>

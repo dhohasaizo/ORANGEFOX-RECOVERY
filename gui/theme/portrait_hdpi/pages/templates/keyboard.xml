@@ -3,15 +3,47 @@
 	<templates>
 		<template name="keyboardterminaltemplate">
 			<image>
+				<condition var1="key_numbar" op="!=" var2="1"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="0" y="%keyboard_bg_terminal_y%"/>
 				<image resource="keyboard_shadow"/>
 				<condition var1="flat_tbar" op="!=" var2="1"/>
 			</image>
+			<image>
+				<condition var1="key_numbar" var2="1"/>
+				<condition var1="tw_hide_kb" var2="0"/>
+				<placement x="0" y="%keyboard_term_num_y%" placement="2"/>
+				<image resource="keyboard_shadow"/>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
+			</image>
 			
 			<keyboard>
+				<condition var1="key_numbar" op="!=" var2="1"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="0" y="%keyboard_terminal_y%" w="%screen_w%" h="96"/>
+				<keymargin x="4" y="8"/>
+				<background color="%background%"/>
+				<key-alphanumeric color="%background%" font="keylabel-bold" textcolor="%text%"/>
+				<key-other color="%background%" font="keylabel-bold" textcolor="%text_light%"/>
+				<longpress font="keylabel-bold" textcolor="%text_light%" x="12" y="0"/>
+				<keylabel key="0:k:29" text="Ctrl"/>
+				<keylabel key="0:c:27" text="Esc"/>
+				<keylabel key="0:c:9" text="Tab"/>
+				<keylabel key="0:k:105" text="&lt;" resource="kb_arrow_left"/>
+				<keylabel key="0:k:108" text="v" resource="kb_arrow_down"/>
+				<keylabel key="0:k:103" text="^" resource="kb_arrow_up"/>
+				<keylabel key="0:k:106" text="&gt;" resource="kb_arrow_right"/>
+				<highlight color="%highlight_color%"/>
+				<ctrlhighlight color="%highlight_color%"/>
+				<layout1>
+					<keysize height="96" width="154"/>
+					<row1 key01="155:k:29" key02="155:c:27" long02=":c:3" key03="154:c:9" key04="154:k:105" key05="154:k:108" key06="154:k:103" key07="154:k:106"/>
+				</layout1>
+			</keyboard>
+			<keyboard>
+				<condition var1="key_numbar" var2="1"/>
+				<condition var1="tw_hide_kb" var2="0"/>
+				<placement x="0" y="%keyboard_term_num_y%" w="%screen_w%" h="96"/>
 				<keymargin x="4" y="8"/>
 				<background color="%background%"/>
 				<key-alphanumeric color="%background%" font="keylabel-bold" textcolor="%text%"/>
@@ -35,6 +67,7 @@
 		
 		<template name="keyboardtemplate">
 			<image>
+				<condition var1="key_numbar" op="!=" var2="1"/>
 				<condition var1="tw_hide_kb" var2="0"/>
 				<placement x="0" y="%keyboard_bg_y%"/>
 				<image resource="keyboard_shadow"/>
@@ -163,6 +196,31 @@
 				<condition var1="navbar_bkg" op="!=" var2="2"/>
 				<placement x="0" y="%row_nav_y%" w="%screen_w%" h="%nav_h%"/>
 			</fill>
+			
+			<image>
+				<condition var1="key_numbar" var2="1"/>
+				<condition var1="tw_hide_kb" var2="0"/>
+				<placement x="0" y="%keyboard_bg_terminal_y%" placement="2"/>
+				<image resource="keyboard_shadow"/>
+				<condition var1="flat_tbar" op="!=" var2="1"/>
+			</image>
+			
+			<keyboard>
+				<condition var1="key_numbar" var2="1"/>
+				<condition var1="tw_hide_kb" var2="0"/>
+				<placement x="0" y="%keyboard_num_y%" w="%screen_w%" h="96"/>
+				<keymargin x="4" y="0"/>
+				<background color="%background%"/>
+				<key-alphanumeric color="%background%" font="keylabel" textcolor="%text%"/>
+				<key-other color="%background%" font="keylabel" textcolor="%text_light%"/>
+				<longpress font="keylabel-bold" textcolor="%text_light%" x="12" y="0"/>
+				<highlight color="%highlight_color%"/>
+				<ctrlhighlight color="%highlight_color%"/>
+				<layout1>
+					<keysize height="90" width="108"/>
+					<row1 key01="1" key02="2" key03="3" key04="4" key05="5" key06="6" key07="7" key08="8" key09="9" key10="0"/>
+				</layout1>
+			</keyboard>
 		</template>
 		
 		<template name="keyboardnum">
