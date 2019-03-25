@@ -26,7 +26,7 @@
 				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon_small" file="file_icon_small"/>
-				<filter folders="1" files="1" extn=".png" extnvar="fm_type_sort"/>
+				<filter folders="1" files="1" extnvar="fm_type_sort"/>
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
@@ -185,7 +185,7 @@
 			
 			<action><condition var1="tw_file_extension" var2="txt"/><actions><action function="set">fex_found=1</action><action function="page">cat_file</action></actions></action>
 			<action><condition var1="tw_file_extension" var2="prop"/><actions><action function="set">fex_found=1</action><action function="page">cat_file</action></actions></action>
-			<action><condition var1="tw_file_extension" var2="log"/><actions><action function="set">fex_found=1</action><action function="page">cat_file</action></actions></action>
+			<action><condition var1="tw_file_extension" var2="log"/><condition var1="tw_filename1" op="!=" var2="/tmp/recovery.log"/><actions><action function="set">fex_found=1</action><action function="page">cat_file</action></actions></action>
 
 			<action>
 				<condition var1="tw_file_extension" var2="apk"/>
@@ -813,6 +813,7 @@
 				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%bl_files_h%"/>
 				<listitem name="{@fm_open}">
 					<icon res="bs_btn_open"/>
+					<condition var1="tw_filename1" op="!=" var2="/tmp/recovery.log"/>
 					<action function="page">openas</action>
 				</listitem>
 				<listitem name="{@fm_copy_btn}">
