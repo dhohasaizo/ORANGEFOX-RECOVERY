@@ -217,6 +217,119 @@
 			</action>
 		</page>
 
+		<page name="fm_sort">
+			<template name="dialog_body"/>
+
+			<button>
+				<placement x="%screen_w%" y="%ab_menu_y%" placement="1"/>
+				<image resource="fm_sort"/>
+			</button>
+
+			<text style="menu_text">
+				<placement x="%ab_menu_sort_text_x%" y="%ab_menu_inst_1_text_y%"/>
+				<text>{@sort_by_name_asc}</text>
+			</text>
+
+			<image>
+				<condition var1="tw_gui_sort_order" op="=" var2="1"/>
+				<placement x="%ab_menu_x%" y="%ab_menu_inst_1_y%"/>
+				<image resource="arrow"/>
+			</image>
+
+			<image>
+				<condition var1="tw_gui_sort_order" op="=" var2="-1"/>
+				<placement x="%ab_menu_x%" y="%ab_menu_inst_1_y%"/>
+				<image resource="arrow_d"/>
+			</image>
+
+			<button style="menu_btn_sort">
+				<condition var1="tw_gui_sort_order" op="=" var2="1"/>
+				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_1_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_gui_sort_order=-1</action>
+			</button>
+
+			<button style="menu_btn_sort">
+				<condition var1="tw_gui_sort_order" op="!=" var2="1"/>
+				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_1_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_gui_sort_order=1</action>
+			</button>
+
+			<text style="menu_text">
+				<placement x="%ab_menu_sort_text_x%" y="%ab_menu_inst_2_text_y%"/>
+				<text>{@sort_by_date_asc}</text>
+			</text>
+
+			<image>
+				<condition var1="tw_gui_sort_order" op="=" var2="2"/>
+				<placement x="%ab_menu_x%" y="%ab_menu_inst_2_y%"/>
+				<image resource="arrow"/>
+			</image>
+
+			<image>
+				<condition var1="tw_gui_sort_order" op="=" var2="-2"/>
+				<placement x="%ab_menu_x%" y="%ab_menu_inst_2_y%"/>
+				<image resource="arrow_d"/>
+			</image>
+
+			<button style="menu_btn_sort">
+				<condition var1="tw_gui_sort_order" op="=" var2="2"/>
+				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_2_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_gui_sort_order=-2</action>
+			</button>
+
+			<button style="menu_btn_sort">
+				<condition var1="tw_gui_sort_order" op="!=" var2="2"/>
+				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_2_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_gui_sort_order=2</action>
+			</button>
+
+			<text style="menu_text">
+				<placement x="%ab_menu_sort_text_x%" y="%ab_menu_inst_3_text_y%"/>
+				<text>{@sort_by_size_asc}</text>
+			</text>
+
+			<image>
+				<condition var1="tw_gui_sort_order" op="=" var2="3"/>
+				<placement x="%ab_menu_x%" y="%ab_menu_inst_3_y%"/>
+				<image resource="arrow"/>
+			</image>
+
+			<image>
+				<condition var1="tw_gui_sort_order" op="=" var2="-3"/>
+				<placement x="%ab_menu_x%" y="%ab_menu_inst_3_y%"/>
+				<image resource="arrow_d"/>
+			</image>
+
+			<button style="menu_btn_sort">
+				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_3_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_gui_sort_order=-3</action>
+			</button>
+
+			<button style="menu_btn_sort">
+				<condition var1="tw_gui_sort_order" op="!=" var2="3"/>
+				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_3_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">tw_gui_sort_order=3</action>
+			</button>
+
+			<listbox>
+				<placement x="%ab_menu_sort_x%" y="590+%cutout_w%" w="%ab_menu_sort_btn_w%" h="%lb_l3%"/>
+				<data variable="fm_type_sort"/>
+				<listitem name="Show all">all</listitem>
+				<listitem name="Show ZIPs">zip</listitem>
+				<listitem name="Show IMGs">img</listitem>
+			</listbox>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+
 		<page name="dialog_storage">
 			<template name="dialog_body"/>
 

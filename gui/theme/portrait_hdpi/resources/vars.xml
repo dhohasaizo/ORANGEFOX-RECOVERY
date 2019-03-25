@@ -89,6 +89,7 @@
 		<variable name="tw_install_reboot" value="0"/>
 		<variable name="needs_repack" value="0"/>
 		<variable name="secret_features" value="0"/>
+		<variable name="fm_type_sort" value="all" persist="1"/>		
 		
 		<!-- Placement -->
 		
