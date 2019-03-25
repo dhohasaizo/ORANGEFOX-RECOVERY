@@ -125,37 +125,36 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 	mExZipIcon = mExImgIcon = mExTxtIcon = mExPngIcon = mFileIcon;
 	mUpIcon = mFolderIcon;
 	
-	// [f/d] Get additional icons
-	child = FindNode(node, "exicon");
-	if (child) {
-		mExZipIcon  = LoadAttrImage(child, "zip");
-		mExImgIcon  = LoadAttrImage(child, "img");
-		mExTxtIcon  = LoadAttrImage(child, "txt");
-		mExPngIcon  = LoadAttrImage(child, "png");
-		mUpIcon     = LoadAttrImage(child, "up");
-	}
-	
 	int iconWidth = 0, iconHeight = 0;
 	
 	// [f/d] Get size for icons
+	// [f/d] UPD. exicons only availble if iconsize is set. 
+	//            fox wont load
 	child = FindNode(node, "iconsize");
 	if (child) {
 		iconWidth = LoadAttrInt(child, "w", iconWidth);
 		iconHeight = LoadAttrInt(child, "h", iconHeight);
+		// [f/d] Get additional icons
+		child = FindNode(node, "exicon");
+		if (child) {
+			mExZipIcon  = LoadAttrImage(child, "zip");
+			mExImgIcon  = LoadAttrImage(child, "img");
+			mExTxtIcon  = LoadAttrImage(child, "txt");
+			mExPngIcon  = LoadAttrImage(child, "png");
+			mUpIcon     = LoadAttrImage(child, "up");
+		}
+	} else {
+		if (mFolderIcon && mFolderIcon->GetResource() && mFileIcon && mFileIcon->GetResource()) {
+			iconWidth = std::max(mFolderIcon->GetWidth(), mFileIcon->GetWidth());
+			iconHeight = std::max(mFolderIcon->GetHeight(), mFileIcon->GetHeight());
+		} else if (mFolderIcon && mFolderIcon->GetResource()) {
+			iconWidth = mFolderIcon->GetWidth();
+			iconHeight = mFolderIcon->GetHeight();
+		} else if (mFileIcon && mFileIcon->GetResource()) {
+			iconWidth = mFileIcon->GetWidth();
+			iconHeight = mFileIcon->GetHeight();
+		}
 	}
-	
-	/*
-	if (mFolderIcon && mFolderIcon->GetResource() && mFileIcon && mFileIcon->GetResource()) {
-		iconWidth = std::max(mFolderIcon->GetWidth(), mFileIcon->GetWidth());
-		iconHeight = std::max(mFolderIcon->GetHeight(), mFileIcon->GetHeight());
-	} else if (mFolderIcon && mFolderIcon->GetResource()) {
-		iconWidth = mFolderIcon->GetWidth();
-		iconHeight = mFolderIcon->GetHeight();
-	} else if (mFileIcon && mFileIcon->GetResource()) {
-		iconWidth = mFileIcon->GetWidth();
-		iconHeight = mFileIcon->GetHeight();
-	}
-	*/
 	
 	SetMaxIconSize(iconWidth, iconHeight);
 
