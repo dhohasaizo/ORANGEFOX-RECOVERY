@@ -150,7 +150,6 @@ endif
 ifeq ($(TW_USE_TOOLBOX), true)
     LOCAL_CFLAGS += -DTW_USE_TOOLBOX='"1"'
 endif
-LOCAL_CFLAGS += -DPLATFORM_SDK_VERSION=$(PLATFORM_SDK_VERSION)
 
 LOCAL_SRC_FILES := \
     twrp.cpp \
