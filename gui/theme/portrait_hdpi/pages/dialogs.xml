@@ -314,9 +314,9 @@
 			<listbox>
 				<placement x="%ab_menu_sort_x%" y="590+%cutout_w%" w="%ab_menu_sort_btn_w%" h="%lb_l3%"/>
 				<data name="fm_type_sort"/>
-				<listitem name="Show all">all</listitem>
-				<listitem name="Show ZIPs">zip</listitem>
-				<listitem name="Show IMGs">img</listitem>
+				<listitem name="Show all"></listitem>
+				<listitem name="Show ZIPs">.zip</listitem>
+				<listitem name="Show IMGs">.img</listitem>
 			</listbox>
 
 			<action>

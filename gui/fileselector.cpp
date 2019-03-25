@@ -48,9 +48,17 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 	// Load filter for filtering files (e.g. *.zip for only zips)
 	child = FindNode(node, "filter");
 	if (child) {
-		attr = child->first_attribute("extn");
-		if (attr)
-			mExtn = attr->value();
+		// [f/d] use variable as extension filter (if extnvar not found use classic extn)
+		attr = child->first_attribute("extnvar");
+		if (attr) {
+			mExtnVar = attr->value();
+			DataManager::GetValue(mExtnVar, mExtn);
+		} else {
+			attr = child->first_attribute("extn");
+			if (attr)
+				mExtn= attr->value();
+		}
+		
 		attr = child->first_attribute("folders");
 		if (attr)
 			mShowFolders = atoi(attr->value());
@@ -198,9 +206,12 @@ int GUIFileSelector::NotifyVarChange(const std::string& varName, const std::stri
 		// Always clear the data variable so we know to use it
 		DataManager::SetValue(mVariable, "");
 	}
-	if (varName == mPathVar || varName == mSortVariable) {
+	if (varName == mPathVar || varName == mSortVariable || varName == mExtnVar) {
 		if (varName == mSortVariable) {
 			DataManager::GetValue(mSortVariable, mSortOrder);
+		} else if (varName == mExtnVar) {
+			DataManager::GetValue(mExtnVar, mExtn);
+			SetVisibleListLocation(0);
 		} else {
 			// Reset the list to the top
 			SetVisibleListLocation(0);

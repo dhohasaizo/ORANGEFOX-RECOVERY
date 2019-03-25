@@ -12,11 +12,10 @@
 			
 			<fileselector style="fileselector_b">
 				<condition var1="list_font" var2="1"/>
-				<condition var1="fm_type_sort" var2="all"/>
 				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon" file="file_icon" />
-				<filter folders="1" files="1"/>
+				<filter folders="1" files="1" extnvar="fm_type_sort"/>
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
@@ -24,63 +23,10 @@
 
 			<fileselector style="fileselector_s">
 				<condition var1="list_font" op="!=" var2="1"/>
-				<condition var1="fm_type_sort" var2="all"/>
 				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%files_np_w%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon_small" file="file_icon_small"/>
-				<filter folders="1" files="1"/>
-				<path name="tw_file_location1" default="/sdcard"/>
-				<data name="tw_filename1"/>
-				<selection name="tw_selection1"/>
-			</fileselector>
-
-			<!-- Zips -->
-
-			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="1"/>
-				<condition var1="fm_type_sort" var2="zip"/>
-				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%files_np_w%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon" file="file_icon" />
-				<filter extn=".zip" folders="1" files="1"/>
-				<path name="tw_file_location1" default="/sdcard"/>
-				<data name="tw_filename1"/>
-				<selection name="tw_selection1"/>
-			</fileselector>
-
-			<fileselector style="fileselector_s">
-				<condition var1="list_font" op="!=" var2="1"/>
-				<condition var1="fm_type_sort" var2="zip"/>
-				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%files_np_w%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon_small" file="file_icon_small"/>
-				<filter extn=".zip" folders="1" files="1"/>
-				<path name="tw_file_location1" default="/sdcard"/>
-				<data name="tw_filename1"/>
-				<selection name="tw_selection1"/>
-			</fileselector>
-
-			<!-- Images -->
-
-			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="1"/>
-				<condition var1="fm_type_sort" var2="img"/>
-				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%files_np_w%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon" file="file_icon" />
-				<filter extn=".img" folders="1" files="1"/>
-				<path name="tw_file_location1" default="/sdcard"/>
-				<data name="tw_filename1"/>
-				<selection name="tw_selection1"/>
-			</fileselector>
-
-			<fileselector style="fileselector_s">
-				<condition var1="list_font" op="!=" var2="1"/>
-				<condition var1="fm_type_sort" var2="img"/>
-				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%files_np_w%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon_small" file="file_icon_small"/>
-				<filter extn=".img" folders="1" files="1"/>
+				<filter folders="1" files="1" extn=".png" extnvar="fm_type_sort"/>
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
