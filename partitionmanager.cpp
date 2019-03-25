@@ -1164,7 +1164,7 @@ int TWPartitionManager::Run_Backup(bool adbbackup)
   Update_System_Details();
   UnMount_Main_Partitions();
   DataManager::Leds(true);
-  Notify_On_Finished_Backup();
+  DataManager::Vibrate("tw_action_vibrate");
   gui_msg(Msg(msg::kHighlight, "backup_completed=[BACKUP COMPLETED IN {1} SECONDS]") (total_time));	// the end
   string backup_log = part_settings.Backup_Folder + "/recovery.log";
   TWFunc::copy_file("/tmp/recovery.log", backup_log, 0644);
@@ -1392,7 +1392,7 @@ int TWPartitionManager::Run_Restore(const string & Restore_Name)
   Update_System_Details();
   UnMount_Main_Partitions();
   DataManager::Leds(true);
-  Notify_On_Finished_Restore();
+  DataManager::Vibrate("tw_action_vibrate");
   time(&rStop);
   gui_msg(Msg
 	  (msg::kHighlight,
@@ -4534,46 +4534,6 @@ void TWPartitionManager::Update_System_Details_OTA_Survival(void)
   if (!Write_Fstab())
     LOGERR("Error creating fstab\n");
   return;
-}
-
-void TWPartitionManager::Notify_On_Finished_Backup(void)
-{
-  if (DataManager::GetIntValue("fox_inject_after_backup") != 0)
-    {
-      string ledcolor, install_vibrate_value;
-      DataManager::GetValue("fox_data_backup_vibrate",
-			    install_vibrate_value);
-      DataManager::GetValue("fox_backup_led_color", ledcolor);
-      string leds = "/sys/class/leds/";
-      string flashbs = leds + ledcolor + "/brightness";
-      string flashtime = leds + ledcolor + "/led_time";
-      string flashblink = leds + ledcolor + "/blink";
-      string vibrate_path = "/sys/class/timed_output/vibrator/enable";
-      TWFunc::write_to_file(flashbs, "255");
-      TWFunc::write_to_file(flashtime, "1 1 1 1");
-      TWFunc::write_to_file(flashblink, "1");
-      TWFunc::write_to_file(vibrate_path, install_vibrate_value);
-    }
-}
-
-void TWPartitionManager::Notify_On_Finished_Restore(void)
-{
-  if (DataManager::GetIntValue("fox_inject_after_restore") != 0)
-    {
-      string ledcolor, install_vibrate_value;
-      DataManager::GetValue("fox_data_restore_vibrate",
-			    install_vibrate_value);
-      DataManager::GetValue("fox_restore_led_color", ledcolor);
-      string leds = "/sys/class/leds/";
-      string flashbs = leds + ledcolor + "/brightness";
-      string flashtime = leds + ledcolor + "/led_time";
-      string flashblink = leds + ledcolor + "/blink";
-      string vibrate_path = "/sys/class/timed_output/vibrator/enable";
-      TWFunc::write_to_file(flashbs, "255");
-      TWFunc::write_to_file(flashtime, "1 1 1 1");
-      TWFunc::write_to_file(flashblink, "1");
-      TWFunc::write_to_file(vibrate_path, install_vibrate_value);
-    }
 }
 
 bool TWPartitionManager::Partition_Is_Encrypted(const string Path)

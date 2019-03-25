@@ -293,8 +293,6 @@ public:
 	int Write_Fstab();                                                        // Creates /etc/fstab file that's used by the command line for mount commands
 	void Output_Partition_Logging();                                          // Outputs partition information to the log
 	void Output_Partition(TWPartition* Part);                                 // Outputs partition details to the log
-	void Notify_On_Finished_Backup();                                         // Notify user that the backup is finished
-	void Notify_On_Finished_Restore();                                        // Notify user that the restore is finished
 	int Mount_By_Path(string Path, bool Display_Error);                       // Mounts partition based on path (e.g. /system)
 	int UnMount_By_Path(string Path, bool Display_Error);                     // Unmounts partition based on path
 	int Is_Mounted_By_Path(string Path);                                      // Checks if partition is mounted based on path
