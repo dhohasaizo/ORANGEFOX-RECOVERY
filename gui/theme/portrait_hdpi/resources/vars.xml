@@ -2,7 +2,7 @@
 <recovery>
 	<variables>
 		<!-- Cutout -->
-		<variable name="center_clock" value="1" persist="1"/> <!-- default clock placement (0 - right; 1 - center; 2 - left) -->
+		<variable name="center_clock" value="2" persist="1"/> <!-- default clock placement (0 - right; 1 - center; 2 - left) -->
 		
 		<!-- OrangeFox vars -->
 		<variable name="ota_back_file" value="0"/>
@@ -71,7 +71,7 @@
 		<variable name="show_slideout" value="1" persist="1"/>
 		<variable name="separate_status" value="0" persist="1"/>
 		<variable name="style_battery" value="1" persist="1"/>
-		<variable name="flat_tbar" value="1" persist="1"/>
+		<variable name="flat_tbar" value="0" persist="1"/>
 		<variable name="hide_notch" value="0" persist="1"/> 
 		
 		<!-- Other... -->
