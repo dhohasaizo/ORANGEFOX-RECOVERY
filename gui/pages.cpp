@@ -880,9 +880,14 @@ int PageSet::LoadDetails(LoadingContext& ctx, xml_node<>* root)
 		if (resolution) {
 			LOGINFO("Checking resolution...\n");
 			xml_attribute<>* width_attr = resolution->first_attribute("width");
-			//xml_attribute<>* height_attr = resolution->first_attribute("height");
+			xml_attribute<>* resize_attr = resolution->first_attribute("resizing");
 			int height_attr;
-			DataManager::GetValue("screen_original_h", height_attr);
+			if (resize_attr) {
+				xml_attribute<>* height_res_attr = resolution->first_attribute("height");
+				height_attr = atoi(height_res_attr->value());
+			} else {
+				DataManager::GetValue("screen_original_h", height_attr);
+			}
 			xml_attribute<>* noscale_attr = resolution->first_attribute("noscaling");
 			if (width_attr && height_attr && !noscale_attr) {
 				int width = atoi(width_attr->value());
