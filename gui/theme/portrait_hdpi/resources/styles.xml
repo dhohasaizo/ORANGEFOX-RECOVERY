@@ -246,7 +246,7 @@
 			<highlight color="%highlight_color_full%"/>
 			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
 			<background color="%background%" />
-			<exicon up="up_icon" zip="zip_icon" img="img_icon" txt="txt_icon" png="png_icon" />
+			<exicon up="up_icon" lnk="up_icon_small" zip="zip_icon" img="img_icon" txt="txt_icon" png="png_icon" />
 			<iconsize w="216" h="160" />
 			<font resource="status" spacing="%fileselector_spacing%" color="%text%" />
 		</style>
@@ -255,7 +255,7 @@
 			<highlight color="%highlight_color_full%"/>
 			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
 			<background color="%background%" />
-			<exicon up="up_icon_small" zip="zip_icon_small" img="img_icon_small" txt="txt_icon_small" png="png_icon_small" />
+			<exicon up="up_icon_small" lnk="up_icon_small" dev="module_icon_small" zip="zip_icon_small" img="img_icon_small" txt="txt_icon_small" png="png_icon_small" />
 			<iconsize w="120" h="96" />
 			<font resource="status" spacing="%fileselector_spacing%" color="%text%" />
 		</style>
