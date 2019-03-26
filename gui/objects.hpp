@@ -593,6 +593,7 @@ public:
 protected:
 	struct FileData {
 		std::string fileName;
+		std::string fileExt;
 		unsigned char fileType;	 // Uses d_type format from struct dirent
 		mode_t protection;		  // Uses mode_t format from stat
 		uid_t userId;
@@ -627,6 +628,8 @@ protected:
 	ImageResource* mExImgIcon;
 	ImageResource* mExTxtIcon;
 	ImageResource* mExPngIcon;
+	ImageResource* mExLinkIcon;
+	ImageResource* mExBlockIcon;
 	bool updateFileList;
 };
 

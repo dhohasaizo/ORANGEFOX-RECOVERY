@@ -39,7 +39,7 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 	xml_attribute<>* attr;
 	xml_node<>* child;
 
-	mFolderIcon = mFileIcon = mUpIcon = mExZipIcon = mExImgIcon = mExTxtIcon = mExPngIcon = mExLinkIcon = NULL;
+	mFolderIcon = mFileIcon = mUpIcon = mExZipIcon = mExImgIcon = mExTxtIcon = mExPngIcon = mExLinkIcon = mExBlockIcon = NULL;
 	mShowFolders = mShowFiles = mShowNavFolders = 1;
 	mUpdate = 0;
 	mPathVar = "cwd";
@@ -423,6 +423,10 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 		// We've selected an item!
 		std::string str;
 		
+		// Resetting vars
+		DataManager::SetValue("tw_real_path", "");
+		DataManager::SetValue("tw_rp_is_file", "0");
+		
 		if (item_selected < folderSize) {
 			// Path selection
 			std::string cwd;
@@ -455,22 +459,6 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 				// We are changing paths, so we need to set mPathVar
 				DataManager::SetValue(mPathVar, cwd);
 			}
-		} else if (mFileList.at(item_selected - folderSize).fileType == DT_LNK) {
-			// [f/d] Get real path of link
-			str = mFileList.at(item_selected - folderSize).fileName;
-			if (mSelection != "0")
-				DataManager::SetValue(mSelection, str);
-			std::string cwd;
-			DataManager::GetValue(mPathVar, cwd);
-			if (cwd != "/")
-				cwd += "/";
-			std::string path = cwd + str;
-		
-			char *real_path = realpath(path.c_str(), NULL);
-			//DataManager::SetValue(mPathVar, std::string(real_path));
-			if (real_path) 
-				gui_msg(Msg("xxx=Symlink: {1}") (std::string(real_path)));
-			free(real_path);
 		} else if (!mVariable.empty()) {
 			// File selection (data)
 			str = mFileList.at(item_selected - folderSize).fileName;
@@ -481,7 +469,24 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 			DataManager::GetValue(mPathVar, cwd);
 			if (cwd != "/")
 				cwd += "/";
-			DataManager::SetValue(mVariable, cwd + str);
+			
+			std::string path = cwd + str;
+		
+			if (mFileList.at(item_selected - folderSize).fileType == DT_LNK) {
+				// [f/d] We selected a symlink; Trying to get original file name
+				char *real_path = realpath(path.c_str(), NULL);
+				if (real_path) {
+					// Is that dir or file
+					std::string str_path = real_path;
+					struct stat path_stat;
+					stat(real_path, &path_stat);
+					DataManager::SetValue("tw_real_path", str_path);
+					DataManager::SetValue("tw_rp_is_file", S_ISREG(path_stat.st_mode));
+				}
+				free(real_path);
+			}
+			
+			DataManager::SetValue(mVariable, path);
 		}
 	}
 	mUpdate = 1;

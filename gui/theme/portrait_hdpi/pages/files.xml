@@ -800,12 +800,12 @@
 			</text>
 
 			<text style="text_ab_title">
-				<condition var1="tw_realpath"/>
+				<condition var1="tw_real_path"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>Symbolic link</text>
+				<text>{@symlink_name}</text>
 			</text>
 			<text style="text_ab_title">
-				<condition var1="tw_realpath" op="!="/>
+				<condition var1="tw_real_path" op="!="/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>%tw_fm_type%</text>
 			</text>
@@ -817,21 +817,21 @@
 
 			<listbox style="btn_list">
 				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%bl_files_h%"/>
-				<listitem name="Open real file">
-					<icon res="bs_btn_open"/>
-					<condition var1="tw_realpath"/>
-					<condition var1="tw_realpath_isfile" var2="1"/>
-					<action function="set">tw_filename1=%tw_realpath%</action>
-					<action function="set">tw_realpath=</action>
-					<action function="set">tw_realpath_isfile=</action>
+				<listitem name="{@symlink_file}">
+					<icon res="bs_btn_link"/>
+					<condition var1="tw_real_path"/>
+					<condition var1="tw_rp_is_file" var2="1"/>
+					<action function="set">tw_filename1=%tw_real_path%</action>
+					<action function="set">tw_real_path=</action>
+					<action function="set">tw_rp_is_file=</action>
 				</listitem>
-				<listitem name="Open real folder">
-					<icon res="bs_btn_open"/>
-					<condition var1="tw_realpath"/>
-					<condition var1="tw_realpath_isfile" op="!=" var2="1"/>
-					<action function="set">tw_file_location1=%tw_realpath%</action>
-					<action function="set">tw_realpath=</action>
-					<action function="set">tw_realpath_isfile=</action>
+				<listitem name="{@symlink_folder}">
+					<icon res="bs_btn_link"/>
+					<condition var1="tw_real_path"/>
+					<condition var1="tw_rp_is_file" op="!=" var2="1"/>
+					<action function="set">tw_file_location1=%tw_real_path%</action>
+					<action function="set">tw_real_path=</action>
+					<action function="set">tw_rp_is_file=</action>
 					<action function="key">back</action>
 				</listitem>
 				<listitem name="{@fm_open}">
