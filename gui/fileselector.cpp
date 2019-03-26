@@ -141,8 +141,8 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 			mExImgIcon   = LoadAttrImage(child, "img");
 			mExTxtIcon   = LoadAttrImage(child, "txt");
 			mExPngIcon   = LoadAttrImage(child, "png");
-			mExLinkIcon  = LoadAttrImage(child, "lnk");
-			mExBlockIcon = LoadAttrImage(child, "dev");
+			mExLinkIcon  = LoadAttrImage(child, "link");
+			mExBlockIcon = LoadAttrImage(child, "block");
 			mUpIcon      = LoadAttrImage(child, "up");
 		}
 	} else {
@@ -426,6 +426,7 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 		// Resetting vars
 		DataManager::SetValue("tw_real_path", "");
 		DataManager::SetValue("tw_rp_is_file", "0");
+		DataManager::SetValue("tw_is_symlink", "0");
 		
 		if (item_selected < folderSize) {
 			// Path selection
@@ -480,8 +481,12 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 					std::string str_path = real_path;
 					struct stat path_stat;
 					stat(real_path, &path_stat);
-					DataManager::SetValue("tw_real_path", str_path);
-					DataManager::SetValue("tw_rp_is_file", S_ISREG(path_stat.st_mode));
+					// fd: mmvblk's refer to themselves
+					//if (str_path != path) {
+						DataManager::SetValue("tw_real_path", str_path);
+						DataManager::SetValue("tw_rp_is_file", S_ISREG(path_stat.st_mode));
+					//}
+					DataManager::SetValue("tw_is_symlink", "1");
 				}
 				free(real_path);
 			}

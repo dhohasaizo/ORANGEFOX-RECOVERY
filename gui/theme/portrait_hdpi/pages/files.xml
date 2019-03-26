@@ -800,12 +800,12 @@
 			</text>
 
 			<text style="text_ab_title">
-				<condition var1="tw_real_path"/>
+				<condition var1="tw_is_symlink" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@symlink_name}</text>
 			</text>
 			<text style="text_ab_title">
-				<condition var1="tw_real_path" op="!="/>
+				<condition var1="tw_is_symlink" op="!=" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>%tw_fm_type%</text>
 			</text>

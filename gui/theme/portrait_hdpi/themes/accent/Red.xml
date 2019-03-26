@@ -52,6 +52,10 @@
 		<image name="txt_icon" filename="Red/FileManager/txt" retainaspect="1"/>
 		<image name="png_icon_small" filename="Red/FileManager/png_small" retainaspect="1"/>
 		<image name="png_icon" filename="Red/FileManager/png" retainaspect="1"/>
+		<image name="block_icon_small" filename="Red/FileManager/block_small" retainaspect="1"/>
+		<image name="block_icon" filename="Red/FileManager/block" retainaspect="1"/>
+		<image name="link_icon_small" filename="Red/FileManager/link_small" retainaspect="1"/>
+		<image name="link_icon" filename="Red/FileManager/link" retainaspect="1"/>
 		
 		<!-- Info -->
 		<image name="icon_info" filename="Red/Info/icon_info" retainaspect="1"/>

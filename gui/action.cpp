@@ -219,6 +219,7 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
 	  //fordownloads actions
       ADD_ACTION(fileextension);
       ADD_ACTION(up_a_level);
+      ADD_ACTION(forcerender);
  
       // remember actions that run in the caller thread
       for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
@@ -1152,6 +1153,12 @@ int GUIAction::screenshot(std::string arg __unused)
       gui_err("screenshot_err=Failed to take a screenshot!");
     }
   return 0;
+}
+
+int GUIAction::forcerender(std::string arg __unused)
+{
+    gui_forceRender();	
+	return 0;
 }
 
 int GUIAction::screenshotexternal(std::string arg __unused)

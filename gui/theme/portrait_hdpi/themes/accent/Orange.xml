@@ -52,6 +52,10 @@
 		<image name="txt_icon" filename="Orange/FileManager/txt" retainaspect="1"/>
 		<image name="png_icon_small" filename="Orange/FileManager/png_small" retainaspect="1"/>
 		<image name="png_icon" filename="Orange/FileManager/png" retainaspect="1"/>
+		<image name="block_icon_small" filename="Orange/FileManager/block_small" retainaspect="1"/>
+		<image name="block_icon" filename="Orange/FileManager/block" retainaspect="1"/>
+		<image name="link_icon_small" filename="Orange/FileManager/link_small" retainaspect="1"/>
+		<image name="link_icon" filename="Orange/FileManager/link" retainaspect="1"/>
 		
 		<!-- Info -->
 		<image name="icon_info" filename="Orange/Info/icon_info" retainaspect="1"/>
