@@ -44,6 +44,15 @@
 		<image name="bkp_icon_small" filename="Purple/FileManager/file_bkp_small" retainaspect="1"/>
 		<image name="bkp_icon" filename="Purple/FileManager/file_bkp" retainaspect="1"/>
 		
+		<image name="zip_icon_small" filename="Purple/FileManager/zip_small" retainaspect="1"/>
+		<image name="zip_icon" filename="Purple/FileManager/zip" retainaspect="1"/>
+		<image name="img_icon_small" filename="Purple/FileManager/img_small" retainaspect="1"/>
+		<image name="img_icon" filename="Purple/FileManager/img" retainaspect="1"/>
+		<image name="txt_icon_small" filename="Purple/FileManager/txt_small" retainaspect="1"/>
+		<image name="txt_icon" filename="Purple/FileManager/txt" retainaspect="1"/>
+		<image name="png_icon_small" filename="Purple/FileManager/png_small" retainaspect="1"/>
+		<image name="png_icon" filename="Purple/FileManager/png" retainaspect="1"/>
+		
 		<!-- Info -->
 		<image name="icon_info" filename="Purple/Info/icon_info" retainaspect="1"/>
 		

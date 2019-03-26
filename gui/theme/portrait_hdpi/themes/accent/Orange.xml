@@ -44,6 +44,15 @@
 		<image name="bkp_icon_small" filename="Orange/FileManager/file_bkp_small" retainaspect="1"/>
 		<image name="bkp_icon" filename="Orange/FileManager/file_bkp" retainaspect="1"/>
 		
+		<image name="zip_icon_small" filename="Orange/FileManager/zip_small" retainaspect="1"/>
+		<image name="zip_icon" filename="Orange/FileManager/zip" retainaspect="1"/>
+		<image name="img_icon_small" filename="Orange/FileManager/img_small" retainaspect="1"/>
+		<image name="img_icon" filename="Orange/FileManager/img" retainaspect="1"/>
+		<image name="txt_icon_small" filename="Orange/FileManager/txt_small" retainaspect="1"/>
+		<image name="txt_icon" filename="Orange/FileManager/txt" retainaspect="1"/>
+		<image name="png_icon_small" filename="Orange/FileManager/png_small" retainaspect="1"/>
+		<image name="png_icon" filename="Orange/FileManager/png" retainaspect="1"/>
+		
 		<!-- Info -->
 		<image name="icon_info" filename="Orange/Info/icon_info" retainaspect="1"/>
 		

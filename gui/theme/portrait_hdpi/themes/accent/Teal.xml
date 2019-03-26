@@ -44,6 +44,15 @@
 		<image name="bkp_icon_small" filename="Teal/FileManager/file_bkp_small" retainaspect="1"/>
 		<image name="bkp_icon" filename="Teal/FileManager/file_bkp" retainaspect="1"/>
 		
+		<image name="zip_icon_small" filename="Teal/FileManager/zip_small" retainaspect="1"/>
+		<image name="zip_icon" filename="Teal/FileManager/zip" retainaspect="1"/>
+		<image name="img_icon_small" filename="Teal/FileManager/img_small" retainaspect="1"/>
+		<image name="img_icon" filename="Teal/FileManager/img" retainaspect="1"/>
+		<image name="txt_icon_small" filename="Teal/FileManager/txt_small" retainaspect="1"/>
+		<image name="txt_icon" filename="Teal/FileManager/txt" retainaspect="1"/>
+		<image name="png_icon_small" filename="Teal/FileManager/png_small" retainaspect="1"/>
+		<image name="png_icon" filename="Teal/FileManager/png" retainaspect="1"/>
+		
 		<!-- Info -->
 		<image name="icon_info" filename="Teal/Info/icon_info" retainaspect="1"/>
 		

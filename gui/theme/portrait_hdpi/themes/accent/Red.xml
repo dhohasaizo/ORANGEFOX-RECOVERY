@@ -44,6 +44,15 @@
 		<image name="bkp_icon_small" filename="Red/FileManager/file_bkp_small" retainaspect="1"/>
 		<image name="bkp_icon" filename="Red/FileManager/file_bkp" retainaspect="1"/>
 		
+		<image name="zip_icon_small" filename="Red/FileManager/zip_small" retainaspect="1"/>
+		<image name="zip_icon" filename="Red/FileManager/zip" retainaspect="1"/>
+		<image name="img_icon_small" filename="Red/FileManager/img_small" retainaspect="1"/>
+		<image name="img_icon" filename="Red/FileManager/img" retainaspect="1"/>
+		<image name="txt_icon_small" filename="Red/FileManager/txt_small" retainaspect="1"/>
+		<image name="txt_icon" filename="Red/FileManager/txt" retainaspect="1"/>
+		<image name="png_icon_small" filename="Red/FileManager/png_small" retainaspect="1"/>
+		<image name="png_icon" filename="Red/FileManager/png" retainaspect="1"/>
+		
 		<!-- Info -->
 		<image name="icon_info" filename="Red/Info/icon_info" retainaspect="1"/>
 		
