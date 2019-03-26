@@ -425,8 +425,7 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 		
 		// Resetting vars
 		DataManager::SetValue("tw_real_path", "");
-		DataManager::SetValue("tw_rp_is_file", "0");
-		DataManager::SetValue("tw_is_symlink", "0");
+		DataManager::SetValue("tw_rp_type", "3");
 		
 		if (item_selected < folderSize) {
 			// Path selection
@@ -481,12 +480,10 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 					std::string str_path = real_path;
 					struct stat path_stat;
 					stat(real_path, &path_stat);
-					// fd: mmvblk's refer to themselves
-					//if (str_path != path) {
-						DataManager::SetValue("tw_real_path", str_path);
-						DataManager::SetValue("tw_rp_is_file", S_ISREG(path_stat.st_mode));
-					//}
-					DataManager::SetValue("tw_is_symlink", "1");
+					DataManager::SetValue("tw_real_path", str_path);
+					DataManager::SetValue("tw_rp_type", S_ISDIR(path_stat.st_mode));
+				} else {
+					DataManager::SetValue("tw_rp_type", "2");
 				}
 				free(real_path);
 			}

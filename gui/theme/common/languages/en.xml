@@ -1157,7 +1157,9 @@
 		<string name="abt_changes">Change Log</string>
 		
 		<!-- Symlink -->
-		<string name="symlink_name">Symbolic link</string>
+		<string name="symlink_dir_name">Link to folder</string>
+		<string name="symlink_file_name">Link to file</string>
+		<string name="symlink_broken_name">Broken link</string>
 		<string name="symlink_folder">Open real folder</string>
 		<string name="symlink_file">Open real file</string>
 		

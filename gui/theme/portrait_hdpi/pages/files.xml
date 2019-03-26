@@ -800,12 +800,24 @@
 			</text>
 
 			<text style="text_ab_title">
-				<condition var1="tw_is_symlink" var2="1"/>
+				<condition var1="tw_rp_type" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@symlink_name}</text>
+				<text>{@symlink_dir_name}</text>
 			</text>
 			<text style="text_ab_title">
-				<condition var1="tw_is_symlink" op="!=" var2="1"/>
+				<condition var1="tw_rp_type" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@symlink_file_name}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="tw_rp_type" var2="2"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@symlink_broken_name}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="tw_rp_type" op="!=" var2="2"/>
+				<condition var1="tw_rp_type" op="!=" var2="1"/>
+				<condition var1="tw_rp_type" op="!=" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>%tw_fm_type%</text>
 			</text>
@@ -820,18 +832,20 @@
 				<listitem name="{@symlink_file}">
 					<icon res="bs_btn_link"/>
 					<condition var1="tw_real_path"/>
-					<condition var1="tw_rp_is_file" var2="1"/>
+					<condition var1="tw_rp_type" var2="0"/>
 					<action function="set">tw_filename1=%tw_real_path%</action>
 					<action function="set">tw_real_path=</action>
-					<action function="set">tw_rp_is_file=</action>
+					<action function="set">tw_rp_type=</action>
+					<action function="set">tw_fm_type={@fm_type_file}</action>
 				</listitem>
 				<listitem name="{@symlink_folder}">
 					<icon res="bs_btn_link"/>
 					<condition var1="tw_real_path"/>
-					<condition var1="tw_rp_is_file" op="!=" var2="1"/>
+					<condition var1="tw_rp_type" var2="1"/>
 					<action function="set">tw_file_location1=%tw_real_path%</action>
 					<action function="set">tw_real_path=</action>
-					<action function="set">tw_rp_is_file=</action>
+					<action function="set">tw_rp_type=</action>
+					<action function="set">tw_fm_type={@fm_type_folder}</action>
 					<action function="key">back</action>
 				</listitem>
 				<listitem name="{@fm_open}">

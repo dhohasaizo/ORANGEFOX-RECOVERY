@@ -1247,7 +1247,10 @@
 		<string name="abt_changes">Изменения</string>
 		
 		<!-- Symlink -->
-		<string name="symlink_name">Символьная ссылка</string>
+		<string name="symlink_dir_name">Ссылка на папку</string>
+		<string name="symlink_file_name">Ссылка на файл</string>
+		<string name="symlink_syb_name">Ссылка в Сибирь</string>
+		<string name="symlink_broken_name">Сломанная ссылка</string>
 		<string name="symlink_folder">Открыть настоящую папку</string>
 		<string name="symlink_file">Открыть настоящий файл</string>
 
