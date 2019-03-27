@@ -281,9 +281,6 @@
 				<listitem name="{@include_kernel_log}">
 					<data variable="tw_include_kernel_log"/>
 				</listitem>
-				<!--listitem name="{@include_bugreport}">
-					<data variable="include_bugreport"/>
-				</listitem-->
 			</listbox>
 
 			<slider style="slider_action">
@@ -381,26 +378,6 @@
 					<action function="page">action_complete</action>
 				</actions>
 			</action>
-
-			<!--action>
-				<condition var1="include_bugreport" var2="1"/>
-				<condition var1="tw_action" var2="copylog"/>
-				<actions>
-					<action function="cmd">
-						echo "Bugreport information:";
-						echo "Style: %theme_style%";
-						echo "Accent: %theme_accent%";
-						echo "Background: %theme_background%";
-						echo "Font: %theme_font%";
-						echo "Language: {@lang_file}";
-						echo "TWRP Version: %tw_version%";
-						echo "Theme Version: %theme_version%";
-						echo "Is theme built-in: %tw_themeexist%";
-						echo "Screen Height: %screen_h%";
-						echo "NavBar: %rem_navbar_add%";
-					</action>
-				</actions>
-			</action-->
 
 			<action>
 				<condition var1="tw_has_action2" var2="0"/>

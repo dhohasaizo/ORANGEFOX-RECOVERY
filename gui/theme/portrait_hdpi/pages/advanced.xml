@@ -88,12 +88,8 @@
 					<action function="page">fixcontexts</action>
 				</listitem>
 				<listitem name="{@new_lock}">
-					<condition var1="utils_show" var2="1"/>
+					<condition var1="utils_show" var2="fuk"/>
 					<icon res="bs_adv_frp"/>
-					<actions>
-						<action function="set">tw_action_param=mount /data; rm -f data/system/*.key data/system/locksettings.*</action>
-						<action function="page">remlock</action>
-					</actions>
 				</listitem>
 				<listitem name="{@terminal_btn}">
 					<condition var1="utils_show" var2="1"/>
@@ -323,60 +319,6 @@
 			</action>
 		</page>
 
-			<page name="remlock">
-				<template name="body"/>
-				
-				<template name="ab"/>
-				
-				<template name="statusbarinfo"/>
-
-				<text style="text_ab_title">
-					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>{@new_lock}</text>
-				</text>
-
-				<text style="caption">
-					<placement x="%col1_x%" y="%row1_1_y%"/>
-					<text>{@options_cptn}</text>
-				</text>
-
-				<!-- THX to NFound / kory-vadim http://4pda.ru/forum/index.php?showtopic=725345&view=findpost&p=71305432 / kaito373 http://4pda.ru/forum/index.php?showtopic=725345&view=findpost&p=57019639 -->
-				<listbox>
-					<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l4%"/>
-					<data name="tw_action_param"/>
-					<listitem name="{@removelock_1}">mount /data; rm -f data/system/*.key data/system/locksettings.*</listitem>
-					<listitem name="{@removelock_2}">mount /system; mount -o rw,remount,rw /system; sed -i "s/ro.frp.pst=.*./&amp;=false/" /system/build.prop; umount /system;</listitem>
-					<listitem name="{@removelock_3}">dd if=/dev/zero of}') bs=524288 count=1 || echo "Error wiping FRP!"</listitem>
-					<listitem name="{@removelock_4}">dd if=/dev/zero of=$(readlink $(find /dev/block -type l | grep 'by-name' | grep '/frp')) bs=524288 count=1 || echo "Error wiping FRP!"</listitem>
-				</listbox>
-
-				<text style="caption">
-					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-					<text>{@swipe_to_confirm}</text>
-				</text>
-
-				<slider style="slider_action">
-					<placement x="%center_x%" y="%slider_y%" placement="5"/>
-					<actions>
-						<action function="set">tw_back=advanced</action>
-						<action function="set">tw_action=cmd</action>
-						<action function="set">tw_action_text1={@new_lock}</action>
-						<action function="set">tw_action_text2={@new_lock_wait}</action>
-						<action function="set">tw_complete_text1={@new_lock_done}</action>
-						<action function="page">action_page</action>
-					</actions>
-				</slider>
-
-				<action>
-					<touch key="back"/>
-					<action function="page">advanced</action>
-				</action>
-
-				<action>
-					<touch key="home"/>
-					<action function="page">main</action>
-				</action>
-			</page>
 
 			<page name="partsdcardcheck">
 				<action>

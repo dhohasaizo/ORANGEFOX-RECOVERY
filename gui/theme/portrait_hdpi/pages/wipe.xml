@@ -139,7 +139,7 @@
 			<text style="text_body2_fail">
 				<condition var1="tw_has_adopted_storage" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row3_1a_y%"/>
-				<text>{@also_wipes=Also wipes} {@adopted_storage}</text>
+				<text>{@also_wipes} {@adopted_storage}</text>
 			</text>
 
 			<text style="text_body2">

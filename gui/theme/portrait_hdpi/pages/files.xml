@@ -1098,7 +1098,7 @@
 					<action function="cmd">
 					printf "{@name}: " > /tmp/stat.txt;
 					echo "%tw_filename1%" >> /tmp/stat.txt;
-					printf "{@name=Name} ({@real}): " >> /tmp/stat.txt;
+					printf "{@name} ({@real}): " >> /tmp/stat.txt;
 					realpath "%tw_filename1%" >> /tmp/stat.txt;
 					printf "{@part_size}: " >> /tmp/stat.txt;
 					du -h "%tw_filename1%" | sed 's*%tw_filename1%**g' >> /tmp/stat.txt;

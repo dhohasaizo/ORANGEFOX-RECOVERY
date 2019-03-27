@@ -460,7 +460,7 @@
 				<condition var1="tw_screen_timeout_secs" op="!=" var2="0"/>
 				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
 				<placement x="%col1_x%" y="%row2_3a_y%"/>
-				<text>{@settings_screen_timeout_cptn2=Timeout:} %tw_screen_timeout_secs% {@timeout_unit}</text>
+				<text>{@settings_screen_timeout_cptn2} %tw_screen_timeout_secs% {@timeout_unit}</text>
 			</text>
 
 			<slidervalue>

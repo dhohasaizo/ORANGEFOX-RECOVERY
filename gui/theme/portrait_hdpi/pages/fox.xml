@@ -150,7 +150,7 @@
 
             <listbox style="settingslist">
 				<placement x="0" y="%row2_3a_y%" w="%screen_w%" h="%lb_l7%"/>
-				<listitem name="{@fox_support_miui_ota_chk=}">
+				<listitem name="{@fox_support_miui_ota_chk}">
 					<data variable="fox_support_miui_ota"/>
 				</listitem>	
 				<listitem name="{@fox_include_system_survival_chk}">
