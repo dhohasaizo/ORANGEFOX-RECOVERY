@@ -328,7 +328,6 @@ protected:
 	int screenshot(std::string arg);
 	int screenshotexternal(std::string arg);
 	int setbrightness(std::string arg);
-	int forcerender(std::string arg);
 
 	// (originally) threaded actions
 	int fileexists(std::string arg);

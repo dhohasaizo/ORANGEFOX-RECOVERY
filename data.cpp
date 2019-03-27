@@ -651,6 +651,8 @@ void DataManager::SetDefaultValues()
   mConst.SetValue(OF_STATUS_INDENT_RIGHT_S, OF_STATUS_INDENT_RIGHT);
   mConst.SetValue(OF_CLOCK_POS_S, OF_CLOCK_POS);
   mConst.SetValue(OF_ALLOW_DISABLE_NAVBAR_S, OF_ALLOW_DISABLE_NAVBAR);
+  mData.SetValue("of_fl_path_1", OF_FL_PATH1);
+  mData.SetValue("of_fl_path_2", OF_FL_PATH2);
   //[f/d]
  
 #ifndef TW_NO_HAPTICS
