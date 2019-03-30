@@ -38,7 +38,7 @@
 
 			<input>
 				<condition var1="darker_ui" op="!=" var2="1"/>
-				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="696" h="64"/>
+				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="552" h="64"/>
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
 				<background color="%background%"/>
@@ -49,7 +49,7 @@
 			
 			<input>
 				<condition var1="darker_ui" var2="1"/>
-				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="696" h="64"/>
+				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="552" h="64"/>
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
 				<background color="%title_solid_bg%"/>
@@ -66,12 +66,23 @@
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
-				<action function="overlay">fm_sort</action>
+				<action function="overlay">file_sort</action>
 			</button>
 
 			<image>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_sort"/>
+			</image>
+			
+			<button>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="page">file_search</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<image resource="actionbar_edit"/>
 			</image>
 			
 			<button>
@@ -144,6 +155,101 @@
 			<action>
 				<touch key="back"/>
 				<action function="up_a_level">tw_file_location1</action>
+			</action>
+		</page>
+		
+		<page name="file_search">
+			<fileselector style="fileselector_b">
+				<condition var1="list_font" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_h%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon" file="file_icon" />
+				<filter folders="1" files="1" extnvar="fm_type_sort"/>
+				<path name="tw_file_location1" default="/sdcard"/>
+				<data name="tw_filename1"/>
+				<selection name="tw_selection1"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="list_font" op="!=" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_h%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon_small" file="file_icon_small"/>
+				<filter folders="1" files="1" extnvar="fm_type_sort"/>
+				<path name="tw_file_location1" default="/sdcard"/>
+				<data name="tw_filename1"/>
+				<selection name="tw_selection1"/>
+			</fileselector>
+			
+			<template name="body_key"/>
+			
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+			
+			<input>
+				<placement x="%col1_x_indent%" y="%ab_bc_search_y%"  w="816" h="%input_height%"/>
+				<text>%tw_name_filter%</text>
+				<data name="tw_name_filter"/>
+				<action function="set">tw_reload_fm=1</action>
+				<action function="page">file_search</action>
+			</input>
+			
+			<action>
+				<actions>
+					<action function="set">tw_fm_type={@fm_type_file}</action>
+					<action function="set">tw_fm_isfolder=0</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_filename1" op="modified"/>
+				<condition var1="fm_auto_open" op="!=" var2="1"/>
+				<actions>
+					<action function="page">filemanageroptions</action>
+				</actions>
+			</action>
+			
+			<action>
+				<condition var1="tw_filename1" op="modified"/>
+				<condition var1="fm_auto_open" var2="1"/>
+				<actions>
+					<action function="set">tw_back=filemanagerlist</action>
+					<action function="set">tw_fm_isfolder=0</action>
+					<action function="set">tw_file_extension=</action>
+					<action function="set">fex_found=0</action>
+					<action function="fileextension">%tw_selection1%</action>
+					<action function="page">files_redirect</action>
+				</actions>
+			</action>
+			
+			<action>
+				<condition var1="tw_file_location1" op="modified"/>
+				<actions>
+					<action function="page">file_search</action>
+				</actions>
+			</action>
+			
+			<action>
+				<condition var1="tw_name_filter" op="modified"/>
+				<actions>
+					<action function="set">tw_reload_fm=1</action>
+					<action function="page">file_search</action>
+				</actions>
+			</action>
+			
+			<action>
+				<touch key="home"/>
+				<action function="set">tw_name_filter=</action>
+				<action function="set">tw_reload_fm=1</action>
+				<action function="page">filemanagerlist</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="set">tw_name_filter=</action>
+				<action function="set">tw_reload_fm=1</action>
+				<action function="page">filemanagerlist</action>
 			</action>
 		</page>
 		

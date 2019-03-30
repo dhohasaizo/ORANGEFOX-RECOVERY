@@ -60,7 +60,7 @@
 		<variable name="navbar_bkg" value="3" persist="1"/>
 		<variable name="nougat" value="3" persist="1"/>
 		<variable name="key_buttons" value="1" persist="1"/>
-		<variable name="key_numbar" value="1" persist="1"/>
+		<variable name="key_numbar" value="0" persist="1"/>
 		<variable name="use_fixed_font" value="1" persist="1"/>
 		<variable name="show_cpu_temp" value="1" persist="1"/>
 		<variable name="list_font" value="0" persist="1"/>
@@ -204,6 +204,7 @@
 		<variable name="col1_set_x" value="24"/>
 		<variable name="content_w" value="984"/>
 		<variable name="listbox_tz_width_2" value="540"/>
+		<variable name="fm_search_h" value="%screen_min_cut%-1028"/>
 		
 		<!-- button list height -->
 		<variable name="bl_h1" value="144"/>
@@ -341,6 +342,7 @@
 		<variable name="ab_btn3_x" value="636"/>
 		<variable name="ab_back_x" value="12"/>
 		<variable name="ab_bc_y" value="108+%cutout_w%"/>
+		<variable name="ab_bc_search_y" value="128+%cutout_w%"/>
 		<variable name="ab_bc2_y" value="276+%cutout_w%"/>
 		<variable name="ab_bc3_y" value="492+%cutout_w%"/>
 		<variable name="ab_h" value="240+%cutout_w%"/>
