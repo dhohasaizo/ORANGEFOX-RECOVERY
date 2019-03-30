@@ -13,6 +13,7 @@
 					<action function="page">ext_general</action>
 				</listitem>
 				<listitem name="MIUI OTA">
+					<condition var1="of_no_miui_features" op="!=" var2="1"/>
 					<icon res="bs_btn_set_ota"/>
 					<action function="page">fox_ota</action>
 				</listitem>
@@ -989,9 +990,8 @@
 				<condition var1="of_maintainer" op="!=" var2="3"/>
 				<condition var1="of_maintainer" op="!=" var2="2"/>
 				<condition var1="of_maintainer" op="!=" var2="1"/>
-				<condition var1="of_device"/>
 				<placement x="%card_txt_x%" y="%cardtxt_8%"/>
-				<text>{@abt_device}: %of_device%</text>
+				<text>{@abt_device}: %fox_compatibility_fox_device%</text>
 			</text>
 			<!-- Card -->
 			
