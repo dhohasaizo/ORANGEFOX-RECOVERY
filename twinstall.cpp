@@ -260,6 +260,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   string miui_check1 = "ro.miui.ui.version";
   string check_command = "grep " + miui_check1 + " " + TMP_UPDATER_BINARY_PATH;
   int is_new_miui_update_binary = 0;
+  int zip_has_miui_stuff = 0;
   
   zip_is_rom_package = false; // assume we are not installing a ROM
   zip_is_survival_trigger = false; // assume non-miui
@@ -292,6 +293,11 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	        {
 		  zip_is_rom_package = true;
 		  DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 1); // standard ROM
+		  // check for miui entries
+		  if (TWFunc::CheckWord(FOX_TMP_PATH, "miui_update") ||  TWFunc::CheckWord(FOX_TMP_PATH, "firmware-update"))
+		     {
+		        zip_has_miui_stuff = 1;
+		     }
 		}
 	      unlink(FOX_TMP_PATH);
 	    }
@@ -314,9 +320,12 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
                   int not_found = mCheck.find("not found");
                   if (not_found == -1) // then we are miui
                     {    
-                       is_new_miui_update_binary = 1;
-                       zip_is_survival_trigger = true;
                        LOGINFO("OrangeFox: Detected new Xiaomi update-binary [Message=%s]\n", mCheck.c_str());
+                       is_new_miui_update_binary = 1;
+                       if (zip_has_miui_stuff == 1)
+                       {
+                          zip_is_survival_trigger = true;
+                       }
                     }
                    else 
                      {
