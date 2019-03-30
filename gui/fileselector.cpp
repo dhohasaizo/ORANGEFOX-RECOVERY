@@ -79,6 +79,7 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 		attr = child->first_attribute("default");
 		if (attr) {
 			mPathDefault = attr->value();
+			DataManager::SetValue(mPathVar, attr->value());
 		}
 	}
 
