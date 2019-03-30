@@ -78,6 +78,7 @@ int ROM_IsRealTreble = 0;
 int New_Fox_Installation = 0;
 int OrangeFox_Startup_Executed = 0;
 int Fox_Has_Welcomed = 0;
+string Fox_Current_ROM = "";
 
 /* create a new (text) file */
 static void CreateNewFile(string file_path)
@@ -110,6 +111,11 @@ static bool New_Fox_On_Treble(void)
 /* Get the display ID of the installed ROM */
 static string GetInstalledRom(void)
 {
+   if (Fox_Current_ROM != "")
+    {
+      return Fox_Current_ROM;
+    }
+   
    string s = TWFunc::System_Property_Get ("ro.build.display.id");
    if (s.empty())
    {
@@ -1993,6 +1999,7 @@ int TWFunc::Check_MIUI_Treble(void)
   	fox_is_treble_rom_installed = TWFunc::File_Property_Get (fox_cfg, "TREBLE");
   	fox_is_real_treble_rom = TWFunc::File_Property_Get (fox_cfg, "REALTREBLE");
   	display_panel = TWFunc::File_Property_Get (fox_cfg, "panel_name");	
+  	Fox_Current_ROM = TWFunc::File_Property_Get (fox_cfg, "ROM");
     }
 
    // Treble ?
@@ -2094,6 +2101,8 @@ void TWFunc::OrangeFox_Startup(void)
  
   if (TWFunc::Path_Exists(FOX_PS_BIN)) 
       chmod (FOX_PS_BIN, 0755);
+  
+  Fox_Current_ROM = "";
   
   TWFunc::Welcome_Message();
   
