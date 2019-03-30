@@ -79,7 +79,6 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 		attr = child->first_attribute("default");
 		if (attr) {
 			mPathDefault = attr->value();
-			DataManager::SetValue(mPathVar, attr->value());
 		}
 	}
 
@@ -289,9 +288,15 @@ int GUIFileSelector::GetFileList(const std::string folder)
 		return -1;
 	}
 	
-	string showHiddenFiles;
+	string showHiddenFiles, reloadfm, mSearchString;
 	DataManager::GetValue("tw_hidden_files", showHiddenFiles);
-
+	DataManager::GetValue("tw_name_filter", mSearchString); // Experemental function; no gui
+	DataManager::GetValue("tw_reload_fm", reloadfm);
+	if (reloadfm == "1") {
+		SetVisibleListLocation(0); // Scrolls to top
+		DataManager::SetValue("tw_reload_fm", "0");
+	}
+	
 	while ((de = readdir(d)) != NULL) {
 		FileData data;
 
@@ -299,6 +304,10 @@ int GUIFileSelector::GetFileList(const std::string folder)
 		if (data.fileName == ".")
 			continue;
 		if (data.fileName == ".." && folder == "/")
+			continue;
+		
+		// [f/d] filter files by name
+		if (data.fileName != ".." && data.fileName.find(mSearchString) == string::npos)
 			continue;
 		
 		// [f/d] Remove hidden files/folders when tw_hidden_files = 0
