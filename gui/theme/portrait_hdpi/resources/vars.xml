@@ -93,6 +93,15 @@
 		
 		<!-- Placement -->
 		
+		<!-- Scaling -->
+		<variable name="fm_icon_big_w" value="216*%tw_scaling_w%"/>
+		<variable name="fm_icon_big_h" value="160*%tw_scaling_h%"/>
+		<variable name="fm_icon_small_w" value="120*%tw_scaling_w%"/>
+		<variable name="fm_icon_small_h" value="96*%tw_scaling_h%"/>
+		<variable name="blist_icon_w" value="216*%tw_scaling_w%"/>
+		<variable name="blist_icon_h" value="144*%tw_scaling_h%"/>
+		<variable name="blist_icon_padding" value="24*%tw_scaling_w%"/>
+		
 		<!-- Screen size -->
 		<variable name="cutout_w" value="%status_h%-72"/>
 		<variable name="center_x" value="540"/>

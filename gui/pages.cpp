@@ -920,6 +920,10 @@ int PageSet::LoadDetails(LoadingContext& ctx, xml_node<>* root)
 						LOGINFO("Scaling theme width %fx and height %fx, offsets x: %i y: %i w: %i h: %i\n",
 							scale_w, scale_h, tw_x_offset, tw_y_offset, tw_w_offset, tw_h_offset);
 						set_scale_values(scale_w, scale_h);
+						
+						//[f/d] put scale values to vars
+						DataManager::SetValue("tw_scaling_w", scale_w);
+						DataManager::SetValue("tw_scaling_h", scale_h);
 					}
 				}
 			} else {
@@ -1064,6 +1068,26 @@ int PageSet::LoadVariables(xml_node<>* vars)
 				int val1 = atoi(val1str.c_str());
 				int val2 = atoi(val2str.c_str());
 				int val = val1 - val2;
+
+				DataManager::SetValue(name->value(), val, p);
+			} else if (valstr.find("*") != string::npos) { // [f/d] allow use multiplication and division
+				string val1str = valstr;
+				val1str = val1str.substr(0, val1str.find('*'));
+				string val2str = valstr;
+				val2str = val2str.substr(val2str.find('*') + 1, string::npos);
+				int val1 = atoi(val1str.c_str());
+				int val2 = atoi(val2str.c_str());
+				int val = val1 * val2;
+
+				DataManager::SetValue(name->value(), val, p);
+			} else if (valstr.find("/") != string::npos) {
+				string val1str = valstr;
+				val1str = val1str.substr(0, val1str.find('/'));
+				string val2str = valstr;
+				val2str = val2str.substr(val2str.find('/') + 1, string::npos);
+				int val1 = atoi(val1str.c_str());
+				int val2 = atoi(val2str.c_str());
+				int val = val1 / val2;
 
 				DataManager::SetValue(name->value(), val, p);
 			} else {

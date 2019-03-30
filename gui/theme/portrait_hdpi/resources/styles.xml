@@ -188,7 +188,7 @@
 			<background color="%background%"/>
 			<highlight color="%highlight_color_full%"/>
 			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
-			<iconsize w="216" h="144" padding="24"/>
+			<iconsize w="%blist_icon_w%" h="%blist_icon_h%" padding="%blist_icon_padding%"/>
 			<font resource="button" spacing="%fileselector_spacing%" color="%text_menu%"/>
 		</style>
 		
@@ -247,7 +247,7 @@
 			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
 			<background color="%background%" />
 			<exicon up="up_icon" link="link_icon" block="block_icon"  zip="zip_icon" img="img_icon" txt="txt_icon" png="png_icon" />
-			<iconsize w="216" h="160" />
+			<iconsize w="%fm_icon_big_w%" h="%fm_icon_big_h%" />
 			<font resource="status" spacing="%fileselector_spacing%" color="%text%" />
 		</style>
 
@@ -256,7 +256,7 @@
 			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
 			<background color="%background%" />
 			<exicon up="up_icon_small" link="link_icon_small" block="block_icon_small" zip="zip_icon_small" img="img_icon_small" txt="txt_icon_small" png="png_icon_small" />
-			<iconsize w="120" h="96" />
+			<iconsize w="%fm_icon_small_w%" h="%fm_icon_small_h%" />
 			<font resource="status" spacing="%fileselector_spacing%" color="%text%" />
 		</style>
 
