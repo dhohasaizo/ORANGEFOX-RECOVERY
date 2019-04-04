@@ -2035,10 +2035,10 @@ void TWFunc::Welcome_Message(void)
    if (Fox_Has_Welcomed > 0)
      return;
    gui_print("**************************\n");
-   gui_msg("orangefox_msg2=[OrangeFox]: Welcome! ^_^");
-   gui_msg(Msg("orangefox_msg3=[Version]: '{1}'") (FOX_VERSION));
-   gui_msg(Msg("orangefox_msg4=[Build]: {1}") (FOX_BUILD));
-   gui_print("**************************\n");
+   gui_msg("Welcome to OrangeFox Recovery!");
+   gui_msg(Msg("[Version]: {1}") (FOX_BUILD));
+   gui_msg(Msg("[TWRP Version]: '{1}'") (FOX_VERSION));
+   gui_print("--------------------------\n");
    Fox_Has_Welcomed++;
 }
 
