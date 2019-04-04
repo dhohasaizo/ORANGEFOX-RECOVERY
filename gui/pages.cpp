@@ -57,7 +57,7 @@ extern "C" {
 #include "blanktimer.hpp"
 
 // version 2 requires theme to handle power button as action togglebacklight
-#define TW_THEME_VERSION 10
+#define TW_THEME_VERSION 3
 
 #define TW_THEME_VER_ERR -2
 
@@ -861,7 +861,7 @@ int PageSet::LoadDetails(LoadingContext& ctx, xml_node<>* root)
 	xml_node<>* child = root->first_node("details");
 	if (child) {
 		int theme_ver = 0;
-		xml_node<>* themeversion = child->first_node("foxrelease");
+		xml_node<>* themeversion = child->first_node("themeversion");
 		if (themeversion && themeversion->value()) {
 			theme_ver = atoi(themeversion->value());
 		} else {
