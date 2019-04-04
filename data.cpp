@@ -1084,9 +1084,14 @@ void DataManager::SetDefaultValues()
   mData.SetValue("tw_app_install_status", "0");	// 0 = no status, 1 = not installed, 2 = already installed
 #endif
 
-  mData.SetValue("tw_enable_adb_backup", "0");
+	mData.SetValue("tw_enable_adb_backup", "0");
 
-  pthread_mutex_unlock(&m_valuesLock);
+	if (TWFunc::Path_Exists("/sbin/magiskboot"))
+		mConst.SetValue("tw_has_repack_tools", "1");
+	else
+		mConst.SetValue("tw_has_repack_tools", "0");
+
+	pthread_mutex_unlock(&m_valuesLock);
 }
 
 // Magic Values

@@ -35,6 +35,7 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <cutils/properties.h>
 
 #include "twcommon.h"
 #include "mtdutils/mounts.h"
@@ -285,6 +286,43 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 
       gui_msg("fox_install_detecting=Detecting Current Package");
       
+			char arches[PATH_MAX];
+			std::string binary_name = ASSUMED_UPDATE_BINARY_NAME;
+			property_get("ro.product.cpu.abilist", arches, "error");
+			if (strcmp(arches, "error") == 0)
+				property_get("ro.product.cpu.abi", arches, "error");
+			vector<string> split = TWFunc::split_string(arches, ',', true);
+			std::vector<string>::iterator arch;
+			std::string base_name = binary_name;
+			base_name += "-";
+			for (arch = split.begin(); arch != split.end(); arch++) {
+				std::string temp = base_name + *arch;
+				if (Zip->EntryExists(temp)) {
+					binary_name = temp;
+					break;
+				}
+			}
+			LOGINFO("Extracting updater binary '%s'\n", binary_name.c_str());
+			if (!Zip->ExtractEntry(binary_name.c_str(), TMP_UPDATER_BINARY_PATH, 0755)) {
+				Zip->Close();
+				LOGERR("Could not extract '%s'\n", ASSUMED_UPDATE_BINARY_NAME);
+				return INSTALL_ERROR;
+			}
+
+			// If exists, extract file_contexts from the zip file
+			if (!Zip->EntryExists("file_contexts")) {
+				Zip->Close();
+				LOGINFO("Zip does not contain SELinux file_contexts file in its root.\n");
+			} else {
+				const string output_filename = "/file_contexts";
+				LOGINFO("Zip contains SELinux file_contexts file in its root. Extracting to %s\n", output_filename.c_str());
+				if (!Zip->ExtractEntry("file_contexts", output_filename, 0644)) {
+					Zip->Close();
+					LOGERR("Could not extract '%s'\n", output_filename.c_str());
+					return INSTALL_ERROR;
+				}
+			}
+
       if (Zip->EntryExists(UPDATER_SCRIPT))
 	{
 	  if (Zip->ExtractEntry(UPDATER_SCRIPT, FOX_TMP_PATH, 0644))
@@ -302,6 +340,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      unlink(FOX_TMP_PATH);
 	    }
 	}
+
+
       
    // try to identify MIUI ROM installer
       if (zip_is_rom_package == true) 
@@ -599,50 +639,39 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 }
 
 #ifndef TW_NO_LEGACY_PROPS
-static bool update_binary_has_legacy_properties(const char *binary)
-{
-  const char str_to_match[] = "ANDROID_PROPERTY_WORKSPACE";
-  int len_to_match = sizeof(str_to_match) - 1;
-  bool found = false;
+static bool update_binary_has_legacy_properties(const char *binary) {
+	const char str_to_match[] = "ANDROID_PROPERTY_WORKSPACE";
+	int len_to_match = sizeof(str_to_match) - 1;
+	bool found = false;
 
-  int fd = open(binary, O_RDONLY);
-  if (fd < 0)
-    {
-      LOGINFO("has_legacy_properties: Could not open %s: %s!\n", binary,
-	      strerror(errno));
-      return false;
-    }
-
-  struct stat finfo;
-  if (fstat(fd, &finfo) < 0)
-    {
-      LOGINFO("has_legacy_properties: Could not fstat %d: %s!\n", fd,
-	      strerror(errno));
-      close(fd);
-      return false;
-    }
-
-  void *data = mmap(NULL, finfo.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
-  if (data == MAP_FAILED)
-    {
-      LOGINFO("has_legacy_properties: mmap (size=%ld) failed: %s!\n",
-	      finfo.st_size, strerror(errno));
-    }
-  else
-    {
-      if (memmem(data, finfo.st_size, str_to_match, len_to_match))
-	{
-	  LOGINFO("has_legacy_properties: Found legacy property match!\n");
-	  found = true;
+	int fd = open(binary, O_RDONLY);
+	if (fd < 0) {
+		LOGINFO("has_legacy_properties: Could not open %s: %s!\n", binary, strerror(errno));
+		return false;
 	}
-      munmap(data, finfo.st_size);
-    }
-  close(fd);
 
-  return found;
+	struct stat finfo;
+	if (fstat(fd, &finfo) < 0) {
+		LOGINFO("has_legacy_properties: Could not fstat %d: %s!\n", fd, strerror(errno));
+		close(fd);
+		return false;
+	}
+
+	void *data = mmap(NULL, finfo.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+	if (data == MAP_FAILED) {
+		LOGINFO("has_legacy_properties: mmap (size=%zu) failed: %s!\n", (size_t)finfo.st_size, strerror(errno));
+	} else {
+		if (memmem(data, finfo.st_size, str_to_match, len_to_match)) {
+			LOGINFO("has_legacy_properties: Found legacy property match!\n");
+			found = true;
+		}
+		munmap(data, finfo.st_size);
+	}
+	close(fd);
+
+	return found;
 }
 #endif
-
 
 static int Run_Update_Binary(const char *path, ZipWrap * Zip, int *wipe_cache,
 			     zip_type ztype)
@@ -1110,3 +1139,4 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 #endif
   return ret_val;
 }
+

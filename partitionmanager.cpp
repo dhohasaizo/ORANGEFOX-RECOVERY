@@ -674,25 +674,22 @@ Find_Partition_By_Block_Device(const string & Block_Device)
   return NULL;
 }
 
-int TWPartitionManager::Check_Backup_Name(bool Display_Error)
-{
-  // Check the backup name to ensure that it is the correct size and contains only valid characters
-  // and that a backup with that name doesn't already exist
-  char backup_name[MAX_BACKUP_NAME_LEN];
-  char backup_loc[255], tw_image_dir[255];
-  int copy_size;
-  int index, cur_char;
-  string Backup_Name, Backup_Loc;
+int TWPartitionManager::Check_Backup_Name(const std::string& Backup_Name, bool Display_Error, bool Must_Be_Unique) {
+	// Check the backup name to ensure that it is the correct size and contains only valid characters
+	// and that a backup with that name doesn't already exist
+	char backup_name[MAX_BACKUP_NAME_LEN];
+	char backup_loc[255], tw_image_dir[255];
+	int copy_size;
+	int index, cur_char;
+	string Backup_Loc;
 
-  DataManager::GetValue(TW_BACKUP_NAME, Backup_Name);
-  copy_size = Backup_Name.size();
-  // Check size
-  if (copy_size > MAX_BACKUP_NAME_LEN)
-    {
-      if (Display_Error)
-	gui_err("backup_name_len=Backup name is too long.");
-      return -2;
-    }
+	copy_size = Backup_Name.size();
+	// Check size
+	if (copy_size > MAX_BACKUP_NAME_LEN) {
+		if (Display_Error)
+			gui_err("backup_name_len=Backup name is too long.");
+		return -2;
+	}
 
   // Check each character
   strncpy(backup_name, Backup_Name.c_str(), copy_size);
@@ -724,19 +721,21 @@ int TWPartitionManager::Check_Backup_Name(bool Display_Error)
 	}
     }
 
-  // Check to make sure that a backup with this name doesn't already exist
-  DataManager::GetValue(TW_BACKUPS_FOLDER_VAR, Backup_Loc);
-  strcpy(backup_loc, Backup_Loc.c_str());
-  sprintf(tw_image_dir, "%s/%s", backup_loc, Backup_Name.c_str());
-  if (TWFunc::Path_Exists(tw_image_dir))
-    {
-      if (Display_Error)
-	gui_err("backup_name_exists=A backup with that name already exists!");
+	if (Must_Be_Unique) {
+		// Check to make sure that a backup with this name doesn't already exist
+		DataManager::GetValue(TW_BACKUPS_FOLDER_VAR, Backup_Loc);
+		strcpy(backup_loc, Backup_Loc.c_str());
+		sprintf(tw_image_dir,"%s/%s", backup_loc, Backup_Name.c_str());
+		if (TWFunc::Path_Exists(tw_image_dir)) {
+			if (Display_Error)
+				gui_err("backup_name_exists=A backup with that name already exists!");
 
-      return -4;
-    }
-  // No problems found, return 0
-  return 0;
+			return -4;
+		}
+		// Backup is unique
+	}
+	// No problems found
+	return 0;
 }
 
 bool TWPartitionManager::Backup_Partition(PartitionSettings * part_settings)
@@ -2651,208 +2650,153 @@ int TWPartitionManager::Partition_SDCard(void)
   return true;
 }
 
-void TWPartitionManager::Get_Partition_List(string ListType,
-					    std::vector < PartitionList >
-					    *Partition_List)
-{
-  std::vector < TWPartition * >::iterator iter;
-  if (ListType == "mount")
-    {
-      for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
-	{
-	  if ((*iter)->Can_Be_Mounted)
-	    {
-	      struct PartitionList part;
-	      part.Display_Name = (*iter)->Display_Name;
-	      part.Mount_Point = (*iter)->Mount_Point;
-	      part.selected = (*iter)->Is_Mounted();
-	      Partition_List->push_back(part);
-	    }
-	}
-    }
-  else if (ListType == "part_option")
-    {
-      for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
-	{
-	  if ((*iter)->Wipe_Available_in_GUI && !(*iter)->Is_SubPartition)
-	    {
-	      struct PartitionList part;
-	      part.Display_Name = (*iter)->Display_Name;
-	      part.Mount_Point = (*iter)->Mount_Point;
-	      part.selected = 0;
-	      Partition_List->push_back(part);
-	    }
-	}
-
-    }
-    else if (ListType == "storage")
-    {
-      char free_space[255];
-      string Current_Storage = DataManager::GetCurrentStoragePath();
-      for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
-	{
-	  if ((*iter)->Is_Storage)
-	    {
-	      struct PartitionList part;
-	      sprintf(free_space, "%llu", (*iter)->Free / 1024 / 1024);
-	      part.Display_Name = (*iter)->Storage_Name + " (";
-	      part.Display_Name += free_space;
-	      part.Display_Name += "MB)";
-	      part.Mount_Point = (*iter)->Storage_Path;
-	      if ((*iter)->Storage_Path == Current_Storage)
-		part.selected = 1;
-	      else
-		part.selected = 0;
-	      Partition_List->push_back(part);
-	    }
-	}
-    }
-  else if (ListType == "backup")
-    {
-      char backup_size[255];
-      unsigned long long Backup_Size;
-      for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
-	{
-	  if ((*iter)->Can_Be_Backed_Up && !(*iter)->Is_SubPartition
-	      && (*iter)->Is_Present)
-	    {
-	      struct PartitionList part;
-	      Backup_Size = (*iter)->Backup_Size;
-	      if ((*iter)->Has_SubPartition)
-		{
-		  std::vector < TWPartition * >::iterator subpart;
-
-		  for (subpart = Partitions.begin();
-		       subpart != Partitions.end(); subpart++)
-		    {
-		      if ((*subpart)->Is_SubPartition
-			  && (*subpart)->Can_Be_Backed_Up
-			  && (*subpart)->Is_Present
-			  && (*subpart)->SubPartition_Of ==
-			  (*iter)->Mount_Point)
-			Backup_Size += (*subpart)->Backup_Size;
-		    }
-		}
-	      sprintf(backup_size, "%llu", Backup_Size / 1024 / 1024);
-	      part.Display_Name = (*iter)->Backup_Display_Name + " (";
-	      part.Display_Name += backup_size;
-	      part.Display_Name += "MB)";
-	      part.Mount_Point = (*iter)->Backup_Path;
-	      part.selected = 0;
-	      Partition_List->push_back(part);
-	    }
-	} // for	
-    } // if backup
-  else if (ListType == "restore")
-    {
-      string Restore_List, restore_path;
-      TWPartition *restore_part = NULL;
-
-      DataManager::GetValue("tw_restore_list", Restore_List);
-      if (!Restore_List.empty())
-	{
-	  size_t start_pos = 0, end_pos = Restore_List.find(";", start_pos);
-	  while (end_pos != string::npos && start_pos < Restore_List.size())
-	    {
-	      restore_path = Restore_List.substr(start_pos, end_pos - start_pos);
-		  struct PartitionList part;
-		  if (restore_path.compare("ADB_Backup") == 0)
-		    {
-		      part.Display_Name = "ADB Backup";
-		      part.Mount_Point = "ADB Backup";
-		      part.selected = 1;
-		      Partition_List->push_back(part);
-		      break;
-		    }
-		  if ((restore_part = Find_Partition_By_Path(restore_path)) != NULL)
-		    {
-		      if ((restore_part->Backup_Name == "recovery"
-			   && !restore_part->Can_Be_Backed_Up)
-			  || restore_part->Is_SubPartition)
-			{
-			  // Don't allow restore of recovery (causes problems on some devices)
-			  // Don't add subpartitions to the list of items
+void TWPartitionManager::Get_Partition_List(string ListType, std::vector<PartitionList> *Partition_List) {
+	std::vector<TWPartition*>::iterator iter;
+	if (ListType == "mount") {
+		for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
+			if ((*iter)->Can_Be_Mounted) {
+				struct PartitionList part;
+				part.Display_Name = (*iter)->Display_Name;
+				part.Mount_Point = (*iter)->Mount_Point;
+				part.selected = (*iter)->Is_Mounted();
+				Partition_List->push_back(part);
 			}
-		      else
-			{
-			  part.Display_Name =
-			    restore_part->Backup_Display_Name;
-			  part.Mount_Point = restore_part->Backup_Path;
-			  part.selected = 1;
-			  Partition_List->push_back(part);
-			}
-		    }
-		  else
-		    {
-		      gui_msg(Msg
-			      (msg::kError,
-			       "restore_unable_locate=Unable to locate '{1}' partition for restoring.")
-			      (restore_path));
 		}
-	      start_pos = end_pos + 1;
-	      end_pos = Restore_List.find(";", start_pos);
-	    }
-	}
-    }
-  else if (ListType == "wipe")
-    {
-      struct PartitionList dalvik;
-      dalvik.Display_Name = gui_parse_text("{@dalvik}");
-      dalvik.Mount_Point = "DALVIK";
-      dalvik.selected = 0;
-      Partition_List->push_back(dalvik);    
-      for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
-	{
-	  if ((*iter)->Wipe_Available_in_GUI && !(*iter)->Is_SubPartition)
-	    {
-	      struct PartitionList part;
-	      part.Display_Name = (*iter)->Display_Name;
-	      part.Mount_Point = (*iter)->Mount_Point;
-	      part.selected = 0;
-	      Partition_List->push_back(part);
-	    }
-	  if ((*iter)->Has_Android_Secure)
-	    {
-	      struct PartitionList part;
-	      part.Display_Name = (*iter)->Backup_Display_Name;
-	      part.Mount_Point = (*iter)->Backup_Path;
-	      part.selected = 0;
-	      Partition_List->push_back(part);
-	    }
-	  if ((*iter)->Has_Data_Media)
-	    {
-	      struct PartitionList datamedia;
-	      datamedia.Display_Name = (*iter)->Storage_Name;
-	      datamedia.Mount_Point = "INTERNAL";
-	      datamedia.selected = 0;
-	      Partition_List->push_back(datamedia);
-	    }
-	}
+	} else if (ListType == "storage") {
+		char free_space[255];
+		string Current_Storage = DataManager::GetCurrentStoragePath();
+		for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
+			if ((*iter)->Is_Storage) {
+				struct PartitionList part;
+				sprintf(free_space, "%llu", (*iter)->Free / 1024 / 1024);
+				part.Display_Name = (*iter)->Storage_Name + " (";
+				part.Display_Name += free_space;
+				part.Display_Name += "MB)";
+				part.Mount_Point = (*iter)->Storage_Path;
+				if ((*iter)->Storage_Path == Current_Storage)
+					part.selected = 1;
+				else
+					part.selected = 0;
+				Partition_List->push_back(part);
+			}
+		}
+	} else if (ListType == "backup") {
+		char backup_size[255];
+		unsigned long long Backup_Size;
+		for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
+			if ((*iter)->Can_Be_Backed_Up && !(*iter)->Is_SubPartition && (*iter)->Is_Present) {
+				struct PartitionList part;
+				Backup_Size = (*iter)->Backup_Size;
+				if ((*iter)->Has_SubPartition) {
+					std::vector<TWPartition*>::iterator subpart;
 
-    }
-  else if (ListType == "flashimg")
-    {
-      for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
-	{
-	  if ((*iter)->Can_Flash_Img && (*iter)->Is_Present)
-	    {
-	      struct PartitionList part;
-	      part.Display_Name = (*iter)->Backup_Display_Name;
-	      part.Mount_Point = (*iter)->Backup_Path;
-	      part.selected = 0;
-	      Partition_List->push_back(part);
-	    }
+					for (subpart = Partitions.begin(); subpart != Partitions.end(); subpart++) {
+						if ((*subpart)->Is_SubPartition && (*subpart)->Can_Be_Backed_Up && (*subpart)->Is_Present && (*subpart)->SubPartition_Of == (*iter)->Mount_Point)
+							Backup_Size += (*subpart)->Backup_Size;
+					}
+				}
+				sprintf(backup_size, "%llu", Backup_Size / 1024 / 1024);
+				part.Display_Name = (*iter)->Backup_Display_Name + " (";
+				part.Display_Name += backup_size;
+				part.Display_Name += "MB)";
+				part.Mount_Point = (*iter)->Backup_Path;
+				part.selected = 0;
+				Partition_List->push_back(part);
+			}
+		}
+	} else if (ListType == "restore") {
+		string Restore_List, restore_path;
+		TWPartition* restore_part = NULL;
+
+		DataManager::GetValue("tw_restore_list", Restore_List);
+		if (!Restore_List.empty()) {
+			size_t start_pos = 0, end_pos = Restore_List.find(";", start_pos);
+			while (end_pos != string::npos && start_pos < Restore_List.size()) {
+				restore_path = Restore_List.substr(start_pos, end_pos - start_pos);
+				struct PartitionList part;
+				if (restore_path.compare("ADB_Backup") == 0) {
+					part.Display_Name = "ADB Backup";
+					part.Mount_Point = "ADB Backup";
+					part.selected = 1;
+					Partition_List->push_back(part);
+					break;
+				}
+				if ((restore_part = Find_Partition_By_Path(restore_path)) != NULL) {
+					if ((restore_part->Backup_Name == "recovery" && !restore_part->Can_Be_Backed_Up) || restore_part->Is_SubPartition) {
+						// Don't allow restore of recovery (causes problems on some devices)
+						// Don't add subpartitions to the list of items
+					} else {
+						part.Display_Name = restore_part->Backup_Display_Name;
+						part.Mount_Point = restore_part->Backup_Path;
+						part.selected = 1;
+						Partition_List->push_back(part);
+					}
+				} else {
+					gui_msg(Msg(msg::kError, "restore_unable_locate=Unable to locate '{1}' partition for restoring.")(restore_path));
+				}
+				start_pos = end_pos + 1;
+				end_pos = Restore_List.find(";", start_pos);
+			}
+		}
+	} else if (ListType == "wipe") {
+		struct PartitionList dalvik;
+		dalvik.Display_Name = gui_parse_text("{@dalvik}");
+		dalvik.Mount_Point = "DALVIK";
+		dalvik.selected = 0;
+		Partition_List->push_back(dalvik);
+		for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
+			if ((*iter)->Wipe_Available_in_GUI && !(*iter)->Is_SubPartition) {
+				struct PartitionList part;
+				part.Display_Name = (*iter)->Display_Name;
+				part.Mount_Point = (*iter)->Mount_Point;
+				part.selected = 0;
+				Partition_List->push_back(part);
+			}
+			if ((*iter)->Has_Android_Secure) {
+				struct PartitionList part;
+				part.Display_Name = (*iter)->Backup_Display_Name;
+				part.Mount_Point = (*iter)->Backup_Path;
+				part.selected = 0;
+				Partition_List->push_back(part);
+			}
+			if ((*iter)->Has_Data_Media) {
+				struct PartitionList datamedia;
+				datamedia.Display_Name = (*iter)->Storage_Name;
+				datamedia.Mount_Point = "INTERNAL";
+				datamedia.selected = 0;
+				Partition_List->push_back(datamedia);
+			}
+		}
+	} else if (ListType == "flashimg") {
+		for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
+			if ((*iter)->Can_Flash_Img && (*iter)->Is_Present) {
+				struct PartitionList part;
+				part.Display_Name = (*iter)->Backup_Display_Name;
+				part.Mount_Point = (*iter)->Backup_Path;
+				part.selected = 0;
+				Partition_List->push_back(part);
+			}
+		}
+		if (DataManager::GetIntValue("tw_has_repack_tools") != 0 && DataManager::GetIntValue("tw_has_boot_slots") != 0) {
+			TWPartition* boot = Find_Partition_By_Path("/boot");
+			if (boot) {
+				// Allow flashing kernels and ramdisks
+				struct PartitionList repack_ramdisk;
+				repack_ramdisk.Display_Name = gui_lookup("install_twrp_ramdisk", "Install Recovery Ramdisk");
+				repack_ramdisk.Mount_Point = "/repack_ramdisk";
+				repack_ramdisk.selected = 0;
+				Partition_List->push_back(repack_ramdisk);
+				/*struct PartitionList repack_kernel; For now let's leave repacking kernels under advanced only
+				repack_kernel.Display_Name = gui_lookup("install_kernel", "Install Kernel");
+				repack_kernel.Mount_Point = "/repack_kernel";
+				repack_kernel.selected = 0;
+				Partition_List->push_back(repack_kernel);*/
+			}
+		}
+	} else {
+		LOGERR("Unknown list type '%s' requested for TWPartitionManager::Get_Partition_List\n", ListType.c_str());
 	}
-    }
-  else
-    {
-      LOGERR
-	("Unknown list type '%s' requested for TWPartitionManager::Get_Partition_List\n",
-	 ListType.c_str());
-    }
 }
-
-
 
 int TWPartitionManager::Fstab_Processed(void)
 {
@@ -2862,7 +2806,13 @@ int TWPartitionManager::Fstab_Processed(void)
 void TWPartitionManager::Output_Storage_Fstab(void) {
 	std::vector<TWPartition*>::iterator iter;
 	char storage_partition[255];
-	string Temp;
+	std::string Temp;
+	std::string cacheDir = TWFunc::get_cache_dir();
+
+	if (cacheDir.empty()) {
+		LOGINFO("Unable to find cache directory\n");
+		return;
+	}
 
 	std::string storageFstab = TWFunc::get_cache_dir() + "recovery/storage.fstab";
 	FILE *fp = fopen(storageFstab.c_str(), "w");
@@ -3209,93 +3159,88 @@ bool TWPartitionManager::Remove_MTP_Storage(unsigned int Storage_ID)
   return false;
 }
 
-bool TWPartitionManager::Flash_Image(string & path, string & filename)
-{
-  int partition_count = 0;
-  TWPartition *flash_part = NULL;
-  string Flash_List, flash_path, full_filename;
-  size_t start_pos = 0, end_pos = 0;
+bool TWPartitionManager::Flash_Image(string& path, string& filename) {
+	int partition_count = 0;
+	TWPartition* flash_part = NULL;
+	string Flash_List, flash_path, full_filename;
+	size_t start_pos = 0, end_pos = 0;
 
-  full_filename = path + "/" + filename;
+	full_filename = path + "/" + filename;
 
-  gui_msg("image_flash_start=[IMAGE FLASH STARTED]");
-  gui_msg(Msg("img_to_flash=Image to flash: '{1}'") (full_filename));
+	gui_msg("image_flash_start=[IMAGE FLASH STARTED]");
+	gui_msg(Msg("img_to_flash=Image to flash: '{1}'")(full_filename));
 
-  if (!TWFunc::Path_Exists(full_filename))
-    {
-      if (!Mount_By_Path(full_filename, true))
-	{
-	  return false;
-	}
-      if (!TWFunc::Path_Exists(full_filename))
-	{
-	  gui_msg(Msg(msg::kError, "unable_to_locate=Unable to locate {1}.")
-		  (full_filename));
-	  return false;
-	}
-    }
-
-  PartitionSettings part_settings;
-  part_settings.Backup_Folder = path;
-  unsigned long long total_bytes = TWFunc::Get_File_Size(full_filename);
-  ProgressTracking progress(total_bytes);
-  part_settings.progress = &progress;
-  part_settings.adbbackup = false;
-  part_settings.PM_Method = PM_RESTORE;
-
-  gui_msg("calc_restore=Calculating restore details...");
-  DataManager::GetValue("tw_flash_partition", Flash_List);
-  if (!Flash_List.empty())
-    {
-      end_pos = Flash_List.find(";", start_pos);
-      while (end_pos != string::npos && start_pos < Flash_List.size())
-	{
-	  flash_path = Flash_List.substr(start_pos, end_pos - start_pos);
-	  flash_part = Find_Partition_By_Path(flash_path);
-	  if (flash_part != NULL)
-	    {
-	      partition_count++;
-	      if (partition_count > 1)
-		{
-		  gui_err
-		    ("too_many_flash=Too many partitions selected for flashing.");
-		  return false;
+	if (!TWFunc::Path_Exists(full_filename)) {
+		if (!Mount_By_Path(full_filename, true)) {
+			return false;
 		}
-	    }
-	  else
-	    {
-	      gui_msg(Msg
-		      (msg::kError,
-		       "flash_unable_locate=Unable to locate '{1}' partition for flashing.")
-		      (flash_path));
-	      return false;
-	    }
-	  start_pos = end_pos + 1;
-	  end_pos = Flash_List.find(";", start_pos);
+		if (!TWFunc::Path_Exists(full_filename)) {
+			gui_msg(Msg(msg::kError, "unable_to_locate=Unable to locate {1}.")(full_filename));
+			return false;
+		}
 	}
-    }
 
-  if (partition_count == 0)
-    {
-      gui_err("no_part_flash=No partitions selected for flashing.");
-      return false;
-    }
+	DataManager::GetValue("tw_flash_partition", Flash_List);
+	Repack_Type repack = REPLACE_NONE;
+	if (Flash_List == "/repack_ramdisk;") {
+		repack = REPLACE_RAMDISK;
+	} else if (Flash_List == "/repack_kernel;") {
+		repack = REPLACE_KERNEL;
+	}
+	if (repack != REPLACE_NONE) {
+		Repack_Options_struct Repack_Options;
+		Repack_Options.Type = repack;
+		Repack_Options.Disable_Verity = false;
+		Repack_Options.Disable_Force_Encrypt = false;
+		Repack_Options.Backup_First = DataManager::GetIntValue("tw_repack_backup_first") != 0;
+		return Repack_Images(full_filename, Repack_Options);
+	}
+	PartitionSettings part_settings;
+	part_settings.Backup_Folder = path;
+	unsigned long long total_bytes = TWFunc::Get_File_Size(full_filename);
+	ProgressTracking progress(total_bytes);
+	part_settings.progress = &progress;
+	part_settings.adbbackup = false;
+	part_settings.PM_Method = PM_RESTORE;
+	gui_msg("calc_restore=Calculating restore details...");
+	if (!Flash_List.empty()) {
+		end_pos = Flash_List.find(";", start_pos);
+		while (end_pos != string::npos && start_pos < Flash_List.size()) {
+			flash_path = Flash_List.substr(start_pos, end_pos - start_pos);
+			flash_part = Find_Partition_By_Path(flash_path);
+			if (flash_part != NULL) {
+				partition_count++;
+				if (partition_count > 1) {
+					gui_err("too_many_flash=Too many partitions selected for flashing.");
+					return false;
+				}
+			} else {
+				gui_msg(Msg(msg::kError, "flash_unable_locate=Unable to locate '{1}' partition for flashing.")(flash_path));
+				return false;
+			}
+			start_pos = end_pos + 1;
+			end_pos = Flash_List.find(";", start_pos);
+		}
+	}
 
-  DataManager::SetProgress(0.0);
-  if (flash_part)
-    {
-      flash_part->Backup_FileName = filename;
-      if (!flash_part->Flash_Image(&part_settings))
-	return false;
-    }
-  else
-    {
-      gui_err("invalid_flash=Invalid flash partition specified.");
-      return false;
-    }
-  gui_highlight("flash_done=IMAGE FLASH COMPLETED]");
-  return true;
+	if (partition_count == 0) {
+		gui_err("no_part_flash=No partitions selected for flashing.");
+		return false;
+	}
+
+	DataManager::SetProgress(0.0);
+	if (flash_part) {
+		flash_part->Backup_FileName = filename;
+		if (!flash_part->Flash_Image(&part_settings))
+			return false;
+	} else {
+		gui_err("invalid_flash=Invalid flash partition specified.");
+		return false;
+	}
+	gui_highlight("flash_done=IMAGE FLASH COMPLETED]");
+	return true;
 }
+
 
 void TWPartitionManager::Translate_Partition(const char *path,
 					     const char *resource_name,
@@ -4540,4 +4485,135 @@ bool TWPartitionManager::Partition_Is_Encrypted(const string Path)
 {
   TWPartition *Part = Find_Partition_By_Path(Path);
   return (Part && Part->Is_Encrypted);
+}
+
+bool TWPartitionManager::Prepare_Empty_Folder(const std::string& Folder) {
+	if (TWFunc::Path_Exists(Folder))
+		TWFunc::removeDir(Folder, false);
+	return TWFunc::Recursive_Mkdir(Folder);
+}
+
+bool TWPartitionManager::Prepare_Repack(TWPartition* Part, const std::string& Temp_Folder_Destination, const bool Create_Backup, const std::string& Backup_Name) {
+	if (!Part) {
+		LOGERR("Partition was null!\n");
+		return false;
+	}
+	if (!Prepare_Empty_Folder(Temp_Folder_Destination))
+		return false;
+	std::string target_image = Temp_Folder_Destination + "boot.img";
+	PartitionSettings part_settings;
+	part_settings.Part = Part;
+	if (Create_Backup) {
+		if (Check_Backup_Name(Backup_Name, true, false) != 0)
+			return false;
+		DataManager::GetValue(TW_BACKUPS_FOLDER_VAR, part_settings.Backup_Folder);
+		part_settings.Backup_Folder = part_settings.Backup_Folder + "/" + TWFunc::Get_Current_Date() + " " + Backup_Name + "/";
+		if (!TWFunc::Recursive_Mkdir(part_settings.Backup_Folder))
+			return false;
+	} else
+		part_settings.Backup_Folder = Temp_Folder_Destination;
+	part_settings.adbbackup = false;
+	part_settings.generate_digest = false;
+	part_settings.generate_md5 = false;
+	part_settings.PM_Method = PM_BACKUP;
+	part_settings.progress = NULL;
+	pid_t not_a_pid = 0;
+	if (!Part->Backup(&part_settings, &not_a_pid))
+		return false;
+	std::string backed_up_image = part_settings.Backup_Folder;
+	backed_up_image += Part->Backup_FileName;
+	target_image = Temp_Folder_Destination + "boot.img";
+	if (Create_Backup) {
+		std::string source = part_settings.Backup_Folder + Part->Backup_FileName;
+		if (TWFunc::copy_file(source, target_image, 0644) != 0) {
+			LOGERR("Failed to copy backup file '%s' to temp folder target '%s'\n", source.c_str(), target_image.c_str());
+			return false;
+		}
+	} else {
+		if (rename(backed_up_image.c_str(), target_image.c_str()) != 0) {
+			LOGERR("Failed to rename '%s' to '%s'\n", backed_up_image.c_str(), target_image.c_str());
+			return false;
+		}
+	}
+	return Prepare_Repack(target_image, Temp_Folder_Destination, false, false);
+}
+
+bool TWPartitionManager::Prepare_Repack(const std::string& Source_Path, const std::string& Temp_Folder_Destination, const bool Copy_Source, const bool Create_Destination) {
+	if (Create_Destination) {
+		if (!Prepare_Empty_Folder(Temp_Folder_Destination))
+			return false;
+	}
+	if (Copy_Source) {
+		std::string destination = Temp_Folder_Destination + "/boot.img";
+		if (TWFunc::copy_file(Source_Path, destination, 0644))
+			return false;
+	}
+	std::string command = "cd " + Temp_Folder_Destination + " && /sbin/magiskboot --unpack -h " + Source_Path;
+	if (TWFunc::Exec_Cmd(command) != 0) {
+		LOGINFO("Error unpacking %s!\n", Source_Path.c_str());
+		gui_msg(Msg(msg::kError, "unpack_error=Error unpacking image."));
+		return false;
+	}
+	return true;
+}
+
+bool TWPartitionManager::Repack_Images(const std::string& Target_Image, const struct Repack_Options_struct& Repack_Options) {
+	if (!TWFunc::Path_Exists("/sbin/magiskboot")) {
+		LOGERR("Image repacking tool not present in this TWRP build!");
+		return false;
+	}
+	DataManager::SetProgress(0);
+	TWPartition* part = PartitionManager.Find_Partition_By_Path("/boot");
+	if (part)
+		gui_msg(Msg("unpacking_image=Unpacking {1}...")(part->Display_Name));
+	else {
+		gui_msg(Msg(msg::kError, "unable_to_locate=Unable to locate {1}.")("/boot"));
+		return false;
+	}
+	if (!PartitionManager.Prepare_Repack(part, REPACK_ORIG_DIR, Repack_Options.Backup_First, gui_lookup("repack", "Repack")))
+		return false;
+	DataManager::SetProgress(.25);
+	gui_msg(Msg("unpacking_image=Unpacking {1}...")(Target_Image));
+	if (!PartitionManager.Prepare_Repack(Target_Image, REPACK_NEW_DIR, true))
+		return false;
+	DataManager::SetProgress(.5);
+	gui_msg(Msg("repacking_image=Repacking {1}...")(part->Display_Name));
+	std::string path = REPACK_NEW_DIR;
+	if (Repack_Options.Type == REPLACE_KERNEL) {
+		// When we replace the kernel, what we really do is copy the boot partition ramdisk into the new image's folder
+		if (TWFunc::copy_file(REPACK_ORIG_DIR "ramdisk.cpio", REPACK_NEW_DIR "ramdisk.cpio", 0644)) {
+			LOGERR("Failed to copy ramdisk\n");
+			return false;
+		}
+	} else if (Repack_Options.Type == REPLACE_RAMDISK) {
+		// Repack the ramdisk
+		if (TWFunc::copy_file(REPACK_NEW_DIR "ramdisk.cpio", REPACK_ORIG_DIR "ramdisk.cpio", 0644)) {
+			LOGERR("Failed to copy ramdisk\n");
+			return false;
+		}
+		path = REPACK_ORIG_DIR;
+	} else {
+		LOGERR("Invalid repacking options specified\n");
+		return false;
+	}
+	if (Repack_Options.Disable_Verity)
+		LOGERR("Disabling verity is not implemented yet\n");
+	if (Repack_Options.Disable_Force_Encrypt)
+		LOGERR("Disabling force encrypt is not implemented yet\n");
+	std::string command = "cd " + path + " && /sbin/magiskboot --repack " + path + "boot.img";
+	if (TWFunc::Exec_Cmd(command) != 0) {
+		gui_msg(Msg(msg::kError, "repack_error=Error repacking image."));
+		return false;
+	}
+	DataManager::SetProgress(.75);
+	std::string file = "new-boot.img";
+	DataManager::SetValue("tw_flash_partition", "/boot;");
+	if (!PartitionManager.Flash_Image(path, file)) {
+		LOGINFO("Error flashing new image\n");
+		return false;
+	}
+	DataManager::SetProgress(1);
+	TWFunc::removeDir(REPACK_ORIG_DIR, false);
+	TWFunc::removeDir(REPACK_NEW_DIR, false);
+	return true;
 }

@@ -882,68 +882,53 @@ void TWFunc::Copy_Log(string Source, string Destination)
 }
 
 
-void TWFunc::Update_Log_File(void)
-{
-  // Copy logs to cache so the system can find out what happened.
-  if (PartitionManager.Mount_By_Path("/cache", false))
-    {
-      if (!TWFunc::Path_Exists("/cache/recovery/."))
-	{
-	  LOGINFO("Recreating /cache/recovery folder.\n");
-	  if (mkdir("/cache/recovery", S_IRWXU | S_IRWXG | S_IWGRP | S_IXGRP)
-	      != 0)
-	    LOGINFO("Unable to create /cache/recovery folder.\n");
-	}
-      Copy_Log(TMP_LOG_FILE, "/cache/recovery/log");
-      copy_file("/cache/recovery/log", "/cache/recovery/last_log", 600);
-      chown("/cache/recovery/log", 1000, 1000);
-      chmod("/cache/recovery/log", 0600);
-      chmod("/cache/recovery/last_log", 0640);
-    }
-  else if (PartitionManager.Mount_By_Path("/data", false)
-	   && TWFunc::Path_Exists("/data/cache/recovery/."))
-    {
-      Copy_Log(TMP_LOG_FILE, "/data/cache/recovery/log");
-      copy_file("/data/cache/recovery/log", "/data/cache/recovery/last_log",
-		600);
-      chown("/data/cache/recovery/log", 1000, 1000);
-      chmod("/data/cache/recovery/log", 0600);
-      chmod("/data/cache/recovery/last_log", 0640);
-    }
-  else
-    {
-      LOGINFO
-	("Failed to mount /cache or find /data/cache for TWFunc::Update_Log_File\n");
-    }
+void TWFunc::Update_Log_File(void) {
+	std::string recoveryDir = get_cache_dir() + "recovery/";
 
-  // Reset bootloader message
-  TWPartition *Part = PartitionManager.Find_Partition_By_Path("/misc");
-  if (Part != NULL)
-    {
-      std::string err;
-      if (!clear_bootloader_message((void *) &err))
-	{
-	  if (err == "no misc device set")
-	    {
-	      LOGINFO("%s\n", err.c_str());
-	    }
-	  else
-	    {
-	      LOGERR("%s\n", err.c_str());
-	    }
+	if (get_cache_dir() == NON_AB_CACHE_DIR) {
+		if (!PartitionManager.Mount_By_Path(NON_AB_CACHE_DIR, false)) {
+			LOGINFO("Failed to mount %s for TWFunc::Update_Log_File\n", NON_AB_CACHE_DIR);
+		}
 	}
-    }
 
-  if (PartitionManager.Mount_By_Path("/cache", false))
-    {
-      if (unlink("/cache/recovery/command") && errno != ENOENT)
-	{
-	  LOGINFO("Can't unlink %s\n", "/cache/recovery/command");
+	if (!TWFunc::Path_Exists(recoveryDir)) {
+		LOGINFO("Recreating %s folder.\n", recoveryDir.c_str());
+		if (!Create_Dir_Recursive(recoveryDir,  S_IRWXU | S_IRWXG | S_IWGRP | S_IXGRP, 0, 0)) {
+			LOGINFO("Unable to create %s folder.\n", recoveryDir.c_str());
+		}
 	}
-    }
 
-  sync();
+	std::string logCopy = recoveryDir + "log";
+	std::string lastLogCopy = recoveryDir + "last_log";
+	copy_file(logCopy, lastLogCopy, 600);
+	Copy_Log(TMP_LOG_FILE, logCopy);
+	chown(logCopy.c_str(), 1000, 1000);
+	chmod(logCopy.c_str(), 0600);
+	chmod(lastLogCopy.c_str(), 0640);
+
+	// Reset bootloader message
+	TWPartition* Part = PartitionManager.Find_Partition_By_Path("/misc");
+	if (Part != NULL) {
+		std::string err;
+		if (!clear_bootloader_message((void*)&err)) {
+			if (err == "no misc device set") {
+				LOGINFO("%s\n", err.c_str());
+			} else {
+				LOGERR("%s\n", err.c_str());
+			}
+		}
+	}
+
+	if (get_cache_dir() == NON_AB_CACHE_DIR) {
+		if (PartitionManager.Mount_By_Path("/cache", false)) {
+			if (unlink("/cache/recovery/command") && errno != ENOENT) {
+				LOGINFO("Can't unlink %s\n", "/cache/recovery/command");
+			}
+		}
+	}
+	sync();
 }
+
 
 void TWFunc::Update_Intent_File(string Intent)
 {
@@ -1316,42 +1301,34 @@ string TWFunc::File_Property_Get(string File_Path, string Prop_Name)
   return propvalue;
 }
 
-
-void TWFunc::Auto_Generate_Backup_Name()
-{
-  string propvalue = System_Property_Get("ro.build.display.id");
-  if (propvalue.empty())
-    {
-      DataManager::SetValue(TW_BACKUP_NAME, Get_Current_Date());
-      return;
-    }
-  else
-    {
-      //remove periods from build display so it doesn't confuse the extension code
-      propvalue.erase(remove(propvalue.begin(), propvalue.end(), '.'),
-		      propvalue.end());
-    }
-  string Backup_Name = Get_Current_Date();
-  Backup_Name += "_" + propvalue;
-  if (Backup_Name.size() > MAX_BACKUP_NAME_LEN)
-    Backup_Name.resize(MAX_BACKUP_NAME_LEN);
-  // Trailing spaces cause problems on some file systems, so remove them
-  string space_check, space = " ";
-  space_check = Backup_Name.substr(Backup_Name.size() - 1, 1);
-  while (space_check == space)
-    {
-      Backup_Name.resize(Backup_Name.size() - 1);
-      space_check = Backup_Name.substr(Backup_Name.size() - 1, 1);
-    }
-  replace(Backup_Name.begin(), Backup_Name.end(), ' ', '_');
-  DataManager::SetValue(TW_BACKUP_NAME, Backup_Name);
-  if (PartitionManager.Check_Backup_Name(false) != 0)
-    {
-      LOGINFO
-	("Auto generated backup name '%s' contains invalid characters, using date instead.\n",
-	 Backup_Name.c_str());
-      DataManager::SetValue(TW_BACKUP_NAME, Get_Current_Date());
-    }
+void TWFunc::Auto_Generate_Backup_Name() {
+	string propvalue = System_Property_Get("ro.build.display.id");
+	if (propvalue.empty()) {
+		DataManager::SetValue(TW_BACKUP_NAME, Get_Current_Date());
+		return;
+	}
+	else {
+		//remove periods from build display so it doesn't confuse the extension code
+		propvalue.erase(remove(propvalue.begin(), propvalue.end(), '.'), propvalue.end());
+	}
+	string Backup_Name = Get_Current_Date();
+	Backup_Name += "_" + propvalue;
+	if (Backup_Name.size() > MAX_BACKUP_NAME_LEN)
+		Backup_Name.resize(MAX_BACKUP_NAME_LEN);
+	// Trailing spaces cause problems on some file systems, so remove them
+	string space_check, space = " ";
+	space_check = Backup_Name.substr(Backup_Name.size() - 1, 1);
+	while (space_check == space) {
+		Backup_Name.resize(Backup_Name.size() - 1);
+		space_check = Backup_Name.substr(Backup_Name.size() - 1, 1);
+	}
+	replace(Backup_Name.begin(), Backup_Name.end(), ' ', '_');
+	if (PartitionManager.Check_Backup_Name(Backup_Name, false, true) != 0) {
+		LOGINFO("Auto generated backup name '%s' is not valid, using date instead.\n", Backup_Name.c_str());
+		DataManager::SetValue(TW_BACKUP_NAME, Get_Current_Date());
+	} else {
+		DataManager::SetValue(TW_BACKUP_NAME, Backup_Name);
+	}
 }
 
 void TWFunc::Fixup_Time_On_Boot(const string & time_paths)
@@ -3768,7 +3745,15 @@ bool TWFunc::DontPatchBootImage(void)
 
 std::string TWFunc::get_cache_dir() {
 	if (PartitionManager.Find_Partition_By_Path(NON_AB_CACHE_DIR) == NULL) {
-		return AB_CACHE_DIR;
+		if (PartitionManager.Find_Partition_By_Path(NON_AB_CACHE_DIR) == NULL) {
+			if (PartitionManager.Find_Partition_By_Path(PERSIST_CACHE_DIR) == NULL) {
+				LOGINFO("Unable to find a directory to store TWRP logs.");
+				return "";
+			}
+			return PERSIST_CACHE_DIR;
+		} else {
+			return AB_CACHE_DIR;
+		}
 	}
 	else {
 		return NON_AB_CACHE_DIR;

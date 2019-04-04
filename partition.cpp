@@ -1894,7 +1894,7 @@ bool TWPartition::Wipe(string New_File_System)
 		else if (New_File_System == "ext4")
 			wiped = Wipe_EXT4();
 		else if (New_File_System == "ext2" || New_File_System == "ext3")
-			wiped = Wipe_EXT23(New_File_System);
+			wiped = Wipe_EXTFS(New_File_System);
 		else if (New_File_System == "vfat")
 			wiped = Wipe_FAT();
 		else if (New_File_System == "exfat")
@@ -2476,31 +2476,81 @@ void TWPartition::Check_FS_Type()
     }
 }
 
-bool TWPartition::Wipe_EXT23(string File_System) {
+bool TWPartition::Wipe_EXTFS(string File_System) {
+#if PLATFORM_SDK_VERSION < 28
+	if (!TWFunc::Path_Exists("/sbin/mke2fs"))
+#else
+	if (!TWFunc::Path_Exists("/sbin/mke2fs") || !TWFunc::Path_Exists("/sbin/e2fsdroid"))
+#endif
+		return Wipe_RMRF();
+
+	int ret;
+	bool NeedPreserveFooter = true;
+
+	Find_Actual_Block_Device();
+	if (!Is_Present) {
+		LOGINFO("Block device not present, cannot wipe %s.\n", Display_Name.c_str());
+		gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+		return false;
+	}
 	if (!UnMount(true))
 		return false;
 
-	if (TWFunc::Path_Exists("/sbin/mke2fs")) {
-		string command;
+	/**
+	 * On decrypted devices, IOCTL_Get_Block_Size calculates size on device mapper,
+	 * so there's no need to preserve footer.
+	 */
+	if ((Is_Decrypted && !Decrypted_Block_Device.empty()) ||
+			Crypto_Key_Location != "footer") {
+		NeedPreserveFooter = false;
+	}
 
-		gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("mke2fs"));
-		Find_Actual_Block_Device();
-		command = "mke2fs -t " + File_System + " -m 0 " + Actual_Block_Device;
-		LOGINFO("mke2fs command: %s\n", command.c_str());
-		if (TWFunc::Exec_Cmd(command) == 0) {
-			Current_File_System = File_System;
-			Recreate_AndSec_Folder();
-			gui_msg("done=Done.");
-			return true;
-		} else {
+	unsigned long long dev_sz = TWFunc::IOCTL_Get_Block_Size(Actual_Block_Device.c_str());
+	if (!dev_sz)
+		return false;
+
+	if (NeedPreserveFooter)
+		Length < 0 ? dev_sz += Length : dev_sz -= CRYPT_FOOTER_OFFSET;
+
+	char dout[16];
+	sprintf(dout, "%llu", dev_sz / 4096);
+
+	//string size_str =to_string(dev_sz / 4096);
+	string size_str = dout;
+	string Command;
+
+	gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("mke2fs"));
+
+	// Execute mke2fs to create empty ext4 filesystem
+	Command = "mke2fs -t " + File_System + " -b 4096 " + Actual_Block_Device + " " + size_str;
+	LOGINFO("mke2fs command: %s\n", Command.c_str());
+	ret = TWFunc::Exec_Cmd(Command);
+	if (ret) {
+		gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+		return false;
+	}
+
+	if (TWFunc::Path_Exists("/sbin/e2fsdroid")) {
+		// Execute e2fsdroid to initialize selinux context
+		Command = "e2fsdroid -e -a " + Mount_Point + " " + Actual_Block_Device;
+		LOGINFO("e2fsdroid command: %s\n", Command.c_str());
+		ret = TWFunc::Exec_Cmd(Command);
+		if (ret) {
 			gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
 			return false;
 		}
-	} else
-		return Wipe_RMRF();
+	} else {
+		LOGINFO("e2fsdroid not present\n");
+	}
 
-	return false;
+	if (NeedPreserveFooter)
+		Wipe_Crypto_Key();
+	Current_File_System = File_System;
+	Recreate_AndSec_Folder();
+	gui_msg("done=Done.");
+	return true;
 }
+
 
 bool TWPartition::Wipe_EXT4() {
 	Find_Actual_Block_Device();
@@ -2906,6 +2956,53 @@ Wipe_Data_Without_Wiping_Media_Func(const string & parent __unused)
 	  (Mount_Point) (strerror(errno)));
   return false;
 }
+
+void TWPartition::Wipe_Crypto_Key() {
+	Find_Actual_Block_Device();
+	if (Crypto_Key_Location.empty())
+		return;
+	else if (Crypto_Key_Location == "footer") {
+		int fd = open(Actual_Block_Device.c_str(), O_RDWR);
+		if (fd < 0) {
+			gui_print_color("warning", "Unable to open '%s' to wipe crypto key\n", Actual_Block_Device.c_str());
+			return;
+		}
+
+		unsigned int block_count;
+		if ((ioctl(fd, BLKGETSIZE, &block_count)) == -1) {
+			gui_print_color("warning", "Unable to get block size for wiping crypto footer.\n");
+		} else {
+			int newlen = Length < 0 ? -Length : CRYPT_FOOTER_OFFSET;
+			off64_t offset = ((off64_t)block_count * 512) - newlen;
+			if (lseek64(fd, offset, SEEK_SET) == -1) {
+				gui_print_color("warning", "Unable to lseek64 for wiping crypto footer.\n");
+			} else {
+				void* buffer = malloc(newlen);
+				if (!buffer) {
+					gui_print_color("warning", "Failed to malloc for wiping crypto footer.\n");
+				} else {
+					memset(buffer, 0, newlen);
+					int ret = write(fd, buffer, newlen);
+					if (ret != newlen) {
+						gui_print_color("warning", "Failed to wipe crypto footer.\n");
+					} else {
+						LOGINFO("Successfully wiped crypto footer.\n");
+					}
+					free(buffer);
+				}
+			}
+		}
+		close(fd);
+	} else {
+		if (TWFunc::IOCTL_Get_Block_Size(Crypto_Key_Location.c_str()) >= 16384LLU) {
+			string Command = "dd of='" + Crypto_Key_Location + "' if=/dev/zero bs=16384 count=1";
+			TWFunc::Exec_Cmd(Command);
+		} else {
+			LOGINFO("Crypto key location reports size < 16K so not wiping crypto footer.\n");
+		}
+	}
+}
+
 
 bool TWPartition::Backup_Tar(PartitionSettings *part_settings, pid_t *tar_fork_pid) {
 	string Full_FileName;

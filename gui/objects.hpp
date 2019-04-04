@@ -376,6 +376,8 @@ protected:
 	int wlfw(std::string arg);
 	int calldeactivateprocess(std::string arg);
 	int xsleep(std::string arg);
+	int repackimage(std::string arg);
+	int fixabrecoverybootloop(std::string arg);
 
 	int simulate;
 };

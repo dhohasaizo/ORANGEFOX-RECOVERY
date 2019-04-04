@@ -29,6 +29,9 @@
 
 #define MAX_FSTAB_LINE_LENGTH 2048
 
+#define REPACK_ORIG_DIR "/tmp/repackorig/"
+#define REPACK_NEW_DIR "/tmp/repacknew/"
+
 using namespace std;
 
 // BasePartition is used for overriding so we can run custom, device
@@ -70,6 +73,19 @@ struct Flags_Map {
 	std::string File_System;
 	std::string Flags;
 	char* fstab_line;
+};
+
+enum Repack_Type {
+	REPLACE_NONE = 0,
+	REPLACE_RAMDISK = 1,
+	REPLACE_KERNEL = 2,
+};
+
+struct Repack_Options_struct {
+	Repack_Type Type;
+	bool Backup_First;
+	bool Disable_Verity;
+	bool Disable_Force_Encrypt;
 };
 
 enum PartitionManager_Op {                                                    // PartitionManager Restore Mode for Raw_Read_Write()
@@ -182,7 +198,7 @@ private:
 	unsigned long long IOCTL_Get_Block_Size();                                // Finds the partition size using ioctl
 	bool Find_Partition_Size();                                               // Finds the partition size from /proc/partitions
 	unsigned long long Get_Size_Via_du(string Path, bool Display_Error);      // Uses du to get sizes
-	bool Wipe_EXT23(string File_System);                                      // Formats as ext3 or ext2
+	bool Wipe_EXTFS(string File_System);                                      // Formats as ext3 or ext2
 	bool Wipe_EXT4();                                                         // Formats using ext4, uses make_ext4fs when present
 	bool Wipe_FAT();                                                          // Formats as FAT if mkfs.fat exits otherwise rm -rf wipe
 	bool Wipe_EXFAT();                                                        // Formats as EXFAT
@@ -191,6 +207,7 @@ private:
 	bool Wipe_F2FS();                                                         // Uses mkfs.f2fs to wipe
 	bool Wipe_NTFS();                                                         // Uses mkntfs to wipe
 	bool Wipe_Data_Without_Wiping_Media();                                    // Uses rm -rf to wipe but does not wipe /data/media
+	void Wipe_Crypto_Key();                                                   // Wipe crypto key from either footer or block device
 	bool Wipe_Data_Without_Wiping_Media_Func(const string& parent);           // Uses rm -rf to wipe but does not wipe /data/media
 	bool Backup_Tar(PartitionSettings *part_settings, pid_t *tar_fork_pid);   // Backs up using tar for file systems
 	bool Backup_Image(PartitionSettings *part_settings);                      // Backs up using raw read/write for emmc memory types
@@ -300,7 +317,7 @@ public:
 	int Mount_Settings_Storage(bool Display_Error);                           // Mounts the settings file storage location (usually internal)
 	TWPartition* Find_Partition_By_Path(const string& Path);                  // Returns a pointer to a partition based on path
 	TWPartition* Find_Partition_By_Block_Device(const string& Block_Device);  // Returns a pointer to a partition based on block device
-	int Check_Backup_Name(bool Display_Error);                                // Checks the current backup name to ensure that it is valid
+	int Check_Backup_Name(const std::string& Backup_Name, bool Display_Error, bool Must_Be_Unique); // Checks the current backup name to ensure that it is valid and optionally that a backup with that name doesn't already exist
 	int Run_Backup(bool adbbackup);                                           // Initiates a backup in the current storage
 	int Run_OTA_Survival_Backup(bool adbbackup);                              // Create backup for OTA survival in the internal storage
     int Run_OTA_Survival_Restore(const string& Restore_Name);                 // Restore OTA survival
@@ -369,6 +386,9 @@ public:
 	void close_uevent();                                                      // Closes the uevent netlink socket
 	void Add_Partition(TWPartition* Part);                                    // Adds a new partition to the Partitions vector
 	bool Partition_Is_Encrypted(const string Path);				  // Returns whether the named partition is encrypted
+	bool Prepare_Repack(TWPartition* Part, const std::string& Temp_Folder_Destination, const bool Create_Backup, const std::string& Backup_Name); // Prepares an image for repacking by unpacking it to the temp folder destination
+	bool Prepare_Repack(const std::string& Source_Path, const std::string& Temp_Folder_Destination, const bool Copy_Source, const bool Create_Destination = true); // Prepares an image for repacking by unpacking it to the temp folder destination
+	bool Repack_Images(const std::string& Target_Image, const struct Repack_Options_struct& Repack_Options); // Repacks the boot image with a new kernel or a new ramdisk
 
 private:
 	void Setup_Settings_Storage_Partition(TWPartition* Part);                 // Sets up settings storage
@@ -381,6 +401,7 @@ private:
 	void Post_Decrypt(const string& Block_Device);                            // Completes various post-decrypt tasks
 	void Coldboot_Scan(std::vector<string> *sysfs_entries, const string& Path, int depth); // Scans subfolders to find matches to the paths stored in sysfs_entries so we can trigger the uevent system to "re-add" devices
 	void Coldboot();                                                          // Starts the scan of the /sys/block folder
+	bool Prepare_Empty_Folder(const std::string& Folder);                     // Creates an empty folder at Folder. If the folder already exists, the folder is deleted, then created
 	pid_t mtppid;
 	bool mtp_was_enabled;
 	int mtp_write_fd;
