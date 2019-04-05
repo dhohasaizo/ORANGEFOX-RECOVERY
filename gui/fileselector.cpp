@@ -132,8 +132,14 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 	//            fox wont load
 	child = FindNode(node, "iconsize");
 	if (child) {
-		iconWidth = LoadAttrInt(child, "w", iconWidth);
-		iconHeight = LoadAttrInt(child, "h", iconHeight);
+		// fd. Scale values
+		int scalew = 1, scaleh = 1;
+		DataManager::GetValue("tw_scaling_w", scalew);
+		DataManager::GetValue("tw_scaling_h", scaleh);
+		
+		iconWidth = LoadAttrInt(child, "w", iconWidth) * scalew;
+		iconHeight = LoadAttrInt(child, "h", iconHeight) * scaleh;
+		
 		// [f/d] Get additional icons
 		child = FindNode(node, "exicon");
 		if (child) {

@@ -49,8 +49,13 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 	// [f/d] Get size for icons
 	child = FindNode(node, "iconsize");
 	if (child) {
-		iconWidth = LoadAttrInt(child, "w", iconWidth);
-		iconHeight = LoadAttrInt(child, "h", iconHeight);
+		// fd. Scale values
+		int scalew = 1, scaleh = 1;
+		DataManager::GetValue("tw_scaling_w", scalew);
+		DataManager::GetValue("tw_scaling_h", scaleh);
+
+		iconWidth = LoadAttrInt(child, "w", iconWidth) * scalew;
+		iconHeight = LoadAttrInt(child, "h", iconHeight) * scaleh;
 	} else {
 		if (mIconSelected && mIconSelected->GetResource() && mIconUnselected && mIconUnselected->GetResource()) {
 			iconWidth = std::max(mIconSelected->GetWidth(), mIconUnselected->GetWidth());

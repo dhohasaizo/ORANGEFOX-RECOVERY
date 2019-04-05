@@ -916,6 +916,9 @@ int PageSet::LoadDetails(LoadingContext& ctx, xml_node<>* root)
 					tw_x_offset = offx * scale_off_w;
 					tw_y_offset = offy * scale_off_h;
 #endif
+					DataManager::SetValue("tw_scaling_w", scale_w);
+					DataManager::SetValue("tw_scaling_h", scale_h);
+					
 					if (scale_w != 1 || scale_h != 1) {
 						LOGINFO("Scaling theme width %fx and height %fx, offsets x: %i y: %i w: %i h: %i\n",
 							scale_w, scale_h, tw_x_offset, tw_y_offset, tw_w_offset, tw_h_offset);

@@ -60,7 +60,10 @@ GUIScrollList::GUIScrollList(xml_node<>* node) : GUIObject(node)
 	// [f/d] Icon right padding
 	child = FindNode(node, "iconsize");
 	if (child) {
-		mPadding = LoadAttrInt(child, "padding", mPadding);
+		// fd. Scale values
+		int scalew = 1;
+		DataManager::GetValue("tw_scaling_w", scalew);
+		mPadding = LoadAttrInt(child, "padding", mPadding) * scalew;
 	}
 	
 	// Load header text
