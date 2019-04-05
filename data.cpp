@@ -653,11 +653,7 @@ void DataManager::SetDefaultValues()
   mConst.SetValue(OF_ALLOW_DISABLE_NAVBAR_S, OF_ALLOW_DISABLE_NAVBAR);
   mData.SetValue("of_fl_path_1", OF_FL_PATH1);
   mData.SetValue("of_fl_path_2", OF_FL_PATH2);
-  mConst.SetValue("of_no_miui_features", OF_DISABLE_MIUI_SPECIFIC_FEATURES);
-  
-  // Default scaling values
-  mData.SetValue("tw_scaling_w", "1");
-  mData.SetValue("tw_scaling_h", "1");
+  mData.SetValue("of_no_miui_features", OF_DISABLE_MIUI_SPECIFIC_FEATURES);
   //[f/d]
  
 #ifndef TW_NO_HAPTICS
