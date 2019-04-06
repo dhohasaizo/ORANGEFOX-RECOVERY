@@ -2615,7 +2615,7 @@ bool TWPartition::Wipe_EXT4() {
 			return false;
 		}
 	} else
-		return Wipe_EXT23("ext4");
+		return Wipe_EXTFS("ext4");
 #endif
 	return false;
 }
