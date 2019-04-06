@@ -947,7 +947,6 @@ int TWPartitionManager::Run_Backup(bool adbbackup)
 {
   PartitionSettings part_settings;
   int partition_count = 0, disable_free_space_check = 0, skip_digest = 0;
-  int gui_adb_backup;
   string Backup_Name, Backup_List, backup_path;
   unsigned long long total_bytes = 0, free_space = 0;
   TWPartition *storage = NULL;
@@ -3980,7 +3979,7 @@ int TWPartitionManager::Run_OTA_Survival_Backup(bool adbbackup)
   TWPartition *storage = NULL;
   std::vector < TWPartition * >::iterator subpart;
   struct tm *t;
-  time_t seconds, total_start, total_stop;
+  time_t seconds, total_start;
   size_t start_pos = 0, end_pos = 0;
   stop_backup.set_value(0);
   seconds = time(0);
@@ -4180,10 +4179,6 @@ int TWPartitionManager::Run_OTA_Survival_Backup(bool adbbackup)
   int img_bps = (int) part_settings.img_bytes / (int) part_settings.img_time;
   unsigned long long file_bps =
     part_settings.file_bytes / (int) part_settings.file_time;
-
-
-  time(&total_stop);
-  int total_time = (int) difftime(total_stop, total_start);
 
   uint64_t actual_backup_size;
   if (!adbbackup)

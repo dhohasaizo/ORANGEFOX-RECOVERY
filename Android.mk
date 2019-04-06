@@ -430,7 +430,7 @@ ifneq ($(TW_CLOCK_OFFSET),)
    LOCAL_CFLAGS += -DTW_CLOCK_OFFSET=$(TW_CLOCK_OFFSET)
 endif
 
-LOCAL_ADDITIONAL_DEPENDENCIES += \
+LOCAL_REQUIRED_MODULES += \
     dump_image \
     erase_image \
     flash_image \
@@ -442,14 +442,15 @@ LOCAL_ADDITIONAL_DEPENDENCIES += \
     fsck.fat \
     fatlabel \
     mkfs.fat \
-    magiskboot \
     mkbootimg \
     unpackbootimg \
     permissive.sh \
     simg2img_twrp \
     libbootloader_message_twrp \
     init.recovery.hlthchrg.rc \
-    init.recovery.service.rc
+    init.recovery.service.rc \
+    parted \
+    magiskboot
 
 ifneq ($(TARGET_ARCH), arm64)
     ifneq ($(TARGET_ARCH), x86_64)

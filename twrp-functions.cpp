@@ -101,11 +101,11 @@ static void AppendLineToFile(string file_path, string line)
     file << line << std::endl;
 }
 
-/* Have we just installed OrangeFox on a device with a Treble ROM? */
+/* Have we just installed OrangeFox on a device with a Treble ROM?
 static bool New_Fox_On_Treble(void)
 {
  return ((Fox_Current_ROM_IsTreble == 1 || ROM_IsRealTreble == 1) && (New_Fox_Installation == 1));
-}
+} */
 
 /* Get the display ID of the installed ROM */
 static string GetInstalledRom(void)
@@ -142,12 +142,6 @@ static string Get_Property (const string propname)
        return "";
    else
       return ret;//(Trim_Trailing_NewLine (ret));
-}
-
-/* Get the device name */
-static string GetDeviceName(void)
-{
-  return (Get_Property("ro.product.device"));
 }
 
 /* is this a real treble device? (else, treble is emulated via /cust) */
@@ -437,7 +431,6 @@ int TWFunc::Wait_For_Child_Timeout(pid_t pid, int *status,
     {
       LOGERR("%s took too long, killing process\n", Child_Name.c_str());
       kill(pid, SIGKILL);
-      int died = 0;
       for (timeout = 5; retpid == 0 && timeout; --timeout)
 	{
 	  sleep(1);
