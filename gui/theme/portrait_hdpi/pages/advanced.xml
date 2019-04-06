@@ -25,7 +25,6 @@
 					<action function="page">magisk_mount</action>
 				</listitem>
 				<listitem name="Delete Apps">
-					<condition var1="utils_show" var2="fuk"/>
 					<icon res="apps"/>
 					<action function="page">apps_load</action>
 				</listitem>
