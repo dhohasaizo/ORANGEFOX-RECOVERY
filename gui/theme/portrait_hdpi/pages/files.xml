@@ -66,7 +66,7 @@
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
-				<action function="overlay">file_sort</action>
+				<action function="overlay">fm_sort</action>
 			</button>
 
 			<image>
@@ -82,7 +82,7 @@
 
 			<image>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
-				<image resource="actionbar_edit"/>
+				<image resource="actionbar_search"/>
 			</image>
 			
 			<button>
