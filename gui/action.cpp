@@ -215,12 +215,11 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(togglebacklight);
       ADD_ACTION(disableled);
       ADD_ACTION(flashlight);
-	  
+
 	  //fordownloads actions
       ADD_ACTION(fileextension);
       ADD_ACTION(up_a_level);
-      ADD_ACTION(forcerender);
- 
+
       // remember actions that run in the caller thread
       for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
 	setActionsRunningInCallerThread.insert(it->first);
@@ -245,7 +244,7 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(openrecoveryscript);
       ADD_ACTION(installsu);
       ADD_ACTION(fixsu);
-     
+
       ADD_ACTION(decrypt_backup);
       ADD_ACTION(repair);
       ADD_ACTION(resize);
@@ -253,11 +252,12 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(flashimage);
       ADD_ACTION(twcmd);
       ADD_ACTION(setbootslot);
+      ADD_ACTION(repackimage);
+      ADD_ACTION(fixabrecoverybootloop);
       ADD_ACTION(adb);
       ADD_ACTION(wlfw);
       ADD_ACTION(wlfx);
       ADD_ACTION(calldeactivateprocess);
-      ADD_ACTION(xsleep);
    }
 
   // First, get the action
@@ -453,7 +453,7 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
 		("config_twrp_err=Unable to configure TWRP with this kernel.");
 	    }
 	}
-	
+
       //* DJ9
       Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
       usleep(32);
@@ -464,8 +464,8 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
           	 LOGINFO("OrangeFox: processed internal zip: %s\n",filename.c_str());
               }
               else
-          	 LOGINFO("OrangeFox: installed standard zip: %s\n",filename.c_str());           
-        } 
+          	 LOGINFO("OrangeFox: installed standard zip: %s\n",filename.c_str());
+        }
       else // this is a ROM install
         {
           if (Fox_Zip_Installer_Code == 1) LOGINFO("OrangeFox: installed CUSTOM ROM: %s\n",filename.c_str());
@@ -480,7 +480,7 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
           else
           if (Fox_Zip_Installer_Code == 23) LOGINFO("OrangeFox: installed Treble (MIUI) ROM and OTA_BAK: %s\n",filename.c_str());
           else
-             LOGINFO("OrangeFox: installed MIUI ROM: %s\n",filename.c_str());            
+             LOGINFO("OrangeFox: installed MIUI ROM: %s\n",filename.c_str());
         }
        LOGINFO ("flash_zip: installer code = %i\n", DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE));
       //* DJ9
@@ -927,17 +927,6 @@ int GUIAction::sleep(std::string arg)
   return 0;
 }
 
-int GUIAction::xsleep(std::string arg)
-{
-  int total = atoi(arg.c_str());
-  for (int t = total; t > 0; t--)
-    {
-      ::sleep(1);
-      DataManager::SetValue("tw_xsleep", t - 1);
-    }
-  return 0;
-}
-
 int GUIAction::sleepcounter(std::string arg)
 {
   operation_start("SleepCounter");
@@ -1155,12 +1144,6 @@ int GUIAction::screenshot(std::string arg __unused)
   return 0;
 }
 
-int GUIAction::forcerender(std::string arg __unused)
-{
-    gui_forceRender();	
-	return 0;
-}
-
 int GUIAction::screenshotexternal(std::string arg __unused)
 {
   time_t tm;
@@ -1261,10 +1244,10 @@ int GUIAction::flash(std::string arg)
 {
   int i, ret_val = 0, wipe_cache = 0;
   int has_installed_rom = 0;
-  
+
   // We're going to jump to this page first, like a loading page
   gui_changePage(arg);
-  
+
   // loop through the zip(s) to be installed
   for (i = 0; i < zip_queue_index; i++)
     {
@@ -1281,7 +1264,7 @@ int GUIAction::flash(std::string arg)
       // try to flash the zip
       ret_val = flash_zip(zip_path, &wipe_cache);
       TWFunc::SetPerformanceMode(false);
-      
+
       // what was the outcome ?
       if (ret_val != 0)
 	{
@@ -1290,8 +1273,8 @@ int GUIAction::flash(std::string arg)
 	  ret_val = 1;
 	  break;
 	}
- 
-      // success - but what have we just installed? 
+
+      // success - but what have we just installed?
       if (Fox_Zip_Installer_Code != 0) // we have just installed a ROM - ideally, the user should reboot the recovery
        {
           has_installed_rom++;
@@ -1301,11 +1284,11 @@ int GUIAction::flash(std::string arg)
           usleep(50000);
 	  PartitionManager.Update_System_Details();
        }
-       
+
        usleep(250000);
-       
+
      } // for i
-    
+
    zip_queue_index = 0;
 
    if (wipe_cache)
@@ -1321,10 +1304,10 @@ int GUIAction::flash(std::string arg)
    PartitionManager.Update_System_Details();
    operation_end(ret_val);
    DataManager::SetValue(FOX_INSTALL_PREBUILT_ZIP, 0); // if we have installed an internal zip, turn off the flag
-  
+
    // This needs to be after the operation_end call so we change pages before we change variables that we display on the screen
    DataManager::SetValue(TW_ZIP_QUEUE_COUNT, zip_queue_index);
-   
+
    return 0;
 }
 
@@ -2355,12 +2338,12 @@ int GUIAction::flashlight(std::string arg __unused)
             LOGINFO("DEBUG: Enable flashlight 1"); }
         else {
             TWFunc::write_to_file("/sys/class/leds/flashlight/brightness", "0");
-            DataManager::SetValue("flashlight", 0); 
+            DataManager::SetValue("flashlight", 0);
             LOGINFO("DEBUG: Disable flashlight 1"); }
       }
-      
+
       if (TWFunc::Path_Exists(flashpathone)) {
-	
+
         if (flash != 1) {
           TWFunc::write_to_file(flashpathone, flashvalue);
           TWFunc::write_to_file(flashpathtwo, flashvalue);
@@ -2388,7 +2371,7 @@ int GUIAction::calldeactivateprocess(std::string arg __unused)
     {
   	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
   	usleep(1024);
-  	DataManager::GetValue(FOX_FORCE_DEACTIVATE_PROCESS, Fox_Force_Deactivate_Process); 	
+  	DataManager::GetValue(FOX_FORCE_DEACTIVATE_PROCESS, Fox_Force_Deactivate_Process);
   	TWFunc::Deactivation_Process();
     }
   operation_end(0);
