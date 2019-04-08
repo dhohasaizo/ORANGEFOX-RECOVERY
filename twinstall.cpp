@@ -299,7 +299,10 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		  zip_is_rom_package = true;
 		  DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 1); // standard ROM
 		  // check for miui entries
-		  if (TWFunc::CheckWord(FOX_TMP_PATH, "miui_update") ||  TWFunc::CheckWord(FOX_TMP_PATH, "firmware-update"))
+		  if (TWFunc::CheckWord(FOX_TMP_PATH, "miui_update")
+		  ||  TWFunc::CheckWord(FOX_TMP_PATH, "firmware-update")
+		  ||  TWFunc::CheckWord(FOX_TMP_PATH, "ro.build.fingerprint") // OTA
+		     )
 		     {
 		        zip_has_miui_stuff = 1;
 		     }
@@ -507,7 +510,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    }
 	    
 	  TWPartition *survival_sys =
-	    PartitionManager.Find_Partition_By_Path("/system");
+	    PartitionManager.Find_Partition_By_Path(PartitionManager.Get_Android_Root_Path());
 	    
 	  if (!survival_sys)
 	    {
