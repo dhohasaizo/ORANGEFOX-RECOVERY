@@ -995,7 +995,7 @@
 			</text>
 			<!-- Card -->
 			
-			<button style="floating_btn">
+			<!--button style="floating_btn">
 				<condition var1="screen_h" op="&gt;=" var2="2160"/>
 				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
 				<action function="set">credits_page=0</action>
@@ -1023,7 +1023,7 @@
 				<condition var1="of_maintainer" op="&gt;=" var2="1"/>
 				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
 				<image resource="fab_credits"/>
-			</image>
+			</image-->
 
 			<action>
 				<touch key="home"/>
