@@ -328,7 +328,6 @@ protected:
 	int screenshot(std::string arg);
 	int screenshotexternal(std::string arg);
 	int setbrightness(std::string arg);
-	int forcerender(std::string arg);
 
 	// (originally) threaded actions
 	int fileexists(std::string arg);
@@ -353,7 +352,7 @@ protected:
 	int adbsideloadcancel(std::string arg);
 	int openrecoveryscript(std::string arg);
 	int installsu(std::string arg);
-	int fixsu(std::string arg);	
+	int fixsu(std::string arg);
 	int decrypt_backup(std::string arg);
 	int repair(std::string arg);
 	int resize(std::string arg);
@@ -376,7 +375,6 @@ protected:
 	int wlfx(std::string arg);
 	int wlfw(std::string arg);
 	int calldeactivateprocess(std::string arg);
-	int xsleep(std::string arg);
 	int repackimage(std::string arg);
 	int fixabrecoverybootloop(std::string arg);
 
@@ -546,7 +544,7 @@ protected:
 	int mSeparatorH; // Height of the separator between items
 	COLOR mSeparatorColor; // color of the separator that is between items
 	int mPadding; //[f/d] right icon padding
-	
+
 	// Scrollbar
 	int mFastScrollW; // width of the fastscroll area
 	int mFastScrollLineW; // width of the line for fastscroll rendering

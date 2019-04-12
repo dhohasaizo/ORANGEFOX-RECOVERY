@@ -367,7 +367,7 @@ int main(int argc, char **argv)
 
   // Check for su to see if the device is rooted or not
   if (DataManager::GetIntValue("tw_mount_system_ro") == 0
-      && PartitionManager.Mount_By_Path("/system", false))
+      && PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false))
     {
       // read /system/build.prop to get sdk version and do not offer to root if running M or higher (sdk version 23 == M)
       string sdkverstr = TWFunc::System_Property_Get("ro.build.version.sdk");
@@ -377,7 +377,7 @@ int main(int argc, char **argv)
 	  sdkver = atoi(sdkverstr.c_str());
 	}
       sync();
-      PartitionManager.UnMount_By_Path("/system", false);
+      PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
     }
 #endif
 
