@@ -981,8 +981,8 @@
 				
 				<action>
 					<actions>
-						<action function="cmd">
-							echo "/data/app/$(cat %amgr_file%)";
+						<action function="terminalcommand">
+							rm -rf "$(cat "%amgr_file%")";
 						</action>
 					</actions>
 				</action>
