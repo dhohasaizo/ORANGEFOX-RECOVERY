@@ -1984,15 +1984,15 @@ int TWFunc::Check_MIUI_Treble(void)
   // is the device encrypted?
   if (StorageIsEncrypted())
     {
-      gui_print ("- Storage is encrypted\n");
+      gui_print ("* Storage is encrypted\n");
     }
   
   // show display panel name, if we got one 
   if (!display_panel.empty())
-       gui_print("- Display: %s\n", display_panel.c_str());
+       gui_print("* Display: %s\n", display_panel.c_str());
 
   // device name
-  gui_print("- Device:  %s\n", Fox_Current_Device.c_str());
+  gui_print("* Device:  %s\n", Fox_Current_Device.c_str());
 
   // installed ROM
   rom_desc = GetInstalledRom();
@@ -2006,33 +2006,33 @@ int TWFunc::Check_MIUI_Treble(void)
   	if (strncmp(fox_is_miui_rom_installed.c_str(), "1", 1) == 0)
      	  {
   	     Fox_Current_ROM_IsMIUI = 1;
-  	     gui_print("- MIUI ROM %s", tmp.c_str());
+  	     gui_print("* MIUI ROM %s", tmp.c_str());
           } 
   	else
      	  {
-  	    gui_print("- Custom ROM %s", tmp.c_str());
+  	    gui_print("* Custom ROM %s", tmp.c_str());
      	  } 
-        gui_print("- %s\n", rom_desc.c_str());
+        gui_print("* %s\n", rom_desc.c_str());
     }
     else
       {
-    	gui_print_color ("warning", "- No ROM.\n");
+    	gui_print_color("warning", "* No ROM.\n");
       }
 
-   gui_print("**************************\n");  
+   gui_print("--------------------------\n");  
    return 0;
 }
 
 void TWFunc::Welcome_Message(void)
 {
    if (Fox_Has_Welcomed > 0)
-     return;
-   gui_print("**************************\n");
-   gui_msg("Welcome to OrangeFox Recovery!");
-   gui_msg(Msg("[Version]: {1}") (FOX_BUILD));
-   gui_msg(Msg("[TWRP Version]: '{1}'") (FOX_VERSION));
-   gui_print("--------------------------\n");
-   Fox_Has_Welcomed++;
+    return;
+    gui_print("--------------------------\n");
+    gui_print("Welcome to OrangeFox Recovery!");
+    gui_print("[OrangeFox Version]: %s", FOX_BUILD);
+    gui_print("[TWRP Version]: %s", FOX_VERSION);
+    gui_print("--------------------------\n");
+    Fox_Has_Welcomed++;
 }
 
 void TWFunc::OrangeFox_Startup(void)
