@@ -253,6 +253,7 @@
 		
 		<!-- Long buttons -->
 		<variable name="bs_text_offset" value="42"/>
+		<variable name="input_btn_list_y" value="674+%cutout_w%"/>
 		
 		<!-- Long buttons (bottom) -->
 		<variable name="db_row1_y" value="%screen_h%-288"/>

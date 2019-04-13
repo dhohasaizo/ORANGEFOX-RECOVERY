@@ -325,9 +325,9 @@
 			</text>
 
 			<listbox style="btn_list">
-				<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%bl_h3%"/>
+				<placement x="0" y="%input_btn_list_y%" w="%screen_w%" h="%bl_h3%"/>
 				<listitem name="{@bkp_date}">
-					<icon res="nav"/>
+					<icon res="bs_btn_time"/>
 					<action function="appenddatetobackupname"/>
 				</listitem>
 				<listitem name="{@bkp_gen}">
@@ -399,9 +399,9 @@
 			</button>
 
 			<listbox style="btn_list">
-				<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%bl_h2%"/>
+				<placement x="0" y="%input_btn_list_y%" w="%screen_w%" h="%bl_h2%"/>
 				<listitem name="{@bkp_date}">
-					<icon res="nav"/>
+					<icon res="bs_btn_time"/>
 					<action function="set">tw_backup_name=</action>
 					<action function="page">backupname</action>
 					<action function="appenddatetobackupname"/>
