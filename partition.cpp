@@ -2739,10 +2739,7 @@ bool TWPartition::Wipe_RMRF()
   return true;
 }
 
-
-// OrangeFox - old wipe f2fs function
-
-/* bool TWPartition::Wipe_F2FS()
+bool TWPartition::Wipe_F2FS()
 {
 	string command, command_512;
 
@@ -2811,8 +2808,9 @@ bool TWPartition::Wipe_RMRF()
 		return Wipe_RMRF();
 	   }
 	return false;
-} */
+}
 
+/* // OrangeFox - merged f2fs function
 bool TWPartition::Wipe_F2FS() {
 	string command;
 
@@ -2854,6 +2852,7 @@ bool TWPartition::Wipe_F2FS() {
 	}
 	return false;
 }
+*/
 
 bool TWPartition::Wipe_NTFS()
 {
