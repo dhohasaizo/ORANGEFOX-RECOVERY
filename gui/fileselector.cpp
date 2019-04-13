@@ -309,8 +309,9 @@ int GUIFileSelector::GetFileList(const std::string folder)
 			continue;
 		
 		// [f/d] filter files by name
-		if (data.fileName != ".." && data.fileName.find(mSearchString) == string::npos)
-			continue;
+		if (mSearchString != "")
+			if (data.fileName != ".." && data.fileName.find(mSearchString) == string::npos)
+				continue;
 		
 		// [f/d] Remove hidden files/folders when tw_hidden_files = 0
 		if (showHiddenFiles == "0") {
@@ -349,7 +350,7 @@ int GUIFileSelector::GetFileList(const std::string folder)
 				}
 			}
 		}
-	}
+  }
 	closedir(d);
 
 	std::sort(mFolderList.begin(), mFolderList.end(), fileSort);

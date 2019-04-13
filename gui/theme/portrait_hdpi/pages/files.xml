@@ -197,6 +197,18 @@
 			<template name="statusbarinfo"/>
 			
 			<input>
+				<condition var1="darker_ui" op="!=" var2="1"/>
+				<background color="%background%"/>
+				<placement x="%col1_x_indent%" y="%ab_bc_search_y%"  w="816" h="%input_height%"/>
+				<text>%tw_name_filter%</text>
+				<data name="tw_name_filter"/>
+				<action function="set">tw_reload_fm=1</action>
+				<action function="page">file_search</action>
+			</input>
+			
+			<input>
+				<condition var1="darker_ui" var2="1"/>
+				<background color="%title_solid_bg%"/>
 				<placement x="%col1_x_indent%" y="%ab_bc_search_y%"  w="816" h="%input_height%"/>
 				<text>%tw_name_filter%</text>
 				<data name="tw_name_filter"/>
@@ -1491,26 +1503,14 @@
 			</fill>
 
 			<listbox style="btn_list">
-				<placement x="0" y="%row3_1_y%" w="%screen_w%" h="%bl_h2%"/>
+				<placement x="0" y="%input_btn_list_y%" w="%screen_w%" h="%bl_h2%"/>
 				<listitem name="{@fm_chmod644_btn}">
 					<icon res="bs_btn_chmod"/>
-					<action function="set">tw_filemanager_command=chmod 644</action>
-					<action function="set">tw_fm_text1={@fm_chmod644ing}</action>
-					<action function="set">tw_fm_text2=</action>
-					<action function="set">tw_fm_text3=</action>
-					<action function="set">tw_include_text3=0</action>
-					<action function="set">tw_back=filemanageroptions</action>
-					<action function="page">filemanagerconfirm</action>
+					<action function="set">tw_filemanager_rename=0644</action>
 				</listitem>
 				<listitem name="{@fm_chmod755_btn}">
 					<icon res="bs_btn_chmod"/>
-					<action function="set">tw_filemanager_command=chmod 755</action>
-					<action function="set">tw_fm_text1={@fm_chmod755ing}</action>
-					<action function="set">tw_fm_text2=</action>
-					<action function="set">tw_fm_text3=</action>
-					<action function="set">tw_include_text3=0</action>
-					<action function="set">tw_back=filemanageroptions</action>
-					<action function="page">filemanagerconfirm</action>
+					<action function="set">tw_filemanager_rename=0755</action>
 				</listitem>
 			</listbox>
 			
