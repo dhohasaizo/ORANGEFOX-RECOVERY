@@ -113,7 +113,7 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 		mSelection = attr->value();
 	else
 		mSelection = "0";
-
+	
 	// Get folder and file icons if present
 	child = FindNode(node, "icon");
 	if (child) {
@@ -132,13 +132,8 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 	//            fox wont load
 	child = FindNode(node, "iconsize");
 	if (child) {
-		// fd. Scale values
-		int scalew = 1, scaleh = 1;
-		DataManager::GetValue("tw_scaling_w", scalew);
-		DataManager::GetValue("tw_scaling_h", scaleh);
-		
-		iconWidth = LoadAttrInt(child, "w", iconWidth) * scalew;
-		iconHeight = LoadAttrInt(child, "h", iconHeight) * scaleh;
+		iconWidth = LoadAttrIntScaleX(child, "w", iconWidth);
+		iconHeight = LoadAttrIntScaleY(child, "h", iconHeight);
 		
 		// [f/d] Get additional icons
 		child = FindNode(node, "exicon");
@@ -467,8 +462,13 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 				if (cwd != "/")	 cwd += "/";
 				cwd += str;
 			}
-
-			if (mShowNavFolders == 0 && (mShowFiles == 0 || mExtn == ".ab")) {
+			
+			DataManager::SetValue("tw_fm_isfolder", 1);
+			
+			DataManager::GetValue(itemHold, itemHldStatus);
+			if (itemHldStatus == "1") {
+				DataManager::SetValue(mVariable, cwd);
+			} else if (mShowNavFolders == 0 && (mShowFiles == 0 || mExtn == ".ab")) {
 				// this is probably the restore list and we need to save chosen location to mVariable instead of mPathVar
 				DataManager::SetValue(mVariable, cwd);
 			} else {
@@ -503,7 +503,7 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 				}
 				free(real_path);
 			}
-			
+			DataManager::SetValue("tw_fm_isfolder", 0);
 			DataManager::SetValue(mVariable, path);
 		}
 	}

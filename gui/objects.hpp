@@ -522,6 +522,8 @@ protected:
 	// Header
 	COLOR mHeaderBackgroundColor;
 	COLOR mHeaderFontColor;
+	std::string itemHold;
+	std::string itemHldStatus;
 	std::string mHeaderText; // Original header text without parsing any variables
 	std::string mLastHeaderValue; // Header text after parsing variables
 	bool mHeaderIsStatic; // indicates if the header is static (no need to check for changes in NotifyVarChange)

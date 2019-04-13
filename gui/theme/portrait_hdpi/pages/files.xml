@@ -6,6 +6,7 @@
 
 			<action>
 				<action function="set">nav_panel_id=0</action>
+				<action function="set">tw_hold=0</action>
 			</action>
 
 			<!-- All files -->
@@ -19,6 +20,7 @@
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
+				<holditem name="tw_hold"/>
 			</fileselector>
 
 			<fileselector style="fileselector_s">
@@ -30,6 +32,7 @@
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
+				<holditem name="tw_hold"/>
 			</fileselector>
 			
 			<template name="ab_main"/>
@@ -100,7 +103,6 @@
 			
 			<action>
 				<actions>
-					<action function="set">tw_fm_type={@fm_type_file}</action>
 					<action function="set">tw_fm_isfolder=0</action>
 				</actions>
 			</action>
@@ -108,6 +110,13 @@
 			<action>
 				<condition var1="tw_filename1" op="modified"/>
 				<condition var1="fm_auto_open" op="!=" var2="1"/>
+				<actions>
+					<action function="page">filemanageroptions</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_hold" var2="1"/>
 				<actions>
 					<action function="page">filemanageroptions</action>
 				</actions>
@@ -197,7 +206,6 @@
 			
 			<action>
 				<actions>
-					<action function="set">tw_fm_type={@fm_type_file}</action>
 					<action function="set">tw_fm_isfolder=0</action>
 				</actions>
 			</action>
@@ -418,7 +426,6 @@
 					<action function="overlay"/>
 					<action function="set">tw_filename1=tw_file_location1</action>
 					<action function="set">tw_fm_isfolder=1</action>
-					<action function="set">tw_fm_type={@fm_type_folder}</action>
 					<action function="page">filemanageroptions</action>
 				</actions>
 			</button>
@@ -921,11 +928,20 @@
 				<text>{@symlink_broken_name}</text>
 			</text>
 			<text style="text_ab_title">
+				<condition var1="tw_fm_isfolder" op="!=" var2="1"/>
 				<condition var1="tw_rp_type" op="!=" var2="2"/>
 				<condition var1="tw_rp_type" op="!=" var2="1"/>
 				<condition var1="tw_rp_type" op="!=" var2="0"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>%tw_fm_type%</text>
+				<text>{@fm_type_file}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="tw_fm_isfolder" var2="1"/>
+				<condition var1="tw_rp_type" op="!=" var2="2"/>
+				<condition var1="tw_rp_type" op="!=" var2="1"/>
+				<condition var1="tw_rp_type" op="!=" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@fm_type_folder}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
@@ -942,7 +958,6 @@
 					<action function="set">tw_filename1=%tw_real_path%</action>
 					<action function="set">tw_real_path=</action>
 					<action function="set">tw_rp_type=</action>
-					<action function="set">tw_fm_type={@fm_type_file}</action>
 				</listitem>
 				<listitem name="{@symlink_folder}">
 					<icon res="bs_btn_link"/>
@@ -951,7 +966,6 @@
 					<action function="set">tw_file_location1=%tw_real_path%</action>
 					<action function="set">tw_real_path=</action>
 					<action function="set">tw_rp_type=</action>
-					<action function="set">tw_fm_type={@fm_type_folder}</action>
 					<action function="key">back</action>
 				</listitem>
 				<listitem name="{@fm_open}">

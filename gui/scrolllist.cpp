@@ -33,6 +33,7 @@ const int SCROLLING_FLOOR = 2; // minimum pixels for scrolling to stop
 GUIScrollList::GUIScrollList(xml_node<>* node) : GUIObject(node)
 {
 	xml_node<>* child;
+	xml_attribute<>* attr;
 
 	firstDisplayedItem = mItemSpacing = mFontHeight = mSeparatorH = y_offset = scrollingSpeed = 0;
 	mPadding = maxIconWidth = maxIconHeight =  mHeaderIconHeight = mHeaderIconWidth = 0;
@@ -60,10 +61,19 @@ GUIScrollList::GUIScrollList(xml_node<>* node) : GUIObject(node)
 	// [f/d] Icon right padding
 	child = FindNode(node, "iconsize");
 	if (child) {
-		// fd. Scale values
-		int scalew = 1;
-		DataManager::GetValue("tw_scaling_w", scalew);
-		mPadding = LoadAttrInt(child, "padding", mPadding) * scalew;
+		mPadding = LoadAttrIntScaleX(child, "padding", mPadding);
+	}
+	
+	// [f/d] Hold item
+	child = FindNode(node, "holditem");
+	if (child) {
+		attr = child->first_attribute("name");
+		if (attr) {
+			itemHold = attr->value();
+			DataManager::SetValue(itemHold, "0");
+		} else {
+			itemHold = "";
+		}
 	}
 	
 	// Load header text
@@ -508,6 +518,12 @@ int GUIScrollList::NotifyTouch(TOUCH_STATE state, int x, int y)
 		mUpdate = 1;
 		break;
 
+	case TOUCH_HOLD:
+		if (selectedItem != NO_ITEM && itemHold != "")
+			DataManager::SetValue(itemHold, "1");
+		else
+			break;
+		
 	case TOUCH_RELEASE:
 		if (fastScroll)
 			mUpdate = 1; // get rid of touch effects on the fastscroll bar
@@ -529,7 +545,6 @@ int GUIScrollList::NotifyTouch(TOUCH_STATE state, int x, int y)
 				scrollingSpeed = 0;
 		}
 	case TOUCH_REPEAT:
-	case TOUCH_HOLD:
 		break;
 	}
 	return 0;
