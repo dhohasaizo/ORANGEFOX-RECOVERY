@@ -3019,7 +3019,7 @@ bool TWFunc::JustInstalledMiui(void)
       return false;
 }
 
-
+/*
 bool TWFunc::Fresh_Fox_Install()
 {
   std::string fox_file = "/cache/recovery/Fox_Installed";
@@ -3044,6 +3044,45 @@ bool TWFunc::Fresh_Fox_Install()
 	TWFunc::Deactivation_Process();
 	New_Fox_Installation = 0;
 	#endif
+	return true;
+   }    
+   else
+        return false;
+}
+*/
+
+bool TWFunc::Fresh_Fox_Install()
+{
+  std::string fox_file = get_cache_dir() + "recovery/Fox_Installed";
+  bool CanProceed = true;
+  New_Fox_Installation = 0;
+
+  if (get_cache_dir() == NON_AB_CACHE_DIR)
+    {
+      CanProceed = (PartitionManager.Is_Mounted_By_Path(NON_AB_CACHE_DIR) 
+                 || PartitionManager.Mount_By_Path(NON_AB_CACHE_DIR, true));
+    }
+
+  if (CanProceed) //((PartitionManager.Is_Mounted_By_Path(NON_AB_CACHE_DIR)) || (PartitionManager.Mount_By_Path(NON_AB_CACHE_DIR, true)))
+    {
+	if (!Path_Exists(fox_file))
+	    return false;
+	
+	unlink(fox_file.c_str());
+	#ifdef OF_DONT_PATCH_ON_FRESH_INSTALLATION
+	gui_print("Fresh OrangeFox installation - not running the dm-verity/forced-encryption patches\n");
+	#else
+	New_Fox_Installation = 1;
+	gui_print("Fresh OrangeFox installation - about to run the dm-verity/forced-encryption patches\n");
+     	if (Fox_Current_ROM_IsMIUI == 1)
+     	   {
+		Fox_Force_Deactivate_Process = 1;
+		DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
+	   }
+	TWFunc::Deactivation_Process();
+	New_Fox_Installation = 0;
+	#endif
+	copy_file("/tmp/recovery.log", "/data/media/0/Fox/post-install.log", 0644);
 	return true;
    }    
    else
