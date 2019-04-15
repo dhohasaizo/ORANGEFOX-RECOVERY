@@ -918,6 +918,11 @@
 			<action>
 				<action function="set">opts_show=0</action>
 			</action>
+
+			<action>
+				<condition var1="tw_filename1" var2="/"/>
+				<action function="page">filemanagerlist</action>
+			</action>
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
