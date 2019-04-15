@@ -1035,7 +1035,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	set_miui_install_status(OTA_ERROR, false);
      }
 #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
-   //LOGINFO("OrangeFox: not running the MIUI OTA backup.\n");
+   LOGINFO("OrangeFox: not running the MIUI OTA backup.\n");
 #else    
   else  
   if (DataManager::GetIntValue(FOX_INCREMENTAL_OTA_FAIL) != 1)
