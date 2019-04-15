@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <recovery>
 	<details>
-		<resolution width="1080" height="1920"/>
+		<resolution width="1080" />
 		<author>OrangeFox dev team & KMP design</author>
 		<title>OrangeFox Original Splash</title>
 		<description>Design by KMP design</description>
@@ -17,15 +17,15 @@
 		<page name="splash">
 			<background color="#8B3506FF"/>
 			<fill color="#E47718FF">
-				<placement x="0" y="0" w="1080" h="960"/>
+				<placement x="0" y="0" w="1080" h="%center_y%"/>
 			</fill>
 			<object type="image">
 				<image resource="splash_bg"/>
-				<placement x="540" y="960" placement="4"/>
+				<placement x="540" y="%center_y%" placement="4"/>
 			</object>
 			<object type="image">
 				<image resource="splash_logo_w"/>
-				<placement x="540" y="960" placement="4"/>
+				<placement x="540" y="%center_y%" placement="4"/>
 			</object>
 		</page>
 	</pages>

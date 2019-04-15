@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <recovery>
 	<details>
-		<resolution width="1080" height="1920"/>
+		<resolution width="1080"/>
 		<author>fordownloads (OrangeFox dev team)</author>
 		<title>OrangeFox Customizable Splash</title>
 		<description>SED Splash</description>
@@ -18,11 +18,11 @@
 			<background color="#BG_COLOR#"/>
 			<#BG_IMG#object type="image">
 				<image resource="splash_bg"/>
-				<placement x="540" y="960" placement="4"/>
+				<placement x="540" y="%center_y%" placement="4"/>
 			</object#BG_IMG#>
 			<#LOGO_ON#object type="image">
 				<image resource="splash_logo"/>
-				<placement x="540" y="960" placement="4"/>
+				<placement x="540" y="%center_y%" placement="4"/>
 			</object#LOGO_ON#>
 		</page>
 	</pages>
