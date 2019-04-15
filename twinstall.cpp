@@ -78,13 +78,10 @@ extern "C"
 #define OTA_SUCCESS "INSTALL_SUCCESS"
 #define FOX_TMP_PATH "/foxtmpfile"
 
-#ifndef TW_NO_LEGACY_PROPS
-static const char* properties_path = "/dev/__properties__";
-static const char* properties_path_renamed = "/dev/__properties_kk__";
+static const char *properties_path = "/dev/__properties__";
+static const char *properties_path_renamed = "/dev/__properties_kk__";
 static bool legacy_props_env_initd = false;
 static bool legacy_props_path_modified = false;
-#endif
-
 static bool zip_is_for_specific_build = false;
 static bool zip_is_rom_package = false;
 static bool zip_survival_failed = false;
@@ -98,12 +95,25 @@ enum zip_type
   TWRP_THEME_ZIP_TYPE
 };
 
+static std::string get_survival_path()
+{
+  std::string ota_location_folder, ota_location_backup;
+  DataManager::GetValue(FOX_SURVIVAL_FOLDER_VAR, ota_location_folder);
+  DataManager::GetValue(FOX_SURVIVAL_BACKUP_NAME, ota_location_backup);
+  ota_location_folder += "/" + ota_location_backup;
+  return ota_location_folder;
+}
+
+static bool storage_is_encrypted()
+{
+  return DataManager::GetIntValue(TW_IS_ENCRYPTED) != 0;
+}
+
 static bool ors_is_active()
 {
   return DataManager::GetStrValue("tw_action") == "openrecoveryscript";
 }
 
-#ifndef TW_NO_LEGACY_PROPS
 // to support pre-KitKat update-binaries that expect properties in the legacy format
 static int switch_to_legacy_properties()
 {
@@ -156,7 +166,6 @@ static int switch_to_new_properties()
 
   return 0;
 }
-#endif
 
 static int Install_Theme(const char *path, ZipWrap * Zip)
 {
@@ -199,7 +208,26 @@ static void set_miui_install_status(std::string install_status, bool verify)
     }
 }
 
-/* static bool verify_incremental_package(string fingerprint, string metadatafp,
+static std::string get_metadata_property(std::vector < string > metadata,
+					 std::string Property)
+{
+  int i, l = metadata.size();
+  size_t start = 0, end;
+  std::string local;
+  for (i = 0; i < l; i++)
+    {
+      end = metadata.at(i).find("=", start);
+      local = metadata.at(i).substr(start, end);
+      if (local == Property)
+	{
+	  local = metadata.at(i).substr(end + 1, metadata.at(i).size());
+	  return local;
+	}
+    }
+  return local;
+}
+
+static bool verify_incremental_package(string fingerprint, string metadatafp,
 				       string metadatadevice)
 {
   if (metadatafp.size() > FOX_MIN_EXPECTED_FP_SIZE
@@ -213,7 +241,7 @@ static void set_miui_install_status(std::string install_status, bool verify)
   return (metadatadevice.size() >= 4
 	  && metadatafp.size() > FOX_MIN_EXPECTED_FP_SIZE
 	  && metadatafp.find(metadatadevice) == string::npos) ? false : true;
-} */
+}
 
 static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 				 int *wipe_cache)
@@ -252,43 +280,6 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 
       gui_msg("fox_install_detecting=Detecting Current Package");
       
-			char arches[PATH_MAX];
-			std::string binary_name = ASSUMED_UPDATE_BINARY_NAME;
-			property_get("ro.product.cpu.abilist", arches, "error");
-			if (strcmp(arches, "error") == 0)
-				property_get("ro.product.cpu.abi", arches, "error");
-			vector<string> split = TWFunc::split_string(arches, ',', true);
-			std::vector<string>::iterator arch;
-			std::string base_name = binary_name;
-			base_name += "-";
-			for (arch = split.begin(); arch != split.end(); arch++) {
-				std::string temp = base_name + *arch;
-				if (Zip->EntryExists(temp)) {
-					binary_name = temp;
-					break;
-				}
-			}
-			LOGINFO("Extracting updater binary '%s'\n", binary_name.c_str());
-			if (!Zip->ExtractEntry(binary_name.c_str(), TMP_UPDATER_BINARY_PATH, 0755)) {
-				Zip->Close();
-				LOGERR("Could not extract '%s'\n", ASSUMED_UPDATE_BINARY_NAME);
-				return INSTALL_ERROR;
-			}
-
-			// If exists, extract file_contexts from the zip file
-			if (!Zip->EntryExists("file_contexts")) {
-				Zip->Close();
-				LOGINFO("Zip does not contain SELinux file_contexts file in its root.\n");
-			} else {
-				const string output_filename = "/file_contexts";
-				LOGINFO("Zip contains SELinux file_contexts file in its root. Extracting to %s\n", output_filename.c_str());
-				if (!Zip->ExtractEntry("file_contexts", output_filename, 0644)) {
-					Zip->Close();
-					LOGERR("Could not extract '%s'\n", output_filename.c_str());
-					return INSTALL_ERROR;
-				}
-			}
-
       if (Zip->EntryExists(UPDATER_SCRIPT))
 	{
 	  if (Zip->ExtractEntry(UPDATER_SCRIPT, FOX_TMP_PATH, 0644))
@@ -298,10 +289,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		  zip_is_rom_package = true;
 		  DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 1); // standard ROM
 		  // check for miui entries
-		  if (TWFunc::CheckWord(FOX_TMP_PATH, "miui_update")
-		  ||  TWFunc::CheckWord(FOX_TMP_PATH, "firmware-update")
-		  ||  TWFunc::CheckWord(FOX_TMP_PATH, "ro.build.fingerprint") // OTA
-		     )
+		  if (TWFunc::CheckWord(FOX_TMP_PATH, "miui_update") ||  TWFunc::CheckWord(FOX_TMP_PATH, "firmware-update"))
 		     {
 		        zip_has_miui_stuff = 1;
 		     }
@@ -309,8 +297,6 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      unlink(FOX_TMP_PATH);
 	    }
 	}
-
-
       
    // try to identify MIUI ROM installer
       if (zip_is_rom_package == true) 
@@ -509,7 +495,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    }
 	    
 	  TWPartition *survival_sys =
-	    PartitionManager.Find_Partition_By_Path(PartitionManager.Get_Android_Root_Path());
+	    PartitionManager.Find_Partition_By_Path("/system");
 	    
 	  if (!survival_sys)
 	    {
@@ -607,40 +593,49 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
   return INSTALL_SUCCESS;
 }
 
-#ifndef TW_NO_LEGACY_PROPS
-static bool update_binary_has_legacy_properties(const char *binary) {
-	const char str_to_match[] = "ANDROID_PROPERTY_WORKSPACE";
-	int len_to_match = sizeof(str_to_match) - 1;
-	bool found = false;
+static bool update_binary_has_legacy_properties(const char *binary)
+{
+  const char str_to_match[] = "ANDROID_PROPERTY_WORKSPACE";
+  int len_to_match = sizeof(str_to_match) - 1;
+  bool found = false;
 
-	int fd = open(binary, O_RDONLY);
-	if (fd < 0) {
-		LOGINFO("has_legacy_properties: Could not open %s: %s!\n", binary, strerror(errno));
-		return false;
+  int fd = open(binary, O_RDONLY);
+  if (fd < 0)
+    {
+      LOGINFO("has_legacy_properties: Could not open %s: %s!\n", binary,
+	      strerror(errno));
+      return false;
+    }
+
+  struct stat finfo;
+  if (fstat(fd, &finfo) < 0)
+    {
+      LOGINFO("has_legacy_properties: Could not fstat %d: %s!\n", fd,
+	      strerror(errno));
+      close(fd);
+      return false;
+    }
+
+  void *data = mmap(NULL, finfo.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
+  if (data == MAP_FAILED)
+    {
+      LOGINFO("has_legacy_properties: mmap (size=%ld) failed: %s!\n",
+	      finfo.st_size, strerror(errno));
+    }
+  else
+    {
+      if (memmem(data, finfo.st_size, str_to_match, len_to_match))
+	{
+	  LOGINFO("has_legacy_properties: Found legacy property match!\n");
+	  found = true;
 	}
+      munmap(data, finfo.st_size);
+    }
+  close(fd);
 
-	struct stat finfo;
-	if (fstat(fd, &finfo) < 0) {
-		LOGINFO("has_legacy_properties: Could not fstat %d: %s!\n", fd, strerror(errno));
-		close(fd);
-		return false;
-	}
-
-	void *data = mmap(NULL, finfo.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
-	if (data == MAP_FAILED) {
-		LOGINFO("has_legacy_properties: mmap (size=%zu) failed: %s!\n", (size_t)finfo.st_size, strerror(errno));
-	} else {
-		if (memmem(data, finfo.st_size, str_to_match, len_to_match)) {
-			LOGINFO("has_legacy_properties: Found legacy property match!\n");
-			found = true;
-		}
-		munmap(data, finfo.st_size);
-	}
-	close(fd);
-
-	return found;
+  return found;
 }
-#endif
+
 
 static int Run_Update_Binary(const char *path, ZipWrap * Zip, int *wipe_cache,
 			     zip_type ztype)
@@ -1107,4 +1102,3 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 #endif
   return ret_val;
 }
-
