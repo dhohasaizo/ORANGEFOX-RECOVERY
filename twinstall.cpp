@@ -35,7 +35,6 @@
 
 #include <string.h>
 #include <stdio.h>
-#include <cutils/properties.h>
 
 #include "twcommon.h"
 #include "mtdutils/mounts.h"
