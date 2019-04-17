@@ -162,7 +162,7 @@
 			<listbox>
 				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l2%"/>
 				<data name="style_battery"/>
-				<listitem name="Pie">2</listitem>
+				<listitem name="Pie">0</listitem>
 				<listitem name="{@status_battery_circle}">1</listitem>
 			</listbox>
 

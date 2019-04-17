@@ -7,6 +7,14 @@
 		<image name="battery50" filename="Light/Battery/battery50" retainaspect="1"/>
 		<image name="battery25" filename="Light/Battery/battery25" retainaspect="1"/>
 		<image name="battery15_good" filename="Light/Battery/battery15_good" retainaspect="1"/>
+		<!-- Pie-->
+		<image name="battery100_p" filename="Light/Battery/battery100_p" retainaspect="1"/>
+		<image name="battery75_p" filename="Light/Battery/battery75_p" retainaspect="1"/>
+		<image name="battery50_p" filename="Light/Battery/battery50_p" retainaspect="1"/>
+		<image name="battery25_p" filename="Light/Battery/battery25_p" retainaspect="1"/>
+		<image name="battery15_good_p" filename="Light/Battery/battery15_good_p" retainaspect="1"/>
+		<image name="battery_charge_p" filename="Light/Battery/battery_charge_p" retainaspect="1"/>
+		<image name="battery_charge" filename="Light/Battery/battery_charge" retainaspect="1"/>
 		
 		<!-- Fullscreen Icons -->
 		<image name="language_busy" filename="Light/FullscreenIcons/language_busy" retainaspect="1"/>

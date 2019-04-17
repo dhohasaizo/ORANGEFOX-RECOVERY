@@ -10,6 +10,14 @@
 		<image name="battery50" filename="Default/Battery/battery50" retainaspect="1"/>
 		<image name="battery25" filename="Default/Battery/battery25" retainaspect="1"/>
 		<image name="battery15_good" filename="Default/Battery/battery15_good" retainaspect="1"/>
+		<!-- Pie -->
+		<image name="battery100_p" filename="Default/Battery/battery100_p" retainaspect="1"/>
+		<image name="battery75_p" filename="Default/Battery/battery75_p" retainaspect="1"/>
+		<image name="battery50_p" filename="Default/Battery/battery50_p" retainaspect="1"/>
+		<image name="battery25_p" filename="Default/Battery/battery25_p" retainaspect="1"/>
+		<image name="battery15_good_p" filename="Default/Battery/battery15_good_p" retainaspect="1"/>
+		<image name="battery_charge_p" filename="Default/Battery/battery_charge_p" retainaspect="1"/>
+		<image name="battery_charge" filename="Default/Battery/battery_charge" retainaspect="1"/>
 		
 		<!-- Fullscreen Icons -->
 		<image name="language_busy" filename="Default/FullscreenIcons/language_busy" retainaspect="1"/>
