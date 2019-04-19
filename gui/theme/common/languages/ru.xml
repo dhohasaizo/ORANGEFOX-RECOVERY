@@ -122,7 +122,7 @@
 		<string name="formatting_data">Форматирование Data...</string>
 		<string name="swipe_format_data">Проведите для форматирования</string>
 		<string name="swipe_format_data_s">   Форматировать Data</string>
-		<string name="factory_reset_complete">Сброс до заводского состояния завершен</string>
+		<string name="factory_reset_complete">Сброс до заводского состояния завершён</string>
 		<string name="sel_part_hdr">Выбор разделов</string>
 		<string name="wipe_sel_confirm">Очистить выбранные разделы</string>
 		<string name="wiping_part">Очистка разделов...</string>
@@ -203,7 +203,7 @@
 		<string name="backup_name_exists">Резервная копия с таким именем уже существует!</string>
 		<string name="encrypt_backup">Зашифровать резервную копию</string>
 		<string name="enter_pass">Введите пароль:</string>
-		<string name="enter_pass2">Введите пароль еще раз:</string>
+		<string name="enter_pass2">Введите пароль ещё раз:</string>
 		<string name="pass_not_match">Пароли не совпадают!</string>
 		<string name="partitions">Разделы</string>
 		<string name="disabled">Выключено</string>
@@ -296,6 +296,7 @@
 		<string name="settings_tz_btn">Часовой пояс</string>
 		<string name="settings_screen_btn">Экран</string>
 		<string name="settings_screen_bright_btn">Яркость</string>
+		<string name="vibration_disabled">Вибрация отключена для этого устройства</string>
 		<string name="settings_vibration_btn">Вибрация</string>
 		<string name="settings_language_btn">Язык</string>
 		<string name="time_zone_hdr">Часовой пояс</string>
@@ -485,7 +486,7 @@
 		<string name="md5_compute_error"> * Ошибка вычисления MD5.</string>
 		<string name="current_date">(Текущая дата)</string>
 		<string name="auto_generate">(Создать автоматически)</string>
-		<string name="unable_to_locate_partition">Не удается найти '{1}' раздел для расчета копирования.</string>
+		<string name="unable_to_locate_partition">Не удаётся найти '{1}' раздел для расчёта копирования.</string>
 		<string name="no_partition_selected">Не выбраны разделы для резервного копирования.</string>
 		<string name="total_partitions_backup"> * Общее количество разделов для резервного копирования: {1}</string>
 		<string name="total_backup_size"> * Общий объем данных: {1}МБ</string>
@@ -507,7 +508,7 @@
 		<string name="skip_md5">Пропуск проверки MD5 согласно настройкам.</string>
 		<string name="calc_restore">Вычисление информации о восстановлении...</string>
 		<string name="restore_read_only">Невозможно восстановить {1} -- смонтировано только для чтения.</string>
-		<string name="restore_unable_locate">Не удается найти '{1}' раздел для восстановления.</string>
+		<string name="restore_unable_locate">Не удаётся найти '{1}' раздел для восстановления.</string>
 		<string name="no_part_restore">Не выбраны разделы для восстановления.</string>
 		<string name="restore_part_count">Восстановление {1} разделов...</string>
 		<string name="total_restore_size">Общий размер для восстановления: {1}МБ</string>
@@ -515,11 +516,11 @@
 		<string name="restore_completed">[ВОССТАНОВЛЕНИЕ ЗАВЕРШЕНО ЗА {1} СЕКУНД]</string>
 		<!-- {1} is the path we could not open, {2} is strerror output -->
 		<string name="error_opening_strerr">Ошибка открытия: '{1}' ({2})</string>
-		<string name="unable_locate_part_backup_name">Не удается найти раздел для копирования: '{1}'</string>
-		<string name="unable_find_part_path">Не удается найти раздел по пути '{1}'</string>
+		<string name="unable_locate_part_backup_name">Не удаётся найти раздел для копирования: '{1}'</string>
+		<string name="unable_find_part_path">Не удаётся найти раздел по пути '{1}'</string>
 		<string name="update_part_details">Обновление информации о разделах...</string>
 		<string name="update_part_details_done">...готово</string>
-		<string name="wiping_dalvik">Очистка директорий Dalvik Cache...</string>
+
 		<string name="cleaned">Очищены: {1}...</string>
 		<string name="dalvik_done">-- Очистка директорий Dalvik Cache завершена!</string>
 		<string name="no_andсек.">Не найдены разделы android сек.ure.</string>
@@ -536,18 +537,18 @@
 		<string name="partition_sd_locate">Не удалось найти устройство для разметки.</string>
 		<string name="ext_swap_size">Размер EXT + Swap превышает размер sdcard.</string>
 		<string name="remove_part_table">Удаление таблицы разделов...</string>
-		<string name="unable_rm_part">Не удается удалить таблицу разделов.</string>
+		<string name="unable_rm_part">Не удаётся удалить таблицу разделов.</string>
 		<string name="create_part">Создание раздела {1}...</string>
-		<string name="unable_to_create_part">Не удается создать раздел {1}.</string>
+		<string name="unable_to_create_part">Не удаётся создать раздел {1}.</string>
 		<string name="format_sdext_as">Форматирование sd-ext в {1}...</string>
 		<string name="part_complete">Разметка завершена.</string>
-		<string name="unable_to_open">Не удается открыть '{1}'.</string>
-		<string name="mtp_already_enabled">MTP уже включен</string>
+		<string name="unable_to_open">Не удаётся открыть '{1}'.</string>
+		<string name="mtp_already_enabled">MTP уже включён</string>
 		<string name="mtp_fail">Не удалось включить MTP</string>
 		<string name="no_mtp">Поддержка MTP отсутствует</string>
 		<string name="image_flash_start">[ПРОШИВКА ОБРАЗА НАЧАТА]</string>
 		<string name="img_to_flash">Образ для прошивки: '{1}'</string>
-		<string name="flash_unable_locate">Не удается найти раздел '{1}'.</string>
+		<string name="flash_unable_locate">Не удаётся найти раздел '{1}'.</string>
 		<string name="no_part_flash">Не выбраны разделы для прошивки.</string>
 		<string name="too_many_flash">Выбрано слишком много разделов для прошивки.</string>
 		<string name="invalid_flash">Указан неверный раздел для прошивки.</string>
@@ -560,9 +561,9 @@
 		<!-- {1} is the folder name that we could not create, {2} is strerror output -->
 		<string name="create_folder_strerr">Невозможно создать папку '{1}' ({2}).</string>
 		<!-- {1} is the folder name that we could not mount, {2} is strerror output -->
-		<string name="fail_mount">Не удается смонтировать '{1}' ({2})</string>
+		<string name="fail_mount">Не удаётся смонтировать '{1}' ({2})</string>
 		<!-- {1} is the folder name that we could not unmount, {2} is strerror output -->
-		<string name="fail_unmount">Не удается размонтировать '{1}' ({2})</string>
+		<string name="fail_unmount">Не удаётся размонтировать '{1}' ({2})</string>
 		<string name="cannot_resize">Невозможно изменить размер {1}.</string>
 		<string name="repair_resize">Восстановление {1} перед изменением размера.</string>
 		<string name="unable_resize">Не удается изменить размер {1}.</string>
@@ -585,7 +586,7 @@
 		<string name="img_size_err">Размер образа больше размера целевого устройства</string>
 		<string name="flashing">Прошивка {1}...</string>
 		<string name="backup_folder_set">Папка для резервной копии установлена в '{1}'</string>
-		<string name="locate_backup_err">Не удается найти резервную копию '{1}'</string>
+		<string name="locate_backup_err">Не удаётся найти резервную копию '{1}'</string>
 		<string name="set_restore_opt">Установки опций восстановления: '{1}':</string>
 		<string name="md5_check_skip">Пропуск проверки MD5 включен</string>
 		<string name="ors_encrypt_restore_err">Не удается использовать OpenRecoveryScript для восстановления зашифрованной резервной копии.</string>
