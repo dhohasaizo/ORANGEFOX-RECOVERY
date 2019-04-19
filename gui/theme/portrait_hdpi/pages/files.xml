@@ -916,7 +916,7 @@
 			<template name="statusbarinfo"/>
 
 			<action>
-				<action function="set">opts_show=0</action>
+				<action function="set">opts_show=%auto_show_btns%</action>
 			</action>
 
 			<action>
@@ -1055,6 +1055,7 @@
 					<action function="set">opts_show=1</action>
 				</listitem>
 				<listitem name="{@hide}">
+					<condition var1="auto_show_btns" op="!=" var2="1"/>
 					<condition var1="opts_show" var2="1"/>
 					<icon res="hide"/>
 					<action function="page">filemanageroptions</action>

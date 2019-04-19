@@ -6,7 +6,7 @@
 
 			<action>
 				<action function="set">nav_panel_id=3</action>
-				<action function="set">utils_show=0</action>
+				<action function="set">utils_show=%auto_show_btns%</action>
 			</action>
 
 
@@ -64,6 +64,7 @@
 				</listitem>
 				<listitem name="{@hide}">
 					<condition var1="utils_show" var2="1"/>
+					<condition var1="auto_show_btns" op="!=" var2="1"/>
 					<icon res="hide"/>
 					<action function="page">advanced</action>
 				</listitem>

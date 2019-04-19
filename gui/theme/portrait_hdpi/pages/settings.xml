@@ -197,6 +197,10 @@
 					<data variable="tw_hidden_files"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
+				<listitem name="[TODO: Move to custom] Auto expand lists">
+					<data variable="auto_show_btns"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
 				<listitem name="{@inject_twrp_chk}">
 					<condition var1="tw_has_injecttwrp" var2="1"/>
 					<condition var1="general_back" var2="settings"/>
