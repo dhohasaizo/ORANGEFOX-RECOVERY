@@ -684,11 +684,6 @@
 			</action>
 			
 			<action>
-				<touch key="voldown"/>
-				<action function="screenshotinternal"/>
-			</action>
-			
-			<action>
 				<touch key="power+volup"/>
 				<action function="flashlight"/>
 			</action>
