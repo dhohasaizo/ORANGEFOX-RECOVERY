@@ -2340,14 +2340,16 @@ int GUIAction::flashlight(std::string arg __unused)
 			// maintainer not set flash paths
 			if (TWFunc::Path_Exists("/sys/class/leds/flashlight/brightness") && TWFunc::Path_Exists("/sys/class/leds/flashlight/max_brightness")) {
 				// use flashlight for old devices
+        LOGINFO("Torch 000");
 				path_one = "/sys/class/leds/flashlight";
 			} else {
 				// use flashlight for new devices
+        LOGINFO("Torch 001");
 				path_one = "/sys/class/leds/led:torch_0";
 				path_two = "/sys/class/leds/led:switch_0";
 			}
 		} else if (path_one.empty() && !path_two.empty()) {
-			// Maintainer is dumb???
+			// No variables exported?
 			path_one = path_two;
 			path_two = "";
 		}
@@ -2366,9 +2368,11 @@ int GUIAction::flashlight(std::string arg __unused)
 				if (fl_one_on == "0" || fl_used.empty()) {
 					TWFunc::write_to_file(bright_one, max_brt_one);
 					LOGINFO("Enable flashlight 1");
+          DataManager::SetValue("of_fl_used", "1");
 				} else {
 					TWFunc::write_to_file(bright_one, "0");
 					LOGINFO("Disable flashlight 1");
+          DataManager::SetValue("of_fl_used", "0");
 				}
 				// Set path that we found to var to skip path finding
 				if (fl_used.empty() && path_two.empty()) {
@@ -2394,9 +2398,11 @@ int GUIAction::flashlight(std::string arg __unused)
 				if ((fl_two_on == "0" && fl_one_on == "0") || fl_used.empty()) {
 					TWFunc::write_to_file(bright_two, max_brt_two);
 					LOGINFO("Enable flashlight 1");
+          DataManager::SetValue("of_fl_used", "1");
 				} else {
 					TWFunc::write_to_file(bright_two, "0");
 					LOGINFO("Disable flashlight 1");
+          DataManager::SetValue("of_fl_used", "0");
 				}
 				if (fl_used.empty()) {
 					DataManager::SetValue("of_fl_used", "1");
