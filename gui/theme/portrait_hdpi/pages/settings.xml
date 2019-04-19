@@ -854,11 +854,11 @@
 
 			<text style="text_ab_subtitle">
 				<placement x="%about_txt_x%" y="%about_txt2_y%"/>
-				<text>Recovery Project</text>
+				<text>{@version}: %fox_actual_build%</text>
 			</text>
 			<text style="text_ab_subtitle">
 				<placement x="%about_txt_x%" y="%about_txt3_y%"/>
-				<text>{@version}: %fox_actual_build%</text>
+				<text>Build type: %fox_build_type1%</text>
 			</text>
 			<text style="text_ab_subtitle">
 				<placement x="%about_txt_x%" y="%about_txt4_y%"/>

@@ -633,6 +633,8 @@ void DataManager::SetDefaultValues()
 
   mConst.SetValue(TW_VERSION_VAR, FOX_VERSION);
   mConst.SetValue(OF_MAINTAINER_STR, OF_MAINTAINER);
+  mConst.SetValue(BUILD_TYPE_STR, BUILD_TYPE);
+
   mConst.SetValue(OF_FLASHLIGHT_ENABLE_STR, OF_FLASHLIGHT_ENABLE);
   
   //[f/d] UI Vars
@@ -651,6 +653,8 @@ void DataManager::SetDefaultValues()
   mConst.SetValue(OF_STATUS_INDENT_RIGHT_S, OF_STATUS_INDENT_RIGHT);
   mConst.SetValue(OF_CLOCK_POS_S, OF_CLOCK_POS);
   mConst.SetValue(OF_ALLOW_DISABLE_NAVBAR_S, OF_ALLOW_DISABLE_NAVBAR);
+
+  mData.SetValue("fox_build_type1", BUILD_TYPE);
 
   mData.SetValue("of_no_miui_features", 0);
   #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES)

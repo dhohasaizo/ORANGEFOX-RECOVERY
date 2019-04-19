@@ -2030,6 +2030,10 @@ void TWFunc::Welcome_Message(void)
     gui_print("--------------------------\n");
     gui_print("Welcome to OrangeFox Recovery!");
     gui_print("[OrangeFox Version]: %s", FOX_BUILD);
+    if (FOX_BUILD == "Unofficial")
+      gui_print_color("warning", "[Build type]: Unofficial\n");
+    else
+      gui_print("[Build type]: %s", BUILD_TYPE);
     gui_print("[TWRP Version]: %s", FOX_VERSION);
     gui_print("--------------------------\n");
     Fox_Has_Welcomed++;

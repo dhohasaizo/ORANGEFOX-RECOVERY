@@ -23,12 +23,14 @@
 
 #define TW_MAIN_VERSION_STR       "3.3.0"
 #define TW_VERSION_STR TW_MAIN_VERSION_STR TW_DEVICE_VERSION
+#define BUILD_TYPE_STR BUILD_TYPE
 
 // OrangeFox - Values
 #define FOX_BUILD                TW_DEVICE_VERSION
 #define FOX_DEVICE               FOX_DEVICE_MODEL
 #define FOX_VERSION              TW_MAIN_VERSION_STR
 #define OF_MAINTAINER_STR      	"of_maintainer"
+#define BUILD_TYPE_STR              BUILD_TYPE
 #define OF_FLASHLIGHT_ENABLE_STR "of_flashlight_enable"
 
 // fordownloads values
