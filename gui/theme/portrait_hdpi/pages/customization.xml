@@ -44,7 +44,6 @@
 					<action function="set">spl_bg_color=#000000ff</action>
 					<action function="set">spl_bg_user=0</action>
 					<action function="set">spl_bg_on=0</action>
-					<action function="set">update_splash=0</action>
 					<action function="page">ext_custom_splash</action>
 				</listitem>
 			</listbox>
@@ -67,7 +66,6 @@
 				<action function="set">update_navbar=0</action>
 				<action function="set">update_accent=0</action>
 				<action function="set">update_style=0</action>
-				<action function="set">update_splash=0</action>
 				
 				<action function="set">navbar_disable_tmp=%navbar_disable%</action>
 				<action function="set">navbar_disable_add_tmp=%navbar_disable_add%</action>
@@ -1267,18 +1265,14 @@
 				<condition var1="spl_bg_user" var2="1"/>
 				<placement x="%spl_btn_x6%" y="%spl_custom_btn%" placement="2"/>
 				<image resource="spl_apply"/>
-				<action function="set">update_splash=1</action>
-				<action function="set">needs_repack=1</action>
-				<action function="page">ext_custom</action>
+				<action function="page">apply_splash</action>
 			</button>
 			
 			<button>
 				<condition var1="spl_bg_user" var2="0"/>
 				<placement x="%spl_btn_x5%" y="%spl_custom_btn%" placement="2"/>
 				<image resource="spl_apply"/>
-				<action function="set">update_splash=1</action>
-				<action function="set">needs_repack=1</action>
-				<action function="page">ext_custom</action>
+				<action function="page">apply_splash</action>
 			</button>
 			
 			<button>
@@ -1547,9 +1541,19 @@
 					if [[ '%update_accent%' = '1' ]]; then
 						cat "/twres/themes/accent/%theme_accent_tmp%.xml" > /sdcard/Fox/.theme/accent.xml;
 					fi;
-					
-					#Splash
-					if [[ '%update_splash%' = '1' ]]; then
+				</action>
+				<action function="reload"/>
+			</action>
+		</page>
+
+		<page name="apply_splash">
+			<template name="busy_screen"/>
+			
+			<action>
+				<condition var1="fox_busy" op="!=" var2="1"/>
+				<action function="set">fox_busy=1</action>
+				<action function="wlfw"/>
+				<action function="cmd">
 						if [[ '%spl_bg_user%' = '1' ]]; then
 							if [[ '%spl_logo_type%' = '0' ]];
 								then logo_on=!--;
@@ -1572,9 +1576,8 @@
 							else cat "/twres/themes/sed/splash_orig.xml" > /tmp/orangefox/ramdisk/twres/splash.xml;
 						fi;
 						cat "/tmp/orangefox/ramdisk/twres/splash.xml" > /twres/splash.xml;
-					fi;
 				</action>
-				<action function="set">status=; Reloading...</action>
+				<action function="wlfx"/>
 				<action function="reload"/>
 			</action>
 		</page>

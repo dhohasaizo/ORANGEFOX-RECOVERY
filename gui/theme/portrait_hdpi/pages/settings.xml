@@ -24,7 +24,6 @@
 					<action function="set">update_navbar=0</action>
 					<action function="set">update_accent=0</action>
 					<action function="set">update_style=0</action>
-					<action function="set">update_splash=0</action>
 					
 					<action function="set">navbar_disable_tmp=%navbar_disable%</action>
 					<action function="set">navbar_disable_add_tmp=%navbar_disable_add%</action>
