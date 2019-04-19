@@ -1504,8 +1504,8 @@
 			<action>
 				<condition var1="fox_busy" op="!=" var2="1"/>
 				<action function="set">fox_busy=1</action>
-				<action function="wlfw"/>
 				<action function="cmd">
+					if [ ! -d "/sdcard/Fox/.theme" ]; then mkdir -p "/sdcard/Fox/.theme"; fi;
 					#Fonts
 					if [[ '%update_fonts%' = '1' ]]; then
 						if [ -f "/twres/fonts/%theme_sec_font_tmp%.ttf" ];
@@ -1527,8 +1527,7 @@
 						s/#SECONDARY_FONT_REG#/%theme_sec_font_tmp%${sec_reg}/g;
 						s/#PRIMARY_NAME#/%theme_font_tmp%/g;
 						s/#SECONDARY_NAME#/%theme_sec_font_tmp%/g
-						" > /tmp/orangefox/ramdisk/twres/themes/font.xml;
-						cat "/tmp/orangefox/ramdisk/twres/themes/font.xml" > /twres/themes/font.xml;
+						" > /sdcard/Fox/.theme/font.xml;
 					fi;
 				
 					#Navbar
@@ -1536,20 +1535,17 @@
 						cat "/twres/themes/sed/navbar.xml" | sed -e "
 						s/#NAVBAR_DISABLE#/%navbar_disable_tmp%/g;
 						s/#SCREEN_H#/$(expr %screen_original_h% + %navbar_disable_add_tmp%)/g
-						" > /tmp/orangefox/ramdisk/twres/themes/navbar.xml;
-						cat "/tmp/orangefox/ramdisk/twres/themes/navbar.xml" > /twres/themes/navbar.xml;
+						" > /sdcard/Fox/.theme/navbar.xml;
 					fi;
 				
 					#Style
 					if [[ '%update_style%' = '1' ]]; then
-						cat "/twres/themes/styles/%theme_style_tmp%.xml" > /tmp/orangefox/ramdisk/twres/themes/style.xml;
-						cat "/tmp/orangefox/ramdisk/twres/themes/style.xml" > /twres/themes/style.xml;
+						cat "/twres/themes/styles/%theme_style_tmp%.xml" > /sdcard/Fox/.theme/style.xml;
 					fi;
 				
 					#Accent
 					if [[ '%update_accent%' = '1' ]]; then
-						cat "/twres/themes/accent/%theme_accent_tmp%.xml" > /tmp/orangefox/ramdisk/twres/themes/accent.xml;
-						cat "/tmp/orangefox/ramdisk/twres/themes/accent.xml" > /twres/themes/accent.xml;
+						cat "/twres/themes/accent/%theme_accent_tmp%.xml" > /sdcard/Fox/.theme/accent.xml;
 					fi;
 					
 					#Splash
@@ -1578,7 +1574,7 @@
 						cat "/tmp/orangefox/ramdisk/twres/splash.xml" > /twres/splash.xml;
 					fi;
 				</action>
-				<action function="wlfx"/>
+				<action function="set">status=; Reloading...</action>
 				<action function="reload"/>
 			</action>
 		</page>

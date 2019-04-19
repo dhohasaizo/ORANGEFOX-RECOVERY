@@ -440,13 +440,13 @@
 			<text style="bs_text">
 				<placement x="%center_x%" y="%busy_text_l%" placement="4"/>
 				<condition var1="navbar_disable" op="!=" var2="1"/>
-				<text>{@theme_apply}</text>
+				<text>{@theme_apply}%status%</text>
 			</text>
 			
 			<text style="bs_text">
 				<placement x="%center_x%" y="%busy_text%" placement="4"/>
 				<condition var1="navbar_disable" var2="1"/>
-				<text>{@theme_apply}</text>
+				<text>{@theme_apply}%status%</text>
 			</text>
 		</template>
 		
