@@ -516,7 +516,7 @@
 				<button style="btn_raised">
 					<condition var1="tw_partition_removable" op="=" var2="1"/>
 					<condition var1="tw_allow_partition_sdcard" var2="1"/>
-					<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+					<placement x="%btn_raised_left_x%" y="%row7_2_y%"/>
 					<text>{@part_sd_hdr}</text>
 					<action function="set">tw_storage_path=%part_option%</action>
 					<action function="page">partsdcardcheck</action>
