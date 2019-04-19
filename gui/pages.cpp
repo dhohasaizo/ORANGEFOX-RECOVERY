@@ -780,10 +780,11 @@ int PageSet::Load(LoadingContext& ctx, const std::string& filename)
 		}
 	}
 
+	//[f/d] Change theme accent/style w/o repacking recovery
 	// process includes recursively
 	child = root->first_node("include");
 	if (child) {
-		xml_node<>* include = child->first_node("xmlfile");
+		xml_node<>* include = child->first_node("xml");
 		while (include != NULL) {
 			xml_attribute<>* attr = include->first_attribute("name");
 			if (!attr) {
@@ -791,13 +792,22 @@ int PageSet::Load(LoadingContext& ctx, const std::string& filename)
 				continue;
 			}
 
-			string filename = ctx.basepath + attr->value();
+			string filename = attr->value();
 			LOGINFO("Including file: %s...\n", filename.c_str());
 			int rc = Load(ctx, filename);
-			if (rc != 0)
-				return rc;
+			if (rc != 0) {
+				attr = include->first_attribute("default");
+				if (attr) {
+					string filename = attr->value();
+					int rc = Load(ctx, filename);
+					if (rc != 0)
+						return rc;
+				} else {
+					return rc;
+				}
+			}
 
-			include = include->next_sibling("xmlfile");
+			include = include->next_sibling("xml");
 		}
 	}
 

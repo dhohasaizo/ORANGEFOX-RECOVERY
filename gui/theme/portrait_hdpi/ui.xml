@@ -10,37 +10,38 @@
 	</details>
 	
 	<include>
-		<xmlfile name="themes/navbar.xml"/>
-		<xmlfile name="themes/font.xml"/>
-		<xmlfile name="themes/style.xml"/>
-		<xmlfile name="themes/accent.xml"/>
-		<xmlfile name="resources/images.xml"/>
-		<xmlfile name="resources/vars.xml"/>
-		<xmlfile name="resources/styles.xml"/>
-	
-		<xmlfile name="pages/templates/keyboard.xml"/>
-		<xmlfile name="pages/templates/navbar.xml"/>
-		<xmlfile name="pages/templates/statusbar.xml"/>
-		<xmlfile name="pages/templates/templates.xml"/>
-		
-		<xmlfile name="pages/main.xml"/>
-		<xmlfile name="pages/pass.xml"/>
-		<xmlfile name="pages/install.xml"/>
-		<xmlfile name="pages/wipe.xml"/>
-		<xmlfile name="pages/backup.xml"/>
-		<xmlfile name="pages/restore.xml"/>
-		<xmlfile name="pages/mount.xml"/>
-		<xmlfile name="pages/files.xml"/>
-		<xmlfile name="pages/magisk.xml"/>
-		<xmlfile name="pages/advanced.xml"/>
-		<xmlfile name="pages/reboot.xml"/>
-		<xmlfile name="pages/settings.xml"/>
-		<xmlfile name="pages/universal.xml"/>
-		<xmlfile name="pages/anywhere.xml"/>
-		<xmlfile name="pages/dialogs.xml"/>
-		<xmlfile name="pages/customization.xml"/>
+		<xml name="/sdcard/Fox/.theme/navbar.xml" default="/twres/themes/navbar.xml"/>
+		<xml name="/sdcard/Fox/.theme/font.xml"   default="/twres/themes/font.xml"/>
+		<xml name="/sdcard/Fox/.theme/style.xml"  default="/twres/themes/style.xml"/>
+		<xml name="/sdcard/Fox/.theme/accent.xml" default="/twres/themes/accent.xml"/>
 
-		<xmlfile name="pages/fox.xml"/>
+		<xml name="/twres/resources/images.xml"/>
+		<xml name="/twres/resources/vars.xml"/>
+		<xml name="/twres/resources/styles.xml"/>
+	
+		<xml name="/twres/pages/templates/keyboard.xml"/>
+		<xml name="/twres/pages/templates/navbar.xml"/>
+		<xml name="/twres/pages/templates/statusbar.xml"/>
+		<xml name="/twres/pages/templates/templates.xml"/>
+		
+		<xml name="/twres/pages/main.xml"/>
+		<xml name="/twres/pages/pass.xml"/>
+		<xml name="/twres/pages/install.xml"/>
+		<xml name="/twres/pages/wipe.xml"/>
+		<xml name="/twres/pages/backup.xml"/>
+		<xml name="/twres/pages/restore.xml"/>
+		<xml name="/twres/pages/mount.xml"/>
+		<xml name="/twres/pages/files.xml"/>
+		<xml name="/twres/pages/magisk.xml"/>
+		<xml name="/twres/pages/advanced.xml"/>
+		<xml name="/twres/pages/reboot.xml"/>
+		<xml name="/twres/pages/settings.xml"/>
+		<xml name="/twres/pages/universal.xml"/>
+		<xml name="/twres/pages/anywhere.xml"/>
+		<xml name="/twres/pages/dialogs.xml"/>
+		<xml name="/twres/pages/customization.xml"/>
+
+		<xml name="/twres/pages/fox.xml"/>
 	</include>
 	<variables>
 		<variable name="theme_version" value="A6 | Alpha"/>

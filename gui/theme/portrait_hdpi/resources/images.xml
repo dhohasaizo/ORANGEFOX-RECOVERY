@@ -94,6 +94,8 @@
 		<!-- Battery -->
 		<image name="battery15" filename="Default/Battery/battery15" retainaspect="1"/>
 		<image name="battery5" filename="Default/Battery/battery5" retainaspect="1"/>
+		<image name="battery15_p" filename="Default/Battery/battery15_p" retainaspect="1"/>
+		<image name="battery5_p" filename="Default/Battery/battery5_p" retainaspect="1"/>
 		
 		<!-- Controls -->
 		<image name="btn_raised" filename="Default/Controls/btn_raised"/>
