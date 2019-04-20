@@ -227,7 +227,7 @@
 					</actions>
 				</listitem>
 				<listitem name="{@subs_wipe} (RRO, Legacy)">
-					<icon res="subs"/>
+					<icon res="bs_btn_archive"/>
 					<actions>
 						<action function="queueclear"/>
 						<action function="set">fox_m_author=prjkt.</action>
@@ -245,7 +245,7 @@
 					</actions>
 				</listitem>
 				<listitem name="{@subs_wipe} (OMS)">
-					<icon res="subs"/>
+					<icon res="bs_btn_archive"/>
 					<actions>
 						<action function="queueclear"/>
 						<action function="set">fox_m_author=prjkt.</action>
@@ -291,6 +291,24 @@
 						<action function="set">tw_filecheck=%tw_filename%</action>
 						<action function="set">install_back=fox_modules</action>
 						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
+						<action function="queuezip"/>
+						<action function="set">tw_q_1=%tw_file%</action>
+						<action function="set">tw_notexistpage=fox_modules_confirm</action>
+						<action function="set">tw_existpage=fox_modules_confirm</action>
+						<action function="page">filecheck</action>
+					</actions>
+				</listitem>
+				<listitem name="Remove password">
+					<icon res="bs_btn_archive"/>
+					<actions>
+						<action function="queueclear"/>
+						<action function="set">fox_m_author=DarthJabba9</action>
+						<action function="set">fox_m_name=Remove password</action>
+						<action function="set">tw_file=Rm_Pass.zip</action>
+						<action function="set">tw_filename=/FFiles/Rm_Pass/Rm_Pass.zip</action>
+						<action function="set">tw_filecheck=%tw_filename%</action>
+						<action function="set">install_back=fox_modules</action>
+						<action function="set">tw_zip_location=/FFiles/Rm_Pass/</action>
 						<action function="queuezip"/>
 						<action function="set">tw_q_1=%tw_file%</action>
 						<action function="set">tw_notexistpage=fox_modules_confirm</action>
