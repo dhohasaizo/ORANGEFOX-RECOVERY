@@ -83,6 +83,13 @@ int OrangeFox_Startup_Executed = 0;
 int Fox_Has_Welcomed = 0;
 string Fox_Current_ROM = "";
 
+static const bool Is_AB_Device =
+  #ifdef OF_AB_DEVICE
+  	true;
+  #else
+  	false;
+  #endif
+
 /* create a new (text) file */
 static void CreateNewFile(string file_path)
 {
@@ -2459,7 +2466,8 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
   std::string ramdisk_cpio = Fox_ramdisk_dir + k + cpio;
   bool retval = false;
   bool keepverity = false;
-  int res = 0;  
+  int res = 0;
+
   std::string cmd_script =  "/tmp/do_magisk-unpack.sh";
   std::string cmd_script2 = "/tmp/do_magisk-repack.sh";
 
@@ -2473,14 +2481,19 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
  
   TWPartition *Boot = PartitionManager.Find_Partition_By_Path("/boot");
   TWPartition *Recovery = PartitionManager.Find_Partition_By_Path("/recovery");
- 
+
+#ifdef OF_AB_DEVICE
+  if (Boot != NULL)
+    {
+       tmpstr = Boot->Actual_Block_Device;
+#else 
   if (Boot != NULL && Recovery != NULL)
     {
       if (is_boot)
 	tmpstr = Boot->Actual_Block_Device;
       else
 	tmpstr = Recovery->Actual_Block_Device;
-	
+#endif
       if (do_unpack) // unpack
 	{
 	  if (TWFunc::Path_Exists(Fox_tmp_dir))
@@ -2492,14 +2505,26 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        chmod (cmd_script.c_str(), 0755);
 	        AppendLineToFile (cmd_script, "#!/sbin/sh");
 	        AppendLineToFile (cmd_script, "LOGINFO() { echo \"$1\"; echo \"$1\" >> /tmp/recovery.log;}");
-	        AppendLineToFile (cmd_script, "abort() { LOGINFO \"$1\"; exit 1;}");
+	        // if we need to backup the script, for debugging
+	        if (New_Fox_Installation == 1) 
+	         {
+	           AppendLineToFile (cmd_script, 
+	           "BackUp() { cp -f /tmp/recovery.log /sdcard/Fox/post-install.log; cp -af " + cmd_script + " /sdcard/Fox/cmd_script1.log; }"); 
+	         }
+	        else 
+	           AppendLineToFile (cmd_script, "BackUp() { cp -af " + cmd_script + " /sdcard/Fox/cmd_script1.log; }");
+	        
+	        //AppendLineToFile (cmd_script, "abort() { LOGINFO \"$1\"; BackUp; exit 1; }");
+	        AppendLineToFile (cmd_script, "abort() { LOGINFO \"$1\"; exit 1; }");
 	        AppendLineToFile (cmd_script, "mkdir -p " + Fox_tmp_dir);
 	        AppendLineToFile (cmd_script, "mkdir -p " + Fox_ramdisk_dir);
 	        AppendLineToFile (cmd_script, cd_dir + Fox_tmp_dir);
-	        AppendLineToFile (cmd_script, "LOGINFO \"- Unpacking boot/recovery image ...\"");
+	        AppendLineToFile (cmd_script, "LOGINFO \"- Unpacking boot/recovery image - block device=\"");
+	        AppendLineToFile (cmd_script, "LOGINFO \"[" + tmpstr + "] \"");
 	        AppendLineToFile (cmd_script, magiskboot_action + "unpack \"" + tmpstr + "\" > /dev/null 2>&1");
 	        AppendLineToFile (cmd_script, "[ $? == 0 ] && LOGINFO \"- Succeeded.\" || abort \"- Unpacking image failed.\"");
 	        AppendLineToFile (cmd_script, "#");
+	        // processing boot image?
 		if (is_boot)
 		   {
 	              AppendLineToFile (cmd_script, cd_dir + Fox_tmp_dir);
@@ -2538,6 +2563,8 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	              	    AppendLineToFile (cmd_script, "[ -f extra ] && magiskboot --dtb-patch extra > /dev/null 2>&1");
 	                 }
 	           } // is_boot
+
+	        // continue processing the rest
 	        AppendLineToFile (cmd_script, "#");
 	        AppendLineToFile (cmd_script, "mv " + tmp_cpio + " " + ramdisk_cpio);
 	        AppendLineToFile (cmd_script, cd_dir + Fox_ramdisk_dir);
@@ -2545,12 +2572,19 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        AppendLineToFile (cmd_script, magiskboot_action + "cpio ramdisk.cpio extract > /dev/null 2>&1");
 	        AppendLineToFile (cmd_script, "[ $? == 0 ] && LOGINFO \"- Succeeded.\" || abort \"- Ramdisk file extraction failed.\"");
 	        AppendLineToFile (cmd_script, "rm -f " + ramdisk_cpio);
+	        
+	        #ifdef OF_AB_DEVICE
+	        //AppendLineToFile (cmd_script, "cp -f " + cmd_script + " /sdcard/Fox/cmd_script1.log");
+	        #endif
+	        
 	        AppendLineToFile (cmd_script, "exit 0");
 	        res = Exec_Cmd (cmd_script, result);
 	        if (res == 0) 
 	           retval = true;
 	        usleep (128);
+	        
 		unlink(cmd_script.c_str());
+		
 		//gui_print("DEBUG: result of unpack command %s=%i, and output=%s\n",cmd_script.c_str(), res, result.c_str());   
 	    } // if
 	} // do_unpack
@@ -2560,7 +2594,17 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	  	chmod (cmd_script2.c_str(), 0755);
 	        AppendLineToFile (cmd_script2, "#!/sbin/sh");
 	        AppendLineToFile (cmd_script2, "LOGINFO() { echo \"$1\"; echo \"$1\" >> /tmp/recovery.log;}");
-	        AppendLineToFile (cmd_script2, "abort() { LOGINFO \"$1\"; exit 1;}");
+	        // if we need to backup the script, for debugging	        
+	        if (New_Fox_Installation == 1) 
+	         {
+	           AppendLineToFile (cmd_script2, 
+	           "BackUp() { cp -af /tmp/recovery.log /sdcard/Fox/post-install.log; cp -f " + cmd_script2 + " /sdcard/Fox/cmd_script2.log; }"); 
+	         }
+	        else
+	           AppendLineToFile (cmd_script2, "BackUp() { cp -f " + cmd_script2 + " /sdcard/Fox/cmd_script2.log; }");
+
+	        //AppendLineToFile (cmd_script2, "abort() { LOGINFO \"$1\"; BackUp; exit 1; }");
+	        AppendLineToFile (cmd_script2, "abort() { LOGINFO \"$1\"; exit 1; }");
 	        AppendLineToFile (cmd_script2, cd_dir + Fox_ramdisk_dir);
 	        AppendLineToFile (cmd_script2, "LOGINFO \"- Archiving ramdisk.cpio ...\"");
 	        AppendLineToFile (cmd_script2, "find | cpio -o -H newc > \"" + tmp_cpio + "\"");
@@ -2570,23 +2614,37 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        AppendLineToFile (cmd_script2, magiskboot_action + "repack \"" + tmpstr + "\" > /dev/null 2>&1");
 	        AppendLineToFile (cmd_script2, "[ $? == 0 ] && LOGINFO \"- Succeeded.\" || abort \"- Repacking of image failed.\"");
 	        AppendLineToFile (cmd_script2, "LOGINFO \"- Flashing repacked image ...\"");
+	        #ifdef OF_AB_DEVICE
+	        AppendLineToFile (cmd_script2, "dd if=new-boot.img of=" + tmpstr + " > /dev/null 2>&1");
+	        #else
 	        AppendLineToFile (cmd_script2, "flash_image \"" +  tmpstr + "\" new-boot.img");
+	        #endif
 	        AppendLineToFile (cmd_script2, "[ $? == 0 ] && LOGINFO \"- Succeeded.\" || abort \"- Flashing repacked image failed.\"");
 	        AppendLineToFile (cmd_script2, magiskboot_action + "cleanup > /dev/null 2>&1");
+
+	        #ifdef OF_AB_DEVICE
+	        //AppendLineToFile (cmd_script2, "cp -f " + cmd_script2 + " /sdcard/Fox/cmd_script2.log");
+	        #endif
+
 	        AppendLineToFile (cmd_script2, "exit 0");
 	        res = Exec_Cmd (cmd_script2, result);
 		usleep (128);
+		
 		unlink(cmd_script2.c_str());
+		
 		//gui_print("DEBUG: result of repack command %s=%i and output=%s\n",cmd_script2.c_str(), res, result.c_str());
 	        if (res == 0) 
 	          retval = true;
 	  	TWFunc::removeDir(Fox_tmp_dir, false);
 	}
+    } // boot != null
+    else
+    {
+        LOGERR("TWFunc::PackRepackImage_MagiskBoot: Failed to mount boot/recovery!");
     }
   PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
   return retval;
 }
-
 
 bool TWFunc::isNumber(string strtocheck)
 {
@@ -3023,56 +3081,45 @@ bool TWFunc::JustInstalledMiui(void)
       return false;
 }
 
-/*
-bool TWFunc::Fresh_Fox_Install()
-{
-  std::string fox_file = "/cache/recovery/Fox_Installed";
-  New_Fox_Installation = 0;
-
-  if ((PartitionManager.Is_Mounted_By_Path("/cache")) || (PartitionManager.Mount_By_Path("/cache", true)))
-    {
-	if (!Path_Exists(fox_file))
-	    return false;
-	
-	unlink(fox_file.c_str());
-	#ifdef OF_DONT_PATCH_ON_FRESH_INSTALLATION
-	gui_print("Fresh OrangeFox installation - not running the dm-verity/forced-encryption patches\n");
-	#else
-	New_Fox_Installation = 1;
-	gui_print("Fresh OrangeFox installation - about to run the dm-verity/forced-encryption patches\n");
-     	if (Fox_Current_ROM_IsMIUI == 1)
-     	   {
-		Fox_Force_Deactivate_Process = 1;
-		DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
-	   }
-	TWFunc::Deactivation_Process();
-	New_Fox_Installation = 0;
-	#endif
-	return true;
-   }    
-   else
-        return false;
-}
-*/
-
 bool TWFunc::Fresh_Fox_Install()
 {
   std::string fox_file = get_cache_dir() + "recovery/Fox_Installed";
   bool CanProceed = true;
   New_Fox_Installation = 0;
 
+/*
+// -------------------
+if (Is_AB_Device)
+{
+	LOGINFO ("DEBUG [Fresh_Fox_Install()] - file=%s\n", fox_file.c_str());
+	if (Path_Exists(fox_file)) 
+	{
+  		LOGINFO ("OrangeFox - DEBUG [Fresh_Fox_Install()] - fox_file exists\n");  
+	} 		
+	else 
+	{
+  		LOGINFO ("OrangeFox - DEBUG [Fresh_Fox_Install()] - fox_file CANNOT be found!!!\n");  
+	}
+}
+// ----------------- //
+*/
   if (get_cache_dir() == NON_AB_CACHE_DIR)
     {
       CanProceed = (PartitionManager.Is_Mounted_By_Path(NON_AB_CACHE_DIR) 
                  || PartitionManager.Mount_By_Path(NON_AB_CACHE_DIR, true));
     }
 
-  if (CanProceed) //((PartitionManager.Is_Mounted_By_Path(NON_AB_CACHE_DIR)) || (PartitionManager.Mount_By_Path(NON_AB_CACHE_DIR, true)))
+  if (CanProceed)
     {
+//if (Is_AB_Device) LOGINFO ("DEBUG [Fresh_Fox_Install()] - we can proceed\n");
+
 	if (!Path_Exists(fox_file))
 	    return false;
+
+//if (Is_AB_Device) LOGINFO ("DEBUG [Fresh_Fox_Install()] - fox_file exists\n");
 	
 	unlink(fox_file.c_str());
+	
 	#ifdef OF_DONT_PATCH_ON_FRESH_INSTALLATION
 	gui_print("Fresh OrangeFox installation - not running the dm-verity/forced-encryption patches\n");
 	#else
@@ -3086,11 +3133,16 @@ bool TWFunc::Fresh_Fox_Install()
 	TWFunc::Deactivation_Process();
 	New_Fox_Installation = 0;
 	#endif
+	
+	LOGINFO ("DEBUG [Fresh_Fox_Install()] - copying log to:/data/media/0/Fox/post-install.log \n");
 	copy_file("/tmp/recovery.log", "/data/media/0/Fox/post-install.log", 0644);
 	return true;
    }    
    else
-        return false;
+   {
+//if (Is_AB_Device) LOGINFO ("DEBUG [Fresh_Fox_Install() - we cannot proceed\n");
+      	return false;
+   }
 }
 
 bool TWFunc::Patch_DM_Verity(void)
@@ -3760,6 +3812,11 @@ bool TWFunc::DontPatchBootImage(void)
   // check whether to patch on new OrangeFox installations 
   if (New_Fox_Installation == 1)
      { 
+        if (Is_AB_Device) // don't patch the boot image of A/B devices at post-install stage
+        {
+           return true;
+        }
+
         if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) != 1) 
         && (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) != 1))
            {  // if we get here, the user has turned off these settings manually
