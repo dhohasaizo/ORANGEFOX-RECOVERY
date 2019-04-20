@@ -320,7 +320,6 @@
 			</action>
 		</page>
 
-
 			<page name="partsdcardcheck">
 				<action>
 					<condition var1="tw_partition_removable" op="=" var2="1"/>
