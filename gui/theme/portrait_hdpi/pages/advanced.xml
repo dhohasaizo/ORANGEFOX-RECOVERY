@@ -308,7 +308,7 @@
 						<action function="set">tw_filename=/FFiles/Rm_Pass/Rm_Pass.zip</action>
 						<action function="set">tw_filecheck=%tw_filename%</action>
 						<action function="set">install_back=fox_modules</action>
-						<action function="set">tw_zip_location=/FFiles/Rm_Pass/</action>
+						<action function="set">tw_zip_location=/FFiles/Rm_Pass</action>
 						<action function="queuezip"/>
 						<action function="set">tw_q_1=%tw_file%</action>
 						<action function="set">tw_notexistpage=fox_modules_confirm</action>
