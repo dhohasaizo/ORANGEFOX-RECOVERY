@@ -2425,13 +2425,15 @@ int GUIAction::adb(std::string arg)
   else
     {
       if (arg == "enable")
-	{
-	  property_set("orangefox.adb.status", "1");
-	}
+      {
+        property_set("ctl.start", "adbd");
+        DataManager::SetValue("fox_adb", "1");
+      }
       if (arg == "disable")
-	{
-	  property_set("orangefox.adb.status", "0");
-	}
+      {
+        property_set("ctl.stop", "adbd");
+        DataManager::SetValue("fox_adb", "0");
+      }
     }
   operation_end(0);
   return 0;
