@@ -516,6 +516,15 @@ static void ors_command_read()
 				char* pg = &command[11];
 				gui_changePage(pg);
 				ors_command_done();
+			} else if (strlen(command) > 5 && strncmp(command, "xset ", 5) == 0) {
+				char* xsetcom = &command[5];
+				std::string setst = string(xsetcom);
+				string varName = setst.substr(0, setst.find('='));
+				string value = setst.substr(setst.find('=') + 1, string::npos);
+
+				DataManager::GetValue(value, value);
+				DataManager::SetValue(varName, value);
+				ors_command_done();
 			} else {
 				// mirror output messages
 				gui_set_FILE(orsout);

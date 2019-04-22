@@ -377,6 +377,7 @@ protected:
 	int calldeactivateprocess(std::string arg);
 	int repackimage(std::string arg);
 	int fixabrecoverybootloop(std::string arg);
+	int ftls(std::string arg);
 
 	int simulate;
 };

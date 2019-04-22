@@ -258,6 +258,9 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(wlfw);
       ADD_ACTION(wlfx);
       ADD_ACTION(calldeactivateprocess);
+
+      //[f/d] Threaded actions
+      ADD_ACTION(ftls); //ftls (foxtools) - silent cmd
    }
 
   // First, get the action
@@ -1700,6 +1703,25 @@ int GUIAction::cmd(std::string arg)
     }
 
   operation_end(op_status);
+  return 0;
+}
+
+int GUIAction::ftls(std::string arg)
+{
+  int op_status = 0;
+  DataManager::SetValue("ftls_running", "1");
+
+  if (simulate)
+  {
+    simulate_progress_bar();
+  }
+  else
+  {
+    op_status = TWFunc::Exec_Cmd(arg, false);
+  }
+
+  DataManager::SetValue("ftls_errcode", op_status);
+  DataManager::SetValue("ftls_running", "0");
   return 0;
 }
 
