@@ -21,16 +21,19 @@
 					<action function="page">part_options</action>
 				</listitem>
 				<listitem name="Magisk Manager">
+					<condition var1="fileexists" var2="/sbin/mmgui"/>
 					<icon res="magisk"/>
 					<action function="set">ftls_running=1</action>
 					<action function="set">ft_mm_found=0</action>
 					<action function="page">magisk_mount</action>
 				</listitem>
 				<listitem name="{@appmgr_title}">
+					<condition var1="fileexists" var2="/sbin/aapt"/>
 					<icon res="apps"/>
 					<action function="page">apps_load</action>
 				</listitem>
 				<listitem name="AromaFM">
+					<condition var1="fileexists" var2="/sdcard/Fox/FoxFiles/AromaFM/AromaFM.zip"/>
 					<icon res="bs_adv_aroma"/>
 					<actions>
 						<action function="queueclear"/>
