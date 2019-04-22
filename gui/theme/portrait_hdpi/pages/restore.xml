@@ -3,16 +3,17 @@
 	<pages>
 		<page name="restore">
 			<action>
-				<action function="cmd">
-					if [ ! -d "%tw_backups_folder%" ]; then mkdir -p "%tw_backups_folder%"; fi;
-					if [ -f "%tw_backups_folder%/.EMPTY" ]; then rm "%tw_backups_folder%/.EMPTY"; fi;
-					if [ $(find %tw_backups_folder%/* -maxdepth 0 -type d | wc -l) -eq 0 ]; then touch "%tw_backups_folder%/.EMPTY"; fi;
+				<action function="ftls">
+					dir="%tw_backups_folder%";
+					if [ ! -d "$dir" ]; then mkdir -p "$dir"; fi;
+					if [ $(find $dir/* -maxdepth 0 -type d | wc -l) -eq 0 ]; then
+						twrp xset ft_backup_empty=1;
+					else
+						twrp xset ft_backup_empty=0;
+					fi;
 				</action>
 				<action function="set">tw_backups_folder_fm=%tw_backups_folder%</action>
-				<action function="set">tw_filecheck=%tw_backups_folder%/.EMPTY</action>
-				<action function="set">tw_existpage=restore_prepared</action>
-				<action function="set">tw_notexistpage=restore_prepared</action>
-				<action function="page">filecheck</action>
+				<action function="page">restore_prepared</action>
 			</action>
 		</page>
 		
@@ -51,7 +52,7 @@
 
 			<input>
 				<condition var1="darker_ui" var2="1"/>
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="552" h="64"/>
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
@@ -63,7 +64,7 @@
 
 			<input>
 				<condition var1="darker_ui" var2="1"/>
-				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="ft_backup_empty" var2="1"/>
 				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="984" h="64"/>
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
@@ -75,7 +76,7 @@
 			
 			<input>
 				<condition var1="darker_ui" op="!=" var2="1"/>
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="552" h="64"/>
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
@@ -87,7 +88,7 @@
 
 			<input>
 				<condition var1="darker_ui" op="!=" var2="1"/>
-				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="ft_backup_empty" var2="1"/>
 				<placement x="%col1_x%" y="%ab_bc_double_d_y%" w="984" h="64"/>
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
@@ -103,33 +104,33 @@
 			</text>
 
 			<button>
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="overlay">menu_sort</action>
 			</button>
 
 			<image>
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_sort"/>
 			</image>
 			
 			<button>
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="overlay">dialog_storage_restore</action>
 			</button>
 
 			<image>
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_storage"/>
 			</image>
 
 			<button>
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<actions>
@@ -147,7 +148,7 @@
 			</button>
 
 			<image>
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<image resource="actionbar_delete"/>
 			</image>
@@ -162,19 +163,19 @@
 			</action>
 
 			<image>
-				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="ft_backup_empty" var2="1"/>
 				<image resource="empty_folder"/>
 				<placement x="304" y="%row1_3_y%"/>
 			</image>
 
 			<text style="text_ab_title">
-				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="ft_backup_empty" var2="1"/>
 				<placement x="%center_x%" y="%row5_1_y%" placement="4"/>
 				<text>{@backups_wat}</text>
 			</text>
 
 			<button style="btn_raised_hl">
-				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="ft_backup_empty" var2="1"/>
 				<condition var1="auto_generate" var2="0"/>
 				<placement x="%center_x%" y="%row6_1a_y%" placement="4"/>
 				<text>{@backup_short_hdr}</text>
@@ -185,7 +186,7 @@
 			</button>
 
 			<button style="btn_raised_hl">
-				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="ft_backup_empty" var2="1"/>
 				<condition var1="auto_generate" var2="1"/>
 				<placement x="%center_x%" y="%row6_1a_y%" placement="4"/>
 				<text>{@backup_short_hdr}</text>
@@ -196,7 +197,7 @@
 			</button>
 
 			<button style="btn_raised_hl">
-				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="ft_backup_empty" var2="1"/>
 				<condition var1="auto_generate" var2="2"/>
 				<placement x="%center_x%" y="%row6_1a_y%" placement="4"/>
 				<text>{@backup_short_hdr}</text>
@@ -206,7 +207,7 @@
 			</button>
 
 			<button style="btn_raised">
-				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="ft_backup_empty" var2="1"/>
 				<text>{@select_storage_hdr}</text>
 				<placement x="%center_x%" y="%row7_1_y%" placement="4"/>
 				<action function="overlay">dialog_storage_restore</action>
@@ -215,7 +216,7 @@
 			<template name="nav_panel"/>
 
 			<button style="floating_btn">
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<condition var1="auto_generate" var2="0"/>
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
 				<actions>
@@ -227,7 +228,7 @@
 			</button>
 			
 			<button style="floating_btn">
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<condition var1="auto_generate" var2="1"/>
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
 				<actions>
@@ -239,7 +240,7 @@
 			</button>
 			
 			<button style="floating_btn">
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<condition var1="auto_generate" var2="2"/>
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
 				<actions>
@@ -250,7 +251,7 @@
 			</button>
 			
 			<image>
-				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="ft_backup_empty" var2="0"/>
 				<placement x="%btn_float_x%" y="%btn_float_nav_y%"/>
 				<image resource="fab_add"/>
 			</image>
