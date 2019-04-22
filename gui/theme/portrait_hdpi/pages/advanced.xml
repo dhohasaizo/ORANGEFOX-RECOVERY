@@ -811,6 +811,7 @@
 			</page>
 
 			<page name="apps_load">
+				<template name="running_acts"/>
 				<action>
 					<action function="cmd">
 						[ ! -f "/sbin/aapt" ] && exit

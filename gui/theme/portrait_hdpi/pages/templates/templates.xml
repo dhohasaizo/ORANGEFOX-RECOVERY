@@ -593,13 +593,27 @@
 		<template name="running_acts">
 			<button>
 				<condition var1="ftls_running" var2="1"/>
+				<condition var1="tw_busy" op="!=" var2="1"/>
 				<fill color="%darktransparent%"/>
 				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
 			</button>
 			<text style="text_status">
 				<placement x="%center_x%" y="%center_y%" placement="5"/>
 				<condition var1="ftls_running" var2="1"/>
-				<text>Running actions...</text>
+				<condition var1="tw_busy" op="!=" var2="1"/>
+				<text>{@lang_wait}</text>
+			</text>
+			<button>
+				<condition var1="tw_busy" var2="1"/>
+				<condition var1="ftls_running" op="!=" var2="1"/>
+				<fill color="%darktransparent%"/>
+				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
+			</button>
+			<text style="text_status">
+				<placement x="%center_x%" y="%center_y%" placement="5"/>
+				<condition var1="tw_busy" var2="1"/>
+				<condition var1="ftls_running" op="!=" var2="1"/>
+				<text>{@lang_wait}</text>
 			</text>
 		</template>
 		
