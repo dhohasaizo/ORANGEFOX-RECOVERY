@@ -1135,7 +1135,6 @@
 		
 		<!-- MIUI OTA -->
 		<string name="fox_ota_settings">OTA Settings</string>
-		<string name="fox_ota_off">Disable OTA</string>
 		<string name="fox_ota_on">Enable OTA</string>
 		
 		<!-- About -->
@@ -1164,6 +1163,9 @@
 		<string name="file_read_error">Unable to open file!</string>
 		<string name="subs_wipe">Wipe Substratum Overlays</string>
 
+		<string name="fox_ota_msg_ready">You are ready to receive updates!</string>
+		<string name="fox_ota_msg_custom">Enabled custom ROM mode</string>
+		<string name="fox_ota_msg_reflash">Please flash full MIUI ROM!</string>
 		<string name="fox_advanced_stock_recovery">Aggressive stock recovery deactivation</string>
 		<string name="fox_support_miui_ota_chk">Support MIUI Incremental OTA</string>
 		<string name="fox_include_system_survival_chk">Include system in OTA survival</string>
