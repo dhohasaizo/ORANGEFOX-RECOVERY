@@ -26,7 +26,7 @@
 					<action function="set">ft_mm_found=0</action>
 					<action function="page">magisk_mount</action>
 				</listitem>
-				<listitem name="Delete Apps">
+				<listitem name="{@appmgr_title}">
 					<icon res="apps"/>
 					<action function="page">apps_load</action>
 				</listitem>
@@ -858,7 +858,7 @@
 
 				<text style="caption">
 					<placement x="%col1_x%" y="%row1_1_y%"/>
-					<text>Apps</text>
+					<text>{@appmgr_apps}</text>
 				</text>
 				
 				<fileselector style="fileselector_b">
@@ -889,7 +889,7 @@
 				
 				<text style="text_ab_title">
 					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>Manage Apps</text>
+					<text>{@appmgr_title}</text>
 				</text>
 
 				<button>
@@ -928,7 +928,7 @@
 
 				<text style="text_ab_title">
 					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>App Manager</text>
+					<text>{@appmgr_title}</text>
 				</text>
 
 				<text style="text_ab_title">
@@ -983,7 +983,7 @@
 
 				<text style="text_ab_title">
 					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>App Manager</text>
+					<text>{@appmgr_title}</text>
 				</text>
 
 				<text style="text_ab_title">
@@ -1026,7 +1026,7 @@
 
 				<text style="text_ab_title">
 					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>App Manager</text>
+					<text>{@appmgr_title}</text>
 				</text>
 
 				<text style="text_ab_title">

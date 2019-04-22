@@ -1163,6 +1163,11 @@
 		<string name="file_read_error">Unable to open file!</string>
 		<string name="subs_wipe">Wipe Substratum Overlays</string>
 
+		<!-- App mgr -->
+		<string name="appmgr_apps">Apps</string>
+		<string name="appmgr_title">App Manager</string>
+
+		<!-- OTA -->
 		<string name="fox_ota_msg_ready">You are ready to receive updates!</string>
 		<string name="fox_ota_msg_custom">Enabled custom ROM mode</string>
 		<string name="fox_ota_msg_reflash">Please flash full MIUI ROM!</string>
