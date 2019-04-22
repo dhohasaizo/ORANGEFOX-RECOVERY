@@ -5,7 +5,7 @@
 			<template name="running_acts"/>
 			<action>
 				<action function="ftls">
-					mmgui mnt
+					mmgui mnt || exit 1
 					if [ -f "/cache/.disable_magisk" ]; then
 						twrp xset magisk_core=1
 					else
@@ -20,6 +20,7 @@
 					<condition var1="ft_mm_found" var2="1"/>
 				</conditions>
 				<actions>
+					<action function="set">mmgui_path=/tmp/mmgui</action>
 					<action function="page">magisk</action>
 				</actions>
 			</action>
@@ -322,7 +323,7 @@
 							else
 								dest="/magisk";
 							fi
-							touch "$dest/%mmgui_select%/auto_mount" && twrp xset mmodule_amnt=0
+							rm "$dest/%mmgui_select%/auto_mount" && twrp xset mmodule_amnt=0
 						</action>
 					</listitem>
 					<listitem name="{@mm_module_mount}">
@@ -334,7 +335,7 @@
 							else
 								dest="/magisk";
 							fi
-							rm "$dest/%mmgui_select%/auto_mount" && twrp xset mmodule_amnt=1
+							touch "$dest/%mmgui_select%/auto_mount" && twrp xset mmodule_amnt=1
 						</action>
 					</listitem>
 				</listbox>
