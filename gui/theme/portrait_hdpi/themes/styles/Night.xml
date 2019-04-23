@@ -42,11 +42,13 @@
 		<image name="db_hl" filename="Default/Dialog/db_hl"/>
 		<image name="arrow" filename="Default/Dialog/arrow"/>
 		<image name="arrow_d" filename="Default/Dialog/arrow_d"/>
+		<image name="sort_select" filename="Default/Dialog/select"/>
 		
 		<!-- Dialogs -->
 		<image name="dialog_bg" filename="Night/Dialog/dialog_bg"/>
 		<image name="menu_sort" filename="Night/Dialog/menu_sort"/>
 		<image name="snackbar" filename="Night/Dialog/snackbar"/>
+		<image name="fm_sort" filename="Night/Dialog/fm_sort"/>
 		
 		<!-- ota -->
 		<image name="ota_icon" filename="Default/FullscreenIcons/ota_icon" retainaspect="1"/>

@@ -42,11 +42,13 @@
 		<image name="db_hl" filename="Default/Dialog/db_hl"/>
 		<image name="arrow" filename="Default/Dialog/arrow"/>
 		<image name="arrow_d" filename="Default/Dialog/arrow_d"/>
+		<image name="sort_select" filename="Default/Dialog/select"/>
 		
 		<!-- Dialogs -->
 		<image name="dialog_bg" filename="Black/Dialog/dialog_bg"/>
 		<image name="menu_sort" filename="Black/Dialog/menu_sort"/>
 		<image name="snackbar" filename="Black/Dialog/snackbar"/>
+		<image name="fm_sort" filename="Black/Dialog/fm_sort"/>
 		
 		<!-- ota -->
 		<image name="ota_icon" filename="Default/FullscreenIcons/ota_icon" retainaspect="1"/>
@@ -57,7 +59,7 @@
 		<variable name="bg_rgb" value="0"/>
 		
 		<variable name="highlight_color" value="#00000066"/>
-		<variable name="highlight_color_full" value="#0A0A0A"/>
+		<variable name="highlight_color_full" value="#33333344"/>
 		<variable name="text" value="#FFFFFF"/>
 		<variable name="text_status" value="#FFFFFF"/>
 		<variable name="text_menu" value="#FFFFFF"/>
