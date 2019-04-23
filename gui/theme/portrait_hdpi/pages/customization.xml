@@ -130,18 +130,18 @@
 
 			<listbox style="settingslist">
 				<placement x="0" y="%row5_1a_y%" w="%screen_w%" h="%lb_l6%"/>
-				<listitem name="{@dark_title}">
-					<data variable="darker_ui"/>
-				</listitem>
-				<listitem name="{@noshadow_title}">
-					<data variable="flat_tbar"/>
-				</listitem>
 				<listitem name="{@hide_notch}">
 					<data variable="hide_notch"/>
 					<condition var1="allow_hide_notch" var2="1"/>
 				</listitem>
 				<listitem name="{@separate_status}">
 					<data variable="separate_status"/>
+				</listitem>
+				<listitem name="{@dark_title}">
+					<data variable="darker_ui"/>
+				</listitem>
+				<listitem name="{@noshadow_title}">
+					<data variable="show_shadow"/>
 				</listitem>
 				<listitem name="{@show_cpu_temp_bar}">
 					<data variable="show_cpu_temp"/>
@@ -293,7 +293,7 @@
 
 			<image>
 				<image resource="actionbar_shadow"/>
-				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<condition var1="show_shadow" var2="1"/>
 				<placement x="0" y="%row4_1_y%"/>
 			</image>
 

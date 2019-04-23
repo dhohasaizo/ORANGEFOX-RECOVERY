@@ -132,7 +132,7 @@
 			</button>
 			
 			<image>
-				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<condition var1="show_shadow" var2="1"/>
 				<placement x="0" y="%nav_panel_y%" placement="2"/>
 				<image resource="nav_shadow"/>
 			</image>
@@ -474,7 +474,7 @@
 		
 		<template name="ab">
 			<image>
-				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<condition var1="show_shadow" var2="1"/>
 				<image resource="actionbar_shadow"/>
 				<placement x="0" y="%ab_h%"/>
 			</image>
@@ -491,7 +491,7 @@
 		
 		<template name="ab_main">
 			<image>
-				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<condition var1="show_shadow" var2="1"/>
 				<image resource="actionbar_shadow"/>
 				<placement x="0" y="%ab_h%"/>
 			</image>
@@ -506,7 +506,7 @@
 		
 		<template name="ab_ex">
 			<image>
-				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<condition var1="show_shadow" var2="1"/>
 				<image resource="actionbar_shadow"/>
 				<placement x="0" y="%ab_ex_h%"/>
 			</image>
@@ -816,7 +816,7 @@
 		
 		<template name="status_bg">
 			<fill color="%status_solid_bg%">
-				<condition var1="separate_status" op="!=" var2="1"/>
+				<condition var1="separate_status" var2="1"/>
 				<placement x="0" y="0" w="%screen_w%" h="%status_h%"/>
 			</fill>
 			

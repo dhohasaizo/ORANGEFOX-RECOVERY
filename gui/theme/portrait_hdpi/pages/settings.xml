@@ -364,7 +364,7 @@
 
 			<image>
 				<image resource="actionbar_shadow"/>
-				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<condition var1="show_shadow" var2="1"/>
 				<placement x="0" y="%row4_1_y%"/>
 			</image>
 
@@ -842,7 +842,7 @@
 			
 			<image>
 				<image resource="actionbar_shadow"/>
-				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<condition var1="show_shadow" var2="1"/>
 				<placement x="0" y="%about_title_h%"/>
 			</image>
 
@@ -1092,7 +1092,7 @@
 			
 			<image>
 				<image resource="actionbar_shadow"/>
-				<condition var1="flat_tbar" op="!=" var2="1"/>
+				<condition var1="show_shadow" var2="1"/>
 				<placement x="0" y="%tab_title_h%"/>
 			</image>
 			

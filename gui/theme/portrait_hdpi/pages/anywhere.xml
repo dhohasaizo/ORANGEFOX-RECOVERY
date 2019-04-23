@@ -4,6 +4,7 @@
 		<page name="lock">
 			<background color="%background%"/>
 
+			<template name="status_bg"/>
 			<template name="statusbarinfo"/>
 			<template name="keys"/>
 
