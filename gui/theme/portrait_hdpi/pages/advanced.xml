@@ -195,14 +195,19 @@
 
 			<!-- fox_modules_confirm located in install.xml -->
 			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>Magisk</text>
+			</text>
+
 			<listbox style="btn_list">
-				<placement x="0" y="%bl_y%" w="%screen_w%" h="%bl_fullscreen_h%"/>
-				<listitem name="{@module_install} Magisk 18.1">
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%bl_h2%"/>
+				<listitem name="{@module_install} Magisk">
 					<icon res="bs_btn_archive"/>
 					<actions>
 						<action function="queueclear"/>
 						<action function="set">fox_m_author=topjohnwu</action>
-						<action function="set">fox_m_name={@module_install} Magisk 18.1</action>
+						<action function="set">fox_m_name={@module_install} Magisk</action>
 						<action function="set">tw_file=Magisk.zip</action>
 						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
 						<action function="set">tw_filecheck=%tw_filename%</action>
@@ -233,6 +238,15 @@
 						<action function="page">filecheck</action>
 					</actions>
 				</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>Substratum</text>
+			</text>
+
+			<listbox style="btn_list">
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%bl_h2%"/>
 				<listitem name="{@subs_wipe} (RRO, Legacy)">
 					<icon res="bs_btn_archive"/>
 					<actions>
@@ -269,7 +283,17 @@
 						<action function="page">filecheck</action>
 					</actions>
 				</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_2_y%"/>
+				<text>{@cust_oth}</text>
+			</text>
+
+			<listbox style="btn_list">
+				<placement x="0" y="%row5_3_y%" w="%screen_w%" h="%bl_h3%"/>
 				<listitem name="{@module_initd}">
+					<condition var1="fileexists" var2="/sdcard/Fox/FoxFiles/OF_initd.zip"/>
 					<icon res="bs_btn_archive"/>
 					<actions>
 						<action function="queueclear"/>
@@ -288,6 +312,7 @@
 					</actions>
 				</listitem>
 				<listitem name="{@module_cam}">
+					<condition var1="fileexists" var2="/sdcard/Fox/FoxFiles/Cam2API.zip"/>
 					<icon res="bs_btn_archive"/>
 					<actions>
 						<action function="queueclear"/>
@@ -305,12 +330,13 @@
 						<action function="page">filecheck</action>
 					</actions>
 				</listitem>
-				<listitem name="Remove password">
+				<listitem name="{@module_pass}">
+					<condition var1="fileexists" var2="/FFiles/Rm_Pass/Rm_Pass.zip"/>
 					<icon res="bs_btn_archive"/>
 					<actions>
 						<action function="queueclear"/>
 						<action function="set">fox_m_author=DarthJabba9</action>
-						<action function="set">fox_m_name=Remove password</action>
+						<action function="set">fox_m_name={@module_pass}</action>
 						<action function="set">tw_file=Rm_Pass.zip</action>
 						<action function="set">tw_filename=/FFiles/Rm_Pass/Rm_Pass.zip</action>
 						<action function="set">tw_filecheck=%tw_filename%</action>
@@ -334,6 +360,31 @@
 				<text>{@fox_modules_hdr}</text>
 			</text>
 			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<actions>
+					<action function="queueclear"/>
+					<action function="set">fox_m_author=DarthJabba9</action>
+					<action function="set">fox_m_name={@remove_of_files}</action>
+					<action function="set">tw_file=OF_DelFiles.zip</action>
+					<action function="set">tw_filename=/FFiles/OF_DelFiles/OF_DelFiles.zip</action>
+					<action function="set">tw_filecheck=%tw_filename%</action>
+					<action function="set">install_back=fox_modules</action>
+					<action function="set">tw_zip_location=/FFiles/OF_DelFiles</action>
+					<action function="queuezip"/>
+					<action function="set">tw_q_1=%tw_file%</action>
+					<action function="set">tw_notexistpage=fox_modules_confirm</action>
+					<action function="set">tw_existpage=fox_modules_confirm</action>
+					<action function="page">filecheck</action>
+				</actions>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_delete"/>
+			</image>
+
 			<action>
 				<touch key="home"/>
 				<action function="page">advanced</action>
