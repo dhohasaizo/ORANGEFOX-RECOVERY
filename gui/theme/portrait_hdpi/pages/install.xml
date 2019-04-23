@@ -205,7 +205,7 @@
 			<action>
 				<touch key="back"/>
 				<action function="queueclear"/>
-				<action function="page">fox_modules</action>
+				<action function="page">%install_back%</action>
 			</action>
 
 			<action>
