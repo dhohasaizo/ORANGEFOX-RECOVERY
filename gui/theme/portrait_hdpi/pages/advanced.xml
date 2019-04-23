@@ -52,6 +52,8 @@
 				</listitem>
 				<listitem name="{@adb_sideload_btn}">
 					<icon res="bs_adv_adb"/>
+					<action function="set">fox_adb=0</action>
+					<action function="ftls">ps -eo 'comm' | grep adbd && twrp xset fox_adb=1</action>
 					<action function="page">sideload</action>
 				</listitem>
 				<listitem name="{@fox_modules_hdr}">
