@@ -136,8 +136,17 @@
 
 			<button>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<condition var1="ft_mm_isnew" op="!=" var2="1"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="ftls">mmgui unmnt</action>
+				<action function="page">advanced</action>
+			</button>
+
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<condition var1="ft_mm_isnew" var2="1"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="ftls">[ -d "/tmp/mmgui" ] && rm -rf "/tmp/mmgui"</action>
 				<action function="page">advanced</action>
 			</button>
 
@@ -448,12 +457,13 @@
 						<action function="ftls">
 							if [[ "%ft_mm_isnew%" == "1" ]]; then
 							    dest="/data/adb/modules";
+								[ -d "/tmp/mmgui" ] && rm -rf "/tmp/mmgui"
 							else
 								dest="/magisk";
 							fi
 							if [ -f "$dest/%mmgui_select%" ]; then
 								rm -rf "$dest/%mmgui_select%"
-								mmgui unmnt
+								[[ "%ft_mm_isnew%" == "1" ]] || mmgui unmnt
 							else
 								exit 1
 							fi
