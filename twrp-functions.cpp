@@ -2035,13 +2035,16 @@ void TWFunc::Welcome_Message(void)
    if (Fox_Has_Welcomed > 0)
     return;
     gui_print("--------------------------\n");
-    gui_print("Welcome to OrangeFox Recovery!");
-    gui_print("[OrangeFox Version]: %s", FOX_BUILD);
+    gui_print("Welcome to OrangeFox Recovery!\n");
+    gui_print("[OrangeFox Version]: %s\n", FOX_BUILD);
     if (FOX_BUILD == "Unofficial")
       gui_print_color("warning", "[Build type]: Unofficial\n");
     else
-      gui_print("[Build type]: %s", BUILD_TYPE);
-    gui_print("[TWRP Version]: %s", FOX_VERSION);
+      gui_print("[Build type]: %s\n", BUILD_TYPE);
+    gui_print("[TWRP Version]: %s\n", FOX_VERSION);
+    #ifdef OF_DISABLE_MIUI_SPECIFIC_FEATURES
+    LOGINFO("[* MIUI-specifiec features not enabled *]\n");
+    #endif
     gui_print("--------------------------\n");
     Fox_Has_Welcomed++;
 }
@@ -3900,11 +3903,6 @@ void TWFunc::Deactivation_Process(void)
 {
 bool patched_verity = false;
 bool patched_crypt = false;
-  
-  #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
-     LOGINFO("OrangeFox: not executing Deactivation_Process()\n");
-     return;
-  #endif  
 
   // don't call this on first boot following fresh installation
   if (New_Fox_Installation != 1)
@@ -3953,7 +3951,7 @@ bool patched_crypt = false;
   if (!Unpack_Image("/boot"))
   #endif
      {
-	LOGINFO("Deactivation_Process: Unable to unpack boot image\n");
+	LOGERR("Deactivation_Process: Unable to unpack boot image\n");
 	return;
      }
 
@@ -3973,7 +3971,7 @@ bool patched_crypt = false;
 	  else
 	  {
 	 #ifdef OF_USE_MAGISKBOOT
-   		//LOGINFO("OrangeFox: Probably nothing left to patch in DM-Verity ... \n");
+   	     //LOGINFO("OrangeFox: Probably nothing left to patch in DM-Verity ... \n");
 	 #else
 	     gui_msg("of_dm_verity_off=DM-Verity is not enabled");
 	 #endif
