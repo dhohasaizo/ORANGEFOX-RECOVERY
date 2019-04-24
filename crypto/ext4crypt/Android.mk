@@ -45,11 +45,7 @@ ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26; echo $$?),0)
             LOCAL_SHARED_LIBRARIES += libkeyutils
         endif
     endif
-    ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 28; echo $$?),0)
-        LOCAL_REQUIRED_MODULES := keystore_auth
-    else
-        LOCAL_ADDITIONAL_DEPENDENCIES := keystore_auth
-    endif
+    LOCAL_REQUIRED_MODULES := keystore_auth
 else
     #7.x rules
     LOCAL_SRC_FILES += Ext4Crypt.cpp Keymaster.cpp KeyStorage.cpp
