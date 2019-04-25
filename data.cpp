@@ -1320,6 +1320,11 @@ string DataManager::GetCurrentStoragePath(void)
   return GetStrValue("tw_storage_path");
 }
 
+string DataManager::GetCurrentPartPath(void)
+{
+  return GetStrValue("part_option");
+}
+
 string DataManager::GetSettingsStoragePath(void)
 {
   return GetStrValue("tw_settings_path");

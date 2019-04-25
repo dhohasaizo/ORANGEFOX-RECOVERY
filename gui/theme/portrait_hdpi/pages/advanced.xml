@@ -396,24 +396,6 @@
 			</action>
 		</page>
 
-			<page name="partsdcardcheck">
-				<action>
-					<condition var1="tw_partition_removable" op="=" var2="1"/>
-					<actions>
-						<action function="set">partitionlisterror=0</action>
-						<action function="page">partsdcard</action>
-					</actions>
-				</action>
-
-				<action>
-					<condition var1="tw_partition_removable" op="!=" var2="1"/>
-					<actions>
-						<action function="set">partitionlisterror=1</action>
-						<action function="page">partitionoptions</action>
-					</actions>
-				</action>
-			</page>
-
 			<page name="partsdcard">
 				<template name="body"/>
 

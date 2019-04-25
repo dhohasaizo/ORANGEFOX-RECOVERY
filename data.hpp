@@ -63,6 +63,7 @@ static void Leds(bool enable);
 	static void ReadSettingsFile(void);
 
 	static string GetCurrentStoragePath(void);
+	static string GetCurrentPartPath(void);
 	static string GetSettingsStoragePath(void);
 
 protected:
