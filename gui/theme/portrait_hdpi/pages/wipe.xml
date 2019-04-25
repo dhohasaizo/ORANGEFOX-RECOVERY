@@ -171,7 +171,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">wipe</action>
+				<action function="page">part_options</action>
 			</action>
 		</page>
 
@@ -534,6 +534,7 @@
 						<action function="set">tw_text1={@resize_confirm}</action>
 						<action function="set">tw_text2=%tw_partition_name%</action>
 						<action function="set">tw_action_text1={@resizing}</action>
+						<action function="set">tw_action_text2=%tw_text2%</action>
 						<action function="set">tw_complete_text1={@resize_complete}</action>
 						<action function="set">tw_slider_text={@swipe_resize}</action>
 						<action function="page">wipe_confirm_action</action>
@@ -560,6 +561,7 @@
 						<action function="set">tw_text1={@repair_confirm}</action>
 						<action function="set">tw_text2=%tw_partition_name%</action>
 						<action function="set">tw_action_text1={@repairing}</action>
+						<action function="set">tw_action_text2=%tw_text2%</action>
 						<action function="set">tw_complete_text1={@repair_complete}</action>
 						<action function="set">tw_slider_text={@swipe_repair}</action>
 						<action function="page">wipe_confirm_action</action>
@@ -649,267 +651,41 @@
 					<text>{@new_file_system}</text>
 				</text>
 
-				<button>
-					<condition var1="tw_action_new_file_system" op="!=" var2="ext2"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="0" y="%row3_2a_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>EXT2          </text>
-					<image resource="radio_false"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=ext2</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} EXT2</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
+				<listbox>
+					<placement x="0" y="%row3_2a_y%" w="%listbox_tz_width_2%" h="%lb_l3%"/>
+					<condition var1="tw_partition_ext" var2="1"/>
+					<data name="tw_action_new_file_system"/>
+					<listitem name="EXT2">ext2</listitem>
+					<listitem name="EXT3">ext3</listitem>
+					<listitem name="EXT4">ext4</listitem>
+				</listbox>
 
-				<button>
-					<condition var1="tw_action_new_file_system" op="=" var2="ext2"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="0" y="%row3_2a_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>EXT2          </text>
-					<image resource="radio_true"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=ext2</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} EXT2</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
-
-				<button>
-					<condition var1="tw_action_new_file_system" op="!=" var2="ext3"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="0" y="%row4_1_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>EXT3          </text>
-					<image resource="radio_false"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=ext3</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} EXT3</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
-
-				<button>
-					<condition var1="tw_action_new_file_system" op="=" var2="ext3"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="0" y="%row4_1_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>EXT3          </text>
-					<image resource="radio_true"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=ext3</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} EXT3</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
-
-				<button>
-					<condition var1="tw_action_new_file_system" op="!=" var2="ext4"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="0" y="%row4_2a_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>EXT4          </text>
-					<image resource="radio_false"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=ext4</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} EXT4</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
-
-				<button>
-					<condition var1="tw_action_new_file_system" op="=" var2="ext4"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="0" y="%row4_2a_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>EXT4          </text>
-					<image resource="radio_true"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=ext4</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} EXT4</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
-
-				<button>
-					<condition var1="tw_action_new_file_system" op="!=" var2="fat"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="%col2_x%" y="%row3_2a_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>FAT          </text>
-					<image resource="radio_false"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=fat</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} FAT</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
-
-				<button>
-					<condition var1="tw_action_new_file_system" op="=" var2="fat"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="%col2_x%" y="%row3_2a_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>FAT          </text>
-					<image resource="radio_true"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=fat</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} FAT</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
-
-				<button>
-					<condition var1="tw_action_new_file_system" op="!=" var2="exfat"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="%col2_x%" y="%row4_1_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>exFAT          </text>
-					<image resource="radio_false"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=exfat</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} exFAT</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
-
-				<button>
-					<condition var1="tw_action_new_file_system" op="=" var2="exfat"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="%col2_x%" y="%row4_1_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>exFAT          </text>
-					<image resource="radio_true"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=exfat</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} exFAT</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
-
-				<button>
-					<condition var1="tw_action_new_file_system" op="!=" var2="f2fs"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="%col2_x%" y="%row4_2a_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>F2FS          </text>
-					<image resource="radio_false"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=f2fs</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} F2FS</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
-
-				<button>
-					<condition var1="tw_action_new_file_system" op="=" var2="f2fs"/>
-					<condition var1="tw_partition_ext" op="=" var2="1"/>
-					<placement x="%col2_x%" y="%row4_2a_y%" textplacement="6"/>
-					<font resource="body1" color="%text%"/>
-					<text>F2FS          </text>
-					<image resource="radio_true"/>
-					<actions>
-						<action function="set">tw_back=refreshfilesystem</action>
-						<action function="set">tw_action=changefilesystem</action>
-						<action function="set">tw_action_param=%tw_partition_mount_point%</action>
-						<action function="set">tw_action_new_file_system=f2fs</action>
-						<action function="set">tw_has_action2=0</action>
-						<action function="set">tw_text1={@change_fs_confirm} F2FS</action>
-						<action function="set">tw_text2=%tw_partition_name%</action>
-						<action function="set">tw_action_text1={@formatting}</action>
-						<action function="set">tw_complete_text1={@format_complete}</action>
-						<action function="set">tw_slider_text={@swipe_change_fs}</action>
-					</actions>
-				</button>
+				<listbox>
+					<placement x="%listbox_tz_width_2%" y="%row3_2a_y%" w="%listbox_tz_width_2%" h="%lb_l3%"/>
+					<data name="tw_action_new_file_system"/>
+					<listitem name="vFAT">vfat<condition var1="tw_partition_vfat" var2="1"/></listitem>
+					<listitem name="exFAT">exfat<condition var1="tw_partition_exfat" var2="1"/></listitem>
+					<listitem name="F2FS">f2fs<condition var1="tw_partition_f2fs" var2="1"/></listitem>
+				</listbox>
 
 				<text style="caption">
 					<condition var1="tw_action_new_file_system" op="!=" var2="_"/>
 					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-					<text>%tw_slider_text%</text>
+					<text>{@swipe_change_fs}</text>
 				</text>
 
 				<slider style="slider_action">
 					<condition var1="tw_action_new_file_system" op="!=" var2="_"/>
 					<placement x="%center_x%" y="%slider_y%" placement="5"/>
+					<action function="set">tw_back=refreshfilesystem</action>
+					<action function="set">tw_action=changefilesystem</action>
+					<action function="set">tw_action_param=%tw_partition_mount_point%</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text2=%tw_partition_name%</action>
+					<action function="set">tw_action_text1={@formatting}</action>
+					<action function="set">tw_complete_text1={@format_complete}</action>
+					<action function="set">tw_action_text2=%tw_text2%</action>
+					<action function="set">tw_text1={@change_fs_confirm} %tw_action_new_file_system%</action>
 					<action function="page">wipe_action_page</action>
 				</slider>
 
