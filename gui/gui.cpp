@@ -206,7 +206,6 @@ bool InputHandler::processInput(int timeout_ms)
 		break;
 
 	case EV_KEY:
-		LOGINFO("Button!");
 		if((ev.code == KEY_MENU || ev.code == KEY_HOME || ev.code == KEY_BACK) && DataManager::GetIntValue("tw_enable_keys") != 0) {
 		    if(ev.value != 0){
 		         if(ev.code == KEY_HOME && DataManager::GetStrValue("tw_menu_key") != "")
