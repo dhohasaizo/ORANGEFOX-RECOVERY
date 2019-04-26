@@ -160,6 +160,12 @@
 			<image resource="db_empty" highlightresource="db_hl" />
 		</style>
 
+		<style name="btn_about_credits">
+			<highlight color="%highlight_color%"/>
+			<font resource="subhead" color="%accent%"/>
+			<image resource="db_empty" highlightresource="db_hl" />
+		</style>
+
 		<style name="settingslist">
 			<highlight color="%highlight_color_full%"/>
 			<background color="%background%"/>

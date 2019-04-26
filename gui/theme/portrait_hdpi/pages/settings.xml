@@ -469,6 +469,18 @@
 				<data variable="tw_screen_timeout_secs" min="0" max="300" showrange="0" showcurr="0" changeondrag="1"/>
 			</slidervalue>
 
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<text>LED Settings</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%lb_l1%"/>
+				<listitem name="{@fox_use_green_led}">
+					<data variable="fox_led_color"/>
+				</listitem>
+			</listbox>
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -994,7 +1006,8 @@
 			</text>
 			<!-- Card -->
 			
-			<!--button style="floating_btn">
+			<!-- Credits button when maintainer is OrangeFox developer -->
+			<button style="floating_btn">
 				<condition var1="screen_h" op="&gt;=" var2="2160"/>
 				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
 				<action function="set">credits_page=0</action>
@@ -1022,7 +1035,19 @@
 				<condition var1="of_maintainer" op="&gt;=" var2="1"/>
 				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
 				<image resource="fab_credits"/>
-			</image-->
+			</image>
+
+			<!-- Credit button when maintair isn't OrangeFox developer -->
+
+			<button style="btn_about_credits">
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
+				<placement x="720" y="1548"/>
+				<text>{@credits}</text>
+				<action function="set">credits_page=0</action>
+				<action function="page">about_credits</action>
+			</button>
 
 			<action>
 				<touch key="home"/>
