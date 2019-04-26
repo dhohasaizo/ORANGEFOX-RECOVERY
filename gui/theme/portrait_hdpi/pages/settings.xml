@@ -42,6 +42,10 @@
 					
 					<action function="page">ext_custom</action>
 				</listitem>
+				<listitem name="{@enter_password_cptn}">
+					<icon res="bs_btn_set_secure"/>
+					<action function="page">pass_select</action>
+				</listitem>
 				<listitem name="{@settings_screen}">
 					<icon res="bs_btn_set_screen"/>
 					<action function="page">ext_screen</action>
@@ -59,10 +63,6 @@
 				<listitem name="{@settings_time}">
 					<icon res="bs_btn_set_regional"/>
 					<action function="page">ext_time</action>
-				</listitem>
-				<listitem name="Perfomance">
-					<icon res="bs_btn_set_perf"/>
-					<action function="page">ext_gov</action>
 				</listitem>
 				<listitem name="{@dbg}">
 					<icon res="bs_btn_set_bug"/>
@@ -195,21 +195,17 @@
 					<condition var1="general_back" op="!=" var2="mount"/>
 					<data variable="use_fixed_font"/>
 				</listitem>
-				<listitem name="{@install_reboot_chk}">
+				<!--listitem name="{@install_reboot_chk}">
 					<condition var1="tw_reboot_system" var2="1"/>
 					<condition var1="general_back" var2="settings"/>
 					<data variable="tw_install_reboot"/>
-				</listitem>
+				</listitem-->
 				<listitem name="{@zip_sig_chk}">
 					<data variable="tw_signed_zip_verify"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
 				<listitem name="{@restoredialog_readonly}">
 					<data variable="tw_never_show_system_ro_page"/>
-					<condition var1="general_back" var2="settings"/>
-				</listitem>
-				<listitem name="{@fm_icons_simple}">
-					<data variable="list_font"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
 				<listitem name="{@files_auto_open}">
@@ -220,14 +216,16 @@
 					<data variable="tw_hidden_files"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
-				<listitem name="[TODO: Move to custom] Auto expand lists">
-					<data variable="auto_show_btns"/>
-					<condition var1="general_back" var2="settings"/>
-				</listitem>
 				<listitem name="{@inject_twrp_chk}">
 					<condition var1="tw_has_injecttwrp" var2="1"/>
 					<condition var1="general_back" var2="settings"/>
 					<data variable="tw_inject_after_zip"/>
+				</listitem>
+				<listitem name="{@fox_boot_fastcharge}">
+					<data variable="fox_boot_fastcharge_check"/>
+				</listitem>
+				<listitem name="{@fox_save_load_aromafm_config_chk}">
+					<data variable="fox_reboot_saveload_aromafm_check"/>
 				</listitem>
 			</listbox>
 			
@@ -235,44 +233,19 @@
 			<text style="caption">
 				<placement x="%col1_x%" y="%row8_2_y%"/>
 				<condition var1="general_back" var2="settings"/>
-				<text>{@enter_password_cptn}</text>
-			</text>
-
-			<text style="text_body2">
-				<condition var1="use_pass" var2="0"/>
-				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row8_3_y%"/>
-				<text>{@disabled}</text>
+				<text>{@perf_title}</text>
 			</text>
 			
 			<text style="text_body2">
-				<condition var1="use_pass" var2="1"/>
-				<condition var1="pass_type" var2="1"/>
 				<condition var1="general_back" var2="settings"/>
 				<placement x="%col1_x%" y="%row8_3_y%"/>
-				<text>{@pass_gk}</text>
-			</text>
-			
-			<text style="text_body2">
-				<condition var1="use_pass" var2="1"/>
-				<condition var1="pass_type" var2="0"/>
-				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row8_3_y%"/>
-				<text>{@pass_classic}</text>
-			</text>
-			
-			<text style="text_body2">
-				<condition var1="use_pass" var2="1"/>
-				<condition var1="pass_type" var2="2"/>
-				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row8_3_y%"/>
-				<text>{@pass_pin}</text>
+				<text>Open perfomance settings</text>
 			</text>
 
 			<button style="menu_btn">
 				<condition var1="general_back" var2="settings"/>
 				<placement x="%col1_x%" y="%row8_2_y%" w="%content_w%" h="%mb_h_hide%"/>
-				<action function="page">pass_select</action>
+				<action function="page">ext_gov</action>
 			</button>
 
 			<text style="caption">
@@ -436,7 +409,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">ext_general</action>
+				<action function="page">settings</action>
 			</action>
 		</page>
 
@@ -1311,30 +1284,30 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Perfomance</text>
+				<text>{@perf_title}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@fox_menu2_power}</text>
+				<text>{@perf_conf_mode}</text>
 			</text>
 
 			<listbox style="listbox">
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
-				<listitem name="{@fox_boot_performance}">
+				<listitem name="{@perf_conf_high}">
 					<data variable="fox_boot_performance_check"/>
 				</listitem>
-				<listitem name="{@fox_boot_powersave}">
+				<listitem name="{@perf_conf_batt}">
 					<data variable="fox_boot_powersave_check"/>
 				</listitem>
-				<listitem name="{@fox_boot_balance}">
+				<listitem name="{@perf_conf_balance}">
 					<data variable="fox_boot_balance_check"/>
 				</listitem>
 			</listbox>
 
-			<text style="caption">
+			<!--text style="caption">
 				<placement x="%col1_x%" y="%row3_1_y%"/>
-				<text>{@fox_menu2_other}</text>
+				<text>{@cust_oth}</text>
 			</text>
 
 			<listbox style="settingslist">
@@ -1342,19 +1315,10 @@
 				<listitem name="FSync">
 					<data variable="fox_boot_fsync_check"/>
 				</listitem>
-				<listitem name="{@fox_boot_fastcharge}">
-					<data variable="fox_boot_fastcharge_check"/>
-				</listitem>
 				<listitem name="2tap2wake">
 					<data variable="fox_boot_t2w_check"/>
 				</listitem>
-				<listitem name="{@fox_save_load_aromafm_config_chk}">
-					<data variable="fox_reboot_saveload_aromafm_check"/>
-				</listitem>
-				<listitem name="{@fox_use_green_led}">
-					<data variable="fox_led_color"/>
-				</listitem>
-			</listbox>
+			</listbox-->
 
 			<action>
 				<conditions>

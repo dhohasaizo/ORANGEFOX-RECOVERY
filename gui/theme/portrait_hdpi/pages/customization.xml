@@ -25,7 +25,7 @@
 					<icon res="lockscreen"/>
 					<action function="page">ext_custom_lock</action>
 				</listitem>
-				<listitem name="{@keyboard_title}">
+				<listitem name="{@cust_oth}">
 					<icon res="keyboard"/>
 					<action function="page">ext_custom_key</action>
 				</listitem>
@@ -177,49 +177,7 @@
 
 		<!-- Keyboard -->
 		<page name="ext_custom_key">
-			<template name="body_key"/>
-			
-			<fill color="%accent%">
-				<condition var1="key_buttons" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-			</fill>
-			
-			<fill color="%unactive_title%">
-				<condition var1="key_buttons" op="!=" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-			</fill>
-
-			<image>
-				<condition var1="key_buttons" var2="1"/>
-				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
-				<image resource="switch_on"/>
-			</image>
-			<image>
-				<condition var1="key_buttons" op="!=" var2="1"/>
-				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
-				<image resource="switch_off"/>
-			</image>
-
-			<text style="text_ab_switch">
-				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
-				<text>{@keyboard_newstyle}</text>
-			</text>
-
-			<button style="bs_btn">
-				<condition var1="key_buttons" op="!=" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-				<actions>
-					<action function="set">key_buttons=1</action>
-				</actions>
-			</button>
-			
-			<button style="bs_btn">
-				<condition var1="key_buttons" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
-				<actions>
-					<action function="set">key_buttons=0</action>
-				</actions>
-			</button>
+			<template name="body"/>
 
 			<template name="ab"/>
 
@@ -231,9 +189,23 @@
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row1_3a_y%" w="%screen_w%" h="%lb_l1%"/>
+				<placement x="0" y="%row1_1_y%" w="%screen_w%" h="%lb_l5%"/>
+				<listitem name="{@keyboard_newstyle}">
+					<data variable="key_buttons"/>
+				</listitem>
 				<listitem name="{@keyboard_nums}">
 					<data variable="key_numbar"/>
+				</listitem>
+				<listitem name="{@fm_icons_simple}">
+					<data variable="list_font"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
+				<listitem name="Auto expand lists">
+					<data variable="auto_show_btns"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
+				<listitem name="{@fox_use_green_led}">
+					<data variable="fox_led_color"/>
 				</listitem>
 			</listbox>
 
