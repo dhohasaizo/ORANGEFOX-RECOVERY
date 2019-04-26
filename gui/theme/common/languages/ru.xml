@@ -1128,15 +1128,17 @@
 		<string name="unpack">Распаковать</string>
 		<string name="repack">Запаковать</string>
 		
-		<string name="fox_modules_hdr">Дополнения OrangeFox</string>
+		<string name="fox_modules_hdr">Дополнения Fox</string>
 		<string name="fox_modules_inst">Установить дополнение</string>
 		<string name="backup_short_hdr">Новая копия</string>
 		<string name="backups_wat">А где резервные копии?</string>
 		
 		<string name="module_install">Установить</string>
 		<string name="module_uninstall">Удалить</string>
+		<string name="remove_of_files">Удалить файлы OrangeFox</string>
 		<string name="module_initd">Включить поддержку init.d</string>
 		<string name="module_cam">Включить поддержку Camera2API</string>
+		<string name="module_pass">Удалить пароль</string>
 		<string name="fox_files_not_exist_1">Файл не найден!</string>
 		<string name="fox_files_not_exist_2">Перепрошейте OrangeFox с</string>
 		<string name="fox_files_not_exist_3">помощью установочного ZIP.</string>
@@ -1148,9 +1150,9 @@
 		<string name="mm_ver">Версия Magisk</string>
 		<string name="mm_mod_ver">Версия модуля</string>
 		<string name="magisk_not_found">Magisk не найден!</string>
-		<string name="magisk_not_found_1">Хотите ли вы перейти в "Дополнения</string>
-		<string name="magisk_not_found_2">OrangeFox и установить встроенный</string>
-		<string name="magisk_not_found_3">Magisk?</string>
+		<string name="magisk_not_found_1">Хотите ли вы перейти в</string>
+		<string name="magisk_not_found_2">"Дополнения OrangeFox" и</string>
+		<string name="magisk_not_found_3">установить Magisk?</string>
 		
 		<!-- Customization -->
 		<string name="fm_icons_simple">Сделать значки файлов больше</string>
@@ -1160,6 +1162,7 @@
 		
 		<string name="font_small">Маленький</string>
 		<string name="font_norm">Нормальный</string>
+		<string name="font_big">Большой</string>
 		<string name="font_size">Размер шрифта</string>
 		
 		<string name="status_battery_style">Стиль значка батареи</string>

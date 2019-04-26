@@ -2447,7 +2447,7 @@ int TWPartitionManager::Partition_SDCard(void)
 
   // Locate and validate device to partition
   TWPartition *SDCard =
-    Find_Partition_By_Path(DataManager::GetCurrentStoragePath());
+    Find_Partition_By_Path(DataManager::GetCurrentPartPath());
 
   if (SDCard->Is_Adopted_Storage)
     SDCard->Revert_Adopted();
@@ -2497,7 +2497,7 @@ int TWPartitionManager::Partition_SDCard(void)
   fat_size = total_size - ext - swap;
   LOGINFO
     ("sd card mount point %s block device is '%s', sdcard size is: %iMB, fat size: %iMB, ext size: %iMB, ext system: '%s', swap size: %iMB\n",
-     DataManager::GetCurrentStoragePath().c_str(), Device.c_str(), total_size,
+     DataManager::GetCurrentPartPath().c_str(), Device.c_str(), total_size,
      fat_size, ext, ext_format.c_str(), swap);
 
   // Determine partition sizes
