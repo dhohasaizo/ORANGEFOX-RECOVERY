@@ -213,6 +213,7 @@
 		<variable name="bl_fullscreen_h" value="%screen_min_cut%-432"/>
 		<variable name="bl_y" value="264+%cutout_w%"/>
 		<variable name="bl_np_h" value="%screen_min_cut%-600"/>
+		<variable name="bl_np_h_no_nabar" value="%screen_min_cut%-480"/>
 		<variable name="bl_files_h" value="%screen_min_cut%-648"/>
 		
 		<!-- About -->
