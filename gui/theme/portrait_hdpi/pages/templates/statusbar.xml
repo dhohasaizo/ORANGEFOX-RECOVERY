@@ -299,6 +299,33 @@
 					<condition var1="charging_now" var2="1"/>
 				</conditions>
 			</image>
+
+			<!-- Powersave -->
+			<image>
+				<image resource="battery_power_p"/>
+				<placement x="%battery_12_x%" y="%battery_y%"/>
+				<conditions>
+					<condition var1="center_clock" var2="0"/>
+					<condition var1="tw_military_time" var2="0"/>
+					<condition var1="enable_battery" var2="1"/>
+					<condition var1="tw_no_battery_percent" var2="0"/>
+					<condition var1="style_battery" op="!=" var2="1"/>
+					<condition var1="fox_boot_powersave_check" var2="1"/>
+				</conditions>
+			</image>
+
+			<image>
+				<image resource="battery_power"/>
+				<placement x="%battery_12_x%" y="%battery_y%"/>
+				<conditions>
+					<condition var1="center_clock" var2="0"/>
+					<condition var1="tw_military_time" var2="0"/>
+					<condition var1="enable_battery" var2="1"/>
+					<condition var1="tw_no_battery_percent" var2="0"/>
+					<condition var1="style_battery" var2="1"/>
+					<condition var1="fox_boot_powersave_check" var2="1"/>
+				</conditions>
+			</image>
 			
 			<!-- text -->
 			<text style="text_status">
@@ -619,6 +646,33 @@
 					<condition var1="charging_now" var2="1"/>
 				</conditions>
 			</image>
+
+			<!-- Powersave -->
+			<image>
+				<image resource="battery_power_p"/>
+				<placement x="%battery_24_x%" y="%battery_y%"/>
+				<conditions>
+					<condition var1="center_clock" var2="0"/>
+					<condition var1="tw_military_time" var2="1"/>
+					<condition var1="enable_battery" var2="1"/>
+					<condition var1="tw_no_battery_percent" var2="0"/>
+					<condition var1="style_battery" op="!=" var2="1"/>
+					<condition var1="fox_boot_powersave_check" var2="1"/>
+				</conditions>
+			</image>
+
+			<image>
+				<image resource="battery_power"/>
+				<placement x="%battery_24_x%" y="%battery_y%"/>
+				<conditions>
+					<condition var1="center_clock" var2="0"/>
+					<condition var1="tw_military_time" var2="1"/>
+					<condition var1="enable_battery" var2="1"/>
+					<condition var1="tw_no_battery_percent" var2="0"/>
+					<condition var1="style_battery" var2="1"/>
+					<condition var1="fox_boot_powersave_check" var2="1"/>
+				</conditions>
+			</image>
 			
 			<!-- text -->
 			<text style="text_status">
@@ -919,6 +973,31 @@
 					<condition var1="tw_no_battery_percent" var2="0"/>
 					<condition var1="style_battery" var2="1"/>
 					<condition var1="charging_now" var2="1"/>
+				</conditions>
+			</image>
+
+			<!-- Powersave -->
+			<image>
+				<image resource="battery_power_p"/>
+				<placement x="%battery_center_x%" y="%battery_y%"/>
+				<conditions>
+					<condition var1="center_clock" op="!=" var2="0"/>
+					<condition var1="enable_battery" var2="1"/>
+					<condition var1="tw_no_battery_percent" var2="0"/>
+					<condition var1="style_battery" op="!=" var2="1"/>
+					<condition var1="fox_boot_powersave_check" var2="1"/>
+				</conditions>
+			</image>
+
+			<image>
+				<image resource="battery_power"/>
+				<placement x="%battery_center_x%" y="%battery_y%"/>
+				<conditions>
+					<condition var1="center_clock" op="!=" var2="0"/>
+					<condition var1="enable_battery" var2="1"/>
+					<condition var1="tw_no_battery_percent" var2="0"/>
+					<condition var1="style_battery" var2="1"/>
+					<condition var1="fox_boot_powersave_check" var2="1"/>
 				</conditions>
 			</image>
 			

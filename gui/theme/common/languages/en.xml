@@ -798,6 +798,7 @@
 		<string name="no_osrb_recovery">wish to reboot to recovery?</string>
 		<string name="no_osrb_boot">wish to reboot to bootloader?</string>
 		<string name="no_osrb_down">wish to reboot to download mode?</string>
+		<string name="no_osrb_edl">wish to reboot to EDL mode?</string>
 		
 		<string name="areb_confirm">Reboot confirmation dialog</string>
 		<string name="areb_noos">When no OS installed</string>
@@ -1171,6 +1172,16 @@
 		<!-- App mgr -->
 		<string name="appmgr_apps">Apps</string>
 		<string name="appmgr_title">App Manager</string>
+
+		<!-- Perfomance -->
+		<string name="perf_title">Perfomance</string>
+		<string name="perf_conf_balance">Recovery perfomance mode</string>
+		<string name="perf_conf_balance">Balanced</string>
+		<string name="perf_conf_high">High perfomance</string>
+		<string name="perf_conf_batt">Power save</string>
+
+		<string name="fox_use_green_led">Use green led color</string>
+		<string name="fox_boot_fastcharge">Force fast charge</string>
 
 		<!-- OTA -->
 		<string name="fox_ota_msg_ready">You are ready to receive updates!</string>

@@ -158,6 +158,12 @@
 				<text>{@no_osrb_down}</text>
 			</text>
 
+			<text style="text_body2_fail">
+				<condition var1="tw_action_param" var2="edl"/>
+				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
+				<text>{@no_osrb_edl}</text>
+			</text>
+
 			<button style="btn_raised_hl">
 				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
 				<text>{@cancel_btn}</text>

@@ -60,6 +60,10 @@
 					<icon res="bs_btn_set_regional"/>
 					<action function="page">ext_time</action>
 				</listitem>
+				<listitem name="Perfomance">
+					<icon res="bs_btn_set_perf"/>
+					<action function="page">ext_gov</action>
+				</listitem>
 				<listitem name="{@dbg}">
 					<icon res="bs_btn_set_bug"/>
 					<condition var1="debug_mode" var2="1"/>
@@ -1294,6 +1298,109 @@
 			<action>
 				<touch key="back"/>
 				<action function="page">debug</action>
+			</action>
+		</page>
+		
+		<!-- Fox perfomance -->
+		<page name="ext_gov">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>Perfomance</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@fox_menu2_power}</text>
+			</text>
+
+			<listbox style="listbox">
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
+				<listitem name="{@fox_boot_performance}">
+					<data variable="fox_boot_performance_check"/>
+				</listitem>
+				<listitem name="{@fox_boot_powersave}">
+					<data variable="fox_boot_powersave_check"/>
+				</listitem>
+				<listitem name="{@fox_boot_balance}">
+					<data variable="fox_boot_balance_check"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1_y%"/>
+				<text>{@fox_menu2_other}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row3_2_y%" w="%screen_w%" h="%lb_l6%"/>
+				<listitem name="FSync">
+					<data variable="fox_boot_fsync_check"/>
+				</listitem>
+				<listitem name="{@fox_boot_fastcharge}">
+					<data variable="fox_boot_fastcharge_check"/>
+				</listitem>
+				<listitem name="2tap2wake">
+					<data variable="fox_boot_t2w_check"/>
+				</listitem>
+				<listitem name="{@fox_save_load_aromafm_config_chk}">
+					<data variable="fox_reboot_saveload_aromafm_check"/>
+				</listitem>
+				<listitem name="{@fox_use_green_led}">
+					<data variable="fox_led_color"/>
+				</listitem>
+			</listbox>
+
+			<action>
+				<conditions>
+					<condition var1="tw_busy" var2="0"/>
+					<condition var1="fox_boot_performance_check" op="!=" var2="1"/>
+					<condition var1="fox_boot_balance_check" op="!=" var2="1"/>
+					<condition var1="fox_boot_powersave_check" op="!=" var2="1"/>
+				</conditions>
+				<action function="set">fox_boot_balance_check=1</action>
+			</action>
+
+			<action>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="fox_boot_performance_check" var2="1"/>
+				<actions>
+					<action function="set">fox_boot_powersave_check=0</action>
+					<action function="set">fox_boot_balance_check=0</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="fox_boot_powersave_check" var2="1"/>
+				<actions>
+					<action function="set">fox_boot_performance_check=0</action>
+					<action function="set">fox_boot_balance_check=0</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="fox_boot_balance_check" var2="1"/>
+				<actions>
+					<action function="set">fox_boot_performance_check=0</action>
+					<action function="set">fox_boot_powersave_check=0</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
 			</action>
 		</page>
 	</pages>

@@ -96,6 +96,8 @@
 		<image name="battery5" filename="Default/Battery/battery5" retainaspect="1"/>
 		<image name="battery15_p" filename="Default/Battery/battery15_p" retainaspect="1"/>
 		<image name="battery5_p" filename="Default/Battery/battery5_p" retainaspect="1"/>
+		<image name="battery_power" filename="Default/Battery/powersave" retainaspect="1"/>
+		<image name="battery_power_p" filename="Default/Battery/powersave_p" retainaspect="1"/>
 		
 		<!-- Controls -->
 		<image name="btn_raised" filename="Default/Controls/btn_raised"/>
@@ -146,6 +148,7 @@
 		<image name="bs_btn_set_vibro" filename="Default/Icons/bs_btn_set_vibro" retainaspect="1"/>
 		<image name="bs_btn_set_screen" filename="Default/Icons/bs_btn_set_screen" retainaspect="1"/>
 		<image name="bs_btn_set_ota" filename="Default/Icons/bs_btn_set_ota" retainaspect="1"/>
+		<image name="bs_btn_set_perf" filename="Default/Icons/bs_btn_set_perf" retainaspect="1"/>
 		<image name="bs_btn_copy" filename="Default/Icons/bs_btn_copy" retainaspect="1"/>
 		<image name="bs_btn_cut" filename="Default/Icons/bs_btn_cut" retainaspect="1"/>
 		<image name="bs_btn_chmod" filename="Default/Icons/bs_btn_chmod" retainaspect="1"/>
