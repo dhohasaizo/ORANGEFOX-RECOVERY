@@ -71,6 +71,7 @@
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="set">needs_repack=0</action>
 				<action function="set">update_fonts=0</action>
+				<action function="set">remove_theme=0</action>
 				<action function="set">update_navbar=0</action>
 				<action function="set">update_accent=0</action>
 				<action function="set">update_style=0</action>
@@ -90,6 +91,38 @@
 				<condition var1="needs_repack" var2="1"/>
 				<placement x="%ab_btn1_x%" y="%ab_y%"/>
 				<image resource="actionbar_reset"/>
+			</image>
+			
+			<button>
+				<condition var1="fileexists" var2="/sdcard/Fox/.theme"/>
+				<condition var1="needs_repack" var2="1"/>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">remove_theme=1</action>
+				<action function="set">needs_repack=1</action>
+			</button>
+
+			<image>
+				<condition var1="fileexists" var2="/sdcard/Fox/.theme"/>
+				<condition var1="needs_repack" var2="1"/>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_delete"/>
+			</image>
+			
+			<button>
+				<condition var1="fileexists" var2="/sdcard/Fox/.theme"/>
+				<condition var1="needs_repack" op="!=" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">remove_theme=1</action>
+				<action function="set">needs_repack=1</action>
+			</button>
+
+			<image>
+				<condition var1="fileexists" var2="/sdcard/Fox/.theme"/>
+				<condition var1="needs_repack" op="!=" var2="1"/>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_delete"/>
 			</image>
 			
 			<template name="snackbar_update"/>
@@ -1561,6 +1594,12 @@
 				<condition var1="fox_busy" op="!=" var2="1"/>
 				<action function="set">fox_busy=1</action>
 				<action function="ftls">
+					#Remove theme
+					if [[ '%remove_theme%' = '1' ]]; then
+						[ -d "/sdcard/Fox/.theme" ] && rm -rf /sdcard/Fox/.theme;
+						exit;
+					fi;
+
 					if [ ! -d "/sdcard/Fox/.theme" ]; then mkdir -p "/sdcard/Fox/.theme"; fi;
 					#Fonts
 					if [[ '%update_fonts%' = '1' ]]; then

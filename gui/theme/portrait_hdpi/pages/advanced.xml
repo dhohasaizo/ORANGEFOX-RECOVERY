@@ -135,8 +135,16 @@
 
 			<image>
 				<condition var1="of_flashlight_enable" var2="1"/>
+				<condition var1="of_flash_on" op="!=" var2="1"/>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_flash"/>
+			</image>
+
+			<image>
+				<condition var1="of_flashlight_enable" var2="1"/>
+				<condition var1="of_flash_on" var2="1"/>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_flash_on"/>
 			</image>
 			
 			<button>

@@ -8,14 +8,12 @@
 		<variable name="ota_back_file" value="0"/>
 		<variable name="fox_busy" value="0"/>
 		<variable name="update_fonts" value="0"/>
+		<variable name="remove_theme" value="0"/>
 		<variable name="update_navbar" value="0"/>
 		<variable name="update_accent" value="0"/>
 		<variable name="update_style" value="0"/>
-
-		<variable name="prebuild_action" value="0"/>
 		
 		<variable name="mmgui_path" value="/tmp/mmgui"/>
-		<variable name="magisk_installed" value="0"/>
 
 		<!-- Lockscreen -->
 		<variable name="clock_style" value="0" persist="1"/>

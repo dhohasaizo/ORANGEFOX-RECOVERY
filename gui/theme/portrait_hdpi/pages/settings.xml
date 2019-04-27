@@ -26,6 +26,7 @@
 					<icon res="bs_btn_set_custom"/>
 					<action function="set">needs_repack=0</action>
 					<action function="set">update_fonts=0</action>
+					<action function="set">remove_theme=0</action>
 					<action function="set">update_navbar=0</action>
 					<action function="set">update_accent=0</action>
 					<action function="set">update_style=0</action>
