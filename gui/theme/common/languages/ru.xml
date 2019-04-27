@@ -1157,7 +1157,7 @@
 		
 		<!-- Customization -->
 		<string name="fm_icons_simple">Сделать значки файлов больше</string>
-		<string name="theme_engine_update">Применить и перезагрузиться?</string>
+		<string name="theme_engine_update">Применить тему и перезапуститься?</string>
 		<string name="apply_btn">Применить</string>
 		<string name="theme_hdr">Тема</string>
 		
@@ -1165,6 +1165,8 @@
 		<string name="font_norm">Нормальный</string>
 		<string name="font_big">Большой</string>
 		<string name="font_size">Размер шрифта</string>
+		<string name="cust_autoapply">Применять тему без подтверждения</string>
+		<string name="cust_expand_list">Раскрывать списки автоматически</string>
 		
 		<string name="status_battery_style">Стиль значка батареи</string>
 		<string name="status_battery_circle">Круг</string>

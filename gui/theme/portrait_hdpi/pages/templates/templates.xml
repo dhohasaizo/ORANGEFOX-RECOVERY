@@ -451,6 +451,13 @@
 		</template>
 		
 		<template name="snackbar_update">
+			<action>
+				<condition var1="instant_apply" var2="1"/>
+				<condition var1="needs_repack" var2="1"/>
+				<action function="set">needs_repack=0</action>
+				<action function="overlay">apply_changes</action>
+			</action>
+
 			<image>
 				<image resource="snackbar"/>
 				<condition var1="needs_repack" var2="1"/>

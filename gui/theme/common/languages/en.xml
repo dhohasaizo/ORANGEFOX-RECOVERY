@@ -1050,7 +1050,7 @@
 
 		<!-- Customization -->
 		<string name="fm_icons_simple">Make file icons bigger</string>
-		<string name="theme_engine_update">Restart recovery &amp; apply changes?</string>
+		<string name="theme_engine_update">Apply changes and reload?</string>
 		<string name="apply_btn">Apply</string>
 		<string name="theme_hdr">Theme</string>
 		
@@ -1058,6 +1058,8 @@
 		<string name="font_norm">Normal</string>
 		<string name="font_big">Big</string>
 		<string name="font_size">Font size</string>
+		<string name="cust_autoapply">Apply theme without confirmation</string>
+		<string name="cust_expand_list">Expand lists automatically</string>
 		
 		<string name="status_battery_style">Battery style</string>
 		<string name="status_battery_circle">Circle</string>

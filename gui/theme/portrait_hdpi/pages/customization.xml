@@ -515,12 +515,15 @@
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l2%"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l5%"/>
 				<listitem name="{@fm_icons_simple}">
 					<data variable="list_font"/>
 				</listitem>
-				<listitem name="Auto expand lists">
+				<listitem name="{@cust_expand_list}">
 					<data variable="auto_show_btns"/>
+				</listitem>
+				<listitem name="{@cust_autoapply}">
+					<data variable="instant_apply"/>
 				</listitem>
 			</listbox>
 
@@ -1611,7 +1614,7 @@
 			
 			<text style="text_body1">
 				<placement x="%snackbar_text_x%" y="%snackbar_text_y%"/>
-				<text>Updating...</text>
+				<text>{@theme_apply}</text>
 			</text>
 		
 		</page>

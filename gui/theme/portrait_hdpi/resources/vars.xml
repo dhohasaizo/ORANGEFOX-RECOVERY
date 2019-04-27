@@ -73,6 +73,7 @@
 		<variable name="show_shadow" value="1" persist="1"/>
 		<variable name="hide_notch" value="0" persist="1"/> 
 		<variable name="auto_show_btns" value="0" persist="1"/> 
+		<variable name="instant_apply" value="0" persist="1"/> 
 		
 		<!-- Other... -->
 		<variable name="disable_no_os" value="0" persist="1"/>
