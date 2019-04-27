@@ -154,6 +154,18 @@ else
     LOCAL_CFLAGS += -DOF_ALLOW_DISABLE_NAVBAR='"1"'
 endif
 
+ifneq ($(OF_FL_PATH1),)
+    LOCAL_CFLAGS += -DOF_FL_PATH1='"$(OF_FL_PATH1)"'
+else
+    LOCAL_CFLAGS += -DOF_FL_PATH1='""'
+endif
+
+ifneq ($(OF_FL_PATH2),)
+    LOCAL_CFLAGS += -DOF_FL_PATH2='"$(OF_FL_PATH2)"'
+else
+    LOCAL_CFLAGS += -DOF_FL_PATH2='""'
+endif
+
 ifeq ($(OF_NO_RELOAD_AFTER_DECRYPTION),1)
     LOCAL_CFLAGS += -DOF_NO_RELOAD_AFTER_DECRYPTION='"1"'
 endif
