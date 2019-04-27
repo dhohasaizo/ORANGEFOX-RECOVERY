@@ -4,6 +4,10 @@
 		<!-- Customization -->
 		<page name="ext_custom">
 			<template name="body"/>
+			
+			<action>
+				<action function="set">of_reload_back=ext_custom</action>
+			</action>
 
 			<listbox style="btn_list">
 				<placement x="0" y="%bl_y%" w="%screen_w%" h="%bl_fullscreen_h%"/>
@@ -347,6 +351,10 @@
 		<page name="ext_custom_nav">
 			<template name="body"/>
 
+			<action>
+				<action function="set">of_reload_back=ext_custom_nav</action>
+			</action>
+
 			<fill color="%accent%">
 				<condition var1="navbar_disable_tmp" var2="0"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
@@ -623,6 +631,10 @@
 			<template name="ab"/>
 			
 			<template name="statusbarinfo"/>
+
+			<action>
+				<action function="set">of_reload_back=ext_custom_fonts</action>
+			</action>
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
@@ -892,6 +904,10 @@
 			<template name="ab"/>
 			
 			<template name="statusbarinfo"/>
+
+			<action>
+				<action function="set">of_reload_back=ext_custom_theme</action>
+			</action>
 			
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
@@ -1535,12 +1551,13 @@
 		</page>
 
 		<page name="apply_changes">
-			<template name="busy_screen"/>
+			<!--template name="busy_screen"/-->
+			<template name="dialog_body"/>
 			
 			<action>
 				<condition var1="fox_busy" op="!=" var2="1"/>
 				<action function="set">fox_busy=1</action>
-				<action function="cmd">
+				<action function="ftls">
 					if [ ! -d "/sdcard/Fox/.theme" ]; then mkdir -p "/sdcard/Fox/.theme"; fi;
 					#Fonts
 					if [[ '%update_fonts%' = '1' ]]; then
@@ -1586,6 +1603,17 @@
 				</action>
 				<action function="reload"/>
 			</action>
+
+			<image>
+				<image resource="snackbar"/>
+				<placement x="0" y="%row_nav_y%" placement="2"/>
+			</image>
+			
+			<text style="text_body1">
+				<placement x="%snackbar_text_x%" y="%snackbar_text_y%"/>
+				<text>Updating...</text>
+			</text>
+		
 		</page>
 
 		<page name="apply_splash">

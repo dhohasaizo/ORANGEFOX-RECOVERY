@@ -669,6 +669,8 @@ void DataManager::SetDefaultValues()
     mData.SetValue("of_no_miui_features", "0");
   #endif
  
+  mData.SetValue("of_reload_back", "main");
+
   //[f/d]
  
 #ifndef TW_NO_HAPTICS

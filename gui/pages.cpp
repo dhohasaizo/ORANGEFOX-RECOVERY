@@ -1576,6 +1576,9 @@ int PageManager::RunReload()
 	//[f/d] Load settings file
 	DataManager::ReadSettingsFile();
     gui_forceRender();
+	std::string page_return;
+	DataManager::GetValue("of_reload_back", page_return);
+	gui_changePage(page_return);
 
 	LOGINFO("Theme reloaded\n");
 

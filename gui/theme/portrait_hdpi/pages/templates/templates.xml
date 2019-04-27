@@ -468,7 +468,7 @@
 				<placement x="%snackbar_button_x%" y="%snackbar_button_y%"/>
 				<text>{@apply_btn}</text>
 				<action function="set">needs_repack=0</action>
-				<action function="page">apply_changes</action>
+				<action function="overlay">apply_changes</action>
 			</button>
 		</template>
 		
