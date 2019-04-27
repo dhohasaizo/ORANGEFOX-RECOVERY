@@ -653,12 +653,16 @@ void DataManager::SetDefaultValues()
   mConst.SetValue(OF_STATUS_INDENT_RIGHT_S, OF_STATUS_INDENT_RIGHT);
   mConst.SetValue(OF_CLOCK_POS_S, OF_CLOCK_POS);
   mConst.SetValue(OF_ALLOW_DISABLE_NAVBAR_S, OF_ALLOW_DISABLE_NAVBAR);
+  mConst.SetValue("of_fl_path_1", OF_FL_PATH1);
+  mConst.SetValue("of_fl_path_2", OF_FL_PATH2);
+  mData.SetValue("of_flash_on", "0");
 
-  mData.SetValue("fox_build_type1", BUILD_TYPE);
+  mConst.SetValue("fox_build_type1", BUILD_TYPE);
 
-  mData.SetValue("of_no_miui_features", 0);
   #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES)
-    mData.SetValue("of_no_miui_features", 1);
+    mConst.SetValue("of_no_miui_features", 1);
+  #else
+    mConst.SetValue("of_no_miui_features", 0);
   #endif 
   
   //[f/d]
@@ -1358,7 +1362,7 @@ void DataManager::Leds(bool enable)
   bsmax1 = leds1 + "/max_brightness";
 
   string vibrate_path = "/sys/class/timed_output/vibrator/enable";
-  DataManager::GetValue("fox_data_install_vibrate", install_vibrate_value);
+  DataManager::GetValue("tw_action_vibrate", install_vibrate_value);
   DataManager::GetValue("fox_led_color", ledcolor);
 
   if (!TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
