@@ -2346,7 +2346,6 @@ int GUIAction::flashlight(std::string arg __unused)
     }
   else 
     {
-	// here comes fordownloads!
 	  
 		std::string path_one, path_two,
 					fl_one_on, fl_two_on,
@@ -2358,11 +2357,11 @@ int GUIAction::flashlight(std::string arg __unused)
 		// get maintainer flash files
 		DataManager::GetValue("of_fl_path_1", path_one);
 		DataManager::GetValue("of_fl_path_2", path_two);
-		DataManager::GetValue("of_fl_used", fl_used);
+		DataManager::GetValue("of_flash_on", fl_used);
 		
 		if (path_one.empty() && path_two.empty()) {
 			// maintainer not set flash paths
-			if (TWFunc::Path_Exists("/sys/class/leds/flashlight/brightness") && TWFunc::Path_Exists("/sys/class/leds/flashlight/max_brightness")) {
+			if (TWFunc::Path_Exists("/sys/class/leds/flashlight/brightness")) {
 				// use flashlight for old devices
 				path_one = "/sys/class/leds/flashlight";
 			} else {
@@ -2371,7 +2370,6 @@ int GUIAction::flashlight(std::string arg __unused)
 				path_two = "/sys/class/leds/led:switch_0";
 			}
 		} else if (path_one.empty() && !path_two.empty()) {
-			// Maintainer is dumb???
 			path_one = path_two;
 			path_two = "";
 		}
@@ -2389,18 +2387,14 @@ int GUIAction::flashlight(std::string arg __unused)
 				// If we use flashlight first time after reboot, always enable it
 				if (fl_one_on == "0" || fl_used.empty()) {
 					TWFunc::write_to_file(bright_one, max_brt_one);
-					LOGINFO("Enable flashlight 1");
+          DataManager::SetValue("of_flash_on", "1");
 				} else {
 					TWFunc::write_to_file(bright_one, "0");
-					LOGINFO("Disable flashlight 1");
-				}
-				// Set path that we found to var to skip path finding
-				if (fl_used.empty() && path_two.empty()) {
-					DataManager::SetValue("of_fl_used", "1");
-					DataManager::SetValue("of_fl_path_1", path_one);
+          DataManager::SetValue("of_flash_on", "0");
 				}
 			} else {
 				gui_print_color("warning", "Flashlight file not found!\n");
+        operation_end(0);
 				return 0;
 			}
 		}
@@ -2415,56 +2409,15 @@ int GUIAction::flashlight(std::string arg __unused)
 					TWFunc::read_file(max_two, max_brt_two);
 				}
 				TWFunc::read_file(bright_two, fl_two_on);
-				if ((fl_two_on == "0" && fl_one_on == "0") || fl_used.empty()) {
+				if (fl_two_on == "0" || fl_one_on == "0" || fl_used.empty()) {
 					TWFunc::write_to_file(bright_two, max_brt_two);
-					LOGINFO("Enable flashlight 1");
+          DataManager::SetValue("of_flash_on", "1");
 				} else {
 					TWFunc::write_to_file(bright_two, "0");
-					LOGINFO("Disable flashlight 1");
-				}
-				if (fl_used.empty()) {
-					DataManager::SetValue("of_fl_used", "1");
-					DataManager::SetValue("of_fl_path_1", path_one);
-					DataManager::SetValue("of_fl_path_2", path_two);
+          DataManager::SetValue("of_flash_on", "0");
 				}
 			}
 		}
-		
-	  /*
-      int flash = 0;
-      string flashone = "1";
-      string flashdisable = "0";
-      string flashvalue = flashone + flashdisable + flashdisable;
-      string flashpathvalue_one = "/sys/class/leds/led:torch_";
-      string flashpathvalue_two = "/brightness";
-      string flashpathone = flashpathvalue_one + flashdisable + flashpathvalue_two;
-      string flashpathtwo = flashpathvalue_one + flashone + flashpathvalue_two;
-      DataManager::GetValue("flashlight", flash);
-      if (TWFunc::Path_Exists("sys/class/leds/flashlight/")) {
-        if (flash != 1) {
-            TWFunc::write_to_file("/sys/class/leds/flashlight/brightness", "1");
-            DataManager::SetValue("flashlight", 1);
-            LOGINFO("DEBUG: Enable flashlight 1"); }
-        else {
-            TWFunc::write_to_file("/sys/class/leds/flashlight/brightness", "0");
-            DataManager::SetValue("flashlight", 0);
-            LOGINFO("DEBUG: Disable flashlight 1"); }
-      }
-
-      if (TWFunc::Path_Exists(flashpathone)) {
-
-        if (flash != 1) {
-          TWFunc::write_to_file(flashpathone, flashvalue);
-          TWFunc::write_to_file(flashpathtwo, flashvalue);
-          DataManager::SetValue("flashlight", 1);
-          LOGINFO("DEBUG: Enable flashlight 0"); }
-        else {
-          TWFunc::write_to_file(flashpathone, flashdisable);
-          TWFunc::write_to_file(flashpathtwo, flashdisable);
-          DataManager::SetValue("flashlight", 0);
-          LOGINFO("DEBUG: Disable flashlight 0"); }
-        }
-		*/
     }
   operation_end(0);
   return 0;
