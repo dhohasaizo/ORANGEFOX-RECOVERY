@@ -276,11 +276,12 @@ void GUIPartitionList::NotifySelect(size_t item_selected)
 				int i;
 				string variablelist;
 				for (i=0; i<listSize; i++) {
-					if (ListType == "part_option" && mList.at(i).selected) {
-						variablelist += mList.at(i).Mount_Point; //[f/d] No ; in part_option
-					}
-					if (ListType == "flashimg" && mList.at(i).selected) {
-						variablelist += mList.at(i).Mount_Point + ";";
+					if (mList.at(i).selected) {
+						if (ListType == "part_option") {
+							variablelist += mList.at(i).Mount_Point; //[f/d] No ; in part_option
+						} else {
+							variablelist += mList.at(i).Mount_Point + ";";
+						}
 					}
 				}
 
