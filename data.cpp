@@ -1358,7 +1358,7 @@ void DataManager::Leds(bool enable)
   bsmax1 = leds1 + "/max_brightness";
 
   string vibrate_path = "/sys/class/timed_output/vibrator/enable";
-  DataManager::GetValue("fox_data_install_vibrate", install_vibrate_value);
+  DataManager::GetValue("tw_action_vibrate", install_vibrate_value);
   DataManager::GetValue("fox_led_color", ledcolor);
 
   if (!TWFunc::Path_Exists("/sys/class/leds/white/brightness"))

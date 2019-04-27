@@ -1300,7 +1300,7 @@ int GUIAction::flash(std::string arg)
       PartitionManager.Wipe_By_Path("/cache");
     }
 
-   DataManager::Vibrate("fox_data_install_vibrate");
+   DataManager::Vibrate("tw_action_vibrate");
    DataManager::Leds(true);
 
    reinject_after_flash(); // ** redundant code
