@@ -2385,7 +2385,7 @@ int GUIAction::flashlight(std::string arg __unused)
 			if (TWFunc::Path_Exists(bright_one)) {
 				TWFunc::read_file(bright_one, fl_one_on);
 				// If we use flashlight first time after reboot, always enable it
-				if (fl_one_on == "0" || fl_used.empty()) {
+				if (fl_one_on == "0" || fl_used == "0") {
 					TWFunc::write_to_file(bright_one, max_brt_one);
           DataManager::SetValue("of_flash_on", "1");
 				} else {
@@ -2409,7 +2409,7 @@ int GUIAction::flashlight(std::string arg __unused)
 					TWFunc::read_file(max_two, max_brt_two);
 				}
 				TWFunc::read_file(bright_two, fl_two_on);
-				if (fl_two_on == "0" || fl_one_on == "0" || fl_used.empty()) {
+				if ((fl_two_on == "0" && fl_one_on == "0") || fl_used == "0") {
 					TWFunc::write_to_file(bright_two, max_brt_two);
           DataManager::SetValue("of_flash_on", "1");
 				} else {
