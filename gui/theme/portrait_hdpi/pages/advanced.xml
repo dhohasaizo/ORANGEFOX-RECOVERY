@@ -860,7 +860,7 @@
 						mkdir $tmp $list
 						cd $apps_dir
 						
-						if [ ! -f "/sbin/aapt" ]; then
+						if [ -f "/sbin/aapt" ]; then
 							for pkgname in * ; do
 								name=$(aapt dump badging "$pkgname/base.apk" | grep $namestr | sed "s/$namestr//" | sed "s/'//")
 								echo "$apps_dir/$pkgname" > $list/$name;
