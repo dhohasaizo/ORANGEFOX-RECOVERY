@@ -1573,7 +1573,11 @@ int PageManager::RunReload()
 		}
 	}
 
-	LOGINFO("Theme reloaded");
+	//[f/d] Load settings file
+	DataManager::ReadSettingsFile();
+    gui_forceRender();
+
+	LOGINFO("Theme reloaded\n");
 
 	// This makes the console re-translate
 	//GUIConsole::Clear_For_Retranslation();

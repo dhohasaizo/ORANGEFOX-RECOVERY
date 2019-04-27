@@ -663,12 +663,12 @@ void DataManager::SetDefaultValues()
 
   mConst.SetValue("fox_build_type1", BUILD_TYPE);
 
-  #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES)
-    mConst.SetValue("of_no_miui_features", 1);
+  #ifdef OF_DISABLE_MIUI_SPECIFIC_FEATURES
+    mData.SetValue("of_no_miui_features", "1");
   #else
-    mConst.SetValue("of_no_miui_features", 0);
-  #endif 
-  
+    mData.SetValue("of_no_miui_features", "0");
+  #endif
+ 
   //[f/d]
  
 #ifndef TW_NO_HAPTICS
