@@ -635,7 +635,6 @@ void DataManager::SetDefaultValues()
   mConst.SetValue(OF_MAINTAINER_STR, OF_MAINTAINER);
   mConst.SetValue(BUILD_TYPE_STR, BUILD_TYPE);
 
-  mConst.SetValue(OF_FLASHLIGHT_ENABLE_STR, OF_FLASHLIGHT_ENABLE);
   
   //[f/d] UI Vars
   int of_status_placement = (atoi(OF_STATUS_H) / 2) - 28;
@@ -653,9 +652,14 @@ void DataManager::SetDefaultValues()
   mConst.SetValue(OF_STATUS_INDENT_RIGHT_S, OF_STATUS_INDENT_RIGHT);
   mConst.SetValue(OF_CLOCK_POS_S, OF_CLOCK_POS);
   mConst.SetValue(OF_ALLOW_DISABLE_NAVBAR_S, OF_ALLOW_DISABLE_NAVBAR);
-  mConst.SetValue("of_fl_path_1", OF_FL_PATH1);
-  mConst.SetValue("of_fl_path_2", OF_FL_PATH2);
-  mData.SetValue("of_flash_on", "0");
+  mConst.SetValue(OF_FLASHLIGHT_ENABLE_STR, OF_FLASHLIGHT_ENABLE);
+  #ifdef OF_FLASHLIGHT_ENABLE 
+    if (OF_FLASHLIGHT_ENABLE == "1") {
+      mConst.SetValue("of_fl_path_1", OF_FL_PATH1);
+      mConst.SetValue("of_fl_path_2", OF_FL_PATH2);
+      mData.SetValue("of_flash_on", "0");
+    }
+  #endif 
 
   mConst.SetValue("fox_build_type1", BUILD_TYPE);
 
