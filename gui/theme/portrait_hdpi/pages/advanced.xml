@@ -28,7 +28,6 @@
 					<action function="page">magisk_mount</action>
 				</listitem>
 				<listitem name="{@appmgr_title}">
-					<condition var1="fileexists" var2="/sbin/aapt"/>
 					<icon res="apps"/>
 					<action function="page">apps_load</action>
 				</listitem>
@@ -852,7 +851,6 @@
 				<template name="running_acts"/>
 				<action>
 					<action function="cmd">
-						[ ! -f "/sbin/aapt" ] && exit
 						tmp=/tmp/listapps
 						list=$tmp/list
 						apps_dir=/data/app
@@ -862,10 +860,17 @@
 						mkdir $tmp $list
 						cd $apps_dir
 						
-						for pkgname in * ; do
-							name=$(aapt dump badging "$pkgname/base.apk" | grep $namestr | sed "s/$namestr//" | sed "s/'//")
-							echo "$apps_dir/$pkgname" > $list/$name;
-						done
+						if [ ! -f "/sbin/aapt" ]; then
+							for pkgname in * ; do
+								name=$(aapt dump badging "$pkgname/base.apk" | grep $namestr | sed "s/$namestr//" | sed "s/'//")
+								echo "$apps_dir/$pkgname" > $list/$name;
+							done
+						else 
+							for pkgname in * ; do
+								name=$(echo "$pkgname" | sed 's+-.*++g')
+								echo "$apps_dir/$pkgname" > "$list/$name";
+							done
+						fi
 					</action>
 				</action>
 
