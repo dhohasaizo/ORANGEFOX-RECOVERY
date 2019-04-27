@@ -3692,7 +3692,7 @@ bool TWFunc::Patch_Forced_Encryption(void)
   return status;
 }
 
-
+/*
 void TWFunc::Patch_Others(void)
 {
   std::string fstab = ramdisk + "/fstab.qcom";
@@ -3751,6 +3751,7 @@ void TWFunc::Patch_Others(void)
   if (Path_Exists(fstab)) 
   	chmod(fstab.c_str(), 0644);
 }
+*/
 
 void TWFunc::PrepareToFinish(void)
 {
@@ -3997,8 +3998,8 @@ bool patched_crypt = false;
      }
 #endif
 
-  // other stuff
-  Patch_Others();
+  // other stuff - 
+  // Patch_Others();
 
   // repack the boot image
   #ifdef OF_USE_MAGISKBOOT

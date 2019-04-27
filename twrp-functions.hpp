@@ -149,7 +149,7 @@ private:
 	static string Load_File(string extension);
 	static bool Patch_Forced_Encryption(void);
     	static bool Patch_DM_Verity(void);
-    	static void Patch_Others(void);	
+    	// static void Patch_Others(void); // obsolete 	
     	static void PrepareToFinish(void); // call this only when we are about to shutdown or reboot
     	static bool DontPatchBootImage(void); // return true to avoid patching the boot image
 };
