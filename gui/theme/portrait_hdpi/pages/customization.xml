@@ -1613,7 +1613,7 @@
 				<action function="set">fox_busy=1</action>
 				<action function="ftls">
 					#Remove theme
-					if [[ '%remove_theme%' = '1' ]]; then
+					if [[ '%remove_theme%' = '1' ]] || [[ '%theme_style_tmp%' = 'Night' && '%theme_accent_tmp%' = 'Orange' && '%navbar_disable_tmp%' = '0' && '%theme_font_tmp%' = 'Roboto' && '%theme_sec_font_tmp%' = 'GoogleSans' && '%theme_font_size_tmp%' = 'n' ]]; then
 						[ -d "/sdcard/Fox/.theme" ] && rm -rf /sdcard/Fox/.theme;
 						exit;
 					fi;
