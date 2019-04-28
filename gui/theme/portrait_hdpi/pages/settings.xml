@@ -39,6 +39,7 @@
 					<action function="set">theme_font_size_tmp=%theme_font_size%</action>
 					
 					<action function="set">theme_accent_tmp=%theme_accent%</action>
+					<action function="set">theme_accent_c_tmp=%accent%</action>
 					<action function="set">theme_style_tmp=%theme_style%</action>
 					
 					<action function="page">ext_custom</action>

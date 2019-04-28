@@ -84,6 +84,7 @@
 				<action function="set">theme_font_size_tmp=%theme_font_size%</action>
 				
 				<action function="set">theme_accent_tmp=%theme_accent%</action>
+				<action function="set">theme_accent_c_tmp=%accent%</action>
 				<action function="set">theme_style_tmp=%theme_style%</action>
 			</button>
 
@@ -969,6 +970,7 @@
 				<condition var1="theme_accent_tmp" var2="Black"/>
 				<image resource="style_black"/>
 				<action function="set">theme_style_tmp=Black</action>
+				<action function="set">theme_accent_c_tmp=9e9e9e</action>
 				<action function="set">theme_accent_tmp=Gray</action>
 			</button>
 
@@ -993,6 +995,7 @@
 				<image resource="style_night"/>
 				<action function="set">theme_style_tmp=Night</action>
 				<action function="set">theme_accent_tmp=Gray</action>
+				<action function="set">theme_accent_c_tmp=9e9e9e</action>
 			</button>
 
 			<image>
@@ -1016,6 +1019,7 @@
 				<image resource="style_gray"/>
 				<action function="set">theme_style_tmp=Gray</action>
 				<action function="set">theme_accent_tmp=Gray</action>
+				<action function="set">theme_accent_c_tmp=9e9e9e</action>
 			</button>
 
 			<image>
@@ -1039,6 +1043,7 @@
 				<image resource="style_light"/>
 				<action function="set">theme_style_tmp=Light</action>
 				<action function="set">theme_accent_tmp=Black</action>
+				<action function="set">theme_accent_c_tmp=000000</action>
 			</button>
 			
 			<image>
@@ -1059,6 +1064,7 @@
 				<placement x="30" y="720"/>
 				<image resource="color_fox"/>
 				<action function="set">theme_accent_tmp=Orange</action>
+				<action function="set">theme_accent_c_tmp=ed6f02</action>
 			</button>
 
 			<image>
@@ -1073,6 +1079,7 @@
 				<placement x="285" y="720"/>
 				<image resource="color_blue"/>
 				<action function="set">theme_accent_tmp=Blue</action>
+				<action function="set">theme_accent_c_tmp=1A73E8</action>
 			</button>
 
 			<image>
@@ -1087,6 +1094,7 @@
 				<placement x="540" y="720"/>
 				<image resource="color_cyan"/>
 				<action function="set">theme_accent_tmp=Teal</action>
+				<action function="set">theme_accent_c_tmp=009788</action>
 			</button>
 
 			<image>
@@ -1102,6 +1110,7 @@
 				<placement x="795" y="720"/>
 				<image resource="color_gray"/>
 				<action function="set">theme_accent_tmp=Gray</action>
+				<action function="set">theme_accent_c_tmp=9e9e9e</action>
 			</button>
 
 			<button>
@@ -1109,6 +1118,7 @@
 				<placement x="795" y="720"/>
 				<image resource="style_black"/>
 				<action function="set">theme_accent_tmp=Black</action>
+				<action function="set">theme_accent_c_tmp=000000</action>
 			</button>
 
 			<image>
@@ -1131,6 +1141,7 @@
 				<placement x="30" y="975"/>
 				<image resource="color_red"/>
 				<action function="set">theme_accent_tmp=Red</action>
+				<action function="set">theme_accent_c_tmp=E53935</action>
 			</button>
 
 			<image>
@@ -1145,6 +1156,7 @@
 				<placement x="285" y="975"/>
 				<image resource="color_indigo"/>
 				<action function="set">theme_accent_tmp=Indigo</action>
+				<action function="set">theme_accent_c_tmp=3F51B5</action>
 			</button>
 
 			<image>
@@ -1159,6 +1171,7 @@
 				<placement x="540" y="975"/>
 				<image resource="color_green"/>
 				<action function="set">theme_accent_tmp=Green</action>
+				<action function="set">theme_accent_c_tmp=4caf50</action>
 			</button>
 
 			<image>
@@ -1173,6 +1186,7 @@
 				<placement x="795" y="975"/>
 				<image resource="color_bluegray"/>
 				<action function="set">theme_accent_tmp=BlueGray</action>
+				<action function="set">theme_accent_c_tmp=607D8B</action>
 			</button>
 
 			<image>
@@ -1187,6 +1201,7 @@
 				<placement x="30" y="1230"/>
 				<image resource="color_pink"/>
 				<action function="set">theme_accent_tmp=Pink</action>
+				<action function="set">theme_accent_c_tmp=ff5252</action>
 			</button>
 
 			<image>
@@ -1201,6 +1216,7 @@
 				<placement x="285" y="1230"/>
 				<image resource="color_purple"/>
 				<action function="set">theme_accent_tmp=Purple</action>
+				<action function="set">theme_accent_c_tmp=7750FB</action>
 			</button>
 
 			<image>
@@ -1215,6 +1231,7 @@
 				<placement x="540" y="1230"/>
 				<image resource="color_amber"/>
 				<action function="set">theme_accent_tmp=Amber</action>
+				<action function="set">theme_accent_c_tmp=CF9D06</action>
 			</button>
 
 			<image>
@@ -1229,6 +1246,7 @@
 				<placement x="795" y="1230"/>
 				<image resource="color_brown"/>
 				<action function="set">theme_accent_tmp=Brown</action>
+				<action function="set">theme_accent_c_tmp=795548</action>
 			</button>
 
 			<image>
@@ -1640,7 +1658,10 @@
 				
 					#Accent
 					if [[ '%update_accent%' = '1' ]]; then
-						cat "/twres/themes/accent/%theme_accent_tmp%.xml" > /sdcard/Fox/.theme/accent.xml;
+						cat "/twres/themes/sed/accent.xml" | sed -e "
+						s/#ACCENT#/%theme_accent_tmp%/g;
+						s/#COLOR#/%theme_accent_c_tmp%/g
+						" > /sdcard/Fox/.theme/accent.xml;
 					fi;
 				</action>
 				<action function="reload"/>

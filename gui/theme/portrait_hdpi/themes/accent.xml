@@ -45,7 +45,6 @@
 		<image name="file_icon" filename="Orange/FileManager/file" retainaspect="1"/>
 		<image name="bkp_icon_small" filename="Orange/FileManager/file_bkp_small" retainaspect="1"/>
 		<image name="bkp_icon" filename="Orange/FileManager/file_bkp" retainaspect="1"/>
-		
 		<image name="zip_icon_small" filename="Orange/FileManager/zip_small" retainaspect="1"/>
 		<image name="zip_icon" filename="Orange/FileManager/zip" retainaspect="1"/>
 		<image name="img_icon_small" filename="Orange/FileManager/img_small" retainaspect="1"/>
@@ -76,8 +75,6 @@
 		<image name="back_ng" filename="Orange/NavBar/back_ng" retainaspect="1"/>
 		<image name="slideout_ng" filename="Orange/NavBar/slideout_ng" retainaspect="1"/>
 		<image name="keyboard_hide_ng" filename="Orange/NavBar/keyboard_hide_ng" retainaspect="1"/>
-		
-		<!-- Pie Nav bar -->
 		<image name="back_pie" filename="Orange/NavBar/back_pie" retainaspect="1"/>
 		<image name="back_key_pie" filename="Orange/NavBar/back_key_pie" retainaspect="1"/>
 		<image name="home_pie" filename="Orange/NavBar/home_pie" retainaspect="1"/>
@@ -85,12 +82,6 @@
 	</resources>
 	<variables>
 		<variable name="accent" value="#ed6f02"/>
-		<variable name="accent_r" value="237"/>
-		<variable name="accent_g" value="111"/>
-		<variable name="accent_b" value="2"/>
 		<variable name="theme_accent" value="Orange"/>
-		<variable name="current_accent" value="Orange"/>
-		<variable name="applied_accent_x" value="285"/>
-		<variable name="applied_accent_y" value="720"/>
 	</variables>
 </recovery>
