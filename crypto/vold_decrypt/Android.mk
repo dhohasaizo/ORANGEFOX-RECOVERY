@@ -76,8 +76,8 @@ ifeq ($(TW_INCLUDE_CRYPTO), true)
         include $(CLEAR_VARS)
         LOCAL_MODULE := libvolddecrypt
         LOCAL_MODULE_TAGS := eng optional
-        LOCAL_CFLAGS := -Wall
-        LOCAL_ADDITIONAL_DEPENDENCIES += init.recovery.vold_decrypt.rc
+        LOCAL_CFLAGS := -Wall -Wno-unused-function
+#  R10.x      LOCAL_ADDITIONAL_DEPENDENCIES += init.recovery.vold_decrypt.rc
         ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 23; echo $$?),0)
             LOCAL_C_INCLUDES += external/stlport/stlport bionic bionic/libstdc++/include
         endif
@@ -125,7 +125,7 @@ ifeq ($(TW_INCLUDE_CRYPTO), true)
             LOCAL_TIDY_CHECKS := -*,cert-*,clang,-analyzer-security*
             LOCAL_STATIC_LIBRARIES := libvold_binder
             LOCAL_SHARED_LIBRARIES := libbase libcutils libutils libbinder
-            LOCAL_CFLAGS := -Wall
+            LOCAL_CFLAGS := -Wall -Wno-unused-function
             ifeq ($(TWRP_INCLUDE_LOGCAT), true)
                 LOCAL_CFLAGS += -DTWRP_INCLUDE_LOGCAT
             endif

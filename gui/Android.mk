@@ -1,7 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_CFLAGS := -fno-strict-aliasing
+LOCAL_CFLAGS := -fno-strict-aliasing -Wno-unused-variable
 
 LOCAL_SRC_FILES := \
     gui.cpp \
