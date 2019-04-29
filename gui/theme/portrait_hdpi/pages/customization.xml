@@ -273,9 +273,12 @@
 			</text>
 
 			<listbox style="settingslist">
-				<placement x="0" y="%row1_3a_y%" w="%screen_w%" h="%lb_l1%"/>
+				<placement x="0" y="%row1_3a_y%" w="%screen_w%" h="%lb_l2%"/>
 				<listitem name="{@keyboard_nums}">
 					<data variable="key_numbar"/>
+				</listitem>
+				<listitem name="Swipe on keyboard">
+					<data variable="key_allow_swipe"/>
 				</listitem>
 			</listbox>
 

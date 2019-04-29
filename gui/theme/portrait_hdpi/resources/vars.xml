@@ -72,6 +72,7 @@
 		<variable name="hide_notch" value="0" persist="1"/> 
 		<variable name="auto_show_btns" value="0" persist="1"/> 
 		<variable name="instant_apply" value="0" persist="1"/> 
+		<variable name="key_allow_swipe" value="0" persist="1"/> 
 		
 		<!-- Other... -->
 		<variable name="disable_no_os" value="0" persist="1"/>
@@ -379,11 +380,8 @@
 		<!-- Keyboard -->
 		<variable name="keyboard_y" value="%screen_h%-788"/>
 		<variable name="keyboard_terminal_y" value="%screen_h%-884"/>
-		<variable name="keyboard_num_y" value="%screen_h%-896"/>
+		<variable name="keyboard_num_y" value="%screen_h%-900"/>
 		<variable name="keyboard_term_num_y" value="%screen_h%-992"/>
-		<variable name="keyboard_bg_y" value="%screen_h%-812"/>
-		<variable name="keyboard_bg_terminal_y" value="%screen_h%-908"/>
-		<variable name="key_enter_new" value="%screen_h%-297"/>
 		
 		<!-- Input fields -->
 		<variable name="input_width" value="984"/>

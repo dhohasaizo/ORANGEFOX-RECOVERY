@@ -965,7 +965,6 @@ protected:
 	};
 	struct Layout
 	{
-		ImageResource* keyboardImg;
 		Key keys[MAX_KEYBOARD_ROWS][MAX_KEYBOARD_KEYS];
 		int row_end_y[MAX_KEYBOARD_ROWS];
 		bool is_caps;
@@ -979,13 +978,16 @@ protected:
 		int layout_from; // 1-based; 0 for labels that apply to all layouts
 		int layout_to; // same as Key.layout
 		string text; // key label text
+		string noalt; // do not use alt image
 		ImageResource* image; // image (overrides text if defined)
+		ImageResource* imagealt; // image (overrides text if defined)
 	};
 	std::vector<KeyLabel> mKeyLabels;
 
 	// Find key at screen coordinates
 	Key* HitTestKey(int x, int y);
 
+	ImageResource* keyboardImg;
 	bool mRendered;
 	std::string mVariable;
 	int currentLayout;
