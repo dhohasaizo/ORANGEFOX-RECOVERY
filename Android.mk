@@ -217,7 +217,7 @@ LOCAL_MODULE := recovery
 RECOVERY_API_VERSION := 3
 RECOVERY_FSTAB_VERSION := 2
 LOCAL_CFLAGS += -DRECOVERY_API_VERSION=$(RECOVERY_API_VERSION)
-LOCAL_CFLAGS += -Wno-unused-parameter
+LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -Wno-format-extra-args
 LOCAL_CLANG := true
 
 #LOCAL_STATIC_LIBRARIES := \
@@ -740,7 +740,7 @@ endif
 # ===============================
 include $(CLEAR_VARS)
 LOCAL_CLANG := true
-LOCAL_CFLAGS := -Wall -Werror -Wno-unused-parameter
+LOCAL_CFLAGS := -Wall -Werror -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable
 LOCAL_CFLAGS += -D_XOPEN_SOURCE -D_GNU_SOURCE
 
 LOCAL_MODULE_TAGS := optional
@@ -765,7 +765,7 @@ include $(BUILD_SHARED_LIBRARY)
 # =============================== (required to fix build errors in 8.1 due to use by tests)
 include $(CLEAR_VARS)
 LOCAL_CLANG := true
-LOCAL_CFLAGS := -Wall -Werror -Wno-unused-parameter
+LOCAL_CFLAGS := -Wall -Werror -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable
 LOCAL_CFLAGS += -D_XOPEN_SOURCE -D_GNU_SOURCE
 
 LOCAL_MODULE_TAGS := optional
