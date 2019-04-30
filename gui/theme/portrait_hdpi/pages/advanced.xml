@@ -858,8 +858,8 @@
 			<page name="apps_load">
 				<template name="running_acts"/>
 				<action>
+					<action function="mount">/data</action>
 					<action function="cmd">
-						mount /data
 						tmp="/tmp/listapps"
 						list="$tmp/list"
 						apps_dir="/data/app"
