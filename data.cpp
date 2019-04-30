@@ -1371,7 +1371,7 @@ void DataManager::Leds(bool enable)
   DataManager::GetValue("tw_action_vibrate", install_vibrate_value);
   DataManager::GetValue("fox_led_color", ledcolor);
 
-  if (!TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
+  if (TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
   {
     LOGINFO("DEBUG - found white led on /sys/class/leds/white/ path");
     TWFunc::read_file("/sys/class/leds/white/max_brightness", max_brt);
