@@ -859,24 +859,25 @@
 				<template name="running_acts"/>
 				<action>
 					<action function="cmd">
-						tmp=/tmp/listapps
-						list=$tmp/list
-						apps_dir=/data/app
+						mount /data
+						tmp="/tmp/listapps"
+						list="$tmp/list"
+						apps_dir="/data/app"
 						namestr="application-label:'"
 						
-						[ -d $list ] && exit
-						mkdir $tmp $list
-						cd $apps_dir
+						[ -d "$list" ] && exit
+						mkdir "$tmp" "$list"
+						cd "$apps_dir"
 						
 						if [ -f "/sbin/aapt" ]; then
 							for pkgname in * ; do
-								name=$(aapt dump badging "$pkgname/base.apk" | grep $namestr | sed "s/$namestr//" | sed "s/'//")
-								echo "$apps_dir/$pkgname" > $list/$name;
+								name=$(aapt dump badging "$pkgname/base.apk" | grep "$namestr" | sed "s/"$namestr"//" | sed "s/'//")
+								echo "$apps_dir/$pkgname" > "$list/$name"
 							done
 						else 
 							for pkgname in * ; do
-								name=$(echo "$pkgname" | sed 's+-.*++g')
-								echo "$apps_dir/$pkgname" > "$list/$name";
+								name="$(echo "$pkgname" | sed 's+-.*++g')"
+								echo "$apps_dir/$pkgname" > "$list/$name"
 							done
 						fi
 					</action>
