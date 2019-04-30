@@ -1712,14 +1712,7 @@ int GUIAction::ftls(std::string arg)
   int op_status = 0;
   DataManager::SetValue("ftls_running", "1");
 
-  if (simulate)
-  {
-    simulate_progress_bar();
-  }
-  else
-  {
-    op_status = TWFunc::Exec_Cmd(arg, false);
-  }
+  op_status = TWFunc::Exec_Cmd(arg, false);
 
   DataManager::SetValue("ftls_errcode", op_status);
   DataManager::SetValue("ftls_running", "0");
@@ -2338,14 +2331,8 @@ int GUIAction::setbootslot(std::string arg)
 
 int GUIAction::flashlight(std::string arg __unused)
 {
-  operation_start("Flashlight");
-  if (simulate)
-    {
-      simulate_progress_bar();
-    }
-  else 
-    {
-	  
+    #ifdef OF_FLASHLIGHT_ENABLE
+    if (OF_FLASHLIGHT_ENABLE == "1") {
 		std::string path_one, path_two,
 					fl_one_on, fl_two_on,
 					max_one, max_two,
@@ -2393,7 +2380,6 @@ int GUIAction::flashlight(std::string arg __unused)
 				}
 			} else {
 				gui_print_color("warning", "Flashlight file not found!\n");
-        operation_end(0);
 				return 0;
 			}
 		}
@@ -2417,8 +2403,8 @@ int GUIAction::flashlight(std::string arg __unused)
 				}
 			}
 		}
-    }
-  operation_end(0);
+  }
+  #endif 
   return 0;
 }
 
