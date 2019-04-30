@@ -88,11 +88,17 @@
 				<image resource="actionbar_search"/>
 			</image>
 			
-			<button>
+			<!--button>
 				<placement x="%ab_btn2_x%" y="%ab_y%"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="set">tw_file_location_temp=%tw_file_location1%</action>
 				<action function="overlay">dialog_path</action>
+			</button-->
+
+			<button>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="overlay">dialog_storage</action>
 			</button>
 
 			<image>
