@@ -1391,7 +1391,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">settings</action>
+				<action function="page">ext_general</action>
 			</action>
 		</page>
 	</pages>
