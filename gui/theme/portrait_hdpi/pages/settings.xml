@@ -783,6 +783,7 @@
 
 			<action>
 				<condition var1="tw_language" op="modified"/>
+				<action function="set">of_reload_back=ext_time_lang</action>
 				<action function="page">ext_time_lang_busy</action>
 				<action function="setlanguage"/>
 			</action>
