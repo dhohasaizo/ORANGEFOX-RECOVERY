@@ -1229,6 +1229,18 @@
 		<string name="battery">Батарея</string>
 		<string name="password">Пароль</string>
 		
+		<!-- Perfomance -->
+		<string name="perf_title">Режим производительности</string>
+		<string name="perf_conf_mode">Режим производительности OrangeFox</string>
+		<string name="perf_conf_balance">Сбалансированный</string>
+		<string name="perf_conf_high">Высокое быстродействие</string>
+		<string name="perf_conf_batt">Экономный</string>
+
+		<string name="fox_led_title">Настройки светодиода</string>
+		<string name="fox_use_green_led">Зеленый светодиод</string>
+		<string name="fox_boot_fastcharge">Включить быструю зарядку</string>
+		<string name="fox_save_load_aromafm_config_chk">Сохранять настройки AromaFM</string>
+
 		<!-- Files -->
 		<string name="files_show_hidden">Показывать скрытые файлы</string>
 		<string name="files_auto_open">Автооткрытие поддерживаемых файлов</string>
