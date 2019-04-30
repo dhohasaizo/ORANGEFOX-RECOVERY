@@ -96,7 +96,6 @@
 			<button style="btn_dlg_hl">
 				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
 				<text>{@goto_storage}</text>
-				<action function="set">storage_tofiles=1</action>
 				<action function="overlay"/>
 				<action function="overlay">dialog_storage</action>
 			</button>
@@ -197,16 +196,8 @@
 			</button>
 
 			<partitionlist style="partitionlist_dialog">
-				<condition var1="storage_tofiles" op="!=" var2="1"/>
 				<placement x="%storage_indent_x%" y="%storage_indent_y%" w="%dialog_w%" h="%storage_height%"/>
 				<data name="tw_storage_path"/>
-				<listtype name="storage"/>
-			</partitionlist>
-
-			<partitionlist style="partitionlist_dialog">
-				<condition var1="storage_tofiles" var2="1"/>
-				<placement x="%storage_indent_x%" y="%storage_indent_y%" w="%dialog_w%" h="%storage_height%"/>
-				<data name="tw_file_location1"/>
 				<listtype name="storage"/>
 			</partitionlist>
 
@@ -229,13 +220,11 @@
 
 			<action>
 				<touch key="home"/>
-				<action function="set">storage_tofiles=0</action>
 				<action function="page">main</action>
 			</action>
 
 			<action>
 				<touch key="back"/>
-				<action function="set">storage_tofiles=0</action>
 				<action function="overlay"/>
 			</action>
 		</page>
@@ -273,13 +262,11 @@
 
 			<action>
 				<touch key="home"/>
-				<action function="set">storage_tofiles=0</action>
 				<action function="page">main</action>
 			</action>
 
 			<action>
 				<touch key="back"/>
-				<action function="set">storage_tofiles=0</action>
 				<action function="page">restore</action>
 				<action function="overlay"/>
 			</action>

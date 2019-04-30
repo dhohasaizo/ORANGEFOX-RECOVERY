@@ -119,6 +119,8 @@ int main(int argc, char **argv)
   printf("Starting OrangeFox TWRP %s-%s-%s on %s (pid %d)\n", FOX_VERSION,
 	 FOX_BUILD, TW_GIT_REVISION, ctime(&StartupTime), getpid());
 
+	DataManager::Leds(false);
+
   // Load default values to set DataManager constants and handle ifdefs
 	DataManager::SetDefaultValues();
 	printf("Starting the UI...\n");
