@@ -277,7 +277,7 @@
 				<listitem name="{@keyboard_nums}">
 					<data variable="key_numbar"/>
 				</listitem>
-				<listitem name="Swipe on keyboard">
+				<listitem name="{@key_swipe}">
 					<data variable="key_allow_swipe"/>
 				</listitem>
 			</listbox>
