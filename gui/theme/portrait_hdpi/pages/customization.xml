@@ -491,12 +491,12 @@
 				<placement x="0" y="%row7_1_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				<listitem name="{@cust_navbar_white}">
-					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="navbar_bkg" op="!=" var2="3"/>
 					<condition var1="theme_style_tmp_main" op="!=" var2="Light"/>
 					<data variable="navbar_accent"/>
 				</listitem>
 				<listitem name="{@cust_navbar_white}">
-					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="navbar_bkg" op="!=" var2="3"/>
 					<condition var1="nougat" op="!=" var2="3"/>
 					<condition var1="theme_style_tmp_main" var2="Light"/>
 					<condition var1="theme_background" var2="on"/>
@@ -516,7 +516,7 @@
 			</listbox>
 
 			<action>
-				<condition var1="navbar_bkg" var2="1"/>
+				<condition var1="navbar_bkg" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<action function="set">navbar_accent=1</action>
 			</action>
@@ -609,8 +609,8 @@
 				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l4%"/>
 				<data name="navbar_bkg"/>
 				<listitem name="{@fm_none}">0</listitem>
-				<listitem name="{@dark_nav}">3</listitem>
-				<listitem name="{@cust_navbar_accent}">1</listitem>
+				<listitem name="{@dark_nav}">1</listitem>
+				<listitem name="{@cust_navbar_accent}">3</listitem>
 				<listitem name="{@cust_navbar_black}">2<condition var1="theme_style_tmp" op="!=" var2="Black"/>
 				</listitem>
 			</listbox>
@@ -623,12 +623,12 @@
 			<listbox style="settingslist">
 				<placement x="0" y="%row6_1a_y%" w="%screen_w%" h="%lb_l3%"/>
 				<listitem name="{@cust_navbar_white}">
-					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="navbar_bkg" op="!=" var2="3"/>
 					<condition var1="theme_style_tmp_main" op="!=" var2="Light"/>
 					<data variable="navbar_accent"/>
 				</listitem>
 				<listitem name="{@cust_navbar_white}">
-					<condition var1="navbar_bkg" op="!=" var2="1"/>
+					<condition var1="navbar_bkg" op="!=" var2="3"/>
 					<condition var1="nougat" op="!=" var2="3"/>
 					<condition var1="theme_style_tmp_main" var2="Light"/>
 					<condition var1="theme_background" var2="on"/>
@@ -648,7 +648,7 @@
 			</listbox>
 
 			<action>
-				<condition var1="navbar_bkg" var2="1"/>
+				<condition var1="navbar_bkg" var2="3"/>
 				<condition var1="navbar_accent" var2="0"/>
 				<action function="set">navbar_accent=1</action>
 			</action>

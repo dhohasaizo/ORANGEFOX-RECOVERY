@@ -193,18 +193,18 @@
 		<image name="home_white_pie" filename="Default/NavBar/home_pie" retainaspect="1"/>
 		<image name="slideout_white_key_pie" filename="Default/NavBar/slideout_key_pie" retainaspect="1"/>
 		
-		<!---image name="home_dark" filename="Light/NavBar/home" retainaspect="1"/>
-		<image name="back_dark" filename="Light/NavBar/back" retainaspect="1"/>
-		<image name="slideout_dark" filename="Light/NavBar/slideout" retainaspect="1"/>
-		<image name="keyboard_hide_dark" filename="Light/NavBar/keyboard_hide" retainaspect="1"/>
-		<image name="home_dark_ng" filename="Light/NavBar/home_ng" retainaspect="1"/>
-		<image name="back_dark_ng" filename="Light/NavBar/back_ng" retainaspect="1"/>
-		<image name="slideout_dark_ng" filename="Light/NavBar/slideout_ng" retainaspect="1"/>
-		<image name="keyboard_hide_dark_ng" filename="Light/NavBar/keyboard_hide_ng" retainaspect="1"/>
-		<image name="back_dark_key_pie" filename="Light/NavBar/back_key_pie" retainaspect="1"/>
-		<image name="back_dark_pie" filename="Light/NavBar/back_pie" retainaspect="1"/>
-		<image name="home_dark_pie" filename="Light/NavBar/home_pie" retainaspect="1"/>
-		<image name="slideout_dark_key_pie" filename="Light/NavBar/slideout_key_pie" retainaspect="1"/-->
+		<image name="home_dark" filename="Default/NavBar/Light/home" retainaspect="1"/>
+		<image name="back_dark" filename="Default/NavBar/Light/back" retainaspect="1"/>
+		<image name="slideout_dark" filename="Default/NavBar/Light/slideout" retainaspect="1"/>
+		<image name="keyboard_hide_dark" filename="Default/NavBar/Light/keyboard_hide" retainaspect="1"/>
+		<image name="home_dark_ng" filename="Default/NavBar/Light/home_ng" retainaspect="1"/>
+		<image name="back_dark_ng" filename="Default/NavBar/Light/back_ng" retainaspect="1"/>
+		<image name="slideout_dark_ng" filename="Default/NavBar/Light/slideout_ng" retainaspect="1"/>
+		<image name="keyboard_hide_dark_ng" filename="Default/NavBar/Light/keyboard_hide_ng" retainaspect="1"/>
+		<image name="back_dark_key_pie" filename="Default/NavBar/Light/back_key_pie" retainaspect="1"/>
+		<image name="back_dark_pie" filename="Default/NavBar/Light/back_pie" retainaspect="1"/>
+		<image name="home_dark_pie" filename="Default/NavBar/Light/home_pie" retainaspect="1"/>
+		<image name="slideout_dark_key_pie" filename="Default/NavBar/Light/slideout_key_pie" retainaspect="1"/>
 		
 		<image name="nb_btn" filename="Default/NavBar/btn" retainaspect="1"/>
 		<image name="nb_btn_hl" filename="Default/NavBar/btn_hl" retainaspect="1"/>

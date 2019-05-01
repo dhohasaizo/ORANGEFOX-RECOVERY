@@ -3,7 +3,7 @@
 	<templates>
 		<template name="nav_panel">
 			<fill color="%title_solid_bg%">
-				<condition var1="navbar_bkg" var2="3"/>
+				<condition var1="navbar_bkg" var2="1"/>
 				<placement x="0" y="%nav_panel_y%" w="%screen_w%" h="%nav_panel_h%"/>
 			</fill>
 			
