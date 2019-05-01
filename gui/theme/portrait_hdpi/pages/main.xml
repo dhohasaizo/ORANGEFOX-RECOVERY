@@ -10,13 +10,10 @@
 				<action function="stopmtp"/>
 			</action>
 			
-				<!--action function="cmd">
-					stop adbd
-					setprop sys.usb.config charging
-				</action-->
 			<action>
 				<condition var1="use_pass" var2="1"/>
 				<condition var1="pass_open" var2="0"/>
+				<action function="adb">disable</action>
 				<action function="set">pass_enter=</action>
 				<action function="set">pass_govno=0</action>
 				<action function="page">password_enter</action>
