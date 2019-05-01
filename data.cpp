@@ -846,7 +846,6 @@ void DataManager::SetDefaultValues()
   mData.SetValue(FOX_RUN_SURVIVAL_BACKUP, "0");
   mData.SetValue(FOX_METADATA_PRE_BUILD, "0");
   mData.SetValue(FOX_INCREMENTAL_OTA_FAIL, "0");
-  mData.SetValue(FOX_PASSWORD_VARIABLE, "dd");
   mData.SetValue(FOX_LOADED_FINGERPRINT, "0");
   mData.SetValue(FOX_MIUI_ZIP_TMP, "0");
   mData.SetValue(FOX_FLASHLIGHT_VAR, "0");

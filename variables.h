@@ -91,7 +91,6 @@ static int Fox_Current_ROM_IsMIUI = 0; // is the currently installed ROM a MIUI 
 #define FOX_FILES_BACKUPS_FOLDER_VAR       "fox_files_backup_folder_var"
 #define FOX_DISABLE_BOOT_CHK       "fox_disable_boot_check"
 #define FOX_DO_SYSTEM_ON_OTA       "fox_include_system_survival"
-#define FOX_PASSWORD_VARIABLE       "heslo"
 #define FOX_INSTALL_PREBUILT_ZIP       "fox_install_built_in_zip"
 #define FOX_DONT_REPLACE_STOCK       "fox_reboot_dont_disable_stock_recovery"
 #define FOX_ACTUAL_BUILD_VAR              "fox_actual_build"

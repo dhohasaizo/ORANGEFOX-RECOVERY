@@ -2066,7 +2066,6 @@ void TWFunc::OrangeFox_Startup(void)
   std::string kernel_proc_check = "/proc/touchpanel/capacitive_keys_";
   std::string device_one = kernel_proc_check + "enable";
   std::string device_two = kernel_proc_check + "disable";
-  std::string password_file = "/sbin/wlfx";
 
 //gui_print("DEBUG: - OrangeFox_Startup_Executed=%i\n", OrangeFox_Startup_Executed);
   // don't repeat this
@@ -2091,15 +2090,6 @@ void TWFunc::OrangeFox_Startup(void)
 
   if (TWFunc::Path_Exists(device_two))
     TWFunc::write_to_file(device_two, enable);
-
-  if (TWFunc::Path_Exists(password_file))
-    {
-      if (TWFunc::read_file(password_file, loaded_password) == 0)
-	{
-	  if (!loaded_password.empty())
-	    DataManager::SetValue(FOX_PASSWORD_VARIABLE, loaded_password);
-	}
-    }
 
   if (TWFunc::Path_Exists(t2w))
     {
