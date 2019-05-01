@@ -1131,6 +1131,7 @@
 		<string name="backup_short_hdr">Новая копия</string>
 		<string name="backups_wat">А где резервные копии?</string>
 		
+		<string name="reboot_to_take_effect">Перезагрузитесь для применения</string>
 		<string name="module_install">Установить</string>
 		<string name="module_uninstall">Удалить</string>
 		<string name="remove_of_files">Удалить файлы OrangeFox</string>
@@ -1230,7 +1231,7 @@
 		<string name="password">Пароль</string>
 		
 		<!-- Perfomance -->
-		<string name="perf_title">Режим производительности</string>
+		<string name="perf_title">Производительность</string>
 		<string name="perf_conf_mode">Режим производительности OrangeFox</string>
 		<string name="perf_conf_balance">Сбалансированный</string>
 		<string name="perf_conf_high">Высокое быстродействие</string>
@@ -1278,7 +1279,7 @@
 		
 		<!-- App mgr -->
 		<string name="appmgr_apps">Приложения</string>
-		<string name="appmgr_title">Менеджер приложений</string>
+		<string name="appmgr_title">Приложения</string>
 
 		<!-- MIUI OTA -->
 		<string name="fox_ota_msg_ready">Вы готовы получать обновления!</string>
