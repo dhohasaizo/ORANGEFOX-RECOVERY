@@ -2187,6 +2187,7 @@ int GUIAction::flashimage(std::string arg __unused)
   else
     op_status = 1;		// fail
 
+  DataManager::Leds(true);
   operation_end(op_status);
   return 0;
 }
