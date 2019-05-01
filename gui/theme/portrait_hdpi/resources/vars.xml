@@ -150,9 +150,6 @@
 		<variable name="busy_text_l" value="%screen_h%-144"/>
 		
 		<!-- AR UI -->
-		<variable name="check_mount_ro_1" value="1096+%cutout_w%"/>
-		<variable name="check_mount_ro_2" value="374+%cutout_w%"/>
-		
 		<variable name="magisk_list_h" value="%screen_min_cut%-882"/>
 		<variable name="fullscreen_list_h" value="%screen_min_cut%-552"/>
 		<variable name="part_list_btns_h" value="%screen_min_cut%-1380"/> <!-- Backup parts -->
@@ -162,6 +159,12 @@
 		<!--variable name="flash_img_part_expanded" value="%screen_min_cut%-1122"/-->
 		<variable name="flash_img_part" value="%screen_min_cut%-1396"/>
 		<variable name="restore_part" value="%screen_min_cut%-1426"/>
+
+		<!-- Workshop -->
+		<variable name="ws_cards_y1" value="%cutout_w%+360"/>
+		<variable name="ws_cards_y2" value="%cutout_w%+720"/>
+		<variable name="ws_cards_y3" value="%cutout_w%+975"/>
+		<variable name="ws_cards_y4" value="%cutout_w%+1230"/>
 		
 		<!-- Splash -->
 		<variable name="spl_custom_btn" value="%screen_original_h%-30"/>

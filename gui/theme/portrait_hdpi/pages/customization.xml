@@ -876,7 +876,7 @@
 			</action>
 		</page>
 		
-		<page name="ext_custom_fonts_cust">
+		<!--page name="ext_custom_fonts_cust">
 			<template name="body"/>
 			
 			<fileselector style="fileselector_b">
@@ -936,7 +936,7 @@
 				<touch key="home"/>
 				<action function="page">main</action>
 			</action>
-		</page>
+		</page-->
 		
 		<page name="ext_custom_theme">
 			<template name="body"/>
@@ -962,14 +962,14 @@
 			<!-- Themes -->
 			<!-- Gray -->
 			<button>
-				<placement x="285" y="360"/>
+				<placement x="285" y="%ws_cards_y1%"/>
 				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
 				<image resource="style_black"/>
 				<action function="set">theme_style_tmp=Black</action>
 			</button>
 			
 			<button>
-				<placement x="285" y="360"/>
+				<placement x="285" y="%ws_cards_y1%"/>
 				<condition var1="theme_accent_tmp" var2="Black"/>
 				<image resource="style_black"/>
 				<action function="set">theme_style_tmp=Black</action>
@@ -978,7 +978,7 @@
 			</button>
 
 			<image>
-				<placement x="285" y="360"/>
+				<placement x="285" y="%ws_cards_y1%"/>
 				<condition var1="theme_style_tmp" var2="Black"/>
 				<image resource="style_apply"/>
 			</image>
@@ -986,14 +986,14 @@
 
 			<!-- Night -->
 			<button>
-				<placement x="30" y="360"/>
+				<placement x="30" y="%ws_cards_y1%"/>
 				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
 				<image resource="style_night"/>
 				<action function="set">theme_style_tmp=Night</action>
 			</button>
 			
 			<button>
-				<placement x="30" y="360"/>
+				<placement x="30" y="%ws_cards_y1%"/>
 				<condition var1="theme_accent_tmp" var2="Black"/>
 				<image resource="style_night"/>
 				<action function="set">theme_style_tmp=Night</action>
@@ -1002,7 +1002,7 @@
 			</button>
 
 			<image>
-				<placement x="30" y="360"/>
+				<placement x="30" y="%ws_cards_y1%"/>
 				<condition var1="theme_style_tmp" var2="Night"/>
 				<image resource="style_apply"/>
 			</image>
@@ -1010,14 +1010,14 @@
 			
 			<!-- Black -->
 			<button>
-				<placement x="540" y="360"/>
+				<placement x="540" y="%ws_cards_y1%"/>
 				<condition var1="theme_accent_tmp" op="!=" var2="Black"/>
 				<image resource="style_gray"/>
 				<action function="set">theme_style_tmp=Gray</action>
 			</button>
 			
 			<button>
-				<placement x="540" y="360"/>
+				<placement x="540" y="%ws_cards_y1%"/>
 				<condition var1="theme_accent_tmp" var2="Black"/>
 				<image resource="style_gray"/>
 				<action function="set">theme_style_tmp=Gray</action>
@@ -1026,7 +1026,7 @@
 			</button>
 
 			<image>
-				<placement x="540" y="360"/>
+				<placement x="540" y="%ws_cards_y1%"/>
 				<condition var1="theme_style_tmp" var2="Gray"/>
 				<image resource="style_apply"/>
 			</image>
@@ -1034,14 +1034,14 @@
 
 			<!-- Light -->
 			<button>
-				<placement x="795" y="360"/>
+				<placement x="795" y="%ws_cards_y1%"/>
 				<condition var1="theme_accent_tmp" op="!=" var2="Gray"/>
 				<image resource="style_light"/>
 				<action function="set">theme_style_tmp=Light</action>
 			</button>
 			
 			<button>
-				<placement x="795" y="360"/>
+				<placement x="795" y="%ws_cards_y1%"/>
 				<condition var1="theme_accent_tmp" var2="Gray"/>
 				<image resource="style_light"/>
 				<action function="set">theme_style_tmp=Light</action>
@@ -1050,7 +1050,7 @@
 			</button>
 			
 			<image>
-				<placement x="795" y="360"/>
+				<placement x="795" y="%ws_cards_y1%"/>
 				<condition var1="theme_style_tmp" var2="Light"/>
 				<image resource="style_apply_black"/>
 			</image>
@@ -1064,7 +1064,7 @@
 
 			<!-- Orange -->
 			<button>
-				<placement x="30" y="720"/>
+				<placement x="30" y="%ws_cards_y2%"/>
 				<image resource="color_fox"/>
 				<action function="set">theme_accent_tmp=Orange</action>
 				<action function="set">theme_accent_c_tmp=ed6f02</action>
@@ -1072,14 +1072,14 @@
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="Orange"/>
-				<placement x="30" y="720"/>
+				<placement x="30" y="%ws_cards_y2%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
 			<!-- Blue -->
 			<button>
-				<placement x="285" y="720"/>
+				<placement x="285" y="%ws_cards_y2%"/>
 				<image resource="color_blue"/>
 				<action function="set">theme_accent_tmp=Blue</action>
 				<action function="set">theme_accent_c_tmp=1A73E8</action>
@@ -1087,14 +1087,14 @@
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="Blue"/>
-				<placement x="285" y="720"/>
+				<placement x="285" y="%ws_cards_y2%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 			
 			<!-- Teal -->
 			<button>
-				<placement x="540" y="720"/>
+				<placement x="540" y="%ws_cards_y2%"/>
 				<image resource="color_cyan"/>
 				<action function="set">theme_accent_tmp=Teal</action>
 				<action function="set">theme_accent_c_tmp=009788</action>
@@ -1102,7 +1102,7 @@
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="Teal"/>
-				<placement x="540" y="720"/>
+				<placement x="540" y="%ws_cards_y2%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
@@ -1110,7 +1110,7 @@
 			<!-- Black / Gray (based on selected theme) -->
 			<button>
 				<condition var1="theme_style_tmp" op="!=" var2="Light"/>
-				<placement x="795" y="720"/>
+				<placement x="795" y="%ws_cards_y2%"/>
 				<image resource="color_gray"/>
 				<action function="set">theme_accent_tmp=Gray</action>
 				<action function="set">theme_accent_c_tmp=9e9e9e</action>
@@ -1118,7 +1118,7 @@
 
 			<button>
 				<condition var1="theme_style_tmp" var2="Light"/>
-				<placement x="795" y="720"/>
+				<placement x="795" y="%ws_cards_y2%"/>
 				<image resource="style_black"/>
 				<action function="set">theme_accent_tmp=Black</action>
 				<action function="set">theme_accent_c_tmp=000000</action>
@@ -1127,21 +1127,21 @@
 			<image>
 				<condition var1="theme_accent_tmp" var2="Gray"/>
 				<condition var1="theme_style_tmp" op="!=" var2="Light"/>
-				<placement x="795" y="720"/>
+				<placement x="795" y="%ws_cards_y2%"/>
 				<image resource="style_apply"/>
 			</image>
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="Black"/>
 				<condition var1="theme_style_tmp" var2="Light"/>
-				<placement x="795" y="720"/>
+				<placement x="795" y="%ws_cards_y2%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
 			<!-- Red -->
 			<button>
-				<placement x="30" y="975"/>
+				<placement x="30" y="%ws_cards_y3%"/>
 				<image resource="color_red"/>
 				<action function="set">theme_accent_tmp=Red</action>
 				<action function="set">theme_accent_c_tmp=E53935</action>
@@ -1149,14 +1149,14 @@
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="Red"/>
-				<placement x="30" y="975"/>
+				<placement x="30" y="%ws_cards_y3%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
 			<!-- Indigo -->
 			<button>
-				<placement x="285" y="975"/>
+				<placement x="285" y="%ws_cards_y3%"/>
 				<image resource="color_indigo"/>
 				<action function="set">theme_accent_tmp=Indigo</action>
 				<action function="set">theme_accent_c_tmp=3F51B5</action>
@@ -1164,14 +1164,14 @@
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="Indigo"/>
-				<placement x="285" y="975"/>
+				<placement x="285" y="%ws_cards_y3%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
 			<!-- Green -->
 			<button>
-				<placement x="540" y="975"/>
+				<placement x="540" y="%ws_cards_y3%"/>
 				<image resource="color_green"/>
 				<action function="set">theme_accent_tmp=Green</action>
 				<action function="set">theme_accent_c_tmp=4caf50</action>
@@ -1179,14 +1179,14 @@
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="Green"/>
-				<placement x="540" y="975"/>
+				<placement x="540" y="%ws_cards_y3%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
 			<!-- BlueGray -->
 			<button>
-				<placement x="795" y="975"/>
+				<placement x="795" y="%ws_cards_y3%"/>
 				<image resource="color_bluegray"/>
 				<action function="set">theme_accent_tmp=BlueGray</action>
 				<action function="set">theme_accent_c_tmp=607D8B</action>
@@ -1194,14 +1194,14 @@
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="BlueGray"/>
-				<placement x="795" y="975"/>
+				<placement x="795" y="%ws_cards_y3%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
 			<!-- Pink -->
 			<button>
-				<placement x="30" y="1230"/>
+				<placement x="30" y="%ws_cards_y4%"/>
 				<image resource="color_pink"/>
 				<action function="set">theme_accent_tmp=Pink</action>
 				<action function="set">theme_accent_c_tmp=ff5252</action>
@@ -1209,14 +1209,14 @@
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="Pink"/>
-				<placement x="30" y="1230"/>
+				<placement x="30" y="%ws_cards_y4%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
 			<!-- Purple -->
 			<button>
-				<placement x="285" y="1230"/>
+				<placement x="285" y="%ws_cards_y4%"/>
 				<image resource="color_purple"/>
 				<action function="set">theme_accent_tmp=Purple</action>
 				<action function="set">theme_accent_c_tmp=7750FB</action>
@@ -1224,14 +1224,14 @@
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="Purple"/>
-				<placement x="285" y="1230"/>
+				<placement x="285" y="%ws_cards_y4%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
 			<!-- Amber -->
 			<button>
-				<placement x="540" y="1230"/>
+				<placement x="540" y="%ws_cards_y4%"/>
 				<image resource="color_amber"/>
 				<action function="set">theme_accent_tmp=Amber</action>
 				<action function="set">theme_accent_c_tmp=CF9D06</action>
@@ -1239,14 +1239,14 @@
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="Amber"/>
-				<placement x="540" y="1230"/>
+				<placement x="540" y="%ws_cards_y4%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
 
 			<!-- Brown -->
 			<button>
-				<placement x="795" y="1230"/>
+				<placement x="795" y="%ws_cards_y4%"/>
 				<image resource="color_brown"/>
 				<action function="set">theme_accent_tmp=Brown</action>
 				<action function="set">theme_accent_c_tmp=795548</action>
@@ -1254,7 +1254,7 @@
 
 			<image>
 				<condition var1="theme_accent_tmp" var2="Brown"/>
-				<placement x="795" y="1230"/>
+				<placement x="795" y="%ws_cards_y4%"/>
 				<image resource="style_apply"/>
 			</image>
 			<!-- -->
