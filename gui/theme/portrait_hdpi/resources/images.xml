@@ -165,8 +165,8 @@
 		<!-- Info -->
 		<image name="icon_info2" filename="Default/Info/icon_info2" retainaspect="1"/>
 		<image name="icon_warning" filename="Default/Info/icon_warning" retainaspect="1"/>
-		<image name="icon_person" filename="Default/Info/icon_person" retainaspect="1"/>
-		<image name="icon_mail" filename="Default/Info/icon_mail" retainaspect="1"/>
+		<image name="db_l_hl" filename="Light/Dialog/db_hl"/>
+		<image name="db_empty" filename="Default/Dialog/db"/>
 		
 		<!-- Keyboard -->
 		<image name="backspace" filename="Default/Keyboard/backspace" retainaspect="1"/>
@@ -251,5 +251,6 @@
 		<image name="author_yan" filename="Default/About/author_yan" retainaspect="1"/>
 		<image name="author_jabba" filename="Default/About/author_jabba" retainaspect="1"/>
 		<image name="maintainer_img" filename="Default/About/maintainer" retainaspect="1"/>
+		<image name="maintainer_layer" filename="Default/About/maintainer_layer" retainaspect="1"/>
 	</resources>
 </recovery>

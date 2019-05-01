@@ -866,7 +866,7 @@
 			</text>
 			<text style="text_ab_subtitle">
 				<placement x="%about_txt_x%" y="%about_txt3_y%"/>
-				<text>Build type: %fox_build_type1%</text>
+				<text>{@build_type}: %fox_build_type1%</text>
 			</text>
 			<text style="text_ab_subtitle">
 				<placement x="%about_txt_x%" y="%about_txt4_y%"/>
@@ -889,19 +889,35 @@
 				<text>MrYacha</text>
 			</text>
 			<text style="about_info">
-				<condition var1="of_maintainer" op="!=" var2="1"/>
 				<placement x="%card_txt_x%" y="%cardtxt_1%" />
 				<text>{@abt_front}</text>
-			</text>
-			<text style="about_info">
-				<condition var1="of_maintainer" var2="1"/>
-				<placement x="%card_txt_x%" y="%cardtxt_1%" />
-				<text>{@abt_front}, {@abt_maintainer}</text>
 			</text>
 			<text style="about_info">
 				<placement x="%card_txt_x%" y="%cardtxt_2%" />
 				<text>{@abt_bork}</text>
 			</text>
+			<fill color="%accent%">
+				<condition var1="of_maintainer" var2="1"/>
+				<placement x="%card1_ctag_x%" y="%card1_ctag_y%" w="272" h="72"/>
+			</fill>
+			<button>
+				<condition var1="of_maintainer" var2="1"/>
+				<image resource="maintainer_layer"/>
+				<font resource="caption" color="%text_raisedbtn%"/>
+				<placement x="%card1_mtag_x%" y="%card1_mtag_y%"/>
+				<text>{@abt_main_shrt}</text>
+			</button>
+			<fill color="%accent%">
+				<condition var1="of_maintainer" var2="4"/>
+				<placement x="%card1_ctag_x%" y="%card1_ctag_y%" w="272" h="72"/>
+			</fill>
+			<button>
+				<condition var1="of_maintainer" var2="4"/>
+				<image resource="maintainer_layer"/>
+				<font resource="caption" color="%text_raisedbtn%"/>
+				<placement x="%card1_mtag_x%" y="%card1_mtag_y%"/>
+				<text>{@abt_main_shrt}</text>
+			</button>
 			<!-- Card -->
 			
 			<!-- fd's Card -->
@@ -920,12 +936,6 @@
 				<text>fordownloads</text>
 			</text>
 			<text style="about_info">
-				<condition var1="of_maintainer" var2="2"/>
-				<placement x="%card_txt_x%" y="%cardtxt_3%"/>
-				<text>{@abt_front}, {@abt_maintainer}</text>
-			</text>
-			<text style="about_info">
-				<condition var1="of_maintainer" op="!=" var2="2"/>
 				<placement x="%card_txt_x%" y="%cardtxt_3%"/>
 				<text>{@abt_front}</text>
 			</text>
@@ -933,6 +943,17 @@
 				<placement x="%card_txt_x%" y="%cardtxt_4%"/>
 				<text>{@abt_fd}</text>
 			</text>
+			<fill color="%accent%">
+				<condition var1="of_maintainer" var2="2"/>
+				<placement x="%card1_ctag_x%" y="%card2_ctag_y%" w="272" h="72"/>
+			</fill>
+			<button>
+				<condition var1="of_maintainer" var2="2"/>
+				<image resource="maintainer_layer"/>
+				<font resource="caption" color="%text_raisedbtn%"/>
+				<placement x="%card1_mtag_x%" y="%card2_mtag_y%"/>
+				<text>{@abt_main_shrt}</text>
+			</button>
 			<!-- Card -->
 			
 			<!-- Bim's Card -->
@@ -951,24 +972,30 @@
 				<text>DarthJabba9</text>
 			</text>
 			<text style="about_info">
-				<condition var1="of_maintainer" op="!=" var2="3"/>
 				<placement x="%card_txt_x%" y="%cardtxt_5%"/>
 				<text>{@abt_back}</text>
-			</text>
-			<text style="about_info">
-				<condition var1="of_maintainer" var2="3"/>
-				<placement x="%card_txt_x%" y="%cardtxt_5%"/>
-				<text>{@abt_back}, {@abt_maintainer}</text>
 			</text>
 			<text style="about_info">
 				<placement x="%card_txt_x%" y="%cardtxt_6%"/>
 				<text>{@abt_dj}</text>
 			</text>
+			<fill color="%accent%">
+				<condition var1="of_maintainer" op="&gt;=" var2="3"/>
+				<placement x="%card1_ctag_x%" y="%card3_ctag_y%" w="272" h="72"/>
+			</fill>
+			<button>
+				<condition var1="of_maintainer" op="&gt;=" var2="3"/>
+				<image resource="maintainer_layer"/>
+				<font resource="caption" color="%text_raisedbtn%"/>
+				<placement x="%card3_mtag_x%" y="%card3_mtag_y%"/>
+				<text>{@abt_main_shrt}</text>
+			</button>
 			<!-- Card -->
 			
 			<!-- Maintainer -->
 			<image>
 				<image resource="maintainer_img"/>
+				<condition var1="of_maintainer" op="!=" var2="4"/>
 				<condition var1="of_maintainer" op="!=" var2="3"/>
 				<condition var1="of_maintainer" op="!=" var2="2"/>
 				<condition var1="of_maintainer" op="!=" var2="1"/>
@@ -977,6 +1004,7 @@
 			
 			<image>
 				<image resource="card"/>
+				<condition var1="of_maintainer" op="!=" var2="4"/>
 				<condition var1="of_maintainer" op="!=" var2="3"/>
 				<condition var1="of_maintainer" op="!=" var2="2"/>
 				<condition var1="of_maintainer" op="!=" var2="1"/>
@@ -984,6 +1012,7 @@
 			</image>
 
 			<text style="about_name">
+				<condition var1="of_maintainer" op="!=" var2="4"/>
 				<condition var1="of_maintainer" op="!=" var2="3"/>
 				<condition var1="of_maintainer" op="!=" var2="2"/>
 				<condition var1="of_maintainer" op="!=" var2="1"/>
@@ -991,6 +1020,7 @@
 				<text>%of_maintainer%</text>
 			</text>
 			<text style="about_info">
+				<condition var1="of_maintainer" op="!=" var2="4"/>
 				<condition var1="of_maintainer" op="!=" var2="3"/>
 				<condition var1="of_maintainer" op="!=" var2="2"/>
 				<condition var1="of_maintainer" op="!=" var2="1"/>
@@ -998,6 +1028,7 @@
 				<text>{@abt_maintainer}</text>
 			</text>
 			<text style="about_info">
+				<condition var1="of_maintainer" op="!=" var2="4"/>
 				<condition var1="of_maintainer" op="!=" var2="3"/>
 				<condition var1="of_maintainer" op="!=" var2="2"/>
 				<condition var1="of_maintainer" op="!=" var2="1"/>
@@ -1008,21 +1039,7 @@
 			
 			<!-- Credits button when maintainer is OrangeFox developer -->
 			<button style="floating_btn">
-				<condition var1="screen_h" op="&gt;=" var2="2160"/>
-				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
-				<action function="set">credits_page=0</action>
-				<action function="page">about_credits</action>
-			</button>
-			
-			<image>
-				<condition var1="screen_h" op="&gt;=" var2="2160"/>
-				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
-				<image resource="fab_credits"/>
-			</image>
-			
-			<button style="floating_btn">
-				<condition var1="screen_h" op="&lt;" var2="2160"/>
-				<condition var1="of_maintainer" op="&lt;=" var2="3"/>
+				<condition var1="of_maintainer" op="&lt;=" var2="4"/>
 				<condition var1="of_maintainer" op="&gt;=" var2="1"/>
 				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
 				<action function="set">credits_page=0</action>
@@ -1030,8 +1047,7 @@
 			</button>
 			
 			<image>
-				<condition var1="screen_h" op="&lt;" var2="2160"/>
-				<condition var1="of_maintainer" op="&lt;=" var2="3"/>
+				<condition var1="of_maintainer" op="&lt;=" var2="4"/>
 				<condition var1="of_maintainer" op="&gt;=" var2="1"/>
 				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
 				<image resource="fab_credits"/>
@@ -1040,11 +1056,12 @@
 			<!-- Credit button when maintair isn't OrangeFox developer -->
 
 			<button style="btn_about_credits">
+				<condition var1="of_maintainer" op="!=" var2="4"/>
 				<condition var1="of_maintainer" op="!=" var2="3"/>
 				<condition var1="of_maintainer" op="!=" var2="2"/>
 				<condition var1="of_maintainer" op="!=" var2="1"/>
-				<placement x="720" y="1548"/>
-				<text>{@credits}</text>
+				<placement x="752" y="%card4_btn_y%"/>
+				<text>{@more}</text>
 				<action function="set">credits_page=0</action>
 				<action function="page">about_credits</action>
 			</button>
@@ -1103,7 +1120,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@about_hdr}</text>
+				<text>{@credits}</text>
 			</text>
 			
 			<image>

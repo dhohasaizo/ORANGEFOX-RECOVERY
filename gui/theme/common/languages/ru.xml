@@ -1038,7 +1038,7 @@
 		<string name="sort_ex_zip">ZIP файлы</string>
 
 		<!-- Utilities -->
-		<string name="more">Еще...</string>
+		<string name="more">Больше...</string>
 		<string name="hide">Скрыть</string>
 		<string name="part_menu_hdr">Управление разделами</string>
 		<string name="subs_wipe">Удалить слои Substratum</string>
@@ -1052,9 +1052,11 @@
 		<string name="abt_front">Frontend разработчик</string>
 		<string name="abt_back">Backend разработчик</string>
 		<string name="version_twrp">Версия TWRP</string>
+		<string name="build_type">Тип сборки</string>
 		<string name="abt_credits">Спасибо</string>
 		<string name="abt_trans">Перевод</string>
 		<string name="abt_changes">Изменения</string>
+		<string name="abt_main_shrt">Поддержка</string>
 		
 		<!-- Symlink -->
 		<string name="symlink_dir_name">Ссылка на папку</string>

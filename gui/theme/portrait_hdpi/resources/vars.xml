@@ -36,13 +36,6 @@
 		<variable name="book_6" value="notset" persist="1"/>
 		<variable name="book_7" value="notset" persist="1"/>
 		
-		<!-- Bookmarks -->
-		<variable name="tw_theme_path" value="/data/media/0/TWRP/theme" persist="1"/>
-		<variable name="location_install" value="/sdcard" persist="1"/>
-		<variable name="location_install_image" value="/sdcard" persist="1"/>
-		<variable name="location_addfile" value="/sdcard" persist="1"/>
-		<variable name="location_filemanager" value="/sdcard" persist="1"/>
-		
 		<!-- FRP -->
 		<variable name="use_pass" value="0" persist="1"/>
 		<variable name="pass_true" value="qwerty" persist="1"/>
@@ -244,6 +237,18 @@
 		<variable name="card2_y" value="864+%cutout_w%"/>
 		<variable name="card3_y" value="1152+%cutout_w%"/>
 		<variable name="card4_y" value="1440+%cutout_w%"/>
+		<variable name="card4_btn_y" value="1604+%cutout_w%"/>
+		
+		<variable name="card1_mtag_x" value="744"/>
+		<variable name="card1_ctag_x" value="748"/>
+		<variable name="card1_mtag_y" value="636+%cutout_w%"/>
+		<variable name="card2_mtag_y" value="924+%cutout_w%"/>
+		<variable name="card3_mtag_y" value="1212+%cutout_w%"/>
+		<variable name="card4_mtag_y" value="1500+%cutout_w%"/>
+		<variable name="card1_ctag_y" value="640+%cutout_w%"/>
+		<variable name="card2_ctag_y" value="928+%cutout_w%"/>
+		<variable name="card3_ctag_y" value="1216+%cutout_w%"/>
+		<variable name="card4_ctag_y" value="1504+%cutout_w%"/>
 		
 		<variable name="card_img1_y" value="648+%cutout_w%"/>
 		<variable name="card_img2_y" value="936+%cutout_w%"/>
