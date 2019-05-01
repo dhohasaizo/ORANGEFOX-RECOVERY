@@ -1100,6 +1100,12 @@
 					<icon res="bs_btn_checksum"/>
 					<action function="set">tw_back=filemanageroptions</action>
 					<action function="set">sum=1</action>
+					<action function="ftls">
+					twrp xset ft_inf_md5=$(md5sum "%tw_filename1%" | sed 's*%tw_filename1%**g')
+					twrp xset ft_inf_sha1=$(sha1sum "%tw_filename1%" | sed 's*%tw_filename1%**g')
+					twrp xset ft_inf_sha2=$(sha256sum "%tw_filename1%" | sed 's*%tw_filename1%**g')
+					twrp xset ft_inf_sha5=$(sha512sum "%tw_filename1%" | sed 's*%tw_filename1%**g')
+					</action>
 					<action function="page">checksum_confirm</action>
 				</listitem>
 				<listitem name="{@info}">
@@ -1108,6 +1114,16 @@
 					<icon res="info"/>
 					<action function="set">tw_back=filemanageroptions</action>
 					<action function="set">sum=0</action>
+					<action function="ftls">
+					link="%tw_filename1%"
+					[ -L "%tw_filename1%" ] && link=$(realpath "%tw_filename1%")
+					twrp xset ft_inf_real=$link
+					twrp xset ft_inf_size=$(du -h "%tw_filename1%" | sed 's*%tw_filename1%**g');
+					twrp xset ft_inf_rights=$(stat -c '%%a (%%A)' "%tw_filename1%")
+					twrp xset ft_inf_acc=$(stat -c %%x "%tw_filename1%")
+					twrp xset ft_inf_mod=$(stat -c %%y "%tw_filename1%")
+					twrp xset ft_inf_ch=$(stat -c %%z "%tw_filename1%")
+					</action>
 					<action function="page">checksum_confirm</action>
 				</listitem>
 			</listbox>
@@ -1209,79 +1225,131 @@
 			</text>
 
 			<text style="text_ab_title">
+				<condition var1="sum" op="!=" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
 				<text>{@info}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="sum" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@fm_sums}</text>
 			</text>
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>%tw_filename1%</text>
 			</text>
-			
-			<template name="action_page_console"/>
-			<template name="cant_cancel" />
-			
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" var2="0"/>
-				</conditions>
-				<actions>
-					<action function="set">tw_back=filemanagerlist</action>
-					<action function="set">tw_complete_text1={@fm_complete}</action>
-					<action function="page">filemanagercomplete</action>
-				</actions>
-			</action>
 
-			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-					<condition var1="tw_operation_status" op="!=" var2="0"/>
-				</conditions>
-				<actions>
-					<action function="set">tw_complete_text1={@fm_complete}</action>
-					<action function="page">filemanagercomplete</action>
-				</actions>
-			</action>
+			<text style="caption">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<text>{@name} ({@real})</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row2_2a_y%"/>
+				<text>%ft_inf_real%</text>
+			</text>
 
-			<action>
-				<condition var1="sum" var2="0"/>
-				<actions>
-					<action function="mount">data</action>
-					<action function="cmd">
-					printf "{@name}: " > /tmp/stat.txt;
-					echo "%tw_filename1%" >> /tmp/stat.txt;
-					printf "{@name} ({@real}): " >> /tmp/stat.txt;
-					realpath "%tw_filename1%" >> /tmp/stat.txt;
-					printf "{@part_size}: " >> /tmp/stat.txt;
-					du -h "%tw_filename1%" | sed 's*%tw_filename1%**g' >> /tmp/stat.txt;
-					stat "%tw_filename1%" | grep Access | sed 's/Access/{@access}/g' 2>/dev/null 1>> /tmp/stat.txt;
-					stat "%tw_filename1%" | grep Modify | sed 's/Modify/{@time_m}/g' 2>/dev/null 1>> /tmp/stat.txt;
-					stat "%tw_filename1%" | grep Change | sed 's/Change/{@time_c}/g' 2>/dev/null 1>> /tmp/stat.txt;
-					</action>
-					<action function="terminalcommand">cat /tmp/stat.txt;</action>
-				</actions>
-			</action>
-			
-			<action>
+			<text style="caption">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>{@part_size}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row3_2a_y%"/>
+				<text>%ft_inf_size%</text>
+			</text>
+
+			<text style="caption">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row4_1a_y%"/>
+				<text>{@fm_perms}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row4_2a_y%"/>
+				<text>%ft_inf_rights%</text>
+			</text>
+
+			<text style="caption">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row5_1a_y%"/>
+				<text>{@access}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row5_2a_y%"/>
+				<text>%ft_inf_acc%</text>
+			</text>
+
+			<text style="caption">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row6_1a_y%"/>
+				<text>{@time_m}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row6_2a_y%"/>
+				<text>%ft_inf_mod%</text>
+			</text>
+
+			<text style="caption">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row7_1a_y%"/>
+				<text>{@time_c}</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="sum" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row7_2a_y%"/>
+				<text>%ft_inf_ch%</text>
+			</text>
+
+			<text style="caption">
 				<condition var1="sum" var2="1"/>
-				<actions>
-					<action function="cmd">
-					echo "MD5:" > /tmp/stat.txt;
-					md5sum "%tw_filename1%" | sed 's*%tw_filename1%**g' >> /tmp/stat.txt;
-					echo "SHA1:" >> /tmp/stat.txt;
-					sha1sum "%tw_filename1%" | sed 's*%tw_filename1%**g' >> /tmp/stat.txt;
-					echo "SHA3:" >> /tmp/stat.txt;
-					sha3sum "%tw_filename1%" | sed 's*%tw_filename1%**g' >> /tmp/stat.txt;
-					echo "SHA256:" >> /tmp/stat.txt;
-					sha256sum "%tw_filename1%" | sed 's*%tw_filename1%**g' >> /tmp/stat.txt;
-					echo "SHA512:" >> /tmp/stat.txt;
-					sha512sum "%tw_filename1%" | sed 's*%tw_filename1%**g' >> /tmp/stat.txt;
-					echo "SUM:" >> /tmp/stat.txt;
-					sum "%tw_filename1%" >> /tmp/stat.txt;</action>
-					<action function="terminalcommand">cat /tmp/stat.txt;</action>
-				</actions>
-			</action>
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<text>MD5</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="sum" var2="1"/>
+				<placement x="%col1_x%" y="%row2_2a_y%"/>
+				<text>%ft_inf_md5%</text>
+			</text>
+
+			<text style="caption">
+				<condition var1="sum" var2="1"/>
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>SHA1</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="sum" var2="1"/>
+				<placement x="%col1_x%" y="%row3_2a_y%"/>
+				<text>%ft_inf_sha1%</text>
+			</text>
+
+			<text style="caption">
+				<condition var1="sum" var2="1"/>
+				<placement x="%col1_x%" y="%row4_1a_y%"/>
+				<text>SHA256</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="sum" var2="1"/>
+				<placement x="%col1_x%" y="%row4_2a_y%"/>
+				<text>%ft_inf_sha2%</text>
+			</text>
+
+			<text style="caption">
+				<condition var1="sum" var2="1"/>
+				<placement x="%col1_x%" y="%row5_1a_y%"/>
+				<text>SHA512</text>
+			</text>
+			<text style="text_body2">
+				<condition var1="sum" var2="1"/>
+				<placement x="%col1_x%" y="%row5_2a_y%"/>
+				<text>%ft_inf_sha5%</text>
+			</text>
 			
 			<action>
 				<touch key="home"/>
@@ -1290,7 +1358,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">filemanageroptions</action>
+				<action function="page">filemanagerlist</action>
 			</action>
 		</page>
 
