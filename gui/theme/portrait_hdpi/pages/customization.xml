@@ -52,7 +52,7 @@
 				</listitem>
 				<listitem name="{@cust_oth}">
 					<icon res="plus"/>
-					<action function="set">general_back=ext_custom_other</action>
+					<action function="set">general_back=ext_custom</action>
 					<action function="page">ext_custom_other</action>
 				</listitem>
 			</listbox>
@@ -574,6 +574,10 @@
 				</listitem>
 				<listitem name="{@cust_autoapply}">
 					<data variable="instant_apply"/>
+					<condition var1="general_back" op="!=" var2="terminal"/>
+				</listitem>
+				<listitem name="{@cust_new_ota_screen}">
+					<data variable="ota_new_screen"/>
 					<condition var1="general_back" op="!=" var2="terminal"/>
 				</listitem>
 			</listbox>

@@ -15,6 +15,10 @@
 		<style name="text_ab_title">
 			<font resource="Secondary-title" color="%accent%"/>
 		</style>
+		
+		<style name="text_ab_title_ota">
+			<font resource="Secondary-title" color="%text%"/>
+		</style>
 		<style name="text_ab_switch">
 			<font resource="title" color="#fafafa"/>
 		</style>

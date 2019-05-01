@@ -309,6 +309,18 @@
 		</page>
 
 		<page name="action_page">
+			<action>
+				<condition var1="tw_action" var2="openrecoveryscript"/>
+				<condition var1="ota_new_screen" var2="1"/>
+				<condition var1="ota_screen_log" op="!=" var2="1"/>
+				<actions>
+					<action function="set">tw_has_cancel=1</action>
+					<action function="set">tw_cancel_action=set</action>
+					<action function="set">tw_cancel_param=ota_screen_log=0</action>
+					<action function="overlay">ota_simple</action>
+				</actions>
+			</action>
+
 			<template name="body"/>
 
 			<template name="progress_bar"/>
@@ -321,7 +333,7 @@
 				<condition var1="tw_action" op="!=" var2="adbsideload"/>
 				<condition var1="tw_action" op="!=" var2="openrecoveryscript"/>
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@working}</text>
+				<text>OrangeFox</text>
 			</text>
 
 			<text style="text_ab_title">
@@ -399,17 +411,6 @@
 					<action function="%tw_action2%">%tw_action2_param%</action>
 				</actions>
 			</action>
-
-			<action>
-				<condition var1="tw_action" var2="openrecoveryscript"/>
-				<condition var1="ota_screen_log" op="!=" var2="1"/>
-				<actions>
-					<action function="set">tw_has_cancel=1</action>
-					<action function="set">tw_cancel_action=overlay</action>
-					<action function="set">tw_cancel_param=ota_simple</action>
-					<action function="overlay">ota_simple</action>
-				</actions>
-			</action>
 		</page>
 
 		<page name="ota_simple">
@@ -424,7 +425,7 @@
 				<placement x="%center_x%" y="%center_y%" placement="4"/>
 			</image>
 
-			<text style="text_ab_title">
+			<text style="text_ab_title_ota">
 				<placement x="%center_x%" y="%ota_update_title_y%" placement="4"/>
 				<text>{@ota_simple_title}</text>
 			</text>
@@ -478,7 +479,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@working}</text>
+				<text>OrangeFox</text>
 			</text>
 
 			<text style="text_ab_title">

@@ -34,7 +34,7 @@
 				<condition var1="clock_style" var2="1"/>
 				<condition var1="lock_info" var2="1"/>
 				<font resource="info"/>
-				<placement x="%center_x%" y="%row3_1a_y%" placement="4"/>
+				<placement x="%center_x%" y="%row3_2_y%" placement="4"/>
 				<text>{@cpu_temp} | %tw_battery%</text>
 			</text>
 
