@@ -370,7 +370,7 @@
 					<action function="set">pass_open=1</action>
 					<action function="set">pass_true=%pass_new_1%</action>
 					<action function="set">pass_type=%pass_type_tmp%</action>
-					<action function="page">ext_general</action>
+					<action function="page">pass_select</action>
 				</actions>
 			</action>
 
