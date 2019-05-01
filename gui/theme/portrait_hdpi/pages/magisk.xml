@@ -306,6 +306,7 @@
 					<condition var1="ft_mm_isnew" op="!=" var2="1"/>
 					<placement x="%col1_x%" y="%row4_1_y%" w="%content_w%" h="%mb_h_hide%"/>
 					<action function="set">tw_file_location1=/magisk/%mmgui_select%</action>
+					<action function="set">tw_reload_fm=1</action>
 					<action function="page">filemanagerlist</action>
 				</button>
 
@@ -313,6 +314,7 @@
 					<condition var1="ft_mm_isnew" var2="1"/>
 					<placement x="%col1_x%" y="%row4_1_y%" w="%content_w%" h="%mb_h_hide%"/>
 					<action function="set">tw_file_location1=/data/adb/modules/%mmgui_select%</action>
+					<action function="set">tw_reload_fm=1</action>
 					<action function="page">filemanagerlist</action>
 				</button>
 
