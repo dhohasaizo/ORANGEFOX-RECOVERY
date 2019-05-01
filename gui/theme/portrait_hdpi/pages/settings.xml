@@ -154,12 +154,6 @@
 				<text>{@mount_hdr}</text>
 			</text>
 
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<condition var1="general_back" var2="terminal"/>
-				<text>{@term_s_hdr}</text>
-			</text>
-
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
 				<condition var1="general_back" op="!=" var2="reboot"/>
@@ -172,7 +166,6 @@
 				<listitem name="{@mount_sys_ro_chk}">
 					<condition var1="general_back" op="!=" var2="wipe"/>
 					<condition var1="general_back" op="!=" var2="reboot"/>
-					<condition var1="general_back" op="!=" var2="terminal"/>
 					<icon res="checkbox_true"/>
 					<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
 					<action function="set">tw_lifetime_writes=2</action>
@@ -181,27 +174,14 @@
 				<listitem name="{@mount_sys_ro_chk}">
 					<condition var1="general_back" op="!=" var2="wipe"/>
 					<condition var1="general_back" op="!=" var2="reboot"/>
-					<condition var1="general_back" op="!=" var2="terminal"/>
 					<condition var1="tw_mount_system_ro" var2="0"/>
 					<icon res="checkbox_false"/>
 					<action function="mountsystemtoggle">1</action>
 				</listitem>
 				<listitem name="{@use_rmrf_chk}">
-					<condition var1="general_back" op="!=" var2="terminal"/>
 					<condition var1="general_back" op="!=" var2="mount"/>
 					<data variable="tw_rm_rf"/>
 				</listitem>
-				<listitem name="{@use_fixed_font}">
-					<condition var1="general_back" op="!=" var2="wipe"/>
-					<condition var1="general_back" op="!=" var2="reboot"/>
-					<condition var1="general_back" op="!=" var2="mount"/>
-					<data variable="use_fixed_font"/>
-				</listitem>
-				<!--listitem name="{@install_reboot_chk}">
-					<condition var1="tw_reboot_system" var2="1"/>
-					<condition var1="general_back" var2="settings"/>
-					<data variable="tw_install_reboot"/>
-				</listitem-->
 				<listitem name="{@zip_sig_chk}">
 					<data variable="tw_signed_zip_verify"/>
 					<condition var1="general_back" var2="settings"/>
@@ -210,6 +190,14 @@
 					<data variable="tw_never_show_system_ro_page"/>
 					<condition var1="general_back" var2="settings"/>
 				</listitem>
+				<listitem name="{@fox_boot_fastcharge}">
+					<condition var1="general_back" var2="settings"/>
+					<data variable="fox_boot_fastcharge_check"/>
+				</listitem>
+				<listitem name="{@fox_save_load_aromafm_config_chk}">
+					<condition var1="general_back" var2="settings"/>
+					<data variable="fox_reboot_saveload_aromafm_check"/>
+				</listitem>
 				<listitem name="{@files_auto_open}">
 					<data variable="fm_auto_open"/>
 					<condition var1="general_back" var2="settings"/>
@@ -217,13 +205,6 @@
 				<listitem name="{@files_show_hidden}">
 					<data variable="tw_hidden_files"/>
 					<condition var1="general_back" var2="settings"/>
-				</listitem>
-				<listitem name="{@fox_boot_fastcharge}">
-					<condition var1="general_back" var2="settings"/>
-					<data variable="fox_boot_fastcharge_check"/>
-				</listitem>
-				<listitem name="{@fox_save_load_aromafm_config_chk}">								<condition var1="general_back" var2="settings"/>
-					<data variable="fox_reboot_saveload_aromafm_check"/>
 				</listitem>
 				<listitem name="{@inject_twrp_chk}">
 					<condition var1="tw_has_injecttwrp" var2="1"/>
@@ -234,7 +215,7 @@
 			
 			
 			<text style="caption">
-				<placement x="%col1_x%" y="%row8_2_y%"/>
+				<placement x="%col1_x%" y="%row7_3a_y%"/>
 				<condition var1="general_back" var2="settings"/>
 				<text>{@perf_title}</text>
 			</text>
@@ -242,38 +223,38 @@
 			<text style="text_body2">
 				<condition var1="general_back" var2="settings"/>
 				<condition var1="fox_boot_performance_check" var2="1"/>
-				<placement x="%col1_x%" y="%row8_3_y%"/>
+				<placement x="%col1_x%" y="%row8_1a_y%"/>
 				<text>{@perf_conf_high}</text>
 			</text>
 			
 			<text style="text_body2">
 				<condition var1="general_back" var2="settings"/>
 				<condition var1="fox_boot_powersave_check" var2="1"/>
-				<placement x="%col1_x%" y="%row8_3_y%"/>
+				<placement x="%col1_x%" y="%row8_1a_y%"/>
 				<text>{@perf_conf_batt}</text>
 			</text>
 			
 			<text style="text_body2">
 				<condition var1="general_back" var2="settings"/>
 				<condition var1="fox_boot_balance_check" var2="1"/>
-				<placement x="%col1_x%" y="%row8_3_y%"/>
+				<placement x="%col1_x%" y="%row8_1a_y%"/>
 				<text>{@perf_conf_balance}</text>
 			</text>
 
 			<button style="menu_btn">
 				<condition var1="general_back" var2="settings"/>
-				<placement x="%col1_x%" y="%row8_2_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<placement x="%col1_x%" y="%row7_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<action function="page">ext_gov</action>
 			</button>
 
 			<text style="caption">
-				<placement x="%col1_x%" y="%row6_1a_y%"/>
+				<placement x="%col1_x%" y="%row5_3_y%"/>
 				<condition var1="general_back" var2="settings"/>
 				<text>{@areb_confirm}</text>
 			</text>
 
 			<listbox>
-				<placement x="0" y="%row6_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<placement x="0" y="%row6_1_y%" w="%screen_w%" h="%lb_l3%"/>
 				<condition var1="general_back" var2="settings"/>
 				<data name="disable_no_os"/>
 				<listitem name="{@otp_never}">1</listitem>

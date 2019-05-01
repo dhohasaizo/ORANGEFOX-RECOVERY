@@ -52,6 +52,7 @@
 				</listitem>
 				<listitem name="{@cust_oth}">
 					<icon res="plus"/>
+					<action function="set">general_back=ext_custom_other</action>
 					<action function="page">ext_custom_other</action>
 				</listitem>
 			</listbox>
@@ -543,24 +544,37 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<condition var1="general_back" op="!=" var2="terminal"/>
 				<text>{@cust_oth}</text>
+			</text>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<condition var1="general_back" var2="terminal"/>
+				<text>{@term_s_hdr}</text>
 			</text>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row1_1_y%"/>
-				<text>{@cust_oth}</text>
+				<text>{@options_hdr}</text>
 			</text>
 
 			<listbox style="settingslist">
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l5%"/>
+				<listitem name="{@use_fixed_font}">
+					<data variable="use_fixed_font"/>
+				</listitem>
 				<listitem name="{@fm_icons_simple}">
 					<data variable="list_font"/>
+					<condition var1="general_back" op="!=" var2="terminal"/>
 				</listitem>
 				<listitem name="{@cust_expand_list}">
 					<data variable="auto_show_btns"/>
+					<condition var1="general_back" op="!=" var2="terminal"/>
 				</listitem>
 				<listitem name="{@cust_autoapply}">
 					<data variable="instant_apply"/>
+					<condition var1="general_back" op="!=" var2="terminal"/>
 				</listitem>
 			</listbox>
 
@@ -571,7 +585,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">ext_custom</action>
+				<action function="page">%general_back%</action>
 			</action>
 		</page>
 

@@ -632,7 +632,7 @@
 					<placement x="%ab_btn1_x%" y="%ab_y%"/>
 					<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 					<action function="set">general_back=terminal</action>
-					<action function="page">ext_general</action>
+					<action function="page">ext_custom_other</action>
 				</button>
 
 				<image>
