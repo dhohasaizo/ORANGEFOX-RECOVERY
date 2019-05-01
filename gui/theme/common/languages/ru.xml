@@ -1123,9 +1123,6 @@
 		
 		<!-- OrangeFox Recovery - Pie Door theme -->
 
-		<string name="orangefox_msg2">[OrangeFox]: Добро пожаловать!</string>
-		<string name="orangefox_msg3">[Версия]: {1}</string>
-		<string name="orangefox_msg4">[Сборка]: {1}</string>
 		<string name="unpack">Распаковать</string>
 		<string name="repack">Запаковать</string>
 		
@@ -1293,5 +1290,38 @@
 		<string name="fox_dmverity_chk">Отключить DM-Verity</string>
 		<string name="fox_forced_encryption_chk">Отключить принудительное шифрование</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Отключить автоперезагрузку после OTA</string>
+
+		<string name="zip_compatible_err">Zip Treble compatibility error!</string>
+		
+		
+		<!-- Console Messages -->
+		<string name="fox_incremental_ota_compatibility_chk">Проверка подписи инкрементального пакета...</string>
+		<string name="fox_incremental_ota_compatibility_false">Устанавливаемый пакет несовместим с этой версией прошивки!</string>
+		<string name="fox_incremental_ota_compatibility_true">Инкрементный пакет совместим</string>
+		<string name="fox_incremental_ota_status_enabled">Поддержка обновлений MIUI OTA: включена</string>
+		<string name="fox_incremental_ota_status_disabled">Поддержка обновлений MIUI OTA: отключена</string>
+		<string name="fox_incremental_package_detected">Обнаружен инкрементный пакет '{1}'</string>
+		<string name="fox_survival_does_not_exist">OTA Survival не найден! Пожалуйста прошейте сначала полную версию прошивки!</string>
+		<string name="fox_install_detecting">Обнаружение текущего пакета...</string>
+		<string name="fox_install_standard_detected">- Обнаружен стандартный пакет</string>
+		<string name="fox_install_miui_detected">- Обнаружен пакет обновления MIUI</string>
+		<string name="fox_zip_have_bootloader">Предупреждение. Обнаружена переустановка загрузчика, которая была вызвана '{1}'.</string>
+		<string name="fox_no_space_ota_survival">Недостаточно свободного места на внутреннем хранилище для создания OTA Survival.</string>
+		<string name="fox_incremental_ota_res">OTA_RES -- готово!</string>
+		<string name="fox_incremental_ota_res_run">Запуск процесса OTA_RES...</string>
+		<string name="fox_incremental_ota_bak_run">Запуск процесса OTA_BAK...</string>
+		<string name="fox_incremental_ota_bak">OTA_BAK -- готово!</string>
+		<string name="fox_internal_fatal_i1">OrangeFox: КРИТИЧЕСКАЯ ошибка! Резервное копирование внутренней памяти во внутреннюю память невозможно!</string>
+		<string name="fox_internal_fatal_i2">Вы ДОЛЖНЫ изменить место расположения резервной копии на MicroSD / USB-OTG.</string>
+		<string name="fox_internal_q1">OrangeFox - Внутренняя память - будьте осторожны!</string>
+
+		<string name="of_run_process">Запуск процесса '{1}'</string>
+		<string name="of_run_process_fail">Не удалось завершить процесс '{1}'</string>
+		<string name="of_run_process_done">Процесс '{1}' завершен</string>
+		<string name="of_dm_verity">Успешно пропатчен ​​DM-Verity</string>
+		<string name="of_dm_verity_off">DM-Verity не включен</string>
+		<string name="of_encryption">Успешно пропатчено принудительное шифрование</string>
+		<string name="of_encryption_off">Принудительное шифрование не включено</string>
+		<string name="of_fstab">Обнаружен fstab: '{1}'</string>
 	</resources>
 </language>

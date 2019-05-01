@@ -996,18 +996,14 @@
 		<string name="fox_install_standard_detected">- Detected Standard Package</string>
 		<string name="fox_install_miui_detected">- Detected MIUI Update Package</string>
 		<string name="fox_zip_have_bootloader">Warning: Detected reinstallation of the bootloader which was called by '{1}'.</string>
-		<string name="substratum_done">-- Substratum Overlays Wipe Complete!</string>
 		<string name="fox_no_space_ota_survival">Not enough free space on internal storage for creating the OTA survival.</string>
 		<string name="fox_incremental_ota_res">OTA_RES -- done!</string>
 		<string name="fox_incremental_ota_res_run">Running OTA_RES process...</string>
 		<string name="fox_incremental_ota_bak_run">Running OTA_BAK process...</string>
 		<string name="fox_incremental_ota_bak">OTA_BAK -- done!</string>
-		<string name="fox_set_new_access_password">Changing recovery access password...</string>
 		<string name="fox_internal_fatal_i1">OrangeFox: FATAL ERROR! You cannot backup Internal Storage onto itself!</string>
 		<string name="fox_internal_fatal_i2">You MUST change the backup destination to MicroSD/USB-OTG.</string>
 		<string name="fox_internal_q1">OrangeFox - Internal Storage - take care!</string>
-
-		<string name="fox_remove_access_password_one">Removing recovery access password...</string>
 
 		<string name="copy_kernel_log">Copied kernel log to {1}</string>
 
