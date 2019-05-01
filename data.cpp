@@ -1366,7 +1366,6 @@ void DataManager::Leds(bool enable)
   blink1 = leds1 + "/blink";
   bsmax1 = leds1 + "/max_brightness";
 
-  string vibrate_path = "/sys/class/timed_output/vibrator/enable";
   DataManager::GetValue("tw_action_vibrate", install_vibrate_value);
   DataManager::GetValue("fox_led_color", ledcolor);
 
@@ -1384,23 +1383,33 @@ void DataManager::Leds(bool enable)
     }
   else
     {
-      if (stat(bs.c_str(), &st) == 0 && stat(time.c_str(), &st) == 0
-	  && stat(bsmax.c_str(), &st) == 0 && stat(blink.c_str(), &st) == 0)
-	{
-	  if (TWFunc::read_file(bsmax, bsm) == 0)
-	    {
-	      TWFunc::write_to_file(bs, bsmax);
-	      TWFunc::write_to_file(blink, "1");
-        TWFunc::write_to_file(time, "1 1 1 1");
+      if (stat(bs.c_str(), &st) == 0 && stat(bsmax.c_str(), &st) == 0) {
+        if (stat(time.c_str(), &st) == 0 && stat(blink.c_str(), &st) == 0)
+        {
+          if (TWFunc::read_file(bsmax, bsm) == 0)
+            {
+              TWFunc::write_to_file(bs, bsm);
+              TWFunc::write_to_file(blink, "1");
+              TWFunc::write_to_file(time, "1 1 1 1");
 
-        if (ledcolor == 0) {
-          LOGINFO("Enable Yellow led");
-          TWFunc::write_to_file("/sys/class/leds/red/brightness", bsmax);
-          TWFunc::write_to_file("/sys/class/leds/red/blink", "1");
-          TWFunc::write_to_file("/sys/class/leds/red/led_time", "1 1 1 1");
+              if (ledcolor == 0) {
+                LOGINFO("Enable Yellow led");
+                TWFunc::write_to_file("/sys/class/leds/red/brightness", bsm);
+                TWFunc::write_to_file("/sys/class/leds/red/blink", "1");
+                TWFunc::write_to_file("/sys/class/leds/red/led_time", "1 1 1 1");
+              }
+            }
+        } else {
+        //[f/d] Just turn on led if device doesn't support blinking
+          if (TWFunc::read_file(bsmax, bsm) == 0)
+          {
+            TWFunc::write_to_file(bs, bsm);
+
+            if (ledcolor == 0) {
+              TWFunc::write_to_file("/sys/class/leds/red/brightness", bsm);
+            }
+          }
         }
-        TWFunc::write_to_file(vibrate_path, install_vibrate_value);
-	    }
-	}
+      }
     }
 }

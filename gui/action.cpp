@@ -2331,8 +2331,9 @@ int GUIAction::setbootslot(std::string arg)
 
 int GUIAction::flashlight(std::string arg __unused)
 {
-    #ifdef OF_FLASHLIGHT_ENABLE
-    if (OF_FLASHLIGHT_ENABLE == "1") {
+    string enable_flash;
+    DataManager::GetValue(OF_FLASHLIGHT_ENABLE_STR, enable_flash);
+    if (enable_flash == "1") {
 		std::string path_one, path_two,
 					fl_one_on, fl_two_on,
 					max_one, max_two,
@@ -2404,7 +2405,6 @@ int GUIAction::flashlight(std::string arg __unused)
 			}
 		}
   }
-  #endif 
   return 0;
 }
 
