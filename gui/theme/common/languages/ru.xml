@@ -2,8 +2,7 @@
 
 <language>
 	<display>Русский</display>
-	<!-- Translated by Jemmini & Onarion, 2016 -->
-	<!-- Fixed by fordownloads, 2018-2019 -->
+	<!-- Translation by fordownloads, OrangeFox Recovery © 2019 -->
 
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
@@ -680,112 +679,32 @@
 		<string name="sel_color">Выбор цвета</string>
 		<string name="s_color">Цвет</string>
 		<string name="current_color">Файл. система:</string>
-		<string name="functional">Параметры</string>
-		<string name="use_aromafm">Использовать Aroma File Manager</string>
-		<string name="set_bookmark_hdr">Установить закладки</string>
-		<string name="use_bookmark">Закладки для списка файлов</string>
-		<string name="auto_name_generate">Показать название резервной копии</string>
-		<string name="use_flashit_script">Прошивать скриптом FlashIt</string>
-		<string name="visual">Персоналицация</string>
-		<string name="center_clock_bar">Часы по центру</string>
 		<string name="show_cpu_temp_bar">Показывать температуру ЦП</string>
-		<string name="use_menu_btn">Кнопки в главном меню</string>
-		<string name="use_color_navbar">Цветная нижняя панель</string>
-		<string name="tw_zip_location_hdr">Выберите ZIP с темой</string>
-		<string name="theme_splash_hdr">Модификации TWRP</string>
-		<string name="theme_splash_adapt_hdr">Подогнать заставку</string>
-		<string name="theme_image_kitchken">Android Image Kitchen</string>
-		<string name="im_kitchen1">Перепакованный IMG будет сохранён</string>
-		<string name="im_kitchen2">в ту же папку, что и исходный IMG</string>
-		<string name="stock_recovery_im">Образ TWRP</string>
-		<string name="not_selected">не выбран</string>
-		<string name="tw_splash_png_btn">PNG-заставка</string>
-		<string name="install_flash_repack">Установить перепакованный образ</string>
-		<string name="splash_preview">Просмотр</string>
-		<string name="splash_preview_note">Просмотр новой заставки</string>
-		<string name="theme_splash_preview">Просмотр</string>
-		<string name="auto_flash_repack_chb">Сразу установить перепакованный образ</string>
-		<string name="include_flash_repack">Встроить текущую тему в образ</string>
-		<string name="not_include_theme">(Образ не будет содержать тему!)</string>
-		<string name="slider_repack">Проведите для перепаковки</string>
-		<string name="slider_install_repack">Проведите для создания и установки образа</string>
-		<string name="repacking">Перепаковка...</string>
 		<string name="ts_inform">Информация</string>
-		<string name="ts_how_works">Как это работает</string>
-		<string name="sel_rec_im">Выберите образ TWRP</string>
 		<string name="sel_splash_png">Выберите PNG заставку</string>
 		<string name="install_recovery">Установка TWRP...</string>
-		<string name="zip_md5_chk">Проверка MD5 для всех архивов</string>
 		<string name="swipe_to_install">Проведите для установки</string>
-		<string name="start_aromafm">Запуск Aroma File Manager</string>
-		<string name="swipe_aromafm">Проведите для запуска AromaFM</string>
-		<string name="run_aromafm">Запуск</string>
-		<string name="flashit_script">Скрипт FlashIt</string>
-		<string name="raised_installscript_btn">УСТАНОВИТЬ СКРИПТ</string>
-		<string name="image_type">Тип образа</string>
-		<string name="image_type_1">Режим восстановления</string>
-		<string name="image_type_2">Загрузчик</string>
-		<string name="image_type_3">Модуль связи / Модем</string>
-		<string name="install_flashit_script">Установите скрипт FlashIt для продолжения!</string>
 		<string name="swipe_to_install_img">Проведите для установки образа</string>
 		<string name="sel_image_type">Выбор типа образа</string>
 		<string name="zip_add_queue">Добавить ZIP</string>
-		<string name="tw_aroma_btn">AROMA File Manager</string>
-		<string name="sel_part_single1">Выберите один раздел</string>
-		<string name="sel_part_single2">для доступа к настройкам</string>
 		<string name="part_fs_error_1">Просмотр параметров не</string>
 		<string name="part_fs_error_2">доступен для этого раздела!</string>
 		<string name="new_file_system">Новая файловая система</string>
 		<string name="adb_sideload_opt">Настройки Sideload</string>
 		<string name="about_hdr">Информация</string>
 		<string name="author">Автор</string>
-		<string name="contact">Контакты</string>
 		<string name="credits">Благодарности</string>
 		<string name="version">Версия</string>
-		<string name="theme">Установка темы</string>
-		<string name="theme_vers">Тема:</string>
 		<string name="set_password">Установка пароля</string>
 		<string name="verifying_pas">Подтверждение пароля</string>
-		<string name="dialog_folder_note_1">Вы хотите установить эту папку</string>
-		<string name="dialog_folder_note_2">по умолчанию для этого списка?</string>
-		<string name="hide_folder">Не напоминать</string>
-		<string name="dialog_label_color_hdr">Требуется перезагрузка</string>
-		<string name="dialog_color_note_1">Не напоминать</string>
-		<string name="dialog_settheme_hdr">Изменить тему</string>
-		<string name="dialog_settheme_btn">ИЗМЕНИТЬ ТЕМУ</string>
-		<string name="dialog_settheme_note_1">TWRP сейчас перезагрузится</string>
-		<string name="dialog_settheme_note_2">для применения выбраной темы.</string>
-		<string name="dialog_settheme_note_2a">для применения выбраного цвета.</string>
-		<string name="dialog_settheme_color_btn">Цвет темы</string>
-		<string name="dialog_splash_btn">Заставка</string>
-		<string name="dialog_splash_adapt">Подогнать</string>
-		<string name="dialog_reset_note_1">Восстановить настройки по</string>
-		<string name="dialog_reset_note_2">умолчанию для TWRP и темы?</string>
-		<string name="dialog_reset_note_3">Требуется перезагрузка.</string>
 		<string name="dialog_reset_theme_hdr">Сброс</string>
-		<string name="dialog_reset_theme_note_1">Сбросить настройки темы?</string>
-		<string name="dialog_reset_theme_note_2"></string>
-		<string name="dialog_remove_theme_hdr">Удалить тему</string>
-		<string name="dialog_remove_theme_1">Вы хотите удалить эту тему?</string>
 		<string name="queue_no">№</string>
-		<string name="dialog_warning_hdr">Внимание!</string>
-		<string name="dialog_warning_1">Размер нового файла образа</string>
-		<string name="dialog_warning_2">может превышать размер</string>
-		<string name="dialog_warning_3">раздела TWRP. В этом случае,</string>
-		<string name="dialog_warning_4">образ не будет прошит.</string>
-		<string name="all_done">Всё готово</string>
-		<string name="patch_image">Патч образов...</string>
-		<string name="done_script">Скрипт завершен с результатом: [{1}]</string>
-		<string name="aborted_script">script aborted (no error message)</string>
-		<string name="aborted_script_err">Скрипт прерван с результатом: {1}</string>
 		<string name="options_cptn">Настройки</string>
 		<string name="flash_img_confirm">Прошить образ</string>
 		<string name="also_wipes">Также очистить</string>
 		<string name="confirm_wipe_cptn">Подтвердить очистку</string>
 		<string name="storage_cptn">Накопитель</string>
 		<string name="enter_password_cptn">Пароль</string>
-		<string name="theme_path_hdr">Путь к теме</string>
-		<string name="theme_path_subhdr">Выберите UI.ZIP</string>
 		
 		<!-- added by fordownloads -->
 		<string name="backing">Резервное копирование</string>
@@ -802,9 +721,6 @@
 		<string name="settings_screen_cptn">Экран</string>
 		<string name="language_cptn">Язык</string>
 		<string name="settings_cptn">Настройки</string>
-		<string name="fordowns_theme">Персонализация</string>
-		<string name="fordowns_about">TWRP Materialised+</string>
-		<string name="fordowns_about2">Материальный дизайн TWRP</string>
 		<string name="restore_backup_hdr">Воосстановить копию</string>
 		<string name="restore_md5_chk">Проверить MD5 копий</string>
 		<string name="part_yes">Да</string>
@@ -816,13 +732,7 @@
 		<string name="btn_flat_more">+</string>
 		<string name="btn_flat_less">-</string>
 		<string name="fordowns_sl">Запуск Sideload...</string>
-		<string name="fordowns_recovery">Меню</string>
 		<string name="fordowns_to">в</string>
-		<string name="mod">Оригинал создан</string>
-		<string name="fm_actions">Действия</string>
-		<string name="su_install">Установка SuperSU</string>
-		<string name="su_device">Получение ROOT</string>
-		<string name="name_click">Нажмите для изменения...</string>
 		<string name="dumlock_note1">Информация о HTC Dumlock доступна</string>
 		<string name="dumlock_note2">на сайте:</string>
 		<string name="decrypt">Расшифровка</string>
@@ -839,33 +749,17 @@
 		<string name="dbg_page">Страница</string>
 		<string name="dbg_overlay">Слой</string>
 		<string name="dbg_active">Отладка включена!</string>
-		
-		<string name="fm_butts">Кнопка менеджера файлов</string>
 		<string name="fm_none">Нет</string>
-		<string name="fm_book">Кнопка закладок</string>
-		<string name="fm_font">Кнопка размера значков</string>
-		
-		<string name="cust_fm">Файлы</string>
-		<string name="cust_fm_t">Файлы</string>
-		<string name="cust_fm_font">Размер значков</string>
-		<string name="cust_fm_font_b">Большой</string>
-		<string name="cust_fm_font_s">Маленький</string>
 		<string name="cust_oth">Дополнительно</string>
-		<string name="cust_fm_shad">Использовать тень</string>
 		
-		<string name="cust_navbar">НАВИГАЦИЯ</string>
-		<string name="cust_navbar_t">Панель навигации</string>
-		<string name="cust_navbar_style">Стиль</string>
 		<string name="cust_navbar_noug">Nougat</string>
 		<string name="cust_navbar_cls">Классика</string>
-		<string name="cust_navbar_bkg">Фон</string>
 		<string name="cust_navbar_accent">Акцент</string>
 		<string name="cust_navbar_black">Черный</string>
 		<string name="cust_navbar_white">Использовать белые кнопки</string>
 		
 		<string name="fm_open">Открыть как...</string>
 		<string name="fm_open_text">Текст</string>
-		<string name="fm_open_MD5">Файл контрольных сумм</string>
 		<string name="fm_open_ZIP">Архив ZIP для установки</string>
 		
 		<string name="fm_open_backup">Резервная копия</string>
@@ -887,9 +781,6 @@
 		<string name="settings_screen">Экран</string>
 		<string name="settings_time">Региональные настройки</string>
 		
-		<string name="settings_md5">Контрольные суммы и проверка</string>
-		
-		<string name="lang_file">Русский</string>
 		<string name="lang_wait">Пожалуйста, подождите...</string>
 		
 		<string name="settings_ui_status">Панель статуса</string>
@@ -905,12 +796,8 @@
 		<string name="settings_backup_name_auto_hide">Создавать при создании копии</string>
 		<string name="working">Подождите...</string>
 		
-		<string name="accent_title">Использовать акцент в заголовке</string>
-		
 		<string name="update_btn">Обновить</string>
 		<string name="include_kernel_log">Сохранить лог ядра</string>
-		
-		<string name="new_lock">FRP и экран блокировки</string>
 
 		<string name="fm_books">Избранное</string>
 		<string name="fm_books_desc">Просмотр избранных папок</string>
@@ -935,7 +822,7 @@
 		<string name="no_os1">Система не установлена! Вы хотите</string>
 		<string name="no_osrb">перезагрузить устройство?</string>
 		<string name="no_ospo">выключить устройство?</string>
-		<string name="no_osrb_recovery">перезагрузиться в режим восстановления?</string>
+		<string name="no_osrb_recovery">перезагрузить OrangeFox?</string>
 		<string name="no_osrb_boot">перезагрузиться в загрузчик?</string>
 		<string name="no_osrb_down">перезагрузиться в режим загрузки?</string>
 		<string name="no_osrb_edl">перезагрузиться в режим EDL?</string>
@@ -947,125 +834,27 @@
 		
 		<string name="areb_off">Выключено</string>
 		
-		<string name="restoredialog_books">Не показывать диалог установки закладок</string>
 		<string name="restoredialog_readonly">Не показывать диалог "только чтение"</string>
 		
 		<string name="offset_wrong">Неверное смещение!</string>
-		
-		<string name="flashlight">Источник фонарика</string>
-		
-		<string name="new_battery_wait">Калибровка...</string>
-		<string name="new_battery_done">Батарея откалибрована</string>
-		<string name="new_lock_wait">Удаление...</string>
-		<string name="new_lock_done">Удаление завершено</string>
-		
-		<string name="flashlight_set">Уровень яркости (текущий: %flash_active%)</string>
-		<string name="flashlight_dialog1">Фонарик</string>
-		<string name="flashlight_dialog2">Яркость</string>
-		
-		<string name="flashlight_govno_1">Этот источник не может быть</string>
-		<string name="flashlight_govno_2">использован как фонарик!</string>
-		<string name="flashlight_good_1">Вы хотите использовать этот</string>
-		<string name="flashlight_good_2">источник как фонарик?</string>
-		
-		<string name="extra_keys">Подсказка:</string>
-		
-		<string name="extra_keys3">Включайте фонарик зажатием кнопки</string>
-		<string name="extra_keys4">питания и кнопки громкости вверх!</string>
-		
+	
 		<string name="new_key">Использовать новый вид клавиатуры</string>
 		
 		<string name="bkp_nametitle">Имя копии</string>
 		<string name="bkp_namesub">Введите или сгенерируйте имя</string>
 		
-		<string name="aroma_select">Выберите AromaFM</string>
 		<string name="goto_storage">Память</string>
 		
-		<string name="custom_font">Cвой шрифт</string>
-		<string name="select_custom_font">Выберите шрифт</string>
-		
-		<string name="aroma_inimg">Встроенный AromaFM</string>
-		<string name="keep">Оставить</string>
-		<string name="remove">Убрать</string>
-		
 		<string name="theme_apply">Обновление темы...</string>
-		<string name="theme_font">Шрифт</string>
 		<string name="theme_fonts">Шрифты</string>
 		<string name="theme_style">Стиль</string>
 		<string name="theme_accent">Акцент</string>
-		<string name="theme_bkg">Фон</string>
-		<string name="theme_default">Однотонный</string>
-		<string name="theme_userdef">Пользовательский</string>
 		<string name="theme_font_sel">Основной шрифт</string>
 		<string name="theme_sec_font_sel">Дополнительный шрифт</string>
-		<string name="theme_ar_sel">Выберите соотношение сторон</string>
-		<string name="theme_dim">Затемнение</string>
-		<string name="alt_btn">Альтернативный вид кнопок</string>
-		<string name="theme_pngselect">Выберите изображение</string>
-		<string name="theme_delbkg">Использовать одноцветный фон</string>
-		<string name="theme_newpng">Выбрать другое изображение для фона</string>
-		<string name="theme_view">Просмотр текущего изображения</string>
 		
-		<string name="not_set">Не задано</string>
-		<string name="aroma_on">Включить AromaFM</string>
 		<string name="of">из</string>
-		<string name="storagedialog_enable">Включить диалог выбора хранилища</string>
-		<string name="checksum_fail">Ошибка контрольных сумм!</string>
-		<string name="checksum_suc">Контрольные суммы совпали!</string>
-		<string name="include_bugreport">Отчет об ошибке</string>
-		<string name="flash_repacked">ПРОШИТЬ</string>
 		
-		<string name="removelock_1">Убрать пароль и графический ключ</string>
-		<string name="removelock_2">Отключить FRP</string>
-		<string name="removelock_3">Очистить раздел FRP через TWRP</string>
-		<string name="removelock_4">Автоматически очистить раздел FRP</string>
-		
-		<string name="aik_help_1">AIK не найден! Для установки</string>
-		<string name="aik_help_2">AIK, подключите ваше устройство</string>
-		<string name="aik_help_3">к ПК и введите в терминале:</string>
-		<string name="aik_help_4">adb shell aik</string>
-		
-		<string name="aik_not_found">AIK не найден</string>
-		<string name="aik_found">AIK найден</string>
-		
-		<string name="sph_set">Настройки заставки</string>
-		<string name="sph_place">Расположение</string>
-		<string name="sph_logo">Тип логотипа</string>
-		<string name="sph_sidebar">Боковая панель</string>
-		<string name="sph_ttrail">"Хвост" вверху</string>
-		<string name="sph_btrail">"Хвост" внизу</string>
-		<string name="top">Наверху</string>
-		<string name="center">По центру</string>
-		<string name="bottom">Внизу</string>
-		<string name="preview_btn">ПОКАЗАТЬ</string>
-		<string name="sph_inv">Инверсия</string>
-		<string name="sph_newclassic">Новая классика</string>
-		<string name="sph_classtitle">Заголовок внизу</string>
-		<string name="sph_classic">(классика)</string>
-		<string name="sph_colors">Цвета заставки</string>
-		<string name="sph_colors_btn">ЦВЕТА</string>
-		<string name="getreco_title">Извлечение TWRP</string>
-		<string name="getreco_err">Невозможно извлечь TWRP!</string>
-		<string name="getreco_btn">Извлечь образ TWRP из устройства</string>
 		<string name="sph_sph">Заставка</string>
-		<string name="ws_create_t">Создать тему</string>
-		<string name="ws_create_t_1">Workshop создаст новую тему</string>
-		<string name="ws_create_t_2">ui.zip для работы. Выбранные</string>
-		<string name="ws_create_t_3">изменения не будут применены.</string>
-		
-		<string name="color_picker">Выбор цвета</string>
-		<string name="color_red">Красный</string>
-		<string name="color_blue">Синий</string>
-		<string name="color_green">Зелёный</string>
-		<string name="color_bg">Цвет фона</string>
-		<string name="color_accent">Цвет акцента</string>
-		<string name="color_add">Дополнительный цвет</string>
-		<string name="cleanup">Очистить</string>
-		
-		<string name="sph_include">Встроить в IMG...</string>
-		<string name="sph_includearoma">Встроить AromaFM (без сохранения конфигурации)</string>
-		
-		<string name="compatibility_321">Совместимость с TWRP 3.2.1</string>
 		
 		<string name="adb_backup_pc1">Эта резервная копия будет</string>
 		<string name="adb_backup_pc2">сохранена на вашем компьютере</string>
@@ -1073,10 +862,8 @@
 		<string name="starting_aroma">Запуск AromaFM...</string>
 		<string name="lang_set_wait">Изменение языка...</string>
 		<string name="installing_theme">Установка темы...</string>
-		<string name="swipe_to_install_img_reb">Проведите для прошивки и перезагрузки</string>
 		
 		<string name="use_fixed_font">Моноширинный шрифт в терминале</string>
-		<string name="aspect_ratio">Соотношение сторон</string>
 		<!-- Тема изначально предназначалась для версии 3.0.2, так что криво протируем новые языковые строки ~_~ -->
 		<string name="data_backup">Data</string>
 		<string name="autostorage">Хранилище</string>

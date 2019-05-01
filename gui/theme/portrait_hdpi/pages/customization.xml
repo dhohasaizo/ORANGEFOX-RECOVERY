@@ -324,7 +324,7 @@
 			<text color="%text%">
 				<condition var1="clock_style" var2="1"/>
 				<font resource="clock"/>
-				<placement x="%center_x%" y="%row2_1_y%" placement="4"/>
+				<placement x="%center_x%" y="%row1_3a_y%" placement="4"/>
 				<text>%tw_time%</text>
 			</text>
 
@@ -893,68 +893,6 @@
 				<action function="page">ext_custom</action>
 			</action>
 		</page>
-		
-		<!--page name="ext_custom_fonts_cust">
-			<template name="body"/>
-			
-			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="1"/>
-				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon" file="file_icon" />
-				<filter extn=".ttf" folders="1" files="1"/>
-				<path name="tw_zip_location" default="/sdcard"/>
-				<data name="tw_filename"/>
-				<selection name="tw_file"/>
-			</fileselector>
-
-			<fileselector style="fileselector_s">
-				<condition var1="list_font" op="!=" var2="1"/>
-				<placement x="0" y="%row_ab_ex_y%" w="%fileselector_width%" h="%fileselector_terminal_height%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon_small" file="file_icon_small" />
-				<filter extn=".ttf" folders="1" files="1"/>
-				<path name="tw_zip_location" default="/sdcard"/>
-				<data name="tw_filename"/>
-				<selection name="tw_file"/>
-			</fileselector>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-			
-			<template name="actionbar_sort"/>
-			<template name="actionbar_storage"/>
-
-			<text style="text_ab_subtitle">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>%tw_zip_location%</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@select_custom_font}</text>
-			</text>
-
-			<action>
-				<condition var1="tw_filename" op="modified"/>
-				<actions>
-					<action function="set">ttf_path=%tw_filename%</action>
-					<action function="set">theme_cmd=themes/fonts/Custom.xml > ./themes/font.xml;cp "%ttf_path%" "./fonts/Custom.ttf"</action>
-					<action function="page">apply_font</action>
-				</actions>
-			</action>
-
-			<action>
-				<touch key="back"/>
-				<action function="page">ext_custom_fonts</action>
-			</action>
-
-			<action>
-				<touch key="home"/>
-				<action function="page">main</action>
-			</action>
-		</page-->
 		
 		<page name="ext_custom_theme">
 			<template name="body"/>

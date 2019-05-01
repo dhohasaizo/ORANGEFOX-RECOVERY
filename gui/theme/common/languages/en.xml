@@ -581,122 +581,34 @@
 		<string name="sel_color">Select Color</string>
 		<string name="s_color">Color</string>
 		<string name="current_color">File System:</string>
-		<string name="functional">Functional</string>
-		<string name="use_aromafm">Use Aroma File Manager</string>
-		<string name="set_bookmark_hdr">Set Bookmark</string>
-		<string name="use_bookmark">Use bookmark function for file lists</string>
-		<string name="auto_name_generate">Show auto generated backup name</string>
-		<string name="use_flashit_script">Use FlashIt script for image flashing</string>
-		<string name="visual">Visual</string>
-		<string name="center_clock_bar">Center clock in statusbar</string>
 		<string name="show_cpu_temp_bar">Show CPU temperature</string>
-		<string name="use_menu_btn">Use buttons on main menu</string>
-		<string name="use_color_navbar">Use accent color for navbar</string>
-		<string name="tw_zip_location_hdr">Select Theme ZIP</string>
-		<string name="theme_splash_hdr">OrangeFox modification</string>
-		<string name="theme_splash_adapt_hdr">Adapt OrangeFox Splash</string>
-		<string name="theme_image_kitchken">Android Image Kitchen</string>
-		<string name="im_kitchen1">The repacked IMG will be saved</string>
-		<string name="im_kitchen2">to the same folder as the stock IMG</string>
-		<string name="stock_recovery_im">Stock OrangeFox Image</string>
-		<string name="not_selected">not selected</string>
-		<string name="tw_splash_png_btn">PNG as Splash Screen</string>
-		<string name="install_flash_repack">Install repacked recovery</string>
-		<string name="splash_preview">Preview</string>
-		<string name="splash_preview_note">See what the new Splash will look like</string>
-		<string name="theme_splash_preview">PREVIEW SPLASH</string>
-		<string name="auto_flash_repack_chb">Automatically install repacked recovery</string>
-		<string name="include_flash_repack">Include current theme in repack</string>
-		<string name="not_include_theme">(the repack will not include the theme!)</string>
-		<string name="slider_repack">Swipe to create Repack</string>
-		<string name="slider_install_repack">Swipe to create &amp; install Repack</string>
-		<string name="repacking">Repacking...</string>
 		<string name="ts_inform">Information</string>
-		<string name="ts_how_works">How it works</string>
-		<string name="sel_rec_im">Select Recovery Image</string>
 		<string name="sel_splash_png">Select Splash PNG</string>
-		<string name="install_recovery">Installing Recovery...</string>
-		<string name="zip_md5_chk">Force MD5 check on all ZIP files</string>
 		<string name="swipe_to_install">Swipe to Install</string>
-		<string name="start_aromafm">Start Aroma File Manager</string>
-		<string name="swipe_aromafm">Swipe to start AromaFM</string>
-		<string name="run_aromafm">Run</string>
-		<string name="flashit_script">FlashIt Script</string>
-		<string name="raised_installscript_btn">Install Script</string>
-		<string name="image_type">Image Type</string>
-		<string name="image_type_1">Recovery Image</string>
-		<string name="image_type_2">Boot Image</string>
-		<string name="image_type_3">Radio / Modem Image</string>
-		<string name="install_flashit_script">Install the FlashIt script to continue!</string>
 		<string name="swipe_to_install_img">Swipe to install Image</string>
 		<string name="sel_image_type">Select Image Type!</string>
 		<string name="zip_add_queue">Add to Queue</string>
-		<string name="tw_aroma_btn">AROMA Filemanager</string>
-		<string name="sel_part_single1">Single select partitions if you want</string>
-		<string name="sel_part_single2">to use the Partition Options!</string>
 		<string name="part_fs_error_1">Partition Options are not</string>
 		<string name="part_fs_error_2">available for this partition!</string>
 		<string name="new_file_system">New File System</string>
 		<string name="adb_sideload_opt">Sideload Options</string>
 		<string name="about_hdr">About</string>
 		<string name="author">Author</string>
-		<string name="contact">Contact</string>
 		<string name="credits">Credits</string>
 		<string name="version">Version</string>
-		<string name="theme">Install Theme</string>
-		<string name="theme_vers">Theme:</string>
 		<string name="set_password">Set Password</string>
 		<string name="verifying_pas">Verify Password</string>
-		<string name="dialog_folder_note_1">Do you want to set the current folder</string>
-		<string name="dialog_folder_note_2">as the default folder for this list?</string>
-		<string name="hide_folder">Don't ask me again</string>
-		<string name="dialog_label_color_hdr">Reboot required</string>
-		<string name="dialog_color_note_1">Don't tell me again</string>
-		<string name="dialog_settheme_hdr">Change Theme</string>
-		<string name="dialog_settheme_btn">Change Theme</string>
-		<string name="dialog_settheme_note_1">The recovery will now reboot</string>
-		<string name="dialog_settheme_note_2">to apply the selected theme.</string>
-		<string name="dialog_settheme_note_2a">to apply the selected color.</string>
 		<string name="dialog_offset_note">Select your offset value</string>
-		<string name="dialog_settheme_color_btn">Change Color</string>
-		<string name="dialog_splash_btn">Change Splash</string>
-		<string name="dialog_splash_adapt">Adapt Splash</string>
-		<string name="dialog_reset_note_1">Do you want to restore the</string>
-		<string name="dialog_reset_note_2">default settings for recovery?</string>
-		<string name="dialog_reset_note_3">Reboot required.</string>
-		<string name="dialog_reset_theme_hdr">Default Settings</string>
-		<string name="dialog_reset_theme_note_1">Do you want to restore the default</string>
-		<string name="dialog_reset_theme_note_2">settings for the Materialised theme?</string>
-		<string name="dialog_remove_theme_hdr">Remove Theme</string>
-		<string name="dialog_remove_theme_1">Do you want to remove the theme?</string>
 		<string name="queue_no">#</string>
-		<string name="dialog_warning_hdr">Warning!</string>
-		<string name="dialog_warning_1">The size of the resulting image file</string>
-		<string name="dialog_warning_2">might exceed the actual size of the</string>
-		<string name="dialog_warning_3">recovery partition. In this case,</string>
-		<string name="dialog_warning_4">flashing the image will fail.</string>
-		<string name="all_done">All Done</string>
-		<string name="patch_image">Patching firmware images...</string>
-		<string name="done_script">script succeeded: result was [{1}]</string>
-		<string name="aborted_script">script aborted (no error message)</string>
-		<string name="aborted_script_err">script aborted: {1}</string>
 		<string name="options_cptn">Options</string>
 		<string name="flash_img_confirm">Flash Image File</string>
 		<string name="also_wipes">Also wipes</string>
 		<string name="confirm_wipe_cptn">Confirm Wipe</string>
 		<string name="storage_cptn">Storage</string>
 		<string name="enter_password_cptn">Password</string>
-		<string name="theme_path_hdr">Theme Path</string>
-		<string name="theme_path_subhdr">Select the UI.ZIP</string>
 		<!-- added by fordownloads -->
-		<string name="fordowns_theme">Theme</string>
-		<string name="fordowns_about">OrangeFox Materialised+</string>
-		<string name="fordowns_about2">Recovery gone App</string>
 		<string name="fordowns_sl">Starting Sideload...</string>
-		<string name="fordowns_recovery">Recovery</string>
-		<string name="mod">Original theme by</string>
 		<string name="fordowns_to">to</string>
-		<string name="name_click">Click here to change...</string>
 		<string name="dbg">Debug</string>
 		<string name="dbg_active">Debug menu activated!</string>
 		<string name="dbg_act">Action</string>
@@ -704,29 +616,16 @@
 		<string name="dbg_set">Set</string>
 		<string name="dbg_page">Page</string>
 		<string name="dbg_overlay">Overlay</string>
-		
-		<string name="fm_butts">Button in Files</string>
 		<string name="fm_none">None</string>
-		<string name="fm_book">Bookmark button</string>
-		<string name="fm_font">Icon size button</string>
 		
-		<string name="cust_fm_font">Icon Size</string>
-		<string name="cust_fm_font_b">Big</string>
-		<string name="cust_fm_font_s">Small</string>
-		<string name="cust_fm_shad">Use shadow</string>
-		
-		<string name="cust_navbar_style">Style</string>
 		<string name="cust_navbar_noug">Nougat</string>
 		<string name="cust_navbar_cls">Classic</string>
-		<string name="cust_navbar_bkg">Background</string>
 		<string name="cust_navbar_accent">Accent</string>
 		<string name="cust_navbar_black">Black</string>
 		<string name="cust_navbar_white">Use white buttons</string>
 		
-		<!--чет из меня английским поперло-->
 		<string name="fm_open">Open as...</string>
 		<string name="fm_open_text">Text file</string>
-		<string name="fm_open_MD5">Checksum file</string>
 		<string name="fm_open_ZIP">Flashable ZIP</string>
 		
 		<string name="fm_open_backup">Backup</string>
@@ -751,9 +650,6 @@
 		<string name="settings_screen">Display</string>
 		<string name="settings_time">Regional</string>
 		
-		<string name="settings_md5">Digest and verification</string>
-		
-		<string name="lang_file">English</string>
 		<string name="lang_wait">Please wait...</string>
 		
 		<string name="settings_ui_status">Status bar</string>
@@ -768,15 +664,8 @@
 		<string name="settings_backup_name_auto">Defined automatically</string>
 		<string name="settings_backup_name_auto_hide">While backing up</string>
 		
-		<string name="accent_title">Use accent color in title</string>
-		
 		<string name="update_btn">Update</string>
 		<string name="include_kernel_log">Include Kernel Log</string>
-		
-		<string name="new_lock_wait">Removing...</string>
-		<string name="new_lock_done">Removing complete</string>
-		
-		<string name="new_lock">FRP and Lockscreen</string>
 		
 		<string name="fm_books">Favorite folders</string>
 		<string name="fm_books_desc">Manage your favorites</string>
@@ -807,111 +696,27 @@
 		
 		<string name="areb_off">Off</string>
 		
-		<string name="restoredialog_books">Newer show set bookmaks dialog</string>
 		<string name="restoredialog_readonly">Never show mount system read-only dialog</string>
 		
 		<string name="offset_wrong">Wrong offset!</string>
-		
-		<string name="flashlight">Flashlight source</string>
-		<string name="flashlight_set">Brightness level (current: %flash_active%)</string>
-		<string name="flashlight_dialog1">Flashlight</string>
-		<string name="flashlight_dialog2">Brightness level</string>
-		
-		<string name="flashlight_govno_1">This source can not be used as a</string>
-		<string name="flashlight_govno_2">flashlight!</string>
-		<string name="flashlight_good_1">Do you want to use this source as a</string>
-		<string name="flashlight_good_2">flashlight?</string>
-		
-		<string name="aik_help_1">AIK Mobile not found!</string>
-		<string name="aik_help_2">Connect your device to PC and</string>
-		<string name="aik_help_3">type to the terminal following</string>
-		<string name="aik_help_4">command: adb shell aik</string>
-		
-		<string name="extra_keys">Hint:</string>
-		
-		<string name="extra_keys3">Turn on the flashlight by pressing</string>
-		<string name="extra_keys4">power and the volume up buttons!</string>
-		
+
 		<string name="new_key">Use new style for keyboard</string>
 		
 		<string name="bkp_nametitle">Backup name</string>
 		<string name="bkp_namesub">Type or generate backup name</string>
 		
-		<string name="aroma_select">Select AromaFM ZIP</string>
 		<string name="goto_storage">Storage</string>
 		
-		<string name="custom_font">Custom Font</string>
-		<string name="select_custom_font">Select font</string>
-		
-		<string name="aroma_inimg">Built-in AromaFM</string>
-		
 		<string name="theme_apply">Updating theme...</string>
-		<string name="theme_font">Font</string>
 		<string name="theme_fonts">Fonts</string>
 		<string name="theme_style">Style</string>
 		<string name="theme_accent">Accent</string>
-		<string name="theme_bkg">Background</string>
-		<string name="theme_default">Solid</string>
-		<string name="theme_userdef">User-defined</string>
-		<string name="theme_dim">Dim level</string>
 		<string name="theme_font_sel">Primary font</string>
 		<string name="theme_sec_font_sel">Secondary font</string>
-		<string name="theme_pngselect">Select background image</string>
-		<string name="theme_delbkg">Remove background image</string>
-		<string name="theme_newpng">Choose new background image</string>
-		<string name="theme_view">View current image</string>
-		<string name="theme_ar_sel">Select aspect ratio</string>
 		
-		<string name="alt_btn">Alternative buttons style</string>
-		<string name="storagedialog_enable">Enable storage selection dialog</string>
-		
-		<string name="not_set">Not set</string>
-		<string name="aroma_on">Enable AromaFM</string>
 		<string name="of">of</string>
-		<string name="checksum_fail">Checksums failed!</string>
-		<string name="checksum_suc">Checksums matched!</string>
-		<string name="include_bugreport">Bug report</string>
-		<string name="flash_repacked">FLASH REPACK</string>
 		
-		<string name="removelock_1">Remove password and getsure key</string>
-		<string name="removelock_2">Disable FRP</string>
-		<string name="removelock_3">Wipe FRP using OrangeFox</string>
-		<string name="removelock_4">Wipe FRP automatically</string>
-		
-		<string name="sph_set">Splash settings</string>
-		<string name="sph_place">Placement</string>
-		<string name="sph_logo">Logo type</string>
-		<string name="sph_sidebar">Sidebar</string>
-		<string name="sph_ttrail">Top trail</string>
-		<string name="sph_btrail">Bottom trail</string>
-		<string name="top">Top</string>
-		<string name="center">Center</string>
-		<string name="bottom">Bottom</string>
-		<string name="preview_btn">Preview</string>
-		<string name="sph_newclassic">New classic</string>
-		<string name="sph_classtitle">Bottom title</string>
-		<string name="sph_classic">(classic)</string>
-		<string name="sph_colors">Splash colors</string>
-		<string name="sph_colors_btn">COLORS</string>
 		<string name="sph_sph">Splash</string>
-		
-		<string name="color_picker">Color picker</string>
-		<string name="color_red">Red</string>
-		<string name="color_blue">Blue</string>
-		<string name="color_green">Green</string>
-		<string name="sph_inv">Inversion</string>
-		<string name="color_bg">Background color</string>
-		<string name="color_accent">Accent color</string>
-		<string name="color_add">Additional color</string>
-		<string name="getreco_title">Extract recovery</string>
-		<string name="getreco_err">Can't extract recovery.img!</string>
-		<string name="getreco_btn">Extract OrangeFox recovery from device</string>
-		<string name="cleanup">Clean up</string>
-		<string name="ws_create_t">Create theme</string>
-		<string name="ws_create_t_1">Workshop will create ui.zip</string>
-		<string name="ws_create_t_2">theme to continue. Selected</string>
-		<string name="ws_create_t_3">changes will be discarded.</string>
-		<string name="swipe_to_install_img_reb">Swipe to install Image and Reboot</string>
 		
 		<string name="real">real</string>
 		<string name="info">Information</string>
@@ -920,25 +725,14 @@
 		<string name="access">Access</string>
 		<string name="fm_sums">Checksum</string>
 		
-		<string name="compatibility_321">Compatibility with OrangeFox 3.2.1</string>
-		<string name="aspect_ratio">Aspect Ratio</string>
-		
 		<string name="use_fixed_font">Monospace font in terminal</string>
-		<string name="sph_include">Include...</string>
-		<string name="sph_includearoma">Include AromaFM (config won't save)</string>
-		
+
 		<string name="adb_backup_pc1">This backup will be</string>
 		<string name="adb_backup_pc2">saved on your PC</string>
-		
-		<string name="keep">Keep</string>
-		<string name="remove">Remove</string>
 		
 		<string name="starting_aroma">Starting AromaFM...</string>
 		<string name="lang_set_wait">Changing language...</string>
 		<string name="installing_theme">Installing theme...</string>
-		
-		<string name="aik_not_found">AIK not found</string>
-		<string name="aik_found">AIK found</string>
 		
 		<string name="menu_btn">Menu</string>
 		

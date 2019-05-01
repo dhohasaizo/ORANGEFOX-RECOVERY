@@ -94,10 +94,6 @@
 					<icon res="bs_adv_se"/>
 					<action function="page">fixcontexts</action>
 				</listitem>
-				<listitem name="{@new_lock}">
-					<condition var1="utils_show" var2="fuk"/>
-					<icon res="bs_adv_frp"/>
-				</listitem>
 				<listitem name="{@terminal_btn}">
 					<condition var1="utils_show" var2="1"/>
 					<icon res="bs_adv_term"/>
