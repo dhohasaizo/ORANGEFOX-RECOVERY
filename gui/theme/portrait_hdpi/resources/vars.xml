@@ -329,8 +329,7 @@
 		
 		<!-- File list -->
 		<variable name="fileselector_width" value="%screen_w%"/>
-		<variable name="fileselector_terminal_height" value="%screen_h%-600"/>
-		<variable name="fileselector_shadow_terminal_x" value="%screen_h%-165"/>
+		<variable name="fileselector_terminal_height" value="%screen_min_cut%-600"/>
 		<variable name="fileselector_separatorheight" value="2"/>
 		<variable name="fileselector_spacing" value="0"/>
 		
@@ -397,11 +396,10 @@
 		<variable name="input_backup_width" value="876"/>
 		<variable name="input_encr_width" value="696"/>
 		<variable name="input_height" value="60"/>
-		<variable name="input_backup_y" value="359"/>
 		<variable name="input_encr_y" value="629"/>
 		<variable name="input_decr_y" value="899"/>
-		<variable name="input_format_y" value="959"/>
-		<variable name="input_rename_y" value="569"/>
+		<variable name="input_format_y" value="959+%cutout_w%"/>
+		<variable name="input_rename_y" value="569+%cutout_w%"/>
 		<variable name="input_line_height" value="3"/>
 		<variable name="input_cursor_width" value="2"/>
 		
