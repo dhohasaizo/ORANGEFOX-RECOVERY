@@ -10,6 +10,13 @@
 				<action function="set">tw_name_filter=</action>
 			</action>
 
+			<!-- Crutch to make input fields update -->
+			<action>
+				<condition var1="startup" op="!=" var2="1"/>
+				<action function="set">tw_file_location1=/sdcard</action>
+				<action function="set">startup=1</action>
+			</action>
+
 			<!-- All files -->
 			
 			<fileselector style="fileselector_b">
@@ -166,6 +173,7 @@
 		<page name="file_search">
 			<fileselector style="fileselector_b">
 				<condition var1="list_font" var2="1"/>
+				<condition var1="key_numbar" op="!=" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_h%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon" file="file_icon" />
@@ -173,10 +181,12 @@
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
+				<holditem name="tw_hold"/>
 			</fileselector>
 
 			<fileselector style="fileselector_s">
 				<condition var1="list_font" op="!=" var2="1"/>
+				<condition var1="key_numbar" op="!=" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_h%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon_small" file="file_icon_small"/>
@@ -184,6 +194,33 @@
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
+				<holditem name="tw_hold"/>
+			</fileselector>
+
+			<fileselector style="fileselector_b">
+				<condition var1="list_font" var2="1"/>
+				<condition var1="key_numbar" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_num_h%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon" file="file_icon" />
+				<filter folders="1" files="1" extnvar="fm_type_sort"/>
+				<path name="tw_file_location1" default="/sdcard"/>
+				<data name="tw_filename1"/>
+				<selection name="tw_selection1"/>
+				<holditem name="tw_hold"/>
+			</fileselector>
+
+			<fileselector style="fileselector_s">
+				<condition var1="list_font" op="!=" var2="1"/>
+				<condition var1="key_numbar" var2="1"/>
+				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_num_h%"/>
+				<sort name="tw_gui_sort_order"/>
+				<icon folder="folder_icon_small" file="file_icon_small"/>
+				<filter folders="1" files="1" extnvar="fm_type_sort"/>
+				<path name="tw_file_location1" default="/sdcard"/>
+				<data name="tw_filename1"/>
+				<selection name="tw_selection1"/>
+				<holditem name="tw_hold"/>
 			</fileselector>
 			
 			<template name="body_key"/>
@@ -211,16 +248,25 @@
 				<action function="set">tw_reload_fm=1</action>
 				<action function="page">file_search</action>
 			</input>
+
+			<text>
+				<condition var1="tw_name_filter" op="!="/>
+				<placement x="%col1_x_indent%" y="%ab_bc_search_y%"/>
+				<font resource="body1" color="#66666666"/>
+				<text>{@search_help}</text>
+			</text>
 			
 			<action>
+				<condition var1="tw_filename1" op="modified"/>
+				<condition var1="fm_auto_open" op="!=" var2="1"/>
 				<actions>
-					<action function="set">tw_fm_isfolder=0</action>
+					<action function="page">filemanageroptions</action>
 				</actions>
 			</action>
 
 			<action>
-				<condition var1="tw_filename1" op="modified"/>
-				<condition var1="fm_auto_open" op="!=" var2="1"/>
+				<condition var1="tw_hold" var2="1"/>
+				<condition var1="fm_auto_open" var2="1"/>
 				<actions>
 					<action function="page">filemanageroptions</action>
 				</actions>
@@ -240,16 +286,10 @@
 			</action>
 			
 			<action>
-				<condition var1="tw_file_location1" op="modified"/>
-				<actions>
-					<action function="page">file_search</action>
-				</actions>
-			</action>
-			
-			<action>
-				<condition var1="tw_name_filter" op="modified"/>
+				<condition var1="tw_keyboard_press_key" var2="1"/>
 				<actions>
 					<action function="set">tw_reload_fm=1</action>
+					<action function="set">tw_keyboard_press_key=0</action>
 					<action function="page">file_search</action>
 				</actions>
 			</action>
