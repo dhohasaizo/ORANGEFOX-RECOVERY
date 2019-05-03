@@ -781,7 +781,7 @@
 			<action>
 				<condition var1="tw_language" op="modified"/>
 				<action function="set">of_reload_back=ext_time_lang</action>
-				<action function="page">ext_time_lang_busy</action>
+				<action function="overlay">ext_time_lang_busy</action>
 				<action function="setlanguage"/>
 			</action>
 
@@ -797,28 +797,15 @@
 		</page>
 
 		<page name="ext_time_lang_busy">
-			<background color="%background%"/>
-			
-			<template name="background_image"/>
-
-			<template name="status_bg"/>
-
-			<template name="statusbarinfo"/>
+			<template name="dialog_body"/>
 
 			<image>
-				<image resource="language_busy"/>
-				<placement x="%center_x%" y="%center_y%" placement="4"/>
+				<image resource="snackbar"/>
+				<placement x="0" y="%row_nav_y%" placement="2"/>
 			</image>
 			
-			<text style="bs_text">
-				<placement x="%center_x%" y="%busy_text_l%" placement="4"/>
-				<condition var1="navbar_disable" op="!=" var2="1"/>
-				<text>{@lang_set_wait}</text>
-			</text>
-			
-			<text style="bs_text">
-				<placement x="%center_x%" y="%busy_text%" placement="4"/>
-				<condition var1="navbar_disable" var2="1"/>
+			<text style="text_body1">
+				<placement x="%snackbar_text_x%" y="%snackbar_text_y%"/>
 				<text>{@lang_set_wait}</text>
 			</text>
 		</page>

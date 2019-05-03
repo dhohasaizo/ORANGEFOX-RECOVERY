@@ -88,10 +88,10 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 				data.variableValue = (*iter).filename;
 				data.action = NULL;
 				if (currentValue == (*iter).filename) {
-					data.selected = 1;
+					data.icon = mIconSelected;
 					DataManager::SetValue("tw_language_display", (*iter).displayvalue);
 				} else
-					data.selected = 0;
+					data.icon = mIconUnselected;
 				mListItems.push_back(data);
 			}
 		}
