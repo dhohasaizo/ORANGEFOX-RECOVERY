@@ -149,7 +149,8 @@
 			</image>
 			
 			<template name="nav_panel"/>
-			<template name="navbar_back"/>
+			<template name="navbar_back_cls"/>
+			<template name="navbar_back_fm"/>
 
 			<action>
 				<touch key="home"/>

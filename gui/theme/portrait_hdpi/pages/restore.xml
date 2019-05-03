@@ -216,6 +216,7 @@
 			</button>
 
 			<template name="nav_panel"/>
+			<template name="navbar_back_cls"/>
 
 			<button style="floating_btn">
 				<condition var1="ft_backup_empty" var2="0"/>

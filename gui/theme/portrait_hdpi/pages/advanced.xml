@@ -187,6 +187,7 @@
 			</text>
 			
 			<template name="nav_panel"/>
+			<template name="navbar_back_cls"/>
 
 			<action>
 				<touch key="home"/>
