@@ -780,18 +780,13 @@
 				<text>{@sys_rop4}</text>
 			</text>
 
-			<text style="text_body2">
-				<placement x="%col1_x_indent%" y="%row4_2_y%"/>
-				<text>{@sys_rop4a}</text>
-			</text>
-
 			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="%row4_3a_y%"/>
+				<placement x="%col1_x_indent%" y="%row4_2a_y%"/>
 				<text>{@sys_rop5}</text>
 			</text>
 
 			<text style="text_body2_fail">
-				<placement x="%col1_x_indent%" y="%row5_1a_y%"/>
+				<placement x="%col1_x_indent%" y="%row4_3a_y%"/>
 				<text>{@sys_rop6}</text>
 			</text>
 			
@@ -802,7 +797,7 @@
 			</button>
 			
 			<listbox style="settingslist">
-				<placement x="0" y="%row6_1_y%" w="%screen_w%" h="%lb_l1%"/>
+				<placement x="0" y="%row5_3_y%" w="%screen_w%" h="%lb_l1%"/>
 				<listitem name="{@sys_ro_never_show_chk}">
 					<data variable="tw_never_show_system_ro_page"/>
 				</listitem>

@@ -268,15 +268,11 @@
 		<string name="sys_rop2">раздел неизменным, чтобы</string>
 		<string name="sys_rop2a">сохранить возможность обновлений.</string>
 		<string name="sys_rop3">При этом система сможет удалить</string>
-		<string name="sys_rop4">TWRP, а TWRP не будет предлагать</string>
-		<string name="sys_rop4a">получить ROOT.</string>
+		<string name="sys_rop4">OrangeFox.</string>
 		<string name="sys_rop5">Установка ZIP или работа ADB</string>
 		<string name="sys_rop6">всегда изменяют системный раздел.</string>
-		<string name="sys_rol1">TWRP может оставить системный раздел неизменным, чтобы сохранить возможность официальних обновлений.</string>
-		<string name="sys_rol2">При этом система сможет вернуть обратно стоковый TWRP, а TWRP не будет предлагать установку ROOT.</string>
-		<string name="sys_rol3">Установка ZIP или работа ADB все равно смогут изменять системный раздел.</string>
 		<string name="sys_ro_never_show_chk">Больше не показывать эту страницу</string>
-		<string name="sys_ro_keep_ro_btn">ТОЛЬКО ЧТЕНИЕ</string>
+		<string name="sys_ro_keep_ro_btn">Только чтение</string>
 		<string name="swipe_allow_mod">Разрешить изменения</string>
 		<string name="swipe_allow_mod_s">Разрешить изменения</string>
 		<string name="settings_hdr">Настройки</string>
@@ -288,18 +284,6 @@
 		<string name="rev_navbar_chk">Поменять местами нижние кнопки</string>
 		<string name="simact_chk">Имитация действий для теста темы</string>
 		<string name="simfail_chk">Имитация отказа для действий</string>
-		<string name="ctr_navbar_rdo">Кнопки нав.панели по центру</string>
-		<string name="lft_navbar_rdo">Выровнять кнопки нав.панели слева</string>
-		<string name="rht_navbar_rdo">Выровнять кнопки нав.панели справа</string>
-		<string name="restore_defaults_btn">Восстановить настр-ки</string>
-		<string name="settings_tz_btn">Часовой пояс</string>
-		<string name="settings_screen_btn">Экран</string>
-		<string name="settings_screen_bright_btn">Яркость</string>
-		<string name="vibration_disabled">Вибрация отключена для этого устройства</string>
-		<string name="settings_vibration_btn">Вибрация</string>
-		<string name="settings_language_btn">Язык</string>
-		<string name="time_zone_hdr">Часовой пояс</string>
-		<string name="sel_tz_list">Выбор часового пояса</string>
 		<!-- Translator note: if it does not make sense to translate the locations or if it makes more sense,
 				feel free to change the location listed or drop the location entirely and just call it UTC -6 -->
 		<string name="utcm11">(UTC -11) о. Мидуэй, Самоа</string>
@@ -458,14 +442,6 @@
 		<string name="fixing_contexts">Исправление контекста...</string>
 		<string name="fix_contexts_complete">Исправление контекста завершено</string>
 		<string name="reboot_hdr">Перезагрузка</string>
-		<string name="su_hdr">Проверка SuperSU</string>
-		<string name="su_note1">В вашем устройстве отсутствует ROOT.</string>
-		<string name="su_note2">Установить SuperSU сейчас?</string>
-		<string name="su_note3">ROOT-доступ будет активирован.</string>
-		<string name="su_cancel">Отмена</string>
-		<string name="swipe_su_to_install">Проведите для установки</string>
-		<string name="swipe_su_install">   Установка</string>
-		<string name="su_installing">Установка SuperSU</string>
 		<string name="sel_storage_list">Выбор хранилища</string>
 		<string name="ok_btn">Ок</string>
 
@@ -915,6 +891,7 @@
 		<string name="unpack">Распаковать</string>
 		<string name="repack">Запаковать</string>
 		
+		<string name="search_help">Поиск файлов и папок...</string>
 		<string name="fox_modules_hdr">Дополнения Fox</string>
 		<string name="fox_modules_inst">Установить дополнение</string>
 		<string name="backup_short_hdr">Новая копия</string>
