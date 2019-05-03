@@ -669,8 +669,9 @@
 		<string name="include_kernel_log">Include Kernel Log</string>
 		
 		<string name="fm_books">Favorite folders</string>
-		<string name="fm_books_desc">Manage your favorites</string>
-		<string name="fm_books_desc_edit">Edit your favorites</string>
+		<string name="fm_books_desc">Long press to edit this list</string>
+		<string name="fm_books_edit">Edit this list...</string>
+		<string name="fm_books_desc_edit">Long press to delete item</string>
 		<string name="fm_books_empty">(Empty)</string>
 		
 		<string name="fm_mkdir">Create folder</string>

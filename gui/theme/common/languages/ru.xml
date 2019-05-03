@@ -801,8 +801,9 @@
 		<string name="include_kernel_log">Сохранить лог ядра</string>
 
 		<string name="fm_books">Избранное</string>
-		<string name="fm_books_desc">Просмотр избранных папок</string>
-		<string name="fm_books_desc_edit">Редактирование избранных папок</string>
+		<string name="fm_books_desc">Удерживайте для редактирования</string>
+		<string name="fm_books_desc_edit">Удерживайте для удаления</string>
+		<string name="fm_books_edit">Редактировать этот список...</string>
 		<string name="fm_books_empty">(Пусто)</string>
 		
 		<string name="fm_mkdir">Создать папку</string>

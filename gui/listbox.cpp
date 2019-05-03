@@ -36,7 +36,7 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 	xml_node<>* child;
 	mIconSelected = mIconUnselected = NULL;
 	mUpdate = 0;
-	isCheckList = isTextParsed = false;
+	requireReload = isCheckList = isTextParsed = false;
 	
 	// Get the icons, if any
 	child = FindNode(node, "icon");
@@ -69,6 +69,9 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 	// Handle the result variable
 	child = FindNode(node, "data");
 	if (child) {
+		attr = child->first_attribute("requireReload");
+		if (attr)
+			requireReload = true;
 		attr = child->first_attribute("name");
 		if (attr)
 			mVariable = attr->value();
@@ -165,6 +168,8 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 			continue;
 		// We will parse display names when we get page focus to ensure that translating takes place
 		item.displayName = attr->value();
+		if (requireReload)
+			item.unparsedName = attr->value();
 		item.variableValue = gui_parse_text(child->value());
 		item.selected = (child->value() == currentValue);
 		item.action = NULL;
@@ -245,6 +250,9 @@ int GUIListBox::NotifyVarChange(const std::string& varName, const std::string& v
 		bool itemVisible = UpdateConditions(item.mConditions, varName);
 		if (itemVisible)
 			mVisibleItems.push_back(i);
+
+		if (requireReload)
+			item.displayName = gui_parse_text(item.unparsedName);
 
 		if (isCheckList)
 		{

@@ -413,6 +413,7 @@
 				<placement x="%btn_float_x%" y="%btn_sfloat_3_y%"/>
 				<image resource="float_fm_books" highlightresource="float_fm_books_hl"/>
 				<action function="overlay"/>
+				<action function="set">book_edit=0</action>
 				<action function="page">files_bookmarks_prepare</action>
 			</button>
 			
@@ -495,6 +496,23 @@
 			</action>
 			
 			<action>
+				<condition var1="book_8" var2="notset"/>
+				<action function="set">book_8={@fm_books_empty}</action>
+			</action>
+			
+			<action>
+				<condition var1="book_9" var2="notset"/>
+				<action function="set">book_9={@fm_books_empty}</action>
+			</action>
+			
+			<action>
+				<condition var1="book_0" var2="notset"/>
+				<action function="set">book_0={@fm_books_empty}</action>
+			</action>
+			
+			<action>
+				<action function="set">book_id=</action>
+				<action function="set">book_hold=0</action>
 				<action function="page">files_bookmarks</action>
 			</action>
 		</page>
@@ -528,350 +546,136 @@
 				<text>{@fm_books_desc_edit}</text>
 			</text>
 			
-			
-			<!-- book_1 -->
-			<button style="bs_btn">
-				<condition var1="book_1" op="!=" var2="{@fm_books_empty}"/>
-				<condition var1="book_edit" var2="0"/>
-				<placement x="0" y="%bs_row1_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
-					<action function="set">tw_file_location1=%book_1%</action>
-					<action function="page">filemanagerlist</action>
-				</actions>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_1" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x%" y="%bs_row1_y%"/>
-				<image resource="bs_btn_bookmark"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_1" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
-				<text>%book_1%</text>
-			</text>
-			<!-- edit -->
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="0" y="%bs_row1_y%" w="%bs_del%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_1=%tw_file_location1%</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x%" y="%bs_row1_y%"/>
-				<image resource="bs_btn_rename"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x_indent%" y="%bs_row1_text_y%"/>
-				<text>%book_1%</text>
-			</text>
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del%" y="%bs_row1_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_1={@fm_books_empty}</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del_i%" y="%bs_row1_y%"/>
-				<image resource="bs_btn_delete"/>
-			</image>
-			<!-- book_2 -->
-			<button style="bs_btn">
-				<condition var1="book_2" op="!=" var2="{@fm_books_empty}"/>
-				<condition var1="book_edit" var2="0"/>
-				<placement x="0" y="%bs_row2_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
-					<action function="set">tw_file_location1=%book_2%</action>
-					<action function="page">filemanagerlist</action>
-				</actions>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_2" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x%" y="%bs_row2_y%"/>
-				<image resource="bs_btn_bookmark"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_2" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
-				<text>%book_2%</text>
-			</text>
-			<!-- edit -->
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="0" y="%bs_row2_y%" w="%bs_del%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_2=%tw_file_location1%</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x%" y="%bs_row2_y%"/>
-				<image resource="bs_btn_rename"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x_indent%" y="%bs_row2_text_y%"/>
-				<text>%book_2%</text>
-			</text>
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del%" y="%bs_row2_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_2={@fm_books_empty}</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del_i%" y="%bs_row2_y%"/>
-				<image resource="bs_btn_delete"/>
-			</image>
-			<!-- book_3 -->
-			<button style="bs_btn">
-				<condition var1="book_3" op="!=" var2="{@fm_books_empty}"/>
-				<condition var1="book_edit" var2="0"/>
-				<placement x="0" y="%bs_row3_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
-					<action function="set">tw_file_location1=%book_3%</action>
-					<action function="page">filemanagerlist</action>
-				</actions>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_3" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x%" y="%bs_row3_y%"/>
-				<image resource="bs_btn_bookmark"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_3" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x_indent%" y="%bs_row3_text_y%"/>
-				<text>%book_3%</text>
-			</text>
-			<!-- edit -->
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="0" y="%bs_row3_y%" w="%bs_del%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_3=%tw_file_location1%</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x%" y="%bs_row3_y%"/>
-				<image resource="bs_btn_rename"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x_indent%" y="%bs_row3_text_y%"/>
-				<text>%book_3%</text>
-			</text>
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del%" y="%bs_row3_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_3={@fm_books_empty}</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del_i%" y="%bs_row3_y%"/>
-				<image resource="bs_btn_delete"/>
-			</image>
-			<!-- book_4 -->
-			<button style="bs_btn">
-				<condition var1="book_4" op="!=" var2="{@fm_books_empty}"/>
-				<condition var1="book_edit" var2="0"/>
-				<placement x="0" y="%bs_row4_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
-					<action function="set">tw_file_location1=%book_4%</action>
-					<action function="page">filemanagerlist</action>
-				</actions>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_4" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x%" y="%bs_row4_y%"/>
-				<image resource="bs_btn_bookmark"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_4" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x_indent%" y="%bs_row4_text_y%"/>
-				<text>%book_4%</text>
-			</text>
-			<!-- edit -->
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="0" y="%bs_row4_y%" w="%bs_del%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_4=%tw_file_location1%</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x%" y="%bs_row4_y%"/>
-				<image resource="bs_btn_rename"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x_indent%" y="%bs_row4_text_y%"/>
-				<text>%book_4%</text>
-			</text>
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del%" y="%bs_row4_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_4={@fm_books_empty}</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del_i%" y="%bs_row4_y%"/>
-				<image resource="bs_btn_delete"/>
-			</image>
-			<!-- book_5 -->
-			<button style="bs_btn">
-				<condition var1="book_5" op="!=" var2="{@fm_books_empty}"/>
-				<condition var1="book_edit" var2="0"/>
-				<placement x="0" y="%bs_row5_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
-					<action function="set">tw_file_location1=%book_5%</action>
-					<action function="page">filemanagerlist</action>
-				</actions>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_5" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x%" y="%bs_row5_y%"/>
-				<image resource="bs_btn_bookmark"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_5" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
-				<text>%book_5%</text>
-			</text>
-			<!-- edit -->
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="0" y="%bs_row5_y%" w="%bs_del%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_5=%tw_file_location1%</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x%" y="%bs_row5_y%"/>
-				<image resource="bs_btn_rename"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x_indent%" y="%bs_row5_text_y%"/>
-				<text>%book_5%</text>
-			</text>
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del%" y="%bs_row5_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_5={@fm_books_empty}</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del_i%" y="%bs_row5_y%"/>
-				<image resource="bs_btn_delete"/>
-			</image>
-			<!-- book_6 -->
-			<button style="bs_btn">
-				<condition var1="book_6" op="!=" var2="{@fm_books_empty}"/>
-				<condition var1="book_edit" var2="0"/>
-				<placement x="0" y="%bs_row6_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
-					<action function="set">tw_file_location1=%book_6%</action>
-					<action function="page">filemanagerlist</action>
-				</actions>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_6" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x%" y="%bs_row6_y%"/>
-				<image resource="bs_btn_bookmark"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_6" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x_indent%" y="%bs_row6_text_y%"/>
-				<text>%book_6%</text>
-			</text>
-			<!-- edit -->
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="0" y="%bs_row6_y%" w="%bs_del%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_6=%tw_file_location1%</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x%" y="%bs_row6_y%"/>
-				<image resource="bs_btn_rename"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x_indent%" y="%bs_row6_text_y%"/>
-				<text>%book_6%</text>
-			</text>
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del%" y="%bs_row6_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_6={@fm_books_empty}</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del_i%" y="%bs_row6_y%"/>
-				<image resource="bs_btn_delete"/>
-			</image>
-			<!-- book_7 -->
-			<button style="bs_btn">
-				<condition var1="book_7" op="!=" var2="{@fm_books_empty}"/>
-				<condition var1="book_edit" var2="0"/>
-				<placement x="0" y="%bs_row7_y%" w="%screen_w%" h="%ab_menu_sort_btn_h%"/>
-				<actions>
-					<action function="set">tw_file_location1=%book_7%</action>
-					<action function="page">filemanagerlist</action>
-				</actions>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_7" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x%" y="%bs_row7_y%"/>
-				<image resource="bs_btn_bookmark"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="0"/>
-				<condition var1="book_7" op="!=" var2="{@fm_books_empty}"/>
-				<placement x="%col1_x_indent%" y="%bs_row7_text_y%"/>
-				<text>%book_7%</text>
-			</text>
-			<!-- edit -->
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="0" y="%bs_row7_y%" w="%bs_del%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_7=%tw_file_location1%</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x%" y="%bs_row7_y%"/>
-				<image resource="bs_btn_rename"/>
-			</image>
-			<text style="bs_text">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x_indent%" y="%bs_row7_text_y%"/>
-				<text>%book_7%</text>
-			</text>
-			<button style="bs_btn">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del%" y="%bs_row7_y%" w="%bs_del_w%" h="%ab_menu_sort_btn_h%"/>
-				<action function="set">book_7={@fm_books_empty}</action>
-			</button>
-			<image>
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%bs_del_i%" y="%bs_row7_y%"/>
-				<image resource="bs_btn_delete"/>
-			</image>
-
-		
-			<button style="floating_btn">
-				<condition var1="book_edit" var2="0"/>
-				<placement x="%btn_float_x%" y="%btn_float_y%"/>
-				<action function="set">book_edit=1</action>
-			</button>
+			<listbox style="btn_list">
+				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%bl_files_h%"/>
+				<data requireReload="1"/>
+				<holditem name="book_hold"/>
+				<listitem name="{@fm_books_edit}">
+					<icon res="bs_btn_rename"/>
+					<condition var1="book_edit" var2="0"/>
+					<condition var1="book_1" var2="{@fm_books_empty}"/>
+					<condition var1="book_2" var2="{@fm_books_empty}"/>
+					<condition var1="book_3" var2="{@fm_books_empty}"/>
+					<condition var1="book_4" var2="{@fm_books_empty}"/>
+					<condition var1="book_5" var2="{@fm_books_empty}"/>
+					<condition var1="book_6" var2="{@fm_books_empty}"/>
+					<condition var1="book_7" var2="{@fm_books_empty}"/>
+					<condition var1="book_8" var2="{@fm_books_empty}"/>
+					<condition var1="book_9" var2="{@fm_books_empty}"/>
+					<condition var1="book_0" var2="{@fm_books_empty}"/>
+					<action function="set">book_edit=1</action>
+				</listitem>
+				<listitem name="%book_1%">
+					<icon res="bs_btn_bookmark"/>
+					<condition var1="book_1" op="!=" var2="{@fm_books_empty}"/>
+					<condition var1="book_edit" var2="0"/>
+					<action function="set">book_id=1</action>
+				</listitem>
+				<listitem name="%book_1%">
+					<icon res="bs_btn_rename"/>
+					<condition var1="book_edit" var2="1"/>
+					<action function="set">book_id=1</action>
+				</listitem>
+				<listitem name="%book_2%">
+					<icon res="bs_btn_bookmark"/>
+					<condition var1="book_2" op="!=" var2="{@fm_books_empty}"/>
+					<condition var1="book_edit" var2="0"/>
+					<action function="set">book_id=2</action>
+				</listitem>
+				<listitem name="%book_2%">
+					<icon res="bs_btn_rename"/>
+					<condition var1="book_edit" var2="1"/>
+					<action function="set">book_id=2</action>
+				</listitem>
+				<listitem name="%book_3%">
+					<icon res="bs_btn_bookmark"/>
+					<condition var1="book_3" op="!=" var2="{@fm_books_empty}"/>
+					<condition var1="book_edit" var2="0"/>
+					<action function="set">book_id=3</action>
+				</listitem>
+				<listitem name="%book_3%">
+					<icon res="bs_btn_rename"/>
+					<condition var1="book_edit" var2="1"/>
+					<action function="set">book_id=3</action>
+				</listitem>
+				<listitem name="%book_4%">
+					<icon res="bs_btn_bookmark"/>
+					<condition var1="book_4" op="!=" var2="{@fm_books_empty}"/>
+					<condition var1="book_edit" var2="0"/>
+					<action function="set">book_id=4</action>
+				</listitem>
+				<listitem name="%book_4%">
+					<icon res="bs_btn_rename"/>
+					<condition var1="book_edit" var2="1"/>
+					<action function="set">book_id=4</action>
+				</listitem>
+				<listitem name="%book_5%">
+					<icon res="bs_btn_bookmark"/>
+					<condition var1="book_5" op="!=" var2="{@fm_books_empty}"/>
+					<condition var1="book_edit" var2="0"/>
+					<action function="set">book_id=5</action>
+				</listitem>
+				<listitem name="%book_5%">
+					<icon res="bs_btn_rename"/>
+					<condition var1="book_edit" var2="1"/>
+					<action function="set">book_id=5</action>
+				</listitem>
+				<listitem name="%book_6%">
+					<icon res="bs_btn_bookmark"/>
+					<condition var1="book_6" op="!=" var2="{@fm_books_empty}"/>
+					<condition var1="book_edit" var2="0"/>
+					<action function="set">book_id=6</action>
+				</listitem>
+				<listitem name="%book_6%">
+					<icon res="bs_btn_rename"/>
+					<condition var1="book_edit" var2="1"/>
+					<action function="set">book_id=6</action>
+				</listitem>
+				<listitem name="%book_7%">
+					<icon res="bs_btn_bookmark"/>
+					<condition var1="book_7" op="!=" var2="{@fm_books_empty}"/>
+					<condition var1="book_edit" var2="0"/>
+					<action function="set">book_id=7</action>
+				</listitem>
+				<listitem name="%book_7%">
+					<icon res="bs_btn_rename"/>
+					<condition var1="book_edit" var2="1"/>
+					<action function="set">book_id=7</action>
+				</listitem>
+				<listitem name="%book_8%">
+					<icon res="bs_btn_bookmark"/>
+					<condition var1="book_8" op="!=" var2="{@fm_books_empty}"/>
+					<condition var1="book_edit" var2="0"/>
+					<action function="set">book_id=8</action>
+				</listitem>
+				<listitem name="%book_8%">
+					<icon res="bs_btn_rename"/>
+					<condition var1="book_edit" var2="1"/>
+					<action function="set">book_id=8</action>
+				</listitem>
+				<listitem name="%book_9%">
+					<icon res="bs_btn_bookmark"/>
+					<condition var1="book_9" op="!=" var2="{@fm_books_empty}"/>
+					<condition var1="book_edit" var2="0"/>
+					<action function="set">book_id=9</action>
+				</listitem>
+				<listitem name="%book_9%">
+					<icon res="bs_btn_rename"/>
+					<condition var1="book_edit" var2="1"/>
+					<action function="set">book_id=9</action>
+				</listitem>
+				<listitem name="%book_0%">
+					<icon res="bs_btn_bookmark"/>
+					<condition var1="book_0" op="!=" var2="{@fm_books_empty}"/>
+					<condition var1="book_edit" var2="0"/>
+					<action function="set">book_id=0</action>
+				</listitem>
+				<listitem name="%book_0%">
+					<icon res="bs_btn_rename"/>
+					<condition var1="book_edit" var2="1"/>
+					<action function="set">book_id=0</action>
+				</listitem>
+			</listbox>
 			
 			<button style="floating_btn">
 				<condition var1="book_edit" var2="1"/>
@@ -885,12 +689,36 @@
 				<image resource="fab_close"/>
 			</image>
 			
-			<image>
+			<action>
 				<condition var1="book_edit" var2="0"/>
-				<placement x="%btn_float_x%" y="%btn_float_y%"/>
-				<image resource="fab_add"/>
-			</image>
-			
+				<condition var1="book_hold" var2="0"/>
+				<condition var1="book_id" op="modified"/>
+				<action function="set">tw_file_location1=book_%book_id%</action>
+				<action function="set">tw_reload_fm=1</action>
+				<action function="page">filemanagerlist</action>
+			</action>
+			<action>
+				<condition var1="book_edit" var2="0"/>
+				<condition var1="book_hold" var2="1"/>
+				<condition var1="book_id" op="modified"/>
+				<action function="set">book_edit=1</action>
+				<action function="page">files_bookmarks_prepare</action>
+			</action>
+			<action>
+				<condition var1="book_edit" var2="1"/>
+				<condition var1="book_hold" var2="1"/>
+				<condition var1="book_id" op="modified"/>
+				<action function="set">book_%book_id%=notset</action>
+				<action function="page">files_bookmarks_prepare</action>
+			</action>
+			<action>
+				<condition var1="book_edit" var2="1"/>
+				<condition var1="book_hold" var2="0"/>
+				<condition var1="book_id" op="modified"/>
+				<action function="set">book_%book_id%=tw_file_location1</action>
+				<action function="page">files_bookmarks_prepare</action>
+			</action>
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>

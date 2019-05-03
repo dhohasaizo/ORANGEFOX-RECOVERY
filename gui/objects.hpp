@@ -666,9 +666,9 @@ protected:
 		unsigned int selected;
 		GUIAction* action;
 		std::vector<Condition> mConditions;
-		//[f/d] For btn list
 		ImageResource* icon;
 		bool hasicon;
+		string unparsedName;
 	};
 
 protected:
@@ -682,6 +682,7 @@ protected:
 	ImageResource* mIconUnselected;
 	bool isCheckList;
 	bool isTextParsed;
+	bool requireReload;
 };
 
 class GUIPartitionList : public GUIScrollList
