@@ -17,7 +17,6 @@
 		<image name="battery_charge" filename="Light/Battery/battery_charge" retainaspect="1"/>
 		
 		<!-- Fullscreen Icons -->
-		<image name="language_busy" filename="Light/FullscreenIcons/language_busy" retainaspect="1"/>
 		<image name="palette" filename="Light/FullscreenIcons/palette" retainaspect="1"/>
 		<image name="usb" filename="Light/FullscreenIcons/usb" retainaspect="1"/>
 		<image name="aroma_folder" filename="Light/FullscreenIcons/aroma_folder" retainaspect="1"/>
@@ -50,9 +49,9 @@
 		<image name="progress_fill_small" filename="Light/Progress/progress_fill_small"/>
 	</resources>
 	<variables>
-		<variable name="background" value="#FAFAFA"/>
+		<variable name="background" value="#ffffff"/>
 		
-		<variable name="highlight_color" value="#FAFAFA66"/>
+		<variable name="highlight_color" value="#ffffff66"/>
 		<variable name="highlight_color_full" value="#E9E9E944"/>
 		<variable name="text" value="#666666"/>
 		<variable name="text_status" value="#666666"/>
@@ -61,10 +60,10 @@
 		<variable name="text_dark" value="#666666"/>
 		<variable name="console_foreground" value="#666666"/>
 		<variable name="linecolor" value="#666666"/>
-		<variable name="darktransparent" value="#FAFAFABB"/>
+		<variable name="darktransparent" value="#ffffffBB"/>
 		<variable name="theme_style" value="Light"/>
 		
-		<variable name="status_solid_bg" value="#F3F3F3"/>
-		<variable name="title_solid_bg" value="#F6F6F6"/>
+		<variable name="status_solid_bg" value="#F0F0F0"/>
+		<variable name="title_solid_bg" value="#FAFAFA"/>
 	</variables>
 </recovery>

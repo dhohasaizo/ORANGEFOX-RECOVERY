@@ -550,7 +550,7 @@
 				<condition var1="ui_progress" var2="0"/>
 				<placement x="%progressbar_x%" y="%progressbar_y%"/>
 				<resource name="progress"/>
-				<speed fps="30" render="2"/>
+				<speed fps="30" render="1"/>
 				<loop frame="1"/>
 			</animation>
 			
@@ -558,7 +558,7 @@
 				<condition var1="ui_progress" var2="100"/>
 				<placement x="%progressbar_x%" y="%progressbar_y%"/>
 				<resource name="progress"/>
-				<speed fps="30" render="2"/>
+				<speed fps="30" render="1"/>
 				<loop frame="1"/>
 			</animation>
 		</template>

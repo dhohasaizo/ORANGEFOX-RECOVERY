@@ -3,7 +3,7 @@
 
 	<mousecursor>
 		<placement w="0" h="0"/>
-		<background color="#FFFFFF00" resource="cursor"/>
+		<background color="#FFFFFF00"/>
 		<speed multiplier="2.5"/>
 	</mousecursor>
 	
@@ -74,6 +74,7 @@
 		<image name="spl_color_o" filename="Default/Workshop/spl_color_o" retainaspect="1"/>
 		<image name="spl_color_w" filename="Default/Workshop/spl_color_w" retainaspect="1"/>
 		<image name="spl_color_d" filename="Default/Workshop/spl_color_d" retainaspect="1"/>
+		<image name="spl_color_n" filename="Default/Workshop/spl_color_n" retainaspect="1"/>
 		<image name="spl_color_b" filename="Default/Workshop/spl_color_b" retainaspect="1"/>
 		<image name="spl_color_a" filename="Default/Workshop/spl_color_a" retainaspect="1"/>
 		<image name="spl_color" filename="Default/Workshop/spl_color" retainaspect="1"/>
@@ -240,7 +241,6 @@
 		
 		<!-- Other -->
 		<image name="actionbar_clear" filename="Default/Other/actionbar_clear" retainaspect="1"/>
-		<image name="cursor" filename="Default/Other/cursor" retainaspect="1"/>
 		<image name="empty_folder" filename="Default/FullscreenIcons/empty_folder" retainaspect="1"/>
 		<image name="fox_lock" filename="Default/FullscreenIcons/fox_lock" retainaspect="1"/>
 		

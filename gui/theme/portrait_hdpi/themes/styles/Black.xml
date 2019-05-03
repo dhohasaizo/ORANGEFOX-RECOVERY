@@ -20,7 +20,6 @@
 		<image name="battery_charge" filename="Default/Battery/battery_charge" retainaspect="1"/>
 		
 		<!-- Fullscreen Icons -->
-		<image name="language_busy" filename="Default/FullscreenIcons/language_busy" retainaspect="1"/>
 		<image name="palette" filename="Default/FullscreenIcons/palette" retainaspect="1"/>
 		<image name="usb" filename="Default/FullscreenIcons/usb" retainaspect="1"/>
 		<image name="aroma_folder" filename="Default/FullscreenIcons/aroma_folder" retainaspect="1"/>
@@ -35,7 +34,7 @@
 		<image name="progress_fill" filename="Default/Progress/progress_fill"/>
 		
 		<!-- Controls -->
-		<image name="slider_classic" filename="Default/Controls/slider_classic" retainaspect="1"/>
+		<image name="slider_classic" filename="Black/Controls/slider_classic" retainaspect="1"/>
 		
 		<!-- Dialogs -->
 		<image name="db_hl" filename="Default/Dialog/db_hl"/>
