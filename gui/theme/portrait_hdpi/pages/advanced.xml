@@ -7,7 +7,6 @@
 			<action>
 				<action function="set">nav_panel_id=3</action>
 				<action function="set">utils_show=%auto_show_btns%</action>
-				<action function="set">aroma_hold=0</action>
 				<action function="set">aroma_help=0</action>
 			</action>
 
@@ -41,8 +40,20 @@
 				</listitem>
 				<listitem name="{@aroma_help}">
 					<condition var1="aroma_help" var2="1"/>
-					<icon res="bs_adv_aroma"/>
-					<action function="page">aroma_prep</action>
+					<icon res="bs_adv_aroma"/><action>
+					<action function="queueclear"/>
+					<action function="set">fox_install_built_in_zip=1</action>
+					<action function="set">tw_signed_zip_verify_tmp=%tw_signed_zip_verify%</action>
+					<action function="set">tw_signed_zip_verify=0</action>
+					<action function="set">fox_inject_after_zip_tmp=%fox_inject_after_zip%</action>
+					<action function="set">fox_inject_after_zip=0</action>
+					<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
+					<action function="set">tw_screen_timeout_secs=0</action>
+					<action function="set">tw_filename=/sdcard/Fox/FoxFiles/AromaFM/AromaFM.zip</action>
+					<action function="set">qcount_temp=1</action>
+					<action function="queuezip"/>
+					<action function="flash">aroma_busy</action>
+			</action>
 				</listitem>
 				<listitem name="{@adb_sideload_btn}">
 					<icon res="bs_adv_adb"/>
@@ -100,7 +111,6 @@
 					<icon res="bs_adv_term"/>
 					<action function="page">htcdumlock</action>
 				</listitem>
-				<holditem name="aroma_hold"/>
 			</listbox>
 			
 			<template name="ab_main"/>

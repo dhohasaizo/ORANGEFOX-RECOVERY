@@ -47,29 +47,6 @@
 			</action>
 		</page>
 
-		<page name="aroma_prep">
-			<action>
-				<condition var1="aroma_hold" var2="1"/>
-				<action function="queueclear"/>
-				<action function="set">fox_install_built_in_zip=1</action>
-				<action function="set">tw_signed_zip_verify_tmp=%tw_signed_zip_verify%</action>
-				<action function="set">tw_signed_zip_verify=0</action>
-				<action function="set">fox_inject_after_zip_tmp=%fox_inject_after_zip%</action>
-				<action function="set">fox_inject_after_zip=0</action>
-				<action function="set">tw_screen_timeout_temp=%tw_screen_timeout_secs%</action>
-				<action function="set">tw_screen_timeout_secs=0</action>
-				<action function="set">tw_filename=/sdcard/Fox/FoxFiles/AromaFM/AromaFM.zip</action>
-				<action function="set">qcount_temp=1</action>
-				<action function="queuezip"/>
-				<action function="flash">aroma_busy</action>
-			</action>
-			<action>
-				<condition var1="aroma_hold" op="!=" var2="1"/>
-				<action function="set">aroma_help=1</action>
-				<action function="page">advanced</action>
-			</action>
-		</page>
-
 		<page name="aroma_busy">
 			<background color="%background%"/>
 			
