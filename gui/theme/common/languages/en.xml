@@ -27,8 +27,7 @@
 		<string name="adopted_storage">Adopted Storage</string>
 
 		<!-- GUI XML strings -->
-		<string name="twrp_header">Team Win Recovery Project</string>
-		<string name="twrp_watch_header">%tw_version%</string>
+		<string name="twrp_watch_header">OrangeFox %fox_actual_build%</string>
 		<string name="cpu_temp">CPU: %tw_cpu_temp% &#xB0;C</string>
 		<string name="sort_by_name_asc">Name</string>
 		<string name="sort_by_date_asc">Date</string>
@@ -260,7 +259,6 @@
 		<string name="settings_screen_timeout_cptn2">Timeout:</string>
 		<string name="timeout_unit">seconds</string>
 		<string name="enable_timeout_chk">Enable screen timeout</string>
-		<string name="screen_to_slider_s">Screen timeout in seconds (0=disabled): %tw_screen_timeout_secs%</string>
 		<string name="screen_to_na">Screen timeout setting unavailable</string>
 		<string name="rotation_chk">Rotation</string>
 		<string name="screen_bright_slider">Brightness: %tw_brightness_pct%%</string>
@@ -536,7 +534,6 @@
 		<string name="dumlock_restore">Restoring original boot...</string>
 		<string name="dumlock_reflash">Reflashing recovery to boot...</string>
 		<string name="run_script">Running {1} script...</string>
-		<string name="rename_stock">Renamed stock recovery file in /system to prevent the stock ROM from replacing OrangeFox.</string>
 		<string name="split_backup">Breaking backup file into multiple archives...</string>
 		<string name="backup_error">Error creating backup.</string>
 		<string name="restore_error">Error during restore process.</string>

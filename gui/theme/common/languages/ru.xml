@@ -20,7 +20,7 @@
 		<string name="internal">Внутренняя память</string>
 		<string name="microsd">Карта MicroSD</string>
 		<string name="usbotg">USB OTG</string>
-		<string name="android_сек.ure">Android сек.ure</string>
+		<string name="android_secure">Android Secure</string>
 		<string name="dalvik">Dalvik / ART Cache</string>
 		<!-- This is a rarely used partition on a Micro SD card for a very old app2sd system -->
 		<string name="sdext">SD-EXT</string>
@@ -28,8 +28,7 @@
 		<string name="adopted_storage">Adopted Storage</string>
 
 		<!-- GUI XML strings -->
-		<string name="twrp_header">Team Win Recovery Project</string>
-		<string name="twrp_watch_header">TWRP %tw_version%</string>
+		<string name="twrp_watch_header">OrangeFox %fox_actual_build%</string>
 		<string name="cpu_temp">ЦП: %tw_cpu_temp% &#xB0;C</string>
 		<string name="sort_by_name_asc">Имя</string>
 		<string name="sort_by_date_asc">Дата</string>
@@ -73,7 +72,7 @@
 		<string name="folder">Папка</string>
 		<string name="file">Файл</string>
 		<string name="zip_sig_chk">Проверка ZIP сигнатуры</string>
-		<string name="inject_twrp_chk">Интегрировать TWRP после установки</string>
+		<string name="inject_twrp_chk">Интегрировать OrangeFox после установки</string>
 		<string name="options_hdr">Настройки</string>
 		<string name="confirm_flash_hdr">Подтвердить прошивку</string>
 		<string name="zip_queue">Очередь</string>
@@ -264,7 +263,7 @@
 		<string name="sys_ro">Системный раздел</string>
 		<string name="sys_ro_hdr">Модификация системы</string>
 		<string name="sys_ro_keep">Оставить системный раздел только для чтения</string>
-		<string name="sys_rop1">TWRP может оставить системный</string>
+		<string name="sys_rop1">OrangeFox может оставить системный</string>
 		<string name="sys_rop2">раздел неизменным, чтобы</string>
 		<string name="sys_rop2a">сохранить возможность обновлений.</string>
 		<string name="sys_rop3">При этом система сможет удалить</string>
@@ -326,8 +325,6 @@
 		<string name="settings_screen_hdr">Экран</string>
 		<string name="settings_screen_timeout_hdr">Таймаут экрана</string>
 		<string name="enable_timeout_chk">Включить таймаут экрана</string>
-		<string name="screen_to_slider">Выключение экрана через n сек:</string>
-		<string name="screen_to_slider_s">Выключение экрана через n сек (0=выключен): %tw_screen_timeout_сек.s%</string>
 		<string name="screen_to_na">Установка таймаута экрана недоступна</string>
 		<string name="screen_bright_slider">Яркость: %tw_brightness_pct%%</string>
 		<string name="screen_bright_na">Установка яркости недоступна</string>
@@ -353,10 +350,10 @@
 		<string name="terminal_btn">Терминал</string>
 		<string name="reload_theme_btn">Перезагрузить тему</string>
 		<string name="dumlock_btn">HTC Dumlock</string>
-		<string name="inject_twrp_btn">Интегрировать TWRP</string>
-		<string name="inject_twrp_confirm">Интегрировать TWRP заново</string>
-		<string name="injecting_twrp">Интегрирование TWRP...</string>
-		<string name="inject_twrp_complete">Интегрирование TWRP завершено</string>
+		<string name="inject_twrp_btn">Интегрировать OrangeFox</string>
+		<string name="inject_twrp_confirm">Интегрировать OrangeFox заново</string>
+		<string name="injecting_twrp">Интегрирование OrangeFox...</string>
+		<string name="inject_twrp_complete">Интегрирование OrangeFox завершено</string>
 		<string name="swipe_to_confirm">Проведите для подтверждения</string>
 		<string name="part_sd_hdr">Разметка SD</string>
 		<string name="invalid_partsd_sel">Вы должны выбрать съемное устройство</string>
@@ -377,7 +374,7 @@
 		<string name="dumlock_restore_confirm">Восстановить Boot</string>
 		<string name="dumlock_restoring">Восстановление оригинального Boot...</string>
 		<string name="dumlock_restore_complete">Восстановление Boot завершено</string>
-		<string name="dumlock_reflash_btn">Перепрошивка TWRP</string>
+		<string name="dumlock_reflash_btn">Перепрошивка OrangeFox</string>
 		<string name="dumlock_reflash_confirm">Перепрошить Recovery в Boot</string>
 		<string name="dumlock_reflashing">Прошивка Recovery в Boot...</string>
 		<string name="dumlock_reflash_complete">Прошивка Recovery в Boot завершена</string>
@@ -478,7 +475,7 @@
 		<string name="backup_completed">[КОПИРОВАНИЕ ЗАВЕРШЕНО ЗА {1} СЕКУНД]</string>
 		<string name="restore_started">[ВОССТАНОВЛЕНИЕ НАЧАТО]</string>
 		<string name="restore_folder">Папка для восстановления: '{1}'</string>
-		<!-- {1} is the partition display name and {2} is the nuМБer of сек.onds -->
+		<!-- {1} is the partition display name and {2} is the nuМБer of seconds -->
 		<string name="restore_part_done">[{1} выполнено за {2} секунд(ы)]</string>
 		<string name="verifying_md5">Проверка MD5</string>
 		<string name="skip_md5">Пропуск проверки MD5 согласно настройкам.</string>
@@ -499,7 +496,7 @@
 
 		<string name="cleaned">Очищены: {1}...</string>
 		<string name="dalvik_done">-- Очистка директорий Dalvik Cache завершена!</string>
-		<string name="no_andсек.">Не найдены разделы android сек.ure.</string>
+		<string name="no_andsec">Не найдены разделы android secure.</string>
 		<string name="unable_to_locate">{1} не найден.</string>
 		<string name="wiping_datamedia">Очистка внутренней памяти -- /data/media...</string>
 		<string name="unable_to_mount">Не удается смонтировать {1}</string>
@@ -546,7 +543,7 @@
 		<string name="no_md5_found">Отсутствует файл md5 для '{1}'. Пожалуйста отмените выбор проверки MD5 при восстановлении.</string>
 		<string name="md5_fail_match">MD5 не соответствует для '{1}'.</string>
 		<string name="fail_decrypt_tar">Не удается расшифровать tar-файл '{1}'</string>
-		<string name="format_data_msg">Вам, возможно, потребуется перезагрузить TWRP, чтобы иметь возможность использовать /data снова.</string>
+		<string name="format_data_msg">Вам, возможно, потребуется перезагрузиться, чтобы иметь возможность использовать /data снова.</string>
 		<string name="format_data_err">Невозможно отформатировать и удалить шифрование.</string>
 		<string name="formatting_using">Форматирование {1} с помощью {2}...</string>
 		<string name="unable_to_wipe">Невозможно очистить {1}.</string>
@@ -580,7 +577,7 @@
 		<string name="need_new_adb">Вам необходим ADB 1.0.32 или новее для выполнения Sideload на этом устр-ве.</string>
 		<string name="no_pwd">Не предоставлен пароль.</string>
 		<string name="done_ors">Завершено выполнение файла сценария</string>
-		<string name="injecttwrp">Введение TWRP в образ boot...</string>
+		<string name="injecttwrp">Введение OrangeFox в образ boot...</string>
 		<string name="zip_err">Ошибка при установке ZIP файла '{1}'</string>
 		<string name="installing_zip">Установка ZIP файла '{1}'</string>
 		<string name="select_backup_opt">Установка опций резервного копирования:</string>
@@ -608,7 +605,6 @@
 		<string name="dumlock_restore">Восстановление оригинального boot...</string>
 		<string name="dumlock_reflash">Перепрошивка recovery в boot...</string>
 		<string name="run_script">Запуск сценария {1}...</string>
-		<string name="rename_stock">Переименование файла стокового TWRP в /system для предотвращения возврата на стоковое TWRP вместо TWRP.</string>
 		<string name="split_backup">Разделение резервной копии на несколько архивов...</string>
 		<string name="backup_error">Ошибка создания резервной копии.</string>
 		<string name="restore_error">Ошибка восстановления резервной копии.</string>
@@ -620,15 +616,15 @@
 		<string name="base_pkg_err">Неудача при загрузке базовых пакетов.</string>
 		<string name="simulating">Имитация действий...</string>
 		<string name="backup_cancel">Резервное копирование отменено</string>
-		<string name="config_twrp">Конфигурирование TWRP...</string>
-		<string name="config_twrp_err">Невозможно сконфигурировать TWRP с этим ядром.</string>
+		<string name="config_twrp">Настройка OrangeFox...</string>
+		<string name="config_twrp_err">Невозможно настроить OrangeFox с этим ядром.</string>
 		<string name="copy_log">recovery.log скопирован в {1}.</string>
 		<string name="max_queue">Максимум ZIP в очереди достигнут!</string>
 		<string name="min_queue">Минимум ZIP в очереди достигнут!</string>
 		<string name="screenshot_saved">Скриншот сохранен в {1}</string>
 		<string name="screenshot_err">Не удалось сделать скриншот!</string>
 		<string name="zip_wipe_cache">Один или более ZIP запрашивают очистку cache -- Очистка cache...</string>
-		<string name="and_сек._wipe_err">Невозможно очистить android сек.ure</string>
+		<string name="and_sec_wipe_err">Невозможно очистить android secure</string>
 		<string name="dalvik_wipe_err">Не удалось очистить dalvik</string>
 		<string name="auto_gen">(Создать автоматически)</string>
 		<string name="curr_date">(Текущая дата)</string>
@@ -637,7 +633,7 @@
 		<string name="no_real_sdcard">В этом устройстве отсутствует реальная SD-карта! Отмена!</string>
 		<string name="cancel_sideload">Отмена ADB Sideload...</string>
 		<string name="change_fs_err">Ошибка при изменении файловой системы.</string>
-		<string name="theme_ver_err">Версия темы не соответствует версии TWRP. Используется тема по умолчанию.</string>
+		<string name="theme_ver_err">Версия темы не соответствует версии OrangeFox. Используется тема по умолчанию.</string>
 		<string name="up_a_level">..</string>
 		
 		
@@ -659,7 +655,7 @@
 		<string name="show_cpu_temp_bar">Показывать температуру ЦП</string>
 		<string name="ts_inform">Информация</string>
 		<string name="sel_splash_png">Выберите PNG заставку</string>
-		<string name="install_recovery">Установка TWRP...</string>
+		<string name="install_recovery">Установка OrangeFox...</string>
 		<string name="swipe_to_install">Проведите для установки</string>
 		<string name="swipe_to_install_img">Проведите для установки образа</string>
 		<string name="sel_image_type">Выбор типа образа</string>
@@ -706,7 +702,7 @@
 		<string name="part_present">Присутствует</string>
 		<string name="part_removable">Съёмное</string>
 		<string name="wipe_cache_btn">Очистить Cache</string>
-		<string name="reboot_recovery_btn">TWRP</string>
+		<string name="reboot_recovery_btn">В OrangeFox</string>
 		<string name="btn_flat_more">+</string>
 		<string name="btn_flat_less">-</string>
 		<string name="fordowns_sl">Запуск Sideload...</string>

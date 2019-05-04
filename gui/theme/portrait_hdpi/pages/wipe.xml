@@ -172,7 +172,7 @@
 
 			<action>
 				<touch key="back"/>
-				<action function="page">part_options</action>
+				<action function="page">partitionoptions</action>
 			</action>
 		</page>
 
