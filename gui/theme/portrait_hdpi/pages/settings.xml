@@ -67,7 +67,6 @@
 					<action function="page">ext_time</action>
 				</listitem>
 				<listitem name="{@dbg}">
-					<icon res="bs_btn_set_bug"/>
 					<condition var1="debug_mode" var2="1"/>
 					<action function="page">debug</action>
 				</listitem>
