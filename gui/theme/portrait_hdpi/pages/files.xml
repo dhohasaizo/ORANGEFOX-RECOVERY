@@ -87,8 +87,16 @@
 			
 			<button>
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<condition var1="darker_ui" op="!=" var2="1"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
 				<action function="page">file_search</action>
+			</button>
+			
+			<button>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<condition var1="darker_ui" var2="1"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="page">file_dark_search</action>
 			</button>
 
 			<image>
@@ -171,121 +179,22 @@
 		</page>
 		
 		<page name="file_search">
-			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="1"/>
-				<condition var1="key_numbar" op="!=" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_h%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon" file="file_icon" />
-				<filter folders="1" files="1" extnvar="fm_type_sort"/>
-				<path name="tw_file_location1" default="/sdcard"/>
-				<data name="tw_filename1"/>
-				<selection name="tw_selection1"/>
-				<holditem name="tw_hold"/>
-			</fileselector>
-
-			<fileselector style="fileselector_s">
-				<condition var1="list_font" op="!=" var2="1"/>
-				<condition var1="key_numbar" op="!=" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_h%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon_small" file="file_icon_small"/>
-				<filter folders="1" files="1" extnvar="fm_type_sort"/>
-				<path name="tw_file_location1" default="/sdcard"/>
-				<data name="tw_filename1"/>
-				<selection name="tw_selection1"/>
-				<holditem name="tw_hold"/>
-			</fileselector>
-
-			<fileselector style="fileselector_b">
-				<condition var1="list_font" var2="1"/>
-				<condition var1="key_numbar" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_num_h%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon" file="file_icon" />
-				<filter folders="1" files="1" extnvar="fm_type_sort"/>
-				<path name="tw_file_location1" default="/sdcard"/>
-				<data name="tw_filename1"/>
-				<selection name="tw_selection1"/>
-				<holditem name="tw_hold"/>
-			</fileselector>
-
-			<fileselector style="fileselector_s">
-				<condition var1="list_font" op="!=" var2="1"/>
-				<condition var1="key_numbar" var2="1"/>
-				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_num_h%"/>
-				<sort name="tw_gui_sort_order"/>
-				<icon folder="folder_icon_small" file="file_icon_small"/>
-				<filter folders="1" files="1" extnvar="fm_type_sort"/>
-				<path name="tw_file_location1" default="/sdcard"/>
-				<data name="tw_filename1"/>
-				<selection name="tw_selection1"/>
-				<holditem name="tw_hold"/>
-			</fileselector>
-			
-			<template name="body_key"/>
-			
-			<template name="ab"/>
-
-			<template name="statusbarinfo"/>
+			<template name="file_search_base"/>
 			
 			<input>
-				<condition var1="darker_ui" op="!=" var2="1"/>
 				<background color="%background%"/>
 				<placement x="%col1_x_indent%" y="%ab_bc_search_y%"  w="816" h="%input_height%"/>
 				<text>%tw_name_filter%</text>
-				<cursor color="%text%" hasfocus="0" width="%input_cursor_width%"/>
 				<data name="tw_name_filter"/>
 				<action function="set">tw_reload_fm=1</action>
 				<action function="page">file_search</action>
 			</input>
-			
-			<input>
-				<condition var1="darker_ui" var2="1"/>
-				<background color="%title_solid_bg%"/>
-				<placement x="%col1_x_indent%" y="%ab_bc_search_y%"  w="816" h="%input_height%"/>
-				<text>%tw_name_filter%</text>
-				<data name="tw_name_filter"/>
-				<action function="set">tw_reload_fm=1</action>
-				<action function="page">file_search</action>
-			</input>
-
 			<text>
 				<condition var1="tw_name_filter" op="!="/>
 				<placement x="%col1_x_indent%" y="%ab_bc_search_y%"/>
 				<font resource="body1" color="#66666666"/>
 				<text>{@search_help}</text>
 			</text>
-			
-			<action>
-				<condition var1="tw_filename1" op="modified"/>
-				<condition var1="fm_auto_open" op="!=" var2="1"/>
-				<actions>
-					<action function="page">filemanageroptions</action>
-				</actions>
-			</action>
-
-			<action>
-				<condition var1="tw_hold" var2="1"/>
-				<condition var1="fm_auto_open" var2="1"/>
-				<actions>
-					<action function="page">filemanageroptions</action>
-				</actions>
-			</action>
-			
-			<action>
-				<condition var1="tw_filename1" op="modified"/>
-				<condition var1="fm_auto_open" var2="1"/>
-				<actions>
-					<action function="set">tw_back=filemanagerlist</action>
-					<action function="set">tw_fm_isfolder=0</action>
-					<action function="set">tw_file_extension=</action>
-					<action function="set">fex_found=0</action>
-					<action function="fileextension">%tw_selection1%</action>
-					<action function="page">files_redirect</action>
-				</actions>
-			</action>
-			
 			<action>
 				<condition var1="tw_keyboard_press_key" var2="1"/>
 				<actions>
@@ -294,17 +203,32 @@
 					<action function="page">file_search</action>
 				</actions>
 			</action>
+		</page>
+		
+		<page name="file_dark_search">
+			<template name="file_search_base"/>
 			
-			<action>
-				<touch key="home"/>
+			<input>
+				<background color="%title_solid_bg%"/>
+				<placement x="%col1_x_indent%" y="%ab_bc_search_y%"  w="816" h="%input_height%"/>
+				<text>%tw_name_filter%</text>
+				<data name="tw_name_filter"/>
 				<action function="set">tw_reload_fm=1</action>
-				<action function="page">filemanagerlist</action>
-			</action>
-
+				<action function="page">file_search</action>
+			</input>
+			<text>
+				<condition var1="tw_name_filter" op="!="/>
+				<placement x="%col1_x_indent%" y="%ab_bc_search_y%"/>
+				<font resource="body1" color="#66666666"/>
+				<text>{@search_help}</text>
+			</text>
 			<action>
-				<touch key="back"/>
-				<action function="set">tw_reload_fm=1</action>
-				<action function="page">filemanagerlist</action>
+				<condition var1="tw_keyboard_press_key" var2="1"/>
+				<actions>
+					<action function="set">tw_reload_fm=1</action>
+					<action function="set">tw_keyboard_press_key=0</action>
+					<action function="page">file_dark_search</action>
+				</actions>
 			</action>
 		</page>
 		
