@@ -57,11 +57,10 @@
 		<variable name="use_fixed_font" value="1" persist="1"/>
 		<variable name="show_cpu_temp" value="1" persist="1"/>
 		<variable name="list_font" value="0" persist="1"/>
-		<variable name="bookmark" value="2" persist="1"/>
 		<variable name="navbar_sams" value="0" persist="1"/>
 		<variable name="navbar_accent" value="0" persist="1"/>
 		<variable name="darker_ui" value="1" persist="1"/>
-		<variable name="show_slideout" value="1" persist="1"/>
+		<variable name="show_slideout" value="0" persist="1"/> <!-- Everything should work perfectly! -->
 		<variable name="separate_status" value="1" persist="1"/>
 		<variable name="style_battery" value="0" persist="1"/>
 		<variable name="show_shadow" value="1" persist="1"/>
@@ -82,12 +81,11 @@
 		<variable name="tw_app_prompt" value="0"/>
 		<variable name="tw_app_install_status" value="2"/>
 		<variable name="tw_include_kernel_log" value="0"/>
-		<variable name="include_bugreport" value="0"/>
 		<variable name="tw_install_reboot" value="0"/>
 		<variable name="needs_repack" value="0"/>
-		<variable name="secret_features" value="0"/>
 		<variable name="fm_type_sort" value="" persist="1"/>
 		<variable name="ft_backup_empty" value="0"/>
+		<variable name="startup" value="0"/>
 		
 		<!-- Placement -->
 		

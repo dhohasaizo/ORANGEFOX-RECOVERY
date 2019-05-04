@@ -310,6 +310,7 @@
 		<string name="utcp10">(UTC +10) Якутск, Гуам, Канберра</string>
 		<string name="utcp11">(UTC +11) Владивосток, Сахалин</string>
 		<string name="utcp12">(UTC +12) Магадан, Камчатка, Фидж</string>
+		<string name="sel_tz_list">Часовой пояс</string>
 		<string name="tz_offset_hdr">Смещение времени</string>	
 		<string name="tz_offset">Смещение</string>
 		<string name="dialog_offset_note">Поправка в минутах</string>
@@ -922,7 +923,7 @@
 		<!-- Customization -->
 		<string name="cust_new_ota_screen">Простой экран установки OTA</string>
 		<string name="fm_icons_simple">Сделать значки файлов больше</string>
-		<string name="theme_engine_update">Применить тему и перезапуститься?</string>
+		<string name="theme_engine_update">Применить тему?</string>
 		<string name="apply_btn">Применить</string>
 		<string name="theme_hdr">Тема</string>
 		
@@ -986,7 +987,7 @@
 		<string name="pass_page_block">Текущий метод блокировки</string>
 		<string name="pass_page_block_inf1">Спите спокойно, зная, что</string>
 		<string name="pass_page_block_inf2">вы защищены.</string>
-		<string name="pass_page_select">Select password type</string>
+		<string name="pass_page_select">Выберите тип пароля</string>
 
 		<!-- OTA working page -->
 		<string name="ota_console_title">Установка OTA</string>

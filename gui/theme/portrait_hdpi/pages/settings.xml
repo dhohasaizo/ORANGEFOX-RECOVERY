@@ -246,6 +246,16 @@
 				<placement x="%col1_x%" y="%row7_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
 				<action function="page">ext_gov</action>
 			</button>
+			
+			<action>
+				<conditions>
+					<condition var1="tw_busy" var2="0"/>
+					<condition var1="fox_boot_performance_check" op="!=" var2="1"/>
+					<condition var1="fox_boot_balance_check" op="!=" var2="1"/>
+					<condition var1="fox_boot_powersave_check" op="!=" var2="1"/>
+				</conditions>
+				<action function="set">fox_boot_balance_check=1</action>
+			</action>
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row5_3_y%"/>

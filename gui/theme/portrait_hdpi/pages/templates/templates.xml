@@ -3,7 +3,7 @@
 	<templates>
 		<template name="nav_panel">
 			<fill color="%title_solid_bg%">
-				<condition var1="navbar_bkg" var2="1"/>
+				<condition var1="darker_ui" var2="1"/>
 				<placement x="0" y="%nav_panel_y%" w="%screen_w%" h="%nav_panel_h%"/>
 			</fill>
 			
@@ -598,24 +598,13 @@
 		</template>
 		
 		<template name="running_acts">
-			<button>
-				<condition var1="ftls_running" var2="1"/>
-				<condition var1="tw_busy" op="!=" var2="1"/>
-				<fill color="%darktransparent%"/>
-				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
-			</button>
+			<template name="dialog_body"/>
 			<text style="text_status">
 				<placement x="%center_x%" y="%center_y%" placement="5"/>
 				<condition var1="ftls_running" var2="1"/>
 				<condition var1="tw_busy" op="!=" var2="1"/>
 				<text>{@lang_wait}</text>
 			</text>
-			<button>
-				<condition var1="tw_busy" var2="1"/>
-				<condition var1="ftls_running" op="!=" var2="1"/>
-				<fill color="%darktransparent%"/>
-				<placement x="0" y="0" w="%screen_w%" h="%screen_h%"/>
-			</button>
 			<text style="text_status">
 				<placement x="%center_x%" y="%center_y%" placement="5"/>
 				<condition var1="tw_busy" var2="1"/>

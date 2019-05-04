@@ -234,6 +234,7 @@
 				<background color="%background%"/>
 				<placement x="%col1_x_indent%" y="%ab_bc_search_y%"  w="816" h="%input_height%"/>
 				<text>%tw_name_filter%</text>
+				<cursor color="%text%" hasfocus="0" width="%input_cursor_width%"/>
 				<data name="tw_name_filter"/>
 				<action function="set">tw_reload_fm=1</action>
 				<action function="page">file_search</action>
@@ -985,7 +986,7 @@
 					<action function="set">sum=0</action>
 					<action function="ftls">
 					link="%tw_filename1%"
-					[ -L "%tw_filename1%" ] && link=$(realpath "%tw_filename1%")
+					[ -L "%tw_filename1%" ] && link=$(readlink "%tw_filename1%")
 					twrp xset ft_inf_real=$link
 					twrp xset ft_inf_size=$(du -h "%tw_filename1%" | sed 's*%tw_filename1%**g');
 					twrp xset ft_inf_rights=$(stat -c '%%a (%%A)' "%tw_filename1%")
