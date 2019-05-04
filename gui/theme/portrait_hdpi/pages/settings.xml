@@ -369,11 +369,23 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<text>ADB</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%lb_l1%"/>
+				<listitem name="{@run_adb_startup}">
+					<data variable="adb_startup"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_2a_y%"/>
 				<text>{@pass_page_select}</text>
 			</text>
 
 			<listbox style="btn_list">
-				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%bl_h4%"/>
+				<placement x="0" y="%row5_3a_y%" w="%screen_w%" h="%bl_h4%"/>
 				<listitem name="{@pass_classic}">
 					<icon res="pass_classic"/>
 					<action function="set">pass_new_1=</action>

@@ -13,7 +13,8 @@
 			<!-- Crutch to make input fields update -->
 			<action>
 				<condition var1="startup" op="!=" var2="1"/>
-				<action function="set">tw_file_location1=/sdcard</action>
+				<condition var1="tw_file_location1" op="modified"/>
+				<action function="page">filemanagerlist</action>
 				<action function="set">startup=1</action>
 			</action>
 

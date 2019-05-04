@@ -50,7 +50,7 @@
 		<string name="install_image_btn">Install IMAGE</string>
 		<string name="install_select_file_hdr">Select File</string>
 		<string name="install_select_file_btn">Select File</string>
-		<string name="adb_sideload_btn">ADB Sideload</string>
+		<string name="adb_sideload_btn">ADB & Sideload</string>
 		<string name="select_storage_hdr">Select Storage</string>
 		<string name="select_storage_btn">Select Storage</string>
 		<string name="queue_hdr">Queue</string>
@@ -594,7 +594,8 @@
 		<string name="also_wipes">Also wipes</string>
 		<string name="confirm_wipe_cptn">Confirm Wipe</string>
 		<string name="storage_cptn">Storage</string>
-		<string name="enter_password_cptn">Password</string>
+		<string name="enter_password_restore">Password</string>
+		<string name="enter_password_cptn">Security</string>
 		<!-- added by fordownloads -->
 		<string name="fordowns_sl">Starting Sideload...</string>
 		<string name="fordowns_to">to</string>
@@ -912,6 +913,7 @@
 		<string name="more">More...</string>
 		<string name="hide">Hide</string>
 		<string name="part_menu_hdr">Manage Partitions</string>
+		<string name="run_adb_startup">Run ADB on startup</string>
 
 		<!-- MMGUI -->
 		<string name="mm_module_active">Active</string>

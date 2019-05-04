@@ -55,7 +55,7 @@
 		<string name="install_select_file_btn">Выбрать файл</string>
 		<string name="file_selector_folders_hdr">Папки</string>
 		<string name="select_file_from_storage">Выбор файла из %tw_storage_display_name% (%tw_storage_free_size% МБ)</string>
-		<string name="adb_sideload_btn">ADB Sideload</string>
+		<string name="adb_sideload_btn">ADB и Sideload</string>
 		<string name="install_hdr">Установка</string>
 		<string name="install_reboot_chk">Перезагрузка по окончании</string>
 		<string name="select_storage_hdr">Накопитель</string>
@@ -677,7 +677,8 @@
 		<string name="also_wipes">Также очистить</string>
 		<string name="confirm_wipe_cptn">Подтвердить очистку</string>
 		<string name="storage_cptn">Накопитель</string>
-		<string name="enter_password_cptn">Пароль</string>
+		<string name="enter_password_restore">Пароль</string>
+		<string name="enter_password_cptn">Защита</string>
 		<string name="copy_kernel_log">Лог ядра скоприован в {1}</string>
 		
 		<!-- added by fordownloads -->
@@ -1020,6 +1021,7 @@
 		<string name="part_menu_hdr">Управление разделами</string>
 		<string name="subs_wipe">Удалить слои Substratum</string>
 		<string name="aroma_help">Нажмите еще раз для запуска...</string>
+		<string name="run_adb_startup">Запускать ADB при загрузке</string>
 		
 		<!-- About -->
 		<string name="abt_maintainer">Сопровождающий</string>

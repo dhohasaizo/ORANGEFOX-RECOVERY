@@ -74,6 +74,12 @@ static void Print_Prop(const char *key, const char *name, void *cookie)
 
 int main(int argc, char **argv)
 {
+	//[f/d] Disable LED as early as possible
+	DataManager::Leds(false);
+	//Also disable adbd 
+  property_set("ctl.stop", "adbd");
+  property_set("orangefox.adb.status", "0");
+
   // Recovery needs to install world-readable files, so clear umask
   // set by init
   umask(0);
@@ -118,8 +124,6 @@ int main(int argc, char **argv)
   time_t StartupTime = time(NULL);
   printf("Starting OrangeFox TWRP %s-%s-%s on %s (pid %d)\n", FOX_VERSION,
 	 FOX_BUILD, TW_GIT_REVISION, ctime(&StartupTime), getpid());
-
-	DataManager::Leds(false);
 
   // Load default values to set DataManager constants and handle ifdefs
 	DataManager::SetDefaultValues();
@@ -292,13 +296,13 @@ int main(int argc, char **argv)
       && (!DataManager::GetIntValue(TW_IS_ENCRYPTED)
 	  || DataManager::GetIntValue(TW_IS_DECRYPTED)))
     {
-      property_set("mtp.crash_check", "1");
+      /*property_set("mtp.crash_check", "1");
       LOGINFO("Starting MTP\n");
       if (!PartitionManager.Enable_MTP())
 	PartitionManager.Disable_MTP();
       else
 	gui_msg("mtp_enabled=MTP Enabled");
-      property_set("mtp.crash_check", "0");
+      property_set("mtp.crash_check", "0");*/
     }
   else if (strcmp(mtp_crash_check, "0"))
     {
@@ -312,7 +316,7 @@ int main(int argc, char **argv)
       PartitionManager.Disable_MTP();
     }
 #endif
-  
+
   // call OrangeFox startup code
   TWFunc::OrangeFox_Startup();
 
