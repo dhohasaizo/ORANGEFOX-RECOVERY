@@ -3,6 +3,12 @@
 	<pages>
 		<page name="main">
 			<action>
+				<condition var1="first_start" op="!=" var2="1"/>
+				<action function="page">welcome</action>
+			</action>
+
+			<action>
+				<condition var1="first_start" var2="1"/>
 				<condition var1="use_pass" var2="1"/>
 				<condition var1="pass_open" var2="0"/>
 				<condition var1="tw_has_mtp" var2="1"/>
@@ -11,6 +17,7 @@
 			</action>
 			
 			<action>
+				<condition var1="first_start" var2="1"/>
 				<condition var1="use_pass" var2="1"/>
 				<condition var1="pass_open" var2="0"/>
 				<action function="adb">disable</action>
@@ -20,6 +27,7 @@
 			</action>
 
 			<action>
+				<condition var1="first_start" var2="1"/>
 				<condition var1="use_pass" var2="0"/>
 				<condition var1="adb_startup" var2="1"/>
 				<condition var1="adb_started" op="!=" var2="1"/>
@@ -28,6 +36,7 @@
 			</action>
 
 			<action>
+				<condition var1="first_start" var2="1"/>
 				<condition var1="use_pass" var2="0"/>
 				<actions>
 					<action function="overlay"/>
@@ -37,6 +46,7 @@
 			</action>
 
 			<action>
+				<condition var1="first_start" var2="1"/>
 				<condition var1="use_pass" var2="1"/>
 				<condition var1="pass_open" var2="1"/>
 				<actions>
@@ -45,6 +55,37 @@
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
+		</page>
+
+		<page name="welcome">
+			<background color="%background%"/>
+			<template name="background_image"/>
+			<template name="keys"/>
+
+			<image>
+				<image resource="welcome_fox"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+
+			<text style="text_ab_title">
+				<placement x="%center_x%" y="%welcome_text%" placement="4"/>
+				<text>{@welcome_msg}</text>
+			</text>
+			<text style="text_ab_title">
+				<placement x="%center_x%" y="%welcome_text2%" placement="4"/>
+				<text>{@welcome_msg2}</text>
+			</text>
+
+			<button style="floating_btn">
+				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
+				<action function="set">first_start=1</action>
+				<action function="page">main</action>
+			</button>
+			
+			<image>
+				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
+				<image resource="fab_accept"/>
+			</image>
 		</page>
 
 		<page name="aroma_busy">

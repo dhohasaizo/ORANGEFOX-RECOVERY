@@ -88,6 +88,8 @@
 		<variable name="startup" value="0"/>
 		
 		<!-- Placement -->
+		<variable name="welcome_text" value="%center_y%+160"/>
+		<variable name="welcome_text2" value="%center_y%+240"/>
 		
 		<!-- Screen size -->
 		<variable name="cutout_w" value="%status_h%-72"/>
