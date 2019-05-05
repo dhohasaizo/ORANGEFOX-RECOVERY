@@ -228,6 +228,15 @@
 				<action function="disableled"/>
 				<action function="page">%tw_clear_destination%</action>
 			</action>
+
+			<!-- Enable hardware keys if device is mido -->
+			<action>
+				<condition var1="%fox_compatibility_fox_device%" var2="mido"/>
+				<action function="cmd">
+					echo 0 > /proc/touchpanel/capacitive_keys_disable
+				</action>
+			</action>
+			
 		</page>
 
 		<page name="confirm_action">

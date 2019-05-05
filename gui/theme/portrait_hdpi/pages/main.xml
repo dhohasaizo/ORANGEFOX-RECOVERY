@@ -37,14 +37,6 @@
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
-
-			<!-- Enable hardware keys if device is mido -->
-			<action>
-				<condition var1="%of_maintainer%" var2="MrYacha & DarthJabba9 | mido"/>
-				<action function="cmd">
-					echo 0 > /proc/touchpanel/capacitive_keys_disable
-				</action>
-			</action>
 		</page>
 
 		<page name="aroma_busy">
