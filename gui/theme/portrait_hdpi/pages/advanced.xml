@@ -213,12 +213,12 @@
 
 			<listbox style="btn_list">
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%bl_h2%"/>
-				<listitem name="{@module_install} Magisk">
+				<listitem name="{@module_install} Magisk 19.1">
 					<icon res="bs_btn_archive"/>
 					<actions>
 						<action function="queueclear"/>
 						<action function="set">fox_m_author=topjohnwu</action>
-						<action function="set">fox_m_name={@module_install} Magisk</action>
+						<action function="set">fox_m_name={@module_install} Magisk 19.1</action>
 						<action function="set">tw_file=Magisk.zip</action>
 						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
 						<action function="set">tw_filecheck=%tw_filename%</action>
