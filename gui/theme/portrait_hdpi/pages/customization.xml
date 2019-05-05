@@ -10,7 +10,7 @@
 			</action>
 
 			<listbox style="btn_list">
-				<placement x="0" y="%bl_y%" w="%screen_w%" h="%bl_fullscreen_h%"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%bl_fullscreen_h%"/>
 				<listitem name="{@navbar_title}">
 					<condition var1="allow_disable_nav" var2="1"/>
 					<icon res="nav"/>
@@ -476,8 +476,8 @@
 				<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				<data name="navbar_bkg"/>
 				<listitem name="{@fm_none}">0</listitem>
-				<listitem name="{@dark_nav}">3</listitem>
-				<listitem name="{@cust_navbar_accent}">1</listitem>
+				<listitem name="{@dark_nav}">1</listitem>
+				<listitem name="{@cust_navbar_accent}">3</listitem>
 				<listitem name="{@cust_navbar_black}">2<condition var1="theme_style_tmp" op="!=" var2="Black"/>
 				</listitem>
 			</listbox>
@@ -490,22 +490,25 @@
 
 			<listbox style="settingslist">
 				<placement x="0" y="%row7_1_y%" w="%screen_w%" h="%lb_l3%"/>
-				<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				<listitem name="{@cust_navbar_white}">
 					<condition var1="navbar_bkg" op="!=" var2="3"/>
 					<condition var1="theme_style" op="!=" var2="Light"/>
+					<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 					<data variable="navbar_accent"/>
 				</listitem>
 				<listitem name="{@cust_navbar_gray}">
 					<condition var1="navbar_bkg" op="!=" var2="3"/>
 					<condition var1="theme_style" var2="Light"/>
+					<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 					<data variable="navbar_accent"/>
 				</listitem>
 				<listitem name="{@rev_navbar_chk}">
 					<data variable="navbar_sams"/>
+					<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 				</listitem>
 				<listitem name="{@show_slideout}">
 					<condition var1="nougat" var2="3"/>
+					<condition var1="navbar_disable_tmp" op="!=" var2="1"/>
 					<data variable="show_slideout"/>
 				</listitem>
 			</listbox>
@@ -1586,12 +1589,13 @@
 				<action function="set">fox_busy=1</action>
 				<action function="ftls">
 					#Remove theme
-					if [[ '%remove_theme%' = '1' ]] || [[ '%theme_style_tmp%' = 'Night' && '%theme_accent_tmp%' = 'Orange' && '%navbar_disable_tmp%' = '0' && '%theme_font_tmp%' = 'Roboto' && '%theme_sec_font_tmp%' = 'GoogleSans' && '%theme_font_size_tmp%' = 'n' ]]; then
+					if [[ '%remove_theme%' = '1' ]] || [[ '%theme_style_tmp%' = 'Night' && '%theme_accent_tmp%' = 'Orange' && '%theme_font_tmp%' = 'Roboto' && '%theme_sec_font_tmp%' = 'GoogleSans' && '%theme_font_size_tmp%' = 'n' ]]; then
 						[ -d "/sdcard/Fox/.theme" ] && rm -rf /sdcard/Fox/.theme;
-						exit;
+						[[ '%update_navbar%' = '1' ]] || exit;
+					else
+						if [ ! -d "/sdcard/Fox/.theme" ]; then mkdir -p "/sdcard/Fox/.theme"; fi;
 					fi;
 
-					if [ ! -d "/sdcard/Fox/.theme" ]; then mkdir -p "/sdcard/Fox/.theme"; fi;
 					#Fonts
 					if [[ '%update_fonts%' = '1' ]]; then
 						if [ -f "/twres/fonts/%theme_sec_font_tmp%.ttf" ];
@@ -1618,10 +1622,11 @@
 				
 					#Navbar
 					if [[ '%update_navbar%' = '1' ]]; then
+						if [ ! -d "/sdcard/Fox/.navbar" ]; then mkdir -p "/sdcard/Fox/.navbar"; fi;
 						cat "/twres/themes/sed/navbar.xml" | sed -e "
 						s/#NAVBAR_DISABLE#/%navbar_disable_tmp%/g;
 						s/#SCREEN_H#/$(expr %screen_original_h% + %navbar_disable_add_tmp%)/g
-						" > /sdcard/Fox/.theme/navbar.xml;
+						" > /sdcard/Fox/.navbar/navbar.xml;
 					fi;
 				
 					#Style

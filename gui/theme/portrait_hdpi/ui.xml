@@ -10,7 +10,7 @@
 	</details>
 	
 	<include>
-		<xml name="/sdcard/Fox/.theme/navbar.xml" default="/twres/themes/navbar.xml"/>
+		<xml name="/sdcard/Fox/.navbar/navbar.xml" default="/twres/themes/navbar.xml"/>
 		<xml name="/sdcard/Fox/.theme/font.xml"   default="/twres/themes/font.xml"/>
 		<xml name="/sdcard/Fox/.theme/style.xml"  default="/twres/themes/style.xml"/>
 		<xml name="/sdcard/Fox/.theme/accent.xml" default="/twres/themes/accent.xml"/>

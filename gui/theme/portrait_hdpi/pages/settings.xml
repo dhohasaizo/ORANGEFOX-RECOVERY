@@ -6,7 +6,7 @@
 			<template name="body"/>
 
 			<listbox style="btn_list">
-				<placement x="0" y="%bl_y%" w="%screen_w%" h="%bl_np_h_no_nabar%"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%bl_fullscreen_h%"/>
 				<listitem name="{@settings_general}">
 					<icon res="bs_btn_set_global"/>
 					<action function="set">general_back=settings</action>
@@ -112,7 +112,7 @@
 
 			<action>
 				<touch key="home"/>
-				<action function="page">advanced</action>
+				<action function="page">main</action>
 			</action>
 
 			<action>
@@ -424,7 +424,7 @@
 			
 			<action>
 				<touch key="home"/>
-				<action function="page">advanced</action>
+				<action function="page">main</action>
 			</action>
 
 			<action>

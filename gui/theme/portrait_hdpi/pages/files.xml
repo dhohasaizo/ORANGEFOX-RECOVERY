@@ -472,11 +472,6 @@
 			</action>
 			
 			<action>
-				<condition var1="book_0" var2="notset"/>
-				<action function="set">book_0={@fm_books_empty}</action>
-			</action>
-			
-			<action>
 				<action function="set">book_id=</action>
 				<action function="set">book_hold=0</action>
 				<action function="page">files_bookmarks</action>
@@ -485,35 +480,9 @@
 		
 		<page name="files_bookmarks">
 			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr}</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_books}</text>
-			</text>
-
-			<text style="text_ab_subtitle">
-				<condition var1="book_edit" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@fm_books_desc}</text>
-			</text>
-			
-			<text style="text_ab_subtitle">
-				<condition var1="book_edit" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>{@fm_books_desc_edit}</text>
-			</text>
 			
 			<listbox style="btn_list">
-				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%bl_files_h%"/>
+				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%bl_files_h%"/>
 				<data requireReload="1"/>
 				<holditem name="book_hold"/>
 				<listitem name="{@fm_books_edit}">
@@ -528,7 +497,6 @@
 					<condition var1="book_7" var2="{@fm_books_empty}"/>
 					<condition var1="book_8" var2="{@fm_books_empty}"/>
 					<condition var1="book_9" var2="{@fm_books_empty}"/>
-					<condition var1="book_0" var2="{@fm_books_empty}"/>
 					<action function="set">book_edit=1</action>
 				</listitem>
 				<listitem name="%book_1%">
@@ -630,18 +598,33 @@
 					<condition var1="book_edit" var2="1"/>
 					<action function="set">book_id=9</action>
 				</listitem>
-				<listitem name="%book_0%">
-					<icon res="bs_btn_bookmark"/>
-					<condition var1="book_0" op="!=" var2="{@fm_books_empty}"/>
-					<condition var1="book_edit" var2="0"/>
-					<action function="set">book_id=0</action>
-				</listitem>
-				<listitem name="%book_0%">
-					<icon res="bs_btn_rename"/>
-					<condition var1="book_edit" var2="1"/>
-					<action function="set">book_id=0</action>
-				</listitem>
 			</listbox>
+			
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@fm_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@fm_books}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<condition var1="book_edit" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@fm_books_desc}</text>
+			</text>
+			
+			<text style="text_ab_subtitle">
+				<condition var1="book_edit" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@fm_books_desc_edit}</text>
+			</text>
 			
 			<button style="floating_btn">
 				<condition var1="book_edit" var2="1"/>
@@ -755,7 +738,7 @@
 			</text>
 
 			<listbox style="btn_list">
-				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%bl_files_h%"/>
+				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%bl_files_h%"/>
 				<listitem name="{@symlink_file}">
 					<icon res="bs_btn_link"/>
 					<condition var1="tw_real_path"/>
@@ -847,6 +830,7 @@
 					<action function="set">tw_fm_text3=</action>
 					<action function="set">tw_include_text3=0</action>
 					<action function="set">tw_back=filemanageroptions</action>
+					<action function="ftls">twrp xset tw_filemanager_rename=$(stat -c '%%a' "%tw_filename1%")</action>
 					<action function="page">filemanagerchmod</action>
 				</listitem>
 				<listitem name="{@fm_delete_btn}">
@@ -957,7 +941,7 @@
 			</text>
 		
 			<listbox style="btn_list">
-				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%bl_files_h%"/>
+				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%bl_files_h%"/>
 				<listitem name="{@fm_open_text}">
 					<condition var1="tw_fm_isfolder" var2="0"/>
 					<icon res="bs_btn_doc"/>
@@ -1249,7 +1233,7 @@
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>%tw_file_location1%</text>
+				<text>%tw_filename1%</text>
 			</text>
 
 			<text style="caption_hl">
@@ -1305,7 +1289,7 @@
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>%tw_file_location1%</text>
+				<text>%tw_filename1%</text>
 			</text>
 
 			<text style="caption_hl">
@@ -1349,6 +1333,10 @@
 
 			<template name="statusbarinfo"/>
 
+			<action>
+				<action function="set">tw_filemanager_rename=%tw_filemanager_rename%</action>
+			</action>
+
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
 				<text>{@fm_hdr}</text>
@@ -1361,7 +1349,7 @@
 
 			<text style="text_ab_subtitle">
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>%tw_file_location1%</text>
+				<text>%tw_filename1%</text>
 			</text>
 
 			<text style="caption_hl">

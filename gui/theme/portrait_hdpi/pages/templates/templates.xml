@@ -466,15 +466,48 @@
 			
 			<text style="text_body1">
 				<condition var1="needs_repack" var2="1"/>
+				<condition var1="remove_theme" op="!=" var2="1"/>
 				<placement x="%snackbar_text_x%" y="%snackbar_text_y%"/>
 				<text>{@theme_engine_update}</text>
 			</text>
 			
+			<text style="text_body1">
+				<condition var1="needs_repack" var2="1"/>
+				<condition var1="remove_theme" var2="1"/>
+				<placement x="%snackbar_text_x%" y="%snackbar_text_y%"/>
+				<text>{@theme_engine_reset}</text>
+			</text>
+			
 			<button style="btn_dlg_hl">
 				<condition var1="needs_repack" var2="1"/>
+				<condition var1="remove_theme" op="!=" var2="1"/>
 				<placement x="%snackbar_button_x%" y="%snackbar_button_y%"/>
 				<text>{@apply_btn}</text>
 				<action function="set">needs_repack=0</action>
+				<action function="overlay">apply_changes</action>
+			</button>
+			<button style="btn_dlg_hl">
+				<condition var1="needs_repack" var2="1"/>
+				<condition var1="remove_theme" var2="1"/>
+				<placement x="%snackbar_button_x%" y="%snackbar_button_y%"/>
+				<text>{@apply_btn}</text>
+				<action function="set">needs_repack=0</action>
+				<action function="set">needs_repack=0</action>
+				<action function="set">update_fonts=0</action>
+				<action function="set">update_navbar=0</action>
+				<action function="set">update_accent=0</action>
+				<action function="set">update_style=0</action>
+				
+				<action function="set">navbar_disable_tmp=%navbar_disable%</action>
+				<action function="set">navbar_disable_add_tmp=%navbar_disable_add%</action>
+				
+				<action function="set">theme_font_tmp=%theme_font%</action>
+				<action function="set">theme_sec_font_tmp=%theme_sec_font%</action>
+				<action function="set">theme_font_size_tmp=%theme_font_size%</action>
+				
+				<action function="set">theme_accent_tmp=%theme_accent%</action>
+				<action function="set">theme_accent_c_tmp=%accent%</action>
+				<action function="set">theme_style_tmp=%theme_style%</action>
 				<action function="overlay">apply_changes</action>
 			</button>
 		</template>

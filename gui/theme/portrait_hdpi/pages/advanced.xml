@@ -12,7 +12,7 @@
 
 
 			<listbox style="btn_list">
-				<placement x="0" y="%bl_y%" w="%screen_w%" h="%bl_np_h%"/>
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%files_np_w%"/>
 				<listitem name="{@mount_hdr}">
 					<icon res="bs_adv_mount"/>
 					<action function="page">mount</action>
@@ -398,7 +398,7 @@
 
 			<action>
 				<touch key="home"/>
-				<action function="page">advanced</action>
+				<action function="page">main</action>
 			</action>
 
 			<action>

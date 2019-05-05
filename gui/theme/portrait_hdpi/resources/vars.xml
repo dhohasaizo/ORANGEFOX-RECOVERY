@@ -38,7 +38,6 @@
 		<variable name="book_7" value="notset" persist="1"/>
 		<variable name="book_8" value="notset" persist="1"/>
 		<variable name="book_9" value="notset" persist="1"/>
-		<variable name="book_0" value="notset" persist="1"/>
 		
 		<!-- FRP -->
 		<variable name="use_pass" value="0" persist="1"/>
@@ -204,17 +203,10 @@
 		<variable name="bl_h3" value="432"/>
 		<variable name="bl_h4" value="576"/>
 		<variable name="bl_h5" value="720"/>
-		<variable name="bl_h6" value="864"/>
-		<variable name="bl_h7" value="1008"/>
-		<variable name="bl_h8" value="1152"/>
-		<variable name="bl_h9" value="1296"/>
-		<variable name="bl_h10" value="1440"/>
 		
-		<variable name="bl_fullscreen_h" value="%screen_min_cut%-432"/>
-		<variable name="bl_y" value="264+%cutout_w%"/>
-		<variable name="bl_np_h" value="%screen_min_cut%-600"/>
-		<variable name="bl_np_h_no_nabar" value="%screen_min_cut%-480"/>
-		<variable name="bl_files_h" value="%screen_min_cut%-648"/>
+		<variable name="bl_fullscreen_h" value="%screen_min_cut%-384"/>
+		<variable name="bl_files_h" value="%screen_min_cut%-600"/>
+		<variable name="input_btn_list_y" value="674+%cutout_w%"/>
 		
 		<!-- About -->
 		<variable name="about_title_h" value="576+%cutout_w%"/>
@@ -262,33 +254,6 @@
 		<variable name="card_img_x" value="72"/>
 		
 		<variable name="btn_float_center_y" value="%screen_h%-294"/>
-		
-		<!-- WILL BE REMOVED SOON -->
-		
-		<!-- Long buttons -->
-		<variable name="bs_text_offset" value="42"/>
-		<variable name="input_btn_list_y" value="674+%cutout_w%"/>
-		
-		<!-- Long buttons (bottom) -->
-		<variable name="db_row1_y" value="%screen_h%-288"/>
-		
-		<!-- Long buttons in file manager -->
-		<variable name="bs_row1_y" value="480+%cutout_w%"/>
-		<variable name="bs_row2_y" value="624+%cutout_w%"/>
-		<variable name="bs_row3_y" value="768+%cutout_w%"/>
-		<variable name="bs_row4_y" value="912+%cutout_w%"/>
-		<variable name="bs_row5_y" value="1056+%cutout_w%"/>
-		<variable name="bs_row6_y" value="1200+%cutout_w%"/>
-		<variable name="bs_row7_y" value="1344+%cutout_w%"/>
-		<variable name="bs_row1_text_y" value="%bs_row1_y%+%bs_text_offset%"/>
-		<variable name="bs_row2_text_y" value="%bs_row2_y%+%bs_text_offset%"/>
-		<variable name="bs_row3_text_y" value="%bs_row3_y%+%bs_text_offset%"/>
-		<variable name="bs_row4_text_y" value="%bs_row4_y%+%bs_text_offset%"/>
-		<variable name="bs_row5_text_y" value="%bs_row5_y%+%bs_text_offset%"/>
-		<variable name="bs_row6_text_y" value="%bs_row6_y%+%bs_text_offset%"/>
-		<variable name="bs_row7_text_y" value="%bs_row7_y%+%bs_text_offset%"/>
-		
-		<!-- WILL BE REMOVED SOON -->
 		
 		<!-- NavBar -->
 		<variable name="row_nav_text_y" value="%row_nav_y%+%bs_text_offset%"/>
