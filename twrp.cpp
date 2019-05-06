@@ -121,9 +121,10 @@ int main(int argc, char **argv)
   property_set("ro.twrp.build", "orangefox");
   property_set("ro.twrp.version", FOX_VERSION);
 
+  DataManager::GetValue(FOX_COMPATIBILITY_DEVICE, Fox_Current_Device);
   time_t StartupTime = time(NULL);
-  printf("Starting OrangeFox TWRP %s-%s-%s on %s (pid %d)\n", FOX_VERSION,
-	 FOX_BUILD, TW_GIT_REVISION, ctime(&StartupTime), getpid());
+  printf("Starting OrangeFox TWRP %s-%s-%s (for device %s) on %s (pid %d)\n", FOX_VERSION,
+	 FOX_BUILD, TW_GIT_REVISION, Fox_Current_Device.c_str(), ctime(&StartupTime), getpid());
 
   // Load default values to set DataManager constants and handle ifdefs
 	DataManager::SetDefaultValues();
