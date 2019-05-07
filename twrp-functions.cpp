@@ -3113,6 +3113,8 @@ if (Is_AB_Device)
 	
 	unlink(fox_file.c_str());
 	
+  DataManager::SetValue("first_start", "1");
+
 	#ifdef OF_DONT_PATCH_ON_FRESH_INSTALLATION
 	gui_print("Fresh OrangeFox installation - not running the dm-verity/forced-encryption patches\n");
 	#else

@@ -682,60 +682,9 @@
 		<page name="filemanageroptions">
 			<template name="body"/>
 
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
 			<action>
 				<action function="set">opts_show=%auto_show_btns%</action>
 			</action>
-
-			<action>
-				<condition var1="tw_filename1" var2="/"/>
-				<action function="page">filemanagerlist</action>
-			</action>
-			
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr}</text>
-			</text>
-
-			<text style="text_ab_title">
-				<condition var1="tw_rp_type" var2="1"/>
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@symlink_dir_name}</text>
-			</text>
-			<text style="text_ab_title">
-				<condition var1="tw_rp_type" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@symlink_file_name}</text>
-			</text>
-			<text style="text_ab_title">
-				<condition var1="tw_rp_type" var2="2"/>
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@symlink_broken_name}</text>
-			</text>
-			<text style="text_ab_title">
-				<condition var1="tw_fm_isfolder" op="!=" var2="1"/>
-				<condition var1="tw_rp_type" op="!=" var2="2"/>
-				<condition var1="tw_rp_type" op="!=" var2="1"/>
-				<condition var1="tw_rp_type" op="!=" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_type_file}</text>
-			</text>
-			<text style="text_ab_title">
-				<condition var1="tw_fm_isfolder" var2="1"/>
-				<condition var1="tw_rp_type" op="!=" var2="2"/>
-				<condition var1="tw_rp_type" op="!=" var2="1"/>
-				<condition var1="tw_rp_type" op="!=" var2="0"/>
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_type_folder}</text>
-			</text>
-
-			<text style="text_ab_subtitle">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>%tw_filename1%</text>
-			</text>
 
 			<listbox style="btn_list">
 				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%bl_files_h%"/>
@@ -907,6 +856,57 @@
 				</listitem>
 			</listbox>
 
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<action>
+				<condition var1="tw_filename1" var2="/"/>
+				<action function="page">filemanagerlist</action>
+			</action>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@fm_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_rp_type" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@symlink_dir_name}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="tw_rp_type" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@symlink_file_name}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="tw_rp_type" var2="2"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@symlink_broken_name}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="tw_fm_isfolder" op="!=" var2="1"/>
+				<condition var1="tw_rp_type" op="!=" var2="2"/>
+				<condition var1="tw_rp_type" op="!=" var2="1"/>
+				<condition var1="tw_rp_type" op="!=" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@fm_type_file}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="tw_fm_isfolder" var2="1"/>
+				<condition var1="tw_rp_type" op="!=" var2="2"/>
+				<condition var1="tw_rp_type" op="!=" var2="1"/>
+				<condition var1="tw_rp_type" op="!=" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@fm_type_folder}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_filename1%</text>
+			</text>
+
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -920,25 +920,6 @@
 		
 		<page name="openas">
 			<template name="body"/>
-
-			<template name="ab_ex"/>
-
-			<template name="statusbarinfo"/>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@fm_hdr}</text>
-			</text>
-
-			<text style="text_ab_title">
-				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-				<text>{@fm_open}</text>
-			</text>
-
-			<text style="text_ab_subtitle">
-				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-				<text>%tw_filename1%</text>
-			</text>
 		
 			<listbox style="btn_list">
 				<placement x="0" y="%ab_ex_h%" w="%screen_w%" h="%bl_files_h%"/>
@@ -980,6 +961,25 @@
 				</listitem>
 			</listbox>
 		
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@fm_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@fm_open}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_filename1%</text>
+			</text>
+			
 			<action>
 				<touch key="home"/>
 				<action function="page">main</action>
@@ -1838,6 +1838,7 @@
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
 				<text>{@back_btn}</text>
 				<actions>
+					<action function="set">tw_reload_fm=1</action>
 					<action function="set">tw_clear_destination=%tw_back%</action>
 					<action function="page">clear_vars</action>
 				</actions>
@@ -1858,6 +1859,7 @@
 			<action>
 				<touch key="home"/>
 				<actions>
+					<action function="set">tw_reload_fm=1</action>
 					<action function="set">tw_clear_destination=main</action>
 					<action function="page">clear_vars</action>
 				</actions>
@@ -1866,6 +1868,7 @@
 			<action>
 				<touch key="back"/>
 				<actions>
+					<action function="set">tw_reload_fm=1</action>
 					<action function="set">tw_clear_destination=%tw_back%</action>
 					<action function="page">clear_vars</action>
 				</actions>
