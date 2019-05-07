@@ -1091,7 +1091,7 @@
 			<listbox>
 				<condition var1="credits_page" var2="0"/>
 				<background color="%background%"/>
-				<font resource="body2" spacing="8" color="%text%" />
+				<font resource="caption" spacing="8" color="%text%" />
 				<highlight color="%transparent%"/>
 				<icon/>
 				<placement x="24" y="%tab_title_h%" w="1032" h="%credits_listbox_h%"/>
@@ -1099,7 +1099,7 @@
 			</listbox>
 			<listbox>
 				<condition var1="credits_page" var2="1"/>
-				<font resource="body2" spacing="8" color="%text%" />
+				<font resource="caption" spacing="8" color="%text%" />
 				<highlight color="%transparent%"/>
 				<icon/>
 				<placement x="24" y="%tab_title_h%" w="1032" h="%credits_listbox_h%"/>
@@ -1108,7 +1108,7 @@
 			<listbox>
 				<condition var1="credits_page" var2="2"/>
 				<background color="%background%"/>
-				<font resource="body2" spacing="8" color="%text%" />
+				<font resource="caption" spacing="8" color="%text%" />
 				<highlight color="%transparent%"/>
 				<icon/>
 				<placement x="24" y="%tab_title_h%" w="1032" h="%credits_listbox_h%"/>
