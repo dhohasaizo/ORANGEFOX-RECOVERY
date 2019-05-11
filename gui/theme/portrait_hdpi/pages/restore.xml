@@ -2,7 +2,10 @@
 <recovery>
 	<pages>
 		<page name="restore">
+			<template name="body_nav"/>
+
 			<action>
+				<action function="set">nav_panel_id=1</action>
 				<action function="ftls">
 					dir="%tw_backups_folder%";
 					if [ ! -d "$dir" ]; then mkdir -p "$dir"; fi;
@@ -13,15 +16,6 @@
 					fi;
 				</action>
 				<action function="set">tw_backups_folder_fm=%tw_backups_folder%</action>
-				<action function="page">restore_prepared</action>
-			</action>
-		</page>
-		
-		<page name="restore_prepared">
-			<template name="body_nav"/>
-
-			<action>
-				<action function="set">nav_panel_id=1</action>
 			</action>
 
 			<fileselector style="fileselector_b">
@@ -59,9 +53,9 @@
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
 				<background color="%title_solid_bg%"/>
-				<data name="tw_backups_folder"/>
+				<data name="tw_backups_folder_fm"/>
 				<restrict disable="1"/>
-				<text>%tw_backups_folder%</text>
+				<text>%tw_backups_folder_fm%</text>
 			</input>
 
 			<input>
@@ -71,9 +65,9 @@
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
 				<background color="%title_solid_bg%"/>
-				<data name="tw_backups_folder"/>
+				<data name="tw_backups_folder_fm"/>
 				<restrict disable="1"/>
-				<text>%tw_backups_folder%</text>
+				<text>%tw_backups_folder_fm%</text>
 			</input>
 			
 			<input>
@@ -83,9 +77,9 @@
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
 				<background color="%background%"/>
-				<data name="tw_backups_folder"/>
+				<data name="tw_backups_folder_fm"/>
 				<restrict disable="1"/>
-				<text>%tw_backups_folder%</text>
+				<text>%tw_backups_folder_fm%</text>
 			</input>
 
 			<input>
@@ -95,9 +89,9 @@
 				<cursor color="%transparent%" hasfocus="0" width="0"/>
 				<font resource="Secondary" color="%accent%"/>
 				<background color="%background%"/>
-				<data name="tw_backups_folder"/>
+				<data name="tw_backups_folder_fm"/>
 				<restrict disable="1"/>
-				<text>%tw_backups_folder%</text>
+				<text>%tw_backups_folder_fm%</text>
 			</input>
 
 			<text style="text_ab_title">
