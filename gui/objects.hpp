@@ -635,6 +635,7 @@ protected:
 	ImageResource* mExLinkIcon;
 	ImageResource* mExBlockIcon;
 	bool updateFileList;
+	std::string mFileFilterVar;
 };
 
 class GUIListBox : public GUIScrollList

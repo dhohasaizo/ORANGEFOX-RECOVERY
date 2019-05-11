@@ -141,7 +141,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@enter_password_cptn}</text>
+				<text>{@enter_password_restore}</text>
 			</text>
 			
 			<image>
@@ -239,7 +239,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@enter_password_cptn}</text>
+				<text>{@enter_password_restore}</text>
 			</text>
 			
 			<image>

@@ -63,6 +63,7 @@
 					<action function="page">sideload</action>
 				</listitem>
 				<listitem name="{@fox_modules_hdr}">
+					<condition var1="fileexists" var2="/sdcard/Fox/FoxFiles"/>
 					<icon res="bs_btn_archive"/>
 					<action function="page">fox_modules</action>
 				</listitem>

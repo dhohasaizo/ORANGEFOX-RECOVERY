@@ -1689,7 +1689,7 @@
 						cat "/tmp/orangefox/ramdisk/twres/splash.xml" > /twres/splash.xml;
 				</action>
 				<action function="wlfx"/>
-				<action function="reload"/>
+				<action function="page">ext_custom</action>
 			</action>
 		</page>
 	</pages>

@@ -7,7 +7,6 @@
 			<action>
 				<action function="set">nav_panel_id=0</action>
 				<action function="set">tw_hold=0</action>
-				<action function="set">tw_name_filter=</action>
 			</action>
 
 			<!-- Crutch to make input fields update -->
@@ -90,6 +89,7 @@
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<condition var1="darker_ui" op="!=" var2="1"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">tw_name_filter=</action>
 				<action function="page">file_search</action>
 			</button>
 			
@@ -97,6 +97,7 @@
 				<placement x="%ab_btn3_x%" y="%ab_y%"/>
 				<condition var1="darker_ui" var2="1"/>
 				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">tw_name_filter=</action>
 				<action function="page">file_dark_search</action>
 			</button>
 

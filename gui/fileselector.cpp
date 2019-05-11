@@ -43,6 +43,7 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 	mShowFolders = mShowFiles = mShowNavFolders = 1;
 	mUpdate = 0;
 	mPathVar = "cwd";
+	mFileFilterVar = "";
 	updateFileList = false;
 
 	// Load filter for filtering files (e.g. *.zip for only zips)
@@ -58,7 +59,10 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 			if (attr)
 				mExtn= attr->value();
 		}
-		
+
+		attr = child->first_attribute("name");
+		if (attr)
+			mFileFilterVar = attr->value();
 		attr = child->first_attribute("folders");
 		if (attr)
 			mShowFolders = atoi(attr->value());
@@ -290,9 +294,12 @@ int GUIFileSelector::GetFileList(const std::string folder)
 		return -1;
 	}
 	
-	string showHiddenFiles, reloadfm, mSearchString;
+	string showHiddenFiles, reloadfm, searchString;
 	DataManager::GetValue("tw_hidden_files", showHiddenFiles);
-	DataManager::GetValue("tw_name_filter", mSearchString); // Experemental function; no gui
+	if (mFileFilterVar != "") {
+		DataManager::GetValue(mFileFilterVar, searchString);
+		std::transform(searchString.begin(), searchString.end(), searchString.begin(), ::tolower);
+	}
 	DataManager::GetValue("tw_reload_fm", reloadfm);
 	if (reloadfm == "1") {
 		SetVisibleListLocation(0); // Scrolls to top
@@ -309,9 +316,14 @@ int GUIFileSelector::GetFileList(const std::string folder)
 			continue;
 		
 		// [f/d] filter files by name
-		if (mSearchString != "")
-			if (data.fileName != ".." && data.fileName.find(mSearchString) == string::npos)
-				continue;
+		if (searchString != "" && mFileFilterVar != "") {
+			if (data.fileName != ".." && data.fileName.find(searchString) == string::npos){
+				string fileLower = data.fileName;
+				std::transform(fileLower.begin(), fileLower.end(), fileLower.begin(), ::tolower);
+				if (fileLower.find(searchString) == string::npos)
+					continue;
+			}
+		}
 		
 		// [f/d] Remove hidden files/folders when tw_hidden_files = 0
 		if (showHiddenFiles == "0") {

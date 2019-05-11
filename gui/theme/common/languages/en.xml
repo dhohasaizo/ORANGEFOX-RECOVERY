@@ -832,7 +832,7 @@
 		<string name="fox_files_not_exist_3">using the installation zip.</string>
 
 		<!-- Customization -->
-		<string name="cust_new_ota_screen">Show simple screen while OTA</string>
+		<string name="cust_new_ota_screen">Show less detail while running OTA updates</string>
 		<string name="fm_icons_simple">Make file icons bigger</string>
 		<string name="theme_engine_update">Apply changes and reload?</string>
 		<string name="theme_engine_reset">Reset theme and reload?</string>
@@ -991,5 +991,6 @@
 		<string name="fox_dmverity_chk">Disable DM-Verity</string>
 		<string name="fox_forced_encryption_chk">Disable Forced Encryption</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Prevent auto reboot after installing OTA</string>
+		<string name="of_ota_reboot_disabled">OTA update succeeded. You disabled auto-reboot. Returning control to you.</string>
 	</resources>
 </language>

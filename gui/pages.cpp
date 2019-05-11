@@ -1578,6 +1578,7 @@ int PageManager::RunReload()
     gui_forceRender();
 	std::string page_return;
 	DataManager::GetValue("of_reload_back", page_return);
+	DataManager::SetValue("pass_open", "1");
 	gui_changePage(page_return);
 
 	LOGINFO("Theme reloaded\n");
