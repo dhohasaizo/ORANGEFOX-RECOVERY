@@ -392,6 +392,7 @@
 					<condition var1="tw_operation_status" var2="0"/>
 				</conditions>
 				<actions>
+					<action function="overlay"/>
 					<action function="page">action_complete</action>
 				</actions>
 			</action>
@@ -402,6 +403,7 @@
 					<condition var1="tw_operation_status" op="!=" var2="0"/>
 				</conditions>
 				<actions>
+					<action function="overlay"/>
 					<action function="page">action_complete</action>
 				</actions>
 			</action>
@@ -452,20 +454,8 @@
 			</button>
 
 			<action>
-				<conditions>
-					<condition var1="tw_operation_state" var2="1"/>
-				</conditions>
-				<actions>
-					<action function="overlay"/>
-					<action function="page">action_complete</action>
-				</actions>
-			</action>
-
-			<action>
 				<touch key="home"/>
-				<actions>
-					<action function="key">back</action>
-				</actions>
+				<action function="key">back</action>
 			</action>
 
 			<action>

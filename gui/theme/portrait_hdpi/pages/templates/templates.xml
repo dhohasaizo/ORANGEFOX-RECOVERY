@@ -192,7 +192,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@enter_password_cptn}</text>
+				<text>{@enter_password_restore}</text>
 			</text>
 			
 			<image>
@@ -246,7 +246,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>{@enter_password_cptn}</text>
+				<text>{@enter_password_restore}</text>
 			</text>
 			
 			<image>
@@ -314,7 +314,7 @@
 
 			<text style="text_ab_title">
 				<placement x="%col1_x%" y="%ab_bc_y%"/>
-				<text>{@enter_password_cptn}</text>
+				<text>{@enter_password_restore}</text>
 			</text>
 
 			<button>
@@ -955,7 +955,7 @@
 				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_h%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon" file="file_icon" />
-				<filter folders="1" files="1" extnvar="fm_type_sort"/>
+				<filter name="tw_name_filter" folders="1" files="1" extnvar="fm_type_sort"/>
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
@@ -968,7 +968,7 @@
 				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_h%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon_small" file="file_icon_small"/>
-				<filter folders="1" files="1" extnvar="fm_type_sort"/>
+				<filter name="tw_name_filter" folders="1" files="1" extnvar="fm_type_sort"/>
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
@@ -981,7 +981,7 @@
 				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_num_h%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon" file="file_icon" />
-				<filter folders="1" files="1" extnvar="fm_type_sort"/>
+				<filter name="tw_name_filter" folders="1" files="1" extnvar="fm_type_sort"/>
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
@@ -994,7 +994,7 @@
 				<placement x="0" y="%ab_h%" w="%fileselector_width%" h="%fm_search_num_h%"/>
 				<sort name="tw_gui_sort_order"/>
 				<icon folder="folder_icon_small" file="file_icon_small"/>
-				<filter folders="1" files="1" extnvar="fm_type_sort"/>
+				<filter name="tw_name_filter" folders="1" files="1" extnvar="fm_type_sort"/>
 				<path name="tw_file_location1" default="/sdcard"/>
 				<data name="tw_filename1"/>
 				<selection name="tw_selection1"/>
