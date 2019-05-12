@@ -401,7 +401,9 @@ int TWFunc::Wait_For_Child(pid_t pid, int *status, string Child_Name, bool Show_
 				gui_msg(Msg(msg::kError, "pid_signal={1} process ended with signal: {2}")(Child_Name)(WTERMSIG(*status))); // Seg fault or some other non-graceful termination
 			return -1;
 		} else if (WEXITSTATUS(*status) == 0) {
-			LOGINFO("%s process ended with RC=%d\n", Child_Name.c_str(), WEXITSTATUS(*status)); // Success
+			//LOGINFO("%s process ended with RC=%d\n", Child_Name.c_str(), WEXITSTATUS(*status)); // Success
+			if (Show_Errors)
+			  LOGINFO("Process ended with no errors.\n"); //[f/d] Process ended w/ no errors, why we need to сlutter up logs?
 		} else {
 			if (Show_Errors)
 				gui_msg(Msg(msg::kError, "pid_error={1} process ended with ERROR: {2}")(Child_Name)(WEXITSTATUS(*status))); // Graceful exit, but there was an error

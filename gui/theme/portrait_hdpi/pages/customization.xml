@@ -39,7 +39,13 @@
 				</listitem>
 				<listitem name="{@theme_fonts}">
 					<icon res="ws_font"/>
+					<condition var1="tw_language" op="!=" var2="zh_CH"/>
 					<action function="page">ext_custom_fonts</action>
+				</listitem>
+				<listitem name="{@theme_fonts}">
+					<icon res="ws_font"/>
+					<condition var1="tw_language" var2="zh_CH"/>
+					<action function="page">ext_custom_fonts_cn</action>
 				</listitem>
 				<listitem name="{@sph_sph}">
 					<icon res="boot_splash"/>
@@ -870,6 +876,55 @@
 
 			<listbox>
 				<placement x="0" y="%row6_2a_y%" w="%screen_w%" h="%lb_l3%"/>
+				<data name="theme_font_size_tmp"/>
+				<listitem name="{@font_small}">s</listitem>
+				<listitem name="{@font_norm}">n</listitem>
+				<listitem name="{@font_big}">b</listitem>
+			</listbox>
+
+			<action>
+				<condition var1="theme_font_size_tmp" op="modified"/>
+				<action function="set">needs_repack=1</action>
+				<action function="set">update_fonts=1</action>
+			</action>
+
+			<template name="snackbar_update"/>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+			
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_custom</action>
+			</action>
+		</page>
+		
+		<page name="ext_custom_fonts_cn">
+			<template name="body"/>
+			
+			<template name="ab"/>
+			
+			<template name="statusbarinfo"/>
+
+			<action>
+				<action function="set">of_reload_back=ext_custom_fonts_cn</action>
+			</action>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@theme_fonts}</text>
+			</text>
+
+			<!-- Font Size -->
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%" />
+				<text>{@font_size}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
 				<data name="theme_font_size_tmp"/>
 				<listitem name="{@font_small}">s</listitem>
 				<listitem name="{@font_norm}">n</listitem>

@@ -86,6 +86,7 @@
 		<variable name="fm_type_sort" value=""/>
 		<variable name="ft_backup_empty" value="0"/>
 		<variable name="startup" value="0"/>
+		<variable name="tw_backups_folder_fm" value="/tmp"/>
 		
 		<!-- Placement -->
 		<variable name="welcome_text" value="%center_y%+160"/>
