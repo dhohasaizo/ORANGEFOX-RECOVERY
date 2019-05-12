@@ -262,13 +262,6 @@
 					<action function="page">flash_image_confirm</action>
 				</actions>
 			</action>
-			<action>
-				<condition var1="tw_file_extension" var2="txt"/>
-				<actions>
-					<action function="set">fex_found=1</action>
-					<action function="page">cat_file</action>
-				</actions>
-			</action>
 			
 			<action><condition var1="tw_file_extension" var2="txt"/><actions><action function="set">fex_found=1</action><action function="page">cat_file</action></actions></action>
 			<action><condition var1="tw_file_extension" var2="prop"/><actions><action function="set">fex_found=1</action><action function="page">cat_file</action></actions></action>
