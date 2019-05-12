@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <language>
-	<display>Chinese (Simplified)</display>
+	<display>中文（简体）</display>
 
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
@@ -78,7 +78,7 @@
 		<string name="install_image_btn">安装镜像</string>
 		<string name="install_select_file_hdr">选择文件</string>
 		<string name="install_select_file_btn">选择文件</string>
-		<string name="adb_sideload_btn">通过ADB操作</string>
+		<string name="adb_sideload_btn">ADB Sideload</string>
 		<string name="select_storage_hdr">选择存储</string>
 		<string name="select_storage_btn">选择存储</string>
 		<string name="queue_hdr">队列</string>
@@ -91,12 +91,12 @@
 		<string name="inject_twrp_chk">安装后注入 OrangeFox</string>
 		<string name="install_reboot_chk">安装完成后重启</string>
 		<string name="options_hdr">选项</string>
-		<string name="zip_queue">排列</string>
+		<string name="zip_queue">队列</string>
 		<string name="install_zip_count_hdr">正在安装 %tw_zip_queue_count% 个文件中的 %tw_zip_index%  </string>
 		<string name="working">正在处理...</string>
 		<string name="failed">失败</string>
 		<string name="successful">成功</string>
-		<string name="wipe_cache_btn">擦除 Cache</string>
+		<string name="wipe_cache_btn">清除 Cache</string>
 		<string name="reboot_system_btn">重新启动系统</string>
 		<string name="reboot_recovery_btn">重新启动至 Recovery</string>
 		<string name="install_sel_target">选择目标分区</string>
@@ -104,16 +104,16 @@
 		<string name="flashing_image">正在刷入镜像...</string>
 		<string name="image_flashed">Image 镜像刷入成功</string>
 		<string name="wipe_cache_dalvik_confirm">是否清除 Cache 和 Dalvik 分区数据 ？</string>
-		<string name="wipe_dalvik_confirm">擦除Dalvik?</string>
+		<string name="wipe_dalvik_confirm">是否清除Dalvik?</string>
 		<string name="wiping_cache_dalvik">正在清除 Cache 和 Dalvik...</string>
 		<string name="wipe_cache_dalvik_complete">Cache 和 Dalvik 清除完成</string>
-		<string name="cache_dalvik_done">Cache 和 Dalvik 擦除完成</string>
+		<string name="cache_dalvik_done">Cache 和 Dalvik 清除完成</string>
 		<string name="swipe_wipe">滑动以执行清除</string>
 		<string name="rebooting">正在重启...</string>
 		<string name="swipe_reboot">滑动以重启</string>
 		<string name="confirm_action">确认操作</string>
 		<string name="cancel_btn">取消</string>
-		<string name="wipe_hdr">擦除</string>
+		<string name="wipe_hdr">清除</string>
 		<string name="factory_reset_hdr">恢复出厂设置</string>
 		<string name="factory_reset1">清除 Data、Cache 和 Dalvik</string>
 		<string name="factory_reset2">(不包括内部存储)</string>
@@ -121,8 +121,8 @@
 		<string name="factory_reset4">你唯一需要的清除</string>
 		<string name="factory_resetting">正在清除 Data、Cache 和 Dalvik ...</string>
 		<string name="advanced_wipe_hdr">高级清除</string>
-		<string name="advanced_wipe_btn">高级擦除</string>
-		<string name="wipe_enc_confirm">是否清除数据加密？</string>
+		<string name="advanced_wipe_btn">高级清除</string>
+		<string name="wipe_enc_confirm">是否清除 Data 加密？</string>
 		<string name="formatting_data">正在格式化 Data 分区...</string>
 		<string name="swipe_format_data">滑动以格式化 Data 分区</string>
 		<string name="factory_reset_complete">恢复出厂设置完成</string>
@@ -144,7 +144,7 @@
 		<string name="file_sys_opt">分区选项</string>
 		<string name="part_mount_point">挂载点</string>
 		<string name="part_curr_fs">文件系统</string>
-		<string name="part_present">Present</string>
+		<string name="part_present">已提供</string>
 		<string name="part_removable">移动</string>
 		<string name="part_yes">是</string>
 		<string name="part_no">否</string>
@@ -158,7 +158,7 @@
 		<string name="resize_complete">调整大小已完成</string>
 		<string name="swipe_resize">滑动以调整大小</string>
 		<string name="repair_btn">修复文件系统</string>
-		<string name="repair_confirm">还原分区</string>
+		<string name="repair_confirm">修复分区</string>
 		<string name="repairing">正在修复...</string>
 		<string name="repair_complete">修复完成</string>
 		<string name="swipe_repair">滑动以修复</string>
@@ -171,7 +171,7 @@
 		<string name="swipe_change_fs">滑动以更改</string>
 		<string name="back_btn">返回</string>
 		<string name="wipe_enc_btn">清除加密</string>
-		<string name="swipe_factory_reset">滑动以恢复出厂</string>
+		<string name="swipe_factory_reset">滑动以恢复出厂设置</string>
 		<string name="backup_hdr">备份</string>
 		<string name="encryption_hdr">启用加密</string>
 		<string name="name">名称</string>
@@ -214,7 +214,7 @@
 		<string name="usb_stor_mnt1">USB 存储已挂载</string>
 		<string name="usb_stor_mnt2">在安全地移除你的设备之前</string>
 		<string name="usb_stor_mnt3">请务必将其从计算机中弹出！</string>
-		<string name="unmount_btn">卸载</string>
+		<string name="unmount_btn">取消挂载</string>
 		<string name="rb_system_btn">系统</string>
 		<string name="rb_poweroff_btn">关机</string>
 		<string name="rb_recovery_btn">Recovery</string>
@@ -310,7 +310,7 @@
 		<string name="injecting_twrp">正在重新注入 OrangeFox...</string>
 		<string name="inject_twrp_complete">OrangeFox 注入完成</string>
 		<string name="swipe_to_confirm">滑动以确认</string>
-		<string name="part_sd_hdr">分区</string>
+		<string name="part_sd_hdr">SD卡分区</string>
 		<string name="rem_sd">可移动存储</string>
 		<string name="rem_sd_sel">选择一个可移动设备！</string>
 		<string name="invalid_partsd_sel">你必须选择一个可移动设备</string>
@@ -330,7 +330,7 @@
 		<string name="partitioning_sd2">这将需要几分钟。</string>
 		<string name="part_sd_complete">分区完成。</string>
 		<string name="dumlock_hdr">HTC Dumlock</string>
-		<string name="dumlock_restore_btn">恢复初始 Boot 分区</string>
+		<string name="dumlock_restore_btn">恢复原始 Boot 分区</string>
 		<string name="dumlock_restore_confirm">是否恢复原始 Boot 镜像？</string>
 		<string name="dumlock_restoring">正在恢复原始 Boot 镜像...</string>
 		<string name="dumlock_restore_complete">恢复原始 Boot 镜像完成</string>
@@ -449,9 +449,9 @@
 		<string name="unable_find_part_path">无法在如下路径找到分区：'{1}' </string>
 		<string name="update_part_details">正在更新分区详情...</string>
 		<string name="update_part_details_done">...完成</string>
-		<string name="wiping_dalvik">正在擦除 Dalvik目录...</string>
+		<string name="wiping_dalvik">正在清除 Dalvik目录...</string>
 		<string name="cleaned">已清除：{1}...</string>
-		<string name="dalvik_done">-- Dalvik Cache 目录擦除完成！</string>
+		<string name="dalvik_done">-- Dalvik Cache 目录清除完成！</string>
 		<string name="no_andsec">没有找到 Android Secure 分区。</string>
 		<string name="unable_to_locate">无法定位 {1}。</string>
 		<string name="wiping_datamedia">擦除内部存储 -- /data/media...</string>
@@ -462,7 +462,7 @@
 		<string name="no_crypto_support">此构建版本的编译不含加密支持。</string>
 		<string name="decrypt_success_dev">数据解密成功，新的块设备：'{1}'</string>
 		<string name="done">完成</string>
-		<string name="start_partition_sd">分区 SD 存储中...</string>
+		<string name="start_partition_sd">正在给 SD 卡分区...</string>
 		<string name="partition_sd_locate">无法定位要分区的设备。</string>
 		<string name="ext_swap_size">额外分区和交换分区大小超出 SD 卡大小。</string>
 		<string name="remove_part_table">正在移除分区表...</string>
@@ -505,7 +505,7 @@
 		<string name="unable_to_wipe">无法擦除 {1}。</string>
 		<string name="cannot_wipe">分区 {1} 无法擦除。</string>
 		<string name="remove_all">正在移除 '{1}' 下的所有文件</string>
-		<string name="wiping_data">擦除 data 而不擦除 /data/media ...</string>
+		<string name="wiping_data">清除 data 而不清除 /data/media ...</string>
 		<string name="backing_up">正在备份 {1}...</string>
 		<string name="backing">正在备份</string>
 		<string name="backup_size">'{1}' 的备份文件大小为 0 字节。</string>
@@ -563,13 +563,13 @@
 		<string name="dumlock_reflash">再次恢复备份至 Boot 分区...</string>
 		<string name="run_script">正在运行 {1} 脚本...</string>
 		<string name="split_backup">正在将备份文件拆分为多个存档...</string>
-		<string name="backup_error">创建备份时出误。</string>
+		<string name="backup_error">创建备份时出错。</string>
 		<string name="restore_error">恢复过程中出错。</string>
 		<string name="split_thread">将线程 ID {1} 拆分为存档 {2}</string>
 		<!-- These 2 items are saved in the data manager instead of resource manager, so %llu, etc is correct instead of {1} -->
 		<string name="file_progress">已完成 %llu , 共 %llu 个文件 , 进度 %i%%</string>
 		<string name="size_progress">已完成 %lluMB , 共 %lluMB , 进度 %i%%</string>
-		<string name="decrypt_cmd">正在尝试通过命令行解密数据分区。</string>
+		<string name="decrypt_cmd">正在尝试通过命令行解密Data分区。</string>
 		<string name="base_pkg_err">加载基本包失败。</string>
 		<string name="simulating">模拟操作</string>
 		<string name="backup_cancel">备份已取消</string>
@@ -749,7 +749,7 @@
 		<string name="adb_backup_pc1">此备份将会</string>
 		<string name="adb_backup_pc2">保存在你的电脑上</string>
 		
-		<string name="starting_aroma">正在启动 Aromma 文件管理器...</string>
+		<string name="starting_aroma">正在启动 Aroma 文件管理器...</string>
 		<string name="lang_set_wait">更改语言...</string>
 		<string name="installing_theme">正在安装主题...</string>
 		
@@ -770,7 +770,7 @@
 		<string name="digest_compute_error" version="2"> * 计算 Digest 时出错</string>
 		<string name="verifying_digest" version="2">验证 Digest</string>
 		<string name="skip_digest" version="2">根据用户设定，跳过 Digest 检查</string>
-		<string name="decrypt_success_nodev">Data 成功解密</string>
+		<string name="decrypt_success_nodev">Data 解密成功</string>
 		<string name="no_digest_found" version="2">未找到 ‘{1}’ 的 Digest 校验文件。 请取消勾选“启用 Digest 校验备份文件”复选框。</string>
 		<string name="digest_fail_match" version="2">Digest 无法与 '{1}' 匹配。</string>
 		<string name="digest_matched" version="2">'{1}' 的 Digest 已匹配</string>
@@ -783,13 +783,13 @@
 		<string name="digest_match" version="2">Digest 匹配</string>
 		<string name="password">密码</string>
 		<string name="boot_slot">启动位置</string>
-		<string name="boot_slot_a">位置 A</string>
-		<string name="boot_slot_use_a">切换到位置 A</string>
-		<string name="boot_slot_b">位置 B</string>
-		<string name="boot_slot_use_b">切换到位置 B</string>
-		<string name="changing_boot_slot">正在更改启动位置</string>
-		<string name="changing_boot_slot_complete">已成功更改启动位置</string>
-		<string name="unable_set_boot_slot">将引导模式的启动位置更改为 {1} 时出错</string>
+		<string name="boot_slot_a">槽位 A</string>
+		<string name="boot_slot_use_a">切换到槽位 A</string>
+		<string name="boot_slot_b">槽位 B</string>
+		<string name="boot_slot_use_b">切换到槽位 B</string>
+		<string name="changing_boot_slot">正在更改启动槽位</string>
+		<string name="changing_boot_slot_complete">已成功更改启动槽位</string>
+		<string name="unable_set_boot_slot">将引导模式的启动槽位更改为 {1} 时出错</string>
 		<string name="backup_storage_warning">备份 {1} 不包括内部存储中的任何文件，例如图片或下载等。</string>
 		<string name="sha2_chk">使用SHA2进行散列</string>
 		<string name="disabled">未启用</string>
@@ -814,7 +814,7 @@
 		<string name="fox_incremental_ota_res_run">正在运行 OTA_RES 进程...</string>
 		<string name="fox_incremental_ota_bak_run">正在运行 OTA_BAK 进程...</string>
 		<string name="fox_incremental_ota_bak">OTA_BAK -- 已完成</string>
-		<string name="fox_internal_fatal_i1">OrangeFox：致命错误！ 你不能将内部存储备份到内部存储上！</string>
+		<string name="fox_internal_fatal_i1">OrangeFox：致命错误！ 您不能将内部存储备份到内部存储上！</string>
 		<string name="fox_internal_fatal_i2">您必须将备份目标更改为 MicroSD 或是 USB-OTG。</string>
 		<string name="fox_internal_q1">OrangeFox  - 内部存储 - 注意！</string>
 
@@ -829,7 +829,7 @@
 		<string name="of_encryption_off">未启用强制加密</string>
 		<string name="of_fstab">检测到 fstab：'{1}'</string>
 
-		<string name="install_remlatest">Remove Latest</string>
+		<string name="install_remlatest">删除最新的</string>
 		
 		<string name="backups_remove_all">所有备份</string>
 		<string name="backups_remove">删除</string>
@@ -851,7 +851,7 @@
 		<string name="module_install">安装</string>
 		<string name="module_uninstall">卸载</string>
 		<string name="remove_of_files">移除OrangeFox文件</string>
-		<string name="module_initd">启用init.d支持</string>
+		<string name="module_initd">启用 init.d 支持</string>
 		<string name="module_cam">启用 Camera2API</string>
 		<string name="module_pass">移除密码</string>
 		<string name="fox_files_not_exist_1">文件不存在！</string>
@@ -859,7 +859,7 @@
 		<string name="fox_files_not_exist_3">重新刷入 Recovery。</string>
 
 		<!-- Customization -->
-		<string name="cust_new_ota_screen">Show simple screen while OTA</string>
+		<string name="cust_new_ota_screen">在 OTA 时显示简约屏幕</string>
 		<string name="fm_icons_simple">放大文件图标</string>
 		<string name="theme_engine_update">应用更改并重新加载?</string>
 		<string name="apply_btn">应用</string>
@@ -890,9 +890,9 @@
 		<string name="dark_nav">暗色</string>
 		<!-- Keyboard -->
 		<string name="keyboard_title">键盘</string>
-		<string name="keyboard_newstyle">Refreshed style</string>
-		<string name="keyboard_nums">Numbers row</string>
-		<string name="key_swipe">在键盘上滑动以清楚全部</string>
+		<string name="keyboard_newstyle">刷新样式</string>
+		<string name="keyboard_nums">数字行</string>
+		<string name="key_swipe">在键盘上滑动以清除全部</string>
 		<!-- Lockscreen -->
 		<string name="lockscreen_unlock">解锁​​​​</string>
 		<string name="lockscreen_title">锁屏</string>
@@ -931,9 +931,9 @@
 		<string name="new_pass_info_4_2">请再次输入密码.</string>
 		<string name="new_pass_info_4_2_gk">请再次绘制手势密码</string>
 		
-		<string name="pass_page_block">Current blocking method</string>
-		<string name="pass_page_block_inf1">You can sleep better knowing</string>
-		<string name="pass_page_block_inf2">that you are protected.</string>
+		<string name="pass_page_block">当前屏蔽方法</string>
+		<string name="pass_page_block_inf1">知道自己受到保护,</string>
+		<string name="pass_page_block_inf2">您可以休眠得更好</string>
 		<string name="pass_page_select">请选择密码类型</string>
 		
 		<!-- Utilities -->
@@ -948,8 +948,8 @@
 		<string name="mm_ver">Magisk 版本</string>
 		<string name="mm_mod_ver">模块版本</string>
 		<string name="magisk_not_found">未发现Magisk!</string>
-		<string name="magisk_not_found_1">您想到Fox插件界面</string>
-		<string name="magisk_not_found_2">安装预构建的Magisk吗？</string>
+		<string name="magisk_not_found_1">您想到Fox插件中心</string>
+		<string name="magisk_not_found_2">安装预装的Magisk吗？</string>
 		<string name="magisk_not_found_3"/>
 		
 		<!-- MIUI OTA -->
@@ -958,11 +958,11 @@
 		
 		<!-- About -->
 		<string name="abt_maintainer">维护人员</string>
-		<string name="abt_fd">Theme creator &amp; designer</string>
-		<string name="abt_bork">CEO, Site &amp; UI</string>
-		<string name="abt_dj">Build system, C++</string>
-		<string name="abt_front">Frontend developer</string>
-		<string name="abt_back">Backend developer</string>
+		<string name="abt_fd">主题创建者 &amp; 设计师</string>
+		<string name="abt_bork">CEO，网站 &amp; 界面</string>
+		<string name="abt_dj">构建系统，C++</string>
+		<string name="abt_front">前端开发者</string>
+		<string name="abt_back">后端开发者</string>
 		<string name="abt_device">设备</string>
 		<string name="version_twrp">TWRP 版本</string>
 		<string name="build_type">构建类型</string>
@@ -975,18 +975,18 @@
 		<string name="symlink_dir_name">链接到文件夹</string>
 		<string name="symlink_file_name">链接到文件</string>
 		<string name="symlink_broken_name">失效链接</string>
-		<string name="symlink_folder">Open real folder</string>
-		<string name="symlink_file">Open real file</string>
+		<string name="symlink_folder">打开实体文件夹</string>
+		<string name="symlink_file">打开实体文件</string>
 		
 		<!-- Files -->
-		<string name="files_show_hidden">在文件中显示隐藏文件</string>
-		<string name="files_auto_open">自动检测文件中的文件类型</string>
-		<string name="file_read_error">无法打开文件！</string>
+		<string name="files_show_hidden">显示隐藏文件</string>
+		<string name="files_auto_open">自动检测文件类型</string>
+		<string name="file_read_error">无法打开文件!</string>
 		<string name="subs_wipe">清除 Substratum 叠加层</string>
 		<string name="sort_ex_all">所有文件</string>
-		<string name="sort_ex_img">镜像文件</string>
-		<string name="sort_ex_zip">压缩文件</string>
-		<string name="aroma_help">在按一次启动AromaFM</string>
+		<string name="sort_ex_img">IMG 文件</string>
+		<string name="sort_ex_zip">ZIP 文件</string>
+		<string name="aroma_help">再按一次启动AromaFM</string>
 
 		<!-- App mgr -->
 		<string name="appmgr_apps">应用程序</string>
