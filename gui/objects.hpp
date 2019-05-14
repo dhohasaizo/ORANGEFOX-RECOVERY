@@ -347,6 +347,7 @@ protected:
 	int killterminal(std::string arg);
 	int reinjecttwrp(std::string arg);
 	int checkbackupname(std::string arg);
+	int checkbackupfolder(std::string arg);
 	int decrypt(std::string arg);
 	int adbsideload(std::string arg);
 	int adbsideloadcancel(std::string arg);

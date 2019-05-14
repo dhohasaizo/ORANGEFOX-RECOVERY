@@ -965,6 +965,11 @@
 		<string name="sort_ex_zip">ZIP files</string>
 		<string name="aroma_help">Press again to start AromaFM...</string>
 
+		<!-- this error will shown when recovery cannot create backup folder
+		 -->
+		<string name="backups_rw_error_1">Storage mounted</string>
+		<string name="backups_rw_error_2">as read only!</string>
+
 		<!-- App mgr -->
 		<string name="appmgr_apps">Apps</string>
 		<string name="appmgr_title">App Manager</string>

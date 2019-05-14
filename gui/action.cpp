@@ -219,6 +219,7 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
 	  //fordownloads actions
       ADD_ACTION(fileextension);
       ADD_ACTION(up_a_level);
+      ADD_ACTION(checkbackupfolder);
  
       // remember actions that run in the caller thread
       for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
@@ -669,6 +670,49 @@ int GUIAction::readBackup(std::string arg __unused)
   string Restore_Name;
   DataManager::GetValue("tw_restore", Restore_Name);
   PartitionManager.Set_Restore_Files(Restore_Name);
+  return 0;
+}
+
+int GUIAction::checkbackupfolder(std::string arg __unused)
+{
+  string path;
+  DIR* d;
+  struct stat s;
+	struct dirent* de;
+
+	DataManager::GetValue(TW_BACKUPS_FOLDER_VAR, path);
+  DataManager::SetValue("of_backup_rw", "1");
+  DataManager::SetValue("of_backup_empty", "1");
+
+  // create backup folder if it not exist
+  // if we failed to create folder, user possibly trying to open usb with ntfs
+  string dirpath = path + "/.";
+  if( stat(dirpath.c_str(),&s) != 0 )
+    if (!TWFunc::Recursive_Mkdir(path, false))
+      DataManager::SetValue("of_backup_rw", "0");
+
+  // open dir and trying to get file list
+  d = opendir(path.c_str());
+	if (d != NULL) {
+      while ((de = readdir(d)) != NULL) {
+        std::string name = de->d_name;
+        unsigned char type = de->d_type;
+        // skip files and special folders 
+        if (name == "." || name == ".." || type != DT_DIR)
+          continue;
+        // when we found a normal folder, set of_backup_empty to 0 and exit loop
+        DataManager::SetValue("of_backup_empty", "0");
+        break;
+      }
+      closedir(d);
+  } else {
+      LOGINFO("Error opening folder: %s\n", path.c_str());
+  }
+
+  DataManager::SetValue("tw_backups_folder_fm", path);
+  // switch to restore_prep page
+  gui_changePage("restore_prep");
+
   return 0;
 }
 

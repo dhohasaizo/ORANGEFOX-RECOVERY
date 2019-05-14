@@ -802,7 +802,7 @@ void TWFunc::htc_dumlock_reflash_recovery_to_boot(void)
 }
 
 
-int TWFunc::Recursive_Mkdir(string Path)
+int TWFunc::Recursive_Mkdir(string Path, bool ShowErr)
 {
   std::vector < std::string > parts = Split_String(Path, "/", true);
   std::string cur_path;
@@ -813,10 +813,11 @@ int TWFunc::Recursive_Mkdir(string Path)
 	{
 	  if (mkdir(cur_path.c_str(), 0777))
 	    {
-	      gui_msg(Msg
-		      (msg::kError,
-		       "create_folder_strerr=Can not create '{1}' folder ({2}).")
-		      (cur_path) (strerror(errno)));
+        if (ShowErr)
+          gui_msg(Msg
+            (msg::kError,
+            "create_folder_strerr=Can not create '{1}' folder ({2}).")
+            (cur_path) (strerror(errno)));
 	      return false;
 	    }
 	  else

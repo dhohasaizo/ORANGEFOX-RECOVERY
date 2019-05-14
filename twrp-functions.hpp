@@ -91,7 +91,7 @@ public:
 
 	static void Deactivation_Process(void);                     		// Run deactivation proces...
 	static void OrangeFox_Startup(void);        				// Run StartUP code for OrangeFox
-	static int Recursive_Mkdir(string Path);                                    // Recursively makes the entire path
+	static int Recursive_Mkdir(string Path, bool ShowErr = true);                                    // Recursively makes the entire path
 	static void GUI_Operation_Text(string Read_Value, string Default_Text);     // Updates text for display in the GUI, e.g. Backing up %partition name%
 	static void GUI_Operation_Text(string Read_Value, string Partition_Name, string Default_Text); // Same as above but includes partition name
 	static void Update_Log_File(void);                                          // Writes the log to last_log
