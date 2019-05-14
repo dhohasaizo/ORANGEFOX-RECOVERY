@@ -27,6 +27,7 @@ extern "C" {
 #include "objects.hpp"
 #include "../data.hpp"
 #include "pages.hpp"
+#include "../twrp-functions.hpp"
 
 extern std::vector<language_struct> Language_List;
 
@@ -99,64 +100,34 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 	else
 		allowSelection = false;		// allows using listbox as a read-only list or menu
 
-	//[f/d] 
+	//[f/d] read file
 	child = FindNode(node, "read");
 	if (child) {
 		attr = child->first_attribute("filename");
 		if (attr) {
 			mFileName = attr->value();
-			int size = 1024, pos;
-			int c;
-			char *buffer = (char *)malloc(size);
-
-			fp = fopen(mFileName.c_str(), "r");
-			if(fp) {
+			std::vector<string> lines;
+			if (TWFunc::read_file(mFileName.c_str(), lines) == 0) {
 			  LOGINFO("Parsing file: %s\n", mFileName.c_str());
-			  do { // read all lines in file
-				pos = 0;
-				do{ // read one line
-				  c = fgetc(fp);
-				  if(c != EOF) buffer[pos++] = (char)c;
-				  if(pos >= size - 1) { // increase buffer length - leave room for 0
-					size *=2;
-					buffer = (char*)realloc(buffer, size);
-				  }
-				}while(c != EOF && c != '\n');
-				buffer[pos] = 0;
-				// line is now in buffer
-				ListItem item;
-				item.displayName = buffer;
-				item.selected = false;
-				item.action = NULL;
-				allowSelection = true;
-				
-				allowSelection = false;
-				isCheckList = false;
-				
-				mListItems.push_back(item);
-				mVisibleItems.push_back(mListItems.size()-1);
-			  } while(c != EOF); 
-			  fclose(fp); 
-			  free(buffer);
-			  return;
+				unsigned int vector_size = lines.size();
+				for (unsigned int i = 0; i < vector_size; i++) {
+					ListItem item;
+					item.displayName = lines[i];
+					item.selected = false;
+
+					mListItems.push_back(item);
+				}
 			} else {
-			    LOGINFO("Can't open file: %s\n", mFileName.c_str());
 				ListItem item;
 				item.displayName = gui_parse_text("{@file_read_error=Unable to open file!}");
 				item.selected = false;
-				item.action = NULL;
-				allowSelection = true;
-				
-				allowSelection = false;
-				isCheckList = false;
 				
 				mListItems.push_back(item);
-				mVisibleItems.push_back(mListItems.size()-1);
 			}
+			return;
 		}
 	}
-		
-	
+
 	// Get the data for the list
 	child = FindNode(node, "listitem");
 	if (!child) return;
