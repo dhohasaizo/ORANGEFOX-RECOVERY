@@ -72,6 +72,7 @@
 			<action>
 				<condition var1="tw_backup_system_size" op="&lt;" var2="%tw_min_system%"/>
 				<condition var1="disable_no_os" var2="0"/>
+				<action function="disableled"/>
 				<action function="page">no_os_warning</action>
 			</action>
 
@@ -79,6 +80,7 @@
 				<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
 				<condition var1="disable_no_os" var2="2"/>
 				<actions>
+					<action function="disableled"/>
 					<action function="set">tw_action=reboot</action>
 					<action function="set">tw_text1={@reboot_btn}</action>
 					<action function="set">tw_action_text1={@reboot_btn}</action>
@@ -92,6 +94,7 @@
 			<action>
 				<condition var1="tw_backup_system_size" op="&lt;" var2="%tw_min_system%"/>
 				<condition var1="disable_no_os" var2="2"/>
+				<action function="disableled"/>
 				<action function="page">no_os_warning</action>
 			</action>
 		</page>
@@ -560,7 +563,6 @@
 				<text>{@back_btn}</text>
 				<actions>
 					<action function="set">tw_clear_destination=%tw_back%</action>
-					<action function="disableled"/>
 					<action function="page">clear_vars</action>
 				</actions>
 			</button>
@@ -581,7 +583,6 @@
 				<touch key="home"/>
 				<actions>
 					<action function="set">tw_clear_destination=main</action>
-					<action function="disableled"/>
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
@@ -590,7 +591,6 @@
 				<touch key="back"/>
 				<actions>
 					<action function="set">tw_clear_destination=%tw_back%</action>
-					<action function="disableled"/>
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>

@@ -916,7 +916,6 @@
 				<text>{@back_btn}</text>
 				<actions>
 					<action function="set">tw_clear_destination=%tw_back%</action>
-					<action function="disableled"/>
 					<action function="page">clear_vars</action>
 				</actions>
 			</button>
@@ -926,13 +925,15 @@
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
 				<text>{@module_pass}</text>
 					<actions>
+						<action function="disableled"/>
 						<action function="queueclear"/>
+						<action function="set">tw_clear_destination=main</action>
 						<action function="set">fox_m_author=DarthJabba9</action>
 						<action function="set">fox_m_name={@module_pass}</action>
 						<action function="set">tw_file=PassReset.zip</action>
 						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/PassReset.zip</action>
 						<action function="set">tw_filecheck=%tw_filename%</action>
-						<action function="set">install_back=fox_modules</action>
+						<action function="set">install_back=clear_vars</action>
 						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
 						<action function="queuezip"/>
 						<action function="set">tw_q_1=%tw_file%</action>
@@ -958,7 +959,6 @@
 				<touch key="home"/>
 				<actions>
 					<action function="set">tw_clear_destination=main</action>
-					<action function="disableled"/>
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
@@ -967,7 +967,6 @@
 				<touch key="back"/>
 				<actions>
 					<action function="set">tw_clear_destination=%tw_back%</action>
-					<action function="disableled"/>
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>

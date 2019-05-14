@@ -740,6 +740,7 @@
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
 				<text>{@wipe_cache_btn}</text>
 				<actions>
+					<action function="disableled"/>
 					<action function="set">tw_back=flash_done</action>
 					<action function="set">tw_action=wipe</action>
 					<action function="set">tw_action_param=/cache</action>
@@ -782,14 +783,12 @@
 				<touch key="back"/>
 				<actions>
 					<action function="set">tw_clear_destination=%install_back%</action>
-					<action function="disableled"/>
 					<action function="page">clear_vars</action>
 				</actions>
 			</action>
 
 			<action>
 				<touch key="home"/>
-				<action function="disableled"/>
 				<action function="page">main</action>
 			</action>
 		</page>
