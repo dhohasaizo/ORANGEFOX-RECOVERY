@@ -74,11 +74,8 @@ static void Print_Prop(const char *key, const char *name, void *cookie)
 
 int main(int argc, char **argv)
 {
-	//[f/d] Disable LED as early as possible
-	DataManager::Leds(false);
-	//Also disable adbd 
-  property_set("ctl.stop", "adbd");
-  property_set("orangefox.adb.status", "0");
+   //[f/d] Disable LED as early as possible
+   DataManager::Leds(false);
 
   // Recovery needs to install world-readable files, so clear umask
   // set by init
