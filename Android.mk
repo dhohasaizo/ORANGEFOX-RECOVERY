@@ -182,10 +182,6 @@ ifeq ($(OF_SKIP_FBE_DECRYPTION),1)
     LOCAL_CFLAGS += -DOF_SKIP_FBE_DECRYPTION='"1"'
 endif
 
-ifeq ($(OF_NO_TREBLE_COMPATIBILITY_CHECK),1)
-    LOCAL_CFLAGS += -DOF_NO_TREBLE_COMPATIBILITY_CHECK='"1"'
-endif
-
 ifeq ($(TW_USE_TOOLBOX), true)
     LOCAL_CFLAGS += -DTW_USE_TOOLBOX='"1"'
 endif
@@ -838,6 +834,11 @@ LOCAL_MODULE := libaosprecovery
 LOCAL_MODULE_TAGS := eng optional
 LOCAL_CFLAGS := -std=gnu++0x
 LOCAL_SRC_FILES := adb_install.cpp legacy_property_service.cpp set_metadata.cpp tw_atomic.cpp installcommand.cpp zipwrap.cpp
+
+ifeq ($(OF_NO_TREBLE_COMPATIBILITY_CHECK),1)
+    LOCAL_CFLAGS += -DOF_NO_TREBLE_COMPATIBILITY_CHECK='"1"'
+endif
+
 LOCAL_SHARED_LIBRARIES += libc liblog libcutils libmtdutils libfusesideload libselinux libminzip
 LOCAL_CFLAGS += -DRECOVERY_API_VERSION=$(RECOVERY_API_VERSION)
 ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 23; echo $$?),0)
