@@ -3632,6 +3632,13 @@ string TWPartitionManager::Get_Android_Root_Path() {
 	return Android_Root;
 }
 
+string TWPartitionManager::Get_Internal_Storage_Path() {
+   std::string s = getenv("EXTERNAL_STORAGE");
+   if (s == "") 
+        s = "/sdcard";
+  return s;
+}
+
 void TWPartitionManager::Remove_Uevent_Devices(const string & Mount_Point)
 {
   std::vector < TWPartition * >::iterator iter;

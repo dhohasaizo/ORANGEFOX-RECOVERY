@@ -71,7 +71,8 @@ static string tmp = Fox_tmp_dir; // "/tmp/orangefox/"
 static string split_img = tmp + "/split_img";
 static string ramdisk = tmp + "/ramdisk";
 static string tmp_boot = tmp + "/boot.img";
-static string fstab1 = PartitionManager.Get_Android_Root_Path() + "/vendor/etc"; // /system/vendor/etc 
+static string fstab1 = PartitionManager.Get_Android_Root_Path() + "/vendor/etc"; // /system/vendor/etc
+static string Internal_SD = PartitionManager.Get_Internal_Storage_Path();
 static string fstab2 = "/vendor/etc";
 static string exec_error_str = "EXEC_ERROR!";
 static string popen_error_str = "popen error!";
@@ -298,7 +299,14 @@ bool TWFunc::Rerun_Startup(void)
 /* function to run just before every reboot */
 void TWFunc::Run_Before_Reboot(void)
 {
-  copy_file("/tmp/recovery.log", "/data/media/0/Fox/lastrecoverylog.log", 0644);
+  copy_file("/tmp/recovery.log", "/sdcard/Fox/lastrecoverylog.log", 0644);
+  
+  // backup also to external SD (/sdcard1/) if there is one
+  if ((PartitionManager.Is_Mounted_By_Path("/sdcard1")) || (PartitionManager.Mount_By_Path("/sdcard1", false)))
+    {
+       copy_file("/tmp/recovery.log", "/sdcard1/lastrecoverylog.log", 0644);
+       PartitionManager.UnMount_By_Path("/sdcard1", false);
+    }
 }
 
 /* Execute a command */
@@ -2070,7 +2078,7 @@ void TWFunc::OrangeFox_Startup(void)
   std::string device_one = kernel_proc_check + "enable";
   std::string device_two = kernel_proc_check + "disable";
 
-//gui_print("DEBUG: - OrangeFox_Startup_Executed=%i\n", OrangeFox_Startup_Executed);
+  //gui_print("DEBUG: - OrangeFox_Startup_Executed=%i\n", OrangeFox_Startup_Executed);
   // don't repeat this
   if (OrangeFox_Startup_Executed > 0)
      return;
@@ -3132,8 +3140,8 @@ if (Is_AB_Device)
 	New_Fox_Installation = 0;
 	#endif
 	
-	LOGINFO ("DEBUG [Fresh_Fox_Install()] - copying log to:/data/media/0/Fox/post-install.log \n");
-	copy_file("/tmp/recovery.log", "/data/media/0/Fox/post-install.log", 0644);
+	LOGINFO ("DEBUG [Fresh_Fox_Install()] - copying log to:/sdcard/Fox/post-install.log \n");
+	copy_file("/tmp/recovery.log", "/sdcard/Fox/post-install.log", 0644);
 	return true;
    }    
    else
