@@ -140,6 +140,7 @@ public:
 	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
 	static void Patch_Verity_Flags(string path); // patch the fstab's dm-verity flags
 	static bool Has_Vendor_Partition(void); // does the device have a real vendor partition?
+	static int Patch_DMVerity_ForcedEncryption_Magisk(void); // patch dm-verity/forced-encryption with a script using magisk
 	//
 	static std::string get_cache_dir(); // return the cache partition existence
 	static void check_selinux_support(); // print whether selinux support is enabled to console

@@ -1022,8 +1022,10 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	    }
 	}
     }
+
   time(&stop);
-	int total_time = (int) difftime(stop, start);
+  int total_time = (int) difftime(stop, start);
+
   if (ret_val == INSTALL_CORRUPT)
     {
         set_miui_install_status(OTA_CORRUPT, true);
@@ -1037,66 +1039,20 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
    LOGINFO("OrangeFox: not running the MIUI OTA backup.\n");
 #else    
-  else  
-  if (DataManager::GetIntValue(FOX_INCREMENTAL_OTA_FAIL) != 1)
-    {
-      if ((DataManager::GetIntValue(FOX_MIUI_ZIP_TMP) != 0) || (DataManager::GetIntValue(FOX_METADATA_PRE_BUILD) != 0))
-	{
-	  string ota_folder, ota_backup, loadedfp;
-	  DataManager::GetValue(FOX_SURVIVAL_FOLDER_VAR, ota_folder);
-	  DataManager::GetValue(FOX_SURVIVAL_BACKUP_NAME, ota_backup);
-	  DataManager::GetValue(FOX_LOADED_FINGERPRINT, loadedfp);
-	  ota_folder += "/" + ota_backup;
-	  string ota_info = ota_folder + Fox_OTA_info;
-	  if (TWFunc::Verify_Loaded_OTA_Signature(loadedfp, ota_folder))
-	    {
-	      gui_msg
-		("fox_incremental_ota_bak_skip=Detected OTA survival with the same ID - leaving");
-	    }
-	  else
-	    {
-	      if (TWFunc::Path_Exists(ota_folder))
-		  TWFunc::removeDir(ota_folder, false);
-
-	      DataManager::SetValue(FOX_RUN_SURVIVAL_BACKUP, 1);
-	      gui_msg
-		("fox_incremental_ota_bak_run=Starting OTA_BAK process...");
-	      	      
-	      if (PartitionManager.Run_OTA_Survival_Backup(false))
-	        {
-	           Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
-	           if (Fox_Zip_Installer_Code == 22) // Treble
-	               DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 23); // Treble miui OTA backup succeeded
-	           else
-	               DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 3); // non-Treble miui OTA backup succeeded
-	           
-	           set_miui_install_status(OTA_SUCCESS, false);    
-	           gui_msg("fox_incremental_ota_bak=Process OTA_BAK --- done!");
-	           Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
-	        }
-	      else
-	        {
-		   set_miui_install_status(OTA_ERROR, false);
-	           gui_print("Process OTA_BAK --- FAILED!\n");
-	           LOGERR("OTA_BAK: Unable to finish OTA_BAK!\n");
-	        }  
-
-	      if ((TWFunc::Path_Exists(ota_folder)) && (!TWFunc::Path_Exists(ota_info)))
-		{
-		  TWFunc::create_fingerprint_file(ota_info, loadedfp);
-		}
-	    }
-	} // FOX_MIUI_ZIP_TMP
-	
-      DataManager::SetValue(FOX_METADATA_PRE_BUILD, 0);
-      DataManager::SetValue(FOX_MIUI_ZIP_TMP, 0);
-      DataManager::SetValue(FOX_INCREMENTAL_OTA_FAIL, 0);
-      DataManager::SetValue(FOX_LOADED_FINGERPRINT, 0);
-      DataManager::SetValue(FOX_RUN_SURVIVAL_BACKUP, 0);
+   else  
+   if (DataManager::GetIntValue(FOX_INCREMENTAL_OTA_FAIL) != 1)
+     {
+      	TWinstall_Run_OTA_BAK (true); // true, because the value of Fox_Zip_Installer_Code to be set     
+      	
+      	DataManager::SetValue(FOX_METADATA_PRE_BUILD, 0);
+      	DataManager::SetValue(FOX_MIUI_ZIP_TMP, 0);
+      	DataManager::SetValue(FOX_INCREMENTAL_OTA_FAIL, 0);
+      	DataManager::SetValue(FOX_LOADED_FINGERPRINT, 0);
+      	DataManager::SetValue(FOX_RUN_SURVIVAL_BACKUP, 0);
       
-      LOGINFO("Install took %i second(s).\n", total_time);
-   } // FOX_INCREMENTAL_OTA_FAIL
-#endif // MIUI OTA
+      	LOGINFO("Install took %i second(s).\n", total_time);
+     }
+#endif // OF_DISABLE_MIUI_SPECIFIC_FEATURES
 
    if (ret_val == INSTALL_SUCCESS)
       set_miui_install_status(OTA_SUCCESS, false);
@@ -1105,4 +1061,63 @@ int TWinstall_zip(const char *path, int *wipe_cache)
   sysReleaseMap(&map);
 #endif
   return ret_val;
+}
+
+int TWinstall_Run_OTA_BAK (bool reportback) 
+{
+int result = 1;
+      if ((DataManager::GetIntValue(FOX_MIUI_ZIP_TMP) != 0) || (DataManager::GetIntValue(FOX_METADATA_PRE_BUILD) != 0))
+      {
+	  string ota_folder, ota_backup, loadedfp;
+	  DataManager::GetValue(FOX_SURVIVAL_FOLDER_VAR, ota_folder);
+	  DataManager::GetValue(FOX_SURVIVAL_BACKUP_NAME, ota_backup);
+	  DataManager::GetValue(FOX_LOADED_FINGERPRINT, loadedfp);
+	  ota_folder += "/" + ota_backup;
+	  string ota_info = ota_folder + Fox_OTA_info;
+	  if (TWFunc::Verify_Loaded_OTA_Signature(loadedfp, ota_folder))
+	    {
+	        gui_msg
+		("fox_incremental_ota_bak_skip=Detected OTA survival with the same ID - leaving");
+		return 0;
+	    }
+	    
+	    if (TWFunc::Path_Exists(ota_folder))
+		    TWFunc::removeDir(ota_folder, false);
+
+	    DataManager::SetValue(FOX_RUN_SURVIVAL_BACKUP, 1);
+	    gui_msg
+		("fox_incremental_ota_bak_run=Starting OTA_BAK process...");
+	      	      
+	    if (PartitionManager.Run_OTA_Survival_Backup(false))
+	        {
+	           set_miui_install_status(OTA_SUCCESS, false);    
+	           gui_msg("fox_incremental_ota_bak=Process OTA_BAK --- done!");
+	           Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+	           result = 0;
+	           if (reportback)
+	           {
+	           	Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
+	           	if (Fox_Zip_Installer_Code == 22) // Treble
+	               	   DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 23); // Treble miui OTA backup succeeded
+	           	else
+	               	   DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 3); // non-Treble miui OTA backup succeeded
+	           }
+	           else
+	           {
+	           	DataManager::SetValue(FOX_RUN_SURVIVAL_BACKUP, 0);
+	           }
+	        }
+	    else
+	        {
+		   set_miui_install_status(OTA_ERROR, false);
+	           gui_print("Process OTA_BAK --- FAILED!\n");
+	           LOGERR("OTA_BAK: Unable to finish OTA_BAK!\n");
+	        }  
+
+	    if ((TWFunc::Path_Exists(ota_folder)) && (!TWFunc::Path_Exists(ota_info)))
+		{
+		   TWFunc::create_fingerprint_file(ota_info, loadedfp);
+		}
+      } // FOX_MIUI_ZIP_TMP
+      return result;
 }

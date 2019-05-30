@@ -3695,67 +3695,6 @@ bool TWFunc::Patch_Forced_Encryption(void)
   return status;
 }
 
-/*
-void TWFunc::Patch_Others(void)
-{
-  std::string fstab = ramdisk + "/fstab.qcom";
-  std::string default_prop = ramdisk + "/default.prop";
-  std::string adb_ro = "ro.adb.secure";
-  std::string ro = "ro.secure";
-  std::string mock = "ro.allow.mock.location";
-  std::string miui_secure_boot = "ro.secureboot.devicelock";
-
-  // Enable ADB read-only property in the default.prop
-  if (DataManager::GetIntValue(FOX_ENABLE_ADB_RO) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, adb_ro, true);
-    }
-
-  // Disable ADB read-only property in the default.prop
-  if (DataManager::GetIntValue(FOX_DISABLE_ADB_RO) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, adb_ro, false);
-    }
-
-  // Enable read-only property in the default.prop
-  if (DataManager::GetIntValue(FOX_ENABLE_SECURE_RO) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, ro, true);
-    }
-
-  // Disable read-only property in the default.prop
-  if (DataManager::GetIntValue(FOX_DISABLE_SECURE_RO) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, ro, false);
-    }
-
-  // Disable secure-boot
-  if (DataManager::GetIntValue(FOX_DISABLE_SECURE_BOOT) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, miui_secure_boot, false);
-    }
-
-  // Enable mock_location property
-  if (DataManager::GetIntValue(FOX_ENABLE_MOCK_LOCATION) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, mock, true);
-    }
-
-  // Disable mock_location property
-  if (DataManager::GetIntValue(FOX_DISABLE_MOCK_LOCATION) == 1)
-    {
-      TWFunc::Set_New_Ramdisk_Property(default_prop, mock, false);
-    }
-
-  // Set permissions
-  if (Path_Exists(default_prop)) 
-  	chmod(default_prop.c_str(), 0644);
-
-  if (Path_Exists(fstab)) 
-  	chmod(fstab.c_str(), 0644);
-}
-*/
-
 void TWFunc::PrepareToFinish(void)
 {
    // unmount stuff
@@ -3918,7 +3857,10 @@ bool patched_crypt = false;
   if (MIUI_Is_Running())
   	Disable_Stock_Recovery_Replace();
 
-// !patch ROM's fstab
+// patch ROM's fstab
+#ifdef OF_USE_MAGISKBOOT
+   // this will be handled below
+#else
   if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
          patched_crypt = Patch_Forced_Encryption_In_System_Fstab();
@@ -3928,9 +3870,10 @@ bool patched_crypt = false;
      {
 	patched_verity = Patch_DM_Verity_In_System_Fstab();
      }
-// !!patch ROM's fstab
+#endif
+// patch ROM's fstab
   
-  // Should we skip the boot image patches?
+// Should we skip the boot image patches?
   if (DontPatchBootImage() == true)
      {
      	if (New_Fox_Installation == 1 || MIUI_Is_Running())
@@ -3943,42 +3886,42 @@ bool patched_crypt = false;
         DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);	
         return;
      }   
-  // end
+// end
   
   gui_msg(Msg(msg::kProcess, "of_run_process=Starting '{1}' process")
       ("OrangeFox"));
 
-  // unpack boot image
-  #ifdef OF_USE_MAGISKBOOT
+// new method, using magiskboot plus a modded shell script
+#ifdef OF_USE_MAGISKBOOT
+        TWFunc::Patch_DMVerity_ForcedEncryption_Magisk();
+  	return;
+#endif
+// ---
+
+// unpack boot image
+#ifdef OF_USE_MAGISKBOOT
   if (!PackRepackImage_MagiskBoot(true, true))
-  #else
+#else
   if (!Unpack_Image("/boot"))
-  #endif
+#endif
      {
 	LOGERR("Deactivation_Process: Unable to unpack boot image\n");
 	return;
      }
 
-  // do the patches
-#ifdef OF_USE_MAGISKBOOT
-   //LOGINFO("OrangeFox: DM-Verity is handled by PackRepackImage_MagiskBoot(): \n");
-#else
+// do the patches, using  mkbootimg et. al.
+#ifndef OF_USE_MAGISKBOOT
   // dm-verity #2
   if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
 	  patched_verity = Patch_DM_Verity();
 	  if (patched_verity)
 	  {
-              //DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, 1);
 	      gui_msg("of_dm_verity=Successfully patched DM-Verity");
 	  }
 	  else
 	  {
-	 #ifdef OF_USE_MAGISKBOOT
-   	     //LOGINFO("OrangeFox: Probably nothing left to patch in DM-Verity ... \n");
-	 #else
 	     gui_msg("of_dm_verity_off=DM-Verity is not enabled");
-	 #endif
 	  }
      }
 
@@ -3992,24 +3935,17 @@ bool patched_crypt = false;
 	     }
 	  else
 	     {
-	 #ifdef OF_USE_MAGISKBOOT
-   		//LOGINFO("OrangeFox: Probably nothing left to patch in Forced Encryption ... \n");
-	 #else
 	        gui_msg("of_encryption_off=Forced Encryption is not enabled");
-	 #endif
 	     }
      }
 #endif
 
-  // other stuff - 
-  // Patch_Others();
-
-  // repack the boot image
-  #ifdef OF_USE_MAGISKBOOT
+// repack the boot image
+#ifdef OF_USE_MAGISKBOOT
   if (!PackRepackImage_MagiskBoot(false, true))
-  #else
+#else
   if (!Repack_Image("/boot"))
-  #endif
+#endif
      {
 	gui_msg(Msg
 	  (msg::kProcess, "of_run_process_fail=Unable to finish '{1}' process")
@@ -4021,7 +3957,71 @@ bool patched_crypt = false;
 	  ("OrangeFox"));
      }
 
-  // reset "force" stuff  
   Fox_Force_Deactivate_Process = 0;
   DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
 }
+
+
+int TWFunc::Patch_DMVerity_ForcedEncryption_Magisk(void)
+// credits to wzsx150 for the modded shell script used in this function
+{
+std::string keepdmverity, keepforcedencryption, cmd_script, result;
+int res, outcome;
+   
+   outcome = 0;
+   if (!TWFunc::Path_Exists("/sbin/magiskboot"))
+     {
+        gui_print("ERROR - cannot find /sbin/magiskboot");
+        gui_msg(Msg
+	(msg::kProcess, "of_run_process_fail=Unable to finish '{1}' process") 
+	  ("OrangeFox"));
+  	Fox_Force_Deactivate_Process = 0;
+  	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
+  	return 1;
+     }
+        
+    if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
+	keepdmverity = " false ";
+    else
+	keepdmverity = " true ";
+	
+    if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
+	{
+	#ifdef OF_DONT_PATCH_ENCRYPTED_DEVICE
+	   if (StorageIsEncrypted())
+	         keepforcedencryption = "true";
+	   else
+	#endif
+	   keepforcedencryption = "false";
+	}
+   else	
+	keepforcedencryption = "true";
+
+   result = FFiles_dir + "/of_verity_crypt";
+   cmd_script = result + keepdmverity + keepforcedencryption;
+   chmod (result.c_str(), 0755); 
+   result = "";
+   gui_msg(Msg(msg::kProcess, "lang_wait=Please wait ..."));
+   res = Exec_Cmd (cmd_script, result);   
+   /*
+   gui_print ("----------------------------------\n");
+   gui_print ("%s\n", result.c_str());
+   gui_print ("----------------------------------\n");
+   */
+   if (res != 0)
+     {
+	gui_msg(Msg
+	(msg::kProcess, "of_run_process_fail=Unable to finish '{1}' process") ("OrangeFox"));
+	outcome = 1;
+     }
+   else
+     {
+        gui_msg(Msg(msg::kProcess, "of_run_process_done=Finished '{1}' process") ("OrangeFox"));
+     }
+ 
+   // reset "force" stuff  
+   Fox_Force_Deactivate_Process = 0;
+   DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
+   return outcome;
+}
+//
