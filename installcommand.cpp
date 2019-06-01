@@ -249,6 +249,10 @@ bool verify_package_compatibility(ZipWrap *package_zip) {
 // entry doesn't exist. Note that the compatibility info is packed in a zip file inside the OTA
 // package.
 bool verify_package_compatibility(ZipWrap *zw) {
+#ifdef OF_NO_TREBLE_COMPATIBILITY_CHECK
+   printf("Bypassing Treble compatibility check ...\n");
+   return true;
+#endif
   ZipArchiveHandle package_zip = zw->GetZipArchiveHandle();
   printf("Verifying package compatibility...\n");
 

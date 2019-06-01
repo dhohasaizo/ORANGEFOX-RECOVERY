@@ -573,6 +573,10 @@ static int try_update_binary(const std::string & package,
 // package.
 bool verify_package_compatibility(ZipArchiveHandle package_zip)
 {
+#ifdef OF_NO_TREBLE_COMPATIBILITY_CHECK
+   LOG(INFO) << "Bypassing Treble compatibility check ...";
+   return true;
+#endif
   LOG(INFO) << "Verifying package compatibility...";
 
   static constexpr const char *COMPATIBILITY_ZIP_ENTRY = "compatibility.zip";
