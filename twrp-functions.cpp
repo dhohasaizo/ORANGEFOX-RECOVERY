@@ -58,6 +58,7 @@
 #include "openaes/inc/oaes_lib.h"
 #endif
 #include "set_metadata.h"
+#include "twinstall.h"
 
 extern "C"
 {
@@ -3858,9 +3859,7 @@ bool patched_crypt = false;
   	Disable_Stock_Recovery_Replace();
 
 // patch ROM's fstab
-#ifdef OF_USE_MAGISKBOOT
-   // this will be handled below
-#else
+#ifndef OF_USE_MAGISKBOOT
   if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
          patched_crypt = Patch_Forced_Encryption_In_System_Fstab();
@@ -3891,26 +3890,24 @@ bool patched_crypt = false;
   gui_msg(Msg(msg::kProcess, "of_run_process=Starting '{1}' process")
       ("OrangeFox"));
 
-// new method, using magiskboot plus a modded shell script
+// --- new method, using magiskboot plus a modded script
 #ifdef OF_USE_MAGISKBOOT
-        TWFunc::Patch_DMVerity_ForcedEncryption_Magisk();
-  	return;
-#endif
-// ---
-
-// unpack boot image
-#ifdef OF_USE_MAGISKBOOT
-  if (!PackRepackImage_MagiskBoot(true, true))
-#else
+  int res = TWFunc::Patch_DMVerity_ForcedEncryption_Magisk();
+  if (res != 0)
+     {
+	gui_msg(Msg(msg::kProcess, "of_run_process_fail=Unable to finish '{1}' process") ("OrangeFox"));
+     }
+  else
+     {
+    	gui_msg(Msg(msg::kProcess, "of_run_process_done=Finished '{1}' process") ("OrangeFox"));
+     }
+#else // OF_USE_MAGISKBOOT
   if (!Unpack_Image("/boot"))
-#endif
      {
 	LOGERR("Deactivation_Process: Unable to unpack boot image\n");
 	return;
      }
 
-// do the patches, using  mkbootimg et. al.
-#ifndef OF_USE_MAGISKBOOT
   // dm-verity #2
   if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
      {
@@ -3938,14 +3935,8 @@ bool patched_crypt = false;
 	        gui_msg("of_encryption_off=Forced Encryption is not enabled");
 	     }
      }
-#endif
 
-// repack the boot image
-#ifdef OF_USE_MAGISKBOOT
-  if (!PackRepackImage_MagiskBoot(false, true))
-#else
   if (!Repack_Image("/boot"))
-#endif
      {
 	gui_msg(Msg
 	  (msg::kProcess, "of_run_process_fail=Unable to finish '{1}' process")
@@ -3956,34 +3947,34 @@ bool patched_crypt = false;
        gui_msg(Msg(msg::kProcess, "of_run_process_done=Finished '{1}' process")
 	  ("OrangeFox"));
      }
-
+#endif // OF_USE_MAGISKBOOT
   Fox_Force_Deactivate_Process = 0;
   DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
 }
 
 
 int TWFunc::Patch_DMVerity_ForcedEncryption_Magisk(void)
-// credits to wzsx150 for the modded shell script used in this function
 {
-std::string keepdmverity, keepforcedencryption, cmd_script, result;
-int res, outcome;
-   
-   outcome = 0;
+std::string keepdmverity, keepforcedencryption;
+std::string zipname = FFiles_dir + "/OF_verity_crypt/OF_verity_crypt.zip";
+int res=0, wipe_cache=0;
+
    if (!TWFunc::Path_Exists("/sbin/magiskboot"))
      {
-        gui_print("ERROR - cannot find /sbin/magiskboot");
-        gui_msg(Msg
-	(msg::kProcess, "of_run_process_fail=Unable to finish '{1}' process") 
-	  ("OrangeFox"));
-  	Fox_Force_Deactivate_Process = 0;
-  	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
+        gui_print("ERROR - cannot find /sbin/magiskboot\n");
   	return 1;
      }
-        
+
+   if (!TWFunc::Path_Exists(zipname))
+     {
+        gui_print("ERROR - cannot find %s\n", zipname.c_str());
+  	return 1;
+     }
+
     if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
-	keepdmverity = " false ";
+	keepdmverity = "false";
     else
-	keepdmverity = " true ";
+	keepdmverity = "true";
 	
     if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
 	{
@@ -3997,31 +3988,16 @@ int res, outcome;
    else	
 	keepforcedencryption = "true";
 
-   result = FFiles_dir + "/of_verity_crypt";
-   cmd_script = result + keepdmverity + keepforcedencryption;
-   chmod (result.c_str(), 0755); 
-   result = "";
-   gui_msg(Msg(msg::kProcess, "lang_wait=Please wait ..."));
-   res = Exec_Cmd (cmd_script, result);   
-   /*
-   gui_print ("----------------------------------\n");
-   gui_print ("%s\n", result.c_str());
-   gui_print ("----------------------------------\n");
-   */
-   if (res != 0)
-     {
-	gui_msg(Msg
-	(msg::kProcess, "of_run_process_fail=Unable to finish '{1}' process") ("OrangeFox"));
-	outcome = 1;
-     }
-   else
-     {
-        gui_msg(Msg(msg::kProcess, "of_run_process_done=Finished '{1}' process") ("OrangeFox"));
-     }
+   setenv("KEEP_VERITY", keepdmverity.c_str(), 1);
+   setenv("KEEP_FORCEENCRYPT", keepforcedencryption.c_str(), 1);
+   DataManager::SetValue(FOX_INSTALL_PREBUILT_ZIP, "1");
+
+   res = TWinstall_zip(zipname.c_str(), &wipe_cache);
+
+   setenv ("KEEP_VERITY", "", 1);
+   setenv ("KEEP_FORCEENCRYPT", "", 1);
+   DataManager::SetValue(FOX_INSTALL_PREBUILT_ZIP, "0");
  
-   // reset "force" stuff  
-   Fox_Force_Deactivate_Process = 0;
-   DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
-   return outcome;
+   return res;
 }
 //
