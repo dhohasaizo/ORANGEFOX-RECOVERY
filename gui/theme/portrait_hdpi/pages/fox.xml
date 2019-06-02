@@ -16,7 +16,6 @@
 				<condition var1="fox_reboot_advanced_stock_recovery_check" var2="1"/>
 				<condition var1="fox_reboot_forced_encryption_check" var2="1"/>
 				<condition var1="fox_reboot_dm_verity_check" var2="1"/>
-				<condition var1="fox_disable_ota_auto_reboot_check" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 			</fill>
 			<image>
@@ -26,7 +25,6 @@
 				<condition var1="fox_reboot_advanced_stock_recovery_check" var2="1"/>
 				<condition var1="fox_reboot_forced_encryption_check" var2="1"/>
 				<condition var1="fox_reboot_dm_verity_check" var2="1"/>
-				<condition var1="fox_disable_ota_auto_reboot_check" var2="1"/>
 				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
 				<image resource="switch_on"/>
 			</image>
@@ -45,7 +43,6 @@
 					<action function="set">fox_reboot_advanced_stock_recovery_check=1</action>
 					<action function="set">fox_reboot_dm_verity_check=1</action>
 					<action function="set">fox_reboot_forced_encryption_check=1</action>
-					<action function="set">fox_disable_ota_auto_reboot_check=1</action>
 				</actions>
 			</button>
 
@@ -56,7 +53,6 @@
 				<condition var1="fox_reboot_advanced_stock_recovery_check" var2="1"/>
 				<condition var1="fox_reboot_forced_encryption_check" var2="1"/>
 				<condition var1="fox_reboot_dm_verity_check" var2="1"/>
-				<condition var1="fox_disable_ota_auto_reboot_check" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
 					<action function="set">fox_support_miui_ota=0</action>
@@ -65,7 +61,6 @@
 					<action function="set">fox_reboot_advanced_stock_recovery_check=0</action>
 					<action function="set">fox_reboot_forced_encryption_check=0</action>
 					<action function="set">fox_reboot_dm_verity_check=0</action>
-					<action function="set">fox_disable_ota_auto_reboot_check=0</action>
 				</actions>
 			</button>
 		
