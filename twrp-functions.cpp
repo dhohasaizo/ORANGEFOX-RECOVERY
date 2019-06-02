@@ -3841,6 +3841,7 @@ void TWFunc::check_selinux_support() {
 		}
 	}
 }
+
 #endif // ndef BUILD_TWRPTAR_MAIN
 
 void TWFunc::Deactivation_Process(void)
