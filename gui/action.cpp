@@ -696,10 +696,16 @@ int GUIAction::checkbackupfolder(std::string arg __unused)
 	if (d != NULL) {
       while ((de = readdir(d)) != NULL) {
         std::string name = de->d_name;
-        unsigned char type = de->d_type;
-        // skip files and special folders 
-        if (name == "." || name == ".." || type != DT_DIR)
+        // skip special folders
+        if (name == "." || name == "..")
           continue;
+
+        unsigned char type = de->d_type;
+        if (type == DT_UNKNOWN)
+			    type = TWFunc::Get_D_Type_From_Stat(path);
+        if (type != DT_DIR)
+          continue;
+        
         // when we found a normal folder, set of_backup_empty to 0 and exit loop
         DataManager::SetValue("of_backup_empty", "0");
         break;
