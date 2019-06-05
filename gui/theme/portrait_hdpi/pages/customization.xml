@@ -39,12 +39,20 @@
 				</listitem>
 				<listitem name="{@theme_fonts}">
 					<icon res="ws_font"/>
+					<condition var1="tw_language" op="!=" var2="ar"/>
+					<condition var1="tw_language" op="!=" var2="es-ES"/>
+					<condition var1="tw_language" op="!=" var2="hu"/>
 					<condition var1="tw_language" op="!=" var2="zh_CH"/>
+					<condition var1="tw_language" op="!=" var2="zh_TW"/>
 					<action function="page">ext_custom_fonts</action>
 				</listitem>
 				<listitem name="{@theme_fonts}">
 					<icon res="ws_font"/>
+					<condition var1="tw_language" var2="ar"/>
+					<condition var1="tw_language" var2="es-ES"/>
+					<condition var1="tw_language" var2="hu"/>
 					<condition var1="tw_language" var2="zh_CH"/>
+					<condition var1="tw_language" var2="zh_TW"/>
 					<action function="page">ext_custom_fonts_cn</action>
 				</listitem>
 				<listitem name="{@sph_sph}">
