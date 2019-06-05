@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+	<display>Turkish</display>
+
+	<resources>
+		<!-- Font overrides - only change these if your language requires special characters -->
+
+		<!-- Partition display names -->
+		<string name="system">Sistem</string>
+		<string name="system_image">Sistem İmajı</string>
+		<string name="vendor">Vendor</string>
+		<string name="vendor_image">Vendor İmajı</string>
+		<string name="boot">Boot</string>
+		<string name="recovery">Kurtarma</string>
+		<string name="cache">Önbellek</string>
+		<string name="data">Veri</string>
+		<string name="sdcard">SDCard</string>
+		<string name="internal">Dahili depolama</string>
+		<string name="microsd">Micro SDCard</string>
+		<string name="usbotg">USB OTG</string>
+		<string name="android_secure">Android Güvenli</string>
+		<string name="dalvik">Dalvik / ART Önbellek</string>
+		<!-- This is a rarely used partition on a Micro SD card for a very old app2sd system -->
+		<string name="sdext">Harici Depolama</string>
+		<string name="adopted_data">Kabul Edilen Veri</string>
+		<string name="adopted_storage">Kabul Edilen Depolama</string>
+
+		<!-- GUI XML strings -->
+		<string name="twrp_watch_header">OrangeFox %fox_actual_build%</string>
+		<string name="cpu_temp">CPU: %tw_cpu_temp% &#xB0;C</string>
+		<string name="sort_by_name_asc">İsim</string>
+		<string name="sort_by_date_asc">Date</string>
+		<string name="sort_by_size_asc">Boyut</string>
+		<string name="sort_by_name_desc">İsim</string>
+		<string name="sort_by_date_desc">Date</string>
+		<string name="sort_by_size_desc">Boyut</string>
+		<string name="install_btn">Yükle</string>
+		<string name="wipe_btn">Sil</string>
+		<string name="backup_btn">Yedek</string>
+		<string name="restore_btn">Geri Yükle</string>
+		<string name="mount_btn">Bağla</string>
+		<string name="file_manager_btn">Dosya Yöneticisi</string>
+		<string name="advanced_btn">Gelişmiş</string>
+		<string name="reboot_btn">Yeniden Başlat</string>
+		<string name="copy_log_btn">Günlüğü SD karta kopyala</string>
+		<string name="install_zip_hdr">Zip Yükle</string>
+		<string name="install_zip_btn">Zip Yükle</string>
+		<string name="install_image_hdr">İmaj Yükle</string>
+		<string name="install_image_btn">İmaj Yükle</string>
+		<string name="install_select_file_hdr">Dosya Seç</string>
+		<string name="install_select_file_btn">Dosya Seç</string>
+		<string name="adb_sideload_btn">ADB &amp; Sideload</string>
+		<string name="select_storage_hdr">Depolama Seç</string>
+		<string name="select_storage_btn">Depolama Seç</string>
+		<string name="queue_hdr">kuyruk</string>
+		<string name="raised_clearqueue_btn">Sırayı temizle</string>
+		<string name="raised_viewqueue_btn">Sırayı Görüntüle</string>
+		<string name="zip_queue_count"> %tw_zip_queue_count% Maksimum 10 dosya sıraya alınabilir</string>
+		<string name="folder">Klasör</string>
+		<string name="file">Dosya</string>
+		<string name="zip_sig_chk">Zip imza doğrulaması</string>
+		<string name="inject_twrp_chk">Inject OrangeFox after install</string>
+		<string name="install_reboot_chk">Yükleme tamamlandıktan sonra yeniden başlat</string>
+		<string name="options_hdr">Seçenekler</string>
+		<string name="zip_queue">kuyruk</string>
+		<string name="install_zip_count_hdr">%tw_zip_queue_count%%tw_zip_index% dosyası yükleniyor</string>
+		<string name="working">Çalışıyor... </string>
+		<string name="failed">Başarısız oldu</string>
+		<string name="successful">Başarılı</string>
+		<string name="wipe_cache_btn">Önbelleği Temizle</string>
+		<string name="reboot_system_btn">Sistemi Yeniden Başlat</string>
+		<string name="reboot_recovery_btn">Kurtarma modunda yeniden başlat</string>
+		<string name="install_sel_target">Hedef Bölümü Seç</string>
+		<string name="flash_image_select">Bölüm</string>
+		<string name="flashing_image">İmaj Flaşhlanıyor... </string>
+		<string name="image_flashed">İmaj Flaşhlandı</string>
+		<string name="wipe_cache_dalvik_confirm">Önbellek &amp; Dalvik Silinsin Mi?</string>
+		<string name="wipe_dalvik_confirm">Wipe Dalvik?</string>
+		<string name="wiping_cache_dalvik">Önbellek Dalvik Siliniyor... &amp; </string>
+		<string name="wipe_cache_dalvik_complete">Önbellek &amp; Dalvik Silme Tamamlandı</string>
+		<string name="cache_dalvik_done">Önbellek &amp; Dalvik Silme Tamamlandı</string>
+		<string name="swipe_wipe">Silmek için kaydır</string>
+		<string name="rebooting">Yeniden başlatılıyor ...</string>
+		<string name="swipe_reboot">Yeniden başlatmak için hızlıca kaydırın</string>
+		<string name="confirm_action">Eylemi Onayla</string>
+		<string name="cancel_btn">Cancel</string>
+		<string name="wipe_hdr">silme</string>
+		<string name="factory_reset_hdr">Fabrika ayarları</string>
+		<string name="factory_reset1">Veriler, Önbellek ve Dalvik Silinecek</string>
+		<string name="factory_reset2">(dahili depolama dahil değil)</string>
+		<string name="factory_reset3">Çoğu zaman bu</string>
+		<string name="factory_reset4">İhtiyacın olan tek şey silme. </string>
+		<string name="factory_resetting">Veriler, Önbellek ve Dalvik Siliniyor... </string>
+		<string name="advanced_wipe_hdr">Gelişmiş Silme</string>
+		<string name="advanced_wipe_btn">Gelişmiş Silme</string>
+		<string name="wipe_enc_confirm">Şifreleme Verilerden Silinir mi?</string>
+		<string name="formatting_data">Veri formatlanıyor...</string>
+		<string name="swipe_format_data">Verileri Biçimlendirmek için Hızlıca Kaydırın</string>
+		<string name="factory_reset_complete">Fabrika Ayarı tamamlandı</string>
+		<string name="sel_part_hdr">Bölümleri Seç</string>
+		<string name="wipe_sel_confirm">Wipe Selected Partitions?</string>
+		<string name="wiping_part">Wiping Partitions...</string>
+		<string name="wipe_complete">Silme tamamlandı</string>
+		<string name="format_data_hdr">Verileri Biçimlendir</string>
+		<string name="format_data_btn">Verileri Biçimlendir</string>
+		<string name="format_data_ptr1">Verileri Biçimlendirmek tüm uygulamalarınızı silecek,</string>
+		<string name="format_data_ptr2">yedekler, resimler, videolar, medya ve</string>
+		<string name="format_data_ptr3">removes encryption on internal storage.</string>
+		<string name="format_data_adopted">Kabul Edilen Depolama Dahil</string>
+		<string name="format_data_undo">Bu işlem geri alınamaz.</string>
+		<string name="format_data_complete">Veri Biçimlendirme tamamlandı</string>
+		<!-- Translator note: the word "yes" must remain English! -->
+		<string name="yes_continue">Onaylamak için "yes" yazınız.</string>
+		<string name="part_opt_hdr">Bölüm bilgisi</string>
+		<string name="file_sys_opt">Bölüm Seçenekleri</string>
+		<string name="part_mount_point">Bağlama Noktası</string>
+		<string name="part_curr_fs">Dosya sistemi</string>
+		<string name="part_present">Mevcut</string>
+		<string name="part_removable">çıkarılabilir</string>
+		<string name="part_yes">Evet</string>
+		<string name="part_no">Hayır</string>
+		<string name="part_size">Boyut</string>
+		<string name="part_used">Kullanılan</string>
+		<string name="part_free">Boş</string>
+		<string name="part_backup_size">Yedekleme Boyutu</string>
+		<string name="resize_btn">DS'ni yeniden boyutlandır</string>
+		<string name="resize_confirm">Bölümü yeniden boyutlandır</string>
+		<string name="resizing">Yeniden boyutlandırılıyor ...</string>
+		<string name="resize_complete">Yeniden boyutlandırma tamamlandı</string>
+		<string name="swipe_resize">Yeniden boyutlandırmak için kaydır</string>
+		<string name="repair_btn">DS'ni Onar</string>
+		<string name="repair_confirm">Dosya Sistemini Onar</string>
+		<string name="repairing">Onarılıyor ...</string>
+		<string name="repair_complete">Onarma tamamlandı</string>
+		<string name="swipe_repair">Onarmak için hızlıca kaydırın</string>
+		<string name="change_fs_btn">DS'ni değiştir</string>
+		<string name="change_fs_warn1">Bazı ROM'lar veya çekirdekler desteklemeyebilir</string>
+		<string name="change_fs_warn2">bazı dosya sistemleri. Dikkatle ilerle!</string>
+		<string name="change_fs_confirm">DS'ni değiştir</string>
+		<string name="formatting">Biçimlendiriliyor ...</string>
+		<string name="format_complete">Biçimlendirme tamamlandı</string>
+		<string name="swipe_change_fs">Değiştirmek için kaydır</string>
+		<string name="back_btn">Geri</string>
+		<string name="wipe_enc_btn">Şifrelemeyi Temizle</string>
+		<string name="swipe_factory_reset">Fabrika Ayarlarına Sıfırlamak için kaydır</string>
+		<string name="backup_hdr">yedek</string>
+		<string name="encryption_hdr">Şifrelemeyi etkinleştir</string>
+		<string name="name">İsim</string>
+		<string name="enable_backup_comp_chk">Sıkıştırmayı etkinleştir</string>
+		<string name="skip_md5_backup_chk">Yedekleme sırasında MD5 nesnesini atla</string>
+		<string name="disable_backup_space_chk">Yedeklemeden önce boş alan kontrolünü devre dışı bırak</string>
+		<string name="swipe_backup">Yedeklemek için kaydır</string>
+		<string name="backup_name_exists">Bu ada sahip bir yedek zaten var!</string>
+		<string name="pass_not_match">Parolalar uyuşmuyor!</string>
+		<string name="partitions">Bölümler</string>
+		<string name="progress">İlerleme</string>
+		<string name="backup_complete">Yedekleme tamamlandı</string>
+		<string name="restore_hdr">Yedek</string>
+		<string name="restore_backup_hdr">Yedeklemeyi Geri Yükle</string>
+		<string name="sel_backup_hdr">Yedekleme Seç</string>
+		<string name="restore_dec_fail">Şifre başarısız oldu, lütfen tekrar deneyin!</string>
+		<string name="del_backup_confirm">Yedeklemeyi Sil?</string>
+		<string name="del_backup_confirm2">Bu geri alınamaz!</string>
+		<string name="deleting_backup">Yedekleme siliniyor ...</string>
+		<string name="backup_deleted">Yedekleme silindi</string>
+		<string name="swipe_delete">Silmek için kaydır</string>
+		<string name="restore_backup_date">Yedekleme Tarihi</string>
+		<string name="restore_md5_chk">Yedek dosyaların MD5'ini kontrol et</string>
+		<string name="restore_enable_md5_chk">Yedek dosyaların MD5 doğrulamasını etkinleştir</string>
+		<string name="restore_complete">Geri yükleme tamamlandı</string>
+		<string name="swipe_restore">Geri yüklemek için hızlıca kaydırın</string>
+		<string name="rename_backup_hdr">Yedeklemeyi Yeniden Adlandır</string>
+		<string name="rename_backup_confirm">Yedekleme yeniden adlandırılsın mı?</string>
+		<string name="rename_backup_confirm2">Bu geri alınamaz!</string>
+		<string name="renaming_backup">Yedekleme Yeniden Adlandırılıyor ...</string>
+		<string name="rename_backup_complete">Yedekleme yeniden adlandırıldı</string>
+		<string name="swipe_to_rename">Yeniden adlandırmak için hızlıca kaydırın</string>
+		<string name="mount_hdr">Bağla</string>
+		<string name="mount_sys_ro_chk"> Sistem bölümünü salt okunur bağla</string>
+		<string name="decrypt_data_btn">Veri şifrelemesini çöz</string>
+		<string name="disable_mtp_btn">MTP'yi devre dışı bırak</string>
+		<string name="enable_mtp_btn">MTP'yi etkinleştir</string>
+		<string name="usb_storage_hdr">USB depolama</string>
+		<string name="usb_storage_btn">USB depolama</string>
+		<string name="usb_stor_mnt1">USB depolama Bağlandı</string>
+		<string name="usb_stor_mnt2">Cihazınızı güvenle kaldırdığınızdan emin olun</string>
+		<string name="usb_stor_mnt3">sökmeden önce bilgisayarınızdan!</string>
+		<string name="unmount_btn">Bağlantıyı kes</string>
+		<string name="rb_system_btn">Sistem</string>
+		<string name="rb_poweroff_btn">Kapat</string>
+		<string name="rb_recovery_btn">Kurtarma</string>
+		<string name="rb_bootloader_btn">Bootloader</string>
+		<string name="rb_theme">Tema</string>
+		<string name="rb_download_btn">Yükleme</string>
+		<string name="rb_edl_btn">Edl</string>
+		<string name="turning_off">Kapanıyor...</string>
+		<string name="swipe_power_off">Kapatmak için Hızlıca Kaydır</string>
+		<string name="sys_ro">Sistem Bölümü</string>
+		<string name="sys_ro_hdr">Değiştirilmemiş Sistem Bölümü</string>
+		<string name="sys_rop1">OrangeFox sistem bölümünüzü bırakabilir</string>
+		<string name="sys_rop2">sizin için kolaylaştırmak için değiştirilmemiş</string>
+		<string name="sys_rop2a">Resmi güncellemeleri al.</string>
+		<string name="sys_rop3">OrangeFox bunu engelleyemez</string>
+		<string name="sys_rop4">stock ROM from replacing OrangeFox.</string>
+		<string name="sys_rop5">Zip kurulumları veya ADB işlemleri</string>
+		<string name="sys_rop6">Sistem bölümünü değiştirebilir.</string>
+		<string name="sys_ro_never_show_chk">Bu mesajı bir daha gösterme</string>
+		<string name="sys_ro_keep_ro_btn">Yalnızca Okunabilir Olarak Tut</string>
+		<string name="swipe_allow_mod">Değişikliklere İzin Vermek için kaydır</string>
+		<string name="settings_hdr">Ayarlar</string>
+		<string name="settings_cptn">Genel</string>
+		<string name="use_rmrf_chk">Biçimlendirme yerine rm -rf kullanın</string>
+		<string name="use24clock_chk">24 saatlik zaman dilimini kullan</string>
+		<string name="rev_navbar_chk">Ters gezinti çubuğu düzeni</string>
+		<string name="simact_chk">Tema Testi için Simülasyon Eylemleri</string>
+		<string name="simfail_chk">Simulasyon eylemleri başarısız oldu</string>
+		<string name="sel_tz_list">Zaman Dilimi</string>
+		<string name="dialog_reset_theme_hdr">Varsayılana Sıfırla</string>
+		<!-- Translator note: if it does not make sense to translate the locations or if it makes more sense,
+				feel free to change the location listed or drop the location entirely and just call it UTC -6 -->
+		<string name="utcm11">(UTC -11) Samoa, Midway Island</string>
+		<string name="utcm10">(UTC -10) Hawaii</string>
+		<string name="utcm9">(UTC -9) Alaska</string>
+		<string name="utcm8">(UTC -8) Pacific Time</string>
+		<string name="utcm7">(UTC -7) Mountain Time</string>
+		<string name="utcm6">(UTC -6) Central Time</string>
+		<string name="utcm5">(UTC -5) Eastern Time</string>
+		<string name="utcm4">(UTC -4) Atlantic Time</string>
+		<string name="utcm3">(UTC -3) Brazil, Buenos Aires</string>
+		<string name="utcm2">(UTC -2) Mid-Atlantic</string>
+		<string name="utcm1">(UTC -1) Azores, Cape Verde</string>
+		<string name="utc0">(UTC  0) London, Dublin, Lisbon</string>
+		<string name="utcp1">(UTC +1) Berlin, Brussels, Paris</string>
+		<string name="utcp2">(UTC +2) Athens, Istanbul, South Africa</string>
+		<string name="utcp3">(UTC +3) Moscow, Baghdad</string>
+		<string name="utcp4">(UTC +4) Abu Dhabi, Tbilisi, Muscat</string>
+		<string name="utcp5">(UTC +5) Yekaterinburg, Islamabad</string>
+		<string name="utcp6">(UTC +6) Almaty, Dhaka, Colombo</string>
+		<string name="utcp7">(UTC +7) Bangkok, Hanoi, Jakarta</string>
+		<string name="utcp8">(UTC +8) Beijing, Singapore, Hong Kong</string>
+		<string name="utcp9">(UTC +9) Tokyo, Seoul, Yakutsk</string>
+		<string name="utcp10">(UTC +10) Eastern Australia, Guam</string>
+		<string name="utcp11">(UTC +11) Vladivostok, Solomon Islands</string>
+		<string name="utcp12">(UTC +12) Auckland, Wellington, Fiji</string>
+		<string name="tz_offset_hdr">Zaman Uzantısı</string>	
+		<string name="tz_offset">Uzantı</string>
+		<string name="sel_tz_offset">Uzantı Seç (genellikle 0): %tw_time_zone_guioffset%</string>
+		<string name="tz_offset_0">0</string>
+		<string name="tz_offset_15">15</string>
+		<string name="tz_offset_30">30</string>
+		<string name="tz_offset_45">45</string>
+		<string name="use_dst_chk">Yaz saati uygulamasını kullanın (DST)</string>
+		<string name="curr_tz">Geçerli Saat Dilimi: %tw_time_zone%</string>
+		<string name="curr_tz_s">Geçerli Saat Dilimi:</string>
+		<string name="set_tz_btn">Saat Dilimini Ayarla</string>
+		<string name="settings_screen_cptn">Ekran Ayarları</string>
+		<string name="settings_screen_timeout_cptn">Zaman aşımı kapalı</string>
+		<string name="settings_screen_timeout_cptn2">Zaman aşımı:</string>
+		<string name="timeout_unit">Saniye</string>
+		<string name="enable_timeout_chk">Ekran zaman aşımını etkinleştir</string>
+		<string name="screen_to_na">Ekran zaman aşımı ayarları mevcut değil</string>
+		<string name="rotation_chk">Döndürme</string>
+		<string name="screen_bright_slider">Parlaklık: %%tw_brightness_pct%</string>
+		<string name="screen_bright_na">Parlaklık ayarları mevcut değil</string>
+		<string name="vibration_hdr">Titreşim</string>
+		<string name="button_vibration_hdr">Tuş Titreşimi kapalı</string>
+		<string name="kb_vibration_hdr">Klavye Titreşimi kapalı</string>
+		<string name="act_vibration_hdr">Eylem Titreşimi kapalı</string>
+		<string name="button_vibration">Buton Titreşimi:</string>
+		<string name="kb_vibration">Klavye Titreşimi:</string>
+		<string name="act_vibration">Eylem Titreşimi:</string>
+		<string name="advanced_hdr">Gelişmiş</string>
+		<string name="copy_log_confirm">Günlük SD kart kopyalansın mı?</string>
+		<string name="copying_log">Günlük SD kart kopyalanıyor...</string>
+		<string name="copy_log_complete">Günlük kopyalandı</string>
+		<string name="terminal_btn">Terminal</string>
+		<string name="dumlock_note1">Çalışmalar hakkında bilgi için</string>
+		<string name="dumlock_note2">HTC Dumlock'un lütfen bkz:</string>
+		<string name="inject_twrp_btn">Inject OrangeFox</string>
+		<string name="inject_twrp_confirm">Re-Inject OrangeFox?</string>
+		<string name="injecting_twrp">Re-Injecting OrangeFox...</string>
+		<string name="inject_twrp_complete">OrangeFox Injection completed</string>
+		<string name="swipe_to_confirm">Onaylamak için Kaydırın</string>
+		<string name="part_sd_hdr">SD Bölümü</string>
+		<string name="rem_sd">Kaldırılabilir Depolama</string>
+		<string name="rem_sd_sel">Bir kaldırılabilir aygıt seçin! </string>
+		<string name="invalid_partsd_sel">Çıkarılabilir bir aygıt seçmeniz gerekir</string>
+		<string name="part_sd_lose">SD kartınızdaki tüm dosyaları kaybedeceksiniz!</string>
+		<string name="part_sdcard_sel_note_1">Bölümleme tüm dosyaları siler</string>
+		<string name="part_sdcard_sel_note_2">SD kartınızda!</string>
+		<string name="part_sd_undo">Bu işlem geri alınamaz!</string>
+		<string name="part_sd_ext_sz">EXT Boyutu:</string>
+		<string name="btn_flat_ext4">EXT4</string>
+		<string name="btn_flat_ext3">EXT3</string>
+		<string name="btn_flat_more">+</string>
+		<string name="btn_flat_less">-</string>
+		<string name="part_sd_swap_sz">Swap Boyutu:</string>
+		<string name="file_system">Dosya Sistemi:</string>
+		<string name="swipe_part_sd">Bölümlendirmek için kaydırın</string>
+		<string name="partitioning_sd">SD kart bölümlendiriliyor...</string>
+		<string name="partitioning_sd2">Bu işlem birkaç dakika sürebilir.</string>
+		<string name="part_sd_complete">Bölümlendirme tamamlandı</string>
+		<string name="dumlock_hdr">HTC Dumlock</string>
+		<string name="dumlock_restore_btn">Orijinal Önyüklemeyi Geri Yükle</string>
+		<string name="dumlock_restore_confirm">Stock Boot imajı Geri Yüklensin mi? </string>
+		<string name="dumlock_restoring">Stock Boot Geri Yükleniyor...</string>
+		<string name="dumlock_restore_complete">Stock Boot Geri Yüklendi</string>
+		<string name="dumlock_reflash_btn">Kurtarmayı Yeniden Yükle</string>
+		<string name="dumlock_reflash_confirm">Recovery Boot'a yeniden flaşhlansın mı?</string>
+		<string name="dumlock_reflashing">Recovery Boot'a flaşhlanıyor...</string>
+		<string name="dumlock_reflash_complete">Recovery'nin Boot'a yüklenmesi tamamlandı!</string>
+		<string name="dumlock_install_btn">HTC Dumlock Yükle</string>
+		<string name="dumlock_install_confirm">HTC dumlock dosyalarını ROM'a yüklemek istiyor musunuz?</string>
+		<string name="dumlock_installing">HTC Dumlock Yükleniyor...</string>
+		<string name="dumlock_install_complete">HTC Dumlock Yükleme Tamamlandı</string>
+		<string name="swipe_to_unlock">Kilidi açmak içim kaydır</string>
+		<string name="fm_actions">Eylemler</string>
+		<string name="fm_hdr">Dosya Yöneticisi</string>
+		<string name="fm_sel_file">Bir Dosya veya Klasör Seçin</string>
+		<string name="fm_type_folder">Klasör</string>
+		<string name="fm_type_file">Dosya</string>
+		<string name="fm_copy_btn">Kopyala</string>
+		<string name="fm_copying">Kopyalanıyor</string>
+		<string name="fm_move_btn">Taşı</string>
+		<string name="fm_moving">Taşınıyor</string>
+		<string name="fm_chmod755_btn">Set 755</string>
+		<string name="fm_chmod755ing">Set 755</string>
+		<string name="fm_chmod644_btn">Set 644</string>
+		<string name="fm_chmod644ing">Set 644</string>
+		<string name="fm_chmod_btn">İzinleri ayarla</string>
+		<string name="fm_delete_btn">Sil</string>
+		<string name="fm_deleting">Siliniyor</string>
+		<string name="fm_rename_btn">Yeniden Adlandır</string>
+		<string name="fm_renaming">Yeniden Adlandırılıyor</string>
+		<string name="fm_sel_dest">Hedef klasör</string>
+		<string name="fm_rename_hdr">Yeniden Adlandır</string>
+		<string name="fm_set_perms_hdr">İzinleri Ayarla</string>
+		<string name="fm_perms">İzinler</string>
+		<string name="fm_complete">Dosya işlemi tamamlandı</string>
+		<string name="decrypt">Şifreyi çöz</string>
+		<string name="data_part">Veri Bölümü</string>
+		<string name="encrypt_data_part">Veri Bölümü Şifrelenmiş</string>
+		<string name="sel_encrypt_backup">Şifreli bir yedek seçtiniz.</string>
+		<string name="decrypt_data_enter_note1">Lütfen şifrenizi giriniz</string>
+		<string name="decrypt_data_enter_note1a">Lütfen deseni giriniz</string>
+		<string name="decrypt_data_enter_note2">iptal etmek için geri düğmesine basın.</string>
+		<string name="decrypt_data_enter_pass">Parola girin</string>
+		<string name="decrypt_data_failed_pattern">Desen Hatalı! </string>
+		<string name="decrypt_try_again">Lütfen tekrar deneyin.</string>
+		<string name="decrypt_data_enter_pattern">Deseni girin.</string>
+		<string name="decrypt_data_trying">Şifreyi Çözmeye Çalışıyor</string>
+		<string name="term_s_hdr">Terminal</string>
+		<string name="adb_sideload_hdr">ADB Sideload</string>
+		<string name="sideload_wipe_dalvik_chk">Dalvik Önbelleği Temizle</string>
+		<string name="sideload_wipe_cache_chk">Önbelleği Temizle</string>
+		<string name="swipe_to_sideload">Sideload'ı Başlatmak için Kaydır</string>
+		<string name="sideload_confirm">ADB Sideload</string>
+		<string name="sideload_usage">Kullanım: ADB SideLoad Dosya.ZIP</string>
+		<string name="sideload_complete">ADB Sideload Tamamlandı</string>
+		<string name="fix_contexts_hdr">İçeriği Düzelt</string>
+		<string name="fix_contexts_confirm">SELinux bağlamlarını düzeltilsin mi?</string>
+		<string name="fix_contexts_note1">Not: Sabitleme bağlamlarına nadiren ihtiyaç vardır.</string>
+		<string name="fix_contexts_note2">SELinux bağlamlarının düzeltilmesi </string>
+		<string name="fix_contexts_note3">cihazınızın düzgün olarak önyükleme yapmamasına neden olabilir.</string>
+		<string name="swipe_to_fix_contexts">İçeriği Düzeltmek için Kaydırın</string>
+		<string name="fixing_contexts">İçerik Düzeltiliyor...</string>
+		<string name="fix_contexts_complete">İçerik Düzeltilmesi Tamamlandı</string>
+		<string name="reboot_hdr">Yeniden Başlat</string>
+		<string name="sel_storage_list">Depolama Seç</string>
+		<string name="ok_btn">Ok</string>
+
+		<!-- Various console messages - these consist of user displayed messages, oftentimes errors -->
+		<string name="no_kernel_selinux">Çekirdek, SELinux durumlarını okumaya destek vermiyor.</string>
+		<string name="full_selinux">Tam SELinux desteği mevcut.</string>
+		<string name="no_selinux">SELinux desteği yok (libselinux yok).</string>
+		<string name="mtp_enabled">MTP Etkin</string>
+		<string name="mtp_disabled">MTP Devredışı</string>
+		<string name="mtp_crash">MTP Çöktü, önyükleme sırasında MTP başlatılmadı.</string>
+		<string name="decrypt_success">Varsayılan parola ile başarıyla şifresi çözüldü.</string>
+		<string name="unable_to_decrypt">Varsayılan şifre ile şifre çözülemiyor. Veri Formatlaması gerçekleştirmeniz gerekebilir.</string>
+		<string name="generating_md51">MD5 Oluşturuluyor</string>
+		<!-- Message displayed during a backup if we are generating an MD5, ideally, leave the leading " * " to help align and separate this text from other console text -->
+		<string name="generating_md52"> * MD5 oluşturuluyor...</string>
+		<string name="md5_created"> * MD5 Oluşturuldu.</string>
+		<string name="md5_error"> * MD5 Hatası! </string>
+		<string name="md5_compute_error"> * MD5 hesaplanırken hata oluştu.</string>
+		<string name="current_date">(Seçilen Tarih)</string>
+		<string name="auto_generate">(Otomatik Oluştur) </string>
+		<string name="unable_to_locate_partition">'{1}' bölümü yedek hesaplaması için bulunamadı.</string>
+		<string name="no_partition_selected">Yedekleme için Bölüm Seçilmedi</string>
+		<string name="total_partitions_backup"> * Yedeklenecek toplam bölüm sayısı: {1}</string>
+		<string name="total_backup_size"> * Tüm verilerin toplam boyutu: {1} MB</string>
+		<string name="available_space"> * Kullanılabilir alan: {1} MB</string>
+		<string name="unable_locate_storage">Depolama aygıtı bulunamadı.</string>
+		<string name="no_space">Depolama alanında yeterli boş alan yok.</string>
+		<string name="backup_started">[YEDEKLEME BAŞLADI] </string>
+		<string name="backup_folder"> * Yedekleme Klasörü: {1}</string>
+		<string name="fail_backup_folder">Yedekleme klasörü oluşturulurken hata oluştu. </string>
+		<string name="avg_backup_fs">Dosya sistemleri için ortalama yedekleme hızı: {1} MB/sn</string>
+		<string name="avg_backup_img">Görüntülenen sürücüler için ortalama yedekleme hızı: {1} MB/sn</string>
+		<string name="total_backed_size">[TOPLAM {1} MB YEDEKLENDİ]</string>
+		<string name="backup_completed">[YEDEKLEME {1} SANİYEDE TAMAMLANDI]</string>
+		<string name="restore_started">[GERİ YÜKLEME BAŞLADI]</string>
+		<string name="restore_folder">Geri yüklenecek klasör: '{1}' </string>
+		<!-- {1} is the partition display name and {2} is the number of seconds -->
+		<string name="restore_part_done">[{1} tamamlandı ({2} saniye)]</string>
+		<string name="verifying_md5">MD5 Kontrol Ediliyor</string>
+		<string name="skip_md5">Kullanıcı ayarına bağlı olarak MD5 kontrolünü atlanıyor.</string>
+		<string name="calc_restore">Geri Yükleme Detayları Hesaplanıyor... </string>
+		<string name="restore_read_only">{1} geri yüklenemiyor -- yalnızca salt okunur olarak bağlandı.</string>
+		<string name="restore_unable_locate">Geri yüklenecek '{1}' bölümü bulunamadı.</string>
+		<string name="no_part_restore">Geri yükleme için hiçbir bölüm seçilmedi.</string>
+		<string name="restore_part_count">{1} bölümü geri yükleniyor...</string>
+		<string name="total_restore_size">Toplam geri yükleme boyutu: {1} MB</string>
+		<string name="updating_system_details">Sistem Ayrıntıları Güncelleniyor...</string>
+		<string name="restore_completed">[GERİ YÜKLEME {1} SANİYE İÇİNDE TAMAMLANDI]</string>
+		<!-- {1} is the path we could not open, {2} is strerror output -->
+		<string name="error_opening_strerr">Açılırken hata oluştu: '{1}' ({2})</string>
+		<string name="unable_locate_part_backup_name">Bu bölüm yedek adına göre bulamıyor: '{1}'</string>
+		<string name="unable_find_part_path">'{1}' yolu için bölüm bulunamadı</string>
+		<string name="update_part_details">Bölüm ayrıntıları güncelleniyor... </string>
+		<string name="update_part_details_done">...tamam</string>
+		<string name="wiping_dalvik">Dalvik Önbellek Klasörleri Temizleniyor...</string>
+		<string name="cleaned">Temizlendi: {1}...</string>
+		<string name="dalvik_done">Dalvik Önbellek Klasörleri Temizlendi!</string>
+		<string name="no_andsec">Android secure bölümü bulunamadı.</string>
+		<string name="unable_to_locate">{1} bulunamadı.</string>
+		<string name="wiping_datamedia">Dahili depolama temizleniyor -- /data/media...</string>
+		<string name="unable_to_mount">{1} bağlanamadı</string>
+		<string name="unable_to_mount_internal">Internal_storage bağlanılamıyor</string>
+		<string name="unable_to_mount_storage">Depolama alanı bağlanamadı</string>
+		<string name="fail_decrypt">Verilerin şifresini çözme başarısız oldu.</string>
+		<string name="no_crypto_support">Bu yapıya hiçbir kripto desteği derlenmedi.</string>
+		<string name="decrypt_success_dev">Veri şifresi başarıyla çözüldü, yeni blok cihazı: '{1}'</string>
+		<string name="done">Tamam</string>
+		<string name="start_partition_sd">SD kart bölümlendiriliyor...</string>
+		<string name="partition_sd_locate">Cihazın bölümlendirilemedi.</string>
+		<string name="ext_swap_size">EXT + Swap boyutu, SD kart boyutundan daha büyük.</string>
+		<string name="remove_part_table">Bölüm tablosu kaldırılıyor...</string>
+		<string name="unable_rm_part">Bölümleme tablosu kaldırılamıyor.</string>
+		<string name="create_part">{1} bölümü oluşturuluyor...</string>
+		<string name="unable_to_create_part">{1} bölümü oluşturulamadı.</string>
+		<string name="format_sdext_as">Sd-ext {1} olarak biçimlendiriliyor...</string>
+		<string name="part_complete">Bölümlendirme tamamlandı.</string>
+		<string name="unable_to_open">'{1}' açılamıyor.</string>
+		<string name="mtp_already_enabled">MTP zaten etkin</string>
+		<string name="mtp_fail">MTP etkinleştirilemedi</string>
+		<string name="no_mtp">MTP desteği dahil değil</string>
+		<string name="image_flash_start">[İMAJ FLASHLAMA BAŞLATILDI]</string>
+		<string name="img_to_flash">Yüklenecek imaj: '{1}'</string>
+		<string name="flash_unable_locate">'{1}' bölümünü yüklemek için bulunamıyor.</string>
+		<string name="no_part_flash">Yüklemek için herhangi bir bölüm seçilmedi.</string>
+		<string name="too_many_flash">Yüklemek için çok fazla bölüm seçildi.</string>
+		<string name="invalid_flash">Geçersiz yükleme bölümü belirtildi.</string>
+		<string name="flash_done">[İMAJ FLASHLAMA TAMAMLANDI] </string>
+		<string name="wiping">Temizleniyor {1}</string>
+		<string name="repair_not_exist">{1} mevcut değil! Tamir edilemez!</string>
+		<string name="repairing_using">{1} {2} Kullanılarak onarılıyor...</string>
+		<string name="unable_repair">{1} onarılamıyor.</string>
+		<string name="mount_data_footer">/data bağlanamadı ve kripto altbilgisi bulunamadı.</string>
+		<!-- {1} is the folder name that we could not create, {2} is strerror output -->
+		<string name="create_folder_strerr">'{1}' klasörü oluşturulamıyor ({2}).</string>
+		<!-- {1} is the folder name that we could not mount, {2} is strerror output -->
+		<string name="fail_mount">'{1}' ({2}) bağlanılamadı</string>
+		<!-- {1} is the folder name that we could not unmount, {2} is strerror output -->
+		<string name="fail_unmount">'{1}' ({2}) bağlanılamadı</string>
+		<string name="cannot_resize">{1} yeniden boyutlandırılamıyor.</string>
+		<string name="repair_resize">Yeniden boyutlandırmadan önce {1} onarılıyor.</string>
+		<string name="unable_resize">{1} yeniden boyutlandırılamadı.</string>
+		<string name="no_md5_found">'{1}' için MD5 dosyası bulunamadı. Lütfen geri yüklemek için MD5 doğrulamasını etkinleştir seçeneğinin işaretini kaldırın.</string>
+		<string name="md5_fail_match">MD5, '{1}' ile eşleşemedi.</string>
+		<string name="fail_decrypt_tar">'{1}' tar dosyasının şifresi çözülemedi</string>
+		<string name="format_data_msg">/data'yı tekrar kullanabilmek için kurtarma modunu yeniden başlatmanız gerekebilir.</string>
+		<string name="format_data_err">Şifrelemeyi kaldırmak için biçimlendirme yapılamıyor.</string>
+		<string name="formatting_using">{1} {2} Kullanılarak onarılıyor...</string>
+		<string name="unable_to_wipe">{1} silinemiyor.</string>
+		<string name="cannot_wipe">Bölüm {1} silinemez.</string>
+		<string name="remove_all">'{1}' altındaki tüm dosyaları kaldır</string>
+		<string name="wiping_data">/data/media bölümü silinmeden /data siliniyor...</string>
+		<string name="backing_up">{1} Yedekleniyor...</string>
+		<string name="backing">Yedekleniyor</string>
+		<string name="backup_size">'{1}' için yedeklenecek dosya boyutu 0 bayt.</string>
+		<string name="datamedia_fs_restore">UYARI: Bu / veri yedekleme, {1} dosya sistemi ile yapıldı! Yedekleme, {1} geri dönmediğiniz sürece önyükleme yapamaz.</string>
+		<string name="restoring">{1} Geri yükleniyor...</string>
+		<string name="restoring_hdr">Geri yükleniyor...</string>
+		<string name="recreate_folder_err">{1} klasörü yeniden oluşturulamadı.</string>
+		<string name="img_size_err">İmajın boyutu hedef cihazdan daha büyük</string>
+		<string name="flashing">{1} Yükleniyor...</string>
+		<string name="backup_folder_set">Yedekleme klasörü '{1}' olarak ayarlı</string>
+		<string name="locate_backup_err">'{1}' yedek kopyası bulunamadı</string>
+		<string name="set_restore_opt">Geri yükleme seçeneklerini ayarla: '{1}':</string>
+		<string name="md5_check_skip">MD5 kontrolünü atlama açık</string>
+		<string name="ors_encrypt_restore_err">Şifrelenmiş bir yedeklemeyi geri yüklemek için OpenRecoveryScript kullanılamıyor.</string>
+		<string name="mounting">Bağlanılıyor</string>
+		<string name="unmounting">Bağlantı kesiliyor</string>
+		<string name="mounted">'{1}' Bağlandı</string>
+		<string name="unmounted">'{1}' Kaldırıldı</string>
+		<string name="setting">'{1}' ayarı '{2}' olarak değiştirildi</string>
+		<string name="setting_empty">{1} boş olarak ayarlama</string>
+		<string name="making_dir1">Dizin Oluşturuluyor</string>
+		<string name="making_dir2">Dizin oluşturuluyor: {1}</string>
+		<string name="running_command">Komut Çalışıyor</string>
+		<string name="sideload">ADB Sideload</string>
+		<string name="start_sideload">ADB Sideload özelliği başlatılıyor...</string>
+		<string name="need_new_adb">Bu cihaza sideload eklemek için adb 1.0.32 veya daha yenisine ihtiyacınız var.</string>
+		<string name="no_pwd">Sağlanan şifre yok.</string>
+		<string name="done_ors">Çalıştır komutu dosyası tamamlandı</string>
+		<string name="injecttwrp">OrangeFox boot imajına dahil ediliyor...</string>
+		<string name="zip_err">'{1}' zip dosyası yüklenirken hata oluştu</string>
+		<string name="installing_zip">'{1}' zip dosyası yükleniyor</string>
+		<string name="select_backup_opt">Yedekleme seçeneklerini ayarla:</string>
+		<string name="compression_on">Sıkıştırma açık</string>
+		<string name="md5_off">MD5 oluşturma kapalı</string>
+		<string name="backup_fail">Yedekleme Başarısız Oldu</string>
+		<string name="backup_clean">Yedekleme Başarısız Oldu. Yedekleme Klasörünü Temizleniyor.</string>
+		<string name="running_recovery_commands">Recovery Komutları Çalışıyor</string>
+		<string name="recovery_commands_complete">Recovery Komutları Tamamlandı</string>
+		<string name="running_ors">OpenRecoveryScript'i Çalışıyor</string>
+		<string name="ors_complete">OpenRecoveryScript Tamamlandı</string>
+		<string name="no_updater_binary">Zip dosyasında '{1}' bulunamadı.</string>
+		<string name="check_for_md5">MD5 dosyası kontrol ediliyor...</string>
+		<string name="fail_sysmap">'{1}' dosyası eşleştirilemedi</string>
+		<string name="verify_zip_sig">Zip imzası doğrulanıyor...</string>
+		<string name="verify_zip_fail">Zip imzası doğrulaması başarısız oldu!</string>
+		<string name="verify_zip_done">Zip imzası başarıyla doğrulandı.</string>
+		<string name="zip_corrupt">Zip dosyası bozuk!</string>
+		<string name="no_md5">MD5 kontrolü atlanıyor: MD5 dosyası bulunamadı</string>
+		<string name="md5_fail">MD5 eşleşmiyor</string>
+		<string name="md5_match">MD5 eşleşti</string>
+		<string name="pid_signal">{1} işlemi uyarı ile sona erdi: {2}</string>
+		<string name="pid_error">{1} işlemi uyarı ile sona erdi: {2}</string>
+		<string name="install_dumlock">HTC Dumlock sisteme yükleniyor...</string>
+		<string name="dumlock_restore">Orijinal boot geri yükleniyor...</string>
+		<string name="dumlock_reflash">Kurtarma işleminin yeniden başlatılması için yenilendi...</string>
+		<string name="run_script">{1} komut dosyası çalıştırılıyor...</string>
+		<string name="split_backup">Yedek dosyayı birden fazla arşiv haline getiriyor...</string>
+		<string name="backup_error">Yedek oluşturulurken hata oluştu.</string>
+		<string name="restore_error">Geri yükleme işlemi sırasında hata oluştu.</string>
+		<string name="split_thread">{2} arşivinde {1} kimliğine sahip alt bölümü dosyala</string>
+		<!-- These 2 items are saved in the data manager instead of resource manager, so %llu, etc is correct instead of {1} -->
+		<string name="file_progress">%llu of %llu files, %i%%</string>
+		<string name="size_progress">%lluMB of %lluMB, %i%%</string>
+		<string name="decrypt_cmd">Veri bölümünü komut satırından çözmeye çalışıyor.</string>
+		<string name="base_pkg_err">Temel paketler yüklenemedi.</string>
+		<string name="simulating">Eylemler Simule Ediliyor</string>
+		<string name="backup_cancel">Yedekleme İptal Edildi</string>
+		<string name="config_twrp">OrangeFox Yapılandırılıyor...</string>
+		<string name="config_twrp_err">OrangeFox bu çekirdek ile yapılandırılamadı.</string>
+		<string name="copy_log">Recovery günlüğü {1}'e kopyalandı.</string>
+		<string name="max_queue">En fazla zip kuyruğuna ulaşıldı!</string>
+		<string name="min_queue">En düşük zip kuyruğuna ulaşıldı!</string>
+		<string name="screenshot_saved">Ekran görüntüsü {1} 'e kaydedildi</string>
+		<string name="screenshot_err">Ekran görüntüsü alma başarısız oldu!</string>
+		<string name="zip_wipe_cache">Bir veya daha zip dosyası önbellek silmeyi istedi -- Önbelleği şimdi silin.</string>
+		<string name="and_sec_wipe_err">Android güvenli silinemiyor</string>
+		<string name="dalvik_wipe_err">Dalvik temizlenemedi</string>
+		<string name="auto_gen">(Otomatik Oluştur) </string>
+		<string name="curr_date">(Seçilen Tarih)</string>
+		<string name="backup_name_len">Yedekleme adı çok uzun.</string>
+		<string name="backup_name_invalid">'{1}' yedek adı geçersiz karakter içeriyor: '{1}'</string>
+		<string name="no_real_sdcard">Bu cihazın gerçek bir SD kartı yok! İptal ediliyor!</string>
+		<string name="cancel_sideload">ADB sideload iptal ediliyor...</string>
+		<string name="change_fs_err">Dosya sistemi değiştirilirken hata oluştu.</string>
+		<string name="change_fs_hdr">Dosya Sistemini Değiştir</string>
+		<string name="theme_ver_err">Özel tema sürümü, OrangeFox sürümüyle eşleşmiyor. Orijinal temayı kullan.</string>
+		<string name="up_a_level">..</string>
+
+		<!-- new-->
+		<string name="sel_color">Renk Seçin</string>
+		<string name="s_color">Renk</string>
+		<string name="current_color">Dosya Sistemi:</string>
+		<string name="show_cpu_temp_bar">İşlemci sıcaklığını göster</string>
+		<string name="ts_inform">Bilgi</string>
+		<string name="sel_splash_png">Splash PNG'yi seçin</string>
+		<string name="swipe_to_install">Yüklemek için Kaydırın</string>
+		<string name="swipe_to_install_img">İmajı yüklemek için kaydırın</string>
+		<string name="sel_image_type">İmaj Türü Seçin!</string>
+		<string name="zip_add_queue">Kuyruğa Ekle</string>
+		<string name="part_fs_error_1">Bölüm Seçenekleri</string>
+		<string name="part_fs_error_2">bu bölüm için kullanılabilir!</string>
+		<string name="new_file_system">Yeni Dosya Sistemi</string>
+		<string name="adb_sideload_opt">Sideload Seçenekleri</string>
+		<string name="about_hdr">Hakkında</string>
+		<string name="author">Yapımcı</string>
+		<string name="credits">Katkıda Bulunanlar</string>
+		<string name="version">Sürüm</string>
+		<string name="set_password">Şifre Belirle</string>
+		<string name="verifying_pas">Şifrenizi Doğrulayın</string>
+		<string name="dialog_offset_note">Ofset değerinizi seçin</string>
+		<string name="queue_no">#</string>
+		<string name="options_cptn">Seçenekler</string>
+		<string name="flash_img_confirm">Flash İmaj Dosyası</string>
+		<string name="also_wipes">Ayrıca Temizlikler</string>
+		<string name="confirm_wipe_cptn">Temizleme işlemini onayla</string>
+		<string name="storage_cptn">Depolama</string>
+		<string name="enter_password_restore">Şifre</string>
+		<string name="enter_password_cptn">Güvenlik</string>
+		<!-- added by fordownloads -->
+		<string name="fordowns_sl">Sideload başlatılıyor...</string>
+		<string name="fordowns_to">Hedef</string>
+		<string name="dbg">Hata ayıklama</string>
+		<string name="dbg_active">Hata ayıklama menüsü aktif!</string>
+		<string name="dbg_act">Eylem</string>
+		<string name="dbg_func">İşlev</string>
+		<string name="dbg_set">Ayarla</string>
+		<string name="dbg_page">Sayfa</string>
+		<string name="dbg_overlay">Arayüz</string>
+		<string name="fm_none">Hiçbiri</string>
+		
+		<string name="cust_navbar_noug">Nougat</string>
+		<string name="cust_navbar_cls">Klasik</string>
+		<string name="cust_navbar_accent">Vurgu rengi</string>
+		<string name="cust_navbar_black">Siyah</string>
+		<string name="cust_navbar_white">Beyaz düğmeleri kullan</string>
+		<string name="cust_navbar_gray">Gri düğmeleri kullan</string>
+		
+		<string name="fm_open">Olarak aç...</string>
+		<string name="fm_open_text">Metin dosyası</string>
+		<string name="fm_open_ZIP">yedek</string>
+		
+		<string name="fm_open_backup">yedek</string>
+		<string name="fm_open_makezip">Sıkıştır</string>
+		<string name="fm_open_unpackzip">Arşiv paketini aç</string>
+		<string name="fm_open_image">Yüklenebilir İmaj</string>
+		<string name="arc_type">Arşiv Tipi</string>
+		<string name="arc_lvl">Sıkıştırma seviyesi:</string>
+		<string name="arc_lvl_title">Sıkıştırma</string>
+		
+		<string name="bkp_date">Tarih ekle</string>
+		<string name="bkp_gen">Yedek adı oluştur</string>
+		<string name="bkp_gen_whilebkp">Yedek adını yedeklerken oluştur</string>
+		<string name="bkp_quick">Hızlı Yedek</string>
+		<string name="bkp_clear">Dil</string>
+		
+		<string name="language_cptn">Dil</string>
+		<string name="cust_oth">Diğer</string>
+		
+		<string name="settings_general">Genel</string>
+		<string name="settings_ui">Özelleştirme</string>
+		<string name="settings_screen">Ekran</string>
+		<string name="settings_time">Lütfen bekleyin...</string>
+		
+		<string name="lang_wait">Lütfen bekleyin...</string>
+		
+		<string name="settings_ui_status">Durum Çubuğu</string>
+		<string name="settings_ui_battery">Pil simgesini göster</string>
+		<string name="settings_ui_style">NavBar Stili</string>
+		<string name="settings_ui_color">NavBar Arkaplanı</string>
+		
+		<string name="settings_backup_qbkp_custom">Quick backup partitions</string>
+		
+		<string name="settings_backup_name">Yedek Adı</string>
+		<string name="settings_backup_name_user">Değiştirme</string>
+		<string name="settings_backup_name_auto">Defined automatically</string>
+		<string name="settings_backup_name_auto_hide">Yedeklerken</string>
+		
+		<string name="update_btn">Çekirdek günlüğünü dahil et</string>
+		<string name="include_kernel_log">Çekirdek günlüğünü dahil et</string>
+		
+		<string name="fm_books">Favori klasörler</string>
+		<string name="fm_books_desc">Listeyi düzenlemek için uzun basın</string>
+		<string name="fm_books_edit">Listeyi düzenle...</string>
+		<string name="fm_books_desc_edit">Dosyayı silmek için uzun basın</string>
+		<string name="fm_books_empty">(Boş)</string>
+		
+		<string name="fm_mkdir">Klasör Oluştur</string>
+		<string name="fm_mkdir_folder">Klasör Adı</string>
+		
+		<string name="fm_path">Yolu gir</string>
+		<string name="fm_path2">Yol</string>
+		
+		<string name="no_os_title">Emin misiniz?</string>
+		<string name="no_os_subtitle">İşletim Sistemi yüklü değil!</string>
+		
+		<string name="no_os1">İşletim Sistemi yüklü değil! Emin misiniz ?</string>
+		<string name="no_osrb">Yeniden başlatmak ister misiniz ?</string>
+		<string name="no_ospo">Gücü kapatmak ister misiniz ?</string>
+		<string name="no_osrb_recovery">Kurtarma modunda yeniden başlatmak ister misiniz ?</string>
+		<string name="no_osrb_boot">Ön yükleyici modunda yeniden başlatmak ister misiniz ?</string>
+		<string name="no_osrb_down">Yükleme modunda yeniden başlatmak ister misiniz ?</string>
+		<string name="no_osrb_edl">EDL modunda yeniden başlatmak ister misiniz ?</string>
+		
+		<string name="areb_confirm">Reboot confirmation dialog</string>
+		<string name="areb_noos">When no OS installed</string>
+		<string name="opt_always">Her zaman</string>
+		<string name="otp_never">Hiçbir zaman</string>
+		
+		<string name="areb_off">Kapalı</string>
+		
+		<string name="restoredialog_readonly">Never show mount system read-only dialog</string>
+		
+		<string name="offset_wrong">Wrong offset!</string>
+
+		<string name="new_key">Yeni klavye stilini kullan</string>
+		
+		<string name="bkp_nametitle">Yedek Adı</string>
+		<string name="bkp_namesub">Depolama</string>
+		
+		<string name="goto_storage">Depolama</string>
+		
+		<string name="theme_apply">Tema güncelleniyor...</string>
+		<string name="theme_fonts">Yazı tipleri</string>
+		<string name="theme_style">Stil</string>
+		<string name="theme_accent">Vurgu rengi</string>
+		<string name="theme_font_sel">Birincil yazı tipi</string>
+		<string name="theme_sec_font_sel">İkinci yazı tipi </string>
+		
+		<string name="of">of</string>
+		
+		<string name="sph_sph">Splash</string>
+		
+		<string name="real">Bilgi</string>
+		<string name="info">Bilgi</string>
+		<string name="time_m">Modify</string>
+		<string name="time_c">Erişim</string>
+		<string name="access">Erişim</string>
+		<string name="fm_sums">Checksum</string>
+		
+		<string name="use_fixed_font">Monospace font in terminal</string>
+
+		<string name="adb_backup_pc1">This backup will be</string>
+		<string name="adb_backup_pc2">saved on your PC</string>
+		
+		<string name="starting_aroma">Starting AromaFM...</string>
+		<string name="lang_set_wait">Changing language...</string>
+		<string name="installing_theme">Installing theme...</string>
+		
+		<string name="menu_btn">Veri</string>
+		
+		<string name="data_backup">Depolama</string>
+		<string name="autostorage">Depolama</string>
+		<string name="install_reboot">Rebooting in %tw_sleep% seconds</string>
+		<string name="cancel_reboot_btn">Yedekleme sırassında Digest oluşturmayı atla</string>
+		<string name="skip_digest_backup_chk" version="2">Yedekleme sırassında Digest oluşturmayı atla</string>
+		<string name="restore_digest_chk" version="2">Enable Digest verification of backups</string>
+		<string name="restore_enable_digest_chk" version="2">Vold şifre çözme için gerekli dosya eksik: {1}</string>
+		<string name="decrypt_data_vold_os_missing">Vold şifre çözme için gerekli dosya eksik: {1}</string>
+		<string name="generating_digest1" version="2">Digest oluşturuluyor</string>
+		<string name="generating_digest2" version="2"> * Digest oluşturuluyor...</string>
+		<string name="digest_created" version="2"> * Digest created.</string>
+		<string name="digest_error" version="2"> * Digest hesaplamada hata.</string>
+		<string name="digest_compute_error" version="2"> * Digest hesaplamada hata.</string>
+		<string name="verifying_digest" version="2">Digest doğrulanıyor</string>
+		<string name="skip_digest" version="2">Kullanıcı ayarına bağlı olarak Digest kontrolü atlanıyor.</string>
+		<string name="decrypt_success_nodev">Veri başarıyla çözüldü</string>
+		<string name="no_digest_found" version="2">Digest, '{1}' ile eşleşmedi. Lütfen geri yüklemek için Digest doğrulamasını etkinleştir seçeneğinin işaretini kaldırın.</string>
+		<string name="digest_fail_match" version="2">Digest, '{1}' ile eşleşmedi.</string>
+		<string name="digest_matched" version="2">Digest, '{1}' ile eşleşti.</string>
+		<string name="digest_check_skip" version="2">Digest kontrolü'nü geçme açık</string>
+		<string name="digest_off" version="2">Geçersiz zip dosya formatı!</string>
+		<string name="invalid_zip_format">Geçersiz zip dosya formatı!</string>
+		<string name="check_for_digest" version="2">Digest dosyası kontrol ediliyor...</string>
+		<string name="no_digest" version="2">Digest kontrolü atlanıyor: Digest dosyası bulunamadı</string>
+		<string name="digest_fail" version="2">Digest eşleşmiyor</string>
+		<string name="digest_match" version="2">Digest eşleşti</string>
+		<string name="password">Şifre</string>
+		<string name="boot_slot">Boot yuvası</string>
+		<string name="boot_slot_a">SLOT A</string>
+		<string name="boot_slot_use_a">SLOT A'ya GEÇİN</string>
+		<string name="boot_slot_b">SLOT B</string>
+		<string name="boot_slot_use_b">SLOT B'ye GEÇİN</string>
+		<string name="changing_boot_slot">Boot Slotunu Değiştirin</string>
+		<string name="changing_boot_slot_complete">Boot Slotunun değiştirilmesi tamamlandı</string>
+		<string name="unable_set_boot_slot">Bootloader boot yuvasını {1} değiştirirken hata oluştu</string>
+		<string name="backup_storage_warning">Yedekleri {1} böyle resimler veya indirmeleri gibi dahili depolama herhangi bir dosya içermez.</string>
+		<string name="sha2_chk">Hashlamak için SH2 kullan</string>
+		<string name="disabled">Disabled</string>
+		<string name="enabled">Enabled</string>
+		<string name="zip_compatible_err">Artımlı Paket İmzası doğrulanıyor...</string>
+		
+		
+		<!-- Console Messages -->
+		<string name="fox_incremental_ota_compatibility_chk">Artımlı Paket İmzası doğrulanıyor...</string>
+		<string name="fox_incremental_ota_compatibility_false">Artımlı paket bu ROM ile uyumlu değil!</string>
+		<string name="fox_incremental_ota_compatibility_true">Artımlı paket uyumlu</string>
+		<string name="fox_incremental_ota_status_enabled">MIUI Artımlı paket desteği: Etkin</string>
+		<string name="fox_incremental_ota_status_disabled">MIUI Artımlı paket desteği: Devredışı</string>
+		<string name="fox_incremental_package_detected">Artımlı paket algılandı {1}</string>
+		<string name="fox_survival_does_not_exist">OTA sağkalımı mevcut değil! Lütfen önce eksiksiz bir ROM'u flaşlayın!</string>
+		<string name="fox_install_detecting">Mevcut Paket Algılanıyor</string>
+		<string name="fox_install_standard_detected">- Normal Paket Tespit Edildi</string>
+		<string name="fox_install_miui_detected">- MIUI Güncelleme Paketi Tespit Edildi</string>
+		<string name="fox_zip_have_bootloader">Uyarı: '{1}' tarafından bootloader'ın tekrar yükleneceği algılandı.</string>
+		<string name="fox_no_space_ota_survival">OTA sağkalımı için dahili depolama'da yeterli boş alan yok.</string>
+		<string name="fox_incremental_ota_res">OTA_RES -- bitti!</string>
+		<string name="fox_incremental_ota_res_run">OTA_RES işlemi çalıştırılıyor...</string>
+		<string name="fox_incremental_ota_bak_run">OTA_BAK işlemi çalıştırılıyor...</string>
+		<string name="fox_incremental_ota_bak">OTA_BAK -- bitti!</string>
+		<string name="fox_internal_fatal_i1">OrangeFox: KRİTİK HATA! Dahili Depolama'yı kendisine yedekleyemezsiniz!</string>
+		<string name="fox_internal_fatal_i2">Yedekleme hedefini MicroSD/USB-OTG'ye değiştirmelisiniz.</string>
+		<string name="fox_internal_q1">OrangeFox - Dahili Depolama - Dikkatli olun!</string>
+
+		<string name="copy_kernel_log">Çekirdek günlüğü {1}'e kopyalandı</string>
+
+		<string name="of_run_process">'{1}' işlemi başlatılıyor</string>
+		<string name="of_run_process_fail">'{1}' işlemi tamamlanamadı</string>
+		<string name="of_run_process_done">'{1}' işlemi tamamlandı</string>
+		<string name="of_dm_verity">DM-Verity başarıyla yamalandı</string>
+		<string name="of_dm_verity_off">DM-Verity etkin değil</string>
+		<string name="of_encryption">Zorunlu şifreleme başarıyla yamalandı</string>
+		<string name="of_encryption_off">Zorunlu Şifreleme etkin değil</string>
+		<string name="of_fstab">Algılanan fstab: '{1}'</string>
+
+		<string name="install_remlatest">Remove Latest</string>
+		
+		<string name="backups_remove_all">Sil</string>
+		<string name="backups_remove">Sil</string>
+		
+		<!-- OrangeFox Recovery - Pie Door theme -->
+
+		<string name="unpack">Unpack</string>
+		<string name="repack">Repack</string>
+
+		<string name="fox_save_load_aromafm_config_chk">Save/load AromaFM settings</string>
+		<string name="search_help">Search files and folders...</string>
+		
+		<string name="reboot_to_take_effect">Reboot to changes take effect</string>
+		<string name="fox_modules_hdr">Fox Addons</string>
+		<string name="fox_modules_inst">Install addon</string>
+		<string name="backup_short_hdr">New Backup</string>
+		<string name="backups_wat">Yükle</string>
+		
+		<string name="module_install">Yükle</string>
+		<string name="module_uninstall">Uninstall</string>
+		<string name="remove_of_files">Remove OrangeFox files</string>
+		<string name="module_initd">Enable init.d support</string>
+		<string name="module_cam">Parolayı kaldır</string>
+		<string name="module_pass">Parolayı kaldır</string>
+		<string name="fox_files_not_exist_1">Dosya yok!</string>
+		<string name="fox_files_not_exist_2">Recovery'yi tekrar flaşlayın</string>
+		<string name="fox_files_not_exist_3">yükleme zip'ini kullanarak.</string>
+
+		<!-- Customization -->
+		<string name="cust_new_ota_screen">Show less detail while running OTA updates</string>
+		<string name="fm_icons_simple">Make file icons bigger</string>
+		<string name="theme_engine_update">Apply changes and reload?</string>
+		<string name="theme_engine_reset">Tema</string>
+		<string name="apply_btn">Apply</string>
+		<string name="theme_hdr">Tema</string>
+		
+		<string name="font_small">Small</string>
+		<string name="font_norm">Normal</string>
+		<string name="font_big">Big</string>
+		<string name="font_size">Font size</string>
+		<string name="cust_autoapply">Apply theme without confirmation</string>
+		<string name="cust_expand_list">Expand lists automatically</string>
+		
+		<string name="status_battery_style">Battery style</string>
+		<string name="status_battery_circle">Circle</string>
+		<!-- Status bar -->
+		<string name="status_clock_pos">Clock position</string>
+		<string name="status_clock_left">Left</string>
+		<string name="status_clock_center">Center</string>
+		<string name="status_clock_right">Right</string>
+		<string name="dark_title">Make title darker</string>
+		<string name="separate_status">Make status bar darker</string>
+		<string name="noshadow_title">Show status bar shadow</string>
+		<string name="hide_notch">Hide notch</string>
+		<!-- NavBar -->
+		<string name="navbar_title">Navigation Bar</string>
+		<string name="navbar_onscreen">Enable NavBar</string>
+		<string name="show_slideout">Show console button</string>
+		<string name="dark_nav">Dark</string>
+		<!-- Keyboard -->
+		<string name="keyboard_title">Keyboard</string>
+		<string name="keyboard_newstyle">Refreshed style</string>
+		<string name="keyboard_nums">Kilidi aç</string>
+		<string name="key_swipe">Swipe on keyboard to delete all</string>
+		<!-- Lockscreen -->
+		<string name="lockscreen_unlock">Kilidi aç</string>
+		<string name="lockscreen_title">Lockscreen</string>
+		<string name="lockscreen_style">Lockscreen style</string>
+		<string name="lockscreen_clock">Clock</string>
+		<string name="lockscreen_icon">Icon</string>
+		<string name="lockscreen_btn">Replace slider with button</string>
+		<string name="lockscreen_info">Show battery and CPU info</string>
+		<string name="lockscreen_quicklock">Tapping the lock icon locks the screen</string>
+
+		<!-- OTA working page -->
+		<string name="ota_console_title">Installing OTA...</string>
+		<string name="ota_simple_title">Updating...</string>
+		<string name="ota_simple_log_btn">Log</string>
+
+		<string name="battery">Battery</string>
+
+		<!-- Pass -->
+		<string name="pass_gk">Gesture key</string>
+		<string name="pass_classic">Text password</string>
+		<string name="pass_dis">Disable password</string>
+		<string name="pass_pin">PIN Code</string>
+		
+		<string name="locked_info_1">Ana kurtarma özelliklerini kullanmak için</string>
+		<string name="locked_info_2">bir şifre girmeniz gerekiyor.</string>
+		<string name="locked_info_3">Ana kurtarma özelliklerini kullanmak için</string>
+		<string name="locked_info_4">bir şifre girmeniz gerekiyor.</string>
+		<string name="locked_info_4_gk">you first need to draw your gesture key.</string>
+		
+		<string name="new_pass_info_1">Enter new password to</string>
+		<string name="new_pass_info_1_gk">erişim.</string>
+		<string name="new_pass_info_2">OrangeFox against unauthorized</string>
+		<string name="new_pass_info_3">erişim.</string>
+		<string name="new_pass_info_4">You need to enter your password twice.</string>
+		<string name="new_pass_info_4_gk">You need to draw gesture key twice.</string>
+		<string name="new_pass_info_4_2">Enter your password again.</string>
+		<string name="new_pass_info_4_2_gk">Draw gesture key again.</string>
+		
+		<string name="pass_page_block">Current blocking method</string>
+		<string name="pass_page_block_inf1">You can sleep better knowing</string>
+		<string name="pass_page_block_inf2">that you are protected.</string>
+		<string name="pass_page_select">Select password type</string>
+		
+		<!-- Utilities -->
+		<string name="more">More...</string>
+		<string name="hide">Hide</string>
+		<string name="part_menu_hdr">Manage Partitions</string>
+		<string name="run_adb_startup">Run ADB on startup</string>
+
+		<!-- MMGUI -->
+		<string name="mm_module_active">Active</string>
+		<string name="mm_module_mount">Auto mount</string>
+		<string name="mm_modules">Modules</string>
+		<string name="mm_ver">Magisk Version</string>
+		<string name="mm_mod_ver">Module Version</string>
+		<string name="magisk_not_found">Magisk not found!</string>
+		<string name="magisk_not_found_1">Do you wanna go to Fox Addons</string>
+		<string name="magisk_not_found_2">OTA'yı Etkinleştir</string>
+		<string name="magisk_not_found_3"/>
+		
+		<!-- MIUI OTA -->
+		<string name="fox_ota_settings">OTA Settings</string>
+		<string name="fox_ota_on">OTA'yı Etkinleştir</string>
+		
+		<!-- About -->
+		<string name="abt_maintainer">Sorumlu</string>
+		<string name="abt_fd">Theme creator &amp; designer</string>
+		<string name="abt_bork">CEO, Site &amp; UI</string>
+		<string name="abt_dj">Build system, C++</string>
+		<string name="abt_front">Frontend developer</string>
+		<string name="abt_back">Backend developer</string>
+		<string name="abt_device">Katkıda Bulunanlar</string>
+		<string name="version_twrp">TWRP Version</string>
+		<string name="build_type">Build type</string>
+		<string name="abt_credits">Katkıda Bulunanlar</string>
+		<string name="abt_trans">Translators</string>
+		<string name="abt_changes">Change Log</string>
+		<string name="abt_main_shrt">Sorumlu</string>
+		<string name="welcome_msg">Welcome to OrangeFox!</string>
+		<string name="welcome_msg2"><!-- If welcome message is too big in your lang, use this string --></string>
+		
+		<!-- Symlink -->
+		<string name="symlink_dir_name">Link to folder</string>
+		<string name="symlink_file_name">Link to file</string>
+		<string name="symlink_broken_name">Broken link</string>
+		<string name="symlink_folder">Open real folder</string>
+		<string name="symlink_file">Open real file</string>
+		
+		<!-- Files -->
+		<string name="files_show_hidden">Show hidden files in Files</string>
+		<string name="files_auto_open">Auto detect file type in Files</string>
+		<string name="file_read_error">Unable to open file!</string>
+		<string name="subs_wipe">Wipe Substratum Overlays</string>
+		<string name="sort_ex_all">All files</string>
+		<string name="sort_ex_img">IMG files</string>
+		<string name="sort_ex_zip">ZIP files</string>
+		<string name="aroma_help">Press again to start AromaFM...</string>
+
+		<!-- this error will shown when recovery cannot create backup folder
+		 -->
+		<string name="backups_rw_error_1">Storage mounted</string>
+		<string name="backups_rw_error_2">as read only!</string>
+
+		<!-- App mgr -->
+		<string name="appmgr_apps">Apps</string>
+		<string name="appmgr_title">App Manager</string>
+
+		<!-- Perfomance -->
+		<string name="perf_title">Hızlı Şarj'ı zorla</string>
+		<string name="perf_conf_mode">Recovery perfomance mode</string>
+		<string name="perf_conf_balance">Balanced</string>
+		<string name="perf_conf_high">High perfomance</string>
+		<string name="perf_conf_batt">Agresif stok kurtarma deaktivasyonu</string>
+
+		<string name="fox_led_title">MIUI artımlı OTA desteği</string>
+		<string name="fox_use_green_led">OTA sağkalımına sistemi dahil et</string>
+		<string name="fox_boot_fastcharge">Hızlı Şarj'ı zorla</string>
+
+		<!-- OTA -->
+		<string name="fox_ota_msg_ready">Dm-Verity'i Devre dışı bırak</string>
+		<string name="fox_ota_msg_custom">Depolama şifrelemeyi devre dışı bırak?</string>
+		<string name="fox_ota_msg_reflash">OTA'yı yükledikten sonra otomatik yeniden başlatmayı engelle</string>
+		<string name="fox_advanced_stock_recovery">Agresif stok kurtarma deaktivasyonu</string>
+		<string name="fox_support_miui_ota_chk">MIUI artımlı OTA desteği</string>
+		<string name="fox_include_system_survival_chk">OTA sağkalımına sistemi dahil et</string>
+		<string name="fox_verify_incremental_ota_signature_chk">Artımlı OTA imza doğrulaması</string>
+		<string name="fox_dmverity_chk">Dm-Verity'i Devre dışı bırak</string>
+		<string name="fox_forced_encryption_chk">Depolama şifrelemeyi devre dışı bırak?</string>
+		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">OTA'yı yükledikten sonra otomatik yeniden başlatmayı engelle</string>
+		<string name="of_ota_reboot_disabled">OTA update succeeded. You disabled auto-reboot. Returning control to you.</string>
+	</resources>
+</language>

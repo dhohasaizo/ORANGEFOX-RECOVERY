@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+	<display>Czech</display>
+
+	<resources>
+		<!-- Font overrides - only change these if your language requires special characters -->
+
+		<!-- Partition display names -->
+		<string name="system">Systém</string>
+		<string name="system_image">Obraz systému</string>
+		<string name="vendor">Prodejce</string>
+		<string name="vendor_image">Obrázek dodavatele</string>
+		<string name="boot">Boot</string>
+		<string name="recovery">Recovery</string>
+		<string name="cache">Mezipaměti</string>
+		<string name="data">Data</string>
+		<string name="sdcard">SDCard</string>
+		<string name="internal">Vnitřní úložiště</string>
+		<string name="microsd">Micro SDCard</string>
+		<string name="usbotg">USB OTG</string>
+		<string name="android_secure">Android Zabezpečení</string>
+		<string name="dalvik">Dalvik / ART Cache</string>
+		<!-- This is a rarely used partition on a Micro SD card for a very old app2sd system -->
+		<string name="sdext">SD-EXT</string>
+		<string name="adopted_data">Přijaté údaje</string>
+		<string name="adopted_storage">Přijaté úložiště</string>
+
+		<!-- GUI XML strings -->
+		<string name="twrp_watch_header">OrangeFox %fox_actual_build%</string>
+		<string name="cpu_temp">CPU: %tw_cpu_temp% &#xB0;C</string>
+		<string name="sort_by_name_asc">Jméno</string>
+		<string name="sort_by_date_asc">Date</string>
+		<string name="sort_by_size_asc">Velikost</string>
+		<string name="sort_by_name_desc">Jméno</string>
+		<string name="sort_by_date_desc">Date</string>
+		<string name="sort_by_size_desc">Velikost</string>
+		<string name="install_btn">Nainstalovat</string>
+		<string name="wipe_btn">Vyčistit</string>
+		<string name="backup_btn">Backups</string>
+		<string name="restore_btn">Obnova</string>
+		<string name="mount_btn">Vyjmout</string>
+		<string name="file_manager_btn">Files</string>
+		<string name="advanced_btn">Pokročilý</string>
+		<string name="reboot_btn">Restartovat</string>
+		<string name="copy_log_btn">Copy Log to SD</string>
+		<string name="install_zip_hdr">Install ZIP</string>
+		<string name="install_zip_btn">Install ZIP</string>
+		<string name="install_image_hdr">Instalovat Image</string>
+		<string name="install_image_btn">Install IMAGE</string>
+		<string name="install_select_file_hdr">Vybrat soubor</string>
+		<string name="install_select_file_btn">Vybrat soubor</string>
+		<string name="adb_sideload_btn">ADB &amp; Sideload</string>
+		<string name="select_storage_hdr">Vyberte Uložiště</string>
+		<string name="select_storage_btn">Vyberte Uložiště</string>
+		<string name="queue_hdr">Fronta</string>
+		<string name="raised_clearqueue_btn">Clear Queue</string>
+		<string name="raised_viewqueue_btn">View Queue</string>
+		<string name="zip_queue_count">%tw_zip_queue_count% z max. 10 souborů ve frontě</string>
+		<string name="folder">Složka</string>
+		<string name="file">Soubor</string>
+		<string name="zip_sig_chk">ZIP signature verification</string>
+		<string name="inject_twrp_chk">Inject OrangeFox after install</string>
+		<string name="install_reboot_chk">Restartování po dokončení obnovení</string>
+		<string name="options_hdr">Nastavení</string>
+		<string name="zip_queue">Fronta</string>
+		<string name="install_zip_count_hdr">Instalovat Zip %tw_zip_index% z %tw_zip_queue_count%</string>
+		<string name="working">Pracuje...</string>
+		<string name="failed">Nepodařilo se</string>
+		<string name="successful">Úspěšně</string>
+		<string name="wipe_cache_btn">Wipe Caches</string>
+		<string name="reboot_system_btn">Reboot System</string>
+		<string name="reboot_recovery_btn">Reboot Recovery</string>
+		<string name="install_sel_target">Vyberte cílový oddíl</string>
+		<string name="flash_image_select">Oddíl</string>
+		<string name="flashing_image">Flashuje se obraz souboru...</string>
+		<string name="image_flashed">Obraz se nainstaloval</string>
+		<string name="wipe_cache_dalvik_confirm">Vymazat Cache &amp; Dalvik?</string>
+		<string name="wipe_dalvik_confirm">Wipe Dalvik?</string>
+		<string name="wiping_cache_dalvik">Mažu Cache &amp; Dalvik...</string>
+		<string name="wipe_cache_dalvik_complete">Cache &amp; Dalvik čištění bylo dokončeno</string>
+		<string name="cache_dalvik_done">Cache &amp; Dalvik čištění bylo dokončeno</string>
+		<string name="swipe_wipe">Přetáhněte prstem k vyčištění</string>
+		<string name="rebooting">Restartování...</string>
+		<string name="swipe_reboot">Přesuňte prstem pro Restartování</string>
+		<string name="confirm_action">Potvrzení akce</string>
+		<string name="cancel_btn">Cancel</string>
+		<string name="wipe_hdr">Vyčistit</string>
+		<string name="factory_reset_hdr">Tovární reset</string>
+		<string name="factory_reset1">Vyčistit data, mezipaměť a Dalvik</string>
+		<string name="factory_reset2">(neobsahuje vnitřního úložiště)</string>
+		<string name="factory_reset3">Většinu času</string>
+		<string name="factory_reset4">jediné vyčištění, které potřebujete.</string>
+		<string name="factory_resetting">Mazání dat, Cache paměť a Dalvik...</string>
+		<string name="advanced_wipe_hdr">Pokročilé čištění</string>
+		<string name="advanced_wipe_btn">Pokročilé čištění</string>
+		<string name="wipe_enc_confirm">Vyčistit šifrování z dat?</string>
+		<string name="formatting_data">Formátování Dat...</string>
+		<string name="swipe_format_data">Přejeďte pro formátování dat</string>
+		<string name="factory_reset_complete">Tovární reset kompletní</string>
+		<string name="sel_part_hdr">Vyberte oddíly</string>
+		<string name="wipe_sel_confirm">Wipe Selected Partitions?</string>
+		<string name="wiping_part">Wiping Partitions...</string>
+		<string name="wipe_complete">Čištění dokončeno</string>
+		<string name="format_data_hdr">Formát Dat</string>
+		<string name="format_data_btn">Formát Dat</string>
+		<string name="format_data_ptr1">Formátování dat vymaže všechny vaše aplikace,</string>
+		<string name="format_data_ptr2">zálohovat, obrázky, videa, média a</string>
+		<string name="format_data_ptr3">removes encryption on internal storage.</string>
+		<string name="format_data_adopted">Obsahuje přijaté úložiště</string>
+		<string name="format_data_undo">To nemůže být nedokončené.</string>
+		<string name="format_data_complete">Formát Dat dokončen</string>
+		<!-- Translator note: the word "yes" must remain English! -->
+		<string name="yes_continue">Type "yes" to confirm.</string>
+		<string name="part_opt_hdr">Partition Info</string>
+		<string name="file_sys_opt">Možnosti pro oddíl</string>
+		<string name="part_mount_point">Vyjmout bod</string>
+		<string name="part_curr_fs">Souborový systém</string>
+		<string name="part_present">Současnost</string>
+		<string name="part_removable">Odstranitelné</string>
+		<string name="part_yes">Ano</string>
+		<string name="part_no">Ne</string>
+		<string name="part_size">Velikost</string>
+		<string name="part_used">Použito</string>
+		<string name="part_free">Volný</string>
+		<string name="part_backup_size">Velikost zálohy</string>
+		<string name="resize_btn">Změnit velikost FS</string>
+		<string name="resize_confirm">Resize partition</string>
+		<string name="resizing">Měním velikost...</string>
+		<string name="resize_complete">Změna velikosti kompletní</string>
+		<string name="swipe_resize">Přetáhněte prstem na změnu velikosti</string>
+		<string name="repair_btn">Repair FS</string>
+		<string name="repair_confirm">Repair partition</string>
+		<string name="repairing">Opravuji...</string>
+		<string name="repair_complete">Oprava byla dokončena</string>
+		<string name="swipe_repair">Přetáhněte prstem pro opravu</string>
+		<string name="change_fs_btn">Změnit FS</string>
+		<string name="change_fs_warn1">Některé ROMs nebo jádra nemusí podporovat</string>
+		<string name="change_fs_warn2">některé systémy souborů. Postupujte s opatrností!</string>
+		<string name="change_fs_confirm">Change FS to</string>
+		<string name="formatting">Formátování...</string>
+		<string name="format_complete">Formátování bylo dokončeno</string>
+		<string name="swipe_change_fs">Přejeďte pro možnost změny</string>
+		<string name="back_btn">Back</string>
+		<string name="wipe_enc_btn">Wipe Encryption</string>
+		<string name="swipe_factory_reset">Přejeďte prstem pro tovární nastavení</string>
+		<string name="backup_hdr">Záloha</string>
+		<string name="encryption_hdr">Povolit šifrování</string>
+		<string name="name">Jméno</string>
+		<string name="enable_backup_comp_chk">Povolit kompresi</string>
+		<string name="skip_md5_backup_chk">Přeskočit MD5 generování během zálohování</string>
+		<string name="disable_backup_space_chk">Před zálohováním Zakázat kontrolu zbylého místa</string>
+		<string name="swipe_backup">Přejděte prstem pro Zálohování</string>
+		<string name="backup_name_exists">Záloha s tímto názvem již existuje!</string>
+		<string name="pass_not_match">Hesla se neshodují!</string>
+		<string name="partitions">Rozdělení</string>
+		<string name="progress">Průběh</string>
+		<string name="backup_complete">Záloha je dokončena</string>
+		<string name="restore_hdr">Backups</string>
+		<string name="restore_backup_hdr">Obnovit zálohu</string>
+		<string name="sel_backup_hdr">Výběr zálohy</string>
+		<string name="restore_dec_fail">Neplatné heslo, opakujte akci!</string>
+		<string name="del_backup_confirm">Smazat zálohu?</string>
+		<string name="del_backup_confirm2">Tohle nemůže být nedokončené!</string>
+		<string name="deleting_backup">Odstranění zálohy...</string>
+		<string name="backup_deleted">Zálohy odstraněny</string>
+		<string name="swipe_delete">Přejeďte prstem pro odstranění</string>
+		<string name="restore_backup_date">Datum zálohy</string>
+		<string name="restore_md5_chk">Zkontrolujte záložní soubory MD5</string>
+		<string name="restore_enable_md5_chk">Zapnout MD5 ověřování záloh</string>
+		<string name="restore_complete">Obnovení bylo dokončeno</string>
+		<string name="swipe_restore">Přejeďte pro obnovení</string>
+		<string name="rename_backup_hdr">Přejmenovat zálohu</string>
+		<string name="rename_backup_confirm">Přejmenovat zálohu?</string>
+		<string name="rename_backup_confirm2">Tohle nemůže být nedokončené!</string>
+		<string name="renaming_backup">Přejmenovávání zálohy...</string>
+		<string name="rename_backup_complete">Přejmenování kompletní</string>
+		<string name="swipe_to_rename">Přejeďte pro přejmenování</string>
+		<string name="mount_hdr">Vyjmout</string>
+		<string name="mount_sys_ro_chk">Vyjměte systémový oddíl pouze pro čtení</string>
+		<string name="decrypt_data_btn">Decrypt Data</string>
+		<string name="disable_mtp_btn">Zakázat MTP</string>
+		<string name="enable_mtp_btn">Povolit MTP</string>
+		<string name="usb_storage_hdr">Úložiště USB</string>
+		<string name="usb_storage_btn">Úložiště USB</string>
+		<string name="usb_stor_mnt1">USB úložiště vyjmuto</string>
+		<string name="usb_stor_mnt2">Ujistěte se, že jste bezpečně odebrali zařízení</string>
+		<string name="usb_stor_mnt3">z počítače před vyjmutím!</string>
+		<string name="unmount_btn">Odpojit</string>
+		<string name="rb_system_btn">Systém</string>
+		<string name="rb_poweroff_btn">Vypnout</string>
+		<string name="rb_recovery_btn">Recovery</string>
+		<string name="rb_bootloader_btn">Bootloader</string>
+		<string name="rb_theme">Téma</string>
+		<string name="rb_download_btn">Stáhnout</string>
+		<string name="rb_edl_btn">Edl</string>
+		<string name="turning_off">Vypínání...</string>
+		<string name="swipe_power_off">Přejeďte pro vypnutí</string>
+		<string name="sys_ro">Systémový oddíl</string>
+		<string name="sys_ro_hdr">Neupravený systémový oddíl</string>
+		<string name="sys_rop1">OrangeFox can leave your system partition</string>
+		<string name="sys_rop2">nemodifikovat, aby to bylo pro vás jednoduší</string>
+		<string name="sys_rop2a">použijte oficiální aktualizace.</string>
+		<string name="sys_rop3">OrangeFox will be unable to prevent the</string>
+		<string name="sys_rop4">stock ROM from replacing OrangeFox.</string>
+		<string name="sys_rop5">ZIP installations or ADB operations</string>
+		<string name="sys_rop6">může stále změnit systémový oddíl.</string>
+		<string name="sys_ro_never_show_chk">Never show this screen again</string>
+		<string name="sys_ro_keep_ro_btn">Keep Read-Only</string>
+		<string name="swipe_allow_mod">Přetáhněte prstem pro možnost Povolit úpravy</string>
+		<string name="settings_hdr">Nastavení</string>
+		<string name="settings_cptn">Obecné</string>
+		<string name="use_rmrf_chk">Použít rm -rf namísto formátování</string>
+		<string name="use24clock_chk">Použijte 24hodinové hodiny</string>
+		<string name="rev_navbar_chk">Obrácené rozvržení kláves</string>
+		<string name="simact_chk">Simulovat akce pro test tématu</string>
+		<string name="simfail_chk">Simulovat selhání pro akce</string>
+		<string name="sel_tz_list">Časové pásmo</string>
+		<string name="dialog_reset_theme_hdr">Reset to defaults</string>
+		<!-- Translator note: if it does not make sense to translate the locations or if it makes more sense,
+				feel free to change the location listed or drop the location entirely and just call it UTC -6 -->
+		<string name="utcm11">(UTC -11) Samoa, Midwajské ostrovy</string>
+		<string name="utcm10">(UTC -10) Havaj</string>
+		<string name="utcm9">(UTC -9) Aljaška</string>
+		<string name="utcm8">(UTC -8) Pacifický čas</string>
+		<string name="utcm7">(UTC -7) USA - západní čas</string>
+		<string name="utcm6">(UTC -6) USA - centrální čas</string>
+		<string name="utcm5">(UTC -5) USA - východní čas</string>
+		<string name="utcm4">(UTC -4) Atlantický čas</string>
+		<string name="utcm3">(UTC -3) Brazílie, Buenos Aires</string>
+		<string name="utcm2">(UTC -2) Středoatlantický čas</string>
+		<string name="utcm1">(UTC -1) Azory, Cape Verde</string>
+		<string name="utc0">(UTC  0) Londýn, Dublin, Lisabon</string>
+		<string name="utcp1">(UTC +1) Praha, Berlín, Brusel</string>
+		<string name="utcp2">(UTC +2) Atény, Istanbul, Jižní Afrika</string>
+		<string name="utcp3">(UTC +3) Moskva, Bagdád</string>
+		<string name="utcp4">(UTC +4) Abu Dhabi, Tbilisi, Muscat</string>
+		<string name="utcp5">(UTC +5) Jekatěrinburg, Islámábád</string>
+		<string name="utcp6">(UTC +6) Almaty, Dhaka, Colombo</string>
+		<string name="utcp7">(UTC +7) Bangkok, Hanoi, Jakarta</string>
+		<string name="utcp8">(UTC +8) Peking, Singapur, Hong Kong</string>
+		<string name="utcp9">(UTC +9) Tokyo, Soul, Yakutsk</string>
+		<string name="utcp10">(UTC +10) Východní Austrálie, Guam</string>
+		<string name="utcp11">(UTC +11) Vladivostok, Šalamounovy ostrovy</string>
+		<string name="utcp12">(UTC +12) Auckland, Wellington, Fidži</string>
+		<string name="tz_offset_hdr">Časový posun</string>	
+		<string name="tz_offset">Posun</string>
+		<string name="sel_tz_offset">Zvolte odchylku (obvykle 0): %tw_time_zone_guioffset%</string>
+		<string name="tz_offset_0">0</string>
+		<string name="tz_offset_15">15</string>
+		<string name="tz_offset_30">30</string>
+		<string name="tz_offset_45">45</string>
+		<string name="use_dst_chk">Použít letní čas (DST)</string>
+		<string name="curr_tz">Určité Časové pásmo: %tw_time_zone%</string>
+		<string name="curr_tz_s">Určité Časové pásmo:</string>
+		<string name="set_tz_btn">Nastavit časové pásmo</string>
+		<string name="settings_screen_cptn">Nastavení displeje</string>
+		<string name="settings_screen_timeout_cptn">Timeout is off</string>
+		<string name="settings_screen_timeout_cptn2">Časový limit:</string>
+		<string name="timeout_unit">sekundy</string>
+		<string name="enable_timeout_chk">Povolit časový limit obrazovky</string>
+		<string name="screen_to_na">Časový limit není k dispozici</string>
+		<string name="rotation_chk">Otáčení</string>
+		<string name="screen_bright_slider">Jas: %tw_brightness_pct% %</string>
+		<string name="screen_bright_na">Nastavení jasu není k dispozici</string>
+		<string name="vibration_hdr">Vibrace</string>
+		<string name="button_vibration_hdr">Button Vibration is off</string>
+		<string name="kb_vibration_hdr">Keyboard Vibration is off</string>
+		<string name="act_vibration_hdr">Action Vibration is off</string>
+		<string name="button_vibration">Vibrace tlačítek:</string>
+		<string name="kb_vibration">Vibrace klávesnice:</string>
+		<string name="act_vibration">Vibrace akcí:</string>
+		<string name="advanced_hdr">Pokročilý</string>
+		<string name="copy_log_confirm">Copy Log to SD Card?</string>
+		<string name="copying_log">Copying Log to SD Card...</string>
+		<string name="copy_log_complete">Log copied</string>
+		<string name="terminal_btn">Terminál</string>
+		<string name="dumlock_note1">Informace o fungování</string>
+		<string name="dumlock_note2">o HTC Dumlock prosím podívejte se:</string>
+		<string name="inject_twrp_btn">Inject OrangeFox</string>
+		<string name="inject_twrp_confirm">Re-Inject OrangeFox?</string>
+		<string name="injecting_twrp">Re-Injecting OrangeFox...</string>
+		<string name="inject_twrp_complete">OrangeFox Injection completed</string>
+		<string name="swipe_to_confirm">Přejeďte pro potvrzení</string>
+		<string name="part_sd_hdr">Partition SD</string>
+		<string name="rem_sd">Vyměnitelné úložiště</string>
+		<string name="rem_sd_sel">Vyberte vyměnitelné zařízení!</string>
+		<string name="invalid_partsd_sel">Musíte vybrat vyměnitelné zařízení</string>
+		<string name="part_sd_lose">Budou ztracena všechna data na kartě!</string>
+		<string name="part_sdcard_sel_note_1">Rozdělení disku odstraní všechny soubory</string>
+		<string name="part_sdcard_sel_note_2">na vaši SD kartě!</string>
+		<string name="part_sd_undo">Tuto akci nelze vrátit zpět!</string>
+		<string name="part_sd_ext_sz">Velikost EXT:</string>
+		<string name="btn_flat_ext4">EXT4</string>
+		<string name="btn_flat_ext3">EXT3</string>
+		<string name="btn_flat_more">+</string>
+		<string name="btn_flat_less">-</string>
+		<string name="part_sd_swap_sz">Velikost výměny:</string>
+		<string name="file_system">Souborový systém:</string>
+		<string name="swipe_part_sd">Přejeďte pro vytvoření oddílu</string>
+		<string name="partitioning_sd">Partitioning SD Card...</string>
+		<string name="partitioning_sd2">Může trvat několik minut.</string>
+		<string name="part_sd_complete">Rozdělení dokončeno</string>
+		<string name="dumlock_hdr">HTC Dumlock</string>
+		<string name="dumlock_restore_btn">Restore Original Boot</string>
+		<string name="dumlock_restore_confirm">Obnovit původní boot obraz?</string>
+		<string name="dumlock_restoring">Obnovování původního Boot...</string>
+		<string name="dumlock_restore_complete">Obnova původního Boot byla dokončena</string>
+		<string name="dumlock_reflash_btn">Reflsh Recovery</string>
+		<string name="dumlock_reflash_confirm">Přepsat recovery při spuštění?</string>
+		<string name="dumlock_reflashing">Přepisování recovery do spuštění...</string>
+		<string name="dumlock_reflash_complete">Recovery nainstalování bylo dokončeno</string>
+		<string name="dumlock_install_btn">Install Dumlock</string>
+		<string name="dumlock_install_confirm">Nainstalovat HTC dumlock složky do ROM?</string>
+		<string name="dumlock_installing">Instalace HTC Dumlock...</string>
+		<string name="dumlock_install_complete">Instalace HTC Dumlock je dokončena</string>
+		<string name="swipe_to_unlock">Odemknete posunutím prstu</string>
+		<string name="fm_actions">Akce</string>
+		<string name="fm_hdr">Files</string>
+		<string name="fm_sel_file">Vyberte soubor nebo složku</string>
+		<string name="fm_type_folder">Složka</string>
+		<string name="fm_type_file">Soubor</string>
+		<string name="fm_copy_btn">Kopírovat</string>
+		<string name="fm_copying">Kopírování</string>
+		<string name="fm_move_btn">Přesunout</string>
+		<string name="fm_moving">Přesouvání</string>
+		<string name="fm_chmod755_btn">Set 755</string>
+		<string name="fm_chmod755ing">Set 755</string>
+		<string name="fm_chmod644_btn">Set 644</string>
+		<string name="fm_chmod644ing">Set 644</string>
+		<string name="fm_chmod_btn">Set permissions</string>
+		<string name="fm_delete_btn">Smazat</string>
+		<string name="fm_deleting">Odstraňování</string>
+		<string name="fm_rename_btn">Přejmenovat</string>
+		<string name="fm_renaming">Přejmenování</string>
+		<string name="fm_sel_dest">Cílová složka</string>
+		<string name="fm_rename_hdr">Přejmenovat</string>
+		<string name="fm_set_perms_hdr">Nastavit oprávnění</string>
+		<string name="fm_perms">Oprávnění</string>
+		<string name="fm_complete">Operace se souborem dokončena</string>
+		<string name="decrypt">Dešifrovat</string>
+		<string name="data_part">Oddíl dat</string>
+		<string name="encrypt_data_part">Datový oddíl je zašifrován.</string>
+		<string name="sel_encrypt_backup">Vybrali jste šifrovanou zálohu.</string>
+		<string name="decrypt_data_enter_note1">Zadejte prosím heslo nebo</string>
+		<string name="decrypt_data_enter_note1a">Zadejte prosím heslo nebo</string>
+		<string name="decrypt_data_enter_note2">stiskněte tlačítko zpět pro zrušení.</string>
+		<string name="decrypt_data_enter_pass">Zadejte heslo</string>
+		<string name="decrypt_data_failed_pattern">Vzor selhal!</string>
+		<string name="decrypt_try_again">Prosím, zkuste znovu.</string>
+		<string name="decrypt_data_enter_pattern">Zadejte obrazec.</string>
+		<string name="decrypt_data_trying">Zkouším dešifrování</string>
+		<string name="term_s_hdr">Terminál</string>
+		<string name="adb_sideload_hdr">ADB Sideload</string>
+		<string name="sideload_wipe_dalvik_chk">Vymazat Dalvik Cache</string>
+		<string name="sideload_wipe_cache_chk">Vymazat Cache</string>
+		<string name="swipe_to_sideload">Přejeďte pro spuštění Sideload</string>
+		<string name="sideload_confirm">ADB Sideload</string>
+		<string name="sideload_usage">Usage: ADB SideLoad File.ZIP</string>
+		<string name="sideload_complete">ADB Sideload dokončena</string>
+		<string name="fix_contexts_hdr">Opravy kontextů</string>
+		<string name="fix_contexts_confirm">Opravit kontexty SELinux?</string>
+		<string name="fix_contexts_note1">Poznámka: Oprava oprávnění je zřídka kdy zapotřebí.</string>
+		<string name="fix_contexts_note2">Oprava SELinux kontextů může způsobit</string>
+		<string name="fix_contexts_note3">vaše zařízení nemusí správně spustit.</string>
+		<string name="swipe_to_fix_contexts">Přetáhněte prstem na opravu kontextů</string>
+		<string name="fixing_contexts">Opravy kontextů...</string>
+		<string name="fix_contexts_complete">Opravy kontextů byly dokončeny</string>
+		<string name="reboot_hdr">Restartovat</string>
+		<string name="sel_storage_list">Vyberte Uložiště</string>
+		<string name="ok_btn">Ok</string>
+
+		<!-- Various console messages - these consist of user displayed messages, oftentimes errors -->
+		<string name="no_kernel_selinux">Kernel neobsahuje podporu pro čtení SELinux kontextů.</string>
+		<string name="full_selinux">Plná podpora SELinux je k dispozici.</string>
+		<string name="no_selinux">Žádná podpora SELinuxu (bez libselinux).</string>
+		<string name="mtp_enabled">MTP povoleno</string>
+		<string name="mtp_disabled">MTP je zakázaný</string>
+		<string name="mtp_crash">MTP spadlo, při spuštění nebude dostupné.</string>
+		<string name="decrypt_success">Úspěšně dešifrován s výchozím heslem.</string>
+		<string name="unable_to_decrypt">Nelze dešifrovat pomocí výchozího hesla. Možná budete muset provést formátování dat.</string>
+		<string name="generating_md51">Generování MD5</string>
+		<!-- Message displayed during a backup if we are generating an MD5, ideally, leave the leading " * " to help align and separate this text from other console text -->
+		<string name="generating_md52"> * Generování md5...</string>
+		<string name="md5_created"> * Vytvořen MD5.</string>
+		<string name="md5_error"> * MD5 chyba!</string>
+		<string name="md5_compute_error"> * Chyba součtu MD5.</string>
+		<string name="current_date">(Aktuální datum)</string>
+		<string name="auto_generate">(Automaticky generovat)</string>
+		<string name="unable_to_locate_partition">Nelze nalézt oddíl '{1}' pro výpočet zálohy.</string>
+		<string name="no_partition_selected">Nezvolené žádné oddíly pro zálohování.</string>
+		<string name="total_partitions_backup"> * Počet oddílů pro zálohování: {1}</string>
+		<string name="total_backup_size"> * Celková velikost všech dat: {1}MB</string>
+		<string name="available_space"> * Volné místo: {1}MB</string>
+		<string name="unable_locate_storage">Nelze nalézt úložiště telefonu.</string>
+		<string name="no_space">Není dostatek volného místa v úložišti.</string>
+		<string name="backup_started">[ZÁLOHOVÁNÍ ZAČALO]</string>
+		<string name="backup_folder"> * Složka zálohy: {1}</string>
+		<string name="fail_backup_folder">Nepodařilo se vytvořit složku pro zálohu.</string>
+		<string name="avg_backup_fs">Průměrná rychlost zálohování pro souborové systémy: {1} MB/s</string>
+		<string name="avg_backup_img">Průměrná rychlost zálohování pro bitové kopie disků: {1} MB/s</string>
+		<string name="total_backed_size">[{1} MB CELKOVÁ VELIKOST ZÁLOHY]</string>
+		<string name="backup_completed">[ZÁLOHA BYLA DOKONČENA ZA {1} VTEŘIN]</string>
+		<string name="restore_started">[OBNOVOVÁNÍ ZAČALO]</string>
+		<string name="restore_folder">Složka k obnovení: "{1}"</string>
+		<!-- {1} is the partition display name and {2} is the number of seconds -->
+		<string name="restore_part_done">[{1} Hotovo ({2} sekund)]</string>
+		<string name="verifying_md5">Ověřování MD5</string>
+		<string name="skip_md5">Přeskočení MD5 dle nastavení uživatele.</string>
+		<string name="calc_restore">Výpočet...</string>
+		<string name="restore_read_only">Nelze obnovit {1} -- připojené jen pro čtení.</string>
+		<string name="restore_unable_locate">Nelze najít '{1}' oddíl pro obnovení.</string>
+		<string name="no_part_restore">Žádný oddíl pro obnovení.</string>
+		<string name="restore_part_count">Obnoveny {1} oddíly...</string>
+		<string name="total_restore_size">Celková velikost obnovy je {1}MB</string>
+		<string name="updating_system_details">Podrobnosti aktualizace systému</string>
+		<string name="restore_completed">[OBNOVENÍ DOKONČENO ZA {1} SEKUNDY]</string>
+		<!-- {1} is the path we could not open, {2} is strerror output -->
+		<string name="error_opening_strerr">Chyba při otevírání: '{1}' ({2})</string>
+		<string name="unable_locate_part_backup_name">Nelze najít oddíl zálohy jménem: "{1}"</string>
+		<string name="unable_find_part_path">Nelze najít oddíl pro cestu "{1}"</string>
+		<string name="update_part_details">Podrobnosti aktualizace oddílu...</string>
+		<string name="update_part_details_done">...Hotovo</string>
+		<string name="wiping_dalvik">Wiping Dalvik Directories...</string>
+		<string name="cleaned">Čištění: {1}...</string>
+		<string name="dalvik_done">-- smazání Dalvik Cache kompletní!</string>
+		<string name="no_andsec">Nenalezen žádný android secure.</string>
+		<string name="unable_to_locate">Nelze najít {1}.</string>
+		<string name="wiping_datamedia">Mazání vnitřního uložiště -- /data/media...</string>
+		<string name="unable_to_mount">Nepodařilo se připojit {1}</string>
+		<string name="unable_to_mount_internal">Nepodařilo se připojit internal_storage</string>
+		<string name="unable_to_mount_storage">Nelze připojit úložiště</string>
+		<string name="fail_decrypt">Dešifrování dat se nezdařilo.</string>
+		<string name="no_crypto_support">V této verzi není podpora šifrování.</string>
+		<string name="decrypt_success_dev">Data úspěšně dešifrována, nový blok zařízení: "{1}"</string>
+		<string name="done">Hotovo</string>
+		<string name="start_partition_sd">Partitioning SD Card...</string>
+		<string name="partition_sd_locate">Nelze nalézt zařízení k rozdělení.</string>
+		<string name="ext_swap_size">EXT + Swap size is larger than sdcard size.</string>
+		<string name="remove_part_table">Odstraňování oddílů...</string>
+		<string name="unable_rm_part">Nelze odstranit oddíly.</string>
+		<string name="create_part">Vytváření {1} oddílu...</string>
+		<string name="unable_to_create_part">Nelze vytvořit {1} oddíl.</string>
+		<string name="format_sdext_as">Formátování sd-ext jako {1}...</string>
+		<string name="part_complete">Rozdělení dokončeno.</string>
+		<string name="unable_to_open">Nelze otevřít '{1}'.</string>
+		<string name="mtp_already_enabled">MTP je už povoleno</string>
+		<string name="mtp_fail">Nepodařilo se povolit MTP</string>
+		<string name="no_mtp">MTP podpora není zahrnuta</string>
+		<string name="image_flash_start">[ZAČALA INSTALACE IMAGE]</string>
+		<string name="img_to_flash">Image pro instalaci: '{1}'</string>
+		<string name="flash_unable_locate">Nelze nalézt oddíl '{1}' pro instalaci.</string>
+		<string name="no_part_flash">Pro instalování nebyli zvolený žadné oddíly.</string>
+		<string name="too_many_flash">Příliš mnoho oddílů pro instalování.</string>
+		<string name="invalid_flash">Zadán neplatný oddíl pro instalaci.</string>
+		<string name="flash_done">[INSTALACE IMAGE DOKONČENA]</string>
+		<string name="wiping">Mazání {1}</string>
+		<string name="repair_not_exist">{1} neexistuje! Nelze opravit!</string>
+		<string name="repairing_using">Opravuji {1} pomocí {2}...</string>
+		<string name="unable_repair">Nelze opravit {1}.</string>
+		<string name="mount_data_footer">Nemohu připojit /data a nepodařilo najít šifrovací parametry.</string>
+		<!-- {1} is the folder name that we could not create, {2} is strerror output -->
+		<string name="create_folder_strerr">Nelze vytvořit '{1}' složku ({2}).</string>
+		<!-- {1} is the folder name that we could not mount, {2} is strerror output -->
+		<string name="fail_mount">Nepodařilo se připojit '{1}' ({2})</string>
+		<!-- {1} is the folder name that we could not unmount, {2} is strerror output -->
+		<string name="fail_unmount">Nepodařilo se odpojit '{1}' ({2})</string>
+		<string name="cannot_resize">Nelze změnit velikost {1}.</string>
+		<string name="repair_resize">Opravuji {1} před změnou velikosti.</string>
+		<string name="unable_resize">Nelze změnit velikost {1}.</string>
+		<string name="no_md5_found">Pro '{1}' nebyl nalezen žádný soubor md5. Zrušte zaškrtnutí políčka Povolit ověření MD5 k obnovení.</string>
+		<string name="md5_fail_match">MD5 se neshoduje u '{1}'.</string>
+		<string name="fail_decrypt_tar">Nepodařilo se dešifrovat soubor tar '{1}'</string>
+		<string name="format_data_msg">Budete muset restartovat recovery aby bylo možné /data znovu použít.</string>
+		<string name="format_data_err">Nelze naformátovat k odstranění šifrování.</string>
+		<string name="formatting_using">Formátování {1} pomocí {2}...</string>
+		<string name="unable_to_wipe">Nelze vymazat {1}.</string>
+		<string name="cannot_wipe">Oddíl {1} nemůže být vymazán.</string>
+		<string name="remove_all">Odstranění všech souborů v '{1}'</string>
+		<string name="wiping_data">Mazání Data bez smazání /data/media ...</string>
+		<string name="backing_up">Zálohování {1}...</string>
+		<string name="backing">Zálohování</string>
+		<string name="backup_size">Velikost záložního souboru pro '{1}' je 0 bajtů.</string>
+		<string name="datamedia_fs_restore">UPOZORNĚNÍ: Zálohování dat / dat bylo provedeno pomocí systému souborů {1}! Zálohování se nemusí spouštět, dokud se nezměníte zpět na hodnotu {1}.</string>
+		<string name="restoring">Obnovování {1}...</string>
+		<string name="restoring_hdr">Obnovování...</string>
+		<string name="recreate_folder_err">Nelze znovu vytvořit složku {1}.</string>
+		<string name="img_size_err">Velikost image je větší než cílové zařízení</string>
+		<string name="flashing">Instaluji {1}...</string>
+		<string name="backup_folder_set">Záložní složka nastavena na "{1}"</string>
+		<string name="locate_backup_err">Nelze nalézt zálohu '{1}'</string>
+		<string name="set_restore_opt">Nastavení možností obnovení: '{1}':</string>
+		<string name="md5_check_skip">Kontrola MD5 je vynechána</string>
+		<string name="ors_encrypt_restore_err">Nelze použít OpenRecoveryScript pro obnovu šifrované zálohy.</string>
+		<string name="mounting">Připojování</string>
+		<string name="unmounting">Odpojování</string>
+		<string name="mounted">Připojeno '{1}'</string>
+		<string name="unmounted">Odpojeno '{1}'</string>
+		<string name="setting">Nastavení '{1}' do '{2}'</string>
+		<string name="setting_empty">Nastavení '{1}' na prázdné</string>
+		<string name="making_dir1">Vytvářím adresář</string>
+		<string name="making_dir2">Vytvářím adresář: '{1}'</string>
+		<string name="running_command">Spuštění příkazu</string>
+		<string name="sideload">ADB Sideload</string>
+		<string name="start_sideload">Spouštění ADB sideload...</string>
+		<string name="need_new_adb">Budete potřebovat adb 1.0.32 nebo novější pro sideload u tohoto zařízení.</string>
+		<string name="no_pwd">Žádné heslo.</string>
+		<string name="done_ors">Zpracování skriptu hotovo</string>
+		<string name="injecttwrp">Injecting OrangeFox into boot image...</string>
+		<string name="zip_err">Error installing ZIP file '{1}'</string>
+		<string name="installing_zip">Installing ZIP file '{1}'</string>
+		<string name="select_backup_opt">Nastavení možností zálohy:</string>
+		<string name="compression_on">Komprese povolena</string>
+		<string name="md5_off">Generování MD5 je vypnuto</string>
+		<string name="backup_fail">Zálohování selhalo</string>
+		<string name="backup_clean">Zálohování selhalo. Čištění zálohovací složky.</string>
+		<string name="running_recovery_commands">Spouštění příkazů Recovery</string>
+		<string name="recovery_commands_complete">Příkazy Recovery kompletní</string>
+		<string name="running_ors">Spouštění OpenRecoveryScript</string>
+		<string name="ors_complete">OpenRecoveryScript kompletní</string>
+		<string name="no_updater_binary">Could not find '{1}' in the ZIP file.</string>
+		<string name="check_for_md5">Kontrola MD5...</string>
+		<string name="fail_sysmap">Nepodařilo se namapovat soubor '{1}'</string>
+		<string name="verify_zip_sig">Verifying ZIP signature...</string>
+		<string name="verify_zip_fail">ZIP signature verification failed!</string>
+		<string name="verify_zip_done">ZIP signature verified successfully.</string>
+		<string name="zip_corrupt">ZIP file is corrupt!</string>
+		<string name="no_md5">Vynechávání MD5: nalezen žádný MD5</string>
+		<string name="md5_fail">MD5 se neshoduje</string>
+		<string name="md5_match">MD5 souhlasí</string>
+		<string name="pid_signal">{1} proces skončil signálem: {2}</string>
+		<string name="pid_error">{1} proces skončil s chybou: {2}</string>
+		<string name="install_dumlock">Instalace HTC Dumlock do systému...</string>
+		<string name="dumlock_restore">Obnovování původního Boot...</string>
+		<string name="dumlock_reflash">Opětovná instalace recovery při spuštění...</string>
+		<string name="run_script">Spuštění {1} skriptu...</string>
+		<string name="split_backup">Rozdělování zálohy do více archivů...</string>
+		<string name="backup_error">Chyba vytvoření zálohy.</string>
+		<string name="restore_error">Během procesu obnovení došlo k chybě.</string>
+		<string name="split_thread">Rozdělení {1} ID podprocesu do archivu {2}</string>
+		<!-- These 2 items are saved in the data manager instead of resource manager, so %llu, etc is correct instead of {1} -->
+		<string name="file_progress">%llu ze %llu složky, %i%%</string>
+		<string name="size_progress">%lluMB ze %lluMB, %i%%</string>
+		<string name="decrypt_cmd">Pokus o dešifrování data oddílu pomocí příkazového řádku.</string>
+		<string name="base_pkg_err">Nepodařilo se načíst základní balíčky.</string>
+		<string name="simulating">SIMULATING ACTIONS</string>
+		<string name="backup_cancel">Záloha byla zrušena</string>
+		<string name="config_twrp">Konfigurace OrangeFox...</string>
+		<string name="config_twrp_err">Nepodařilo se nakonfigurovat OrangeFox s tímto kernelem.</string>
+		<string name="copy_log">Recovery log zkopírován do {1}.</string>
+		<string name="max_queue">Maximum ZIP queue reached!</string>
+		<string name="min_queue">Minimum ZIP queue reached!</string>
+		<string name="screenshot_saved">Snímek obrazovky byl uložen do {1}</string>
+		<string name="screenshot_err">Nepodařilo se zachytit snímek obrazovky!</string>
+		<string name="zip_wipe_cache">One or more ZIP requested a cache wipe -- Wiping cache now.</string>
+		<string name="and_sec_wipe_err">Nelze vymazat android secure</string>
+		<string name="dalvik_wipe_err">Nepodařilo se vymazat dalvik</string>
+		<string name="auto_gen">(Automaticky generovat)</string>
+		<string name="curr_date">(Aktuální datum)</string>
+		<string name="backup_name_len">Název zálohy je příliš dlouhý.</string>
+		<string name="backup_name_invalid">Název zálohy '{1}' obsahuje neplatný znak: '{1}'</string>
+		<string name="no_real_sdcard">This device does not have a real SD Card! Ruší se!</string>
+		<string name="cancel_sideload">Rušení ADB sideload...</string>
+		<string name="change_fs_err">Chyba při změně souborového systému.</string>
+		<string name="change_fs_hdr">Change File System</string>
+		<string name="theme_ver_err">Vlastní verze motivu neodpovídá verzi OrangeFoxu. Použití tématu zásob.</string>
+		<string name="up_a_level">..</string>
+
+		<!-- new-->
+		<string name="sel_color">Vyberte barvu</string>
+		<string name="s_color">Barva</string>
+		<string name="current_color">Souborový systém:</string>
+		<string name="show_cpu_temp_bar">Zobrazit CPU teplotu</string>
+		<string name="ts_inform">Informace</string>
+		<string name="sel_splash_png">Vyberte Splash PNG</string>
+		<string name="swipe_to_install">Přejeďte pro instalaci</string>
+		<string name="swipe_to_install_img">Chcete-li nainstalovat obraz, přetáhněte prstem</string>
+		<string name="sel_image_type">Vyberte typ image!</string>
+		<string name="zip_add_queue">Add to Queue</string>
+		<string name="part_fs_error_1">Možnosti oddílu nejsou</string>
+		<string name="part_fs_error_2">k dispozici pro tento oddíl!</string>
+		<string name="new_file_system">Nový Souborový systém</string>
+		<string name="adb_sideload_opt">Možnosti Sideload</string>
+		<string name="about_hdr">O programu</string>
+		<string name="author">Autor</string>
+		<string name="credits">Poděkování</string>
+		<string name="version">Verze</string>
+		<string name="set_password">Nastavit heslo</string>
+		<string name="verifying_pas">Ověření hesla</string>
+		<string name="dialog_offset_note">Vyberte hodnotu offsetu</string>
+		<string name="queue_no">#</string>
+		<string name="options_cptn">Nastavení</string>
+		<string name="flash_img_confirm">Soubor obrazu Flash</string>
+		<string name="also_wipes">Také vyčistí</string>
+		<string name="confirm_wipe_cptn">Potvrzením vyčistíte</string>
+		<string name="storage_cptn">Úložný prostor</string>
+		<string name="enter_password_restore">Heslo</string>
+		<string name="enter_password_cptn">Security</string>
+		<!-- added by fordownloads -->
+		<string name="fordowns_sl">Starting Sideload...</string>
+		<string name="fordowns_to">to</string>
+		<string name="dbg">Debug</string>
+		<string name="dbg_active">Debug menu activated!</string>
+		<string name="dbg_act">Action</string>
+		<string name="dbg_func">Function</string>
+		<string name="dbg_set">Set</string>
+		<string name="dbg_page">Page</string>
+		<string name="dbg_overlay">Overlay</string>
+		<string name="fm_none">None</string>
+		
+		<string name="cust_navbar_noug">Nougat</string>
+		<string name="cust_navbar_cls">Classic</string>
+		<string name="cust_navbar_accent">Accent</string>
+		<string name="cust_navbar_black">Black</string>
+		<string name="cust_navbar_white">Use white buttons</string>
+		<string name="cust_navbar_gray">Use gray buttons</string>
+		
+		<string name="fm_open">Open as...</string>
+		<string name="fm_open_text">Text file</string>
+		<string name="fm_open_ZIP">Záloha</string>
+		
+		<string name="fm_open_backup">Záloha</string>
+		<string name="fm_open_makezip">Compress</string>
+		<string name="fm_open_unpackzip">Unpack archive</string>
+		<string name="fm_open_image">Flashable image</string>
+		<string name="arc_type">Archive type</string>
+		<string name="arc_lvl">Compression level:</string>
+		<string name="arc_lvl_title">Compression</string>
+		
+		<string name="bkp_date">Add date</string>
+		<string name="bkp_gen">Generate backup name</string>
+		<string name="bkp_gen_whilebkp">Generate backup name while backing up</string>
+		<string name="bkp_quick">Quick Backup</string>
+		<string name="bkp_clear">Jazyk</string>
+		
+		<string name="language_cptn">Jazyk</string>
+		<string name="cust_oth">"Ostatní"</string>
+		
+		<string name="settings_general">Obecné</string>
+		<string name="settings_ui">Customization</string>
+		<string name="settings_screen">Display</string>
+		<string name="settings_time">Počkejte prosím...</string>
+		
+		<string name="lang_wait">Počkejte prosím...</string>
+		
+		<string name="settings_ui_status">Status bar</string>
+		<string name="settings_ui_battery">Show battery icon</string>
+		<string name="settings_ui_style">NavBar style</string>
+		<string name="settings_ui_color">NavBar background</string>
+		
+		<string name="settings_backup_qbkp_custom">Quick backup partitions</string>
+		
+		<string name="settings_backup_name">Backup name</string>
+		<string name="settings_backup_name_user">Do not change</string>
+		<string name="settings_backup_name_auto">Defined automatically</string>
+		<string name="settings_backup_name_auto_hide">While backing up</string>
+		
+		<string name="update_btn">Obsahuje jádro záznamu</string>
+		<string name="include_kernel_log">Obsahuje jádro záznamu</string>
+		
+		<string name="fm_books">Favorite folders</string>
+		<string name="fm_books_desc">Long press to edit this list</string>
+		<string name="fm_books_edit">Edit this list...</string>
+		<string name="fm_books_desc_edit">Long press to delete item</string>
+		<string name="fm_books_empty">(Empty)</string>
+		
+		<string name="fm_mkdir">Create folder</string>
+		<string name="fm_mkdir_folder">Folder name</string>
+		
+		<string name="fm_path">Enter path</string>
+		<string name="fm_path2">Path</string>
+		
+		<string name="no_os_title">Are you sure?</string>
+		<string name="no_os_subtitle">Nenainstalován žádný OS!</string>
+		
+		<string name="no_os1">Nenainstalován žádný OS! Are you sure you</string>
+		<string name="no_osrb">wish to reboot?</string>
+		<string name="no_ospo">wish to power off?</string>
+		<string name="no_osrb_recovery">wish to reboot to recovery?</string>
+		<string name="no_osrb_boot">wish to reboot to bootloader?</string>
+		<string name="no_osrb_down">wish to reboot to download mode?</string>
+		<string name="no_osrb_edl">wish to reboot to EDL mode?</string>
+		
+		<string name="areb_confirm">Reboot confirmation dialog</string>
+		<string name="areb_noos">When no OS installed</string>
+		<string name="opt_always">Always</string>
+		<string name="otp_never">Never</string>
+		
+		<string name="areb_off">Off</string>
+		
+		<string name="restoredialog_readonly">Never show mount system read-only dialog</string>
+		
+		<string name="offset_wrong">Wrong offset!</string>
+
+		<string name="new_key">Use new style for keyboard</string>
+		
+		<string name="bkp_nametitle">Backup name</string>
+		<string name="bkp_namesub">Úložný prostor</string>
+		
+		<string name="goto_storage">Úložný prostor</string>
+		
+		<string name="theme_apply">Updating theme...</string>
+		<string name="theme_fonts">Fonts</string>
+		<string name="theme_style">Style</string>
+		<string name="theme_accent">Accent</string>
+		<string name="theme_font_sel">Primary font</string>
+		<string name="theme_sec_font_sel">Secondary font</string>
+		
+		<string name="of">of</string>
+		
+		<string name="sph_sph">Splash</string>
+		
+		<string name="real">Informace</string>
+		<string name="info">Informace</string>
+		<string name="time_m">Změnit</string>
+		<string name="time_c">Změnit</string>
+		<string name="access">Přístup</string>
+		<string name="fm_sums">Checksum</string>
+		
+		<string name="use_fixed_font">Monospace font in terminal</string>
+
+		<string name="adb_backup_pc1">This backup will be</string>
+		<string name="adb_backup_pc2">saved on your PC</string>
+		
+		<string name="starting_aroma">Starting AromaFM...</string>
+		<string name="lang_set_wait">Changing language...</string>
+		<string name="installing_theme">Installing theme...</string>
+		
+		<string name="menu_btn">Data</string>
+		
+		<string name="data_backup">Data</string>
+		<string name="autostorage">Úložný prostor</string>
+		<string name="install_reboot">Rebooting in %tw_sleep% seconds</string>
+		<string name="cancel_reboot_btn">Přeskočit Digest generování během zálohování</string>
+		<string name="skip_digest_backup_chk" version="2">Přeskočit Digest generování během zálohování</string>
+		<string name="restore_digest_chk" version="2">Enable Digest verification of backups</string>
+		<string name="restore_enable_digest_chk" version="2">Chybějící soubory potřebné k dešifrování: {1}</string>
+		<string name="decrypt_data_vold_os_missing">Chybějící soubory potřebné k dešifrování: {1}</string>
+		<string name="generating_digest1" version="2">Generování Digest</string>
+		<string name="generating_digest2" version="2"> * Generování Digest...</string>
+		<string name="digest_created" version="2"> * Digest created.</string>
+		<string name="digest_error" version="2"> * Chyba součtu Digest.</string>
+		<string name="digest_compute_error" version="2"> * Chyba součtu Digest.</string>
+		<string name="verifying_digest" version="2">Ověření Digest</string>
+		<string name="skip_digest" version="2">Přeskočení Digest dle nastavení uživatele.</string>
+		<string name="decrypt_success_nodev">Data byla úspěšně exportována</string>
+		<string name="no_digest_found" version="2">MD5 se neshoduje u '{1}'. Zrušte zaškrtnutí políčka Povolit ověření Md5 k obnovení.</string>
+		<string name="digest_fail_match" version="2">MD5 se neshoduje u '{1}'.</string>
+		<string name="digest_matched" version="2">MD5 odpovídá za "{1}".</string>
+		<string name="digest_check_skip" version="2">Kontrola Md5 je vynechána</string>
+		<string name="digest_off" version="2">Neplatný formát zip souboru!</string>
+		<string name="invalid_zip_format">Neplatný formát zip souboru!</string>
+		<string name="check_for_digest" version="2">Kontrola Md5...</string>
+		<string name="no_digest" version="2">Vynechávání kontroly Digest: nenalezena žádná složka Digest</string>
+		<string name="digest_fail" version="2">Digest se neshoduje</string>
+		<string name="digest_match" version="2">Digest odpovídal</string>
+		<string name="password">Heslo</string>
+		<string name="boot_slot">Boot Slot</string>
+		<string name="boot_slot_a">SLOT A</string>
+		<string name="boot_slot_use_a">PŘEPNĚTE NA SLOT A</string>
+		<string name="boot_slot_b">SLOT B</string>
+		<string name="boot_slot_use_b">PŘEPNĚTE NA SLOT B</string>
+		<string name="changing_boot_slot">Změna bootovacího slotu</string>
+		<string name="changing_boot_slot_complete">Změna bootovacího slotu byla dokončena</string>
+		<string name="unable_set_boot_slot">Chyba při změně spouštěcího slotu bootloaderu na hodnotu {1}</string>
+		<string name="backup_storage_warning">Zálohy {1} nezahrnují žádné soubory ve vnitřním úložišti, například obrázky nebo stahování.</string>
+		<string name="sha2_chk">Použijte SHA2 pro hašování</string>
+		<string name="disabled">Disabled</string>
+		<string name="enabled">Enabled</string>
+		<string name="zip_compatible_err">Ověření inkrementálního podpisu balíčku...</string>
+		
+		
+		<!-- Console Messages -->
+		<string name="fox_incremental_ota_compatibility_chk">Ověření inkrementálního podpisu balíčku...</string>
+		<string name="fox_incremental_ota_compatibility_false">Přírůstkový balíček není s tímto ROM kompatibilní!</string>
+		<string name="fox_incremental_ota_compatibility_true">Přírůstkový balíček je kompatibilní</string>
+		<string name="fox_incremental_ota_status_enabled">Podpora MIUI Stav inkrementálního balíčku: Povoleno</string>
+		<string name="fox_incremental_ota_status_disabled">Podpora MIUI Přírůstkový stav balíčku: Zakázáno</string>
+		<string name="fox_incremental_package_detected">Detekovaný přírůstkový balíček '{1}'</string>
+		<string name="fox_survival_does_not_exist">OTA Survival neexistuje! Nejprve prosím nejprve přečtěte kompletní ROM!</string>
+		<string name="fox_install_detecting">Detekce aktuálního balíčku</string>
+		<string name="fox_install_standard_detected">- Zjištěný standardní balíček</string>
+		<string name="fox_install_miui_detected">- Zjištěný MIUI aktualizační balíček</string>
+		<string name="fox_zip_have_bootloader">Upozornění: Byla zjištěna opětovná instalace bootloaderu, která byla nazývána "{1}".</string>
+		<string name="fox_no_space_ota_survival">Nedostatek volného místa na interním úložišti pro vytvoření přežití OTA.</string>
+		<string name="fox_incremental_ota_res">OTA_RES - hotovo!</string>
+		<string name="fox_incremental_ota_res_run">Spuštěn proces OTA_RES...</string>
+		<string name="fox_incremental_ota_bak_run">Spuštěn proces OTA_RES...</string>
+		<string name="fox_incremental_ota_bak">OTA_BAK -- hotovo!</string>
+		<string name="fox_internal_fatal_i1">OrangeFox: FATAL ERROR! Nemůžete zálohovat vnitřní úložiště na sebe!</string>
+		<string name="fox_internal_fatal_i2">MUSÍTE změnit cíl zálohy na MicroSD / USB-OTG.</string>
+		<string name="fox_internal_q1">OrangeFox - interní úložiště - pečujte!</string>
+
+		<string name="copy_kernel_log">Zkopírován jádro záznamu do {1}</string>
+
+		<string name="of_run_process">Spuštění procesu "{1}"</string>
+		<string name="of_run_process_fail">Nelze dokončit proces '{1}'</string>
+		<string name="of_run_process_done">Dokončený proces "{1}"</string>
+		<string name="of_dm_verity">Úspěšně jste opravili DM-Verity</string>
+		<string name="of_dm_verity_off">DM-Verity není povoleno</string>
+		<string name="of_encryption">Úspěšně jste zakódovali nucené šifrování</string>
+		<string name="of_encryption_off">Nucené šifrování není povoleno</string>
+		<string name="of_fstab">Detekován fstab: '{1}'</string>
+
+		<string name="install_remlatest">Remove Latest</string>
+		
+		<string name="backups_remove_all">Smazat</string>
+		<string name="backups_remove">Smazat</string>
+		
+		<!-- OrangeFox Recovery - Pie Door theme -->
+
+		<string name="unpack">Unpack</string>
+		<string name="repack">Repack</string>
+
+		<string name="fox_save_load_aromafm_config_chk">Save/load AromaFM settings</string>
+		<string name="search_help">Search files and folders...</string>
+		
+		<string name="reboot_to_take_effect">Reboot to changes take effect</string>
+		<string name="fox_modules_hdr">Fox Addons</string>
+		<string name="fox_modules_inst">Install addon</string>
+		<string name="backup_short_hdr">New Backup</string>
+		<string name="backups_wat">Nainstalovat</string>
+		
+		<string name="module_install">Nainstalovat</string>
+		<string name="module_uninstall">Uninstall</string>
+		<string name="remove_of_files">Remove OrangeFox files</string>
+		<string name="module_initd">Enable init.d support</string>
+		<string name="module_cam">Odstranit heslo</string>
+		<string name="module_pass">Odstranit heslo</string>
+		<string name="fox_files_not_exist_1">Složka neexistuje!</string>
+		<string name="fox_files_not_exist_2">Znovu obnovte recovery</string>
+		<string name="fox_files_not_exist_3">pomocí instalačního zipu.</string>
+
+		<!-- Customization -->
+		<string name="cust_new_ota_screen">Show less detail while running OTA updates</string>
+		<string name="fm_icons_simple">Make file icons bigger</string>
+		<string name="theme_engine_update">Apply changes and reload?</string>
+		<string name="theme_engine_reset">Téma</string>
+		<string name="apply_btn">Apply</string>
+		<string name="theme_hdr">Téma</string>
+		
+		<string name="font_small">Small</string>
+		<string name="font_norm">Normal</string>
+		<string name="font_big">Big</string>
+		<string name="font_size">Font size</string>
+		<string name="cust_autoapply">Apply theme without confirmation</string>
+		<string name="cust_expand_list">Expand lists automatically</string>
+		
+		<string name="status_battery_style">Battery style</string>
+		<string name="status_battery_circle">Circle</string>
+		<!-- Status bar -->
+		<string name="status_clock_pos">Clock position</string>
+		<string name="status_clock_left">Left</string>
+		<string name="status_clock_center">Center</string>
+		<string name="status_clock_right">Right</string>
+		<string name="dark_title">Make title darker</string>
+		<string name="separate_status">Make status bar darker</string>
+		<string name="noshadow_title">Show status bar shadow</string>
+		<string name="hide_notch">Hide notch</string>
+		<!-- NavBar -->
+		<string name="navbar_title">Navigation Bar</string>
+		<string name="navbar_onscreen">Enable NavBar</string>
+		<string name="show_slideout">Show console button</string>
+		<string name="dark_nav">Dark</string>
+		<!-- Keyboard -->
+		<string name="keyboard_title">Keyboard</string>
+		<string name="keyboard_newstyle">Refreshed style</string>
+		<string name="keyboard_nums">Odemknout</string>
+		<string name="key_swipe">Swipe on keyboard to delete all</string>
+		<!-- Lockscreen -->
+		<string name="lockscreen_unlock">Odemknout</string>
+		<string name="lockscreen_title">Lockscreen</string>
+		<string name="lockscreen_style">Lockscreen style</string>
+		<string name="lockscreen_clock">Clock</string>
+		<string name="lockscreen_icon">Icon</string>
+		<string name="lockscreen_btn">Replace slider with button</string>
+		<string name="lockscreen_info">Show battery and CPU info</string>
+		<string name="lockscreen_quicklock">Tapping the lock icon locks the screen</string>
+
+		<!-- OTA working page -->
+		<string name="ota_console_title">Installing OTA...</string>
+		<string name="ota_simple_title">Updating...</string>
+		<string name="ota_simple_log_btn">Log</string>
+
+		<string name="battery">Battery</string>
+
+		<!-- Pass -->
+		<string name="pass_gk">Gesture key</string>
+		<string name="pass_classic">Text password</string>
+		<string name="pass_dis">Disable password</string>
+		<string name="pass_pin">PIN Code</string>
+		
+		<string name="locked_info_1">Použití hlavních funkcí obnovení</string>
+		<string name="locked_info_2">musíte nejprve zadat heslo.</string>
+		<string name="locked_info_3">Použití hlavních funkcí obnovení</string>
+		<string name="locked_info_4">musíte nejprve zadat heslo.</string>
+		<string name="locked_info_4_gk">you first need to draw your gesture key.</string>
+		
+		<string name="new_pass_info_1">Enter new password to</string>
+		<string name="new_pass_info_1_gk">přístup.</string>
+		<string name="new_pass_info_2">OrangeFox against unauthorized</string>
+		<string name="new_pass_info_3">přístup.</string>
+		<string name="new_pass_info_4">You need to enter your password twice.</string>
+		<string name="new_pass_info_4_gk">You need to draw gesture key twice.</string>
+		<string name="new_pass_info_4_2">Enter your password again.</string>
+		<string name="new_pass_info_4_2_gk">Draw gesture key again.</string>
+		
+		<string name="pass_page_block">Current blocking method</string>
+		<string name="pass_page_block_inf1">You can sleep better knowing</string>
+		<string name="pass_page_block_inf2">that you are protected.</string>
+		<string name="pass_page_select">Select password type</string>
+		
+		<!-- Utilities -->
+		<string name="more">More...</string>
+		<string name="hide">Hide</string>
+		<string name="part_menu_hdr">Manage Partitions</string>
+		<string name="run_adb_startup">Run ADB on startup</string>
+
+		<!-- MMGUI -->
+		<string name="mm_module_active">Active</string>
+		<string name="mm_module_mount">Auto mount</string>
+		<string name="mm_modules">Modules</string>
+		<string name="mm_ver">Magisk Version</string>
+		<string name="mm_mod_ver">Module Version</string>
+		<string name="magisk_not_found">Magisk not found!</string>
+		<string name="magisk_not_found_1">Do you wanna go to Fox Addons</string>
+		<string name="magisk_not_found_2">Povolit OTA</string>
+		<string name="magisk_not_found_3"/>
+		
+		<!-- MIUI OTA -->
+		<string name="fox_ota_settings">OTA Settings</string>
+		<string name="fox_ota_on">Povolit OTA</string>
+		
+		<!-- About -->
+		<string name="abt_maintainer">Správce</string>
+		<string name="abt_fd">Theme creator &amp; designer</string>
+		<string name="abt_bork">CEO, Site &amp; UI</string>
+		<string name="abt_dj">Build system, C++</string>
+		<string name="abt_front">Frontend developer</string>
+		<string name="abt_back">Backend developer</string>
+		<string name="abt_device">Poděkování</string>
+		<string name="version_twrp">TWRP Version</string>
+		<string name="build_type">Build type</string>
+		<string name="abt_credits">Poděkování</string>
+		<string name="abt_trans">Translators</string>
+		<string name="abt_changes">Change Log</string>
+		<string name="abt_main_shrt">Správce</string>
+		<string name="welcome_msg">Welcome to OrangeFox!</string>
+		<string name="welcome_msg2"><!-- If welcome message is too big in your lang, use this string --></string>
+		
+		<!-- Symlink -->
+		<string name="symlink_dir_name">Link to folder</string>
+		<string name="symlink_file_name">Link to file</string>
+		<string name="symlink_broken_name">Broken link</string>
+		<string name="symlink_folder">Open real folder</string>
+		<string name="symlink_file">Open real file</string>
+		
+		<!-- Files -->
+		<string name="files_show_hidden">Show hidden files in Files</string>
+		<string name="files_auto_open">Auto detect file type in Files</string>
+		<string name="file_read_error">Unable to open file!</string>
+		<string name="subs_wipe">Wipe Substratum Overlays</string>
+		<string name="sort_ex_all">All files</string>
+		<string name="sort_ex_img">IMG files</string>
+		<string name="sort_ex_zip">ZIP files</string>
+		<string name="aroma_help">Press again to start AromaFM...</string>
+
+		<!-- this error will shown when recovery cannot create backup folder
+		 -->
+		<string name="backups_rw_error_1">Storage mounted</string>
+		<string name="backups_rw_error_2">as read only!</string>
+
+		<!-- App mgr -->
+		<string name="appmgr_apps">Apps</string>
+		<string name="appmgr_title">App Manager</string>
+
+		<!-- Perfomance -->
+		<string name="perf_title">Vynutit rychlé nabíjení</string>
+		<string name="perf_conf_mode">Recovery perfomance mode</string>
+		<string name="perf_conf_balance">Balanced</string>
+		<string name="perf_conf_high">High perfomance</string>
+		<string name="perf_conf_batt">Agresivní deaktivace základních obnov</string>
+
+		<string name="fox_led_title">Podpora MIUI přírůstkové OTA</string>
+		<string name="fox_use_green_led">Zahrnout systém v přežití OTA</string>
+		<string name="fox_boot_fastcharge">Vynutit rychlé nabíjení</string>
+
+		<!-- OTA -->
+		<string name="fox_ota_msg_ready">Zakázat DM-Verity</string>
+		<string name="fox_ota_msg_custom">Zakázat nucené šifrování</string>
+		<string name="fox_ota_msg_reflash">Zabránit automatickému restartování po instalaci OTA</string>
+		<string name="fox_advanced_stock_recovery">Agresivní deaktivace základních obnov</string>
+		<string name="fox_support_miui_ota_chk">Podpora MIUI přírůstkové OTA</string>
+		<string name="fox_include_system_survival_chk">Zahrnout systém v přežití OTA</string>
+		<string name="fox_verify_incremental_ota_signature_chk">Přírůstkové OTA ověření podpisu</string>
+		<string name="fox_dmverity_chk">Zakázat DM-Verity</string>
+		<string name="fox_forced_encryption_chk">Zakázat nucené šifrování</string>
+		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Zabránit automatickému restartování po instalaci OTA</string>
+		<string name="of_ota_reboot_disabled">OTA update succeeded. You disabled auto-reboot. Returning control to you.</string>
+	</resources>
+</language>

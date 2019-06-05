@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <language>
-	<display>Deutsch</display>
+	<display>German</display>
 
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
@@ -33,7 +33,7 @@
 		<string name="sort_by_size_asc">Größe aufsteigend</string>
 		<string name="sort_by_name_desc">Name absteigend</string>
 		<string name="sort_by_date_desc">Datum absteigend</string>
-		<string name="sort_by_size_desc">Größe absteigend</string>
+		<string name="sort_by_size_desc">Größe aufsteigend</string>
 		<string name="install_btn">Installieren</string>
 		<string name="wipe_btn">Löschen</string>
 		<string name="backup_btn">Backups</string>
@@ -49,7 +49,7 @@
 		<string name="install_image_btn">IMAGE installieren</string>
 		<string name="install_select_file_hdr">Datei auswählen</string>
 		<string name="install_select_file_btn">Datei auswählen</string>
-		<string name="adb_sideload_btn">ADB Sideload</string>
+		<string name="adb_sideload_btn">ADB &amp; Sideload</string>
 		<string name="select_storage_hdr">Speicher auswählen</string>
 		<string name="select_storage_btn">Speicher auswählen</string>
 		<string name="queue_hdr">Queue</string>
@@ -62,7 +62,7 @@
 		<string name="inject_twrp_chk">TWRP nach der Installation starten</string>
 		<string name="install_reboot_chk">Nach Abschluss der Installation neu starten</string>
 		<string name="options_hdr">Optionen</string>
-		<string name="zip_queue">Warteschlange</string>
+		<string name="zip_queue">Queue</string>
 		<string name="install_zip_count_hdr">Datei %tw_zip_index% von %tw_zip_queue_count% wird installiert</string>
 		<string name="working">Bitte warten...</string>
 		<string name="failed">Fehlgeschlagen</string>
@@ -119,7 +119,7 @@
 		<string name="part_removable">Entfernbar</string>
 		<string name="part_yes">Ja</string>
 		<string name="part_no">Nein</string>
-		<string name="part_size">Größe absteigend</string>
+		<string name="part_size">Größe aufsteigend</string>
 		<string name="part_used">Verbraucht</string>
 		<string name="part_free">Verfügbar</string>
 		<string name="part_backup_size">Backup-Größe</string>
@@ -188,7 +188,7 @@
 		<string name="unmount_btn">Abhängen</string>
 		<string name="rb_system_btn">System</string>
 		<string name="rb_poweroff_btn">Ausschalten</string>
-		<string name="rb_recovery_btn">Wiederherstellen</string>
+		<string name="rb_recovery_btn">Recovery</string>
 		<string name="rb_bootloader_btn">Bootloader</string>
 		<string name="rb_theme">Design</string>
 		<string name="rb_download_btn">Download</string>
@@ -593,7 +593,8 @@
 		<string name="also_wipes">Auch Löschen</string>
 		<string name="confirm_wipe_cptn">Bestätigen Sie das Löschen</string>
 		<string name="storage_cptn">Speicher</string>
-		<string name="enter_password_cptn">Passwort</string>
+		<string name="enter_password_restore">Passwort</string>
+		<string name="enter_password_cptn">Sideload wird gestartet...</string>
 		<!-- added by fordownloads -->
 		<string name="fordowns_sl">Sideload wird gestartet...</string>
 		<string name="fordowns_to">an</string>
@@ -686,7 +687,7 @@
 		
 		<string name="areb_off">Aus</string>
 		
-		<string name="restoredialog_readonly">Nie Mount-System Read-Only Dialogfeld anzeigen</string>
+		<string name="restoredialog_readonly">Nie Mount System nur-Lese Dialogfeld anzeigen</string>
 		
 		<string name="offset_wrong">Falscher Offset!</string>
 
@@ -726,7 +727,7 @@
 		
 		<string name="menu_btn">Menü</string>
 		
-		<string name="data_backup">Daten</string>
+		<string name="data_backup">Speicher</string>
 		<string name="autostorage">Speicher</string>
 		<string name="install_reboot">Neustart in %tw_sleep% Sekunden</string>
 		<string name="cancel_reboot_btn">Neustart abbrechen</string>
@@ -830,10 +831,10 @@
 		<string name="fox_files_not_exist_3">Recovery .zip flashen.</string>
 
 		<!-- Customization -->
-		<string name="cust_new_ota_screen">Einfacher Bildschirm während OTA</string>
+		<string name="cust_new_ota_screen">Dateisymbole vergrößern</string>
 		<string name="fm_icons_simple">Dateisymbole vergrößern</string>
 		<string name="theme_engine_update">Änderungen anwenden/neu laden?</string>
-		<string name="theme_engine_reset">Thema zurücksetzen und neu laden?</string>
+		<string name="theme_engine_reset">Design</string>
 		<string name="apply_btn">Anwenden</string>
 		<string name="theme_hdr">Design</string>
 		
@@ -912,7 +913,7 @@
 		<string name="more">Mehr...</string>
 		<string name="hide">Ausblenden</string>
 		<string name="part_menu_hdr">Partitionen verwalten</string>
-		<string name="run_adb_startup">Führen Sie ADB beim Start aus</string>
+		<string name="run_adb_startup">Module</string>
 
 		<!-- MMGUI -->
 		<string name="mm_module_active">Aktiv</string>
@@ -930,7 +931,7 @@
 		<string name="fox_ota_on">Aktivieren Sie OTA</string>
 		
 		<!-- About -->
-		<string name="abt_maintainer">Maintainer</string>
+		<string name="abt_maintainer">Betreuer</string>
 		<string name="abt_fd">Thema-Ersteller &amp; Designer</string>
 		<string name="abt_bork">CEO, Seite &amp; UI</string>
 		<string name="abt_dj">Build System, C++</string>
@@ -943,7 +944,7 @@
 		<string name="abt_trans">Übersetzer</string>
 		<string name="abt_changes">Changelog</string>
 		<string name="abt_main_shrt">Betreuer</string>
-		<string name="welcome_msg">Willkommen zu OrangeFox!</string>
+		<string name="welcome_msg">Echten Ordner öffnen</string>
 		<string name="welcome_msg2"><!-- If welcome message is too big in your lang, use this string --></string>
 		
 		<!-- Symlink -->
@@ -962,6 +963,11 @@
 		<string name="sort_ex_img">IMG Dateien</string>
 		<string name="sort_ex_zip">ZIP Dateien</string>
 		<string name="aroma_help">Erneut Drücken, um AromaFM zu starten...</string>
+
+		<!-- this error will shown when recovery cannot create backup folder
+		 -->
+		<string name="backups_rw_error_1">Hohe Leistung</string>
+		<string name="backups_rw_error_2">Energie sparen</string>
 
 		<!-- App mgr -->
 		<string name="appmgr_apps">Apps</string>
@@ -989,6 +995,6 @@
 		<string name="fox_dmverity_chk">Deaktivieren Sie DM-Verity</string>
 		<string name="fox_forced_encryption_chk">Deaktivieren Sie die erzwungene Verschlüsselung</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Verhindert den automatischen Neustart nach der Installation von OTA</string>
-		<string name="of_ota_reboot_disabled">OTA-Update erfolgreich. Sie haben den automatischen Neustart deaktiviert. Übergabe der Kontrolle an Sie.</string>
+		<string name="of_ota_reboot_disabled">OTA update succeeded. You disabled auto-reboot. Returning control to you.</string>
 	</resources>
 </language>

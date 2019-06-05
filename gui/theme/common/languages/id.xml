@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+	<display>Inggris</display>
+
+	<resources>
+		<!-- Font overrides - only change these if your language requires special characters -->
+
+		<!-- Partition display names -->
+		<string name="system">Sistem</string>
+		<string name="system_image">System Image</string>
+		<string name="vendor">Vendor</string>
+		<string name="vendor_image">Vendor Image</string>
+		<string name="boot">Boot</string>
+		<string name="recovery">Recovery</string>
+		<string name="cache">Cache</string>
+		<string name="data">Data</string>
+		<string name="sdcard">Kartu SD</string>
+		<string name="internal">Penyimpanan Internal</string>
+		<string name="microsd">Kartu Micro SD</string>
+		<string name="usbotg">USB OTG</string>
+		<string name="android_secure">Keamanan Android</string>
+		<string name="dalvik">Dalvik / ART Cache</string>
+		<!-- This is a rarely used partition on a Micro SD card for a very old app2sd system -->
+		<string name="sdext">SD-EXT</string>
+		<string name="adopted_data">Data Teradopsi</string>
+		<string name="adopted_storage">Penyimpanan Teradopsi</string>
+
+		<!-- GUI XML strings -->
+		<string name="twrp_watch_header">OrangeFox %fox_actual_build%</string>
+		<string name="cpu_temp">CPU: %tw_cpu_temp% &#xB0;C</string>
+		<string name="sort_by_name_asc">Nama</string>
+		<string name="sort_by_date_asc">Tanggal</string>
+		<string name="sort_by_size_asc">Ukuran</string>
+		<string name="sort_by_name_desc">Nama</string>
+		<string name="sort_by_date_desc">Tanggal</string>
+		<string name="sort_by_size_desc">Ukuran</string>
+		<string name="install_btn">Pasang</string>
+		<string name="wipe_btn">Bersihkan</string>
+		<string name="backup_btn">Cadangkan</string>
+		<string name="restore_btn">Pulihkan</string>
+		<string name="mount_btn">Mount</string>
+		<string name="file_manager_btn">Berkas</string>
+		<string name="advanced_btn">Tingkat lanjut</string>
+		<string name="reboot_btn">Mulai ulang</string>
+		<string name="copy_log_btn">Salin Log ke kartu SD</string>
+		<string name="install_zip_hdr">Pasang Zip</string>
+		<string name="install_zip_btn">Pasang Zip</string>
+		<string name="install_image_hdr">Pasang Image</string>
+		<string name="install_image_btn">Instal IMAGE</string>
+		<string name="install_select_file_hdr">Pilih Berkas</string>
+		<string name="install_select_file_btn">Pilih Berkas</string>
+		<string name="adb_sideload_btn">ADB &amp; Sideload</string>
+		<string name="select_storage_hdr">Pilih Penyimpanan</string>
+		<string name="select_storage_btn">Pilih Penyimpanan</string>
+		<string name="queue_hdr">Antrian</string>
+		<string name="raised_clearqueue_btn">Hapus antrian</string>
+		<string name="raised_viewqueue_btn">Lihat urutan</string>
+		<string name="zip_queue_count">%tw_zip_queue_count% dari maks 10 berkas sudah diantrikan</string>
+		<string name="folder">Direktori</string>
+		<string name="file">Berkas</string>
+		<string name="zip_sig_chk">Verifikasi tanda tangan ZIP</string>
+		<string name="inject_twrp_chk">Suntikkan TWRP setelah memasang</string>
+		<string name="install_reboot_chk">Mulai ulang setelah pemasangan selesai</string>
+		<string name="options_hdr">Pilihan</string>
+		<string name="zip_queue">Urutan</string>
+		<string name="install_zip_count_hdr">Memasang berkas %tw_zip_index% dari %tw_zip_queue_count%</string>
+		<string name="working">Sedang Bekerja...</string>
+		<string name="failed">Gagal</string>
+		<string name="successful">Berhasil</string>
+		<string name="wipe_cache_btn">Hapus Cache</string>
+		<string name="reboot_system_btn">Sistem reboot</string>
+		<string name="reboot_recovery_btn">Reboot ke Recovery</string>
+		<string name="install_sel_target">Pilih Target Partisi</string>
+		<string name="flash_image_select">Partisi</string>
+		<string name="flashing_image">Memasang Image...</string>
+		<string name="image_flashed">Image Terpasang</string>
+		<string name="wipe_cache_dalvik_confirm">Hapus Cache &amp; Dalvik?</string>
+		<string name="wipe_dalvik_confirm">Menghapus dalvik</string>
+		<string name="wiping_cache_dalvik">Menghapus Cache &amp; Dalvik...</string>
+		<string name="wipe_cache_dalvik_complete">Menghapus Cache &amp; Dalvik telah selesai</string>
+		<string name="cache_dalvik_done">Menghapus Cache &amp; Dalvik telah selesai</string>
+		<string name="swipe_wipe">Usap untuk Hapus</string>
+		<string name="rebooting">Memulai Ulang...</string>
+		<string name="swipe_reboot">Usap untuk Memulai Ulang</string>
+		<string name="confirm_action">Konfirmasi Tindakan</string>
+		<string name="cancel_btn">Batal</string>
+		<string name="wipe_hdr">Bersihkan</string>
+		<string name="factory_reset_hdr">Reset Pabrik</string>
+		<string name="factory_reset1">Bersihkan Data, Cache, dan Dalvik</string>
+		<string name="factory_reset2">(tidak termasuk penyimpanan internal)</string>
+		<string name="factory_reset3">Sebagian besar waktu ini</string>
+		<string name="factory_reset4">penghapusan yang hanya Anda butuhkan.</string>
+		<string name="factory_resetting">Membersihkan Data, Cache, dan Dalvik...</string>
+		<string name="advanced_wipe_hdr">Bersihkan Tingkat Lanjut</string>
+		<string name="advanced_wipe_btn">Bersihkan Tingkat Lanjut</string>
+		<string name="wipe_enc_confirm">Hapus Enkripsi dari Data?</string>
+		<string name="formatting_data">Memformat Data ...</string>
+		<string name="swipe_format_data">Usap untuk Format Data</string>
+		<string name="factory_reset_complete">Reset Pabrik Telah Selesai</string>
+		<string name="sel_part_hdr">Pilih Partisi</string>
+		<string name="wipe_sel_confirm">Menghapus partisi yang dipilih?</string>
+		<string name="wiping_part">Membersihkan Partisi...</string>
+		<string name="wipe_complete">Pembersihan telah selesai</string>
+		<string name="format_data_hdr">Format Data</string>
+		<string name="format_data_btn">Format Data</string>
+		<string name="format_data_ptr1">Format Data akan menghapus semua aplikasi Anda,</string>
+		<string name="format_data_ptr2">backup, gambar, video, media, dan</string>
+		<string name="format_data_ptr3">akan menghapus enkripsi pada penyimpanan internal.</string>
+		<string name="format_data_adopted">Termasuk Penyimpanan yang Teradopsi</string>
+		<string name="format_data_undo">Hal Ini tidak dapat dibatalkan.</string>
+		<string name="format_data_complete">Format Data selesai</string>
+		<!-- Translator note: the word "yes" must remain English! -->
+		<string name="yes_continue">Ketik "ya" untuk konfirmasi</string>
+		<string name="part_opt_hdr">Tipe partisi</string>
+		<string name="file_sys_opt">Opsi Partisi</string>
+		<string name="part_mount_point">Mount Point</string>
+		<string name="part_curr_fs">File system</string>
+		<string name="part_present">Persembahkan</string>
+		<string name="part_removable">Removable</string>
+		<string name="part_yes">Ya</string>
+		<string name="part_no">Tidak</string>
+		<string name="part_size">Ukuran</string>
+		<string name="part_used">Digunakan</string>
+		<string name="part_free">Bebas</string>
+		<string name="part_backup_size">Ukuran Pencadangan</string>
+		<string name="resize_btn">Mengubah ukuran FS</string>
+		<string name="resize_confirm">Partisi pemulihan</string>
+		<string name="resizing">Mengubah Ukuran...</string>
+		<string name="resize_complete">Ubah Ukuran telah selesai</string>
+		<string name="swipe_resize">Usap untuk Ubah Ukuran</string>
+		<string name="repair_btn">Perbaiki FS</string>
+		<string name="repair_confirm">Partisi pemulihan</string>
+		<string name="repairing">Memperbaiki...</string>
+		<string name="repair_complete">Perbaiki telah selesai</string>
+		<string name="swipe_repair">Usap untuk Perbaiki</string>
+		<string name="change_fs_btn">Ganti FS</string>
+		<string name="change_fs_warn1">Beberapa ROMs atau kernel mungkin tidak support</string>
+		<string name="change_fs_warn2">beberapa berkas sistem. Di lanjutkan dengan hati - hati!</string>
+		<string name="change_fs_confirm">Ganti FS</string>
+		<string name="formatting">Formatting...</string>
+		<string name="format_complete">Format telah selesai</string>
+		<string name="swipe_change_fs">Usap untuk mengganti</string>
+		<string name="back_btn">Kembali</string>
+		<string name="wipe_enc_btn">Hapus enkripsi</string>
+		<string name="swipe_factory_reset">Usap untuk Reset Pabrik</string>
+		<string name="backup_hdr">Cadangkan</string>
+		<string name="encryption_hdr">Nyalakan Enkripsi</string>
+		<string name="name">Nama</string>
+		<string name="enable_backup_comp_chk">Menyalakan kompresi</string>
+		<string name="skip_md5_backup_chk">Lewati MD5 generation saat mencadangkan</string>
+		<string name="disable_backup_space_chk">Matikan cek bebas ruang sebelum mencadangkan</string>
+		<string name="swipe_backup">Usap untuk mencadangkan</string>
+		<string name="backup_name_exists">Cadangan dengan nama itu sudah ada!</string>
+		<string name="pass_not_match">Sandi tidak cocok!</string>
+		<string name="partitions">Partisi</string>
+		<string name="progress">Proses</string>
+		<string name="backup_complete">Mencadangkan selesai</string>
+		<string name="restore_hdr">Cadangkan</string>
+		<string name="restore_backup_hdr">Restore Pencadangan</string>
+		<string name="sel_backup_hdr">Pilih cadangan</string>
+		<string name="restore_dec_fail">Password salah, ulangi kembali!</string>
+		<string name="del_backup_confirm">Hapus cadangan?</string>
+		<string name="del_backup_confirm2">Hal Ini tidak dapat dibatalkan!</string>
+		<string name="deleting_backup">Menghapus cadangan...</string>
+		<string name="backup_deleted">Cadangan terhapus</string>
+		<string name="swipe_delete">Usap untuk menghapus</string>
+		<string name="restore_backup_date">Tanggal cadangan</string>
+		<string name="restore_md5_chk">Cek MD5 dari berkas cadangan</string>
+		<string name="restore_enable_md5_chk">Nyalakan MD5 verifikasi dari berkas cadangan</string>
+		<string name="restore_complete">Mengembalikan telah selesai</string>
+		<string name="swipe_restore">Usap untuk Mengembalikan</string>
+		<string name="rename_backup_hdr">Ganti nama cadangan</string>
+		<string name="rename_backup_confirm">Ganti nama Cadangan?</string>
+		<string name="rename_backup_confirm2">Hal Ini tidak dapat dibatalkan!</string>
+		<string name="renaming_backup">Menggantin nama Cadangan...</string>
+		<string name="rename_backup_complete">Ganti Nama Cadangan Selesai</string>
+		<string name="swipe_to_rename">Usap untuk Ganti Nama</string>
+		<string name="mount_hdr">Mount</string>
+		<string name="mount_sys_ro_chk">Mount sistem partisi read-only</string>
+		<string name="decrypt_data_btn">Dekripsi data</string>
+		<string name="disable_mtp_btn">Nonaktifkan MTP</string>
+		<string name="enable_mtp_btn">Aktifkan MTP</string>
+		<string name="usb_storage_hdr">Penyimpana USB</string>
+		<string name="usb_storage_btn">Penyimpana USB</string>
+		<string name="usb_stor_mnt1">Penyimpanan USB terbuka</string>
+		<string name="usb_stor_mnt2">Pastikan untuk menghapus perangkat Anda dengan aman</string>
+		<string name="usb_stor_mnt3">dari komputer Anda sebelum di unmounting!</string>
+		<string name="unmount_btn">Melepas</string>
+		<string name="rb_system_btn">Sistem</string>
+		<string name="rb_poweroff_btn">Matikan Daya</string>
+		<string name="rb_recovery_btn">Pemulihan</string>
+		<string name="rb_bootloader_btn">Bootloader</string>
+		<string name="rb_theme">Tema</string>
+		<string name="rb_download_btn">Download</string>
+		<string name="rb_edl_btn">Edl</string>
+		<string name="turning_off">Menonaktifkan...</string>
+		<string name="swipe_power_off">Usap untuk Matikan daya</string>
+		<string name="sys_ro">Sistem Partisi</string>
+		<string name="sys_ro_hdr">Sistem Partisi tidak termodifikasi</string>
+		<string name="sys_rop1">TWRP dapat meninggalkan sistem partisi anda</string>
+		<string name="sys_rop2">tidak dimodifikasi untuk mempermudah Anda</string>
+		<string name="sys_rop2a">ambil pembaruan resmi.</string>
+		<string name="sys_rop3">TWRP tidak akan mampu mencegah</string>
+		<string name="sys_rop4">ROM stok dari menggantikan TWRP dan.</string>
+		<string name="sys_rop5">Instalasi zip atau operasi ADB</string>
+		<string name="sys_rop6">masih dapat memodifikasi partisi sistem.</string>
+		<string name="sys_ro_never_show_chk">Jangan pernah tampilkan pesan ini lagi</string>
+		<string name="sys_ro_keep_ro_btn">Tetap Hanya-Baca</string>
+		<string name="swipe_allow_mod">Geser untuk Mengizinkan Modifikasi</string>
+		<string name="settings_hdr">Setelan</string>
+		<string name="settings_cptn">Umum</string>
+		<string name="use_rmrf_chk">Gunakan rm -rf daripada memformat</string>
+		<string name="use24clock_chk">Gunakan jam 24 jam</string>
+		<string name="rev_navbar_chk">Tata letak navbar terbalik</string>
+		<string name="simact_chk">Simulasikan aksi untuk pengujian tema</string>
+		<string name="simfail_chk">Simulasikan kegagalan untuk tindakan</string>
+		<string name="sel_tz_list">Zona Waktu</string>
+		<string name="dialog_reset_theme_hdr">Setel ulang ke default</string>
+		<!-- Translator note: if it does not make sense to translate the locations or if it makes more sense,
+				feel free to change the location listed or drop the location entirely and just call it UTC -6 -->
+		<string name="utcm11">(UTC -11) Samoa, Midway Island</string>
+		<string name="utcm10">(UTC -10) Hawaii</string>
+		<string name="utcm9">(UTC -9) Alaska</string>
+		<string name="utcm8">(UTC -8) Waktu Pasifik</string>
+		<string name="utcm7">(UTC -7) Waktu Gunung</string>
+		<string name="utcm6">(UTC -6) Waktu Tengah</string>
+		<string name="utcm5">(UTC -5) Waktu Bagian Timur</string>
+		<string name="utcm4">(UTC -4) Waktu Atlantik</string>
+		<string name="utcm3">(UTC -3) Brasil, Buenos Aires</string>
+		<string name="utcm2">(UTC -2) Pertengahan Atlantik</string>
+		<string name="utcm1">(UTC -1) Azores, Cape Verde</string>
+		<string name="utc0">(UTC 0) London, Dublin, Lisbon</string>
+		<string name="utcp1">(UTC +1) Berlin, Brussels, Paris</string>
+		<string name="utcp2">(UTC +2) Athena, Istanbul, Afrika Selatan</string>
+		<string name="utcp3">(UTC +3) Moskow, Baghdad</string>
+		<string name="utcp4">(UTC +4) Abu Dhabi, Tbilisi, Muscat</string>
+		<string name="utcp5">(UTC +5) Yekaterinburg, Islamabad</string>
+		<string name="utcp6">(UTC +6) Almaty, Dhaka, Colombo</string>
+		<string name="utcp7">(UTC +7) Bangkok, Hanoi, Jakarta</string>
+		<string name="utcp8">(UTC +8) Beijing, Singapura, Hong Kong</string>
+		<string name="utcp9">(UTC +9) Tokyo, Seoul, Yakutsk</string>
+		<string name="utcp10">(UTC +10) Australia Timur, Guam</string>
+		<string name="utcp11">(UTC +11) Vladivostok, Kepulauan Solomon</string>
+		<string name="utcp12">(UTC +12) Auckland, Wellington, Fiji</string>
+		<string name="tz_offset_hdr">Time Offset</string>	
+		<string name="tz_offset">Offset</string>
+		<string name="sel_tz_offset">Pilih Offset (biasanya 0): %tw_time_zone_guioffset%</string>
+		<string name="tz_offset_0">0</string>
+		<string name="tz_offset_15">15</string>
+		<string name="tz_offset_30">30</string>
+		<string name="tz_offset_45">45</string>
+		<string name="use_dst_chk">Gunakan daylight savings time (DST)</string>
+		<string name="curr_tz">Zona Waktu Saat Ini: %tw_time_zone%</string>
+		<string name="curr_tz_s">Zona Waktu Saat Ini:</string>
+		<string name="set_tz_btn">Tetapkan zona waktu</string>
+		<string name="settings_screen_cptn">Pengaturan Layar</string>
+		<string name="settings_screen_timeout_cptn">Batas waktu mati</string>
+		<string name="settings_screen_timeout_cptn2">Batas Waktu:</string>
+		<string name="timeout_unit">detik</string>
+		<string name="enable_timeout_chk">Aktifkan batas waktu layar</string>
+		<string name="screen_to_na">Pengaturan waktu habis layar tidak tersedia</string>
+		<string name="rotation_chk">Rotasi</string>
+		<string name="screen_bright_slider">Kecerahan: %tw_brightness_pct%%</string>
+		<string name="screen_bright_na">Pengaturan kecerahan tidak tersedia</string>
+		<string name="vibration_hdr">Getaran</string>
+		<string name="button_vibration_hdr">Getaran Tombol tidak aktif</string>
+		<string name="kb_vibration_hdr">Getaran Tombol tidak aktif</string>
+		<string name="act_vibration_hdr">Getaran Tombol tidak aktif</string>
+		<string name="button_vibration">Tombol Getaran:</string>
+		<string name="kb_vibration">Getaran Keyboard:</string>
+		<string name="act_vibration">Aksi Getaran:</string>
+		<string name="advanced_hdr">Tingkat Lanjut</string>
+		<string name="copy_log_confirm">Salin Log ke kartu SD?</string>
+		<string name="copying_log">Menyalin Log ke kartu SD...</string>
+		<string name="copy_log_complete">Log disalin</string>
+		<string name="terminal_btn">Terminal</string>
+		<string name="dumlock_note1">Untuk informasi tentang cara kerja</string>
+		<string name="dumlock_note2">dari HTC Dumlock, silakan lihat:</string>
+		<string name="inject_twrp_btn">Suntikkan OrangeFox</string>
+		<string name="inject_twrp_confirm">Suntikkan OrangeFox?</string>
+		<string name="injecting_twrp">Suntikkan OrangeFox...</string>
+		<string name="inject_twrp_complete">OrangeFox Injection selesai</string>
+		<string name="swipe_to_confirm">Gesek untuk Mengonfirmasi</string>
+		<string name="part_sd_hdr">Partisi</string>
+		<string name="rem_sd">Penyimpanan yang Dapat Dilepas</string>
+		<string name="rem_sd_sel">Pilih perangkat yang dapat dilepas!</string>
+		<string name="invalid_partsd_sel">Anda harus memilih perangkat yang dapat dilepas</string>
+		<string name="part_sd_lose">Anda akan kehilangan semua file di kartu SD Anda!</string>
+		<string name="part_sdcard_sel_note_1">Partisi akan menghapus semua file</string>
+		<string name="part_sdcard_sel_note_2">pada kartu SD Anda!</string>
+		<string name="part_sd_undo">Tindakan ini tidak dapat diurungkan!</string>
+		<string name="part_sd_ext_sz">Ukuran EXT:</string>
+		<string name="btn_flat_ext4">EXT4</string>
+		<string name="btn_flat_ext3">EXT3</string>
+		<string name="btn_flat_more">+</string>
+		<string name="btn_flat_less">-</string>
+		<string name="part_sd_swap_sz">Ukuran Swap:</string>
+		<string name="file_system">Berkas sistem:</string>
+		<string name="swipe_part_sd">Geser ke Partisi</string>
+		<string name="partitioning_sd">Mempartisi kartu SD...</string>
+		<string name="partitioning_sd2">Ini akan memakan waktu beberapa menit.</string>
+		<string name="part_sd_complete">Partisi selesai</string>
+		<string name="dumlock_hdr">HTC Dumlock</string>
+		<string name="dumlock_restore_btn">Memulihkan Boot Asli</string>
+		<string name="dumlock_restore_confirm">Kembalikan boot image asli?</string>
+		<string name="dumlock_restoring">Memulihkan Boot Asli...</string>
+		<string name="dumlock_restore_complete">Kembalikan booting asli selesai</string>
+		<string name="dumlock_reflash_btn">Reboot ke Recovery</string>
+		<string name="dumlock_reflash_confirm">Reflash recovery ke boot?</string>
+		<string name="dumlock_reflashing">Flashing recovery ke boot...</string>
+		<string name="dumlock_reflash_complete">Pemulihan flash ke boot selesai</string>
+		<string name="dumlock_install_btn">Instal Dumlock</string>
+		<string name="dumlock_install_confirm">Instal file dumlock HTC ke ROM?</string>
+		<string name="dumlock_installing">Memasang HTC Dumlock...</string>
+		<string name="dumlock_install_complete">Instalasi HTC Dumlock selesai</string>
+		<string name="swipe_to_unlock">Gesek untuk Membuka Kunci</string>
+		<string name="fm_actions">Tindakan</string>
+		<string name="fm_hdr">Berkas</string>
+		<string name="fm_sel_file">Pilih File atau Folder</string>
+		<string name="fm_type_folder">Direktori</string>
+		<string name="fm_type_file">Berkas</string>
+		<string name="fm_copy_btn">Salin</string>
+		<string name="fm_copying">Menyalin</string>
+		<string name="fm_move_btn">Pindah</string>
+		<string name="fm_moving">Memindahkan</string>
+		<string name="fm_chmod755_btn">Set 755</string>
+		<string name="fm_chmod755ing">Set 755</string>
+		<string name="fm_chmod644_btn">Set 644</string>
+		<string name="fm_chmod644ing">Set 644</string>
+		<string name="fm_chmod_btn">Mengatur Perizinan</string>
+		<string name="fm_delete_btn">Hapus</string>
+		<string name="fm_deleting">Menghapus</string>
+		<string name="fm_rename_btn">Ubah Nama</string>
+		<string name="fm_renaming">Mengubah nama</string>
+		<string name="fm_sel_dest">Folder tujuan</string>
+		<string name="fm_rename_hdr">Ubah Nama</string>
+		<string name="fm_set_perms_hdr">Mengatur Perizinan</string>
+		<string name="fm_perms">Perizinan</string>
+		<string name="fm_complete">Operasi file selesai</string>
+		<string name="decrypt">Dekripsi</string>
+		<string name="data_part">Partisi Data</string>
+		<string name="encrypt_data_part">Partisi Data dienkripsi.</string>
+		<string name="sel_encrypt_backup">Anda telah memilih cadangan terenkripsi.</string>
+		<string name="decrypt_data_enter_note1">Silakan masukkan kata sandi atau</string>
+		<string name="decrypt_data_enter_note1a">Silakan masukkan pola atau</string>
+		<string name="decrypt_data_enter_note2">tekan tombol kembali untuk batal.</string>
+		<string name="decrypt_data_enter_pass">Masukkan kata sandi</string>
+		<string name="decrypt_data_failed_pattern">Pola gagal!</string>
+		<string name="decrypt_try_again">Silakan coba lagi.</string>
+		<string name="decrypt_data_enter_pattern">Masukkan Pola.</string>
+		<string name="decrypt_data_trying">Mencoba Dekripsi</string>
+		<string name="term_s_hdr">Terminal</string>
+		<string name="adb_sideload_hdr">ADB Sideload</string>
+		<string name="sideload_wipe_dalvik_chk">Hapus Dalvik Cache</string>
+		<string name="sideload_wipe_cache_chk">Hapus Cache</string>
+		<string name="swipe_to_sideload">Gesek untuk Memulai Sideload</string>
+		<string name="sideload_confirm">ADB Sideload</string>
+		<string name="sideload_usage">Penggunaan: File SideLoad ADB.ZIP</string>
+		<string name="sideload_complete">ADB Sideload selesai</string>
+		<string name="fix_contexts_hdr">Perbaiki Konteks</string>
+		<string name="fix_contexts_confirm">Perbaiki konteks SELinux?</string>
+		<string name="fix_contexts_note1">Catatan: Memperbaiki konteks jarang diperlukan.</string>
+		<string name="fix_contexts_note2">Memperbaiki konteks SELinux dapat menyebabkan</string>
+		<string name="fix_contexts_note3">perangkat Anda untuk tidak bisa boot dengan benar.</string>
+		<string name="swipe_to_fix_contexts">Gesek untuk Memperbaiki Konteks</string>
+		<string name="fixing_contexts">Memperbaiki Konteks...</string>
+		<string name="fix_contexts_complete">Perbaiki Konteks selesai</string>
+		<string name="reboot_hdr">Nyalakan Ulang</string>
+		<string name="sel_storage_list">Pilih Penyimpanan</string>
+		<string name="ok_btn">Oke</string>
+
+		<!-- Various console messages - these consist of user displayed messages, oftentimes errors -->
+		<string name="no_kernel_selinux">Kernel tidak memiliki dukungan untuk membaca konteks SELinux.</string>
+		<string name="full_selinux">Dukungan SELinux penuh hadir.</string>
+		<string name="no_selinux">Tidak ada dukungan SELinux (tidak ada libselinux).</string>
+		<string name="mtp_enabled">MTP diaktifkan</string>
+		<string name="mtp_disabled">MTP dinonaktifkan</string>
+		<string name="mtp_crash">MTP Rusak, tidak memulai MTP saat boot.</string>
+		<string name="decrypt_success">Berhasil didekripsi dengan kata sandi default.</string>
+		<string name="unable_to_decrypt">Tidak dapat mendekripsi dengan kata sandi default. Anda mungkin perlu melakukan Format Data.</string>
+		<string name="generating_md51">Menghasilkan MD5</string>
+		<!-- Message displayed during a backup if we are generating an MD5, ideally, leave the leading " * " to help align and separate this text from other console text -->
+		<string name="generating_md52"> * Menghasilkan md5...</string>
+		<string name="md5_created"> * MD5 Dibuat.</string>
+		<string name="md5_error"> * Kesalahan MD5!</string>
+		<string name="md5_compute_error"> * Kesalahan komputasi MD5.</string>
+		<string name="current_date">(Tanggal sekarang)</string>
+		<string name="auto_generate">(Hasilkan Otomatis)</string>
+		<string name="unable_to_locate_partition">Tidak dapat menemukan partisi '{1}' untuk perhitungan cadangan.</string>
+		<string name="no_partition_selected">Tidak ada partisi yang dipilih untuk cadangan.</string>
+		<string name="total_partitions_backup"> * Jumlah total partisi yang dicadangkan: {1}</string>
+		<string name="total_backup_size"> * Ukuran total semua data: {1}MB</string>
+		<string name="available_space"> * Ruang yang tersedia: {1}MB</string>
+		<string name="unable_locate_storage">Tidak dapat menemukan perangkat penyimpanan.</string>
+		<string name="no_space">Tidak cukup ruang penyimpanan.</string>
+		<string name="backup_started">[BACKUP DIMULAI]</string>
+		<string name="backup_folder"> * Folder Cadangan: {1}</string>
+		<string name="fail_backup_folder">Gagal membuat folder cadangan.</string>
+		<string name="avg_backup_fs">Rata-rata tingkat pencadangan untuk sistem file: {1} MB / detik</string>
+		<string name="avg_backup_img">Rata-rata tingkat pencadangan untuk drive yang dicitrakan: {1} MB / detik</string>
+		<string name="total_backed_size">[{1} MB TOTAL DICADANGKAN]</string>
+		<string name="backup_completed">[CADANGAN SELESAI DALAM {1} DETIK]</string>
+		<string name="restore_started">[PULIHKAN DIMULAI]</string>
+		<string name="restore_folder">Pulihkan folder: '{1}'</string>
+		<!-- {1} is the partition display name and {2} is the number of seconds -->
+		<string name="restore_part_done">[{1} selesai ({2} detik)]</string>
+		<string name="verifying_md5">Verifikasi MD5</string>
+		<string name="skip_md5">Melewatkan pemeriksaan MD5 berdasarkan pengaturan pengguna.</string>
+		<string name="calc_restore">Menghitung detail pemulihan...</string>
+		<string name="restore_read_only">Tidak dapat memulihkan {1} -- mount hanya baca.</string>
+		<string name="restore_unable_locate">Tidak dapat menemukan partisi '{1}' untuk memulihkan.</string>
+		<string name="no_part_restore">Tidak ada partisi yang dipilih untuk dipulihkan.</string>
+		<string name="restore_part_count">Memulihkan {1} partisi...</string>
+		<string name="total_restore_size">Total ukuran pemulihan adalah {1}MB</string>
+		<string name="updating_system_details">Memperbarui Detail Sistem</string>
+		<string name="restore_completed">[PEMULIHAN SELESAI DALAM {1} DETIK]</string>
+		<!-- {1} is the path we could not open, {2} is strerror output -->
+		<string name="error_opening_strerr">Kesalahan membuka: '{1}' ({2})</string>
+		<string name="unable_locate_part_backup_name">Tidak dapat menemukan partisi dengan nama cadangan: '{1}'</string>
+		<string name="unable_find_part_path">Tidak dapat menemukan partisi pada path '{1}'</string>
+		<string name="update_part_details">Memperbarui detail partisi...</string>
+		<string name="update_part_details_done">... selesai</string>
+		<string name="wiping_dalvik">Menghapus Direktori Dalvik Cache...</string>
+		<string name="cleaned">Dibersihkan: {1}...</string>
+		<string name="dalvik_done">Hapus Dalvik Cache Direktori selesai!</string>
+		<string name="no_andsec">Tidak ada partisi Android yang aman ditemukan.</string>
+		<string name="unable_to_locate">Tidak dapat menemukan {1}.</string>
+		<string name="wiping_datamedia">Menghapus penyimpanan internal -- /data/media...</string>
+		<string name="unable_to_mount">Tidak dapat memasang {1}</string>
+		<string name="unable_to_mount_internal">Tidak dapat memasang penyimpanan_internal</string>
+		<string name="unable_to_mount_storage">Tidak dapat memasang penyimpanan</string>
+		<string name="fail_decrypt">Gagal mendekripsi data.</string>
+		<string name="no_crypto_support">Tidak ada dukungan crypto yang dikompilasi ke dalam build ini.</string>
+		<string name="decrypt_success_dev">Data berhasil didekripsi, perangkat blok baru: '{1}'</string>
+		<string name="done">Selesai</string>
+		<string name="start_partition_sd">Mempartisi kartu SD...</string>
+		<string name="partition_sd_locate">Tidak dapat menemukan perangkat untuk dipartisi.</string>
+		<string name="ext_swap_size">Ukuran EXT + Swap lebih besar dari ukuran kartu SD.</string>
+		<string name="remove_part_table">Menghapus tabel partisi...</string>
+		<string name="unable_rm_part">Tidak dapat menghapus tabel partisi.</string>
+		<string name="create_part">Membuat {1} partisi...</string>
+		<string name="unable_to_create_part">Tidak dapat membuat {1} partisi.</string>
+		<string name="format_sdext_as">Memformat sd-ext sebagai {1}...</string>
+		<string name="part_complete">Partisi selesai.</string>
+		<string name="unable_to_open">Tidak dapat membuka '{1}'.</string>
+		<string name="mtp_already_enabled">MTP sudah diaktifkan</string>
+		<string name="mtp_fail">Gagal mengaktifkan MTP</string>
+		<string name="no_mtp">Dukungan MTP tidak termasuk</string>
+		<string name="image_flash_start">[IMAGE FLASH DIMULAI]</string>
+		<string name="img_to_flash">Image to flash: '{1}'</string>
+		<string name="flash_unable_locate">Tidak dapat menemukan partisi '{1}' untuk flashing.</string>
+		<string name="no_part_flash">Tidak ada partisi yang dipilih untuk diflash.</string>
+		<string name="too_many_flash">Terlalu banyak partisi yang dipilih untuk mem-flash.</string>
+		<string name="invalid_flash">Partisi flash yang ditentukan tidak valid.</string>
+		<string name="flash_done">[IMAGE FLASH SELESAI]</string>
+		<string name="wiping">Menghapus {1}</string>
+		<string name="repair_not_exist">{1} tidak ada! Tidak bisa diperbaiki!</string>
+		<string name="repairing_using">Memperbaiki {1} menggunakan {2}...</string>
+		<string name="unable_repair">Tidak dapat memperbaiki {1}.</string>
+		<string name="mount_data_footer">Tidak dapat memasang /data dan tidak dapat menemukan footer kripto.</string>
+		<!-- {1} is the folder name that we could not create, {2} is strerror output -->
+		<string name="create_folder_strerr">Tidak dapat membuat folder '{1}' ({2}).</string>
+		<!-- {1} is the folder name that we could not mount, {2} is strerror output -->
+		<string name="fail_mount">Gagal memasang '{1}' ({2})</string>
+		<!-- {1} is the folder name that we could not unmount, {2} is strerror output -->
+		<string name="fail_unmount">Gagal melepas '{1}' ({2})</string>
+		<string name="cannot_resize">Tidak dapat mengubah ukuran {1}.</string>
+		<string name="repair_resize">Memperbaiki {1} sebelum mengubah ukuran.</string>
+		<string name="unable_resize">Tidak dapat mengubah ukuran {1}.</string>
+		<string name="no_md5_found">Tidak ada file md5 yang ditemukan untuk '{1}'. Batalkan pilihan Aktifkan verifikasi MD5 untuk dipulihkan.</string>
+		<string name="md5_fail_match">MD5 gagal mencocokkan pada '{1}'.</string>
+		<string name="fail_decrypt_tar">Gagal mendekripsi file tar '{1}'</string>
+		<string name="format_data_msg">Anda mungkin perlu me-reboot pemulihan agar dapat menggunakan /data lagi.</string>
+		<string name="format_data_err">Tidak dapat memformat untuk menghapus enkripsi.</string>
+		<string name="formatting_using">Memformat {1} menggunakan {2}...</string>
+		<string name="unable_to_wipe">Tidak dapat menghapus {1}.</string>
+		<string name="cannot_wipe">Partisi {1} tidak dapat dihapus.</string>
+		<string name="remove_all">Menghapus semua file di bawah '{1}'</string>
+		<string name="wiping_data">Menghapus data tanpa menghapus /data/media...</string>
+		<string name="backing_up">Mencadangkan {1}...</string>
+		<string name="backing">Mencadangkan</string>
+		<string name="backup_size">Ukuran file cadangan untuk '{1}' adalah 0 byte.</string>
+		<string name="datamedia_fs_restore">PERINGATAN: Pencadangan /data ini dibuat dengan sistem file {1}! Cadangan mungkin tidak bisa boot kecuali Anda mengubah kembali ke {1}.</string>
+		<string name="restoring">Memulihkan {1}...</string>
+		<string name="restoring_hdr">Memulihkan...</string>
+		<string name="recreate_folder_err">Tidak dapat membuat ulang {1} folder.</string>
+		<string name="img_size_err">Ukuran image lebih besar dari perangkat target</string>
+		<string name="flashing">Flashing {1}...</string>
+		<string name="backup_folder_set">Folder cadangan disetel ke '{1}'</string>
+		<string name="locate_backup_err">Tidak dapat menemukan cadangan '{1}'</string>
+		<string name="set_restore_opt">Menetapkan opsi pemulihan: '{1}':</string>
+		<string name="md5_check_skip">Loncati periksa MD5 aktif</string>
+		<string name="ors_encrypt_restore_err">Tidak dapat menggunakan OpenRecoveryScript untuk memulihkan cadangan yang dienkripsi.</string>
+		<string name="mounting">Pemasangan</string>
+		<string name="unmounting">Lepas</string>
+		<string name="mounted">Terpasang '{1}'</string>
+		<string name="unmounted">Dilepaskan '{1}'</string>
+		<string name="setting">Pengaturan '{1}' hingga '{2}'</string>
+		<string name="setting_empty">Pengaturan '{1}' untuk mengosongkan</string>
+		<string name="making_dir1">Membuat Direktori</string>
+		<string name="making_dir2">Membuat direktori: '{1}'</string>
+		<string name="running_command">Menjalankan Komando</string>
+		<string name="sideload">ADB Sideload</string>
+		<string name="start_sideload">Memulai fitur sideload ADB...</string>
+		<string name="need_new_adb">Anda perlu adb 1.0.32 atau yang lebih baru untuk melakukan sideload ke perangkat ini.</string>
+		<string name="no_pwd">Tidak ada kata sandi yang disediakan.</string>
+		<string name="done_ors">Selesai memproses file skrip</string>
+		<string name="injecttwrp">Menyuntikkan TWRP ke dalam boot image...</string>
+		<string name="zip_err">Kesalahan menginstal file zip '{1}'</string>
+		<string name="installing_zip">Memasang file zip '{1}'</string>
+		<string name="select_backup_opt">Menetapkan opsi cadangan:</string>
+		<string name="compression_on">Kompresi aktif</string>
+		<string name="md5_off">Generasi MD5 tidak aktif</string>
+		<string name="backup_fail">Cadangan Gagal</string>
+		<string name="backup_clean">Cadangan Gagal. Membersihkan Folder Cadangan.</string>
+		<string name="running_recovery_commands">Menjalankan Perintah Pemulihan</string>
+		<string name="recovery_commands_complete">Perintah Pemulihan selesai</string>
+		<string name="running_ors">Menjalankan OpenRecoveryScript</string>
+		<string name="ors_complete">OpenRecoveryScript selesai</string>
+		<string name="no_updater_binary">Tidak dapat menemukan '{1}' di file zip.</string>
+		<string name="check_for_md5">Memeriksa file MD5...</string>
+		<string name="fail_sysmap">Gagal memetakan file '{1}'</string>
+		<string name="verify_zip_sig">Memverifikasi tanda tangan zip...</string>
+		<string name="verify_zip_fail">Verifikasi tanda tangan zip gagal!</string>
+		<string name="verify_zip_done">Tanda tangan Zip berhasil diverifikasi.</string>
+		<string name="zip_corrupt">File zip rusak!</string>
+		<string name="no_md5">Melewatkan pemeriksaan MD5: tidak ditemukan file MD5</string>
+		<string name="md5_fail">MD5 tidak cocok</string>
+		<string name="md5_match">MD5 cocok</string>
+		<string name="pid_signal">{1} proses diakhiri dengan sinyal: {2}</string>
+		<string name="pid_error">{1} proses berakhir dengan ERROR: {2}</string>
+		<string name="install_dumlock">Memasang HTC Dumlock ke sistem...</string>
+		<string name="dumlock_restore">Memulihkan Boot Asli...</string>
+		<string name="dumlock_reflash">Flash ulang recovery ke boot...</string>
+		<string name="run_script">Menjalankan {1} skrip...</string>
+		<string name="split_backup">Memecahkan file cadangan ke beberapa arsip...</string>
+		<string name="backup_error">Kesalahan membuat cadangan.</string>
+		<string name="restore_error">Kesalahan selama proses pemulihan.</string>
+		<string name="split_thread">Memisahkan thread ID {1} ke dalam arsip {2}</string>
+		<!-- These 2 items are saved in the data manager instead of resource manager, so %llu, etc is correct instead of {1} -->
+		<string name="file_progress">%llu dari %llu file, %i%%</string>
+		<string name="size_progress">%lluMB dari %lluMB, %i%%</string>
+		<string name="decrypt_cmd">Mencoba mendekripsi partisi data melalui baris perintah.</string>
+		<string name="base_pkg_err">Gagal memuat paket dasar.</string>
+		<string name="simulating">TINDAKAN SIMULASI</string>
+		<string name="backup_cancel">Cadangan Dibatalkan</string>
+		<string name="config_twrp">Mengonfigurasi OrangeFox...</string>
+		<string name="config_twrp_err">Tidak dapat mengkonfigurasi OrangeFox dengan kernel ini.</string>
+		<string name="copy_log">Salinan pemulihan yang disalin ke {1}.</string>
+		<string name="max_queue">Antrian zip maksimum tercapai!</string>
+		<string name="min_queue">Antrian zip maksimum tercapai!</string>
+		<string name="screenshot_saved">Tangkapan layar disimpan ke {1}</string>
+		<string name="screenshot_err">Gagal mengambil tangkapan layar!</string>
+		<string name="zip_wipe_cache">Satu atau beberapa zip meminta penghapusan cache -- Menghapus cache sekarang.</string>
+		<string name="and_sec_wipe_err">Tidak dapat menghapus keamanan Android</string>
+		<string name="dalvik_wipe_err">Gagal menghapus dalvik</string>
+		<string name="auto_gen">(Hasilkan Otomatis)</string>
+		<string name="curr_date">(Tanggal sekarang)</string>
+		<string name="backup_name_len">Nama cadangan terlalu panjang.</string>
+		<string name="backup_name_invalid">Nama cadangan '{1}' mengandung karakter tidak valid: '{1}'</string>
+		<string name="no_real_sdcard">Perangkat ini tidak memiliki kartu SD sungguhan! Batalkan!</string>
+		<string name="cancel_sideload">Membatalkan sideload ADB...</string>
+		<string name="change_fs_err">Kesalahan mengubah sistem file.</string>
+		<string name="change_fs_hdr">Ubah Sistem File untuk</string>
+		<string name="theme_ver_err">Versi tema khusus tidak cocok dengan versi OrangeFox. Menggunakan tema stok.</string>
+		<string name="up_a_level">..</string>
+
+		<!-- new-->
+		<string name="sel_color">Pilih Warna</string>
+		<string name="s_color">Warna</string>
+		<string name="current_color">Berkas sistem:</string>
+		<string name="show_cpu_temp_bar">Tampilkan suhu CPU</string>
+		<string name="ts_inform">Informasi</string>
+		<string name="sel_splash_png">Pilih Splash PNG</string>
+		<string name="swipe_to_install">Gesek untuk Menginstal</string>
+		<string name="swipe_to_install_img">Geser untuk menginstal Image</string>
+		<string name="sel_image_type">Pilih Jenis Image!</string>
+		<string name="zip_add_queue">Tambahkan ke antrian</string>
+		<string name="part_fs_error_1">Opsi partisi tidak</string>
+		<string name="part_fs_error_2">tersedia untuk partisi ini!</string>
+		<string name="new_file_system">Sistem File Baru</string>
+		<string name="adb_sideload_opt">Opsi Sideload</string>
+		<string name="about_hdr">Tentang</string>
+		<string name="author">Pembuat</string>
+		<string name="credits">Kredit</string>
+		<string name="version">Versi</string>
+		<string name="set_password">Setel Kata Sandi</string>
+		<string name="verifying_pas">Verifikasi Kata Sandi</string>
+		<string name="dialog_offset_note">Pilih nilai offset Anda</string>
+		<string name="queue_no">#</string>
+		<string name="options_cptn">Pilihan</string>
+		<string name="flash_img_confirm">Flash Image File</string>
+		<string name="also_wipes">Juga hapus</string>
+		<string name="confirm_wipe_cptn">Konfirmasikan Penghapusan</string>
+		<string name="storage_cptn">Penyimpanan</string>
+		<string name="enter_password_restore">Kata sandi</string>
+		<string name="enter_password_cptn">Mulai Sideload ...</string>
+		<!-- added by fordownloads -->
+		<string name="fordowns_sl">Mulai Sideload ...</string>
+		<string name="fordowns_to">ke</string>
+		<string name="dbg">Debug</string>
+		<string name="dbg_active">Menu debug diaktifkan!</string>
+		<string name="dbg_act">Actions</string>
+		<string name="dbg_func">Fungsi</string>
+		<string name="dbg_set">Set</string>
+		<string name="dbg_page">Halaman</string>
+		<string name="dbg_overlay">Tampilan</string>
+		<string name="fm_none">Tak satupun</string>
+		
+		<string name="cust_navbar_noug">Nougat</string>
+		<string name="cust_navbar_cls">Klasik</string>
+		<string name="cust_navbar_accent">Aksen</string>
+		<string name="cust_navbar_black">Hitam</string>
+		<string name="cust_navbar_white">Gunakan tombol putih</string>
+		<string name="cust_navbar_gray">Gunakan tombol putih</string>
+		
+		<string name="fm_open">Buka sebagai</string>
+		<string name="fm_open_text">File teks</string>
+		<string name="fm_open_ZIP">ZIP yang dapat di-flash</string>
+		
+		<string name="fm_open_backup">Cadangkan</string>
+		<string name="fm_open_makezip">KOMPRES</string>
+		<string name="fm_open_unpackzip">Buka paket arsip</string>
+		<string name="fm_open_image">Gambar yang dapat di-flash</string>
+		<string name="arc_type">Jenis arsip</string>
+		<string name="arc_lvl">Kompresi aktif:</string>
+		<string name="arc_lvl_title">Kompresi</string>
+		
+		<string name="bkp_date">Tambahkan tanggal</string>
+		<string name="bkp_gen">Menghasilkan kode cadangan</string>
+		<string name="bkp_gen_whilebkp">Hasilkan nama cadangan saat membuat cadangan</string>
+		<string name="bkp_quick">Backup Cepat</string>
+		<string name="bkp_clear">Bersihkan</string>
+		
+		<string name="language_cptn">Bahasa</string>
+		<string name="cust_oth">Lainnya</string>
+		
+		<string name="settings_general">Umum</string>
+		<string name="settings_ui">Kustomisasi</string>
+		<string name="settings_screen">Tampilan</string>
+		<string name="settings_time">Daerah</string>
+		
+		<string name="lang_wait">Tunggu sebentar...</string>
+		
+		<string name="settings_ui_status">Status bar</string>
+		<string name="settings_ui_battery">Tampilkan ikon baterai</string>
+		<string name="settings_ui_style">Gaya NavBar</string>
+		<string name="settings_ui_color">Latar belakang NavBar</string>
+		
+		<string name="settings_backup_qbkp_custom">Partisi cadangan cepat</string>
+		
+		<string name="settings_backup_name">Nama cadangan</string>
+		<string name="settings_backup_name_user">Jangan diubah</string>
+		<string name="settings_backup_name_auto">Didefinisikan secara otomatis</string>
+		<string name="settings_backup_name_auto_hide">Saat mencadangkan</string>
+		
+		<string name="update_btn">Pembaruan</string>
+		<string name="include_kernel_log">Sertakan Log Kernel</string>
+		
+		<string name="fm_books">Folder Favorit Baru</string>
+		<string name="fm_books_desc">Tekan yang lama untuk memperbaiki &amp; mengunci</string>
+		<string name="fm_books_edit">Edit daftar ini ...</string>
+		<string name="fm_books_desc_edit">Tekan lama untuk menghapus item</string>
+		<string name="fm_books_empty">(Kosong)</string>
+		
+		<string name="fm_mkdir">Membuat folder</string>
+		<string name="fm_mkdir_folder">Nama folder</string>
+		
+		<string name="fm_path">Masukkan Jalur:</string>
+		<string name="fm_path2">Path</string>
+		
+		<string name="no_os_title">Anda yakin?</string>
+		<string name="no_os_subtitle">Partisi sistem kosong</string>
+		
+		<string name="no_os1">Tidak ada OS yang diinstal! Apakah kamu yakin?</string>
+		<string name="no_osrb">Usap untuk Memulai Ulang?</string>
+		<string name="no_ospo">Usap untuk Matikan daya?</string>
+		<string name="no_osrb_recovery">Tidak dapat menyalakan ulang ke mode pemulihan</string>
+		<string name="no_osrb_boot">Tidak dapat menyalakan ulang ke mode pemulihan</string>
+		<string name="no_osrb_down">Tidak dapat menyalakan ulang ke mode pemulihan</string>
+		<string name="no_osrb_edl">Tidak dapat menyalakan ulang ke mode pemulihan</string>
+		
+		<string name="areb_confirm">Dialog konfirmasi Shutdown</string>
+		<string name="areb_noos">Tidak ada OS yang diinstal</string>
+		<string name="opt_always">Selalu</string>
+		<string name="otp_never">Jangan pernah</string>
+		
+		<string name="areb_off">Mati</string>
+		
+		<string name="restoredialog_readonly">Jangan pernah tampilkan dialog sistem baca-saja</string>
+		
+		<string name="offset_wrong">Offset salah!</string>
+
+		<string name="new_key">Gunakan gaya baru untuk keyboard</string>
+		
+		<string name="bkp_nametitle">Nama cadangan</string>
+		<string name="bkp_namesub">Tampilkan nama cadangan yang dibuat otomatis</string>
+		
+		<string name="goto_storage">Penyimpanan</string>
+		
+		<string name="theme_apply">Memperbarui tema...</string>
+		<string name="theme_fonts">Jenis Huruf</string>
+		<string name="theme_style">Gaya</string>
+		<string name="theme_accent">Aksen</string>
+		<string name="theme_font_sel">Teks Primer</string>
+		<string name="theme_sec_font_sel">Teks Sekunder</string>
+		
+		<string name="of">dari</string>
+		
+		<string name="sph_sph">Percikan</string>
+		
+		<string name="real">Nyata</string>
+		<string name="info">Informasi</string>
+		<string name="time_m">Ubah</string>
+		<string name="time_c">Ganti</string>
+		<string name="access">Mengakses</string>
+		<string name="fm_sums">Cheksum</string>
+		
+		<string name="use_fixed_font">Font Monospace di terminal</string>
+
+		<string name="adb_backup_pc1">Cadangan ini akan menjadi</string>
+		<string name="adb_backup_pc2">disimpan di PC Anda</string>
+		
+		<string name="starting_aroma">Memulai AromaFM ...</string>
+		<string name="lang_set_wait">Ubah bahasa</string>
+		<string name="installing_theme">Menginstall Motif</string>
+		
+		<string name="menu_btn">Menu</string>
+		
+		<string name="data_backup">Data</string>
+		<string name="autostorage">Penyimpanan</string>
+		<string name="install_reboot">Memulai ulang dalam %tw_sleep% detik(d</string>
+		<string name="cancel_reboot_btn">Mulai ulang lanjutan</string>
+		<string name="skip_digest_backup_chk" version="2">Lewati Pembuatan Digest selama pencadangan</string>
+		<string name="restore_digest_chk" version="2">Aktifkan Verifikasi Digest dari File Cadangan</string>
+		<string name="restore_enable_digest_chk" version="2">Aktifkan Verifikasi Digest dari File Cadangan</string>
+		<string name="decrypt_data_vold_os_missing">File yang hilang diperlukan untuk mendekripsi tanda terima: {1}</string>
+		<string name="generating_digest1" version="2">Menghasilkan Digest</string>
+		<string name="generating_digest2" version="2"> * Menghasilkan Digest...</string>
+		<string name="digest_created" version="2"> * Digest Dibuat.</string>
+		<string name="digest_error" version="2"> * Kesalahan Digest!</string>
+		<string name="digest_compute_error" version="2"> * Kesalahan menghitung Digest.</string>
+		<string name="verifying_digest" version="2">Memeriksa Digest</string>
+		<string name="skip_digest" version="2">Melewatkan pemeriksaan Digest berdasarkan pengaturan pengguna.</string>
+		<string name="decrypt_success_nodev">Data berhasil didekripsi</string>
+		<string name="no_digest_found" version="2">Tidak ada file digest yang ditemukan untuk '{1}'. Harap batalkan pilihan Mengaktifkan verifikasi Digest untuk dipulihkan.</string>
+		<string name="digest_fail_match" version="2">Intisari gagal mencocokkan pada '{1}'.</string>
+		<string name="digest_matched" version="2">Intisari cocok untuk '{1}'.</string>
+		<string name="digest_check_skip" version="2">Lewati pemeriksaan digest aktif</string>
+		<string name="digest_off" version="2">Generasi MD5 tidak aktif</string>
+		<string name="invalid_zip_format">Format file zip tidak valid!</string>
+		<string name="check_for_digest" version="2">Memeriksa file Digest...</string>
+		<string name="no_digest" version="2">Melewatkan pemeriksaan Digest: tidak ditemukan file Digest</string>
+		<string name="digest_fail" version="2">Digest tidak cocok</string>
+		<string name="digest_match" version="2">Digest cocok</string>
+		<string name="password">Kata sandi</string>
+		<string name="boot_slot">Slot Boot</string>
+		<string name="boot_slot_a">SLOT A</string>
+		<string name="boot_slot_use_a">BERALIH KE SLOT A</string>
+		<string name="boot_slot_b">SLOT B</string>
+		<string name="boot_slot_use_b">BERALIH KE SLOT B</string>
+		<string name="changing_boot_slot">Mengubah Slot Boot</string>
+		<string name="changing_boot_slot_complete">Mengganti Boot Slot selesai</string>
+		<string name="unable_set_boot_slot">Kesalahan mengubah bootloader ke slot {1}</string>
+		<string name="backup_storage_warning">Cadangan {1} tidak termasuk file apa pun dalam penyimpanan internal seperti gambar atau unduhan.</string>
+		<string name="sha2_chk">Gunakan SHA2 untuk hashing</string>
+		<string name="disabled">Cacat</string>
+		<string name="enabled">Diaktifkan</string>
+		<string name="zip_compatible_err">Kesalahan kompatibilitas Zip Treble!</string>
+		
+		
+		<!-- Console Messages -->
+		<string name="fox_incremental_ota_compatibility_chk">Memverifikasi Penandatanganan Paket Incremental...</string>
+		<string name="fox_incremental_ota_compatibility_false">Paket inkremental tidak kompatibel dengan ROM ini!</string>
+		<string name="fox_incremental_ota_compatibility_true">Paket inkremental kompatibel</string>
+		<string name="fox_incremental_ota_status_enabled">Mendukung status paket MIUI Incremental: Diaktifkan</string>
+		<string name="fox_incremental_ota_status_disabled">Mendukung status paket MIUI Incremental: Nonaktif</string>
+		<string name="fox_incremental_package_detected">Paket Incremental Terdeteksi '{1}'</string>
+		<string name="fox_survival_does_not_exist">Kelangsungan Hidup OTA tidak ada! Harap flash full ROM terlebih dahulu!</string>
+		<string name="fox_install_detecting">Mendeteksi Paket Saat Ini</string>
+		<string name="fox_install_standard_detected">- Paket Standar Terdeteksi</string>
+		<string name="fox_install_miui_detected">- Paket Pembaruan MIUI Terdeteksi</string>
+		<string name="fox_zip_have_bootloader">Peringatan: Terdeteksi instalasi ulang dari bootloader yang dipanggil oleh '{1}'.</string>
+		<string name="fox_no_space_ota_survival">Tidak cukup ruang kosong pada penyimpanan internal untuk menciptakan kelangsungan hidup OTA.</string>
+		<string name="fox_incremental_ota_res">OTA_RES -- selesai!</string>
+		<string name="fox_incremental_ota_res_run">Menjalankan proses OTA_RES...</string>
+		<string name="fox_incremental_ota_bak_run">Menjalankan proses OTA_BAK...</string>
+		<string name="fox_incremental_ota_bak">OTA_BAK -- selesai!</string>
+		<string name="fox_internal_fatal_i1">OrangeFox: KESALAHAN FATAL! Anda tidak dapat mencadangkan Penyimpanan Internal ke dalamnya sendiri!</string>
+		<string name="fox_internal_fatal_i2">Anda HARUS mengubah tujuan pencadangan ke MicroSD/USB-OTG.</string>
+		<string name="fox_internal_q1">OrangeFox - Penyimpanan Internal - hati-hati!</string>
+
+		<string name="copy_kernel_log">Log kernel disalin ke {1}</string>
+
+		<string name="of_run_process">Memulai proses '{1}'</string>
+		<string name="of_run_process_fail">Tidak dapat menyelesaikan proses '{1}'</string>
+		<string name="of_run_process_done">Proses '{1}' selesai</string>
+		<string name="of_dm_verity">Berhasil menambal DM-Verity</string>
+		<string name="of_dm_verity_off">DM-Verity tidak diaktifkan</string>
+		<string name="of_encryption">Enkripsi paksa yang berhasil ditambal</string>
+		<string name="of_encryption_off">Enkripsi Paksa tidak diaktifkan</string>
+		<string name="of_fstab">Terdeteksi fstab: '{1}'</string>
+
+		<string name="install_remlatest">Hapus Terbaru</string>
+		
+		<string name="backups_remove_all">Semua cadangan</string>
+		<string name="backups_remove">Hapus</string>
+		
+		<!-- OrangeFox Recovery - Pie Door theme -->
+
+		<string name="unpack">Buka</string>
+		<string name="repack">Repack</string>
+
+		<string name="fox_save_load_aromafm_config_chk">Simpan/Muat konfigurasi AromaFM</string>
+		<string name="search_help">★ Mencari file dan folder</string>
+		
+		<string name="reboot_to_take_effect">Mulai ulang untuk perubahan mulai berlaku</string>
+		<string name="fox_modules_hdr">Addon C++</string>
+		<string name="fox_modules_inst">Pasang addon</string>
+		<string name="backup_short_hdr">Cadangan Baru</string>
+		<string name="backups_wat">Di mana cadangannya?</string>
+		
+		<string name="module_install">Pasang</string>
+		<string name="module_uninstall">Hapus</string>
+		<string name="remove_of_files">Menghapus file OrangeFox</string>
+		<string name="module_initd">Aktifkan dukungan JSONP</string>
+		<string name="module_cam">Aktifkan Camera2API</string>
+		<string name="module_pass">Hapus kata sandi</string>
+		<string name="fox_files_not_exist_1">File tidak ada!</string>
+		<string name="fox_files_not_exist_2">Harap reflash recovery</string>
+		<string name="fox_files_not_exist_3">menggunakan zip instalasi.</string>
+
+		<!-- Customization -->
+		<string name="cust_new_ota_screen">Jadikan ikon file lebih besar</string>
+		<string name="fm_icons_simple">Jadikan ikon file lebih besar</string>
+		<string name="theme_engine_update">Terapkan perubahan dan muat ulang?</string>
+		<string name="theme_engine_reset">Tema</string>
+		<string name="apply_btn">Terapkan</string>
+		<string name="theme_hdr">Tema</string>
+		
+		<string name="font_small">Kecil</string>
+		<string name="font_norm">Normal</string>
+		<string name="font_big">Besar</string>
+		<string name="font_size">ukuran Huruf</string>
+		<string name="cust_autoapply">Terapkan tema dengan konfirmasi</string>
+		<string name="cust_expand_list">Perluas daftar secara otomatis</string>
+		
+		<string name="status_battery_style">Gaya Baterai</string>
+		<string name="status_battery_circle">Bulat</string>
+		<!-- Status bar -->
+		<string name="status_clock_pos">posisi jam</string>
+		<string name="status_clock_left">Kiri</string>
+		<string name="status_clock_center">Tengah</string>
+		<string name="status_clock_right">Kanan</string>
+		<string name="dark_title">Buat judul lebih gelap</string>
+		<string name="separate_status">Jadikan bilah status lebih gelap</string>
+		<string name="noshadow_title">Tampilkan bayangan bilah status</string>
+		<string name="hide_notch">Sembunyikan poni</string>
+		<!-- NavBar -->
+		<string name="navbar_title">Bilah Navigasi</string>
+		<string name="navbar_onscreen">Aktifkan NavBar</string>
+		<string name="show_slideout">Tampilkan tombol konsol pengembang</string>
+		<string name="dark_nav">Gelap</string>
+		<!-- Keyboard -->
+		<string name="keyboard_title">Papan ketik</string>
+		<string name="keyboard_newstyle">Gaya baru</string>
+		<string name="keyboard_nums">Baris Angka</string>
+		<string name="key_swipe">Geser pada keyboard untuk menghapus semua</string>
+		<!-- Lockscreen -->
+		<string name="lockscreen_unlock">Membuka kunci</string>
+		<string name="lockscreen_title">Kunci layar</string>
+		<string name="lockscreen_style">Gaya lockscreen</string>
+		<string name="lockscreen_clock">Jam</string>
+		<string name="lockscreen_icon">Ikon</string>
+		<string name="lockscreen_btn">Ganti slider dengan tombol</string>
+		<string name="lockscreen_info">Tampilkan info baterai dan CPU</string>
+		<string name="lockscreen_quicklock">Mengetuk ikon kunci mengunci layar</string>
+
+		<!-- OTA working page -->
+		<string name="ota_console_title">Memasang...</string>
+		<string name="ota_simple_title">Memperbarui...</string>
+		<string name="ota_simple_log_btn">Catatan</string>
+
+		<string name="battery">Baterai</string>
+
+		<!-- Pass -->
+		<string name="pass_gk">Kunci gerakan</string>
+		<string name="pass_classic">Setel kata sandi</string>
+		<string name="pass_dis">Nonaktifkan kata sandi</string>
+		<string name="pass_pin">Kode PIN</string>
+		
+		<string name="locked_info_1">Pemulihan dilindungi</string>
+		<string name="locked_info_2">Akses tidak sah</string>
+		<string name="locked_info_3">Untuk menggunakan fitur pemulihan utama</string>
+		<string name="locked_info_4">Anda harus memasukkan kata sandi Anda terlebih dahulu.</string>
+		<string name="locked_info_4_gk">Anda harus terlebih dahulu menggambar kunci gerakan Anda.</string>
+		
+		<string name="new_pass_info_1">Masukkan sandi baru</string>
+		<string name="new_pass_info_1_gk">Gambarlah kunci gerakan baru untuk melindungi</string>
+		<string name="new_pass_info_2">OrangeFox melawan yang tidak sah</string>
+		<string name="new_pass_info_3">mengakses.</string>
+		<string name="new_pass_info_4">Anda harus memasukkan kata sandi dua kali</string>
+		<string name="new_pass_info_4_gk">Anda perlu menggambar tombol gerakan dua kali</string>
+		<string name="new_pass_info_4_2">Masukkan sandi lagi.</string>
+		<string name="new_pass_info_4_2_gk">Gambar lagi tombol isyarat</string>
+		
+		<string name="pass_page_block">Metode pemblokiran saat ini</string>
+		<string name="pass_page_block_inf1">Anda bisa tidur dengan lebih baik</string>
+		<string name="pass_page_block_inf2">Anda dilindungi.</string>
+		<string name="pass_page_select">Ulang password untuk</string>
+		
+		<!-- Utilities -->
+		<string name="more">Lebih...</string>
+		<string name="hide">Sembunyikan</string>
+		<string name="part_menu_hdr">Partisi Data</string>
+		<string name="run_adb_startup">Modul</string>
+
+		<!-- MMGUI -->
+		<string name="mm_module_active">Aktif</string>
+		<string name="mm_module_mount">Pasang otomatis</string>
+		<string name="mm_modules">Modul</string>
+		<string name="mm_ver">Versi Magisk</string>
+		<string name="mm_mod_ver">Versi Modul</string>
+		<string name="magisk_not_found">Anak tidak ditemukan!</string>
+		<string name="magisk_not_found_1">Apakah Anda ingin pergi ke Fox Addons</string>
+		<string name="magisk_not_found_2">dan instal Magisk yang telah dibangun sebelumnya?</string>
+		<string name="magisk_not_found_3"/>
+		
+		<!-- MIUI OTA -->
+		<string name="fox_ota_settings">Pengaturan HW</string>
+		<string name="fox_ota_on">Aktifkan OTA</string>
+		
+		<!-- About -->
+		<string name="abt_maintainer">Pengelola</string>
+		<string name="abt_fd">Pembuat tema &amp; amp;  perancang</string>
+		<string name="abt_bork">CEO, Situs &amp; amp;  UI</string>
+		<string name="abt_dj">Membangun sistem, C ++</string>
+		<string name="abt_front">Pengembang frontend</string>
+		<string name="abt_back">Pengembang frontend</string>
+		<string name="abt_device">Perangkat</string>
+		<string name="version_twrp">Versi TWRP</string>
+		<string name="build_type">Tipe pembuatan</string>
+		<string name="abt_credits">Kredit</string>
+		<string name="abt_trans">Penerjemah</string>
+		<string name="abt_changes">Perubahan Log</string>
+		<string name="abt_main_shrt">Pengelola</string>
+		<string name="welcome_msg">Buka folder data.</string>
+		<string name="welcome_msg2"><!-- If welcome message is too big in your lang, use this string --></string>
+		
+		<!-- Symlink -->
+		<string name="symlink_dir_name">Tautan ke folder (s)</string>
+		<string name="symlink_file_name">Tautan berkas</string>
+		<string name="symlink_broken_name">Tautan rusak</string>
+		<string name="symlink_folder">Buka folder data.</string>
+		<string name="symlink_file">Buka folder data.</string>
+		
+		<!-- Files -->
+		<string name="files_show_hidden">Tampilkan file dan folder tersembunyi</string>
+		<string name="files_auto_open">Deteksi otomatis jenis file dalam File</string>
+		<string name="file_read_error">Tidak bisa membuka berkas.</string>
+		<string name="subs_wipe">Substratum Overlays</string>
+		<string name="sort_ex_all">Semua file</string>
+		<string name="sort_ex_img">File IMG</string>
+		<string name="sort_ex_zip">File ZIP</string>
+		<string name="aroma_help">Tekan lagi untuk memulai AromaFM ...</string>
+
+		<!-- this error will shown when recovery cannot create backup folder
+		 -->
+		<string name="backups_rw_error_1">Performa tinggi</string>
+		<string name="backups_rw_error_2">Hemat daya</string>
+
+		<!-- App mgr -->
+		<string name="appmgr_apps">Aplikasi</string>
+		<string name="appmgr_title">Manajer Aplikasi</string>
+
+		<!-- Perfomance -->
+		<string name="perf_title">Kinerja</string>
+		<string name="perf_conf_mode">Mode kinerja pemulihan</string>
+		<string name="perf_conf_balance">Seimbang</string>
+		<string name="perf_conf_high">Performa tinggi</string>
+		<string name="perf_conf_batt">Hemat daya</string>
+
+		<string name="fox_led_title">Pengaturan HW</string>
+		<string name="fox_use_green_led">Pakai led warna hijau</string>
+		<string name="fox_boot_fastcharge">Paksa pengisian cepat</string>
+
+		<!-- OTA -->
+		<string name="fox_ota_msg_ready">Anda siap menerima pembaruan!</string>
+		<string name="fox_ota_msg_custom">Diaktifkan mode ROM kustom</string>
+		<string name="fox_ota_msg_reflash">Tolong flash ROM MIUI penuh!</string>
+		<string name="fox_advanced_stock_recovery">Penonaktifan pemulihan stok agresif</string>
+		<string name="fox_support_miui_ota_chk">Mendukung MIUI Incremental OTA</string>
+		<string name="fox_include_system_survival_chk">Sertakan sistem dalam survival OTA</string>
+		<string name="fox_verify_incremental_ota_signature_chk">Verifikasi tanda tangan OTA tambahan</string>
+		<string name="fox_dmverity_chk">Nonaktifkan DM-Verity</string>
+		<string name="fox_forced_encryption_chk">Nonaktifkan Enkripsi Paksa</string>
+		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Cegah reboot otomatis setelah menginstal OTA</string>
+		<string name="of_ota_reboot_disabled">Update OTA berhasil. Anda mematikan muat ulang otomatis. Mengembalikan kontrol kepada anda.</string>
+	</resources>
+</language>
