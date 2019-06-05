@@ -1348,6 +1348,9 @@ void DataManager::Vibrate(const string & varName)
 
 void DataManager::Leds(bool enable)
 {
+#ifdef OF_SKIP_LEDS_FUNCTION
+return;
+#endif
   std::string leds, bs, bsmax, time, blink, bsm, leds1, bs1, bsmax1, time1, blink1, bsm1, max_brt, install_vibrate_value;
   struct stat st;
   int ledcolor;
