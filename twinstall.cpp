@@ -361,7 +361,9 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	     }
 	}
 
-   //* treble
+   //* treble ROM
+   if (zip_is_rom_package == true) 
+    {
       if ((Zip->EntryExists("vendor.new.dat")) || (Zip->EntryExists("vendor.new.dat.br"))) // we are installing a Treble ROM
          {
            DataManager::SetValue(FOX_ZIP_INSTALLER_TREBLE, "1");
@@ -379,7 +381,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
         }
         else 
         if (TWFunc::Has_Vendor_Partition())
-        {
+         {
            DataManager::SetValue(FOX_ZIP_INSTALLER_TREBLE, "1");
            Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
            usleep (32);
@@ -392,7 +394,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
            
            Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
            LOGINFO("OrangeFox: detected standard ROM installer, on a real Treble device!\n");       
-        }
+         }
+    }
    //* treble
 
 #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
@@ -985,9 +988,11 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	{
 	  ret_val = Prepare_Update_Binary(path, &Zip, wipe_cache);
 	  if (ret_val == INSTALL_SUCCESS)
-	    ret_val =
-	      Run_Update_Binary(path, &Zip, wipe_cache,
-				UPDATE_BINARY_ZIP_TYPE);
+	    {
+	  	TWFunc::Run_Pre_Flash_Protocol();
+	        ret_val = Run_Update_Binary
+	            (path, &Zip, wipe_cache, UPDATE_BINARY_ZIP_TYPE);
+	    }
 	  else 
 	   {
 	      zip_survival_failed = true;

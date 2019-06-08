@@ -4001,4 +4001,23 @@ int res=0, wipe_cache=0;
  
    return res;
 }
+
+void TWFunc::Run_Pre_Flash_Protocol(void)
+{
+#ifdef OF_SUPPORT_PRE_FLASH_SCRIPT
+  // don't run this for ROMs
+  if (DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE) == 0)
+    {
+      // don't run this for built-in zips
+      if (DataManager::GetIntValue(FOX_INSTALL_PREBUILT_ZIP) != 1)
+        {
+          string pre_runner = "/sbin/fox_pre_flash";
+          if (TWFunc::Path_Exists(pre_runner))
+	   {
+	      TWFunc::check_and_run_script(pre_runner.c_str(), "system_mount");
+	   }
+       }
+    }
+#endif
+}
 //
