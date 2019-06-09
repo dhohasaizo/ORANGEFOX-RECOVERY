@@ -44,7 +44,7 @@
 		<string name="cache">Caché</string>
 		<string name="data">Datos</string>
 		<string name="sdcard">Tarjeta SD</string>
-		<string name="internal">Almacenamiento interno</string>
+		<string name="internal">Memoria interna</string>
 		<string name="microsd">Tarjeta Micro SD</string>
 		<string name="usbotg">USB OTG</string>
 		<string name="android_secure">Android Seguro</string>
@@ -65,7 +65,7 @@
 		<string name="sort_by_size_desc">Tamaño</string>
 		<string name="install_btn">Instalar</string>
 		<string name="wipe_btn">Limpiar</string>
-		<string name="backup_btn">Copias de seguridad</string>
+		<string name="backup_btn">Copias</string>
 		<string name="restore_btn">Restaurar</string>
 		<string name="mount_btn">Montar</string>
 		<string name="file_manager_btn">Archivos</string>
@@ -184,7 +184,7 @@
 		<string name="partitions">Particiones</string>
 		<string name="progress">Progreso</string>
 		<string name="backup_complete">Copia de seguridad completada</string>
-		<string name="restore_hdr">Copias</string>
+		<string name="restore_hdr">Copias de seguridad</string>
 		<string name="restore_backup_hdr">Restaurar la copia de seguridad</string>
 		<string name="sel_backup_hdr">Selecciona copia de seguridad</string>
 		<string name="restore_dec_fail">Contraseña errónea, por favor, ¡inténtalo de nuevo!</string>
@@ -960,7 +960,7 @@
 		<string name="fox_ota_on">Habilitar OTA</string>
 		
 		<!-- About -->
-		<string name="abt_maintainer">Responsables de mantenimiento</string>
+		<string name="abt_maintainer">Mantenimiento</string>
 		<string name="abt_fd">Creador de temas &amp; diseñador</string>
 		<string name="abt_bork">CEO, Sitio &amp; UI</string>
 		<string name="abt_dj">Sistema utilizado para construir, C++</string>
@@ -972,7 +972,7 @@
 		<string name="abt_credits">Créditos</string>
 		<string name="abt_trans">Traductores</string>
 		<string name="abt_changes">Lista de cambios</string>
-		<string name="abt_main_shrt">Responsables de mantenimiento</string>
+		<string name="abt_main_shrt">Mantenimiento</string>
 		<string name="welcome_msg">¡Bienvenido a OrangeFox!</string>
 		<string name="welcome_msg2"><!-- If welcome message is too big in your lang, use this string --></string>
 		
@@ -1000,7 +1000,7 @@
 
 		<!-- App mgr -->
 		<string name="appmgr_apps">Aplicaciones</string>
-		<string name="appmgr_title">Administrador de aplicaciones</string>
+		<string name="appmgr_title">Admin. de aplicaciones</string>
 
 		<!-- Perfomance -->
 		<string name="perf_title">Rendimiento</string>
@@ -1017,7 +1017,7 @@
 		<string name="fox_ota_msg_ready">¡Estás listo para recibir actualizaciones!</string>
 		<string name="fox_ota_msg_custom">Modo de ROM personalizado activado</string>
 		<string name="fox_ota_msg_reflash">¡Por favor, flashe ROM completa MIUI!</string>
-		<string name="fox_advanced_stock_recovery">Desactivación de recuperación de stock agresiva</string>
+		<string name="fox_advanced_stock_recovery">Desactivación de recuperación de stock</string>
 		<string name="fox_support_miui_ota_chk">Soporte MIUI Incremental OTA</string>
 		<string name="fox_include_system_survival_chk">Incluir sistema de OTA</string>
 		<string name="fox_verify_incremental_ota_signature_chk">Verificación de firma de OTA incremental</string>
