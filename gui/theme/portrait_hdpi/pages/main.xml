@@ -79,7 +79,6 @@
 			<button style="floating_btn">
 				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
 				<action function="set">first_start=0</action>
-				<action function="set">show_help=1</action>
 				<action function="page">main</action>
 			</button>
 			
