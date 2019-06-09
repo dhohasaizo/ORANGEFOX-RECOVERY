@@ -1102,5 +1102,9 @@
 		<string name="of_encryption">Успешно пропатчено принудительное шифрование</string>
 		<string name="of_encryption_off">Принудительное шифрование не включено</string>
 		<string name="of_fstab">Обнаружен fstab: '{1}'</string>
+
+		<!-- Wipe format moved -->
+		<string name="wipe_format_moved_info1">Функция форматирования data</string>
+		<string name="wipe_format_moved_info2">перемещена в "Управление разделами".</string>
 	</resources>
 </language>
