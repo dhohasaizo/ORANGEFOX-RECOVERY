@@ -19,27 +19,43 @@
 			</text>
 
 			<text style="caption">
+				<condition var1="show_help" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@partitions}</text>
+			</text>
+			<text style="caption">
+				<condition var1="show_help" var2="1"/>
 				<placement x="%col1_x%" y="%row2_1_y%"/>
 				<text>{@partitions}</text>
 			</text>
 
 			<image>
+				<condition var1="show_help" var2="1"/>
 				<placement x="%col1_x%" y="%row1_1_y%"/>
 				<image resource="info"/>
 			</image>
 
 			<text style="text_body2_dark">
+				<condition var1="show_help" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
 				<text>{@wipe_format_moved_info1}</text>
 			</text>
 
 			<text style="text_body2_dark">
+				<condition var1="show_help" var2="1"/>
 				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
 				<text>{@wipe_format_moved_info2}</text>
 			</text>
 
 			<partitionlist>
+				<condition var1="show_help" var2="1"/>
 				<placement x="0" y="%row2_2_y%" w="%screen_w%" h="%part_list_btns_9_h%"/>
+				<data name="tw_wipe_list"/>
+				<listtype name="wipe"/>
+			</partitionlist>
+			<partitionlist>
+				<condition var1="show_help" op="!=" var2="1"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%part_list_btns_np_h%"/>
 				<data name="tw_wipe_list"/>
 				<listtype name="wipe"/>
 			</partitionlist>
