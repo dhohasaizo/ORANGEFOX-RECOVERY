@@ -79,7 +79,7 @@
 		<string name="install_select_file_hdr">Seleccionar archivo</string>
 		<string name="install_select_file_btn">Seleccionar archivo</string>
 		<string name="adb_sideload_btn">ADB &amp; Sideload</string>
-		<string name="select_storage_hdr">Seleccione Almacenamiento</string>
+		<string name="select_storage_hdr">Selec. Almacenamiento</string>
 		<string name="select_storage_btn">Selec. Almacenamiento</string>
 		<string name="queue_hdr">En cola</string>
 		<string name="raised_clearqueue_btn">Limpiar cola</string>
@@ -172,12 +172,12 @@
 		<string name="back_btn">Atrás</string>
 		<string name="wipe_enc_btn">Quitar la Encriptación</string>
 		<string name="swipe_factory_reset">Desliza para Restablecer de Fábrica</string>
-		<string name="backup_hdr">Copia de seguridad</string>
+		<string name="backup_hdr">Copia Seguridad</string>
 		<string name="encryption_hdr">Habilitar el Cifrado</string>
 		<string name="name">Nombre</string>
 		<string name="enable_backup_comp_chk">Activar compresión</string>
 		<string name="skip_md5_backup_chk">Omitir generación de MD5 durante la copia de seguridad</string>
-		<string name="disable_backup_space_chk">Deshabilitar la comprobación de espacio libre antes de la copia de seguridad</string>
+		<string name="disable_backup_space_chk">Deshabilitar la comprobación de espacio libre</string>
 		<string name="swipe_backup">Deslizar para realizar la copia de seguridad</string>
 		<string name="backup_name_exists">¡Ya existe una copia de seguridad con ese nombre!</string>
 		<string name="pass_not_match">¡Las contraseñas no coinciden!</string>
@@ -658,7 +658,7 @@
 		<string name="bkp_date">Agregar fecha</string>
 		<string name="bkp_gen">Generar nombre de copia de seguridad</string>
 		<string name="bkp_gen_whilebkp">Generar nombre de copia de seguridad mientras se hace la copia de seguridad</string>
-		<string name="bkp_quick">Copia de seguridad rápida</string>
+		<string name="bkp_quick">Copia Seguridad Rápida</string>
 		<string name="bkp_clear">Idioma</string>
 		
 		<string name="language_cptn">Idioma</string>
@@ -760,9 +760,9 @@
 		<string name="autostorage">Almacenamiento</string>
 		<string name="install_reboot">Reiniciando en %tw_sleep% segundos</string>
 		<string name="cancel_reboot_btn">Cancelar Reiniciar</string>
-		<string name="skip_digest_backup_chk" version="2">Omitir generación Digest durante la copia de seguridad</string>
+		<string name="skip_digest_backup_chk" version="2">Omitir generación Digest durante la copia</string>
 		<string name="restore_digest_chk" version="2">Habilitar verificación de la cuenta de copias de seguridad</string>
-		<string name="restore_enable_digest_chk" version="2">Faltan archivos necesarios para descifrar vold: {1}</string>
+		<string name="restore_enable_digest_chk" version="2">Faltan archivos para descifrar vold: {1}</string>
 		<string name="decrypt_data_vold_os_missing">Faltan archivos necesarios para descifrar vold: {1}</string>
 		<string name="generating_digest1" version="2">Generando Digest</string>
 		<string name="generating_digest2" version="2"> * Generando Digest...</string>
@@ -861,7 +861,7 @@
 
 		<!-- Customization -->
 		<string name="cust_new_ota_screen">Mostrar menos detalles durante OTA</string>
-		<string name="fm_icons_simple">Hacer que los iconos de archivo sean más grandes</string>
+		<string name="fm_icons_simple">Mostrar iconos de archivo más grandes</string>
 		<string name="theme_engine_update">¿Aplicar cambios y recargar?</string>
 		<string name="theme_engine_reset">Tema</string>
 		<string name="apply_btn">Aplicar</string>
@@ -887,7 +887,7 @@
 		<string name="hide_notch">Ocultar notch</string>
 		<!-- NavBar -->
 		<string name="navbar_title">Barra de navegación</string>
-		<string name="navbar_onscreen">Activa barra de navegación</string>
+		<string name="navbar_onscreen">Act. Barra de Navegación</string>
 		<string name="show_slideout">Mostrar botón de consola</string>
 		<string name="dark_nav">Oscuro</string>
 		<!-- Keyboard -->
@@ -1025,5 +1025,9 @@
 		<string name="fox_forced_encryption_chk">Desactivar cifrado forzado</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Evitar el reinicio después de la OTA</string>
 		<string name="of_ota_reboot_disabled">Actualización OTA exitosa. Has desactivado el reinicio automático. Devolviendo el control a usted.</string>
+
+	    <!-- Formateo movido -->
+        <string name="wipe_format_moved_info1">Nota: Formatear Data movido a</string>
+        <string name="wipe_format_moved_info2">Menu de Administración de Particiones.</string>
 	</resources>
 </language>

@@ -1025,5 +1025,8 @@
 		<string name="fox_forced_encryption_chk">Erőltetett titkosítás kikapcsolása</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">OTA-frissítés utáni automatikus újraindulás megakadályozása</string>
 		<string name="of_ota_reboot_disabled">Az OTA-frissítés sikerült. Letiltotta az automatikus újraindítást. Az irányítás visszatér Önhöz.</string>
+
+		<string name="wipe_format_moved_info1">Megjegyzés: a /data formázás átkerült</string>
+   		<string name="wipe_format_moved_info2">a 'Partíciók kezelése' oldalra.</string>
 	</resources>
 </language>

@@ -996,5 +996,9 @@
 		<string name="fox_forced_encryption_chk">Απενεργοποίηση εξαναγκ. κρυπτογράφησης</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Αποτρέψτε την αυτόματη επανεκ. μετά την εγκατ. OTA</string>
 		<string name="of_ota_reboot_disabled">OTA ενημερώθηκε σωστά. Απνεργ/στε την αυτόματη επανε/ση. Επιστροφή ελέγχου</string>
+
+		<!-- Wipe format moved -->
+		<string name="wipe_format_moved_info1">Σημείωση: η διαγραφή Δεδομένων μετακινούνται σε</string>
+		<string name="wipe_format_moved_info2">Σελίδα Διαχείρησης Διαμερισμάτων.</string>
 	</resources>
 </language>
