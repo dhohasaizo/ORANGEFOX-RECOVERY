@@ -871,7 +871,7 @@ void DataManager::SetDefaultValues()
 
   // { MIUI
   string miui_switch = "1";
-  #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
+  #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE) || defined(OF_KEEP_DM_VERITY_FORCED_ENCRYPTION)
   miui_switch = "0";
   #endif  
   mPersist.SetValue("fox_verify_incremental_ota_signature", miui_switch); // set to 1 [support miui ota]
