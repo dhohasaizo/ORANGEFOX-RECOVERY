@@ -98,7 +98,7 @@
 		<string name="successful">Correcto</string>
 		<string name="wipe_cache_btn">Borrar Cachés</string>
 		<string name="reboot_system_btn">Reiniciar Sistema</string>
-		<string name="reboot_recovery_btn">Reiniciar Modo Recovery</string>
+		<string name="reboot_recovery_btn">Reiniciar al Recovery</string>
 		<string name="install_sel_target">Seleccione la partición de destino</string>
 		<string name="flash_image_select">Partición</string>
 		<string name="flashing_image">Flasheando imagen...</string>
@@ -217,7 +217,7 @@
 		<string name="unmount_btn">Desmontar</string>
 		<string name="rb_system_btn">Sistema </string>
 		<string name="rb_poweroff_btn">Apagar</string>
-		<string name="rb_recovery_btn">Recuperación</string>
+		<string name="rb_recovery_btn">Recovery</string>
 		<string name="rb_bootloader_btn">Bootloader</string>
 		<string name="rb_theme">Tema</string>
 		<string name="rb_download_btn">Descargas</string>
@@ -1025,7 +1025,6 @@
 		<string name="fox_forced_encryption_chk">Desactivar cifrado forzado</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Evitar el reinicio después de la OTA</string>
 		<string name="of_ota_reboot_disabled">Actualización OTA exitosa. Has desactivado el reinicio automático. Devolviendo el control a usted.</string>
-
 	    <!-- Formateo movido -->
         <string name="wipe_format_moved_info1">Nota: Formatear Data movido a</string>
         <string name="wipe_format_moved_info2">Menu de Administración de Particiones.</string>
