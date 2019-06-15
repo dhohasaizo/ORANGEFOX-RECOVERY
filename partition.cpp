@@ -1696,7 +1696,7 @@ bool TWPartition::Mount(bool Display_Error)
 			 "fail_mount=Failed to mount '{1}' ({2})")
 			(Mount_Point) (strerror(errno)));
 				if (Mount_Point == "/cust")
-					gui_print_color("warning", "Please keep in mind, in most cases error mounting cust don't affect on installation and system.\n");
+					gui_print_color("warning", "Please note that, in most cases, errors mounting cust do not affect installation and system.\n");
 	      else
 		LOGINFO("Failed to mount '%s' (MTD)\n", Mount_Point.c_str());
 	      return false;
