@@ -59,6 +59,7 @@
 #endif
 #include "set_metadata.h"
 #include "twinstall.h"
+#include "gui/pages.hpp"
 
 extern "C"
 {
@@ -292,6 +293,10 @@ bool TWFunc::Rerun_Startup(void)
    
    //LOGINFO("OrangeFox: Executing OrangeFox_Startup() again...\n");
    OrangeFox_Startup(); 
+
+   //LOGINFO("OrangeFox: Reloading theme to apply generated theme on sdcard - again...\n");
+   PageManager::RequestReload();
+
    LOGINFO("OrangeFox: Finished rerun.\n");
    
    return true;
