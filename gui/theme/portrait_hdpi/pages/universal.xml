@@ -60,12 +60,14 @@
 		<page name="rebootcheck">
 			<action>
 				<condition var1="disable_no_os" var2="1"/>
+				<action function="set">need_reboot=1</action>
 				<action function="reboot">%tw_action_param%</action>
 			</action>
 
 			<action>
 				<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
 				<condition var1="disable_no_os" var2="0"/>
+				<action function="set">need_reboot=1</action>
 				<action function="reboot">%tw_action_param%</action>
 			</action>
 
@@ -194,6 +196,7 @@
 
 			<slider style="slider_action">
 				<placement x="%center_x%" y="%slider_y%" placement="5"/>
+				<action function="set">need_reboot=1</action>
 				<action function="reboot">%tw_action_param%</action>
 			</slider>
 

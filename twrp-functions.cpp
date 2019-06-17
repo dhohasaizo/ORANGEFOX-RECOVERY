@@ -291,11 +291,11 @@ bool TWFunc::Rerun_Startup(void)
    //LOGINFO("OrangeFox: Reading settings file - again...\n");
    DataManager::ReadSettingsFile();
    
-   //LOGINFO("OrangeFox: Executing OrangeFox_Startup() again...\n");
-   OrangeFox_Startup(); 
-
    //LOGINFO("OrangeFox: Reloading theme to apply generated theme on sdcard - again...\n");
    PageManager::RequestReload();
+
+   //LOGINFO("OrangeFox: Executing OrangeFox_Startup() again...\n");
+   OrangeFox_Startup(); 
 
    LOGINFO("OrangeFox: Finished rerun.\n");
    
