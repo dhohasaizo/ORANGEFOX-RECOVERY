@@ -995,7 +995,7 @@
 				<condition var1="of_maintainer" op="&gt;=" var2="3"/>
 				<image resource="maintainer_layer"/>
 				<font resource="caption" color="%text_raisedbtn%"/>
-				<placement x="%card3_mtag_x%" y="%card3_mtag_y%"/>
+				<placement x="%card1_mtag_x%" y="%card3_mtag_y%"/>
 				<text>{@abt_main_shrt}</text>
 			</button>
 			<!-- Card -->
