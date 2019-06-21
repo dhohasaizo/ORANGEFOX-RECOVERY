@@ -726,20 +726,13 @@ int OpenRecoveryScript::Run_OpenRecoveryScript_Action()
 	   }
 
 	if (reboot || code1 == 3 || code2 == 3) 
-	  {
-	  
-		// DJ9
-		//Run_Fox_Process_After_ORS();
-		// DJ9
-	  
+	  {	  
     		// have we disabled auto-reboot?
     		if (code1 == 3 || code2 == 3) 
        		  { 
  		     usleep(1000000); // sleep for 1 second
           	     op_status = 0;
-								 // * ANGRY RUSSIAN SOUNDS *
-							   gui_msg("of_ota_reboot_disabled=OTA update succeeded. You disabled auto-reboot. Returning control to you.");
-          	     /*gui_print_color("warning", "\nOTA update succeeded. You disabled auto-reboot. Returning control to you.\n\n");*/
+		     gui_msg("of_ota_reboot_disabled=OTA update succeeded. You disabled auto-reboot. Returning control to you.\n");
           	     DataManager::SetValue("tw_page_done", 1);
        		  }
        		else

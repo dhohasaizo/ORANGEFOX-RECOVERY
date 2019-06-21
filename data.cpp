@@ -864,10 +864,7 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue(FOX_SAVE_LOAD_AROMAFM, "0");
   mPersist.SetValue(FOX_DISABLE_DEBUGGING, "0");
   mPersist.SetValue(FOX_ENABLE_DEBUGGING, "1");
-
-  // { R9.0
   mPersist.SetValue(FOX_DISABLE_OTA_AUTO_REBOOT, "0");
-  // R9.0 }
 
   // { MIUI
   string miui_switch = "1";

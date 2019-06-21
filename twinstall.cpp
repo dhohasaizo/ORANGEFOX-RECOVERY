@@ -399,7 +399,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
    //* treble
 
 #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
-     //LOGINFO("OrangeFox: not executing MIUI OTA restore\n");
+     LOGINFO("OrangeFox: not executing MIUI OTA restore\n");
 #else
      if (zip_is_survival_trigger) //(DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) != 0)
 	{
@@ -410,6 +410,9 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      const string take_out_metadata = "/tmp/build.prop";
 	      if (Zip->ExtractEntry(metadata_sg_path, take_out_metadata, 0644))
 		{
+		  #ifdef OF_SUPPORT_PRE_FLASH_SCRIPT
+		  //TWFunc::Run_Pre_Flash_Protocol(true);
+	   	  #endif		  
 		  string metadata_fingerprint = TWFunc::File_Property_Get(take_out_metadata, pre_build); // look for "pre-build"
 		  string metadata_device = TWFunc::File_Property_Get(take_out_metadata, pre_device);  // look for "pre-device"
 		  string fingerprint = TWFunc::System_Property_Get(fingerprint_property); // try to get system fingerprint - ro.build.fingerprint
@@ -460,8 +463,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		      if (zip_is_for_specific_build)
 			 {
 			   if ((!ors_is_active()) && (zip_is_rom_package))
-			   gui_warn
-			     ("fox_zip_have_to_be_decrypted=Warning: Some OEMs specific packages have to be first decrypted before the installation!");
+			   gui_err
+			     ("You must flash MIUI OTA updates from the MIUI updater, because only MIUI can decrypt the zips.");
 			 }			
 		      unlink(take_out_metadata.c_str());		      
 		    }
@@ -989,7 +992,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	  ret_val = Prepare_Update_Binary(path, &Zip, wipe_cache);
 	  if (ret_val == INSTALL_SUCCESS)
 	    {
-	  	TWFunc::Run_Pre_Flash_Protocol();
+	  	TWFunc::Run_Pre_Flash_Protocol(false);
 	        ret_val = Run_Update_Binary
 	            (path, &Zip, wipe_cache, UPDATE_BINARY_ZIP_TYPE);
 	    }
@@ -1092,6 +1095,10 @@ int result = 1;
 	    DataManager::SetValue(FOX_RUN_SURVIVAL_BACKUP, 1);
 	    gui_msg
 		("fox_incremental_ota_bak_run=Starting OTA_BAK process...");
+
+		#ifdef OF_SUPPORT_PRE_FLASH_SCRIPT
+		//TWFunc::Run_Pre_Flash_Protocol(true);
+	   	#endif
 	      	      
 	    if (PartitionManager.Run_OTA_Survival_Backup(false))
 	        {
