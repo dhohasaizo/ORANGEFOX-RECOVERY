@@ -288,13 +288,10 @@ bool TWFunc::Rerun_Startup(void)
    if (i == true || tprop == "1")
      return false;
 
-   //LOGINFO("OrangeFox: Reading settings file - again...\n");
+   // LOGINFO("OrangeFox: Reading settings file - again...\n");
    DataManager::ReadSettingsFile();
-   
-   //LOGINFO("OrangeFox: Reloading theme to apply generated theme on sdcard - again...\n");
-   PageManager::RequestReload();
 
-   //LOGINFO("OrangeFox: Executing OrangeFox_Startup() again...\n");
+   // LOGINFO("OrangeFox: Executing OrangeFox_Startup() again...\n");
    OrangeFox_Startup(); 
 
    LOGINFO("OrangeFox: Finished rerun.\n");
@@ -2060,7 +2057,7 @@ void TWFunc::Welcome_Message(void)
       gui_print("[Build type]: %s\n", BUILD_TYPE);
     gui_print("[TWRP Version]: %s\n", FOX_VERSION);
     #ifdef OF_DISABLE_MIUI_SPECIFIC_FEATURES
-    LOGINFO("[* MIUI-specifiec features not enabled *]\n");
+    LOGINFO(" [MIUI-specific features not enabled]\n");
     #endif
     gui_print("--------------------------\n");
     Fox_Has_Welcomed++;
@@ -3101,22 +3098,6 @@ bool TWFunc::Fresh_Fox_Install()
   bool CanProceed = true;
   New_Fox_Installation = 0;
 
-/*
-// -------------------
-if (Is_AB_Device)
-{
-	LOGINFO ("DEBUG [Fresh_Fox_Install()] - file=%s\n", fox_file.c_str());
-	if (Path_Exists(fox_file)) 
-	{
-  		LOGINFO ("OrangeFox - DEBUG [Fresh_Fox_Install()] - fox_file exists\n");  
-	} 		
-	else 
-	{
-  		LOGINFO ("OrangeFox - DEBUG [Fresh_Fox_Install()] - fox_file CANNOT be found!!!\n");  
-	}
-}
-// ----------------- //
-*/
   if (get_cache_dir() == NON_AB_CACHE_DIR)
     {
       CanProceed = (PartitionManager.Is_Mounted_By_Path(NON_AB_CACHE_DIR) 
@@ -3125,16 +3106,12 @@ if (Is_AB_Device)
 
   if (CanProceed)
     {
-//if (Is_AB_Device) LOGINFO ("DEBUG [Fresh_Fox_Install()] - we can proceed\n");
-
 	if (!Path_Exists(fox_file))
 	    return false;
 
-//if (Is_AB_Device) LOGINFO ("DEBUG [Fresh_Fox_Install()] - fox_file exists\n");
-	
 	unlink(fox_file.c_str());
 	
-  DataManager::SetValue("first_start", "1");
+  	DataManager::SetValue("first_start", "1");
 
 	#ifdef OF_DONT_PATCH_ON_FRESH_INSTALLATION
 	gui_print("Fresh OrangeFox installation - not running the dm-verity/forced-encryption patches\n");
@@ -3152,11 +3129,13 @@ if (Is_AB_Device)
 	
 	LOGINFO ("DEBUG [Fresh_Fox_Install()] - copying log to:/sdcard/Fox/post-install.log \n");
 	copy_file("/tmp/recovery.log", "/sdcard/Fox/post-install.log", 0644);
+
 	return true;
    }    
    else
    {
-//if (Is_AB_Device) LOGINFO ("DEBUG [Fresh_Fox_Install() - we cannot proceed\n");
+      	if (Path_Exists(fox_file))
+      	  unlink(fox_file.c_str());
       	return false;
    }
 }
@@ -4011,11 +3990,11 @@ int res=0, wipe_cache=0;
    return res;
 }
 
-void TWFunc::Run_Pre_Flash_Protocol(void)
+void TWFunc::Run_Pre_Flash_Protocol(bool forceit)
 {
 #ifdef OF_SUPPORT_PRE_FLASH_SCRIPT
-  // don't run this for ROMs
-  if (DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE) == 0)
+  // don't run this for ROMs (unless forced)
+  if ((forceit == true) || (DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE) == 0))
     {
       // don't run this for built-in zips
       if (DataManager::GetIntValue(FOX_INSTALL_PREBUILT_ZIP) != 1)

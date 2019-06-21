@@ -251,7 +251,12 @@ int main(int argc, char **argv)
 		if (SkipDecryption) {
 			LOGINFO("Skipping decryption\n");
 		} else {
-			LOGINFO("Is encrypted, do decrypt page first\n");
+			LOGINFO("Is encrypted, do decrypt page first\n");			
+			//
+			LOGINFO("- DEBUG: OrangeFox: detected custom encryption\n");
+			DataManager::SetValue("used_custom_encryption", "1");
+			usleep(16);
+			//
 			if (gui_startPage("decrypt", 1, 1) != 0) {
 				LOGERR("Failed to start decrypt GUI page.\n");
 			} else {
@@ -359,11 +364,21 @@ int main(int argc, char **argv)
   twrpAdbBuFifo *adb_bu_fifo = new twrpAdbBuFifo();
   adb_bu_fifo->threadAdbBuFifo();
 
-  // check for fresh OrangeFox installation
-  TWFunc::Fresh_Fox_Install(); // DJ9
-  
+#ifdef OF_KEEP_DM_VERITY_FORCED_ENCRYPTION
+  DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
+  DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
+#endif
+
+  // check for fresh OrangeFox installation (again)
+  //TWFunc::Fresh_Fox_Install();
+
+  // LOGINFO("OrangeFox: Reloading theme to apply generated theme on sdcard - again...\n");
+  if (DataManager::GetStrValue("used_custom_encryption") == "1")
+    PageManager::RequestReload();
+
   // Launch the main GUI
   gui_start();
+
 #ifndef TW_OEM_BUILD
 
   // Disable flashing of stock recovery

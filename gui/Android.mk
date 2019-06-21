@@ -81,6 +81,10 @@ ifeq ($(TW_ROUND_SCREEN), true)
     LOCAL_CFLAGS += -DTW_ROUND_SCREEN
 endif
 
+ifeq ($(OF_USE_TWFUNC_REBOOT_FUNCTION),1)
+    LOCAL_CFLAGS += -DOF_USE_TWFUNC_REBOOT_FUNCTION='"1"'
+endif
+
 LOCAL_C_INCLUDES += \
     bionic \
     system/core/include \

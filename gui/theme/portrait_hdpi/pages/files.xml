@@ -157,7 +157,7 @@
 			<!-- Reboot if failed last time  -->
 			<action>
 				<condition var1="need_reboot" var2="1"/>
-				<action function="reboot">%tw_reboot_param%</action>
+				<action function="need_reboot">%tw_reboot_param%</action>
 			</action>
 			
 			<!-- менюха внизу -->

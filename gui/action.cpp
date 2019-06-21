@@ -124,12 +124,20 @@ ActionThread::~ActionThread()
   pthread_mutex_destroy(&m_act_lock);
 }
 
+// custom encryption kludge - DJ9
+static bool Hide_Reboot_Kludge_Fix(string FuncName)
+{
+  return (FuncName == "need_reboot");
+}
+// kludge - DJ9
+
 void ActionThread::threadActions(GUIAction * act)
 {
   pthread_mutex_lock(&m_act_lock);
   if (m_thread_running)
     {
       pthread_mutex_unlock(&m_act_lock);
+     if (! Hide_Reboot_Kludge_Fix(act->mActions[0].mFunction))
       LOGERR
 	("Another threaded action is already running -- not running %u actions starting with '%s'\n",
 	 act->mActions.size(), act->mActions[0].mFunction.c_str());
@@ -572,7 +580,8 @@ int GUIAction::doAction(Action action)
   mapFunc::const_iterator funcitr = mf.find(function);
   if (funcitr != mf.end())
     return (this->*funcitr->second) (arg);
-
+  
+  if (! Hide_Reboot_Kludge_Fix(function))
   LOGERR("Unknown action '%s'\n", function.c_str());
   return -1;
 }
@@ -628,7 +637,20 @@ int GUIAction::reboot(std::string arg)
   sync();
   DataManager::SetValue("tw_gui_done", 1);
   DataManager::SetValue("tw_reboot_arg", arg);
-
+  #ifdef OF_USE_TWFUNC_REBOOT_FUNCTION
+  /*
+  RebootCommand command = rb_current;
+  usleep(64);
+  if (arg == "system") command = rb_system; 
+  else if (arg == "recovery") command = rb_recovery; 
+  else if (arg == "poweroff") command = rb_poweroff; 
+  else if (arg == "bootloader" || arg == "fastboot") command = rb_bootloader; 
+  else if (arg == "download") command = rb_download; 
+  else if (arg == "edl") command = rb_edl;
+  else return 1;
+  TWFunc::tw_reboot(command);
+  */
+  #endif  
   return 0;
 }
 
