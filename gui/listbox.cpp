@@ -27,6 +27,7 @@ extern "C" {
 #include "objects.hpp"
 #include "../data.hpp"
 #include "pages.hpp"
+#include "../twrp-functions.hpp"
 
 extern std::vector<language_struct> Language_List;
 
@@ -36,8 +37,8 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 	xml_node<>* child;
 	mIconSelected = mIconUnselected = NULL;
 	mUpdate = 0;
-	isCheckList = isTextParsed = false;
-
+	requireReload = isCheckList = isTextParsed = false;
+	
 	// Get the icons, if any
 	child = FindNode(node, "icon");
 	if (child) {
@@ -45,21 +46,33 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 		mIconUnselected = LoadAttrImage(child, "unselected");
 	}
 	int iconWidth = 0, iconHeight = 0;
-	if (mIconSelected && mIconSelected->GetResource() && mIconUnselected && mIconUnselected->GetResource()) {
-		iconWidth = std::max(mIconSelected->GetWidth(), mIconUnselected->GetWidth());
-		iconHeight = std::max(mIconSelected->GetHeight(), mIconUnselected->GetHeight());
-	} else if (mIconSelected && mIconSelected->GetResource()) {
-		iconWidth = mIconSelected->GetWidth();
-		iconHeight = mIconSelected->GetHeight();
-	} else if (mIconUnselected && mIconUnselected->GetResource()) {
-		iconWidth = mIconUnselected->GetWidth();
-		iconHeight = mIconUnselected->GetHeight();
+	
+	// [f/d] Get size for icons
+	child = FindNode(node, "iconsize");
+	if (child) {
+		iconWidth = LoadAttrIntScaleX(child, "w", iconWidth);
+		iconHeight = LoadAttrIntScaleY(child, "h", iconHeight);
+	} else {
+		if (mIconSelected && mIconSelected->GetResource() && mIconUnselected && mIconUnselected->GetResource()) {
+			iconWidth = std::max(mIconSelected->GetWidth(), mIconUnselected->GetWidth());
+			iconHeight = std::max(mIconSelected->GetHeight(), mIconUnselected->GetHeight());
+		} else if (mIconSelected && mIconSelected->GetResource()) {
+			iconWidth = mIconSelected->GetWidth();
+			iconHeight = mIconSelected->GetHeight();
+		} else if (mIconUnselected && mIconUnselected->GetResource()) {
+			iconWidth = mIconUnselected->GetWidth();
+			iconHeight = mIconUnselected->GetHeight();
+		}
 	}
+	
 	SetMaxIconSize(iconWidth, iconHeight);
 
 	// Handle the result variable
 	child = FindNode(node, "data");
 	if (child) {
+		attr = child->first_attribute("requireReload");
+		if (attr)
+			requireReload = true;
 		attr = child->first_attribute("name");
 		if (attr)
 			mVariable = attr->value();
@@ -76,16 +89,44 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 				data.variableValue = (*iter).filename;
 				data.action = NULL;
 				if (currentValue == (*iter).filename) {
-					data.selected = 1;
+					data.icon = mIconSelected;
 					DataManager::SetValue("tw_language_display", (*iter).displayvalue);
 				} else
-					data.selected = 0;
+					data.icon = mIconUnselected;
 				mListItems.push_back(data);
 			}
 		}
 	}
 	else
 		allowSelection = false;		// allows using listbox as a read-only list or menu
+
+	//[f/d] read file
+	child = FindNode(node, "read");
+	if (child) {
+		attr = child->first_attribute("filename");
+		if (attr) {
+			mFileName = attr->value();
+			std::vector<string> lines;
+			if (TWFunc::read_file(mFileName.c_str(), lines) == 0) {
+			  LOGINFO("Parsing file: %s\n", mFileName.c_str());
+				unsigned int vector_size = lines.size();
+				for (unsigned int i = 0; i < vector_size; i++) {
+					ListItem item;
+					item.displayName = lines[i];
+					item.selected = false;
+
+					mListItems.push_back(item);
+				}
+			} else {
+				ListItem item;
+				item.displayName = gui_parse_text("{@file_read_error=Unable to open file!}");
+				item.selected = false;
+				
+				mListItems.push_back(item);
+			}
+			return;
+		}
+	}
 
 	// Get the data for the list
 	child = FindNode(node, "listitem");
@@ -98,14 +139,28 @@ GUIListBox::GUIListBox(xml_node<>* node) : GUIScrollList(node)
 			continue;
 		// We will parse display names when we get page focus to ensure that translating takes place
 		item.displayName = attr->value();
+		if (requireReload)
+			item.unparsedName = attr->value();
 		item.variableValue = gui_parse_text(child->value());
 		item.selected = (child->value() == currentValue);
 		item.action = NULL;
 		xml_node<>* action = child->first_node("action");
+		if (!action)
+			action = child->first_node("actions");
 		if (action) {
-			item.action = new GUIAction(action);
+			item.action = new GUIAction(child);
 			allowSelection = true;
 		}
+		
+		// [f/d] Load custom icon
+		xml_node<>* exicon = child->first_node("icon");
+		if (exicon) {
+			item.icon = LoadAttrImage(exicon, "res");
+			item.hasicon = true;
+		} else {
+			item.hasicon = false;
+		}
+		
 		xml_node<>* variable_name = child->first_node("data");
 		if (variable_name) {
 			attr = variable_name->first_attribute("variable");
@@ -167,6 +222,9 @@ int GUIListBox::NotifyVarChange(const std::string& varName, const std::string& v
 		if (itemVisible)
 			mVisibleItems.push_back(i);
 
+		if (requireReload)
+			item.displayName = gui_parse_text(item.unparsedName);
+
 		if (isCheckList)
 		{
 			if (item.variableName == varName || varName.empty()) {
@@ -223,7 +281,14 @@ void GUIListBox::RenderItem(size_t itemindex, int yPos, bool selected)
 	// note: the "selected" parameter above is for the currently touched item
 	// don't confuse it with the more persistent "selected" flag per list item used below
 	ListItem& item = mListItems[mVisibleItems[itemindex]];
-	ImageResource* icon = item.selected ? mIconSelected : mIconUnselected;
+	ImageResource* icon;
+	if (item.hasicon) {
+		//[f/d] Render custom icon
+		icon = item.icon;
+	} else {
+		//Render default (un)selected icon
+		icon = item.selected ? mIconSelected : mIconUnselected;
+	}
 	const std::string& text = item.displayName;
 
 	RenderStdItem(yPos, selected, icon, text.c_str());

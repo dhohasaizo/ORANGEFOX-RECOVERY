@@ -124,12 +124,20 @@ ActionThread::~ActionThread()
   pthread_mutex_destroy(&m_act_lock);
 }
 
+// custom encryption kludge - DJ9
+static bool Hide_Reboot_Kludge_Fix(string FuncName)
+{
+  return (FuncName == "need_reboot");
+}
+// kludge - DJ9
+
 void ActionThread::threadActions(GUIAction * act)
 {
   pthread_mutex_lock(&m_act_lock);
   if (m_thread_running)
     {
       pthread_mutex_unlock(&m_act_lock);
+     if (! Hide_Reboot_Kludge_Fix(act->mActions[0].mFunction))
       LOGERR
 	("Another threaded action is already running -- not running %u actions starting with '%s'\n",
 	 act->mActions.size(), act->mActions[0].mFunction.c_str());
@@ -198,7 +206,8 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(generatebackupname);
       ADD_ACTION(checkpartitionlist);
       ADD_ACTION(getpartitiondetails);
-      ADD_ACTION(screenshotinternal);
+      ADD_ACTION(screenshot);
+      ADD_ACTION_EX("screenshotinternal", screenshot);
       ADD_ACTION(screenshotexternal);
       ADD_ACTION(setbrightness);
       ADD_ACTION(fileexists);
@@ -211,9 +220,14 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(checkpartitionlifetimewrites);
       ADD_ACTION(mountsystemtoggle);
       ADD_ACTION(setlanguage);
-      ADD_ACTION(checkforapp);
       ADD_ACTION(togglebacklight);
       ADD_ACTION(disableled);
+      ADD_ACTION(flashlight);
+
+	  //fordownloads actions
+      ADD_ACTION(fileextension);
+      ADD_ACTION(up_a_level);
+      ADD_ACTION(checkbackupfolder);
  
       // remember actions that run in the caller thread
       for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
@@ -239,7 +253,7 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(openrecoveryscript);
       ADD_ACTION(installsu);
       ADD_ACTION(fixsu);
-     
+
       ADD_ACTION(decrypt_backup);
       ADD_ACTION(repair);
       ADD_ACTION(resize);
@@ -247,18 +261,15 @@ GUIAction::GUIAction(xml_node <> *node):GUIObject(node)
       ADD_ACTION(flashimage);
       ADD_ACTION(twcmd);
       ADD_ACTION(setbootslot);
-      ADD_ACTION(installapp);
-      ADD_ACTION(flashlight);
+      ADD_ACTION(repackimage);
+      ADD_ACTION(fixabrecoverybootloop);
       ADD_ACTION(adb);
-      ADD_ACTION(disableinstallled);
-      ADD_ACTION(disablebackupled);
-      ADD_ACTION(disablerestoreled);
-      ADD_ACTION(removepassword);
-      ADD_ACTION(setpassword);
       ADD_ACTION(wlfw);
       ADD_ACTION(wlfx);
-      ADD_ACTION(changesplash);
       ADD_ACTION(calldeactivateprocess);
+
+      //[f/d] Threaded actions
+      ADD_ACTION(ftls); //ftls (foxtools) - silent cmd
    }
 
   // First, get the action
@@ -454,7 +465,7 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
 		("config_twrp_err=Unable to configure TWRP with this kernel.");
 	    }
 	}
-	
+
       //* DJ9
       Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
       usleep(32);
@@ -465,8 +476,8 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
           	 LOGINFO("OrangeFox: processed internal zip: %s\n",filename.c_str());
               }
               else
-          	 LOGINFO("OrangeFox: installed standard zip: %s\n",filename.c_str());           
-        } 
+          	 LOGINFO("OrangeFox: installed standard zip: %s\n",filename.c_str());
+        }
       else // this is a ROM install
         {
           if (Fox_Zip_Installer_Code == 1) LOGINFO("OrangeFox: installed CUSTOM ROM: %s\n",filename.c_str());
@@ -481,7 +492,7 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
           else
           if (Fox_Zip_Installer_Code == 23) LOGINFO("OrangeFox: installed Treble (MIUI) ROM and OTA_BAK: %s\n",filename.c_str());
           else
-             LOGINFO("OrangeFox: installed MIUI ROM: %s\n",filename.c_str());            
+             LOGINFO("OrangeFox: installed MIUI ROM: %s\n",filename.c_str());
         }
        LOGINFO ("flash_zip: installer code = %i\n", DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE));
       //* DJ9
@@ -569,54 +580,56 @@ int GUIAction::doAction(Action action)
   mapFunc::const_iterator funcitr = mf.find(function);
   if (funcitr != mf.end())
     return (this->*funcitr->second) (arg);
-
+  
+  if (! Hide_Reboot_Kludge_Fix(function))
   LOGERR("Unknown action '%s'\n", function.c_str());
   return -1;
 }
 
 void GUIAction::operation_start(const string operation_name)
 {
-  LOGINFO("operation_start: '%s'\n", operation_name.c_str());
-  time(&Start);
-  DataManager::SetValue(TW_ACTION_BUSY, 1);
-  DataManager::SetValue("ui_progress", 0);
-  DataManager::SetValue("tw_operation", operation_name);
-  DataManager::SetValue("tw_operation_state", 0);
-  DataManager::SetValue("tw_operation_status", 0);
+	LOGINFO("operation_start: '%s'\n", operation_name.c_str());
+	time(&Start);
+	DataManager::SetValue(TW_ACTION_BUSY, 1);
+	DataManager::SetValue("ui_progress", 0);
+	DataManager::SetValue("tw_operation", operation_name);
+	DataManager::SetValue("tw_operation_state", 0);
+	DataManager::SetValue("tw_operation_status", 0);
+	bool tw_ab_device = TWFunc::get_cache_dir() != NON_AB_CACHE_DIR;
+	DataManager::SetValue("tw_ab_device", tw_ab_device);
 }
 
 void GUIAction::operation_end(const int operation_status)
 {
-  time_t Stop;
-  int simulate_fail;
-  DataManager::SetValue("ui_progress", 100);
-  if (simulate)
-    {
-      DataManager::GetValue(TW_SIMULATE_FAIL, simulate_fail);
-      if (simulate_fail != 0)
-	DataManager::SetValue("tw_operation_status", 1);
-      else
-	DataManager::SetValue("tw_operation_status", 0);
-    }
-  else
-    {
-      if (operation_status != 0)
-	{
-	  DataManager::SetValue("tw_operation_status", 1);
+	time_t Stop;
+	int simulate_fail;
+	DataManager::SetValue("ui_progress", 100);
+	if (simulate) {
+		DataManager::GetValue(TW_SIMULATE_FAIL, simulate_fail);
+		if (simulate_fail != 0)
+			DataManager::SetValue("tw_operation_status", 1);
+		else
+			DataManager::SetValue("tw_operation_status", 0);
+	} else {
+		if (operation_status != 0) {
+			DataManager::SetValue("tw_operation_status", 1);
+		}
+		else {
+			DataManager::SetValue("tw_operation_status", 0);
+		}
 	}
-      else
-	{
-	  DataManager::SetValue("tw_operation_status", 0);
-	}
-    }
-  DataManager::SetValue("tw_operation_state", 1);
-  DataManager::SetValue(TW_ACTION_BUSY, 0);
-  blankTimer.resetTimerAndUnblank();
-  property_set("twrp.action_complete", "1");
-  time(&Stop);
-  if ((int) difftime(Stop, Start) > 10)
-    DataManager::Vibrate("tw_action_vibrate");
-  LOGINFO("operation_end - status=%d\n", operation_status);
+	DataManager::SetValue("tw_operation_state", 1);
+	DataManager::SetValue(TW_ACTION_BUSY, 0);
+	blankTimer.resetTimerAndUnblank();
+	property_set("twrp.action_complete", "1");
+	time(&Stop);
+
+#ifndef TW_NO_HAPTICS
+	if ((int) difftime(Stop, Start) > 10)
+		DataManager::Vibrate("tw_action_vibrate");
+#endif
+
+	LOGINFO("operation_end - status=%d\n", operation_status);
 }
 
 int GUIAction::reboot(std::string arg)
@@ -624,7 +637,20 @@ int GUIAction::reboot(std::string arg)
   sync();
   DataManager::SetValue("tw_gui_done", 1);
   DataManager::SetValue("tw_reboot_arg", arg);
-
+  #ifdef OF_USE_TWFUNC_REBOOT_FUNCTION
+  /*
+  RebootCommand command = rb_current;
+  usleep(64);
+  if (arg == "system") command = rb_system; 
+  else if (arg == "recovery") command = rb_recovery; 
+  else if (arg == "poweroff") command = rb_poweroff; 
+  else if (arg == "bootloader" || arg == "fastboot") command = rb_bootloader; 
+  else if (arg == "download") command = rb_download; 
+  else if (arg == "edl") command = rb_edl;
+  else return 1;
+  TWFunc::tw_reboot(command);
+  */
+  #endif  
   return 0;
 }
 
@@ -669,6 +695,55 @@ int GUIAction::readBackup(std::string arg __unused)
   return 0;
 }
 
+int GUIAction::checkbackupfolder(std::string arg __unused)
+{
+  string path;
+  DIR* d;
+  struct stat s;
+	struct dirent* de;
+
+	DataManager::GetValue(TW_BACKUPS_FOLDER_VAR, path);
+  DataManager::SetValue("of_backup_rw", "1");
+  DataManager::SetValue("of_backup_empty", "1");
+
+  // create backup folder if it not exist
+  // if we failed to create folder, user possibly trying to open usb with ntfs
+  string dirpath = path + "/.";
+  if( stat(dirpath.c_str(),&s) != 0 )
+    if (!TWFunc::Recursive_Mkdir(path, false))
+      DataManager::SetValue("of_backup_rw", "0");
+
+  // open dir and trying to get file list
+  d = opendir(path.c_str());
+	if (d != NULL) {
+      while ((de = readdir(d)) != NULL) {
+        std::string name = de->d_name;
+        // skip special folders
+        if (name == "." || name == "..")
+          continue;
+
+        unsigned char type = de->d_type;
+        if (type == DT_UNKNOWN)
+			    type = TWFunc::Get_D_Type_From_Stat(path);
+        if (type != DT_DIR)
+          continue;
+        
+        // when we found a normal folder, set of_backup_empty to 0 and exit loop
+        DataManager::SetValue("of_backup_empty", "0");
+        break;
+      }
+      closedir(d);
+  } else {
+      LOGINFO("Error opening folder: %s\n", path.c_str());
+  }
+
+  DataManager::SetValue("tw_backups_folder_fm", path);
+  // switch to restore_prep page
+  gui_changePage("restore_prep");
+
+  return 0;
+}
+
 int GUIAction::set(std::string arg)
 {
   if (arg.find('=') != string::npos)
@@ -687,6 +762,28 @@ int GUIAction::set(std::string arg)
 int GUIAction::clear(std::string arg)
 {
   DataManager::SetValue(arg, "0");
+  return 0;
+}
+
+int GUIAction::up_a_level(std::string arg)
+{
+    string fm_path;
+    DataManager::GetValue(arg, fm_path);
+	size_t found;
+	found = fm_path.find_last_of('/');
+	if (found != string::npos) {
+		string new_folder = fm_path.substr(0, found);
+		if (new_folder.length() < 2)
+			new_folder = "/";
+		DataManager::SetValue(arg, new_folder);
+	}
+	return 0;
+}
+
+int GUIAction::fileextension(std::string arg)
+{
+  string f_ext = arg.substr(arg.find_last_of(".") + 1);
+  DataManager::SetValue("tw_file_extension", f_ext);
   return 0;
 }
 
@@ -951,7 +1048,7 @@ int GUIAction::checkpartitionlist(std::string arg)
   int count = 0;
 
   if (arg.empty())
-    arg = "tw_wipe_list";
+    arg = "part_option";
   DataManager::GetValue(arg, List);
   LOGINFO("checkpartitionlist list '%s'\n", List.c_str());
   if (!List.empty())
@@ -987,7 +1084,7 @@ int GUIAction::getpartitiondetails(std::string arg)
   string List, part_path;
 
   if (arg.empty())
-    arg = "tw_wipe_list";
+    arg = "part_option";
   DataManager::GetValue(arg, List);
   LOGINFO("getpartitiondetails list '%s'\n", List.c_str());
   if (!List.empty())
@@ -998,8 +1095,7 @@ int GUIAction::getpartitiondetails(std::string arg)
 	{
 	  part_path = List.substr(start_pos, end_pos - start_pos);
 	  LOGINFO("getpartitiondetails part_path '%s'\n", part_path.c_str());
-	  if (part_path == "/and-sec" || part_path == "DALVIK"
-	      || part_path == "INTERNAL" || part_path == "SUBSTRATUM")
+	  if (part_path == "/and-sec" || part_path == "DALVIK" || part_path == "INTERNAL")
 	    {
 	      // Do nothing
 	    }
@@ -1073,7 +1169,7 @@ int GUIAction::getpartitiondetails(std::string arg)
   return 0;
 }
 
-int GUIAction::screenshotinternal(std::string arg __unused)
+int GUIAction::screenshot(std::string arg __unused)
 {
   time_t tm;
   char path[256];
@@ -1222,10 +1318,10 @@ int GUIAction::flash(std::string arg)
 {
   int i, ret_val = 0, wipe_cache = 0;
   int has_installed_rom = 0;
-  
+
   // We're going to jump to this page first, like a loading page
   gui_changePage(arg);
-  
+
   // loop through the zip(s) to be installed
   for (i = 0; i < zip_queue_index; i++)
     {
@@ -1242,7 +1338,7 @@ int GUIAction::flash(std::string arg)
       // try to flash the zip
       ret_val = flash_zip(zip_path, &wipe_cache);
       TWFunc::SetPerformanceMode(false);
-      
+
       // what was the outcome ?
       if (ret_val != 0)
 	{
@@ -1251,8 +1347,8 @@ int GUIAction::flash(std::string arg)
 	  ret_val = 1;
 	  break;
 	}
- 
-      // success - but what have we just installed? 
+
+      // success - but what have we just installed?
       if (Fox_Zip_Installer_Code != 0) // we have just installed a ROM - ideally, the user should reboot the recovery
        {
           has_installed_rom++;
@@ -1262,11 +1358,11 @@ int GUIAction::flash(std::string arg)
           usleep(50000);
 	  PartitionManager.Update_System_Details();
        }
-       
+
        usleep(250000);
-       
+
      } // for i
-    
+
    zip_queue_index = 0;
 
    if (wipe_cache)
@@ -1275,17 +1371,17 @@ int GUIAction::flash(std::string arg)
       PartitionManager.Wipe_By_Path("/cache");
     }
 
-   DataManager::Vibrate("fox_data_install_vibrate");
+   DataManager::Vibrate("tw_action_vibrate");
    DataManager::Leds(true);
 
    reinject_after_flash(); // ** redundant code
    PartitionManager.Update_System_Details();
    operation_end(ret_val);
    DataManager::SetValue(FOX_INSTALL_PREBUILT_ZIP, 0); // if we have installed an internal zip, turn off the flag
-  
+
    // This needs to be after the operation_end call so we change pages before we change variables that we display on the screen
    DataManager::SetValue(TW_ZIP_QUEUE_COUNT, zip_queue_index);
-   
+
    return 0;
 }
 
@@ -1384,20 +1480,6 @@ int GUIAction::wipe(std::string arg)
 			  skip = true;
 			}
 		    }
-		  else if (wipe_path == "SUBSTRATUM")
-		    {
-		      if (!PartitionManager.Wipe_Substratum_Overlays())
-			{
-			  gui_err
-			    ("fox_substratum_wipe_err=Failed to wipe substratum overlays");
-			  ret_val = false;
-			  break;
-			}
-		      else
-			{
-			  skip = true;
-			}
-		    }
 		  else if (wipe_path == "INTERNAL")
 		    {
 		      if (!PartitionManager.Wipe_Media_From_Data())
@@ -1482,89 +1564,68 @@ int GUIAction::refreshsizes(std::string arg __unused)
 
 int GUIAction::nandroid(std::string arg)
 {
-  if (simulate)
-    {
-      PartitionManager.stop_backup.set_value(0);
-      DataManager::SetValue("tw_partition", "Simulation");
-      simulate_progress_bar();
-      operation_end(0);
-    }
-  else
-    {
-      operation_start("Nandroid");
-      int ret = 0;
+	if (simulate) {
+		PartitionManager.stop_backup.set_value(0);
+		DataManager::SetValue("tw_partition", "Simulation");
+		simulate_progress_bar();
+		operation_end(0);
+	} else {
+		operation_start("Nandroid");
+		int ret = 0;
 
-      if (arg == "backup")
-	{
-	  string Backup_Name;
-	  DataManager::GetValue(TW_BACKUP_NAME, Backup_Name);
-	  string auto_gen = gui_lookup("auto_generate", "(Auto Generate)");
-	  if (Backup_Name == auto_gen
-	      || Backup_Name == gui_lookup("curr_date", "(Current Date)")
-	      || Backup_Name == "0" || Backup_Name == "("
-	      || PartitionManager.Check_Backup_Name(true) == 0)
-	    {
-	      ret = PartitionManager.Run_Backup(false);
-	      DataManager::SetValue("tw_encrypt_backup", 0);	// reset value so we don't encrypt every subsequent backup
-	      if (!PartitionManager.stop_backup.get_value())
-		{
-		  if (ret == false)
-		    ret = 1;	// 1 for failure
-		  else
-		    ret = 0;	// 0 for success
-		  DataManager::SetValue("tw_cancel_backup", 0);
+		if (arg == "backup") {
+			string Backup_Name;
+			DataManager::GetValue(TW_BACKUP_NAME, Backup_Name);
+			string auto_gen = gui_lookup("auto_generate", "(Auto Generate)");
+			if (Backup_Name == auto_gen || Backup_Name == gui_lookup("curr_date", "(Current Date)") || Backup_Name == "0" || Backup_Name == "(" || PartitionManager.Check_Backup_Name(Backup_Name, true, true) == 0) {
+				ret = PartitionManager.Run_Backup(false);
+				DataManager::SetValue("tw_encrypt_backup", 0); // reset value so we don't encrypt every subsequent backup
+				if (!PartitionManager.stop_backup.get_value()) {
+					if (ret == false)
+						ret = 1; // 1 for failure
+					else
+						ret = 0; // 0 for success
+					DataManager::SetValue("tw_cancel_backup", 0);
+				} else {
+					DataManager::SetValue("tw_cancel_backup", 1);
+					gui_msg("backup_cancel=Backup Cancelled");
+					ret = 0;
+				}
+			} else {
+				operation_end(1);
+				return -1;
+			}
+			DataManager::SetValue(TW_BACKUP_NAME, auto_gen);
+		} else if (arg == "restore") {
+			string Restore_Name;
+			int gui_adb_backup;
+
+			DataManager::GetValue("tw_restore", Restore_Name);
+			DataManager::GetValue("tw_enable_adb_backup", gui_adb_backup);
+			if (gui_adb_backup) {
+				DataManager::SetValue("tw_operation_state", 1);
+				if (TWFunc::stream_adb_backup(Restore_Name) == 0)
+					ret = 0; // success
+				else
+					ret = 1; // failure
+				DataManager::SetValue("tw_enable_adb_backup", 0);
+				ret = 0; // assume success???
+			} else {
+				if (PartitionManager.Run_Restore(Restore_Name))
+					ret = 0; // success
+				else
+					ret = 1; // failure
+			}
+		} else {
+			operation_end(1); // invalid arg specified, fail
+			return -1;
 		}
-	      else
-		{
-		  DataManager::SetValue("tw_cancel_backup", 1);
-		  gui_msg("backup_cancel=Backup Cancelled");
-		  ret = 0;
-		}
-	    }
-	  else
-	    {
-	      operation_end(1);
-	      return -1;
-	    }
-	  DataManager::SetValue(TW_BACKUP_NAME, auto_gen);
-
+		operation_end(ret);
+		return ret;
 	}
-      else if (arg == "restore")
-	{
-	  string Restore_Name;
-	  int gui_adb_backup;
-
-	  DataManager::GetValue("tw_restore", Restore_Name);
-	  DataManager::GetValue("tw_enable_adb_backup", gui_adb_backup);
-	  if (gui_adb_backup)
-	    {
-	      DataManager::SetValue("tw_operation_state", 1);
-	      if (TWFunc::stream_adb_backup(Restore_Name) == 0)
-		ret = 0;	// success
-	      else
-		ret = 1;	// failure
-	      DataManager::SetValue("tw_enable_adb_backup", 0);
-	      ret = 0;		// assume success???
-	    }
-	  else
-	    {
-	      if (PartitionManager.Run_Restore(Restore_Name))
-		ret = 0;	// success
-	      else
-		ret = 1;	// failure
-	    }
-	}
-      else
-	{
-	  operation_end(1);	// invalid arg specified, fail
-	  return -1;
-	}
-      operation_end(ret);
-      return ret;
-
-    }
-  return 0;
+	return 0;
 }
+
 
 int GUIAction::cancelbackup(std::string arg __unused)
 {
@@ -1631,6 +1692,8 @@ int GUIAction::partitionsd(std::string arg __unused)
 
   if (simulate)
     {
+      TWPartition *SDCard = PartitionManager.Find_Partition_By_Path(DataManager::GetCurrentPartPath());
+      LOGINFO("DEBUG: Selected partition: %s\n", DataManager::GetCurrentPartPath().c_str());
       simulate_progress_bar();
     }
   else
@@ -1716,6 +1779,18 @@ int GUIAction::cmd(std::string arg)
   return 0;
 }
 
+int GUIAction::ftls(std::string arg)
+{
+  int op_status = 0;
+  DataManager::SetValue("ftls_running", "1");
+
+  op_status = TWFunc::Exec_Cmd(arg, false);
+
+  DataManager::SetValue("ftls_errcode", op_status);
+  DataManager::SetValue("ftls_running", "0");
+  return 0;
+}
+
 int GUIAction::terminalcommand(std::string arg)
 {
   int op_status = 0;
@@ -1723,7 +1798,8 @@ int GUIAction::terminalcommand(std::string arg)
 
   DataManager::GetValue("tw_terminal_location", cmdpath);
   operation_start("CommandOutput");
-  gui_print("%s # %s\n", cmdpath.c_str(), arg.c_str());
+  //[f/d] Silent terminal
+  //gui_print("%s # %s\n", cmdpath.c_str(), arg.c_str());
   if (simulate)
     {
       simulate_progress_bar();
@@ -1831,23 +1907,23 @@ int GUIAction::reinjecttwrp(std::string arg __unused)
 
 int GUIAction::checkbackupname(std::string arg __unused)
 {
-  int op_status = 0;
+	int op_status = 0;
 
-  operation_start("CheckBackupName");
-  if (simulate)
-    {
-      simulate_progress_bar();
-    }
-  else
-    {
-      op_status = PartitionManager.Check_Backup_Name(true);
-      if (op_status != 0)
-	op_status = 1;
-    }
+	operation_start("CheckBackupName");
+	if (simulate) {
+		simulate_progress_bar();
+	} else {
+		string Backup_Name;
+		DataManager::GetValue(TW_BACKUP_NAME, Backup_Name);
+		op_status = PartitionManager.Check_Backup_Name(Backup_Name, true, true);
+		if (op_status != 0)
+			op_status = 1;
+	}
 
-  operation_end(op_status);
-  return 0;
+	operation_end(op_status);
+	return 0;
 }
+
 
 int GUIAction::decrypt(std::string arg __unused)
 {
@@ -2183,6 +2259,7 @@ int GUIAction::flashimage(std::string arg __unused)
   else
     op_status = 1;		// fail
 
+  DataManager::Leds(true);
   operation_end(op_status);
   return 0;
 }
@@ -2251,65 +2328,48 @@ int GUIAction::checkpartitionlifetimewrites(std::string arg)
 
 int GUIAction::mountsystemtoggle(std::string arg)
 {
-  int op_status = 0;
-  bool remount_system = PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path());
-  bool remount_vendor = PartitionManager.Is_Mounted_By_Path("/vendor");
+	int op_status = 0;
+	bool remount_system = PartitionManager.Is_Mounted_By_Path("/system");
+	bool remount_vendor = PartitionManager.Is_Mounted_By_Path("/vendor");
 
-  operation_start("Toggle System Mount");
-  if (!PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), true))
-    {
-      op_status = 1;		// fail
-    }
-  else
-    {
-      TWPartition *Part = PartitionManager.Find_Partition_By_Path(PartitionManager.Get_Android_Root_Path());
-      if (Part)
-	{
-	  if (arg == "0")
-	    {
-	      DataManager::SetValue("tw_mount_system_ro", 0);
-	      Part->Change_Mount_Read_Only(false);
-	    }
-	  else
-	    {
-	      DataManager::SetValue("tw_mount_system_ro", 1);
-	      Part->Change_Mount_Read_Only(true);
-	    }
-	  if (remount_system)
-	    {
-	      Part->Mount(true);
-	    }
-	  op_status = 0;	// success
+	operation_start("Toggle System Mount");
+	if (!PartitionManager.UnMount_By_Path("/system", true)) {
+		op_status = 1; // fail
+	} else {
+		TWPartition* Part = PartitionManager.Find_Partition_By_Path("/system");
+		if (Part) {
+			if (arg == "0") {
+				DataManager::SetValue("tw_mount_system_ro", 0);
+				Part->Change_Mount_Read_Only(false);
+			} else {
+				DataManager::SetValue("tw_mount_system_ro", 1);
+				Part->Change_Mount_Read_Only(true);
+			}
+			if (remount_system) {
+				Part->Mount(true);
+			}
+			op_status = 0; // success
+		} else {
+			op_status = 1; // fail
+		}
+		Part = PartitionManager.Find_Partition_By_Path("/vendor");
+		if (Part) {
+			if (arg == "0") {
+				Part->Change_Mount_Read_Only(false);
+			} else {
+				Part->Change_Mount_Read_Only(true);
+			}
+			if (remount_vendor) {
+				Part->Mount(true);
+			}
+			op_status = 0; // success
+		} else {
+			op_status = 1; // fail
+		}
 	}
-      else
-	{
-	  op_status = 1;	// fail
-	}
-      Part = PartitionManager.Find_Partition_By_Path("/vendor");
-      if (Part)
-	{
-	  if (arg == "0")
-	    {
-	      Part->Change_Mount_Read_Only(false);
-	    }
-	  else
-	    {
-	      Part->Change_Mount_Read_Only(true);
-	    }
-	  if (remount_vendor)
-	    {
-	      Part->Mount(true);
-	    }
-	  op_status = 0;	// success
-	}
-      else
-	{
-	  op_status = 1;	// fail
-	}
-    }
 
-  operation_end(op_status);
-  return 0;
+	operation_end(op_status);
+	return 0;
 }
 
 int GUIAction::setlanguage(std::string arg __unused)
@@ -2342,274 +2402,82 @@ int GUIAction::setbootslot(std::string arg)
   return 0;
 }
 
-int GUIAction::checkforapp(std::string arg __unused)
-{
-  operation_start("Check for TWRP App");
-  if (!simulate)
-    {
-      string sdkverstr = TWFunc::System_Property_Get("ro.build.version.sdk");
-      int sdkver = 0;
-      if (!sdkverstr.empty())
-	{
-	  sdkver = atoi(sdkverstr.c_str());
-	}
-      if (sdkver <= 13)
-	{
-	  if (sdkver == 0)
-	    LOGINFO("Unable to read sdk version from build prop\n");
-	  else
-	    LOGINFO("SDK version too low for TWRP app (%i < 14)\n", sdkver);
-	  DataManager::SetValue("tw_app_install_status", 1);	// 0 = no status, 1 = not installed, 2 = already installed or do not install
-	  goto exit;
-	}
-      if (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false))
-	{
-	  string base_path = "/system";
-	  if (TWFunc::Path_Exists("/system/system"))
-	    base_path += "/system";	// For devices with system as a root file system (e.g. Pixel)
-	  string install_path = base_path + "/priv-app";
-	  if (!TWFunc::Path_Exists(install_path))
-	    install_path = base_path + "/app";
-	  install_path += "/twrpapp";
-	  if (TWFunc::Path_Exists(install_path))
-	    {
-	      LOGINFO("App found at '%s'\n", install_path.c_str());
-	      DataManager::SetValue("tw_app_install_status", 2);	// 0 = no status, 1 = not installed, 2 = already installed or do not install
-	      goto exit;
-	    }
-	}
-      if (PartitionManager.Mount_By_Path("/data", false))
-	{
-	  const char parent_path[] = "/data/app";
-	  const char app_prefix[] = "me.twrp.twrpapp-";
-	  DIR *d = opendir(parent_path);
-	  if (d)
-	    {
-	      struct dirent *p;
-	      while ((p = readdir(d)))
-		{
-		  if (p->d_type != DT_DIR
-		      || strlen(p->d_name) < strlen(app_prefix)
-		      || strncmp(p->d_name, app_prefix, strlen(app_prefix)))
-		    continue;
-		  closedir(d);
-		  LOGINFO("App found at '%s/%s'\n", parent_path, p->d_name);
-		  DataManager::SetValue("tw_app_install_status", 2);	// 0 = no status, 1 = not installed, 2 = already installed or do not install
-		  goto exit;
-		}
-	      closedir(d);
-	    }
-	}
-      else
-	{
-	  LOGINFO("Data partition cannot be mounted during app check\n");
-	  DataManager::SetValue("tw_app_install_status", 2);	// 0 = no status, 1 = not installed, 2 = already installed or do not install
-	}
-    }
-  else
-    simulate_progress_bar();
-  LOGINFO("App not installed\n");
-  DataManager::SetValue("tw_app_install_status", 1);	// 0 = no status, 1 = not installed, 2 = already installed
-exit:
-  operation_end(0);
-  return 0;
-}
-
-int GUIAction::installapp(std::string arg __unused)
-{
-  int op_status = 1;
-  operation_start("Install TWRP App");
-  if (!simulate)
-    {
-      if (DataManager::GetIntValue("tw_mount_system_ro") > 0
-	  || DataManager::GetIntValue("tw_app_install_system") == 0)
-	{
-	  if (PartitionManager.Mount_By_Path("/data", true))
-	    {
-	      string install_path = "/data/app";
-	      string context = "u:object_r:apk_data_file:s0";
-	      if (!TWFunc::Path_Exists(install_path))
-		{
-		  if (mkdir
-		      (install_path.c_str(),
-		       S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
-		    {
-		      LOGERR("Error making %s directory: %s\n",
-			     install_path.c_str(), strerror(errno));
-		      goto exit;
-		    }
-		  if (chown(install_path.c_str(), 1000, 1000))
-		    {
-		      LOGERR("chown %s error: %s\n", install_path.c_str(),
-			     strerror(errno));
-		      goto exit;
-		    }
-		  if (setfilecon
-		      (install_path.c_str(),
-		       (security_context_t) context.c_str()) < 0)
-		    {
-		      LOGERR("setfilecon %s error: %s\n",
-			     install_path.c_str(), strerror(errno));
-		      goto exit;
-		    }
-		}
-	      install_path += "/me.twrp.twrpapp-1";
-	      if (mkdir
-		  (install_path.c_str(),
-		   S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
-		{
-		  LOGERR("Error making %s directory: %s\n",
-			 install_path.c_str(), strerror(errno));
-		  goto exit;
-		}
-	      if (chown(install_path.c_str(), 1000, 1000))
-		{
-		  LOGERR("chown %s error: %s\n", install_path.c_str(),
-			 strerror(errno));
-		  goto exit;
-		}
-	      if (setfilecon
-		  (install_path.c_str(),
-		   (security_context_t) context.c_str()) < 0)
-		{
-		  LOGERR("setfilecon %s error: %s\n", install_path.c_str(),
-			 strerror(errno));
-		  goto exit;
-		}
-	      install_path += "/base.apk";
-	      if (TWFunc::
-		  copy_file("/sbin/me.twrp.twrpapp.apk", install_path, 0644))
-		{
-		  LOGERR("Error copying apk file\n");
-		  goto exit;
-		}
-	      if (chown(install_path.c_str(), 1000, 1000))
-		{
-		  LOGERR("chown %s error: %s\n", install_path.c_str(),
-			 strerror(errno));
-		  goto exit;
-		}
-	      if (setfilecon
-		  (install_path.c_str(),
-		   (security_context_t) context.c_str()) < 0)
-		{
-		  LOGERR("setfilecon %s error: %s\n", install_path.c_str(),
-			 strerror(errno));
-		  goto exit;
-		}
-	      sync();
-	      sync();
-	    }
-	}
-      else
-	{
-	  if (PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), true))
-	    {
-	      string base_path = "/system";
-	      if (TWFunc::Path_Exists("/system/system"))
-		base_path += "/system";	// For devices with system as a root file system (e.g. Pixel)
-	      string install_path = base_path + "/priv-app";
-	      string context = "u:object_r:system_file:s0";
-	      if (!TWFunc::Path_Exists(install_path))
-		install_path = base_path + "/app";
-	      if (TWFunc::Path_Exists(install_path))
-		{
-		  install_path += "/twrpapp";
-		  LOGINFO("Installing app to '%s'\n", install_path.c_str());
-		  if (mkdir
-		      (install_path.c_str(),
-		       S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH) == 0)
-		    {
-		      if (setfilecon
-			  (install_path.c_str(),
-			   (security_context_t) context.c_str()) < 0)
-			{
-			  LOGERR("setfilecon %s error: %s\n",
-				 install_path.c_str(), strerror(errno));
-			  goto exit;
-			}
-		      install_path += "/me.twrp.twrpapp.apk";
-		      if (TWFunc::
-			  copy_file("/sbin/me.twrp.twrpapp.apk", install_path,
-				    0644))
-			{
-			  LOGERR("Error copying apk file\n");
-			  goto exit;
-			}
-		      if (setfilecon
-			  (install_path.c_str(),
-			   (security_context_t) context.c_str()) < 0)
-			{
-			  LOGERR("setfilecon %s error: %s\n",
-				 install_path.c_str(), strerror(errno));
-			  goto exit;
-			}
-		      sync();
-		      sync();
-		      PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), true);
-		      op_status = 0;
-		    }
-		  else
-		    {
-		      LOGERR("Error making app directory '%s': %s\n",
-			     strerror(errno));
-		    }
-		}
-	    }
-	}
-    }
-  else
-    simulate_progress_bar();
-exit:
-  operation_end(0);
-  return 0;
-}
-
-
 int GUIAction::flashlight(std::string arg __unused)
 {
-  operation_start("Flashlight");
-  if (simulate)
-    {
-      simulate_progress_bar();
-    }
-  else
-    {
-      int flash = 0;
-      string flashone = "1";
-      string flashdisable = "0";
-      string flashvalue = flashone + flashdisable + flashdisable;
-      string flashpathvalue_one = "/sys/class/leds/led:torch_";
-      string flashpathvalue_two = "/brightness";
-      string flashpathone = flashpathvalue_one + flashdisable + flashpathvalue_two;
-      string flashpathtwo = flashpathvalue_one + flashone + flashpathvalue_two;
-      DataManager::GetValue("flashlight", flash);
-      if (TWFunc::Path_Exists("sys/class/leds/flashlight/")) {
-        if (flash != 1) {
-            TWFunc::write_to_file("/sys/class/leds/flashlight/brightness", "1");
-            DataManager::SetValue("flashlight", 1);
-            LOGINFO("DEBUG: Enable flashlight 1"); }
-        else {
-            TWFunc::write_to_file("/sys/class/leds/flashlight/brightness", "0");
-            DataManager::SetValue("flashlight", 0); 
-            LOGINFO("DEBUG: Disable flashlight 1"); }
-      }
-      
-      if (TWFunc::Path_Exists(flashpathone)) {
-	
-        if (flash != 1) {
-          TWFunc::write_to_file(flashpathone, flashvalue);
-          TWFunc::write_to_file(flashpathtwo, flashvalue);
-          DataManager::SetValue("flashlight", 1);
-          LOGINFO("DEBUG: Enable flashlight 0"); }
-        else {
-          TWFunc::write_to_file(flashpathone, flashdisable);
-          TWFunc::write_to_file(flashpathtwo, flashdisable);
-          DataManager::SetValue("flashlight", 0);
-          LOGINFO("DEBUG: Disable flashlight 0"); }
-        }
-    }
-  operation_end(0);
+    string enable_flash;
+    DataManager::GetValue(OF_FLASHLIGHT_ENABLE_STR, enable_flash);
+    if (enable_flash == "1") {
+		std::string path_one, path_two,
+					fl_one_on, fl_two_on,
+					max_one, max_two,
+					bright_one, bright_two,
+					max_brt_one, max_brt_two,
+					fl_used;
+		
+		// get maintainer flash files
+		DataManager::GetValue("of_fl_path_1", path_one);
+		DataManager::GetValue("of_fl_path_2", path_two);
+		DataManager::GetValue("of_flash_on", fl_used);
+		
+		if (path_one.empty() && path_two.empty()) {
+			// maintainer not set flash paths
+			if (TWFunc::Path_Exists("/sys/class/leds/flashlight/brightness")) {
+				// use flashlight for old devices
+				path_one = "/sys/class/leds/flashlight";
+			} else {
+				// use flashlight for new devices
+				path_one = "/sys/class/leds/led:torch_0";
+				path_two = "/sys/class/leds/led:switch_0";
+			}
+		} else if (path_one.empty() && !path_two.empty()) {
+			path_one = path_two;
+			path_two = "";
+		}
+		
+		if (!path_one.empty()) {
+			bright_one = path_one + "/brightness";
+			max_one = path_one + "/max_brightness";
+			if (TWFunc::Path_Exists(max_one)) {
+				TWFunc::read_file(max_one, max_brt_one);
+			} else {
+				max_brt_one = "1";
+			}
+			if (TWFunc::Path_Exists(bright_one)) {
+				TWFunc::read_file(bright_one, fl_one_on);
+				// If we use flashlight first time after reboot, always enable it
+				if (fl_one_on == "0" || fl_used == "0") {
+					TWFunc::write_to_file(bright_one, max_brt_one);
+          DataManager::SetValue("of_flash_on", "1");
+				} else {
+					TWFunc::write_to_file(bright_one, "0");
+          DataManager::SetValue("of_flash_on", "0");
+				}
+			} else {
+				gui_print_color("warning", "Flashlight file not found!\n");
+				return 0;
+			}
+		}
+		
+		if (!path_two.empty()) {
+			bright_two = path_two + "/brightness";
+			max_two = path_two + "/max_brightness";
+			if (TWFunc::Path_Exists(bright_two)) {
+				if (!TWFunc::Path_Exists(max_two)) {
+					max_brt_two = "1";
+				} else {
+					TWFunc::read_file(max_two, max_brt_two);
+				}
+				TWFunc::read_file(bright_two, fl_two_on);
+				if ((fl_two_on == "0" && fl_one_on == "0") || fl_used == "0") {
+					TWFunc::write_to_file(bright_two, max_brt_two);
+          DataManager::SetValue("of_flash_on", "1");
+				} else {
+					TWFunc::write_to_file(bright_two, "0");
+          DataManager::SetValue("of_flash_on", "0");
+				}
+			}
+		}
+  }
   return 0;
 }
 
@@ -2624,7 +2492,7 @@ int GUIAction::calldeactivateprocess(std::string arg __unused)
     {
   	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
   	usleep(1024);
-  	DataManager::GetValue(FOX_FORCE_DEACTIVATE_PROCESS, Fox_Force_Deactivate_Process); 	
+  	DataManager::GetValue(FOX_FORCE_DEACTIVATE_PROCESS, Fox_Force_Deactivate_Process);
   	TWFunc::Deactivation_Process();
     }
   operation_end(0);
@@ -2634,86 +2502,6 @@ int GUIAction::calldeactivateprocess(std::string arg __unused)
 int GUIAction::disableled(std::string arg __unused)
 {
   DataManager::Leds(false);
-  return 0;
-}
-
-int GUIAction::disableinstallled(std::string arg __unused)
-{
-  return disableled("Installed");
-}
-
-int GUIAction::disablebackupled(std::string arg __unused)
-{
-  return disableled("Backup");
-}
-
-int GUIAction::disablerestoreled(std::string arg __unused)
-{
-  return disableled("Restore");
-}
-
-int GUIAction::removepassword(std::string arg __unused)
-{
-  operation_start("Remove Recovery Password");
-  if (simulate)
-    {
-      simulate_progress_bar();
-    }
-  else
-    {
-	std::string dd = "dd";
-  	std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
-	gui_msg ("fox_remove_access_password_one=Removing recovery access password...");
-	if (TWFunc::Unpack_Image("/recovery"))
-	   {
-	  	if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
-	    	{
-	      		TWFunc::create_fingerprint_file(password_file, dd);
-	      		TWFunc::Repack_Image("/recovery");
-	      		DataManager::SetValue(FOX_PASSWORD_VARIABLE, dd);
-	      		gui_msg("update_part_details_done=...done");
-	    	}
-	  	else
-	    	{
-	      		LOGERR("Failed to load password engine - cannot find %s\n", Fox_ramdisk_sbin_dir.c_str());
-	    	}
-	   }
-	   else 
-	  	LOGERR("Failed to unpack recovery to load the password engine\n");	     
-    }
-  operation_end(0);
-  return 0;
-}
-
-int GUIAction::setpassword(std::string arg)
-{
-  operation_start("Set New Recovery Password");
-  if (simulate)
-    {
-      simulate_progress_bar();
-    }
-  else
-    {
-	std::string password_file = Fox_ramdisk_sbin_dir + "/wlfx";
-	gui_msg ("fox_set_new_access_password=Changing recovery access password...");
-	if (TWFunc::Unpack_Image("/recovery"))
-	   {
-	  	if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
-	    	{
-	      		TWFunc::create_fingerprint_file(password_file, arg);
-	      		TWFunc::Repack_Image("/recovery");
-	      		DataManager::SetValue(FOX_PASSWORD_VARIABLE, arg);
-	      		gui_msg("update_part_details_done=...done");
-	    	}
-	  	else
-	    	{
-	      		LOGERR("Failed to load password engine - cannot find %s\n", Fox_ramdisk_sbin_dir.c_str());
-	    	}
-	   }
-	   else 
-	   	LOGERR("Failed to unpack recovery to load the password engine\n");
-    }
-  operation_end(0);
   return 0;
 }
 
@@ -2741,41 +2529,8 @@ int GUIAction::wlfx(std::string arg __unused)
     }
   else
     {
+      DataManager::Flush();
       TWFunc::Repack_Image("/recovery");
-    }
-  operation_end(0);
-  return 0;
-}
-
-int GUIAction::changesplash(std::string arg __unused)
-{
-  operation_start("Change Recovery Splash Screen");
-  if (simulate)
-    {
-      simulate_progress_bar();
-    }
-  else
-    {
-	  std::string path, filename;
-	  std::string ramdisk_path = Fox_ramdisk_dir + "/twres/images/splash.png";
-	  DataManager::GetValue("tw_splash_png_path", path);
-	  DataManager::GetValue("tw_splash_png_name", filename);
-	  std::string filepath = path + "/" + filename;
-	  if (TWFunc::Unpack_Image("/recovery"))
-	     {
-	  	if (TWFunc::Path_Exists(Fox_ramdisk_sbin_dir))
-	    	{
-	      		unlink(ramdisk_path.c_str());
-	      		TWFunc::copy_file(filepath, ramdisk_path, 0644);
-	      		TWFunc::Repack_Image("/recovery");
-	    	}
-	  	else
-	    	{
-	      		LOGERR("Failed to load splash engine\n");
-	    	}
-	     } 
-	  	else
-	  		LOGERR("Failed to unpack recovery image to load splash engine\n");
     }
   operation_end(0);
   return 0;
@@ -2791,14 +2546,104 @@ int GUIAction::adb(std::string arg)
   else
     {
       if (arg == "enable")
-	{
-	  property_set("orangefox.adb.status", "1");
-	}
+      {
+        property_set("ctl.start", "adbd");
+        property_set("orangefox.adb.status", "1");
+        DataManager::SetValue("fox_adb", "1");
+      }
       if (arg == "disable")
-	{
-	  property_set("orangefox.adb.status", "0");
-	}
+      {
+        property_set("ctl.stop", "adbd");
+        property_set("orangefox.adb.status", "0");
+        DataManager::SetValue("fox_adb", "0");
+      }
     }
   operation_end(0);
   return 0;
+}
+
+int GUIAction::repackimage(std::string arg __unused)
+{
+	int op_status = 1;
+	operation_start("Repack Image");
+	if (!simulate)
+	{
+		std::string path = DataManager::GetStrValue("tw_filename");
+		Repack_Options_struct Repack_Options;
+		Repack_Options.Disable_Verity = false;
+		Repack_Options.Disable_Force_Encrypt = false;
+		Repack_Options.Backup_First = DataManager::GetIntValue("tw_repack_backup_first") != 0;
+		if (DataManager::GetIntValue("tw_repack_kernel") == 1)
+			Repack_Options.Type = REPLACE_KERNEL;
+		else
+			Repack_Options.Type = REPLACE_RAMDISK;
+		if (!PartitionManager.Repack_Images(path, Repack_Options))
+			goto exit;
+	} else
+		simulate_progress_bar();
+	op_status = 0;
+exit:
+	operation_end(op_status);
+	return 0;
+}
+
+int GUIAction::fixabrecoverybootloop(std::string arg __unused)
+{
+	int op_status = 1;
+	operation_start("Repack Image");
+	if (!simulate)
+	{
+		if (!TWFunc::Path_Exists("/sbin/magiskboot")) {
+			LOGERR("Image repacking tool not present in this TWRP build!");
+			goto exit;
+		}
+		DataManager::SetProgress(0);
+		TWPartition* part = PartitionManager.Find_Partition_By_Path("/boot");
+		if (part)
+			gui_msg(Msg("unpacking_image=Unpacking {1}...")(part->Display_Name));
+		else {
+			gui_msg(Msg(msg::kError, "unable_to_locate=Unable to locate {1}.")("/boot"));
+			goto exit;
+		}
+		if (!PartitionManager.Prepare_Repack(part, REPACK_ORIG_DIR, DataManager::GetIntValue("tw_repack_backup_first") != 0, gui_lookup("repack", "Repack")))
+			goto exit;
+		DataManager::SetProgress(.25);
+		gui_msg("fixing_recovery_loop_patch=Patching kernel...");
+		std::string command = "cd " REPACK_ORIG_DIR " && /sbin/magiskboot --hexpatch kernel 77616E745F696E697472616D667300 736B69705F696E697472616D667300";
+		if (TWFunc::Exec_Cmd(command) != 0) {
+			gui_msg(Msg(msg::kError, "fix_recovery_loop_patch_error=Error patching kernel."));
+			goto exit;
+		}
+		std::string header_path = REPACK_ORIG_DIR;
+		header_path += "header";
+		if (TWFunc::Path_Exists(header_path)) {
+			command = "cd " REPACK_ORIG_DIR " && sed -i \"s|$(grep '^cmdline=' header | cut -d= -f2-)|$(grep '^cmdline=' header | cut -d= -f2- | sed -e 's/skip_override//' -e 's/  */ /g' -e 's/[ \t]*$//')|\" header";
+			if (TWFunc::Exec_Cmd(command) != 0) {
+				gui_msg(Msg(msg::kError, "fix_recovery_loop_patch_error=Error patching kernel."));
+				goto exit;
+			}
+		}
+		DataManager::SetProgress(.5);
+		gui_msg(Msg("repacking_image=Repacking {1}...")(part->Display_Name));
+		command = "cd " REPACK_ORIG_DIR " && /sbin/magiskboot --repack " REPACK_ORIG_DIR "boot.img";
+		if (TWFunc::Exec_Cmd(command) != 0) {
+			gui_msg(Msg(msg::kError, "repack_error=Error repacking image."));
+			goto exit;
+		}
+		DataManager::SetProgress(.75);
+		std::string path = REPACK_ORIG_DIR;
+		std::string file = "new-boot.img";
+		DataManager::SetValue("tw_flash_partition", "/boot;");
+		if (!PartitionManager.Flash_Image(path, file)) {
+			LOGINFO("Error flashing new image\n");
+			goto exit;
+		}
+		DataManager::SetProgress(1);
+		TWFunc::removeDir(REPACK_ORIG_DIR, false);
+	} else
+		simulate_progress_bar();
+	op_status = 0;
+exit:
+	operation_end(op_status);
+	return 0;
 }

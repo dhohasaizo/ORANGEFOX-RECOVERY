@@ -1,0 +1,602 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="filecheck">
+			<action>
+				<action function="fileexists">%tw_filecheck%</action>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">tw_fileexists=1</action>
+					<action function="page">%tw_existpage%</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="set">tw_fileexists=0</action>
+					<action function="page">%tw_notexistpage%</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="filecheck_overlay">
+			<action>
+				<action function="fileexists">%tw_filecheck%</action>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="set">tw_fileexists=1</action>
+					<action function="overlay">%tw_existpage%</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="1"/>
+				</conditions>
+				<actions>
+					<action function="set">tw_fileexists=0</action>
+					<action function="overlay">%tw_notexistpage%</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="rebootcheck">
+			<action>
+				<condition var1="disable_no_os" var2="1"/>
+				<action function="set">need_reboot=1</action>
+				<action function="reboot">%tw_action_param%</action>
+			</action>
+
+			<action>
+				<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
+				<condition var1="disable_no_os" var2="0"/>
+				<action function="set">need_reboot=1</action>
+				<action function="reboot">%tw_action_param%</action>
+			</action>
+
+			<action>
+				<condition var1="tw_backup_system_size" op="&lt;" var2="%tw_min_system%"/>
+				<condition var1="disable_no_os" var2="0"/>
+				<action function="disableled"/>
+				<action function="page">no_os_warning</action>
+			</action>
+
+			<action>
+				<condition var1="tw_backup_system_size" op="&gt;=" var2="%tw_min_system%"/>
+				<condition var1="disable_no_os" var2="2"/>
+				<actions>
+					<action function="disableled"/>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_text1={@reboot_btn}</action>
+					<action function="set">tw_action_text1={@reboot_btn}</action>
+					<action function="set">tw_action_text2={@rebooting}</action>
+					<action function="set">tw_complete_text1={@reboot_btn}</action>
+					<action function="set">tw_slider_text={@swipe_reboot}</action>
+					<action function="page">confirm_action</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_backup_system_size" op="&lt;" var2="%tw_min_system%"/>
+				<condition var1="disable_no_os" var2="2"/>
+				<action function="disableled"/>
+				<action function="page">no_os_warning</action>
+			</action>
+		</page>
+
+		<page name="no_os_warning">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@reboot_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@no_os_title}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@no_os_subtitle}</text>
+			</text>
+
+			<image>
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<image resource="icon_warning"/>
+			</image>
+
+			<text style="text_body2_fail">
+				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
+				<text>{@no_os1}</text>
+			</text>
+
+			<text style="text_body2_fail">
+				<condition var1="tw_action_param" var2="system"/>
+				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
+				<text>{@no_osrb}</text>
+			</text>
+
+			<text style="text_body2_fail">
+				<condition var1="tw_action_param" var2="poweroff"/>
+				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
+				<text>{@no_ospo}</text>
+			</text>
+
+			<text style="text_body2_fail">
+				<condition var1="tw_action_param" var2="recovery"/>
+				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
+				<text>{@no_osrb_recovery}</text>
+			</text>
+
+			<text style="text_body2_fail">
+				<condition var1="tw_action_param" var2="bootloader"/>
+				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
+				<text>{@no_osrb_boot}</text>
+			</text>
+
+			<text style="text_body2_fail">
+				<condition var1="tw_action_param" var2="download"/>
+				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
+				<text>{@no_osrb_down}</text>
+			</text>
+
+			<text style="text_body2_fail">
+				<condition var1="tw_action_param" var2="edl"/>
+				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
+				<text>{@no_osrb_edl}</text>
+			</text>
+
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
+				<text>{@cancel_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row6_1_y%" w="%screen_w%" h="%lb_l1%"/>
+				<listitem name="{@sys_ro_never_show_chk}">
+					<data variable="disable_no_os"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<condition var1="tw_action_param" op="!=" var2="poweroff"/>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@swipe_reboot}</text>
+			</text>
+
+			<text style="caption">
+				<condition var1="tw_action_param" var2="poweroff"/>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@swipe_power_off}</text>
+			</text>
+
+			<slider style="slider_action">
+				<placement x="%center_x%" y="%slider_y%" placement="5"/>
+				<action function="set">need_reboot=1</action>
+				<action function="reboot">%tw_action_param%</action>
+			</slider>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">%tw_back%</action>
+			</action>
+		</page>
+
+		<page name="clear_vars">
+			<action>
+				<action function="set">tw_operation_state=0</action>
+				<action function="set">tw_existpage=main</action>
+				<action function="set">tw_notexistpage=main</action>
+				<action function="set">tw_text1=</action>
+				<action function="set">tw_text2=</action>
+				<action function="set">tw_text3=</action>
+				<action function="set">tw_text4=</action>
+				<action function="set">tw_action_text1=</action>
+				<action function="set">tw_action_text2=</action>
+				<action function="set">tw_action_param=</action>
+				<action function="set">tw_has_action2=0</action>
+				<action function="set">tw_action2=</action>
+				<action function="set">tw_action2_param=</action>
+				<action function="set">tw_has_cancel=0</action>
+				<action function="set">tw_cancel_action=</action>
+				<action function="set">tw_cancel_param=</action>
+				<action function="set">tw_show_exclamation=0</action>
+				<action function="set">tw_show_reboot=0</action>
+				<action function="disableled"/>
+				<action function="page">%tw_clear_destination%</action>
+			</action>
+
+			<!-- Enable hardware keys if device is mido -->
+			<action>
+				<condition var1="%fox_compatibility_fox_device%" var2="mido"/>
+				<action function="cmd">
+					echo 0 > /proc/touchpanel/capacitive_keys_disable
+				</action>
+			</action>
+			
+		</page>
+
+		<page name="confirm_action">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>%tw_text1%</text>
+			</text>
+
+			<image>
+				<condition var1="tw_action" var2="fixpermissions"/>
+				<placement x="%col1_x%" y="%row1_3_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<condition var1="tw_action" var2="fixpermissions"/>
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<text>%tw_text2%</text>
+			</text>
+
+			<text style="text_body2_hl">
+				<condition var1="tw_action" op="!=" var2="fixpermissions"/>
+				<placement x="%col1_x%" y="%row1_3_y%"/>
+				<text>%tw_text2%</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row2_3_y%"/>
+				<text>%tw_text3%</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row3_1_y%"/>
+				<text>%tw_text4%</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>%tw_slider_text%</text>
+			</text>
+
+			<text style="caption">
+				<condition var1="tw_action" var2="copylog"/>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@options_cptn}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<condition var1="tw_action" var2="copylog"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l2%"/>
+				<listitem name="{@include_kernel_log}">
+					<data variable="tw_include_kernel_log"/>
+				</listitem>
+			</listbox>
+
+			<slider style="slider_action">
+				<placement x="%center_x%" y="%slider_y%" placement="5"/>
+				<action function="page">action_page</action>
+			</slider>
+
+			<action>
+				<touch key="back"/>
+				<actions>
+					<action function="set">tw_clear_destination=%tw_back%</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+		</page>
+
+		<page name="action_page">
+			<action>
+				<condition var1="tw_action" var2="openrecoveryscript"/>
+				<condition var1="ota_new_screen" var2="1"/>
+				<condition var1="ota_screen_log" op="!=" var2="1"/>
+				<actions>
+					<action function="set">tw_has_cancel=1</action>
+					<action function="set">tw_cancel_action=set</action>
+					<action function="set">tw_cancel_param=ota_screen_log=0</action>
+					<action function="overlay">ota_simple</action>
+				</actions>
+			</action>
+
+			<template name="body"/>
+
+			<template name="progress_bar"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<condition var1="tw_action" op="!=" var2="adbsideload"/>
+				<condition var1="tw_action" op="!=" var2="openrecoveryscript"/>
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>OrangeFox</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_action" var2="adbsideload"/>
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@adb_sideload_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_action" var2="openrecoveryscript"/>
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@ota_console_title}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>%tw_action_text1%</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_action_text2%</text>
+			</text>
+
+			<template name="action_page_console"/>
+
+			<template name="cant_cancel"/>
+			
+			<button>
+				<condition var1="tw_has_cancel" var2="1"/>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="%tw_cancel_action%">%tw_cancel_param%</action>
+			</button>
+
+			<image>
+				<condition var1="tw_has_cancel" var2="1"/>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_cancel"/>
+			</image>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="overlay"/>
+					<action function="page">action_complete</action>
+				</actions>
+			</action>
+
+			<action>
+				<conditions>
+					<condition var1="tw_operation_state" var2="1"/>
+					<condition var1="tw_operation_status" op="!=" var2="0"/>
+				</conditions>
+				<actions>
+					<action function="overlay"/>
+					<action function="page">action_complete</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_has_action2" var2="0"/>
+				<actions>
+					<action function="%tw_action%">%tw_action_param%</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_has_action2" var2="1"/>
+				<actions>
+					<action function="%tw_action%">%tw_action_param%</action>
+					<action function="%tw_action2%">%tw_action2_param%</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="ota_simple">
+			<template name="body_nav"/>
+
+			<template name="status_bg"/>
+
+			<template name="statusbarinfo"/>
+
+			<image>
+				<image resource="ota_icon"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+
+			<text style="text_ab_title_ota">
+				<placement x="%center_x%" y="%ota_update_title_y%" placement="4"/>
+				<text>{@ota_simple_title}</text>
+			</text>
+
+			<progressbar>
+				<placement x="%ota_update_progress_x%" y="%ota_update_progress_y%"/>
+				<resource empty="progress_empty_small" full="progress_fill_small"/>
+				<data name="ui_progress"/>
+			</progressbar>
+
+			<button style="btn_dlg">
+				<placement x="%center_x%" y="%ota_update_log_y%" placement="4"/>
+				<text>{@ota_simple_log_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="key">back</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<actions>
+					<action function="set">ota_screen_log=1</action>
+					<action function="overlay"/>
+				</actions>
+			</action>
+		</page>
+
+		<page name="singleaction_page">
+			<template name="body"/>
+
+			<template name="progress_bar"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>OrangeFox</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>%tw_action_text1%</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_action_text2%</text>
+			</text>
+
+			<template name="action_page_console"/>
+			<template name="cant_cancel" />
+
+			<action>
+				<condition var1="tw_operation_state" var2="1"/>
+				<actions>
+					<action function="set">tw_page_done=1</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_has_action2" var2="0"/>
+				<actions>
+					<action function="%tw_action%">%tw_action_param%</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_has_action2" var2="1"/>
+				<actions>
+					<action function="%tw_action%">%tw_action_param%</action>
+					<action function="%tw_action2%">%tw_action2_param%</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="action_complete">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<condition var1="tw_action" op="!=" var2="adbsideload"/>
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@done}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_action" var2="adbsideload"/>
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@adb_sideload_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_operation_status" op="!=" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@failed}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_operation_status" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@successful}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_complete_text1%</text>
+			</text>
+
+			<template name="action_page_console"/>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+				<text>{@back_btn}</text>
+				<actions>
+					<action function="set">tw_clear_destination=%tw_back%</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+				<condition var1="tw_reboot_system" var2="1"/>
+				<text>{@reboot_system_btn}</text>
+				<actions>
+					<action function="set">tw_back=main</action>
+					<action function="set">tw_action_param=system</action>
+					<action function="set">tw_reboot_param=system</action>
+					<action function="page">rebootcheck</action>
+				</actions>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<actions>
+					<action function="set">tw_clear_destination=main</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<actions>
+					<action function="set">tw_clear_destination=%tw_back%</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</action>
+		</page>
+	</pages>
+</recovery>

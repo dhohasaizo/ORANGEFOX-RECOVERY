@@ -29,6 +29,10 @@
 
 using namespace std;
 
+#define NON_AB_CACHE_DIR "/cache/"
+#define AB_CACHE_DIR "/data/cache/"
+#define PERSIST_CACHE_DIR "/persist/cache/"
+
 typedef enum
 {
 	rb_current = 0,
@@ -37,6 +41,7 @@ typedef enum
 	rb_poweroff,
 	rb_bootloader,     // May also be fastboot
 	rb_download,
+	rb_edl,
 } RebootCommand;
 
 enum Archive_Type {
@@ -56,8 +61,8 @@ public:
 	static string Exec_With_Output(const string &cmd);			    // Run a command & capture the output
 
 	static int Exec_Cmd(const string& cmd, string &result);                     //execute a command and return the result as a string by reference
-	static int Exec_Cmd(const string& cmd);                                     //execute a command
-	static int Wait_For_Child(pid_t pid, int *status, string Child_Name);       // Waits for pid to exit and checks exit status
+	static int Exec_Cmd(const string& cmd, bool Show_Errors = true);                   //execute a command, displays an error to the GUI if Show_Errors is true, Show_Errors is true by default
+	static int Wait_For_Child(pid_t pid, int *status, string Child_Name, bool Show_Errors = true); // Waits for pid to exit and checks exit status, displays an error to the GUI if Show_Errors is true which is the default
 	static int Wait_For_Child_Timeout(pid_t pid, int *status, const string& Child_Name, int timeout); // Waits for a pid to exit until the timeout is hit. If timeout is hit, kill the chilld.
 	static bool Path_Exists(string Path);                                       // Returns true if the path exists
 	static Archive_Type Get_File_Type(string fn);                               // Determines file type, 0 for unknown, 1 for gzip, 2 for OAES encrypted
@@ -86,7 +91,7 @@ public:
 
 	static void Deactivation_Process(void);                     		// Run deactivation proces...
 	static void OrangeFox_Startup(void);        				// Run StartUP code for OrangeFox
-	static int Recursive_Mkdir(string Path);                                    // Recursively makes the entire path
+	static int Recursive_Mkdir(string Path, bool ShowErr = true);                                    // Recursively makes the entire path
 	static void GUI_Operation_Text(string Read_Value, string Default_Text);     // Updates text for display in the GUI, e.g. Backing up %partition name%
 	static void GUI_Operation_Text(string Read_Value, string Partition_Name, string Default_Text); // Same as above but includes partition name
 	static void Update_Log_File(void);                                          // Writes the log to last_log
@@ -123,26 +128,30 @@ public:
 	static bool isNumber(string strtocheck); // return true if number, false if not a number
 	static int  stream_adb_backup(string &Restore_Name); // Tell ADB Backup to Stream to TWRP from GUI selection
 	static int  Check_MIUI_Treble(void); // check whether we are running a MIUI or Treble ROM 
-    	static bool Fresh_Fox_Install(void); // have we just installed OrangeFox - do some stuff?
-    	static bool JustInstalledMiui(void); // has a MIUI ROM just been installed?
-    	static bool RunStartupScript(void); // run startup script if not already run by init
-    	static bool Rerun_Startup(void); // rerun startup
-    	static void Welcome_Message(void); // provide the welcome message
-    	static void Run_Before_Reboot(void); // run this just before rebooting
-    	//
-    	static bool Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
-    	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
-    	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
-    	static void Patch_Verity_Flags(string path); // patch the fstab's dm-verity flags
-    	static bool Has_Vendor_Partition(void); // does the device have a real vendor partition?
-    	//
+	static bool Fresh_Fox_Install(void); // have we just installed OrangeFox - do some stuff?
+	static bool JustInstalledMiui(void); // has a MIUI ROM just been installed?
+	static bool RunStartupScript(void); // run startup script if not already run by init
+	static bool Rerun_Startup(void); // rerun startup
+	static void Welcome_Message(void); // provide the welcome message
+	static void Run_Before_Reboot(void); // run this just before rebooting
+	//
+	static bool Fstab_Has_Encryption_Flag(string path); // does the fstab file have encryption flags?
+	static void Patch_Encryption_Flags(string path); // patch the fstab's encryption flags
+	static bool Fstab_Has_Verity_Flag(string path); // does the fstab file have dm-verity flags?
+	static void Patch_Verity_Flags(string path); // patch the fstab's dm-verity flags
+	static bool Has_Vendor_Partition(void); // does the device have a real vendor partition?
+	static int Patch_DMVerity_ForcedEncryption_Magisk(void); // patch dm-verity/forced-encryption with a script using magisk
+	static void Run_Pre_Flash_Protocol(bool forceit); // run any pre_flash protocol
+	//
+	static std::string get_cache_dir(); // return the cache partition existence
+	static void check_selinux_support(); // print whether selinux support is enabled to console
 
 private:
 	static void Copy_Log(string Source, string Destination);
 	static string Load_File(string extension);
 	static bool Patch_Forced_Encryption(void);
     	static bool Patch_DM_Verity(void);
-    	static void Patch_Others(void);	
+    	// static void Patch_Others(void); // obsolete 	
     	static void PrepareToFinish(void); // call this only when we are about to shutdown or reboot
     	static bool DontPatchBootImage(void); // return true to avoid patching the boot image
 };

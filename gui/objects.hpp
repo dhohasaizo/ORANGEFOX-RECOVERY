@@ -325,10 +325,9 @@ protected:
 	int generatebackupname(std::string arg);
 	int checkpartitionlist(std::string arg);
 	int getpartitiondetails(std::string arg);
-	int screenshotinternal(std::string arg);
+	int screenshot(std::string arg);
 	int screenshotexternal(std::string arg);
 	int setbrightness(std::string arg);
-	int checkforapp(std::string arg);
 
 	// (originally) threaded actions
 	int fileexists(std::string arg);
@@ -348,12 +347,13 @@ protected:
 	int killterminal(std::string arg);
 	int reinjecttwrp(std::string arg);
 	int checkbackupname(std::string arg);
+	int checkbackupfolder(std::string arg);
 	int decrypt(std::string arg);
 	int adbsideload(std::string arg);
 	int adbsideloadcancel(std::string arg);
 	int openrecoveryscript(std::string arg);
 	int installsu(std::string arg);
-	int fixsu(std::string arg);	
+	int fixsu(std::string arg);
 	int decrypt_backup(std::string arg);
 	int repair(std::string arg);
 	int resize(std::string arg);
@@ -368,19 +368,17 @@ protected:
 	int togglebacklight(std::string arg);
 	int twcmd(std::string arg);
 	int setbootslot(std::string arg);
-	int installapp(std::string arg);
-       	int flashlight(std::string arg);
+	int flashlight(std::string arg);
+	int fileextension(std::string arg);
+	int up_a_level(std::string arg);
 	int adb(std::string arg);
-	int disableinstallled(std::string arg);
-    	int disablebackupled(std::string arg);
-	int disablerestoreled(std::string arg);
-	int disableled(std::string arg);	
-	int removepassword(std::string arg);
-	int setpassword(std::string arg);
-	int changesplash(std::string arg);
+	int disableled(std::string arg);
 	int wlfx(std::string arg);
 	int wlfw(std::string arg);
 	int calldeactivateprocess(std::string arg);
+	int repackimage(std::string arg);
+	int fixabrecoverybootloop(std::string arg);
+	int ftls(std::string arg);
 
 	int simulate;
 };
@@ -526,6 +524,8 @@ protected:
 	// Header
 	COLOR mHeaderBackgroundColor;
 	COLOR mHeaderFontColor;
+	std::string itemHold;
+	std::string itemHldStatus;
 	std::string mHeaderText; // Original header text without parsing any variables
 	std::string mLastHeaderValue; // Header text after parsing variables
 	bool mHeaderIsStatic; // indicates if the header is static (no need to check for changes in NotifyVarChange)
@@ -547,6 +547,7 @@ protected:
 	int mItemSpacing; // stores the spacing or padding on the y axis, part of the actualItemHeight
 	int mSeparatorH; // Height of the separator between items
 	COLOR mSeparatorColor; // color of the separator that is between items
+	int mPadding; //[f/d] right icon padding
 
 	// Scrollbar
 	int mFastScrollW; // width of the fastscroll area
@@ -597,6 +598,7 @@ public:
 protected:
 	struct FileData {
 		std::string fileName;
+		std::string fileExt;
 		unsigned char fileType;	 // Uses d_type format from struct dirent
 		mode_t protection;		  // Uses mode_t format from stat
 		uid_t userId;
@@ -617,6 +619,7 @@ protected:
 	std::string mPathVar; // current path displayed, saved in the data manager
 	std::string mPathDefault; // default value for the path if none is set in mPathVar
 	std::string mExtn; // used for filtering the file list, for example, *.zip
+	std::string mExtnVar; // filtering using variable [f/d]
 	std::string mVariable; // set when the user selects an item, pull path like /path/to/foo
 	std::string mSortVariable; // data manager variable used to change the sorting of files
 	std::string mSelection; // set when the user selects an item without the full path like selecting /path/to/foo would just be set to foo
@@ -625,7 +628,15 @@ protected:
 	static int mSortOrder; // must be static because it is used by the static function fileSort
 	ImageResource* mFolderIcon;
 	ImageResource* mFileIcon;
+	ImageResource* mUpIcon;
+	ImageResource* mExZipIcon;
+	ImageResource* mExImgIcon;
+	ImageResource* mExTxtIcon;
+	ImageResource* mExPngIcon;
+	ImageResource* mExLinkIcon;
+	ImageResource* mExBlockIcon;
 	bool updateFileList;
+	std::string mFileFilterVar;
 };
 
 class GUIListBox : public GUIScrollList
@@ -657,17 +668,23 @@ protected:
 		unsigned int selected;
 		GUIAction* action;
 		std::vector<Condition> mConditions;
+		ImageResource* icon;
+		bool hasicon;
+		string unparsedName;
 	};
 
 protected:
 	std::vector<ListItem> mListItems;
 	std::vector<size_t> mVisibleItems; // contains indexes in mListItems of visible items only
 	std::string mVariable;
+	std::string mFileName;
+	FILE* fp;
 	std::string currentValue;
 	ImageResource* mIconSelected;
 	ImageResource* mIconUnselected;
 	bool isCheckList;
 	bool isTextParsed;
+	bool requireReload;
 };
 
 class GUIPartitionList : public GUIScrollList
@@ -951,7 +968,6 @@ protected:
 	};
 	struct Layout
 	{
-		ImageResource* keyboardImg;
 		Key keys[MAX_KEYBOARD_ROWS][MAX_KEYBOARD_KEYS];
 		int row_end_y[MAX_KEYBOARD_ROWS];
 		bool is_caps;
@@ -965,13 +981,16 @@ protected:
 		int layout_from; // 1-based; 0 for labels that apply to all layouts
 		int layout_to; // same as Key.layout
 		string text; // key label text
+		string noalt; // do not use alt image
 		ImageResource* image; // image (overrides text if defined)
+		ImageResource* imagealt; // image (overrides text if defined)
 	};
 	std::vector<KeyLabel> mKeyLabels;
 
 	// Find key at screen coordinates
 	Key* HitTestKey(int x, int y);
 
+	ImageResource* keyboardImg;
 	bool mRendered;
 	std::string mVariable;
 	int currentLayout;

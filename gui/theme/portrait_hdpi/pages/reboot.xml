@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="reboot">
+			<template name="body"/>
+			
+			<listbox style="btn_list">
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%bl_fullscreen_h%"/>
+				<listitem name="{@rb_system_btn}">
+					<condition var1="tw_reboot_system" var2="1"/>
+					<icon res="reboot_sys"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="page">reboot_system_routine</action>
+				</listitem>
+				<listitem name="{@rb_recovery_btn}">
+					<condition var1="tw_reboot_recovery" var2="1"/>
+					<icon res="reboot_recovery"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action_param=recovery</action>
+					<action function="set">tw_reboot_param=recovery</action>
+					<action function="page">rebootcheck</action>
+				</listitem>
+				<listitem name="{@rb_bootloader_btn}">
+					<condition var1="tw_reboot_bootloader" var2="1"/>
+					<icon res="reboot_bootloader"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action_param=bootloader</action>
+					<action function="set">tw_reboot_param=bootloader</action>
+					<action function="page">rebootcheck</action>
+				</listitem>
+				<listitem name="{@rb_download_btn}">
+					<condition var1="tw_download_mode" var2="1"/>
+					<icon res="reboot_bootloader"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action_param=download</action>
+					<action function="set">tw_reboot_param=download</action>
+					<action function="page">rebootcheck</action>
+				</listitem>
+				<listitem name="EDL">
+					<condition var1="tw_edl_mode" var2="1"/>
+					<icon res="chip"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action_param=edl</action>
+					<action function="set">tw_reboot_param=edl</action>
+					<action function="page">rebootcheck</action>
+				</listitem>
+				<listitem name="{@rb_poweroff_btn}">
+					<condition var1="tw_reboot_poweroff" var2="1"/>
+					<icon res="reboot_power"/>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action_param=poweroff</action>
+					<action function="set">tw_reboot_param=poweroff</action>
+					<action function="page">rebootcheck</action>
+				</listitem>
+			</listbox>
+			
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@reboot_btn}</text>
+			</text>
+
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">general_back=reboot</action>
+				<action function="page">ext_general</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_settings"/>
+			</image>
+
+			<text style="caption">
+				<condition var1="tw_has_boot_slots" var2="1"/>
+				<placement x="%col1_x%" y="%row7_2_y%"/>
+				<text>{@boot_slot}</text>
+			</text>
+
+			<button style="btn_raised_hl">
+				<conditions>
+					<condition var1="tw_has_boot_slots" var2="1"/>
+					<condition var1="tw_active_slot" var2="A"/>
+				</conditions>
+				<placement x="%btn_raised_left_x%" y="%row_btn_y%"/>
+				<text>{@boot_slot_a}</text>
+				<actions>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=setbootslot</action>
+					<action function="set">tw_action_param=A</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_action_text1={@changing_boot_slot}</action>
+					<action function="set">tw_action_text2=</action>
+					<action function="set">tw_complete_text1={@changing_boot_slot_complete}</action>
+					<action function="page">action_page</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised">
+				<conditions>
+					<condition var1="tw_has_boot_slots" var2="1"/>
+					<condition var1="tw_active_slot" var2="B"/>
+				</conditions>
+				<placement x="%btn_raised_left_x%" y="%row_btn_y%"/>
+				<text>{@boot_slot_use_a}</text>
+				<actions>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=setbootslot</action>
+					<action function="set">tw_action_param=A</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_action_text1={@changing_boot_slot}</action>
+					<action function="set">tw_action_text2=</action>
+					<action function="set">tw_complete_text1={@changing_boot_slot_complete}</action>
+					<action function="page">action_page</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised_hl">
+				<conditions>
+					<condition var1="tw_has_boot_slots" var2="1"/>
+					<condition var1="tw_active_slot" var2="B"/>
+				</conditions>
+				<placement x="%btn_raised_right_x%" y="%row_btn_y%" placement="1"/>
+				<text>{@boot_slot_b}</text>
+				<actions>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=setbootslot</action>
+					<action function="set">tw_action_param=B</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_action_text1={@changing_boot_slot}</action>
+					<action function="set">tw_action_text2=</action>
+					<action function="set">tw_complete_text1={@changing_boot_slot_complete}</action>
+					<action function="page">action_page</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised">
+				<conditions>
+					<condition var1="tw_has_boot_slots" var2="1"/>
+					<condition var1="tw_active_slot" var2="A"/>
+				</conditions>
+				<placement x="%btn_raised_right_x%" y="%row_btn_y%" placement="1"/>
+				<text>{@boot_slot_use_b}</text>
+				<actions>
+					<action function="set">tw_back=reboot</action>
+					<action function="set">tw_action=setbootslot</action>
+					<action function="set">tw_action_param=B</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_action_text1={@changing_boot_slot}</action>
+					<action function="set">tw_action_text2=</action>
+					<action function="set">tw_complete_text1={@changing_boot_slot_complete}</action>
+					<action function="page">action_page</action>
+				</actions>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">advanced</action>
+			</action>
+		</page>
+		<page name="reboot_system_routine">
+			<action>
+				<action function="set">tw_back=reboot</action>
+				<action function="set">tw_action_param=system</action>
+				<action function="set">tw_reboot_param=system</action>
+				<action function="page">rebootcheck</action>
+			</action>
+		</page>
+	</pages>
+</recovery>

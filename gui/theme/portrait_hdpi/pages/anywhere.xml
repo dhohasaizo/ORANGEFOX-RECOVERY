@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="lock">
+			<background color="%background%"/>
+
+			<template name="status_bg"/>
+			<template name="statusbarinfo"/>
+			<template name="keys"/>
+
+			<button>
+				<condition var1="lock_action" var2="1"/>
+				<condition var1="clock_style" var2="0"/>
+				<image resource="unlock_icon"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+				<action function="togglebacklight"/>
+			</button>
+
+			<image>
+				<condition var1="lock_action" var2="0"/>
+				<condition var1="clock_style" var2="0"/>
+				<image resource="unlock_icon"/>
+				<placement x="%center_x%" y="%center_y%" placement="4"/>
+			</image>
+
+			<text color="%text%">
+				<condition var1="clock_style" var2="1"/>
+				<font resource="clock"/>
+				<placement x="%center_x%" y="%row2_2_y%" placement="4"/>
+				<text>%tw_time%</text>
+			</text>
+
+			<text color="%text%">
+				<condition var1="clock_style" var2="1"/>
+				<condition var1="lock_info" var2="1"/>
+				<font resource="info"/>
+				<placement x="%center_x%" y="%row3_2_y%" placement="4"/>
+				<text>{@cpu_temp} | %tw_battery%</text>
+			</text>
+
+			<text color="%text_light%">
+				<font resource="caption"/>
+				<condition var1="lock_btn" var2="0"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<placement x="%center_x%" y="%slider_text_y_l%" placement="5"/>
+				<text>{@swipe_to_unlock}</text>
+			</text>
+
+			<slider style="slider_action">
+				<condition var1="lock_btn" var2="0"/>
+				<placement x="%center_x%" y="%slider_y_l%" placement="5"/>
+				<condition var1="navbar_disable" op="!=" var2="1"/>
+				<action function="overlay"/>
+			</slider>
+			
+			<text color="%text_light%">
+				<font resource="caption"/>
+				<condition var1="lock_btn" var2="0"/>
+				<condition var1="navbar_disable" var2="1"/>
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@swipe_to_unlock}</text>
+			</text>
+
+			<slider style="slider_action">
+				<condition var1="lock_btn" var2="0"/>
+				<condition var1="navbar_disable" var2="1"/>
+				<placement x="%center_x%" y="%slider_y%" placement="5"/>
+				<action function="overlay"/>
+			</slider>
+
+			<button style="btn_raised_hl">
+				<condition var1="lock_btn" var2="1"/>
+				<placement x="%center_x%" y="%slider_y%" placement="4"/>
+				<text>{@lockscreen_unlock}</text>
+				<action function="overlay"/>
+			</button>
+		</page>
+
+		<page name="console">
+			<background color="%background%"/>
+			
+			<template name="background_image"/>
+			
+			<template name="keys"/>
+
+			<template name="navbar_console_hide"/>
+
+			<console>
+				<placement x="%col1_x%" y="%ab_bc_y%" w="%console_width%" h="%console_height%"/> 
+				<condition var1="use_fixed_font" var2="0"/>
+			</console>
+			
+			<console>
+				<placement x="%col1_x%" y="%ab_bc_y%" w="%console_width%" h="%console_height%"/> 
+				<condition var1="use_fixed_font" var2="1"/>
+				<font resource="fixed"/>
+			</console>
+
+			<template name="status_bg"/>
+
+			<template name="statusbarinfo"/>
+
+			<action>
+				<touch key="home"/>
+				<action function="overlay"/>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+	</pages>
+</recovery>

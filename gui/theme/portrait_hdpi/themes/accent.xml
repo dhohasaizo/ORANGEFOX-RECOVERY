@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<!-- Controls -->
+		<image name="radio_true_dialog" filename="Orange/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="Orange/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="Orange/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="Orange/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="Orange/Controls/slider_used"/>
+		<image name="handle" filename="Orange/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="Orange/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="Orange/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="Orange/Controls/btn_raised_hl"/>
+		<image name="tab_hl" filename="Orange/Controls/tab"/>
+
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="Orange/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="Orange/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="Orange/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_delete" filename="Orange/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_edit" filename="Orange/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="Orange/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="Orange/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_flash" filename="Orange/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_flash_on" filename="Orange/ActionBar/flash_on" retainaspect="1"/>
+		<image name="actionbar_reset" filename="Orange/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_settings" filename="Orange/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_sort" filename="Orange/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_power_off" filename="Orange/ActionBar/power_off" retainaspect="1"/>
+		<image name="actionbar_storage" filename="Orange/ActionBar/storage" retainaspect="1"/>
+		<image name="actionbar_search" filename="Orange/ActionBar/search" retainaspect="1"/>
+
+		<!-- Nav panel -->
+		<image name="nav_menu" filename="Orange/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="Orange/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="Orange/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="Orange/NavPanel/backup" retainaspect="1"/>
+		
+		<!-- FAB -->
+		<image name="fab" filename="Orange/FAB/fab" retainaspect="1"/>
+		<image name="fab_hl" filename="Orange/FAB/fab_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="file_icon_small" filename="Orange/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="Orange/FileManager/file" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="Orange/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="Orange/FileManager/file_bkp" retainaspect="1"/>
+		<image name="zip_icon_small" filename="Orange/FileManager/zip_small" retainaspect="1"/>
+		<image name="zip_icon" filename="Orange/FileManager/zip" retainaspect="1"/>
+		<image name="img_icon_small" filename="Orange/FileManager/img_small" retainaspect="1"/>
+		<image name="img_icon" filename="Orange/FileManager/img" retainaspect="1"/>
+		<image name="txt_icon_small" filename="Orange/FileManager/txt_small" retainaspect="1"/>
+		<image name="txt_icon" filename="Orange/FileManager/txt" retainaspect="1"/>
+		<image name="png_icon_small" filename="Orange/FileManager/png_small" retainaspect="1"/>
+		<image name="png_icon" filename="Orange/FileManager/png" retainaspect="1"/>
+		<image name="block_icon_small" filename="Orange/FileManager/block_small" retainaspect="1"/>
+		<image name="block_icon" filename="Orange/FileManager/block" retainaspect="1"/>
+		<image name="link_icon_small" filename="Orange/FileManager/link_small" retainaspect="1"/>
+		<image name="link_icon" filename="Orange/FileManager/link" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info" filename="Orange/Info/icon_info" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="enter" filename="Orange/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="Orange/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="Orange/Keyboard/enter_num_new" retainaspect="1"/>
+
+		<!-- Nav Bar -->
+		<image name="home" filename="Orange/NavBar/home" retainaspect="1"/>
+		<image name="back" filename="Orange/NavBar/back" retainaspect="1"/>
+		<image name="slideout" filename="Orange/NavBar/slideout" retainaspect="1"/>
+		<image name="keyboard_hide" filename="Orange/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="home_ng" filename="Orange/NavBar/home_ng" retainaspect="1"/>
+		<image name="back_ng" filename="Orange/NavBar/back_ng" retainaspect="1"/>
+		<image name="slideout_ng" filename="Orange/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="Orange/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		<image name="back_pie" filename="Orange/NavBar/back_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="Orange/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="home_pie" filename="Orange/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="Orange/NavBar/slideout_key_pie" retainaspect="1"/>
+	</resources>
+	<variables>
+		<variable name="accent" value="#ed6f02"/>
+		<variable name="theme_accent" value="Orange"/>
+	</variables>
+</recovery>

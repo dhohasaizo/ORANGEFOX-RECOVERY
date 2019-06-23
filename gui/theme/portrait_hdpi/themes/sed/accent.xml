@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<!-- Controls -->
+		<image name="radio_true_dialog" filename="#ACCENT#/Controls/radio_true_dialog" retainaspect="1"/>
+		<image name="checkbox_true_dialog" filename="#ACCENT#/Controls/checkbox_true_dialog" retainaspect="1"/>
+		<image name="radio_true" filename="#ACCENT#/Controls/radio_true_d" retainaspect="1"/>
+		<image name="checkbox_true" filename="#ACCENT#/Controls/checkbox_true_d" retainaspect="1"/>
+		<image name="slider_used" filename="#ACCENT#/Controls/slider_used"/>
+		<image name="handle" filename="#ACCENT#/Controls/handle" retainaspect="1"/>
+		<image name="handle_h" filename="#ACCENT#/Controls/handle_h" retainaspect="1"/>
+		<image name="handle_h_classic" filename="#ACCENT#/Controls/handle_h_classic" retainaspect="1"/>
+		<image name="btn_raised_hl" filename="#ACCENT#/Controls/btn_raised_hl"/>
+		<image name="tab_hl" filename="#ACCENT#/Controls/tab"/>
+
+		<!-- Action Bar -->
+		<image name="actionbar_back" filename="#ACCENT#/ActionBar/back" retainaspect="1"/>
+		<image name="actionbar_cancel" filename="#ACCENT#/ActionBar/cancel" retainaspect="1"/>
+		<image name="actionbar_cancel_no" filename="#ACCENT#/ActionBar/cancel_no" retainaspect="1"/>
+		<image name="actionbar_delete" filename="#ACCENT#/ActionBar/delete" retainaspect="1"/>
+		<image name="actionbar_edit" filename="#ACCENT#/ActionBar/edit" retainaspect="1"/>
+		<image name="actionbar_encr_dis" filename="#ACCENT#/ActionBar/encr_dis" retainaspect="1"/>
+		<image name="actionbar_encr_ena" filename="#ACCENT#/ActionBar/encr_ena" retainaspect="1"/>
+		<image name="actionbar_flash" filename="#ACCENT#/ActionBar/flash" retainaspect="1"/>
+		<image name="actionbar_flash_on" filename="#ACCENT#/ActionBar/flash_on" retainaspect="1"/>
+		<image name="actionbar_reset" filename="#ACCENT#/ActionBar/reset" retainaspect="1"/>
+		<image name="actionbar_settings" filename="#ACCENT#/ActionBar/settings" retainaspect="1"/>
+		<image name="actionbar_sort" filename="#ACCENT#/ActionBar/sort" retainaspect="1"/>
+		<image name="actionbar_power_off" filename="#ACCENT#/ActionBar/power_off" retainaspect="1"/>
+		<image name="actionbar_storage" filename="#ACCENT#/ActionBar/storage" retainaspect="1"/>
+		<image name="actionbar_search" filename="#ACCENT#/ActionBar/search" retainaspect="1"/>
+
+		<!-- Nav panel -->
+		<image name="nav_menu" filename="#ACCENT#/NavPanel/menu" retainaspect="1"/>
+		<image name="nav_wipe" filename="#ACCENT#/NavPanel/wipe" retainaspect="1"/>
+		<image name="nav_files" filename="#ACCENT#/NavPanel/files" retainaspect="1"/>
+		<image name="nav_backup" filename="#ACCENT#/NavPanel/backup" retainaspect="1"/>
+		
+		<!-- FAB -->
+		<image name="fab" filename="#ACCENT#/FAB/fab" retainaspect="1"/>
+		<image name="fab_hl" filename="#ACCENT#/FAB/fab_hl" retainaspect="1"/>
+		
+		<!-- File Manager -->
+		<image name="file_icon_small" filename="#ACCENT#/FileManager/file_small" retainaspect="1"/>
+		<image name="file_icon" filename="#ACCENT#/FileManager/file" retainaspect="1"/>
+		<image name="bkp_icon_small" filename="#ACCENT#/FileManager/file_bkp_small" retainaspect="1"/>
+		<image name="bkp_icon" filename="#ACCENT#/FileManager/file_bkp" retainaspect="1"/>
+		<image name="zip_icon_small" filename="#ACCENT#/FileManager/zip_small" retainaspect="1"/>
+		<image name="zip_icon" filename="#ACCENT#/FileManager/zip" retainaspect="1"/>
+		<image name="img_icon_small" filename="#ACCENT#/FileManager/img_small" retainaspect="1"/>
+		<image name="img_icon" filename="#ACCENT#/FileManager/img" retainaspect="1"/>
+		<image name="txt_icon_small" filename="#ACCENT#/FileManager/txt_small" retainaspect="1"/>
+		<image name="txt_icon" filename="#ACCENT#/FileManager/txt" retainaspect="1"/>
+		<image name="png_icon_small" filename="#ACCENT#/FileManager/png_small" retainaspect="1"/>
+		<image name="png_icon" filename="#ACCENT#/FileManager/png" retainaspect="1"/>
+		<image name="block_icon_small" filename="#ACCENT#/FileManager/block_small" retainaspect="1"/>
+		<image name="block_icon" filename="#ACCENT#/FileManager/block" retainaspect="1"/>
+		<image name="link_icon_small" filename="#ACCENT#/FileManager/link_small" retainaspect="1"/>
+		<image name="link_icon" filename="#ACCENT#/FileManager/link" retainaspect="1"/>
+		
+		<!-- Info -->
+		<image name="icon_info" filename="#ACCENT#/Info/icon_info" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="enter" filename="#ACCENT#/Keyboard/enter" retainaspect="1"/>
+		<image name="enter_new" filename="#ACCENT#/Keyboard/enter_new" retainaspect="1"/>
+		<image name="enter_num_new" filename="#ACCENT#/Keyboard/enter_num_new" retainaspect="1"/>
+
+		<!-- Nav Bar -->
+		<image name="home" filename="#ACCENT#/NavBar/home" retainaspect="1"/>
+		<image name="back" filename="#ACCENT#/NavBar/back" retainaspect="1"/>
+		<image name="slideout" filename="#ACCENT#/NavBar/slideout" retainaspect="1"/>
+		<image name="keyboard_hide" filename="#ACCENT#/NavBar/keyboard_hide" retainaspect="1"/>
+		<image name="home_ng" filename="#ACCENT#/NavBar/home_ng" retainaspect="1"/>
+		<image name="back_ng" filename="#ACCENT#/NavBar/back_ng" retainaspect="1"/>
+		<image name="slideout_ng" filename="#ACCENT#/NavBar/slideout_ng" retainaspect="1"/>
+		<image name="keyboard_hide_ng" filename="#ACCENT#/NavBar/keyboard_hide_ng" retainaspect="1"/>
+		<image name="back_pie" filename="#ACCENT#/NavBar/back_pie" retainaspect="1"/>
+		<image name="back_key_pie" filename="#ACCENT#/NavBar/back_key_pie" retainaspect="1"/>
+		<image name="home_pie" filename="#ACCENT#/NavBar/home_pie" retainaspect="1"/>
+		<image name="slideout_key_pie" filename="#ACCENT#/NavBar/slideout_key_pie" retainaspect="1"/>
+	</resources>
+	<variables>
+		<variable name="accent" value="##COLOR#"/>
+		<variable name="theme_accent" value="#ACCENT#"/>
+	</variables>
+</recovery>

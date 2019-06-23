@@ -780,10 +780,11 @@ int PageSet::Load(LoadingContext& ctx, const std::string& filename)
 		}
 	}
 
+	//[f/d] Change theme accent/style w/o repacking recovery
 	// process includes recursively
 	child = root->first_node("include");
 	if (child) {
-		xml_node<>* include = child->first_node("xmlfile");
+		xml_node<>* include = child->first_node("xml");
 		while (include != NULL) {
 			xml_attribute<>* attr = include->first_attribute("name");
 			if (!attr) {
@@ -791,13 +792,22 @@ int PageSet::Load(LoadingContext& ctx, const std::string& filename)
 				continue;
 			}
 
-			string filename = ctx.basepath + attr->value();
+			string filename = attr->value();
 			LOGINFO("Including file: %s...\n", filename.c_str());
 			int rc = Load(ctx, filename);
-			if (rc != 0)
-				return rc;
+			if (rc != 0) {
+				attr = include->first_attribute("default");
+				if (attr) {
+					string filename = attr->value();
+					int rc = Load(ctx, filename);
+					if (rc != 0)
+						return rc;
+				} else {
+					return rc;
+				}
+			}
 
-			include = include->next_sibling("xmlfile");
+			include = include->next_sibling("xml");
 		}
 	}
 
@@ -880,11 +890,18 @@ int PageSet::LoadDetails(LoadingContext& ctx, xml_node<>* root)
 		if (resolution) {
 			LOGINFO("Checking resolution...\n");
 			xml_attribute<>* width_attr = resolution->first_attribute("width");
-			xml_attribute<>* height_attr = resolution->first_attribute("height");
+			xml_attribute<>* resize_attr = resolution->first_attribute("resizing");
+			int height_attr;
+			if (resize_attr) {
+				xml_attribute<>* height_res_attr = resolution->first_attribute("height");
+				height_attr = atoi(height_res_attr->value());
+			} else {
+				DataManager::GetValue("screen_original_h", height_attr);
+			}
 			xml_attribute<>* noscale_attr = resolution->first_attribute("noscaling");
 			if (width_attr && height_attr && !noscale_attr) {
 				int width = atoi(width_attr->value());
-				int height = atoi(height_attr->value());
+				int height = height_attr;
 				int offx = 0, offy = 0;
 #ifdef TW_ROUND_SCREEN
 				xml_node<>* roundscreen = child->first_node("roundscreen");
@@ -909,6 +926,7 @@ int PageSet::LoadDetails(LoadingContext& ctx, xml_node<>* root)
 					tw_x_offset = offx * scale_off_w;
 					tw_y_offset = offy * scale_off_h;
 #endif
+					
 					if (scale_w != 1 || scale_h != 1) {
 						LOGINFO("Scaling theme width %fx and height %fx, offsets x: %i y: %i w: %i h: %i\n",
 							scale_w, scale_h, tw_x_offset, tw_y_offset, tw_w_offset, tw_h_offset);
@@ -1534,7 +1552,7 @@ int PageManager::RunReload()
 		ret_val = 1;
 	}
 
-	theme_path += "/Fox/.bin./jq.zip"; 
+	theme_path += "/OrangeFox/theme/ui.zip";
 	if (ret_val != 0 || ReloadPackage("TWRP", theme_path) != 0)
 	{
 		// Loading the custom theme failed - try loading the stock theme
@@ -1545,6 +1563,7 @@ int PageManager::RunReload()
 			ret_val = 1;
 		}
 	}
+
 	if (ret_val == 0) 
 	{
 		if (DataManager::GetStrValue("tw_language") != "en.xml") 
@@ -1554,14 +1573,25 @@ int PageManager::RunReload()
 		}
 	}
 
+	//[f/d] Load settings file
+	DataManager::ReadSettingsFile();
+    gui_forceRender();
+	std::string page_return;
+	DataManager::GetValue("of_reload_back", page_return);
+	DataManager::SetValue("pass_open", "1");
+	gui_changePage(page_return);
+
+	LOGINFO("Theme reloaded\n");
+
 	// This makes the console re-translate
-	GUIConsole::Clear_For_Retranslation();
+	//GUIConsole::Clear_For_Retranslation();
 
 	return ret_val;
 }
 
 void PageManager::RequestReload()
 {
+	DataManager::Flush();
 	mReloadTheme = true;
 }
 

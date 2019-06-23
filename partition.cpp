@@ -34,8 +34,7 @@
 #include <sys/param.h>
 #include <fcntl.h>
 
-#include "cutils/properties.h" 
-
+#include "cutils/properties.h"
 #include "libblkid/include/blkid.h"
 #include "variables.h"
 #include "twcommon.h"
@@ -48,23 +47,23 @@
 #include "set_metadata.h"
 #include "gui/gui.hpp"
 #include "adbbu/libtwadbbu.hpp"
-extern "C"
-{
-#include "mtdutils/mtdutils.h"
-#include "mtdutils/mounts.h"
+#ifdef TW_INCLUDE_CRYPTO
+	#include "crypto/fde/cryptfs.h"
+	#ifdef TW_INCLUDE_FBE
+		#include "crypto/ext4crypt/Decrypt.h"
+	#endif
+#else
+	#define CRYPT_FOOTER_OFFSET 0x4000
+#endif
+extern "C" {
+	#include "mtdutils/mtdutils.h"
+	#include "mtdutils/mounts.h"
 #ifdef USE_EXT4
   // #include "make_ext4fs.h" TODO need ifdef for android8
 #include <ext4_utils/make_ext4fs.h>
 #endif
-
 #ifdef TW_INCLUDE_CRYPTO
-#include "crypto/lollipop/cryptfs.h"
-#include "gpt/gpt.h"
-#ifdef TW_INCLUDE_FBE
-#include "crypto/ext4crypt/Decrypt.h"
-#endif
-#else
-#define CRYPT_FOOTER_OFFSET 0x4000
+	#include "gpt/gpt.h"
 #endif
 }
 #include <selinux/selinux.h>
@@ -120,6 +119,8 @@ const struct flag_list mount_flags[] = {
 const char *ignored_mount_items[] = {
 	"defaults=",
 	"errors=",
+	"latemount",
+	"sysfs_path=",
 	NULL
 };
 
@@ -160,6 +161,8 @@ enum TW_FSTAB_FLAGS {
 	TWFLAG_VOLDMANAGED,
 	TWFLAG_FORMATTABLE,
 	TWFLAG_RESIZE,
+	TWFLAG_KEYDIRECTORY,
+	TWFLAG_WRAPPEDKEY,
 };
 
 /* Flags without a trailing '=' are considered dual format flags and can be
@@ -176,6 +179,7 @@ const struct flag_list tw_flags[] = {
 	{ "defaults",               TWFLAG_DEFAULTS },
 	{ "display=",               TWFLAG_DISPLAY },
 	{ "encryptable=",           TWFLAG_ENCRYPTABLE },
+	{ "fileencryption=",        TWFLAG_FILEENCRYPTION },
 	{ "flashimg",               TWFLAG_FLASHIMG },
 	{ "forceencrypt=",          TWFLAG_FORCEENCRYPT },
 	{ "fsflags=",               TWFLAG_FSFLAGS },
@@ -202,6 +206,8 @@ const struct flag_list tw_flags[] = {
 	{ "voldmanaged=",           TWFLAG_VOLDMANAGED },
 	{ "formattable",            TWFLAG_FORMATTABLE },
 	{ "resize",                 TWFLAG_RESIZE },
+	{ "keydirectory=",          TWFLAG_KEYDIRECTORY },
+	{ "wrappedkey",             TWFLAG_WRAPPEDKEY },
 	{ 0,                        0 },
 };
 
@@ -265,6 +271,7 @@ TWPartition::TWPartition() {
 	Is_Adopted_Storage = false;
 	Adopted_GUID = "";
 	SlotSelect = false;
+	Key_Directory = "";
 }
 
 TWPartition::~TWPartition(void)
@@ -716,135 +723,118 @@ void TWPartition::ExcludeAll(const string & path)
   wipe_exclusions.add_absolute_dir(path);
 }
 
-void TWPartition::Setup_Data_Partition(bool Display_Error)
-{
-  if (Mount_Point != "/data")
-    return;
+void TWPartition::Setup_Data_Partition(bool Display_Error) {
+	if (Mount_Point != "/data")
+		return;
 
-  // Ensure /data is not mounted as tmpfs for qcom hardware decrypt
-  UnMount(false);
+	// Ensure /data is not mounted as tmpfs for qcom hardware decrypt
+	UnMount(false);
 
 #ifdef TW_INCLUDE_CRYPTO
-  if (datamedia)
-    Setup_Data_Media();
-  Can_Be_Encrypted = true;
-  char crypto_blkdev[255];
-  property_get("ro.crypto.fs_crypto_blkdev", crypto_blkdev, "error");
-  if (strcmp(crypto_blkdev, "error") != 0)
-    {
-      DataManager::SetValue(TW_IS_DECRYPTED, 1);
-      Is_Encrypted = true;
-      Is_Decrypted = true;
-      Is_FBE = false;
-      DataManager::SetValue(TW_IS_FBE, 0);
-      Decrypted_Block_Device = crypto_blkdev;
-      LOGINFO("Data already decrypted, new block device: '%s'\n",
-	      crypto_blkdev);
-    }
-  else if (!Mount(false))
-    {
-      if (Is_Present)
-	{
-	  set_partition_data(Actual_Block_Device.c_str(),
-			     Crypto_Key_Location.c_str(),
-			     Fstab_File_System.c_str());
-	  if (cryptfs_check_footer() == 0)
-	    {
-	      Is_Encrypted = true;
-	      Is_Decrypted = false;
-	      Can_Be_Mounted = false;
-	      Current_File_System = "emmc";
-	      Setup_Image();
-	      DataManager::SetValue(TW_IS_ENCRYPTED, 1);
-	      DataManager::SetValue(TW_CRYPTO_PWTYPE,
-				    cryptfs_get_password_type());
-	      DataManager::SetValue(TW_CRYPTO_PASSWORD, "");
-	      DataManager::SetValue("tw_crypto_display", "");
-	    }
-	  else
-	    {
-	      gui_err
-		("mount_data_footer=Could not mount /data and unable to find crypto footer.");
-	    }
-	}
-      else
-	{
-	  LOGERR
-	    ("Primary block device '%s' for mount point '%s' is not present!\n",
-	     Primary_Block_Device.c_str(), Mount_Point.c_str());
-	}
-    }
-  else
-    {
-      if (TWFunc::Path_Exists("/data/unencrypted/key/version"))
-	{
-	  LOGINFO("File Based Encryption is present\n");
-#ifdef TW_INCLUDE_FBE
-	  ExcludeAll(Mount_Point + "/convert_fbe");
-	  ExcludeAll(Mount_Point + "/unencrypted");
-	  //ExcludeAll(Mount_Point + "/system/users/0"); // we WILL need to retain some of this if multiple users are present or we just need to delete more folders for the extra users somewhere else
-	  ExcludeAll(Mount_Point + "/misc/vold/user_keys");
-	  //ExcludeAll(Mount_Point + "/system_ce");
-	  //ExcludeAll(Mount_Point + "/system_de");
-	  //ExcludeAll(Mount_Point + "/misc_ce");
-	  //ExcludeAll(Mount_Point + "/misc_de");
-	  ExcludeAll(Mount_Point + "/system/gatekeeper.password.key");
-	  ExcludeAll(Mount_Point + "/system/gatekeeper.pattern.key");
-	  ExcludeAll(Mount_Point + "/system/locksettings.db");
-	  //ExcludeAll(Mount_Point + "/system/locksettings.db-shm"); // don't seem to need this one, but the other 2 are needed
-	  ExcludeAll(Mount_Point + "/system/locksettings.db-wal");
-	  //ExcludeAll(Mount_Point + "/user_de");
-	  //ExcludeAll(Mount_Point + "/misc/profiles/cur/0"); // might be important later
-	  ExcludeAll(Mount_Point + "/misc/gatekeeper");
-	  ExcludeAll(Mount_Point + "/misc/keystore");
-	  ExcludeAll(Mount_Point + "/drm/kek.dat");
-	  ExcludeAll(Mount_Point + "/system_de/0/spblob");	// contains data needed to decrypt pixel 2
-	  int retry_count = 3;
-	  while (!Decrypt_DE() && --retry_count)
-	    usleep(2000);
-	  if (retry_count > 0)
-	    {
-	      property_set("ro.crypto.state", "encrypted");
-	      Is_Encrypted = true;
-	      Is_Decrypted = false;
-	      Is_FBE = true;
-	      DataManager::SetValue(TW_IS_FBE, 1);
-	      DataManager::SetValue(TW_IS_ENCRYPTED, 1);
-	      string filename;
-	      int pwd_type = Get_Password_Type(0, filename);
-	      if (pwd_type < 0)
-		{
-		  LOGERR
-		    ("This TWRP does not have synthetic password decrypt support\n");
-		  pwd_type = 0;	// default password
+	if (datamedia)
+		Setup_Data_Media();
+	Can_Be_Encrypted = true;
+	char crypto_blkdev[255];
+	property_get("ro.crypto.fs_crypto_blkdev", crypto_blkdev, "error");
+	if (strcmp(crypto_blkdev, "error") != 0) {
+		DataManager::SetValue(TW_IS_DECRYPTED, 1);
+		Is_Encrypted = true;
+		Is_Decrypted = true;
+		if (Key_Directory.empty())
+			Is_FBE = false;
+		else
+			Is_FBE = true;
+		DataManager::SetValue(TW_IS_FBE, 0);
+		Decrypted_Block_Device = crypto_blkdev;
+		LOGINFO("Data already decrypted, new block device: '%s'\n", crypto_blkdev);
+	} else if (!Mount(false)) {
+		if (Is_Present) {
+			if (Key_Directory.empty()) {
+				set_partition_data(Actual_Block_Device.c_str(), Crypto_Key_Location.c_str(), Fstab_File_System.c_str());
+				if (cryptfs_check_footer() == 0) {
+					Is_Encrypted = true;
+					Is_Decrypted = false;
+					Can_Be_Mounted = false;
+					Current_File_System = "emmc";
+					Setup_Image();
+					DataManager::SetValue(TW_IS_ENCRYPTED, 1);
+					DataManager::SetValue(TW_CRYPTO_PWTYPE, cryptfs_get_password_type());
+					DataManager::SetValue(TW_CRYPTO_PASSWORD, "");
+					DataManager::SetValue("tw_crypto_display", "");
+				} else {
+					gui_err("mount_data_footer=Could not mount /data and unable to find crypto footer.");
+				}
+			} else {
+				Is_Encrypted = true;
+				Is_Decrypted = false;
+			}
+		} else if (Key_Directory.empty()) {
+			LOGERR("Primary block device '%s' for mount point '%s' is not present!\n", Primary_Block_Device.c_str(), Mount_Point.c_str());
 		}
-	      DataManager::SetValue(TW_CRYPTO_PWTYPE, pwd_type);
-	      DataManager::SetValue(TW_CRYPTO_PASSWORD, "");
-	      DataManager::SetValue("tw_crypto_display", "");
-	    }
+	} else {
+		Decrypt_FBE_DE();
+	}
+	if (datamedia && (!Is_Encrypted || (Is_Encrypted && Is_Decrypted))) {
+		Setup_Data_Media();
+		Recreate_Media_Folder();
+	}
 #else
-	  LOGERR("FBE found but FBE support not present in TWRP\n");
+	if (datamedia) {
+		Setup_Data_Media();
+		Recreate_Media_Folder();
+	}
+#endif
+}
+
+bool TWPartition::Decrypt_FBE_DE() {
+if (TWFunc::Path_Exists("/data/unencrypted/key/version")) {
+		LOGINFO("File Based Encryption is present\n");
+#ifdef TW_INCLUDE_FBE
+		ExcludeAll(Mount_Point + "/convert_fbe");
+		ExcludeAll(Mount_Point + "/unencrypted");
+		//ExcludeAll(Mount_Point + "/system/users/0"); // we WILL need to retain some of this if multiple users are present or we just need to delete more folders for the extra users somewhere else
+		ExcludeAll(Mount_Point + "/misc/vold/user_keys");
+		//ExcludeAll(Mount_Point + "/system_ce");
+		//ExcludeAll(Mount_Point + "/system_de");
+		//ExcludeAll(Mount_Point + "/misc_ce");
+		//ExcludeAll(Mount_Point + "/misc_de");
+		ExcludeAll(Mount_Point + "/system/gatekeeper.password.key");
+		ExcludeAll(Mount_Point + "/system/gatekeeper.pattern.key");
+		ExcludeAll(Mount_Point + "/system/locksettings.db");
+		//ExcludeAll(Mount_Point + "/system/locksettings.db-shm"); // don't seem to need this one, but the other 2 are needed
+		ExcludeAll(Mount_Point + "/system/locksettings.db-wal");
+		//ExcludeAll(Mount_Point + "/user_de");
+		//ExcludeAll(Mount_Point + "/misc/profiles/cur/0"); // might be important later
+		ExcludeAll(Mount_Point + "/misc/gatekeeper");
+		ExcludeAll(Mount_Point + "/misc/keystore");
+		ExcludeAll(Mount_Point + "/drm/kek.dat");
+		ExcludeAll(Mount_Point + "/system_de/0/spblob"); // contains data needed to decrypt pixel 2
+		int retry_count = 3;
+		while (!Decrypt_DE() && --retry_count)
+			usleep(2000);
+		if (retry_count > 0) {
+			property_set("ro.crypto.state", "encrypted");
+			Is_Encrypted = true;
+			Is_Decrypted = false;
+			Is_FBE = true;
+			DataManager::SetValue(TW_IS_FBE, 1);
+			DataManager::SetValue(TW_IS_ENCRYPTED, 1);
+			string filename;
+			int pwd_type = Get_Password_Type(0, filename);
+			if (pwd_type < 0) {
+				LOGERR("This TWRP does not have synthetic password decrypt support\n");
+				pwd_type = 0; // default password
+			}
+			DataManager::SetValue(TW_CRYPTO_PWTYPE, pwd_type);
+			DataManager::SetValue(TW_CRYPTO_PASSWORD, "");
+			DataManager::SetValue("tw_crypto_display", "");
+			return true;
+		}
+#else
+		LOGERR("FBE found but FBE support not present in TWRP\n");
 #endif
 	}
-      else
-	{
-	  // Filesystem is not encrypted and the mount succeeded, so return to
-	  // the original unmounted state
-	  UnMount(false);
-	}
-    }
-  if (datamedia && (!Is_Encrypted || (Is_Encrypted && Is_Decrypted)))
-    {
-      Setup_Data_Media();
-      Recreate_Media_Folder();
-    }
-#else
-  if (datamedia)
-    {
-      Setup_Data_Media();
-      Recreate_Media_Folder();
-    }
-#endif
+	return false;
 }
 
 void TWPartition::Setup_Cache_Partition(bool Display_Error __unused)
@@ -977,17 +967,26 @@ void TWPartition::Apply_TW_Flag(const unsigned flag, const char* str, const bool
 			// fileencryption=ice:aes-256-heh
 			{
 				std::string FBE = str;
-				std::string FBE_contents, FBE_filenames;
 				size_t colon_loc = FBE.find(":");
 				if (colon_loc == std::string::npos) {
-					LOGINFO("Invalid fileencryption fstab flag: '%s'\n", str);
+					property_set("fbe.contents", FBE.c_str());
+					property_set("fbe.filenames", "");
+					LOGINFO("FBE contents '%s', filenames ''\n", FBE.c_str());
 					break;
 				}
+				std::string FBE_contents, FBE_filenames;
 				FBE_contents = FBE.substr(0, colon_loc);
 				FBE_filenames = FBE.substr(colon_loc + 1);
 				property_set("fbe.contents", FBE_contents.c_str());
 				property_set("fbe.filenames", FBE_filenames.c_str());
 				LOGINFO("FBE contents '%s', filenames '%s'\n", FBE_contents.c_str(), FBE_filenames.c_str());
+			}
+			break;
+		case TWFLAG_WRAPPEDKEY:
+			// Set fbe.data.wrappedkey to true
+			{
+				property_set("fbe.data.wrappedkey", "true");
+				LOGINFO("FBE wrapped key enabled\n");
 			}
 			break;
 		case TWFLAG_FLASHIMG:
@@ -1056,6 +1055,8 @@ void TWPartition::Apply_TW_Flag(const unsigned flag, const char* str, const bool
 		case TWFLAG_ALTDEVICE:
 			Alternate_Block_Device = str;
 			break;
+		case TWFLAG_KEYDIRECTORY:
+			Key_Directory = str;
 		default:
 			// Should not get here
 			LOGINFO("Flag identified for processing, but later unmatched: %i\n", flag);
@@ -1173,15 +1174,20 @@ void TWPartition::Process_TW_Flags(char *flags, bool Display_Error,
     }
 }
 
-bool TWPartition::Is_File_System(string File_System)
-{
-  if (File_System == "ext2" || File_System == "ext3" || File_System == "ext4"
-      || File_System == "vfat" || File_System == "ntfs"
-      || File_System == "yaffs2" || File_System == "exfat"
-      || File_System == "f2fs" || File_System == "auto")
-    return true;
-  else
-    return false;
+bool TWPartition::Is_File_System(string File_System) {
+	if (File_System == "ext2" ||
+		File_System == "ext3" ||
+		File_System == "ext4" ||
+		File_System == "vfat" ||
+		File_System == "ntfs" ||
+		File_System == "yaffs2" ||
+		File_System == "exfat" ||
+		File_System == "f2fs" ||
+		File_System == "squashfs" ||
+		File_System == "auto")
+		return true;
+	else
+		return false;
 }
 
 bool TWPartition::Is_Image(string File_System)
@@ -1689,6 +1695,8 @@ bool TWPartition::Mount(bool Display_Error)
 			(msg::kError,
 			 "fail_mount=Failed to mount '{1}' ({2})")
 			(Mount_Point) (strerror(errno)));
+				if (Mount_Point == "/cust")
+					gui_print_color("warning", "Please note that, in most cases, errors mounting cust do not affect installation and system.\n");
 	      else
 		LOGINFO("Failed to mount '%s' (MTD)\n", Mount_Point.c_str());
 	      return false;
@@ -1892,28 +1900,26 @@ bool TWPartition::Wipe(string New_File_System)
     {
       DataManager::GetValue(TW_RM_RF_VAR, check);
 
-      if (check || Use_Rm_Rf)
-	wiped = Wipe_RMRF();
-      else if (New_File_System == "ext4")
-	wiped = Wipe_EXT4();
-      else if (New_File_System == "ext2" || New_File_System == "ext3")
-	wiped = Wipe_EXT23(New_File_System);
-      else if (New_File_System == "vfat")
-	wiped = Wipe_FAT();
-      else if (New_File_System == "exfat")
-	wiped = Wipe_EXFAT();
-      else if (New_File_System == "yaffs2")
-	wiped = Wipe_MTD();
-      else if (New_File_System == "f2fs")
-	wiped = Wipe_F2FS();
-      else if (New_File_System == "ntfs")
-	wiped = Wipe_NTFS();
-      else
-	{
-	  LOGERR("Unable to wipe '%s' -- unknown file system '%s'\n",
-		 Mount_Point.c_str(), New_File_System.c_str());
-	  unlink("/.layout_version");
-	  return false;
+		if (check || Use_Rm_Rf)
+			wiped = Wipe_RMRF();
+		else if (New_File_System == "ext4")
+			wiped = Wipe_EXT4();
+		else if (New_File_System == "ext2" || New_File_System == "ext3")
+			wiped = Wipe_EXTFS(New_File_System);
+		else if (New_File_System == "vfat")
+			wiped = Wipe_FAT();
+		else if (New_File_System == "exfat")
+			wiped = Wipe_EXFAT();
+		else if (New_File_System == "yaffs2")
+			wiped = Wipe_MTD();
+		else if (New_File_System == "f2fs")
+			wiped = Wipe_F2FS();
+		else if (New_File_System == "ntfs")
+			wiped = Wipe_NTFS();
+		else {
+			LOGERR("Unable to wipe '%s' -- unknown file system '%s'\n", Mount_Point.c_str(), New_File_System.c_str());
+			unlink("/.layout_version");
+			return false;
 	}
       update_crypt = wiped;
     }
@@ -2325,133 +2331,103 @@ bool TWPartition::Decrypt(string Password)
   return 1;
 }
 
-bool TWPartition::Wipe_Encryption()
-{
-  bool Save_Data_Media = Has_Data_Media;
+bool TWPartition::Wipe_Encryption() {
+	bool Save_Data_Media = Has_Data_Media;
+	bool ret = false;
+	BasePartition* base_partition = make_partition();
 
-  if (!UnMount(true))
-    return false;
+	if (!base_partition->PreWipeEncryption())
+		goto exit;
 
-  Has_Data_Media = false;
-  Decrypted_Block_Device = "";
+	if (!UnMount(true))
+		goto exit;
+
+	Has_Data_Media = false;
 #ifdef TW_INCLUDE_CRYPTO
-  if (Is_Decrypted && !Decrypted_Block_Device.empty())
-    {
-      if (!UnMount(true))
-	return false;
-      if (delete_crypto_blk_dev((char *) ("userdata")) != 0)
-	{
-	  LOGERR("Error deleting crypto block device, continuing anyway.\n");
+	if (Is_Decrypted && !Decrypted_Block_Device.empty()) {
+		if (!UnMount(true))
+			goto exit;
+		if (delete_crypto_blk_dev((char*)("userdata")) != 0) {
+			LOGERR("Error deleting crypto block device, continuing anyway.\n");
+		}
 	}
-    }
 #endif
-  Is_Decrypted = false;
-  Is_Encrypted = false;
-  Find_Actual_Block_Device();
-  if (Crypto_Key_Location == "footer")
-    {
-      int newlen, fd;
-      if (Length != 0)
-	{
-	  newlen = Length;
-	  if (newlen < 0)
-	    newlen = newlen * -1;
-	}
-      else
-	{
-	  newlen = CRYPT_FOOTER_OFFSET;
-	}
-      if ((fd = open(Actual_Block_Device.c_str(), O_RDWR)) < 0)
-	{
-	  gui_print_color("warning",
-			  "Unable to open '%s' to wipe crypto key\n",
-			  Actual_Block_Device.c_str());
-	}
-      else
-	{
-	  unsigned int block_count;
-	  if ((ioctl(fd, BLKGETSIZE, &block_count)) == -1)
-	    {
-	      gui_print_color("warning",
-			      "Unable to get block size for wiping crypto footer.\n");
-	    }
-	  else
-	    {
-	      off64_t offset = ((off64_t) block_count * 512) - newlen;
-	      if (lseek64(fd, offset, SEEK_SET) == -1)
-		{
-		  gui_print_color("warning",
-				  "Unable to lseek64 for wiping crypto footer.\n");
+	Decrypted_Block_Device = "";
+	Is_Decrypted = false;
+	Is_Encrypted = false;
+	Find_Actual_Block_Device();
+	if (Crypto_Key_Location == "footer") {
+		int newlen, fd;
+		if (Length != 0) {
+			newlen = Length;
+			if (newlen < 0)
+				newlen = newlen * -1;
+		} else {
+			newlen = CRYPT_FOOTER_OFFSET;
 		}
-	      else
-		{
-		  void *buffer = malloc(newlen);
-		  if (!buffer)
-		    {
-		      gui_print_color("warning",
-				      "Failed to malloc for wiping crypto footer.\n");
-		    }
-		  else
-		    {
-		      memset(buffer, 0, newlen);
-		      int ret = write(fd, buffer, newlen);
-		      if (ret != newlen)
-			{
-			  gui_print_color("warning",
-					  "Failed to wipe crypto footer.\n");
+		if ((fd = open(Actual_Block_Device.c_str(), O_RDWR)) < 0) {
+			gui_print_color("warning", "Unable to open '%s' to wipe crypto key\n", Actual_Block_Device.c_str());
+		} else {
+			unsigned int block_count;
+			if ((ioctl(fd, BLKGETSIZE, &block_count)) == -1) {
+				gui_print_color("warning", "Unable to get block size for wiping crypto footer.\n");
+			} else {
+				off64_t offset = ((off64_t)block_count * 512) - newlen;
+				if (lseek64(fd, offset, SEEK_SET) == -1) {
+					gui_print_color("warning", "Unable to lseek64 for wiping crypto footer.\n");
+				} else {
+					void* buffer = malloc(newlen);
+					if (!buffer) {
+						gui_print_color("warning", "Failed to malloc for wiping crypto footer.\n");
+					} else {
+						memset(buffer, 0, newlen);
+						int ret = write(fd, buffer, newlen);
+						if (ret != newlen) {
+							gui_print_color("warning", "Failed to wipe crypto footer.\n");
+						} else {
+							LOGINFO("Successfully wiped crypto footer.\n");
+						}
+						free(buffer);
+					}
+				}
 			}
-		      else
-			{
-			  LOGINFO("Successfully wiped crypto footer.\n");
-			}
-		      free(buffer);
-		    }
+			close(fd);
 		}
-	    }
-	  close(fd);
+	} else {
+		if (TWFunc::IOCTL_Get_Block_Size(Crypto_Key_Location.c_str()) >= 16384LLU) {
+			string Command = "dd of='" + Crypto_Key_Location + "' if=/dev/zero bs=16384 count=1";
+			TWFunc::Exec_Cmd(Command);
+		} else {
+			LOGINFO("Crypto key location reports size < 16K so not wiping crypto footer.\n");
+		}
 	}
-    }
-  else
-    {
-      if (TWFunc::IOCTL_Get_Block_Size(Crypto_Key_Location.c_str()) >=
-	  16384LLU)
-	{
-	  string Command =
-	    "dd of='" + Crypto_Key_Location +
-	    "' if=/dev/zero bs=16384 count=1";
-	  TWFunc::Exec_Cmd(Command);
-	}
-      else
-	{
-	  LOGINFO
-	    ("Crypto key location reports size < 16K so not wiping crypto footer.\n");
-	}
-    }
-  if (Wipe(Fstab_File_System))
-    {
-      Has_Data_Media = Save_Data_Media;
-      if (Has_Data_Media && !Symlink_Mount_Point.empty())
-	{
-	  Recreate_Media_Folder();
-	  if (Mount(false))
-	    PartitionManager.Add_MTP_Storage(MTP_Storage_ID);
-	}
-      DataManager::SetValue(TW_IS_ENCRYPTED, 0);
+	if (Wipe(Fstab_File_System)) {
+		Has_Data_Media = Save_Data_Media;
+		if (Has_Data_Media && !Symlink_Mount_Point.empty()) {
+			Recreate_Media_Folder();
+			if (Mount(false))
+				PartitionManager.Add_MTP_Storage(MTP_Storage_ID);
+		}
+		DataManager::SetValue(TW_IS_ENCRYPTED, 0);
 #ifndef TW_OEM_BUILD
-      gui_msg
-	("format_data_msg=You may need to reboot recovery to be able to use /data again.");
+		gui_msg("format_data_msg=You may need to reboot recovery to be able to use /data again.");
 #endif
-      return true;
-    }
-  else
-    {
-      Has_Data_Media = Save_Data_Media;
-      gui_err("format_data_err=Unable to format to remove encryption.");
-      if (Has_Data_Media && Mount(false))
-	PartitionManager.Add_MTP_Storage(MTP_Storage_ID);
-      return false;
-    }
-  return false;
+		ret = true;
+		if (!Key_Directory.empty())
+			ret = PartitionManager.Wipe_By_Path(Key_Directory);
+		if (ret)
+			ret = base_partition->PostWipeEncryption();
+		goto exit;
+	} else {
+		Has_Data_Media = Save_Data_Media;
+		gui_err("format_data_err=Unable to format to remove encryption.");
+		if (Has_Data_Media && Mount(false))
+			PartitionManager.Add_MTP_Storage(MTP_Storage_ID);
+		goto exit;
+	}
+exit:
+	delete base_partition;
+	return ret;
 }
 
 void TWPartition::Check_FS_Type()
@@ -2511,134 +2487,154 @@ void TWPartition::Check_FS_Type()
     }
 }
 
-bool TWPartition::Wipe_EXT23(string File_System)
-{
-  if (!UnMount(true))
-    return false;
+bool TWPartition::Wipe_EXTFS(string File_System) {
+#if PLATFORM_SDK_VERSION < 28
+	if (!TWFunc::Path_Exists("/sbin/mke2fs"))
+#else
+	if (!TWFunc::Path_Exists("/sbin/mke2fs") || !TWFunc::Path_Exists("/sbin/e2fsdroid"))
+#endif
+		return Wipe_RMRF();
 
-  if (TWFunc::Path_Exists("/sbin/mke2fs"))
-    {
-      string command;
+	int ret;
+	bool NeedPreserveFooter = true;
 
-      gui_msg(Msg("formatting_using=Formatting {1} using {2}...")
-	      (Display_Name) ("mke2fs"));
-      Find_Actual_Block_Device();
-      command = "mke2fs -t " + File_System + " -m 0 " + Actual_Block_Device;
-      LOGINFO("mke2fs command: %s\n", command.c_str());
-      if (TWFunc::Exec_Cmd(command) == 0)
-	{
-	  Current_File_System = File_System;
-	  Recreate_AndSec_Folder();
-	  gui_msg("done=Done.");
-	  return true;
+	Find_Actual_Block_Device();
+	if (!Is_Present) {
+		LOGINFO("Block device not present, cannot wipe %s.\n", Display_Name.c_str());
+		gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+		return false;
 	}
-      else
-	{
-	  gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")
-		  (Display_Name));
-	  return false;
-	}
-    }
-  else
-    return Wipe_RMRF();
+	if (!UnMount(true))
+		return false;
 
-  return false;
+	/**
+	 * On decrypted devices, IOCTL_Get_Block_Size calculates size on device mapper,
+	 * so there's no need to preserve footer.
+	 */
+	if ((Is_Decrypted && !Decrypted_Block_Device.empty()) ||
+			Crypto_Key_Location != "footer") {
+		NeedPreserveFooter = false;
+	}
+
+	unsigned long long dev_sz = TWFunc::IOCTL_Get_Block_Size(Actual_Block_Device.c_str());
+	if (!dev_sz)
+		return false;
+
+	if (NeedPreserveFooter)
+		Length < 0 ? dev_sz += Length : dev_sz -= CRYPT_FOOTER_OFFSET;
+
+	char dout[16];
+	sprintf(dout, "%llu", dev_sz / 4096);
+
+	//string size_str =to_string(dev_sz / 4096);
+	string size_str = dout;
+	string Command;
+
+	gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("mke2fs"));
+
+	// Execute mke2fs to create empty ext4 filesystem
+	Command = "mke2fs -t " + File_System + " -b 4096 " + Actual_Block_Device + " " + size_str;
+	LOGINFO("mke2fs command: %s\n", Command.c_str());
+	ret = TWFunc::Exec_Cmd(Command);
+	if (ret) {
+		gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+		return false;
+	}
+
+	if (TWFunc::Path_Exists("/sbin/e2fsdroid")) {
+		const string& File_Contexts_Entry = (Mount_Point == "/system_root" ? "/" : Mount_Point);
+		char *secontext = NULL;
+		if (!selinux_handle || selabel_lookup(selinux_handle, &secontext, File_Contexts_Entry.c_str(), S_IFDIR) < 0) {
+			LOGINFO("Cannot lookup security context for '%s'\n", Mount_Point.c_str());
+		} else {
+			// Execute e2fsdroid to initialize selinux context
+			Command = "e2fsdroid -e -S /file_contexts -a " + File_Contexts_Entry + " " + Actual_Block_Device;
+			LOGINFO("e2fsdroid command: %s\n", Command.c_str());
+			ret = TWFunc::Exec_Cmd(Command);
+			if (ret) {
+				gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+				return false;
+			}
+		}
+	} else {
+		LOGINFO("e2fsdroid not present\n");
+	}
+
+	if (NeedPreserveFooter)
+		Wipe_Crypto_Key();
+	Current_File_System = File_System;
+	Recreate_AndSec_Folder();
+	gui_msg("done=Done.");
+	return true;
 }
 
-bool TWPartition::Wipe_EXT4()
-{
-  Find_Actual_Block_Device();
-  if (!Is_Present)
-    {
-      LOGINFO("Block device not present, cannot wipe %s.\n",
-	      Display_Name.c_str());
-      gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")
-	      (Display_Name));
-      return false;
-    }
-  if (!UnMount(true))
-    return false;
+
+bool TWPartition::Wipe_EXT4() {
+	Find_Actual_Block_Device();
+	if (!Is_Present) {
+		LOGINFO("Block device not present, cannot wipe %s.\n", Display_Name.c_str());
+		gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+		return false;
+	}
+	if (!UnMount(true))
+		return false;
 
 #if defined(USE_EXT4)
-  int ret;
-  char *secontext = NULL;
+	int ret;
+	char *secontext = NULL;
 
   if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
     gui_msg(Msg("formatting_using=Formatting {1} using {2}...") (Display_Name)
 	    ("make_ext4fs"));
 
-  if (!selinux_handle
-      || selabel_lookup(selinux_handle, &secontext, Mount_Point.c_str(),
-			S_IFDIR) < 0)
-    {
-      LOGINFO("Cannot lookup security context for '%s'\n",
-	      Mount_Point.c_str());
-      ret =
-	make_ext4fs(Actual_Block_Device.c_str(), Length, Mount_Point.c_str(),
-		    NULL);
-    }
-  else
-    {
-      ret =
-	make_ext4fs(Actual_Block_Device.c_str(), Length, Mount_Point.c_str(),
-		    selinux_handle);
-    }
-  if (ret != 0)
-    {
-      gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")
-	      (Display_Name));
-      return false;
-    }
-  else
-    {
-      string sedir = Mount_Point + "/lost+found";
-      PartitionManager.Mount_By_Path(sedir.c_str(), true);
-      rmdir(sedir.c_str());
-      mkdir(sedir.c_str(), S_IRWXU | S_IRWXG | S_IWGRP | S_IXGRP);
-      return true;
-    }
+	if (!selinux_handle || selabel_lookup(selinux_handle, &secontext, Mount_Point.c_str(), S_IFDIR) < 0) {
+		LOGINFO("Cannot lookup security context for '%s'\n", Mount_Point.c_str());
+		ret = make_ext4fs(Actual_Block_Device.c_str(), Length, Mount_Point.c_str(), NULL);
+	} else {
+		ret = make_ext4fs(Actual_Block_Device.c_str(), Length, Mount_Point.c_str(), selinux_handle);
+	}
+	if (ret != 0) {
+		gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+		return false;
+	} else {
+		string sedir = Mount_Point + "/lost+found";
+		PartitionManager.Mount_By_Path(sedir.c_str(), true);
+		rmdir(sedir.c_str());
+		mkdir(sedir.c_str(), S_IRWXU | S_IRWXG | S_IWGRP | S_IXGRP);
+		return true;
+	}
 #else
-  if (TWFunc::Path_Exists("/sbin/make_ext4fs"))
-    {
-      string Command;
+	if (TWFunc::Path_Exists("/sbin/make_ext4fs")) {
+		string Command;
 
-      if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
-	gui_msg(Msg("formatting_using=Formatting {1} using {2}...")
-		(Display_Name) ("make_ext4fs"));
-      Find_Actual_Block_Device();
-      Command = "make_ext4fs";
-      if (!Is_Decrypted && Length != 0)
-	{
-	  // Only use length if we're not decrypted
-	  char len[32];
-	  sprintf(len, "%i", Length);
-	  Command += " -l ";
-	  Command += len;
-	}
-      if (TWFunc::Path_Exists("/file_contexts"))
-	{
-	  Command += " -S /file_contexts";
-	}
-      Command += " -a " + Mount_Point + " " + Actual_Block_Device;
-      LOGINFO("make_ext4fs command: %s\n", Command.c_str());
-      if (TWFunc::Exec_Cmd(Command) == 0)
-	{
-	  Current_File_System = "ext4";
-	  Recreate_AndSec_Folder();
-	  gui_msg("done=Done.");
-	  return true;
-	}
-      else
-	{
-	  gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")
-		  (Display_Name));
-	  return false;
-	}
-    }
-  else
-    return Wipe_EXT23("ext4");
+		gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("make_ext4fs"));
+		Find_Actual_Block_Device();
+		Command = "make_ext4fs";
+		if (!Is_Decrypted && Length != 0) {
+			// Only use length if we're not decrypted
+			char len[32];
+			sprintf(len, "%i", Length);
+			Command += " -l ";
+			Command += len;
+		}
+		if (TWFunc::Path_Exists("/file_contexts")) {
+			Command += " -S /file_contexts";
+		}
+		Command += " -a " + Mount_Point + " " + Actual_Block_Device;
+		LOGINFO("make_ext4fs command: %s\n", Command.c_str());
+		if (TWFunc::Exec_Cmd(Command) == 0) {
+			Current_File_System = "ext4";
+			Recreate_AndSec_Folder();
+			gui_msg("done=Done.");
+			return true;
+		} else {
+			gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+			return false;
+		}
+	} else
+		return Wipe_EXTFS("ext4");
 #endif
-  return false;
+	return false;
 }
 
 bool TWPartition::Wipe_FAT()
@@ -2831,6 +2827,50 @@ bool TWPartition::Wipe_F2FS()
 	return false;
 }
 
+/* // OrangeFox - merged f2fs function
+bool TWPartition::Wipe_F2FS() {
+	string command;
+
+	if (TWFunc::Path_Exists("/sbin/mkfs.f2fs")) {
+		if (!UnMount(true))
+			return false;
+
+		gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("mkfs.f2fs"));
+		Find_Actual_Block_Device();
+		if (!TWFunc::Path_Exists("/sbin/sload.f2fs")) {
+			command = "mkfs.f2fs -t 0";
+			if (!Is_Decrypted && Length != 0) {
+				// Only use length if we're not decrypted
+				char len[32];
+				int mod_length = Length;
+				if (Length < 0)
+					mod_length *= -1;
+				sprintf(len, "%i", mod_length);
+				command += " -r ";
+				command += len;
+			}
+			command += " " + Actual_Block_Device;
+		} else {
+			unsigned long long size = IOCTL_Get_Block_Size() + Length;
+			command = "mkfs.f2fs -d1 -f -O encrypt -O quota -O verity -w 4096 " + Actual_Block_Device + " " + std::to_string(size / 4096) + " && sload.f2fs -t /data " + Actual_Block_Device;
+		}
+		if (TWFunc::Exec_Cmd(command) == 0) {
+			Recreate_AndSec_Folder();
+			gui_msg("done=Done.");
+			return true;
+		} else {
+			gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+			return false;
+		}
+		return true;
+	} else {
+		LOGINFO("mkfs.f2fs binary not found, using rm -rf to wipe.\n");
+		return Wipe_RMRF();
+	}
+	return false;
+}
+*/
+
 bool TWPartition::Wipe_NTFS()
 {
   string command;
@@ -2933,11 +2973,56 @@ Wipe_Data_Without_Wiping_Media_Func(const string & parent __unused)
   return false;
 }
 
-bool TWPartition::Backup_Tar(PartitionSettings * part_settings,
-			     pid_t * tar_fork_pid)
-{
-  string Full_FileName;
-  twrpTar tar;
+void TWPartition::Wipe_Crypto_Key() {
+	Find_Actual_Block_Device();
+	if (Crypto_Key_Location.empty())
+		return;
+	else if (Crypto_Key_Location == "footer") {
+		int fd = open(Actual_Block_Device.c_str(), O_RDWR);
+		if (fd < 0) {
+			gui_print_color("warning", "Unable to open '%s' to wipe crypto key\n", Actual_Block_Device.c_str());
+			return;
+		}
+
+		unsigned int block_count;
+		if ((ioctl(fd, BLKGETSIZE, &block_count)) == -1) {
+			gui_print_color("warning", "Unable to get block size for wiping crypto footer.\n");
+		} else {
+			int newlen = Length < 0 ? -Length : CRYPT_FOOTER_OFFSET;
+			off64_t offset = ((off64_t)block_count * 512) - newlen;
+			if (lseek64(fd, offset, SEEK_SET) == -1) {
+				gui_print_color("warning", "Unable to lseek64 for wiping crypto footer.\n");
+			} else {
+				void* buffer = malloc(newlen);
+				if (!buffer) {
+					gui_print_color("warning", "Failed to malloc for wiping crypto footer.\n");
+				} else {
+					memset(buffer, 0, newlen);
+					int ret = write(fd, buffer, newlen);
+					if (ret != newlen) {
+						gui_print_color("warning", "Failed to wipe crypto footer.\n");
+					} else {
+						LOGINFO("Successfully wiped crypto footer.\n");
+					}
+					free(buffer);
+				}
+			}
+		}
+		close(fd);
+	} else {
+		if (TWFunc::IOCTL_Get_Block_Size(Crypto_Key_Location.c_str()) >= 16384LLU) {
+			string Command = "dd of='" + Crypto_Key_Location + "' if=/dev/zero bs=16384 count=1";
+			TWFunc::Exec_Cmd(Command);
+		} else {
+			LOGINFO("Crypto key location reports size < 16K so not wiping crypto footer.\n");
+		}
+	}
+}
+
+
+bool TWPartition::Backup_Tar(PartitionSettings *part_settings, pid_t *tar_fork_pid) {
+	string Full_FileName;
+	twrpTar tar;
 
   if (!Mount(true))
     return false;

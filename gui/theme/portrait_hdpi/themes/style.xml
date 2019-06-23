@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<recovery>
+		<resources>	
+		<!-- Fullscreen Icons -->
+		<image name="unlock_icon" filename="Default/FullscreenIcons/unlock_icon" retainaspect="1"/>
+		
+		<!-- Battery -->
+		<image name="battery100" filename="Default/Battery/battery100" retainaspect="1"/>
+		<image name="battery75" filename="Default/Battery/battery75" retainaspect="1"/>
+		<image name="battery50" filename="Default/Battery/battery50" retainaspect="1"/>
+		<image name="battery25" filename="Default/Battery/battery25" retainaspect="1"/>
+		<image name="battery15_good" filename="Default/Battery/battery15_good" retainaspect="1"/>
+		<!-- Pie-->
+		<image name="battery100_p" filename="Default/Battery/battery100_p" retainaspect="1"/>
+		<image name="battery75_p" filename="Default/Battery/battery75_p" retainaspect="1"/>
+		<image name="battery50_p" filename="Default/Battery/battery50_p" retainaspect="1"/>
+		<image name="battery25_p" filename="Default/Battery/battery25_p" retainaspect="1"/>
+		<image name="battery15_good_p" filename="Default/Battery/battery15_good_p" retainaspect="1"/>
+		<image name="battery_charge_p" filename="Default/Battery/battery_charge_p" retainaspect="1"/>
+		<image name="battery_charge" filename="Default/Battery/battery_charge" retainaspect="1"/>
+		
+		<!-- Fullscreen Icons -->
+		<image name="palette" filename="Default/FullscreenIcons/palette" retainaspect="1"/>
+		<image name="usb" filename="Default/FullscreenIcons/usb" retainaspect="1"/>
+		<image name="aroma_folder" filename="Default/FullscreenIcons/aroma_folder" retainaspect="1"/>
+		
+		<!-- Keyboard -->
+		<image name="keyback" filename="Night/Keyboard/key_butts"/>
+		<image name="keyback_num" filename="Night/Keyboard/key_num"/>
+		
+		<!-- Progress -->
+		<animation name="progress" filename="Default/Progress/indeterminate"/>
+		<image name="progress_empty" filename="Default/Progress/progress_empty"/>
+		<image name="progress_fill" filename="Default/Progress/progress_fill"/>
+		
+		<!-- Controls -->
+		<image name="slider_classic" filename="Night/Controls/slider_classic" retainaspect="1"/>
+		
+		<!-- Dialogs -->
+		<image name="db_hl" filename="Default/Dialog/db_hl"/>
+		<image name="arrow" filename="Default/Dialog/arrow"/>
+		<image name="arrow_d" filename="Default/Dialog/arrow_d"/>
+		<image name="sort_select" filename="Default/Dialog/select"/>
+		
+		<!-- Dialogs -->
+		<image name="dialog_bg" filename="Night/Dialog/dialog_bg"/>
+		<image name="menu_sort" filename="Night/Dialog/menu_sort"/>
+		<image name="snackbar" filename="Night/Dialog/snackbar"/>
+		<image name="fm_sort" filename="Night/Dialog/fm_sort"/>
+		
+		<!-- ota -->
+		<image name="ota_icon" filename="Default/FullscreenIcons/ota_icon" retainaspect="1"/>
+		<image name="progress_fill_small" filename="Default/Progress/progress_fill_small"/>
+	</resources>
+	<variables>
+		<variable name="background" value="#1e1f22"/>
+		
+		<variable name="highlight_color" value="#1e1f2266"/>
+		<variable name="highlight_color_full" value="#11111144"/>
+		<variable name="text" value="#FFFFFF"/>
+		<variable name="text_status" value="#FFFFFF"/>
+		<variable name="text_menu" value="#FFFFFF"/>
+		<variable name="text_light" value="#666666"/>
+		<variable name="text_dark" value="#666666"/>
+		<variable name="console_foreground" value="#FFFFFF"/>
+		<variable name="linecolor" value="#666666"/>
+		<variable name="darktransparent" value="#000000BB"/>
+		<variable name="theme_style" value="Night"/>
+		
+		<variable name="status_solid_bg" value="#18191B"/>
+		<variable name="title_solid_bg" value="#1C1D20"/>
+	</variables>
+</recovery>

@@ -47,8 +47,9 @@ GUIKeyboard::GUIKeyboard(xml_node<>* node)
 	xml_node<>* keylayout;
 	xml_node<>* keyrow;
 
+	keyboardImg = NULL;
+
 	for (layoutindex=0; layoutindex<MAX_KEYBOARD_LAYOUTS; layoutindex++) {
-		layouts[layoutindex].keyboardImg = NULL;
 		memset(layouts[layoutindex].keys, 0, sizeof(Layout::keys));
 		memset(layouts[layoutindex].row_end_y, 0, sizeof(Layout::row_end_y));
 	}
@@ -88,27 +89,21 @@ GUIKeyboard::GUIKeyboard(xml_node<>* node)
 	LoadKeyLabels(node, 0); // load global key labels
 
 	// compatibility ugliness: resources should be specified in the layouts themselves instead
-	// Load the images for the different layouts
+	// --Load the images for the different layouts--
+	//[f/d] Use only one layout image
 	child = FindNode(node, "layout");
 	if (child)
 	{
-		layoutindex = 1;
-		strcpy(resource, "resource1");
+		strcpy(resource, "resource");
 		attr = child->first_attribute(resource);
-		while (attr && layoutindex < (MAX_KEYBOARD_LAYOUTS + 1)) {
-			layouts[layoutindex - 1].keyboardImg = LoadAttrImage(child, resource);
-
-			layoutindex++;
-			resource[8] = (char)(layoutindex + 48);
-			attr = child->first_attribute(resource);
-		}
+		keyboardImg = LoadAttrImage(child, resource);
 	}
 
-	// Check the first image to get height and width
-	if (layouts[0].keyboardImg && layouts[0].keyboardImg->GetResource())
+	// Check image to get height and width
+	if (keyboardImg && keyboardImg->GetResource())
 	{
-		mRenderW = layouts[0].keyboardImg->GetWidth();
-		mRenderH = layouts[0].keyboardImg->GetHeight();
+		mRenderW = keyboardImg->GetWidth();
+		mRenderH = keyboardImg->GetHeight();
 	}
 
 	// Load all of the layout maps
@@ -268,6 +263,8 @@ void GUIKeyboard::LoadKeyLabels(xml_node<>* parent, int layout)
 				keylabel.layout_to = tempkey.layout;
 				keylabel.text = LoadAttrString(child, "text", "");
 				keylabel.image = LoadAttrImage(child, "resource");
+				keylabel.noalt = LoadAttrString(child, "noalt", "0");
+				keylabel.imagealt = LoadAttrImage(child, "alt");
 				mKeyLabels.push_back(keylabel);
 			} else {
 				LOGERR("Ignoring invalid keylabel in layout %d: '%s'.\n", layout, keydef.c_str());
@@ -281,15 +278,20 @@ void GUIKeyboard::DrawKey(Key& key, int keyX, int keyY, int keyW, int keyH)
 	int keychar = key.key;
 	if (!keychar && !key.layout)
 		return;
+	
+	string useImage;
+	DataManager::GetValue("key_buttons", useImage);
 
-	// key background
+
+	//[f/d] Do not draw key background
+	/* key background
 	COLOR& c = (keychar >= 32 && keychar < 127) ? mKeyColorAlphanumeric : mKeyColorOther;
 	gr_color(c.red, c.green, c.blue, c.alpha);
 	keyX += mKeyMarginX;
 	keyY += mKeyMarginY;
 	keyW -= mKeyMarginX * 2;
 	keyH -= mKeyMarginY * 2;
-	gr_fill(keyX, keyY, keyW, keyH);
+	gr_fill(keyX, keyY, keyW, keyH);*/
 
 	// key label
 	FontResource* labelFont = mFont;
@@ -314,7 +316,7 @@ void GUIKeyboard::DrawKey(Key& key, int keyX, int keyY, int keyW, int keyH)
 			{
 				// found a label
 				labelText = it->text;
-				labelImage = it->image;
+				labelImage = useImage == "0" || (it->noalt != "1" && !it->imagealt) ? it->image : it->noalt == "1" ? NULL : it->imagealt;
 				break;
 			}
 		}
@@ -327,10 +329,11 @@ void GUIKeyboard::DrawKey(Key& key, int keyX, int keyY, int keyW, int keyH)
 		int w = labelImage->GetWidth();
 		int h = labelImage->GetHeight();
 		int x = keyX + (keyW - w) / 2;
-		int y = keyY + (keyH - h) / 2;
+		int y = keyY + (keyH - h) / 2 + 2;
 		gr_blit(labelImage->GetResource(), 0, 0, w, h, x, y);
 	}
-	else if (!labelText.empty() && labelFont && labelFont->GetResource())
+	
+	if (!labelText.empty() && labelFont && labelFont->GetResource())
 	{
 		void* fontResource = labelFont->GetResource();
 		int textW = gr_ttf_measureEx(labelText.c_str(), fontResource);
@@ -372,16 +375,17 @@ int GUIKeyboard::Render(void)
 
 	Layout& lay = layouts[currentLayout - 1];
 
-	bool drawKeys = false;
-	if (lay.keyboardImg && lay.keyboardImg->GetResource())
+	bool drawKeys = true; //[f/d] Always draw keys
+	string useImage;
+	DataManager::GetValue("key_buttons", useImage);
+	if (keyboardImg && keyboardImg->GetResource() && useImage == "1")
 		// keyboard is image based
-		gr_blit(lay.keyboardImg->GetResource(), 0, 0, mRenderW, mRenderH, mRenderX, mRenderY);
+		gr_blit(keyboardImg->GetResource(), 0, 0, mRenderW, mRenderH, mRenderX, mRenderY);
 	else {
 		// keyboard is software drawn
 		// fill background
 		gr_color(mBackgroundColor.red, mBackgroundColor.green, mBackgroundColor.blue, mBackgroundColor.alpha);
 		gr_fill(mRenderX, mRenderY, mRenderW, mRenderH);
-		drawKeys = true;
 	}
 
 	// draw keys
@@ -484,6 +488,8 @@ int GUIKeyboard::NotifyTouch(TOUCH_STATE state, int x, int y)
 
 	if (!isConditionTrue())	 return -1;
 
+	string swipeAct;
+
 	switch (state)
 	{
 	case TOUCH_START:
@@ -501,21 +507,26 @@ int GUIKeyboard::NotifyTouch(TOUCH_STATE state, int x, int y)
 		break;
 
 	case TOUCH_RELEASE:
+		DataManager::SetValue("tw_keyboard_press_key", "1");
+		DataManager::GetValue("key_allow_swipe", swipeAct);
+
 		// TODO: we might want to notify of key releases here
-		if (x < startX - (mRenderW * 0.5)) {
-			if (highlightRenderCount != 0) {
-				highlightRenderCount = 0;
-				mRendered = false;
+		if (swipeAct != "0") {
+			if (x < startX - (mRenderW * 0.5)) {
+				if (highlightRenderCount != 0) {
+					highlightRenderCount = 0;
+					mRendered = false;
+				}
+				PageManager::NotifyCharInput(KEYBOARD_SWIPE_LEFT);
+				return 0;
+			} else if (x > startX + (mRenderW * 0.5)) {
+				if (highlightRenderCount != 0) {
+					highlightRenderCount = 0;
+					mRendered = false;
+				}
+				PageManager::NotifyCharInput(KEYBOARD_SWIPE_RIGHT);
+				return 0;
 			}
-			PageManager::NotifyCharInput(KEYBOARD_SWIPE_LEFT);
-			return 0;
-		} else if (x > startX + (mRenderW * 0.5)) {
-			if (highlightRenderCount != 0) {
-				highlightRenderCount = 0;
-				mRendered = false;
-			}
-			PageManager::NotifyCharInput(KEYBOARD_SWIPE_RIGHT);
-			return 0;
 		}
 		// fall through
 	case TOUCH_HOLD:
@@ -549,7 +560,11 @@ int GUIKeyboard::NotifyTouch(TOUCH_STATE state, int x, int y)
 			bool repeatKey = false;
 			Layout& lay = layouts[currentLayout - 1];
 			if (state == TOUCH_RELEASE && was_held == 0) {
+
+#ifndef TW_NO_HAPTICS
 				DataManager::Vibrate("tw_keyboard_vibrate");
+#endif
+
 				if (key.layout > 0) {
 					// Switch layouts
 					if (lay.is_caps && key.layout == lay.revert_layout && !CapsLockOn) {
@@ -593,7 +608,11 @@ int GUIKeyboard::NotifyTouch(TOUCH_STATE state, int x, int y)
 				was_held = 1;
 				if (key.longpresskey > 0) {
 					// Long Press Key
+
+#ifndef TW_NO_HAPTICS
 					DataManager::Vibrate("tw_keyboard_vibrate");
+#endif
+
 					PageManager::NotifyCharInput(key.longpresskey);
 				}
 				else

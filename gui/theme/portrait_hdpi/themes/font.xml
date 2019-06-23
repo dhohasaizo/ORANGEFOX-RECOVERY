@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<recovery>
+	<resources>
+		<font name="status" filename="Roboto-Medium.ttf" size="40"/>
+		<font name="bigfont" filename="Roboto-Medium.ttf" size="48"/>
+		<font name="body1" filename="Roboto-Regular.ttf" size="42"/>
+		<font name="body2" filename="Roboto-Medium.ttf" size="42"/>
+		<font name="subhead" filename="Roboto-Regular.ttf" size="52"/>
+		<font name="title" filename="Roboto-Medium.ttf" size="60"/>
+		<font name="mainbutton" filename="Roboto-Regular.ttf" size="64"/>
+		<font name="button" filename="Roboto-Medium.ttf" size="41"/>
+		<font name="menu" filename="Roboto-Medium.ttf" size="44"/>
+		<font name="input_fail" filename="Roboto-Medium.ttf" size="32"/>
+		<font name="splash" filename="Roboto-Medium.ttf" size="47"/>
+
+		<font name="font_l" filename="Roboto-Medium.ttf" size="52"/>
+		<font name="font_m" filename="Roboto-Medium.ttf" size="42"/>
+		<font name="font_s" filename="Roboto-Medium.ttf" size="36"/>
+		<font name="font_b" filename="Roboto-Medium.ttf" size="200"/>
+
+		<font name="keylabel" filename="Roboto-Regular.ttf" size="64"/>
+		<font name="keylabel-bold" filename="Roboto-Medium.ttf" size="46"/>
+		<font name="keylabel-num" filename="Roboto-Regular.ttf" size="72"/>
+		<font name="keylabel-small" filename="Roboto-Regular.ttf" size="46"/>
+		<font name="keylabel-longpress" filename="Roboto-Regular.ttf" size="32"/>
+		
+		<font name="Secondary" filename="GoogleSans-Medium.ttf" size="42"/>
+		<font name="Secondary-title" filename="GoogleSans-Medium.ttf" size="64"/>
+		<font name="caption" filename="GoogleSans-Medium.ttf" size="36"/>
+		
+		<font name="clock" filename="GoogleSans-Medium.ttf" size="210"/>
+		<font name="info" filename="GoogleSans-Regular.ttf" size="50"/>
+	</resources>
+	
+	<variables>
+		<variable name="theme_font" value="Roboto"/>
+		<variable name="theme_sec_font" value="GoogleSans"/>
+		<variable name="theme_font_size" value="n"/>
+	</variables>
+</recovery>

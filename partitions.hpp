@@ -29,7 +29,27 @@
 
 #define MAX_FSTAB_LINE_LENGTH 2048
 
+#define REPACK_ORIG_DIR "/tmp/repackorig/"
+#define REPACK_NEW_DIR "/tmp/repacknew/"
+
 using namespace std;
+
+// BasePartition is used for overriding so we can run custom, device
+// specific code.
+class BasePartition {
+	public:
+		explicit BasePartition() {}
+		virtual ~BasePartition() {}
+
+		virtual bool PreWipeEncryption() {
+			return true;
+		}
+
+		virtual bool PostWipeEncryption() {
+			return true;
+		}
+};
+BasePartition* make_partition();
 
 struct PartitionList {
 	std::string Display_Name;
@@ -53,6 +73,19 @@ struct Flags_Map {
 	std::string File_System;
 	std::string Flags;
 	char* fstab_line;
+};
+
+enum Repack_Type {
+	REPLACE_NONE = 0,
+	REPLACE_RAMDISK = 1,
+	REPLACE_KERNEL = 2,
+};
+
+struct Repack_Options_struct {
+	Repack_Type Type;
+	bool Backup_First;
+	bool Disable_Verity;
+	bool Disable_Force_Encrypt;
 };
 
 enum PartitionManager_Op {                                                    // PartitionManager Restore Mode for Raw_Read_Write()
@@ -129,6 +162,7 @@ public:
 	void Partition_Post_Processing(bool Display_Error);                       // Apply partition specific settings after fstab processed
 	void Set_Backup_FileName(string fname);                                   // Set Backup_FileName for partition
 	string Get_Backup_Name();                                                 // Get Backup_Name for partition
+	bool Decrypt_FBE_DE();                                                    // If FBE is present, backup exclusions are set up and DE decrypt is attempted
 
 public:
 	string Current_File_System;                                               // Current file system
@@ -164,7 +198,7 @@ private:
 	unsigned long long IOCTL_Get_Block_Size();                                // Finds the partition size using ioctl
 	bool Find_Partition_Size();                                               // Finds the partition size from /proc/partitions
 	unsigned long long Get_Size_Via_du(string Path, bool Display_Error);      // Uses du to get sizes
-	bool Wipe_EXT23(string File_System);                                      // Formats as ext3 or ext2
+	bool Wipe_EXTFS(string File_System);                                      // Formats as ext3 or ext2
 	bool Wipe_EXT4();                                                         // Formats using ext4, uses make_ext4fs when present
 	bool Wipe_FAT();                                                          // Formats as FAT if mkfs.fat exits otherwise rm -rf wipe
 	bool Wipe_EXFAT();                                                        // Formats as EXFAT
@@ -173,6 +207,7 @@ private:
 	bool Wipe_F2FS();                                                         // Uses mkfs.f2fs to wipe
 	bool Wipe_NTFS();                                                         // Uses mkntfs to wipe
 	bool Wipe_Data_Without_Wiping_Media();                                    // Uses rm -rf to wipe but does not wipe /data/media
+	void Wipe_Crypto_Key();                                                   // Wipe crypto key from either footer or block device
 	bool Wipe_Data_Without_Wiping_Media_Func(const string& parent);           // Uses rm -rf to wipe but does not wipe /data/media
 	bool Backup_Tar(PartitionSettings *part_settings, pid_t *tar_fork_pid);   // Backs up using tar for file systems
 	bool Backup_Image(PartitionSettings *part_settings);                      // Backs up using raw read/write for emmc memory types
@@ -247,6 +282,8 @@ private:
 	bool SlotSelect;                                                          // Partition has A/B slots
 	TWExclude backup_exclusions;                                              // Exclusions for file based backups
 	TWExclude wipe_exclusions;                                                // Exclusions for file based wipes (data/media devices only)
+	string Key_Directory;                                                      // Metadata key directory needed for mounting FBE encrypted data partitions using metadata encryption
+
 	struct partition_fs_flags_struct {                                        // This struct is used to store mount flags and options for different file systems for the same partition
 		string File_System;
 		int Mount_Flags;
@@ -273,8 +310,6 @@ public:
 	int Write_Fstab();                                                        // Creates /etc/fstab file that's used by the command line for mount commands
 	void Output_Partition_Logging();                                          // Outputs partition information to the log
 	void Output_Partition(TWPartition* Part);                                 // Outputs partition details to the log
-	void Notify_On_Finished_Backup();                                         // Notify user that the backup is finished
-	void Notify_On_Finished_Restore();                                        // Notify user that the restore is finished
 	int Mount_By_Path(string Path, bool Display_Error);                       // Mounts partition based on path (e.g. /system)
 	int UnMount_By_Path(string Path, bool Display_Error);                     // Unmounts partition based on path
 	int Is_Mounted_By_Path(string Path);                                      // Checks if partition is mounted based on path
@@ -282,7 +317,7 @@ public:
 	int Mount_Settings_Storage(bool Display_Error);                           // Mounts the settings file storage location (usually internal)
 	TWPartition* Find_Partition_By_Path(const string& Path);                  // Returns a pointer to a partition based on path
 	TWPartition* Find_Partition_By_Block_Device(const string& Block_Device);  // Returns a pointer to a partition based on block device
-	int Check_Backup_Name(bool Display_Error);                                // Checks the current backup name to ensure that it is valid
+	int Check_Backup_Name(const std::string& Backup_Name, bool Display_Error, bool Must_Be_Unique); // Checks the current backup name to ensure that it is valid and optionally that a backup with that name doesn't already exist
 	int Run_Backup(bool adbbackup);                                           // Initiates a backup in the current storage
 	int Run_OTA_Survival_Backup(bool adbbackup);                              // Create backup for OTA survival in the internal storage
     int Run_OTA_Survival_Restore(const string& Restore_Name);                 // Restore OTA survival
@@ -296,7 +331,6 @@ public:
 	int Wipe_By_Path(string Path, string New_File_System);                    // Wipes a partition based on path
 	int Factory_Reset();                                                      // Performs a factory reset
 	int Wipe_Dalvik_Cache();                                                  // Wipes dalvik cache
-	int Wipe_Substratum_Overlays();                                    // Wipe substratum overlays
 	int Wipe_Rotate_Data();                                                   // Wipes rotation data --
 	int Wipe_Battery_Stats();                                                 // Wipe battery stats -- /data/system/batterystats.bin
 	int Wipe_Android_Secure();                                                // Wipes android secure
@@ -343,6 +377,7 @@ public:
 	string Get_Active_Slot_Suffix();                                          // Returns active slot _a or _b
 	string Get_Active_Slot_Display();                                         // Returns active slot A or B for display purposes
 	string Get_Android_Root_Path();                                           // Returns path of ANDROID_ROOT environment variable
+	string Get_Internal_Storage_Path();					  // Returns path of EXTERNAL_STORAGE environment variable
 	struct pollfd uevent_pfd;                                                 // Used for uevent code
 	void Remove_Uevent_Devices(const string& sysfs_path);                     // Removes subpartitions from the Partitions vector for a matched uevent device
 	void Handle_Uevent(const Uevent_Block_Data& uevent_data);                 // Handle uevent data
@@ -352,6 +387,9 @@ public:
 	void close_uevent();                                                      // Closes the uevent netlink socket
 	void Add_Partition(TWPartition* Part);                                    // Adds a new partition to the Partitions vector
 	bool Partition_Is_Encrypted(const string Path);				  // Returns whether the named partition is encrypted
+	bool Prepare_Repack(TWPartition* Part, const std::string& Temp_Folder_Destination, const bool Create_Backup, const std::string& Backup_Name); // Prepares an image for repacking by unpacking it to the temp folder destination
+	bool Prepare_Repack(const std::string& Source_Path, const std::string& Temp_Folder_Destination, const bool Copy_Source, const bool Create_Destination = true); // Prepares an image for repacking by unpacking it to the temp folder destination
+	bool Repack_Images(const std::string& Target_Image, const struct Repack_Options_struct& Repack_Options); // Repacks the boot image with a new kernel or a new ramdisk
 
 private:
 	void Setup_Settings_Storage_Partition(TWPartition* Part);                 // Sets up settings storage
@@ -364,6 +402,7 @@ private:
 	void Post_Decrypt(const string& Block_Device);                            // Completes various post-decrypt tasks
 	void Coldboot_Scan(std::vector<string> *sysfs_entries, const string& Path, int depth); // Scans subfolders to find matches to the paths stored in sysfs_entries so we can trigger the uevent system to "re-add" devices
 	void Coldboot();                                                          // Starts the scan of the /sys/block folder
+	bool Prepare_Empty_Folder(const std::string& Folder);                     // Creates an empty folder at Folder. If the folder already exists, the folder is deleted, then created
 	pid_t mtppid;
 	bool mtp_was_enabled;
 	int mtp_write_fd;

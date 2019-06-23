@@ -138,7 +138,7 @@ int GUIPartitionList::NotifyVarChange(const std::string& varName, const std::str
 
 	if (varName == mVariable && !mUpdate)
 	{
-		if (ListType == "storage") {
+		if (ListType == "storage" || ListType == "part_option") {
 			currentValue = value;
 			SetPosition();
 		} else if (ListType == "backup") {
@@ -158,7 +158,7 @@ void GUIPartitionList::SetPageFocus(int inFocus)
 {
 	GUIScrollList::SetPageFocus(inFocus);
 	if (inFocus) {
-		if (ListType == "storage" || ListType == "flashimg") {
+		if (ListType == "storage" || ListType == "part_option" || ListType == "flashimg") {
 			DataManager::GetValue(mVariable, currentValue);
 			SetPosition();
 		}
@@ -262,9 +262,10 @@ void GUIPartitionList::NotifySelect(size_t item_selected)
 					mUpdate = 1;
 
 					DataManager::SetValue(mVariable, str);
+					DataManager::SetValue("tw_file_location1", str);
 				}
 			} else {
-				if (ListType == "flashimg") { // only one item can be selected for flashing images
+				if (ListType == "flashimg" || ListType == "part_option" ) { // only one item can be selected for flashing images
 					for (int i=0; i<listSize; i++)
 						mList.at(i).selected = 0;
 				}
@@ -277,7 +278,11 @@ void GUIPartitionList::NotifySelect(size_t item_selected)
 				string variablelist;
 				for (i=0; i<listSize; i++) {
 					if (mList.at(i).selected) {
-						variablelist += mList.at(i).Mount_Point + ";";
+						if (ListType == "part_option") {
+							variablelist += mList.at(i).Mount_Point; //[f/d] No ; in part_option
+						} else {
+							variablelist += mList.at(i).Mount_Point + ";";
+						}
 					}
 				}
 

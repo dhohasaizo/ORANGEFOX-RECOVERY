@@ -161,31 +161,6 @@ static int check_newer_ab_build(ZipWrap* zip)
         return INSTALL_ERROR;
     }
 
-/*
-    // Check for downgrade version.
-    int64_t build_timestampt = property_get_int64(
-            "ro.build.date.utc", std::numeric_limits<int64_t>::max());
-    int64_t pkg_post_timespampt = 0;
-    // We allow to full update to the same version we are running, in case there
-    // is a problem with the current copy of that version.
-    if (metadata["post-timestamp"].empty() ||
-        !android::base::ParseInt(metadata["post-timestamp"].c_str(),
-                                 &pkg_post_timespampt) ||
-        pkg_post_timespampt < build_timestampt) {
-        if (metadata["ota-downgrade"] != "yes") {
-            printf("Update package is older than the current build, expected a "
-                 "build newer than timestamp %" PRIu64 " but package has "
-                 "timestamp %" PRIu64 " and downgrade not allowed.\n",
-                 build_timestampt, pkg_post_timespampt);
-            return INSTALL_ERROR;
-        }
-        if (pkg_pre_build_fingerprint.empty()) {
-            printf("Downgrade package must have a pre-build version set, not "
-                 "allowed.\n");
-            return INSTALL_ERROR;
-        }
-    }
-*/
     return 0;
 }
 
@@ -274,6 +249,10 @@ bool verify_package_compatibility(ZipWrap *package_zip) {
 // entry doesn't exist. Note that the compatibility info is packed in a zip file inside the OTA
 // package.
 bool verify_package_compatibility(ZipWrap *zw) {
+#ifdef OF_NO_TREBLE_COMPATIBILITY_CHECK
+   printf("Bypassing Treble compatibility check ...\n");
+   return true;
+#endif
   ZipArchiveHandle package_zip = zw->GetZipArchiveHandle();
   printf("Verifying package compatibility...\n");
 

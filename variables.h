@@ -21,16 +21,32 @@
 #ifndef _VARIABLES_HEADER_
 #define _VARIABLES_HEADER_
 
-#define TW_MAIN_VERSION_STR       "3.2.3"
+#define TW_MAIN_VERSION_STR       "3.3.1"
 #define TW_VERSION_STR TW_MAIN_VERSION_STR TW_DEVICE_VERSION
+#define BUILD_TYPE_STR BUILD_TYPE
 
 // OrangeFox - Values
 #define FOX_BUILD                TW_DEVICE_VERSION
 #define FOX_DEVICE               FOX_DEVICE_MODEL
 #define FOX_VERSION              TW_MAIN_VERSION_STR
 #define OF_MAINTAINER_STR      	"of_maintainer"
+#define BUILD_TYPE_STR              BUILD_TYPE
 #define OF_FLASHLIGHT_ENABLE_STR "of_flashlight_enable"
-#define FOX_NOTCH_STR "fox_notch"
+
+// fordownloads values
+#define OF_SCREEN_H_S              "screen_original_h"
+#define OF_SCREEN_NAV_H_S          "screen_h"
+#define OF_CENTER_Y_S              "center_y"
+
+#define OF_STATUS_H_S              "status_h"
+#define OF_HIDE_NOTCH_S            "allow_hide_notch"
+#define OF_STATUS_INDENT_LEFT_S    "status_indent_left"
+#define OF_STATUS_INDENT_RIGHT_S   "status_indent_right"
+
+#define OF_STATUS_PLACEMENT_S      "status_info_y"
+#define OF_CLOCK_POS_S             "cutout_clock"
+
+#define OF_ALLOW_DISABLE_NAVBAR_S  "allow_disable_nav"
 
 // *** OrangeFox - Variables ** //
 #include <stdio.h>
@@ -75,7 +91,6 @@ static int Fox_Current_ROM_IsMIUI = 0; // is the currently installed ROM a MIUI 
 #define FOX_FILES_BACKUPS_FOLDER_VAR       "fox_files_backup_folder_var"
 #define FOX_DISABLE_BOOT_CHK       "fox_disable_boot_check"
 #define FOX_DO_SYSTEM_ON_OTA       "fox_include_system_survival"
-#define FOX_PASSWORD_VARIABLE       "heslo"
 #define FOX_INSTALL_PREBUILT_ZIP       "fox_install_built_in_zip"
 #define FOX_DONT_REPLACE_STOCK       "fox_reboot_dont_disable_stock_recovery"
 #define FOX_ACTUAL_BUILD_VAR              "fox_actual_build"
@@ -232,6 +247,7 @@ static int Fox_Current_ROM_IsMIUI = 0; // is the currently installed ROM a MIUI 
 #define TW_MIN_SYSTEM_SIZE          "50" // minimum system size to allow a reboot
 #define TW_MIN_SYSTEM_VAR           "tw_min_system"
 #define TW_DOWNLOAD_MODE            "tw_download_mode"
+#define TW_EDL_MODE                 "tw_edl_mode"
 #define TW_IS_ENCRYPTED             "tw_is_encrypted"
 #define TW_IS_DECRYPTED             "tw_is_decrypted"
 #define TW_CRYPTO_PWTYPE            "tw_crypto_pwtype"
@@ -267,8 +283,6 @@ static int Fox_Current_ROM_IsMIUI = 0; // is the currently installed ROM a MIUI 
 #define CUSTOM_LUN_FILE "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
 #endif
 
-// For OpenRecoveryScript
-#define SCRIPT_FILE_CACHE "/cache/recovery/openrecoveryscript"
 #define SCRIPT_FILE_TMP "/tmp/openrecoveryscript"
 #define TMP_LOG_FILE "/tmp/recovery.log"
 

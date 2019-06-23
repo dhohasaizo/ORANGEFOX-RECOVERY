@@ -1,0 +1,1434 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<!-- Settings -->
+		<page name="settings">
+			<template name="body"/>
+
+			<listbox style="btn_list">
+				<placement x="0" y="%ab_h%" w="%screen_w%" h="%bl_fullscreen_h%"/>
+				<listitem name="{@settings_general}">
+					<icon res="bs_btn_set_global"/>
+					<action function="set">general_back=settings</action>
+					<action function="page">ext_general</action>
+				</listitem>
+				<listitem name="MIUI OTA">
+					<condition var1="of_no_miui_features" op="!=" var2="1"/>
+					<icon res="bs_btn_set_ota"/>
+					<action function="page">fox_ota</action>
+				</listitem>
+				<listitem name="OTA">
+					<condition var1="of_no_miui_features" var2="1"/>
+					<icon res="bs_btn_set_ota"/>
+					<action function="page">fox_ota_lite</action>
+				</listitem>
+				<listitem name="{@settings_ui}">
+					<icon res="bs_btn_set_custom"/>
+					<action function="set">needs_repack=0</action>
+					<action function="set">update_fonts=0</action>
+					<action function="set">remove_theme=0</action>
+					<action function="set">update_navbar=0</action>
+					<action function="set">update_accent=0</action>
+					<action function="set">update_style=0</action>
+					
+					<action function="set">navbar_disable_tmp=%navbar_disable%</action>
+					<action function="set">navbar_disable_add_tmp=%navbar_disable_add%</action>
+					
+					<action function="set">theme_font_tmp=%theme_font%</action>
+					<action function="set">theme_sec_font_tmp=%theme_sec_font%</action>
+					<action function="set">theme_font_size_tmp=%theme_font_size%</action>
+					
+					<action function="set">theme_accent_tmp=%theme_accent%</action>
+					<action function="set">theme_accent_c_tmp=%accent%</action>
+					<action function="set">theme_style_tmp=%theme_style%</action>
+					
+					<action function="page">ext_custom</action>
+				</listitem>
+				<listitem name="{@enter_password_cptn}">
+					<icon res="bs_btn_set_secure"/>
+					<action function="page">pass_select</action>
+				</listitem>
+				<listitem name="{@settings_screen}">
+					<icon res="bs_btn_set_screen"/>
+					<action function="page">ext_screen</action>
+				</listitem>
+				<listitem name="{@vibration_hdr}">
+					<icon res="bs_btn_set_vibro"/>
+					<condition var1="tw_disable_haptics" op="!=" var2="1"/>
+					<action function="page">ext_vibrate</action>
+				</listitem>
+				<listitem name="{@backup_hdr}">
+					<icon res="bs_btn_restore"/>
+					<action function="set">backup_back=settings</action>
+					<action function="page">ext_backup</action>
+				</listitem>
+				<listitem name="{@settings_time}">
+					<icon res="bs_btn_set_regional"/>
+					<action function="page">ext_time</action>
+				</listitem>
+				<listitem name="{@dbg}">
+					<condition var1="debug_mode" var2="1"/>
+					<action function="page">debug</action>
+				</listitem>
+				<listitem name="{@about_hdr}">
+					<icon res="bs_btn_set_about"/>
+					<action function="page">about</action>
+				</listitem>
+			</listbox>
+			
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_hdr}</text>
+			</text>
+			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<actions>
+					<action function="queueclear"/>
+					<action function="set">fox_m_author=DarthJabba9</action>
+					<action function="set">fox_m_name={@dialog_reset_theme_hdr}</action>
+					<action function="set">tw_file=OF_reset.zip</action>
+					<action function="set">tw_filename=/FFiles/OF_reset/OF_reset.zip</action>
+					<action function="set">tw_filecheck=%tw_filename%</action>
+					<action function="set">install_back=settings</action>
+					<action function="set">tw_zip_location=/FFiles/OF_reset</action>
+					<action function="queuezip"/>
+					<action function="set">tw_q_1=%tw_file%</action>
+					<action function="set">tw_notexistpage=fox_modules_confirm</action>
+					<action function="set">tw_existpage=fox_modules_confirm</action>
+					<action function="page">filecheck</action>
+				</actions>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_reset"/>
+			</image>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">advanced</action>
+			</action>
+		</page>
+
+		<!-- General -->
+		<page name="ext_general">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<condition var1="general_back" var2="settings"/>
+				<text>{@settings_general}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<condition var1="general_back" var2="wipe"/>
+				<text>{@wipe_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<condition var1="general_back" var2="reboot"/>
+				<text>{@reboot_btn}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<condition var1="general_back" var2="mount"/>
+				<text>{@mount_hdr}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<condition var1="general_back" op="!=" var2="reboot"/>
+				<text>{@options_hdr}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l9%"/>
+					<condition var1="general_back" op="!=" var2="reboot"/>
+				<listitem name="{@mount_sys_ro_chk}">
+					<condition var1="general_back" op="!=" var2="wipe"/>
+					<condition var1="general_back" op="!=" var2="reboot"/>
+					<icon res="checkbox_true"/>
+					<condition var1="tw_mount_system_ro" op="!=" var2="0"/>
+					<action function="set">tw_lifetime_writes=2</action>
+					<action function="page">system_readonly_check_mount</action>
+				</listitem>
+				<listitem name="{@mount_sys_ro_chk}">
+					<condition var1="general_back" op="!=" var2="wipe"/>
+					<condition var1="general_back" op="!=" var2="reboot"/>
+					<condition var1="tw_mount_system_ro" var2="0"/>
+					<icon res="checkbox_false"/>
+					<action function="mountsystemtoggle">1</action>
+				</listitem>
+				<listitem name="{@use_rmrf_chk}">
+					<condition var1="general_back" op="!=" var2="mount"/>
+					<data variable="tw_rm_rf"/>
+				</listitem>
+				<listitem name="{@zip_sig_chk}">
+					<data variable="tw_signed_zip_verify"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
+				<listitem name="{@restoredialog_readonly}">
+					<data variable="tw_never_show_system_ro_page"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
+				<listitem name="{@fox_boot_fastcharge}">
+					<condition var1="general_back" var2="settings"/>
+					<data variable="fox_boot_fastcharge_check"/>
+				</listitem>
+				<listitem name="{@fox_save_load_aromafm_config_chk}">
+					<condition var1="general_back" var2="settings"/>
+					<data variable="fox_reboot_saveload_aromafm_check"/>
+				</listitem>
+				<listitem name="{@files_auto_open}">
+					<data variable="fm_auto_open"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
+				<listitem name="{@files_show_hidden}">
+					<data variable="tw_hidden_files"/>
+					<condition var1="general_back" var2="settings"/>
+				</listitem>
+				<listitem name="{@inject_twrp_chk}">
+					<condition var1="tw_has_injecttwrp" var2="1"/>
+					<condition var1="general_back" var2="settings"/>
+					<data variable="tw_inject_after_zip"/>
+				</listitem>
+			</listbox>
+			
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row7_3a_y%"/>
+				<condition var1="general_back" var2="settings"/>
+				<text>{@perf_conf_mode}</text>
+			</text>
+			
+			<text style="text_body2">
+				<condition var1="general_back" var2="settings"/>
+				<condition var1="fox_boot_performance_check" var2="1"/>
+				<placement x="%col1_x%" y="%row8_1a_y%"/>
+				<text>{@perf_conf_high}</text>
+			</text>
+			
+			<text style="text_body2">
+				<condition var1="general_back" var2="settings"/>
+				<condition var1="fox_boot_powersave_check" var2="1"/>
+				<placement x="%col1_x%" y="%row8_1a_y%"/>
+				<text>{@perf_conf_batt}</text>
+			</text>
+			
+			<text style="text_body2">
+				<condition var1="general_back" var2="settings"/>
+				<condition var1="fox_boot_balance_check" var2="1"/>
+				<placement x="%col1_x%" y="%row8_1a_y%"/>
+				<text>{@perf_conf_balance}</text>
+			</text>
+
+			<button style="menu_btn">
+				<condition var1="general_back" var2="settings"/>
+				<placement x="%col1_x%" y="%row7_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<action function="page">ext_gov</action>
+			</button>
+			
+			<action>
+				<conditions>
+					<condition var1="tw_busy" var2="0"/>
+					<condition var1="fox_boot_performance_check" op="!=" var2="1"/>
+					<condition var1="fox_boot_balance_check" op="!=" var2="1"/>
+					<condition var1="fox_boot_powersave_check" op="!=" var2="1"/>
+				</conditions>
+				<action function="set">fox_boot_balance_check=1</action>
+			</action>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_3_y%"/>
+				<condition var1="general_back" var2="settings"/>
+				<text>{@areb_confirm}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row6_1_y%" w="%screen_w%" h="%lb_l3%"/>
+				<condition var1="general_back" var2="settings"/>
+				<data name="disable_no_os"/>
+				<listitem name="{@otp_never}">1</listitem>
+				<listitem name="{@opt_always}">2</listitem>
+				<listitem name="{@areb_noos}">0</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<condition var1="general_back" var2="reboot"/>
+				<text>{@areb_confirm}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
+				<condition var1="general_back" var2="reboot"/>
+				<data name="disable_no_os"/>
+				<listitem name="{@otp_never}">1</listitem>
+				<listitem name="{@opt_always}">2</listitem>
+				<listitem name="{@areb_noos}">0</listitem>
+			</listbox>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">%general_back%</action>
+			</action>
+		</page>
+		
+		<page name="pass_select">
+			<template name="body"/>
+
+			<fill color="%title_solid_bg%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%row4_1_y%"/>
+			</fill>
+
+			<template name="status_bg"/>
+			
+			<template name="actionbar_back"/>
+
+			<template name="statusbarinfo"/>
+			
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@enter_password_cptn}</text>
+			</text>
+
+			<image>
+				<image resource="fox_lock"/>
+				<placement x="68" y="%row1_1_y%"/>
+			</image>
+
+			<text style="text_body1_hl">
+				<placement x="450" y="%row1_1_y%"/>
+				<text>{@pass_page_block}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="use_pass" op="!=" var2="1"/>
+				<placement x="450" y="%row1_2_y%"/>
+				<text>{@fm_none}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="pass_type" op="!=" var2="1"/>
+				<condition var1="pass_type" op="!=" var2="2"/>
+				<condition var1="use_pass" var2="1"/>
+				<placement x="450" y="%row1_2_y%"/>
+				<text>{@pass_classic}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="pass_type" var2="2"/>
+				<condition var1="use_pass" var2="1"/>
+				<placement x="450" y="%row1_2_y%"/>
+				<text>{@pass_pin}</text>
+			</text>
+			<text style="text_ab_title">
+				<condition var1="use_pass" var2="1"/>
+				<condition var1="pass_type" var2="1"/>
+				<placement x="450" y="%row1_2_y%"/>
+				<text>{@pass_gk}</text>
+			</text>
+
+			<text style="text_body1_hl">
+				<placement x="450" y="%row2_3a_y%"/>
+				<text>{@pass_page_block_inf1}</text>
+			</text>
+
+			<text style="text_body1_hl">
+				<placement x="450" y="%row3_1a_y%"/>
+				<text>{@pass_page_block_inf2}</text>
+			</text>
+
+			<image>
+				<image resource="actionbar_shadow"/>
+				<condition var1="show_shadow" var2="1"/>
+				<placement x="0" y="%row4_1_y%"/>
+			</image>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<text>ADB</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row4_3_y%" w="%screen_w%" h="%lb_l1%"/>
+				<listitem name="{@run_adb_startup}">
+					<data variable="adb_startup"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_2a_y%"/>
+				<text>{@pass_page_select}</text>
+			</text>
+
+			<listbox style="btn_list">
+				<placement x="0" y="%row5_3a_y%" w="%screen_w%" h="%bl_h4%"/>
+				<listitem name="{@pass_classic}">
+					<icon res="pass_classic"/>
+					<action function="set">pass_new_1=</action>
+					<action function="set">pass_new_2=</action>
+					<action function="set">pass_notm=0</action>
+					<action function="page">pass_text</action>
+				</listitem>
+				<listitem name="{@pass_pin}">
+					<icon res="dialpad"/>
+					<action function="set">pass_new_1=</action>
+					<action function="set">pass_new_2=</action>
+					<action function="set">pass_notm=0</action>
+					<action function="page">pass_pin</action>
+				</listitem>
+				<listitem name="{@pass_gk}">
+					<icon res="pass_gesture"/>
+					<action function="set">pass_new_1=</action>
+					<action function="set">pass_new_2=</action>
+					<action function="set">pass_notm=0</action>
+					<action function="set">pass_pattern_grid=3</action>
+					<action function="page">pass_pattern</action>
+				</listitem>
+				<listitem name="{@pass_dis}">
+					<condition var1="use_pass" var2="1"/>
+					<icon res="bs_adv_frp"/>
+					<action function="set">pass_new_1=</action>
+					<action function="set">pass_new_2=</action>
+					<action function="set">pass_notm=0</action>
+					<action function="set">pass_true=qwerty</action>
+					<action function="set">pass_type=0</action>
+					<action function="set">pass_pattern_grid=3</action>
+					<action function="set">use_pass=0</action>
+					<action function="page">pass_select</action>
+				</listitem>
+			</listbox>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+
+		<!-- Screen -->
+		<page name="ext_screen">
+			<template name="body"/>
+			
+			<template name="ab"/>
+			
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_screen}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@settings_screen_cptn}</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="tw_has_brightnesss_file" var2="1"/>
+				<placement x="%col1_x%" y="%row1_2_y%"/>
+				<text>{@screen_bright_slider}</text>
+			</text>
+
+			<slidervalue>
+				<condition var1="tw_has_brightnesss_file" var2="1"/>
+				<placement x="%slider_x%" y="%row1_2a_y%" w="%slidervalue_w%"/>
+				<data variable="tw_brightness_pct" min="10" max="100" showrange="0" showcurr="0" changeondrag="1"/>
+				<actions>
+					<action function="set">tw_brightness=%tw_brightness_max%</action>
+					<action function="compute">tw_brightness*%tw_brightness_pct%</action>
+					<action function="compute">tw_brightness/100</action>
+					<action function="setbrightness">%tw_brightness%</action>
+				</actions>
+			</slidervalue>
+
+			<text style="text_body2">
+				<condition var1="tw_screen_timeout_secs" op="=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@settings_screen_timeout_cptn}</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="tw_screen_timeout_secs" op="!=" var2="0"/>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@settings_screen_timeout_cptn2} %tw_screen_timeout_secs% {@timeout_unit}</text>
+			</text>
+
+			<slidervalue>
+				<condition var1="tw_no_screen_timeout" op="!=" var2="1"/>
+				<placement x="%slider_x%" y="%row3_1_y%" w="%slidervalue_w%"/>
+				<data variable="tw_screen_timeout_secs" min="0" max="300" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_2a_y%"/>
+				<text>{@fox_led_title}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row4_3a_y%" w="%screen_w%" h="%lb_l1%"/>
+				<listitem name="{@fox_use_green_led}">
+					<data variable="fox_led_color"/>
+				</listitem>
+			</listbox>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+
+		<!-- Vibration -->
+		<page name="ext_vibrate">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@vibration_hdr}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@vibration_hdr}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row1_2_y%"/>
+				<condition var1="tw_button_vibrate" op="!=" var2="0"/>
+				<text>{@button_vibration} %tw_button_vibrate%</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="tw_button_vibrate" op="=" var2="0"/>
+				<placement x="%col1_x%" y="%row1_2_y%"/>
+				<text>{@button_vibration_hdr}</text>
+			</text>
+
+			<slidervalue>
+				<placement x="%slider_x%" y="%row1_2a_y%" w="%slidervalue_w%"/>
+				<data variable="tw_button_vibrate" min="0" max="300" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+
+			<text style="text_body2">
+				<condition var1="tw_keyboard_vibrate" op="!=" var2="0"/>
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@kb_vibration} %tw_keyboard_vibrate%</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="tw_keyboard_vibrate" op="=" var2="0"/>
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@kb_vibration_hdr}</text>
+			</text>
+
+			<slidervalue>
+				<placement x="%slider_x%" y="%row3_1_y%" w="%slidervalue_w%"/>
+				<data variable="tw_keyboard_vibrate" min="0" max="300" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+
+			<text style="text_body2">
+				<condition var1="tw_action_vibrate" op="!=" var2="0"/>
+				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<text>{@act_vibration} %tw_action_vibrate%</text>
+			</text>
+
+			<text style="text_body2">
+				<condition var1="tw_action_vibrate" op="=" var2="0"/>
+				<placement x="%col1_x%" y="%row4_2_y%"/>
+				<text>{@act_vibration_hdr}</text>
+			</text>
+
+			<slidervalue>
+				<placement x="%slider_x%" y="%row4_2a_y%" w="%slidervalue_w%"/>
+				<data variable="tw_action_vibrate" min="0" max="500" showrange="0" showcurr="0" changeondrag="1"/>
+			</slidervalue>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+
+		<!-- Backup -->
+		<page name="ext_backup">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@backup_hdr}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@settings_backup_name}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
+				<data name="auto_generate"/>
+				<listitem name="{@settings_backup_name_user}">2</listitem>
+				<listitem name="{@settings_backup_name_auto}">1</listitem>
+				<listitem name="{@settings_backup_name_auto_hide}">0</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_3a_y%"/>
+				<text>{@cust_oth}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row6_1a_y%" w="%screen_w%" h="%lb_l5%"/>		
+				<listitem name="{@enable_backup_comp_chk}">
+					<data variable="tw_use_compression"/>
+				</listitem>
+				<listitem name="{@disable_backup_space_chk}">
+					<data variable="tw_disable_free_space"/>
+				</listitem>
+				<listitem name="{@restore_enable_digest_chk}">
+					<data variable="tw_skip_digest_check"/>
+					<condition var1="backup_back" var2="settings"/>
+				</listitem>
+				<listitem name="{@skip_digest_backup_chk}">
+					<data variable="tw_skip_digest_generate"/>
+				</listitem>
+				<listitem name="{@sha2_chk}">
+					<condition var1="tw_no_sha2" var2="0"/>
+					<data variable="tw_use_sha2"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>{@settings_backup_qbkp_custom}</text>
+			</text>
+
+			<partitionlist>
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%lb_l4%"/>
+				<data name="tw_backup_list_quick"/>
+				<listtype name="backup"/>
+			</partitionlist>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">%backup_back%</action>
+			</action>
+		</page>
+
+		<!-- Regional -->
+		<page name="ext_time">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@settings_time}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@sel_tz_list}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l7%"/>
+				<data name="tw_time_zone_guisel"/>
+				<listitem name="{@utcm11}">BST11;BDT</listitem>
+				<listitem name="{@utcm10}">HST10;HDT</listitem>
+				<listitem name="{@utcm9}">AST9;ADT</listitem>
+				<listitem name="{@utcm8}">PST8;PDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm7}">MST7;MDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm6}">CST6;CDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm5}">EST5;EDT,M3.2.0,M11.1.0</listitem>
+				<listitem name="{@utcm4}">AST4;ADT</listitem>
+				<listitem name="{@utcm3}">GRNLNDST3;GRNLNDDT</listitem>
+				<listitem name="{@utcm2}">FALKST2;FALKDT</listitem>
+				<listitem name="{@utcm1}">AZOREST1;AZOREDT</listitem>
+				<listitem name="{@utc0}">GMT0;BST,M3.5.0,M10.5.0</listitem>
+				<listitem name="{@utcp1}">CET-1;CEST,M3.5.0,M10.5.0</listitem>
+				<listitem name="{@utcp2}">WET-2;WET,M3.5.0,M10.5.0</listitem>
+				<listitem name="{@utcp3}">SAUST-3;SAUDT</listitem>
+				<listitem name="{@utcp4}">WST-4;WDT</listitem>
+				<listitem name="{@utcp5}">PAKST-5;PAKDT</listitem>
+				<listitem name="{@utcp6}">TASHST-6;TASHDT</listitem>
+				<listitem name="{@utcp7}">THAIST-7;THAIDT</listitem>
+				<listitem name="{@utcp8}">TAIST-8;TAIDT</listitem>
+				<listitem name="{@utcp9}">JST-9;JSTDT</listitem>
+				<listitem name="{@utcp10}">EET-10;EETDT</listitem>
+				<listitem name="{@utcp11}">MET-11;METDT</listitem>
+				<listitem name="{@utcp12}">NZST-12;NZDT</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_1a_y%"/>
+				<text>{@options_cptn}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row5_2a_y%" w="%screen_w%" h="%lb_l2%"/>
+				<listitem name="{@use_dst_chk}">
+					<data variable="tw_time_zone_guidst"/>
+				</listitem>
+				<listitem name="{@use24clock_chk}">
+					<data variable="tw_military_time"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row6_3a_y%"/>
+				<text>{@tz_offset}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row7_1a_y%"/>
+				<text>{@sel_tz_offset}</text>
+			</text>
+
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row6_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<action function="set">zone_temp=%tw_time_zone_guioffset%</action>
+				<action function="set">zone_error=0</action>
+				<action function="overlay">dialog_offset</action>
+			</button>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row7_3a_y%"/>
+				<text>{@language_cptn}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row8_1a_y%"/>
+				<text>%tw_language_display%</text>
+			</text>
+
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row7_3a_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<action function="page">ext_time_lang</action>
+			</button>
+
+			<action>
+				<condition var1="tw_time_zone_guisel" op="modified"/>
+				<action function="page">ext_time</action>
+				<action function="setguitimezone"/>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+
+		<page name="ext_time_lang">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@language_cptn}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_1_y%" />
+				<text>{@language_cptn}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%fullscreen_list_h%"/>
+				<data name="tw_language"/>
+			</listbox>
+
+			<action>
+				<condition var1="tw_language" op="modified"/>
+				<action function="set">of_reload_back=ext_time_lang</action>
+				<action function="overlay">ext_time_lang_busy</action>
+				<action function="setlanguage"/>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_time</action>
+			</action>
+		</page>
+
+		<page name="ext_time_lang_busy">
+			<template name="dialog_body"/>
+
+			<image>
+				<image resource="snackbar"/>
+				<placement x="0" y="%row_nav_y%" placement="2"/>
+			</image>
+			
+			<text style="text_body1">
+				<placement x="%snackbar_text_x%" y="%snackbar_text_y%"/>
+				<text>{@lang_set_wait}</text>
+			</text>
+		</page>
+
+		<!-- About -->
+		<page name="about">
+			<template name="body"/>
+			
+			<fill color="%title_solid_bg%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%about_title_h%"/>
+			</fill>
+
+			<template name="status_bg"/>
+			
+			<template name="actionbar_back"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@about_hdr}</text>
+			</text>
+			
+			<image>
+				<image resource="actionbar_shadow"/>
+				<condition var1="show_shadow" var2="1"/>
+				<placement x="0" y="%about_title_h%"/>
+			</image>
+
+			
+			<image>
+				<image resource="logo_big"/>
+				<placement x="%about_logo_x%" y="%about_logo_y%"/>
+			</image>
+			
+			<text style="text_ab_title">
+				<placement x="%about_txt_x%" y="%about_logo_y%" />
+				<text>OrangeFox</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%about_txt_x%" y="%about_txt2_y%"/>
+				<text>{@version}: %fox_actual_build%</text>
+			</text>
+			<text style="text_ab_subtitle">
+				<placement x="%about_txt_x%" y="%about_txt3_y%"/>
+				<text>{@build_type}: %fox_build_type1%</text>
+			</text>
+			<text style="text_ab_subtitle">
+				<placement x="%about_txt_x%" y="%about_txt4_y%"/>
+				<text>{@version_twrp}: %tw_version%</text>
+			</text>
+			
+			<!-- Yan's Card -->
+			
+			<image>
+				<image resource="author_yan"/>
+				<placement x="%card_img_x%" y="%card_img1_y%"/>
+			</image>
+
+			<image>
+				<image resource="card"/>
+				<placement x="0" y="%about_title_h%"/>
+			</image>
+			<text style="about_name">
+				<placement x="%card_txt_x%" y="%card_img1_y%"/>
+				<text>MrYacha</text>
+			</text>
+			<text style="about_info">
+				<placement x="%card_txt_x%" y="%cardtxt_1%" />
+				<text>{@abt_front}</text>
+			</text>
+			<text style="about_info">
+				<placement x="%card_txt_x%" y="%cardtxt_2%" />
+				<text>{@abt_bork}</text>
+			</text>
+			<fill color="%accent%">
+				<condition var1="of_maintainer" var2="1"/>
+				<placement x="%card1_ctag_x%" y="%card1_ctag_y%" w="272" h="72"/>
+			</fill>
+			<button>
+				<condition var1="of_maintainer" var2="1"/>
+				<image resource="maintainer_layer"/>
+				<font resource="caption" color="%text_raisedbtn%"/>
+				<placement x="%card1_mtag_x%" y="%card1_mtag_y%"/>
+				<text>{@abt_main_shrt}</text>
+			</button>
+			<fill color="%accent%">
+				<condition var1="of_maintainer" var2="4"/>
+				<placement x="%card1_ctag_x%" y="%card1_ctag_y%" w="272" h="72"/>
+			</fill>
+			<button>
+				<condition var1="of_maintainer" var2="4"/>
+				<image resource="maintainer_layer"/>
+				<font resource="caption" color="%text_raisedbtn%"/>
+				<placement x="%card1_mtag_x%" y="%card1_mtag_y%"/>
+				<text>{@abt_main_shrt}</text>
+			</button>
+			<!-- Card -->
+			
+			<!-- fd's Card -->
+			
+			<image>
+				<image resource="author_fd"/>
+				<placement x="%card_img_x%" y="%card_img2_y%"/>
+			</image>
+
+			<image>
+				<image resource="card"/>
+				<placement x="0" y="%card2_y%"/>
+			</image>
+			<text style="about_name">
+				<placement x="%card_txt_x%" y="%card_img2_y%"/>
+				<text>fordownloads</text>
+			</text>
+			<text style="about_info">
+				<placement x="%card_txt_x%" y="%cardtxt_3%"/>
+				<text>{@abt_front}</text>
+			</text>
+			<text style="about_info">
+				<placement x="%card_txt_x%" y="%cardtxt_4%"/>
+				<text>{@abt_fd}</text>
+			</text>
+			<fill color="%accent%">
+				<condition var1="of_maintainer" var2="2"/>
+				<placement x="%card1_ctag_x%" y="%card2_ctag_y%" w="272" h="72"/>
+			</fill>
+			<button>
+				<condition var1="of_maintainer" var2="2"/>
+				<image resource="maintainer_layer"/>
+				<font resource="caption" color="%text_raisedbtn%"/>
+				<placement x="%card1_mtag_x%" y="%card2_mtag_y%"/>
+				<text>{@abt_main_shrt}</text>
+			</button>
+			<!-- Card -->
+			
+			<!-- Bim's Card -->
+			<image>
+				<image resource="author_jabba"/>
+				<placement x="%card_img_x%" y="%card_img3_y%"/>
+			</image>
+			
+			<image>
+				<image resource="card"/>
+				<placement x="0" y="%card3_y%"/>
+			</image>
+
+			<text style="about_name">
+				<placement x="%card_txt_x%" y="%card_img3_y%"/>
+				<text>DarthJabba9</text>
+			</text>
+			<text style="about_info">
+				<placement x="%card_txt_x%" y="%cardtxt_5%"/>
+				<text>{@abt_back}</text>
+			</text>
+			<text style="about_info">
+				<placement x="%card_txt_x%" y="%cardtxt_6%"/>
+				<text>{@abt_dj}</text>
+			</text>
+			<fill color="%accent%">
+				<condition var1="of_maintainer" op="&gt;=" var2="3"/>
+				<placement x="%card1_ctag_x%" y="%card3_ctag_y%" w="272" h="72"/>
+			</fill>
+			<button>
+				<condition var1="of_maintainer" op="&gt;=" var2="3"/>
+				<image resource="maintainer_layer"/>
+				<font resource="caption" color="%text_raisedbtn%"/>
+				<placement x="%card1_mtag_x%" y="%card3_mtag_y%"/>
+				<text>{@abt_main_shrt}</text>
+			</button>
+			<!-- Card -->
+			
+			<!-- Maintainer -->
+			<image>
+				<image resource="maintainer_img"/>
+				<condition var1="of_maintainer" op="!=" var2="4"/>
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
+				<placement x="%card_img_x%" y="%card_img4_y%"/>
+			</image>
+			
+			<image>
+				<image resource="card"/>
+				<condition var1="of_maintainer" op="!=" var2="4"/>
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
+				<placement x="0" y="%card4_y%"/>
+			</image>
+
+			<text style="about_name">
+				<condition var1="of_maintainer" op="!=" var2="4"/>
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
+				<placement x="%card_txt_x%" y="%card_img4_y%"/>
+				<text>%of_maintainer%</text>
+			</text>
+			<text style="about_info">
+				<condition var1="of_maintainer" op="!=" var2="4"/>
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
+				<placement x="%card_txt_x%" y="%cardtxt_7%"/>
+				<text>{@abt_maintainer}</text>
+			</text>
+			<text style="about_info">
+				<condition var1="of_maintainer" op="!=" var2="4"/>
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
+				<placement x="%card_txt_x%" y="%cardtxt_8%"/>
+				<text>{@abt_device}: %fox_compatibility_fox_device%</text>
+			</text>
+			<!-- Card -->
+			
+			<!-- Credits button when maintainer is OrangeFox developer -->
+			<button style="floating_btn">
+				<condition var1="of_maintainer" op="&lt;=" var2="4"/>
+				<condition var1="of_maintainer" op="&gt;=" var2="1"/>
+				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
+				<action function="set">credits_page=0</action>
+				<action function="page">about_credits</action>
+			</button>
+			
+			<image>
+				<condition var1="of_maintainer" op="&lt;=" var2="4"/>
+				<condition var1="of_maintainer" op="&gt;=" var2="1"/>
+				<placement x="%center_x%" y="%btn_float_center_y%" placement="4"/>
+				<image resource="fab_credits"/>
+			</image>
+
+			<!-- Credit button when maintair isn't OrangeFox developer -->
+
+			<button style="btn_about_credits">
+				<condition var1="of_maintainer" op="!=" var2="4"/>
+				<condition var1="of_maintainer" op="!=" var2="3"/>
+				<condition var1="of_maintainer" op="!=" var2="2"/>
+				<condition var1="of_maintainer" op="!=" var2="1"/>
+				<placement x="752" y="%card4_btn_y%"/>
+				<text>{@more}</text>
+				<action function="set">credits_page=0</action>
+				<action function="page">about_credits</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+		
+		<page name="about_credits">
+			<template name="body"/>
+			
+			<listbox>
+				<condition var1="credits_page" var2="0"/>
+				<background color="%background%"/>
+				<font resource="caption" spacing="8" color="%text%" />
+				<highlight color="%transparent%"/>
+				<icon/>
+				<fastscroll/>
+				<placement x="24" y="%tab_title_h%" w="1032" h="%credits_listbox_h%"/>
+				<read filename="/twres/credits.txt"/>
+			</listbox>
+			<listbox>
+				<condition var1="credits_page" var2="1"/>
+				<font resource="caption" spacing="8" color="%text%" />
+				<highlight color="%transparent%"/>
+				<icon/>
+				<fastscroll/>
+				<placement x="24" y="%tab_title_h%" w="1032" h="%credits_listbox_h%"/>
+				<read filename="/twres/translators.txt"/>
+			</listbox>
+			<listbox>
+				<condition var1="credits_page" var2="2"/>
+				<background color="%background%"/>
+				<font resource="caption" spacing="8" color="%text%" />
+				<highlight color="%transparent%"/>
+				<icon/>
+				<fastscroll/>
+				<placement x="24" y="%tab_title_h%" w="1032" h="%credits_listbox_h%"/>
+				<read filename="/twres/changelog.txt"/>
+			</listbox>
+			
+			<fill color="%title_solid_bg%">
+				<condition var1="darker_ui" var2="1"/>
+				<placement x="0" y="0" w="%screen_w%" h="%tab_title_h%"/>
+			</fill>
+
+			<template name="status_bg"/>
+			
+			<template name="actionbar_back"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@credits}</text>
+			</text>
+			
+			<image>
+				<image resource="actionbar_shadow"/>
+				<condition var1="show_shadow" var2="1"/>
+				<placement x="0" y="%tab_title_h%"/>
+			</image>
+			
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<font resource="Secondary" color="%accent%"/>
+				<placement x="0" y="%tab_btn_y%" w="360" h="84"/>
+				<text>{@abt_credits}</text>
+				<action function="set">credits_page=0</action>
+			</button>
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<font resource="Secondary" color="%accent%"/>
+				<placement x="360" y="%tab_btn_y%" w="360" h="84"/>
+				<text>{@abt_trans}</text>
+				<action function="set">credits_page=1</action>
+			</button>
+			<button>
+				<highlight color="%highlight_color%"/>
+				<fill color="%transparent%"/>
+				<font resource="Secondary" color="%accent%"/>
+				<placement x="720" y="%tab_btn_y%" w="360" h="84"/>
+				<text>{@abt_changes}</text>
+				<action function="set">credits_page=2</action>
+			</button>
+			
+			<image>
+				<condition var1="credits_page" var2="0"/>
+				<image resource="tab_hl"/>
+				<placement x="0" y="%tab_title_h%" placement="2"/>
+			</image>
+			<image>
+				<condition var1="credits_page" var2="1"/>
+				<image resource="tab_hl"/>
+				<placement x="360" y="%tab_title_h%" placement="2"/>
+			</image>
+			<image>
+				<condition var1="credits_page" var2="2"/>
+				<image resource="tab_hl"/>
+				<placement x="720" y="%tab_title_h%" placement="2"/>
+			</image>
+			
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">about</action>
+			</action>
+		</page>
+		
+		<!-- Debug -->
+		<page name="debug">
+			<template name="body_key"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+			
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="reload"/>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_reset"/>
+			</image>
+			
+			<button>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="page">debug_plus</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn2_x%" y="%ab_y%"/>
+				<image resource="actionbar_settings"/>
+			</image>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@dbg}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row2_1_y%"/>
+				<text>{@dbg_func}</text>
+			</text>
+
+			<listbox>
+				<placement x="0" y="%row2_2_y%" w="%screen_w%" h="%lb_l3%"/>
+				<data name="dbg"/>
+				<listitem name="{@dbg_page}">page</listitem>
+				<listitem name="{@dbg_set}">set</listitem>
+				<listitem name="{@dbg_overlay}">overlay</listitem>
+				<listitem name="{@unpack} OrangeFox">wlfw</listitem>
+				<listitem name="{@repack} OrangeFox">wlfx</listitem>
+			</listbox>
+			
+			<text style="caption">
+				<placement x="%col1_x%" y="%row4_1a_y%"/>
+				<text>{@cust_oth}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row4_2a_y%" w="%screen_w%" h="%lb_l2%"/>
+				<listitem name="{@simact_chk}">
+					<data variable="tw_simulate_actions"/>
+				</listitem>
+				<listitem name="{@simfail_chk}">
+					<condition var1="tw_simulate_actions" var2="1"/>
+					<data variable="tw_simulate_fail"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption_hl">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@dbg_act}</text>
+			</text>
+
+			<input>
+				<placement x="%col1_x%" y="%row1_2_y%" w="%input_width%" h="%input_height%"/>
+				<text>%dbg_b%</text>
+				<data name="dbg_b"/>
+				<restrict minlen="0" maxlen="512"/>
+				<action function="set">tw_back=debug</action>
+				<action function="%dbg%">%dbg_b%</action>
+			</input>
+
+			<fill color="%accent%">
+				<placement x="%col1_x%" y="%row1_3_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">settings</action>
+			</action>
+		</page>
+
+		<page name="debug_plus">
+			<template name="body_key"/>
+			
+			<template name="ab"/>
+			
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@dbg}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<text>{@dbg_func}</text>
+			</text>
+
+			<input>
+				<placement x="%col1_x%" y="%row1_2_y%" w="%input_width%" h="%input_height%"/>
+				<text>%dbg%</text>
+				<data name="dbg"/>
+				<restrict minlen="1" maxlen="32" allow="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_="/>
+				<action function="page">debug</action>
+			</input>
+
+			<fill color="%accent%">
+				<placement x="%col1_x%" y="%row1_3_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">debug</action>
+			</action>
+		</page>
+		
+		<!-- Fox perfomance -->
+		<page name="ext_gov">
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@perf_title}</text>
+			</text>
+
+			<image>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+				<text>{@reboot_to_take_effect}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row1_3_y%"/>
+				<text>{@perf_conf_mode}</text>
+			</text>
+
+			<listbox style="listbox">
+				<placement x="0" y="%row2_1_y%" w="%screen_w%" h="%lb_l3%"/>
+				<listitem name="{@perf_conf_high}">
+					<data variable="fox_boot_performance_check"/>
+				</listitem>
+				<listitem name="{@perf_conf_balance}">
+					<data variable="fox_boot_balance_check"/>
+				</listitem>
+				<listitem name="{@perf_conf_batt}">
+					<data variable="fox_boot_powersave_check"/>
+				</listitem>
+			</listbox>
+
+			<!--text style="caption">
+				<placement x="%col1_x%" y="%row3_1_y%"/>
+				<text>{@cust_oth}</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row3_2_y%" w="%screen_w%" h="%lb_l6%"/>
+				<listitem name="FSync">
+					<data variable="fox_boot_fsync_check"/>
+				</listitem>
+				<listitem name="2tap2wake">
+					<data variable="fox_boot_t2w_check"/>
+				</listitem>
+			</listbox-->
+
+			<action>
+				<conditions>
+					<condition var1="tw_busy" var2="0"/>
+					<condition var1="fox_boot_performance_check" op="!=" var2="1"/>
+					<condition var1="fox_boot_balance_check" op="!=" var2="1"/>
+					<condition var1="fox_boot_powersave_check" op="!=" var2="1"/>
+				</conditions>
+				<action function="set">fox_boot_balance_check=1</action>
+			</action>
+
+			<action>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="fox_boot_performance_check" var2="1"/>
+				<actions>
+					<action function="set">fox_boot_powersave_check=0</action>
+					<action function="set">fox_boot_balance_check=0</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="fox_boot_powersave_check" var2="1"/>
+				<actions>
+					<action function="set">fox_boot_performance_check=0</action>
+					<action function="set">fox_boot_balance_check=0</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_busy" var2="0"/>
+				<condition var1="fox_boot_balance_check" var2="1"/>
+				<actions>
+					<action function="set">fox_boot_performance_check=0</action>
+					<action function="set">fox_boot_powersave_check=0</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">ext_general</action>
+			</action>
+		</page>
+	</pages>
+</recovery>

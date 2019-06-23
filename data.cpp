@@ -161,93 +161,74 @@ void DataManager::get_device_id(void)
 #endif
 
 #ifndef TW_FORCE_CPUINFO_FOR_DEVICE_ID
-#ifdef TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID
-	// Check serial number system property
-	if (property_get("ro.serialno", line, "")) {
-		snprintf(device_id, DEVID_MAX, "%s", line);
-		sanitize_device_id(device_id);
-		mConst.SetValue("device_id", device_id);
-		return;
-	}
-#endif
-
 	// Check the cmdline to see if the serial number was supplied
 	fp = fopen("/proc/cmdline", "rt");
 	if (fp != NULL) {
 		fgets(line, sizeof(line), fp);
 		fclose(fp); // cmdline is only one line long
 
-      token = strtok(line, " ");
-      while (token)
-	{
-	  if (memcmp(token, CMDLINE_SERIALNO, CMDLINE_SERIALNO_LEN) == 0)
-	    {
-	      token += CMDLINE_SERIALNO_LEN;
-	      snprintf(device_id, DEVID_MAX, "%s", token);
-	      sanitize_device_id(device_id);	// also removes newlines
-	      mConst.SetValue("device_id", device_id);
-	      return;
-	    }
-	  token = strtok(NULL, " ");
+		token = strtok(line, " ");
+		while (token) {
+			if (memcmp(token, CMDLINE_SERIALNO, CMDLINE_SERIALNO_LEN) == 0) {
+				token += CMDLINE_SERIALNO_LEN;
+				snprintf(device_id, DEVID_MAX, "%s", token);
+				sanitize_device_id(device_id); // also removes newlines
+				mConst.SetValue("device_id", device_id);
+				return;
+			}
+			token = strtok(NULL, " ");
+		}
 	}
-    }
 #endif
-  // Check cpuinfo for serial number; if found, use as device_id
-  // If serial number is not found, fallback to hardware_id for the device_id
-  fp = fopen("/proc/cpuinfo", "rt");
-  if (fp != NULL)
-    {
-      while (fgets(line, sizeof(line), fp) != NULL)
-	{
-	  if (memcmp(line, CPUINFO_SERIALNO, CPUINFO_SERIALNO_LEN) == 0)
-	    {
-	      // skip past "Serial", spaces, and colon
-	      token = line + CPUINFO_SERIALNO_LEN;
-	      while (*token && (!isgraph(*token) || *token == ':'))
-		token++;
+	// Check cpuinfo for serial number; if found, use as device_id
+	// If serial number is not found, fallback to hardware_id for the device_id
+	fp = fopen("/proc/cpuinfo", "rt");
+	if (fp != NULL) {
+		while (fgets(line, sizeof(line), fp) != NULL) {
+			if (memcmp(line, CPUINFO_SERIALNO, CPUINFO_SERIALNO_LEN) == 0) {
+				// skip past "Serial", spaces, and colon
+				token = line + CPUINFO_SERIALNO_LEN;
+				while (*token && (!isgraph(*token) || *token == ':'))
+					token++;
 
-	      if (*token && *token != '\n')
-		{
-		  snprintf(device_id, DEVID_MAX, "%s", token);
-		  sanitize_device_id(device_id);	// also removes newlines
-		  LOGINFO("=> serial from cpuinfo: '%s'\n", device_id);
-		  mConst.SetValue("device_id", device_id);
-		  fclose(fp);
-		  return;
-		}
-	    }
-	  else if (memcmp(line, CPUINFO_HARDWARE, CPUINFO_HARDWARE_LEN) == 0)
-	    {
-	      // skip past "Hardware", spaces, and colon
-	      token = line + CPUINFO_HARDWARE_LEN;
-	      while (*token && (!isgraph(*token) || *token == ':'))
-		token++;
+				if (*token && *token != '\n') {
+					snprintf(device_id, DEVID_MAX, "%s", token);
+					sanitize_device_id(device_id); // also removes newlines
+					LOGINFO("=> serial from cpuinfo: '%s'\n", device_id);
+					mConst.SetValue("device_id", device_id);
+					fclose(fp);
+					return;
+				}
+			} else if (memcmp(line, CPUINFO_HARDWARE,
+					CPUINFO_HARDWARE_LEN) == 0) {
+				// skip past "Hardware", spaces, and colon
+				token = line + CPUINFO_HARDWARE_LEN;
+				while (*token && (!isgraph(*token) || *token == ':'))
+					token++;
 
-	      if (*token && *token != '\n')
-		{
-		  snprintf(hardware_id, HWID_MAX, "%s", token);
-		  if (hardware_id[strlen(hardware_id) - 1] == '\n')
-		    hardware_id[strlen(hardware_id) - 1] = 0;
-		  LOGINFO("=> hardware id from cpuinfo: '%s'\n", hardware_id);
+				if (*token && *token != '\n') {
+					snprintf(hardware_id, HWID_MAX, "%s", token);
+					if (hardware_id[strlen(hardware_id)-1] == '\n')
+						hardware_id[strlen(hardware_id)-1] = 0;
+					LOGINFO("=> hardware id from cpuinfo: '%s'\n", hardware_id);
+				}
+			}
 		}
-	    }
+		fclose(fp);
 	}
-      fclose(fp);
-    }
 
-  if (hardware_id[0] != 0)
-    {
-      LOGINFO("\nusing hardware id for device id: '%s'\n", hardware_id);
-      snprintf(device_id, DEVID_MAX, "%s", hardware_id);
-      sanitize_device_id(device_id);
-      mConst.SetValue("device_id", device_id);
-      return;
-    }
+	if (hardware_id[0] != 0) {
+		LOGINFO("\nusing hardware id for device id: '%s'\n", hardware_id);
+		snprintf(device_id, DEVID_MAX, "%s", hardware_id);
+		sanitize_device_id(device_id);
+		mConst.SetValue("device_id", device_id);
+		return;
+	}
 
-  strcpy(device_id, "serialno");
-  LOGINFO("=> device id not found, using '%s'\n", device_id);
-  mConst.SetValue("device_id", device_id);
-  return;
+	strcpy(device_id, "serialno");
+	LOGINFO("=> device id not found, using '%s'\n", device_id);
+	mConst.SetValue("device_id", device_id);
+	return;
 }
 
 int DataManager::ResetDefaults()
@@ -652,12 +633,55 @@ void DataManager::SetDefaultValues()
 
   mConst.SetValue(TW_VERSION_VAR, FOX_VERSION);
   mConst.SetValue(OF_MAINTAINER_STR, OF_MAINTAINER);
+  mConst.SetValue(BUILD_TYPE_STR, BUILD_TYPE);
+
+  
+  //[f/d] UI Vars
+  int of_status_placement = (atoi(OF_STATUS_H) / 2) - 28;
+  int of_center_y = atoi(OF_SCREEN_H) / 2;
+  
+  mConst.SetValue(OF_STATUS_PLACEMENT_S, of_status_placement);
+  mConst.SetValue(OF_CENTER_Y_S, of_center_y);
+  
+  mConst.SetValue(OF_SCREEN_H_S, OF_SCREEN_H);
+  mData.SetValue(OF_SCREEN_NAV_H_S, OF_SCREEN_H); // mData for nide navbar function
+  
+  mConst.SetValue(OF_STATUS_H_S, OF_STATUS_H);
+  mConst.SetValue(OF_HIDE_NOTCH_S, OF_HIDE_NOTCH);
+  mConst.SetValue(OF_STATUS_INDENT_LEFT_S, OF_STATUS_INDENT_LEFT);
+  mConst.SetValue(OF_STATUS_INDENT_RIGHT_S, OF_STATUS_INDENT_RIGHT);
+  mConst.SetValue(OF_CLOCK_POS_S, OF_CLOCK_POS);
+  mConst.SetValue(OF_ALLOW_DISABLE_NAVBAR_S, OF_ALLOW_DISABLE_NAVBAR);
   mConst.SetValue(OF_FLASHLIGHT_ENABLE_STR, OF_FLASHLIGHT_ENABLE);
-  mConst.SetValue(FOX_NOTCH_STR, FOX_NOTCH);
-    
-  mPersist.SetValue("tw_button_vibrate", "40");
-  mPersist.SetValue("tw_keyboard_vibrate", "40");
-  mPersist.SetValue("tw_action_vibrate", "150");
+  #ifdef OF_FLASHLIGHT_ENABLE 
+    if (OF_FLASHLIGHT_ENABLE == "1") {
+      mConst.SetValue("of_fl_path_1", OF_FL_PATH1);
+      mConst.SetValue("of_fl_path_2", OF_FL_PATH2);
+      mData.SetValue("of_flash_on", "0");
+    }
+  #endif 
+
+  mConst.SetValue("fox_build_type1", BUILD_TYPE);
+
+  #ifdef OF_DISABLE_MIUI_SPECIFIC_FEATURES
+    mData.SetValue("of_no_miui_features", "1");
+  #else
+    mData.SetValue("of_no_miui_features", "0");
+  #endif
+ 
+  mData.SetValue("of_reload_back", "main");
+
+  //[f/d]
+ 
+#ifndef TW_NO_HAPTICS
+	mPersist.SetValue("tw_button_vibrate", "40");
+	mPersist.SetValue("tw_keyboard_vibrate", "40");
+	mPersist.SetValue("tw_action_vibrate", "250");
+	mConst.SetValue("tw_disable_haptics", "0");
+#else
+	LOGINFO("TW_NO_HAPTICS := true\n");
+	mConst.SetValue("tw_disable_haptics", "1");
+#endif
 
   TWPartition *store = PartitionManager.Get_Default_Storage_Partition();
   if (store)
@@ -792,6 +816,10 @@ void DataManager::SetDefaultValues()
   printf("TW_HAS_DOWNLOAD_MODE := true\n");
   mConst.SetValue(TW_DOWNLOAD_MODE, "1");
 #endif
+#ifdef TW_HAS_EDL_MODE
+	printf("TW_HAS_EDL_MODE := true\n");
+	mConst.SetValue(TW_EDL_MODE, "1");
+#endif
 #ifdef TW_INCLUDE_CRYPTO
   mConst.SetValue(TW_HAS_CRYPTO, "1");
   printf("TW_INCLUDE_CRYPTO := true\n");
@@ -818,7 +846,6 @@ void DataManager::SetDefaultValues()
   mData.SetValue(FOX_RUN_SURVIVAL_BACKUP, "0");
   mData.SetValue(FOX_METADATA_PRE_BUILD, "0");
   mData.SetValue(FOX_INCREMENTAL_OTA_FAIL, "0");
-  mData.SetValue(FOX_PASSWORD_VARIABLE, "dd");
   mData.SetValue(FOX_LOADED_FINGERPRINT, "0");
   mData.SetValue(FOX_MIUI_ZIP_TMP, "0");
   mData.SetValue(FOX_FLASHLIGHT_VAR, "0");
@@ -837,14 +864,11 @@ void DataManager::SetDefaultValues()
   mPersist.SetValue(FOX_SAVE_LOAD_AROMAFM, "0");
   mPersist.SetValue(FOX_DISABLE_DEBUGGING, "0");
   mPersist.SetValue(FOX_ENABLE_DEBUGGING, "1");
-
-  // { R9.0
   mPersist.SetValue(FOX_DISABLE_OTA_AUTO_REBOOT, "0");
-  // R9.0 }
 
   // { MIUI
   string miui_switch = "1";
-  #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
+  #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE) || defined(OF_KEEP_DM_VERITY_FORCED_ENCRYPTION)
   miui_switch = "0";
   #endif  
   mPersist.SetValue("fox_verify_incremental_ota_signature", miui_switch); // set to 1 [support miui ota]
@@ -1060,18 +1084,20 @@ void DataManager::SetDefaultValues()
 #endif
 
 #ifdef TW_OEM_BUILD
-  LOGINFO("TW_OEM_BUILD := true\n");
-  mConst.SetValue("tw_oem_build", "1");
+	LOGINFO("TW_OEM_BUILD := true\n");
+	mConst.SetValue("tw_oem_build", "1");
 #else
-  mConst.SetValue("tw_oem_build", "0");
-  mPersist.SetValue("tw_app_prompt", "0");
-  mPersist.SetValue("tw_app_install_system", "0");
-  mData.SetValue("tw_app_install_status", "0");	// 0 = no status, 1 = not installed, 2 = already installed
+	mConst.SetValue("tw_oem_build", "0");
 #endif
 
-  mData.SetValue("tw_enable_adb_backup", "0");
+	mData.SetValue("tw_enable_adb_backup", "0");
 
-  pthread_mutex_unlock(&m_valuesLock);
+	if (TWFunc::Path_Exists("/sbin/magiskboot"))
+		mConst.SetValue("tw_has_repack_tools", "1");
+	else
+		mConst.SetValue("tw_has_repack_tools", "0");
+
+	pthread_mutex_unlock(&m_valuesLock);
 }
 
 // Magic Values
@@ -1184,11 +1210,17 @@ int DataManager::GetMagicValue(const string & varName, string & value)
 	      fgets(cap_s, 2, cap);
 	      fclose(cap);
 	      if (cap_s[0] == 'C')
-		charging = '+';
+        {
+          charging = '+';
+          DataManager::SetValue("charging_now", "1");
+        }
 	      else
-		charging = ' ';
+        {
+          charging = ' ';
+          DataManager::SetValue("charging_now", "0");
+        }
 	    }
-	  nextSecCheck = curTime.tv_sec + 60;
+	  nextSecCheck = curTime.tv_sec + 1;
 	}
 
       sprintf(tmp, "%i%%%c", lastVal, charging);
@@ -1291,6 +1323,11 @@ string DataManager::GetCurrentStoragePath(void)
   return GetStrValue("tw_storage_path");
 }
 
+string DataManager::GetCurrentPartPath(void)
+{
+  return GetStrValue("part_option");
+}
+
 string DataManager::GetSettingsStoragePath(void)
 {
   return GetStrValue("tw_settings_path");
@@ -1308,6 +1345,9 @@ void DataManager::Vibrate(const string & varName)
 
 void DataManager::Leds(bool enable)
 {
+#ifdef OF_SKIP_LEDS_FUNCTION
+return;
+#endif
   std::string leds, bs, bsmax, time, blink, bsm, leds1, bs1, bsmax1, time1, blink1, bsm1, max_brt, install_vibrate_value;
   struct stat st;
   int ledcolor;
@@ -1323,11 +1363,10 @@ void DataManager::Leds(bool enable)
   blink1 = leds1 + "/blink";
   bsmax1 = leds1 + "/max_brightness";
 
-  string vibrate_path = "/sys/class/timed_output/vibrator/enable";
-  DataManager::GetValue("fox_data_install_vibrate", install_vibrate_value);
+  DataManager::GetValue("tw_action_vibrate", install_vibrate_value);
   DataManager::GetValue("fox_led_color", ledcolor);
 
-  if (!TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
+  if (TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
   {
     LOGINFO("DEBUG - found white led on /sys/class/leds/white/ path");
     TWFunc::read_file("/sys/class/leds/white/max_brightness", max_brt);
@@ -1341,23 +1380,33 @@ void DataManager::Leds(bool enable)
     }
   else
     {
-      if (stat(bs.c_str(), &st) == 0 && stat(time.c_str(), &st) == 0
-	  && stat(bsmax.c_str(), &st) == 0 && stat(blink.c_str(), &st) == 0)
-	{
-	  if (TWFunc::read_file(bsmax, bsm) == 0)
-	    {
-	      TWFunc::write_to_file(bs, bsmax);
-	      TWFunc::write_to_file(blink, "1");
-        TWFunc::write_to_file(time, "1 1 1 1");
+      if (stat(bs.c_str(), &st) == 0 && stat(bsmax.c_str(), &st) == 0) {
+        if (stat(time.c_str(), &st) == 0 && stat(blink.c_str(), &st) == 0)
+        {
+          if (TWFunc::read_file(bsmax, bsm) == 0)
+            {
+              TWFunc::write_to_file(bs, bsm);
+              TWFunc::write_to_file(blink, "1");
+              TWFunc::write_to_file(time, "1 1 1 1");
 
-        if (ledcolor == 0) {
-          LOGINFO("Enable Yellow led");
-          TWFunc::write_to_file("/sys/class/leds/red/brightness", bsmax);
-          TWFunc::write_to_file("/sys/class/leds/red/blink", "1");
-          TWFunc::write_to_file("/sys/class/leds/red/led_time", "1 1 1 1");
+              if (ledcolor == 0) {
+                LOGINFO("Enable Yellow led");
+                TWFunc::write_to_file("/sys/class/leds/red/brightness", bsm);
+                TWFunc::write_to_file("/sys/class/leds/red/blink", "1");
+                TWFunc::write_to_file("/sys/class/leds/red/led_time", "1 1 1 1");
+              }
+            }
+        } else {
+        //[f/d] Just turn on led if device doesn't support blinking
+          if (TWFunc::read_file(bsmax, bsm) == 0)
+          {
+            TWFunc::write_to_file(bs, bsm);
+
+            if (ledcolor == 0) {
+              TWFunc::write_to_file("/sys/class/leds/red/brightness", bsm);
+            }
+          }
         }
-        TWFunc::write_to_file(vibrate_path, install_vibrate_value);
-	    }
-	}
+      }
     }
 }

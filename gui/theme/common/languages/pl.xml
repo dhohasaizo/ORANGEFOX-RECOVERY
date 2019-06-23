@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <language>
-    <author>OrangeFox Recovery Project</author>
-    <!-- Write your language name in english -->
 	<display>Polish</display>
-	
+
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
-		<resource name="font_l" type="fontoverride" filename="RobotoCondensed-Regular.ttf" scale="100"/>
-		<resource name="font_m" type="fontoverride" filename="RobotoCondensed-Regular.ttf" scale="100"/>
-		<resource name="font_s" type="fontoverride" filename="RobotoCondensed-Regular.ttf" scale="100"/>
-		<resource name="fixed" type="fontoverride" filename="DroidSansMono.ttf" scale="100"/>
 
 		<!-- Partition display names -->
 		<string name="system">System</string>
-		<string name="system_image">Obraz System</string>
+		<string name="system_image">Obraz systemu</string>
 		<string name="vendor">Vendor</string>
 		<string name="vendor_image">Obraz Vendor</string>
 		<string name="boot">Boot</string>
 		<string name="recovery">Recovery</string>
 		<string name="cache">Cache</string>
 		<string name="data">Data</string>
-		<string name="data_backup">Data (oprócz pam. wew.)</string>
 		<string name="sdcard">Karta SD</string>
 		<string name="internal">Pamięć Wewnętrzna</string>
-		<string name="microsd">Karta Micro SD</string>
+		<string name="microsd">Karta MicroSD</string>
 		<string name="usbotg">USB OTG</string>
 		<string name="android_secure">Android Secure</string>
 		<string name="dalvik">Dalvik / ART Cache</string>
@@ -31,80 +24,75 @@
 		<string name="sdext">SD-EXT</string>
 		<string name="adopted_data">Adopted Data</string>
 		<string name="adopted_storage">Adopted Storage</string>
-		<string name="autostorage">Pamięć</string>
 
 		<!-- GUI XML strings -->
+		<string name="twrp_watch_header">OrangeFox %fox_actual_build%</string>
 		<string name="cpu_temp">Procesor: %tw_cpu_temp% &#xB0;C</string>
-		<string name="sort_by_name_asc">Nazwa rosnąco</string>
-		<string name="sort_by_date_asc">Data rosnąco</string>
-		<string name="sort_by_size_asc">Rozmiar rosnąco</string>
-		<string name="sort_by_name_desc">Nazwa malejąco</string>
-		<string name="sort_by_date_desc">Data malejąco</string>
-		<string name="sort_by_size_desc">Rozmiar malejąco</string>
+		<string name="sort_by_name_asc">Nazwa:</string>
+		<string name="sort_by_date_asc">Data</string>
+		<string name="sort_by_size_asc">Rozmiar</string>
+		<string name="sort_by_name_desc">Nazwa:</string>
+		<string name="sort_by_date_desc">Data</string>
+		<string name="sort_by_size_desc">Rozmiar</string>
 		<string name="install_btn">Instaluj</string>
 		<string name="wipe_btn">Wyczyść</string>
-		<string name="backup_btn">Kopia</string>
+		<string name="backup_btn">Kopie zapasowe</string>
 		<string name="restore_btn">Przywróć</string>
-		<string name="mount_btn">Zamontuj</string>
-		<string name="file_manager_btn">Menedżer Plików</string>
+		<string name="mount_btn">Montowanie</string>
+		<string name="file_manager_btn">Pliki</string>
 		<string name="advanced_btn">Zaawansowane</string>
 		<string name="reboot_btn">Restart</string>
-		<string name="copy_log_btn">Kopiuj Log</string>
-		<string name="install_zip_hdr">Instaluj plik zip</string>
-		<string name="install_zip_btn">Instaluj plik zip</string>
+		<string name="copy_log_btn">Skopiuj Log na SD</string>
+		<string name="install_zip_hdr">Zainstaluj Zip</string>
+		<string name="install_zip_btn">Zainstaluj Zip</string>
 		<string name="install_image_hdr">Instaluj plik img</string>
 		<string name="install_image_btn">Instaluj plik img</string>
 		<string name="install_select_file_hdr">Wybierz plik</string>
 		<string name="install_select_file_btn">Wybierz plik</string>
-		<string name="adb_sideload_btn">ADB Sideload</string>
+		<string name="adb_sideload_btn">ADB &amp; Sideload</string>
 		<string name="select_storage_hdr">Wybierz pamięć</string>
 		<string name="select_storage_btn">Wybierz pamięć</string>
 		<string name="queue_hdr">Kolejka</string>
-		<string name="raised_clearqueue_btn">WYCZYŚĆ KOLEJKĘ</string>
-		<string name="raised_viewqueue_btn">ZOBACZ KOLEJKĘ</string>
-		<string name="zip_queue_count">%tw_zip_queue_count% / 10 Files queued</string>
+		<string name="raised_clearqueue_btn">Wyczyść Kolejkę</string>
+		<string name="raised_viewqueue_btn">Pokaż Kolejkę</string>
+		<string name="zip_queue_count">%tw_zip_queue_count% z max. 10 plików w kolejce</string>
 		<string name="folder">Folder:</string>
-		<string name="file">Plik:</string>
-		<string name="zip_sig_chk">Weryfikacja podpisu pliku zip</string>
-		<string name="inject_twrp_chk">Zaszczep TWRP po instalacji</string>
+		<string name="file">Plik</string>
+		<string name="zip_sig_chk">Weryfikacja podpisu pliku ZIP</string>
+		<string name="inject_twrp_chk">Zaszczep OrangeFox po instalacji</string>
 		<string name="install_reboot_chk">Uruchom ponownie po instalacji</string>
 		<string name="options_hdr">Opcje:</string>
-		<string name="zip_queue">Kolejka:</string>
+		<string name="zip_queue">Kolejka</string>
 		<string name="install_zip_count_hdr">Trwa instalacja pliku %tw_zip_index% z %tw_zip_queue_count%</string>
 		<string name="working">Pracuję...</string>
 		<string name="failed">Niepowodzenie</string>
 		<string name="successful">Powodzenie</string>
-		<string name="wipe_cache_btn">WYCZYŚĆ CACHE</string>
-		<string name="reboot_system_btn">URUCHOM SYSTEM</string>
-		<string name="reboot_recovery_btn">URUCHOM RECOVERY</string>
+		<string name="wipe_cache_btn">Wyczyść Cache</string>
+		<string name="reboot_system_btn">Restart systemu</string>
+		<string name="reboot_recovery_btn">Restart do recovery</string>
 		<string name="install_sel_target">Wybierz partycję docelową</string>
-		<string name="flash_image_select">Partycja:</string>
+		<string name="flash_image_select">Partycja</string>
 		<string name="flashing_image">Instalowanie obrazu...</string>
 		<string name="image_flashed">Obraz zainstalowany</string>
-		<!-- Note! "&amp;" is only "&", you can remove it -->
 		<string name="wipe_cache_dalvik_confirm">Wyczyścić Cache i Dalvik?</string>
+		<string name="wipe_dalvik_confirm">Wyczyść pamięć Dalvik?</string>
 		<string name="wiping_cache_dalvik">Czyszczenie Cache i Dalvik...</string>
 		<string name="wipe_cache_dalvik_complete">Czyszczenie Cache i Dalvik ukończone</string>
-		<!-- -->
+		<string name="cache_dalvik_done">Czyszczenie Cache i Dalvik ukończone</string>
 		<string name="swipe_wipe">Przesuń, aby wyczyścić</string>
-		<string name="no_os1">Brak zainstalowanego systemu!</string>
-		<string name="no_osrb">Czy na pewno chcesz zrestartować?</string>
-		<string name="no_ospo">Czy na pewno chcesz wyłączyć?</string>
 		<string name="rebooting">Restartowanie...</string>
-		<string name="install_reboot">Ponowne uruchomienie za %tw_sleep% sek.</string>
 		<string name="swipe_reboot">Przesuń, aby zrestartować</string>
 		<string name="confirm_action">Potwierdź czynność</string>
-		<string name="cancel_btn">ANULUJ</string>
-		<string name="cancel_reboot_btn">ANULUJ RESTART</string>
-		<string name="wipe_hdr">Wyczyść</string>
+		<string name="cancel_btn">Anuluj</string>
+		<string name="wipe_hdr">Wyczyścić</string>
 		<string name="factory_reset_hdr">Przywrócenie ustawień fabrycznych</string>
 		<string name="factory_reset1">Czyści Data, Cache i Dalvik</string>
 		<string name="factory_reset2">(nie czyści pamięci wewnętrznej)</string>
 		<string name="factory_reset3">W większości przypadków jest to</string>
 		<string name="factory_reset4">jedyne czyszczenie jakiego potrzebujesz.</string>
 		<string name="factory_resetting">Czyszczenie Data, Cache i Dalvik...</string>
-		<string name="advanced_wipe_hdr">Zaawansowane czyszczenie</string>
-		<string name="advanced_wipe_btn">Zaawansowane czyszczenie</string>
+		<string name="advanced_wipe_hdr">ZAAWANS. CZYSZCZENIE</string>
+		<string name="advanced_wipe_btn">ZAAWANS. CZYSZCZENIE</string>
 		<string name="wipe_enc_confirm">Usunąć szyfrowanie z /data?</string>
 		<string name="formatting_data">Formatowanie /data...</string>
 		<string name="swipe_format_data">Przesuń, aby sformatować /data</string>
@@ -122,45 +110,41 @@
 		<string name="format_data_undo">To nieodwracalne.</string>
 		<string name="format_data_complete">Formatowanie /data zakończone</string>
 		<!-- Translator note: the word "yes" must remain English! -->
-		<string name="yes_continue">Wpisz \"yes\", aby potwierdzić.</string>
-		<string name="part_opt_hdr">Opcje partycji dla: %tw_partition_name%</string>
+		<string name="yes_continue">Wpisz "yes", aby potwierdzić.</string>
+		<string name="part_opt_hdr">Inormacje o partycji</string>
 		<string name="file_sys_opt">OPCJE PARTYCJI</string>
-		<string name="part_mount_point">Punkt montowania:</string>
-		<string name="part_curr_fs">System plików:</string>
-		<string name="part_present">Obecna:</string>
-		<string name="part_removable">Wymienna:</string>
+		<string name="part_mount_point">Punkt montowania</string>
+		<string name="part_curr_fs">System plików</string>
+		<string name="part_present">Obecna</string>
+		<string name="part_removable">Wymienna</string>
 		<string name="part_yes">Tak</string>
 		<string name="part_no">Nie</string>
-		<string name="part_size">Rozmiar:</string>
-		<string name="part_used">Użyte:</string>
-		<string name="part_free">Wolne:</string>
-		<string name="part_backup_size">Rozmiar kopii zapasowej:</string>
+		<string name="part_size">Rozmiar</string>
+		<string name="part_used">Użyto</string>
+		<string name="part_free">Wolne</string>
+		<string name="part_backup_size">Rozmiar kopii zapasowej</string>
 		<string name="resize_btn">Zmień rozmiar sys.</string>
-		<string name="resize_confirm">Zmienić rozmiar %tw_partition_name%?</string>
+		<string name="resize_confirm">Zmień rozmiar partycji</string>
 		<string name="resizing">Zmienianie rozmiaru...</string>
 		<string name="resize_complete">Zmienianie rozmiaru zakończone</string>
 		<string name="swipe_resize">Przesuń, aby zmienić rozmiar</string>
 		<string name="repair_btn">Napraw system plików</string>
-		<string name="repair_confirm">Naprawić %tw_partition_name%?</string>
+		<string name="repair_confirm">Napraw partycję</string>
 		<string name="repairing">Naprawianie...</string>
 		<string name="repair_complete">Naprawianie zakończone</string>
 		<string name="swipe_repair">Przesuń, aby naprawić</string>
 		<string name="change_fs_btn">Zmień system plików</string>
 		<string name="change_fs_warn1">Niektore ROMy i kernele mogą nie obsługiwać</string>
 		<string name="change_fs_warn2">niektórych systemów plików. Ostrożnie!</string>
-		<string name="change_fs_confirm">Zmienić %tw_partition_name%?</string>
+		<string name="change_fs_confirm">Zmień system plików na</string>
 		<string name="formatting">Formatowanie...</string>
 		<string name="format_complete">Formatowanie zakończone</string>
 		<string name="swipe_change_fs">Przesuń, aby zmienić</string>
-		<string name="back_btn">WSTECZ</string>
-		<string name="wipe_enc_btn">USUŃ SZYFROWANIE</string>
+		<string name="back_btn">Wróć</string>
+		<string name="wipe_enc_btn">Usuń Szyfrowanie</string>
 		<string name="swipe_factory_reset">Przesuń, aby przywrócić.</string>
-		<string name="backup_hdr">Kopia</string>
+		<string name="backup_hdr">Kopia zapasowa</string>
 		<string name="encryption_hdr">Włącz szyfrowanie</string>
-		<string name="encrypt_backup1">Wprowadź hasło, aby włączyć</string>
-		<string name="encrypt_backup2">szyfrowanie kopii zapasowej.</string>
-		<string name="encrypt_backup3">Powtórz hasło, aby włączyć</string>
-		<string name="encrypt_backup4">Naciśnij przycisk wstecz, aby anulować.</string>
 		<string name="name">Nazwa:</string>
 		<string name="enable_backup_comp_chk">Włącz kompresję</string>
 		<string name="skip_md5_backup_chk">Pomiń generowanie MD5 podczas kopii</string>
@@ -171,7 +155,7 @@
 		<string name="partitions">Partycje:</string>
 		<string name="progress">Postęp:</string>
 		<string name="backup_complete">Kopia zapasowa wykonana</string>
-		<string name="restore_hdr">Przywróć</string>
+		<string name="restore_hdr">Kopie zapasowe</string>
 		<string name="restore_backup_hdr">Przywróć kopię</string>
 		<string name="sel_backup_hdr">Wybierz kopię zapasową</string>
 		<string name="restore_dec_fail">Hasło nieprawidłowe, spróbuj ponownie!</string>
@@ -191,13 +175,13 @@
 		<string name="renaming_backup">Zmienianie nazwy kopii zapasowej...</string>
 		<string name="rename_backup_complete">Zmienianie nazwy kopii zapasowej zakończone</string>
 		<string name="swipe_to_rename">Przesuń, aby zmienić nazwę</string>
-		<string name="mount_hdr">Zamontuj</string>
-		<string name="mount_sys_ro_chk">Zamontuj /system tylko do odczytu</string>
-		<string name="decrypt_data_btn">ROZSZYFRUJ DATA</string>
+		<string name="mount_hdr">Montowanie</string>
+		<string name="mount_sys_ro_chk">Zamontuj /system i /vendor tylko do odczytu</string>
+		<string name="decrypt_data_btn">Odszyfrowywanie danych</string>
 		<string name="disable_mtp_btn">WYŁĄCZ MTP</string>
 		<string name="enable_mtp_btn">WŁĄCZ MTP</string>
-		<string name="usb_storage_hdr">Pamięć USB</string>
-		<string name="usb_storage_btn">Pamięć USB</string>
+		<string name="usb_storage_hdr">PAMIĘĆ USB</string>
+		<string name="usb_storage_btn">PAMIĘĆ USB</string>
 		<string name="usb_stor_mnt1">Pamięć USB zamontowana</string>
 		<string name="usb_stor_mnt2">Pamiętaj, aby bezpiecznie usunąć urządzenie</string>
 		<string name="usb_stor_mnt3">z komputera przed odmontowaniem!</string>
@@ -208,20 +192,20 @@
 		<string name="rb_bootloader_btn">Bootloader</string>
 		<string name="rb_theme">Motyw</string>
 		<string name="rb_download_btn">Download</string>
+		<string name="rb_edl_btn">Edl</string>
 		<string name="turning_off">Wyłączanie...</string>
 		<string name="swipe_power_off">Przesuń, aby wyłączyć</string>
 		<string name="sys_ro">Partycja systemowa</string>
 		<string name="sys_ro_hdr">Niezmodyfikowana partycja systemowa</string>
-		<string name="sys_rop1">RWRP może pozostawić partycję systemową</string>
+		<string name="sys_rop1">OrangeFox może pozostawić partycję systemową</string>
 		<string name="sys_rop2">niezmodyfikowaną, aby ułatwić otrzymanie</string>
 		<string name="sys_rop2a">oficjalnych aktualizacji.</string>
-		<string name="sys_rop3">RWRP nie może zapobiec przed podmianą</string>
-		<string name="sys_rop4">recovery przez oficjalny system i nie</string>
-		<string name="sys_rop4a">zaproponuje rootowania urządzenia.</string>
+		<string name="sys_rop3">OrangeFox nie może zapobiec przed podmianą</string>
+		<string name="sys_rop4">oryginalny ROM od zastąpienia OrangeFox.</string>
 		<string name="sys_rop5">Instalacja plików lub operacje przez ADB</string>
 		<string name="sys_rop6">nadal mogą modyfikować partycję systemową.</string>
-		<string name="sys_ro_never_show_chk">Nie pokazuj tego ekranu ponownie po uruchomieniu</string>
-		<string name="sys_ro_keep_ro_btn">TYLKO DO ODCZYTU</string>
+		<string name="sys_ro_never_show_chk">Nie pokazuj tego komunikatu ponownie</string>
+		<string name="sys_ro_keep_ro_btn">Tylko do odczytu</string>
 		<string name="swipe_allow_mod">Przesuń, aby zezwolić na modyfikacje.</string>
 		<string name="settings_hdr">Ustawienia</string>
 		<string name="settings_cptn">Główne</string>
@@ -231,6 +215,7 @@
 		<string name="simact_chk">Symuluj akcje do testowania motywu</string>
 		<string name="simfail_chk">Symuluj niepowodzenia dla akcji</string>
 		<string name="sel_tz_list">Wybierz strefę czasową:</string>
+		<string name="dialog_reset_theme_hdr">Przywróć ustawienia domyślne</string>
 		<!-- Translator note: if it does not make sense to translate the locations or if it makes more sense,
 				feel free to change the location listed or drop the location entirely and just call it UTC -6 -->
 		<string name="utcm11">(UTC -11) Samoa, Wyspy Midway</string>
@@ -257,7 +242,7 @@
 		<string name="utcp10">(UTC +10) Australia Wschodnia, Guam</string>
 		<string name="utcp11">(UTC +11) Władywostok, Wyspy Salomona</string>
 		<string name="utcp12">(UTC +12) Auckland, Wellington, Fidżi</string>
-		<string name="tz_offset_hdr">Przesunięcie czasu</string>
+		<string name="tz_offset_hdr">Przesunięcie czasu</string>	
 		<string name="tz_offset">Przesunięcie</string>
 		<string name="sel_tz_offset">Wybierz przesunięcie (najczęściej 0): %tw_time_zone_guioffset%</string>
 		<string name="tz_offset_0">0</string>
@@ -269,36 +254,32 @@
 		<string name="curr_tz_s">Obecna strefa czasowa:</string>
 		<string name="set_tz_btn">Ustaw strefę czasową</string>
 		<string name="settings_screen_cptn">Ustawienia ekranu</string>
-		<string name="settings_screen_timeout_cptn">Wygaszenie ekranu</string>
+		<string name="settings_screen_timeout_cptn">Limit czasu jest wyłączony</string>
 		<string name="settings_screen_timeout_cptn2">Wygaszenie ekranu za:</string>
 		<string name="timeout_unit">sekund</string>
 		<string name="enable_timeout_chk">Włącz wygaszanie ekranu</string>
-		<string name="screen_to_slider_s">Wygaszanie ekranu w sekundach (0=wyłączone): %tw_screen_timeout_secs%</string>
 		<string name="screen_to_na">Ustawienia wygaszania ekranu niedostępne</string>
 		<string name="rotation_chk">Obracanie</string>
 		<string name="screen_bright_slider">Jasność: %tw_brightness_pct%%</string>
 		<string name="screen_bright_na">Ustawienia jasności ekranu niedostępne</string>
 		<string name="vibration_hdr">Wibracje</string>
-		<string name="button_vibration_hdr">Wibracje przycisków</string>
-		<string name="kb_vibration_hdr">Wibracje klawiatury</string>
-		<string name="act_vibration_hdr">Wibracje działań</string>
+		<string name="button_vibration_hdr">Wibracje przycisków są wyłączone</string>
+		<string name="kb_vibration_hdr">Wibracje klawiatury są wyłączone</string>
+		<string name="act_vibration_hdr">Wibracje działań są wyłączone</string>
 		<string name="button_vibration">Wibracje przycisków:</string>
 		<string name="kb_vibration">Wibracje klawiatury:</string>
 		<string name="act_vibration">Wibracje działań:</string>
-		<string name="language_cptn">Język</string>
 		<string name="advanced_hdr">Zaawansowane</string>
-		<string name="copy_log_confirm">Skopiować log na kartę SD?</string>
-		<string name="copying_log">Kopiowanie pliku log na kartę SD...</string>
-		<string name="copy_log_complete">Kopiowanie pliku log zakończone</string>
-		<string name="copy_kernel_log">Skopiowano log kernela do {1}</string>
-		<string name="include_kernel_log">Dołącz log kernela</string>
+		<string name="copy_log_confirm">Skopiować dziennik na kartę SD?</string>
+		<string name="copying_log">Kopiowanie dziennika na kartę SD...</string>
+		<string name="copy_log_complete">Dziennik skopiowany</string>
 		<string name="terminal_btn">Terminal</string>
 		<string name="dumlock_note1">Informacje o działaniu</string>
 		<string name="dumlock_note2">HTC Dumlock można znaleźć na stronie:</string>
-		<string name="inject_twrp_btn">Zaszczep TWRP</string>
-		<string name="inject_twrp_confirm">Ponownie zaszczepić TWRP?</string>
-		<string name="injecting_twrp">Szczepienie TWRP...</string>
-		<string name="inject_twrp_complete">Szczepienie TWRP zakończone</string>
+		<string name="inject_twrp_btn">Iniekcja OrangeFox</string>
+		<string name="inject_twrp_confirm">Ponownie zaszczepić OrangeFox?</string>
+		<string name="injecting_twrp">Szczepienie OrangeFox...</string>
+		<string name="inject_twrp_complete">Szczepienie OrangeFox zakończone</string>
 		<string name="swipe_to_confirm">Przesuń, aby potwierdzić</string>
 		<string name="part_sd_hdr">Partycjonowanie SD</string>
 		<string name="rem_sd">Wymienna pamięć</string>
@@ -309,40 +290,44 @@
 		<string name="part_sdcard_sel_note_2">na karcie SD!</string>
 		<string name="part_sd_undo">To nieodwracalne!</string>
 		<string name="part_sd_ext_sz">Rozmiar EXT:</string>
+		<string name="btn_flat_ext4">EXT4</string>
+		<string name="btn_flat_ext3">EXT3</string>
+		<string name="btn_flat_more">+</string>
+		<string name="btn_flat_less">-</string>
 		<string name="part_sd_swap_sz">Rozmiar Swap:</string>
 		<string name="file_system">System plików:</string>
 		<string name="swipe_part_sd">Przesuń, aby partycjonować</string>
-		<string name="partitioning_sd">Partycjonowanie Karty SD...</string>
+		<string name="partitioning_sd">Partycjonowanie SD...</string>
 		<string name="partitioning_sd2">To potrwa parę minut.</string>
 		<string name="part_sd_complete">Partycjonowanie zakończone</string>
 		<string name="dumlock_hdr">HTC Dumlock</string>
-		<string name="dumlock_restore_btn">PRZYWRÓĆ ORYGINALNY BOOT</string>
+		<string name="dumlock_restore_btn">Przywróć oryginalny obraz boot</string>
 		<string name="dumlock_restore_confirm">Przywrócić oryginalny obraz Boot?</string>
 		<string name="dumlock_restoring">Przywracanie oryginalnego obrazu Boot...</string>
 		<string name="dumlock_restore_complete">Przywracanie oryginalnego obrazu Boot zakończone</string>
-		<string name="dumlock_reflash_btn">Reinstaluj Recovery</string>
+		<string name="dumlock_reflash_btn">Ponownie wgraj recovery</string>
 		<string name="dumlock_reflash_confirm">Reinstalować recovery do boot?</string>
 		<string name="dumlock_reflashing">Instalowanie recovery do boot...</string>
 		<string name="dumlock_reflash_complete">Instalowanie recovery do boot zakończone</string>
-		<string name="dumlock_install_btn">Instaluj HTC Dumlock</string>
+		<string name="dumlock_install_btn">Zainstaluj Dumlock</string>
 		<string name="dumlock_install_confirm">Instalować pliki HTC Dumlock do ROMu?</string>
 		<string name="dumlock_installing">Instalowanie HTC Dumlock...</string>
 		<string name="dumlock_install_complete">Instalowanie HTC Dumlock zakończone</string>
 		<string name="swipe_to_unlock">Przesuń, aby odblokować</string>
 		<string name="fm_actions">Akcje</string>
-		<string name="fm_hdr">Menedżer Plików</string>
+		<string name="fm_hdr">Pliki</string>
 		<string name="fm_sel_file">Wybierz plik lub folder</string>
 		<string name="fm_type_folder">Folder:</string>
-		<string name="fm_type_file">Plik:</string>
+		<string name="fm_type_file">Plik</string>
 		<string name="fm_copy_btn">Kopiuj</string>
 		<string name="fm_copying">Kopiowanie</string>
 		<string name="fm_move_btn">Przenieś</string>
 		<string name="fm_moving">Przenoszenie</string>
-		<string name="fm_chmod755_btn">chmod 755</string>
-		<string name="fm_chmod755ing">chmod 755</string>
-		<string name="fm_chmod644_btn">chmod 644</string>
-		<string name="fm_chmod644ing">chmod 644</string>
-		<string name="fm_chmod_btn">chmod</string>
+		<string name="fm_chmod755_btn">Ustaw 755</string>
+		<string name="fm_chmod755ing">Ustaw 755</string>
+		<string name="fm_chmod644_btn">Ustaw 644</string>
+		<string name="fm_chmod644ing">Ustaw 644</string>
+		<string name="fm_chmod_btn">Zmień uprawnienia</string>
 		<string name="fm_delete_btn">Usuń</string>
 		<string name="fm_deleting">Usuwanie</string>
 		<string name="fm_rename_btn">Zmień nazwę</string>
@@ -359,20 +344,18 @@
 		<string name="decrypt_data_enter_note1">Proszę wprowadzić hasło lub</string>
 		<string name="decrypt_data_enter_note1a">Proszę podać wzór lub</string>
 		<string name="decrypt_data_enter_note2">nacisnąć przycisk wstecz, aby anulować.</string>
-		<string name="decrypt_data_enter_pass">Hasło</string>
-		<string name="decrypt_data_failed">Hasło nieprawidłowe!</string>
+		<string name="decrypt_data_enter_pass">Wprowadź hasło</string>
 		<string name="decrypt_data_failed_pattern">Wzór nieprawidłowy!</string>
 		<string name="decrypt_try_again">Proszę spróbować ponownie.</string>
 		<string name="decrypt_data_enter_pattern">Wprowadź wzór.</string>
 		<string name="decrypt_data_trying">Próbuję rozszyfrować</string>
-		<string name="decrypt_data_vold_os_missing">Brakuje potrzebnych plików do odszyfrowania: {1}</string>
 		<string name="term_s_hdr">Terminal</string>
 		<string name="adb_sideload_hdr">ADB Sideload</string>
 		<string name="sideload_wipe_dalvik_chk">Wyczyść Dalvik Cache</string>
 		<string name="sideload_wipe_cache_chk">Wyczyść Cache</string>
 		<string name="swipe_to_sideload">Przesuń, aby włączyć Sideload</string>
 		<string name="sideload_confirm">ADB Sideload</string>
-		<string name="sideload_usage">Użycie: adb sideload nazwapliku.zip</string>
+		<string name="sideload_usage">Sposób użycia: ADB SideLoad File.ZIP</string>
 		<string name="sideload_complete">ADB Sideload zakończone</string>
 		<string name="fix_contexts_hdr">Naprawa kontekstów</string>
 		<string name="fix_contexts_confirm">Naprawić konteksty SELinux?</string>
@@ -383,7 +366,6 @@
 		<string name="fixing_contexts">Naprawianie kontekstów...</string>
 		<string name="fix_contexts_complete">Naprawianie kontekstów zakończone</string>
 		<string name="reboot_hdr">Restart</string>
-		<string name="install_cancel">Nie instaluj</string>
 		<string name="sel_storage_list">Wybierz pamięć</string>
 		<string name="ok_btn">OK</string>
 
@@ -450,9 +432,8 @@
 		<string name="fail_decrypt">Niepowodzenie rozszyfrowywania /data.</string>
 		<string name="no_crypto_support">Brak obsługi kryptograficznej w tej kompilacji.</string>
 		<string name="decrypt_success_dev">Partycja /data pomyślnie rozszyfrowana, nowe urządzenie blokowe: '{1}'</string>
-		<string name="decrypt_success_nodev">Partycja /data została rozszyfrowana</string>
 		<string name="done">Ukończono.</string>
-		<string name="start_partition_sd">Partycjonowanie Karty SD...</string>
+		<string name="start_partition_sd">Partycjonowanie SD...</string>
 		<string name="partition_sd_locate">Nie można zlokalizować urządzenia do partycjonowania.</string>
 		<string name="ext_swap_size">Rozmiar EXT + Swap jest większy niż rozmiar Karty SD.</string>
 		<string name="remove_part_table">Usuwanie tablicy partycji...</string>
@@ -488,7 +469,6 @@
 		<string name="unable_resize">Nie można zmienić rozmiaru {1}.</string>
 		<string name="no_md5_found">Nie znaleziono pliku MD5 '{1}'. Proszę wyłączyć weryfikację MD5, aby przywrócić.</string>
 		<string name="md5_fail_match">MD5 nie pasuje do '{1}'.</string>
-		<string name="md5_matched">MD5 pasuje do '{1}'.</string>
 		<string name="fail_decrypt_tar">Nie udało się odszyfrować pliku tar '{1}'</string>
 		<string name="format_data_msg">Może być konieczne ponowne uruchomienie recovery, aby móc ponownie użyć /data.</string>
 		<string name="format_data_err">Nie można sformatować, aby usunąć szyfrowania.</string>
@@ -502,7 +482,7 @@
 		<string name="backup_size">Rozmiar kopii zapasowej '{1}' to 0 bajtów.</string>
 		<string name="datamedia_fs_restore">UWAGA: Ta kopia /data została wykonana w sytemie plików {1}! Kopia może się nie uruchomić jeśli nie wrócisz do {1}.</string>
 		<string name="restoring">Przywracanie {1}...</string>
-		<string name="restoring_hdr">Przywracanie</string>
+		<string name="restoring_hdr">Przywracanie...</string>
 		<string name="recreate_folder_err">Nie można odtworzyć {1} folderu.</string>
 		<string name="img_size_err">Rozmiar obrazu jest większy niż urządzenia docelowego</string>
 		<string name="flashing">Instalowanie {1}...</string>
@@ -525,8 +505,8 @@
 		<string name="need_new_adb">Wymagane ADB 1.0.32 lub nowsze, aby użyć sideload na tym urządzeniu.</string>
 		<string name="no_pwd">Hasło nie zostało podane.</string>
 		<string name="done_ors">Zakończono przetwarzanie skryptu</string>
-		<string name="injecttwrp">Zaszczepianie TWRP w obrazie boot...</string>
-		<string name="zip_err">Błąd instalowania pliku zip '{1}'</string>
+		<string name="injecttwrp">Wstrzykiwanie OrangeFox do obrazu boot...</string>
+		<string name="zip_err">Błąd instalacji pliku zip '{1}'</string>
 		<string name="installing_zip">Instalowanie pliku zip '{1}'</string>
 		<string name="select_backup_opt">Ustawienia kopii zapasowych:</string>
 		<string name="compression_on">Kompresja jest włączona</string>
@@ -538,7 +518,6 @@
 		<string name="running_ors">Uruchamianie OpenRecoveryScript</string>
 		<string name="ors_complete">Wykonano OpenRecoveryScript</string>
 		<string name="no_updater_binary">Nie można znaleźć '{1}' w pliku zip.</string>
-		<string name="invalid_zip_format">Nieprawidłowy format pliku zip!</string>
 		<string name="check_for_md5">Sprawdzanie istnienia MD5...</string>
 		<string name="fail_sysmap">Nie udało się zmapować pliku '{1}'</string>
 		<string name="verify_zip_sig">Weryfikowanie podpisów zip...</string>
@@ -554,7 +533,6 @@
 		<string name="dumlock_restore">Przywracanie oryginalnego obrazu boot...</string>
 		<string name="dumlock_reflash">Reinstalowanie recovery do boot...</string>
 		<string name="run_script">Uruchomiono skrypt {1}...</string>
-		<string name="rename_stock">Zmieniono nazwę stock recovery w /system w celu uniknięcia podmiany TWRP przez stock ROM.</string>
 		<string name="split_backup">Dzielenie pliku kopii zapasowej na wiele plików...</string>
 		<string name="backup_error">Błąd podczas tworzenia kopii zapasowej.</string>
 		<string name="restore_error">Błąd podczas procesu przywracania.</string>
@@ -564,6 +542,7 @@
 		<string name="size_progress">%lluMB z %lluMB, %i%%</string>
 		<string name="decrypt_cmd">Próba odszyfrowania partycji data za pomocą wiersza poleceń.</string>
 		<string name="base_pkg_err">Nie udało się wczytać pakietów podstawowych.</string>
+		<string name="simulating">SYMULACJA DZIAŁAŃ</string>
 		<string name="backup_cancel">Kopia anulowana</string>
 		<string name="config_twrp">Konfigurowanie OrangeFox...</string>
 		<string name="config_twrp_err">Nie można skonfigurować OrangeFox z tym kernelem.</string>
@@ -572,7 +551,7 @@
 		<string name="min_queue">Osiągnięto minimalną kolejkę plików zip!</string>
 		<string name="screenshot_saved">Zrzut ekranu zapisany do {1}</string>
 		<string name="screenshot_err">Niepowodzenie wykonywania zrzutu ekranu!</string>
-		<string name="zip_wipe_cache">Jeden lub więcej zip zażądał wyczyszczenia pamięci podręcznej - czyszczenie pamięci podręcznej.</string>
+		<string name="zip_wipe_cache">Jeden lub więcej plików zip zażądało wyczyszczenia cache -- Trwa czyszczenie cache.</string>
 		<string name="and_sec_wipe_err">Nie można wyczyścić android_secure</string>
 		<string name="dalvik_wipe_err">Nie udało się wyczyścić dalvik</string>
 		<string name="auto_gen">(Generuj automatycznie)</string>
@@ -582,477 +561,440 @@
 		<string name="no_real_sdcard">To urządzenie nie ma prawdziwej karty SD! Przerywanie...</string>
 		<string name="cancel_sideload">Anulowanie ADB sideload...</string>
 		<string name="change_fs_err">Niepowodzenie zmiany systemu plików.</string>
-		<string name="change_fs_hdr">Zmień system plików dla %tw_partition_name%</string>
+		<string name="change_fs_hdr">Zmień system plików</string>
 		<string name="theme_ver_err">Niestandardowa wersja motywu nie pasuje do wersji OrangeFox. Użyto domyślnego motywu.</string>
-		<string name="up_a_level">(Cofnij)</string>
+		<string name="up_a_level">..</string>
 
-	    <string name="mtp_enabled">MTP jest włączone</string>
-		<string name="mtp_disabled">MTP jest wyłączone</string>
-		<string name="done">Ukończono.</string>
-		<string name="backup_cancel">Kopia anulowana</string>
+		<!-- new-->
 		<string name="sel_color">Wybierz kolor</string>
 		<string name="s_color">Kolor</string>
-		<string name="current_color">Bieżący:</string>
-		<string name="functional">Funkcjonalne</string>
-		<string name="use_aromafm">Użyj Menedżera plików Aroma</string>
-		<string name="auto_name_generate">Pokaż auto generowaną nazwę kopii</string>
-		<string name="use_flashit_script">Użyj skryptu FlashIt do flashowania obrazu</string>
-		<string name="visual">Wizualne</string>
-		<string name="center_clock_bar">Zegar na środku paska stanu</string>
+		<string name="current_color">System plików:</string>
 		<string name="show_cpu_temp_bar">Pokaż temperaturę CPU</string>
-		<string name="use_menu_btn">Użyj przycisków w menu głównym</string>
-		<string name="use_color_navbar">Użyj koloru akcentu dla navbara</string>
-		<string name="tw_zip_location_hdr">Wybierz Zip motywu</string>
 		<string name="ts_inform">Informacja</string>
-		<string name="ts_how_works">Jak to działa</string>
-		<string name="sel_rec_im">Wybierz Obraz Recovery</string>
-		<string name="sel_splash_png">Select Splash PNG</string>
-		<string name="install_recovery">Instalowanie Recovery...</string>
-		<string name="zip_md5_chk">Wymuś sprawdzanie MD5 na wszystkich plikach Zip</string>
+		<string name="sel_splash_png">Wybierz plik PNG</string>
 		<string name="swipe_to_install">Przesuń palcem, by zainstalować</string>
-		<string name="run_aromafm">Uruchom</string>
-		<string name="flashit_script">Zainstaluj Skrypt</string>
-		<string name="raised_installscript_btn">Zainstaluj skrypt</string>
-		<string name="image_type">Typ obrazu</string>
-		<string name="image_type_1">Obraz Recovery</string>
-		<string name="image_type_2">Obraz rozruchowy</string>
-		<string name="image_type_3">Radio / Modem Image</string>
-		<string name="install_flashit_script">Zainstaluj skrypt FlashIt, aby kontynuować!</string>
 		<string name="swipe_to_install_img">Przesuń palcem, aby zainstalować obraz</string>
 		<string name="sel_image_type">Wybierz typ obrazu!</string>
-		<string name="zip_add_queue">Dodaj plik do kolejki</string>
-		<string name="tw_aroma_btn">AROMAT Filemanager</string>
-		<string name="sel_part_single1">Wybierz jedną partycję, jeśli chcesz</string>
-		<string name="sel_part_single2">aby użyć opcji partycji!</string>
+		<string name="zip_add_queue">Dodaj do Kolejki</string>
 		<string name="part_fs_error_1">Opcje partycji nie są</string>
 		<string name="part_fs_error_2">dostępne dla tej partycji!</string>
-		<string name="new_file_system">Nowy System plików:</string>
-		<string name="adb_sideload_opt">Sideload Options</string>
-		<string name="theme">Zainstaluj motyw</string>
-		<string name="theme_hdr">Wybierz motyw</string>
-		<string name="theme_vers">Motyw:</string>
-		<string name="password">Hasło</string>
+		<string name="new_file_system">Nowy System plików</string>
+		<string name="adb_sideload_opt">Opcje Sideload</string>
+		<string name="about_hdr">O Recovery</string>
+		<string name="author">Autor</string>
+		<string name="credits">Podziękowania</string>
+		<string name="version">Wersja</string>
 		<string name="set_password">Ustaw hasło</string>
 		<string name="verifying_pas">Zweryfikuj hasło</string>
-		<string name="fox.pass.final_slide">Przesuń, aby powrócić do menu głównego.</string>
-		<string name="hide_folder">Nie pytaj mnie ponownie</string>
-		<string name="dialog_label_color_hdr">Wymagany restart</string>
-		<string name="dialog_settheme_hdr">Zmień motyw</string>
-		<string name="dialog_settheme_note_1">Recovery uruchomi się ponownie</string>
-		<string name="dialog_settheme_note_2">aby zastosować wybrany motyw.</string>
-		<string name="dialog_settheme_note_2a">aby zastosować wybrany kolor.</string>
 		<string name="dialog_offset_note">Wybierz swoją wartość offsetu</string>
-		<string name="queue_no">Nie.</string>
-		<string name="dialog_warning_hdr">Uwaga!</string>
-		<string name="dialog_warning_1">Rozmiar wynikowego pliku obrazu</string>
-		<string name="dialog_warning_2">może przekroczyć rzeczywisty rozmiar</string>
-		<string name="dialog_warning_3">partycja recovery. W tym przypadku,</string>
-		<string name="dialog_warning_4">instalacja obrazu zakończyła się niepowodzeniem.</string>
-		<string name="all_done">Wszystko zrobione</string>
-		<string name="patch_image">Patching firmware images...</string>
-		<string name="done_script">script succeeded: result was [{1}]</string>
-		<string name="aborted_script">script aborted (no error message)</string>
-		<string name="aborted_script_err">script aborted: {1}</string>
+		<string name="queue_no">#</string>
 		<string name="options_cptn">Opcje:</string>
-		<string name="flash_img_confirm">Flash Image File</string>
-		<string name="also_wipes">Also wipes</string>
-		<string name="confirm_wipe_cptn">Confirm Wipe</string>
+		<string name="flash_img_confirm">Flashuj Plik Obrazu</string>
+		<string name="also_wipes">Również wipeuje</string>
+		<string name="confirm_wipe_cptn">Potwierdź Wipe</string>
 		<string name="storage_cptn">Pamięć</string>
-		<string name="enter_password_cptn">Hasło</string>
-		<string name="theme_path_hdr">Theme Path</string>
-		<string name="theme_path_subhdr">Select the ui.zip</string>
-		<string name="reboot_install_app_hdr">Install official TWRP App?</string>
-		<string name="reboot_install_app1">Do you like to install the TWRP App?</string>
-		<string name="reboot_install_app2">It can check for new TWRP versions.</string>
-		<string name="reboot_install_app_prompt_settings">Prompt to install the Snap camera</string>
-		<string name="reboot_install_app_prompt_install">Prompt again at next reboot</string>
-		<string name="reboot_install_app_system">Install as a system app</string>
-		<string name="reboot_installing_app">Installing TWRP App...</string>
-		<string name="swipe_to_install_app">Swipe to install TWRP App</string>
-		<string name="tab_backup_create">BACKUP</string>
-		<string name="tab_backup_options">OPTIONS</string>
-		<string name="boot_slot">Boot Slot</string>
+		<string name="enter_password_restore">Hasło</string>
+		<string name="enter_password_cptn">Startowanie Sideload...</string>
+		<!-- added by fordownloads -->
+		<string name="fordowns_sl">Startowanie Sideload...</string>
+		<string name="fordowns_to">do</string>
+		<string name="dbg">Debuguj</string>
+		<string name="dbg_active">Aktywowano Debug menu!</string>
+		<string name="dbg_act">Akcja</string>
+		<string name="dbg_func">Funkcja</string>
+		<string name="dbg_set">Ustaw</string>
+		<string name="dbg_page">Strona</string>
+		<string name="dbg_overlay">Nakładka</string>
+		<string name="fm_none">Żaden</string>
+		
+		<string name="cust_navbar_noug">Nougat</string>
+		<string name="cust_navbar_cls">Klasyczny</string>
+		<string name="cust_navbar_accent">Akcent</string>
+		<string name="cust_navbar_black">Czarny</string>
+		<string name="cust_navbar_white">Użyj białych przycisków</string>
+		<string name="cust_navbar_gray">Użyj szarych przycisków</string>
+		
+		<string name="fm_open">Otwórz jako...</string>
+		<string name="fm_open_text">Plik tekstowy</string>
+		<string name="fm_open_ZIP">Zip'y do zainstalowania</string>
+		
+		<string name="fm_open_backup">Kopia zapasowa</string>
+		<string name="fm_open_makezip">Kompresuj</string>
+		<string name="fm_open_unpackzip">Wypakuj archiwum</string>
+		<string name="fm_open_image">Obrazy do zainstalowania</string>
+		<string name="arc_type">Typ archiwum</string>
+		<string name="arc_lvl">Stopień kompresji:</string>
+		<string name="arc_lvl_title">Kompresja</string>
+		
+		<string name="bkp_date">Dodaj datę</string>
+		<string name="bkp_gen">Generuj nazwę kopii zapasowej</string>
+		<string name="bkp_gen_whilebkp">Generuj nazwę kopii zapasowej podczas Backupu</string>
+		<string name="bkp_quick">Szybka Kopia</string>
+		<string name="bkp_clear">Wyczyść</string>
+		
+		<string name="language_cptn">Język</string>
+		<string name="cust_oth">Inne</string>
+		
+		<string name="settings_general">Główne</string>
+		<string name="settings_ui">Dostosowywanie</string>
+		<string name="settings_screen">Wyświetlacz</string>
+		<string name="settings_time">Regionalne</string>
+		
+		<string name="lang_wait">Proszę czekać...</string>
+		
+		<string name="settings_ui_status">Pasek stanu</string>
+		<string name="settings_ui_battery">Pokaż ikonę baterii</string>
+		<string name="settings_ui_style">Styl NavBar</string>
+		<string name="settings_ui_color">Tło NavBar</string>
+		
+		<string name="settings_backup_qbkp_custom">Partycje szybkich backupów</string>
+		
+		<string name="settings_backup_name">Nazwa kopii zapasowej</string>
+		<string name="settings_backup_name_user">Nie zmieniaj</string>
+		<string name="settings_backup_name_auto">Definiowane automatycznie</string>
+		<string name="settings_backup_name_auto_hide">Podczas tworzenia backupu</string>
+		
+		<string name="update_btn">Aktualizacja</string>
+		<string name="include_kernel_log">Dołącz log kernela</string>
+		
+		<string name="fm_books">Ulubione foldery</string>
+		<string name="fm_books_desc">Przytrzymaj, aby edytować listę</string>
+		<string name="fm_books_edit">Edytuj tą listę...</string>
+		<string name="fm_books_desc_edit">Naciśnij i przytrzymaj by usunąć</string>
+		<string name="fm_books_empty">(Pusty)</string>
+		
+		<string name="fm_mkdir">Utwórz folder</string>
+		<string name="fm_mkdir_folder">Nazwa folderu</string>
+		
+		<string name="fm_path">Wprowadź ścieżkę</string>
+		<string name="fm_path2">Ścieżka</string>
+		
+		<string name="no_os_title">Czy jesteś pewny?</string>
+		<string name="no_os_subtitle">Partycja systemowa jest pusta</string>
+		
+		<string name="no_os1">Brak zainstalowanego systemu! Czy jesteś pewny,</string>
+		<string name="no_osrb">że chcesz zrestartować urządzenie?</string>
+		<string name="no_ospo">że chcesz wyłączyć urządzenie?</string>
+		<string name="no_osrb_recovery">że chcesz zrestartować urządzenie do recovery?</string>
+		<string name="no_osrb_boot">że chcesz zrestartować urządzenie do bootloader?</string>
+		<string name="no_osrb_down">że chcesz zrestartować urządzenie do EDL?</string>
+		<string name="no_osrb_edl">czy zrestartować urządzenie do bootloader?</string>
+		
+		<string name="areb_confirm">Potwierdzenie restartu</string>
+		<string name="areb_noos">Kiedy system nie jest zainstalowany</string>
+		<string name="opt_always">Zawsze</string>
+		<string name="otp_never">Nigdy</string>
+		
+		<string name="areb_off">Wył.</string>
+		
+		<string name="restoredialog_readonly">Nigdy nie pokazuj okna "zamontuj system tylko do odczytu"</string>
+		
+		<string name="offset_wrong">Nieprawidłowy offset!</string>
+
+		<string name="new_key">Użyj nowego stylu dla klawiatury</string>
+		
+		<string name="bkp_nametitle">Nazwa kopii zapasowej</string>
+		<string name="bkp_namesub">Wpisz lub wygeneruj nazwę kopii zapasowej</string>
+		
+		<string name="goto_storage">Pamięć</string>
+		
+		<string name="theme_apply">Stosowanie motywu...</string>
+		<string name="theme_fonts">Czcionki</string>
+		<string name="theme_style">Styl</string>
+		<string name="theme_accent">Akcent</string>
+		<string name="theme_font_sel">Główna czcionka</string>
+		<string name="theme_sec_font_sel">Dodatkowa czcionka</string>
+		
+		<string name="of">z</string>
+		
+		<string name="sph_sph">Obraz ładowania</string>
+		
+		<string name="real">rzeczywisty</string>
+		<string name="info">Informacja</string>
+		<string name="time_m">Modyfikuj</string>
+		<string name="time_c">Zmień</string>
+		<string name="access">Dostęp</string>
+		<string name="fm_sums">Suma kontrolna</string>
+		
+		<string name="use_fixed_font">Czcionki o stałej szerokości w terminalu</string>
+
+		<string name="adb_backup_pc1">Kopia zapasowa zostanie</string>
+		<string name="adb_backup_pc2">zapisana na twoim komputerze</string>
+		
+		<string name="starting_aroma">Uruchamianie AromaFM...</string>
+		<string name="lang_set_wait">Zmienianie języka...</string>
+		<string name="installing_theme">Instalowanie motywu...</string>
+		
+		<string name="menu_btn">Menu</string>
+		
+		<string name="data_backup">Data</string>
+		<string name="autostorage">Pamięć</string>
+		<string name="install_reboot">Ponowne uruchomienie za %tw_sleep% sek.</string>
+		<string name="cancel_reboot_btn">Anuluj restart</string>
+		<string name="skip_digest_backup_chk" version="2">Pomiń generowanie Digest podczas Backupowania</string>
+		<string name="restore_digest_chk" version="2">Włącz weryfikację Digest kopii zapasowych</string>
+		<string name="restore_enable_digest_chk" version="2">Włącz weryfikację Digest kopii zapasowych</string>
+		<string name="decrypt_data_vold_os_missing">Brakuje potrzebnych plików do odszyfrowania: {1}</string>
+		<string name="generating_digest1" version="2">Generowanie Digest</string>
+		<string name="generating_digest2" version="2"> * Generowanie Digest...</string>
+		<string name="digest_created" version="2"> * Digest utworzony.</string>
+		<string name="digest_error" version="2"> * Błąd Digest!</string>
+		<string name="digest_compute_error" version="2"> * Błąd przetwarzania Digest.</string>
+		<string name="verifying_digest" version="2">Weryfikowanie Digest</string>
+		<string name="skip_digest" version="2">Pomijanie sprawdzania Digest na podstawie ustawień użytkownika.</string>
+		<string name="decrypt_success_nodev">Partycja /data została rozszyfrowana</string>
+		<string name="no_digest_found" version="2">Nie znaleziono pliku Digest dla '{1}'. Proszę odznaczyć weryfikację Digest.</string>
+		<string name="digest_fail_match" version="2">Digest niezgodny z '{1}'.</string>
+		<string name="digest_matched" version="2">Digest zgodny z '{1}'.</string>
+		<string name="digest_check_skip" version="2">Pomijanie sprawdzania Digest jest włączone</string>
+		<string name="digest_off" version="2">Generowanie Digest jest wyłączone</string>
+		<string name="invalid_zip_format">Nieprawidłowy format pliku zip!</string>
+		<string name="check_for_digest" version="2">Sprawdzanie pliku Digest...</string>
+		<string name="no_digest" version="2">Pomijanie sprawdzania Digest: plik Digest nie odnaleziony</string>
+		<string name="digest_fail" version="2">Digest niezgodny</string>
+		<string name="digest_match" version="2">Digest zgodny</string>
+		<string name="password">Hasło</string>
+		<string name="boot_slot">SLOT A</string>
 		<string name="boot_slot_a">SLOT A</string>
-		<string name="boot_slot_use_a">Switch to slot A</string>
+		<string name="boot_slot_use_a">ZMIEŃ NA SLOT A</string>
 		<string name="boot_slot_b">SLOT B</string>
-		<string name="boot_slot_use_b">Switch to slot B</string>
-		<string name="changing_boot_slot">Changing Boot Slot</string>
-		<string name="changing_boot_slot_complete">Changing Boot Slot completed</string>
-		<string name="unable_set_boot_slot">Error changing bootloader boot slot to {1}</string>
-		<string name="backup_storage_warning">Backups of {1} do not include any files in internal storage such as pictures or downloads.</string>
-	<!-- Start of Recovery strings -->
-		<string name="dialog_folder_note_1">Do you want to set the current folder</string>
-		<string name="dialog_folder_note_2">as the default folder for this list?</string>
-		<string name="flashlight">Flashlight</string>
-		<string name="lock_text_1">Recovery is protected against unauthorized</string>
-		<string name="lock_text_2">access.</string>
-		<string name="lock_text_3">To use main recovery features</string>
-		<string name="lock_text_4">you first need to enter your password.</string>
-		<string name="lock_text_5">Enter password:</string>
-		<string name="change_pass_btn">Change password</string>
-		<string name="change_pass_text_1">To change the access password</string>
-		<string name="change_pass_text_2">please enter the</string>
-		<string name="change_pass_text_3">current password first.</string>
-		<string name="new_pass_text_1">The access password has been confirmed.</string>
-		<string name="new_pass_text_2">Now enter your new password.</string>
-		<string name="full_new_pass_text_1">The entered password will be used as</string>
-		<string name="full_new_pass_text_2">the access password for the next</string>
-		<string name="full_new_pass_text_3">time you enter the recovery</string>
-		<string name="pass_hdr">Hasło</string>
-		<string name="pass_hdr2">Change Password</string>
-		<string name="pass_hdr3">Password change complete</string>
-		<string name="change_pass_confirm">Swipe to confirm the password change.</string>
-		<string name="fox_please_wait">Please wait ...</string>
-		<string name="Set_pass_btn">Set password</string>
-		<string name="dialog_reset_pass_hdr">Remove password</string>
-		<string name="dialog_reset_pass_1">Do you want to remove password?</string>
-		<string name="dialog_reset_pass_2">Recovery will not require a password</string>
-		<string name="dialog_reset_pass_3">at the next entry.</string>
-		<string name="fox_reboot_install_app_hdr">Do you want to install Snap Camera HDR?</string>
-		<string name="fox_reboot_install_app1">Many users have confirmed that this is an</string>
-		<string name="fox_reboot_install_app2">application that takes the best photos from our device.</string>
-		<string name="fox_swipe_to_install_app">Swipe to install Snap Camera HDR.</string>
-		<string name="pass_hdr2_del">Remove Password</string>
-		<string name="pass_hdr3_del">Removing the password has been completed</string>
-		<string name="change_pass_confirm_del">Swipe to remove password.</string>
-		<string name="fox_please_wait_del">Removing password...</string>
-		<string name="change_pass_text_1_del">To remove an access password,</string>
-		<string name="change_pass_text_2_del">enter your current</string>
-		<string name="change_pass_text_3_del">password first.</string>
-		<string name="fox.fix.fp_scanner">Fix fingerprint scanner</string>
-		<string name="fox.community.scripts_hdr">Community scripts</string>
-		<string name="fox_install_initd">Swipe to install Initd.</string>
-		<string name="fox_flash_substratum_rescue">Swipe to install Substratum Rescue</string>
-		<string name="fox_fix_fp_hdr1">Fix fingerprint scanner</string>
-		<string name="fox_flash_fp_fix">Swipe to fix fingerprint scanner.</string>
-		<string name="fox_actual_build">Current build</string>
-
-		<string name="full_new_pass_repeat_1">Enter the entered password again</string>
-		<string name="full_new_pass_repeat_2">to verify its correctness.</string>
-		<string name="pass_hdr2_xdl">New password</string>
-		<string name="change_pass_confirm_xdl">Swipe to set a new password</string>
-		<string name="working">Pracuję...</string>
-		<string name="run_custom_file">Uruchom</string>
-		<string name="fox_back_text_1">Enter name:</string>
-		<string name="fox_back_page_check1">Use the name also with ADB.</string>
-		<string name="fox_backup_name_hdr1">Set your own name</string>
-		<string name="fox_backup_name_hdr2">for backup folder and ADB</string>
-		<string name="fox_backup_name_confirm1">Swipe to set a new backup folder name</string>
-		<string name="fox_backup_name_confirm2">Swipe to set a new backup folder name and ADB</string>
-		<string name="fox_backup_name_wait">Setting up new name ...</string>
-		<string name="fox_backup_name_finish1">New name setting</string>
-		<string name="fox_backup_name_finish2">completed successfully</string>
-		<string name="fox_backupfolder_btn">Backup folder</string>
-		<string name="fox_del_backup_confirm">Delete all backups?</string>
-		<string name="fox_deleting_backup">Deleting backups...</string>
-		<string name="fox_backup_deleted">Removing backups is complete</string>
-		<string name="fox_boot_fastcharge">Force fast charge</string>
-		<string name="fox_setonboot_cptn">Set on boot</string>
-		<string name="fox_install_vibrate">Install Vibration</string>
-		<string name="fox_backup_vibrate">Backup Vibration</string>
-		<string name="fox_restore_vibrate">Restore Vibration</string>
-		<string name="fox_vibration_hdr">OrangeFox Action Vibrations</string>
-		<!--  -->
-		<string name="restore_enable_digest_chk" version="2">Enable Digest Verification of Backup Files</string>
-		<string name="generating_digest1" version="2">Generating Digest</string>
-
-		<!-- Message displayed during a backup if we are generating an Digest, ideally, leave the leading " * " to help align and separate this text from other console text -->
-		<string name="generating_digest2" version="2"> * Generating digest...</string>
-		<string name="digest_created" version="2"> * Digest Created.</string>
-		<string name="digest_error" version="2"> * Digest Error!</string>
-		<string name="no_digest" version="2">Skipping Digest check: no Digest file found</string>
-		<string name="digest_fail" version="2">Digest does not match</string>
-		<string name="digest_match" version="2">Digest matched</string>
-		<string name="skip_digest_backup_chk" version="2">Skip Digest generation during backup</string>
-		<string name="digest_compute_error" version="2"> * Error computing Digest.</string>
-		<string name="verifying_digest" version="2">Verifying Digest</string>
-		<string name="skip_digest" version="2">Skipping Digest check based on user setting.</string>
-		<string name="digest_check_skip" version="2">Digest check skip is on</string>
-		<string name="check_for_digest" version="2">Checking for Digest file...</string>
-
-		<string name="install_reboot" version="2">Ponowne uruchomienie za %tw_sleep% sek.</string>
-		<string name="sha2_chk">Use SHA2 for hashing</string>
-		<string name="fox_custom_fox_splash_btn">Custom Splash</string>
-		<string name="fox_custom_fox_splash_1">Custom splash screen was</string>
-		<string name="fox_custom_fox_splash_2">succesfully applied</string>
-		<string name="fox_theme_splash_fox_hdr">Custom Splash</string>
-		<string name="fox_theme_splash_fox_txt1">To change the splash screen select any</string>
-		<string name="fox_theme_splash_fox_txt2">image in the png format and then just</string>
-		<string name="fox_theme_splash_fox_txt3">swipe to apply it.</string>
-		<string name="fox_theme_splash_fox_txt4">For the best results the selected</string>
-		<string name="fox_theme_splash_fox_txt5">image should be in the size</string>
-		<string name="fox_theme_splash_fox_txt6">1080x1920.</string>
-		<string name="not_selected">not selected</string>
-		<string name="tw_splash_png_btn">PNG to use as Splash Screen</string>
-		<string name="splash_preview">Splash Type</string>
-		<string name="theme_splash_preview">Select splash</string>
-		<string name="slider_repack">Swipe to apply new splash screen</string>
-		<string name="repacking">Please wait...</string>
-		<string name="dialog_reset_splash_hdr">Default Splash</string>
-		<string name="dialog_reset_splash_note_1">Do you want to restore the default</string>
-		<string name="dialog_reset_splash_note_2">splash for the OrangeFox Recovery?</string>
-		<string name="fox1fox_restore_splash">Restoring default splash screen...</string>
-		<string name="fox_restore_fox_splash_conf">Swipe to restore the stock splash screen</string>
-		<string name="fox_restore_fox_splash_1">Restore default Splash</string>
-		<string name="fox1_restore_splash_fox_2">Screen of the Recovery</string>
-		<string name="fox_restore_fox2_splash_1">Stock Splash Screen was</string>
-		<string name="fox_restore_fox2_splash_2">succesfully restored</string>
-
-		<string name="fox_fm_unzip_btn">Unzip</string>
-		<!--  -->
-		<string name="no_digest_found" version="2">No digest file found for '{1}'. Please unselect Enable Digest verification to restore.</string>
-		<string name="digest_fail_match" version="2">Digest failed to match on '{1}'.</string>
-		<string name="digest_matched" version="2">Digest matched for '{1}'.</string>
-		<!--  -->
-		<string name="fox_no_os_btn">Restart</string>
-		<string name="fox_no_foxos_hdr">No OS installed!</string>
-		<string name="fox_no_os_fox_txt1">OrangeFox detected that OS</string>
-		<string name="fox_no_os_fox_txt2">isn't installed. If you are sure</string>
-		<string name="fox_no_os_fox_txt3">that OS is installed and this detection</string>
-		<string name="fox_no_os_fox_txt4">is wrong then swipe to confirm</string>
-		<string name="fox_no_os_fox_txt5">the reboot.</string>
-		<string name="fox_no_os_fox_slider_txt">Swipe to ignore this detection and reboot</string>
-
-		<string name="fox_reboot_restore_finish_chk">Reboot after restore is complete</string>
-		<string name="fox_save_load_aromafm_config_chk">Save/Load AromaFM config</string>
-		<string name="fox_hide_backup_folder_chk">Hide main recovery folder</string>
-		<string name="fox_reboot_nastaveni">Set on boot settings</string>
-		<string name="fox_no_os_engine">Use Advanced NO OS Search Engine</string>
-		<string name="fox_reset_default_hdr">Default Settings</string>
-
+		<string name="boot_slot_use_b">ZMIEŃ NA SLOT B</string>
+		<string name="changing_boot_slot">Zmienianie Boot Slot</string>
+		<string name="changing_boot_slot_complete">Zmienianie Boot Slot ukończone</string>
+		<string name="unable_set_boot_slot">Błąd przy zmienianiu bootloader boot slot na {1}</string>
+		<string name="backup_storage_warning">Backup {1} nie zawiera żadnych plików w pamięci wewnętrznej takich jak obrazy lub pobrane.</string>
+		<string name="sha2_chk">Użyj SHA2 do hashowania</string>
+		<string name="disabled">Wyłączone</string>
+		<string name="enabled">Włączone</string>
+		<string name="zip_compatible_err">Weryfikowanie Podpisu Aktualizacji Przyrostowej...</string>
+		
+		
 		<!-- Console Messages -->
-		<string name="orangefox_msg2">[OrangeFox]: Welcome!</string>
-		<string name="orangefox_msg3">[Version]: {1}</string>
-		<string name="orangefox_msg4">[Build]: {1}</string>
-		<string name="fox_incremental_ota_compatibility_chk">Verifying Incremental Package Signature...</string>
-		<string name="fox_incremental_ota_compatibility_false">Incremental package isn't compatible with this ROM!</string>
-		<string name="fox_incremental_ota_compatibility_true">Incremental package is compatible</string>
-		<string name="fox_incremental_ota_status_enabled">Support MIUI Incremental package status: Enabled</string>
-		<string name="fox_incremental_ota_status_disabled">Support MIUI Incremental package status: Disabled</string>
-		<string name="fox_incremental_package_detected">Detected Incremental package '{1}'</string>
-		<string name="fox_survival_does_not_exist">OTA Survival does not exist! Please flash a full ROM first!</string>
-		<string name="fox_install_detecting">Detecting Current Package</string>
-		<string name="fox_install_standard_detected">- Detected Standard Package</string>
-		<string name="fox_install_miui_detected">- Detected MIUI Update Package</string>
-		<string name="fox_zip_have_bootloader">Warning: Detected reinstallation of the bootloader which was called by '{1}'.</string>
-		<string name="substratum_done">-- Substratum Overlays Wipe Complete!</string>
-		<string name="fox_no_space_ota_survival">Not enough free space on internal storage for creating the OTA survival.</string>
-		<string name="fox_wipe_substratum_overlays">Substratum Overlays</string>
-		<string name="fox_incremental_ota_res">OTA_RES -- done!</string>
-		<string name="fox_incremental_ota_res_run">Running OTA_RES process...</string>
-		<string name="fox_incremental_ota_bak_run">Running OTA_BAK process...</string>
-		<string name="fox_incremental_ota_bak">OTA_BAK -- done!</string>
-		<string name="fox_set_new_access_password">Changing recovery access password...</string>
-		<!-- Backup internal storage -->
-		<string name="fox_internal_fatal_i1">OrangeFox: FATAL ERROR! You cannot backup Internal Storage onto itself!</string>
-		<string name="fox_internal_fatal_i2">You MUST change the backup destination to MicroSD/USB-OTG.</string>
-		<string name="fox_internal_q1">OrangeFox - Internal Storage - take care!</string>
-		<!-- dumfox -->
-		<string name="msg2">[OrangeFox]: Process finished!</string>
+		<string name="fox_incremental_ota_compatibility_chk">Weryfikowanie Podpisu Aktualizacji Przyrostowej...</string>
+		<string name="fox_incremental_ota_compatibility_false">Ta aktualizacja przyrostowa nie jest kompatybilna z tym ROMem!</string>
+		<string name="fox_incremental_ota_compatibility_true">Aktualizacja przyrostowa jest kompatybilna</string>
+		<string name="fox_incremental_ota_status_enabled">Status wsparcia aktualizacji przyrostowych MIUI: Włączono</string>
+		<string name="fox_incremental_ota_status_disabled">Status wsparcia aktualizacji przyrostowych MIUI: Wyłączono</string>
+		<string name="fox_incremental_package_detected">Wykryto Aktualizację Przyrostową '{1}'</string>
+		<string name="fox_survival_does_not_exist">Analizowanie Paczki... Najpierw zainstaluj ROM!</string>
+		<string name="fox_install_detecting">Analizowanie Paczki...</string>
+		<string name="fox_install_standard_detected">- Wykryto Standardową Paczkę</string>
+		<string name="fox_install_miui_detected">- Wykryto Paczkę Aktualizacji MIUI</string>
+		<string name="fox_zip_have_bootloader">Ostrzeżenie: Wykryto reinstalację bootloadera wywołaną przez '{1}'.</string>
+		<string name="fox_no_space_ota_survival">Brak miejsca w pamięci by zainstalować OTA survival.</string>
+		<string name="fox_incremental_ota_res">OTA_RES -- ukończono!</string>
+		<string name="fox_incremental_ota_res_run">Trwa proces OTA_RES...</string>
+		<string name="fox_incremental_ota_bak_run">Trwa proces OTA_BAK...</string>
+		<string name="fox_incremental_ota_bak">OTA_BAK -- ukończono!</string>
+		<string name="fox_internal_fatal_i1">OrangeFox: FATALNY BŁĄD! Nie możesz zapisać kopii Pamięci Wewnętrzej na nią samą!</string>
+		<string name="fox_internal_fatal_i2">MUSISZ zmienić miejsce docelowe kopii zapasowej na MicroSD/USB-OTG.</string>
+		<string name="fox_internal_q1">Skopiowano log kernela do {1}</string>
 
-		<string name="fox_remove_access_password_one">Removing recovery access password...</string>
+		<string name="copy_kernel_log">Skopiowano log kernela do {1}</string>
 
-		<string name="of_run_process">Starting '{1}' process</string>
-		<string name="of_run_process_fail">Unable to finish '{1}' process</string>
-		<string name="of_run_process_done">Finished '{1}' process</string>
-		<string name="of_dm_verity">Successfully patched DM-Verity</string>
-		<string name="of_dm_verity_off">DM-Verity is not enabled</string>
-		<string name="of_encryption">Successfully patched forced encryption</string>
-		<string name="of_encryption_off">Forced Encryption is not enabled</string>
-		<string name="of_fstab">Detected fstab: '{1}'</string>
+		<string name="of_run_process">Rozpoczynanie procesu '{1}'</string>
+		<string name="of_run_process_fail">Nie udało się ukończyć procesu '{1}'</string>
+		<string name="of_run_process_done">Ukończono proces '{1}'</string>
+		<string name="of_dm_verity">DM-Verity nie jest włączone</string>
+		<string name="of_dm_verity_off">DM-Verity nie jest włączone</string>
+		<string name="of_encryption">Forced Encryption nie jest włączone</string>
+		<string name="of_encryption_off">Forced Encryption nie jest włączone</string>
+		<string name="of_fstab">Wykryto fstab: '{1}'</string>
+
+		<string name="install_remlatest">Remove Latest</string>
 		
-		<!-- <string name=""></string> -->
-
-		<!-- Powersave mode in statusbar -->
-		<string name="powersave_mode">Energooszczędny</string>
-		<string name="fox_m_other">Inne ustawienia</string>
-
-		<!-- This use for Fix SELinux in advanced square buttons mode, please short how you can -->
-		<string name="fix_contexts_btn">Napraw SELinux</string>
-
-		<!-- OrangeFox menu -->
-		<string name="of_menu_tlt">Menu OrangeFox</string>
-		<string name="fox_menu_comm">Community scripts</string>
-		<string name="fox_menu_splash">Zmień Splash</string>
-		<string name="fox_menu_theme">Centrum interfejsu użytkownika</string>
-		<string name="fox_menu_pass_h">Usuń hasło ROM</string>
-		<string name="fox_menu_pass">Autor: DarthJabba9</string>
-		<string name="fox_lock_btn">Przycisk na ekranie blokady</string>
-		<string name="fox_menu_adb_on">ADB: włączone</string>
-		<string name="fox_menu_adb_off">ADB: wyłączone</string>
-		<string name="ico_btn_mode_txt">Styl kwadratowych przycisków</string>
-
-		<string name="fox_menu_other">Inne</string>
-		<string name="fox_menu_nav">Nawigacja</string>
-
-		<!-- OrangeFox menu2 -->
-		<string name="fox_boot_performance">Włącz tryb wydajności</string>
-		<string name="fox_boot_powersave">Włącz tryb oszczędzania energii</string>
-		<string name="fox_boot_balance">Włącz tryb zrównoważony</string>
-
-		<!-- Fox Colour Engine -->
-		<string name="colour_script_finish1">The selected color has been</string>
-		<string name="colour_script_finish2">successfully applied</string>
-		<string name="colour_script_finish3">Swipe to reboot and apply changes</string>
-		<string name="fox_colour_wait">Restart is in progress</string>
-		<string name="colour_engine1">Apply new theme</string>
-		<string name="colour_engine2">Select theme color</string>
-		<string name="colour_engine3">Swipe to apply the selected color</string>
-		<string name="colour_engine4">Selected color is being applied.</string>
-		<string name="fox.colour.change">Change color</string>
-
-		<!-- OrangeFox OTA menu -->
-			<string name="fox_menu3_i1">Hello to OrangeFox OTA section!</string>
-			<string name="fox_menu3_i2">Click on info button for more info</string>
-			<string name="fox_menu3_ota_sett">OTA Parameters</string>
-			<string name="fox_menu3_fast_act">Fast actions</string>
-			<string name="fox_menu3_dis_ota">Disable OTA</string>
-			<string name="fox_menu3_enb_ota">Enable OTA</string>
-
-			<!-- Info -->
-			<string name="fox_menu3_info_header">OTA Information:</string>
-			<string name="fox_menu3_info1">Support MIUI incremental OTA:</string>
-			<string name="fox_menu3_info2">This should be enabled if you want to be able to install</string>
-			<string name="fox_menu3_info3">MIUI incremental OTA upgrades while using OrangeFox.</string>
-			<string name="fox_menu3_info4"/>
-			<string name="fox_menu3_info5">Include system in OTA survival:</string>
-			<string name="fox_menu3_info6">This should be enabled if you want to be able</string>
-			<string name="fox_menu3_info7">to modify the system partition without</string>
-			<string name="fox_menu3_info8">subsequent OTA updates failing</string>
-			<string name="fox_menu3_info9"/>
-			<string name="fox_menu3_info10">Incremental OTA signature verification:</string>
-			<string name="fox_menu3_info11">This should be enabled if you want the signatures</string>
-			<string name="fox_menu3_info12">of incremental OTA upgrade files to be verified</string>
-			<string name="fox_menu3_info13"/>
-
-			<!-- Checkboxes -->
-			<string name="fox_advanced_stock_recovery">Aggressive stock recovery deactivation</string>
-			<string name="fox_support_miui_ota_chk">Support MIUI Incremental OTA</string>
-			<string name="fox_include_system_survival_chk">Include system in OTA survival</string>
-			<string name="fox_verify_incremental_ota_signature_chk">Incremental OTA signature verification</string>
-			<string name="fox_dmverity_chk">Disable DM-Verity</string>
-			<string name="fox_forced_encryption_chk">Disable Forced Encryption</string>
-			<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Prevent auto reboot after installing OTA</string>
-
-		<!-- OrangeFox float buttons -->
-		<!-- Please leave spaces -->
-		<string name="fox_button_close">    Close</string>
-		<string name="fox_button_info">    Info</string>
-		<string name="fox_button_add_zip">        Add to queue</string>
-
-		<!-- OrangeFox files damaged -->
-		<string name="fox_prebuilt_fox_not_exist_hdr">File doesn't exist!</string>
-		<string name="fox_prebuilt_fox_not_exist_1">Please reflash recovery</string>
-		<string name="fox_prebuilt_fox_not_exist_2">using the installation zip.</string>
-		<string name="fox_fm_unzip_btn">Unzip</string>
+		<string name="backups_remove_all">Usuń</string>
+		<string name="backups_remove">Usuń</string>
 		
-		<!-- OrangeFox UI Center -->
-		<string name="fox_theme_title">OrangeFox UI Center</string>
-		<string name="fox_theme_theme_tlt">Change theme</string>
-		<string name="fox_theme_color_tlt">Change color</string>
-		<string name="fox_theme_i1">After changing the theme, the theme color</string>
-		<string name="fox_theme_i2">will be set to default (orange). After you</string>
-		<string name="fox_theme_i3">apply the theme, you can set a new theme color.</string>
-		<string name="fox_theme_black">Black theme</string>
-		<string name="fox_theme_dark">Dark theme</string>
-		<string name="fox_theme_white">White theme</string>
-		<string name="fox_theme_slider_dark">Slide to apply dark theme</string>
-		<string name="fox_theme_slider_black">Slide to apply black theme</string>
-		<string name="fox_theme_slider_white">Slide to apply white theme</string>
-		<string name="fox_filled_lines">Use filled lines</string>
+		<!-- OrangeFox Recovery - Pie Door theme -->
 
-		<!-- OrangeFox About Page -->
-		<string name="about_hdr">About</string>
-		<string name="author">Author</string>
-		<string name="contact">Contact</string>
-		<string name="credits">Credits</string>
-		<string name="DSM_">For the color changing script</string>
-		<string name="version_twrp">Version</string>
-		<string name="fox_about_telegram_account">Telegram account</string>
-		<string name="fox_about_maintainer">Maintainer</string>
-		<string name="z31s1g">For the base of his material theme.</string>
-		<string name="fox_redwolf">for RedWolf development</string>
-		<string name="fox_thfox">For a contribution to UI</string>
+		<string name="unpack">Wypakuj</string>
+		<string name="repack">Przepakuj</string>
 
+		<string name="fox_save_load_aromafm_config_chk">Save/load AromaFM settings</string>
+		<string name="search_help">Search files and folders...</string>
+		
+		<string name="reboot_to_take_effect">Reboot to changes take effect</string>
+		<string name="fox_modules_hdr">Fox Addons</string>
+		<string name="fox_modules_inst">Install addon</string>
+		<string name="backup_short_hdr">New Backup</string>
+		<string name="backups_wat">Instalacja</string>
+		
+		<string name="module_install">Instalacja</string>
+		<string name="module_uninstall">Odinstaluj</string>
+		<string name="remove_of_files">Remove OrangeFox files</string>
+		<string name="module_initd">Włącz obsługę init.d</string>
+		<string name="module_cam">Usuń hasło</string>
+		<string name="module_pass">Usuń hasło</string>
+		<string name="fox_files_not_exist_1">Plik nie istnieje!</string>
+		<string name="fox_files_not_exist_2">Please reflash recovery</string>
+		<string name="fox_files_not_exist_3">using the installation zip.</string>
+
+		<!-- Customization -->
+		<string name="cust_new_ota_screen">Show less detail while running OTA updates</string>
+		<string name="fm_icons_simple">Make file icons bigger</string>
+		<string name="theme_engine_update">Apply changes and reload?</string>
+		<string name="theme_engine_reset">Motyw</string>
+		<string name="apply_btn">Mały</string>
+		<string name="theme_hdr">Motyw</string>
+		
+		<string name="font_small">Mały</string>
+		<string name="font_norm">Normalny</string>
+		<string name="font_big">Duży</string>
+		<string name="font_size">Wielkość czcionki</string>
+		<string name="cust_autoapply">Apply theme without confirmation</string>
+		<string name="cust_expand_list">Expand lists automatically</string>
+		
+		<string name="status_battery_style">Styl wskaźnika baterii</string>
+		<string name="status_battery_circle">Okrąg</string>
+		<!-- Status bar -->
+		<string name="status_clock_pos">Środek</string>
+		<string name="status_clock_left">Z lewej</string>
+		<string name="status_clock_center">Środek</string>
+		<string name="status_clock_right">Z prawej</string>
+		<string name="dark_title">Make title darker</string>
+		<string name="separate_status">Make status bar darker</string>
+		<string name="noshadow_title">Show status bar shadow</string>
+		<string name="hide_notch">Hide notch</string>
+		<!-- NavBar -->
+		<string name="navbar_title">Navigation Bar</string>
+		<string name="navbar_onscreen">Enable NavBar</string>
+		<string name="show_slideout">Show console button</string>
+		<string name="dark_nav">Ciemny</string>
+		<!-- Keyboard -->
+		<string name="keyboard_title">Klawiatura</string>
+		<string name="keyboard_newstyle">Refreshed style</string>
+		<string name="keyboard_nums">Odblokuj</string>
+		<string name="key_swipe">Swipe on keyboard to delete all</string>
 		<!-- Lockscreen -->
-		<string name="unlock_btn">Odblokuj</string>
+		<string name="lockscreen_unlock">Odblokuj</string>
+		<string name="lockscreen_title">Lockscreen</string>
+		<string name="lockscreen_style">Style ekranu blokady</string>
+		<string name="lockscreen_clock">Zegar</string>
+		<string name="lockscreen_icon">Ikona</string>
+		<string name="lockscreen_btn">Dotknięcie ikony blokady blokuje ekran</string>
+		<string name="lockscreen_info">Show battery and CPU info</string>
+		<string name="lockscreen_quicklock">Dotknięcie ikony blokady blokuje ekran</string>
 
-		<!-- OrangeFox menu2 -->
-		<string name="fox_menu2_power">Profil wydajności (dla recovery)</string>
-		<string name="fox_menu2_other">Inne ustawienia</string>
-		<string name="fox_use_green_led">Użyj zielonego koloru diody</string>
+		<!-- OTA working page -->
+		<string name="ota_console_title">Installing OTA...</string>
+		<string name="ota_simple_title">Bateria</string>
+		<string name="ota_simple_log_btn">Log</string>
 
-		<string name="f_orange">Pomarańczowy</string>
-		<string name="f_indigo">Indygo</string>
-		<string name="f_blue">Niebieski</string>
-		<string name="f_light_blue">Jasnoniebieski</string>
-		<string name="f_stock">Stck</string>
-		<string name="f_teal">Morski</string>
-		<string name="f_green">Zielony</string>
-		<string name="f_light_green">Jasnozielony</string>
-		<string name="f_lime">Limonkowy</string>
-		<string name="f_amber">Bursztynowy</string>
-		<string name="f_red">Zły kolor</string>
-		<string name="f_deep_orange">Ciemnopomarańczowy</string>
-		<string name="f_brown">Brązowy</string>
-		<string name="f_grey">Szary</string>
-		<string name="f_blue_grey">Niebiesko-szary</string>
-
-		<!-- OrangeFox community page -->
-
-		<string name="fox_comm_i1">To add a new item contact</string>
-		<string name="fox_comm_i2">@MrYacha in Telegram</string>
-
-		<string name="fox_comm_ins">Instaluj</string>
-		<string name="fox_comm_del">Usuń</string>
-
-		<string name="fox_comm_initd_txt2">Autor: DarthJabba9</string>
-		<string name="fox_comm_initd_sld">Przesuń palcem, aby zainstalować obsługę initd</string>
-
-		<string name="fox_comm_gs_txt2">By SharkcpN</string>
-		<string name="fox_comm_gs_sld">Swipe to install GoogleSans font</string>
-		<string name="fox_comm_gs_i1">Miui not supported!</string>
-
-		<string name="fox_del_btn">Del OF Files</string>
-		<string name="fox_del_txt1">Delete OrangeFox Files</string>
-		<string name="fox_del_txt2">By the OrangeFox team</string>
-		<string name="fox_del_sld">Swipe to delete OrangeFox Files</string>
-		<string name="fox_del_i1">Do you really want to delete all</string>
-		<string name="fox_del_i2">the OrangeFox files?</string>
-
-		<string name="fox_comm_su_txt1">Install SuperSU</string>
-		<string name="fox_comm_su_txt2">By Chainfire</string>
-		<string name="fox_comm_su_sld">Swipe to install SuperSU</string>
-		<string name="fox_comm_su_i1">Only for Miui and Non-Treble ROM</string>
-
-		<string name="fox_comm_rm_su_txt1">Remove SuperSU</string>
-		<string name="fox_comm_rm_su_txt2">SuperSU by Chainfire</string>
-		<string name="fox_comm_rm_su_sld">Swipe to remove SuperSU</string>
-
-		<string name="fox_magisk_txt1">Install Magisk</string>
-		<string name="fox_magisk_txt2">By Topjohnwu</string>
-		<string name="fox_magisk_sld">Swipe to install Magisk</string>
-
-		<string name="fox_comm_rm_mg_txt1">Remove Magisk</string>
-		<string name="fox_comm_rm_mg_txt2">Magisk by Topjohnwu</string>
-		<string name="fox_comm_rm_mg_sld">Swipe to remove Magisk</string>
-
-		<string name="fox_comm_cam_txt1">Install Cam2Api</string>
-		<string name="fox_comm_cam_txt2">No author</string>
-		<string name="fox_comm_cam_sld">Swipe to install Cam2Api</string>
-
-		<string name="fox_dellp_btn">Del ROM Pass</string>
-		<string name="fox_dellp_txt1">Remove ROM password</string>
-		<string name="fox_dellp_txt2">Autor: DarthJabba9</string>
-		<string name="fox_dellp_sld">Swipe to remove ROM Password</string>
-
-		<string name="fox_def_btn">Restore defaults</string>
-		<string name="fox_def_txt1">Restore OrangeFox default settings</string>
-		<string name="fox_def_txt2">By the OrangeFox team</string>
-		<string name="fox_def_sld">Slide to restore default settings</string>
-
-		<!-- Lockscreen -->
 		<string name="battery">Bateria</string>
 
-</resources>
+		<!-- Pass -->
+		<string name="pass_gk">Gesture key</string>
+		<string name="pass_classic">Text password</string>
+		<string name="pass_dis">Disable password</string>
+		<string name="pass_pin">PIN Code</string>
+		
+		<string name="locked_info_1">Aby użyć głównych funkcji Recovery</string>
+		<string name="locked_info_2">musisz najpierw wprowadzić swoje hasło.</string>
+		<string name="locked_info_3">Aby użyć głównych funkcji Recovery</string>
+		<string name="locked_info_4">musisz najpierw wprowadzić swoje hasło.</string>
+		<string name="locked_info_4_gk">you first need to draw your gesture key.</string>
+		
+		<string name="new_pass_info_1">Enter new password to</string>
+		<string name="new_pass_info_1_gk">nieautoryzowanym dostępem.</string>
+		<string name="new_pass_info_2">OrangeFox against unauthorized</string>
+		<string name="new_pass_info_3">nieautoryzowanym dostępem.</string>
+		<string name="new_pass_info_4">You need to enter your password twice.</string>
+		<string name="new_pass_info_4_gk">You need to draw gesture key twice.</string>
+		<string name="new_pass_info_4_2">Enter your password again.</string>
+		<string name="new_pass_info_4_2_gk">Draw gesture key again.</string>
+		
+		<string name="pass_page_block">Current blocking method</string>
+		<string name="pass_page_block_inf1">You can sleep better knowing</string>
+		<string name="pass_page_block_inf2">that you are protected.</string>
+		<string name="pass_page_select">Select password type</string>
+		
+		<!-- Utilities -->
+		<string name="more">More...</string>
+		<string name="hide">Hide</string>
+		<string name="part_menu_hdr">Manage Partitions</string>
+		<string name="run_adb_startup">Run ADB on startup</string>
+
+		<!-- MMGUI -->
+		<string name="mm_module_active">Active</string>
+		<string name="mm_module_mount">Auto mount</string>
+		<string name="mm_modules">Modules</string>
+		<string name="mm_ver">Magisk Version</string>
+		<string name="mm_mod_ver">Module Version</string>
+		<string name="magisk_not_found">Magisk not found!</string>
+		<string name="magisk_not_found_1">Do you wanna go to Fox Addons</string>
+		<string name="magisk_not_found_2">Włącz OTA</string>
+		<string name="magisk_not_found_3"/>
+		
+		<!-- MIUI OTA -->
+		<string name="fox_ota_settings">OTA Settings</string>
+		<string name="fox_ota_on">Włącz OTA</string>
+		
+		<!-- About -->
+		<string name="abt_maintainer">Twórca</string>
+		<string name="abt_fd">Theme creator &amp; designer</string>
+		<string name="abt_bork">CEO, Site &amp; UI</string>
+		<string name="abt_dj">Build system, C++</string>
+		<string name="abt_front">Frontend developer</string>
+		<string name="abt_back">Backend developer</string>
+		<string name="abt_device">Podziękowania</string>
+		<string name="version_twrp">TWRP Version</string>
+		<string name="build_type">Build type</string>
+		<string name="abt_credits">Podziękowania</string>
+		<string name="abt_trans">Translators</string>
+		<string name="abt_changes">Lista Zmian</string>
+		<string name="abt_main_shrt">Twórca</string>
+		<string name="welcome_msg">Welcome to OrangeFox!</string>
+		<string name="welcome_msg2"><!-- If welcome message is too big in your lang, use this string --></string>
+		
+		<!-- Symlink -->
+		<string name="symlink_dir_name">Link to folder</string>
+		<string name="symlink_file_name">Link to file</string>
+		<string name="symlink_broken_name">Broken link</string>
+		<string name="symlink_folder">Open real folder</string>
+		<string name="symlink_file">Open real file</string>
+		
+		<!-- Files -->
+		<string name="files_show_hidden">Show hidden files in Files</string>
+		<string name="files_auto_open">Auto detect file type in Files</string>
+		<string name="file_read_error">Unable to open file!</string>
+		<string name="subs_wipe">Wipe Substratum Overlays</string>
+		<string name="sort_ex_all">All files</string>
+		<string name="sort_ex_img">IMG files</string>
+		<string name="sort_ex_zip">Pliki ZIP</string>
+		<string name="aroma_help">Press again to start AromaFM...</string>
+
+		<!-- this error will shown when recovery cannot create backup folder
+		 -->
+		<string name="backups_rw_error_1">Storage mounted</string>
+		<string name="backups_rw_error_2">as read only!</string>
+
+		<!-- App mgr -->
+		<string name="appmgr_apps">Aplikacje</string>
+		<string name="appmgr_title">Użyj zielonego koloru diody</string>
+
+		<!-- Perfomance -->
+		<string name="perf_title">Wymuś szybkie ładowanie</string>
+		<string name="perf_conf_mode">Profil wydajności recovery</string>
+		<string name="perf_conf_balance">Zrównoważony</string>
+		<string name="perf_conf_high">High perfomance</string>
+		<string name="perf_conf_batt">Agresywna dezaktywacja stock recovery</string>
+
+		<string name="fox_led_title">Wsparcie przyrostowych aktualizacji OTA MIUI</string>
+		<string name="fox_use_green_led">Użyj zielonego koloru diody</string>
+		<string name="fox_boot_fastcharge">Wymuś szybkie ładowanie</string>
+
+		<!-- OTA -->
+		<string name="fox_ota_msg_ready">Wyłącz DM-Verity</string>
+		<string name="fox_ota_msg_custom">Wyłącz Forced Encryption</string>
+		<string name="fox_ota_msg_reflash">Zapobiegaj automatycznemu restartowi po instalacji OTA</string>
+		<string name="fox_advanced_stock_recovery">Agresywna deaktywacja stock recovery</string>
+		<string name="fox_support_miui_ota_chk">Wsparcie przyrostowych aktualizacji OTA MIUI</string>
+		<string name="fox_include_system_survival_chk">Umieść system w OTA survival</string>
+		<string name="fox_verify_incremental_ota_signature_chk">Weryfikacja podpisu przyrostowej aktualizacji OTA</string>
+		<string name="fox_dmverity_chk">Wyłącz DM-Verity</string>
+		<string name="fox_forced_encryption_chk">Wyłącz Forced Encryption</string>
+		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Zapobiegaj automatycznemu restartowi po instalacji OTA</string>
+		<string name="of_ota_reboot_disabled">OTA update succeeded. You disabled auto-reboot. Returning control to you.</string>
+	</resources>
 </language>

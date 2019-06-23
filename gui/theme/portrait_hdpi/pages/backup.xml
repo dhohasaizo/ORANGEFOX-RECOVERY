@@ -1,0 +1,615 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="backup">
+			<action>
+				<actions>
+					<action function="set">adb_backup_pc=1</action>
+					<action function="set">tw_fileexists=0</action>
+					<action function="set">tw_backup_name={@auto_gen}</action>
+					<action function="page">backup_device</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="backup_device">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@backup_short_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@sel_part_hdr}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_storage_display_name% (%tw_storage_free_size% MB)</text>
+			</text>
+
+			<button>
+				<conditions>
+					<condition var1="tw_include_encrypted_backup" var2="1"/>
+					<condition var1="tw_encrypt_backup" var2="0"/>
+				</conditions>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<actions>
+					<action function="set">tw_password_not_match=0</action>
+					<action function="set">tw_backup_password=</action>
+					<action function="set">tw_backup_password2=</action>
+					<action function="set">tw_backup_encrypt_display=</action>
+					<action function="set">tw_backup_encrypt_display2=</action>
+					<action function="overlay">dialog_encryption1</action>
+				</actions>
+			</button>
+			
+			<image>
+				<conditions>
+					<condition var1="tw_include_encrypted_backup" var2="1"/>
+					<condition var1="tw_encrypt_backup" var2="0"/>
+				</conditions>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<image resource="actionbar_encr_dis"/>
+			</image>
+
+			<button>
+				<conditions>
+					<condition var1="tw_include_encrypted_backup" var2="1"/>
+					<condition var1="tw_encrypt_backup" var2="1"/>
+					<condition var1="tw_password_not_match" var2="0"/>
+				</conditions>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<actions>
+					<action function="set">tw_encrypt_backup=0</action>
+					<action function="set">tw_backup_password=</action>
+					<action function="set">tw_backup_password2=</action>
+					<action function="set">tw_backup_encrypt_display=</action>
+					<action function="set">tw_backup_encrypt_display2=</action>
+					<action function="set">tw_password_not_match=0</action>
+				</actions>
+			</button>
+			
+			<image>
+				<conditions>
+					<condition var1="tw_include_encrypted_backup" var2="1"/>
+					<condition var1="tw_encrypt_backup" var2="1"/>
+					<condition var1="tw_password_not_match" var2="0"/>
+				</conditions>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<image resource="actionbar_encr_ena"/>
+			</image>
+
+			<button>
+				<conditions>
+					<condition var1="tw_include_encrypted_backup" var2="1"/>
+					<condition var1="tw_encrypt_backup" var2="1"/>
+					<condition var1="tw_password_not_match" var2="1"/>
+				</conditions>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<actions>
+					<action function="set">tw_encrypt_backup=0</action>
+					<action function="set">tw_backup_password=</action>
+					<action function="set">tw_backup_password2=</action>
+					<action function="set">tw_backup_encrypt_display=</action>
+					<action function="set">tw_backup_encrypt_display2=</action>
+					<action function="set">tw_password_not_match=0</action>
+				</actions>
+			</button>
+			
+			<image>
+				<conditions>
+					<condition var1="tw_include_encrypted_backup" var2="1"/>
+					<condition var1="tw_encrypt_backup" var2="1"/>
+					<condition var1="tw_password_not_match" var2="1"/>
+				</conditions>
+				<placement x="%ab_btn3_x%" y="%ab_y%"/>
+				<image resource="actionbar_encr_dis"/>
+			</image>
+
+			<button>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="set">backup_back=backup_device</action>
+				<action function="page">ext_backup</action>
+			</button>
+
+			<image>
+				<placement x="%ab_btn1_x%" y="%ab_y%"/>
+				<image resource="actionbar_settings"/>
+			</image>
+			
+			<template name="actionbar_storage"/>
+
+			<image>
+				<condition var1="adb_backup_pc" var2="1"/>
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<condition var1="adb_backup_pc" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
+				<text>{@adb_backup_pc1}</text>
+			</text>
+
+			<text style="text_body2_hl">
+				<condition var1="adb_backup_pc" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row2_2a_y%"/>
+				<text>{@adb_backup_pc2}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<condition var1="adb_backup_pc" var2="0"/>
+				<text>{@name}</text>
+			</text>
+
+			<input>
+				<placement x="%col1_x%" y="%row2_2a_y%" w="%content_w%" h="%input_height%"/>
+				<condition var1="adb_backup_pc" var2="0"/>
+				<cursor color="%transparent%" hasfocus="0" width="0"/>
+				<data name="tw_backup_name"/>
+				<restrict minlen="0" maxlen="64" disable="1"/>
+				<text>%tw_backup_name%</text>
+			</input>
+
+			<fill color="%linecolor%">
+				<condition var1="tw_fileexists" var2="0"/>
+				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen}"/>
+				<condition var1="adb_backup_pc" var2="0"/>
+				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<fill color="%linecolor%">
+				<condition var1="tw_backup_name" var2="{@auto_gen}"/>
+				<condition var1="adb_backup_pc" var2="0"/>
+				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<fill color="%text_fail%">
+				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen}"/>
+				<condition var1="adb_backup_pc" var2="0"/>
+				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<text style="text_input_fail">
+				<condition var1="tw_fileexists" var2="1"/>
+				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen}"/>
+				<condition var1="adb_backup_pc" var2="0"/>
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@backup_name_exists}</text>
+			</text>
+
+			<button style="menu_btn">
+				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen}"/>
+				<condition var1="adb_backup_pc" var2="0"/>
+				<placement x="%col1_x%" y="%row2_1a_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<actions>
+					<action function="page">backupname</action>
+				</actions>
+			</button>
+
+			<button style="menu_btn">
+				<condition var1="tw_backup_name" var2="{@auto_gen}"/>
+				<condition var1="adb_backup_pc" var2="0"/>
+				<placement x="%col1_x%" y="%row2_1a_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<actions>
+					<action function="page">backupname_foolprotection</action>
+				</actions>
+			</button>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row3_1a_y%"/>
+				<text>{@partitions}</text>
+			</text>
+
+			<partitionlist>
+				<placement x="0" y="%row3_2a_y%" w="%screen_w%" h="%part_list_btns_h%"/>
+				<data name="tw_backup_list"/>
+				<listtype name="backup"/>
+			</partitionlist>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="%row_btn2_y%"/>
+				<text>{@bkp_clear}</text>
+				<action function="set">tw_backup_list=</action>
+			</button>
+
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_right_x%" y="%row_btn2_y%" placement="1"/>
+				<text>{@bkp_quick}</text>
+				<action function="set">tw_backup_list=%tw_backup_list_quick%</action>
+			</button>
+
+			<text style="caption">
+				<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+				<text>{@swipe_backup}</text>
+			</text>
+
+			<slider style="slider_action">
+				<condition var1="tw_backup_name" op="!=" var2="{@auto_gen}"/>
+				<placement x="%center_x%" y="%slider_y%" placement="5"/>
+				<action function="set">tw_filecheck=%tw_backups_folder%/%tw_backup_name%</action>
+				<action function="set">tw_existpage=backup_device</action>
+				<action function="set">tw_notexistpage=backup_run</action>
+				<action function="page">filecheck</action>
+			</slider>
+
+			<slider style="slider_action">
+				<condition var1="tw_backup_name" var2="{@auto_gen}"/>
+				<placement x="%center_x%" y="%slider_y%" placement="5"/>
+				<action function="page">backup_run</action>
+			</slider>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">restore</action>
+			</action>
+		</page>
+
+		<page name="backupname">		
+			<template name="body_key"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@backup_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@bkp_nametitle}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@bkp_namesub}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<text>{@name}</text>
+			</text>
+
+			<input>
+				<placement x="%col1_x%" y="%row2_2a_y%"  w="%input_backup_width%" h="%input_height%"/>
+				<text>%tw_backup_name%</text>
+				<data name="tw_backup_name"/>
+				<restrict minlen="0" maxlen="64" allow="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_.{}[]"/>
+				<action function="set">tw_filecheck=%tw_backups_folder%/%tw_backup_name%</action>
+				<action function="set">tw_existpage=backupname</action>
+				<action function="set">tw_notexistpage=backup_device</action>
+				<action function="page">filecheck</action>
+			</input>
+
+			<button>
+				<placement x="%ab_btn1_x%" y="%row2_1a_y%"/>
+				<image resource="actionbar_clear"/>
+				<action function="set">tw_backup_name=</action>
+				<action function="page">backupname</action>
+			</button>
+
+			<fill color="%accent%">
+				<condition var1="tw_fileexists" var2="0"/>
+				<placement x="%col1_x%" y="%row2_3a_y%" w="%input_backup_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<fill color="%text_fail%">
+				<condition var1="tw_fileexists" var2="1"/>
+				<placement x="%col1_x%" y="%row2_3a_y%" w="%input_backup_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<text style="text_input_fail">
+				<condition var1="tw_fileexists" var2="1"/>
+				<placement x="%col1_x%" y="%row2_3a_y%"/>
+				<text>{@backup_name_exists}</text>
+			</text>
+
+			<listbox style="btn_list">
+				<placement x="0" y="%input_btn_list_y%" w="%screen_w%" h="%bl_h3%"/>
+				<listitem name="{@bkp_date}">
+					<icon res="bs_btn_time"/>
+					<action function="appenddatetobackupname"/>
+				</listitem>
+				<listitem name="{@bkp_gen}">
+					<icon res="bs_btn_new"/>
+					<action function="generatebackupname"/>
+				</listitem>
+				<listitem name="{@bkp_gen_whilebkp}">
+					<icon res="bs_btn_wut"/>
+					<action function="set">tw_backup_name={@auto_gen}</action>
+					<action function="page">backupname_foolprotection</action>
+				</listitem>
+			</listbox>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">backup_device</action>
+			</action>
+		</page>
+
+		<page name="backupname_foolprotection">
+
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@backup_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@bkp_nametitle}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@bkp_namesub}</text>
+			</text>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<text>{@name}</text>
+			</text>
+
+			<input>
+				<placement x="%col1_x%" y="%row2_2a_y%" w="%content_w%" h="%input_height%"/>
+				<cursor color="%transparent%" hasfocus="0" width="0"/>
+				<data name="tw_backup_name"/>
+				<restrict minlen="0" maxlen="64" disable="1"/>
+				<text>%tw_backup_name%</text>
+			</input>
+
+			<fill color="%linecolor%">
+				<placement x="%col1_x%" y="%row2_3a_y%" w="%content_w%" h="%input_line_height%" placement="1"/>
+			</fill>
+			
+			<button style="menu_btn">
+				<placement x="%col1_x%" y="%row2_1a_y%" w="%content_w%" h="%mb_h_hide%"/>
+				<action function="generatebackupname"/>
+				<action function="page">backupname</action>
+			</button>
+
+			<listbox style="btn_list">
+				<placement x="0" y="%input_btn_list_y%" w="%screen_w%" h="%bl_h2%"/>
+				<listitem name="{@bkp_date}">
+					<icon res="bs_btn_time"/>
+					<action function="set">tw_backup_name=</action>
+					<action function="page">backupname</action>
+					<action function="appenddatetobackupname"/>
+				</listitem>
+				<listitem name="{@bkp_gen}">
+					<icon res="bs_btn_new"/>
+					<action function="generatebackupname"/>
+					<action function="page">backupname</action>
+				</listitem>
+			</listbox>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">backup_device</action>
+			</action>
+		</page>
+
+		<page name="checkbackuppassword">
+			<action>
+				<condition var1="tw_backup_password" op="=" var2="tw_backup_password2"/>
+				<actions>
+					<action function="set">tw_encrypt_backup=1</action>
+					<action function="set">tw_password_not_match=0</action>
+					<action function="page">backup_device</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_backup_password" op="!=" var2="tw_backup_password2"/>
+				<actions>
+					<action function="page">checkbackuppassword2</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="checkbackuppassword2">
+			<action>
+				<actions>
+					<action function="set">tw_backup_password=</action>
+					<action function="set">tw_backup_password2=</action>
+					<action function="set">tw_backup_encrypt_display=</action>
+					<action function="set">tw_backup_encrypt_display2=</action>
+					<action function="set">tw_encrypt_backup=0</action>
+					<action function="set">tw_password_not_match=1</action>
+					<action function="page">backup_device</action>
+					<action function="overlay">dialog_encryption1</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="backup_run">
+			<template name="body"/>
+
+			<template name="progress_bar"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@backup_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@backing}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<condition var1="tw_partition"/>
+				<condition var1="tw_file_progress"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_partition%: %tw_file_progress%</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<condition var1="tw_partition" op="!="/>
+				<condition var1="tw_file_progress" op="!="/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@lang_wait}</text>
+			</text>
+
+			<template name="action_page_console"/>
+			
+			<button>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
+				<action function="cancelbackup"/>
+			</button>
+
+			<image>
+				<condition var1="tw_busy" var2="1"/>
+				<placement x="%ab_back_x%" y="%ab_y%"/>
+				<image resource="actionbar_cancel"/>
+			</image>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row7_1a_y%"/>
+				<text>{@progress}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%col1_x%" y="%row7_2a_y%"/>
+				<text>%tw_size_progress%</text>
+			</text>
+
+			<action>
+				<action function="nandroid">backup</action>
+			</action>
+
+			<action>
+				<condition var1="tw_operation_state" var2="1"/>
+				<condition var1="tw_cancel_backup" var2="0"/>
+				<actions>
+					<action function="set">tw_complete_text1={@backup_complete}</action>
+					<action function="set">tw_show_reboot=1</action>
+					<action function="page">backup_action_complete</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="tw_operation_state" var2="1"/>
+				<condition var1="tw_cancel_backup" var2="1"/>
+				<actions>
+					<action function="set">tw_complete_text1={@backup_cancel}</action>
+					<action function="set">tw_show_reboot=1</action>
+					<action function="page">backup_action_complete</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="backup_action_complete">
+			<template name="body"/>
+
+			<template name="ab_ex"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@backup_hdr}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_operation_status" op="!=" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@failed}</text>
+			</text>
+
+			<text style="text_ab_title">
+				<condition var1="tw_operation_status" var2="0"/>
+				<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+				<text>{@successful}</text>
+			</text>
+
+			<text style="text_ab_subtitle">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>%tw_complete_text1%</text>
+			</text>
+
+			<template name="action_page_console"/>
+
+			<button style="btn_raised">
+				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+				<text>{@back_btn}</text>
+				<actions>
+					<action function="set">tw_clear_destination=backup_device</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</button>
+
+			<button style="btn_raised_hl">
+				<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
+				<condition var1="tw_reboot_system" var2="1"/>
+				<text>{@reboot_system_btn}</text>
+				<actions>
+					<action function="set">tw_back=main</action>
+					<action function="set">tw_action=reboot</action>
+					<action function="set">tw_action_param=system</action>
+					<action function="set">tw_has_action2=0</action>
+					<action function="set">tw_text1={@no_os1}</action>
+					<action function="set">tw_text2={@no_osrb}</action>
+					<action function="set">tw_action_text1={@rebooting}</action>
+					<action function="set">tw_complete_text1={@rebooting}</action>
+					<action function="set">tw_slider_text={@swipe_reboot}</action>
+					<action function="page">rebootcheck</action>
+				</actions>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<actions>
+					<action function="set">tw_clear_destination=backup_device</action>
+					<action function="page">clear_vars</action>
+				</actions>
+			</action>
+		</page>
+	</pages>
+</recovery>

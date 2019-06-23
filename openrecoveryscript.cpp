@@ -65,17 +65,18 @@ OpenRecoveryScript::VoidFunction OpenRecoveryScript::call_after_cli_command;
 #define SCRIPT_COMMAND_SIZE 512
 
 int OpenRecoveryScript::check_for_script_file(void) {
-	if (!PartitionManager.Mount_By_Path(SCRIPT_FILE_CACHE, false)) {
-		LOGINFO("Unable to mount /cache for OpenRecoveryScript support.\n");
-		gui_msg(Msg(msg::kError, "unable_to_mount=Unable to mount {1}")(SCRIPT_FILE_CACHE));
+	std::string orsFile = TWFunc::get_cache_dir() + "/recovery/openrecoveryscript";
+	if (!PartitionManager.Mount_By_Path(orsFile, false)) {
+		LOGINFO("Unable to mount %s for OpenRecoveryScript support.\n", TWFunc::get_cache_dir().c_str());
+		gui_msg(Msg(msg::kError, "unable_to_mount=Unable to mount {1}")(TWFunc::get_cache_dir()));
 		return 0;
 	}
-	if (TWFunc::Path_Exists(SCRIPT_FILE_CACHE)) {
-		LOGINFO("Script file found: '%s'\n", SCRIPT_FILE_CACHE);
+	if (TWFunc::Path_Exists(orsFile)) {
+		LOGINFO("Script file found: '%s'\n", orsFile.c_str());
 		// Copy script file to /tmp
-		TWFunc::copy_file(SCRIPT_FILE_CACHE, SCRIPT_FILE_TMP, 0755);
-		// Delete the file from /cache
-		unlink(SCRIPT_FILE_CACHE);
+		TWFunc::copy_file(orsFile, SCRIPT_FILE_TMP, 0755);
+		// Delete the file from cache
+		unlink(orsFile.c_str());
 		return 1;
 	}
 	return 0;
@@ -187,7 +188,7 @@ int OpenRecoveryScript::run_script_file(void) {
 					strncpy(value2, tok, line_len - remove_nl);
 					DataManager::SetValue(TW_BACKUP_NAME, value2);
 					gui_msg(Msg("backup_folder_set=Backup folder set to '{1}'")(value2));
-					if (PartitionManager.Check_Backup_Name(true) != 0) {
+					if (PartitionManager.Check_Backup_Name(value2, true, true) != 0) {
 						ret_val = 1;
 						continue;
 					}
@@ -370,6 +371,8 @@ int OpenRecoveryScript::run_script_file(void) {
 					TWFunc::tw_reboot(rb_bootloader);
 				else if (strlen(value) && strcmp(value, "download") == 0)
 					TWFunc::tw_reboot(rb_download);
+				else if (strlen(value) && strcmp(value, "edl") == 0)
+					TWFunc::tw_reboot(rb_edl);
 				else
 					TWFunc::tw_reboot(rb_system);
 			} else 
@@ -723,18 +726,13 @@ int OpenRecoveryScript::Run_OpenRecoveryScript_Action()
 	   }
 
 	if (reboot || code1 == 3 || code2 == 3) 
-	  {
-	  
-		// DJ9
-		//Run_Fox_Process_After_ORS();
-		// DJ9
-	  
+	  {	  
     		// have we disabled auto-reboot?
     		if (code1 == 3 || code2 == 3) 
        		  { 
  		     usleep(1000000); // sleep for 1 second
           	     op_status = 0;
-          	     gui_print_color("warning", "\nOTA update succeeded. You disabled auto-reboot. Returning control to you.\n\n");
+		     gui_msg("of_ota_reboot_disabled=OTA update succeeded. You disabled auto-reboot. Returning control to you.\n");
           	     DataManager::SetValue("tw_page_done", 1);
        		  }
        		else
@@ -771,6 +769,10 @@ void OpenRecoveryScript::Run_CLI_Command(const char* command) {
 		gui_msg("decrypt_cmd=Attempting to decrypt data partition via command line.");
 		if (PartitionManager.Decrypt_Device(pass) == 0) {
 			// set_page_done = 1;  // done by singleaction_page anyway
+			std::string orsFile = TWFunc::get_cache_dir() + "/openrecoveryscript";
+			if (TWFunc::Path_Exists(orsFile)) {
+				Run_OpenRecoveryScript_Action();
+			}
 		}
 	} else if (OpenRecoveryScript::Insert_ORS_Command(command)) {
 		OpenRecoveryScript::run_script_file();

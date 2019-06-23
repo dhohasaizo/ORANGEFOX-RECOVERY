@@ -39,18 +39,30 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 	xml_attribute<>* attr;
 	xml_node<>* child;
 
-	mFolderIcon = mFileIcon = NULL;
+	mFolderIcon = mFileIcon = mUpIcon = mExZipIcon = mExImgIcon = mExTxtIcon = mExPngIcon = mExLinkIcon = mExBlockIcon = NULL;
 	mShowFolders = mShowFiles = mShowNavFolders = 1;
 	mUpdate = 0;
 	mPathVar = "cwd";
+	mFileFilterVar = "";
 	updateFileList = false;
 
 	// Load filter for filtering files (e.g. *.zip for only zips)
 	child = FindNode(node, "filter");
 	if (child) {
-		attr = child->first_attribute("extn");
+		// [f/d] use variable as extension filter (if extnvar not found use classic extn)
+		attr = child->first_attribute("extnvar");
+		if (attr) {
+			mExtnVar = attr->value();
+			DataManager::GetValue(mExtnVar, mExtn);
+		} else {
+			attr = child->first_attribute("extn");
+			if (attr)
+				mExtn= attr->value();
+		}
+
+		attr = child->first_attribute("name");
 		if (attr)
-			mExtn = attr->value();
+			mFileFilterVar = attr->value();
 		attr = child->first_attribute("folders");
 		if (attr)
 			mShowFolders = atoi(attr->value());
@@ -105,24 +117,52 @@ GUIFileSelector::GUIFileSelector(xml_node<>* node) : GUIScrollList(node)
 		mSelection = attr->value();
 	else
 		mSelection = "0";
-
+	
 	// Get folder and file icons if present
 	child = FindNode(node, "icon");
 	if (child) {
 		mFolderIcon = LoadAttrImage(child, "folder");
-		mFileIcon = LoadAttrImage(child, "file");
+		mFileIcon   = LoadAttrImage(child, "file");
 	}
+	
+	// [f/d] Use file & folder icons for add. icons when exicon node not found
+	mExZipIcon = mExImgIcon = mExTxtIcon = mExLinkIcon = mExPngIcon = mFileIcon;
+	mUpIcon = mFolderIcon;
+	
 	int iconWidth = 0, iconHeight = 0;
-	if (mFolderIcon && mFolderIcon->GetResource() && mFileIcon && mFileIcon->GetResource()) {
-		iconWidth = std::max(mFolderIcon->GetWidth(), mFileIcon->GetWidth());
-		iconHeight = std::max(mFolderIcon->GetHeight(), mFileIcon->GetHeight());
-	} else if (mFolderIcon && mFolderIcon->GetResource()) {
-		iconWidth = mFolderIcon->GetWidth();
-		iconHeight = mFolderIcon->GetHeight();
-	} else if (mFileIcon && mFileIcon->GetResource()) {
-		iconWidth = mFileIcon->GetWidth();
-		iconHeight = mFileIcon->GetHeight();
+	
+	// [f/d] Get size for icons
+	// [f/d] UPD. exicons only availble if iconsize is set. 
+	//            fox wont load
+	child = FindNode(node, "iconsize");
+	if (child) {
+		iconWidth = LoadAttrIntScaleX(child, "w", iconWidth);
+		iconHeight = LoadAttrIntScaleY(child, "h", iconHeight);
+		
+		// [f/d] Get additional icons
+		child = FindNode(node, "exicon");
+		if (child) {
+			mExZipIcon   = LoadAttrImage(child, "zip");
+			mExImgIcon   = LoadAttrImage(child, "img");
+			mExTxtIcon   = LoadAttrImage(child, "txt");
+			mExPngIcon   = LoadAttrImage(child, "png");
+			mExLinkIcon  = LoadAttrImage(child, "link");
+			mExBlockIcon = LoadAttrImage(child, "block");
+			mUpIcon      = LoadAttrImage(child, "up");
+		}
+	} else {
+		if (mFolderIcon && mFolderIcon->GetResource() && mFileIcon && mFileIcon->GetResource()) {
+			iconWidth = std::max(mFolderIcon->GetWidth(), mFileIcon->GetWidth());
+			iconHeight = std::max(mFolderIcon->GetHeight(), mFileIcon->GetHeight());
+		} else if (mFolderIcon && mFolderIcon->GetResource()) {
+			iconWidth = mFolderIcon->GetWidth();
+			iconHeight = mFolderIcon->GetHeight();
+		} else if (mFileIcon && mFileIcon->GetResource()) {
+			iconWidth = mFileIcon->GetWidth();
+			iconHeight = mFileIcon->GetHeight();
+		}
 	}
+	
 	SetMaxIconSize(iconWidth, iconHeight);
 
 	// Fetch the file/folder list
@@ -172,9 +212,12 @@ int GUIFileSelector::NotifyVarChange(const std::string& varName, const std::stri
 		// Always clear the data variable so we know to use it
 		DataManager::SetValue(mVariable, "");
 	}
-	if (varName == mPathVar || varName == mSortVariable) {
+	if (varName == mPathVar || varName == mSortVariable || varName == mExtnVar) {
 		if (varName == mSortVariable) {
 			DataManager::GetValue(mSortVariable, mSortOrder);
+		} else if (varName == mExtnVar) {
+			DataManager::GetValue(mExtnVar, mExtn);
+			SetVisibleListLocation(0);
 		} else {
 			// Reset the list to the top
 			SetVisibleListLocation(0);
@@ -250,7 +293,19 @@ int GUIFileSelector::GetFileList(const std::string folder)
 		}
 		return -1;
 	}
-
+	
+	string showHiddenFiles, reloadfm, searchString;
+	DataManager::GetValue("tw_hidden_files", showHiddenFiles);
+	if (mFileFilterVar != "") {
+		DataManager::GetValue(mFileFilterVar, searchString);
+		std::transform(searchString.begin(), searchString.end(), searchString.begin(), ::tolower);
+	}
+	DataManager::GetValue("tw_reload_fm", reloadfm);
+	if (reloadfm == "1") {
+		SetVisibleListLocation(0); // Scrolls to top
+		DataManager::SetValue("tw_reload_fm", "0");
+	}
+	
 	while ((de = readdir(d)) != NULL) {
 		FileData data;
 
@@ -259,7 +314,25 @@ int GUIFileSelector::GetFileList(const std::string folder)
 			continue;
 		if (data.fileName == ".." && folder == "/")
 			continue;
-
+		
+		// [f/d] filter files by name
+		if (searchString != "" && mFileFilterVar != "") {
+			if (data.fileName != ".." && data.fileName.find(searchString) == string::npos){
+				string fileLower = data.fileName;
+				std::transform(fileLower.begin(), fileLower.end(), fileLower.begin(), ::tolower);
+				if (fileLower.find(searchString) == string::npos)
+					continue;
+			}
+		}
+		
+		// [f/d] Remove hidden files/folders when tw_hidden_files = 0
+		if (showHiddenFiles == "0") {
+			if (data.fileName != ".." && data.fileName.substr(0, 1) == ".")
+				continue;
+			if (folder == "/" && (data.fileName == "twres" || data.fileName == "tmp"))
+				continue;
+		}
+		
 		data.fileType = de->d_type;
 
 		std::string path = folder + "/" + data.fileName;
@@ -280,13 +353,16 @@ int GUIFileSelector::GetFileList(const std::string folder)
 				mFolderList.push_back(data);
 		} else if (data.fileType == DT_REG || data.fileType == DT_LNK || data.fileType == DT_BLK) {
 			if (mExtn.empty() || (data.fileName.length() > mExtn.length() && data.fileName.substr(data.fileName.length() - mExtn.length()) == mExtn)) {
-				if (mExtn == ".ab" && twadbbu::Check_ADB_Backup_File(path))
+				if (mExtn == ".ab" && twadbbu::Check_ADB_Backup_File(path)) {
 					mFolderList.push_back(data);
-				else
+				} else {
+					// [f/d] Get file extension
+					data.fileExt = data.fileName.substr(data.fileName.find_last_of(".") + 1);
 					mFileList.push_back(data);
+				}
 			}
 		}
-	}
+  }
 	closedir(d);
 
 	std::sort(mFolderList.begin(), mFolderList.end(), fileSort);
@@ -318,18 +394,45 @@ size_t GUIFileSelector::GetItemCount()
 void GUIFileSelector::RenderItem(size_t itemindex, int yPos, bool selected)
 {
 	size_t folderSize = mShowFolders ? mFolderList.size() : 0;
-
+	size_t fileindex = itemindex - folderSize;
+	
 	ImageResource* icon;
 	std::string text;
+	std::string ext;
+	unsigned char type;
 
 	if (itemindex < folderSize) {
 		text = mFolderList.at(itemindex).fileName;
-		icon = mFolderIcon;
-		if (text == "..")
+		if (text == "..") {
 			text = gui_lookup("up_a_level", "(Up A Level)");
+			icon = mUpIcon;
+		} else {
+			icon = mFolderIcon;
+		}
 	} else {
-		text = mFileList.at(itemindex - folderSize).fileName;
-		icon = mFileIcon;
+		text = mFileList.at(fileindex).fileName;
+		ext  = mFileList.at(fileindex).fileExt;
+		type = mFileList.at(fileindex).fileType;
+		
+		// [f/d] Detect symlink
+		if (type == DT_LNK) {
+			icon = mExLinkIcon;
+		} else if (type == DT_BLK || type == DT_CHR) {
+			icon = mExBlockIcon;
+		} else {
+			// [f/d] Detect file extension and set icon
+			if (ext == "zip" || ext == "apk" || ext == "tar" || ext == "gz" || ext == "bz2" || ext == "xz" || ext == "lzo" || ext == "cpio" || ext == "lzma" || ext == "z" || ext == "zz") {
+				icon = mExZipIcon;
+			} else if (ext == "img") {
+				icon = mExImgIcon;
+			} else if (ext == "png" || ext == "jpg" || ext == "bmp" || ext == "gif") {
+				icon = mExPngIcon;
+			} else if (ext == "txt" || ext == "log" || ext == "cfg" || ext == "prop" || ext == "xml" || ext == "sh" || ext == "rc" || ext == "conf" || ext == "fstab" || ext == "default") {
+				icon = mExTxtIcon;
+			} else {
+				icon = mFileIcon;
+			}
+		}
 	}
 
 	RenderStdItem(yPos, selected, icon, text.c_str());
@@ -343,7 +446,13 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 	if (item_selected < folderSize + fileSize) {
 		// We've selected an item!
 		std::string str;
+		
+		// Resetting vars
+		DataManager::SetValue("tw_real_path", "");
+		DataManager::SetValue("tw_rp_type", "3");
+		
 		if (item_selected < folderSize) {
+			// Path selection
 			std::string cwd;
 
 			str = mFolderList.at(item_selected).fileName;
@@ -366,8 +475,13 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 				if (cwd != "/")	 cwd += "/";
 				cwd += str;
 			}
-
-			if (mShowNavFolders == 0 && (mShowFiles == 0 || mExtn == ".ab")) {
+			
+			DataManager::SetValue("tw_fm_isfolder", 1);
+			
+			DataManager::GetValue(itemHold, itemHldStatus);
+			if (itemHldStatus == "1") {
+				DataManager::SetValue(mVariable, cwd);
+			} else if (mShowNavFolders == 0 && (mShowFiles == 0 || mExtn == ".ab")) {
 				// this is probably the restore list and we need to save chosen location to mVariable instead of mPathVar
 				DataManager::SetValue(mVariable, cwd);
 			} else {
@@ -375,6 +489,7 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 				DataManager::SetValue(mPathVar, cwd);
 			}
 		} else if (!mVariable.empty()) {
+			// File selection (data)
 			str = mFileList.at(item_selected - folderSize).fileName;
 			if (mSelection != "0")
 				DataManager::SetValue(mSelection, str);
@@ -383,7 +498,26 @@ void GUIFileSelector::NotifySelect(size_t item_selected)
 			DataManager::GetValue(mPathVar, cwd);
 			if (cwd != "/")
 				cwd += "/";
-			DataManager::SetValue(mVariable, cwd + str);
+			
+			std::string path = cwd + str;
+		
+			if (mFileList.at(item_selected - folderSize).fileType == DT_LNK) {
+				// [f/d] We selected a symlink; Trying to get original file name
+				char *real_path = realpath(path.c_str(), NULL);
+				if (real_path) {
+					// Is that dir or file
+					std::string str_path = real_path;
+					struct stat path_stat;
+					stat(real_path, &path_stat);
+					DataManager::SetValue("tw_real_path", str_path);
+					DataManager::SetValue("tw_rp_type", S_ISDIR(path_stat.st_mode));
+				} else {
+					DataManager::SetValue("tw_rp_type", "2");
+				}
+				free(real_path);
+			}
+			DataManager::SetValue("tw_fm_isfolder", 0);
+			DataManager::SetValue(mVariable, path);
 		}
 	}
 	mUpdate = 1;

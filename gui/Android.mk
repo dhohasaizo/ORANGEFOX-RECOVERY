@@ -1,7 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_CFLAGS := -fno-strict-aliasing
+LOCAL_CFLAGS := -fno-strict-aliasing -Wno-unused-variable
 
 LOCAL_SRC_FILES := \
     gui.cpp \
@@ -79,6 +79,10 @@ ifneq ($(TW_H_OFFSET),)
 endif
 ifeq ($(TW_ROUND_SCREEN), true)
     LOCAL_CFLAGS += -DTW_ROUND_SCREEN
+endif
+
+ifeq ($(OF_USE_TWFUNC_REBOOT_FUNCTION),1)
+    LOCAL_CFLAGS += -DOF_USE_TWFUNC_REBOOT_FUNCTION='"1"'
 endif
 
 LOCAL_C_INCLUDES += \

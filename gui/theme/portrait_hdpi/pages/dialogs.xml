@@ -1,0 +1,630 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="dialog_mkdir">
+			<template name="dialog_body_key"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
+				<text>{@fm_mkdir}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_cap%"/>
+				<text>{@fm_mkdir_folder}</text>
+			</text>
+
+			<input>
+				<placement x="%bg_storage_hdr_x%" y="%input_encr_y%" w="%input_encr_width%" h="%input_height%"/>
+				<text>%mkdir_folder%</text>
+				<data name="mkdir_folder"/>
+				<restrict minlen="1" maxlen="32" />
+				<actions>
+					<action function="overlay"/>
+					<action function="cmd">mkdir "%tw_file_location1%/%mkdir_folder%"</action>
+					<action function="set">mkdir_folder=</action>
+					<action function="page">filemanagerlist</action>
+				</actions>
+			</input>
+
+			<fill color="%accent%">
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<button style="btn_dlg">
+				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
+				<text>{@cancel_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+
+		<page name="dialog_path">
+			<template name="dialog_body_key"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
+				<text>{@fm_path}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_cap%"/>
+				<text>{@fm_path2}</text>
+			</text>
+
+			<input>
+				<placement x="%bg_storage_hdr_x%" y="%input_encr_y%" w="%input_encr_width%" h="%input_height%"/>
+				<text>%tw_file_location_temp%</text>
+				<data name="tw_file_location_temp"/>
+				<restrict minlen="1" maxlen="999" />
+				<actions>
+					<action function="overlay"/>
+					<action function="set">tw_file_location1=%tw_file_location_temp%</action>
+					<action function="page">filemanagerlist</action>
+				</actions>
+			</input>
+
+			<fill color="%accent%">
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<button style="btn_dlg">
+				<placement x="%db_left_x%" y="%db_encrypt_y%"/>
+				<text>{@cancel_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
+				<text>{@goto_storage}</text>
+				<action function="overlay"/>
+				<action function="overlay">dialog_storage</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+
+		<page name="menu_sort">
+			<template name="dialog_body"/>
+
+			<button>
+				<placement x="%screen_w%" y="%ab_menu_y%" placement="1"/>
+				<image resource="menu_sort"/>
+			</button>
+
+			<template name="sort_base"/>
+		</page>
+
+		<page name="fm_sort">
+			<template name="dialog_body"/>
+
+			<button>
+				<placement x="%screen_w%" y="%ab_menu_y%" placement="1"/>
+				<image resource="fm_sort"/>
+			</button>
+
+			<template name="sort_base"/>
+
+			<!-- All -->
+			<button style="menu_btn_sort">
+				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_4_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">fm_type_sort=</action>
+			</button>
+
+			<text style="menu_text">
+				<placement x="%ab_menu_sort_text_x%" y="%ab_menu_inst_4_text_y%"/>
+				<text>{@sort_ex_all}</text>
+			</text>
+
+			<image>
+				<condition var1="fm_type_sort" op="!="/>
+				<placement x="%ab_menu_x%" y="%ab_menu_inst_4_y%"/>
+				<image resource="sort_select"/>
+			</image>
+			<!---->
+
+			<!-- zip -->
+			<button style="menu_btn_sort">
+				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_5_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">fm_type_sort=.zip</action>
+			</button>
+
+			<text style="menu_text">
+				<placement x="%ab_menu_sort_text_x%" y="%ab_menu_inst_5_text_y%"/>
+				<text>{@sort_ex_zip}</text>
+			</text>
+
+			<image>
+				<condition var1="fm_type_sort" var2=".zip"/>
+				<placement x="%ab_menu_x%" y="%ab_menu_inst_5_y%"/>
+				<image resource="sort_select"/>
+			</image>
+			<!---->
+
+			<!-- img -->
+			<button style="menu_btn_sort">
+				<placement x="%ab_menu_sort_x%" y="%ab_menu_inst_6_y%" w="%ab_menu_sort_btn_w%" h="%ab_menu_sort_btn_h%"/>
+				<action function="set">fm_type_sort=.img</action>
+			</button>
+			
+			<text style="menu_text">
+				<placement x="%ab_menu_sort_text_x%" y="%ab_menu_inst_6_text_y%"/>
+				<text>{@sort_ex_img}</text>
+			</text>
+
+			<image>
+				<condition var1="fm_type_sort" var2=".img"/>
+				<placement x="%ab_menu_x%" y="%ab_menu_inst_6_y%"/>
+				<image resource="sort_select"/>
+			</image>
+			<!---->
+		</page>
+
+		<page name="dialog_storage">
+			<template name="dialog_body"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<partitionlist style="partitionlist_dialog">
+				<placement x="%storage_indent_x%" y="%storage_indent_y%" w="%dialog_w%" h="%storage_height%"/>
+				<data name="tw_storage_path"/>
+				<listtype name="storage"/>
+			</partitionlist>
+
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@ok_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<button style="btn_dlg">
+				<placement x="%db_left_x%" y="%db_y%"/>
+				<text>{@update_btn}</text>
+				<action function="refreshsizes"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>{@select_storage_hdr}</text>
+			</text>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+
+		<page name="dialog_storage_restore">
+			<template name="dialog_body"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<partitionlist style="partitionlist_dialog">
+				<placement x="%storage_indent_x%" y="%storage_indent_y%" w="%dialog_w%" h="%storage_height%"/>
+				<data name="tw_storage_path"/>
+				<listtype name="storage"/>
+			</partitionlist>
+
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@ok_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<button style="btn_dlg">
+				<placement x="%db_left_x%" y="%db_y%"/>
+				<text>{@update_btn}</text>
+				<action function="refreshsizes"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>{@select_storage_hdr}</text>
+			</text>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">restore</action>
+				<action function="overlay"/>
+			</action>
+		</page>
+
+		<page name="dialog_encryption1">
+			<template name="dialog_body_key"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
+				<text>{@encryption_hdr}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_cap%"/>
+				<text>{@set_password}</text>
+			</text>
+
+			<input>
+				<placement x="%bg_storage_hdr_x%" y="%input_encr_y%" w="%input_encr_width%" h="%input_height%"/>
+				<text>%tw_backup_encrypt_display%</text>
+				<data name="tw_backup_password" mask="*" maskvariable="tw_backup_encrypt_display"/>
+				<restrict minlen="1" maxlen="32" allow="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="overlay">dialog_encryption2</action>
+				</actions>
+			</input>
+
+			<fill color="%accent%">
+				<condition var1="tw_password_not_match" op="!=" var2="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<fill color="%text_fail%">
+				<condition var1="tw_password_not_match" var2="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<text style="text_input_fail">
+				<condition var1="tw_password_not_match" var2="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%"/>
+				<text>{@pass_not_match}</text>
+			</text>
+
+			<button style="btn_dlg">
+				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
+				<text>{@cancel_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="key">back</action>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="set">tw_encrypt_backup=0</action>
+				<action function="set">tw_backup_password=</action>
+				<action function="set">tw_backup_password2=</action>
+				<action function="set">tw_backup_encrypt_display=</action>
+				<action function="set">tw_backup_encrypt_display2=</action>
+				<action function="overlay"/>
+			</action>
+		</page>
+
+		<page name="dialog_spl_hex">
+			<template name="dialog_body_key"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
+				<text>{@sel_color}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_cap%"/>
+				<text>HEX {@s_color}</text>
+			</text>
+
+			<input>
+				<placement x="%bg_storage_hdr_x%" y="%input_encr_y%" w="%input_encr_width%" h="%input_height%"/>
+				<text>%spl_bg_color_tmp%</text>
+				<data name="spl_bg_color_tmp"/>
+				<restrict minlen="6" maxlen="6" allow="1234567890abcdefABCDEF"/>
+				<actions>
+					<action function="set">spl_bg_color=%spl_bg_color_tmp%</action>
+					<action function="set">spl_bg_user=1</action>
+					<action function="overlay"/>
+				</actions>
+			</input>
+
+			<fill color="%accent%">
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<button style="btn_dlg">
+				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
+				<text>{@cancel_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="key">back</action>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+
+		<page name="dialog_encryption2">
+			<template name="dialog_body_key"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
+				<text>{@encryption_hdr}</text>
+			</text>
+
+			<text style="caption_hl">
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_cap%"/>
+				<text>{@verifying_pas}</text>
+			</text>
+
+			<input>
+				<placement x="%bg_storage_hdr_x%" y="%input_encr_y%" w="%input_encr_width%" h="%input_height%"/>
+				<text>%tw_backup_encrypt_display2%</text>
+				<data name="tw_backup_password2" mask="*" maskvariable="tw_backup_encrypt_display2"/>
+				<restrict minlen="1" maxlen="32" allow="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_"/>
+				<actions>
+					<action function="overlay"/>
+					<action function="page">checkbackuppassword</action>
+				</actions>
+			</input>
+
+			<fill color="%accent%">
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<button style="btn_dlg">
+				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
+				<text>{@cancel_btn}</text>
+				<action function="key">back</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="key">back</action>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="set">tw_encrypt_backup=0</action>
+				<action function="set">tw_backup_password=</action>
+				<action function="set">tw_backup_password2=</action>
+				<action function="set">tw_backup_encrypt_display=</action>
+				<action function="set">tw_backup_encrypt_display2=</action>
+				<action function="overlay"/>
+			</action>
+		</page>
+
+		<page name="dialog_offset">
+			<template name="dialog_body_num"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_encrypt_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="caption_hl">
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_cap%"/>
+				<text>{@dialog_offset_note}</text>
+			</text>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_encrypt_hdr_y%"/>
+				<text>{@tz_offset_hdr}</text>
+			</text>
+
+			<input>
+				<placement x="%bg_storage_hdr_x%" y="%input_encr_y%" w="%input_encr_width%" h="%input_height%"/>
+				<text>%zone_temp%</text>
+				<data name="zone_temp"/>
+				<restrict minlen="1" maxlen="2" allow="1234567890" />
+				<actions>
+					<action function="compute">zone_temp+1</action>
+					<action function="compute">zone_temp-1</action>
+					<action function="overlay"/>
+					<action function="page">check_zone</action>
+				</actions>
+			</input>
+
+			<fill color="%accent%">
+				<condition var1="zone_error" op="!=" var2="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<fill color="%text_fail%">
+				<condition var1="zone_error" var2="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%" w="%input_encr_width%" h="%input_line_height%" placement="1"/>
+			</fill>
+
+			<text style="text_input_fail">
+				<condition var1="zone_error" var2="1"/>
+				<placement x="%bg_storage_hdr_x%" y="%dlg_input_line%"/>
+				<text>{@offset_wrong}</text>
+			</text>
+
+			<button style="btn_dlg">
+				<placement x="%db_right_x%" y="%db_encrypt_y%"/>
+				<text>{@cancel_btn}</text>
+				<action function="set">zone_error=0</action>
+				<action function="overlay"/>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+
+		<page name="check_zone">
+			<action>
+				<condition var1="zone_temp" op="&gt;=" var2="60"/>
+				<action function="set">zone_error=1</action>
+				<action function="page">ext_time</action>
+				<action function="overlay">dialog_offset</action>
+			</action>
+			
+			<action>
+				<condition var1="zone_temp" op="&lt;" var2="60"/>
+				<action function="set">zone_error=0</action>
+				<action function="set">tw_time_zone_guioffset=%zone_temp%</action>
+				<action function="setguitimezone"/>
+				<action function="page">ext_time</action>
+				<action function="overlay"/>
+			</action>
+		</page>
+
+		<page name="dialog_magisk_not_found">
+			<template name="dialog_body"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>{@magisk_not_found}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text1_y%"/>
+				<text>{@magisk_not_found_1}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text2_y%"/>
+				<text>{@magisk_not_found_2}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text3_y%"/>
+				<text>{@magisk_not_found_3}</text>
+			</text>
+
+			<button style="btn_dlg">
+				<placement x="%db_left_x%" y="%db_y%"/>
+				<text>{@cancel_btn}</text>
+				<action function="overlay"/>
+			</button>
+
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@ok_btn}</text>
+				<actions>
+					<action function="overlay"/>
+					<action function="page">fox_modules</action>
+				</actions>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+
+		<page name="dialog_error_partition">
+			<template name="dialog_body"/>
+
+			<button>
+				<placement x="%bg_storage_x%" y="%bg_storage_y%"/>
+				<image resource="dialog_bg"/>
+			</button>
+
+			<text style="text_dlg_title">
+				<placement x="%bg_storage_hdr_x%" y="%bg_storage_hdr_y%"/>
+				<text>{@part_menu_hdr}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text1_y%"/>
+				<text>{@part_fs_error_1}</text>
+			</text>
+
+			<text style="text_body2">
+				<placement x="%bg_storage_hdr_x%" y="%db_text2_y%"/>
+				<text>{@part_fs_error_2}</text>
+			</text>
+
+			<button style="btn_dlg_hl">
+				<placement x="%db_right_x%" y="%db_y%"/>
+				<text>{@ok_btn}</text>
+				<actions>
+					<action function="overlay"/>
+				</actions>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">main</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="overlay"/>
+			</action>
+		</page>
+	</pages>
+</recovery>

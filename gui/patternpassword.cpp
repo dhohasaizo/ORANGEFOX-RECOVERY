@@ -104,10 +104,10 @@ GUIPatternPassword::GUIPatternPassword(xml_node<>* node)
 	if (!mDotImage || !mDotImage->GetResource() || !mActiveDotImage || !mActiveDotImage->GetResource())
 	{
 		mDotCircle = gr_render_circle(mDotRadius, mDotColor.red, mDotColor.green, mDotColor.blue, mDotColor.alpha);
-		mActiveDotCircle = gr_render_circle(mDotRadius/2, mActiveDotColor.red, mActiveDotColor.green, mActiveDotColor.blue, mActiveDotColor.alpha);
+		mActiveDotCircle = gr_render_circle(mDotRadius, mActiveDotColor.red, mActiveDotColor.green, mActiveDotColor.blue, mActiveDotColor.alpha);
 	}
 	else if (mDotImage && mDotImage->GetResource())
-		mDotRadius = mDotImage->GetWidth()/2;
+		mDotRadius = mDotImage->GetWidth();
 
 	SetRenderPos(mRenderX, mRenderY, mRenderW, mRenderH);
 }
@@ -206,12 +206,11 @@ int GUIPatternPassword::Render(void)
 		if (mDotCircle) {
 			gr_blit(mDotCircle, 0, 0, gr_get_width(mDotCircle), gr_get_height(mDotCircle), mDots[i].x, mDots[i].y);
 			if (mDots[i].active) {
-				gr_blit(mActiveDotCircle, 0, 0, gr_get_width(mActiveDotCircle), gr_get_height(mActiveDotCircle), mDots[i].x + mDotRadius/2, mDots[i].y + mDotRadius/2);
+				gr_blit(mActiveDotCircle, 0, 0, gr_get_width(mDotCircle), gr_get_height(mDotCircle), mDots[i].x, mDots[i].y);
 			}
 		} else {
 			if (mDots[i].active && mActiveDotImage && mActiveDotImage->GetResource()) {
-				gr_blit(mActiveDotImage->GetResource(), 0, 0, mActiveDotImage->GetWidth(), mActiveDotImage->GetHeight(),
-						mDots[i].x + (mDotRadius - mActiveDotImage->GetWidth()/2), mDots[i].y + (mDotRadius - mActiveDotImage->GetHeight()/2));
+				gr_blit(mActiveDotImage->GetResource(), 0, 0, mActiveDotImage->GetWidth(), mActiveDotImage->GetHeight(), mDots[i].x, mDots[i].y);
 			} else if (mDotImage && mDotImage->GetResource()) {
 				gr_blit(mDotImage->GetResource(), 0, 0, mDotImage->GetWidth(), mDotImage->GetHeight(), mDots[i].x, mDots[i].y);
 			}
@@ -370,7 +369,11 @@ int GUIPatternPassword::NotifyTouch(TOUCH_STATE state, int x, int y)
 			mTrackingTouch = true;
 			ResetActiveDots();
 			ConnectDot(dot_idx);
+
+#ifndef TW_NO_HAPTICS
 			DataManager::Vibrate("tw_button_vibrate");
+#endif
+
 			mCurLineX = x;
 			mCurLineY = y;
 			mNeedRender = true;
@@ -386,7 +389,11 @@ int GUIPatternPassword::NotifyTouch(TOUCH_STATE state, int x, int y)
 			{
 				ConnectIntermediateDots(dot_idx);
 				ConnectDot(dot_idx);
+
+#ifndef TW_NO_HAPTICS
 				DataManager::Vibrate("tw_button_vibrate");
+#endif
+
 			}
 
 			mCurLineX = x;

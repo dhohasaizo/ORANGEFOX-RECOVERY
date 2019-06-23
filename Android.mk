@@ -16,7 +16,7 @@
 LOCAL_PATH := $(call my-dir)
 commands_TWRP_local_path := $(LOCAL_PATH)
 
-ifdef project-path-for
+ifneq ($(project-path-for),)
     ifeq ($(LOCAL_PATH),$(call project-path-for,recovery))
         PROJECT_PATH_AGREES := true
         BOARD_SEPOLICY_DIRS += $(call project-path-for,recovery)/sepolicy
@@ -25,6 +25,13 @@ else
     ifeq ($(LOCAL_PATH),bootable/recovery)
         PROJECT_PATH_AGREES := true
         BOARD_SEPOLICY_DIRS += bootable/recovery/sepolicy
+    else
+        ifeq ($(LOCAL_PATH),bootable/recovery-twrp)
+            ifeq ($(RECOVERY_VARIANT),twrp)
+                PROJECT_PATH_AGREES := true
+                BOARD_SEPOLICY_DIRS += bootable/recovery-twrp/sepolicy
+            endif
+        endif
     endif
 endif
 
@@ -33,6 +40,10 @@ ifeq ($(PROJECT_PATH_AGREES),true)
 ifneq (,$(filter $(PLATFORM_SDK_VERSION), 21 22))
 # Make recovery domain permissive for TWRP
     BOARD_SEPOLICY_UNION += twrp.te
+endif
+
+ifeq ($(CM_PLATFORM_SDK_VERSION),)
+    CM_PLATFORM_SDK_VERSION := 0
 endif
 
 include $(CLEAR_VARS)
@@ -47,7 +58,7 @@ ifneq ($(TW_DEVICE_VERSION),)
     export FOX_DEVICE_VERSION=$(TW_DEVICE_VERSION)
 else
     LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"Unofficial"'
-    export FOX_DEVICE_VERSION=R9.0
+    export FOX_DEVICE_VERSION=R10.0
 endif
 
 DEVICE := $(subst omni_,,$(TARGET_PRODUCT))
@@ -64,7 +75,24 @@ ifeq ($(OF_DONT_PATCH_ON_FRESH_INSTALLATION),1)
     LOCAL_CFLAGS += -DOF_DONT_PATCH_ON_FRESH_INSTALLATION='"1"'
 endif
 
+ifneq ($(BUILD_TYPE),)
+    LOCAL_CFLAGS += -DBUILD_TYPE='"$(BUILD_TYPE)"'
+else
+    LOCAL_CFLAGS += -DBUILD_TYPE='"Unofficial"'
+endif
+
 ifeq ($(OF_USE_MAGISKBOOT),1)
+    LOCAL_CFLAGS += -DOF_USE_MAGISKBOOT='"1"'
+endif
+
+ifeq ($(OF_USE_MAGISKBOOT_FOR_ALL_PATCHES),1)
+    LOCAL_CFLAGS += -DOF_USE_MAGISKBOOT_FOR_ALL_PATCHES='"1"'
+    LOCAL_CFLAGS += -DOF_USE_MAGISKBOOT='"1"'
+endif
+
+ifeq ($(OF_AB_DEVICE),1)
+    LOCAL_CFLAGS += -DOF_AB_DEVICE='"1"'
+    LOCAL_CFLAGS += -DOF_USE_MAGISKBOOT_FOR_ALL_PATCHES='"1"'
     LOCAL_CFLAGS += -DOF_USE_MAGISKBOOT='"1"'
 endif
 
@@ -75,13 +103,67 @@ endif
 ifneq ($(OF_MAINTAINER),)
     LOCAL_CFLAGS += -DOF_MAINTAINER='"$(OF_MAINTAINER)"'
 else
-    LOCAL_CFLAGS += -DOF_MAINTAINER='"MrYacha and DarthJabba9"'
+    LOCAL_CFLAGS += -DOF_MAINTAINER='"Testing build (unofficial)"'
 endif
 
 ifneq ($(OF_FLASHLIGHT_ENABLE),)
     LOCAL_CFLAGS += -DOF_FLASHLIGHT_ENABLE='"$(OF_FLASHLIGHT_ENABLE)"'
 else
     LOCAL_CFLAGS += -DOF_FLASHLIGHT_ENABLE='"1"'
+endif
+
+ifneq ($(OF_SCREEN_H),)
+    LOCAL_CFLAGS += -DOF_SCREEN_H='"$(OF_SCREEN_H)"'
+else
+    LOCAL_CFLAGS += -DOF_SCREEN_H='"1920"'
+endif
+
+ifneq ($(OF_STATUS_H),)
+    LOCAL_CFLAGS += -DOF_STATUS_H='"$(OF_STATUS_H)"'
+else
+    LOCAL_CFLAGS += -DOF_STATUS_H='"72"'
+endif
+
+ifneq ($(OF_HIDE_NOTCH),)
+    LOCAL_CFLAGS += -DOF_HIDE_NOTCH='"$(OF_HIDE_NOTCH)"'
+else
+    LOCAL_CFLAGS += -DOF_HIDE_NOTCH='"0"'
+endif
+
+ifneq ($(OF_STATUS_INDENT_LEFT),)
+    LOCAL_CFLAGS += -DOF_STATUS_INDENT_LEFT='"$(OF_STATUS_INDENT_LEFT)"'
+else
+    LOCAL_CFLAGS += -DOF_STATUS_INDENT_LEFT='"20"'
+endif
+
+ifneq ($(OF_STATUS_INDENT_RIGHT),)
+    LOCAL_CFLAGS += -DOF_STATUS_INDENT_RIGHT='"$(OF_STATUS_INDENT_RIGHT)"'
+else
+    LOCAL_CFLAGS += -DOF_STATUS_INDENT_RIGHT='"20"'
+endif
+
+ifneq ($(OF_CLOCK_POS),)
+    LOCAL_CFLAGS += -DOF_CLOCK_POS='"$(OF_CLOCK_POS)"'
+else
+    LOCAL_CFLAGS += -DOF_CLOCK_POS='"0"'
+endif
+
+ifneq ($(OF_ALLOW_DISABLE_NAVBAR),)
+    LOCAL_CFLAGS += -DOF_ALLOW_DISABLE_NAVBAR='"$(OF_ALLOW_DISABLE_NAVBAR)"'
+else
+    LOCAL_CFLAGS += -DOF_ALLOW_DISABLE_NAVBAR='"1"'
+endif
+
+ifneq ($(OF_FL_PATH1),)
+    LOCAL_CFLAGS += -DOF_FL_PATH1='"$(OF_FL_PATH1)"'
+else
+    LOCAL_CFLAGS += -DOF_FL_PATH1='""'
+endif
+
+ifneq ($(OF_FL_PATH2),)
+    LOCAL_CFLAGS += -DOF_FL_PATH2='"$(OF_FL_PATH2)"'
+else
+    LOCAL_CFLAGS += -DOF_FL_PATH2='""'
 endif
 
 ifeq ($(OF_NO_RELOAD_AFTER_DECRYPTION),1)
@@ -92,14 +174,28 @@ ifeq ($(OF_TWRP_COMPATIBILITY_MODE),1)
     LOCAL_CFLAGS += -DOF_TWRP_COMPATIBILITY_MODE='"1"'
 endif
 
-ifneq ($(FOX_NOTCH),)
-    LOCAL_CFLAGS += -DFOX_NOTCH='"$(FOX_NOTCH)"'
-else
-    LOCAL_CFLAGS += -DFOX_NOTCH='"0"'
-endif
-
 ifeq ($(OF_USE_HEXDUMP),1)
     LOCAL_CFLAGS += -DOF_USE_HEXDUMP='"1"'
+endif
+
+ifeq ($(OF_SKIP_FBE_DECRYPTION),1)
+    LOCAL_CFLAGS += -DOF_SKIP_FBE_DECRYPTION='"1"'
+endif
+
+ifeq ($(OF_SKIP_LEDS_FUNCTION),1)
+    LOCAL_CFLAGS += -DOF_SKIP_LEDS_FUNCTION='"1"'
+endif
+
+ifeq ($(OF_SUPPORT_PRE_FLASH_SCRIPT),1)
+    LOCAL_CFLAGS += -DOF_SUPPORT_PRE_FLASH_SCRIPT='"1"'
+endif
+
+ifeq ($(OF_KEEP_DM_VERITY_FORCED_ENCRYPTION),1)
+    LOCAL_CFLAGS += -DOF_KEEP_DM_VERITY_FORCED_ENCRYPTION='"1"'
+endif
+
+ifeq ($(OF_USE_TWFUNC_REBOOT_FUNCTION),1)
+    LOCAL_CFLAGS += -DOF_USE_TWFUNC_REBOOT_FUNCTION='"1"'
 endif
 
 ifeq ($(TW_USE_TOOLBOX), true)
@@ -141,7 +237,7 @@ LOCAL_MODULE := recovery
 RECOVERY_API_VERSION := 3
 RECOVERY_FSTAB_VERSION := 2
 LOCAL_CFLAGS += -DRECOVERY_API_VERSION=$(RECOVERY_API_VERSION)
-LOCAL_CFLAGS += -Wno-unused-parameter
+LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -Wno-format-extra-args
 LOCAL_CLANG := true
 
 #LOCAL_STATIC_LIBRARIES := \
@@ -233,18 +329,10 @@ ifeq ($(TARGET_USERIMAGES_USE_EXT4), true)
 endif
 LOCAL_C_INCLUDES += external/libselinux/include
 LOCAL_SHARED_LIBRARIES += libselinux
-#ifneq ($(TARGET_USERIMAGES_USE_EXT4), true)
-#    LOCAL_CFLAGS += -DUSE_EXT4
-#    LOCAL_C_INCLUDES += system/extras/ext4_utils
-#    LOCAL_SHARED_LIBRARIES += libext4_utils
-#    ifneq ($(wildcard external/lz4/Android.mk),)
-#        LOCAL_STATIC_LIBRARIES += liblz4
-#    endif
-#endif
 
 ifeq ($(AB_OTA_UPDATER),true)
     LOCAL_CFLAGS += -DAB_OTA_UPDATER=1
-    LOCAL_SHARED_LIBRARIES += libhardware
+    LOCAL_SHARED_LIBRARIES += libhardware android.hardware.boot@1.0
     LOCAL_REQUIRED_MODULES += libhardware
 endif
 
@@ -255,6 +343,11 @@ LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
 #else
 #  LOCAL_STATIC_LIBRARIES += $(TARGET_RECOVERY_UI_LIB)
 #endif
+ifeq ($(TARGET_RECOVERY_TWRP_LIB),)
+    LOCAL_SRC_FILES += BasePartition.cpp
+else
+    LOCAL_STATIC_LIBRARIES += $(TARGET_RECOVERY_TWRP_LIB)
+endif
 
 LOCAL_C_INCLUDES += system/extras/ext4_utils
 
@@ -264,9 +357,19 @@ ifeq ($(shell git -C $(LOCAL_PATH) diff --quiet; echo $$?),1)
 endif
 LOCAL_CFLAGS += -DTW_GIT_REVISION='"$(tw_git_revision)"'
 
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 28; echo $$?),0)
+ifeq ($(TW_EXCLUDE_MTP),)
+    LOCAL_SHARED_LIBRARIES += libtwrpmtp-ffs
+endif
+else
+ifeq ($(TW_EXCLUDE_MTP),)
+    LOCAL_CFLAGS += -DTW_HAS_LEGACY_MTP
+    LOCAL_SHARED_LIBRARIES += libtwrpmtp-legacy
+endif
+endif
+
 #TWRP Build Flags
 ifeq ($(TW_EXCLUDE_MTP),)
-    LOCAL_SHARED_LIBRARIES += libtwrpmtp
     LOCAL_CFLAGS += -DTW_HAS_MTP
 endif
 ifneq ($(TW_NO_SCREEN_TIMEOUT),)
@@ -335,6 +438,9 @@ endif
 ifeq ($(TW_HAS_DOWNLOAD_MODE), true)
     LOCAL_CFLAGS += -DTW_HAS_DOWNLOAD_MODE
 endif
+ifeq ($(TW_HAS_EDL_MODE), true)
+    LOCAL_CFLAGS += -DTW_HAS_EDL_MODE
+endif
 ifeq ($(TW_NO_SCREEN_BLANK), true)
     LOCAL_CFLAGS += -DTW_NO_SCREEN_BLANK
 endif
@@ -347,6 +453,9 @@ endif
 ifeq ($(TW_NO_EXFAT_FUSE), true)
     LOCAL_CFLAGS += -DTW_NO_EXFAT_FUSE
 endif
+ifeq ($(TW_NO_HAPTICS), true)
+    LOCAL_CFLAGS += -DTW_NO_HAPTICS
+endif
 ifeq ($(TW_INCLUDE_JB_CRYPTO), true)
     TW_INCLUDE_CRYPTO := true
 endif
@@ -355,12 +464,15 @@ ifeq ($(TW_INCLUDE_L_CRYPTO), true)
 endif
 ifeq ($(TW_INCLUDE_CRYPTO), true)
     LOCAL_CFLAGS += -DTW_INCLUDE_CRYPTO
-    LOCAL_SHARED_LIBRARIES += libcryptfslollipop libgpt_twrp
+    LOCAL_SHARED_LIBRARIES += libcryptfsfde libgpt_twrp
     LOCAL_C_INCLUDES += external/boringssl/src/include
     ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 24; echo $$?),0)
         TW_INCLUDE_CRYPTO_FBE := true
         LOCAL_CFLAGS += -DTW_INCLUDE_FBE
         LOCAL_SHARED_LIBRARIES += libe4crypt
+        ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 28; echo $$?),0)
+            LOCAL_CFLAGS += -DTW_INCLUDE_FBE_METADATA_DECRYPT
+        endif
     endif
     ifneq ($(TW_CRYPTO_USE_SYSTEM_VOLD),)
     ifneq ($(TW_CRYPTO_USE_SYSTEM_VOLD),false)
@@ -546,14 +658,19 @@ ifeq ($(shell test $(CM_PLATFORM_SDK_VERSION) -ge 3; echo $$?),0)
         fsck.f2fs \
         mkfs.f2fs
 endif
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 28; echo $$?),0)
+    LOCAL_REQUIRED_MODULES += sload.f2fs
+endif
 endif
 
-ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 25; echo $$?),0)
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26; echo $$?),0)
     LOCAL_REQUIRED_MODULES += file_contexts_text
+else ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 25; echo $$?),0)
+    LOCAL_ADDITIONAL_DEPENDENCIES += file_contexts_text
 endif
 
 ifeq ($(BOARD_CACHEIMAGE_PARTITION_SIZE),)
-LOCAL_REQUIRED_MODULES := recovery-persist recovery-refresh
+LOCAL_REQUIRED_MODULES += recovery-persist recovery-refresh
 endif
 
 include $(BUILD_EXECUTABLE)
@@ -643,7 +760,7 @@ endif
 # ===============================
 include $(CLEAR_VARS)
 LOCAL_CLANG := true
-LOCAL_CFLAGS := -Wall -Werror -Wno-unused-parameter
+LOCAL_CFLAGS := -Wall -Werror -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable
 LOCAL_CFLAGS += -D_XOPEN_SOURCE -D_GNU_SOURCE
 
 LOCAL_MODULE_TAGS := optional
@@ -668,7 +785,7 @@ include $(BUILD_SHARED_LIBRARY)
 # =============================== (required to fix build errors in 8.1 due to use by tests)
 include $(CLEAR_VARS)
 LOCAL_CLANG := true
-LOCAL_CFLAGS := -Wall -Werror -Wno-unused-parameter
+LOCAL_CFLAGS := -Wall -Werror -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable
 LOCAL_CFLAGS += -D_XOPEN_SOURCE -D_GNU_SOURCE
 
 LOCAL_MODULE_TAGS := optional
@@ -733,6 +850,11 @@ LOCAL_MODULE := libaosprecovery
 LOCAL_MODULE_TAGS := eng optional
 LOCAL_CFLAGS := -std=gnu++0x
 LOCAL_SRC_FILES := adb_install.cpp legacy_property_service.cpp set_metadata.cpp tw_atomic.cpp installcommand.cpp zipwrap.cpp
+
+ifeq ($(OF_NO_TREBLE_COMPATIBILITY_CHECK),1)
+    LOCAL_CFLAGS += -DOF_NO_TREBLE_COMPATIBILITY_CHECK='"1"'
+endif
+
 LOCAL_SHARED_LIBRARIES += libc liblog libcutils libmtdutils libfusesideload libselinux libminzip
 LOCAL_CFLAGS += -DRECOVERY_API_VERSION=$(RECOVERY_API_VERSION)
 ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 23; echo $$?),0)
@@ -828,6 +950,12 @@ ifeq ($(shell test $(PLATFORM_SDK_VERSION) -le 25; echo $$?),0)
 include $(commands_TWRP_local_path)/bootloader_message/Android.mk
 endif
 
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 28; echo $$?),0)
+    include $(commands_TWRP_local_path)/mtp/ffs/Android.mk
+else
+    include $(commands_TWRP_local_path)/mtp/legacy/Android.mk
+endif
+
 ifeq ($(wildcard system/core/uncrypt/Android.mk),)
     #include $(commands_TWRP_local_path)/uncrypt/Android.mk
 endif
@@ -863,7 +991,6 @@ include $(commands_TWRP_local_path)/injecttwrp/Android.mk \
     $(commands_TWRP_local_path)/openaes/Android.mk \
     $(commands_TWRP_local_path)/toolbox/Android.mk \
     $(commands_TWRP_local_path)/twrpTarMain/Android.mk \
-    $(commands_TWRP_local_path)/mtp/Android.mk \
     $(commands_TWRP_local_path)/minzip/Android.mk \
     $(commands_TWRP_local_path)/dosfstools/Android.mk \
     $(commands_TWRP_local_path)/etc/Android.mk \
@@ -879,7 +1006,7 @@ ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 24; echo $$?),0)
 endif
 
 ifeq ($(TW_INCLUDE_CRYPTO), true)
-    include $(commands_TWRP_local_path)/crypto/lollipop/Android.mk
+    include $(commands_TWRP_local_path)/crypto/fde/Android.mk
     include $(commands_TWRP_local_path)/crypto/scrypt/Android.mk
     ifeq ($(TW_INCLUDE_CRYPTO_FBE), true)
         include $(commands_TWRP_local_path)/crypto/ext4crypt/Android.mk

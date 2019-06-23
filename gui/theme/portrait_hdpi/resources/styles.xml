@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+
+<recovery>
+	<variables>
+		<variable name="theme_background" value="off"/>
+	</variables>
+	<styles>
+		<style name="nav_panel">
+			<font resource="Secondary" color="%accent%"/>
+		</style>
+		<style name="nav_panel_d">
+			<font resource="Secondary" color="%color_disable%"/>
+		</style>
+		
+		<style name="text_ab_title">
+			<font resource="Secondary-title" color="%accent%"/>
+		</style>
+		
+		<style name="text_ab_title_ota">
+			<font resource="Secondary-title" color="%text%"/>
+		</style>
+		<style name="text_ab_switch">
+			<font resource="title" color="#fafafa"/>
+		</style>
+		
+		<style name="text_ab_subtitle">
+			<font resource="Secondary" color="%accent%"/>
+		</style>
+		
+		<style name="about_name">
+			<font resource="font_l" color="#222222"/>
+		</style>
+		
+		<style name="about_info">
+			<font resource="body1" color="#666666"/>
+		</style>
+
+		<style name="text_dlg_title">
+			<font resource="Secondary-title" color="%text%"/>
+		</style>
+
+		<style name="text_input_fail">
+			<font resource="input_fail" color="%text_fail%"/>
+		</style>
+
+		<style name="text_status">
+			<font resource="status" color="%text_status%"/>
+		</style>
+
+		<style name="text_status_fail">
+			<font resource="status" color="%text_fail%"/>
+		</style>
+
+		<style name="text_body1">
+			<font resource="body1" color="%text%"/>
+		</style>
+
+		<style name="text_body1_hl">
+			<font resource="body1" color="%accent%"/>
+		</style>
+
+		<style name="text_body1_fail">
+			<font resource="body1" color="%text_fail%"/>
+		</style>
+
+		<style name="text_body2">
+			<font resource="body2" color="%text%"/>
+		</style>
+
+		<style name="text_body2_dark">
+			<font resource="body2" color="%text_dark%"/>
+		</style>
+
+		<style name="text_body2_hl">
+			<font resource="body2" color="%accent%"/> <!--accent-->
+		</style>
+
+		<style name="text_body2_fail">
+			<font resource="body2" color="%text_fail%"/>
+		</style>
+
+		<style name="caption">
+			<font resource="caption" color="%text_light%"/>
+		</style>
+
+		<style name="caption_hl">
+			<font resource="caption" color="%accent%"/>
+		</style>
+
+		<style name="icon_mb_solid">
+			<fill color="%accent%"/>
+		</style>
+
+		<style name="menu_text">
+			<font resource="menu" color="%text%"/>
+		</style>
+
+		<style name="menu_text_hl">
+			<font resource="menu" color="%accent%"/>
+		</style>
+
+		<style name="menu_btn">
+			<highlight color="%highlight_color%" />
+			<fill color="%transparent%"/>
+		</style>
+		
+		<style name="menu_btn_sort">
+			<highlight color="%highlight_color_full%" />
+			<fill color="%transparent%"/>
+		</style>
+
+		<style name="mb_btn_edit">
+			<highlight color="%highlight_color%"/>
+			<image resource="btn_empty"/>
+		</style>
+		
+		<style name="mb_btn">
+			<highlight color="%highlight_color%"/>
+			<fill color="%transparent%"/>
+		</style>
+
+		<style name="bs_text">
+			<font resource="button" color="%text_menu%"/>
+		</style>
+
+		<style name="bs_btn">
+			<highlight color="%highlight_color_full%"/>
+			<fill color="%transparent%"/>
+		</style>
+
+		<style name="btn_raised">
+			<highlight color="%highlight_color%"/>
+			<font resource="Secondary" color="%text_raisedbtn%"/>
+			<image resource="btn_raised"/>
+		</style>
+
+		<style name="btn_raised_warn">
+			<highlight color="%highlight_color%"/>
+			<font resource="Secondary" color="%text_raisedbtn%"/>
+			<image resource="btn_raised_warn"/>
+		</style>
+
+		<style name="btn_raised_hl">
+			<highlight color="%highlight_color%"/>
+			<font resource="Secondary" color="%text_raisedbtn%"/>
+			<image resource="btn_raised_hl"/>
+		</style>
+
+		<style name="btn_flat_qw">
+			<highlight color="%highlight_color%"/>
+			<font resource="Secondary" color="%text_raisedbtn%"/>
+			<image resource="btn_flat_qw"/>
+		</style>
+
+		<style name="btn_dlg">
+			<highlight color="%highlight_color%"/>
+			<font resource="Secondary" color="%text_menu%"/>
+			<image resource="db_empty" highlightresource="db_hl" />
+		</style>
+
+		<style name="btn_dlg_hl">
+			<highlight color="%highlight_color%"/>
+			<font resource="Secondary" color="%accent%"/>
+			<image resource="db_empty" highlightresource="db_hl" />
+		</style>
+
+		<style name="btn_about_credits">
+			<highlight color="#FFFFFF66"/>
+			<font resource="Secondary" color="%accent%"/>
+			<image resource="db_empty" highlightresource="db_l_hl" />
+		</style>
+
+		<style name="settingslist">
+			<highlight color="%highlight_color_full%"/>
+			<background color="%background%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<icon selected="checkbox_true" unselected="checkbox_false"/>
+			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" />
+		</style>
+
+		<style name="settingslist_dialog">
+			<highlight color="%highlight_color_full%"/>
+			<background color="%background%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<icon selected="checkbox_true_dialog" unselected="checkbox_false_dialog"/>
+			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" />
+		</style>
+		
+		<style name="listbox">
+			<background color="%background%"/>
+			<highlight color="%highlight_color_full%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<icon selected="radio_true" unselected="radio_false" />
+			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" />
+		</style>
+		
+		<style name="btn_list">
+			<background color="%background%"/>
+			<highlight color="%highlight_color_full%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<iconsize w="216" h="144" padding="24"/>
+			<font resource="button" spacing="%fileselector_spacing%" color="%text_menu%"/>
+		</style>
+		
+		<style name="listbox_dialog">
+			<background color="%background%"/>
+			<highlight color="%highlight_color_full%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<icon selected="radio_true_dialog" unselected="radio_false_dialog" />
+			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" />
+		</style>
+
+		<style name="textbox">
+			<background color="%background%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<font resource="body1" spacing="%textbox_spacing%" color="%text%" />
+		</style>
+
+		<style name="checkbox_big">
+				<highlight color="%highlight_color_full%"/>
+				<font resource="body1" color="%text%"/>
+				<image checked="checkbox_true" unchecked="checkbox_false"/>
+		</style>
+
+		<style name="checkbox_small">
+				<highlight color="%highlight_color_full%"/>
+				<font resource="body1" color="%text%"/>
+				<image checked="checkbox_true" unchecked="checkbox_false"/>
+		</style>
+
+		<style name="partitionlist">
+			<background color="%background%"/>
+			<highlight color="%highlight_color_full%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<icon selected="checkbox_true" unselected="checkbox_false" />
+			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" />
+		</style>
+
+		<style name="partitionlist_dialog">
+			<background color="%background%"/>
+			<highlight color="%highlight_color_full%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<icon selected="radio_true_dialog" unselected="radio_false_dialog" />
+			<font resource="body1" spacing="%fileselector_spacing%" color="%text%"/>
+		</style>
+
+		<style name="partitionlist_radio">
+			<background color="%background%"/>
+			<highlight color="%highlight_color_full%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<icon selected="radio_true" unselected="radio_false" />
+			<font resource="body1" spacing="%fileselector_spacing%" color="%text%" />
+		</style>
+
+		<style name="fileselector_b">
+			<highlight color="%highlight_color_full%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<background color="%background%" />
+			<exicon up="up_icon" link="link_icon" block="block_icon"  zip="zip_icon" img="img_icon" txt="txt_icon" png="png_icon" />
+			<iconsize w="216" h="160" />
+			<font resource="status" spacing="%fileselector_spacing%" color="%text%" />
+		</style>
+
+		<style name="fileselector_s">
+			<highlight color="%highlight_color_full%"/>
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%" />
+			<background color="%background%" />
+			<exicon up="up_icon_small" link="link_icon_small" block="block_icon_small" zip="zip_icon_small" img="img_icon_small" txt="txt_icon_small" png="png_icon_small" />
+			<iconsize w="120" h="96" />
+			<font resource="status" spacing="%fileselector_spacing%" color="%text%" />
+		</style>
+
+		<style name="terminal">
+			<fastscroll rectcolor="%accent%" w="%fastscroll_w%" rectw="%fastscroll_rectw%" recth="%fastscroll_recth%"/>
+			<background color="%background%"/>
+			<font resource="body1" spacing="1" color="%text%"/>
+		</style>
+		
+		<style name="slider_action">
+			<resource base="slider_classic" used="slider_classic" touch="handle_h_classic"/>
+		</style>
+		
+		<style name="console">
+			<color foreground="%console_foreground%" background="%background%" scroll="%background%"/>
+			<font resource="body1"/>
+		</style>	
+		<style name="floating_btn">
+			<image resource="fab" highlightresource="fab_hl"/>
+		</style>	
+		<style name="input">
+			<background color="%background%"/>
+			<cursor color="%text%" hasfocus="1" width="%input_cursor_width%"/>
+			<font resource="body1" color="%text%"/>
+		</style>	
+		<style name="slidervalue">
+			<resource background="slider_used" handle="handle" handlehover="handle_h"/>
+			<font resource="caption" color="%text%"/>
+			<colors line="%text_dark%" slider="%accent%"/>
+			<dimensions lineh="%slidervalue_lineh%" linepadding="%slidervalue_padding%" sliderw="%slidervalue_sliderw%" sliderh="%slidervalue_sliderh%"/>
+		</style>	
+	</styles>
+	<templates>
+		<template name="background_image"></template>
+	</templates>
+</recovery>

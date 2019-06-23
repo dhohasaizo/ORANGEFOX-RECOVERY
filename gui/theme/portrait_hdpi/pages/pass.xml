@@ -1,0 +1,386 @@
+<?xml version="1.0"?>
+<recovery>
+	<pages>
+		<page name="password_enter">
+			<action>
+				<condition var1="pass_type" var2="1"/>
+				<action function="page">password_enter_pattern</action>
+			</action>
+
+			<action>
+				<condition var1="pass_type" var2="2"/>
+				<action function="page">password_enter_num</action>
+			</action>
+		
+			<template name="page_enter_pass_txt"/>
+			
+			<template name="keyboardtemplate"/>
+			
+			<template name="navbar_bkg"/>
+			
+			<template name="navbar_home"/>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">password_enter</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">password_enter</action>
+			</action>
+		</page>
+
+		<page name="password_enter_num">			
+			<template name="page_enter_pass_txt"/>
+			
+			<template name="keyboardnum"/>
+			
+			<template name="navbar_bkg"/>
+			
+			<template name="navbar_home"/>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">password_enter_num</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">password_enter_num</action>
+			</action>
+		</page>
+		
+		<page name="password_enter_pattern">
+			<template name="page_enter_pass"/>
+			
+			<template name="navbar_bkg"/>
+			
+			<template name="navbar_home"/>
+
+			<patternpassword>
+				<size name="pass_pattern_grid" default="3"/>
+				<placement x="%pattern_x%" y="%row3_2a_y%" w="%pattern_size%" h="%pattern_size%"/>
+				<dot color="%text_dark%" activecolor="%accent%" radius="%pattern_dot_dia%"/>
+				<line color="%accent%" width="%pattern_line_w%"/>
+				<data name="pass_enter"/>
+				<action function="page">password_check</action>
+			</patternpassword>
+			
+			<button style="btn_flat_qw">
+				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+				<text>3x3</text>
+				<action function="set">pass_pattern_grid=3</action>
+			</button>
+
+			<button style="btn_flat_qw">
+				<placement x="286" y="%row_btn1_y%"/>
+				<text>4x4</text>
+				<action function="set">pass_pattern_grid=4</action>
+			</button>
+
+			<button style="btn_flat_qw">
+				<placement x="545" y="%row_btn1_y%"/>
+				<text>5x5</text>
+				<action function="set">pass_pattern_grid=5</action>
+			</button>
+
+			<button style="btn_flat_qw">
+				<placement x="804" y="%row_btn1_y%"/>
+				<text>6x6</text>
+				<action function="set">pass_pattern_grid=6</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<action function="page">password_enter_pattern</action>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<action function="page">password_enter_pattern</action>
+			</action>
+		</page>
+
+		<page name="password_check">
+			<action>
+				<condition var1="pass_enter" op="=" var2="%pass_true%"/>
+				<condition var1="tw_has_mtp" var2="1"/>
+				<action function="startmtp"/>
+			</action>
+			
+			<action>
+				<condition var1="pass_enter" op="=" var2="%pass_true%"/>
+				<actions>
+					<action function="set">pass_open=1</action>
+					<action function="page">main</action>
+				</actions>
+			</action>
+			
+			<action>
+				<condition var1="pass_enter" op="!=" var2="%pass_true%"/>
+				<actions>
+					<action function="set">pass_govno=1</action>
+					<action function="page">password_enter</action>
+				</actions>
+			</action>
+		</page>
+		
+		<page name="pass_pattern">
+			<action>
+				<actions>
+					<action function="set">pass_pattern_grid=%pass_pattern_grid%</action>
+				</actions>
+			</action>
+			
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@enter_password_restore}</text>
+			</text>
+			
+			<image>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+				<text>{@new_pass_info_1_gk}</text>
+			</text>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@new_pass_info_2}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<text>{@new_pass_info_3}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<condition var1="pass_notm" op="!=" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>{@new_pass_info_4_gk}</text>
+			</text>
+			
+			<text style="text_body2_fail">
+				<condition var1="pass_notm" var2="1"/>
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>{@pass_not_match}</text>
+			</text>
+			
+			<patternpassword>
+				<size name="pass_pattern_grid" default="%pass_pattern_grid%"/>
+				<placement x="%pattern_x%" y="%row3_2a_y%" w="%pattern_size%" h="%pattern_size%"/>
+				<dot color="%text_dark%" activecolor="%accent%" radius="%pattern_dot_dia%"/>
+				<line color="%accent%" width="%pattern_line_w%"/>
+				<data name="pass_new_1"/>
+				<action function="page">pass_pattern_2</action>
+			</patternpassword>
+
+			<button style="btn_flat_qw">
+				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
+				<text>3x3</text>
+				<action function="set">pass_pattern_grid=3</action>
+			</button>
+
+			<button style="btn_flat_qw">
+				<placement x="286" y="%row_btn1_y%"/>
+				<text>4x4</text>
+				<action function="set">pass_pattern_grid=4</action>
+			</button>
+
+			<button style="btn_flat_qw">
+				<placement x="545" y="%row_btn1_y%"/>
+				<text>5x5</text>
+				<action function="set">pass_pattern_grid=5</action>
+			</button>
+
+			<button style="btn_flat_qw">
+				<placement x="804" y="%row_btn1_y%"/>
+				<text>6x6</text>
+				<action function="set">pass_pattern_grid=6</action>
+			</button>
+
+			<action>
+				<touch key="home"/>
+				<actions>
+					<action function="page">main</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<actions>
+					<action function="page">pass_select</action>
+				</actions>
+			</action>
+		</page>
+		
+		<page name="pass_pattern_2">
+			<action>
+				<actions>
+					<action function="set">pass_pattern_grid=%pass_pattern_grid%</action>
+				</actions>
+			</action>
+			
+			<template name="body"/>
+
+			<template name="ab"/>
+
+			<template name="statusbarinfo"/>
+
+			<text style="text_ab_title">
+				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+				<text>{@enter_password_restore}</text>
+			</text>
+			
+			<image>
+				<placement x="%col1_x%" y="%row1_1_y%"/>
+				<image resource="icon_info"/>
+			</image>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_1_y%"/>
+				<text>{@new_pass_info_1_gk}</text>
+			</text>
+
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+				<text>{@new_pass_info_2}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row1_3_y%"/>
+				<text>{@new_pass_info_3}</text>
+			</text>
+				
+			<text style="text_body2_hl">
+				<placement x="%col1_x_indent%" y="%row2_1_y%"/>
+				<text>{@new_pass_info_4_2_gk}</text>
+			</text>
+
+			<patternpassword>
+				<size name="pass_pattern_grid" default="%pass_pattern_grid%"/>
+				<placement x="%pattern_x%" y="%row3_2a_y%" w="%pattern_size%" h="%pattern_size%"/>
+				<dot color="%text_dark%" activecolor="%accent%" radius="%pattern_dot_dia%"/>
+				<line color="%accent%" width="%pattern_line_w%"/>
+				<data name="pass_new_2"/>
+				<actions>
+					<action function="set">pass_type_tmp=1</action>
+					<action function="set">checked_page=pass_pattern</action>
+					<action function="page">pass_check</action>
+				</actions>
+			</patternpassword>
+
+			<action>
+				<touch key="home"/>
+				<actions>
+					<action function="page">main</action>
+				</actions>
+			</action>
+
+			<action>
+				<touch key="back"/>
+				<actions>
+					<action function="page">pass_select</action>
+				</actions>
+			</action>
+		</page>
+
+		<page name="pass_text">
+			<template name="body_key"/>
+			
+			<template name="page_new_pass"/>
+			
+			<input>
+				<placement x="%col1_x%" y="%row3_1_y%" w="%input_width%" h="%input_height%"/>
+				<text>%pass_new_1_mask%</text>
+				<data name="pass_new_1" mask="*" maskvariable="pass_new_1_mask"/>
+				<restrict minlen="0" maxlen="64" />
+				<action function="set">pass_new_2=</action>
+				<action function="page">pass_text_2</action>
+			</input>
+		</page>
+
+		<page name="pass_text_2">
+			<template name="body_key"/>
+
+			<template name="page_new_pass_2"/>
+			
+			<input>
+				<placement x="%col1_x%" y="%row3_1_y%" w="%input_width%" h="%input_height%"/>
+				<text>%pass_new_2_mask%</text>
+				<data name="pass_new_2" mask="*" maskvariable="pass_new_2_mask"/>
+				<restrict minlen="0" maxlen="64"/>
+				<actions>
+					<action function="set">checked_page=pass_text</action>
+					<action function="set">pass_type_tmp=0</action>
+					<action function="page">pass_check</action>
+				</actions>
+			</input>
+		</page>
+		
+		<page name="pass_pin">
+			<template name="body_num"/>
+			
+			<template name="page_new_pass"/>
+			
+			<input>
+				<placement x="%col1_x%" y="%row3_1_y%" w="%input_width%" h="%input_height%"/>
+				<text>%pass_new_1_mask%</text>
+				<data name="pass_new_1" mask="*" maskvariable="pass_new_1_mask"/>
+				<restrict minlen="0" maxlen="64" />
+				<action function="set">pass_new_2=</action>
+				<action function="page">pass_pin_2</action>
+			</input>
+		</page>
+
+		<page name="pass_pin_2">
+			<template name="body_num"/>
+			
+			<template name="page_new_pass_2"/>
+
+			<input>
+				<placement x="%col1_x%" y="%row3_1_y%" w="%input_width%" h="%input_height%"/>
+				<text>%pass_new_2_mask%</text>
+				<data name="pass_new_2" mask="*" maskvariable="pass_new_2_mask"/>
+				<restrict minlen="0" maxlen="64"/>
+				<actions>
+					<action function="set">checked_page=pass_pin</action>
+					<action function="set">pass_type_tmp=2</action>
+					<action function="page">pass_check</action>
+				</actions>
+			</input>
+		</page>
+
+		<page name="pass_check">
+			<action>
+				<condition var1="pass_new_2" op="=" var2="%pass_new_1%"/>
+				<actions>
+					<action function="set">use_pass=1</action>
+					<action function="set">pass_notm=0</action>
+					<action function="set">pass_open=1</action>
+					<action function="set">pass_true=%pass_new_1%</action>
+					<action function="set">pass_type=%pass_type_tmp%</action>
+					<action function="page">pass_select</action>
+				</actions>
+			</action>
+
+			<action>
+				<condition var1="pass_new_2" op="!=" var2="%pass_new_1%"/>
+				<actions>
+					<action function="set">pass_notm=1</action>
+					<action function="page">%checked_page%</action>
+				</actions>
+			</action>
+		</page>
+	</pages>
+</recovery>

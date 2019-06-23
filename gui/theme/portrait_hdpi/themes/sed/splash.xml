@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<recovery>
+	<details>
+		<resolution width="1080"/>
+		<author>fordownloads (OrangeFox dev team)</author>
+		<title>OrangeFox Customizable Splash</title>
+		<description>SED Splash</description>
+		<themeversion>3</themeversion>
+	</details>
+	
+	<resources>
+		<#LOGO_ON#image name="splash_logo" filename="Splash/logo_#LOGO_TYPE#" retainaspect="1"/#LOGO_ON#>
+		<#BG_IMG#image name="splash_bg" filename="Splash/user" retainaspect="1"/#BG_IMG#>
+	</resources>
+
+	<pages>
+		<page name="splash">
+			<background color="#BG_COLOR#"/>
+			<#BG_IMG#object type="image">
+				<image resource="splash_bg"/>
+				<placement x="540" y="%center_y%" placement="4"/>
+			</object#BG_IMG#>
+			<#LOGO_ON#object type="image">
+				<image resource="splash_logo"/>
+				<placement x="540" y="%center_y%" placement="4"/>
+			</object#LOGO_ON#>
+		</page>
+	</pages>
+</recovery>

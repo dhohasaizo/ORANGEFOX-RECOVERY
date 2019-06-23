@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+	<display>Hungarian</display>
+
+	<resources>
+		<!-- Font overrides - only change these if your language requires special characters -->
+		<resource name="status" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="bigfont" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="body1" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="body2" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="subhead" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="title" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="mainbutton" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="button" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="menu" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="input_fail" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="splash" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+
+		<resource name="font_l" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="font_m" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="font_s" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="font_b" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+
+		<resource name="keylabel" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="keylabel-bold" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="keylabel-num" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="keylabel-small" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="keylabel-longpress" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		
+		<resource name="Secondary" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="Secondary-title" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="caption" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		
+		<resource name="clock" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+		<resource name="info" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
+
+		<!-- Partition display names -->
+		<string name="system">Rendszer</string>
+		<string name="system_image">Rendszer-képfájl</string>
+		<string name="vendor">Gyártói</string>
+		<string name="vendor_image">Gyártói-képfájl</string>
+		<string name="boot">Boot</string>
+		<string name="recovery">Recovery</string>
+		<string name="cache">Gyorsítótár</string>
+		<string name="data">Data</string>
+		<string name="sdcard">SD-kártya</string>
+		<string name="internal">Belső tárhely</string>
+		<string name="microsd">Mikro SD-kártya</string>
+		<string name="usbotg">USB OTG</string>
+		<string name="android_secure">Android Secure</string>
+		<string name="dalvik">Dalvik / ART-gyorsítótár</string>
+		<!-- This is a rarely used partition on a Micro SD card for a very old app2sd system -->
+		<string name="sdext">Külső SD-kártya</string>
+		<string name="adopted_data">Adaptált adat</string>
+		<string name="adopted_storage">Adaptált belső tároló</string>
+
+		<!-- GUI XML strings -->
+		<string name="twrp_watch_header">OrangeFox %fox_actual_build%</string>
+		<string name="cpu_temp">CPU: %tw_cpu_temp% &#xB0;C</string>
+		<string name="sort_by_name_asc">Név</string>
+		<string name="sort_by_date_asc">Dátum</string>
+		<string name="sort_by_size_asc">Méret</string>
+		<string name="sort_by_name_desc">Név</string>
+		<string name="sort_by_date_desc">Dátum</string>
+		<string name="sort_by_size_desc">Méret</string>
+		<string name="install_btn">Telepítés</string>
+		<string name="wipe_btn">Törlés</string>
+		<string name="backup_btn">Mentések</string>
+		<string name="restore_btn">Visszaállítás</string>
+		<string name="mount_btn">Felcsatolás</string>
+		<string name="file_manager_btn">Fájlok</string>
+		<string name="advanced_btn">Haladó</string>
+		<string name="reboot_btn">Újraindítás</string>
+		<string name="copy_log_btn">Hibanapló másolása az SD-kártyára</string>
+		<string name="install_zip_hdr">ZIP-telepítés</string>
+		<string name="install_zip_btn">ZIP-telepítés</string>
+		<string name="install_image_hdr">Képfájltelepítés</string>
+		<string name="install_image_btn">KÉPFÁJL-telepítés</string>
+		<string name="install_select_file_hdr">Fájlválasztás</string>
+		<string name="install_select_file_btn">Fájlválasztás</string>
+		<string name="adb_sideload_btn">ADB és Sideload</string>
+		<string name="select_storage_hdr">Tárhely-választás</string>
+		<string name="select_storage_btn">Tárhely-választás</string>
+		<string name="queue_hdr">Telepítési várólista</string>
+		<string name="raised_clearqueue_btn">Várólista-törlés</string>
+		<string name="raised_viewqueue_btn">Várólista-megtekintés</string>
+		<string name="zip_queue_count">%tw_zip_queue_count% fájl, a telepítési listába helyezhető maximális 10-ből</string>
+		<string name="folder">Könyvtár</string>
+		<string name="file">Fájl</string>
+		<string name="zip_sig_chk">ZIP-aláírásellenőrzés</string>
+		<string name="inject_twrp_chk">A telepítés után illessze be az OrangeFox-ot</string>
+		<string name="install_reboot_chk">Újraindítás, miután a telepítés befejeződött</string>
+		<string name="options_hdr">Opciók</string>
+		<string name="zip_queue">Telepítési lista</string>
+		<string name="install_zip_count_hdr">Az %tw_zip_index%. fájl telepítése a várakozó %tw_zip_queue_count% közül</string>
+		<string name="working">Folyamatban...</string>
+		<string name="failed">Meghiúsult</string>
+		<string name="successful">Sikerült</string>
+		<string name="wipe_cache_btn">Gyorsítótártörlés</string>
+		<string name="reboot_system_btn">Rendszer-újraindítás</string>
+		<string name="reboot_recovery_btn">Recovery-újraindítás</string>
+		<string name="install_sel_target">A képfájl célpartíció kijelölése</string>
+		<string name="flash_image_select">Partíció</string>
+		<string name="flashing_image">Képfájl telepítése...</string>
+		<string name="image_flashed">Képfájl telepítve</string>
+		<string name="wipe_cache_dalvik_confirm">Törli a Gyorsítótárat és a Dalvik/ART-gyorsítótárat?</string>
+		<string name="wipe_dalvik_confirm">Törli a Dalvik-gyorsítótárat?</string>
+		<string name="wiping_cache_dalvik">Gyorsítótár és Dalvik/ART-gyorsítótár törlése...</string>
+		<string name="wipe_cache_dalvik_complete">A Gyorsítótár és a Dalvik/ART-gyorsítótár törlése befejeződött</string>
+		<string name="cache_dalvik_done">A Gyorsítótár és a Dalvik/ART-gyorsítótár törlése befejeződött</string>
+		<string name="swipe_wipe">Húzza el alul a csúszkát a törléshez</string>
+		<string name="rebooting">Újraindítás...</string>
+		<string name="swipe_reboot">Húzza el alul a csúszkát az újraindításhoz</string>
+		<string name="confirm_action">A művelet megerősítése</string>
+		<string name="cancel_btn">Mégse</string>
+		<string name="wipe_hdr">Törlés</string>
+		<string name="factory_reset_hdr">Gyári adatok visszaállítása</string>
+		<string name="factory_reset1">Data-, Dalvik- és Gyorsítótártörlés</string>
+		<string name="factory_reset2">(a belső tárhely nélkül)</string>
+		<string name="factory_reset3">Önnek legtöbbször csak erre a</string>
+		<string name="factory_reset4">törlésre van szüksége.</string>
+		<string name="factory_resetting">Data-, Dalvik- és Gyorsítótártörlés...</string>
+		<string name="advanced_wipe_hdr">Haladó törlés</string>
+		<string name="advanced_wipe_btn">Haladó törlés</string>
+		<string name="wipe_enc_confirm">Törli a titkosítást az Adat-partícióról?</string>
+		<string name="formatting_data">Az Adat-partíció formázása...</string>
+		<string name="swipe_format_data">Húzza el alul a csúszkát az Adat-partíció formázásához</string>
+		<string name="factory_reset_complete">A Gyári adatok visszaállítása kész</string>
+		<string name="sel_part_hdr">Válassza ki a partíciókat</string>
+		<string name="wipe_sel_confirm">Törli a kijelölt partíciókat?</string>
+		<string name="wiping_part">A partíciók törlése...</string>
+		<string name="wipe_complete">A törlés elkészült</string>
+		<string name="format_data_hdr">Adatpartíció-formázás</string>
+		<string name="format_data_btn">Adatpartíció-formázás</string>
+		<string name="format_data_ptr1">Az Adatpartíció-formázás törli az összes alkalmazást,</string>
+		<string name="format_data_ptr2">mentést, képet, videót, egyéb médiát és</string>
+		<string name="format_data_ptr3">megszünteti a belső tárhely titkosítását.</string>
+		<string name="format_data_adopted">Beleértve az adaptált tárolót is.</string>
+		<string name="format_data_undo">Ezt visszavonhatatlan.</string>
+		<string name="format_data_complete">Adatpartíció-formázás kész</string>
+		<!-- Translator note: the word "yes" must remain English! -->
+		<string name="yes_continue">A formázás jóváhagyásához gépelje be: "yes".</string>
+		<string name="part_opt_hdr">Partícióinformáció</string>
+		<string name="file_sys_opt">Partícióbeállítások</string>
+		<string name="part_mount_point">Csatolási pont</string>
+		<string name="part_curr_fs">Fájlrendszer</string>
+		<string name="part_present">Jelenlegi</string>
+		<string name="part_removable">Eltávolítható</string>
+		<string name="part_yes">Igen</string>
+		<string name="part_no">Nem</string>
+		<string name="part_size">Méret</string>
+		<string name="part_used">Felhasznált</string>
+		<string name="part_free">Szabad</string>
+		<string name="part_backup_size">A biztonsági mentés mérete</string>
+		<string name="resize_btn">Fájlrendszer-átméretezés</string>
+		<string name="resize_confirm">Partíció-átméretezés</string>
+		<string name="resizing">Átméretezés folyamatban...</string>
+		<string name="resize_complete">Az átméretezés elkészült</string>
+		<string name="swipe_resize">Húzza el alul a csúszkát az átméretezéshez</string>
+		<string name="repair_btn">Fájlrendszer-javítás</string>
+		<string name="repair_confirm">A partíció helyreállítása</string>
+		<string name="repairing">Javítás folyamatban...</string>
+		<string name="repair_complete">A javítás befejeződött</string>
+		<string name="swipe_repair">Húzza el alul a csúszkát a javításhoz</string>
+		<string name="change_fs_btn">Fájlrendszer-változtatás</string>
+		<string name="change_fs_warn1">Egyes ROM-ok vagy kernelek nem támogatnak</string>
+		<string name="change_fs_warn2">bizonyos fájlrendszereket. Körültekintően járjon el!</string>
+		<string name="change_fs_confirm">Fájlrendszer-módosítás a következőre</string>
+		<string name="formatting">Formázás...</string>
+		<string name="format_complete">A formázás elkészült</string>
+		<string name="swipe_change_fs">Húzza el alul a csúszkát a módosításhoz</string>
+		<string name="back_btn">Vissza</string>
+		<string name="wipe_enc_btn">A titkosítás törlése</string>
+		<string name="swipe_factory_reset">Húzza el alul a csúszkát a Gyári adatok visszaállításához</string>
+		<string name="backup_hdr">Biztonsági mentés</string>
+		<string name="encryption_hdr">A titkosítás engedélyezése</string>
+		<string name="name">Név</string>
+		<string name="enable_backup_comp_chk">Tömörítés engedélyezése</string>
+		<string name="skip_md5_backup_chk">MD5-ellenőrzés kihagyása a mentés során</string>
+		<string name="disable_backup_space_chk">Kikapcsolja a rendelkezésre álló hely ellenőrzését a mentés előtt</string>
+		<string name="swipe_backup">Húzza el alul a csúszkát a mentés készítéséhez</string>
+		<string name="backup_name_exists">Már létezik mentése ezen a néven!</string>
+		<string name="pass_not_match">A jelszavak nem egyeznek meg!</string>
+		<string name="partitions">Partíciók</string>
+		<string name="progress">Folyamatban</string>
+		<string name="backup_complete">A mentés elkészült</string>
+		<string name="restore_hdr">Mentések</string>
+		<string name="restore_backup_hdr">Mentés visszaállítása</string>
+		<string name="sel_backup_hdr">Válassza ki a biztonsági mentést</string>
+		<string name="restore_dec_fail">A jelszó helytelen, próbálkozzon újra!</string>
+		<string name="del_backup_confirm">Törli a mentést?</string>
+		<string name="del_backup_confirm2">Ezt nem lehet visszavonni!</string>
+		<string name="deleting_backup">Mentés törlése...</string>
+		<string name="backup_deleted">A mentés törölve</string>
+		<string name="swipe_delete">Húzza el alul a csúszkát a törléshez</string>
+		<string name="restore_backup_date">A mentés dátuma</string>
+		<string name="restore_md5_chk">Mentési fájlok MD5 ellenőrzése</string>
+		<string name="restore_enable_md5_chk">A mentési fájlok MD5-ellenőrzésének engedélyezése</string>
+		<string name="restore_complete">A visszaállítás elkészült</string>
+		<string name="swipe_restore">Húzza el alul a csúszkát a visszaállításhoz</string>
+		<string name="rename_backup_hdr">A mentés átnevezése</string>
+		<string name="rename_backup_confirm">Átnevezi a mentést?</string>
+		<string name="rename_backup_confirm2">Ezt nem lehet visszavonni!</string>
+		<string name="renaming_backup">Mentés átnevezése...</string>
+		<string name="rename_backup_complete">A mentés átnevezve</string>
+		<string name="swipe_to_rename">Húzza el alul a csúszkát az átnevezéshez</string>
+		<string name="mount_hdr">Felcsatolás</string>
+		<string name="mount_sys_ro_chk">Gyártói / Rendszer felcsatolása csak olvashatóként</string>
+		<string name="decrypt_data_btn">Adat-partíció titkosításának feloldása</string>
+		<string name="disable_mtp_btn">MTP-kikapcsolás</string>
+		<string name="enable_mtp_btn">MTP-bekapcsolás</string>
+		<string name="usb_storage_hdr">USB-tárhely</string>
+		<string name="usb_storage_btn">USB-tárhely</string>
+		<string name="usb_stor_mnt1">USB-tárhely felcsatolva</string>
+		<string name="usb_stor_mnt2">Ügyeljen arra, hogy biztonságosan távolítsa el</string>
+		<string name="usb_stor_mnt3">az USB-tárhelyet a számítógépről leválasztás előtt!</string>
+		<string name="unmount_btn">Lecsatolás</string>
+		<string name="rb_system_btn">Rendszer</string>
+		<string name="rb_poweroff_btn">Kikapcsolás</string>
+		<string name="rb_recovery_btn">Recovery</string>
+		<string name="rb_bootloader_btn">Bootloader</string>
+		<string name="rb_theme">Téma</string>
+		<string name="rb_download_btn">Download-mód</string>
+		<string name="rb_edl_btn">EDL</string>
+		<string name="turning_off">Kikapcsolás...</string>
+		<string name="swipe_power_off">Húzza el alul a csúszkát a kikapcsoláshoz</string>
+		<string name="sys_ro">Rendszerpartíció</string>
+		<string name="sys_ro_hdr">Módosításmentes rendszerpartíció</string>
+		<string name="sys_rop1">Az OrangeFox képes érintetlenül hagyni</string>
+		<string name="sys_rop2">az Ön rendszerpartícióját, hogy megkönnyítse Önnek</string>
+		<string name="sys_rop2a">a hivatalos frissítések telepítését.</string>
+		<string name="sys_rop3">Az OrangeFox nem tudja megakadályozni a következőt:</string>
+		<string name="sys_rop4">hogy a gyári ROM felülírja az OrangeFox-ot.</string>
+		<string name="sys_rop5">ZIP-telepítések vagy ADB-műveletek</string>
+		<string name="sys_rop6">akár módosíthatják a Rendszerpartíciót.</string>
+		<string name="sys_ro_never_show_chk">Ne jelenjen meg többet ez a képernyő</string>
+		<string name="sys_ro_keep_ro_btn">Maradjon 'Csak olvasható'</string>
+		<string name="swipe_allow_mod">A módosítás engedélyezéséhez húzd el alul a csúszkát</string>
+		<string name="settings_hdr">Beállítások</string>
+		<string name="settings_cptn">Általános</string>
+		<string name="use_rmrf_chk">RM -rf használata a formázás helyett</string>
+		<string name="use24clock_chk">24 órás óra használata</string>
+		<string name="rev_navbar_chk">Fordított navigációssáv-elrendezés</string>
+		<string name="simact_chk">Témabeállítások szimulálása</string>
+		<string name="simfail_chk">Hibaszimuláció a végrehajtáshoz</string>
+		<string name="sel_tz_list">Időzóna</string>
+		<string name="dialog_reset_theme_hdr">Visszaállítás alaphelyzetbe</string>
+		<!-- Translator note: if it does not make sense to translate the locations or if it makes more sense,
+				feel free to change the location listed or drop the location entirely and just call it UTC -6 -->
+		<string name="utcm11">(UTC -11) Samoa, Midway-szigetek</string>
+		<string name="utcm10">(UTC -10) Hawaii</string>
+		<string name="utcm9">(UTC -9) Alaszka</string>
+		<string name="utcm8">(UTC -8) Csendes-óceáni idő</string>
+		<string name="utcm7">(UTC-7) Hegyvidéki idő</string>
+		<string name="utcm6">(UTC -6) Közép államokbeli idő</string>
+		<string name="utcm5">(UTC-5) Keleti államokbeli idő</string>
+		<string name="utcm4">(UTC -4) Atlanti-óceáni idő</string>
+		<string name="utcm3">(UTC -3) Brazília, Buenos Aires</string>
+		<string name="utcm2">(UTC -2) Közép-Atlanti idő</string>
+		<string name="utcm1">(UTC -1) Azori-szigetek, Cape Verde</string>
+		<string name="utc0">(UTC  0) London, Dublin, Lisszabon</string>
+		<string name="utcp1">(UTC +1) Budapest, Brüsszel, Párizs, Berlin</string>
+		<string name="utcp2">(UTC +2) Athén, Isztambul, Dél-Afrika</string>
+		<string name="utcp3">(UTC +3) Moszkva, Bagdad</string>
+		<string name="utcp4">(UTC +4) Abu Dhabi, Tbiliszi, Muscat</string>
+		<string name="utcp5">(UTC +5) Jekatyerinburg, Iszlamabád</string>
+		<string name="utcp6">(UTC +6) Almaty, Dhaka, Colombo</string>
+		<string name="utcp7">(UTC +7) Bangkok, Hanoi, Jakarta</string>
+		<string name="utcp8">(UTC +8) Peking, Szingapúr, Hongkong</string>
+		<string name="utcp9">(UTC +9) Tokio, Szöul, Jakutszk</string>
+		<string name="utcp10">(UTC +10) Észak-Ausztrália, Guam</string>
+		<string name="utcp11">(UTC +11) Vlagyivosztok, Salamon-szigetek</string>
+		<string name="utcp12">(UTC +12) Auckland, Wellington, Fiji-szigetek</string>
+		<string name="tz_offset_hdr">Időeltolódás</string>	
+		<string name="tz_offset">Eltolódás:</string>
+		<string name="sel_tz_offset">Eltolódás kiválasztása (perc, általában 0): %tw_time_zone_guioffset%</string>
+		<string name="tz_offset_0">0</string>
+		<string name="tz_offset_15">15</string>
+		<string name="tz_offset_30">30</string>
+		<string name="tz_offset_45">45</string>
+		<string name="use_dst_chk">Nyári időszámítás használata</string>
+		<string name="curr_tz">Jelenlegi időzóna: %tw_time_zone%</string>
+		<string name="curr_tz_s">Jelenlegi időzóna:</string>
+		<string name="set_tz_btn">Időzóna-beállítás</string>
+		<string name="settings_screen_cptn">Kijelzőbeállítások</string>
+		<string name="settings_screen_timeout_cptn">Az időkorlát kikapcsolva</string>
+		<string name="settings_screen_timeout_cptn2">Időkorlát:</string>
+		<string name="timeout_unit">másodperc</string>
+		<string name="enable_timeout_chk">Kijelzőidőkorlát-engedélyezés</string>
+		<string name="screen_to_na">Kijelző időkorlát nem érhető el</string>
+		<string name="rotation_chk">Elforgatás</string>
+		<string name="screen_bright_slider">Fényerő: %tw_brightness_pct%%</string>
+		<string name="screen_bright_na">A fényerőbeállítás nem érhető el</string>
+		<string name="vibration_hdr">Rezgés</string>
+		<string name="button_vibration_hdr">Kikapcsolt Gombrezgés</string>
+		<string name="kb_vibration_hdr">Kikapcsolt Billentyűrezgés</string>
+		<string name="act_vibration_hdr">Kikapcsolt Műveletrezgés</string>
+		<string name="button_vibration">Gombrezgés:</string>
+		<string name="kb_vibration">Billentyűrezgés:</string>
+		<string name="act_vibration">Műveletrezgés:</string>
+		<string name="advanced_hdr">Haladó</string>
+		<string name="copy_log_confirm">Átmásolja a naplót az SD-kártyára?</string>
+		<string name="copying_log">Napló másolása az SD-kártyára...</string>
+		<string name="copy_log_complete">A napló átmásolva</string>
+		<string name="terminal_btn">Terminál</string>
+		<string name="dumlock_note1">A HTC Dumlock működésének</string>
+		<string name="dumlock_note2">leírása itt található:</string>
+		<string name="inject_twrp_btn">Az OrangeFox beillesztése</string>
+		<string name="inject_twrp_confirm">Újra beilleszti az OrangeFox-ot?</string>
+		<string name="injecting_twrp">Az OrangeFox újrabeillesztése...</string>
+		<string name="inject_twrp_complete">Az OrangeFox beillesztése kész</string>
+		<string name="swipe_to_confirm">Húzza el alul a csúszkát a megerősítéshez</string>
+		<string name="part_sd_hdr">SD-partícionálás</string>
+		<string name="rem_sd">Eltávolítható tárhely</string>
+		<string name="rem_sd_sel">Válasszon egy eltávolítható tárhelyet!</string>
+		<string name="invalid_partsd_sel">Az eltávolítható tárhely kiválasztása kötelező</string>
+		<string name="part_sd_lose">Az SD-kártya minden adatát elveszíti!</string>
+		<string name="part_sdcard_sel_note_1">A partícionálás törölni fog minden</string>
+		<string name="part_sdcard_sel_note_2">adatot az Ön SD-kártyájáról!</string>
+		<string name="part_sd_undo">A művelet nem vonható vissza!</string>
+		<string name="part_sd_ext_sz">EXT-méret:</string>
+		<string name="btn_flat_ext4">EXT4</string>
+		<string name="btn_flat_ext3">EXT3</string>
+		<string name="btn_flat_more">+</string>
+		<string name="btn_flat_less">-</string>
+		<string name="part_sd_swap_sz">Swap-méret:</string>
+		<string name="file_system">Fájlrendszer:</string>
+		<string name="swipe_part_sd">Húzza el alul a csúszkát a partícionáláshoz</string>
+		<string name="partitioning_sd">Az SD-kártya partícionálása...</string>
+		<string name="partitioning_sd2">A művelet eltarthat egy ideig.</string>
+		<string name="part_sd_complete">A partícionálás elkészült</string>
+		<string name="dumlock_hdr">HTC Dumlock</string>
+		<string name="dumlock_restore_btn">Az eredeti rendszerindító (boot) visszaállítása</string>
+		<string name="dumlock_restore_confirm">Visszaállítja a gyári rendszerindító-képfájlt (boot)?</string>
+		<string name="dumlock_restoring">A gyári rendszerindító (boot) visszaállítása...</string>
+		<string name="dumlock_restore_complete">A gyári rendszerindító (boot) visszaállítása megtörtént</string>
+		<string name="dumlock_reflash_btn">A Recovery újratelepítése</string>
+		<string name="dumlock_reflash_confirm">Újratelepíti a recovery-t a bootoláshoz?</string>
+		<string name="dumlock_reflashing">A recovery újratelepítése a bootoláshoz...</string>
+		<string name="dumlock_reflash_complete">Elkészült a recovery telepítése a bootoláshoz</string>
+		<string name="dumlock_install_btn">Dumlock-telepítés</string>
+		<string name="dumlock_install_confirm">Telepíti a HTC dumlock fájlokat a ROM-hoz?</string>
+		<string name="dumlock_installing">HTC Dumlock-telepítés...</string>
+		<string name="dumlock_install_complete">A HTC Dumlock telepítése kész</string>
+		<string name="swipe_to_unlock">Húzza el alul a csúszkát a feloldáshoz</string>
+		<string name="fm_actions">Műveletek</string>
+		<string name="fm_hdr">Fájlok</string>
+		<string name="fm_sel_file">Fájl vagy könyvtár kiválasztása</string>
+		<string name="fm_type_folder">Könyvtár</string>
+		<string name="fm_type_file">Fájl</string>
+		<string name="fm_copy_btn">Másolás</string>
+		<string name="fm_copying">Másolás</string>
+		<string name="fm_move_btn">Áthelyezés</string>
+		<string name="fm_moving">Áthelyezés</string>
+		<string name="fm_chmod755_btn">'755'-re állítás</string>
+		<string name="fm_chmod755ing">'755'-re állítás</string>
+		<string name="fm_chmod644_btn">'644'-re állítás</string>
+		<string name="fm_chmod644ing">'644'-re állítás</string>
+		<string name="fm_chmod_btn">Jogosultság-beállítás</string>
+		<string name="fm_delete_btn">Törlés</string>
+		<string name="fm_deleting">Törlés</string>
+		<string name="fm_rename_btn">Átnevezés</string>
+		<string name="fm_renaming">Átnevezés</string>
+		<string name="fm_sel_dest">Célkönyvtár</string>
+		<string name="fm_rename_hdr">Átnevezés</string>
+		<string name="fm_set_perms_hdr">Jogosultság-beállítás</string>
+		<string name="fm_perms">Jogosultságok</string>
+		<string name="fm_complete">Fájlművelet végrehajtva</string>
+		<string name="decrypt">Visszakódolás</string>
+		<string name="data_part">Adat-partíció</string>
+		<string name="encrypt_data_part">Az Adat-partíció titkosított.</string>
+		<string name="sel_encrypt_backup">Egy titkosított mentést választott ki.</string>
+		<string name="decrypt_data_enter_note1">Kérjük, adja meg a jelszót</string>
+		<string name="decrypt_data_enter_note1a">Kérjük, adja meg a feloldómintát</string>
+		<string name="decrypt_data_enter_note2">vagy nyomja meg a Vissza-gombot az elvetéshez.</string>
+		<string name="decrypt_data_enter_pass">Írja be a jelszót</string>
+		<string name="decrypt_data_failed_pattern">Helytelen feloldóminta!</string>
+		<string name="decrypt_try_again">Próbálja újra.</string>
+		<string name="decrypt_data_enter_pattern">Adja meg a feloldómintát.</string>
+		<string name="decrypt_data_trying">A visszakódolás megkísérlése</string>
+		<string name="term_s_hdr">Terminál</string>
+		<string name="adb_sideload_hdr">ADB Sideload</string>
+		<string name="sideload_wipe_dalvik_chk">A Dalvik/ART-gyorsítótár törlése</string>
+		<string name="sideload_wipe_cache_chk">A Gyorsítótár törlése</string>
+		<string name="swipe_to_sideload">Húzza el alul a csúszkát az ADB Sideload indításához</string>
+		<string name="sideload_confirm">ADB Sideload</string>
+		<string name="sideload_usage">A használat módja: ADB sideload File.ZIP</string>
+		<string name="sideload_complete">ADB Sideload kész</string>
+		<string name="fix_contexts_hdr">Kontextus-javítás</string>
+		<string name="fix_contexts_confirm">Engedélyezi a SELinux-kontextusok javítását?</string>
+		<string name="fix_contexts_note1">Megjegyzés: Ritkán szükséges a SELinux-kontextusok javítása.</string>
+		<string name="fix_contexts_note2">A SELinux-kontextusok javítása a készülékének</string>
+		<string name="fix_contexts_note3">hibás bootolását vonhatja maga után.</string>
+		<string name="swipe_to_fix_contexts">Húzza el alul a csúszkát a javításhoz</string>
+		<string name="fixing_contexts">A kontextusok javítása...</string>
+		<string name="fix_contexts_complete">A kontextusok javítása kész</string>
+		<string name="reboot_hdr">Újraindítás</string>
+		<string name="sel_storage_list">Tárhely-választás</string>
+		<string name="ok_btn">OK</string>
+
+		<!-- Various console messages - these consist of user displayed messages, oftentimes errors -->
+		<string name="no_kernel_selinux">A kernel nem támogatja a SELinux-kontextusok olvasását.</string>
+		<string name="full_selinux">Teljes SELinux támogatás érhető el.</string>
+		<string name="no_selinux">Nincs SELinux támogatás (nincs libselinux).</string>
+		<string name="mtp_enabled">Az MTP bekapcsolva</string>
+		<string name="mtp_disabled">Az MTP kikapcsolva</string>
+		<string name="mtp_crash">Az MTP összeomlott - bootláskor az MTP nem indul el.</string>
+		<string name="decrypt_success">Sikeresen visszakódolva az alapértelmezett jelszóval.</string>
+		<string name="unable_to_decrypt">Az alapértelmezett jelszóval nem kódolható vissza. Szükség lehet az Adat-partíció formázására.</string>
+		<string name="generating_md51">MD5-generálás</string>
+		<!-- Message displayed during a backup if we are generating an MD5, ideally, leave the leading " * " to help align and separate this text from other console text -->
+		<string name="generating_md52"> * MD5-generálás...</string>
+		<string name="md5_created"> * Az MD5 kész.</string>
+		<string name="md5_error"> * MD5 hiba!</string>
+		<string name="md5_compute_error"> * Hiba az MD5 számítása közben.</string>
+		<string name="current_date">(A jelenlegi dátum)</string>
+		<string name="auto_generate">(Automatikusan generált)</string>
+		<string name="unable_to_locate_partition">A mentési számításokhoz a(z) {1}-partíció helye nem határozható meg.</string>
+		<string name="no_partition_selected">Nincs partíció kiválasztva a mentéshez.</string>
+		<string name="total_partitions_backup"> * Az összes mentésre kijelölt partíció száma: {1}</string>
+		<string name="total_backup_size"> * A teljes adatmennyiség: {1}MB</string>
+		<string name="available_space"> * A rendelkezésre álló hely: {1}MB</string>
+		<string name="unable_locate_storage">A tárolóeszköz nem található.</string>
+		<string name="no_space">Nincs elegendő szabad hely a tárhelyen.</string>
+		<string name="backup_started">[MENTÉS ELINDÍTVA]</string>
+		<string name="backup_folder"> * Mentési hely: {1}</string>
+		<string name="fail_backup_folder">A mentési könyvtár létrehozása sikertelen.</string>
+		<string name="avg_backup_fs">A fájlrendszerek átlagos mentési sebessége: {1} MB/sec</string>
+		<string name="avg_backup_img">A képfájl-meghajtók átlagos mentési sebessége: {1} MB/sec</string>
+		<string name="total_backed_size">[ÖSSZESEN {1} MB MENTVE]</string>
+		<string name="backup_completed">[A MENTÉS {1} MÁSODPERC ALATT KÉSZÜLT EL]</string>
+		<string name="restore_started">[A VISSZAÁLLÍTÁS ELKEZDVE]</string>
+		<string name="restore_folder">'{1}'-mappa visszaállítása</string>
+		<!-- {1} is the partition display name and {2} is the number of seconds -->
+		<string name="restore_part_done">[{1} kész ({2} másodperc)]</string>
+		<string name="verifying_md5">MD5-ellenőrzés</string>
+		<string name="skip_md5">Az MD5-ellenőrzés kihagyása felhasználói beállításból adódóan.</string>
+		<string name="calc_restore">Visszaállítási részletek számítása..</string>
+		<string name="restore_read_only">{1}-visszaállítás sikertelen -- csak olvashatóként lett felcsatolva.</string>
+		<string name="restore_unable_locate">A visszaállítandó {1}-partíció helyének meghatározása sikertelen.</string>
+		<string name="no_part_restore">Nincs a visszaállításhoz partíció kijelölve.</string>
+		<string name="restore_part_count">A(z) {1} partíció visszaállítása...</string>
+		<string name="total_restore_size">A teljes visszaállítási méret {1}MB</string>
+		<string name="updating_system_details">A rendszer adatainak frissítése</string>
+		<string name="restore_completed">[A VISSZAÁLLÍTÁS {1} MÁSODPERC ALATT ELKÉSZÜLT]</string>
+		<!-- {1} is the path we could not open, {2} is strerror output -->
+		<string name="error_opening_strerr">Hiba a(z) '{1}' megnyitásakor ({2})</string>
+		<string name="unable_locate_part_backup_name">Nem sikerült a(z) '{1}' mentési név alapján a partíció helymeghatározása</string>
+		<string name="unable_find_part_path">A partíciót nem sikerült megtalálni a(z) '{1}' elérési úthoz.</string>
+		<string name="update_part_details">Partíciók részleteinek frissítése...</string>
+		<string name="update_part_details_done">...kész</string>
+		<string name="wiping_dalvik">A Dalvik/ART gyorsítótár-könyvtárak törlése...</string>
+		<string name="cleaned">{1} törölve...</string>
+		<string name="dalvik_done">Dalvik/ART gyorsítótár-könyvtárak törlése kész!</string>
+		<string name="no_andsec">Az Android secure partíció nem található.</string>
+		<string name="unable_to_locate">{1} nem határolható be.</string>
+		<string name="wiping_datamedia">A Belső tárhely törlése -- /data/media...</string>
+		<string name="unable_to_mount">{1}-felcsatolás sikertelen</string>
+		<string name="unable_to_mount_internal">A belső tárhely felcsatolása sikertelen</string>
+		<string name="unable_to_mount_storage">A tárhely felcsatolása sikertelen</string>
+		<string name="fail_decrypt">Sikertelen visszakódolás.</string>
+		<string name="no_crypto_support">A build nem tartalmaz titkosítási támogatást.</string>
+		<string name="decrypt_success_dev">Adatok sikeresen visszafejtve, új blokkeszköz: '{1}'</string>
+		<string name="done">Kész</string>
+		<string name="start_partition_sd">Az SD-kártya partícionálása..</string>
+		<string name="partition_sd_locate">Partíció eszközhöz rendelése sikertelen.</string>
+		<string name="ext_swap_size">Az EXT + a Swap mérete nagyobb, mint az SD-kártya mérete.</string>
+		<string name="remove_part_table">A partíciós tábla eltávolítása...</string>
+		<string name="unable_rm_part">A partíciós tábla eltávolítása sikertelen.</string>
+		<string name="create_part">{1} partíció létrehozása..</string>
+		<string name="unable_to_create_part">{1} partíció létrehozása sikertelen.</string>
+		<string name="format_sdext_as">sd-ext formázása {1}-ként..</string>
+		<string name="part_complete">A partícionálás elkészült.</string>
+		<string name="unable_to_open">'{1}' nem nyitható meg.</string>
+		<string name="mtp_already_enabled">Az MTP már engedélyezett</string>
+		<string name="mtp_fail">Az MTP engedélyezése sikertelen</string>
+		<string name="no_mtp">Nincs MTP-támogatás</string>
+		<string name="image_flash_start">[KÉPFÁJL-TELEPÍTÉS ELKEZDVE]</string>
+		<string name="img_to_flash">'{1}'-képfájl telepítése</string>
+		<string name="flash_unable_locate">A telepíteni kívánt '{1}'-partíció nem határolható be.</string>
+		<string name="no_part_flash">Nincs partíció kiválasztva a telepítéshez.</string>
+		<string name="too_many_flash">Túl sok partíció van kiválasztva a telepítéshez.</string>
+		<string name="invalid_flash">Hibásan lett kiválasztva a telepíteni kívánt partíció.</string>
+		<string name="flash_done">[A KÉPFÁJL-TELEPÍTÉS ELKÉSZÜLT]</string>
+		<string name="wiping">{1} törlése</string>
+		<string name="repair_not_exist">{1} nem létezik! Helyreállítás nem lehetséges!</string>
+		<string name="repairing_using">{1} helyreállítása {2} segítségével..</string>
+		<string name="unable_repair">A(z) {1} helyreállítása sikertelen.</string>
+		<string name="mount_data_footer">A /data csatolása nem sikerült és a titkosítási lábléc nem található.</string>
+		<!-- {1} is the folder name that we could not create, {2} is strerror output -->
+		<string name="create_folder_strerr">'{1}'-könyvtár létrehozása sikertelen ({2}).</string>
+		<!-- {1} is the folder name that we could not mount, {2} is strerror output -->
+		<string name="fail_mount">'{1}' felcsatolása sikertelen ({2})</string>
+		<!-- {1} is the folder name that we could not unmount, {2} is strerror output -->
+		<string name="fail_unmount">'{1}' lecsatolása sikertelen ({2})</string>
+		<string name="cannot_resize">{1} átméretezése sikertelen.</string>
+		<string name="repair_resize">{1} javítása átméretezés előtt.</string>
+		<string name="unable_resize">{1} átméretezése sikertelen.</string>
+		<string name="no_md5_found">Nincs MD5-fájl a következőhöz: '{1}'. Kérjük, kapcsolja ki az MD5-ellenőrzést a visszaállításnál.</string>
+		<string name="md5_fail_match">Az MD5 nem egyezik a következőhöz: '{1}'.</string>
+		<string name="fail_decrypt_tar">'{1}' Tar-fájl visszafejtése sikertelen </string>
+		<string name="format_data_msg">Előfordulhat, hogy újra kell indítania a recovery-t hogy az Adat-partíciót használhassa.</string>
+		<string name="format_data_err">Nem sikerült a formázás a titkosítás eltávolításához.</string>
+		<string name="formatting_using">{1} formázása {2} segítségével...</string>
+		<string name="unable_to_wipe">{1} törlése sikertelen.</string>
+		<string name="cannot_wipe">A {1} partíció tartalmának törlése sikertelen.</string>
+		<string name="remove_all">Az összes fájl eltávolítása a következőről: '{1}'</string>
+		<string name="wiping_data">Adattörlés a /data/media törlése nélkül...</string>
+		<string name="backing_up">{1} mentése..</string>
+		<string name="backing">Mentés</string>
+		<string name="backup_size">A(z) '{1}' biztonsági mentésének nagysága 0 byte.</string>
+		<string name="datamedia_fs_restore">FIGYELMEZTETÉS: Ez a /data mentés {1} fájlrendszerrel készült! A mentés-visszaállítás előfordulhat hogy nem bootol, amíg {1}-re nem lesz visszaállítva.</string>
+		<string name="restoring">{1} visszaállítása...</string>
+		<string name="restoring_hdr">Visszaállítás...</string>
+		<string name="recreate_folder_err">{1}-könyvtár újralétrehozása sikertelen.</string>
+		<string name="img_size_err">A képfájl nagysága nagyobb, mint a céleszköz</string>
+		<string name="flashing">{1} telepítése...</string>
+		<string name="backup_folder_set">Mentési könyvtár beállítása '{1}' állapotra</string>
+		<string name="locate_backup_err">'{1}' mentési helye nem határozható meg</string>
+		<string name="set_restore_opt">A visszaállítási lehetőségek beállítása: '{1}':</string>
+		<string name="md5_check_skip">Az MD5-ellenőrzés kihagyása bekapcsolva</string>
+		<string name="ors_encrypt_restore_err">Az OpenRecoveryScript használata nem sikerült a titkosított mentés visszaállítása során.</string>
+		<string name="mounting">Felcsatolás</string>
+		<string name="unmounting">Lecsatolás</string>
+		<string name="mounted">'{1}' felcsatolva</string>
+		<string name="unmounted">'{1}' lecsatolva</string>
+		<string name="setting">{1} átállítása {2}-re</string>
+		<string name="setting_empty">'{1}' üresre állítása</string>
+		<string name="making_dir1">Könyvtárlétrehozás</string>
+		<string name="making_dir2">Könyvtárlétrehozás: '{1}'</string>
+		<string name="running_command">Parancsfuttatás</string>
+		<string name="sideload">ADB Sideload</string>
+		<string name="start_sideload">ADB Sideload szolgáltatás indítása...</string>
+		<string name="need_new_adb">1.0.32 vagy magasabb verziójú ADB-re lesz szüksége a Sideload-hoz.</string>
+		<string name="no_pwd">Nem lett jelszó megadva.</string>
+		<string name="done_ors">A szkriptfeldolgozás kész</string>
+		<string name="injecttwrp">Az OrangeFox beillesztése a rendszerindító (boot) képfájlba...</string>
+		<string name="zip_err">Hiba a '{1}' ZIP-fájl telepítésekor</string>
+		<string name="installing_zip">'{1}' ZIP-fájl telepítése</string>
+		<string name="select_backup_opt">A mentési lehetőségek beállítása:</string>
+		<string name="compression_on">Tömörítés bekapcsolva</string>
+		<string name="md5_off">MD5-generálás kikapcsolva</string>
+		<string name="backup_fail">A mentés sikertelen</string>
+		<string name="backup_clean">A mentés sikertelen. A mentési könyvtár kiürítése.</string>
+		<string name="running_recovery_commands">Recovery-parancsok futtatása</string>
+		<string name="recovery_commands_complete">Recovery-parancsok lefutottak</string>
+		<string name="running_ors">OpenRecoveryScript futtatása</string>
+		<string name="ors_complete">OpenRecoveryScript futtatása kész</string>
+		<string name="no_updater_binary">'{1}' nem található a ZIP-fájlban.</string>
+		<string name="check_for_md5">MD5-fájl keresése...</string>
+		<string name="fail_sysmap">'{1}' fájl megfeleltetése sikertelen.</string>
+		<string name="verify_zip_sig">A ZIP-aláírás ellenőrzése...</string>
+		<string name="verify_zip_fail">A ZIP-aláírás ellenőrzése meghiúsult!</string>
+		<string name="verify_zip_done">A ZIP-aláírás ellenőrzése sikerült.</string>
+		<string name="zip_corrupt">A ZIP-fájl sérült!</string>
+		<string name="no_md5">MD5-ellenőrzés kihagyása (nincs MD5-fájl)</string>
+		<string name="md5_fail">Az MD5 nem egyezik</string>
+		<string name="md5_match">Az MD5 egyezik</string>
+		<string name="pid_signal">{1}-folyamat véget ért a következővel: {2}</string>
+		<string name="pid_error">{1}-folyamat véget ért a következő hibával: {2}</string>
+		<string name="install_dumlock">HTC Dumlock-telepítés a rendszerre...</string>
+		<string name="dumlock_restore">A gyári rendszerindító (boot) visszaállítása...</string>
+		<string name="dumlock_reflash">A recovery újraflesselése a bootoláshoz...</string>
+		<string name="run_script">{1}-szkript futtatása...</string>
+		<string name="split_backup">Mentés darabolása több fájlba...</string>
+		<string name="backup_error">Hiba mentés közben.</string>
+		<string name="restore_error">Hiba visszaállítás közben.</string>
+		<string name="split_thread">{1}-szálazonosító megosztása a {2}-fájlba</string>
+		<!-- These 2 items are saved in the data manager instead of resource manager, so %llu, etc is correct instead of {1} -->
+		<string name="file_progress">%llu az %llu fájlból, %i%%</string>
+		<string name="size_progress">%lluMB az %lluMB-ból, %i%%</string>
+		<string name="decrypt_cmd">Kísérlet a /data visszakódolására parancssoron keresztül.</string>
+		<string name="base_pkg_err">Nem sikerült betölteni az alapcsomagokat.</string>
+		<string name="simulating">MŰVELET-SZIMULÁCIÓK</string>
+		<string name="backup_cancel">A mentés megszakítva</string>
+		<string name="config_twrp">Az OrangeFox konfigurálása...</string>
+		<string name="config_twrp_err">Az OrangeFox konfigurálása nem lehetséges ezzel a kernellel.</string>
+		<string name="copy_log">A Recovery-napló másolása megtörtént ide: {1}.</string>
+		<string name="max_queue">A telepítési várólista betelt!</string>
+		<string name="min_queue">A telepítési várólistába fájl került!</string>
+		<string name="screenshot_saved">Képernyőkép elmentve ide: {1}</string>
+		<string name="screenshot_err">Képernyőkép készítése sikertelen!</string>
+		<string name="zip_wipe_cache">Egy vagy több ZIP gyorsítótártörlést igényel -- törölje most.</string>
+		<string name="and_sec_wipe_err">Az Android secure törlése sikertelen</string>
+		<string name="dalvik_wipe_err">A Dalvik/ART-gyorsítótás törlése sikertelen</string>
+		<string name="auto_gen">(Automatikusan generált)</string>
+		<string name="curr_date">(A jelenlegi dátum)</string>
+		<string name="backup_name_len">A mentés neve túl hosszú.</string>
+		<string name="backup_name_invalid">A mentés neve '{1}' érvénytelen karaktert tartalmaz: '{1}'</string>
+		<string name="no_real_sdcard">Ebben a készülékben nincs valódi SD-kártya! Megszakítás!</string>
+		<string name="cancel_sideload">ADB sideload megszakítása...</string>
+		<string name="change_fs_err">Hiba a fájlrendszer-változtatás közben.</string>
+		<string name="change_fs_hdr">Fájlrendszer-módosítás</string>
+		<string name="theme_ver_err">Az egyedi téma verziója nem egyezik az OrangeFox verziójával. Az alaptéma használata.</string>
+		<string name="up_a_level">..</string>
+
+		<!-- new-->
+		<string name="sel_color">Színválasztás</string>
+		<string name="s_color">Szín</string>
+		<string name="current_color">Fájlrendszer:</string>
+		<string name="show_cpu_temp_bar">CPU-hőmérséklet megjelenítés</string>
+		<string name="ts_inform">Információk</string>
+		<string name="sel_splash_png">Az Üdvözlőkép (Splash) PNG-jének kiválasztása</string>
+		<string name="swipe_to_install">Húzza el alul a csúszkát a telepítéshez</string>
+		<string name="swipe_to_install_img">Húzza el alul a csúszkát a Képfájl-telepítéshez</string>
+		<string name="sel_image_type">Válasszon képfájl-típust!</string>
+		<string name="zip_add_queue">Hozzáadás a várólistához</string>
+		<string name="part_fs_error_1">Partícióbeállítások nem érhetőek el</string>
+		<string name="part_fs_error_2">ehhez a partícióhoz!</string>
+		<string name="new_file_system">Új fájlrendszer</string>
+		<string name="adb_sideload_opt">Sideload-beállítások</string>
+		<string name="about_hdr">Rólunk</string>
+		<string name="author">Készítő</string>
+		<string name="credits">Közreműködők</string>
+		<string name="version">Verzió</string>
+		<string name="set_password">Jelszóbeállítás</string>
+		<string name="verifying_pas">Jelszóhitelesítés</string>
+		<string name="dialog_offset_note">Válassza ki az eltolódás értékét</string>
+		<string name="queue_no">#</string>
+		<string name="options_cptn">Lehetőségek</string>
+		<string name="flash_img_confirm">Képfájl-telepítés</string>
+		<string name="also_wipes">Szintén törölje</string>
+		<string name="confirm_wipe_cptn">Törlés jóváhagyása</string>
+		<string name="storage_cptn">Tárhely</string>
+		<string name="enter_password_restore">Jelszó</string>
+		<string name="enter_password_cptn">Az ADB Sideload indítása...</string>
+		<!-- added by fordownloads -->
+		<string name="fordowns_sl">(to)</string>
+		<string name="fordowns_to">Hibakeresés</string>
+		<string name="dbg">A hibakeresés menüje aktiválva!</string>
+		<string name="dbg_active">Művelet</string>
+		<string name="dbg_act">Funkció</string>
+		<string name="dbg_func">Beállítás</string>
+		<string name="dbg_set">Oldal</string>
+		<string name="dbg_page">Fedőréteg</string>
+		<string name="dbg_overlay">Egyik sem</string>
+		<string name="fm_none">Nugát</string>
+		
+		<string name="cust_navbar_noug">Klasszikus</string>
+		<string name="cust_navbar_cls">Kiemelőszín</string>
+		<string name="cust_navbar_accent">Fekete</string>
+		<string name="cust_navbar_black">Fehér gombok használata</string>
+		<string name="cust_navbar_white">Szürke gombok használata</string>
+		<string name="cust_navbar_gray">Megnyitás mint...</string>
+		
+		<string name="fm_open">Szövegfájl</string>
+		<string name="fm_open_text">Telepíthető ZIP</string>
+		<string name="fm_open_ZIP">Biztonsági mentés</string>
+		
+		<string name="fm_open_backup">Tömörítés</string>
+		<string name="fm_open_makezip">Csomagolt fájl kibontása</string>
+		<string name="fm_open_unpackzip">Telepíthető képfájl</string>
+		<string name="fm_open_image">A csomagolt fájl típusa</string>
+		<string name="arc_type">Tömörítési szint:</string>
+		<string name="arc_lvl">Tömörítés</string>
+		<string name="arc_lvl_title">Dátum-hozzáadás</string>
+		
+		<string name="bkp_date">A Mentés nevének generálása</string>
+		<string name="bkp_gen">Mentés közben generálódik a mentési fájl neve</string>
+		<string name="bkp_gen_whilebkp">Gyorsmentés</string>
+		<string name="bkp_quick">Törlés</string>
+		<string name="bkp_clear">Nyelv</string>
+		
+		<string name="language_cptn">Egyéb</string>
+		<string name="cust_oth">Általános</string>
+		
+		<string name="settings_general">Testreszabás</string>
+		<string name="settings_ui">Megjelenés</string>
+		<string name="settings_screen">Régióbeállítás</string>
+		<string name="settings_time">Kérjük, várjon...</string>
+		
+		<string name="lang_wait">Állapotsor</string>
+		
+		<string name="settings_ui_status">Akkumulátorikon-megjelenítés</string>
+		<string name="settings_ui_battery">A Navigációs sáv stílusa</string>
+		<string name="settings_ui_style">A Navigációs sáv háttere</string>
+		<string name="settings_ui_color">Gyorsmentési partíciók</string>
+		
+		<string name="settings_backup_qbkp_custom">A biztonsági mentés neve</string>
+		
+		<string name="settings_backup_name">Ne változtassa meg</string>
+		<string name="settings_backup_name_user">Automatikusan meghatározott</string>
+		<string name="settings_backup_name_auto">Mentés közben</string>
+		<string name="settings_backup_name_auto_hide">Frissítés</string>
+		
+		<string name="update_btn">Kernel-napló is kerüljön bele</string>
+		<string name="include_kernel_log">Kedvenc mappák</string>
+		
+		<string name="fm_books">A lista szerkesztéshez nyomja hosszan</string>
+		<string name="fm_books_desc">Listaszerkesztés...</string>
+		<string name="fm_books_edit">Elem törléséhez nyomja hosszan</string>
+		<string name="fm_books_desc_edit">(Üres)</string>
+		<string name="fm_books_empty">Mappakészítés</string>
+		
+		<string name="fm_mkdir">Mappanév</string>
+		<string name="fm_mkdir_folder">Az elérési útvonal megadása</string>
+		
+		<string name="fm_path">Elérési útvonal</string>
+		<string name="fm_path2">Biztos benne?</string>
+		
+		<string name="no_os_title">A rendszerpartíció üres!</string>
+		<string name="no_os_subtitle">Nincs telepített Rendszer!</string>
+		
+		<string name="no_os1">újra szeretné indítani? Biztos benne, hogy</string>
+		<string name="no_osrb">ki szeretné kapcsolni?</string>
+		<string name="no_ospo">újra szeretné indítani a recovery-t?</string>
+		<string name="no_osrb_recovery">újra szeretné indítani fastboot/bootloader módba?</string>
+		<string name="no_osrb_boot">újra szeretné indítani download módba?</string>
+		<string name="no_osrb_down">újra szeretné indítani EDL-módba?</string>
+		<string name="no_osrb_edl">Újraindítást megerősítő párbeszédpanel</string>
+		
+		<string name="areb_confirm">Ha nincs operációs rendszer telepítve</string>
+		<string name="areb_noos">Mindig</string>
+		<string name="opt_always">Soha</string>
+		<string name="otp_never">Ki</string>
+		
+		<string name="areb_off">Soha többé ne jelenítse meg a 'rendszer csak olvasható" párbeszédpanelt</string>
+		
+		<string name="restoredialog_readonly">Hibás eltolódás!</string>
+		
+		<string name="offset_wrong">Új stílusú billentyűzet használata</string>
+
+		<string name="new_key">A biztonsági mentés neve</string>
+		
+		<string name="bkp_nametitle">A mentés nevének beírása vagy generálása</string>
+		<string name="bkp_namesub">Tárhely</string>
+		
+		<string name="goto_storage">A téma frissítése...</string>
+		
+		<string name="theme_apply">Betűtípusok</string>
+		<string name="theme_fonts">Stílus</string>
+		<string name="theme_style">Kiemelőszín</string>
+		<string name="theme_accent">Elsődleges betűtípus</string>
+		<string name="theme_font_sel">Másodlagos betűtípus</string>
+		<string name="theme_sec_font_sel">(of)</string>
+		
+		<string name="of">Üdvözlőképernyő (Splash)</string>
+		
+		<string name="sph_sph">valós</string>
+		
+		<string name="real">Információk</string>
+		<string name="info">Módosítás</string>
+		<string name="time_m">Változtatás</string>
+		<string name="time_c">Hozzáférés</string>
+		<string name="access">Ellenőrző-összeg</string>
+		<string name="fm_sums">Monospace betűtípus a terminálablakban</string>
+		
+		<string name="use_fixed_font">Ez a Mentés az Ön</string>
+
+		<string name="adb_backup_pc1">számítógépén kerül mentésre</string>
+		<string name="adb_backup_pc2">Az AromaFM indítása...</string>
+		
+		<string name="starting_aroma">Nyelvmódosítás...</string>
+		<string name="lang_set_wait">Tématelepítés...</string>
+		<string name="installing_theme">Menü</string>
+		
+		<string name="menu_btn">Adat</string>
+		
+		<string name="data_backup">Tárhely</string>
+		<string name="autostorage">Újraindítás %tw_sleep% másodperc múlva</string>
+		<string name="install_reboot">Az újraindítás visszavonása</string>
+		<string name="cancel_reboot_btn">Ellenőrzőösszeg-generálás kihagyása mentés készítésekor</string>
+		<string name="skip_digest_backup_chk" version="2">Mentések Digest-ellenőrzésének engedélyezése</string>
+		<string name="restore_digest_chk" version="2">Mentések Digest-ellenőrzésének engedélyezése</string>
+		<string name="restore_enable_digest_chk" version="2">A vold visszafejtéshez hiányzó fájlok: {1}</string>
+		<string name="decrypt_data_vold_os_missing">Ellenőrzőösszeg generálása</string>
+		<string name="generating_digest1" version="2">* Digest generálása...</string>
+		<string name="generating_digest2" version="2"> * A Digest létrehozva.</string>
+		<string name="digest_created" version="2"> * Digest-hiba!</string>
+		<string name="digest_error" version="2"> * Hiba az ellenőrzőösszeg-számítás közben.</string>
+		<string name="digest_compute_error" version="2"> Ellenőrzőösszeg-hitelesítés</string>
+		<string name="verifying_digest" version="2">Ellenőrzőösszeg-kontroll kihagyása felhasználói kérésre.</string>
+		<string name="skip_digest" version="2">Az Adat-partíció sikeresen visszakódolva</string>
+		<string name="decrypt_success_nodev">Nincs Digest a következőhöz: '{1}'.</string>
+		<string name="no_digest_found" version="2">Az ellenőrzőösszeg nem egyezik ezzel: '{1}'. Kérjük, kapcsolja ki az ellenőrzőösszeg-hitelesítést a visszaállításnál.</string>
+		<string name="digest_fail_match" version="2">Az ellenőrzőösszeg egyezik ezzel: '{1}'.</string>
+		<string name="digest_matched" version="2">Ellenőrzőösszeg-kontroll kikapcsolva</string>
+		<string name="digest_check_skip" version="2">A Digest-generálás ki van kapcsolva</string>
+		<string name="digest_off" version="2">Érvénytelen zip-fájlformátum!</string>
+		<string name="invalid_zip_format">Ellenőrzőösszeg keresése...</string>
+		<string name="check_for_digest" version="2">Ellenőrzőösszeg-kontroll kihagyása: ellenőrzőösszeg nem található</string>
+		<string name="no_digest" version="2">Az Ellenőrzőösszeg nem egyezik</string>
+		<string name="digest_fail" version="2">Az Ellenőrzőösszeg egyezik</string>
+		<string name="digest_match" version="2">Jelszó</string>
+		<string name="password">Rendszerindító Slot</string>
+		<string name="boot_slot">SLOT A</string>
+		<string name="boot_slot_a">SLOT A-ra váltás</string>
+		<string name="boot_slot_use_a">SLOT B</string>
+		<string name="boot_slot_b">SLOT B-re váltás</string>
+		<string name="boot_slot_use_b">A rendszerindító slot változtatása</string>
+		<string name="changing_boot_slot">A rendszerindító slot váltása megtörtént</string>
+		<string name="changing_boot_slot_complete">Hiba a bootloader boot slot {1}-re váltáskor</string>
+		<string name="unable_set_boot_slot">A {1} mentések nem tartalmaznak belső tárhelyen tárolt fájlokat, mint például képeket vagy letöltéseket.</string>
+		<string name="backup_storage_warning">SHA2 hash alkalmazása</string>
+		<string name="sha2_chk">Letiltva</string>
+		<string name="disabled">Engedélyezve</string>
+		<string name="enabled">Hiba, a ZIP nem Treble-kompatibilis!</string>
+		<string name="zip_compatible_err">A növekményes frissítés aláírásának ellenőrzése...</string>
+		
+		
+		<!-- Console Messages -->
+		<string name="fox_incremental_ota_compatibility_chk">A növekményes frissítés nem kompatibilis ezzel a ROM-al!</string>
+		<string name="fox_incremental_ota_compatibility_false">A növekményes frissítés kompatibilis</string>
+		<string name="fox_incremental_ota_compatibility_true">A MIUI növekményes frissítések támogatása: bekapcsolva</string>
+		<string name="fox_incremental_ota_status_enabled">A MIUI növekményes frissítések támogatása: kikapcsolva</string>
+		<string name="fox_incremental_ota_status_disabled">{1}' növekményes frissítés észlelve</string>
+		<string name="fox_incremental_package_detected">Az OTA-Túlélőmód nem létezik!</string>
+		<string name="fox_survival_does_not_exist">A jelenlegi csomag észlelése Kérjük, telepítsen előbb egy teljes ROM-ot!</string>
+		<string name="fox_install_detecting">- Standard csomag felismerve</string>
+		<string name="fox_install_standard_detected">- MIUI frissítőcsomag felismerve</string>
+		<string name="fox_install_miui_detected">Figyelmeztetés: bootloader újratelepítési kísérlet észlelve '{1}' részéről.</string>
+		<string name="fox_zip_have_bootloader">Nincs elegendő hely a belső tárhelyen az OTA-Túlélés elkészítéséhez.</string>
+		<string name="fox_no_space_ota_survival">Az OTA_RES -- elkészült!</string>
+		<string name="fox_incremental_ota_res">OTA_RES-folyamat futtatása...</string>
+		<string name="fox_incremental_ota_res_run">OTA_BAK-folyamat futtatása...</string>
+		<string name="fox_incremental_ota_bak_run">OTA_BAK -- elkészült!</string>
+		<string name="fox_incremental_ota_bak">OrangeFox: FATÁLIS HIBA</string>
+		<string name="fox_internal_fatal_i1">KÖTELEZŐ átállítani a mentés helyét MicroSD-re vagy USB OTG-re. Nem lehet a belső tárhelyet önmagára menteni!</string>
+		<string name="fox_internal_fatal_i2">OrangeFox - Belső tárhely - Csak óvatosan!</string>
+		<string name="fox_internal_q1">Kernel-napló átmásolva ide: {1}</string>
+
+		<string name="copy_kernel_log">'{1}'-folyamat indítása</string>
+
+		<string name="of_run_process">A(z) '{1}'-folyamat befejezése nem lehetséges</string>
+		<string name="of_run_process_fail">A(z) '{1}'-folyamat befejezve</string>
+		<string name="of_run_process_done">A DM-Verity sikeresen patch-elve</string>
+		<string name="of_dm_verity">A DM-Verity nincs bekapcsolva</string>
+		<string name="of_dm_verity_off">Az 'Erőltetett titkosítás' sikeresen patch-elve</string>
+		<string name="of_encryption">Az 'Erőltetett titkosítás' nincs bekapcsolva</string>
+		<string name="of_encryption_off">fstab felismerve: '{1}'</string>
+		<string name="of_fstab">A legutóbbi eltávolítása</string>
+
+		<string name="install_remlatest">Az összes mentés</string>
+		
+		<string name="backups_remove_all">Törlés</string>
+		<string name="backups_remove">Kicsomagolás</string>
+		
+		<!-- OrangeFox Recovery - Pie Door theme -->
+
+		<string name="unpack">Becsomagolás</string>
+		<string name="repack">Aroma FM-beállítások mentése vagy betöltése</string>
+
+		<string name="fox_save_load_aromafm_config_chk">Fájlok és könyvtárak keresése...</string>
+		<string name="search_help">Újraindítás a változtatások érvénybe léptetéséhez</string>
+		
+		<string name="reboot_to_take_effect">Fox kiegészítők</string>
+		<string name="fox_modules_hdr">Kiegészítő telepítése</string>
+		<string name="fox_modules_inst">Új mentés</string>
+		<string name="backup_short_hdr">Hol vannak a mentések?</string>
+		<string name="backups_wat">Telepítés</string>
+		
+		<string name="module_install">Eltávolítás</string>
+		<string name="module_uninstall">OrangeFox fájlok eltávolítása</string>
+		<string name="remove_of_files">Az Init.d-támogatás engedélyezése</string>
+		<string name="module_initd">A Camera2API engedélyezése</string>
+		<string name="module_cam">Jelszóeltávolítás</string>
+		<string name="module_pass">A fájl nem létezik!</string>
+		<string name="fox_files_not_exist_1">Kérjük telepítse újra a recovery-t</string>
+		<string name="fox_files_not_exist_2">a recovery zip használatával.</string>
+		<string name="fox_files_not_exist_3">Egyszerű képernyő megjelenítése az OTA alatt</string>
+
+		<!-- Customization -->
+		<string name="cust_new_ota_screen">A fájlikonok nagyobbá tétele</string>
+		<string name="fm_icons_simple">Alkalmazza a változtatásokat és újra betölti?</string>
+		<string name="theme_engine_update">Alkalmazás</string>
+		<string name="theme_engine_reset">Téma</string>
+		<string name="apply_btn">Kicsi</string>
+		<string name="theme_hdr">Szokásos</string>
+		
+		<string name="font_small">Nagy</string>
+		<string name="font_norm">Betűméret</string>
+		<string name="font_big">A téma alkalmazása megerősítés nélkül</string>
+		<string name="font_size">Listák automatikus kibontása</string>
+		<string name="cust_autoapply">Akkumulátorstílus</string>
+		<string name="cust_expand_list">Kör</string>
+		
+		<string name="status_battery_style">Az óra pozíciója</string>
+		<string name="status_battery_circle">Balra</string>
+		<!-- Status bar -->
+		<string name="status_clock_pos">Középre</string>
+		<string name="status_clock_left">Jobbra</string>
+		<string name="status_clock_center">A feliratok sötétebbé tétele</string>
+		<string name="status_clock_right">Az állapotsor sötétebbé tétele</string>
+		<string name="dark_title">Állapotsori árnyék megjelenítése</string>
+		<string name="separate_status">A képernyősziget (notch) elrejtése</string>
+		<string name="noshadow_title">Navigációs sáv</string>
+		<string name="hide_notch">A Navigációs sáv engedélyezése</string>
+		<!-- NavBar -->
+		<string name="navbar_title">Konzolgomb megjeleítése</string>
+		<string name="navbar_onscreen">Sötét</string>
+		<string name="show_slideout">Billentyűzet</string>
+		<string name="dark_nav">A frissített stílus</string>
+		<!-- Keyboard -->
+		<string name="keyboard_title">A számok sora</string>
+		<string name="keyboard_newstyle">Csúsztasson a billentyűzeten az összes törléséhez</string>
+		<string name="keyboard_nums">Feloldás</string>
+		<string name="key_swipe">Záróképernyő</string>
+		<!-- Lockscreen -->
+		<string name="lockscreen_unlock">Záróképernyő-stílus</string>
+		<string name="lockscreen_title">Óra</string>
+		<string name="lockscreen_style">Ikon</string>
+		<string name="lockscreen_clock">A csúszka lecserélése gombra</string>
+		<string name="lockscreen_icon">CPU- és akkuinformációk megjeleítése</string>
+		<string name="lockscreen_btn">Képernyőzároláshoz érintse meg a zár ikonját</string>
+		<string name="lockscreen_info">OTA-telepítés...</string>
+		<string name="lockscreen_quicklock">Frissítés...</string>
+
+		<!-- OTA working page -->
+		<string name="ota_console_title">Napló</string>
+		<string name="ota_simple_title">Akkumulátor</string>
+		<string name="ota_simple_log_btn">Feloldóminta</string>
+
+		<string name="battery">Szöveges jelszó</string>
+
+		<!-- Pass -->
+		<string name="pass_gk">Jelszótiltás</string>
+		<string name="pass_classic">PIN-kód</string>
+		<string name="pass_dis">A Recovery most védve van</string>
+		<string name="pass_pin">az illetéktelen hozzáférésektől.</string>
+		
+		<string name="locked_info_1">Hogy a recovery-t használatba vehesse</string>
+		<string name="locked_info_2">előbb meg kell adnia egy jelszót.</string>
+		<string name="locked_info_3">előbb le kell rajzolnia a feloldómintáját.</string>
+		<string name="locked_info_4">Adjon meg új jelszót, hogy</string>
+		<string name="locked_info_4_gk">Rajzoljon új feloldómintát, hogy</string>
+		
+		<string name="new_pass_info_1">megvédje az OrangeFox-ot az illetéktelen</string>
+		<string name="new_pass_info_1_gk">hozzáféréssel szemben.</string>
+		<string name="new_pass_info_2">A jelszavát kétszer kell megadnia.</string>
+		<string name="new_pass_info_3">A feloldómintát kétszer kell megadnia.</string>
+		<string name="new_pass_info_4">Adja meg újra a jelszavát.</string>
+		<string name="new_pass_info_4_gk">Rajzolja le újra a feloldómintát.</string>
+		<string name="new_pass_info_4_2">Aktuális blokkolási módszer</string>
+		<string name="new_pass_info_4_2_gk">Nyugodtabban alhat, ha tudja</string>
+		
+		<string name="pass_page_block">hogy biztonságban van.</string>
+		<string name="pass_page_block_inf1">Jelszótípus-választás</string>
+		<string name="pass_page_block_inf2">Továbbiak...</string>
+		<string name="pass_page_select">Elrejtés</string>
+		
+		<!-- Utilities -->
+		<string name="more">Partíciókezelés</string>
+		<string name="hide">Aktív</string>
+		<string name="part_menu_hdr">Automatikus felcsatolás</string>
+		<string name="run_adb_startup">Modulok</string>
+
+		<!-- MMGUI -->
+		<string name="mm_module_active">Magisk-verzió</string>
+		<string name="mm_module_mount">Modulverzió</string>
+		<string name="mm_modules">A Magisk nem található!</string>
+		<string name="mm_ver">Be kíván lépni a Fox kiegészítőkbe</string>
+		<string name="mm_mod_ver">és telepíteni a beépített Magisk-et?</string>
+		<string name="magisk_not_found">A Magisk nem található!</string>
+		<string name="magisk_not_found_1">OTA-beállítások</string>
+		<string name="magisk_not_found_2">OTA-bekapcsolás</string>
+		<string name="magisk_not_found_3"/>
+		
+		<!-- MIUI OTA -->
+		<string name="fox_ota_settings">Témakészítő és dizájner</string>
+		<string name="fox_ota_on">CEO, Oldal és Felhasználói felület</string>
+		
+		<!-- About -->
+		<string name="abt_maintainer">Rendszerépítés, C++</string>
+		<string name="abt_fd">Frontend-fejlesztő</string>
+		<string name="abt_bork">Backend-fejlesztő</string>
+		<string name="abt_dj">Készülék</string>
+		<string name="abt_front">TWRP-verzió</string>
+		<string name="abt_back">Build-típus</string>
+		<string name="abt_device">Közreműködők</string>
+		<string name="version_twrp">Fordítók</string>
+		<string name="build_type">Változásnapló</string>
+		<string name="abt_credits">Közreműködők</string>
+		<string name="abt_trans">Kapcsolás mappához</string>
+		<string name="abt_changes">Kapcsolás fájlhoz</string>
+		<string name="abt_main_shrt">Halott hivatkozás</string>
+		<string name="welcome_msg">Valós könyvtár megnyitása</string>
+		<string name="welcome_msg2"><!-- If welcome message is too big in your lang, use this string --></string>
+		
+		<!-- Symlink -->
+		<string name="symlink_dir_name">Rejtett fájlok megjelenítése a Fájlok könyvtárban</string>
+		<string name="symlink_file_name">Fájltípus automatikus észlelése a Fájlok könyvtárban</string>
+		<string name="symlink_broken_name">A fájlt nem lehet megnyitni!</string>
+		<string name="symlink_folder">Substratum fedőrétegek törlése</string>
+		<string name="symlink_file">Az összes fájl</string>
+		
+		<!-- Files -->
+		<string name="files_show_hidden">Képfájlok</string>
+		<string name="files_auto_open">ZIP-fájlok</string>
+		<string name="file_read_error">Nyomja meg újra, hogy elinduljon az AromaFM...</string>
+		<string name="subs_wipe">Alkalmazások</string>
+		<string name="sort_ex_all">Alkalmazáskezelő</string>
+		<string name="sort_ex_img">Teljesítmény</string>
+		<string name="sort_ex_zip">A Recovery teljesítménymód-választója</string>
+		<string name="aroma_help">Kiegyensúlyozott</string>
+
+		<!-- this error will shown when recovery cannot create backup folder
+		 -->
+		<string name="backups_rw_error_1">Nagy teljesítményű</string>
+		<string name="backups_rw_error_2">Energiatakarékos</string>
+
+		<!-- App mgr -->
+		<string name="appmgr_apps">LED-Beállítások</string>
+		<string name="appmgr_title">Zöld ledszín használata</string>
+
+		<!-- Perfomance -->
+		<string name="perf_title">A gyorstöltés erőltetése</string>
+		<string name="perf_conf_mode">Készen áll arra, hogy frissítéseket fogadhasson!</string>
+		<string name="perf_conf_balance">Főzött ROM-mód engedélyezése</string>
+		<string name="perf_conf_high">Kérjük, telepítsen egy teljes MIUI ROM-ot!</string>
+		<string name="perf_conf_batt">A gyári recovery agresszív deaktiválása</string>
+
+		<string name="fox_led_title">MIUI növekményes OTA-támogatás</string>
+		<string name="fox_use_green_led">Az OTA-Túlélés a rendszert is magába foglalja</string>
+		<string name="fox_boot_fastcharge">A növekményes OTA aláírásának ellenőrzése</string>
+
+		<!-- OTA -->
+		<string name="fox_ota_msg_ready">A DM-Verity kikapcsolása</string>
+		<string name="fox_ota_msg_custom">Az 'Erőltetett titkosítás' kikapcsolása</string>
+		<string name="fox_ota_msg_reflash">OTA-frissítés utáni automatikus újraindulás megakadályozása</string>
+		<string name="fox_advanced_stock_recovery">A gyári recovery agresszív deaktiválása</string>
+		<string name="fox_support_miui_ota_chk">MIUI növekményes OTA-támogatás</string>
+		<string name="fox_include_system_survival_chk">Az OTA-Túlélés a rendszert is magába foglalja</string>
+		<string name="fox_verify_incremental_ota_signature_chk">A növekményes OTA aláírásának ellenőrzése</string>
+		<string name="fox_dmverity_chk">DM-Verity kikapcsolása</string>
+		<string name="fox_forced_encryption_chk">Erőltetett titkosítás kikapcsolása</string>
+		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">OTA-frissítés utáni automatikus újraindulás megakadályozása</string>
+		<string name="of_ota_reboot_disabled">Az OTA-frissítés sikerült. Letiltotta az automatikus újraindítást. Az irányítás visszatér Önhöz.</string>
+
+		<string name="wipe_format_moved_info1">Megjegyzés: a /data formázás átkerült</string>
+   		<string name="wipe_format_moved_info2">a 'Partíciók kezelése' oldalra.</string>
+	</resources>
+</language>

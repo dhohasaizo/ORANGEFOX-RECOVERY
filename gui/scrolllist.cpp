@@ -33,9 +33,10 @@ const int SCROLLING_FLOOR = 2; // minimum pixels for scrolling to stop
 GUIScrollList::GUIScrollList(xml_node<>* node) : GUIObject(node)
 {
 	xml_node<>* child;
+	xml_attribute<>* attr;
 
 	firstDisplayedItem = mItemSpacing = mFontHeight = mSeparatorH = y_offset = scrollingSpeed = 0;
-	maxIconWidth = maxIconHeight =  mHeaderIconHeight = mHeaderIconWidth = 0;
+	mPadding = maxIconWidth = maxIconHeight =  mHeaderIconHeight = mHeaderIconWidth = 0;
 	mHeaderSeparatorH = mHeaderH = actualItemHeight = 0;
 	mHeaderIsStatic = false;
 	mBackground = mHeaderIcon = NULL;
@@ -57,6 +58,24 @@ GUIScrollList::GUIScrollList(xml_node<>* node) : GUIObject(node)
 	allowSelection = true;
 	selectedItem = NO_ITEM;
 
+	// [f/d] Icon right padding
+	child = FindNode(node, "iconsize");
+	if (child) {
+		mPadding = LoadAttrIntScaleX(child, "padding", mPadding);
+	}
+	
+	// [f/d] Hold item
+	child = FindNode(node, "holditem");
+	if (child) {
+		attr = child->first_attribute("name");
+		if (attr) {
+			itemHold = attr->value();
+			DataManager::SetValue(itemHold, "0");
+		} else {
+			itemHold = "";
+		}
+	}
+	
 	// Load header text
 	// note: node can be NULL for the emergency console
 	child = node ? node->first_node("text") : NULL;
@@ -341,7 +360,7 @@ void GUIScrollList::RenderStdItem(int yPos, bool selected, ImageResource* icon, 
 		int iconH = icon->GetHeight();
 		int iconW = icon->GetWidth();
 		int iconY = yPos + (iconAndTextH - iconH) / 2;
-		int iconX = mRenderX + (maxIconWidth - iconW) / 2;
+		int iconX = mRenderX + (maxIconWidth - iconW) / 2 - mPadding; //[f/d] right icon padding
 		gr_blit(icon->GetResource(), 0, 0, iconW, iconH, iconX, iconY);
 	}
 
@@ -499,6 +518,12 @@ int GUIScrollList::NotifyTouch(TOUCH_STATE state, int x, int y)
 		mUpdate = 1;
 		break;
 
+	case TOUCH_HOLD:
+		if (selectedItem != NO_ITEM && itemHold != "")
+			DataManager::SetValue(itemHold, "1");
+		else
+			break;
+		
 	case TOUCH_RELEASE:
 		if (fastScroll)
 			mUpdate = 1; // get rid of touch effects on the fastscroll bar
@@ -508,7 +533,10 @@ int GUIScrollList::NotifyTouch(TOUCH_STATE state, int x, int y)
 			NotifySelect(selectedItem);
 			mUpdate = 1;
 
+#ifndef TW_NO_HAPTICS
 			DataManager::Vibrate("tw_button_vibrate");
+#endif
+
 			selectedItem = NO_ITEM;
 		} else {
 			// Start kinetic scrolling
@@ -517,7 +545,6 @@ int GUIScrollList::NotifyTouch(TOUCH_STATE state, int x, int y)
 				scrollingSpeed = 0;
 		}
 	case TOUCH_REPEAT:
-	case TOUCH_HOLD:
 		break;
 	}
 	return 0;

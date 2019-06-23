@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+	<display>Romanian</display>
+
+	<resources>
+		<!-- Font overrides - only change these if your language requires special characters -->
+
+		<!-- Partition display names -->
+		<string name="system">Sistem</string>
+		<string name="system_image">Imagine de sistem</string>
+		<string name="vendor">Vendor</string>
+		<string name="vendor_image">Imagine Vendor</string>
+		<string name="boot">Pornire</string>
+		<string name="recovery">Recuperare</string>
+		<string name="cache">Memorie cache</string>
+		<string name="data">Date</string>
+		<string name="sdcard">Card SD</string>
+		<string name="internal">Stocare internă</string>
+		<string name="microsd">Card Micro SD</string>
+		<string name="usbotg">USB OTG</string>
+		<string name="android_secure">Android Secure</string>
+		<string name="dalvik">Dalvik / ART Cache</string>
+		<!-- This is a rarely used partition on a Micro SD card for a very old app2sd system -->
+		<string name="sdext">SD-EXT</string>
+		<string name="adopted_data">Date adoptate</string>
+		<string name="adopted_storage">Stocare adoptată</string>
+
+		<!-- GUI XML strings -->
+		<string name="twrp_watch_header">OrangeFox %fox_actual_build%</string>
+		<string name="cpu_temp">CPU: %tw_cpu_temp% &#xB0;C</string>
+		<string name="sort_by_name_asc">Nume</string>
+		<string name="sort_by_date_asc">Dată</string>
+		<string name="sort_by_size_asc">Dimensiune</string>
+		<string name="sort_by_name_desc">Nume</string>
+		<string name="sort_by_date_desc">Dată</string>
+		<string name="sort_by_size_desc">Dimensiune</string>
+		<string name="install_btn">Instalare</string>
+		<string name="wipe_btn">Ştergere</string>
+		<string name="backup_btn">Copii de rezervă</string>
+		<string name="restore_btn">Restabilire</string>
+		<string name="mount_btn">Montare</string>
+		<string name="file_manager_btn">Fişiere</string>
+		<string name="advanced_btn">Avansat</string>
+		<string name="reboot_btn">Repornire</string>
+		<string name="copy_log_btn">Copiere Log pe cardul SD</string>
+		<string name="install_zip_hdr">Instalare ZIP</string>
+		<string name="install_zip_btn">Instalare ZIP</string>
+		<string name="install_image_hdr">Instalare imagine</string>
+		<string name="install_image_btn">Instalare IMAGINE</string>
+		<string name="install_select_file_hdr">Selectaţi fişierul</string>
+		<string name="install_select_file_btn">Selectaţi fişierul</string>
+		<string name="adb_sideload_btn">ADB și Sideload</string>
+		<string name="select_storage_hdr">Selectaţi stocarea</string>
+		<string name="select_storage_btn">Selectaţi stocarea</string>
+		<string name="queue_hdr">Coadă</string>
+		<string name="raised_clearqueue_btn">Șterge lista</string>
+		<string name="raised_viewqueue_btn">Vizualizare listă</string>
+		<string name="zip_queue_count">%tw_zip_queue_count% din maxim 10 fişiere în coada de aşteptare</string>
+		<string name="folder">Dosar</string>
+		<string name="file">Fişier</string>
+		<string name="zip_sig_chk">Verificare semnătură ZIP</string>
+		<string name="inject_twrp_chk">Se injectează OrangeFox după instalare</string>
+		<string name="install_reboot_chk">Repornire după finalizarea instalării</string>
+		<string name="options_hdr">Opţiuni</string>
+		<string name="zip_queue">Coadă</string>
+		<string name="install_zip_count_hdr">Instalare fişier %tw_zip_index% din %tw_zip_queue_count%</string>
+		<string name="working">Se procesează...</string>
+		<string name="failed">Eșuat</string>
+		<string name="successful">Reușit</string>
+		<string name="wipe_cache_btn">Golire Cache</string>
+		<string name="reboot_system_btn">Repornire în Sistem</string>
+		<string name="reboot_recovery_btn">Repornire în Recuperare</string>
+		<string name="install_sel_target">Selectaţi partiția</string>
+		<string name="flash_image_select">Partiție</string>
+		<string name="flashing_image">Instalare imagine...</string>
+		<string name="image_flashed">Imagine instalată</string>
+		<string name="wipe_cache_dalvik_confirm">Ștergeţi memoria Cache şi Dalvik?</string>
+		<string name="wipe_dalvik_confirm">Ştergeţi Dalvik?</string>
+		<string name="wiping_cache_dalvik">Ștergere memorie Cache şi Dalvik...</string>
+		<string name="wipe_cache_dalvik_complete">Memoria Cache şi Dalvik su fost șterse</string>
+		<string name="cache_dalvik_done">Memoria Cache şi Dalvik au fost șterse</string>
+		<string name="swipe_wipe">Glisați pentru a şterge</string>
+		<string name="rebooting">Repornire...</string>
+		<string name="swipe_reboot">Glisați pentru a reporni</string>
+		<string name="confirm_action">Confirmaţi acțiunea</string>
+		<string name="cancel_btn">Revocare</string>
+		<string name="wipe_hdr">Ştergere</string>
+		<string name="factory_reset_hdr">Resetare la setările din fabrică</string>
+		<string name="factory_reset1">Şterge date, Cache și Dalvik</string>
+		<string name="factory_reset2">(nu include stocarea internă)</string>
+		<string name="factory_reset3">De cele mai multe ori aceasta este</string>
+		<string name="factory_reset4">singura formatare de care aveți nevoie.</string>
+		<string name="factory_resetting">Formatare date, Cache și Dalvik...</string>
+		<string name="advanced_wipe_hdr">Formatare avansată</string>
+		<string name="advanced_wipe_btn">Formatare avansată</string>
+		<string name="wipe_enc_confirm">Formatați datele criptate?</string>
+		<string name="formatting_data">Formatare date...</string>
+		<string name="swipe_format_data">Glisați pentru a formata datele</string>
+		<string name="factory_reset_complete">Resetare la setările inițiale finalizată</string>
+		<string name="sel_part_hdr">Selectaţi partiţiile</string>
+		<string name="wipe_sel_confirm">Formatați partițiile selectate?</string>
+		<string name="wiping_part">Formatare partiții...</string>
+		<string name="wipe_complete">Formatare finalizată</string>
+		<string name="format_data_hdr">Formatare Date</string>
+		<string name="format_data_btn">Formatare Date</string>
+		<string name="format_data_ptr1">Formatarea Datelor va șterge toate aplicațiile,</string>
+		<string name="format_data_ptr2">copiile de rezervă, pozele, muzica, videoclipurile și</string>
+		<string name="format_data_ptr3">va elimina criptarea memoriei interne.</string>
+		<string name="format_data_adopted">Inclusiv spațiul de stocare adoptat</string>
+		<string name="format_data_undo">Această acțiune nu poate fi anulată.</string>
+		<string name="format_data_complete">Formatarea Datelor finalizată</string>
+		<!-- Translator note: the word "yes" must remain English! -->
+		<string name="yes_continue">Introduceți "yes" pentru a confirma.</string>
+		<string name="part_opt_hdr">Informații partiție</string>
+		<string name="file_sys_opt">Opțiuni partiție</string>
+		<string name="part_mount_point">Punct de montare</string>
+		<string name="part_curr_fs">Sistem de fișiere</string>
+		<string name="part_present">Prezent</string>
+		<string name="part_removable">Amovibil</string>
+		<string name="part_yes">Da</string>
+		<string name="part_no">Nu</string>
+		<string name="part_size">Dimensiune</string>
+		<string name="part_used">Utilizat</string>
+		<string name="part_free">Liber</string>
+		<string name="part_backup_size">Dimensiune copie de rezervă</string>
+		<string name="resize_btn">Redimensionare SF</string>
+		<string name="resize_confirm">Redimensionați partiția</string>
+		<string name="resizing">Redimensionare...</string>
+		<string name="resize_complete">Redimensionare finalizată</string>
+		<string name="swipe_resize">Glisați pentru a redimensiona</string>
+		<string name="repair_btn">Reparare SF</string>
+		<string name="repair_confirm">Reparare partiție</string>
+		<string name="repairing">Se repară...</string>
+		<string name="repair_complete">Reparare finalizată</string>
+		<string name="swipe_repair">Glisați pentru a repara</string>
+		<string name="change_fs_btn">Modificare SF</string>
+		<string name="change_fs_warn1">Este posibil ca unele ROM-uri sau kernel-uri să nu accepte</string>
+		<string name="change_fs_warn2">unele sisteme de fișiere. Continuați cu precauție!</string>
+		<string name="change_fs_confirm">Modificare SF în</string>
+		<string name="formatting">Formatare...</string>
+		<string name="format_complete">Formatare finalizată</string>
+		<string name="swipe_change_fs">Glisați pentru a schimba</string>
+		<string name="back_btn">Înapoi</string>
+		<string name="wipe_enc_btn">Formatează datele criptate</string>
+		<string name="swipe_factory_reset">Glișați pentru setările din fabrică</string>
+		<string name="backup_hdr">Copie de rezervă</string>
+		<string name="encryption_hdr">Activare criptare</string>
+		<string name="name">Nume</string>
+		<string name="enable_backup_comp_chk">Activare comprimare</string>
+		<string name="skip_md5_backup_chk">Se omite generarea MD5 în timpul creării copiei de rezervă</string>
+		<string name="disable_backup_space_chk">Dezactivați verificarea spațiului liber înainte de salvare</string>
+		<string name="swipe_backup">Glisați pentru a crea copia de rezervă</string>
+		<string name="backup_name_exists">O copie de rezervă, cu acest nume există deja!</string>
+		<string name="pass_not_match">Parolele nu se potrivesc!</string>
+		<string name="partitions">Partiții</string>
+		<string name="progress">Progres</string>
+		<string name="backup_complete">Copiere finalizată</string>
+		<string name="restore_hdr">Copii de rezervă</string>
+		<string name="restore_backup_hdr">Restabilire copie de rezervă</string>
+		<string name="sel_backup_hdr">Selectaţi copia de rezervă</string>
+		<string name="restore_dec_fail">Parolă greșită, încercaţi din nou!</string>
+		<string name="del_backup_confirm">Ștergeți copia de rezervă?</string>
+		<string name="del_backup_confirm2">Această acțiune nu poate fi anulată!</string>
+		<string name="deleting_backup">Ștergere copie de rezervă...</string>
+		<string name="backup_deleted">Copie de rezervă eliminată</string>
+		<string name="swipe_delete">Glisați pentru a şterge</string>
+		<string name="restore_backup_date">Data ceării</string>
+		<string name="restore_md5_chk">Verificare MD5 ale fișierelor copiei de rezervă</string>
+		<string name="restore_enable_md5_chk">Activare verificare MD5 pentru copiile de rezervă</string>
+		<string name="restore_complete">Restaurare finalizată</string>
+		<string name="swipe_restore">Glisați pentru restabilire</string>
+		<string name="rename_backup_hdr">Redenumiți copia de rezervă</string>
+		<string name="rename_backup_confirm">Redenumiți copia de rezervă?</string>
+		<string name="rename_backup_confirm2">Această acțiune nu poate fi anulată!</string>
+		<string name="renaming_backup">Redenumire copie de rezervă...</string>
+		<string name="rename_backup_complete">Redenumire finalizată</string>
+		<string name="swipe_to_rename">Glisați pentru a redenumi</string>
+		<string name="mount_hdr">Montare</string>
+		<string name="mount_sys_ro_chk">Montaţi partiţia de sistem doar-în-citire</string>
+		<string name="decrypt_data_btn">Decriptare date</string>
+		<string name="disable_mtp_btn">Dezactivaţi MTP</string>
+		<string name="enable_mtp_btn">Activați MTP</string>
+		<string name="usb_storage_hdr">Stocare USB</string>
+		<string name="usb_storage_btn">Stocare USB</string>
+		<string name="usb_stor_mnt1">Stocarea USB este montată</string>
+		<string name="usb_stor_mnt2">Scoateți dispozitivul în singuranță</string>
+		<string name="usb_stor_mnt3">din calculator înainte de demontare!</string>
+		<string name="unmount_btn">Demontare</string>
+		<string name="rb_system_btn">Sistem</string>
+		<string name="rb_poweroff_btn">Oprire</string>
+		<string name="rb_recovery_btn">Recuperare</string>
+		<string name="rb_bootloader_btn">Bootloader</string>
+		<string name="rb_theme">Temă</string>
+		<string name="rb_download_btn">Descărcare</string>
+		<string name="rb_edl_btn">EDL</string>
+		<string name="turning_off">Închidere...</string>
+		<string name="swipe_power_off">Glișați pentru oprire</string>
+		<string name="sys_ro">Partiție de sistem</string>
+		<string name="sys_ro_hdr">Partiție de sistem nemodificată</string>
+		<string name="sys_rop1">OrangeFox poate păstra partiția dvs. de sistem</string>
+		<string name="sys_rop2">nemodificată pentru a vă permite</string>
+		<string name="sys_rop2a">obținerea actualizărilor oficiale.</string>
+		<string name="sys_rop3">OrangeFox nu va putea preveni</string>
+		<string name="sys_rop4">înlocuirea OrangeFox de către ROM-ul stoc.</string>
+		<string name="sys_rop5">Instalări ZIP sau operațiuni ADB</string>
+		<string name="sys_rop6">încă pot modifica partiția de sistem.</string>
+		<string name="sys_ro_never_show_chk">Nu se mai afișează acest ecran</string>
+		<string name="sys_ro_keep_ro_btn">Păstraţi doar în citire</string>
+		<string name="swipe_allow_mod">Glisați pentru a permite modificări</string>
+		<string name="settings_hdr">Setări</string>
+		<string name="settings_cptn">General</string>
+		<string name="use_rmrf_chk">Utilizaţi rm -rf în loc de formatare</string>
+		<string name="use24clock_chk">Folosiți ceasul de 24 de ore</string>
+		<string name="rev_navbar_chk">Inversarea layout-ului barei de navigare</string>
+		<string name="simact_chk">Simulare acțiuni pentru testarea temelor</string>
+		<string name="simfail_chk">Simulare eșuată pentru acțiuni</string>
+		<string name="sel_tz_list">Fus orar</string>
+		<string name="dialog_reset_theme_hdr">Resetare la valori implicite</string>
+		<!-- Translator note: if it does not make sense to translate the locations or if it makes more sense,
+				feel free to change the location listed or drop the location entirely and just call it UTC -6 -->
+		<string name="utcm11">(UTC -11) Samoa, Insula Midway</string>
+		<string name="utcm10">(UTC -10) Hawaii</string>
+		<string name="utcm9">(UTC -9) Alaska</string>
+		<string name="utcm8">(UTC-8) Ora Pacificului</string>
+		<string name="utcm7">(UTC -7) Timp montan</string>
+		<string name="utcm6">(UTC -6) Ora centrală</string>
+		<string name="utcm5">(UTC -5) Timp estic</string>
+		<string name="utcm4">(UTC -4) Timp Atlantic</string>
+		<string name="utcm3">(UTC -3) Brazilia, Buenos Aires</string>
+		<string name="utcm2">(UTC -2) Mijlocul Atlanticului</string>
+		<string name="utcm1">(UTC -1) Azore, Capul Verde</string>
+		<string name="utc0">(UTC 0) Londra, Dublin, Lisabona</string>
+		<string name="utcp1">(UTC + 1) Berlin, Bruxelles, Paris</string>
+		<string name="utcp2">(UTC + 2) Atena, Istanbul, Africa de Sud</string>
+		<string name="utcp3">(UTC + 3) Moscova, Bagdad</string>
+		<string name="utcp4">(UTC + 4) Abu Dhabi, Tbilisi, Muscat</string>
+		<string name="utcp5">(UTC + 5) Yekaterinburg, Islamabad</string>
+		<string name="utcp6">(UTC + 6) Almaty, Dhaka, Colombo</string>
+		<string name="utcp7">(UTC + 7) Bangkok, Hanoi, Jakarta</string>
+		<string name="utcp8">(UTC + 8) Beijing, Singapore, Hong Kong</string>
+		<string name="utcp9">(UTC + 9) Tokyo, Seul, Yakutsk</string>
+		<string name="utcp10">(UTC + 10) Australia estică, Guam</string>
+		<string name="utcp11">(UTC + 11) Vladivostok, Insulele Solomon</string>
+		<string name="utcp12">(UTC + 12) Auckland, Wellington, Fiji</string>
+		<string name="tz_offset_hdr">Diferență de fus orar</string>	
+		<string name="tz_offset">Decalaj</string>
+		<string name="sel_tz_offset">Selectaţi Decalajul (de obicei, 0): %tw_time_zone_guioffset%</string>
+		<string name="tz_offset_0">0</string>
+		<string name="tz_offset_15">15</string>
+		<string name="tz_offset_30">30</string>
+		<string name="tz_offset_45">45</string>
+		<string name="use_dst_chk">Folosiți ora de vară (DST)</string>
+		<string name="curr_tz">Fus orar curent: %tw_time_zone%</string>
+		<string name="curr_tz_s">Fus orar curent:</string>
+		<string name="set_tz_btn">Setaţi fusul orar</string>
+		<string name="settings_screen_cptn">Setări de ecran</string>
+		<string name="settings_screen_timeout_cptn">Inactivitate dezactivată</string>
+		<string name="settings_screen_timeout_cptn2">Inactivitate:</string>
+		<string name="timeout_unit">secunde</string>
+		<string name="enable_timeout_chk">Permite oprirea automată a ecranului</string>
+		<string name="screen_to_na">Setarea pentru oprirea automată a ecranului nu este disponibilă</string>
+		<string name="rotation_chk">Rotaţie</string>
+		<string name="screen_bright_slider">Luminozitate: %tw_brightness_pct% %</string>
+		<string name="screen_bright_na">Setarea luminozității nu este disponibilă</string>
+		<string name="vibration_hdr">Vibrație</string>
+		<string name="button_vibration_hdr">Vibraţia butoanelor este oprită</string>
+		<string name="kb_vibration_hdr">Vibraţia butoanelor este oprită</string>
+		<string name="act_vibration_hdr">Vibraţia la acţiune este oprită</string>
+		<string name="button_vibration">Vibrația butoanelor:</string>
+		<string name="kb_vibration">Vibrația tastaturii:</string>
+		<string name="act_vibration">Vibraţii pentru acţiune:</string>
+		<string name="advanced_hdr">Avansat</string>
+		<string name="copy_log_confirm">Copiați Log-ul pe cardul SD?</string>
+		<string name="copying_log">Se copiază Log-ul pe cardul SD...</string>
+		<string name="copy_log_complete">Log copiat</string>
+		<string name="terminal_btn">Terminal</string>
+		<string name="dumlock_note1">Pentru informații despre funcționarea</string>
+		<string name="dumlock_note2">HTC Dumlock vă rugăm să consultați:</string>
+		<string name="inject_twrp_btn">Injectare OrangeFox</string>
+		<string name="inject_twrp_confirm">Reinjectați OrangeFox?</string>
+		<string name="injecting_twrp">Reinjectare OrangeFox...</string>
+		<string name="inject_twrp_complete">Injectare OrangeFox finalizată</string>
+		<string name="swipe_to_confirm">Glisați pentru a confirma</string>
+		<string name="part_sd_hdr">Partiţionare card SD</string>
+		<string name="rem_sd">Stocare detașabilă</string>
+		<string name="rem_sd_sel">Selectați un dispozitiv detașabil!</string>
+		<string name="invalid_partsd_sel">Trebuie să selectați un dispozitiv detașabil</string>
+		<string name="part_sd_lose">Veţi pierde toate fişierele de pe cardul SD!</string>
+		<string name="part_sdcard_sel_note_1">Partiționarea va șterge toate fișierele</string>
+		<string name="part_sdcard_sel_note_2">de pe cardul SD!</string>
+		<string name="part_sd_undo">Această acțiune nu poate fi anulată!</string>
+		<string name="part_sd_ext_sz">Dimensiune EXT:</string>
+		<string name="btn_flat_ext4">EXT4</string>
+		<string name="btn_flat_ext3">EXT3</string>
+		<string name="btn_flat_more">+</string>
+		<string name="btn_flat_less">-</string>
+		<string name="part_sd_swap_sz">Dimensiunea Swap:</string>
+		<string name="file_system">Sistem de fișiere:</string>
+		<string name="swipe_part_sd">Glisați pentru partiţionare</string>
+		<string name="partitioning_sd">Partiționare Card SD...</string>
+		<string name="partitioning_sd2">Va dura câteva minute.</string>
+		<string name="part_sd_complete">Partiţionare finalizată</string>
+		<string name="dumlock_hdr">HTC Dumlock</string>
+		<string name="dumlock_restore_btn">Restabilire Boot original</string>
+		<string name="dumlock_restore_confirm">Restabiliți imaginea Boot originală?</string>
+		<string name="dumlock_restoring">Restaurare Boot original...</string>
+		<string name="dumlock_restore_complete">Restaurare Boot original finalizată</string>
+		<string name="dumlock_reflash_btn">Reinstalare Recuperare</string>
+		<string name="dumlock_reflash_confirm">Reinstalați Recuperarea la pornire?</string>
+		<string name="dumlock_reflashing">Reinstalare recuperare la pornire...</string>
+		<string name="dumlock_reflash_complete">Reinstalarea Recuperării la pornire finalizată</string>
+		<string name="dumlock_install_btn">Instalare Dumlock</string>
+		<string name="dumlock_install_confirm">Instalați fișierele HTC dumblock în ROM?</string>
+		<string name="dumlock_installing">Instalare HTC Dumlock...</string>
+		<string name="dumlock_install_complete">Instalare HTC Dumlock finalizată</string>
+		<string name="swipe_to_unlock">Glisaţi pentru a debloca</string>
+		<string name="fm_actions">Acțiuni</string>
+		<string name="fm_hdr">Fişiere</string>
+		<string name="fm_sel_file">Selectaţi un fişier sau un dosar</string>
+		<string name="fm_type_folder">Dosar</string>
+		<string name="fm_type_file">Fişier</string>
+		<string name="fm_copy_btn">Copiere</string>
+		<string name="fm_copying">Se copiază...</string>
+		<string name="fm_move_btn">Mutare</string>
+		<string name="fm_moving">Se mută</string>
+		<string name="fm_chmod755_btn">Setați 755</string>
+		<string name="fm_chmod755ing">Setați 755</string>
+		<string name="fm_chmod644_btn">Setați 644</string>
+		<string name="fm_chmod644ing">Setați 644</string>
+		<string name="fm_chmod_btn">Setați permisiunile</string>
+		<string name="fm_delete_btn">Ștergere</string>
+		<string name="fm_deleting">Ștergere</string>
+		<string name="fm_rename_btn">Redenumiţi</string>
+		<string name="fm_renaming">Se redenumește</string>
+		<string name="fm_sel_dest">Dosar destinație</string>
+		<string name="fm_rename_hdr">Redenumiţi</string>
+		<string name="fm_set_perms_hdr">Setaţi permisiunile</string>
+		<string name="fm_perms">Permisiuni</string>
+		<string name="fm_complete">Operaţiuni cu fișiere finalizate</string>
+		<string name="decrypt">Decriptează</string>
+		<string name="data_part">Partiție de date</string>
+		<string name="encrypt_data_part">Partiția de date este criptată.</string>
+		<string name="sel_encrypt_backup">Ați selectat o copie de rezervă criptată.</string>
+		<string name="decrypt_data_enter_note1">Introduceţi parola sau</string>
+		<string name="decrypt_data_enter_note1a">Introduceţi modelul sau</string>
+		<string name="decrypt_data_enter_note2">apăsaţi pe butonul înapoi pentru a anula.</string>
+		<string name="decrypt_data_enter_pass">Introduceţi parola</string>
+		<string name="decrypt_data_failed_pattern">Model eșuat!</string>
+		<string name="decrypt_try_again">Încercaţi din nou.</string>
+		<string name="decrypt_data_enter_pattern">Introduceţi modelul.</string>
+		<string name="decrypt_data_trying">Se incearcă decriptarea</string>
+		<string name="term_s_hdr">Terminal</string>
+		<string name="adb_sideload_hdr">Instalare prin ADB</string>
+		<string name="sideload_wipe_dalvik_chk">Formatare Dalvik Cache</string>
+		<string name="sideload_wipe_cache_chk">Formatare Cache</string>
+		<string name="swipe_to_sideload">Glisați pentru a începe Sideload</string>
+		<string name="sideload_confirm">Instalare prin ADB</string>
+		<string name="sideload_usage">Utilizare: ADB SideLoad Fișier.ZIP</string>
+		<string name="sideload_complete">ADB Sideload finalizat</string>
+		<string name="fix_contexts_hdr">Corectați contextele</string>
+		<string name="fix_contexts_confirm">Remediați contextele SELinux?</string>
+		<string name="fix_contexts_note1">Notă: Fixarea contextelor este rareori necesară.</string>
+		<string name="fix_contexts_note2">Repararea contextelor SELinux poate cauza</string>
+		<string name="fix_contexts_note3">probleme la pornirea dispozitivului.</string>
+		<string name="swipe_to_fix_contexts">Glisați pentru a repara contextele</string>
+		<string name="fixing_contexts">Se repară contextele...</string>
+		<string name="fix_contexts_complete">Repararea contextelor finalizată</string>
+		<string name="reboot_hdr">Repornire</string>
+		<string name="sel_storage_list">Selectaţi stocarea</string>
+		<string name="ok_btn">Ok</string>
+
+		<!-- Various console messages - these consist of user displayed messages, oftentimes errors -->
+		<string name="no_kernel_selinux">Nucleul nu are suport pentru citirea contextelor SELinux.</string>
+		<string name="full_selinux">Suport SELinux deplin este prezent.</string>
+		<string name="no_selinux">Suport SELinux nu este prezent (libselinux lipsă).</string>
+		<string name="mtp_enabled">MTP este activat</string>
+		<string name="mtp_disabled">MTP este dezactivat</string>
+		<string name="mtp_crash">Eroare MTP. MTP nu pornește.</string>
+		<string name="decrypt_success">Decriptate cu succes cu parola implicită.</string>
+		<string name="unable_to_decrypt">Imposibil de decriptat cu parola implicită. Este posibil să fie necesar să efectuați o formatare a datelor.</string>
+		<string name="generating_md51">Generare MD5</string>
+		<!-- Message displayed during a backup if we are generating an MD5, ideally, leave the leading " * " to help align and separate this text from other console text -->
+		<string name="generating_md52"> * Generare md5...</string>
+		<string name="md5_created"> * MD5 creat.</string>
+		<string name="md5_error"> * Eroare MD5!</string>
+		<string name="md5_compute_error"> * Eroare calcul MD5.</string>
+		<string name="current_date">(Data curentă)</string>
+		<string name="auto_generate">(Automat)</string>
+		<string name="unable_to_locate_partition">Imposibil de localizat partiția '{1}' pentru calcule.</string>
+		<string name="no_partition_selected">Nicio partiţie selectată pentru copiere de rezervă.</string>
+		<string name="total_partitions_backup"> * Numărul total de partiţii pentru a face o copie de rezervă: {1}</string>
+		<string name="total_backup_size"> * Dimensiunea totală a tuturor datelor: {1}MB</string>
+		<string name="available_space"> * Spaţiu disponibil: {1}MB</string>
+		<string name="unable_locate_storage">Imposibil de a localiza stocarea dispozitivului.</string>
+		<string name="no_space">Nu există suficient spațiu de stocare.</string>
+		<string name="backup_started">[COPIERE DE REZERVĂ PORNITĂ]</string>
+		<string name="backup_folder"> * Dosar copie de rezervă: {1}</string>
+		<string name="fail_backup_folder">Nu a reușit crearea dosarului pentru copia de rezervă.</string>
+		<string name="avg_backup_fs">Rata medie de rezervare a fișierelor de sistem: {1} MB/s</string>
+		<string name="avg_backup_img">Rata medie de rezervare a imaginilor unităților: {1} MB/s</string>
+		<string name="total_backed_size">[{1} MB TOTAL REZERVAT]</string>
+		<string name="backup_completed">[COPIA DE REZERVĂ FINALIZATĂ ÎN {1} SECUNDE]</string>
+		<string name="restore_started">[RESTAURARE PORNITĂ]</string>
+		<string name="restore_folder">Dosar restaurare: '{1}'</string>
+		<!-- {1} is the partition display name and {2} is the number of seconds -->
+		<string name="restore_part_done">[{1} finalizat ({2} secunde)]</string>
+		<string name="verifying_md5">Verificare MD5</string>
+		<string name="skip_md5">Omitere verificare MD5 bazat pe setarea utilizatorului.</string>
+		<string name="calc_restore">Calculare detalii restaurare...</string>
+		<string name="restore_read_only">Nu se poate restaura {1} -- montat doar în citire.</string>
+		<string name="restore_unable_locate">Imposibil de localizat partiţia '{1}' pentru restaurare.</string>
+		<string name="no_part_restore">Nicio partiţie selectată pentru restaurare.</string>
+		<string name="restore_part_count">Restaurare {1} partiţii...</string>
+		<string name="total_restore_size">Dimensiunea totală de restaurare: {1}MB</string>
+		<string name="updating_system_details">Actualizare detalii sistem</string>
+		<string name="restore_completed">[RESTAURARE FINALIZATĂ ÎN {1} SECUNDE]</string>
+		<!-- {1} is the path we could not open, {2} is strerror output -->
+		<string name="error_opening_strerr">Eroare de deschidere: '{1}' ({2})</string>
+		<string name="unable_locate_part_backup_name">Nu s-a putut localiza partiția după numele copiei de rezervă '{1}'</string>
+		<string name="unable_find_part_path">Imposibil de găsit partiţia pentru calea '{1}'</string>
+		<string name="update_part_details">Actualizare detalii partiție...</string>
+		<string name="update_part_details_done">...finalizat</string>
+		<string name="wiping_dalvik">Ștergerea dosarelor Dalvik...</string>
+		<string name="cleaned">Curăţat: {1}...</string>
+		<string name="dalvik_done">Dalvik Cache şters complet!</string>
+		<string name="no_andsec">Nu a fost găsită nicio partiție de android sigură.</string>
+		<string name="unable_to_locate">Imposibil de localizat {1}.</string>
+		<string name="wiping_datamedia">Ştergere spaţiu de stocare intern -- /data/media...</string>
+		<string name="unable_to_mount">Imposibil de montat {1}</string>
+		<string name="unable_to_mount_internal">Imposibil de montat stocarea internă</string>
+		<string name="unable_to_mount_storage">Imposibil de montat stocarea</string>
+		<string name="fail_decrypt">Eroare la decriptarea datelor.</string>
+		<string name="no_crypto_support">Nicio criptare suportată nu a fost inclusă în acest build.</string>
+		<string name="decrypt_success_dev">Date decriptate cu succes, noul bloc: '{1}'</string>
+		<string name="done">Finalizat</string>
+		<string name="start_partition_sd">Partiționare Card SD...</string>
+		<string name="partition_sd_locate">Imposibil de localizat dispozitivul pentru partiționare.</string>
+		<string name="ext_swap_size">Dimensiunea EXT + Swap este mai mare decât dimensiunea cardului SD.</string>
+		<string name="remove_part_table">Eliminare tabel partiție...</string>
+		<string name="unable_rm_part">Imposibil de eliminat tabela de partiţii.</string>
+		<string name="create_part">Crearea partiției {1}...</string>
+		<string name="unable_to_create_part">Imposibil de creat partiția {1}.</string>
+		<string name="format_sdext_as">Formatare sd-ext ca {1}...</string>
+		<string name="part_complete">Partiţionare completă.</string>
+		<string name="unable_to_open">Imposibil să deschid '{1}'.</string>
+		<string name="mtp_already_enabled">MTP este deja activat</string>
+		<string name="mtp_fail">Activarea MTP a eșuat</string>
+		<string name="no_mtp">Suport MTP neinclus</string>
+		<string name="image_flash_start">[INSTALARE IMAGINIE PORNITĂ]</string>
+		<string name="img_to_flash">Imagine pentru instalare: '{1}'</string>
+		<string name="flash_unable_locate">Imposibil de localizat partiţia '{1}' pentru instalare.</string>
+		<string name="no_part_flash">Nicio partiţie selectată pentru instalare.</string>
+		<string name="too_many_flash">Prea multe partiții selectate pentru instalare.</string>
+		<string name="invalid_flash">Partiţia specificată pentru instalare e nevalidă.</string>
+		<string name="flash_done">[INSTALARE IMAGINE FINALIZATĂ]</string>
+		<string name="wiping">Formatare {1}</string>
+		<string name="repair_not_exist">{1} nu există! Nu se poate repara!</string>
+		<string name="repairing_using">Reparare {1} folosind {2}...</string>
+		<string name="unable_repair">Imposibil de reparat {1}.</string>
+		<string name="mount_data_footer">Nu s-a putut monta /data și nu s-a găsit crypto footer.</string>
+		<!-- {1} is the folder name that we could not create, {2} is strerror output -->
+		<string name="create_folder_strerr">Nu am putut crea '{1}' dosarul ({2}).</string>
+		<!-- {1} is the folder name that we could not mount, {2} is strerror output -->
+		<string name="fail_mount">Montare eșuată a '{1}' ({2})</string>
+		<!-- {1} is the folder name that we could not unmount, {2} is strerror output -->
+		<string name="fail_unmount">Demontare eșuată a '{1}' ({2})</string>
+		<string name="cannot_resize">Imposibil de redimensionat {1}.</string>
+		<string name="repair_resize">Repararea {1} înainte de redimensionare.</string>
+		<string name="unable_resize">Imposibil de redimensionat {1}.</string>
+		<string name="no_md5_found">Nu a fost găsit niciun fișier md5 pentru '{1}'. Deselectați activarea verificării MD5 pentru a restabili.</string>
+		<string name="md5_fail_match">MD5 nu se potrivește pentru '{1}'.</string>
+		<string name="fail_decrypt_tar">Nu s-a putut decripta fișierul tar '{1}'</string>
+		<string name="format_data_msg">Poate fi necesară repornirea în Recuperare pentru a putea folosi /data din nou.</string>
+		<string name="format_data_err">Nu s-a putut formata pentru a elimina criptarea.</string>
+		<string name="formatting_using">Formatare {1} folosind {2}...</string>
+		<string name="unable_to_wipe">Imposibil de formatat {1}.</string>
+		<string name="cannot_wipe">Partiția {1} nu poate fi ștearsă.</string>
+		<string name="remove_all">Se elimină toate fişierele din '{1}'</string>
+		<string name="wiping_data">Ştergerea datelor fără a şterge /data/media...</string>
+		<string name="backing_up">Creare copie de rezervă pentru {1}...</string>
+		<string name="backing">Rezervare</string>
+		<string name="backup_size">Dimensiunea copiei de rezervă a '{1}' este 0 B.</string>
+		<string name="datamedia_fs_restore">AVERTIZARE: Această copie de rezervă pentru /data a fost făcută cu sistemul de fișiere {1}! Este posibil ca dispozitivul să nu pornească dacă nu schimbați înapoi la {1}.</string>
+		<string name="restoring">Restaurare {1}...</string>
+		<string name="restoring_hdr">Restaurare...</string>
+		<string name="recreate_folder_err">Nu a reușit recreerea dosarului {1}.</string>
+		<string name="img_size_err">Dimensiunea imaginii este mai mare decât cea alocată</string>
+		<string name="flashing">Instalarea imaginii {1}...</string>
+		<string name="backup_folder_set">Dosarul copiilor de rezervă este setat la '{1}'</string>
+		<string name="locate_backup_err">Nu s-a putut localiza copia de rezervă '{1}'</string>
+		<string name="set_restore_opt">Setarea opţiunilor de restaurare: '{1}':</string>
+		<string name="md5_check_skip">Omiterea verificării MD5 este activată</string>
+		<string name="ors_encrypt_restore_err">Este imposibilă utilizarea OpenRecoveryScript pentru a restaura o copie de rezervă criptată.</string>
+		<string name="mounting">Montare</string>
+		<string name="unmounting">Demontare</string>
+		<string name="mounted">'{1}' montat</string>
+		<string name="unmounted">'{1}' demontat</string>
+		<string name="setting">Setare '{1}' la '{2}'</string>
+		<string name="setting_empty">Setare '{1}' la gol</string>
+		<string name="making_dir1">Creare director</string>
+		<string name="making_dir2">Creare director: '{1}'</string>
+		<string name="running_command">Rulare comandă</string>
+		<string name="sideload">Instalare prin ADB</string>
+		<string name="start_sideload">Pornire caracteristici ADB sideload...</string>
+		<string name="need_new_adb">Aveți nevoie de adb 1.0.32 sau mai nou pentru sideload pe acest dispozitiv.</string>
+		<string name="no_pwd">Nicio parolă furnizată.</string>
+		<string name="done_ors">Procesarea fișierului de script s-a finalizat</string>
+		<string name="injecttwrp">Injectare OrangeFox în imaginea de Boot...</string>
+		<string name="zip_err">Eroare la instalarea fișierului ZIP '{1}'</string>
+		<string name="installing_zip">Instalare fișier ZIP '{1}'</string>
+		<string name="select_backup_opt">Setarea opţiunilor de rezervare:</string>
+		<string name="compression_on">Comprimare activată</string>
+		<string name="md5_off">Generare MD5 oprită</string>
+		<string name="backup_fail">Copiere de rezervă eşuată</string>
+		<string name="backup_clean">Copiere de rezervă eşuată. Curățarea dosarului copiilor de rezervă.</string>
+		<string name="running_recovery_commands">Rulare comenzi Recuperare</string>
+		<string name="recovery_commands_complete">Comenzi Recuperare finalizate</string>
+		<string name="running_ors">Rulare OpenRecoveryScript</string>
+		<string name="ors_complete">OpenRecoveryScript finalizat</string>
+		<string name="no_updater_binary">Imposibil de găsit '{1}' în fişierul ZIP.</string>
+		<string name="check_for_md5">Verificare pentru fișier MD5...</string>
+		<string name="fail_sysmap">Eșuare alocare fișier '{1}'</string>
+		<string name="verify_zip_sig">Verificarea semnăturii fișierului ZIP...</string>
+		<string name="verify_zip_fail">Verificarea semnăturii fișierului ZIP a eșuat!</string>
+		<string name="verify_zip_done">Semnătura fișierului ZIP verificată cu succes.</string>
+		<string name="zip_corrupt">Fișier ZIP deteriorat!</string>
+		<string name="no_md5">Omitere verificare MD5: niciun fişier MD5 găsit</string>
+		<string name="md5_fail">MD5 nu corespunde</string>
+		<string name="md5_match">MD5 se potrivește</string>
+		<string name="pid_signal">procesul {1} s-a încheiat cu semnalul: {2}</string>
+		<string name="pid_error">procesul {1} s-a încheiat cu EROARE: {2}</string>
+		<string name="install_dumlock">Instalare HTC Dumlock în sistem...</string>
+		<string name="dumlock_restore">Restaurare boot original...</string>
+		<string name="dumlock_reflash">Reinstalare Recuperare în boot...</string>
+		<string name="run_script">Rulare script {1}...</string>
+		<string name="split_backup">Împărțirea copiei de rezervă în mai multe arhive...</string>
+		<string name="backup_error">Eroare la crearea copiei de rezervă.</string>
+		<string name="restore_error">Eroare în timpul procesului de restaurare.</string>
+		<string name="split_thread">Scindare fir ID {1} în arhiva {2}</string>
+		<!-- These 2 items are saved in the data manager instead of resource manager, so %llu, etc is correct instead of {1} -->
+		<string name="file_progress">%llu din %llu fișiere, %i%%</string>
+		<string name="size_progress">%lluMB din %lluMB, %i%%</string>
+		<string name="decrypt_cmd">Se încearcă decriptarea partiției de date prin linia de comandă.</string>
+		<string name="base_pkg_err">Nu s-au încărcat pachetele de bază.</string>
+		<string name="simulating">SIMULARE ACȚIUNI</string>
+		<string name="backup_cancel">Copie de rezervă anulată</string>
+		<string name="config_twrp">Configurare OrangeFox...</string>
+		<string name="config_twrp_err">Nu s-a putut configura OrangeFox cu acest nucleu.</string>
+		<string name="copy_log">Log-ul pentru Recuperare a fost copiat în {1}.</string>
+		<string name="max_queue">Numărul maxim de fișiere ZIP a fost atins!</string>
+		<string name="min_queue">Numărul minim de fișiere ZIP a fost atins!</string>
+		<string name="screenshot_saved">Captura de ecran a fost salvată în {1}</string>
+		<string name="screenshot_err">Captură de ecran eșuată!</string>
+		<string name="zip_wipe_cache">Unul sau mai multe fișiere ZIP au solicitat formatarea memoriei cache - Se formatează memoria cache acum.</string>
+		<string name="and_sec_wipe_err">Imposibil de a formata Android Secure</string>
+		<string name="dalvik_wipe_err">Formatare dalvik nereușită</string>
+		<string name="auto_gen">(Automat)</string>
+		<string name="curr_date">(Data curentă)</string>
+		<string name="backup_name_len">Numele copiei de rezervă este prea lung.</string>
+		<string name="backup_name_invalid">Numele copiei de rezervă '{1}' conține caractere nevalide: '{1}'</string>
+		<string name="no_real_sdcard">Acest dispozitiv nu are un Card SD real! Abandonare!</string>
+		<string name="cancel_sideload">Anulare ADB sideload...</string>
+		<string name="change_fs_err">Eroare la schimbarea sistemului de fișiere.</string>
+		<string name="change_fs_hdr">Schimbarea sistemului de fișiere</string>
+		<string name="theme_ver_err">Versiunea personalizată a temei nu se potrivește cu versiunea OrangeFox. Se utilizează tema implicită.</string>
+		<string name="up_a_level">..</string>
+
+		<!-- new-->
+		<string name="sel_color">Selectați culoarea</string>
+		<string name="s_color">Culoare</string>
+		<string name="current_color">Fişierele sistemului:</string>
+		<string name="show_cpu_temp_bar">Afișarea temperaturii procesorului</string>
+		<string name="ts_inform">Informaţii</string>
+		<string name="sel_splash_png">Selectați Splash PNG</string>
+		<string name="swipe_to_install">Glisați pentru a instala</string>
+		<string name="swipe_to_install_img">Glisați pentru a instala Imaginea</string>
+		<string name="sel_image_type">Selectați tipul Imaginii!</string>
+		<string name="zip_add_queue">Adăugați la lista de așteptare</string>
+		<string name="part_fs_error_1">Opțiunile de partiționare nu sunt</string>
+		<string name="part_fs_error_2">disponibile pentru această partiție!</string>
+		<string name="new_file_system">Sistem de fișiere nou</string>
+		<string name="adb_sideload_opt">Opțiuni Sideload</string>
+		<string name="about_hdr">Despre</string>
+		<string name="author">Autor</string>
+		<string name="credits">Contribuţii</string>
+		<string name="version">Versiune</string>
+		<string name="set_password">Setare parolă</string>
+		<string name="verifying_pas">Verificare parolă</string>
+		<string name="dialog_offset_note">Selectați valoarea de offset</string>
+		<string name="queue_no">#</string>
+		<string name="options_cptn">Opţiuni</string>
+		<string name="flash_img_confirm">Instalare fișier Imagine</string>
+		<string name="also_wipes">De asemenea, formatare</string>
+		<string name="confirm_wipe_cptn">Confirmați formatarea</string>
+		<string name="storage_cptn">Spațiu de stocare</string>
+		<string name="enter_password_restore">Parolă</string>
+		<string name="enter_password_cptn">Pornire Sideload...</string>
+		<!-- added by fordownloads -->
+		<string name="fordowns_sl">Pornire Sideload...</string>
+		<string name="fordowns_to">către</string>
+		<string name="dbg">Depanare</string>
+		<string name="dbg_active">Meniu Depanare activat!</string>
+		<string name="dbg_act">Acţiune</string>
+		<string name="dbg_func">Funcție</string>
+		<string name="dbg_set">Setare</string>
+		<string name="dbg_page">Pagină</string>
+		<string name="dbg_overlay">Suprapunere</string>
+		<string name="fm_none">Nimic</string>
+		
+		<string name="cust_navbar_noug">Nougat</string>
+		<string name="cust_navbar_cls">Clasic</string>
+		<string name="cust_navbar_accent">Accent</string>
+		<string name="cust_navbar_black">Negru</string>
+		<string name="cust_navbar_white">Utilizați butoane albe</string>
+		<string name="cust_navbar_gray">Utilizați butoane gri</string>
+		
+		<string name="fm_open">Deschidere ca...</string>
+		<string name="fm_open_text">Fişier text</string>
+		<string name="fm_open_ZIP">Fișier ZIP de instalare</string>
+		
+		<string name="fm_open_backup">Copie de rezervă</string>
+		<string name="fm_open_makezip">Comprimare</string>
+		<string name="fm_open_unpackzip">Dezarhivare</string>
+		<string name="fm_open_image">Imagine de instalare</string>
+		<string name="arc_type">Tip arhivă</string>
+		<string name="arc_lvl">Nivel de comprimare:</string>
+		<string name="arc_lvl_title">Comprimare</string>
+		
+		<string name="bkp_date">Adăugare dată</string>
+		<string name="bkp_gen">Generare nume copie de rezervă</string>
+		<string name="bkp_gen_whilebkp">Generare nume copie de rezervă în timpul rezervării</string>
+		<string name="bkp_quick">Copie de rezervă rapidă</string>
+		<string name="bkp_clear">Eliminare</string>
+		
+		<string name="language_cptn">Limbă</string>
+		<string name="cust_oth">Altele</string>
+		
+		<string name="settings_general">General</string>
+		<string name="settings_ui">Personalizare</string>
+		<string name="settings_screen">Afişare</string>
+		<string name="settings_time">Regional</string>
+		
+		<string name="lang_wait">Așteptați...</string>
+		
+		<string name="settings_ui_status">Bară de stare</string>
+		<string name="settings_ui_battery">Afișare pictogramă baterie</string>
+		<string name="settings_ui_style">Stil bară de navigare</string>
+		<string name="settings_ui_color">Fundal bară de navigare</string>
+		
+		<string name="settings_backup_qbkp_custom">Copii de rezervă rapide pentru partiții</string>
+		
+		<string name="settings_backup_name">Nume copie de rezervă</string>
+		<string name="settings_backup_name_user">Nu se schimbă</string>
+		<string name="settings_backup_name_auto">Definit în mod automat</string>
+		<string name="settings_backup_name_auto_hide">În timpul rezervării</string>
+		
+		<string name="update_btn">Actualizare</string>
+		<string name="include_kernel_log">Includeți Log-ul pentru kernel</string>
+		
+		<string name="fm_books">Dosare preferate</string>
+		<string name="fm_books_desc">Apasă lung pentru a edita această listă</string>
+		<string name="fm_books_edit">Editare listă...</string>
+		<string name="fm_books_desc_edit">Apăsați lung pentru a șterge elementul</string>
+		<string name="fm_books_empty">(Gol)</string>
+		
+		<string name="fm_mkdir">Creare dosar</string>
+		<string name="fm_mkdir_folder">Nume dosar</string>
+		
+		<string name="fm_path">Introduceţi calea</string>
+		<string name="fm_path2">Cale</string>
+		
+		<string name="no_os_title">Sunteți sigur?</string>
+		<string name="no_os_subtitle">Partiția de sistem este goală</string>
+		
+		<string name="no_os1">Niciun SO instalat! Sunteți sigur că</string>
+		<string name="no_osrb">doriți să reporniți?</string>
+		<string name="no_ospo">doriți să opriți?</string>
+		<string name="no_osrb_recovery">doriți să reporniți în Recuperare?</string>
+		<string name="no_osrb_boot">doriți să reporniți în Bootloader?</string>
+		<string name="no_osrb_down">doriți să reporniți în modul Download?</string>
+		<string name="no_osrb_edl">doriți să reporniți în modul EDL?</string>
+		
+		<string name="areb_confirm">Dialog de confirmare repornire</string>
+		<string name="areb_noos">Când niciun SO instalat</string>
+		<string name="opt_always">Mereu</string>
+		<string name="otp_never">Niciodată</string>
+		
+		<string name="areb_off">Oprit</string>
+		
+		<string name="restoredialog_readonly">Nu se afișează dialogul de montare a sistemului doar-pentru-citire</string>
+		
+		<string name="offset_wrong">Offset greșit!</string>
+
+		<string name="new_key">Utilizați un stil nou pentru tastatură</string>
+		
+		<string name="bkp_nametitle">Nume copie de rezervă</string>
+		<string name="bkp_namesub">Tastați sau generați numele copiei de rezervă</string>
+		
+		<string name="goto_storage">Spațiu de stocare</string>
+		
+		<string name="theme_apply">Actualizare temă...</string>
+		<string name="theme_fonts">Fonturi</string>
+		<string name="theme_style">Stil</string>
+		<string name="theme_accent">Accent</string>
+		<string name="theme_font_sel">Font primar</string>
+		<string name="theme_sec_font_sel">Font secundar</string>
+		
+		<string name="of">al</string>
+		
+		<string name="sph_sph">Splash</string>
+		
+		<string name="real">real</string>
+		<string name="info">Informaţii</string>
+		<string name="time_m">Modificare</string>
+		<string name="time_c">Schimbare</string>
+		<string name="access">Acces</string>
+		<string name="fm_sums">Sumă de control</string>
+		
+		<string name="use_fixed_font">Font Monospace în terminal</string>
+
+		<string name="adb_backup_pc1">Acestă copie de rezervă va fi</string>
+		<string name="adb_backup_pc2">salvată pe PC</string>
+		
+		<string name="starting_aroma">Pornire AromaFM...</string>
+		<string name="lang_set_wait">Schimbare limbă...</string>
+		<string name="installing_theme">Instalare temă...</string>
+		
+		<string name="menu_btn">Meniu</string>
+		
+		<string name="data_backup">Spațiu de stocare</string>
+		<string name="autostorage">Spațiu de stocare</string>
+		<string name="install_reboot">Repornire în %tw_sleep% secunde</string>
+		<string name="cancel_reboot_btn">Anulare repornire</string>
+		<string name="skip_digest_backup_chk" version="2">Se omite generarea Digest în timpul copierii de rezervă</string>
+		<string name="restore_digest_chk" version="2">Activare verificare Digest pentru copiile de rezervă</string>
+		<string name="restore_enable_digest_chk" version="2">Activare verificare Digest pentru copiile de rezervă</string>
+		<string name="decrypt_data_vold_os_missing">Lipsesc fișiere necesare pentru decriptarea vold: {1}</string>
+		<string name="generating_digest1" version="2">Generare Digest</string>
+		<string name="generating_digest2" version="2"> * Generare Digest...</string>
+		<string name="digest_created" version="2"> * Digest creat.</string>
+		<string name="digest_error" version="2"> * Eroare Digest!</string>
+		<string name="digest_compute_error" version="2"> * Eroare calcul Digest.</string>
+		<string name="verifying_digest" version="2">Verificare Digest</string>
+		<string name="skip_digest" version="2">Omitere verificare Digest bazat pe setarea utilizatorului.</string>
+		<string name="decrypt_success_nodev">Datele au fost decriptate cu succes</string>
+		<string name="no_digest_found" version="2">Nu a fost găsit niciun fișier Digest pentru '{1}'. Deselectați activarea verificării Digest pentru a restabili.</string>
+		<string name="digest_fail_match" version="2">Digest nu se potrivește pentru '{1}'.</string>
+		<string name="digest_matched" version="2">Digest corespunde pentru '{1}'.</string>
+		<string name="digest_check_skip" version="2">Omiterea verificării Digest este activată</string>
+		<string name="digest_off" version="2">Generare Digest oprită</string>
+		<string name="invalid_zip_format">Formatul fișierului Zip este nevalid!</string>
+		<string name="check_for_digest" version="2">Verificare pentru fișier Digest...</string>
+		<string name="no_digest" version="2">Omitere verificare Digest: niciun fişier Digest găsit</string>
+		<string name="digest_fail" version="2">Digest nu se potrivește</string>
+		<string name="digest_match" version="2">Digest se potrivește</string>
+		<string name="password">Parolă</string>
+		<string name="boot_slot">Slot Boot</string>
+		<string name="boot_slot_a">SLOT A</string>
+		<string name="boot_slot_use_a">COMUTARE LA SLOT A</string>
+		<string name="boot_slot_b">SLOT B</string>
+		<string name="boot_slot_use_b">COMUTARE LA SLOT B</string>
+		<string name="changing_boot_slot">Schimbare Slot Boot</string>
+		<string name="changing_boot_slot_complete">Schimbare Slot Boot finalizată</string>
+		<string name="unable_set_boot_slot">Eroare la schimbarea slotului de bootloader la {1}</string>
+		<string name="backup_storage_warning">Copiile de rezervă ale {1} nu includ niciun fișier din memoria internă, cum ar fi imagini sau descărcări.</string>
+		<string name="sha2_chk">Utilizați SHA2 pentru hashing</string>
+		<string name="disabled">Dezactivat</string>
+		<string name="enabled">Activat</string>
+		<string name="zip_compatible_err">Eroare compatibilitate Zip Treble!</string>
+		
+		
+		<!-- Console Messages -->
+		<string name="fox_incremental_ota_compatibility_chk">Verificarea semnăturii pachetului incremental...</string>
+		<string name="fox_incremental_ota_compatibility_false">Pachetul incremental nu este compatibil cu acest ROM!</string>
+		<string name="fox_incremental_ota_compatibility_true">Pachetul incremental este compatibil</string>
+		<string name="fox_incremental_ota_status_enabled">Stare suport pentru pachet incremental MIUI: Activat</string>
+		<string name="fox_incremental_ota_status_disabled">Stare suport pentru pachet incremental MIUI: Dezactivat</string>
+		<string name="fox_incremental_package_detected">S-a detectat pachetul incremental '{1}'</string>
+		<string name="fox_survival_does_not_exist">Supraviețuirea OTA nu există! Instalați un ROM complet mai întâi!</string>
+		<string name="fox_install_detecting">Detectarea pachetului curent</string>
+		<string name="fox_install_standard_detected">- Pachet standard detectat</string>
+		<string name="fox_install_miui_detected">- Detectat pachet de actualizare MIUI</string>
+		<string name="fox_zip_have_bootloader">Avertisment: A fost detectată reinstalarea încărcătorului de boot care a fost apelată de '{1}'.</string>
+		<string name="fox_no_space_ota_survival">Nu este suficient spațiu liber pentru stocarea internă pentru crearea supraviețuirii OTA.</string>
+		<string name="fox_incremental_ota_res">OTA_RES -- finalizat!</string>
+		<string name="fox_incremental_ota_res_run">Rulare proces OTA_RES...</string>
+		<string name="fox_incremental_ota_bak_run">Rulare proces OTA_BAK...</string>
+		<string name="fox_incremental_ota_bak">OTA_BAK -- finalizat!</string>
+		<string name="fox_internal_fatal_i1">OrangeFox: EROARE FATALĂ! Nu puteți salva stocarea internă pe ea însăși!</string>
+		<string name="fox_internal_fatal_i2">TREBUIE să schimbați destinația copiei de rezervă la MicroSD/USB-OTG.</string>
+		<string name="fox_internal_q1">OrangeFox - Stocare Internă - fiți atenți!</string>
+
+		<string name="copy_kernel_log">Log-ul pentru kernel a fost copiat in {1}</string>
+
+		<string name="of_run_process">Pornire proces '{1}'</string>
+		<string name="of_run_process_fail">Imposibil de terminat procesul '{1}'</string>
+		<string name="of_run_process_done">Procesul '{1}' a fost finalizat</string>
+		<string name="of_dm_verity">DM-Verity modificat cu succes</string>
+		<string name="of_dm_verity_off">DM-Verity nu este activat</string>
+		<string name="of_encryption">Criptarea forțată a fost modificată cu succes</string>
+		<string name="of_encryption_off">Criptarea forțată nu este activată</string>
+		<string name="of_fstab">FSTAB detectat: '{1}'</string>
+
+		<string name="install_remlatest">Eliminați ultimele</string>
+		
+		<string name="backups_remove_all">Toate copiile de rezervă</string>
+		<string name="backups_remove">Ștergeți</string>
+		
+		<!-- OrangeFox Recovery - Pie Door theme -->
+
+		<string name="unpack">Despachetare</string>
+		<string name="repack">Reîmpachetare</string>
+
+		<string name="fox_save_load_aromafm_config_chk">Salvați/încărcați setările AromaFM</string>
+		<string name="search_help">Căutați fișiere și dosare...</string>
+		
+		<string name="reboot_to_take_effect">Reporniți pentru ca modificările să intre în vigoare</string>
+		<string name="fox_modules_hdr">Suplimente Fox</string>
+		<string name="fox_modules_inst">Instalare supliment</string>
+		<string name="backup_short_hdr">Copie de rezervă nouă</string>
+		<string name="backups_wat">Unde sunt copiile de rezervă?</string>
+		
+		<string name="module_install">Instalează</string>
+		<string name="module_uninstall">Dezinstalare</string>
+		<string name="remove_of_files">Eliminați fișierele OrangeFox</string>
+		<string name="module_initd">Activare suport init.d</string>
+		<string name="module_cam">Activare Camera2API</string>
+		<string name="module_pass">Eliminare parolă</string>
+		<string name="fox_files_not_exist_1">Fișierul nu există!</string>
+		<string name="fox_files_not_exist_2">Reinstalați Recuperarea</string>
+		<string name="fox_files_not_exist_3">utilizând fișierul ZIP de instalare.</string>
+
+		<!-- Customization -->
+		<string name="cust_new_ota_screen">Faceți pictogramele fișierelor mai mari</string>
+		<string name="fm_icons_simple">Faceți pictogramele fișierelor mai mari</string>
+		<string name="theme_engine_update">Aplicați modificările și reîncărcați?</string>
+		<string name="theme_engine_reset">Temă</string>
+		<string name="apply_btn">Aplicare</string>
+		<string name="theme_hdr">Temă</string>
+		
+		<string name="font_small">Mic</string>
+		<string name="font_norm">Normal</string>
+		<string name="font_big">Mare</string>
+		<string name="font_size">Dimensiune font</string>
+		<string name="cust_autoapply">Aplicare temă fără confirmare</string>
+		<string name="cust_expand_list">Se extind listele în mod automat</string>
+		
+		<string name="status_battery_style">Stil baterie</string>
+		<string name="status_battery_circle">Cerc</string>
+		<!-- Status bar -->
+		<string name="status_clock_pos">Poziţia ceasului</string>
+		<string name="status_clock_left">Stânga</string>
+		<string name="status_clock_center">Centru</string>
+		<string name="status_clock_right">Dreapta</string>
+		<string name="dark_title">Faceți titlul mai întunecat</string>
+		<string name="separate_status">Faceți bara de stare mai întunecată</string>
+		<string name="noshadow_title">Se afișează umbra barei de stare</string>
+		<string name="hide_notch">Ascundere breton</string>
+		<!-- NavBar -->
+		<string name="navbar_title">Bară de navigare</string>
+		<string name="navbar_onscreen">Activare bară de navigare</string>
+		<string name="show_slideout">Afișare buton consolă</string>
+		<string name="dark_nav">Întunecată</string>
+		<!-- Keyboard -->
+		<string name="keyboard_title">Tastatură</string>
+		<string name="keyboard_newstyle">Stil împrospătat</string>
+		<string name="keyboard_nums">Rând de cifre</string>
+		<string name="key_swipe">Glisați pe tastatură pentru a șterge tot</string>
+		<!-- Lockscreen -->
+		<string name="lockscreen_unlock">Deblocare</string>
+		<string name="lockscreen_title">Ecran de blocare</string>
+		<string name="lockscreen_style">Stil ecran de blocare</string>
+		<string name="lockscreen_clock">Ceas</string>
+		<string name="lockscreen_icon">Pictogramă</string>
+		<string name="lockscreen_btn">Înlocuire glisor cu buton</string>
+		<string name="lockscreen_info">Afișați informațiile despre baterie și procesor</string>
+		<string name="lockscreen_quicklock">Atingerea pictogramei de blocare blochează ecranul</string>
+
+		<!-- OTA working page -->
+		<string name="ota_console_title">Instalare OTA...</string>
+		<string name="ota_simple_title">Actualizare...</string>
+		<string name="ota_simple_log_btn">Jurnal</string>
+
+		<string name="battery">Baterie</string>
+
+		<!-- Pass -->
+		<string name="pass_gk">Model</string>
+		<string name="pass_classic">Parolă text</string>
+		<string name="pass_dis">Dezactivare parolă</string>
+		<string name="pass_pin">Cod PIN</string>
+		
+		<string name="locked_info_1">Recuperarea este protejată împotriva</string>
+		<string name="locked_info_2">accesului neautorizat.</string>
+		<string name="locked_info_3">Pentru a utiliza funcțiile principale de recuperare</string>
+		<string name="locked_info_4">mai întâi trebuie să introduceți parola.</string>
+		<string name="locked_info_4_gk">mai întâi trebuie să desenați modelul.</string>
+		
+		<string name="new_pass_info_1">Introduceţi o parolă nouă pentru</string>
+		<string name="new_pass_info_1_gk">Desenați un nou model pentru a proteja</string>
+		<string name="new_pass_info_2">OrangeFox împotriva accesului</string>
+		<string name="new_pass_info_3">neautorizat.</string>
+		<string name="new_pass_info_4">Trebuie să introduceți parola de două ori.</string>
+		<string name="new_pass_info_4_gk">Trebuie să desenați modelul de două ori.</string>
+		<string name="new_pass_info_4_2">Introduceți parola din nou.</string>
+		<string name="new_pass_info_4_2_gk">Desenați modelul din nou.</string>
+		
+		<string name="pass_page_block">Metoda actuală de blocare</string>
+		<string name="pass_page_block_inf1">Puteți să dormiți mai bine cunoscând</string>
+		<string name="pass_page_block_inf2">că sunteți protejat.</string>
+		<string name="pass_page_select">Selectați tipul parolei</string>
+		
+		<!-- Utilities -->
+		<string name="more">Mai multe...</string>
+		<string name="hide">Ascundere</string>
+		<string name="part_menu_hdr">Gestionare partiții</string>
+		<string name="run_adb_startup">Module</string>
+
+		<!-- MMGUI -->
+		<string name="mm_module_active">Activ</string>
+		<string name="mm_module_mount">Montare automată</string>
+		<string name="mm_modules">Module</string>
+		<string name="mm_ver">Versiune Magisk</string>
+		<string name="mm_mod_ver">Versiune modul</string>
+		<string name="magisk_not_found">Magisk nu a fost găsit!</string>
+		<string name="magisk_not_found_1">Vreți să accesați Suplimentele Fox</string>
+		<string name="magisk_not_found_2">și să instalați Magisk preinstalat?</string>
+		<string name="magisk_not_found_3"/>
+		
+		<!-- MIUI OTA -->
+		<string name="fox_ota_settings">Setări OTA</string>
+		<string name="fox_ota_on">Activați OTA</string>
+		
+		<!-- About -->
+		<string name="abt_maintainer">Dezvoltator</string>
+		<string name="abt_fd">Creator temă și designer</string>
+		<string name="abt_bork">CEO, Site și IU</string>
+		<string name="abt_dj">Build system, C++</string>
+		<string name="abt_front">Dezvoltator Frontend</string>
+		<string name="abt_back">Dezvoltator Backend</string>
+		<string name="abt_device">Dispozitiv</string>
+		<string name="version_twrp">Versiune TWRP</string>
+		<string name="build_type">Tip compilare</string>
+		<string name="abt_credits">Contribuţii</string>
+		<string name="abt_trans">Traducători</string>
+		<string name="abt_changes">Jurnal de modificări</string>
+		<string name="abt_main_shrt">Dezvoltator</string>
+		<string name="welcome_msg">Deschide dosarul real</string>
+		<string name="welcome_msg2"><!-- If welcome message is too big in your lang, use this string --></string>
+		
+		<!-- Symlink -->
+		<string name="symlink_dir_name">Link la dosar</string>
+		<string name="symlink_file_name">Link la fișier</string>
+		<string name="symlink_broken_name">Link întrerupt</string>
+		<string name="symlink_folder">Deschide dosarul real</string>
+		<string name="symlink_file">Deschide fișierul real</string>
+		
+		<!-- Files -->
+		<string name="files_show_hidden">Afișare fișiere ascunse în Fișiere</string>
+		<string name="files_auto_open">Detectarea automată a tipului de fișiere în Fișiere</string>
+		<string name="file_read_error">Nu se poate deschide fișierul!</string>
+		<string name="subs_wipe">Ștergere suprapuneri Substratum</string>
+		<string name="sort_ex_all">Toate fişierele</string>
+		<string name="sort_ex_img">Fișiere IMG</string>
+		<string name="sort_ex_zip">Fișiere ZIP</string>
+		<string name="aroma_help">Apăsați din nou pentru a porni AromaFM...</string>
+
+		<!-- this error will shown when recovery cannot create backup folder
+		 -->
+		<string name="backups_rw_error_1">Stocarea este montată</string>
+		<string name="backups_rw_error_2">Economisire baterie</string>
+
+		<!-- App mgr -->
+		<string name="appmgr_apps">Aplicaţii</string>
+		<string name="appmgr_title">Gestionare aplicații</string>
+
+		<!-- Perfomance -->
+		<string name="perf_title">Perfomanță</string>
+		<string name="perf_conf_mode">Mod performanță Recuperare</string>
+		<string name="perf_conf_balance">Echilibrat</string>
+		<string name="perf_conf_high">Performanță înaltă</string>
+		<string name="perf_conf_batt">Economisire baterie</string>
+
+		<string name="fox_led_title">Setări LED</string>
+		<string name="fox_use_green_led">Utilizați culoarea verde a LED-ului</string>
+		<string name="fox_boot_fastcharge">Forțează încărcarea rapidă</string>
+
+		<!-- OTA -->
+		<string name="fox_ota_msg_ready">Sunteți gata să primiți actualizări!</string>
+		<string name="fox_ota_msg_custom">Este activat modul ROM personalizat</string>
+		<string name="fox_ota_msg_reflash">Instalați ROM-ul complet MIUI!</string>
+		<string name="fox_advanced_stock_recovery">Dezactivarea Recuperării agresive stoc</string>
+		<string name="fox_support_miui_ota_chk">Susține MIUI OTA incremental</string>
+		<string name="fox_include_system_survival_chk">Includere sistem în supraviețuirea OTA</string>
+		<string name="fox_verify_incremental_ota_signature_chk">Verificarea semnăturii OTA incremental</string>
+		<string name="fox_dmverity_chk">Dezactivare DM-Verity</string>
+		<string name="fox_forced_encryption_chk">Dezactivare criptare forțată</string>
+		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Împiedicați repornirea automată după instalarea OTA</string>
+		<string name="of_ota_reboot_disabled">Actualizare OTA cu succes. Ați dezactivat repornirea automată. Reîntoarcere control către dvs.</string>
+	</resources>
+</language>
