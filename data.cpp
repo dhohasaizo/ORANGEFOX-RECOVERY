@@ -1370,6 +1370,7 @@ return;
     {
       TWFunc::write_to_file(bs, "0");
       TWFunc::write_to_file(bs1, "0");
+      if (TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
       {
         LOGINFO("DEBUG - found white led on /sys/class/leds/white/ path");
         TWFunc::write_to_file("/sys/class/leds/white/brightness", "0");
