@@ -1366,17 +1366,15 @@ return;
   DataManager::GetValue("tw_action_vibrate", install_vibrate_value);
   DataManager::GetValue("fox_led_color", ledcolor);
 
-  if (TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
-  {
-    LOGINFO("DEBUG - found white led on /sys/class/leds/white/ path");
-    TWFunc::read_file("/sys/class/leds/white/max_brightness", max_brt);
-    TWFunc::write_to_file("/sys/class/leds/white/brightness", max_brt);
-  }
-
   if (!enable && stat(bs.c_str(), &st) == 0)
     {
       TWFunc::write_to_file(bs, "0");
       TWFunc::write_to_file(bs1, "0");
+      if (TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
+      {
+        LOGINFO("DEBUG - found white led on /sys/class/leds/white/ path");
+        TWFunc::write_to_file("/sys/class/leds/white/brightness", "0");
+      }
     }
   else
     {
@@ -1394,6 +1392,12 @@ return;
                 TWFunc::write_to_file("/sys/class/leds/red/brightness", bsm);
                 TWFunc::write_to_file("/sys/class/leds/red/blink", "1");
                 TWFunc::write_to_file("/sys/class/leds/red/led_time", "1 1 1 1");
+              }
+              if (TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
+              {
+                LOGINFO("DEBUG - found white led on /sys/class/leds/white/ path");
+                TWFunc::read_file("/sys/class/leds/white/max_brightness", max_brt);
+                TWFunc::write_to_file("/sys/class/leds/white/brightness", max_brt);
               }
             }
         } else {
