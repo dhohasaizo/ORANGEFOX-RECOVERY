@@ -790,6 +790,10 @@ bool TWPartition::Decrypt_FBE_DE() {
 if (TWFunc::Path_Exists("/data/unencrypted/key/version")) {
 		LOGINFO("File Based Encryption is present\n");
 #ifdef TW_INCLUDE_FBE
+		#ifdef OF_SKIP_FBE_DECRYPTION
+		    LOGINFO("Skip FBE decryption is triggered. I will not try to decrypt ...\n");
+		    return false;
+		#endif	
 		ExcludeAll(Mount_Point + "/convert_fbe");
 		ExcludeAll(Mount_Point + "/unencrypted");
 		//ExcludeAll(Mount_Point + "/system/users/0"); // we WILL need to retain some of this if multiple users are present or we just need to delete more folders for the extra users somewhere else
