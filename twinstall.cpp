@@ -556,7 +556,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    {
 	      set_miui_install_status(OTA_CORRUPT, false);
 	      gui_err
-		("fox_survival_encrypted_err=Internal storage is encrypted! Please do decrypt first!");
+		("Internal storage is encrypted! Please do decrypt first!");
 	      return INSTALL_ERROR;
 	    }
 	}
