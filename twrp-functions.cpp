@@ -302,14 +302,21 @@ bool TWFunc::Rerun_Startup(void)
 /* function to run just before every reboot */
 void TWFunc::Run_Before_Reboot(void)
 {
+  // backuup recovery log to internal storage
   copy_file("/tmp/recovery.log", "/sdcard/Fox/lastrecoverylog.log", 0644);
   
-  // backup also to external SD (/sdcard1/) if there is one
+  // backup also to external SD if there is one
+  string extsd;
   if ((PartitionManager.Is_Mounted_By_Path("/sdcard1")) || (PartitionManager.Mount_By_Path("/sdcard1", false)))
-    {
-       copy_file("/tmp/recovery.log", "/sdcard1/lastrecoverylog.log", 0644);
-       PartitionManager.UnMount_By_Path("/sdcard1", false);
-    }
+      extsd = "/sdcard1";
+  else 
+  if ((PartitionManager.Is_Mounted_By_Path("/external_sd")) || (PartitionManager.Mount_By_Path("/external_sd", false)))
+      extsd = "/external_sd";
+  else
+      return;
+  
+  copy_file("/tmp/recovery.log", extsd + "/lastrecoverylog.log", 0644);
+  PartitionManager.UnMount_By_Path(extsd, false);
 }
 
 /* Execute a command */
@@ -4027,7 +4034,7 @@ void TWFunc::Run_Pre_Flash_Protocol(bool forceit)
 	   {
 	      TWFunc::check_and_run_script(pre_runner.c_str(), "system_mount");
 	   }
-       }
+        }
     }
 #endif
 }
