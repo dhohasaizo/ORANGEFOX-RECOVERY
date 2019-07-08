@@ -2147,7 +2147,11 @@ int TWPartitionManager::Decrypt_Device(string Password)
     {
       // Parent
       int status;
-      if (TWFunc::Wait_For_Child_Timeout(pid, &status, "Decrypt", 30))
+      int decrypt_timeout = 30; // DJ9: original=30
+      #ifdef OF_REDUCE_DECRYPTION_TIMEOUT
+      decrypt_timeout = 20; // reduce the decryption timeout
+      #endif
+      if (TWFunc::Wait_For_Child_Timeout(pid, &status, "Decrypt", decrypt_timeout)) // DJ9
 	pwret = -1;
       else
 	pwret = WEXITSTATUS(status) ? -1 : 0;
