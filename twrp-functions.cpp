@@ -302,14 +302,21 @@ bool TWFunc::Rerun_Startup(void)
 /* function to run just before every reboot */
 void TWFunc::Run_Before_Reboot(void)
 {
+  // backuup recovery log to internal storage
   copy_file("/tmp/recovery.log", "/sdcard/Fox/lastrecoverylog.log", 0644);
   
-  // backup also to external SD (/sdcard1/) if there is one
+  // backup also to external SD if there is one
+  string extsd;
   if ((PartitionManager.Is_Mounted_By_Path("/sdcard1")) || (PartitionManager.Mount_By_Path("/sdcard1", false)))
-    {
-       copy_file("/tmp/recovery.log", "/sdcard1/lastrecoverylog.log", 0644);
-       PartitionManager.UnMount_By_Path("/sdcard1", false);
-    }
+      extsd = "/sdcard1";
+  else 
+  if ((PartitionManager.Is_Mounted_By_Path("/external_sd")) || (PartitionManager.Mount_By_Path("/external_sd", false)))
+      extsd = "/external_sd";
+  else
+      return;
+  
+  copy_file("/tmp/recovery.log", extsd + "/lastrecoverylog.log", 0644);
+  PartitionManager.UnMount_By_Path(extsd, false);
 }
 
 /* Execute a command */
@@ -1706,26 +1713,40 @@ std::string TWFunc::to_string(unsigned long value)
   return os.str();
 }
 
-
 void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 {
-      if (DataManager::GetIntValue(FOX_DONT_REPLACE_STOCK) == 1)
+     if (DataManager::GetIntValue(FOX_DONT_REPLACE_STOCK) == 1)
       	return;
       
-      if ((DataManager::GetIntValue(FOX_ADVANCED_STOCK_REPLACE) == 1) 
+     if ((DataManager::GetIntValue(FOX_ADVANCED_STOCK_REPLACE) == 1) 
       ||  (Fox_Force_Deactivate_Process == 1))
 	{
-	  if (Path_Exists("/system/bin/install-recovery.sh"))
-	    rename("/system/bin/install-recovery.sh",
-		   "/system/bin/wlfx0install-recoverybak0xwlf");
+      	  // system-as-root stuff
+      	  bool we_mounted = false;
+          string rootdir = "/system";
+      	  if (Has_System_Root())
+          {
+	     if (!PartitionManager.Is_Mounted_By_Path("/system"))
+	      { 	  
+	         if (PartitionManager.Mount_By_Path("/system", false))
+	            we_mounted = true;	  
+	      }
+	     if ((PartitionManager.Is_Mounted_By_Path("/system")) && (TWFunc::Path_Exists("/system/system")))
+                rootdir = "/system/system";
+          }
+     	  // system-as-root stuff //
 
-	  if (Path_Exists("/system/etc/install-recovery.sh"))
-	    rename("/system/etc/install-recovery.sh",
-		   "/system/etc/wlfx0install-recoverybak0xwlf");
+	  if (Path_Exists(rootdir + "/bin/install-recovery.sh"))
+	      Rename_File(rootdir + "/bin/install-recovery.sh",
+		     	  rootdir + "/bin/wlfx0install-recoverybak0xwlf");
 
-	  if (Path_Exists("/system/etc/recovery-resource.dat"))
-	    rename("/system/etc/recovery-resource.dat",
-		   "/system/etc/wlfx0recovery-resource0xwlf");
+	  if (Path_Exists(rootdir + "/etc/install-recovery.sh"))
+	      Rename_File(rootdir + "/etc/install-recovery.sh",
+		   	 rootdir + "/etc/wlfx0install-recoverybak0xwlf");
+
+	  if (Path_Exists(rootdir + "/etc/recovery-resource.dat"))
+	      Rename_File(rootdir + "/etc/recovery-resource.dat",
+		   	  rootdir + "/etc/wlfx0recovery-resource0xwlf");
 
 	  if (Path_Exists("/system/vendor/bin/install-recovery.sh"))
 	    rename("/system/vendor/bin/install-recovery.sh",
@@ -1751,12 +1772,15 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 	    rename("/vendor/etc/recovery-resource.dat",
 		   "/vendor/etc/wlfx0recovery-resource0xwlf");
 
-          if (TWFunc::Path_Exists("/system/recovery-from-boot.p"))
+          if (TWFunc::Path_Exists(rootdir + "/recovery-from-boot.p"))
   	     {
-	          rename("/system/recovery-from-boot.p",
-		      "/system/wlfx0recovery-from-boot.bak0xwlf");
+	         Rename_File(rootdir + "/recovery-from-boot.p",
+		      	     rootdir + "/wlfx0recovery-from-boot.bak0xwlf");
 	          sync();
 	     }
+	  
+	  if (we_mounted)
+	     PartitionManager.UnMount_By_Path("/system", false);
       }
 }
 
@@ -3738,6 +3762,12 @@ void TWFunc::PrepareToFinish(void)
 	  rename("/system/wlfx0recovery-from-boot.bak0xwlf",
 		 "/system/recovery-from-boot.p");
 	}
+      else if (Path_Exists("/system/system/wlfx0recovery-from-boot.bak0xwlf"))
+	{
+	  rename("/system/system/wlfx0recovery-from-boot.bak0xwlf",
+		 "/system/system/recovery-from-boot.p");
+	}
+	
       PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
     }
 }
@@ -4004,8 +4034,20 @@ void TWFunc::Run_Pre_Flash_Protocol(bool forceit)
 	   {
 	      TWFunc::check_and_run_script(pre_runner.c_str(), "system_mount");
 	   }
-       }
+        }
     }
 #endif
 }
+
+bool TWFunc::Has_System_Root(void)
+{
+ string info = TWFunc::System_Property_Get("ro.build.system_root_image");
+ return (info == "true");
+}
+
+int TWFunc::Rename_File(std::string oldname, std::string newname)
+{
+   return rename(oldname.c_str(), newname.c_str());
+}
+
 //

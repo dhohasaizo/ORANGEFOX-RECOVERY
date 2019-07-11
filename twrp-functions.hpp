@@ -142,6 +142,8 @@ public:
 	static bool Has_Vendor_Partition(void); // does the device have a real vendor partition?
 	static int Patch_DMVerity_ForcedEncryption_Magisk(void); // patch dm-verity/forced-encryption with a script using magisk
 	static void Run_Pre_Flash_Protocol(bool forceit); // run any pre_flash protocol
+	static bool Has_System_Root(void); // is this a system-as-root device?
+	static int Rename_File(std::string oldname, std::string newname); // rename a file, using std strings
 	//
 	static std::string get_cache_dir(); // return the cache partition existence
 	static void check_selinux_support(); // print whether selinux support is enabled to console

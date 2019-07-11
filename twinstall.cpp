@@ -371,7 +371,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
    //* treble
 
 #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
-     LOGINFO("OrangeFox: not executing MIUI OTA restore\n");
+     // LOGINFO("OrangeFox: not executing MIUI OTA restore\n");
 #else
      if (zip_is_survival_trigger) //(DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) != 0)
 	{
@@ -495,7 +495,14 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    }
 
 	  string Boot_File = ota_location_folder + "/boot.emmc.win";
-	  if (!storage_is_encrypted()) //(DataManager::GetIntValue(TW_IS_ENCRYPTED) == 0)
+	  //if (!storage_is_encrypted()) //(DataManager::GetIntValue(TW_IS_ENCRYPTED) == 0)
+	  if (
+	     (!storage_is_encrypted()) 
+	#ifdef OF_OTA_RES_DECRYPT
+	  || (TWFunc::Path_Exists(Boot_File)) 
+	  || (DataManager::GetIntValue("OTA_decrypted") == 1)
+	#endif
+	     )
 	    {
 	      if (TWFunc::Path_Exists(Boot_File))
 		{
@@ -527,8 +534,7 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	  else
 	    {
 	      set_miui_install_status(OTA_CORRUPT, false);
-	      gui_err
-		("fox_survival_encrypted_err=Internal storage is encrypted! Please do decrypt first!");
+	      gui_print ("Internal storage is encrypted! Please do decrypt first!\n");
 	      return INSTALL_ERROR;
 	    }
 	}
@@ -1017,7 +1023,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	set_miui_install_status(OTA_ERROR, false);
      }
 #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
-   LOGINFO("OrangeFox: not running the MIUI OTA backup.\n");
+   // LOGINFO("OrangeFox: not running the MIUI OTA backup.\n");
 #else    
    else  
    if (DataManager::GetIntValue(FOX_INCREMENTAL_OTA_FAIL) != 1)

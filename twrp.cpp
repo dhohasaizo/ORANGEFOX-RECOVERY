@@ -144,6 +144,8 @@ int main(int argc, char **argv)
 
 	bool Shutdown = false;
 	bool SkipDecryption = false;
+	int Need_Decrypt = 0;
+	
 	string Send_Intent = "";
 	{
 		TWPartition* misc = PartitionManager.Find_Partition_By_Path("/misc");
@@ -180,6 +182,9 @@ int main(int argc, char **argv)
 
 					// If we have a map of blocks we don't need to mount data.
 					SkipDecryption = *ptr == '@';
+					if (*ptr == '@')
+					   Need_Decrypt = 1;
+					else Need_Decrypt = 0;
 
 					if (!OpenRecoveryScript::Insert_ORS_Command(ORSCommand))
 						break;
@@ -249,7 +254,19 @@ int main(int argc, char **argv)
 	// Offer to decrypt if the device is encrypted
 	if (DataManager::GetIntValue(TW_IS_ENCRYPTED) != 0) {
 		if (SkipDecryption) {
-			LOGINFO("Skipping decryption\n");
+		   #ifdef OF_OTA_RES_DECRYPT
+			if (Need_Decrypt == 1)
+			 {
+			    usleep(16);
+			    if (gui_startPage("decrypt", 1, 1) == 0)
+			       {  
+				  LOGINFO("- DEBUG: OrangeFox: detected custom encryption\n");
+				  DataManager::SetValue("OTA_decrypted", "1");
+			       } 
+			 }
+			else //
+		   #endif
+			  LOGINFO("Skipping decryption\n");			
 		} else {
 			LOGINFO("Is encrypted, do decrypt page first\n");			
 			//
@@ -367,6 +384,7 @@ int main(int argc, char **argv)
 #ifdef OF_KEEP_DM_VERITY_FORCED_ENCRYPTION
   DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
   DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
+  DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
 #endif
 
   // check for fresh OrangeFox installation (again)

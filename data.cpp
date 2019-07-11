@@ -1343,11 +1343,66 @@ void DataManager::Vibrate(const string & varName)
     }
 }
 
+#ifdef OF_CLASSIC_LEDS_FUNCTION
+// use R9.x Leds function
 void DataManager::Leds(bool enable)
 {
-#ifdef OF_SKIP_LEDS_FUNCTION
-return;
-#endif
+  std::string leds, bs, bsmax, time, blink, bsm, leds1, bs1, bsmax1, time1, blink1, bsm1, max_brt, install_vibrate_value;
+  struct stat st;
+  int ledcolor;
+  leds = "/sys/class/leds/green";
+  bs = leds + "/brightness";
+  time = leds + "/led_time";
+  blink = leds + "/blink";
+  bsmax = leds + "/max_brightness";
+
+  leds1 = "/sys/class/leds/red";
+  bs1 = leds1 + "/brightness";
+  time1 = leds1 + "/led_time";
+  blink1 = leds1 + "/blink";
+  bsmax1 = leds1 + "/max_brightness";
+
+  string vibrate_path = "/sys/class/timed_output/vibrator/enable";
+  DataManager::GetValue("tw_action_vibrate", install_vibrate_value);
+  DataManager::GetValue("fox_led_color", ledcolor);
+
+  if (!TWFunc::Path_Exists("/sys/class/leds/white/brightness"))
+  {
+    LOGINFO("DEBUG - found white led on /sys/class/leds/white/ path");
+    TWFunc::read_file("/sys/class/leds/white/max_brightness", max_brt);
+    TWFunc::write_to_file("/sys/class/leds/white/brightness", max_brt);
+  }
+
+  if (!enable && stat(bs.c_str(), &st) == 0)
+    {
+      TWFunc::write_to_file(bs, "0");
+      TWFunc::write_to_file(bs1, "0");
+    }
+  else
+    {
+      if (stat(bs.c_str(), &st) == 0 && stat(time.c_str(), &st) == 0
+	  && stat(bsmax.c_str(), &st) == 0 && stat(blink.c_str(), &st) == 0)
+	{
+	  if (TWFunc::read_file(bsmax, bsm) == 0)
+	    {
+	      TWFunc::write_to_file(bs, bsmax);
+	      TWFunc::write_to_file(blink, "1");
+        TWFunc::write_to_file(time, "1 1 1 1");
+
+        if (ledcolor == 0) {
+          LOGINFO("Enable Yellow led");
+          TWFunc::write_to_file("/sys/class/leds/red/brightness", bsmax);
+          TWFunc::write_to_file("/sys/class/leds/red/blink", "1");
+          TWFunc::write_to_file("/sys/class/leds/red/led_time", "1 1 1 1");
+        }
+        TWFunc::write_to_file(vibrate_path, install_vibrate_value);
+	    }
+	}
+    }
+}
+#else
+void DataManager::Leds(bool enable)
+{
   std::string leds, bs, bsmax, time, blink, bsm, leds1, bs1, bsmax1, time1, blink1, bsm1, max_brt, install_vibrate_value;
   struct stat st;
   int ledcolor;
@@ -1414,3 +1469,5 @@ return;
       }
     }
 }
+#endif
+
