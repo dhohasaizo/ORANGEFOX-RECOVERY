@@ -1773,9 +1773,8 @@ bool TWPartition::Mount(bool Display_Error)
 	      else
 		LOGINFO("Unable to mount '%s'\n", Mount_Point.c_str());
 	      LOGINFO
-		("Actual block device: '%s', current file system: '%s', flags: 0x%8x, options: '%s'\n",
-		 Actual_Block_Device.c_str(), Current_File_System.c_str(),
-		 flags, Mount_Options.c_str());
+		("Actual block device: '%s', current file system: '%s', options: '%s'\n",
+		 Actual_Block_Device.c_str(), Current_File_System.c_str(), Mount_Options.c_str());
 	      return false;
 	    }
 	}
