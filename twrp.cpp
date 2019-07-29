@@ -381,14 +381,22 @@ int main(int argc, char **argv)
   twrpAdbBuFifo *adb_bu_fifo = new twrpAdbBuFifo();
   adb_bu_fifo->threadAdbBuFifo();
 
+// retain dm-verity and/or forced-encryption on devices that have problems with disabling them
+#ifdef OF_KEEP_FORCED_ENCRYPTION
+  DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
+  DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
+#endif
+
+#ifdef OF_KEEP_DM_VERITY
+  DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
+  DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
+#endif
+
 #ifdef OF_KEEP_DM_VERITY_FORCED_ENCRYPTION
   DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
   DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
   DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
 #endif
-
-  // check for fresh OrangeFox installation (again)
-  //TWFunc::Fresh_Fox_Install();
 
   // LOGINFO("OrangeFox: Reloading theme to apply generated theme on sdcard - again...\n");
   if (DataManager::GetStrValue("used_custom_encryption") == "1")
