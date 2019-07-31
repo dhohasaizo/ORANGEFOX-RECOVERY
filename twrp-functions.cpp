@@ -4027,7 +4027,7 @@ void TWFunc::Run_Pre_Flash_Protocol(bool forceit)
   if ((forceit == true) || (DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE) == 0))
     {
       // don't run this for built-in zips
-      if (DataManager::GetIntValue(FOX_INSTALL_PREBUILT_ZIP) != 1)
+      if ((forceit == true) || (DataManager::GetIntValue(FOX_INSTALL_PREBUILT_ZIP) != 1))
         {
           string pre_runner = "/sbin/fox_pre_flash";
           if (TWFunc::Path_Exists(pre_runner))

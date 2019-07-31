@@ -410,9 +410,6 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	      const string take_out_metadata = "/tmp/build.prop";
 	      if (Zip->ExtractEntry(metadata_sg_path, take_out_metadata, 0644))
 		{
-		  #ifdef OF_SUPPORT_PRE_FLASH_SCRIPT
-		  //TWFunc::Run_Pre_Flash_Protocol(true);
-	   	  #endif		  
 		  string metadata_fingerprint = TWFunc::File_Property_Get(take_out_metadata, pre_build); // look for "pre-build"
 		  string metadata_device = TWFunc::File_Property_Get(take_out_metadata, pre_device);  // look for "pre-device"
 		  string fingerprint = TWFunc::System_Property_Get(fingerprint_property); // try to get system fingerprint - ro.build.fingerprint
@@ -543,6 +540,12 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		    {
 		      gui_msg
 			("fox_incremental_ota_res=Process OTA_RES -- done!!");
+		      // *** can this help with MIUI OTA restore under lavender/violet/raphael ?
+		      #ifdef OF_SUPPORT_PRE_FLASH_SCRIPT
+		         usleep(4096);
+		         TWFunc::Run_Pre_Flash_Protocol(true);
+	   	      #endif
+	   	      // ***
 		    }
 		  else
 		    {
