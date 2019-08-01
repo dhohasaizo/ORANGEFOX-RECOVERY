@@ -540,12 +540,9 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 		    {
 		      gui_msg
 			("fox_incremental_ota_res=Process OTA_RES -- done!!");
-		      // *** can this help with MIUI OTA restore under lavender/violet/raphael ?
 		      #ifdef OF_SUPPORT_PRE_FLASH_SCRIPT
-		         usleep(4096);
-		         TWFunc::Run_Pre_Flash_Protocol(true);
+		         //TWFunc::Run_Pre_Flash_Protocol(true);
 	   	      #endif
-	   	      // ***
 		    }
 		  else
 		    {
