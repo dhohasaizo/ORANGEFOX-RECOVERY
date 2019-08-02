@@ -110,7 +110,7 @@
 		<string name="format_data_undo">Hal Ini tidak dapat dibatalkan.</string>
 		<string name="format_data_complete">Format Data selesai</string>
 		<!-- Translator note: the word "yes" must remain English! -->
-		<string name="yes_continue">Ketik "ya" untuk konfirmasi</string>
+		<string name="yes_continue">Ketik "yes" untuk konfirmasi</string>
 		<string name="part_opt_hdr">Tipe partisi</string>
 		<string name="file_sys_opt">Opsi Partisi</string>
 		<string name="part_mount_point">Mount Point</string>
@@ -594,7 +594,7 @@
 		<string name="confirm_wipe_cptn">Konfirmasikan Penghapusan</string>
 		<string name="storage_cptn">Penyimpanan</string>
 		<string name="enter_password_restore">Kata sandi</string>
-		<string name="enter_password_cptn">Mulai Sideload ...</string>
+		<string name="enter_password_cptn">Keamanan</string>
 		<!-- added by fordownloads -->
 		<string name="fordowns_sl">Mulai Sideload ...</string>
 		<string name="fordowns_to">ke</string>
@@ -638,7 +638,7 @@
 		<string name="settings_general">Umum</string>
 		<string name="settings_ui">Kustomisasi</string>
 		<string name="settings_screen">Tampilan</string>
-		<string name="settings_time">Daerah</string>
+		<string name="settings_time">Regional</string>
 		
 		<string name="lang_wait">Tunggu sebentar...</string>
 		
@@ -707,7 +707,7 @@
 		
 		<string name="of">dari</string>
 		
-		<string name="sph_sph">Percikan</string>
+		<string name="sph_sph">Splash</string>
 		
 		<string name="real">Nyata</string>
 		<string name="info">Informasi</string>
@@ -815,7 +815,7 @@
 		<string name="search_help">★ Mencari file dan folder</string>
 		
 		<string name="reboot_to_take_effect">Mulai ulang untuk perubahan mulai berlaku</string>
-		<string name="fox_modules_hdr">Addon C++</string>
+		<string name="fox_modules_hdr">Fox Addons</string>
 		<string name="fox_modules_inst">Pasang addon</string>
 		<string name="backup_short_hdr">Cadangan Baru</string>
 		<string name="backups_wat">Di mana cadangannya?</string>
@@ -823,7 +823,7 @@
 		<string name="module_install">Pasang</string>
 		<string name="module_uninstall">Hapus</string>
 		<string name="remove_of_files">Menghapus file OrangeFox</string>
-		<string name="module_initd">Aktifkan dukungan JSONP</string>
+		<string name="module_initd">Aktifkan dukungan init.d</string>
 		<string name="module_cam">Aktifkan Camera2API</string>
 		<string name="module_pass">Hapus kata sandi</string>
 		<string name="fox_files_not_exist_1">File tidak ada!</string>

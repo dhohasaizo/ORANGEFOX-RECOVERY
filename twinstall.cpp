@@ -95,15 +95,6 @@ enum zip_type
   TWRP_THEME_ZIP_TYPE
 };
 
-static std::string get_survival_path()
-{
-  std::string ota_location_folder, ota_location_backup;
-  DataManager::GetValue(FOX_SURVIVAL_FOLDER_VAR, ota_location_folder);
-  DataManager::GetValue(FOX_SURVIVAL_BACKUP_NAME, ota_location_backup);
-  ota_location_folder += "/" + ota_location_backup;
-  return ota_location_folder;
-}
-
 static bool storage_is_encrypted()
 {
   return DataManager::GetIntValue(TW_IS_ENCRYPTED) != 0;
@@ -206,25 +197,6 @@ static void set_miui_install_status(std::string install_status, bool verify)
 	  chmod(last_status.c_str(), 0755);
 	}
     }
-}
-
-static std::string get_metadata_property(std::vector < string > metadata,
-					 std::string Property)
-{
-  int i, l = metadata.size();
-  size_t start = 0, end;
-  std::string local;
-  for (i = 0; i < l; i++)
-    {
-      end = metadata.at(i).find("=", start);
-      local = metadata.at(i).substr(start, end);
-      if (local == Property)
-	{
-	  local = metadata.at(i).substr(end + 1, metadata.at(i).size());
-	  return local;
-	}
-    }
-  return local;
 }
 
 static bool verify_incremental_package(string fingerprint, string metadatafp,
