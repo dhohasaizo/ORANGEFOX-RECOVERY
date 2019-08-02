@@ -12,26 +12,18 @@
 			<fill color="%accent%">
 				<condition var1="fox_support_miui_ota" var2="1"/>
 				<condition var1="fox_include_system_survival" var2="1"/>
-				<condition var1="fox_verify_incremental_ota_signature" var2="1"/>
-				<condition var1="fox_reboot_advanced_stock_recovery_check" var2="1"/>
-				<condition var1="fox_reboot_forced_encryption_check" var2="1"/>
-				<condition var1="fox_reboot_dm_verity_check" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 			</fill>
 			<image>
 				<condition var1="fox_support_miui_ota" var2="1"/>
 				<condition var1="fox_include_system_survival" var2="1"/>
-				<condition var1="fox_verify_incremental_ota_signature" var2="1"/>
-				<condition var1="fox_reboot_advanced_stock_recovery_check" var2="1"/>
-				<condition var1="fox_reboot_forced_encryption_check" var2="1"/>
-				<condition var1="fox_reboot_dm_verity_check" var2="1"/>
 				<placement x="%ab_btn1_x%" y="%ab2_y%"/>
 				<image resource="switch_on"/>
 			</image>
 			
 			<text style="text_ab_switch">
 				<placement x="%col1_x_indent%" y="%ab_bc2_y%"/>
-				<text>{@fox_ota_on}</text>
+				<text>{@fox_miui_ota_on}</text>
 			</text>
 
 			<button style="bs_btn">
@@ -39,28 +31,16 @@
 				<actions>
 					<action function="set">fox_support_miui_ota=1</action>
 					<action function="set">fox_include_system_survival=1</action>
-					<action function="set">fox_verify_incremental_ota_signature=1</action>
-					<action function="set">fox_reboot_advanced_stock_recovery_check=1</action>
-					<action function="set">fox_reboot_dm_verity_check=1</action>
-					<action function="set">fox_reboot_forced_encryption_check=1</action>
 				</actions>
 			</button>
 
 			<button style="bs_btn">
 				<condition var1="fox_support_miui_ota" var2="1"/>
 				<condition var1="fox_include_system_survival" var2="1"/>
-				<condition var1="fox_verify_incremental_ota_signature" var2="1"/>
-				<condition var1="fox_reboot_advanced_stock_recovery_check" var2="1"/>
-				<condition var1="fox_reboot_forced_encryption_check" var2="1"/>
-				<condition var1="fox_reboot_dm_verity_check" var2="1"/>
 				<placement x="0" y="%ab_h%" w="%screen_w%" h="%ab_btn_h%"/>
 				<actions>
 					<action function="set">fox_support_miui_ota=0</action>
 					<action function="set">fox_include_system_survival=0</action>
-					<action function="set">fox_verify_incremental_ota_signature=0</action>
-					<action function="set">fox_reboot_advanced_stock_recovery_check=0</action>
-					<action function="set">fox_reboot_forced_encryption_check=0</action>
-					<action function="set">fox_reboot_dm_verity_check=0</action>
 				</actions>
 			</button>
 		
@@ -140,11 +120,11 @@
 			
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_2a_y%"/>
-				<text>{@fox_ota_settings}</text>
+				<text>MIUI OTA</text>
 			</text>
 
             <listbox style="settingslist">
-				<placement x="0" y="%row2_3a_y%" w="%screen_w%" h="%lb_l7%"/>
+				<placement x="0" y="%row2_3a_y%" w="%screen_w%" h="%lb_l4%"/>
 				<listitem name="{@fox_support_miui_ota_chk}">
 					<data variable="fox_support_miui_ota"/>
 				</listitem>	
@@ -154,6 +134,18 @@
 				<listitem name="{@fox_verify_incremental_ota_signature_chk}">
 					<data variable="fox_verify_incremental_ota_signature"/>
 				</listitem>
+				<listitem name="{@FOX_DISABLE_OTA_AUTO_REBOOT_chk}">
+					<data variable="fox_disable_ota_auto_reboot_check"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row5_1a_y%"/>
+				<text>Modify ROM functions</text>
+			</text>
+
+			<listbox style="settingslist">
+				<placement x="0" y="%row5_2a_y%" w="%screen_w%" h="%lb_l3%"/>
 				<listitem name="{@fox_advanced_stock_recovery}">
 					<data variable="fox_reboot_advanced_stock_recovery_check"/>
 				</listitem>
@@ -162,9 +154,6 @@
 				</listitem>
 				<listitem name="{@fox_forced_encryption_chk}">
 					<data variable="fox_reboot_forced_encryption_check"/>
-				</listitem>
-				<listitem name="{@FOX_DISABLE_OTA_AUTO_REBOOT_chk}">
-					<data variable="fox_disable_ota_auto_reboot_check"/>
 				</listitem>
 			</listbox>
 
