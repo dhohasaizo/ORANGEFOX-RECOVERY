@@ -637,20 +637,6 @@ int GUIAction::reboot(std::string arg)
   sync();
   DataManager::SetValue("tw_gui_done", 1);
   DataManager::SetValue("tw_reboot_arg", arg);
-  #ifdef OF_USE_TWFUNC_REBOOT_FUNCTION
-  /*
-  RebootCommand command = rb_current;
-  usleep(64);
-  if (arg == "system") command = rb_system; 
-  else if (arg == "recovery") command = rb_recovery; 
-  else if (arg == "poweroff") command = rb_poweroff; 
-  else if (arg == "bootloader" || arg == "fastboot") command = rb_bootloader; 
-  else if (arg == "download") command = rb_download; 
-  else if (arg == "edl") command = rb_edl;
-  else return 1;
-  TWFunc::tw_reboot(command);
-  */
-  #endif  
   return 0;
 }
 
