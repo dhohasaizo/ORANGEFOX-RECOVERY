@@ -1061,7 +1061,10 @@
 		<string name="fox_ota_msg_reflash">Прошейте полный MIUI ROM!</string>
 		<string name="fox_ota_settings">Настройки OTA</string>
 		<string name="fox_ota_on">Включить OTA</string>
-		<string name="fox_advanced_stock_recovery">Отключение перезаписи рекавери</string>
+		<string name="fox_ota_lite">OTA и прошивка</string>
+		<string name="fox_miui_ota_on">Включить MIUI OTA</string>
+		<string name="fox_patch_rom">Модификация ROM</string>
+		<string name="fox_advanced_stock_recovery">Отключить перезапись рекавери</string>
 		<string name="fox_support_miui_ota_chk">Поддержка частичных OTA MIUI</string>
 		<string name="fox_include_system_survival_chk">Включить System в OTA Survival</string>
 		<string name="fox_verify_incremental_ota_signature_chk">Проверка подписи MIUI OTA</string>
@@ -1070,7 +1073,7 @@
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Отключить автоперезагрузку после OTA</string>
 		<string name="of_ota_reboot_disabled">Обновление OTA завершено. Вы отключили авто-перезагрузку. Возвращаем контроль вам...</string>
 
-		<string name="zip_compatible_err">Zip Treble compatibility error!</string>
+		<string name="zip_compatible_err">Устройство несовместимо с прошивкой Treble!</string>
 		
 		
 		<!-- Console Messages -->

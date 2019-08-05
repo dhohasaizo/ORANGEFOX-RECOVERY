@@ -120,7 +120,7 @@
 			
 			<text style="caption">
 				<placement x="%col1_x%" y="%row2_2a_y%"/>
-				<text>MIUI OTA</text>
+				<text>{@fox_ota_settings}</text>
 			</text>
 
             <listbox style="settingslist">
@@ -141,19 +141,19 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row5_1a_y%"/>
-				<text>Modify ROM functions</text>
+				<text>{@fox_patch_rom}</text>
 			</text>
 
 			<listbox style="settingslist">
 				<placement x="0" y="%row5_2a_y%" w="%screen_w%" h="%lb_l3%"/>
-				<listitem name="{@fox_advanced_stock_recovery}">
-					<data variable="fox_reboot_advanced_stock_recovery_check"/>
-				</listitem>
 				<listitem name="{@fox_dmverity_chk}">
 					<data variable="fox_reboot_dm_verity_check"/>
 				</listitem>
 				<listitem name="{@fox_forced_encryption_chk}">
 					<data variable="fox_reboot_forced_encryption_check"/>
+				</listitem>
+				<listitem name="{@fox_advanced_stock_recovery}">
+					<data variable="fox_reboot_advanced_stock_recovery_check"/>
 				</listitem>
 			</listbox>
 
@@ -178,7 +178,7 @@
 
             <text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>OTA</text>
+				<text>{@fox_ota_lite}</text>
 			</text>
 			
 			<text style="caption">
@@ -187,15 +187,27 @@
 			</text>
 
             <listbox style="settingslist">
-				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
+				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l4%"/>
+				<listitem name="{@FOX_DISABLE_OTA_AUTO_REBOOT_chk}">
+					<data variable="fox_disable_ota_auto_reboot_check"/>
+				</listitem>
+			</listbox>
+
+			<text style="caption">
+				<placement x="%col1_x%" y="%row2_1a_y%"/>
+				<text>{@fox_patch_rom}</text>
+			</text>
+
+            <listbox style="settingslist">
+				<placement x="0" y="%row2_2a_y%" w="%screen_w%" h="%lb_l4%"/>
 				<listitem name="{@fox_dmverity_chk}">
 					<data variable="fox_reboot_dm_verity_check"/>
 				</listitem>
 				<listitem name="{@fox_forced_encryption_chk}">
 					<data variable="fox_reboot_forced_encryption_check"/>
 				</listitem>
-				<listitem name="{@FOX_DISABLE_OTA_AUTO_REBOOT_chk}">
-					<data variable="fox_disable_ota_auto_reboot_check"/>
+				<listitem name="{@fox_advanced_stock_recovery}">
+					<data variable="fox_reboot_advanced_stock_recovery_check"/>
 				</listitem>
 			</listbox>
 
