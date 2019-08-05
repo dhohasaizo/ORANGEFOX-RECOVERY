@@ -17,7 +17,7 @@
 					<icon res="bs_btn_set_ota"/>
 					<action function="page">fox_ota</action>
 				</listitem>
-				<listitem name="Patch ROM">
+				<listitem name="OTA">
 					<condition var1="of_no_miui_features" var2="1"/>
 					<icon res="bs_btn_set_ota"/>
 					<action function="page">fox_ota_lite</action>

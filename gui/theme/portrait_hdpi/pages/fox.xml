@@ -141,7 +141,7 @@
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row5_1a_y%"/>
-				<text>Patch ROM</text>
+				<text>Modify ROM functions</text>
 			</text>
 
 			<listbox style="settingslist">
@@ -178,7 +178,7 @@
 
             <text style="text_ab_title">
 				<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-				<text>Patch ROM</text>
+				<text>OTA</text>
 			</text>
 			
 			<text style="caption">
@@ -188,14 +188,14 @@
 
             <listbox style="settingslist">
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%lb_l3%"/>
-				<listitem name="{@fox_advanced_stock_recovery}">
-					<data variable="fox_reboot_advanced_stock_recovery_check"/>
-				</listitem>
 				<listitem name="{@fox_dmverity_chk}">
 					<data variable="fox_reboot_dm_verity_check"/>
 				</listitem>
 				<listitem name="{@fox_forced_encryption_chk}">
 					<data variable="fox_reboot_forced_encryption_check"/>
+				</listitem>
+				<listitem name="{@FOX_DISABLE_OTA_AUTO_REBOOT_chk}">
+					<data variable="fox_disable_ota_auto_reboot_check"/>
 				</listitem>
 			</listbox>
 
