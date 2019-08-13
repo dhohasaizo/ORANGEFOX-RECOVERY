@@ -1907,6 +1907,11 @@ bool TWPartition::Wipe(string New_File_System)
     {
       DataManager::GetValue(TW_RM_RF_VAR, check);
 
+		if (Mount_Point == "/storage")
+		  {
+	   	    LOGINFO("DEBUG - OrangeFox: wiping /storage with \"rm -rf\" ... \n");
+	   	    wiped = Wipe_RMRF();
+		  } else
 		if (check || Use_Rm_Rf)
 			wiped = Wipe_RMRF();
 		else if (New_File_System == "ext4")
