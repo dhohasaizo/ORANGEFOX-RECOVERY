@@ -364,7 +364,7 @@
 							else
 								dest="/magisk";
 							fi
-							rm "$dest/%mmgui_select%/remove" && twrp xset mmodule_amnt=0
+							rm "$dest/%mmgui_select%/remove" && twrp xset mmodule_rm=0
 						</action>
 					</listitem>
 					<listitem name="{@fm_delete_btn}">
@@ -376,7 +376,7 @@
 							else
 								dest="/magisk";
 							fi
-							touch "$dest/%mmgui_select%/remove" && twrp xset mmodule_amnt=1
+							touch "$dest/%mmgui_select%/remove" && twrp xset mmodule_rm=1
 						</action>
 					</listitem>
 				</listbox>
