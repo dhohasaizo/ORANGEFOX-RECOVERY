@@ -180,6 +180,12 @@
 							else
 								twrp xset mmodule_amnt=0
 							fi
+
+							if [ -f "$dest/remove" ]; then
+								twrp xset mmodule_rm=1
+							else
+								twrp xset mmodule_rm=0
+							fi
 						</action>
 						<action function="page">magisk_actions</action>
 					</actions>
@@ -349,20 +355,31 @@
 							touch "$dest/%mmgui_select%/auto_mount" && twrp xset mmodule_amnt=1
 						</action>
 					</listitem>
+					<listitem name="{@fm_delete_btn}">
+						<icon res="checkbox_true"/>
+						<condition var1="mmodule_rm" op="!=" var2="0"/>
+						<action function="ftls">
+							if [[ "%ft_mm_isnew%" == "1" ]]; then
+							    dest="/data/adb/modules";
+							else
+								dest="/magisk";
+							fi
+							rm "$dest/%mmgui_select%/remove" && twrp xset mmodule_amnt=0
+						</action>
+					</listitem>
+					<listitem name="{@fm_delete_btn}">
+						<condition var1="mmodule_rm" var2="0"/>
+						<icon res="checkbox_false"/>
+						<action function="ftls">
+							if [[ "%ft_mm_isnew%" == "1" ]]; then
+							    dest="/data/adb/modules";
+							else
+								dest="/magisk";
+							fi
+							touch "$dest/%mmgui_select%/remove" && twrp xset mmodule_amnt=1
+						</action>
+					</listitem>
 				</listbox>
-
-				<button>
-					<placement x="%ab_btn1_x%" y="%ab_y%"/>
-					<image resource="actionbar_btn" highlightresource="actionbar_btn_hl"/>
-					<actions>
-						<action function="page">magisk_confirm</action>
-					</actions>
-				</button>
-
-				<image>
-					<placement x="%ab_btn1_x%" y="%ab_y%"/>
-					<image resource="actionbar_delete"/>
-				</image>
 
 				<action>
 					<touch key="home"/>
@@ -372,183 +389,6 @@
 				<action>
 					<touch key="back"/>
 					<action function="page">magisk</action>
-				</action>
-			</page>
-			
-			<page name="magisk_confirm">
-				<template name="body"/>
-				<template name="ab_ex"/>
-				<template name="statusbarinfo"/>
-
-				<text style="text_ab_title">
-					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>Magisk Manager</text>
-				</text>
-
-				<text style="text_ab_title">
-					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-					<text>{@fm_deleting}</text>
-				</text>
-
-				<text style="text_ab_subtitle">
-					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-					<text>%ft_mm_name%</text>
-				</text>
-
-				<image>
-					<placement x="%col1_x%" y="%row2_1a_y%"/>
-					<image resource="icon_warning"/>
-				</image>
-
-				<text style="text_body2_fail">
-					<placement x="%col1_x_indent%" y="%row2_1a_y%"/>
-					<text>{@del_backup_confirm2}</text>
-				</text>
-
-				<text style="caption">
-					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
-					<text>{@swipe_to_confirm}</text>
-				</text>
-				
-				<slider style="slider_action">
-					<placement x="%center_x%" y="%slider_y%" placement="5"/>
-					<action function="set">ftls_running=1</action>
-					<action function="page">magisk_action_console</action>
-				</slider>
-
-				<action>
-					<touch key="back"/>
-					<action function="page">magisk_actions</action>
-				</action>
-
-				<action>
-					<touch key="home"/>
-					<action function="page">main</action>
-				</action>
-			</page>
-			
-			<page name="magisk_action_console">
-				<template name="body"/>
-
-				<template name="progress_bar"/>
-
-				<template name="ab_ex"/>
-
-				<template name="statusbarinfo"/>
-
-				<text style="text_ab_title">
-					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>Magisk Manager</text>
-				</text>
-
-				<text style="text_ab_title">
-					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-					<text>{@fm_deleting}</text>
-				</text>
-				
-				<text style="text_ab_subtitle">
-					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-					<text>%ft_mm_name%</text>
-				</text>
-
-				<template name="action_page_console"/>
-				<template name="cant_cancel" />
-				
-				<action>
-					<actions>
-						<action function="ftls">
-							if [[ "%ft_mm_isnew%" == "1" ]]; then
-							    dest="/data/adb/modules";
-								[ -d "/tmp/mmgui" ] && rm -rf "/tmp/mmgui"
-							else
-								dest="/magisk";
-							fi
-							if [ -f "$dest/%mmgui_select%" ]; then
-								rm -rf "$dest/%mmgui_select%"
-								[[ "%ft_mm_isnew%" == "1" ]] || mmgui unmnt
-							else
-								exit 1
-							fi
-						</action>
-					</actions>
-				</action>
-				
-				<action>
-					<conditions>
-						<condition var1="ftls_running" var2="0"/>
-					</conditions>
-					<actions>
-						<action function="page">magisk_complete</action>
-					</actions>
-				</action>
-			</page>
-			
-			<page name="magisk_complete">
-				<template name="body"/>
-
-				<template name="ab_ex"/>
-
-				<template name="statusbarinfo"/>
-
-				<text style="text_ab_title">
-					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
-					<text>Magisk Manager</text>
-				</text>
-
-				<text style="text_ab_title">
-					<condition var1="ftls_errcode" op="!=" var2="0"/>
-					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-					<text>{@failed}</text>
-				</text>
-
-				<text style="text_ab_title">
-					<condition var1="ftls_errcode" var2="0"/>
-					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-					<text>{@successful}</text>
-				</text>
-
-				<text style="text_ab_subtitle">
-					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-					<text>{@fm_complete}</text>
-				</text>
-
-				<template name="action_page_console"/>
-
-				<button style="btn_raised">
-					<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
-					<text>{@back_btn}</text>
-					<actions>
-						<action function="set">tw_clear_destination=magisk_mount</action>
-						<action function="page">clear_vars</action>
-					</actions>
-				</button>
-
-				<button style="btn_raised_hl">
-					<condition var1="tw_reboot_system" var2="1"/>
-					<placement x="%btn_raised_right_x%" y="%row_btn1_y%" placement="1"/>
-					<text>{@reboot_system_btn}</text>
-					<actions>
-						<action function="set">tw_back=main</action>
-						<action function="set">tw_action_param=system</action>
-						<action function="set">tw_reboot_param=system</action>
-						<action function="page">rebootcheck</action>
-					</actions>
-				</button>
-
-				<action>
-					<touch key="home"/>
-					<actions>
-						<action function="set">tw_clear_destination=main</action>
-						<action function="page">clear_vars</action>
-					</actions>
-				</action>
-
-				<action>
-					<touch key="back"/>
-					<actions>
-						<action function="set">tw_clear_destination=magisk_mount</action>
-						<action function="page">clear_vars</action>
-					</actions>
 				</action>
 			</page>
 		</pages>
