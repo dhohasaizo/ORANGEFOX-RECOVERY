@@ -330,7 +330,7 @@
 				</text>
 				
 				<listbox style="settingslist">
-					<placement x="0" y="%row5_2_y%" w="%screen_w%" h="%lb_l1%"/>
+					<placement x="0" y="%row5_2_y%" w="%screen_w%" h="%lb_l2%"/>
 					<listitem name="{@mm_module_mount}">
 						<icon res="checkbox_true"/>
 						<condition var1="mmodule_amnt" op="!=" var2="0"/>
@@ -399,12 +399,12 @@
 
 				<text style="text_ab_title">
 					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
-					<text>%ft_mm_name%</text>
+					<text>{@fm_delete_btn}</text>
 				</text>
 
 				<text style="text_ab_subtitle">
 					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
-					<text>{@fm_delete_btn}</text>
+					<text>%ft_mm_name%</text>
 				</text>
 
 				<text style="caption">
