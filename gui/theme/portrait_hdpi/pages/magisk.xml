@@ -370,14 +370,7 @@
 					<listitem name="{@fm_delete_btn}">
 						<condition var1="mmodule_rm" var2="0"/>
 						<icon res="checkbox_false"/>
-						<action function="ftls">
-							if [[ "%ft_mm_isnew%" == "1" ]]; then
-							    dest="/data/adb/modules";
-							else
-								dest="/magisk";
-							fi
-							touch "$dest/%mmgui_select%/remove" && twrp xset mmodule_rm=1
-						</action>
+						<action function="page">magisk_delete</action>
 					</listitem>
 				</listbox>
 
@@ -389,6 +382,57 @@
 				<action>
 					<touch key="back"/>
 					<action function="page">magisk</action>
+				</action>
+			</page>
+
+			<page name="magisk_delete">
+				<template name="body"/>
+
+				<template name="ab_ex"/>
+
+				<template name="statusbarinfo"/>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%ab_bc_y%"/>
+					<text>Magisk Manager</text>
+				</text>
+
+				<text style="text_ab_title">
+					<placement x="%col1_x_indent%" y="%row1_2_y%" placement="2"/>
+					<text>%ft_mm_name%</text>
+				</text>
+
+				<text style="text_ab_subtitle">
+					<placement x="%col1_x_indent%" y="%row1_2_y%"/>
+					<text>{@fm_delete_btn}</text>
+				</text>
+
+				<text style="caption">
+					<placement x="%center_x%" y="%slider_text_y%" placement="5"/>
+					<text>{@swipe_delete}</text>
+				</text>
+
+				<slider style="slider_action">
+					<placement x="%center_x%" y="%slider_y%" placement="5"/>
+					<action function="ftls">
+						if [[ "%ft_mm_isnew%" == "1" ]]; then
+							dest="/data/adb/modules";
+						else
+							dest="/magisk";
+						fi
+						touch "$dest/%mmgui_select%/remove" && twrp xset mmodule_rm=1
+					</action>
+					<action function="page">magisk_actions</action>
+				</slider>
+			
+				<action>
+					<touch key="home"/>
+					<action function="page">main</action>
+				</action>
+
+				<action>
+					<touch key="back"/>
+					<action function="page">magisk_actions</action>
 				</action>
 			</page>
 		</pages>
