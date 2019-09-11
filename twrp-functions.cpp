@@ -279,6 +279,8 @@ bool i = Path_Exists("/tmp/orangefox.cfg");
 /* rerun startup if needed after decryption */
 bool TWFunc::Rerun_Startup(void)
 {
+   return false; // something is causing spontaneous reboots to fastboot, so just exit
+   
    if (OrangeFox_Startup_Executed > 0)
       return false;
 
