@@ -117,11 +117,15 @@ int main(int argc, char **argv)
   property_set("ro.twrp.boot", "1");
   property_set("ro.twrp.build", "orangefox");
   property_set("ro.twrp.version", FOX_VERSION);
+  
+  string fox_build_date = TWFunc::File_Property_Get ("/etc/fox.cfg", "FOX_BUILD_DATE");
+  if (fox_build_date == "") 
+     fox_build_date = "[no date!]";
 
   DataManager::GetValue(FOX_COMPATIBILITY_DEVICE, Fox_Current_Device);
   time_t StartupTime = time(NULL);
-  printf("Starting OrangeFox TWRP %s-%s-%s (for device %s) on %s (pid %d)\n", FOX_VERSION,
-	 FOX_BUILD, TW_GIT_REVISION, Fox_Current_Device.c_str(), ctime(&StartupTime), getpid());
+  printf("Starting OrangeFox TWRP %s-%s-%s (built on %s for %s) on %s (pid %d)\n", FOX_VERSION,
+	 FOX_BUILD, TW_GIT_REVISION, fox_build_date.c_str(), Fox_Current_Device.c_str(), ctime(&StartupTime), getpid());
 
   // Load default values to set DataManager constants and handle ifdefs
 	DataManager::SetDefaultValues();
@@ -260,8 +264,9 @@ int main(int argc, char **argv)
 			    usleep(16);
 			    if (gui_startPage("decrypt", 1, 1) == 0)
 			       {  
-				  LOGINFO("- DEBUG: OrangeFox: detected custom encryption\n");
+				  LOGINFO("- DEBUG: OrangeFox OTA: detected custom encryption\n");
 				  DataManager::SetValue("OTA_decrypted", "1");
+				  TWFunc::check_selinux_support();
 			       } 
 			 }
 			else //

@@ -48,7 +48,11 @@
 #include "gui/gui.hpp"
 #include "adbbu/libtwadbbu.hpp"
 #ifdef TW_INCLUDE_CRYPTO
+	#ifdef OF_USE_LEGACY_CRYPTO
+	#include "crypto/lollipop/cryptfs.h"
+	#else
 	#include "crypto/fde/cryptfs.h"
+	#endif
 	#ifdef TW_INCLUDE_FBE
 		#include "crypto/ext4crypt/Decrypt.h"
 	#endif
@@ -1903,6 +1907,11 @@ bool TWPartition::Wipe(string New_File_System)
     {
       DataManager::GetValue(TW_RM_RF_VAR, check);
 
+		if (Mount_Point == "/storage")
+		  {
+	   	    LOGINFO("DEBUG - OrangeFox: wiping /storage with \"rm -rf\" ... \n");
+	   	    wiped = Wipe_RMRF();
+		  } else
 		if (check || Use_Rm_Rf)
 			wiped = Wipe_RMRF();
 		else if (New_File_System == "ext4")

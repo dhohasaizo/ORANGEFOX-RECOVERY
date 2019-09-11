@@ -76,7 +76,11 @@ extern "C"
 }
 
 #ifdef TW_INCLUDE_CRYPTO
+	#ifdef OF_USE_LEGACY_CRYPTO
+	#include "crypto/lollipop/cryptfs.h"
+	#else
 	#include "crypto/fde/cryptfs.h"
+	#endif
 	#include "gui/rapidxml.hpp"
 	#include "gui/pages.hpp"
 	#ifdef TW_INCLUDE_FBE
@@ -305,7 +309,14 @@ int TWPartitionManager::Process_Fstab(string Fstab_Filename, bool Display_Error)
 				while (!Decrypt_Data->Mount(false) && --retry_count)
 					usleep(500);
 				if (Decrypt_Data->Mount(false)) {
-					Decrypt_Data->Decrypt_FBE_DE();
+					if (!Decrypt_Data->Decrypt_FBE_DE()) {
+						LOGINFO("Trying wrapped key.\n");
+						property_set("fbe.data.wrappedkey", "true");
+						if (!Decrypt_Data->Decrypt_FBE_DE()) {
+							LOGERR("Unable to decrypt FBE device\n");
+						}
+					}
+
 				} else {
 					LOGINFO("Failed to mount data after metadata decrypt\n");
 				}
