@@ -999,7 +999,7 @@
 		<string name="fox_dmverity_chk">Disable DM-Verity</string>
 		<string name="fox_forced_encryption_chk">Disable Forced Encryption</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Prevent auto reboot after installing OTA</string>
-		<string name="of_ota_reboot_disabled">OTA update succeeded. You disabled auto-reboot. Returning control to you.</string>
+		<string name="of_ota_reboot_disabled">OTA update completed. You disabled auto-reboot. Returning control to you.</string>
 
 		<!-- Wipe format moved -->
 		<string name="wipe_format_moved_info1">Note: Format Data moved to</string>

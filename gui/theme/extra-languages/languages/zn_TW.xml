@@ -1025,6 +1025,6 @@
 		<string name="fox_dmverity_chk">禁用 DM 校驗</string>
 		<string name="fox_forced_encryption_chk">禁用强制加密</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">安装OTA後阻止自動重啟</string>
-		<string name="of_ota_reboot_disabled">OTA update succeeded. You disabled auto-reboot. Returning control to you.</string>
+		<string name="of_ota_reboot_disabled">OTA update completed. You disabled auto-reboot. Returning control to you.</string>
 	</resources>
 </language>

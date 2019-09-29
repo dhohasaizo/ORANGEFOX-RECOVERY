@@ -996,6 +996,6 @@
 		<string name="fox_dmverity_chk">Wyłącz DM-Verity</string>
 		<string name="fox_forced_encryption_chk">Wyłącz Forced Encryption</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Zapobiegaj automatycznemu restartowi po instalacji OTA</string>
-		<string name="of_ota_reboot_disabled">OTA update succeeded. You disabled auto-reboot. Returning control to you.</string>
+		<string name="of_ota_reboot_disabled">OTA update completed. You disabled auto-reboot. Returning control to you.</string>
 	</resources>
 </language>
