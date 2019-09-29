@@ -668,6 +668,12 @@ void DataManager::SetDefaultValues()
   #else
     mData.SetValue("of_no_miui_features", "0");
   #endif
+
+  #ifdef OF_SUPPORT_PRE_FLASH_SCRIPT
+    mData.SetValue("FOX_PRE_FLASH_SCRIPT", "1");
+  #else
+    mData.SetValue("FOX_PRE_FLASH_SCRIPT", "0");
+  #endif
  
   mData.SetValue("of_reload_back", "main");
 

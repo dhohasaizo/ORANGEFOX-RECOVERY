@@ -4034,10 +4034,27 @@ void TWFunc::Run_Pre_Flash_Protocol(bool forceit)
           string pre_runner = "/sbin/fox_pre_flash";
           if (TWFunc::Path_Exists(pre_runner))
 	   {
-	      TWFunc::check_and_run_script(pre_runner.c_str(), "system_mount");
+	      TWFunc::Exec_Cmd(pre_runner.c_str());
+	      DataManager::SetValue("FOX_PRE_FLASH_SCRIPT", "2");
 	   }
         }
     }
+#endif
+}
+
+void TWFunc::Run_Post_Flash_Protocol(void)
+{
+#ifdef OF_SUPPORT_PRE_FLASH_SCRIPT
+    string pre_runner = "/sbin/fox_pre_flash";
+    if (TWFunc::Path_Exists(pre_runner))
+      {
+         if (DataManager::GetIntValue("FOX_PRE_FLASH_SCRIPT") == 2)
+            {
+	       pre_runner = "/sbin/fox_pre_flash --unmount";
+	       TWFunc::Exec_Cmd(pre_runner.c_str());
+	       DataManager::SetValue("FOX_PRE_FLASH_SCRIPT", "1");
+	    }
+      }
 #endif
 }
 
