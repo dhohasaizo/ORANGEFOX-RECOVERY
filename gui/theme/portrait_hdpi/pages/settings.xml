@@ -367,7 +367,7 @@
 				<placement x="0" y="%row4_1_y%"/>
 			</image>
 
-			<text style="caption">
+			<!--text style="caption">
 				<placement x="%col1_x%" y="%row4_2_y%"/>
 				<text>ADB</text>
 			</text>
@@ -377,7 +377,7 @@
 				<listitem name="{@run_adb_startup}">
 					<data variable="adb_startup"/>
 				</listitem>
-			</listbox>
+			</listbox-->
 
 			<text style="caption">
 				<placement x="%col1_x%" y="%row5_2a_y%"/>
