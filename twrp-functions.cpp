@@ -235,6 +235,13 @@ std::string num_to_string(long value)
   return os.str();
 }
 
+std::string num_to_string(uint64_t value)
+{
+  std::ostringstream os;
+  os << value;
+  return os.str();
+}
+
 /* convert string to number, with default value in case of error */
 int string_to_int(string String, int def_value)
 {
@@ -248,6 +255,15 @@ int tmp;
 long string_to_long(string String, long def_value)
 {
 long tmp;
+  if ((istringstream(String) >> tmp)) 
+      return tmp;
+  else
+      return def_value;
+}
+
+uint64_t string_to_long(string String, uint64_t def_value)
+{
+uint64_t tmp;
   if ((istringstream(String) >> tmp)) 
       return tmp;
   else
@@ -304,9 +320,35 @@ bool TWFunc::Rerun_Startup(void)
 /* function to run just before every reboot */
 void TWFunc::Run_Before_Reboot(void)
 {
-  // backuup recovery log to internal storage
-  copy_file("/tmp/recovery.log", "/sdcard/Fox/lastrecoverylog.log", 0644);
-  
+   if (!Path_Exists(Fox_Logs_Dir))
+      {
+	mkdir(Fox_Logs_Dir.c_str(), 0777);
+      }
+
+#ifdef OF_DONT_KEEP_LOG_HISTORY
+  copy_file("/tmp/recovery.log", Fox_Logs_Dir + "/lastrecoverylog.log", 0644);
+#else
+    struct timeval tv;
+    std::string log_file = "/recovery";
+    if (gettimeofday(&tv, NULL) == 0)
+     {
+        std::string tmp = num_to_string(tv.tv_sec);
+        log_file = log_file + "_" + tmp + "_log";
+     }
+   else
+     {
+         log_file = log_file + "_undated_log";
+     }
+
+   log_file = Fox_Logs_Dir + log_file;
+   copy_file("/tmp/recovery.log", log_file, 0644);
+   if (Path_Exists("/sbin/pigz"))
+     {
+        string cmd = "/sbin/pigz -K --best " + log_file;
+        Exec_Cmd (cmd);
+     }
+#endif
+  /*
   // backup also to external SD if there is one
   string extsd;
   if ((PartitionManager.Is_Mounted_By_Path("/sdcard1")) || (PartitionManager.Mount_By_Path("/sdcard1", false)))
@@ -319,6 +361,7 @@ void TWFunc::Run_Before_Reboot(void)
   
   copy_file("/tmp/recovery.log", extsd + "/lastrecoverylog.log", 0644);
   PartitionManager.UnMount_By_Path(extsd, false);
+  */
 }
 
 /* Execute a command */
