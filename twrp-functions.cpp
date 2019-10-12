@@ -333,11 +333,11 @@ void TWFunc::Run_Before_Reboot(void)
     if (gettimeofday(&tv, NULL) == 0)
      {
         std::string tmp = num_to_string(tv.tv_sec);
-        log_file = log_file + "_" + tmp + "_log";
+        log_file = log_file + "_" + tmp + ".log";
      }
    else
      {
-         log_file = log_file + "_undated_log";
+         log_file = log_file + "_undated.log";
      }
 
    log_file = Fox_Logs_Dir + log_file;
