@@ -167,6 +167,11 @@ int main(int argc, char **argv)
 		char* ptr;
 		printf("Startup Commands: ");
 		for (index = 1; index < argc; index++) {
+			if (strcmp(argv[index], "--prompt_and_wipe_data") == 0) // Rescue Party ?
+			   {
+			      gui_err("OrangeFox: ROM Rescue Party trigger! You need to format your data partition!\n");
+			   }
+
 			argptr = argv[index];
 			printf(" '%s'", argv[index]);
 			len = strlen(argv[index]);
