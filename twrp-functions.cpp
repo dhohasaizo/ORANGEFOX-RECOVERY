@@ -317,6 +317,20 @@ bool TWFunc::Rerun_Startup(void)
    return true;
 }
 
+std::string strReturnCurrentTime()
+{
+  time_t rawtime;
+  struct tm * timeinfo;
+  char buffer[80];
+
+  time (&rawtime);
+  timeinfo = localtime(&rawtime);
+
+  strftime(buffer,sizeof(buffer),"%Y%m%d_%H%M%S",timeinfo);
+  std::string str(buffer);
+  return str;
+}
+
 /* function to run just before every reboot */
 void TWFunc::Run_Before_Reboot(void)
 {
@@ -332,7 +346,7 @@ void TWFunc::Run_Before_Reboot(void)
     std::string log_file = "/recovery";
     if (gettimeofday(&tv, NULL) == 0)
      {
-        std::string tmp = num_to_string(tv.tv_sec);
+        std::string tmp = strReturnCurrentTime(); //num_to_string(tv.tv_sec);
         log_file = log_file + "_" + tmp + ".log";
      }
    else
