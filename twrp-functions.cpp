@@ -334,19 +334,22 @@ std::string strReturnCurrentTime()
 /* function to run just before every reboot */
 void TWFunc::Run_Before_Reboot(void)
 {
-   if (!Path_Exists(Fox_Logs_Dir))
-      {
-	mkdir(Fox_Logs_Dir.c_str(), 0777);
-      }
+    if (!Path_Exists(Fox_Logs_Dir))
+       {
+	  mkdir(Fox_Logs_Dir.c_str(), 0777);
+       }
+
+    copy_file("/tmp/recovery.log", Fox_Logs_Dir + "/lastrecoverylog.log", 0644);
 
 #ifdef OF_DONT_KEEP_LOG_HISTORY
-  copy_file("/tmp/recovery.log", Fox_Logs_Dir + "/lastrecoverylog.log", 0644);
-#else
+    return;
+#endif
+
     struct timeval tv;
     std::string log_file = "/recovery";
     if (gettimeofday(&tv, NULL) == 0)
      {
-        std::string tmp = strReturnCurrentTime(); //num_to_string(tv.tv_sec);
+        std::string tmp = strReturnCurrentTime();
         log_file = log_file + "_" + tmp + ".log";
      }
    else
@@ -361,21 +364,6 @@ void TWFunc::Run_Before_Reboot(void)
         string cmd = "/sbin/pigz -K --best " + log_file;
         Exec_Cmd (cmd);
      }
-#endif
-  /*
-  // backup also to external SD if there is one
-  string extsd;
-  if ((PartitionManager.Is_Mounted_By_Path("/sdcard1")) || (PartitionManager.Mount_By_Path("/sdcard1", false)))
-      extsd = "/sdcard1";
-  else 
-  if ((PartitionManager.Is_Mounted_By_Path("/external_sd")) || (PartitionManager.Mount_By_Path("/external_sd", false)))
-      extsd = "/external_sd";
-  else
-      return;
-  
-  copy_file("/tmp/recovery.log", extsd + "/lastrecoverylog.log", 0644);
-  PartitionManager.UnMount_By_Path(extsd, false);
-  */
 }
 
 /* Execute a command */
