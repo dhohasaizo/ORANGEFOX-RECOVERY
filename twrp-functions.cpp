@@ -336,7 +336,7 @@ void TWFunc::Run_Before_Reboot(void)
 {
     if (!Path_Exists(Fox_Logs_Dir))
        {
-	  mkdir(Fox_Logs_Dir.c_str(), 0777);
+	  TWFunc::Recursive_Mkdir(Fox_Logs_Dir, false);
        }
 
     copy_file("/tmp/recovery.log", Fox_Logs_Dir + "/lastrecoverylog.log", 0644);
@@ -2335,6 +2335,11 @@ void TWFunc::OrangeFox_Startup(void)
       DataManager::SetValue("fox_resource_dir", Fox_Home_Files.c_str());
     }
 
+  if (!Path_Exists(Fox_Logs_Dir))
+      {
+	  TWFunc::Recursive_Mkdir(Fox_Logs_Dir, false);
+      }
+
   TWFunc::Fresh_Fox_Install();
   
   // start mtp manually, if enabled
@@ -2648,10 +2653,10 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        if (New_Fox_Installation == 1) 
 	         {
 	           AppendLineToFile (cmd_script, 
-	           "BackUp() { cp -f /tmp/recovery.log /sdcard/Fox/post-install.log; cp -af " + cmd_script + " /sdcard/Fox/cmd_script1.log; }"); 
+	           "BackUp() { cp -f /tmp/recovery.log /sdcard/Fox/logs/post-install.log; cp -af " + cmd_script + " /sdcard/Fox/logs/cmd_script1.log; }"); 
 	         }
 	        else 
-	           AppendLineToFile (cmd_script, "BackUp() { cp -af " + cmd_script + " /sdcard/Fox/cmd_script1.log; }");
+	           AppendLineToFile (cmd_script, "BackUp() { cp -af " + cmd_script + " /sdcard/Fox/logs/cmd_script1.log; }");
 	        
 	        //AppendLineToFile (cmd_script, "abort() { LOGINFO \"$1\"; BackUp; exit 1; }");
 	        AppendLineToFile (cmd_script, "abort() { LOGINFO \"$1\"; exit 1; }");
@@ -2713,7 +2718,7 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        AppendLineToFile (cmd_script, "rm -f " + ramdisk_cpio);
 	        
 	        #ifdef OF_AB_DEVICE
-	        //AppendLineToFile (cmd_script, "cp -f " + cmd_script + " /sdcard/Fox/cmd_script1.log");
+	        //AppendLineToFile (cmd_script, "cp -f " + cmd_script + " /sdcard/Fox/logs/cmd_script1.log");
 	        #endif
 	        
 	        AppendLineToFile (cmd_script, "exit 0");
@@ -2737,10 +2742,10 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        if (New_Fox_Installation == 1) 
 	         {
 	           AppendLineToFile (cmd_script2, 
-	           "BackUp() { cp -af /tmp/recovery.log /sdcard/Fox/post-install.log; cp -f " + cmd_script2 + " /sdcard/Fox/cmd_script2.log; }"); 
+	           "BackUp() { cp -af /tmp/recovery.log /sdcard/Fox/logs/post-install.log; cp -f " + cmd_script2 + " /sdcard/Fox/logs/cmd_script2.log; }"); 
 	         }
 	        else
-	           AppendLineToFile (cmd_script2, "BackUp() { cp -f " + cmd_script2 + " /sdcard/Fox/cmd_script2.log; }");
+	           AppendLineToFile (cmd_script2, "BackUp() { cp -f " + cmd_script2 + " /sdcard/Fox/logs/cmd_script2.log; }");
 
 	        //AppendLineToFile (cmd_script2, "abort() { LOGINFO \"$1\"; BackUp; exit 1; }");
 	        AppendLineToFile (cmd_script2, "abort() { LOGINFO \"$1\"; exit 1; }");
@@ -2762,7 +2767,7 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        AppendLineToFile (cmd_script2, magiskboot_action + "cleanup > /dev/null 2>&1");
 
 	        #ifdef OF_AB_DEVICE
-	        //AppendLineToFile (cmd_script2, "cp -f " + cmd_script2 + " /sdcard/Fox/cmd_script2.log");
+	        //AppendLineToFile (cmd_script2, "cp -f " + cmd_script2 + " /sdcard/Fox/logs/cmd_script2.log");
 	        #endif
 
 	        AppendLineToFile (cmd_script2, "exit 0");
@@ -3255,8 +3260,8 @@ bool TWFunc::Fresh_Fox_Install()
 	New_Fox_Installation = 0;
 	#endif
 	
-	LOGINFO ("DEBUG [Fresh_Fox_Install()] - copying log to:/sdcard/Fox/post-install.log \n");
-	copy_file("/tmp/recovery.log", "/sdcard/Fox/post-install.log", 0644);
+	LOGINFO ("DEBUG [Fresh_Fox_Install()] - copying log to:/sdcard/Fox/logs/post-install.log \n");
+	copy_file("/tmp/recovery.log", "/sdcard/Fox/logs/post-install.log", 0644);
 
 	return true;
    }    
