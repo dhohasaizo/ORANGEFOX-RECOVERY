@@ -119,8 +119,16 @@ int main(int argc, char **argv)
   property_set("ro.twrp.version", FOX_VERSION);
   
   string fox_build_date = TWFunc::File_Property_Get ("/etc/fox.cfg", "FOX_BUILD_DATE");
-  if (fox_build_date == "") 
-     fox_build_date = "[no date!]";
+  if (fox_build_date == "")
+     {
+        fox_build_date = TWFunc::File_Property_Get ("/default.prop", "ro.bootimage.build.date");
+        if (fox_build_date == "")
+          {
+              fox_build_date = TWFunc::File_Property_Get ("/default.prop", "ro.build.date");
+              if (fox_build_date == "")
+                 fox_build_date = "[no date!]";
+         }
+     }
 
   DataManager::GetValue(FOX_COMPATIBILITY_DEVICE, Fox_Current_Device);
   time_t StartupTime = time(NULL);
