@@ -177,7 +177,7 @@ int main(int argc, char **argv)
 		for (index = 1; index < argc; index++) {
 			if (strcmp(argv[index], "--prompt_and_wipe_data") == 0) // Rescue Party ?
 			   {
-			      gui_print_color("error", "OrangeFox: Android Rescue Party trigger! Dirty-flash your ROM, or format your data partition!\n");
+			      gui_print_color("error", "OrangeFox: Android Rescue Party trigger! Wipe data and caches and/or clean-flash your ROM!\n");
 			   }
 
 			argptr = argv[index];
