@@ -3946,6 +3946,7 @@ int TWPartitionManager::Run_OTA_Survival_Backup(bool adbbackup)
   part_settings.img_bytes = 0;
   part_settings.file_bytes = 0;
   part_settings.PM_Method = PM_BACKUP;
+  bool DoSystemOnOTA = (DataManager::GetIntValue(FOX_DO_SYSTEM_ON_OTA) != 0);
 
   TWPartition *orangefox = Get_Default_Storage_Partition();
   if (orangefox)
@@ -3976,14 +3977,25 @@ int TWPartitionManager::Run_OTA_Survival_Backup(bool adbbackup)
 
   part_settings.Backup_Folder =
     part_settings.Backup_Folder + "/" + Backup_Name;
+
   TWPartition *sys_image =
     PartitionManager.Find_Partition_By_Path("/system_image");
-  if (DataManager::GetIntValue(FOX_DO_SYSTEM_ON_OTA) != 0 && sys_image != NULL)
-    Backup_List += "/system_image;/boot;";
-  else if (DataManager::GetIntValue(FOX_DO_SYSTEM_ON_OTA) != 0)
-    Backup_List += "/system;/boot;";
+
+  #ifdef OF_MIUI_OTA_VENDOR_BACKUP
+  TWPartition *vend_image =
+    PartitionManager.Find_Partition_By_Path("/vendor_image");
+     if (vend_image != NULL)
+        Backup_List += "/vendor_image;";
+     else
+        Backup_List += "/vendor;";
+  #endif
+
+  if (DoSystemOnOTA && sys_image != NULL)
+       Backup_List += "/system_image;/boot;";
+  else if (DoSystemOnOTA)
+       Backup_List += "/system;/boot;";
   else
-    Backup_List += "/boot;";
+       Backup_List += "/boot;";
 
   if (!Backup_List.empty())
     {
@@ -4065,7 +4077,7 @@ int TWPartitionManager::Run_OTA_Survival_Backup(bool adbbackup)
   if (adbbackup)
     disable_free_space_check = true;
 
-  if (DataManager::GetIntValue(FOX_DO_SYSTEM_ON_OTA) != 0)
+  if (DoSystemOnOTA)
     {
       if (!disable_free_space_check)
 	{
