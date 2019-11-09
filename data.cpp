@@ -877,11 +877,22 @@ void DataManager::SetDefaultValues()
   #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE) || defined(OF_KEEP_DM_VERITY_FORCED_ENCRYPTION)
   miui_switch = "0";
   #endif  
+
   mPersist.SetValue("fox_verify_incremental_ota_signature", miui_switch); // set to 1 [support miui ota]
   mPersist.SetValue(FOX_INCREMENTAL_PACKAGE, miui_switch); 		  // set to 1 [support miui ota]
   mPersist.SetValue(FOX_DO_SYSTEM_ON_OTA, miui_switch);
+
+  #ifdef OF_KEEP_DM_VERITY
+  mPersist.SetValue(FOX_DISABLE_DM_VERITY, "0");
+  #else
   mPersist.SetValue(FOX_DISABLE_DM_VERITY, miui_switch);
+  #endif
+  
+  #ifdef OF_KEEP_FORCED_ENCRYPTION
+  mPersist.SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
+  #else
   mPersist.SetValue(FOX_DISABLE_FORCED_ENCRYPTION, miui_switch);
+  #endif
   //  MIUI }
 
   mPersist.SetValue(FOX_FORCE_DEACTIVATE_PROCESS, "0");

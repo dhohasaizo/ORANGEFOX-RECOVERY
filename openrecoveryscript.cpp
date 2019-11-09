@@ -814,7 +814,11 @@ int OpenRecoveryScript::Run_Fox_Process_After_ORS(void)
    Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
    if (Fox_Zip_Installer_Code != 0) // a ROM was installed
      {
-         if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1))
+         if (
+            (DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) 
+         || (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1)
+         || (TWFunc::JustInstalledMiui())
+            )
             {
          	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
          	Fox_Force_Deactivate_Process = DataManager::GetIntValue(FOX_FORCE_DEACTIVATE_PROCESS);

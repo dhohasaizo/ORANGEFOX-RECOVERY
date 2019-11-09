@@ -318,8 +318,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    {
 	      DataManager::SetValue(FOX_MIUI_ZIP_TMP, 1);
 	      DataManager::SetValue(FOX_CALL_DEACTIVATION, 1);
-	      DataManager::SetValue(FOX_DISABLE_DM_VERITY, 1);
-	      DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 2); // MIUI ROM
+	      DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 2); // MIUI ROM  
+	      //DataManager::SetValue(FOX_DISABLE_DM_VERITY, 1);
 	    }
 	  gui_msg ("fox_install_miui_detected=- Detected MIUI Update zip installer"); 
 	}
