@@ -1370,6 +1370,23 @@ string TWFunc::System_Property_Get(string Prop_Name) {
 	if (!PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), true))
 		return propvalue;
 	string prop_file = "/system/build.prop";
+//***
+	bool reloaded = false;
+	string root_path = PartitionManager.Get_Android_Root_Path();
+	if (root_path == "/")
+	   {
+	     if (!PartitionManager.Is_Mounted_By_Path("/system"))
+	        {
+	           if (PartitionManager.Mount_By_Path("/system", true))
+	           reloaded = true;
+	        }
+	   } 
+	else
+	   {
+	      if (root_path != "/system")
+	         prop_file = root_path + "/build.prop";
+	   }
+//***
 	if (!TWFunc::Path_Exists(prop_file))
 		prop_file = PartitionManager.Get_Android_Root_Path() + "/system/build.prop"; // for devices with system as a root file system (e.g. Pixel)
 	if (TWFunc::read_file(prop_file, buildprop) != 0) {
@@ -1377,6 +1394,10 @@ string TWFunc::System_Property_Get(string Prop_Name) {
 		DataManager::SetValue(TW_BACKUP_NAME, Get_Current_Date());
 		if (!mount_state)
 			PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
+		
+		if (reloaded) //***
+		    	PartitionManager.UnMount_By_Path("/system", false);
+		
 		return propvalue;
 	}
 	int line_count = buildprop.size();
@@ -1390,11 +1411,19 @@ string TWFunc::System_Property_Get(string Prop_Name) {
 			propvalue = buildprop.at(index).substr(end_pos + 1, buildprop.at(index).size());
 			if (!mount_state)
 				PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
+
+			if (reloaded)  //***
+		    		PartitionManager.UnMount_By_Path("/system", false);
+
 			return propvalue;
 		}
 	}
 	if (!mount_state)
 		PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
+
+	if (reloaded)  //***
+		PartitionManager.UnMount_By_Path("/system", false);
+
 	return propvalue;
 }
 
@@ -1741,21 +1770,6 @@ int TWFunc::Set_Brightness(std::string brightness_value)
 
   if (DataManager::GetIntValue("tw_has_brightnesss_file"))
     {
-
-/*
-      // DJ9, 20190110 - prevent black screen (refuse to go below a certain value - 10% of max_brightness)
-      	const int MIN_GOOD = 25; // minimum "good" value
-      	int tmp = string_to_int(brightness_value, MIN_GOOD);
-      	int min = (int)(DataManager::GetIntValue("tw_brightness_max") / 10);
-      	if (min < MIN_GOOD) min = MIN_GOOD;
-	//gui_print("DEBUG #1: brightness_value = %s\n", brightness_value.c_str());
-      	if (tmp < min) 
-           {
-            	brightness_value = num_to_string(min);
-           }
-	//gui_print("DEBUG #2: brightness_value = %s\n", brightness_value.c_str());
-      // DJ9 
-*/
       LOGINFO("TWFunc::Set_Brightness: Setting brightness control to %s\n",
 	      brightness_value.c_str());
       result =
@@ -1821,70 +1835,151 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 {
      if (DataManager::GetIntValue(FOX_DONT_REPLACE_STOCK) == 1)
       	return;
-      
+
+     usleep(128);
      if ((DataManager::GetIntValue(FOX_ADVANCED_STOCK_REPLACE) == 1) 
       ||  (Fox_Force_Deactivate_Process == 1))
 	{
-      	  // system-as-root stuff
       	  bool we_mounted = false;
-          string rootdir = "/system";
+      	  string thedir = "/system";
+          string rootdir = PartitionManager.Get_Android_Root_Path();//"/system";
+
+      	// system-as-root stuff
       	  if (Has_System_Root())
-          {
-	     if (!PartitionManager.Is_Mounted_By_Path("/system"))
-	      { 	  
-	         if (PartitionManager.Mount_By_Path("/system", false))
-	            we_mounted = true;	  
-	      }
-	     if ((PartitionManager.Is_Mounted_By_Path("/system")) && (TWFunc::Path_Exists("/system/system")))
-                rootdir = "/system/system";
-          }
-     	  // system-as-root stuff //
+            {
+	       if (TWFunc::Path_Exists(rootdir + "/system") && TWFunc::Path_Exists(rootdir + "/system/etc"))
+	         {
+                     rootdir = rootdir + "/system";
+                 }
+               else
+              	 {
+            	   if (!PartitionManager.Is_Mounted_By_Path("/system"))
+             	      {
+                	if (PartitionManager.Mount_By_Path("/system", false))
+                	   {
+                              we_mounted = true;
+                   	   }
+             	      }
+            	   if ((PartitionManager.Is_Mounted_By_Path("/system")) && (TWFunc::Path_Exists("/system/system")))
+                	 rootdir = "/system/system";
+              	 }
+            }
+          else // it is not system-as-root
+            {
+              if (rootdir != "/system")
+                {
+	           if (rootdir != "/")
+	              rootdir = rootdir + "/";
+	       
+	           if (!PartitionManager.Is_Mounted_By_Path(rootdir + "system"))
+	              {
+	           	if (PartitionManager.Mount_By_Path(rootdir + "system", false))
+	              	   {
+	                	we_mounted = true;
+	                	thedir = rootdir + "system";
+	                   }
+	              }
 
-	  if (Path_Exists(rootdir + "/bin/install-recovery.sh"))
-	      Rename_File(rootdir + "/bin/install-recovery.sh",
-		     	  rootdir + "/bin/wlfx0install-recoverybak0xwlf");
+	       	   if (TWFunc::Path_Exists(rootdir + "system") && TWFunc::Path_Exists(rootdir + "system/etc"))
+	              {
+                          rootdir = rootdir + "system";
+                      }
+                }
+            }
+     	// system-as-root stuff //
 
-	  if (Path_Exists(rootdir + "/etc/install-recovery.sh"))
-	      Rename_File(rootdir + "/etc/install-recovery.sh",
-		   	 rootdir + "/etc/wlfx0install-recoverybak0xwlf");
+          LOGINFO("OrangeFox: Disabling stock recovery [search-dir=%s]...\n", rootdir.c_str());
 
-	  if (Path_Exists(rootdir + "/etc/recovery-resource.dat"))
-	      Rename_File(rootdir + "/etc/recovery-resource.dat",
-		   	  rootdir + "/etc/wlfx0recovery-resource0xwlf");
+	// using rootdir/ as determined here
+	  usleep(512);
+	  if (TWFunc::Path_Exists(rootdir))
+	    {
+          	LOGINFO("OrangeFox: checking %s ...\n", rootdir.c_str());
+	  	if (Path_Exists(rootdir + "/bin/install-recovery.sh"))
+	      		Rename_File(rootdir + "/bin/install-recovery.sh",
+		     	  	rootdir + "/bin/wlfx0install-recoverybak0xwlf");
 
-	  if (Path_Exists("/system/vendor/bin/install-recovery.sh"))
-	    rename("/system/vendor/bin/install-recovery.sh",
-		   "/system/vendor/bin/wlfx0install-recoverybak0xwlf");
+	  	if (Path_Exists(rootdir + "/etc/install-recovery.sh"))
+	      		Rename_File(rootdir + "/etc/install-recovery.sh",
+		   	 	rootdir + "/etc/wlfx0install-recoverybak0xwlf");
 
-	  if (Path_Exists("/system/vendor/etc/install-recovery.sh"))
-	    rename("/system/vendor/etc/install-recovery.sh",
-		   "/system/vendor/etc/wlfx0install-recoverybak0xwlf");
+	  	if (Path_Exists(rootdir + "/etc/recovery-resource.dat"))
+	      		Rename_File(rootdir + "/etc/recovery-resource.dat",
+		   	  	rootdir + "/etc/wlfx0recovery-resource0xwlf");
 
-	  if (Path_Exists("/system/vendor/etc/recovery-resource.dat"))
-	    rename("/system/vendor/etc/recovery-resource.dat",
-		   "/system/vendor/etc/wlfx0recovery-resource0xwlf");
-
-	  if (Path_Exists("/vendor/bin/install-recovery.sh"))
-	    rename("/vendor/bin/install-recovery.sh",
-		   "/vendor/bin/wlfx0install-recoverybak0xwlf");
-
-	  if (Path_Exists("/vendor/etc/install-recovery.sh"))
-	    rename("/vendor/etc/install-recovery.sh",
-		   "/vendor/etc/wlfx0install-recoverybak0xwlf");
-
-	  if (Path_Exists("/vendor/etc/recovery-resource.dat"))
-	    rename("/vendor/etc/recovery-resource.dat",
-		   "/vendor/etc/wlfx0recovery-resource0xwlf");
-
-          if (TWFunc::Path_Exists(rootdir + "/recovery-from-boot.p"))
-  	     {
-	         Rename_File(rootdir + "/recovery-from-boot.p",
+          	if (TWFunc::Path_Exists(rootdir + "/recovery-from-boot.p"))
+  	     	   {
+	         	Rename_File(rootdir + "/recovery-from-boot.p",
 		      	     rootdir + "/wlfx0recovery-from-boot.bak0xwlf");
-	          sync();
+	          	sync();
+	     	   }
 	     }
-	  
-	  if (we_mounted)
-	     PartitionManager.UnMount_By_Path("/system", false);
+
+	  usleep(512);
+	  if (we_mounted) // cleanup
+	     PartitionManager.UnMount_By_Path(thedir, false);
+
+	// using hardcoded /system/vendor/
+	  we_mounted = false;
+	  if (!PartitionManager.Is_Mounted_By_Path("/system"))
+             {
+               if (PartitionManager.Mount_By_Path("/system", false))
+                 {
+                    we_mounted = true;
+                 }
+             }
+
+	  if (PartitionManager.Is_Mounted_By_Path("/system"))
+	     {
+          	LOGINFO("OrangeFox: checking /system ...\n");
+	  	if (Path_Exists("/system/vendor/bin/install-recovery.sh"))
+	    		rename("/system/vendor/bin/install-recovery.sh",
+		   		"/system/vendor/bin/wlfx0install-recoverybak0xwlf");
+
+	  	if (Path_Exists("/system/vendor/etc/install-recovery.sh"))
+	    		rename("/system/vendor/etc/install-recovery.sh",
+		   		"/system/vendor/etc/wlfx0install-recoverybak0xwlf");
+
+	  	if (Path_Exists("/system/vendor/etc/recovery-resource.dat"))
+	    		rename("/system/vendor/etc/recovery-resource.dat",
+		   		"/system/vendor/etc/wlfx0recovery-resource0xwlf");
+
+	  	usleep(512);	  	
+	  	if (we_mounted) // cleanup
+	     	    PartitionManager.UnMount_By_Path("/system", false);
+	     }
+
+	// using hardcoded /vendor/
+	  usleep(512);
+	  we_mounted = false;
+	  if (!PartitionManager.Is_Mounted_By_Path("/vendor"))
+             {
+               if (PartitionManager.Mount_By_Path("/vendor", false))
+                 {
+                    we_mounted = true;
+                 }
+             }
+
+	  if (PartitionManager.Is_Mounted_By_Path("/vendor"))
+	     {
+          	LOGINFO("OrangeFox: checking /vendor ...\n");
+	  	if (Path_Exists("/vendor/bin/install-recovery.sh"))
+	    		rename("/vendor/bin/install-recovery.sh",
+		   	"/vendor/bin/wlfx0install-recoverybak0xwlf");
+
+	  	if (Path_Exists("/vendor/etc/install-recovery.sh"))
+	    		rename("/vendor/etc/install-recovery.sh",
+		   	"/vendor/etc/wlfx0install-recoverybak0xwlf");
+
+	  	if (Path_Exists("/vendor/etc/recovery-resource.dat"))
+	    		rename("/vendor/etc/recovery-resource.dat",
+		   	"/vendor/etc/wlfx0recovery-resource0xwlf");
+	  	
+	  	usleep(512);
+	  	if (we_mounted) // cleanup
+	     	    PartitionManager.UnMount_By_Path("/vendor", false);
+	     }
+      sync();
       }
 }
 
@@ -2101,6 +2196,7 @@ int TWFunc::Check_MIUI_Treble(void)
   Fox_Current_ROM_IsMIUI = 0;
   string display_panel = "";
   string rom_desc = "";
+  string incr_version = "";
   
   // * run startup script
   RunStartupScript();
@@ -2113,6 +2209,7 @@ int TWFunc::Check_MIUI_Treble(void)
   	fox_is_real_treble_rom = TWFunc::File_Property_Get (fox_cfg, "REALTREBLE");
   	display_panel = TWFunc::File_Property_Get (fox_cfg, "panel_name");	
   	Fox_Current_ROM = TWFunc::File_Property_Get (fox_cfg, "ROM");
+  	incr_version = TWFunc::File_Property_Get (fox_cfg, "INCREMENTAL_VERSION");
     }
 
    // Treble ?
@@ -2162,6 +2259,11 @@ int TWFunc::Check_MIUI_Treble(void)
   	    gui_print("* Custom ROM %s", tmp.c_str());
      	  } 
         gui_print("* %s\n", rom_desc.c_str());
+        
+        if (!incr_version.empty())
+          {
+  	     gui_print("* (%s)\n", incr_version.c_str());
+          }
     }
     else
       {
@@ -2673,7 +2775,7 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 		   {
 	              AppendLineToFile (cmd_script, cd_dir + Fox_tmp_dir);
 		      std::string keepdmverity, keepforcedencryption;
-		      if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
+		      if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1)/* || (Fox_Force_Deactivate_Process == 1)*/)
 		      	{
 		           keepverity = false;
 		           keepdmverity = "false ";
@@ -2684,7 +2786,7 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 		           keepdmverity = "true ";
 		        }
 		      
-		      	if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
+		      	if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1)/* || (Fox_Force_Deactivate_Process == 1)*/)
 		      	  {
 		      	     #ifdef OF_DONT_PATCH_ENCRYPTED_DEVICE
 		             if (StorageIsEncrypted())
@@ -2888,8 +2990,6 @@ std::string GetFileHeaderMagic (string fname)
   return DataToHexString(head, len);
 }
 
-/* DJ9 */
-// #define OF_USE_MAGISKBOOT_FOR_ALL_PATCHES 1
 #ifdef OF_USE_MAGISKBOOT_FOR_ALL_PATCHES
 bool TWFunc::Repack_Image(string mount_point)
 {
@@ -3284,6 +3384,11 @@ bool TWFunc::Patch_DM_Verity(void)
   string remove = "verify,;,verify;verify;avb,;,avb;avb;support_scfs,;,support_scfs;support_scfs;";
 
   LOGINFO("OrangeFox: entering Patch_DM_Verity()\n");
+  if (DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) != 1)
+    {
+	gui_print("OrangeFox: Not patching DM_Verity.\n");  
+	return false;
+    }
 
   // /tmp/orangefox/ramdisk
   d = opendir(ramdisk.c_str());
@@ -3766,6 +3871,11 @@ bool TWFunc::Patch_Forced_Encryption(void)
   struct dirent *de;
   
   LOGINFO("OrangeFox: entering Patch_Forced_Encyption()\n");
+  if (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) != 1)
+  {
+  	gui_print("OrangeFox: Not patching forced encryption.\n");
+  	return false;  
+  }
   
   #ifdef OF_DONT_PATCH_ENCRYPTED_DEVICE
   if (StorageIsEncrypted())
@@ -3852,11 +3962,15 @@ void TWFunc::PrepareToFinish(void)
 	      LOGERR("Error creating %s directory: %s\n", aromafm_path.c_str(), strerror(errno));
 	    }
 	}
+
       // Save AromaFM config (AromaFM.cfg)
-      if (copy_file(Fox_aroma_cfg/*FFiles_dir + "/AromaFM/AromaFM.zip.cfg"*/, aromafm_file, 0644))
-	{
-	  LOGERR("Error copying AromaFM config\n");
-	}
+      if (Path_Exists(Fox_aroma_cfg))
+      	 {
+      	   if (copy_file(Fox_aroma_cfg, aromafm_file, 0644))
+	      {
+	         LOGERR("Error copying AromaFM config\n");
+	      }
+      	 }
       PartitionManager.UnMount_By_Path("/sdcard", false);
     }
 
@@ -3905,9 +4019,11 @@ bool TWFunc::DontPatchBootImage(void)
           (DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || 
           (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1)
       )
-      return false;
+        return false;
    else
-      return true;
+     {
+        return true;
+     }
 }
 
 std::string TWFunc::get_cache_dir() {
@@ -4005,7 +4121,9 @@ bool patched_crypt = false;
      {
      	if (New_Fox_Installation == 1 || MIUI_Is_Running())
      	   {
-	      gui_print("Not patching boot image on %s. Flash magisk after this.\n", Fox_Current_Device.c_str());
+	      gui_print_color("warning", "\nOrangeFox: WARNING! Not patching boot image.\nFlash magisk *now*, or the ROM might not boot.\n");
+	      if (MIUI_Is_Running())
+	         gui_print_color("warning", "NOTE: It is likely that booting the ROM now will replace OrangeFox with the stock MIUI recovery.\n");
 	   }
 	LOGINFO("OrangeFox: skipping patching of boot image on device: %s\n", Fox_Current_Device.c_str());
 	New_Fox_Installation = 0;
@@ -4080,14 +4198,13 @@ bool patched_crypt = false;
   DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
 }
 
-
 int TWFunc::Patch_DMVerity_ForcedEncryption_Magisk(void)
 {
 std::string keepdmverity, keepforcedencryption;
 std::string zipname = FFiles_dir + "/OF_verity_crypt/OF_verity_crypt.zip";
 int res=0, wipe_cache=0;
 
-   if (!TWFunc::Path_Exists("/sbin/magiskboot"))
+  if (!TWFunc::Path_Exists("/sbin/magiskboot"))
      {
         gui_print("ERROR - cannot find /sbin/magiskboot\n");
   	return 1;
@@ -4099,12 +4216,12 @@ int res=0, wipe_cache=0;
   	return 1;
      }
 
-    if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (Fox_Force_Deactivate_Process == 1))
+    if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1)/* || (Fox_Force_Deactivate_Process == 1)*/)
 	keepdmverity = "false";
     else
 	keepdmverity = "true";
 	
-    if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1) || (Fox_Force_Deactivate_Process == 1))
+    if ((DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1)/* || (Fox_Force_Deactivate_Process == 1)*/)
 	{
 	#ifdef OF_DONT_PATCH_ENCRYPTED_DEVICE
 	   if (StorageIsEncrypted())
