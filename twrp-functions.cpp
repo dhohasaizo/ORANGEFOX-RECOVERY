@@ -4008,7 +4008,14 @@ bool TWFunc::DontPatchBootImage(void)
         if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) != 1) 
         && (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) != 1))
            {  // if we get here, the user has turned off these settings manually
-              return true;
+            #if defined(OF_FORCE_MAGISKBOOT_BOOT_PATCH_MIUI) && defined(OF_USE_MAGISKBOOT)
+  	    if (MIUI_Is_Running())
+  	       {
+     	  	  LOGINFO("OrangeFox: Fresh OrangeFox installation on MIUI. Processing will continue...\n");
+     	  	  return false;
+  	       }
+	    #endif
+            return true;
            }
      }
 
@@ -4019,9 +4026,16 @@ bool TWFunc::DontPatchBootImage(void)
           (DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || 
           (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1)
       )
-        return false;
+      return false;
    else
      {
+        #if defined(OF_FORCE_MAGISKBOOT_BOOT_PATCH_MIUI) && defined(OF_USE_MAGISKBOOT)
+  	if (TWFunc::JustInstalledMiui())
+  	   {
+     	      LOGINFO("OrangeFox: New MIUI installation. Processing will continue...\n");
+     	      return false;
+  	   }
+	#endif
         return true;
      }
 }
