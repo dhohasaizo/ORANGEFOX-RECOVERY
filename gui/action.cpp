@@ -493,6 +493,8 @@ int GUIAction::flash_zip(std::string filename, int *wipe_cache)
           if (Fox_Zip_Installer_Code == 23) LOGINFO("OrangeFox: installed Treble (MIUI) ROM and OTA_BAK: %s\n",filename.c_str());
           else
              LOGINFO("OrangeFox: installed MIUI ROM: %s\n",filename.c_str());
+          
+          TWFunc::Dump_Current_Settings();
         }
        LOGINFO ("flash_zip: installer code = %i\n", DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE));
       //* DJ9
@@ -2315,14 +2317,14 @@ int GUIAction::checkpartitionlifetimewrites(std::string arg)
 int GUIAction::mountsystemtoggle(std::string arg)
 {
 	int op_status = 0;
-	bool remount_system = PartitionManager.Is_Mounted_By_Path("/system");
+	bool remount_system = PartitionManager.Is_Mounted_By_Path(PartitionManager.Get_Android_Root_Path());
 	bool remount_vendor = PartitionManager.Is_Mounted_By_Path("/vendor");
 
 	operation_start("Toggle System Mount");
-	if (!PartitionManager.UnMount_By_Path("/system", true)) {
+	if (!PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), true)) {
 		op_status = 1; // fail
 	} else {
-		TWPartition* Part = PartitionManager.Find_Partition_By_Path("/system");
+		TWPartition* Part = PartitionManager.Find_Partition_By_Path(PartitionManager.Get_Android_Root_Path());
 		if (Part) {
 			if (arg == "0") {
 				DataManager::SetValue("tw_mount_system_ro", 0);
@@ -2576,10 +2578,11 @@ exit:
 int GUIAction::fixabrecoverybootloop(std::string arg __unused)
 {
 	int op_status = 1;
+	std::string magiskboot = TWFunc::Get_MagiskBoot();
 	operation_start("Repack Image");
 	if (!simulate)
 	{
-		if (!TWFunc::Path_Exists("/sbin/magiskboot")) {
+		if (!TWFunc::Path_Exists(magiskboot)) {
 			LOGERR("Image repacking tool not present in this TWRP build!");
 			goto exit;
 		}
@@ -2595,7 +2598,7 @@ int GUIAction::fixabrecoverybootloop(std::string arg __unused)
 			goto exit;
 		DataManager::SetProgress(.25);
 		gui_msg("fixing_recovery_loop_patch=Patching kernel...");
-		std::string command = "cd " REPACK_ORIG_DIR " && /sbin/magiskboot --hexpatch kernel 77616E745F696E697472616D667300 736B69705F696E697472616D667300";
+		std::string command = "cd " REPACK_ORIG_DIR " && " + magiskboot + " --hexpatch kernel 77616E745F696E697472616D667300 736B69705F696E697472616D667300";
 		if (TWFunc::Exec_Cmd(command) != 0) {
 			gui_msg(Msg(msg::kError, "fix_recovery_loop_patch_error=Error patching kernel."));
 			goto exit;
@@ -2611,7 +2614,7 @@ int GUIAction::fixabrecoverybootloop(std::string arg __unused)
 		}
 		DataManager::SetProgress(.5);
 		gui_msg(Msg("repacking_image=Repacking {1}...")(part->Display_Name));
-		command = "cd " REPACK_ORIG_DIR " && /sbin/magiskboot --repack " REPACK_ORIG_DIR "boot.img";
+		command = "cd " REPACK_ORIG_DIR " && " + magiskboot + " --repack " REPACK_ORIG_DIR "boot.img";
 		if (TWFunc::Exec_Cmd(command) != 0) {
 			gui_msg(Msg(msg::kError, "repack_error=Error repacking image."));
 			goto exit;

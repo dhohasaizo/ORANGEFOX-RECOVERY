@@ -400,6 +400,9 @@ int main(int argc, char **argv)
   twrpAdbBuFifo *adb_bu_fifo = new twrpAdbBuFifo();
   adb_bu_fifo->threadAdbBuFifo();
 
+// is it MIUI running now?
+// if (TWFunc::MIUI_Is_Running()) gui_print("MIUI is running ...\n");
+
 // retain dm-verity and/or forced-encryption on devices that have problems with disabling them
 #ifdef OF_KEEP_FORCED_ENCRYPTION
   DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");

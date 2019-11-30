@@ -589,6 +589,9 @@ int OpenRecoveryScript::Install_Command(string Zip)
 		if (wipe_cache)
 		   PartitionManager.Wipe_By_Path("/cache");
 	  }
+
+	TWFunc::Dump_Current_Settings();
+
 	return ret_val;
 }
 

@@ -1,5 +1,5 @@
 # Copyright (C) 2007 The Android Open Source Project
-# Copyright (C) 2018-2019 OrangeFox Recovery Project
+# Copyright (C) 2018-2020 OrangeFox Recovery Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -87,6 +87,10 @@ endif
 
 ifeq ($(OF_USE_MAGISKBOOT),1)
     LOCAL_CFLAGS += -DOF_USE_MAGISKBOOT='"1"'
+endif
+
+ifeq ($(OF_USE_NEW_MAGISKBOOT),1)
+    LOCAL_CFLAGS += -DOF_USE_NEW_MAGISKBOOT='"1"'
 endif
 
 ifeq ($(OF_USE_MAGISKBOOT_FOR_ALL_PATCHES),1)

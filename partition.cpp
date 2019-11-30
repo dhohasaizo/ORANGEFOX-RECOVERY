@@ -2351,68 +2351,26 @@ bool TWPartition::Wipe_Encryption() {
 	if (!base_partition->PreWipeEncryption())
 		goto exit;
 
+	Find_Actual_Block_Device();
+	if (!Is_Present) {
+		LOGINFO("Block device not present, cannot format %s.\n", Display_Name.c_str());
+		gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+		return false;
+	}
 	if (!UnMount(true))
 		goto exit;
 
-	Has_Data_Media = false;
 #ifdef TW_INCLUDE_CRYPTO
 	if (Is_Decrypted && !Decrypted_Block_Device.empty()) {
-		if (!UnMount(true))
-			goto exit;
 		if (delete_crypto_blk_dev((char*)("userdata")) != 0) {
 			LOGERR("Error deleting crypto block device, continuing anyway.\n");
 		}
 	}
 #endif
+	Has_Data_Media = false;
 	Decrypted_Block_Device = "";
 	Is_Decrypted = false;
 	Is_Encrypted = false;
-	Find_Actual_Block_Device();
-	if (Crypto_Key_Location == "footer") {
-		int newlen, fd;
-		if (Length != 0) {
-			newlen = Length;
-			if (newlen < 0)
-				newlen = newlen * -1;
-		} else {
-			newlen = CRYPT_FOOTER_OFFSET;
-		}
-		if ((fd = open(Actual_Block_Device.c_str(), O_RDWR)) < 0) {
-			gui_print_color("warning", "Unable to open '%s' to wipe crypto key\n", Actual_Block_Device.c_str());
-		} else {
-			unsigned int block_count;
-			if ((ioctl(fd, BLKGETSIZE, &block_count)) == -1) {
-				gui_print_color("warning", "Unable to get block size for wiping crypto footer.\n");
-			} else {
-				off64_t offset = ((off64_t)block_count * 512) - newlen;
-				if (lseek64(fd, offset, SEEK_SET) == -1) {
-					gui_print_color("warning", "Unable to lseek64 for wiping crypto footer.\n");
-				} else {
-					void* buffer = malloc(newlen);
-					if (!buffer) {
-						gui_print_color("warning", "Failed to malloc for wiping crypto footer.\n");
-					} else {
-						memset(buffer, 0, newlen);
-						int ret = write(fd, buffer, newlen);
-						if (ret != newlen) {
-							gui_print_color("warning", "Failed to wipe crypto footer.\n");
-						} else {
-							LOGINFO("Successfully wiped crypto footer.\n");
-						}
-						free(buffer);
-					}
-				}
-			}
-			close(fd);
-		}
-	} else {
-		if (TWFunc::IOCTL_Get_Block_Size(Crypto_Key_Location.c_str()) >= 16384LLU) {
-			string Command = "dd of='" + Crypto_Key_Location + "' if=/dev/zero bs=16384 count=1";
-			TWFunc::Exec_Cmd(Command);
-		} else {
-			LOGINFO("Crypto key location reports size < 16K so not wiping crypto footer.\n");
-		}
-	}
 	if (Wipe(Fstab_File_System)) {
 		Has_Data_Media = Save_Data_Media;
 		if (Has_Data_Media && !Symlink_Mount_Point.empty()) {
@@ -2442,61 +2400,49 @@ exit:
 	return ret;
 }
 
-void TWPartition::Check_FS_Type()
-{
-  const char *type;
-  blkid_probe pr;
+void TWPartition::Check_FS_Type() {
+	const char* type;
+	blkid_probe pr;
 
-  if (Fstab_File_System == "yaffs2" || Fstab_File_System == "mtd"
-      || Fstab_File_System == "bml" || Ignore_Blkid)
-    return;			// Running blkid on some mtd devices causes a massive crash or needs to be skipped
+	if (Fstab_File_System == "yaffs2" || Fstab_File_System == "mtd" || Fstab_File_System == "bml" || Ignore_Blkid)
+		return; // Running blkid on some mtd devices causes a massive crash or needs to be skipped
 
-  Find_Actual_Block_Device();
-  if (!Is_Present)
-    return;
+	Find_Actual_Block_Device();
+	if (!Is_Present)
+		return;
 
-  pr = blkid_new_probe_from_filename(Actual_Block_Device.c_str());
-  if (blkid_do_fullprobe(pr))
-    {
-      blkid_free_probe(pr);
-      LOGINFO("Can't probe device %s\n", Actual_Block_Device.c_str());
-      return;
-    }
-
-  if (blkid_probe_lookup_value(pr, "TYPE", &type, NULL) < 0)
-    {
-      blkid_free_probe(pr);
-      LOGINFO("can't find filesystem on device %s\n",
-	      Actual_Block_Device.c_str());
-      return;
-    }
-
-  Current_File_System = type;
-  blkid_free_probe(pr);
-  if (fs_flags.size() > 1)
-    {
-      std::vector < partition_fs_flags_struct >::iterator iter;
-      std::vector < partition_fs_flags_struct >::iterator found =
-	fs_flags.begin();
-
-      for (iter = fs_flags.begin(); iter != fs_flags.end(); iter++)
-	{
-	  if (iter->File_System == Current_File_System)
-	    {
-	      found = iter;
-	      break;
-	    }
+	pr = blkid_new_probe_from_filename(Actual_Block_Device.c_str());
+	if (blkid_do_fullprobe(pr)) {
+		blkid_free_probe(pr);
+		LOGINFO("Can't probe device %s\n", Actual_Block_Device.c_str());
+		return;
 	}
-      // If we don't find a match, we default the flags to the first set of flags that we received from the fstab
-      if (Mount_Flags != found->Mount_Flags
-	  || Mount_Options != found->Mount_Options)
-	{
-	  Mount_Flags = found->Mount_Flags;
-	  Mount_Options = found->Mount_Options;
-	  LOGINFO("Mount_Flags: %i, Mount_Options: %s\n", Mount_Flags,
-		  Mount_Options.c_str());
+
+	if (blkid_probe_lookup_value(pr, "TYPE", &type, NULL) < 0) {
+		blkid_free_probe(pr);
+		LOGINFO("can't find filesystem on device %s\n", Actual_Block_Device.c_str());
+		return;
 	}
-    }
+
+	Current_File_System = type;
+	blkid_free_probe(pr);
+	if (fs_flags.size() > 1) {
+		std::vector<partition_fs_flags_struct>::iterator iter;
+		std::vector<partition_fs_flags_struct>::iterator found = fs_flags.begin();
+
+		for (iter = fs_flags.begin(); iter != fs_flags.end(); iter++) {
+			if (iter->File_System == Current_File_System) {
+				found = iter;
+				break;
+			}
+		}
+		// If we don't find a match, we default the flags to the first set of flags that we received from the fstab
+		if (Mount_Flags != found->Mount_Flags || Mount_Options != found->Mount_Options) {
+			Mount_Flags = found->Mount_Flags;
+			Mount_Options = found->Mount_Options;
+			LOGINFO("Mount_Flags: %i, Mount_Options: %s\n", Mount_Flags, Mount_Options.c_str());
+		}
+	}
 }
 
 bool TWPartition::Wipe_EXTFS(string File_System) {
@@ -2580,8 +2526,11 @@ bool TWPartition::Wipe_EXTFS(string File_System) {
 	return true;
 }
 
-
 bool TWPartition::Wipe_EXT4() {
+#ifdef USE_EXT4
+	int ret;
+	bool NeedPreserveFooter = true;
+
 	Find_Actual_Block_Device();
 	if (!Is_Present) {
 		LOGINFO("Block device not present, cannot wipe %s.\n", Display_Name.c_str());
@@ -2591,24 +2540,38 @@ bool TWPartition::Wipe_EXT4() {
 	if (!UnMount(true))
 		return false;
 
-#if defined(USE_EXT4)
-	int ret;
+	/**
+	 * On decrypted devices, IOCTL_Get_Block_Size calculates size on device mapper,
+	 * so there's no need to preserve footer.
+	 */
+	if ((Is_Decrypted && !Decrypted_Block_Device.empty()) ||
+			Crypto_Key_Location != "footer") {
+		NeedPreserveFooter = false;
+	}
+
+	unsigned long long dev_sz = TWFunc::IOCTL_Get_Block_Size(Actual_Block_Device.c_str());
+	if (!dev_sz)
+		return false;
+
+	if (NeedPreserveFooter)
+		Length < 0 ? dev_sz += Length : dev_sz -= CRYPT_FOOTER_OFFSET;
+
 	char *secontext = NULL;
 
-  if (DataManager::GetIntValue(FOX_RUN_SURVIVAL_BACKUP) != 1)
-    gui_msg(Msg("formatting_using=Formatting {1} using {2}...") (Display_Name)
-	    ("make_ext4fs"));
+	gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("make_ext4fs"));
 
 	if (!selinux_handle || selabel_lookup(selinux_handle, &secontext, Mount_Point.c_str(), S_IFDIR) < 0) {
 		LOGINFO("Cannot lookup security context for '%s'\n", Mount_Point.c_str());
-		ret = make_ext4fs(Actual_Block_Device.c_str(), Length, Mount_Point.c_str(), NULL);
+		ret = make_ext4fs(Actual_Block_Device.c_str(), dev_sz, Mount_Point.c_str(), NULL);
 	} else {
-		ret = make_ext4fs(Actual_Block_Device.c_str(), Length, Mount_Point.c_str(), selinux_handle);
+		ret = make_ext4fs(Actual_Block_Device.c_str(), dev_sz, Mount_Point.c_str(), selinux_handle);
 	}
 	if (ret != 0) {
 		gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
 		return false;
 	} else {
+		if (NeedPreserveFooter)
+			Wipe_Crypto_Key();
 		string sedir = Mount_Point + "/lost+found";
 		PartitionManager.Mount_By_Path(sedir.c_str(), true);
 		rmdir(sedir.c_str());
@@ -2616,26 +2579,22 @@ bool TWPartition::Wipe_EXT4() {
 		return true;
 	}
 #else
-	if (TWFunc::Path_Exists("/sbin/make_ext4fs")) {
-		string Command;
+	return Wipe_EXTFS("ext4");
+#endif
+}
 
-		gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("make_ext4fs"));
+bool TWPartition::Wipe_FAT() {
+	string command;
+
+	if (TWFunc::Path_Exists("/sbin/mkfs.fat")) {
+		if (!UnMount(true))
+			return false;
+
+		gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("mkfs.fat"));
 		Find_Actual_Block_Device();
-		Command = "make_ext4fs";
-		if (!Is_Decrypted && Length != 0) {
-			// Only use length if we're not decrypted
-			char len[32];
-			sprintf(len, "%i", Length);
-			Command += " -l ";
-			Command += len;
-		}
-		if (TWFunc::Path_Exists("/file_contexts")) {
-			Command += " -S /file_contexts";
-		}
-		Command += " -a " + Mount_Point + " " + Actual_Block_Device;
-		LOGINFO("make_ext4fs command: %s\n", Command.c_str());
-		if (TWFunc::Exec_Cmd(Command) == 0) {
-			Current_File_System = "ext4";
+		command = "mkfs.fat " + Actual_Block_Device;
+		if (TWFunc::Exec_Cmd(command) == 0) {
+			Current_File_System = "vfat";
 			Recreate_AndSec_Folder();
 			gui_msg("done=Done.");
 			return true;
@@ -2643,131 +2602,169 @@ bool TWPartition::Wipe_EXT4() {
 			gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
 			return false;
 		}
-	} else
-		return Wipe_EXTFS("ext4");
-#endif
+		return true;
+	}
+	else
+		return Wipe_RMRF();
+
 	return false;
 }
 
-bool TWPartition::Wipe_FAT()
-{
-  string command;
+bool TWPartition::Wipe_EXFAT() {
+	string command;
 
-  if (TWFunc::Path_Exists("/sbin/mkfs.fat"))
-    {
-      if (!UnMount(true))
+	if (TWFunc::Path_Exists("/sbin/mkexfatfs")) {
+		if (!UnMount(true))
+			return false;
+
+		gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("mkexfatfs"));
+		Find_Actual_Block_Device();
+		command = "mkexfatfs " + Actual_Block_Device;
+		if (TWFunc::Exec_Cmd(command) == 0) {
+			Recreate_AndSec_Folder();
+			gui_msg("done=Done.");
+			return true;
+		} else {
+			gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+			return false;
+		}
+		return true;
+	}
 	return false;
-
-      gui_msg(Msg("formatting_using=Formatting {1} using {2}...")
-	      (Display_Name) ("mkfs.fat"));
-      Find_Actual_Block_Device();
-      command = "mkfs.fat " + Actual_Block_Device;
-      if (TWFunc::Exec_Cmd(command) == 0)
-	{
-	  Current_File_System = "vfat";
-	  Recreate_AndSec_Folder();
-	  gui_msg("done=Done.");
-	  return true;
-	}
-      else
-	{
-	  gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")
-		  (Display_Name));
-	  return false;
-	}
-      return true;
-    }
-  else
-    return Wipe_RMRF();
-
-  return false;
 }
 
-bool TWPartition::Wipe_EXFAT()
-{
-  string command;
+bool TWPartition::Wipe_MTD() {
+	if (!UnMount(true))
+		return false;
 
-  if (TWFunc::Path_Exists("/sbin/mkexfatfs"))
-    {
-      if (!UnMount(true))
+	gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("MTD"));
+
+	mtd_scan_partitions();
+	const MtdPartition* mtd = mtd_find_partition_by_name(MTD_Name.c_str());
+	if (mtd == NULL) {
+		LOGERR("No mtd partition named '%s'", MTD_Name.c_str());
+		return false;
+	}
+
+	MtdWriteContext* ctx = mtd_write_partition(mtd);
+	if (ctx == NULL) {
+		LOGERR("Can't write '%s', failed to format.", MTD_Name.c_str());
+		return false;
+	}
+	if (mtd_erase_blocks(ctx, -1) == -1) {
+		mtd_write_close(ctx);
+		LOGERR("Failed to format '%s'", MTD_Name.c_str());
+		return false;
+	}
+	if (mtd_write_close(ctx) != 0) {
+		LOGERR("Failed to close '%s'", MTD_Name.c_str());
+		return false;
+	}
+	Current_File_System = "yaffs2";
+	Recreate_AndSec_Folder();
+	gui_msg("done=Done.");
+	return true;
+}
+
+bool TWPartition::Wipe_RMRF() {
+	if (!Mount(true))
+		return false;
+	// This is the only wipe that leaves the partition mounted, so we
+	// must manually remove the partition from MTP if it is a storage
+	// partition.
+	if (Is_Storage)
+		PartitionManager.Remove_MTP_Storage(MTP_Storage_ID);
+
+	gui_msg(Msg("remove_all=Removing all files under '{1}'")(Mount_Point));
+	TWFunc::removeDir(Mount_Point, true);
+	Recreate_AndSec_Folder();
+	return true;
+}
+
+bool TWPartition::Wipe_F2FS() {
+	string command;
+
+	if (TWFunc::Path_Exists("/sbin/mkfs.f2fs")) {
+		bool NeedPreserveFooter = true;
+
+		Find_Actual_Block_Device();
+		if (!Is_Present) {
+			LOGINFO("Block device not present, cannot wipe %s.\n", Display_Name.c_str());
+			gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+			return false;
+		}
+		if (!UnMount(true))
+			return false;
+
+		/**
+		 * On decrypted devices, IOCTL_Get_Block_Size calculates size on device mapper,
+		 * so there's no need to preserve footer.
+		 */
+		if ((Is_Decrypted && !Decrypted_Block_Device.empty()) ||
+				Crypto_Key_Location != "footer") {
+			NeedPreserveFooter = false;
+		}
+
+		gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("mkfs.f2fs"));
+		// First determine if we have the old mkfs.f2fs that uses "-r reserved_bytes"
+		// or the new mkfs.f2fs that expects the number of sectors as the optional last argument
+		// Note: some 7.1 trees have the old and some have the new.
+		command = "mkfs.f2fs | grep \"reserved\" > /tmp/f2fsversiontest";
+		TWFunc::Exec_Cmd(command, false); // no help argument so printing usage exits with an error code
+		if (!TWFunc::Path_Exists("/tmp/f2fsversiontest")) {
+			LOGINFO("Error determining mkfs.f2fs version\n");
+			return false;
+		}
+		if (TWFunc::Get_File_Size("/tmp/f2fsversiontest") <= 0) {
+			LOGINFO("Using newer mkfs.f2fs\n");
+			unsigned long long dev_sz = TWFunc::IOCTL_Get_Block_Size(Actual_Block_Device.c_str());
+			if (!dev_sz)
+				return false;
+
+			if (NeedPreserveFooter)
+				Length < 0 ? dev_sz += Length : dev_sz -= CRYPT_FOOTER_OFFSET;
+
+			char dev_sz_str[48];
+			sprintf(dev_sz_str, "%llu", (dev_sz / 4096));
+			command = "mkfs.f2fs -d1 -f -O encrypt -O quota -O verity -w 4096 " + Actual_Block_Device + " " + dev_sz_str;
+			if (TWFunc::Path_Exists("/sbin/sload.f2fs")) {
+				command += " && sload.f2fs -t /data " + Actual_Block_Device;
+			}
+		} else {
+			LOGINFO("Using older mkfs.f2fs\n");
+			command = "mkfs.f2fs -t 0";
+			if (NeedPreserveFooter) {
+				// Only use length if we're not decrypted
+				char len[32];
+				int mod_length = Length;
+				if (Length < 0)
+					mod_length *= -1;
+				sprintf(len, "%i", mod_length);
+				command += " -r ";
+				command += len;
+			}
+			command += " " + Actual_Block_Device;
+		}
+		LOGINFO("mkfs.f2fs command: %s\n", command.c_str());
+		if (TWFunc::Exec_Cmd(command) == 0) {
+			if (NeedPreserveFooter)
+				Wipe_Crypto_Key();
+			Recreate_AndSec_Folder();
+			gui_msg("done=Done.");
+			return true;
+		} else {
+			gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+			return false;
+		}
+		return true;
+	} else {
+		LOGINFO("mkfs.f2fs binary not found, using rm -rf to wipe.\n");
+		return Wipe_RMRF();
+	}
 	return false;
-
-      gui_msg(Msg("formatting_using=Formatting {1} using {2}...")
-	      (Display_Name) ("mkexfatfs"));
-      Find_Actual_Block_Device();
-      command = "mkexfatfs " + Actual_Block_Device;
-      if (TWFunc::Exec_Cmd(command) == 0)
-	{
-	  Recreate_AndSec_Folder();
-	  gui_msg("done=Done.");
-	  return true;
-	}
-      else
-	{
-	  gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")
-		  (Display_Name));
-	  return false;
-	}
-      return true;
-    }
-  return false;
 }
 
-bool TWPartition::Wipe_MTD()
-{
-  if (!UnMount(true))
-    return false;
-
-  gui_msg(Msg("formatting_using=Formatting {1} using {2}...") (Display_Name)
-	  ("MTD"));
-
-  mtd_scan_partitions();
-  const MtdPartition *mtd = mtd_find_partition_by_name(MTD_Name.c_str());
-  if (mtd == NULL)
-    {
-      LOGERR("No mtd partition named '%s'", MTD_Name.c_str());
-      return false;
-    }
-
-  MtdWriteContext *ctx = mtd_write_partition(mtd);
-  if (ctx == NULL)
-    {
-      LOGERR("Can't write '%s', failed to format.", MTD_Name.c_str());
-      return false;
-    }
-  if (mtd_erase_blocks(ctx, -1) == -1)
-    {
-      mtd_write_close(ctx);
-      LOGERR("Failed to format '%s'", MTD_Name.c_str());
-      return false;
-    }
-  if (mtd_write_close(ctx) != 0)
-    {
-      LOGERR("Failed to close '%s'", MTD_Name.c_str());
-      return false;
-    }
-  Current_File_System = "yaffs2";
-  Recreate_AndSec_Folder();
-  gui_msg("done=Done.");
-  return true;
-}
-
-bool TWPartition::Wipe_RMRF()
-{
-  if (!Mount(true))
-    return false;
-  // This is the only wipe that leaves the partition mounted, so we
-  // must manually remove the partition from MTP if it is a storage
-  // partition.
-  if (Is_Storage)
-    PartitionManager.Remove_MTP_Storage(MTP_Storage_ID);
-
-  gui_msg(Msg("remove_all=Removing all files under '{1}'") (Mount_Point));
-  TWFunc::removeDir(Mount_Point, true);
-  Recreate_AndSec_Folder();
-  return true;
-}
-
+/* -- commented out -- 21 November 2019 --
 bool TWPartition::Wipe_F2FS()
 {
 	string command, command_512;
@@ -2838,83 +2835,34 @@ bool TWPartition::Wipe_F2FS()
 	   }
 	return false;
 }
-
-/* // OrangeFox - merged f2fs function
-bool TWPartition::Wipe_F2FS() {
-	string command;
-
-	if (TWFunc::Path_Exists("/sbin/mkfs.f2fs")) {
-		if (!UnMount(true))
-			return false;
-
-		gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)("mkfs.f2fs"));
-		Find_Actual_Block_Device();
-		if (!TWFunc::Path_Exists("/sbin/sload.f2fs")) {
-			command = "mkfs.f2fs -t 0";
-			if (!Is_Decrypted && Length != 0) {
-				// Only use length if we're not decrypted
-				char len[32];
-				int mod_length = Length;
-				if (Length < 0)
-					mod_length *= -1;
-				sprintf(len, "%i", mod_length);
-				command += " -r ";
-				command += len;
-			}
-			command += " " + Actual_Block_Device;
-		} else {
-			unsigned long long size = IOCTL_Get_Block_Size() + Length;
-			command = "mkfs.f2fs -d1 -f -O encrypt -O quota -O verity -w 4096 " + Actual_Block_Device + " " + std::to_string(size / 4096) + " && sload.f2fs -t /data " + Actual_Block_Device;
-		}
-		if (TWFunc::Exec_Cmd(command) == 0) {
-			Recreate_AndSec_Folder();
-			gui_msg("done=Done.");
-			return true;
-		} else {
-			gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
-			return false;
-		}
-		return true;
-	} else {
-		LOGINFO("mkfs.f2fs binary not found, using rm -rf to wipe.\n");
-		return Wipe_RMRF();
-	}
-	return false;
-}
 */
 
-bool TWPartition::Wipe_NTFS()
-{
-  string command;
-  string Ntfsmake_Binary;
+bool TWPartition::Wipe_NTFS() {
+	string command;
+	string Ntfsmake_Binary;
 
-  if (TWFunc::Path_Exists("/sbin/mkntfs"))
-    Ntfsmake_Binary = "mkntfs";
-  else if (TWFunc::Path_Exists("/sbin/mkfs.ntfs"))
-    Ntfsmake_Binary = "mkfs.ntfs";
-  else
-    return false;
+	if (TWFunc::Path_Exists("/sbin/mkntfs"))
+		Ntfsmake_Binary = "mkntfs";
+	else if (TWFunc::Path_Exists("/sbin/mkfs.ntfs"))
+		Ntfsmake_Binary = "mkfs.ntfs";
+	else
+		return false;
 
-  if (!UnMount(true))
-    return false;
+	if (!UnMount(true))
+		return false;
 
-  gui_msg(Msg("formatting_using=Formatting {1} using {2}...") (Display_Name)
-	  (Ntfsmake_Binary));
-  Find_Actual_Block_Device();
-  command = "/sbin/" + Ntfsmake_Binary + " " + Actual_Block_Device;
-  if (TWFunc::Exec_Cmd(command) == 0)
-    {
-      Recreate_AndSec_Folder();
-      gui_msg("done=Done.");
-      return true;
-    }
-  else
-    {
-      gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")
-	      (Display_Name));
-      return false;
-    }
-  return false;
+	gui_msg(Msg("formatting_using=Formatting {1} using {2}...")(Display_Name)(Ntfsmake_Binary));
+	Find_Actual_Block_Device();
+	command = "/sbin/" + Ntfsmake_Binary + " " + Actual_Block_Device;
+	if (TWFunc::Exec_Cmd(command) == 0) {
+		Recreate_AndSec_Folder();
+		gui_msg("done=Done.");
+		return true;
+	} else {
+		gui_msg(Msg(msg::kError, "unable_to_wipe=Unable to wipe {1}.")(Display_Name));
+		return false;
+	}
+	return false;
 }
 
 bool TWPartition::Wipe_Data_Without_Wiping_Media()
@@ -3086,8 +3034,6 @@ bool TWPartition::Backup_Tar(PartitionSettings *part_settings, pid_t *tar_fork_p
     return false;
   return true;
 }
-
-
 
 bool TWPartition::Backup_Image(PartitionSettings * part_settings)
 {

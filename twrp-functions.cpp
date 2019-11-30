@@ -121,6 +121,43 @@ static void AppendLineToFile(string file_path, string line)
     file << line << std::endl;
 }
 
+/* whether we have a new (20.x) magiskboot binary */
+static int New_Magiskboot_Binary(void)
+{
+   string magiskboot = TWFunc::Get_MagiskBoot();
+   if (!TWFunc::Path_Exists(magiskboot))
+     return -2; // magiskboot can't be found
+     
+   string cmd_script = "/tmp/tmp_0tm.sh";
+   CreateNewFile(cmd_script);
+   chmod (cmd_script.c_str(), 0755);
+   AppendLineToFile (cmd_script, "#!/sbin/sh");
+   AppendLineToFile (cmd_script, "abort() { echo \"$1\"; exit $1; }");
+   AppendLineToFile (cmd_script, "[ -z \"$1\" -o ! -x \"$1\" ] && abort \"2\"");
+   AppendLineToFile (cmd_script, "tmp=/tmp/chk_mgsk_01.txt");
+   AppendLineToFile (cmd_script, "$1 &> $tmp");
+   AppendLineToFile (cmd_script, "F=$(cat $tmp | grep \"dtb-<cmd> <dtb>\")");
+   AppendLineToFile (cmd_script, "rm -f $tmp");
+   AppendLineToFile (cmd_script, "[ -z \"$F\" ] && abort \"0\" || abort \"1\"");
+
+   if (!TWFunc::Path_Exists(cmd_script))
+     return -3; // failure to create the script
+
+   usleep(128);
+
+   string mCheck = TWFunc::Exec_With_Output(cmd_script + " " + magiskboot);        
+
+   unlink(cmd_script.c_str());
+
+   //gui_print("TESTING RESULT of %s=%s\n", magiskboot.c_str(), mCheck.c_str());
+   
+   if (mCheck == "0") // this is a new magiskboot binary
+   	return 1;
+   else 
+   	return 0;
+}
+
+
 /* Get the display ID of the installed ROM */
 static string GetInstalledRom(void)
 {
@@ -187,15 +224,6 @@ static bool Treble_Is_Running(void)
 { 
    int treble = DataManager::GetIntValue(FOX_ZIP_INSTALLER_TREBLE);
    if (Fox_Current_ROM_IsTreble == 1 || treble == 1 || ROM_IsRealTreble == 1 || Is_Real_Treble())
-      return true;
-   else
-      return false; 
-}
-
-/* Are we running a MIUI ROM (old or freshly installed) ? */
-static bool MIUI_Is_Running(void)
-{
-   if (Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
       return true;
    else
       return false; 
@@ -531,9 +559,17 @@ int TWFunc::Wait_For_Child_Timeout(pid_t pid, int *status,
   return 0;
 }
 
+bool TWFunc::Is_SymLink(string Path) {
+  struct stat st;
+  if ((lstat(Path.c_str(), &st) == 0) && (S_ISLNK(st.st_mode)))
+     return true;
+  else
+     return false;
+}
+
 bool TWFunc::Path_Exists(string Path) {
-	struct stat st;
-	return stat(Path.c_str(), &st) == 0;
+   struct stat st;
+   return stat(Path.c_str(), &st) == 0;
 }
 
 Archive_Type TWFunc::Get_File_Type(string fn)
@@ -1210,6 +1246,7 @@ int TWFunc::removeDir(const string path, bool skipParent)
 int TWFunc::copy_file(string src, string dst, int mode) {
 	PartitionManager.Mount_By_Path(src, false);
 	PartitionManager.Mount_By_Path(dst, false);
+	
 	if (!Path_Exists(src)) {
 		LOGINFO("Unable to find source file %s\n", src.c_str());
 		return -1;
@@ -1841,11 +1878,13 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
       ||  (Fox_Force_Deactivate_Process == 1))
 	{
       	  bool we_mounted = false;
+      	  bool we_mounted_sys = false;
       	  string thedir = "/system";
-          string rootdir = PartitionManager.Get_Android_Root_Path();//"/system";
+          string rootdir = PartitionManager.Get_Android_Root_Path();
 
       	// system-as-root stuff
-      	  if (Has_System_Root())
+      	  bool Is_SysRoot = Has_System_Root();
+      	  if (Is_SysRoot)
             {
 	       if (TWFunc::Path_Exists(rootdir + "/system") && TWFunc::Path_Exists(rootdir + "/system/etc"))
 	         {
@@ -1857,11 +1896,13 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
              	      {
                 	if (PartitionManager.Mount_By_Path("/system", false))
                 	   {
-                              we_mounted = true;
+                              we_mounted_sys = true;
                    	   }
              	      }
             	   if ((PartitionManager.Is_Mounted_By_Path("/system")) && (TWFunc::Path_Exists("/system/system")))
-                	 rootdir = "/system/system";
+            	     {
+                	rootdir = "/system/system";
+                     }
               	 }
             }
           else // it is not system-as-root
@@ -1875,7 +1916,7 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 	              {
 	           	if (PartitionManager.Mount_By_Path(rootdir + "system", false))
 	              	   {
-	                	we_mounted = true;
+	                	we_mounted_sys = true;
 	                	thedir = rootdir + "system";
 	                   }
 	              }
@@ -1915,13 +1956,10 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 	     	   }
 	     }
 
-	  usleep(512);
-	  if (we_mounted) // cleanup
-	     PartitionManager.UnMount_By_Path(thedir, false);
-
 	// using hardcoded /system/vendor/
 	  we_mounted = false;
-	  if (!PartitionManager.Is_Mounted_By_Path("/system"))
+	  
+	  if (!Is_SymLink("/system") && !PartitionManager.Is_Mounted_By_Path("/system"))
              {
                if (PartitionManager.Mount_By_Path("/system", false))
                  {
@@ -1929,7 +1967,7 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
                  }
              }
 
-	  if (PartitionManager.Is_Mounted_By_Path("/system"))
+	  if (!Is_SymLink("/system") && PartitionManager.Is_Mounted_By_Path("/system"))
 	     {
           	LOGINFO("OrangeFox: checking /system ...\n");
 	  	if (Path_Exists("/system/vendor/bin/install-recovery.sh"))
@@ -1948,6 +1986,13 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 	  	if (we_mounted) // cleanup
 	     	    PartitionManager.UnMount_By_Path("/system", false);
 	     }
+
+	  usleep(512);
+	  if (we_mounted_sys) // cleanup
+	    {
+	       if (PartitionManager.Is_Mounted_By_Path(thedir))
+	          PartitionManager.UnMount_By_Path(thedir, false);
+	    }
 
 	// using hardcoded /vendor/
 	  usleep(512);
@@ -1979,6 +2024,7 @@ void TWFunc::Disable_Stock_Recovery_Replace_Func(void)
 	  	if (we_mounted) // cleanup
 	     	    PartitionManager.UnMount_By_Path("/vendor", false);
 	     }
+      usleep(64);
       sync();
       }
 }
@@ -2230,7 +2276,7 @@ int TWFunc::Check_MIUI_Treble(void)
   // is the device encrypted?
   if (StorageIsEncrypted())
     {
-      gui_print ("* Storage is encrypted\n");
+      gui_print("* Storage is encrypted\n");
     }
   
   // show display panel name, if we got one 
@@ -2269,6 +2315,8 @@ int TWFunc::Check_MIUI_Treble(void)
       {
     	gui_print_color("warning", "* No ROM.\n");
       }
+
+   //New_Magiskboot_Binary();
 
    gui_print("--------------------------\n");  
    return 0;
@@ -2704,20 +2752,25 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
   std::string k = "/";
   std::string cd_dir = "cd ";
   std::string end_command = "; ";
-  std::string magiskboot = "magiskboot";
-  std::string magiskboot_sbin = "/sbin/" + magiskboot;
-  std::string magiskboot_action = magiskboot + " --";
   std::string cpio = "ramdisk.cpio";
   std::string tmp_cpio = Fox_tmp_dir + k + cpio;
   std::string ramdisk_cpio = Fox_ramdisk_dir + k + cpio;
   bool retval = false;
   bool keepverity = false;
   int res = 0;
-
   std::string cmd_script =  "/tmp/do_magisk-unpack.sh";
   std::string cmd_script2 = "/tmp/do_magisk-repack.sh";
+  
+  std::string magiskboot = "magiskboot";
+  std::string magiskboot_sbin = Get_MagiskBoot();
+  std::string magiskboot_action = magiskboot_sbin + " --";
+  int NewMagiskBoot = New_Magiskboot_Binary();
 
-  if (!TWFunc::Path_Exists(magiskboot_sbin)) TWFunc::tw_reboot(rb_recovery);
+  if (!TWFunc::Path_Exists(magiskboot_sbin))
+     {
+     	LOGERR("TWFunc::PackRepackImage_MagiskBoot: Cannot find magiskboot!");
+  	TWFunc::tw_reboot(rb_recovery);
+     }
  
   if (!PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false))
      {
@@ -2767,7 +2820,7 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        AppendLineToFile (cmd_script, cd_dir + Fox_tmp_dir);
 	        AppendLineToFile (cmd_script, "LOGINFO \"- Unpacking boot/recovery image - block device=\"");
 	        AppendLineToFile (cmd_script, "LOGINFO \"[" + tmpstr + "] \"");
-	        AppendLineToFile (cmd_script, magiskboot_action + "unpack \"" + tmpstr + "\" > /dev/null 2>&1");
+	        AppendLineToFile (cmd_script, magiskboot_action + "unpack -h \"" + tmpstr + "\" > /dev/null 2>&1");
 	        AppendLineToFile (cmd_script, "[ $? == 0 ] && LOGINFO \"- Succeeded.\" || abort \"- Unpacking image failed.\"");
 	        AppendLineToFile (cmd_script, "#");
 	        // processing boot image?
@@ -2800,13 +2853,21 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 		        		
 	              AppendLineToFile (cmd_script, "cp -af ramdisk.cpio ramdisk.cpio.orig");
 	              AppendLineToFile (cmd_script, "LOGINFO \"- Patching ramdisk (verity/encryption) ...\"");
-	              AppendLineToFile (cmd_script, "magiskboot --cpio ramdisk.cpio \"patch " + keepdmverity + keepforcedencryption + "\" > /dev/null 2>&1");
+	              AppendLineToFile (cmd_script, magiskboot_sbin + " --cpio ramdisk.cpio \"patch " + keepdmverity + keepforcedencryption + "\" > /dev/null 2>&1");
 	              AppendLineToFile (cmd_script, "[ $? == 0 ] && LOGINFO \"- Succeeded.\" || abort \"- Ramdisk patch failed.\"");
 	              AppendLineToFile (cmd_script, "rm -f ramdisk.cpio.orig");
 	              if (keepverity == false)
 	                 {
-	              	    AppendLineToFile (cmd_script, "[ -f dtb ] && magiskboot --dtb-patch dtb > /dev/null 2>&1");
-	              	    AppendLineToFile (cmd_script, "[ -f extra ] && magiskboot --dtb-patch extra > /dev/null 2>&1");
+	              	    if (NewMagiskBoot > 0)
+	              	    {
+	              	    	AppendLineToFile (cmd_script, "[ -f dtb ] && " + magiskboot_sbin + " dtb dtb patch > /dev/null 2>&1");
+	              	    	AppendLineToFile (cmd_script, "[ -f extra ] && " + magiskboot_sbin + " dtb extra patch > /dev/null 2>&1");	              	    
+	              	    }
+	              	    else
+	              	    {
+	              	    	AppendLineToFile (cmd_script, "[ -f dtb ] && " + magiskboot_sbin + " --dtb-patch dtb > /dev/null 2>&1");
+	              	    	AppendLineToFile (cmd_script, "[ -f extra ] && " + magiskboot_sbin + " --dtb-patch extra > /dev/null 2>&1");
+	              	    }
 	                 }
 	           } // is_boot
 
@@ -2819,10 +2880,6 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        AppendLineToFile (cmd_script, "[ $? == 0 ] && LOGINFO \"- Succeeded.\" || abort \"- Ramdisk file extraction failed.\"");
 	        AppendLineToFile (cmd_script, "rm -f " + ramdisk_cpio);
 	        
-	        #ifdef OF_AB_DEVICE
-	        //AppendLineToFile (cmd_script, "cp -f " + cmd_script + " /sdcard/Fox/logs/cmd_script1.log");
-	        #endif
-	        
 	        AppendLineToFile (cmd_script, "exit 0");
 	        res = Exec_Cmd (cmd_script, result);
 	        if (res == 0) 
@@ -2830,8 +2887,6 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        usleep (128);
 	        
 		unlink(cmd_script.c_str());
-		
-		//gui_print("DEBUG: result of unpack command %s=%i, and output=%s\n",cmd_script.c_str(), res, result.c_str());   
 	    } // if
 	} // do_unpack
       else // repack
@@ -2868,17 +2923,12 @@ bool TWFunc::PackRepackImage_MagiskBoot(bool do_unpack, bool is_boot)
 	        AppendLineToFile (cmd_script2, "[ $? == 0 ] && LOGINFO \"- Succeeded.\" || abort \"- Flashing repacked image failed.\"");
 	        AppendLineToFile (cmd_script2, magiskboot_action + "cleanup > /dev/null 2>&1");
 
-	        #ifdef OF_AB_DEVICE
-	        //AppendLineToFile (cmd_script2, "cp -f " + cmd_script2 + " /sdcard/Fox/logs/cmd_script2.log");
-	        #endif
-
 	        AppendLineToFile (cmd_script2, "exit 0");
 	        res = Exec_Cmd (cmd_script2, result);
 		usleep (128);
 		
 		unlink(cmd_script2.c_str());
 		
-		//gui_print("DEBUG: result of repack command %s=%i and output=%s\n",cmd_script2.c_str(), res, result.c_str());
 	        if (res == 0) 
 	          retval = true;
 	  	TWFunc::removeDir(Fox_tmp_dir, false);
@@ -4135,9 +4185,9 @@ bool patched_crypt = false;
      {
      	if (New_Fox_Installation == 1 || MIUI_Is_Running())
      	   {
-	      gui_print_color("warning", "\nOrangeFox: WARNING! Not patching boot image.\nFlash magisk *now*, or the ROM might not boot.\n");
+	      gui_print_color("warning", "\nOrangeFox: WARNING! Not patching boot image.\nSome ROMs will need you to flash magisk *now*, or the ROM might not boot.\n");
 	      if (MIUI_Is_Running())
-	         gui_print_color("warning", "NOTE: It is likely that booting the ROM now will replace OrangeFox with the stock MIUI recovery.\n");
+	         gui_print_color("warning", "NOTE: It is possible that booting the ROM now will replace OrangeFox with the stock MIUI recovery.\n");
 	   }
 	LOGINFO("OrangeFox: skipping patching of boot image on device: %s\n", Fox_Current_Device.c_str());
 	New_Fox_Installation = 0;
@@ -4296,6 +4346,14 @@ void TWFunc::Run_Post_Flash_Protocol(void)
 #endif
 }
 
+bool TWFunc::MIUI_Is_Running(void)
+{
+   if (Fox_Current_ROM_IsMIUI == 1 || TWFunc::JustInstalledMiui())
+      return true;
+   else
+      return false; 
+}
+
 bool TWFunc::Has_System_Root(void)
 {
  string info = TWFunc::System_Property_Get("ro.build.system_root_image");
@@ -4307,4 +4365,64 @@ int TWFunc::Rename_File(std::string oldname, std::string newname)
    return rename(oldname.c_str(), newname.c_str());
 }
 
+int TWFunc::Get_Android_SDK_Version(void)
+{
+int sdkver = 21;
+string sdkverstr = TWFunc::System_Property_Get("ro.build.version.sdk");
+ if (!sdkverstr.empty())
+   {
+      sdkver = atoi(sdkverstr.c_str());
+   }
+ return sdkver;
+}
+
+string TWFunc::Get_MagiskBoot(void)
+{
+  #ifdef OF_USE_NEW_MAGISKBOOT
+  if (Get_Android_SDK_Version() > 25 && TWFunc::Path_Exists(FOX_NEW_MAGISKBOOT))
+     return FOX_NEW_MAGISKBOOT;
+  #endif
+  return "/sbin/magiskboot";
+}
+
+void TWFunc::Dump_Current_Settings(void)
+{
+   LOGINFO("**********************************************************\n");
+   LOGINFO("DEBUG - OrangeFox: settings being used:\n");   
+   LOGINFO("- Disable DM-Verity=%i\n", DataManager::GetIntValue(FOX_DISABLE_DM_VERITY));
+   LOGINFO("- Disable Forced Encryption=%i\n", DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION));
+   LOGINFO("- Aggressive stock recovery deactivation=%i\n", DataManager::GetIntValue(FOX_ADVANCED_STOCK_REPLACE));
+
+   #ifdef OF_DONT_PATCH_ON_FRESH_INSTALLATION
+   LOGINFO("- Don't patch on fresh ROM installation=1\n");
+   #else
+   LOGINFO("- Don't patch on fresh ROM installation=0\n");
+   #endif
+
+   #ifdef OF_DONT_PATCH_ENCRYPTED_DEVICE
+   LOGINFO("- Don't patch encrypted devices=1\n");
+   #else
+   LOGINFO("- Don't patch encrypted devices=0\n");
+   #endif
+
+   #ifdef OF_USE_MAGISKBOOT
+   LOGINFO("- Use magiskboot=1\n");
+   #else
+   LOGINFO("- Use magiskboot=0\n");
+   #endif
+
+   #ifdef OF_USE_MAGISKBOOT_FOR_ALL_PATCHES
+   LOGINFO("- Use magiskboot for all patches=1\n");
+   #else
+   LOGINFO("- Use magiskboot for all patches=0\n");
+   #endif
+
+   #ifdef OF_FORCE_MAGISKBOOT_BOOT_PATCH_MIUI
+   LOGINFO("- Force magiskboot patch on MIUI ROM installation=1\n");
+   #else
+   LOGINFO("- Force magiskboot patch on MIUI ROM installation=0\n");
+   #endif
+
+   LOGINFO("**********************************************************\n");
+}
 //
