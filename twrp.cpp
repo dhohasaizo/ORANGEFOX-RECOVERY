@@ -328,32 +328,26 @@ int main(int argc, char **argv)
 	}
 
 #ifdef TW_HAS_MTP
-  char mtp_crash_check[PROPERTY_VALUE_MAX];
-  property_get("mtp.crash_check", mtp_crash_check, "0");
-  if (DataManager::GetIntValue("tw_mtp_enabled")
-      && !strcmp(mtp_crash_check, "0") && !crash_counter
-      && (!DataManager::GetIntValue(TW_IS_ENCRYPTED)
-	  || DataManager::GetIntValue(TW_IS_DECRYPTED)))
-    {
-      /*property_set("mtp.crash_check", "1");
-      LOGINFO("Starting MTP\n");
-      if (!PartitionManager.Enable_MTP())
-	PartitionManager.Disable_MTP();
-      else
-	gui_msg("mtp_enabled=MTP Enabled");
-      property_set("mtp.crash_check", "0");*/
-    }
-  else if (strcmp(mtp_crash_check, "0"))
-    {
-      gui_warn("mtp_crash=MTP Crashed, not starting MTP on boot.");
-      DataManager::SetValue("tw_mtp_enabled", 0);
-      PartitionManager.Disable_MTP();
-    }
-  else if (crash_counter == 1)
-    {
-      LOGINFO("TWRP crashed; disabling MTP as a precaution.\n");
-      PartitionManager.Disable_MTP();
-    }
+	char mtp_crash_check[PROPERTY_VALUE_MAX];
+	property_get("mtp.crash_check", mtp_crash_check, "0");
+	if (DataManager::GetIntValue("tw_mtp_enabled")
+			&& !strcmp(mtp_crash_check, "0") && !crash_counter
+			&& (!DataManager::GetIntValue(TW_IS_ENCRYPTED) || DataManager::GetIntValue(TW_IS_DECRYPTED))) {
+		property_set("mtp.crash_check", "1");
+		LOGINFO("Starting MTP\n");
+		if (!PartitionManager.Enable_MTP())
+			PartitionManager.Disable_MTP();
+		else
+			gui_msg("mtp_enabled=MTP Enabled");
+		property_set("mtp.crash_check", "0");
+	} else if (strcmp(mtp_crash_check, "0")) {
+		gui_warn("mtp_crash=MTP Crashed, not starting MTP on boot.");
+		DataManager::SetValue("tw_mtp_enabled", 0);
+		PartitionManager.Disable_MTP();
+	} else if (crash_counter == 1) {
+		LOGINFO("TWRP crashed; disabling MTP as a precaution.\n");
+		PartitionManager.Disable_MTP();
+	}
 #endif
 
   // call OrangeFox startup code
@@ -431,21 +425,6 @@ int main(int argc, char **argv)
 
   // Disable flashing of stock recovery
   TWFunc::Disable_Stock_Recovery_Replace();
-
-  // Check for su to see if the device is rooted or not
-  if (DataManager::GetIntValue("tw_mount_system_ro") == 0
-      && PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false))
-    {
-      // read /system/build.prop to get sdk version and do not offer to root if running M or higher (sdk version 23 == M)
-      string sdkverstr = TWFunc::System_Property_Get("ro.build.version.sdk");
-      int sdkver = 23;
-      if (!sdkverstr.empty())
-	{
-	  sdkver = atoi(sdkverstr.c_str());
-	}
-      sync();
-      PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
-    }
 #endif
 
 	// Reboot

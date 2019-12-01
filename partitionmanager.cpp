@@ -4683,3 +4683,14 @@ bool TWPartitionManager::Repack_Images(const std::string& Target_Image, const st
 	TWFunc::removeDir(REPACK_NEW_DIR, false);
 	return true;
 }
+
+#ifdef TW_HAS_MTP
+bool TWPartitionManager::is_MTP_Enabled(void) {
+  if (mtppid)
+     return true;
+  else
+     return false;
+}
+#endif
+
+//*
