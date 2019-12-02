@@ -252,8 +252,8 @@ int main(int argc, char **argv)
 	}
 
 	// Check for and run startup script if script exists
-	// TWFunc::check_and_run_script("/sbin/runatboot.sh", "boot");
-	// TWFunc::check_and_run_script("/sbin/postrecoveryboot.sh", "boot");
+	TWFunc::check_and_run_script("/sbin/runatboot.sh", "boot");
+	TWFunc::check_and_run_script("/sbin/postrecoveryboot.sh", "boot");
 
 #ifdef TW_INCLUDE_INJECTTWRP
 	// Back up TWRP Ramdisk if needed:
