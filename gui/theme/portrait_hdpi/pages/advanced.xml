@@ -865,26 +865,7 @@
 				<action>
 					<action function="mount">/data</action>
 					<action function="cmd">
-						tmp="/tmp/listapps"
-						list="$tmp/list"
-						apps_dir="/data/app"
-						namestr="application-label:'"
-						
-						[ -d "$list" ] && exit
-						mkdir "$tmp" "$list"
-						cd "$apps_dir"
-						
-						if [ -f "/sbin/aapt" ]; then
-							for pkgname in * ; do
-								name=$(aapt dump badging "$pkgname/base.apk" | grep "$namestr" | sed "s/"$namestr"//" | sed "s/'//")
-								echo "$apps_dir/$pkgname" > "$list/$name"
-							done
-						else 
-							for pkgname in * ; do
-								name="$(echo "$pkgname" | sed 's+-.*++g')"
-								echo "$apps_dir/$pkgname" > "$list/$name"
-							done
-						fi
+						/sbin/fox_list_apps
 					</action>
 				</action>
 
@@ -1060,6 +1041,7 @@
 					<actions>
 						<action function="terminalcommand">
 							rm -rf "$(cat "%amgr_file%")";
+							rm -f "%amgr_file%";
 						</action>
 					</actions>
 				</action>
@@ -1143,4 +1125,4 @@
 				</action>
 			</page>
 		</pages>
-	</recovery>
+</recovery>
