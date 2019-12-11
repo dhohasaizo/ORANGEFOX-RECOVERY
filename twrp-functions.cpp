@@ -4387,6 +4387,39 @@ string TWFunc::Get_MagiskBoot(void)
   return "/sbin/magiskboot";
 }
 
+void TWFunc::Setup_Verity_Forced_Encryption(void)
+{
+  DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
+
+// retain dm-verity and/or forced-encryption on devices that have problems with disabling them
+#ifdef OF_KEEP_DM_VERITY_FORCED_ENCRYPTION
+  DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
+  DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
+#endif
+
+#ifdef OF_KEEP_FORCED_ENCRYPTION
+  DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
+#endif
+
+#ifdef OF_KEEP_DM_VERITY
+  DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
+#endif
+
+// disable dm-verity and/or forced-encryption on devices that require these
+#ifdef OF_DISABLE_DM_VERITY_FORCED_ENCRYPTION
+  DataManager::SetValue(FOX_DISABLE_DM_VERITY, "1");
+  DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "1");
+#endif
+
+#ifdef OF_DISABLE_FORCED_ENCRYPTION
+  DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "1");
+#endif
+
+#ifdef OF_DISABLE_DM_VERITY
+  DataManager::SetValue(FOX_DISABLE_DM_VERITY, "1");
+#endif
+}
+
 void TWFunc::Dump_Current_Settings(void)
 {
    LOGINFO("**********************************************************\n");

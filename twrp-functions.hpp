@@ -150,6 +150,7 @@ public:
 	static int Rename_File(std::string oldname, std::string newname); // rename a file, using std strings
 	static bool MIUI_Is_Running(void); // Are we running a MIUI ROM (old or freshly installed) ?
 	static void Dump_Current_Settings(void); // log some current settings before flashing a ROM
+	static void Setup_Verity_Forced_Encryption(void); //setup dm-verity/forced-encryption build vars
 
 	//
 	static std::string get_cache_dir(); // return the cache partition existence

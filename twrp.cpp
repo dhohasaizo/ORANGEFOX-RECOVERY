@@ -394,29 +394,12 @@ int main(int argc, char **argv)
   twrpAdbBuFifo *adb_bu_fifo = new twrpAdbBuFifo();
   adb_bu_fifo->threadAdbBuFifo();
 
-// is it MIUI running now?
-// if (TWFunc::MIUI_Is_Running()) gui_print("MIUI is running ...\n");
-
-// retain dm-verity and/or forced-encryption on devices that have problems with disabling them
-#ifdef OF_KEEP_FORCED_ENCRYPTION
-  DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
-  DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
-#endif
-
-#ifdef OF_KEEP_DM_VERITY
-  DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
-  DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
-#endif
-
-#ifdef OF_KEEP_DM_VERITY_FORCED_ENCRYPTION
-  DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
-  DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
-  DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
-#endif
-
   // LOGINFO("OrangeFox: Reloading theme to apply generated theme on sdcard - again...\n");
   if (DataManager::GetStrValue("used_custom_encryption") == "1")
     PageManager::RequestReload();
+
+  // implement any relevant dm-verity/forced-encryption build vars
+  TWFunc::Setup_Verity_Forced_Encryption();
 
   // Launch the main GUI
   gui_start();
