@@ -283,7 +283,9 @@ RECOVERY_FSTAB_VERSION := 2
 LOCAL_CFLAGS += -DRECOVERY_API_VERSION=$(RECOVERY_API_VERSION)
 LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -Wno-format-extra-args
 LOCAL_CLANG := true
-
+ifeq ($(TARGET_ARCH), arm)
+  LOCAL_CFLAGS += -Wno-format
+endif
 #LOCAL_STATIC_LIBRARIES := \
 #    libext4_utils_static \
 #    libsparse_static \
