@@ -2329,14 +2329,17 @@ void TWFunc::Welcome_Message(void)
     gui_print("--------------------------\n");
     gui_print("Welcome to OrangeFox Recovery!\n");
     gui_print("[OrangeFox Version]: %s\n", FOX_BUILD);
+    
     if (FOX_BUILD == "Unofficial")
       gui_print_color("warning", "[Build type]: Unofficial\n");
     else
       gui_print("[Build type]: %s\n", BUILD_TYPE);
+    
     gui_print("[TWRP Version]: %s\n", FOX_VERSION);
-    #ifdef OF_DISABLE_MIUI_SPECIFIC_FEATURES
+    #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
     LOGINFO(" [MIUI-specific features not enabled]\n");
     #endif
+    
     gui_print("--------------------------\n");
     Fox_Has_Welcomed++;
 }
@@ -3399,18 +3402,18 @@ bool TWFunc::Fresh_Fox_Install()
   	DataManager::SetValue("first_start", "1");
 
 	#ifdef OF_DONT_PATCH_ON_FRESH_INSTALLATION
-	gui_print("Fresh OrangeFox installation - not running the dm-verity/forced-encryption patches\n");
+	    gui_print("Fresh OrangeFox installation - not running the dm-verity/forced-encryption patches\n");
 	#else
-	New_Fox_Installation = 1;
-	gui_print("Fresh OrangeFox installation - about to run the dm-verity/forced-encryption patches\n");
-     	if (Fox_Current_ROM_IsMIUI == 1)
-     	   {
-		Fox_Force_Deactivate_Process = 1;
-		DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
-	   }
-	TWFunc::Deactivation_Process();
-	New_Fox_Installation = 0;
-	#endif
+	    New_Fox_Installation = 1;
+	    gui_print("Fresh OrangeFox installation - about to run the dm-verity/forced-encryption patches\n");
+     	    if (Fox_Current_ROM_IsMIUI == 1)
+     	       {
+		  Fox_Force_Deactivate_Process = 1;
+		  DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
+	       }
+	    TWFunc::Deactivation_Process();
+	    New_Fox_Installation = 0;
+	#endif // OF_DONT_PATCH_ON_FRESH_INSTALLATION
 	
 	LOGINFO ("DEBUG [Fresh_Fox_Install()] - copying log to:/sdcard/Fox/logs/post-install.log \n");
 	copy_file("/tmp/recovery.log", "/sdcard/Fox/logs/post-install.log", 0644);
@@ -4157,6 +4160,14 @@ void TWFunc::Deactivation_Process(void)
 {
 bool patched_verity = false;
 bool patched_crypt = false;
+
+  #ifdef OF_SKIP_ORANGEFOX_PROCESS
+	gui_print_color("warning", "\nOrangeFox: Skipping the OrangeFox Process.\n");
+	New_Fox_Installation = 0;
+	Fox_Force_Deactivate_Process = 0;
+	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 0);
+	return;
+  #endif
 
   // don't call this on first boot following fresh installation
   if (New_Fox_Installation != 1)
