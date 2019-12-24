@@ -2243,6 +2243,7 @@ int TWFunc::Check_MIUI_Treble(void)
   string display_panel = "";
   string rom_desc = "";
   string incr_version = "";
+  string finger_print = "";
   
   // * run startup script
   RunStartupScript();
@@ -2256,6 +2257,7 @@ int TWFunc::Check_MIUI_Treble(void)
   	display_panel = TWFunc::File_Property_Get (fox_cfg, "panel_name");	
   	Fox_Current_ROM = TWFunc::File_Property_Get (fox_cfg, "ROM");
   	incr_version = TWFunc::File_Property_Get (fox_cfg, "INCREMENTAL_VERSION");
+  	finger_print = TWFunc::File_Property_Get (fox_cfg, "ROM_FINGERPRINT");
     }
 
    // Treble ?
@@ -2309,6 +2311,11 @@ int TWFunc::Check_MIUI_Treble(void)
         if (!incr_version.empty())
           {
   	     gui_print("* (%s)\n", incr_version.c_str());
+          }
+
+        if (!finger_print.empty())
+          {
+  	     gui_print("* Fingerprint: %s\n", finger_print.c_str());
           }
     }
     else
