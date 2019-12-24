@@ -4198,9 +4198,11 @@ bool patched_crypt = false;
      {
      	if (New_Fox_Installation == 1 || MIUI_Is_Running())
      	   {
-	      gui_print_color("warning", "\nOrangeFox: WARNING! Not patching boot image.\nSome ROMs will need you to flash magisk *now*, or the ROM might not boot.\n");
 	      if (MIUI_Is_Running())
-	         gui_print_color("warning", "NOTE: It is possible that booting the ROM now will replace OrangeFox with the stock MIUI recovery.\n");
+	         {
+	           gui_print_color("warning", "\nOrangeFox: WARNING! Not patching boot image.\nSome ROMs will need you to flash\nmagisk *now*, or the ROM might not boot.\n");
+	           gui_print_color("warning", "NOTE: It is possible that booting MIUI now will replace OrangeFox with the stock MIUI recovery.\n");
+	         }
 	   }
 	LOGINFO("OrangeFox: skipping patching of boot image on device: %s\n", Fox_Current_Device.c_str());
 	New_Fox_Installation = 0;
