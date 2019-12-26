@@ -320,12 +320,18 @@ int main(int argc, char **argv)
 	PageManager::LoadLanguage(DataManager::GetStrValue("tw_language"));
 	GUIConsole::Translate_Now();
 
+  	// implement any relevant dm-verity/forced-encryption build vars
+  	TWFunc::Setup_Verity_Forced_Encryption();
+
 	// Run any outstanding OpenRecoveryScript
 	std::string cacheDir = TWFunc::get_cache_dir();
 	std::string orsFile = cacheDir + "/recovery/openrecoveryscript";
 	if ((DataManager::GetIntValue(TW_IS_ENCRYPTED) == 0 || SkipDecryption) && (TWFunc::Path_Exists(SCRIPT_FILE_TMP) || TWFunc::Path_Exists(orsFile))) {
 		OpenRecoveryScript::Run_OpenRecoveryScript();
 	}
+
+  	// call OrangeFox startup code
+  	TWFunc::OrangeFox_Startup();
 
 #ifdef TW_HAS_MTP
 	char mtp_crash_check[PROPERTY_VALUE_MAX];
@@ -349,9 +355,6 @@ int main(int argc, char **argv)
 		PartitionManager.Disable_MTP();
 	}
 #endif
-
-  // call OrangeFox startup code
-  TWFunc::OrangeFox_Startup();
 
 #ifndef TW_OEM_BUILD
 	// Check if system has never been changed
@@ -397,9 +400,6 @@ int main(int argc, char **argv)
   // LOGINFO("OrangeFox: Reloading theme to apply generated theme on sdcard - again...\n");
   if (DataManager::GetStrValue("used_custom_encryption") == "1")
     PageManager::RequestReload();
-
-  // implement any relevant dm-verity/forced-encryption build vars
-  TWFunc::Setup_Verity_Forced_Encryption();
 
   // Launch the main GUI
   gui_start();
