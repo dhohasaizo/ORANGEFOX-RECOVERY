@@ -2,7 +2,7 @@
 	Copyright 2012 bigbiff/Dees_Troy TeamWin
 	This file is part of TWRP/TeamWin Recovery Project.
 
-	Copyright (C) 2018-2019 OrangeFox Recovery Project
+	Copyright (C) 2018-2020 OrangeFox Recovery Project
 	This file is part of the OrangeFox Recovery Project.
 
 	TWRP is free software: you can redistribute it and/or modify
@@ -2313,10 +2313,11 @@ int TWFunc::Check_MIUI_Treble(void)
   	     gui_print("* (%s)\n", incr_version.c_str());
           }
 
+        // fingerprints
         if (!finger_print.empty())
-          {
-  	     gui_print("* Fingerprint: %s\n", finger_print.c_str());
-          }
+           {
+  	      gui_print("* Fingerprint: %s\n", finger_print.c_str());          
+           }
     }
     else
       {
@@ -2504,8 +2505,8 @@ void TWFunc::OrangeFox_Startup(void)
   
   // start mtp manually, if enabled
   #ifdef TW_HAS_MTP
-  if (DataManager::GetIntValue("tw_mtp_enabled") == 1 && !PartitionManager.is_MTP_Enabled())
-     PartitionManager.Enable_MTP();
+ // if (DataManager::GetIntValue("tw_mtp_enabled") == 1 && !PartitionManager.is_MTP_Enabled())
+ //    PartitionManager.Enable_MTP();
   #endif
 }
 
@@ -4183,7 +4184,7 @@ bool patched_crypt = false;
      }
    
   // advanced stock replace
-  if (MIUI_Is_Running())
+  // if (MIUI_Is_Running()) // don't do this for MIUI only
   	Disable_Stock_Recovery_Replace();
 
 // patch ROM's fstab
@@ -4207,8 +4208,14 @@ bool patched_crypt = false;
      	   {
 	      if (MIUI_Is_Running())
 	         {
-	           gui_print_color("warning", "\nOrangeFox: WARNING! Not patching boot image.\nSome ROMs will need you to flash\nmagisk *now*, or the ROM might not boot.\n");
-	           gui_print_color("warning", "NOTE: It is possible that booting MIUI now will replace OrangeFox with the stock MIUI recovery.\n");
+	            if (JustInstalledMiui())
+	              {              	
+	              	gui_print_color("warning", 
+	              	"\nOrangeFox: WARNING! Not patching boot image.\nSome ROMs will need you to flash\nmagisk *now*, or the ROM might not boot.\n");
+	            	
+	            	gui_print_color("warning", 
+	            	"\nNOTE: It is possible that booting MIUI now will replace OrangeFox with the stock MIUI recovery.\n");
+	              }
 	         }
 	   }
 	LOGINFO("OrangeFox: skipping patching of boot image on device: %s\n", Fox_Current_Device.c_str());
