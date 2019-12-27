@@ -3382,7 +3382,7 @@ bool TWFunc::Repack_Image(string mount_point)
 bool TWFunc::JustInstalledMiui(void)
 {
   Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
-  if ((Fox_Zip_Installer_Code == 22) || (Fox_Zip_Installer_Code == 23) || (Fox_Zip_Installer_Code == 3))
+  if ((Fox_Zip_Installer_Code == 22) || (Fox_Zip_Installer_Code == 23) || (Fox_Zip_Installer_Code == 3) || (Fox_Zip_Installer_Code == 2))
       return true;
   else
       return false;
@@ -4414,11 +4414,13 @@ string TWFunc::Get_MagiskBoot(void)
   return "/sbin/magiskboot";
 }
 
+// hopefully, this function will be obsolete one day ... //
 void TWFunc::Setup_Verity_Forced_Encryption(void)
 {
   DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
 
-// retain dm-verity and/or forced-encryption on devices that have problems with disabling them
+/* untick the dm-verity and/or forced-encryption boxes on every bootup 
+(regardless of user settings) on devices that have problems with disabling them */
 #ifdef OF_KEEP_DM_VERITY_FORCED_ENCRYPTION
   DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
   DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
@@ -4432,17 +4434,18 @@ void TWFunc::Setup_Verity_Forced_Encryption(void)
   DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
 #endif
 
-// disable dm-verity and/or forced-encryption on devices that require these
-#ifdef OF_DISABLE_DM_VERITY_FORCED_ENCRYPTION
+/* tick the disable dm-verity and/or forced-encryption boxes on every bootup 
+(regardless of user settings) on devices that require them */
+#ifdef OF_FORCE_DISABLE_DM_VERITY_FORCED_ENCRYPTION
   DataManager::SetValue(FOX_DISABLE_DM_VERITY, "1");
   DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "1");
 #endif
 
-#ifdef OF_DISABLE_FORCED_ENCRYPTION
+#ifdef OF_FORCE_DISABLE_FORCED_ENCRYPTION
   DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "1");
 #endif
 
-#ifdef OF_DISABLE_DM_VERITY
+#ifdef OF_FORCE_DISABLE_DM_VERITY
   DataManager::SetValue(FOX_DISABLE_DM_VERITY, "1");
 #endif
 }

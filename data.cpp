@@ -2,7 +2,7 @@
 	Copyright 2012 to 2016 bigbiff/Dees_Troy TeamWin
 	This file is part of TWRP/TeamWin Recovery Project.
 
-	Copyright (C) 2018-2019 OrangeFox Recovery Project
+	Copyright (C) 2018-2020 OrangeFox Recovery Project
 	This file is part of the OrangeFox Recovery Project.
 
 	TWRP is free software: you can redistribute it and/or modify
@@ -58,7 +58,7 @@ using namespace std;
 string DataManager::mBackingFile;
 int DataManager::mInitialized = 0;
 InfoManager DataManager::mPersist;	// Data that that is not constant and will be saved to the settings file
-InfoManager DataManager::mData;	// Data that is not constant and will not be saved to settings file
+InfoManager DataManager::mData;  	// Data that is not constant and will not be saved to settings file
 InfoManager DataManager::mConst;	// Data that is constant and will not be saved to settings file
 
 extern bool datamedia;
@@ -878,21 +878,38 @@ void DataManager::SetDefaultValues()
   miui_ota = "0";
   #endif  
 
-  mPersist.SetValue("fox_verify_incremental_ota_signature", miui_ota);  // set to 1 [support miui ota]
-  mPersist.SetValue(FOX_INCREMENTAL_PACKAGE, miui_ota); 		// set to 1 [support miui ota]
+  mPersist.SetValue("fox_verify_incremental_ota_signature", miui_ota);  // set to 1 to support miui ota
+  mPersist.SetValue(FOX_INCREMENTAL_PACKAGE, miui_ota); 		// set to 1 to support miui ota
   mPersist.SetValue(FOX_DO_SYSTEM_ON_OTA, miui_ota);
 
-  string miui_switch = "0"; // DJ9, 20191209 - turn it off by default until further notice, else there might be issues in new Xiaomi devices
+  // DJ9 - turn these off by default until further notice, else there might be 
+  // issues in new Xiaomi devices or new ROMs; DJ9 //
+  string dm_verity_switch = "0"; 
+  string fEncrypt_switch = "0";
+
+  #if defined(OF_DISABLE_DM_VERITY_FORCED_ENCRYPTION) || defined(OF_FORCE_DISABLE_DM_VERITY_FORCED_ENCRYPTION)
+  dm_verity_switch = "1"; 
+  fEncrypt_switch = "1";
+  #endif
+  
+  #if defined(OF_DISABLE_DM_VERITY) || defined(OF_FORCE_DISABLE_DM_VERITY)
+  dm_verity_switch = "1"; 
+  #endif
+  
+  #if defined(OF_DISABLE_FORCED_ENCRYPTION) || defined(OF_FORCE_DISABLE_FORCED_ENCRYPTION)
+  fEncrypt_switch = "1";
+  #endif
+  
   #if defined(OF_KEEP_DM_VERITY) || defined(OF_KEEP_DM_VERITY_FORCED_ENCRYPTION)
   mPersist.SetValue(FOX_DISABLE_DM_VERITY, "0");
   #else
-  mPersist.SetValue(FOX_DISABLE_DM_VERITY, miui_switch);
+  mPersist.SetValue(FOX_DISABLE_DM_VERITY, dm_verity_switch);
   #endif
   
   #if defined(OF_KEEP_FORCED_ENCRYPTION) || defined(OF_KEEP_DM_VERITY_FORCED_ENCRYPTION)
   mPersist.SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
   #else
-  mPersist.SetValue(FOX_DISABLE_FORCED_ENCRYPTION, miui_switch);
+  mPersist.SetValue(FOX_DISABLE_FORCED_ENCRYPTION, fEncrypt_switch);
   #endif
   //  MIUI }
 
