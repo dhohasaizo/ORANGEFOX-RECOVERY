@@ -911,7 +911,7 @@
 			<template name="action_page_console"/>
 
 			<button style="btn_raised">
-				<condition var1="fileexists" op="!=" var2="/sdcard/Fox/FoxFiles/PassReset.zip"/>
+				<condition var1="fileexists" op="!=" var2="/FFiles/OF_DelPass/OF_DelPass.zip"/>
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
 				<text>{@back_btn}</text>
 				<actions>
@@ -921,7 +921,7 @@
 			</button>
 
 			<button style="btn_raised">
-				<condition var1="fileexists" var2="/sdcard/Fox/FoxFiles/PassReset.zip"/>
+				<condition var1="fileexists" var2="/FFiles/OF_DelPass/OF_DelPass.zip"/>
 				<placement x="%btn_raised_left_x%" y="%row_btn1_y%"/>
 				<text>{@module_pass}</text>
 					<actions>
@@ -930,8 +930,8 @@
 						<action function="set">tw_clear_destination=main</action>
 						<action function="set">fox_m_author=DarthJabba9</action>
 						<action function="set">fox_m_name={@module_pass}</action>
-						<action function="set">tw_file=PassReset.zip</action>
-						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/PassReset.zip</action>
+						<action function="set">tw_file=OF_DelPass.zip</action>
+						<action function="set">tw_filename=/FFiles/OF_DelPass/OF_DelPass.zip</action>
 						<action function="set">tw_filecheck=%tw_filename%</action>
 						<action function="set">install_back=clear_vars</action>
 						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>

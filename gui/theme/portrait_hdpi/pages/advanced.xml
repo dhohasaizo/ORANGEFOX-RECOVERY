@@ -343,14 +343,14 @@
 					</actions>
 				</listitem>
 				<listitem name="{@module_pass}">
-					<condition var1="fileexists" var2="/sdcard/Fox/FoxFiles/PassReset.zip"/>
+					<condition var1="fileexists" var2="/FFiles/OF_DelPass/OF_DelPass.zip"/>
 					<icon res="bs_btn_archive"/>
 					<actions>
 						<action function="queueclear"/>
 						<action function="set">fox_m_author=DarthJabba9</action>
 						<action function="set">fox_m_name={@module_pass}</action>
-						<action function="set">tw_file=PassReset.zip</action>
-						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/PassReset.zip</action>
+						<action function="set">tw_file=OF_DelPass.zip</action>
+						<action function="set">tw_filename=/FFiles/OF_DelPass/OF_DelPass.zip</action>
 						<action function="set">tw_filecheck=%tw_filename%</action>
 						<action function="set">install_back=fox_modules</action>
 						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
