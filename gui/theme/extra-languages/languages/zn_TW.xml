@@ -4,35 +4,6 @@
 
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
-		<resource name="status" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="bigfont" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="body1" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="body2" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="subhead" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="title" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="mainbutton" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="button" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="menu" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="input_fail" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="splash" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-
-		<resource name="font_l" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="font_m" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="font_s" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="font_b" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-
-		<resource name="keylabel" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="keylabel-bold" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="keylabel-num" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="keylabel-small" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="keylabel-longpress" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		
-		<resource name="Secondary" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="Secondary-title" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="caption" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		
-		<resource name="clock" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="info" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
 
 		<!-- Partition display names -->
 		<string name="system">系統</string>
@@ -75,15 +46,15 @@
 		<string name="install_zip_hdr">安裝 ZIP</string>
 		<string name="install_zip_btn">安裝 ZIP</string>
 		<string name="install_image_hdr">安裝 Image 映像</string>
-		<string name="install_image_btn">Install IMAGE</string>
+		<string name="install_image_btn">安裝映像</string>
 		<string name="install_select_file_hdr">選擇檔案</string>
 		<string name="install_select_file_btn">選擇檔案</string>
 		<string name="adb_sideload_btn">ADB &amp; Sideload</string>
 		<string name="select_storage_hdr">選擇儲存位置：</string>
 		<string name="select_storage_btn">選擇儲存位置：</string>
 		<string name="queue_hdr">佇列</string>
-		<string name="raised_clearqueue_btn">Clear Queue</string>
-		<string name="raised_viewqueue_btn">View Queue</string>
+		<string name="raised_clearqueue_btn">清除佇列</string>
+		<string name="raised_viewqueue_btn">查看佇列</string>
 		<string name="zip_queue_count">已選擇 %tw_zip_queue_count% 個檔案（最多 10 個）</string>
 		<string name="folder">資料夾</string>
 		<string name="file">檔案</string>
@@ -96,15 +67,15 @@
 		<string name="working">正在處理…</string>
 		<string name="failed">失敗</string>
 		<string name="successful">成功</string>
-		<string name="wipe_cache_btn">Wipe Caches</string>
-		<string name="reboot_system_btn">Reboot System</string>
-		<string name="reboot_recovery_btn">Reboot Recovery</string>
+		<string name="wipe_cache_btn">清除 Cache</string>
+		<string name="reboot_system_btn">重新啟動到系統</string>
+		<string name="reboot_recovery_btn">重新啟動到 Recovery</string>
 		<string name="install_sel_target">選擇目標分割區</string>
 		<string name="flash_image_select">分割區</string>
 		<string name="flashing_image">正在刷入映像…</string>
 		<string name="image_flashed">Image 映像刷入成功</string>
 		<string name="wipe_cache_dalvik_confirm">是否清除 Cache 和 Dalvik ？</string>
-		<string name="wipe_dalvik_confirm">Wipe Dalvik?</string>
+		<string name="wipe_dalvik_confirm">是否清除 Dalvik ？</string>
 		<string name="wiping_cache_dalvik">正在清除 Cache &amp; Dalvik…</string>
 		<string name="wipe_cache_dalvik_complete">Cache 和 Dalvik 清除完成</string>
 		<string name="cache_dalvik_done">Cache 和 Dalvik 清除完成</string>
@@ -112,7 +83,7 @@
 		<string name="rebooting">重新啟動中...</string>
 		<string name="swipe_reboot">滑動即可重新啟動</string>
 		<string name="confirm_action">確認操作</string>
-		<string name="cancel_btn">Cancel</string>
+		<string name="cancel_btn">取消</string>
 		<string name="wipe_hdr">清除</string>
 		<string name="factory_reset_hdr">恢復出廠設置</string>
 		<string name="factory_reset1">清除Data、Cache和Dalvik</string>
@@ -140,37 +111,37 @@
 		<string name="format_data_complete">Data 分區格式化已完成</string>
 		<!-- Translator note: the word "yes" must remain English! -->
 		<string name="yes_continue">輸入「yes」以確認。</string>
-		<string name="part_opt_hdr">Partition Info</string>
+		<string name="part_opt_hdr">分區信息</string>
 		<string name="file_sys_opt">分區選項</string>
-		<string name="part_mount_point">Mount Point</string>
-		<string name="part_curr_fs">File system</string>
+		<string name="part_mount_point">挂載點</string>
+		<string name="part_curr_fs">檔案系統</string>
 		<string name="part_present">Present</string>
 		<string name="part_removable">Removable</string>
 		<string name="part_yes">是</string>
 		<string name="part_no">不是</string>
 		<string name="part_size">大小</string>
-		<string name="part_used">Used</string>
-		<string name="part_free">Free</string>
+		<string name="part_used">已使用</string>
+		<string name="part_free">空閑</string>
 		<string name="part_backup_size">備份的檔案大小</string>
-		<string name="resize_btn">調整FS的大小</string>
-		<string name="resize_confirm">Resize partition</string>
+		<string name="resize_btn">調整檔案系統的大小</string>
+		<string name="resize_confirm">調整分割槽大小</string>
 		<string name="resizing">正在調整大小...</string>
 		<string name="resize_complete">調整大小已完成</string>
 		<string name="swipe_resize">滑動以調整大小</string>
-		<string name="repair_btn">Repair FS</string>
-		<string name="repair_confirm">Repair partition</string>
+		<string name="repair_btn">修復檔案系統</string>
+		<string name="repair_confirm">修復分割槽</string>
 		<string name="repairing">正在修復...</string>
 		<string name="repair_complete">修復完成</string>
 		<string name="swipe_repair">滑動來修復</string>
-		<string name="change_fs_btn">改變FS</string>
+		<string name="change_fs_btn">改變檔案系統</string>
 		<string name="change_fs_warn1">一些 ROM 或内核可能不支持</string>
-		<string name="change_fs_warn2">某些文件系統。 請謹慎操作！</string>
-		<string name="change_fs_confirm">Change FS to</string>
+		<string name="change_fs_warn2">某些檔案系統。 請謹慎操作！</string>
+		<string name="change_fs_confirm">修改檔案系統</string>
 		<string name="formatting">正在格式化...</string>
 		<string name="format_complete">格式化已完成</string>
 		<string name="swipe_change_fs">滑動以更改</string>
-		<string name="back_btn">Back</string>
-		<string name="wipe_enc_btn">Wipe Encryption</string>
+		<string name="back_btn">返回</string>
+		<string name="wipe_enc_btn">清除加密</string>
 		<string name="swipe_factory_reset">滑動來進行出廠重置</string>
 		<string name="backup_hdr">備份</string>
 		<string name="encryption_hdr">啟用加密</string>
@@ -206,7 +177,7 @@
 		<string name="swipe_to_rename">滑動來進行重新命名</string>
 		<string name="mount_hdr">掛載</string>
 		<string name="mount_sys_ro_chk">裝載系統分區為只讀</string>
-		<string name="decrypt_data_btn">Decrypt Data</string>
+		<string name="decrypt_data_btn">解密 Data 分割槽</string>
 		<string name="disable_mtp_btn">停用MTP</string>
 		<string name="enable_mtp_btn">啟用MTP</string>
 		<string name="usb_storage_hdr">USB 儲存裝置</string>
@@ -221,20 +192,20 @@
 		<string name="rb_bootloader_btn">Bootloader</string>
 		<string name="rb_theme">主題</string>
 		<string name="rb_download_btn">下載模式</string>
-		<string name="rb_edl_btn">Edl</string>
+		<string name="rb_edl_btn">Edl 模式</string>
 		<string name="turning_off">關閉中...</string>
 		<string name="swipe_power_off">滑動即可關機</string>
 		<string name="sys_ro">系統分割區</string>
 		<string name="sys_ro_hdr">未修改的系統分區</string>
-		<string name="sys_rop1">OrangeFox can leave your system partition</string>
+		<string name="sys_rop1">OrangeFox 能夠不修改系统分割槽</string>
 		<string name="sys_rop2">，使您更容易</string>
 		<string name="sys_rop2a">進行官方更新。</string>
-		<string name="sys_rop3">OrangeFox will be unable to prevent the</string>
-		<string name="sys_rop4">stock ROM from replacing OrangeFox.</string>
-		<string name="sys_rop5">ZIP installations or ADB operations</string>
+		<string name="sys_rop3">OrangeFox 將無法阻止</string>
+		<string name="sys_rop4">官方 ROM 將 OrangeFox 替換爲官方 Recovery.</string>
+		<string name="sys_rop5">ZIP 安裝或 ADB 操作</string>
 		<string name="sys_rop6">仍然修改系統分區</string>
-		<string name="sys_ro_never_show_chk">Never show this screen again</string>
-		<string name="sys_ro_keep_ro_btn">Keep Read-Only</string>
+		<string name="sys_ro_never_show_chk">不再顯示</string>
+		<string name="sys_ro_keep_ro_btn">保持只讀</string>
 		<string name="swipe_allow_mod">滑動以允許修改</string>
 		<string name="settings_hdr">設置</string>
 		<string name="settings_cptn">一般設定</string>
@@ -244,7 +215,7 @@
 		<string name="simact_chk">模擬操作，僅做主題測試</string>
 		<string name="simfail_chk">模擬操作失败</string>
 		<string name="sel_tz_list">時區</string>
-		<string name="dialog_reset_theme_hdr">Reset to defaults</string>
+		<string name="dialog_reset_theme_hdr">重設為預設值</string>
 		<!-- Translator note: if it does not make sense to translate the locations or if it makes more sense,
 				feel free to change the location listed or drop the location entirely and just call it UTC -6 -->
 		<string name="utcm11">（UTC -11）薩摩亞，中途島</string>
@@ -283,7 +254,7 @@
 		<string name="curr_tz_s">當前時區 ︰</string>
 		<string name="set_tz_btn">設置時區</string>
 		<string name="settings_screen_cptn">營幕設置</string>
-		<string name="settings_screen_timeout_cptn">Timeout is off</string>
+		<string name="settings_screen_timeout_cptn">超時關閉</string>
 		<string name="settings_screen_timeout_cptn2">逾時:</string>
 		<string name="timeout_unit">秒鐘</string>
 		<string name="enable_timeout_chk">啟用營幕逾時</string>
@@ -292,25 +263,25 @@
 		<string name="screen_bright_slider">亮度 ︰ %tw_brightness_pct%%</string>
 		<string name="screen_bright_na">無法設置亮度</string>
 		<string name="vibration_hdr">震動</string>
-		<string name="button_vibration_hdr">Button Vibration is off</string>
-		<string name="kb_vibration_hdr">Keyboard Vibration is off</string>
-		<string name="act_vibration_hdr">Action Vibration is off</string>
+		<string name="button_vibration_hdr">已關閉按鍵震動</string>
+		<string name="kb_vibration_hdr">已關閉鍵盤震動</string>
+		<string name="act_vibration_hdr">已關閉觸摸震動</string>
 		<string name="button_vibration">按鈕振動:</string>
 		<string name="kb_vibration">鍵盤振動:</string>
 		<string name="act_vibration">操作振動:</string>
 		<string name="advanced_hdr">高級設置</string>
-		<string name="copy_log_confirm">Copy Log to SD Card?</string>
-		<string name="copying_log">Copying Log to SD Card...</string>
-		<string name="copy_log_complete">Log copied</string>
+		<string name="copy_log_confirm">將日誌複製到SD卡嗎？</string>
+		<string name="copying_log">正在將日誌複製到SD卡...</string>
+		<string name="copy_log_complete">日誌已複製完成</string>
 		<string name="terminal_btn">終端機</string>
 		<string name="dumlock_note1">關於此過程的信息</string>
 		<string name="dumlock_note2">HTC Dumlock 請参閱：</string>
-		<string name="inject_twrp_btn">Inject OrangeFox</string>
-		<string name="inject_twrp_confirm">Re-Inject OrangeFox?</string>
-		<string name="injecting_twrp">Re-Injecting OrangeFox...</string>
-		<string name="inject_twrp_complete">OrangeFox Injection completed</string>
+		<string name="inject_twrp_btn">注入OrangeFox</string>
+		<string name="inject_twrp_confirm">是否重新注入 OrangeFox？</string>
+		<string name="injecting_twrp">正在重新注入 OrangeFox...</string>
+		<string name="inject_twrp_complete">OrangeFox 注入完成</string>
 		<string name="swipe_to_confirm">滑動來確認</string>
-		<string name="part_sd_hdr">Partition SD</string>
+		<string name="part_sd_hdr">分割SD卡</string>
 		<string name="rem_sd">可移動存儲</string>
 		<string name="rem_sd_sel">選擇一個可移動的設備！</string>
 		<string name="invalid_partsd_sel">您必須選擇一個可移動的設備</string>
@@ -326,19 +297,19 @@
 		<string name="part_sd_swap_sz">Swap 大小：</string>
 		<string name="file_system">文件系統：</string>
 		<string name="swipe_part_sd">滑動來進行分區</string>
-		<string name="partitioning_sd">Partitioning SD Card...</string>
+		<string name="partitioning_sd">正在分割SD卡...</string>
 		<string name="partitioning_sd2">這將需要幾分鐘</string>
 		<string name="part_sd_complete">分區完成</string>
 		<string name="dumlock_hdr">HTC Dumlock</string>
-		<string name="dumlock_restore_btn">Restore Original Boot</string>
+		<string name="dumlock_restore_btn">還原原始 Boot 分割區</string>
 		<string name="dumlock_restore_confirm">是否恢復原始 Boot 鏡像？</string>
 		<string name="dumlock_restoring">正在恢復原始 Boot 鏡像...</string>
 		<string name="dumlock_restore_complete">恢復原始 Boot 鏡像完成</string>
-		<string name="dumlock_reflash_btn">Reflsh Recovery</string>
+		<string name="dumlock_reflash_btn">重新刷寫 Recovery</string>
 		<string name="dumlock_reflash_confirm">恢復備份到 Boot 分區？</string>
 		<string name="dumlock_reflashing">正在恢復備份至 Boot 分區...</string>
 		<string name="dumlock_reflash_complete">備份已恢復到 Boot 分區</string>
-		<string name="dumlock_install_btn">Install Dumlock</string>
+		<string name="dumlock_install_btn">安裝 Dumlock</string>
 		<string name="dumlock_install_confirm">是否刷入 HTC dumlock 文件到 ROM？</string>
 		<string name="dumlock_installing">正在刷入 HTC Dumlock...</string>
 		<string name="dumlock_install_complete">HTC Dumlock 刷入完成</string>
@@ -352,11 +323,11 @@
 		<string name="fm_copying">複製中...</string>
 		<string name="fm_move_btn">移動 </string>
 		<string name="fm_moving">移動中...</string>
-		<string name="fm_chmod755_btn">Set 755</string>
-		<string name="fm_chmod755ing">Set 755</string>
-		<string name="fm_chmod644_btn">Set 644</string>
-		<string name="fm_chmod644ing">Set 644</string>
-		<string name="fm_chmod_btn">Set permissions</string>
+		<string name="fm_chmod755_btn">設置權限為 755</string>
+		<string name="fm_chmod755ing">設置權限為 755</string>
+		<string name="fm_chmod644_btn">設置權限為 644</string>
+		<string name="fm_chmod644ing">設置權限為 644</string>
+		<string name="fm_chmod_btn">設定權限</string>
 		<string name="fm_delete_btn">刪除</string>
 		<string name="fm_deleting">正在刪除...</string>
 		<string name="fm_rename_btn">重新命名</string>
@@ -384,7 +355,7 @@
 		<string name="sideload_wipe_cache_chk">清除 Cache</string>
 		<string name="swipe_to_sideload">滑動以啟動 Sideload 模式</string>
 		<string name="sideload_confirm">ADB Sideload</string>
-		<string name="sideload_usage">Usage: ADB SideLoad File.ZIP</string>
+		<string name="sideload_usage">使用方法: ADB SideLoad File.ZIP</string>
 		<string name="sideload_complete">ADB Sideload 已完成</string>
 		<string name="fix_contexts_hdr">修復 Contexts</string>
 		<string name="fix_contexts_confirm">是否修復 SELinux 環境？</string>
@@ -396,7 +367,7 @@
 		<string name="fix_contexts_complete">Contexts 已修復完成</string>
 		<string name="reboot_hdr">重新啟動</string>
 		<string name="sel_storage_list">選擇儲存位置：</string>
-		<string name="ok_btn">Ok</string>
+		<string name="ok_btn">確定</string>
 
 		<!-- Various console messages - these consist of user displayed messages, oftentimes errors -->
 		<string name="no_kernel_selinux">内核不支持讀取 SELinux Contexts。</string>
@@ -449,7 +420,7 @@
 		<string name="unable_find_part_path">無法找到路徑 "{1}" 的分區</string>
 		<string name="update_part_details">正在更新分區詳情...</string>
 		<string name="update_part_details_done">...完成</string>
-		<string name="wiping_dalvik">Wiping Dalvik Directories...</string>
+		<string name="wiping_dalvik">正在清除 Dalvik 目錄...</string>
 		<string name="cleaned">已清除：{1}...</string>
 		<string name="dalvik_done">-- Dalvik Cache 目錄清除完成！</string>
 		<string name="no_andsec">没有找到 Android Secure 分區</string>
@@ -462,7 +433,7 @@
 		<string name="no_crypto_support">此構建版本的編譯不含加密支持。</string>
 		<string name="decrypt_success_dev">數據成功解密，新的塊設備：'{1}'</string>
 		<string name="done">完成</string>
-		<string name="start_partition_sd">Partitioning SD Card...</string>
+		<string name="start_partition_sd">正在分割SD卡...</string>
 		<string name="partition_sd_locate">無法找到要分區的設備。</string>
 		<string name="ext_swap_size">EXT + Swap size is larger than sdcard size.</string>
 		<string name="remove_part_table">正在移除分區表...</string>
@@ -958,7 +929,6 @@
 		<!-- MIUI OTA -->
 		<string name="fox_ota_settings">OTA Settings</string>
 		<string name="fox_ota_on">啟用OTA</string>
-		<string name="fox_miui_ota_on">啟用MIUI OTA</string>
 		
 		<!-- About -->
 		<string name="abt_maintainer">維護人員</string>
@@ -1025,6 +995,6 @@
 		<string name="fox_dmverity_chk">禁用 DM 校驗</string>
 		<string name="fox_forced_encryption_chk">禁用强制加密</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">安装OTA後阻止自動重啟</string>
-		<string name="of_ota_reboot_disabled">OTA update completed. You disabled auto-reboot. Returning control to you.</string>
+		<string name="of_ota_reboot_disabled">OTA update succeeded. You disabled auto-reboot. Returning control to you.</string>
 	</resources>
 </language>

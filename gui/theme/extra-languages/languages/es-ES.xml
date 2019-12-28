@@ -16,24 +16,6 @@
 		<resource name="input_fail" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
 		<resource name="splash" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
 
-		<resource name="font_l" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		<resource name="font_m" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		<resource name="font_s" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		<resource name="font_b" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-
-		<resource name="keylabel" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		<resource name="keylabel-bold" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		<resource name="keylabel-num" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		<resource name="keylabel-small" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		<resource name="keylabel-longpress" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		
-		<resource name="Secondary" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		<resource name="Secondary-title" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		<resource name="caption" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		
-		<resource name="clock" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-		<resource name="info" type="fontoverride" filename="Roboto-Spanish.ttf" scale="100"/>
-
 		<!-- Partition display names -->
 		<string name="system">Sistema </string>
 		<string name="system_image">Imagen del sistema</string>
@@ -42,9 +24,9 @@
 		<string name="boot">Arranque</string>
 		<string name="recovery">Recovery</string>
 		<string name="cache">Caché</string>
-		<string name="data">Data</string>
+		<string name="data">Datos</string>
 		<string name="sdcard">Tarjeta SD</string>
-		<string name="internal">Memoria interna</string>
+		<string name="internal">Almacenamiento interno</string>
 		<string name="microsd">Tarjeta Micro SD</string>
 		<string name="usbotg">USB OTG</string>
 		<string name="android_secure">Android Seguro</string>
@@ -64,8 +46,8 @@
 		<string name="sort_by_date_desc">Fecha</string>
 		<string name="sort_by_size_desc">Tamaño</string>
 		<string name="install_btn">Instalar</string>
-		<string name="wipe_btn">Limpiar</string>
-		<string name="backup_btn">Copias</string>
+		<string name="wipe_btn">Borrar</string>
+		<string name="backup_btn">Copias de seguridad</string>
 		<string name="restore_btn">Restaurar</string>
 		<string name="mount_btn">Montar</string>
 		<string name="file_manager_btn">Archivos</string>
@@ -79,8 +61,8 @@
 		<string name="install_select_file_hdr">Seleccionar archivo</string>
 		<string name="install_select_file_btn">Seleccionar archivo</string>
 		<string name="adb_sideload_btn">ADB &amp; Sideload</string>
-		<string name="select_storage_hdr">Selec. Almacenamiento</string>
-		<string name="select_storage_btn">Selec. Almacenamiento</string>
+		<string name="select_storage_hdr">Seleccione Almacenamiento</string>
+		<string name="select_storage_btn">Seleccione Almacenamiento</string>
 		<string name="queue_hdr">En cola</string>
 		<string name="raised_clearqueue_btn">Limpiar cola</string>
 		<string name="raised_viewqueue_btn">Mostrar cola</string>
@@ -98,7 +80,7 @@
 		<string name="successful">Correcto</string>
 		<string name="wipe_cache_btn">Borrar Cachés</string>
 		<string name="reboot_system_btn">Reiniciar Sistema</string>
-		<string name="reboot_recovery_btn">Reiniciar al Recovery</string>
+		<string name="reboot_recovery_btn">Reiniciar Modo Recovery</string>
 		<string name="install_sel_target">Seleccione la partición de destino</string>
 		<string name="flash_image_select">Partición</string>
 		<string name="flashing_image">Flasheando imagen...</string>
@@ -172,12 +154,12 @@
 		<string name="back_btn">Atrás</string>
 		<string name="wipe_enc_btn">Quitar la Encriptación</string>
 		<string name="swipe_factory_reset">Desliza para Restablecer de Fábrica</string>
-		<string name="backup_hdr">Copia Seguridad</string>
+		<string name="backup_hdr">Copia de seguridad</string>
 		<string name="encryption_hdr">Habilitar el Cifrado</string>
 		<string name="name">Nombre</string>
 		<string name="enable_backup_comp_chk">Activar compresión</string>
 		<string name="skip_md5_backup_chk">Omitir generación de MD5 durante la copia de seguridad</string>
-		<string name="disable_backup_space_chk">Deshabilitar la comprobación de espacio libre</string>
+		<string name="disable_backup_space_chk">Deshabilitar la comprobación de espacio libre antes de la copia de seguridad</string>
 		<string name="swipe_backup">Deslizar para realizar la copia de seguridad</string>
 		<string name="backup_name_exists">¡Ya existe una copia de seguridad con ese nombre!</string>
 		<string name="pass_not_match">¡Las contraseñas no coinciden!</string>
@@ -205,7 +187,7 @@
 		<string name="rename_backup_complete">Cambiado del nombre de la copia de seguridad completado</string>
 		<string name="swipe_to_rename">Desliza para renombrar</string>
 		<string name="mount_hdr">Montar</string>
-		<string name="mount_sys_ro_chk">Montar System y Vendedor en modo lectura</string>
+		<string name="mount_sys_ro_chk">Montar System en modo lectura</string>
 		<string name="decrypt_data_btn">Desencriptar Datos</string>
 		<string name="disable_mtp_btn">Desactivar MTP</string>
 		<string name="enable_mtp_btn">Activar MTP</string>
@@ -217,7 +199,7 @@
 		<string name="unmount_btn">Desmontar</string>
 		<string name="rb_system_btn">Sistema </string>
 		<string name="rb_poweroff_btn">Apagar</string>
-		<string name="rb_recovery_btn">Recovery</string>
+		<string name="rb_recovery_btn">Recuperación</string>
 		<string name="rb_bootloader_btn">Bootloader</string>
 		<string name="rb_theme">Tema</string>
 		<string name="rb_download_btn">Descargas</string>
@@ -395,7 +377,7 @@
 		<string name="fixing_contexts">Corrigiendo contextos...</string>
 		<string name="fix_contexts_complete">Corrección de contextos finalizada</string>
 		<string name="reboot_hdr">Reiniciar</string>
-		<string name="sel_storage_list">Selec. Almacenamiento</string>
+		<string name="sel_storage_list">Seleccione Almacenamiento</string>
 		<string name="ok_btn">Aceptar</string>
 
 		<!-- Various console messages - these consist of user displayed messages, oftentimes errors -->
@@ -658,7 +640,7 @@
 		<string name="bkp_date">Agregar fecha</string>
 		<string name="bkp_gen">Generar nombre de copia de seguridad</string>
 		<string name="bkp_gen_whilebkp">Generar nombre de copia de seguridad mientras se hace la copia de seguridad</string>
-		<string name="bkp_quick">Copia Seguridad Rápida</string>
+		<string name="bkp_quick">Copia de seguridad rápida</string>
 		<string name="bkp_clear">Idioma</string>
 		
 		<string name="language_cptn">Idioma</string>
@@ -760,9 +742,9 @@
 		<string name="autostorage">Almacenamiento</string>
 		<string name="install_reboot">Reiniciando en %tw_sleep% segundos</string>
 		<string name="cancel_reboot_btn">Cancelar Reiniciar</string>
-		<string name="skip_digest_backup_chk" version="2">Omitir generación Digest durante la copia</string>
+		<string name="skip_digest_backup_chk" version="2">Omitir generación Digest durante la copia de seguridad</string>
 		<string name="restore_digest_chk" version="2">Habilitar verificación de la cuenta de copias de seguridad</string>
-		<string name="restore_enable_digest_chk" version="2">Faltan archivos para descifrar vold: {1}</string>
+		<string name="restore_enable_digest_chk" version="2">Faltan archivos necesarios para descifrar vold: {1}</string>
 		<string name="decrypt_data_vold_os_missing">Faltan archivos necesarios para descifrar vold: {1}</string>
 		<string name="generating_digest1" version="2">Generando Digest</string>
 		<string name="generating_digest2" version="2"> * Generando Digest...</string>
@@ -846,7 +828,7 @@
 		<string name="reboot_to_take_effect">Reiniciar para que los cambios surtan efecto</string>
 		<string name="fox_modules_hdr">Añadidos Fox</string>
 		<string name="fox_modules_inst">Instalar addon</string>
-		<string name="backup_short_hdr">Copia de Seguridad</string>
+		<string name="backup_short_hdr">Nueva copia de seguridad</string>
 		<string name="backups_wat">Instalar</string>
 		
 		<string name="module_install">Instalar</string>
@@ -861,7 +843,7 @@
 
 		<!-- Customization -->
 		<string name="cust_new_ota_screen">Mostrar menos detalles durante OTA</string>
-		<string name="fm_icons_simple">Mostrar iconos de archivo más grandes</string>
+		<string name="fm_icons_simple">Hacer que los iconos de archivo sean más grandes</string>
 		<string name="theme_engine_update">¿Aplicar cambios y recargar?</string>
 		<string name="theme_engine_reset">Tema</string>
 		<string name="apply_btn">Aplicar</string>
@@ -887,7 +869,7 @@
 		<string name="hide_notch">Ocultar notch</string>
 		<!-- NavBar -->
 		<string name="navbar_title">Barra de navegación</string>
-		<string name="navbar_onscreen">Act. Barra de Navegación</string>
+		<string name="navbar_onscreen">Activa barra de navegación</string>
 		<string name="show_slideout">Mostrar botón de consola</string>
 		<string name="dark_nav">Oscuro</string>
 		<!-- Keyboard -->
@@ -958,10 +940,9 @@
 		<!-- MIUI OTA -->
 		<string name="fox_ota_settings">Ajustes OTA</string>
 		<string name="fox_ota_on">Habilitar OTA</string>
-		<string name="fox_miui_ota_on">Habilitar MIUI OTA</string>
 		
 		<!-- About -->
-		<string name="abt_maintainer">Mantenimiento</string>
+		<string name="abt_maintainer">Responsables de mantenimiento</string>
 		<string name="abt_fd">Creador de temas &amp; diseñador</string>
 		<string name="abt_bork">CEO, Sitio &amp; UI</string>
 		<string name="abt_dj">Sistema utilizado para construir, C++</string>
@@ -973,7 +954,7 @@
 		<string name="abt_credits">Créditos</string>
 		<string name="abt_trans">Traductores</string>
 		<string name="abt_changes">Lista de cambios</string>
-		<string name="abt_main_shrt">Mantenimiento</string>
+		<string name="abt_main_shrt">Responsables de mantenimiento</string>
 		<string name="welcome_msg">¡Bienvenido a OrangeFox!</string>
 		<string name="welcome_msg2"><!-- If welcome message is too big in your lang, use this string --></string>
 		
@@ -989,7 +970,7 @@
 		<string name="files_auto_open">Detectar automáticamente el tipo de archivo</string>
 		<string name="file_read_error">¡No se puede abrir el archivo!</string>
 		<string name="subs_wipe">Borrar capas de Substratum</string>
-		<string name="sort_ex_all">Todos</string>
+		<string name="sort_ex_all">Todos los archivos</string>
 		<string name="sort_ex_img">Archivos IMG</string>
 		<string name="sort_ex_zip">Archivos ZIP</string>
 		<string name="aroma_help">Presiona de nuevo para empezar AromaFM...</string>
@@ -1001,7 +982,7 @@
 
 		<!-- App mgr -->
 		<string name="appmgr_apps">Aplicaciones</string>
-		<string name="appmgr_title">Admin. de aplicaciones</string>
+		<string name="appmgr_title">Administrador de aplicaciones</string>
 
 		<!-- Perfomance -->
 		<string name="perf_title">Rendimiento</string>
@@ -1018,16 +999,13 @@
 		<string name="fox_ota_msg_ready">¡Estás listo para recibir actualizaciones!</string>
 		<string name="fox_ota_msg_custom">Modo de ROM personalizado activado</string>
 		<string name="fox_ota_msg_reflash">¡Por favor, flashe ROM completa MIUI!</string>
-		<string name="fox_advanced_stock_recovery">Desactivación de recuperación de stock</string>
+		<string name="fox_advanced_stock_recovery">Desactivación de recuperación de stock agresiva</string>
 		<string name="fox_support_miui_ota_chk">Soporte MIUI Incremental OTA</string>
 		<string name="fox_include_system_survival_chk">Incluir sistema de OTA</string>
 		<string name="fox_verify_incremental_ota_signature_chk">Verificación de firma de OTA incremental</string>
 		<string name="fox_dmverity_chk">Desactivar DM-Verity</string>
 		<string name="fox_forced_encryption_chk">Desactivar cifrado forzado</string>
-		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Evitar el reinicio después de la OTA</string>
+		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Evitar el reinicio automático después de instalar OTA</string>
 		<string name="of_ota_reboot_disabled">Actualización OTA exitosa. Has desactivado el reinicio automático. Devolviendo el control a usted.</string>
-	    <!-- Formateo movido -->
-        <string name="wipe_format_moved_info1">Nota: Formatear Data movido a</string>
-        <string name="wipe_format_moved_info2">Menu de Administración de Particiones.</string>
 	</resources>
 </language>

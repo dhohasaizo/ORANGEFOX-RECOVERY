@@ -4,36 +4,6 @@
 
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
-		<resource name="status" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="bigfont" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="body1" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="body2" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="subhead" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="title" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="mainbutton" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="button" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="menu" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="input_fail" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="splash" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-
-		<resource name="font_l" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="font_m" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="font_s" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="font_b" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-
-		<resource name="keylabel" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="keylabel-bold" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="keylabel-num" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="keylabel-small" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="keylabel-longpress" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		
-		<resource name="Secondary" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="Secondary-title" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="caption" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		
-		<resource name="clock" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-		<resource name="info" type="fontoverride" filename="DroidSansFallback.ttf" scale="100"/>
-
 
 		<!-- Partition display names -->
 		<string name="system">System</string>
@@ -89,7 +59,7 @@
 		<string name="folder">文件夹</string>
 		<string name="file">文件</string>
 		<string name="zip_sig_chk">Zip 文件签名验证</string>
-		<string name="inject_twrp_chk">安装后写入 OrangeFox</string>
+		<string name="inject_twrp_chk">安装后注入 OrangeFox</string>
 		<string name="install_reboot_chk">安装完成后重启</string>
 		<string name="options_hdr">选项</string>
 		<string name="zip_queue">队列</string>
@@ -99,13 +69,13 @@
 		<string name="successful">成功</string>
 		<string name="wipe_cache_btn">清除 Cache</string>
 		<string name="reboot_system_btn">重启系统</string>
-		<string name="reboot_recovery_btn">重启至Recovery</string>
+		<string name="reboot_recovery_btn">重启至 Recovery</string>
 		<string name="install_sel_target">选择目标分区</string>
 		<string name="flash_image_select">分区</string>
 		<string name="flashing_image">正在刷入镜像...</string>
 		<string name="image_flashed">Image 镜像刷入成功</string>
 		<string name="wipe_cache_dalvik_confirm">是否清除 Cache 和 Dalvik 分区数据 ？</string>
-		<string name="wipe_dalvik_confirm">是否清除Dalvik?</string>
+		<string name="wipe_dalvik_confirm">是否清除 Dalvik 缓存？</string>
 		<string name="wiping_cache_dalvik">正在清除 Cache 和 Dalvik...</string>
 		<string name="wipe_cache_dalvik_complete">Cache 和 Dalvik 清除完成</string>
 		<string name="cache_dalvik_done">Cache 和 Dalvik 清除完成</string>
@@ -920,7 +890,7 @@
 		<string name="pass_pin">PIN 码</string>
 		
 		<string name="locked_info_1">Recovery 受到保护，以阻止</string>
-		<string name="locked_info_2">未经授权的访问.</string>
+		<string name="locked_info_2">未经授权的访问。</string>
 		<string name="locked_info_3">使用 Recovery 功能</string>
 		<string name="locked_info_4">之前您需要输入密码。</string>
 		<string name="locked_info_4_gk">之前您需要绘制您的手势密码。</string>
@@ -929,9 +899,9 @@
 		<string name="new_pass_info_1_gk">绘制新的手势密码以保护</string>
 		<string name="new_pass_info_2">OrangeFox 阻止未经授权的</string>
 		<string name="new_pass_info_3">访问</string>
-		<string name="new_pass_info_4">您需要再次输入密码.</string>
+		<string name="new_pass_info_4">您需要再次输入密码。</string>
 		<string name="new_pass_info_4_gk">您需要再次绘制手势密码</string>
-		<string name="new_pass_info_4_2">请再次输入密码.</string>
+		<string name="new_pass_info_4_2">请再次输入密码。</string>
 		<string name="new_pass_info_4_2_gk">请再次绘制手势密码</string>
 		
 		<string name="pass_page_block">Recovery 当前上锁方式</string>
@@ -942,7 +912,7 @@
 		<!-- Utilities -->
 		<string name="more">更多</string>
 		<string name="hide">隐藏</string>
-		<string name="part_menu_hdr">管理分区</string>
+		<string name="part_menu_hdr">分区管理</string>
 		<string name="run_adb_startup">启动时运行 ADB</string>
 
 		<!-- MMGUI -->
@@ -959,7 +929,6 @@
 		<!-- MIUI OTA -->
 		<string name="fox_ota_settings">OTA设置</string>
 		<string name="fox_ota_on">启用OTA</string>
-		<string name="fox_miui_ota_on">启用MIUI OTA</string>
 		
 		<!-- About -->
 		<string name="abt_maintainer">维护人员</string>
@@ -1026,6 +995,6 @@
 		<string name="fox_dmverity_chk">禁用 DM 检验</string>
 		<string name="fox_forced_encryption_chk">禁用强制加密</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">安装OTA后阻止自动重启</string>
-		<string name="of_ota_reboot_disabled">OTA更新成功, 自动重启已禁用, 返回控制</string>
+		<string name="of_ota_reboot_disabled">OTA更新成功, 根据您的设置， 已阻止自动重启。</string>
 	</resources>
 </language>

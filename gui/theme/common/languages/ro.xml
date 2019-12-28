@@ -35,7 +35,7 @@
 		<string name="sort_by_date_desc">Dată</string>
 		<string name="sort_by_size_desc">Dimensiune</string>
 		<string name="install_btn">Instalare</string>
-		<string name="wipe_btn">Ştergere</string>
+		<string name="wipe_btn">Formatare</string>
 		<string name="backup_btn">Copii de rezervă</string>
 		<string name="restore_btn">Restabilire</string>
 		<string name="mount_btn">Montare</string>
@@ -52,7 +52,7 @@
 		<string name="adb_sideload_btn">ADB și Sideload</string>
 		<string name="select_storage_hdr">Selectaţi stocarea</string>
 		<string name="select_storage_btn">Selectaţi stocarea</string>
-		<string name="queue_hdr">Coadă</string>
+		<string name="queue_hdr">Listă</string>
 		<string name="raised_clearqueue_btn">Șterge lista</string>
 		<string name="raised_viewqueue_btn">Vizualizare listă</string>
 		<string name="zip_queue_count">%tw_zip_queue_count% din maxim 10 fişiere în coada de aşteptare</string>
@@ -62,7 +62,7 @@
 		<string name="inject_twrp_chk">Se injectează OrangeFox după instalare</string>
 		<string name="install_reboot_chk">Repornire după finalizarea instalării</string>
 		<string name="options_hdr">Opţiuni</string>
-		<string name="zip_queue">Coadă</string>
+		<string name="zip_queue">Listă</string>
 		<string name="install_zip_count_hdr">Instalare fişier %tw_zip_index% din %tw_zip_queue_count%</string>
 		<string name="working">Se procesează...</string>
 		<string name="failed">Eșuat</string>
@@ -77,14 +77,14 @@
 		<string name="wipe_cache_dalvik_confirm">Ștergeţi memoria Cache şi Dalvik?</string>
 		<string name="wipe_dalvik_confirm">Ştergeţi Dalvik?</string>
 		<string name="wiping_cache_dalvik">Ștergere memorie Cache şi Dalvik...</string>
-		<string name="wipe_cache_dalvik_complete">Memoria Cache şi Dalvik su fost șterse</string>
+		<string name="wipe_cache_dalvik_complete">Memoria Cache şi Dalvik au fost șterse</string>
 		<string name="cache_dalvik_done">Memoria Cache şi Dalvik au fost șterse</string>
 		<string name="swipe_wipe">Glisați pentru a şterge</string>
 		<string name="rebooting">Repornire...</string>
 		<string name="swipe_reboot">Glisați pentru a reporni</string>
 		<string name="confirm_action">Confirmaţi acțiunea</string>
 		<string name="cancel_btn">Revocare</string>
-		<string name="wipe_hdr">Ştergere</string>
+		<string name="wipe_hdr">Formatare</string>
 		<string name="factory_reset_hdr">Resetare la setările din fabrică</string>
 		<string name="factory_reset1">Şterge date, Cache și Dalvik</string>
 		<string name="factory_reset2">(nu include stocarea internă)</string>
@@ -122,9 +122,9 @@
 		<string name="part_size">Dimensiune</string>
 		<string name="part_used">Utilizat</string>
 		<string name="part_free">Liber</string>
-		<string name="part_backup_size">Dimensiune copie de rezervă</string>
+		<string name="part_backup_size">Dimen. cop. de rez.</string>
 		<string name="resize_btn">Redimensionare SF</string>
-		<string name="resize_confirm">Redimensionați partiția</string>
+		<string name="resize_confirm">Redimensionare partiție</string>
 		<string name="resizing">Redimensionare...</string>
 		<string name="resize_complete">Redimensionare finalizată</string>
 		<string name="swipe_resize">Glisați pentru a redimensiona</string>
@@ -134,7 +134,7 @@
 		<string name="repair_complete">Reparare finalizată</string>
 		<string name="swipe_repair">Glisați pentru a repara</string>
 		<string name="change_fs_btn">Modificare SF</string>
-		<string name="change_fs_warn1">Este posibil ca unele ROM-uri sau kernel-uri să nu accepte</string>
+		<string name="change_fs_warn1">Este posibil ca unele ROM-uri sau nucleuri să nu accepte</string>
 		<string name="change_fs_warn2">unele sisteme de fișiere. Continuați cu precauție!</string>
 		<string name="change_fs_confirm">Modificare SF în</string>
 		<string name="formatting">Formatare...</string>
@@ -164,8 +164,8 @@
 		<string name="deleting_backup">Ștergere copie de rezervă...</string>
 		<string name="backup_deleted">Copie de rezervă eliminată</string>
 		<string name="swipe_delete">Glisați pentru a şterge</string>
-		<string name="restore_backup_date">Data ceării</string>
-		<string name="restore_md5_chk">Verificare MD5 ale fișierelor copiei de rezervă</string>
+		<string name="restore_backup_date">Data creării</string>
+		<string name="restore_md5_chk">Verificare MD5 ale fișierelor cop. de rezervă</string>
 		<string name="restore_enable_md5_chk">Activare verificare MD5 pentru copiile de rezervă</string>
 		<string name="restore_complete">Restaurare finalizată</string>
 		<string name="swipe_restore">Glisați pentru restabilire</string>
@@ -211,7 +211,7 @@
 		<string name="settings_cptn">General</string>
 		<string name="use_rmrf_chk">Utilizaţi rm -rf în loc de formatare</string>
 		<string name="use24clock_chk">Folosiți ceasul de 24 de ore</string>
-		<string name="rev_navbar_chk">Inversarea layout-ului barei de navigare</string>
+		<string name="rev_navbar_chk">Inversarea aspectului barei de navigare</string>
 		<string name="simact_chk">Simulare acțiuni pentru testarea temelor</string>
 		<string name="simfail_chk">Simulare eșuată pentru acțiuni</string>
 		<string name="sel_tz_list">Fus orar</string>
@@ -330,10 +330,10 @@
 		<string name="fm_chmod_btn">Setați permisiunile</string>
 		<string name="fm_delete_btn">Ștergere</string>
 		<string name="fm_deleting">Ștergere</string>
-		<string name="fm_rename_btn">Redenumiţi</string>
+		<string name="fm_rename_btn">Redenumire</string>
 		<string name="fm_renaming">Se redenumește</string>
 		<string name="fm_sel_dest">Dosar destinație</string>
-		<string name="fm_rename_hdr">Redenumiţi</string>
+		<string name="fm_rename_hdr">Redenumire</string>
 		<string name="fm_set_perms_hdr">Setaţi permisiunile</string>
 		<string name="fm_perms">Permisiuni</string>
 		<string name="fm_complete">Operaţiuni cu fișiere finalizate</string>
@@ -594,7 +594,7 @@
 		<string name="confirm_wipe_cptn">Confirmați formatarea</string>
 		<string name="storage_cptn">Spațiu de stocare</string>
 		<string name="enter_password_restore">Parolă</string>
-		<string name="enter_password_cptn">Pornire Sideload...</string>
+		<string name="enter_password_cptn">Securitate</string>
 		<!-- added by fordownloads -->
 		<string name="fordowns_sl">Pornire Sideload...</string>
 		<string name="fordowns_to">către</string>
@@ -831,10 +831,10 @@
 		<string name="fox_files_not_exist_3">utilizând fișierul ZIP de instalare.</string>
 
 		<!-- Customization -->
-		<string name="cust_new_ota_screen">Faceți pictogramele fișierelor mai mari</string>
+		<string name="cust_new_ota_screen">Se afișează mai puține detalii în timp ce se execută actualizările OTA</string>
 		<string name="fm_icons_simple">Faceți pictogramele fișierelor mai mari</string>
 		<string name="theme_engine_update">Aplicați modificările și reîncărcați?</string>
-		<string name="theme_engine_reset">Temă</string>
+		<string name="theme_engine_reset">Resetați tema și reîncărcați?</string>
 		<string name="apply_btn">Aplicare</string>
 		<string name="theme_hdr">Temă</string>
 		
@@ -913,7 +913,7 @@
 		<string name="more">Mai multe...</string>
 		<string name="hide">Ascundere</string>
 		<string name="part_menu_hdr">Gestionare partiții</string>
-		<string name="run_adb_startup">Module</string>
+		<string name="run_adb_startup">Se rulează ADB la pornire</string>
 
 		<!-- MMGUI -->
 		<string name="mm_module_active">Activ</string>
@@ -929,7 +929,6 @@
 		<!-- MIUI OTA -->
 		<string name="fox_ota_settings">Setări OTA</string>
 		<string name="fox_ota_on">Activați OTA</string>
-		<string name="fox_miui_ota_on">Activați MIUI OTA</string>
 		
 		<!-- About -->
 		<string name="abt_maintainer">Dezvoltator</string>
@@ -945,7 +944,7 @@
 		<string name="abt_trans">Traducători</string>
 		<string name="abt_changes">Jurnal de modificări</string>
 		<string name="abt_main_shrt">Dezvoltator</string>
-		<string name="welcome_msg">Deschide dosarul real</string>
+		<string name="welcome_msg">Bine ați venit în OrangeFox!</string>
 		<string name="welcome_msg2"><!-- If welcome message is too big in your lang, use this string --></string>
 		
 		<!-- Symlink -->
@@ -968,7 +967,7 @@
 		<!-- this error will shown when recovery cannot create backup folder
 		 -->
 		<string name="backups_rw_error_1">Stocarea este montată</string>
-		<string name="backups_rw_error_2">Economisire baterie</string>
+		<string name="backups_rw_error_2">doar în citire!</string>
 
 		<!-- App mgr -->
 		<string name="appmgr_apps">Aplicaţii</string>
