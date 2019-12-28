@@ -692,6 +692,7 @@
 				<condition var1="tw_language" op="!=" var2="hu"/>
 				<condition var1="tw_language" op="!=" var2="zh_CH"/>
 				<condition var1="tw_language" op="!=" var2="zh_TW"/>
+				<condition var1="tw_language" op="!=" var2="vn"/>
 				<action function="set">font_block=1</action>
 				<action function="page">ext_custom_fonts</action>
 			</action>
