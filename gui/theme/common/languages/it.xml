@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <language>
-	<display>Italiano</display>
+	<display>Italian</display>
 
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
@@ -64,7 +64,7 @@
 		<string name="options_hdr">Opzioni</string>
 		<string name="zip_queue">Coda</string>
 		<string name="install_zip_count_hdr">Installazione del file %tw_zip_index% di %tw_zip_queue_count%</string>
-		<string name="working">Processando...</string>
+		<string name="working">Elaborazione in corso...</string>
 		<string name="failed">Fallito</string>
 		<string name="successful">Riuscito</string>
 		<string name="wipe_cache_btn">Cancella la cache</string>
@@ -76,31 +76,31 @@
 		<string name="image_flashed">Immagine flashata</string>
 		<string name="wipe_cache_dalvik_confirm">Cancellare Cache &amp; Dalvik?</string>
 		<string name="wipe_dalvik_confirm">Cancellare la cache Dalvik?</string>
-		<string name="wiping_cache_dalvik">Formattazione Cache &amp; Dalvik in corso...</string>
-		<string name="wipe_cache_dalvik_complete">Formattazione Cache &amp; Dalvik completato</string>
-		<string name="cache_dalvik_done">Formattazione Cache &amp; Dalvik completato</string>
-		<string name="swipe_wipe">Trascina per pulire</string>
+		<string name="wiping_cache_dalvik">Cancellazione Cache &amp; Dalvik in corso...</string>
+		<string name="wipe_cache_dalvik_complete">Cancellazione Cache &amp; Dalvik completato</string>
+		<string name="cache_dalvik_done">Cancellazione Cache &amp; Dalvik completato</string>
+		<string name="swipe_wipe">Trascina per formattare</string>
 		<string name="rebooting">Riavvio...</string>
 		<string name="swipe_reboot">Trascina per riavviare</string>
 		<string name="confirm_action">Conferma l'azione</string>
 		<string name="cancel_btn">Annulla</string>
-		<string name="wipe_hdr">Cancella</string>
+		<string name="wipe_hdr">Formatta</string>
 		<string name="factory_reset_hdr">Reset ai valori di fabbrica</string>
 		<string name="factory_reset1">Formatta Data, Cache e Dalvik</string>
 		<string name="factory_reset2">(escluso l'archivio interno)</string>
 		<string name="factory_reset3">Il più delle volte questa è</string>
 		<string name="factory_reset4">l'unica pulizia che ti serve.</string>
-		<string name="factory_resetting">Cancellazione di Data, Cache e Dalvik...</string>
-		<string name="advanced_wipe_hdr">Pulizia avanzata</string>
-		<string name="advanced_wipe_btn">Pulizia avanzata</string>
+		<string name="factory_resetting">Formattazione di Data, Cache e Dalvik...</string>
+		<string name="advanced_wipe_hdr">Formattazione avanzata</string>
+		<string name="advanced_wipe_btn">Formattazione avanzata</string>
 		<string name="wipe_enc_confirm">Rimuovere la criptazione dai dati?</string>
-		<string name="formatting_data">Formattazione di /data...</string>
-		<string name="swipe_format_data">Trascina per formattare /data</string>
+		<string name="formatting_data">Formattazione di Data...</string>
+		<string name="swipe_format_data">Trascina per formattare Data</string>
 		<string name="factory_reset_complete">Reset di fabbrica completato</string>
 		<string name="sel_part_hdr">Seleziona le partizioni</string>
-		<string name="wipe_sel_confirm">Pulire le partizioni selezionate?</string>
-		<string name="wiping_part">Pulizia partizione/i...</string>
-		<string name="wipe_complete">Pulizia completata</string>
+		<string name="wipe_sel_confirm">Formattare le partizioni selezionate?</string>
+		<string name="wiping_part">Formattazione partizione/i...</string>
+		<string name="wipe_complete">Formattazione completata</string>
 		<string name="format_data_hdr">Formatta Data</string>
 		<string name="format_data_btn">Formatta Data</string>
 		<string name="format_data_ptr1">Formattando Data cancellerai tutte le tue applicazioni,</string>
@@ -111,9 +111,9 @@
 		<string name="format_data_complete">Formattazione Data completata</string>
 		<!-- Translator note: the word "yes" must remain English! -->
 		<string name="yes_continue">Scrivi "yes" per confermare.</string>
-		<string name="part_opt_hdr">Informazioni della partizione</string>
-		<string name="file_sys_opt">Opzioni della partizione</string>
-		<string name="part_mount_point">Punto di montaggio</string>
+		<string name="part_opt_hdr">Informazioni partizione</string>
+		<string name="file_sys_opt">Opzioni partizione</string>
+		<string name="part_mount_point">Punto di mount</string>
 		<string name="part_curr_fs">File system</string>
 		<string name="part_present">Presente</string>
 		<string name="part_removable">Rimovibile</string>
@@ -420,12 +420,12 @@
 		<string name="unable_find_part_path">Impossibile trovare la partizione per il percorso '{1}'</string>
 		<string name="update_part_details">Aggiornamento dati della partizione...</string>
 		<string name="update_part_details_done">...fatto</string>
-		<string name="wiping_dalvik">Cancellazione percosi Dalvik cache...</string>
+		<string name="wiping_dalvik">Cancellazione cartelle Dalvik cache...</string>
 		<string name="cleaned">Cancellati: {1}...</string>
-		<string name="dalvik_done">-- Cancellazione percorsi dalvik cache completata!</string>
+		<string name="dalvik_done">Cancellazione delle cartelle dalvik cache completata!</string>
 		<string name="no_andsec">Nessuna partizione android secure trovata.</string>
 		<string name="unable_to_locate">Impossibile trovare {1}.</string>
-		<string name="wiping_datamedia">Cancellazione memoria interna -- /data/media...</string>
+		<string name="wiping_datamedia">Formattazione memoria interna -- /data/media...</string>
 		<string name="unable_to_mount">Impossibile montare {1}</string>
 		<string name="unable_to_mount_internal">Impossibile montare memoria interna</string>
 		<string name="unable_to_mount_storage">Impossibile montare archiviazione</string>
@@ -453,7 +453,7 @@
 		<string name="too_many_flash">Troppe partizioni selezionate per il flash.</string>
 		<string name="invalid_flash">Partizione di flash specificata non valida.</string>
 		<string name="flash_done">[FLASH IMMAGINE COMPLETATO]</string>
-		<string name="wiping">Cancellazione {1}</string>
+		<string name="wiping">Formattazione di {1}</string>
 		<string name="repair_not_exist">{1} non esiste! Riparazione impossibile!</string>
 		<string name="repairing_using">Riparazione {1} utilizzando {2}...</string>
 		<string name="unable_repair">Impossibile riparare {1}.</string>
@@ -473,10 +473,10 @@
 		<string name="format_data_msg">Sarà necessario riavviare in recovery per poter di nuovo usare /data.</string>
 		<string name="format_data_err">Impossibile formattare per rimuovere l'encriptazione.</string>
 		<string name="formatting_using">Formattazione {1} utilizzando {2}...</string>
-		<string name="unable_to_wipe">Impossibile cancellare {1}.</string>
-		<string name="cannot_wipe">La partizione {1} non può essere cancellata.</string>
+		<string name="unable_to_wipe">Impossibile formattare {1}.</string>
+		<string name="cannot_wipe">La partizione {1} non può essere formattata.</string>
 		<string name="remove_all">Cancellazione di tutti i file in '{1}'</string>
-		<string name="wiping_data">Cancellazione Data senza cancellare /data/media...</string>
+		<string name="wiping_data">Formattazione Data senza cancellare /data/media...</string>
 		<string name="backing_up">Backup {1} in corso...</string>
 		<string name="backing">Backup in corso</string>
 		<string name="backup_size">La dimensione del backup per '{1}' è di 0 bytes.</string>
@@ -591,7 +591,7 @@
 		<string name="options_cptn">Opzioni</string>
 		<string name="flash_img_confirm">Flash File immagine</string>
 		<string name="also_wipes">Elimina anche</string>
-		<string name="confirm_wipe_cptn">Conferma cancellazione</string>
+		<string name="confirm_wipe_cptn">Conferma formattazione</string>
 		<string name="storage_cptn">Archivio</string>
 		<string name="enter_password_restore">Password</string>
 		<string name="enter_password_cptn">Avvio Sideload...</string>
@@ -958,7 +958,7 @@
 		<string name="files_show_hidden">Mostra i file nascosti nei file</string>
 		<string name="files_auto_open">Rilevamento automatico del tipo di file nei file</string>
 		<string name="file_read_error">Impossibile aprire il file!</string>
-		<string name="subs_wipe">Cancella Sovrapposizione Substratum</string>
+		<string name="subs_wipe">Cancella overlay di Substratum</string>
 		<string name="sort_ex_all">Tutti i file</string>
 		<string name="sort_ex_img">File IMG</string>
 		<string name="sort_ex_zip">File ZIP</string>
