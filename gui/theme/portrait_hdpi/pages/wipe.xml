@@ -559,7 +559,7 @@
 
 				<button style="btn_raised_warn">
 					<condition var1="tw_has_data_media" var2="1"/>
-					<condition var1="tw_partition_name" var2="Data"/>
+					<condition var1="tw_partition_mount_point" var2="/data"/>
 					<placement x="%btn_raised_right_x%" y="%row_btn_y%" placement="1"/>
 					<text>{@format_data_btn}</text>
 					<action function="page">formatdata</action>
