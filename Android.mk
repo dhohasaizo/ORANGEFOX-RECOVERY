@@ -1,5 +1,5 @@
 # Copyright (C) 2007 The Android Open Source Project
-# Copyright (C) 2018-2019 OrangeFox Recovery Project
+# Copyright (C) 2018-2020 OrangeFox Recovery Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -58,7 +58,7 @@ ifneq ($(TW_DEVICE_VERSION),)
     export FOX_DEVICE_VERSION=$(TW_DEVICE_VERSION)
 else
     LOCAL_CFLAGS += -DTW_DEVICE_VERSION='"Unofficial"'
-    export FOX_DEVICE_VERSION=R10.0
+    export FOX_DEVICE_VERSION=R10.1
 endif
 
 DEVICE := $(subst omni_,,$(TARGET_PRODUCT))
@@ -71,8 +71,17 @@ ifeq ($(OF_DISABLE_MIUI_SPECIFIC_FEATURES),1)
     LOCAL_CFLAGS += -DOF_DISABLE_MIUI_SPECIFIC_FEATURES='"1"'
 endif
 
+ifeq ($(OF_TWRP_COMPATIBILITY_MODE),1)
+    LOCAL_CFLAGS += -DOF_TWRP_COMPATIBILITY_MODE='"1"'
+endif
+
 ifeq ($(OF_USE_LEGACY_CRYPTO),1)
     LOCAL_CFLAGS += -DOF_USE_LEGACY_CRYPTO='"1"'
+endif
+
+ifeq ($(OF_SKIP_ORANGEFOX_PROCESS),1)
+    LOCAL_CFLAGS += -DOF_SKIP_ORANGEFOX_PROCESS='"1"'
+    OF_DONT_PATCH_ON_FRESH_INSTALLATION := 1
 endif
 
 ifeq ($(OF_DONT_PATCH_ON_FRESH_INSTALLATION),1)
@@ -89,9 +98,17 @@ ifeq ($(OF_USE_MAGISKBOOT),1)
     LOCAL_CFLAGS += -DOF_USE_MAGISKBOOT='"1"'
 endif
 
+ifeq ($(OF_USE_NEW_MAGISKBOOT),1)
+    LOCAL_CFLAGS += -DOF_USE_NEW_MAGISKBOOT='"1"'
+endif
+
 ifeq ($(OF_USE_MAGISKBOOT_FOR_ALL_PATCHES),1)
     LOCAL_CFLAGS += -DOF_USE_MAGISKBOOT_FOR_ALL_PATCHES='"1"'
     LOCAL_CFLAGS += -DOF_USE_MAGISKBOOT='"1"'
+endif
+
+ifeq ($(OF_FORCE_MAGISKBOOT_BOOT_PATCH_MIUI),1)
+    LOCAL_CFLAGS += -DOF_FORCE_MAGISKBOOT_BOOT_PATCH_MIUI='"1"'
 endif
 
 ifeq ($(OF_AB_DEVICE),1)
@@ -174,10 +191,6 @@ ifeq ($(OF_NO_RELOAD_AFTER_DECRYPTION),1)
     LOCAL_CFLAGS += -DOF_NO_RELOAD_AFTER_DECRYPTION='"1"'
 endif
 
-ifeq ($(OF_TWRP_COMPATIBILITY_MODE),1)
-    LOCAL_CFLAGS += -DOF_TWRP_COMPATIBILITY_MODE='"1"'
-endif
-
 ifeq ($(OF_USE_HEXDUMP),1)
     LOCAL_CFLAGS += -DOF_USE_HEXDUMP='"1"'
 endif
@@ -196,22 +209,60 @@ endif
 
 ifeq ($(OF_KEEP_DM_VERITY_FORCED_ENCRYPTION),1)
     LOCAL_CFLAGS += -DOF_KEEP_DM_VERITY_FORCED_ENCRYPTION='"1"'
-endif
-
-ifeq ($(OF_KEEP_FORCED_ENCRYPTION),1)
-    LOCAL_CFLAGS += -DOF_KEEP_FORCED_ENCRYPTION='"1"'
+    OF_KEEP_DM_VERITY := 1
+    OF_KEEP_FORCED_ENCRYPTION := 1
 endif
 
 ifeq ($(OF_KEEP_DM_VERITY),1)
     LOCAL_CFLAGS += -DOF_KEEP_DM_VERITY='"1"'
 endif
 
+ifeq ($(OF_KEEP_FORCED_ENCRYPTION),1)
+    LOCAL_CFLAGS += -DOF_KEEP_FORCED_ENCRYPTION='"1"'
+endif
+
+ifeq ($(OF_DISABLE_DM_VERITY_FORCED_ENCRYPTION),1)
+    LOCAL_CFLAGS += -DOF_DISABLE_DM_VERITY_FORCED_ENCRYPTION='"1"'
+    OF_DISABLE_DM_VERITY := 1
+    OF_DISABLE_FORCED_ENCRYPTION := 1
+endif
+
+ifeq ($(OF_DISABLE_DM_VERITY),1)
+    LOCAL_CFLAGS += -DOF_DISABLE_DM_VERITY='"1"'
+endif
+
+ifeq ($(OF_DISABLE_FORCED_ENCRYPTION),1)
+    LOCAL_CFLAGS += -DOF_DISABLE_FORCED_ENCRYPTION='"1"'
+endif
+
+ifeq ($(OF_FORCE_DISABLE_DM_VERITY_FORCED_ENCRYPTION),1)
+    LOCAL_CFLAGS += -DOF_FORCE_DISABLE_DM_VERITY_FORCED_ENCRYPTION='"1"'
+    OF_FORCE_DISABLE_DM_VERITY := 1
+    OF_FORCE_DISABLE_FORCED_ENCRYPTION := 1
+endif
+
+ifeq ($(OF_FORCE_DISABLE_DM_VERITY),1)
+    LOCAL_CFLAGS += -DOF_FORCE_DISABLE_DM_VERITY='"1"'
+endif
+
+ifeq ($(OF_FORCE_DISABLE_FORCED_ENCRYPTION),1)
+    LOCAL_CFLAGS += -DOF_FORCE_DISABLE_FORCED_ENCRYPTION='"1"'
+endif
+
 ifeq ($(OF_OTA_RES_DECRYPT),1)
     LOCAL_CFLAGS += -DOF_OTA_RES_DECRYPT='"1"'
 endif
 
+ifeq ($(OF_NO_MIUI_OTA_VENDOR_BACKUP),1)
+    LOCAL_CFLAGS += -DOF_NO_MIUI_OTA_VENDOR_BACKUP='"1"'
+endif
+
 ifeq ($(OF_REDUCE_DECRYPTION_TIMEOUT),1)
     LOCAL_CFLAGS += -DOF_REDUCE_DECRYPTION_TIMEOUT='"1"'
+endif
+
+ifeq ($(OF_DONT_KEEP_LOG_HISTORY),1)
+    LOCAL_CFLAGS += -DOF_DONT_KEEP_LOG_HISTORY='"1"'
 endif
 
 ifeq ($(TW_USE_TOOLBOX), true)
@@ -255,7 +306,9 @@ RECOVERY_FSTAB_VERSION := 2
 LOCAL_CFLAGS += -DRECOVERY_API_VERSION=$(RECOVERY_API_VERSION)
 LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -Wno-format-extra-args
 LOCAL_CLANG := true
-
+ifeq ($(TARGET_ARCH), arm)
+  LOCAL_CFLAGS += -Wno-format
+endif
 #LOCAL_STATIC_LIBRARIES := \
 #    libext4_utils_static \
 #    libsparse_static \
@@ -684,13 +737,32 @@ endif
 endif
 
 ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26; echo $$?),0)
-    LOCAL_REQUIRED_MODULES += file_contexts_text
-else ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 25; echo $$?),0)
-    LOCAL_ADDITIONAL_DEPENDENCIES += file_contexts_text
+    TWRP_REQUIRED_MODULES += ld.config.txt
+    ifeq ($(BOARD_VNDK_RUNTIME_DISABLE),true)
+        LOCAL_POST_INSTALL_CMD += \
+            sed '0,/^namespace.default.search.paths\s\{1,\}/!b;//a\namespace.default.search.paths += \/sbin' \
+                $(TARGET_OUT_ETC)/ld.config.vndk_lite.txt > $(TARGET_RECOVERY_ROOT_OUT)/sbin/ld.config.txt;
+    else
+        LOCAL_POST_INSTALL_CMD += \
+            sed '0,/^namespace.default.search.paths\s\{1,\}/!b;//a\namespace.default.search.paths += \/sbin' \
+                $(TARGET_OUT_ETC)/ld.config.txt > $(TARGET_RECOVERY_ROOT_OUT)/sbin/ld.config.txt;
+    endif
 endif
 
-ifeq ($(BOARD_CACHEIMAGE_PARTITION_SIZE),)
-LOCAL_REQUIRED_MODULES += recovery-persist recovery-refresh
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 25; echo $$?),0)
+    TWRP_REQUIRED_MODULES += file_contexts_text
+endif
+
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 24; echo $$?),0)
+    ifeq ($(BOARD_CACHEIMAGE_PARTITION_SIZE),)
+        TWRP_REQUIRED_MODULES += recovery-persist recovery-refresh
+    endif
+endif
+
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 28; echo $$?),0)
+    LOCAL_REQUIRED_MODULES += $(TWRP_REQUIRED_MODULES)
+else
+    LOCAL_ADDITIONAL_DEPENDENCIES += $(TWRP_REQUIRED_MODULES)
 endif
 
 include $(BUILD_EXECUTABLE)

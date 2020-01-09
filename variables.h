@@ -56,6 +56,7 @@
 static const std::string Fox_Tmp = "/tmp";
 static const std::string Fox_Home = "/sdcard/Fox";
 static const std::string Fox_Home_Files = Fox_Home + "/FoxFiles";
+static const std::string Fox_Logs_Dir = Fox_Home + "/logs";
 static const std::string Fox_sdcard_aroma_cfg = Fox_Home + "/aromafm.cfg";
 static const std::string Fox_Themes_Dir = "/Fox/theme";
 static const std::string FFiles_dir = "/FFiles";
@@ -81,8 +82,10 @@ static int Fox_Current_ROM_IsMIUI = 0; // is the currently installed ROM a MIUI 
 #define FOX_ZIP_INSTALLER_CODE "fox_zip_installer_code"
 #define FOX_ZIP_INSTALLER_TREBLE "fox_zip_installer_treble"
 #define FOX_DISABLE_OTA_AUTO_REBOOT "fox_disable_ota_auto_reboot_check"
-#define FOX_STARTUP_SCRIPT "/sbin/findmiui.sh"
+#define FOX_STARTUP_SCRIPT "/sbin/foxstart.sh"
 #define FOX_PS_BIN "/FFiles/ps"
+#define FOX_NEW_MAGISKBOOT "/FFiles/magiskboot_new"
+
 // **** //
 
 #define FOX_SURVIVAL_FOLDER_VAR      "fox_survival_backup_folder_path"

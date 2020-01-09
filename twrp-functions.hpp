@@ -65,6 +65,7 @@ public:
 	static int Wait_For_Child(pid_t pid, int *status, string Child_Name, bool Show_Errors = true); // Waits for pid to exit and checks exit status, displays an error to the GUI if Show_Errors is true which is the default
 	static int Wait_For_Child_Timeout(pid_t pid, int *status, const string& Child_Name, int timeout); // Waits for a pid to exit until the timeout is hit. If timeout is hit, kill the chilld.
 	static bool Path_Exists(string Path);                                       // Returns true if the path exists
+	static bool Is_SymLink(string Path);                                        // Returns true if the path exists and is a symbolic link	
 	static Archive_Type Get_File_Type(string fn);                               // Determines file type, 0 for unknown, 1 for gzip, 2 for OAES encrypted
 	static int Try_Decrypting_File(string fn, string password); 		    // -1 for some error, 0 for failed to decrypt, 1 for decrypted, 3 for decrypted and found gzip format
 	static unsigned long Get_File_Size(const string& Path);                     // Returns the size of a file
@@ -88,6 +89,8 @@ public:
 	static bool Repack_Image(string mount_point);
 	static bool Unpack_Image(string mount_point);
 	static void Read_Write_Specific_Partition(string path, string partition_name, bool backup);
+	static int Get_Android_SDK_Version(void);				// Return the SDK version of the current ROM (or default to 21 (Android 5.0))
+	static string Get_MagiskBoot(void);					// Return the name of the magiskboot binary that should be used for patching
 
 	static void Deactivation_Process(void);                     		// Run deactivation proces...
 	static void OrangeFox_Startup(void);        				// Run StartUP code for OrangeFox
@@ -142,8 +145,13 @@ public:
 	static bool Has_Vendor_Partition(void); // does the device have a real vendor partition?
 	static int Patch_DMVerity_ForcedEncryption_Magisk(void); // patch dm-verity/forced-encryption with a script using magisk
 	static void Run_Pre_Flash_Protocol(bool forceit); // run any pre_flash protocol
+	static void Run_Post_Flash_Protocol(void); // run any post_flash protocol
 	static bool Has_System_Root(void); // is this a system-as-root device?
 	static int Rename_File(std::string oldname, std::string newname); // rename a file, using std strings
+	static bool MIUI_Is_Running(void); // Are we running a MIUI ROM (old or freshly installed) ?
+	static void Dump_Current_Settings(void); // log some current settings before flashing a ROM
+	static void Setup_Verity_Forced_Encryption(void); //setup dm-verity/forced-encryption build vars
+
 	//
 	static std::string get_cache_dir(); // return the cache partition existence
 	static void check_selinux_support(); // print whether selinux support is enabled to console

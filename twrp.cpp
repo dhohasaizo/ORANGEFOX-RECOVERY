@@ -119,8 +119,16 @@ int main(int argc, char **argv)
   property_set("ro.twrp.version", FOX_VERSION);
   
   string fox_build_date = TWFunc::File_Property_Get ("/etc/fox.cfg", "FOX_BUILD_DATE");
-  if (fox_build_date == "") 
-     fox_build_date = "[no date!]";
+  if (fox_build_date == "")
+     {
+        fox_build_date = TWFunc::File_Property_Get ("/default.prop", "ro.bootimage.build.date");
+        if (fox_build_date == "")
+          {
+              fox_build_date = TWFunc::File_Property_Get ("/default.prop", "ro.build.date");
+              if (fox_build_date == "")
+                 fox_build_date = "[no date!]";
+         }
+     }
 
   DataManager::GetValue(FOX_COMPATIBILITY_DEVICE, Fox_Current_Device);
   time_t StartupTime = time(NULL);
@@ -167,6 +175,11 @@ int main(int argc, char **argv)
 		char* ptr;
 		printf("Startup Commands: ");
 		for (index = 1; index < argc; index++) {
+			if (strcmp(argv[index], "--prompt_and_wipe_data") == 0) // Rescue Party ?
+			   {
+			      gui_print_color("error", "OrangeFox: Android Rescue Party trigger! Wipe data and caches and/or clean-flash your ROM!\n");
+			   }
+
 			argptr = argv[index];
 			printf(" '%s'", argv[index]);
 			len = strlen(argv[index]);
@@ -239,8 +252,8 @@ int main(int argc, char **argv)
 	}
 
 	// Check for and run startup script if script exists
-	// TWFunc::check_and_run_script("/sbin/runatboot.sh", "boot");
-	// TWFunc::check_and_run_script("/sbin/postrecoveryboot.sh", "boot");
+	TWFunc::check_and_run_script("/sbin/runatboot.sh", "boot");
+	TWFunc::check_and_run_script("/sbin/postrecoveryboot.sh", "boot");
 
 #ifdef TW_INCLUDE_INJECTTWRP
 	// Back up TWRP Ramdisk if needed:
@@ -267,6 +280,7 @@ int main(int argc, char **argv)
 				  LOGINFO("- DEBUG: OrangeFox OTA: detected custom encryption\n");
 				  DataManager::SetValue("OTA_decrypted", "1");
 				  TWFunc::check_selinux_support();
+				  gui_loadCustomResources();
 			       } 
 			 }
 			else //
@@ -306,6 +320,9 @@ int main(int argc, char **argv)
 	PageManager::LoadLanguage(DataManager::GetStrValue("tw_language"));
 	GUIConsole::Translate_Now();
 
+  	// implement any relevant dm-verity/forced-encryption build vars
+  	TWFunc::Setup_Verity_Forced_Encryption();
+
 	// Run any outstanding OpenRecoveryScript
 	std::string cacheDir = TWFunc::get_cache_dir();
 	std::string orsFile = cacheDir + "/recovery/openrecoveryscript";
@@ -313,37 +330,31 @@ int main(int argc, char **argv)
 		OpenRecoveryScript::Run_OpenRecoveryScript();
 	}
 
-#ifdef TW_HAS_MTP
-  char mtp_crash_check[PROPERTY_VALUE_MAX];
-  property_get("mtp.crash_check", mtp_crash_check, "0");
-  if (DataManager::GetIntValue("tw_mtp_enabled")
-      && !strcmp(mtp_crash_check, "0") && !crash_counter
-      && (!DataManager::GetIntValue(TW_IS_ENCRYPTED)
-	  || DataManager::GetIntValue(TW_IS_DECRYPTED)))
-    {
-      /*property_set("mtp.crash_check", "1");
-      LOGINFO("Starting MTP\n");
-      if (!PartitionManager.Enable_MTP())
-	PartitionManager.Disable_MTP();
-      else
-	gui_msg("mtp_enabled=MTP Enabled");
-      property_set("mtp.crash_check", "0");*/
-    }
-  else if (strcmp(mtp_crash_check, "0"))
-    {
-      gui_warn("mtp_crash=MTP Crashed, not starting MTP on boot.");
-      DataManager::SetValue("tw_mtp_enabled", 0);
-      PartitionManager.Disable_MTP();
-    }
-  else if (crash_counter == 1)
-    {
-      LOGINFO("TWRP crashed; disabling MTP as a precaution.\n");
-      PartitionManager.Disable_MTP();
-    }
-#endif
+  	// call OrangeFox startup code
+  	TWFunc::OrangeFox_Startup();
 
-  // call OrangeFox startup code
-  TWFunc::OrangeFox_Startup();
+#ifdef TW_HAS_MTP
+	char mtp_crash_check[PROPERTY_VALUE_MAX];
+	property_get("mtp.crash_check", mtp_crash_check, "0");
+	if (DataManager::GetIntValue("tw_mtp_enabled")
+			&& !strcmp(mtp_crash_check, "0") && !crash_counter
+			&& (!DataManager::GetIntValue(TW_IS_ENCRYPTED) || DataManager::GetIntValue(TW_IS_DECRYPTED))) {
+		property_set("mtp.crash_check", "1");
+		LOGINFO("Starting MTP\n");
+		if (!PartitionManager.Enable_MTP())
+			PartitionManager.Disable_MTP();
+		else
+			gui_msg("mtp_enabled=MTP Enabled");
+		property_set("mtp.crash_check", "0");
+	} else if (strcmp(mtp_crash_check, "0")) {
+		gui_warn("mtp_crash=MTP Crashed, not starting MTP on boot.");
+		DataManager::SetValue("tw_mtp_enabled", 0);
+		PartitionManager.Disable_MTP();
+	} else if (crash_counter == 1) {
+		LOGINFO("TWRP crashed; disabling MTP as a precaution.\n");
+		PartitionManager.Disable_MTP();
+	}
+#endif
 
 #ifndef TW_OEM_BUILD
 	// Check if system has never been changed
@@ -386,23 +397,6 @@ int main(int argc, char **argv)
   twrpAdbBuFifo *adb_bu_fifo = new twrpAdbBuFifo();
   adb_bu_fifo->threadAdbBuFifo();
 
-// retain dm-verity and/or forced-encryption on devices that have problems with disabling them
-#ifdef OF_KEEP_FORCED_ENCRYPTION
-  DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
-  DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
-#endif
-
-#ifdef OF_KEEP_DM_VERITY
-  DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
-  DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
-#endif
-
-#ifdef OF_KEEP_DM_VERITY_FORCED_ENCRYPTION
-  DataManager::SetValue(FOX_DISABLE_DM_VERITY, "0");
-  DataManager::SetValue(FOX_DISABLE_FORCED_ENCRYPTION, "0");
-  DataManager::SetValue(FOX_ADVANCED_STOCK_REPLACE, "1");
-#endif
-
   // LOGINFO("OrangeFox: Reloading theme to apply generated theme on sdcard - again...\n");
   if (DataManager::GetStrValue("used_custom_encryption") == "1")
     PageManager::RequestReload();
@@ -414,21 +408,6 @@ int main(int argc, char **argv)
 
   // Disable flashing of stock recovery
   TWFunc::Disable_Stock_Recovery_Replace();
-
-  // Check for su to see if the device is rooted or not
-  if (DataManager::GetIntValue("tw_mount_system_ro") == 0
-      && PartitionManager.Mount_By_Path(PartitionManager.Get_Android_Root_Path(), false))
-    {
-      // read /system/build.prop to get sdk version and do not offer to root if running M or higher (sdk version 23 == M)
-      string sdkverstr = TWFunc::System_Property_Get("ro.build.version.sdk");
-      int sdkver = 23;
-      if (!sdkverstr.empty())
-	{
-	  sdkver = atoi(sdkverstr.c_str());
-	}
-      sync();
-      PartitionManager.UnMount_By_Path(PartitionManager.Get_Android_Root_Path(), false);
-    }
 #endif
 
 	// Reboot

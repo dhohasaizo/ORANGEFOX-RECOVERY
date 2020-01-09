@@ -318,8 +318,8 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 	    {
 	      DataManager::SetValue(FOX_MIUI_ZIP_TMP, 1);
 	      DataManager::SetValue(FOX_CALL_DEACTIVATION, 1);
-	      DataManager::SetValue(FOX_DISABLE_DM_VERITY, 1);
-	      DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 2); // MIUI ROM
+	      DataManager::SetValue(FOX_ZIP_INSTALLER_CODE, 2); // MIUI ROM  
+	      //DataManager::SetValue(FOX_DISABLE_DM_VERITY, 1);
 	    }
 	  gui_msg ("fox_install_miui_detected=- Detected MIUI Update zip installer"); 
 	}
@@ -373,10 +373,12 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 #if defined(OF_DISABLE_MIUI_SPECIFIC_FEATURES) || defined(OF_TWRP_COMPATIBILITY_MODE)
      // LOGINFO("OrangeFox: not executing MIUI OTA restore\n");
 #else
-     if (zip_is_survival_trigger) //(DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) != 0)
+     if (zip_is_survival_trigger) // (DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) != 0)
 	{
-	  gui_msg
-	    ("fox_incremental_ota_status_enabled=Support MIUI Incremental package status: Enabled");
+	  if (DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) != 0)
+	    gui_msg
+	       ("fox_incremental_ota_status_enabled=Support MIUI Incremental package status: Enabled");
+	  
 	  if (Zip->EntryExists(metadata_sg_path)) // META-INF/com/android/metadata is in zip
 	    {
 	      const string take_out_metadata = "/tmp/build.prop";
@@ -393,6 +395,14 @@ static int Prepare_Update_Binary(const char *path, ZipWrap * Zip,
 			      ("fox_incremental_package_detected=Detected Incremental package '{1}'")
 			      (path));
 			      
+		      if (DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) == 0)
+		      {
+		  	Zip->Close();
+		  	LOGERR("MIUI OTA is not enabled. Quitting the incremental OTA update.\n");
+		  	set_miui_install_status(OTA_ERROR, false);
+		  	return INSTALL_ERROR; 
+		      }
+		      
 		      zip_is_for_specific_build = true;
 		      
 		      DataManager::SetValue(FOX_METADATA_PRE_BUILD, 1);
@@ -825,7 +835,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
   else   
     {
       gui_msg(Msg("installing_zip=Installing zip file '{1}'") (path));
-
+      
       if (strlen(path) < 9 || strncmp(path, "/sideload", 9) != 0)
 	{
 	  string digest_str;
@@ -971,8 +981,11 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 	  if (ret_val == INSTALL_SUCCESS)
 	    {
 	  	TWFunc::Run_Pre_Flash_Protocol(false);
+	        
 	        ret_val = Run_Update_Binary
 	            (path, &Zip, wipe_cache, UPDATE_BINARY_ZIP_TYPE);
+	            
+	  	TWFunc::Run_Post_Flash_Protocol();
 	    }
 	  else 
 	   {
@@ -1011,7 +1024,7 @@ int TWinstall_zip(const char *path, int *wipe_cache)
 
   time(&stop);
   int total_time = (int) difftime(stop, start);
-
+  
   if (ret_val == INSTALL_CORRUPT)
     {
         set_miui_install_status(OTA_CORRUPT, true);
@@ -1028,7 +1041,10 @@ int TWinstall_zip(const char *path, int *wipe_cache)
    else  
    if (DataManager::GetIntValue(FOX_INCREMENTAL_OTA_FAIL) != 1)
      {
-      	TWinstall_Run_OTA_BAK (true); // true, because the value of Fox_Zip_Installer_Code to be set     
+      	if (DataManager::GetIntValue(FOX_INCREMENTAL_PACKAGE) == 1)
+      	  {
+      	      TWinstall_Run_OTA_BAK (true); // true, because the value of Fox_Zip_Installer_Code to be set
+      	  }
       	
       	DataManager::SetValue(FOX_METADATA_PRE_BUILD, 0);
       	DataManager::SetValue(FOX_MIUI_ZIP_TMP, 0);

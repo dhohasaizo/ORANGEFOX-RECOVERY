@@ -214,12 +214,12 @@
 
 			<listbox style="btn_list">
 				<placement x="0" y="%row1_2_y%" w="%screen_w%" h="%bl_h2%"/>
-				<listitem name="{@module_install} Magisk 19.3">
+				<listitem name="{@module_install} Magisk 20.1">
 					<icon res="bs_btn_archive"/>
 					<actions>
 						<action function="queueclear"/>
 						<action function="set">fox_m_author=topjohnwu</action>
-						<action function="set">fox_m_name={@module_install} Magisk 19.3</action>
+						<action function="set">fox_m_name={@module_install} Magisk 20.1</action>
 						<action function="set">tw_file=Magisk.zip</action>
 						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Magisk.zip</action>
 						<action function="set">tw_filecheck=%tw_filename%</action>
@@ -332,7 +332,7 @@
 						<action function="set">fox_m_name={@module_cam}</action>
 						<action function="set">tw_file=Cam2API.zip</action>
 						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/Cam2API.zip</action>
-						<action function="set">tw_filecheck=%tw_filename%</action>
+19						<action function="set">tw_filecheck=%tw_filename%</action>
 						<action function="set">install_back=fox_modules</action>
 						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
 						<action function="queuezip"/>
@@ -343,14 +343,14 @@
 					</actions>
 				</listitem>
 				<listitem name="{@module_pass}">
-					<condition var1="fileexists" var2="/sdcard/Fox/FoxFiles/PassReset.zip"/>
+					<condition var1="fileexists" var2="/FFiles/OF_DelPass/OF_DelPass.zip"/>
 					<icon res="bs_btn_archive"/>
 					<actions>
 						<action function="queueclear"/>
 						<action function="set">fox_m_author=DarthJabba9</action>
 						<action function="set">fox_m_name={@module_pass}</action>
-						<action function="set">tw_file=PassReset.zip</action>
-						<action function="set">tw_filename=/sdcard/Fox/FoxFiles/PassReset.zip</action>
+						<action function="set">tw_file=OF_DelPass.zip</action>
+						<action function="set">tw_filename=/FFiles/OF_DelPass/OF_DelPass.zip</action>
 						<action function="set">tw_filecheck=%tw_filename%</action>
 						<action function="set">install_back=fox_modules</action>
 						<action function="set">tw_zip_location=/sdcard/Fox/FoxFiles</action>
@@ -865,6 +865,7 @@
 				<action>
 					<action function="mount">/data</action>
 					<action function="cmd">
+<<<<<<< HEAD
 						tmp="/tmp/listapps"
 						list="$tmp/list"
 						apps_dir="/data/app"
@@ -885,6 +886,9 @@
 								echo "$apps_dir/$pkgname" > "$list/$name"
 							done
 						fi
+=======
+						/sbin/fox_list_apps
+>>>>>>> upstream/master
 					</action>
 				</action>
 
@@ -1060,6 +1064,7 @@
 					<actions>
 						<action function="terminalcommand">
 							rm -rf "$(cat "%amgr_file%")";
+							rm -f "%amgr_file%";
 						</action>
 					</actions>
 				</action>
@@ -1143,4 +1148,8 @@
 				</action>
 			</page>
 		</pages>
+<<<<<<< HEAD
 	</recovery>
+=======
+</recovery>
+>>>>>>> upstream/master

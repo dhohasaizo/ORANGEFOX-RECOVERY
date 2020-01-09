@@ -1,0 +1,3 @@
+#Causes clashes if recovery and ROM are based on different android versions - so disable
+#on fs
+#    export LD_CONFIG_FILE /sbin/ld.config.txt

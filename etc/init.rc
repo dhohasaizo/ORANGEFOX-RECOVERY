@@ -1,9 +1,8 @@
 import /init.recovery.logd.rc
+import /init.recovery.ldconfig.rc
 import /init.recovery.mksh.rc
 import /init.recovery.usb.rc
 import /init.recovery.service.rc
-import /init.recovery.qcom.rc
-import /init.recovery.hlthchrg.rc
 import /init.recovery.vold_decrypt.rc
 import /init.recovery.${ro.hardware}.rc
 
@@ -59,7 +58,7 @@ on boot
     domainname localdomain
 
     class_start default
-       
+
 # Load properties, pre-Android 6.0
 on load_all_props_action
     load_all_props
@@ -110,7 +109,7 @@ service adbd /sbin/adbd --root_seclabel=u:r:su:s0 --device_banner=recovery
     disabled
     socket adbd stream 660 system system
     seclabel u:r:adbd:s0
-    
+
 # Always start adbd on userdebug and eng builds
 on property:ro.debuggable=1
     #write /sys/class/android_usb/android0/enable 1
@@ -122,9 +121,3 @@ on property:service.adb.root=1
     write /sys/class/android_usb/android0/enable 0
     restart adbd
     write /sys/class/android_usb/android0/enable 1
-
-# DJ9 - run custom post_init script
-#on property:init.svc.set_permissive=stopped
-#    chmod 0755 /sbin/findmiui.sh
-#    exec u:r:init:s0 -- /sbin/findmiui.sh
-#

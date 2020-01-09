@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <language>
-	<display>Italiano</display>
+	<display>Italian</display>
 
 	<resources>
 		<!-- Font overrides - only change these if your language requires special characters -->
 
 		<!-- Partition display names -->
-		<string name="system">Sistema</string>
+		<string name="system">System</string>
 		<string name="system_image">Immagine del sistema</string>
-		<string name="vendor">venditore</string>
-		<string name="vendor_image">Immagine Vendor</string>
-		<string name="boot">Avvio</string>
-		<string name="recovery">Recupero</string>
+		<string name="vendor">Vendor</string>
+		<string name="vendor_image">Vendor Image</string>
+		<string name="boot">Boot</string>
+		<string name="recovery">Recovery</string>
 		<string name="cache">Cache</string>
 		<string name="data">Data</string>
 		<string name="sdcard">Scheda SD</string>
 		<string name="internal">Archiviazione interna</string>
-		<string name="microsd">Micro SDCard</string>
+		<string name="microsd">Scheda Micro SD</string>
 		<string name="usbotg">USB OTG</string>
 		<string name="android_secure">Android Secure</string>
 		<string name="dalvik">Dalvik / ART Cache</string>
@@ -35,30 +35,30 @@
 		<string name="sort_by_date_desc">Data</string>
 		<string name="sort_by_size_desc">Dimensione</string>
 		<string name="install_btn">Installare</string>
-		<string name="wipe_btn">Pulire</string>
-		<string name="backup_btn">Backups</string>
+		<string name="wipe_btn">Formatta</string>
+		<string name="backup_btn">Backup</string>
 		<string name="restore_btn">Ripristina</string>
-		<string name="mount_btn">Montare</string>
+		<string name="mount_btn">Montaggio</string>
 		<string name="file_manager_btn">File</string>
 		<string name="advanced_btn">Avanzate</string>
 		<string name="reboot_btn">Riavvia</string>
 		<string name="copy_log_btn">Copia il log nella scheda SD</string>
 		<string name="install_zip_hdr">Installa zip</string>
-		<string name="install_zip_btn">Installa zip</string>
+		<string name="install_zip_btn">Installa ZIP</string>
 		<string name="install_image_hdr">Installa immagine</string>
-		<string name="install_image_btn">Installa Immagine</string>
+		<string name="install_image_btn">Installa IMAGE</string>
 		<string name="install_select_file_hdr">Seleziona il file</string>
 		<string name="install_select_file_btn">Seleziona il file</string>
-		<string name="adb_sideload_btn">ADB Sideload</string>
+		<string name="adb_sideload_btn">ADB &amp; Sideload</string>
 		<string name="select_storage_hdr">Seleziona Archiviazione</string>
 		<string name="select_storage_btn">Seleziona Archiviazione</string>
 		<string name="queue_hdr">Coda</string>
-		<string name="raised_clearqueue_btn">Cancella coda</string>
+		<string name="raised_clearqueue_btn">Pulisci coda</string>
 		<string name="raised_viewqueue_btn">Visualizza la coda</string>
-		<string name="zip_queue_count">%tw_zip_queue_count% di max di 10 file in coda</string>
+		<string name="zip_queue_count">%tw_zip_queue_count% di max 10 file in coda</string>
 		<string name="folder">Cartella</string>
 		<string name="file">File</string>
-		<string name="zip_sig_chk">Verifica della firma zip</string>
+		<string name="zip_sig_chk">Verifica della firma ZIP</string>
 		<string name="inject_twrp_chk">Inietta Orangefox dopo l'installazione</string>
 		<string name="install_reboot_chk">Riavvia dopo aver completato l'installazione</string>
 		<string name="options_hdr">Opzioni</string>
@@ -68,88 +68,88 @@
 		<string name="failed">Fallito</string>
 		<string name="successful">Riuscito</string>
 		<string name="wipe_cache_btn">Cancella la cache</string>
-		<string name="reboot_system_btn">Riavvia il sistema</string>
-		<string name="reboot_recovery_btn">Riavvia in recovery</string>
+		<string name="reboot_system_btn">Riavvia nel Sistema</string>
+		<string name="reboot_recovery_btn">Riavvia in Recovery</string>
 		<string name="install_sel_target">Selezionare la partizione di destinazione</string>
 		<string name="flash_image_select">Partizione</string>
-		<string name="flashing_image">Installazione immagine...</string>
-		<string name="image_flashed">Immagine installata</string>
+		<string name="flashing_image">Applicazione dell'immagine...</string>
+		<string name="image_flashed">Immagine flashata</string>
 		<string name="wipe_cache_dalvik_confirm">Cancellare Cache &amp; Dalvik?</string>
-		<string name="wipe_dalvik_confirm">Cancellare la dalvik?</string>
+		<string name="wipe_dalvik_confirm">Cancellare la cache Dalvik?</string>
 		<string name="wiping_cache_dalvik">Cancellazione Cache &amp; Dalvik in corso...</string>
-		<string name="wipe_cache_dalvik_complete">Cache &amp; Dalvik Wipe completato</string>
-		<string name="cache_dalvik_done">Cache &amp; Dalvik Wipe completato</string>
-		<string name="swipe_wipe">Scorri per cancellare</string>
-		<string name="rebooting">Riavvio ...</string>
-		<string name="swipe_reboot">Scorri per riavviare</string>
+		<string name="wipe_cache_dalvik_complete">Cancellazione Cache &amp; Dalvik completato</string>
+		<string name="cache_dalvik_done">Cancellazione Cache &amp; Dalvik completato</string>
+		<string name="swipe_wipe">Trascina per formattare</string>
+		<string name="rebooting">Riavvio...</string>
+		<string name="swipe_reboot">Trascina per riavviare</string>
 		<string name="confirm_action">Conferma l'azione</string>
 		<string name="cancel_btn">Annulla</string>
-		<string name="wipe_hdr">pulire</string>
+		<string name="wipe_hdr">Formatta</string>
 		<string name="factory_reset_hdr">Reset ai valori di fabbrica</string>
 		<string name="factory_reset1">Formatta Data, Cache e Dalvik</string>
 		<string name="factory_reset2">(escluso l'archivio interno)</string>
-		<string name="factory_reset3">Il più delle volte questo è</string>
-		<string name="factory_reset4">l'unica formattazione di cui hai bisogno.</string>
-		<string name="factory_resetting">Cancellazione dei dati, cache e Dalvik ...</string>
-		<string name="advanced_wipe_hdr">Cancellazione avanzata</string>
-		<string name="advanced_wipe_btn">Cancellazione avanzata</string>
-		<string name="wipe_enc_confirm">Cancellare la crittografia dai dati?</string>
-		<string name="formatting_data">Formattazione dei dati...</string>
-		<string name="swipe_format_data">Scorri per formattare i dati</string>
+		<string name="factory_reset3">Il più delle volte questa è</string>
+		<string name="factory_reset4">l'unica pulizia che ti serve.</string>
+		<string name="factory_resetting">Formattazione di Data, Cache e Dalvik...</string>
+		<string name="advanced_wipe_hdr">Formattazione avanzata</string>
+		<string name="advanced_wipe_btn">Formattazione avanzata</string>
+		<string name="wipe_enc_confirm">Rimuovere la criptazione dai dati?</string>
+		<string name="formatting_data">Formattazione di Data...</string>
+		<string name="swipe_format_data">Trascina per formattare Data</string>
 		<string name="factory_reset_complete">Reset di fabbrica completato</string>
 		<string name="sel_part_hdr">Seleziona le partizioni</string>
-		<string name="wipe_sel_confirm">Cancella partizione/i selezionata/e?</string>
-		<string name="wiping_part">Cancellazione partizione/i...</string>
-		<string name="wipe_complete">Cancellazione completata</string>
-		<string name="format_data_hdr">Formatta data</string>
-		<string name="format_data_btn">Formatta data</string>
-		<string name="format_data_ptr1">Formattare Data cancellerà tutte le tue applicazioni,</string>
-		<string name="format_data_ptr2">backups, immagini, video, file multimediali e</string>
-		<string name="format_data_ptr3">rimuove una eventuale criptazione della memoria di archiviazione interna.</string>
-		<string name="format_data_adopted">Includi memoria montata</string>
+		<string name="wipe_sel_confirm">Formattare le partizioni selezionate?</string>
+		<string name="wiping_part">Formattazione partizione/i...</string>
+		<string name="wipe_complete">Formattazione completata</string>
+		<string name="format_data_hdr">Formatta Data</string>
+		<string name="format_data_btn">Formatta Data</string>
+		<string name="format_data_ptr1">Formattando Data cancellerai tutte le tue applicazioni,</string>
+		<string name="format_data_ptr2">backups, immagini, video, media e</string>
+		<string name="format_data_ptr3">rimuove la crittografia della memoria interna.</string>
+		<string name="format_data_adopted">Includi memoria utilizzata</string>
 		<string name="format_data_undo">Questa azione non può essere annullata.</string>
-		<string name="format_data_complete">Formattazione data completata</string>
+		<string name="format_data_complete">Formattazione Data completata</string>
 		<!-- Translator note: the word "yes" must remain English! -->
 		<string name="yes_continue">Scrivi "yes" per confermare.</string>
-		<string name="part_opt_hdr">Informazioni della partizione</string>
-		<string name="file_sys_opt">Opzioni della partizione</string>
-		<string name="part_mount_point">Punto di montaggio</string>
-		<string name="part_curr_fs">File System</string>
+		<string name="part_opt_hdr">Informazioni partizione</string>
+		<string name="file_sys_opt">Opzioni partizione</string>
+		<string name="part_mount_point">Punto di mount</string>
+		<string name="part_curr_fs">File system</string>
 		<string name="part_present">Presente</string>
 		<string name="part_removable">Rimovibile</string>
 		<string name="part_yes">Sì</string>
 		<string name="part_no">No</string>
 		<string name="part_size">Dimensione</string>
-		<string name="part_used">Usato</string>
+		<string name="part_used">Utilizzato</string>
 		<string name="part_free">Libero</string>
 		<string name="part_backup_size">Dimensione del backup</string>
 		<string name="resize_btn">Ridimensiona FS</string>
 		<string name="resize_confirm">Ridimensiona la partizione</string>
 		<string name="resizing">Ridimensionamento...</string>
 		<string name="resize_complete">Ridimensionamento completato</string>
-		<string name="swipe_resize">Scorri per ridimensionare</string>
+		<string name="swipe_resize">Trascina per ridimensionare</string>
 		<string name="repair_btn">Ripara FS</string>
 		<string name="repair_confirm">Ripara la partizione</string>
 		<string name="repairing">Riparando...</string>
 		<string name="repair_complete">Riparazione completata</string>
-		<string name="swipe_repair">Scorri per riparare</string>
+		<string name="swipe_repair">Trascina per riparare</string>
 		<string name="change_fs_btn">Cambia FS</string>
-		<string name="change_fs_warn1">Alcune ROM o Kernel potrebbero non supportare</string>
+		<string name="change_fs_warn1">Alcune ROM o kernel potrebbero non supportare</string>
 		<string name="change_fs_warn2">alcuni file system. Procedi con cautela!</string>
-		<string name="change_fs_confirm">Sostituisci FS con</string>
+		<string name="change_fs_confirm">Cambia FS con</string>
 		<string name="formatting">Formattazione...</string>
 		<string name="format_complete">Formattazione completata</string>
-		<string name="swipe_change_fs">Scorri per cambiare</string>
-		<string name="back_btn">Torna indietro</string>
-		<string name="wipe_enc_btn">Cancella criptazione</string>
-		<string name="swipe_factory_reset">Scorri per il ripristino di fabbrica</string>
+		<string name="swipe_change_fs">Trascina per cambiare</string>
+		<string name="back_btn">Indietro</string>
+		<string name="wipe_enc_btn">Rimuovi criptazione</string>
+		<string name="swipe_factory_reset">Trascina per il ripristino di fabbrica</string>
 		<string name="backup_hdr">Backup</string>
 		<string name="encryption_hdr">Abilita crittografia</string>
 		<string name="name">Nome</string>
 		<string name="enable_backup_comp_chk">Abilita compressione</string>
 		<string name="skip_md5_backup_chk">Salta generazione MD5 durante il backup</string>
-		<string name="disable_backup_space_chk">Disabilita il controllo libero dello spazio prima del backup</string>
-		<string name="swipe_backup">Scorri per il backup</string>
+		<string name="disable_backup_space_chk">Disabilita il controllo dello spazio libero prima del backup</string>
+		<string name="swipe_backup">Trascina per il backup</string>
 		<string name="backup_name_exists">Esiste già un backup con il nome inserito!</string>
 		<string name="pass_not_match">Le due password non coincidono!</string>
 		<string name="partitions">Partizioni</string>
@@ -163,21 +163,21 @@
 		<string name="del_backup_confirm2">Questa azione non può essere annullata!</string>
 		<string name="deleting_backup">Elminazione backup...</string>
 		<string name="backup_deleted">Backup eliminato</string>
-		<string name="swipe_delete">Scorri per eliminare</string>
-		<string name="restore_backup_date">Data backup</string>
-		<string name="restore_md5_chk">Controlla MD5 dei file di backup</string>
+		<string name="swipe_delete">Trascina per eliminare</string>
+		<string name="restore_backup_date">Data del backup</string>
+		<string name="restore_md5_chk">Verifica MD5 dei file di backup</string>
 		<string name="restore_enable_md5_chk">Abilita verifica MD5 dei file di backup</string>
 		<string name="restore_complete">Ripristino completato</string>
-		<string name="swipe_restore">Scorri per ripristinare</string>
+		<string name="swipe_restore">Trascina per ripristinare</string>
 		<string name="rename_backup_hdr">Rinomina backup</string>
 		<string name="rename_backup_confirm">Rinomina backup?</string>
 		<string name="rename_backup_confirm2">Questa azione non può essere annullata!</string>
 		<string name="renaming_backup">Rinominazione backup...</string>
 		<string name="rename_backup_complete">Backup rinominato con successo</string>
-		<string name="swipe_to_rename">Scorri per rinominare</string>
+		<string name="swipe_to_rename">Trascina per rinominare</string>
 		<string name="mount_hdr">Montare</string>
-		<string name="mount_sys_ro_chk">Monta sistema/vendor in sola modalità di lettura</string>
-		<string name="decrypt_data_btn">Decritta Data</string>
+		<string name="mount_sys_ro_chk">Monta partizione system in modalità di sola lettura</string>
+		<string name="decrypt_data_btn">Decripta Data</string>
 		<string name="disable_mtp_btn">Disattiva MTP</string>
 		<string name="enable_mtp_btn">Attiva MTP</string>
 		<string name="usb_storage_hdr">Archivio USB</string>
@@ -188,31 +188,31 @@
 		<string name="unmount_btn">Smonta</string>
 		<string name="rb_system_btn">Sistema</string>
 		<string name="rb_poweroff_btn">Spegni</string>
-		<string name="rb_recovery_btn">Recupero</string>
+		<string name="rb_recovery_btn">Recovery</string>
 		<string name="rb_bootloader_btn">Bootloader</string>
 		<string name="rb_theme">Tema</string>
 		<string name="rb_download_btn">Scarica</string>
-		<string name="rb_edl_btn">Edl</string>
+		<string name="rb_edl_btn">EDL</string>
 		<string name="turning_off">Spegnimento...</string>
-		<string name="swipe_power_off">Scorri per spegnere</string>
-		<string name="sys_ro">Partizione di sistema</string>
-		<string name="sys_ro_hdr">Partizione di sistema non modificata</string>
-		<string name="sys_rop1">OrangeFox può lasciare la partizione di sistema</string>
+		<string name="swipe_power_off">Trascina per spegnere</string>
+		<string name="sys_ro">Partizione System</string>
+		<string name="sys_ro_hdr">Partizione System non modificata</string>
+		<string name="sys_rop1">OrangeFox può lasciare la partizione System</string>
 		<string name="sys_rop2">non modificata per rendere più facile per te</string>
 		<string name="sys_rop2a">ricevere aggiornamenti ufficiali.</string>
 		<string name="sys_rop3">OrangeFox non sarà in grado di prevenire la</string>
-		<string name="sys_rop4">ROM stock nel sostituire OrangeFox.</string>
-		<string name="sys_rop5">installazioni ZIP o operazioni ADB</string>
-		<string name="sys_rop6">può ancora modificare la partizione di sistema.</string>
+		<string name="sys_rop4">sovrascrizione di OrangeFox da parte della ROM stock.</string>
+		<string name="sys_rop5">Le installazioni di file ZIP o operazioni ADB</string>
+		<string name="sys_rop6">possono ancora modificare la partizione System.</string>
 		<string name="sys_ro_never_show_chk">Non mostrare più questo messaggio</string>
 		<string name="sys_ro_keep_ro_btn">Mantieni in sola lettura</string>
-		<string name="swipe_allow_mod">Scorri per consentire modifiche</string>
+		<string name="swipe_allow_mod">Trascina per consentire modifiche</string>
 		<string name="settings_hdr">Impostazioni</string>
 		<string name="settings_cptn">Generale</string>
 		<string name="use_rmrf_chk">Utilizza rm -rf invece di formattare</string>
 		<string name="use24clock_chk">Usa il formato 24 ore</string>
-		<string name="rev_navbar_chk">Layout navbar invertito</string>
-		<string name="simact_chk">Simula azioni per il test del tema</string>
+		<string name="rev_navbar_chk">Layout della barra di navigazione invertito</string>
+		<string name="simact_chk">Simula azioni per il testing del tema</string>
 		<string name="simfail_chk">Simula errori per le azioni</string>
 		<string name="sel_tz_list">Fuso Orario</string>
 		<string name="dialog_reset_theme_hdr">Ripristina impostazioni predefinite</string>
@@ -260,13 +260,13 @@
 		<string name="enable_timeout_chk">Attiva timeout schermo</string>
 		<string name="screen_to_na">Impostazione timeout schermo non disponibile</string>
 		<string name="rotation_chk">Rotazione</string>
-		<string name="screen_bright_slider">Luminosità: %tw_brightness_pct%</string>
+		<string name="screen_bright_slider">Luminosità: %tw_brightness_pct%%</string>
 		<string name="screen_bright_na">Impostazione luminosità non disponibile</string>
 		<string name="vibration_hdr">Vibrazione</string>
 		<string name="button_vibration_hdr">Vibrazione pulsante disattivata</string>
 		<string name="kb_vibration_hdr">Vibrazione tastiera disattivata</string>
 		<string name="act_vibration_hdr">Vibrazione azioni disattivata</string>
-		<string name="button_vibration">Vibrazione bottoni:</string>
+		<string name="button_vibration">Vibrazione pulsanti:</string>
 		<string name="kb_vibration">Vibrazione tastiera:</string>
 		<string name="act_vibration">Vibrazione azioni:</string>
 		<string name="advanced_hdr">Avanzate</string>
@@ -280,13 +280,13 @@
 		<string name="inject_twrp_confirm">Re-installare OrangeFox?</string>
 		<string name="injecting_twrp">Re-installando OrangeFox...</string>
 		<string name="inject_twrp_complete">Installazione OrangeFox completata</string>
-		<string name="swipe_to_confirm">Scorri per confermare</string>
-		<string name="part_sd_hdr">Partizione SD</string>
+		<string name="swipe_to_confirm">Trascina per confermare</string>
+		<string name="part_sd_hdr">Partiziona SD</string>
 		<string name="rem_sd">Archiviazione rimovibile</string>
 		<string name="rem_sd_sel">Seleziona un dispositivo rimovibile!</string>
 		<string name="invalid_partsd_sel">Devi selezionare un dispositivo rimovibile</string>
 		<string name="part_sd_lose">Perderai tutti i file sulla tua scheda SD!</string>
-		<string name="part_sdcard_sel_note_1">Partizionare cancellerà tutti i file</string>
+		<string name="part_sdcard_sel_note_1">Il partizionamento cancellerà tutti i file</string>
 		<string name="part_sdcard_sel_note_2">sulla tua scheda SD!</string>
 		<string name="part_sd_undo">Questa azione non può essere annullata!</string>
 		<string name="part_sd_ext_sz">Dimensione EXT:</string>
@@ -302,19 +302,19 @@
 		<string name="part_sd_complete">Partizionamento completato</string>
 		<string name="dumlock_hdr">HTC Dumlock</string>
 		<string name="dumlock_restore_btn">Ripristina Boot originale</string>
-		<string name="dumlock_restore_confirm">Ripristinare l'immagine di avvio originale?</string>
-		<string name="dumlock_restoring">Ripristino immagine di Boot...</string>
-		<string name="dumlock_restore_complete">Ripristino Boot originale completato</string>
+		<string name="dumlock_restore_confirm">Ripristinare l'immagine boot originale?</string>
+		<string name="dumlock_restoring">Ripristino immagine boot...</string>
+		<string name="dumlock_restore_complete">Ripristino boot originale completato</string>
 		<string name="dumlock_reflash_btn">Reflash Recovery</string>
-		<string name="dumlock_reflash_confirm">Reflash della recovery nel boot?</string>
-		<string name="dumlock_reflashing">Flash della recovery nel boot in corso...</string>
-		<string name="dumlock_reflash_complete">Flash della recovery nel boot completato</string>
+		<string name="dumlock_reflash_confirm">Riflashare la recovery in boot?</string>
+		<string name="dumlock_reflashing">Flash della recovery in boot in corso...</string>
+		<string name="dumlock_reflash_complete">Flash della recovery in boot completato</string>
 		<string name="dumlock_install_btn">Installa Dumlock</string>
 		<string name="dumlock_install_confirm">Installare i file HTC Dumlock nella ROM?</string>
 		<string name="dumlock_installing">Installazione HTC Dumlock...</string>
 		<string name="dumlock_install_complete">Installazione HTC Dumlock completata</string>
-		<string name="swipe_to_unlock">Scorri per sbloccare</string>
-		<string name="fm_actions">Actions</string>
+		<string name="swipe_to_unlock">Trascina per sbloccare</string>
+		<string name="fm_actions">Azioni</string>
 		<string name="fm_hdr">File</string>
 		<string name="fm_sel_file">Seleziona un file o una cartella</string>
 		<string name="fm_type_folder">Cartella</string>
@@ -385,7 +385,7 @@
 		<string name="md5_error"> * Errore MD5!</string>
 		<string name="md5_compute_error"> * Errore calcolo MD5.</string>
 		<string name="current_date">(Data corrente)</string>
-		<string name="auto_generate">(Auto Genera)</string>
+		<string name="auto_generate">(Auto genera)</string>
 		<string name="unable_to_locate_partition">Impossibile trovare '{1}' partizione per i calcoli di backup.</string>
 		<string name="no_partition_selected">Nessuna partizione selezionata per il backup.</string>
 		<string name="total_partitions_backup"> Numero totale di partizioni di cui eseguire il backup: {1}</string>
@@ -420,12 +420,12 @@
 		<string name="unable_find_part_path">Impossibile trovare la partizione per il percorso '{1}'</string>
 		<string name="update_part_details">Aggiornamento dati della partizione...</string>
 		<string name="update_part_details_done">...fatto</string>
-		<string name="wiping_dalvik">Cancellazione percosi Dalvik cache...</string>
+		<string name="wiping_dalvik">Cancellazione cartelle Dalvik cache...</string>
 		<string name="cleaned">Cancellati: {1}...</string>
-		<string name="dalvik_done">-- Cancellazione percorsi dalvik cache completata!</string>
+		<string name="dalvik_done">Cancellazione delle cartelle dalvik cache completata!</string>
 		<string name="no_andsec">Nessuna partizione android secure trovata.</string>
 		<string name="unable_to_locate">Impossibile trovare {1}.</string>
-		<string name="wiping_datamedia">Cancellazione memoria interna -- /data/media...</string>
+		<string name="wiping_datamedia">Formattazione memoria interna -- /data/media...</string>
 		<string name="unable_to_mount">Impossibile montare {1}</string>
 		<string name="unable_to_mount_internal">Impossibile montare memoria interna</string>
 		<string name="unable_to_mount_storage">Impossibile montare archiviazione</string>
@@ -453,7 +453,7 @@
 		<string name="too_many_flash">Troppe partizioni selezionate per il flash.</string>
 		<string name="invalid_flash">Partizione di flash specificata non valida.</string>
 		<string name="flash_done">[FLASH IMMAGINE COMPLETATO]</string>
-		<string name="wiping">Cancellazione {1}</string>
+		<string name="wiping">Formattazione di {1}</string>
 		<string name="repair_not_exist">{1} non esiste! Riparazione impossibile!</string>
 		<string name="repairing_using">Riparazione {1} utilizzando {2}...</string>
 		<string name="unable_repair">Impossibile riparare {1}.</string>
@@ -473,16 +473,16 @@
 		<string name="format_data_msg">Sarà necessario riavviare in recovery per poter di nuovo usare /data.</string>
 		<string name="format_data_err">Impossibile formattare per rimuovere l'encriptazione.</string>
 		<string name="formatting_using">Formattazione {1} utilizzando {2}...</string>
-		<string name="unable_to_wipe">Impossibile cancellare {1}.</string>
-		<string name="cannot_wipe">La partizione {1} non può essere cancellata.</string>
+		<string name="unable_to_wipe">Impossibile formattare {1}.</string>
+		<string name="cannot_wipe">La partizione {1} non può essere formattata.</string>
 		<string name="remove_all">Cancellazione di tutti i file in '{1}'</string>
-		<string name="wiping_data">Cancellazione Data senza cancellare /data/media...</string>
+		<string name="wiping_data">Formattazione Data senza cancellare /data/media...</string>
 		<string name="backing_up">Backup {1} in corso...</string>
 		<string name="backing">Backup in corso</string>
 		<string name="backup_size">La dimensione del backup per '{1}' è di 0 bytes.</string>
 		<string name="datamedia_fs_restore">ATTENZIONE: Questo backup di /data è stato fatto con il file system {1}! Il backup potrebbe non avviarsi a meno che non cambi in {1}.</string>
 		<string name="restoring">Ripristino {1}...</string>
-		<string name="restoring_hdr">Ripristino in corso...</string>
+		<string name="restoring_hdr">Ripristino...</string>
 		<string name="recreate_folder_err">Impossibile ricreare la cartella {1}.</string>
 		<string name="img_size_err">La dimensione dell'immagine è più grande del dispositivo di destinazione</string>
 		<string name="flashing">Flash {1} in corso...</string>
@@ -511,8 +511,8 @@
 		<string name="select_backup_opt">Impostazione delle opzioni di backup:</string>
 		<string name="compression_on">La compressione è attivata</string>
 		<string name="md5_off">La generazione MD5 è disattivata</string>
-		<string name="backup_fail">Backup Fallito</string>
-		<string name="backup_clean">Backup non riuscito. Pulizia cartella di backup.</string>
+		<string name="backup_fail">Backup non riuscito</string>
+		<string name="backup_clean">Backup Fallito. Pulizia cartella di backup.</string>
 		<string name="running_recovery_commands">Esecuzione dei comandi di recovery</string>
 		<string name="recovery_commands_complete">Comandi di recovery completati</string>
 		<string name="running_ors">Esecuzione OpenRecoveryScript</string>
@@ -538,7 +538,7 @@
 		<string name="restore_error">Errore durante il processo di ripristino.</string>
 		<string name="split_thread">Suddivisione thread con ID {1} in archivio {2}</string>
 		<!-- These 2 items are saved in the data manager instead of resource manager, so %llu, etc is correct instead of {1} -->
-		<string name="file_progress">%llu di %llu files, %i%%</string>
+		<string name="file_progress">%llu di %llu file, %i%%</string>
 		<string name="size_progress">%lluMB di %lluMB, %i%%</string>
 		<string name="decrypt_cmd">Tentando di decriptare la partizione Data attraverso linea di comando.</string>
 		<string name="base_pkg_err">Impossibile caricare pacchetti base.</string>
@@ -554,7 +554,7 @@
 		<string name="zip_wipe_cache">Uno o più file di zip hanno richiesto una cancellazione della cache -- Cancellazione cache in corso.</string>
 		<string name="and_sec_wipe_err">Impossibile cancellare android secure</string>
 		<string name="dalvik_wipe_err">Cancellazione dalvik fallita</string>
-		<string name="auto_gen">(Auto genera)</string>
+		<string name="auto_gen">(Auto Genera)</string>
 		<string name="curr_date">(Data corrente)</string>
 		<string name="backup_name_len">Nome di backup troppo lungo.</string>
 		<string name="backup_name_invalid">Nome di backup '{1}' contiene caratteri non validi: '{1}'</string>
@@ -591,9 +591,10 @@
 		<string name="options_cptn">Opzioni</string>
 		<string name="flash_img_confirm">Flash File immagine</string>
 		<string name="also_wipes">Elimina anche</string>
-		<string name="confirm_wipe_cptn">Conferma cancellazione</string>
+		<string name="confirm_wipe_cptn">Conferma formattazione</string>
 		<string name="storage_cptn">Archivio</string>
-		<string name="enter_password_cptn">Password</string>
+		<string name="enter_password_restore">Password</string>
+		<string name="enter_password_cptn">Avvio Sideload...</string>
 		<!-- added by fordownloads -->
 		<string name="fordowns_sl">Avvio Sideload...</string>
 		<string name="fordowns_to">al</string>
@@ -830,12 +831,12 @@
 		<string name="fox_files_not_exist_3">usando il zip di installazione.</string>
 
 		<!-- Customization -->
-		<string name="cust_new_ota_screen">Mostra la schermata semplice mentre OTA</string>
+		<string name="cust_new_ota_screen">Rendere le icone dei file più grandi</string>
 		<string name="fm_icons_simple">Rendere le icone dei file più grandi</string>
 		<string name="theme_engine_update">Applicare le modifiche e ricaricare?</string>
+		<string name="theme_engine_reset">Tema</string>
 		<string name="apply_btn">Applica</string>
 		<string name="theme_hdr">Tema</string>
-		<string name="theme_engine_reset">Reimposta il tema e ricarica?</string>
 		
 		<string name="font_small">Piccolo</string>
 		<string name="font_norm">Normale</string>
@@ -892,16 +893,16 @@
 		<string name="locked_info_2">accessi non autorizzati.</string>
 		<string name="locked_info_3">Per utilizzare le funzioni principali della recovery</string>
 		<string name="locked_info_4">devi prima inserire la password.</string>
-		<string name="locked_info_4_gk">devi prima disegnare la chiave del gesto.</string>
+		<string name="locked_info_4_gk">devi prima disegnare il pattern.</string>
 		
 		<string name="new_pass_info_1">Inserire la nuova password per</string>
-		<string name="new_pass_info_1_gk">Disegna una nuova chiave per proteggere</string>
-		<string name="new_pass_info_2">OrangeFox contro non autorizzati</string>
-		<string name="new_pass_info_3">accessi.</string>
+		<string name="new_pass_info_1_gk">Disegna un nuovo pattern per proteggere</string>
+		<string name="new_pass_info_2">OrangeFox da accessi non</string>
+		<string name="new_pass_info_3">autorizzati.</string>
 		<string name="new_pass_info_4">Devi inserire la password due volte.</string>
-		<string name="new_pass_info_4_gk">Devi disegnare la chiave gesture due volte.</string>
+		<string name="new_pass_info_4_gk">Devi disegnare il pattern due volte.</string>
 		<string name="new_pass_info_4_2">Inserisci nuovamente la password.</string>
-		<string name="new_pass_info_4_2_gk">Disegna nuovamente il tasto gesture.</string>
+		<string name="new_pass_info_4_2_gk">Disegna nuovamente il pattern.</string>
 		
 		<string name="pass_page_block">Metodo di blocco attuale</string>
 		<string name="pass_page_block_inf1">Puoi dormire meglio sapendo</string>
@@ -912,7 +913,7 @@
 		<string name="more">Più...</string>
 		<string name="hide">Nascondi</string>
 		<string name="part_menu_hdr">Gestisci Partizioni</string>
-		<string name="run_adb_startup">Esegui ADB all'avvio</string>
+		<string name="run_adb_startup">Moduli</string>
 
 		<!-- MMGUI -->
 		<string name="mm_module_active">Attivo</string>
@@ -922,19 +923,18 @@
 		<string name="mm_mod_ver">Versione modulo</string>
 		<string name="magisk_not_found">Magisk non trovato!</string>
 		<string name="magisk_not_found_1">Vuoi andare su Fox Addons</string>
-		<string name="magisk_not_found_2">e installare Magisk precostruito?</string>
+		<string name="magisk_not_found_2">e installare Magisk incluso nella recovery?</string>
 		<string name="magisk_not_found_3"/>
 		
 		<!-- MIUI OTA -->
 		<string name="fox_ota_settings">Impostazioni OTA</string>
 		<string name="fox_ota_on">Abilita OTA</string>
-		<string name="fox_miui_ota_on">Abilita MIUI OTA</string>
 		
 		<!-- About -->
 		<string name="abt_maintainer">Manutentore</string>
 		<string name="abt_fd">Creatore di tema &amp; designer</string>
 		<string name="abt_bork">CEO, Sito &amp; UI</string>
-		<string name="abt_dj">Sistema di costruzione, C++</string>
+		<string name="abt_dj">Sistema di build, C++</string>
 		<string name="abt_front">Sviluppatore Frontend</string>
 		<string name="abt_back">Sviluppatore Backend</string>
 		<string name="abt_device">Dispositivo</string>
@@ -944,6 +944,8 @@
 		<string name="abt_trans">Traduttori</string>
 		<string name="abt_changes">Changelog</string>
 		<string name="abt_main_shrt">Manutentore</string>
+		<string name="welcome_msg">Benvenuto su Orangefox!</string>
+		<string name="welcome_msg2"><!-- If welcome message is too big in your lang, use this string --></string>
 		
 		<!-- Symlink -->
 		<string name="symlink_dir_name">Link alla cartella</string>
@@ -956,11 +958,16 @@
 		<string name="files_show_hidden">Mostra i file nascosti nei file</string>
 		<string name="files_auto_open">Rilevamento automatico del tipo di file nei file</string>
 		<string name="file_read_error">Impossibile aprire il file!</string>
-		<string name="subs_wipe">Cancella Sovrapposizione Substratum</string>
+		<string name="subs_wipe">Cancella overlay di Substratum</string>
 		<string name="sort_ex_all">Tutti i file</string>
 		<string name="sort_ex_img">File IMG</string>
 		<string name="sort_ex_zip">File ZIP</string>
 		<string name="aroma_help">Premi di nuovo per avviare AromaFM...</string>
+
+		<!-- this error will shown when recovery cannot create backup folder
+		 -->
+		<string name="backups_rw_error_1">Alte Prestazioni</string>
+		<string name="backups_rw_error_2">Risparmio energetico</string>
 
 		<!-- App mgr -->
 		<string name="appmgr_apps">Applicazioni</string>
@@ -968,7 +975,7 @@
 
 		<!-- Perfomance -->
 		<string name="perf_title">Perfomance</string>
-		<string name="perf_conf_mode">Modalità della recovery perfomance</string>
+		<string name="perf_conf_mode">Modalità delle perfomance della recovery</string>
 		<string name="perf_conf_balance">Bilanciato</string>
 		<string name="perf_conf_high">Alte Prestazioni</string>
 		<string name="perf_conf_batt">Risparmio energetico</string>
@@ -979,7 +986,7 @@
 
 		<!-- OTA -->
 		<string name="fox_ota_msg_ready">Sei pronto per ricevere aggiornamenti!</string>
-		<string name="fox_ota_msg_custom">Modalità ROM personalizzata abilitata</string>
+		<string name="fox_ota_msg_custom">Modalità custom ROM abilitata</string>
 		<string name="fox_ota_msg_reflash">Per favore, installa la ROM completa MIUI!</string>
 		<string name="fox_advanced_stock_recovery">Disattivazione della recovery aggressiva stock</string>
 		<string name="fox_support_miui_ota_chk">Supporta MIUI OTA Incrementale</string>
@@ -988,6 +995,6 @@
 		<string name="fox_dmverity_chk">Disabilita DM-Verity</string>
 		<string name="fox_forced_encryption_chk">Disabilita crittografia forzata</string>
 		<string name="FOX_DISABLE_OTA_AUTO_REBOOT_chk">Impedisci il riavvio automatico dopo l'installazione di OTA</string>
-		<string name="of_ota_reboot_disabled">Aggiornamento OTA riuscito. Hai disabilitato il riavvio automatico. Restituendo il controllo a te.</string>
+		<string name="of_ota_reboot_disabled">Aggiornamento OTA riuscito. Hai disattivato il riavvio automatico. Restituendoti il controllo.</string>
 	</resources>
 </language>

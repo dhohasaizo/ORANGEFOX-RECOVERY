@@ -97,7 +97,7 @@ int OpenRecoveryScript::copy_script_file(string filename) {
 }
 
 int OpenRecoveryScript::run_script_file(void) {
-	int ret_val = 0, cindex, line_len, i, remove_nl, install_cmd = 0, sideload = 0;
+	int ret_val = 0, cindex, line_len, i, remove_nl, install_cmd = 0, sideload = 0, tmp_tmp = 0;
 	char script_line[SCRIPT_COMMAND_SIZE], command[SCRIPT_COMMAND_SIZE],
 	     value[SCRIPT_COMMAND_SIZE], mount[SCRIPT_COMMAND_SIZE],
 	     value1[SCRIPT_COMMAND_SIZE], value2[SCRIPT_COMMAND_SIZE];
@@ -148,6 +148,7 @@ int OpenRecoveryScript::run_script_file(void) {
 				DataManager::SetValue("tw_action_text2", "Installing Zip");
 				//PartitionManager.Mount_All_Storage();
 				ret_val = Install_Command(value);
+				tmp_tmp = ret_val;
 				install_cmd = -1;
 			} else 
 			if (strcmp(command, "wipe") == 0) 
@@ -464,6 +465,7 @@ int OpenRecoveryScript::run_script_file(void) {
 		fclose(fp);
 		unlink(SCRIPT_FILE_TMP);
 		gui_msg("done_ors=Done processing script file");
+		tmp_tmp = ret_val;
 
 		//* DJ9 - disable auto-reboot after incremental OTA updates? *//
 		if (DataManager::GetIntValue(FOX_DISABLE_OTA_AUTO_REBOOT) == 1) 
@@ -494,7 +496,8 @@ int OpenRecoveryScript::run_script_file(void) {
 	}
 	
 	// DJ9
-	Run_Fox_Process_After_ORS();
+	if (tmp_tmp == 0)
+	   Run_Fox_Process_After_ORS();
 	// DJ9
 	
 	if (sideload)
@@ -586,6 +589,9 @@ int OpenRecoveryScript::Install_Command(string Zip)
 		if (wipe_cache)
 		   PartitionManager.Wipe_By_Path("/cache");
 	  }
+
+	TWFunc::Dump_Current_Settings();
+
 	return ret_val;
 }
 
@@ -732,7 +738,7 @@ int OpenRecoveryScript::Run_OpenRecoveryScript_Action()
        		  { 
  		     usleep(1000000); // sleep for 1 second
           	     op_status = 0;
-		     gui_msg("of_ota_reboot_disabled=OTA update succeeded. You disabled auto-reboot. Returning control to you.\n");
+		     gui_msg("of_ota_reboot_disabled=OTA update completed. You disabled auto-reboot. Returning control to you.\n");
           	     DataManager::SetValue("tw_page_done", 1);
        		  }
        		else
@@ -811,7 +817,11 @@ int OpenRecoveryScript::Run_Fox_Process_After_ORS(void)
    Fox_Zip_Installer_Code = DataManager::GetIntValue(FOX_ZIP_INSTALLER_CODE);
    if (Fox_Zip_Installer_Code != 0) // a ROM was installed
      {
-         if ((DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) || (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1))
+         if (
+            (DataManager::GetIntValue(FOX_DISABLE_DM_VERITY) == 1) 
+         || (DataManager::GetIntValue(FOX_DISABLE_FORCED_ENCRYPTION) == 1)
+         || (TWFunc::JustInstalledMiui())
+            )
             {
          	DataManager::SetValue(FOX_FORCE_DEACTIVATE_PROCESS, 1);
          	Fox_Force_Deactivate_Process = DataManager::GetIntValue(FOX_FORCE_DEACTIVATE_PROCESS);
